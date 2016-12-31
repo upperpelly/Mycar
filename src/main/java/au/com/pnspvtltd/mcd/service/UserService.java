@@ -2,12 +2,17 @@ package au.com.pnspvtltd.mcd.service;
 
 import java.util.List;
 
-import au.com.pnspvtltd.mcd.web.model.User;
+import au.com.pnspvtltd.mcd.web.model.UserVO;
 
 public interface UserService {
 
-	User findById(Long id);
-	User createUser(User user);
-	User updateUser(User user);
-	List<User> findAllUsers();
+	UserVO findById(Long id);
+
+	UserVO createUser(UserVO user);
+
+	UserVO updateUser(UserVO user);
+
+	List<UserVO> findAllUsers();
+
+	UserVO findUserByEmail(String email);
 }

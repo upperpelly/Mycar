@@ -1,19 +1,21 @@
 package au.com.pnspvtltd.mcd.service.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import au.com.pnspvtltd.mcd.domain.MyCarDomainUser;
-import au.com.pnspvtltd.mcd.repository.MyCarDomainUserRepository;
+import au.com.pnspvtltd.mcd.domain.User;
+import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.service.UserService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
-import au.com.pnspvtltd.mcd.web.model.User;
+import au.com.pnspvtltd.mcd.web.model.UserVO;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -21,41 +23,61 @@ public class UserServiceImpl implements UserService{
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 	
 	@Autowired
-	MyCarDomainUserRepository myCarDomainUserRepository;
+	UserRepository userRepository;
 	
 	@Override
 	@Transactional(readOnly = true)
-	public User findById(Long id) {
-		return DomainModelUtil.fromMyCarDomainUser(myCarDomainUserRepository.findOne(id));
+	public UserVO findById(Long id) {
+		User user = userRepository.findOne(id);
+		return (user != null ? DomainModelUtil.fromUser(user) : null);
 	}
 
 	@Override
 	@Transactional
-	public User createUser(User user) {
-		return DomainModelUtil.fromMyCarDomainUser(myCarDomainUserRepository.save(DomainModelUtil.toMyCarDomainUser(user)));
+	public UserVO createUser(UserVO userVO) {
+		userVO.setUserId(null);
+		return DomainModelUtil.fromUser(userRepository.save(DomainModelUtil.toUser(userVO)));
 	}
 
 	@Override
 	@Transactional
-	public User updateUser(User user) {
-		MyCarDomainUser myCarDomainUserToUpdate = myCarDomainUserRepository.findOne(user.getUserId());
-		if (myCarDomainUserToUpdate == null){
-			LOGGER.debug("User with id {} does not exist", user.getUserId());
-		}
-		myCarDomainUserToUpdate.setABNNumber(user.getUserABNNumber());
+	public UserVO updateUser(UserVO userVO) {
+		User userToUpdate = userRepository.findOne(userVO.getUserId());
 		
-		MyCarDomainUser myCarDomainUser = myCarDomainUserRepository.save(myCarDomainUserToUpdate);			
-		return DomainModelUtil.fromMyCarDomainUser(myCarDomainUser);
+		if (userToUpdate == null){
+			LOGGER.debug("User with id {} does not exist", userVO.getUserId());
+			return null;
+		}
+		
+		try {
+			BeanUtils.copyProperties(userToUpdate, userVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+			
+		User user = userRepository.save(userToUpdate);			
+		return DomainModelUtil.fromUser(user);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<User> findAllUsers() {
-		List<User> users = new ArrayList<>();
-		for(MyCarDomainUser myCarDomainUser :  myCarDomainUserRepository.findAll()){
-			users.add(DomainModelUtil.fromMyCarDomainUser(myCarDomainUser));
+	public List<UserVO> findAllUsers() {
+		List<UserVO> userVOs = new ArrayList<>();
+		for(User user :  userRepository.findAll()){
+			userVOs.add(DomainModelUtil.fromUser(user));
 		}
-		return users;
+		return userVOs;
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public UserVO findUserByEmail(String email){
+		return DomainModelUtil.fromUser(userRepository.findByEmailIgnoreCase(email));
 	}
 
 	

@@ -1,20 +1,43 @@
 package au.com.pnspvtltd.mcd.util;
 
-import au.com.pnspvtltd.mcd.domain.MyCarDomainUser;
-import au.com.pnspvtltd.mcd.web.model.User;
+import java.lang.reflect.InvocationTargetException;
+
+import org.apache.commons.beanutils.BeanUtils;
+
+import au.com.pnspvtltd.mcd.domain.User;
+import au.com.pnspvtltd.mcd.web.model.UserVO;
 
 public class DomainModelUtil {
-	public static User fromMyCarDomainUser(final MyCarDomainUser myCarDomainUser){
-		User user = new User();
-		user.setUserId(myCarDomainUser.getId());
-		user.setUserABNNumber(myCarDomainUser.getABNNumber());
-		return user;
+	public static UserVO fromUser(final User user){
+		
+		if (user == null){
+			return null;
+		}
+		
+		UserVO userVO = new UserVO();
+		try {
+			BeanUtils.copyProperties(userVO, user);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userVO;
 	}
 	
-	public static MyCarDomainUser toMyCarDomainUser(final User user){
-		MyCarDomainUser myCarDomainUser = new MyCarDomainUser();
-		myCarDomainUser.setId(user.getUserId());
-		myCarDomainUser.setABNNumber(user.getUserABNNumber());
-		return myCarDomainUser;
+	public static User toUser(final UserVO userVO){
+		User user = new User();
+		try {
+			BeanUtils.copyProperties(user, userVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
 	}
 }
