@@ -4,7 +4,9 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.User;
+import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 
 public class DomainModelUtil {
@@ -39,5 +41,25 @@ public class DomainModelUtil {
 			e.printStackTrace();
 		}
 		return user;
+	}
+	
+public static InventoryVO fromInventory(final Inventory inventory, boolean isMinified){
+		
+		if (inventory == null){
+			return null;
+		}
+		
+		InventoryVO inventoryVO = new InventoryVO();
+		try {
+			//TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
 	}
 }
