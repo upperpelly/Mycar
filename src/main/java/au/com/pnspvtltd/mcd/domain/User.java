@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "userrepo")
 public class User implements Serializable {
 
 	private Long userId;

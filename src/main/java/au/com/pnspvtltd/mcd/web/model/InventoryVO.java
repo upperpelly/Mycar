@@ -125,6 +125,8 @@ public class InventoryVO {
 		// Finance
 
 		private double finAmountMin;
+		
+		private Long dealerId;
 
 	// carQuery
 
@@ -795,4 +797,14 @@ public class InventoryVO {
 	public void setMake(String make) {
 		this.make = make;
 	}
+
+	public Long getDealerId() {
+		return dealerId;
+	}
+
+	public void setDealerId(Long dealerId) {
+		this.dealerId = dealerId;
+	}
+	
+	
 }
