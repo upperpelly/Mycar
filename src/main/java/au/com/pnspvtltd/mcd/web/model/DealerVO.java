@@ -2,8 +2,6 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.util.List;
 
-import au.com.pnspvtltd.mcd.domain.Inventory;
-
 public class DealerVO {
 
 	private Long dealerId;
@@ -26,8 +24,8 @@ public class DealerVO {
 	private String suborb;
 	private String state;
 	private int postcode;
-	
-	List<InventoryVO> carModel;
+
+	List<InventoryVO> inventory;
 
 	public Long getDealerId() {
 		return dealerId;
@@ -189,14 +187,12 @@ public class DealerVO {
 		this.postcode = postcode;
 	}
 
-	public List<InventoryVO> getCarModel() {
-		return carModel;
+	public List<InventoryVO> getInventory() {
+		return inventory;
 	}
 
-	public void setCarModel(List<InventoryVO> carModel) {
-		this.carModel = carModel;
+	public void setInventory(List<InventoryVO> inventory) {
+		this.inventory = inventory;
 	}
-	
-	
 
 }

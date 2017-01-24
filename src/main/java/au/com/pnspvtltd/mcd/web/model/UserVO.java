@@ -1,5 +1,9 @@
 package au.com.pnspvtltd.mcd.web.model;
 
+import java.util.List;
+
+import au.com.pnspvtltd.mcd.domain.Search;
+
 public class UserVO {
 
 	private Long userId;
@@ -20,6 +24,7 @@ public class UserVO {
 	private String issueState;
 	private boolean facebook;
 	private boolean payDeposit;
+	List<SearchVO> search;
 
 	public Long getUserId() {
 		return userId;
@@ -163,6 +168,14 @@ public class UserVO {
 
 	public void setPayDeposit(boolean payDeposit) {
 		this.payDeposit = payDeposit;
+	}
+
+	public List<SearchVO> getSearch() {
+		return search;
+	}
+
+	public void setSearch(List<SearchVO> search) {
+		this.search = search;
 	}
 
 }

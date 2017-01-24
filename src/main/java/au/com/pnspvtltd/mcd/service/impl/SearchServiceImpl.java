@@ -27,7 +27,7 @@ public class SearchServiceImpl implements SearchService {
 
 		User user = userRepository.findOne(searchVO.getUserId());
 		Search search = DomainModelUtil.toSearch(searchVO);
-		user.getCarModel().add(search);
+		user.getSearch().add(search);
 		userRepository.flush();
 		return "{\"userId\":" + searchVO.getUserId() + ",\"searchId\":" + search.getCarSearchId() + "}";
 

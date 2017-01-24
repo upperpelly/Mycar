@@ -87,7 +87,7 @@ public class DealerServiceImpl implements DealerService {
 	public String addInventory(InventoryVO inventoryVO) {
 		Dealer dealer = dealerRepository.findOne(inventoryVO.getRefId());
 		Inventory inventory = DomainModelUtil.toInventory(inventoryVO);
-		dealer.getCarModel().add(inventory);
+		dealer.getInventory().add(inventory);
 		dealerRepository.flush();
 		return "{\"dealerId\":" + dealer.getDealerId() + ",\"inventoryId\":" + inventory.getRepoId() + "}";
 	}

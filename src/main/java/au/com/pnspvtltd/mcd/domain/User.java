@@ -37,7 +37,7 @@ public class User implements Serializable {
 	private boolean facebook;
 	private boolean payDeposit;
 
-	List<Search> carModel;
+	List<Search> search;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -204,12 +204,12 @@ public class User implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
-	public List<Search> getCarModel() {
-		return carModel;
+	public List<Search> getSearch() {
+		return search;
 	}
 
-	public void setCarModel(List<Search> carModel) {
-		this.carModel = carModel;
+	public void setSearch(List<Search> search) {
+		this.search = search;
 	}
 
 }

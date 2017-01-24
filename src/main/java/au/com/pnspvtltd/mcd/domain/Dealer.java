@@ -38,6 +38,7 @@ public class Dealer implements Serializable {
 	private String suborb;
 	private String state;
 	private int postcode;
+	List<Inventory> inventory;
 
 	public @Column(name = "ISADMIN") boolean isAdmin() {
 		return isAdmin;
@@ -63,8 +64,6 @@ public class Dealer implements Serializable {
 		this.password = password;
 	}
 
-	List<Inventory> carModel;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "DEALERID")
@@ -78,12 +77,12 @@ public class Dealer implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
-	public List<Inventory> getCarModel() {
-		return carModel;
+	public List<Inventory> getInventory() {
+		return inventory;
 	}
 
-	public void setCarModel(List<Inventory> carModel) {
-		this.carModel = carModel;
+	public void setInventory(List<Inventory> inventory) {
+		this.inventory = inventory;
 	}
 
 	@Column(name = "ISDEALER")
