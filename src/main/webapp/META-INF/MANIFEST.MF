@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: MyCarDomain
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: A1 computer
+Implementation-Vendor-Id: au.com.pnspvtltd
+Build-Jdk: 1.8.0_111
+Implementation-URL: http://projects.spring.io/spring-boot/MyCarDomain/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

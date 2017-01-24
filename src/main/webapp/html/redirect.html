@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+<button ng-click="redirect()">Click</button>
+</div>
+
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+$scope.redirect = function(){
+  window.location = "MyCarDomain/travelo-travel-tour-booking-html5-template/html/cruise-detailed-ats.htm";
+}
+});
+</script>
+
+</body>
+</html>

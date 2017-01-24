@@ -1,0 +1,4113 @@
+<!DOCTYPE html>
+<html class="load-full-screen">
+<head>
+    <!-- Page Title -->
+    <title>Autoscoop</title>
+    
+    <!-- Meta Tags -->
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Autoscoop Booking HTML5 Template">
+    <meta name="author" content="SoapTheme">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="pingback" href="http://www.carqueryapi.com/xmlrpc.php" />
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/animate.min.css">
+    
+    <!-- Current Page Styles -->
+    <link rel="stylesheet" type="text/css" href="components/revolution_slider/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="components/revolution_slider/css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="components/jquery.bxslider/jquery.bxslider.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="components/flexslider/flexslider.css" media="screen" />
+  <script type="text/javascript" src="../js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="../js/cufon-yui.js"></script>
+<script type="text/javascript" src="../js/cufon-replace.js"></script>  
+<script type="text/javascript" src="../js/Cabin_400.font.js"></script>
+<script type="text/javascript" src="../js/tabs.js"></script> 
+<script type="text/javascript" src="../js/jquery.jqtransform.js" ></script>
+<script type="text/javascript" src="../js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="../js/atooltip.jquery.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+<script src="../js/carquery.0.3.4.js"type="text/javascript" ></script>
+  <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="../js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="../js/cufon-yui.js"></script>
+<script type="text/javascript" src="../js/cufon-replace.js"></script>  
+<script type="text/javascript" src="../js/Cabin_400.font.js"></script>
+<script type="text/javascript" src="../js/tabs.js"></script> 
+<script type="text/javascript" src="../js/jquery.jqtransform.js" ></script>
+<script type="text/javascript" src="../js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="../js/atooltip.jquery.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+<script src="../js/carquery.0.3.4.js"type="text/javascript" ></script>
+<script>
+$(document).ready(function() {
+
+$.ajax({
+  url: "http://www.carqueryapi.com/api/0.3/?cmd=getStats",
+  success: function(data){
+
+  $('#make_count').html(data.Stats.make_count);
+  $('#model_count').html(data.Stats.model_count);
+  $('#trim_count').html(data.Stats.trim_count);
+
+  }
+});
+
+});
+</script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<script src="../js/angular-resource.js"></script>
+<script src="../js/ui-bootstrap-tpls-0.11.0.js"></script>
+<script>
+	var mainApp1 = angular.module("mainApp1", [ 'ui.bootstrap', 'ngResource' ]);
+	mainApp1.controller('overviewController', function($scope, $stateParams) {
+	    var index = $stateParams.index;
+	    var anotherKey = $stateParams.anotherKey;
+	});
+	mainApp1
+			.controller(
+					'myController1',
+					function($scope, $http) {
+
+						$scope.predicate = 'name';
+						$scope.reverse = true;
+						$scope.currentPage = 1;
+						$scope.order = function(predicate) {
+							$scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse
+									: false;
+							$scope.predicate = predicate;
+						};
+
+						$scope.updatePagination = function() {
+							$scope.totalItems = $scope.biil.details.length;
+							$scope.numPerPage = 5;
+							$scope.paginate = function(value) {
+								var begin, end, index;
+								begin = ($scope.currentPage - 1)
+										* $scope.numPerPage;
+								end = begin + $scope.numPerPage;
+								index = $scope.biil.details.indexOf(value);
+								return (begin <= index && index < end);
+							};
+						};
+						
+					    
+
+						$scope.submitForm = function() {
+
+var e = document.getElementById("car-model-trims"); 
+var strUser = e.options[e.selectedIndex].text;
+
+							
+						
+
+								 /*var wsURL = 'http://sample-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser; */
+var wsURL = 'http://www.autoscoop.com.au/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;  
+/*var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;*/   
+/* var wsURL = 'http://sample-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser; */
+/* alert(wsURL);
+ */							/* var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear=2008&modelDisplay=BMW&modelName=116&modelTrim=i Exclusive'; */
+/* 							if ($scope.selectedRadio == 'invoiceNum') {
+								var invNumVal = $scope.invForm.invNum.$viewValue;
+								wsURL = wsURL
+										+ '/invoiceNumber.srv?invoiceNumber='
+										+ invNumVal;
+							} else if ($scope.selectedRadio == 'accNum') {
+								console.log($scope.invForm.custNum);
+								var custNum = $scope.invForm.custNum.$viewValue;
+								wsURL = wsURL + '/accntNumber.srv?accntNumber='
+										+ custNum;
+							} else {
+								wsURL = wsURL + '/recentdata.srv';
+							} */
+
+							/* var dataObj = {
+									userABNNumber : $scope.userABNNumber
+							}; */
+							
+							var modelYear= $('#car-years').val();
+							var modelDisplay= $('#car-makes').val();
+							var modelName=$('#car-models').val();
+							var trimValue=$('#car-model-trims').val();
+							//alert ("model"+modelYear);
+							
+							$http({
+								method : 'GET',
+								url : wsURL
+								
+							}).success(function(data) {
+								/* alert(data.priceMin); */
+								/* alert(trimValue); */
+								var url="abc.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
+										"&modelYear="+modelYear+"&modelDisplay="+modelDisplay+"&modelName="+modelName+"&modeltrim="+strUser+"&trimValue="+trimValue;
+								/* alert(url); */ 
+								window.location = url;
+								
+							}); 
+
+							// start
+							
+						};
+
+						$scope.init = function() {
+							$scope.biil = {
+								details : []
+							};
+							$scope.submitForm();
+						};
+
+					});
+</script>
+<!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[84,140] -->
+<link rel="canonical" href="http://www.carqueryapi.com/demo/dependant-selects-and-car-data-display/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="CarQuery &raquo; Feed" href="http://www.carqueryapi.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CarQuery &raquo; Comments Feed" href="http://www.carqueryapi.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CarQuery &raquo; Dependent Selects and Car Data Display Comments Feed" href="http://www.carqueryapi.com/demo/dependant-selects-and-car-data-display/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.carqueryapi.com\/wp-includes\/js\/wp-emoji-release.min.js"}};
+			!function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<script type='text/javascript' src='http://www.carqueryapi.com/wp-includes/js/jquery/jquery.js'></script>
+<script type='text/javascript' src='http://www.carqueryapi.com/wp-includes/js/jquery/jquery-migrate.min.js'></script>
+<script type='text/javascript' src='http://www.carqueryapi.com/wp-content/themes/mh_impact/js/scripts.js'></script>
+<link rel='https://api.w.org/' href='http://www.carqueryapi.com/wp-json/' />
+<link rel='shortlink' href='http://www.carqueryapi.com/?p=49' />
+<link rel="alternate" type="application/json+oembed" href="http://www.carqueryapi.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.carqueryapi.com%2Fdemo%2Fdependant-selects-and-car-data-display%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.carqueryapi.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.carqueryapi.com%2Fdemo%2Fdependant-selects-and-car-data-display%2F&#038;format=xml" />
+	<style type='text/css'>
+	.download-info .download-button {
+		background-image: url(http://www.carqueryapi.com/wp-content/plugins/download-monitor/page-addon/downloadbutton.gif);
+	}
+	.download-info .more-button {
+		background-image: url(http://www.carqueryapi.com/wp-content/plugins/download-monitor/page-addon/morebutton.gif);
+	}
+	</style>
+<link rel="shortcut icon" href="favicon.ico">
+  
+  
+  <!-- cruise start-->
+  
+  <!-- STYLES -->
+	<link href="assets/css/animate.min.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="assets/css/owl.carousel.css" rel="stylesheet">
+	<link href="assets/css/owl-carousel-theme.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="assets/css/flexslider.css" rel="stylesheet" media="screen">
+	<link href="assets/css/style.css" rel="stylesheet" media="screen">
+	<!-- LIGHT -->
+	<link rel="stylesheet" type="text/css" href="assets/css/dummy.css" id="select-style">
+	<link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	
+	<!-- FONTS -->
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600' rel='stylesheet' type='text/css'>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="LimpidThemes">
+  <!-- cruise end-->
+  
+    
+    <!-- Main Style -->
+    <link id="main-style" rel="stylesheet" href="css/style.css">
+    
+    <!-- Updated Styles -->
+    <link rel="stylesheet" href="css/updates.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/custom.css">
+    
+    <!-- Responsive Styles -->
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- CSS for IE -->
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" type="text/css" href="css/ie.css" />
+    <![endif]-->
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+    <style>
+        section#content {  min-height: 1000px; padding: 0; position: relative; overflow: hidden; }
+        #main { padding-top: 200px; }
+        .page-title, .page-description { color: #fff; }
+        .page-title { font-size: 4.1667em; font-weight: bold; }
+        .page-description { font-size: 2.5em; margin-bottom: 50px; }
+        .featured { position: absolute; right: 50px; bottom: 50px; z-index: 9; margin-bottom: 0;  text-align: right; }
+        .featured figure a { border: 2px solid #fff; }
+        .featured .details { margin-right: 10px; }
+        .featured .details > * { color: #fff; line-height: 1.25em; margin: 0; font-weight: bold; text-shadow: 2px -2px rgba(0, 0, 0, 0.2); }
+    </style>
+</head>
+<body class="load-full-screen" ng-app="mainApp1" ng-controller="myController1">
+  
+    <div id="page-wrapper" class="site-wrapper">
+        <header id="header" class="navbar-static-top">
+          
+            <div class="topnav hidden-xs">
+             
+                <div class="container">
+                  <script type="text/javascript">// <![CDATA[
+$(document).ready( function() {
+
+var carquery = new CarQuery();
+carquery.init();
+carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+
+//Set onclick function for the US filter checkbox and show data button
+$('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
+$('#cq-show-data').click(  function(){ carquery.populateCarData('car-model-data'); } );
+$('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model-data','price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); } );
+});
+// ]]&gt;</script>
+			
+                    <ul class="quick-menu pull-left">
+                        <li><a href="dashboard1.html">MY ACCOUNT</a></li>
+                       
+                    </ul>
+                    <ul class="quick-menu pull-right">
+                        <li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
+                        <li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-header">
+                
+                <a href="#mobile-menu-01" data-toggle="collapse" class="mobile-menu-toggle">
+                    Mobile Menu Toggle
+                </a>
+
+                <div class="container">
+                    <h1 class="logo navbar-brand">
+                        <a href="homepage10.html" title="Autoscoop - home">
+                            <img src="images/logo.png" alt="Autoscoop HTML5 Template" />
+                        </a>
+                    </h1>
+                    
+                    <nav id="main-menu" role="navigation">
+                        <ul class="menu">
+                            <li class="menu-item-has-children active">
+                                <a href="homepage10.html">eBidR</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Browse</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Finance</a>
+                                 <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Insurance</a>
+                                 <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Service & Maintennance</a>
+                                 <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Transport</a>
+                                 <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                           
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Rego</a>
+                                 <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+                
+                <nav id="mobile-menu-01" class="mobile-menu collapse">
+                    <ul id="mobile-primary-menu" class="menu">
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">eBidR</a>
+                             <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Browse</a>
+                             <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Finance</a>
+                             <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Insurance</a>
+                             <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Service & Maintenance</a>
+                             <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Transport</a>
+                             <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                       
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Rego</a>
+                             <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                       
+                    </ul>
+                    
+                    <ul class="mobile-topnav container">
+                        <li><a href="#">MY ACCOUNT</a></li>
+                        <li class="ribbon language menu-color-skin">
+                            <a href="#" data-toggle="collapse">ENGLISH</a>
+                            <ul class="menu mini">
+                                <li><a href="#" title="Dansk">Dansk</a></li>
+                                <li><a href="#" title="Deutsch">Deutsch</a></li>
+                                <li class="active"><a href="#" title="English">English</a></li>
+                                <li><a href="#" title="EspaÃ±ol">EspaÃ±ol</a></li>
+                                <li><a href="#" title="FranÃ§ais">FranÃ§ais</a></li>
+                                <li><a href="#" title="Italiano">Italiano</a></li>
+                                <li><a href="#" title="Magyar">Magyar</a></li>
+                                <li><a href="#" title="Nederlands">Nederlands</a></li>
+                                <li><a href="#" title="Norsk">Norsk</a></li>
+                                <li><a href="#" title="Polski">Polski</a></li>
+                                <li><a href="#" title="PortuguÃªs">PortuguÃªs</a></li>
+                                <li><a href="#" title="Suomi">Suomi</a></li>
+                                <li><a href="#" title="Svenska">Svenska</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
+                        <li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+                        <li class="ribbon currency menu-color-skin">
+                            <a href="#">USD</a>
+                            <ul class="menu mini">
+                                <li><a href="#" title="AUD">AUD</a></li>
+                                <li><a href="#" title="BRL">BRL</a></li>
+                                <li class="active"><a href="#" title="USD">USD</a></li>
+                                <li><a href="#" title="CAD">CAD</a></li>
+                                <li><a href="#" title="CHF">CHF</a></li>
+                                <li><a href="#" title="CNY">CNY</a></li>
+                                <li><a href="#" title="CZK">CZK</a></li>
+                                <li><a href="#" title="DKK">DKK</a></li>
+                                <li><a href="#" title="EUR">EUR</a></li>
+                                <li><a href="#" title="GBP">GBP</a></li>
+                                <li><a href="#" title="HKD">HKD</a></li>
+                                <li><a href="#" title="HUF">HUF</a></li>
+                                <li><a href="#" title="IDR">IDR</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                </nav>
+            </div>
+            <div id="travelo-signup" class="travelo-signup-box travelo-box">
+                <div class="login-social">
+                    <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
+                    <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
+                </div>
+                <div class="seperator"><label>OR</label></div>
+                <div class="simple-signup">
+                    <div class="text-center signup-email-section">
+                        <a href="#" class="signup-email"><i class="soap-icon-letter"></i>Sign up with Email</a>
+                    </div>
+                    <p class="description">By signing up, I agree to Autoscoop's Terms of Service, Privacy Policy and Host Guarantee Terms.</p>
+                </div>
+                <div class="email-signup">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="input-text full-width" placeholder="first name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="input-text full-width" placeholder="last name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="input-text full-width" placeholder="email address">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="input-text full-width" placeholder="password">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="input-text full-width" placeholder="confirm password">
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Tell me about Autoscoop news
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="description">By signing up, I agree to Autoscoop's Terms of Service, Privacy Policy and Host Guarantee Terms.</p>
+                        </div>
+                        <button type="submit" class="full-width btn-medium">SIGNUP</button>
+                    </form>
+                </div>
+                <div class="seperator"></div>
+                <p>Already a Autoscoop member? <a href="#travelo-login" class="goto-login soap-popupbox">Login</a></p>
+            </div>
+            <div id="travelo-login" class="travelo-login-box travelo-box">
+                <div class="login-social">
+                    <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
+                    <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
+                </div>
+                <div class="seperator"><label>OR</label></div>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="input-text full-width" placeholder="email address">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="input-text full-width" placeholder="password">
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="forgot-password pull-right">Forgot password?</a>
+                        <div class="checkbox checkbox-inline">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                </form>
+                <div class="seperator"></div>
+                <p>Don't have an account? <a href="#travelo-signup" class="goto-signup soap-popupbox">Sign up</a></p>
+            </div>
+        </header>
+        
+                                <!-- BEGIN: SEARCH SECTION -->
+
+    <section id="content" class="slideshow-bg">     
+         <div id="slideshow">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div class="slidebg" style="background-image: url('http://placehold.it/2080x2000');"><img src="assets/images/parachute.jpeg" alt="Cruise"></div>
+                        </li>
+                        <li>
+                            <div class="slidebg" style="background-image: url('http://placehold.it/2080x2000');"><img src="assets/images/parachute.jpeg" alt="Cruise"></div>
+                        </li>
+                        <li>
+                            <div class="slidebg" style="background-image: url('http://placehold.it/2080x2000');"><img src="assets/images/parachute.jpeg" alt="Cruise"></div>
+                        </li>
+                        <li>
+                            <div class="slidebg" style="background-image: url('http://placehold.it/2080x2000');"><img src="assets/images/parachute.jpeg" alt="Cruise"></div>
+                        </li>
+                        <li>
+                            <div class="slidebg" style="background-image: url('http://placehold.it/2080x2000');"><img src="assets/images/parachute.jpeg" alt="Cruise"></div>
+                        </li>
+                        <li>
+                            <div class="slidebg" style="background-image: url('http://placehold.it/2080x2000');"><img src="assets/images/parachute.jpeg" alt="Cruise"></div>
+                        </li>
+                        <li>
+                            <div class="slidebg" style="background-image: url('http://placehold.it/2080x2000');"><img src="assets/images/parachute.jpeg" alt="Cruise"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+           <div class="container">
+                    <div id="main" class="col-sm-8 col-md-9">
+                        <div class="search-box-wrapper style1">
+                            <div class="search-box ">
+                                <ul class="search-tabs clearfix">
+                                    <li class="active"><a href="#hotels-tab" data-toggle="tab"><i class="soap-icon-pets"></i>eBid-R</a></li>
+                                    <li><a href="#flights-tab" data-toggle="tab"><i class="soap-icon-search"></i>Browse</a></li>
+                                    <li><a href="#flight-and-hotel-tab" data-toggle="tab"><i class="soap-icon-savings"></i>Finance</a></li>
+                                    <li><a href="#cars-tab" data-toggle="tab"><i class="soap-icon-insurance"></i>Insurance</a></li>
+                                    <li><a href="#cruises-tab" data-toggle="tab"><i class="soap-icon-doorman"></i>Serv & Maint</a></li>
+                                    <li><a href="#flight-status-tab" data-toggle="tab"><i class="soap-icon-baggage-5"></i>Transport</a></li>
+<li><a href="#online-checkin-tab" data-toggle="tab"><i class="soap-icon-status"></i>Rego</a></li>
+                                </ul>
+                                <div class="visible-mobile">
+                                    <ul id="mobile-search-tabs" class="search-tabs clearfix">
+                                        <li class="active"><a href="#hotels-tab">eBid-R</a></li>
+                                        <li><a href="#flights-tab">Browse</a></li>
+                                        <li><a href="#flight-and-hotel-tab">Finance</a></li>
+                                        <li><a href="#cars-tab">Insurance</a></li>
+                                        <li><a href="#cruises-tab">Serv & Maint</a></li>
+                                        <li><a href="#flight-status-tab">Transport</a></li>
+                                        <li><a href="#online-checkin-tab">Rego</a></li>
+
+                                    </ul>
+                                </div>
+                                
+                                <div role="tabpanel" class="search-tab-content tran-search-box" style="background-image: url('parachute.jpeg');">
+<!-- Start of eBidR -->
+<div role="tabpanel" class="tab-pane active" id="hotels-tab">
+<div class="title-container">
+<h5>Electronic Bidding</h5>
+              <p class="text-sm">We're bringing you a new level of comfort.</p>
+                                                <i class="soap-icon-pets"></i>
+                                            </div>
+   				<div role="tabpanel" class="col-md-12 search-section tran-search-box">
+
+								
+					<!-- BEGIN: CATEGORY TAB -->
+
+					<ul class="nav nav-tabs search-top" role="tablist" id="searchTab">
+						<li role="presentation" class="active text-center">
+							<a href="#flight" aria-controls="flight" role="tab" data-toggle="tab">
+								<i class="fa fa-cab"></i> 
+								<span>Cars</SPAN>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#hotel" aria-controls="hotel" role="tab" data-toggle="tab">
+								<i class="fa fa-motorcycle"></i> 
+								<span>Bikes</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#holiday" aria-controls="holiday" role="tab" data-toggle="tab">
+								<i class="fa fa-ship"></i>
+								<span>Boats</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#taxi" aria-controls="taxi" role="tab" data-toggle="tab">
+								<i class="fa fa-truck"></i>
+								<span>Caravan</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#cruise" aria-controls="cruise" role="tab" data-toggle="tab">
+								<i class="fa fa-bicycle"></i>
+								<span>Bicycle</span>
+							</a>
+						</li>
+					</ul>
+					<!-- END: CATEGORY TAB -->
+
+					<!-- BEGIN: TAB PANELS -->
+					<div class="tab-content" >
+							<!-- BEGIN: FLIGHT SEARCH -->
+							<div role="tabpanel" class="tab-pane active" id="flight">
+								<form name="invForm" ng-submit="submitForm()">
+
+									<div class="col-md-12 product-search-title">Ebbiding for car</div>
+									<!-- <div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">Used
+										</label>
+									</div> -->
+									
+									
+                                        <div class="clearfix"></div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"><span class="skin-color">New</span></a>.
+                                        </label>
+                                    </div>
+                                
+                                
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"><span class="skin-color">Used</span></a>.
+                                        </label>
+                                    </div>
+                                
+									<div class="clearfix"></div>
+									<div class="col-sm-5 col-md-4">
+                                            <label>Year</label>
+                                            <div class="selector">
+                                                <select id="car-years" name="car-years" class="full-width">
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+									
+									<div class="col-sm-5 col-md-4">
+                                            <label>Make</label>
+                                            <div class="selector">
+                                                <select id="car-makes" name="car-makes" class="full-width">
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+									<div class="col-sm-5 col-md-4">
+                                            <label>Model</label>
+                                            <div class="selector">
+                                                <select id="car-models" name="car-models" class="full-width">
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+									
+                                 <div class="col-sm-5 col-md-4">
+                                            <label>Variant</label>
+                                            <div class="selector">
+                                                <select id="car-model-trims" name="car-model-trims" class="full-width">
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+																		
+									<div class="clearfix"></div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"><span class="skin-color">Finance</span></a>.
+                                        </label>
+                                    </div>
+                                
+                                
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"><span class="skin-color">Insurance</span></a>.
+                                        </label>
+                                    </div>
+									
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+									<button ng-click="go()" class="button">build</button>
+										<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: FLIGHT SEARCH -->
+							
+							<!-- START: HOTEL SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="hotel">
+								<form>
+									<div class="col-md-12 product-search-title">Ebbiding for bike</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="bike-years" name="bike-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="bike-makes" name="bike-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="bike-models" name="bike-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="bike-model-trims" name="bike-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">           Finance
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">        Insurance
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOTEL SEARCH -->
+								
+							<!-- START: BEGIN HOLIDAY -->
+							<div role="tabpanel" class="tab-pane" id="holiday">
+								<form>
+									<div class="col-md-12 product-search-title">Ebbiding for boat</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="boat-years" name="boat-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="boat-makes" name="boat-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="boat-models" name="boat-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="boat-model-trims" name="boat-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">           Finance
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">        Insurance
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOLIDAYS -->
+							
+							<!-- START: CAR SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="taxi">
+								<form>
+									<div class="col-md-12 product-search-title">Ebbiding for caravan</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="caravan-years" name="caravan-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="caravan-makes" name="caravan-makes"></select>
+									</div>
+                                 
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="caravan-models" name="caravan-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="caravan-model-trims" name="caravan-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">           Finance
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">        Insurance
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CAR SEARCH -->
+							
+							<!-- START: CRUISE SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="cruise">
+								<form>
+									<div class="col-md-12 product-search-title">Ebbiding for Bicycle</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="bicycle-years" name="bicycle-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="bicycle-makes" name="bicycle-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="bicycle-models" name="bicycle-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="bicycle-model-trims" name="bicycle-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">           Finance
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">        Insurance
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CRUISE SEARCH -->
+							
+						</div>
+						<!-- END: TAB PANE -->
+
+
+					</div>
+				
+			</div>
+			
+  
+ 
+<!-- Start of flight tab-->
+<div class="tab-pane fade" id="flights-tab">
+<div class="title-container">
+<h5>Browse for Vehicles</h5>
+              <p class="text-sm">We're bringing you a new level of comfort.</p>
+                                                <i class="soap-icon-search"></i>
+                                            </div>
+     
+		<div role="tabpanel" class="col-md-12 search-section tran-search-box">
+					<!-- BEGIN: CATEGORY TAB -->
+
+					<ul class="nav nav-tabs search-top" role="tablist" id="searchTab">
+						<li role="presentation" class="active text-center">
+							<a href="#flight1" aria-controls="flight" role="tab" data-toggle="tab">
+								<i class="fa fa-cab"></i> 
+								<span>Cars</SPAN>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#hotel1" aria-controls="hotel" role="tab" data-toggle="tab">
+								<i class="fa fa-motorcycle"></i> 
+								<span>Bikes</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#holiday1" aria-controls="holiday" role="tab" data-toggle="tab">
+								<i class="fa  fa-ship"></i>
+								<span>Boats</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#taxi1" aria-controls="taxi" role="tab" data-toggle="tab">
+								<i class="fa fa-truck"></i>
+								<span>Caravan</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#cruise1" aria-controls="cruise" role="tab" data-toggle="tab">
+								<i class="fa fa-bicycle"></i>
+								<span>Bicycle</span>
+							</a>
+						</li>
+					</ul>
+					<!-- END: CATEGORY TAB -->
+
+					<!-- BEGIN: TAB PANELS -->
+					<div class="tab-content" >
+							<!-- BEGIN: FLIGHT SEARCH -->
+							<div role="tabpanel" class="tab-pane active" id="flight1">
+								<form>
+									<div class="col-md-12 product-search-title">Browse for car</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">Finance
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">Insurance
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: FLIGHT SEARCH -->
+							
+							<!-- START: HOTEL SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="hotel1">
+								<form>
+									<div class="col-md-12 product-search-title">Browse for bike</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="bike-years" name="bike-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="bike-makes" name="bike-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="bike-models" name="bike-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="bike-model-trims" name="bike-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">           Finance
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">        Insurance
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOTEL SEARCH -->
+								
+							<!-- START: BEGIN HOLIDAY -->
+							<div role="tabpanel" class="tab-pane" id="holiday1">
+								<form>
+									<div class="col-md-12 product-search-title">Browse for boat</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="boat-years" name="boat-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="boat-makes" name="boat-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="boat-models" name="boat-models"></select>
+									</div>
+                                 
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="boat-model-trims" name="boat-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">           Finance
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">        Insurance
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOLIDAYS -->
+							
+							<!-- START: CAR SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="taxi1">
+								<form>
+									<div class="col-md-12 product-search-title">Browse for caravan</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="caravan-years" name="caravan-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="caravan-makes" name="caravan-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="caravan-models" name="caravan-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="caravan-model-trims" name="caravan-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">           Finance
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">        Insurance
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CAR SEARCH -->
+							
+							<!-- START: CRUISE SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="cruise1">
+								<form>
+									<div class="col-md-12 product-search-title">Browse for bicycle</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="bicycle-years" name="bicycle-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="bicycle-makes" name="bicycle-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="bicycle-models" name="bicycle-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="bicycle-model-trims" name="bicycle-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">           Finance
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">        Insurance
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CRUISE SEARCH -->
+							
+						</div>
+						<!-- END: TAB PANE -->
+
+
+</div>
+				</div>
+			
+                                   
+<!-- Start of flghts and hotel tab-->
+<div class="tab-pane fade" id="flight-and-hotel-tab">
+<div class="title-container">
+<h5>Finance for Vehicles</h5>
+              <p class="text-sm">We're bringing you a new level of comfort.</p>
+                                                <i class="soap-icon-savings"></i>
+                                            </div>
+                                   
+		<div role="tabpanel" class="col-md-12 search-section tran-search-box">
+					<!-- BEGIN: CATEGORY TAB -->
+
+					<ul class="nav nav-tabs search-top" role="tablist" id="searchTab">
+						<li role="presentation" class="active text-center">
+							<a href="#flight2" aria-controls="flight" role="tab" data-toggle="tab">
+								<i class="fa fa-cab"></i> 
+								<span>Cars</SPAN>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#hotel2" aria-controls="hotel" role="tab" data-toggle="tab">
+								<i class="fa fa-motorcycle"></i> 
+								<span>Bikes</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#holiday2" aria-controls="holiday" role="tab" data-toggle="tab">
+								<i class="fa fa-ship"></i>
+								<span>Boats</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#taxi2" aria-controls="taxi" role="tab" data-toggle="tab">
+								<i class="fa fa-truck"></i>
+								<span>Caravan</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#cruise2" aria-controls="cruise" role="tab" data-toggle="tab">
+								<i class="fa fa-bicycle"></i>
+								<span>Bicycle</span>
+							</a>
+						</li>
+					</ul>
+					<!-- END: CATEGORY TAB -->
+
+					<!-- BEGIN: TAB PANELS -->
+					<div class="tab-content" >
+							<!-- BEGIN: FLIGHT SEARCH -->
+							<div role="tabpanel" class="tab-pane active" id="flight2">
+								<form>
+									<div class="col-md-12 product-search-title">Finance for car</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Employed / Business</label><br>
+												<input type="text" id="child_count" name="child_count" value="" class="form-control quantity-padding">
+											</div>
+											
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Baloon Amount</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Loan Amount</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											<div class="clearfix"></div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Loan Term</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms & Conditions</span>
+													 
+												</div>
+											</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: FLIGHT SEARCH -->
+							
+							<!-- START: HOTEL SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="hotel2">
+								<form>
+									<div class="col-md-12 product-search-title">Finance for bike</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Employed / Business</label><br>
+												<input type="text" id="child_count" name="child_count" value="" class="form-control quantity-padding">
+											</div>
+											
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Baloon Amount</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Loan Amount</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											<div class="clearfix"></div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Loan Term</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms & Conditions</span>
+													 
+												</div>
+											</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOTEL SEARCH -->
+								
+							<!-- START: BEGIN HOLIDAY -->
+							<div role="tabpanel" class="tab-pane" id="holiday2">
+								<form>
+									<div class="col-md-12 product-search-title">Finance for boat</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Employed / Business</label><br>
+												<input type="text" id="child_count" name="child_count" value="" class="form-control quantity-padding">
+											</div>
+											
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Baloon Amount</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Loan Amount</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											<div class="clearfix"></div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Loan Term</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms & Conditions</span>
+													 
+												</div>
+											</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOLIDAYS -->
+							
+							<!-- START: CAR SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="taxi2">
+								<form>
+									<div class="col-md-12 product-search-title">Finance for caravan</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Employed / Business</label><br>
+												<input type="text" id="child_count" name="child_count" value="" class="form-control quantity-padding">
+											</div>
+											
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Baloon Amount</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Loan Amount</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											<div class="clearfix"></div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Loan Term</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms & Conditions</span>
+													 
+												</div>
+											</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CAR SEARCH -->
+							
+							<!-- START: CRUISE SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="cruise2">
+								<form>
+									<div class="col-md-12 product-search-title">Finance for bicycle</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Employed / Business</label><br>
+												<input type="text" id="child_count" name="child_count" value="" class="form-control quantity-padding">
+											</div>
+											
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Baloon Amount</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Loan Amount</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											<div class="clearfix"></div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="left">Loan Term</span>
+												<input type="text" id="child_count" name="child_count" value="Amount" class="form-control quantity-padding">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms & Conditions</span>
+													 
+												</div>
+											</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CRUISE SEARCH -->
+							
+						</div>
+						<!-- END: TAB PANE -->
+
+
+</div>
+				</div>
+			
+                                    
+<!-- Start of cars tab-->
+                                    <div class="tab-pane fade" id="cars-tab">
+<div class="title-container">
+<h5>Insurance of  Vehicles</h5>
+              <p class="text-sm">We're bringing you a new level of comfort.</p>
+                                                <i class="soap-icon-insurance"></i>
+                                            </div>
+                                         
+		<div role="tabpanel" class="col-md-12 search-section tran-search-box">
+					<!-- BEGIN: CATEGORY TAB -->
+
+					<ul class="nav nav-tabs search-top" role="tablist" id="searchTab">
+						<li role="presentation" class="active text-center">
+							<a href="#flight3" aria-controls="flight" role="tab" data-toggle="tab">
+								<i class="fa fa-cab"></i> 
+								<span>Cars</SPAN>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#hotel3" aria-controls="hotel" role="tab" data-toggle="tab">
+								<i class="fa fa-motorcycle"></i> 
+								<span>Bikes</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#holiday3" aria-controls="holiday" role="tab" data-toggle="tab">
+								<i class="fa fa-ship"></i>
+								<span>Boats</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#taxi3" aria-controls="taxi" role="tab" data-toggle="tab">
+								<i class="fa fa-truck"></i>
+								<span>Caravan</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#cruise3" aria-controls="cruise" role="tab" data-toggle="tab">
+								<i class="fa fa-bicycle"></i>
+								<span>Bicycle</span>
+							</a>
+						</li>
+					</ul>
+					<!-- END: CATEGORY TAB -->
+
+					<!-- BEGIN: TAB PANELS -->
+					<div class="tab-content" >
+							<!-- BEGIN: FLIGHT SEARCH -->
+							<div role="tabpanel" class="tab-pane active" id="flight3">
+								<form>
+									<div class="col-md-12 product-search-title">Insurance for car</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  Private
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Business
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Third Party / Comprehensive</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Estimated  Value</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Preferred Excess Amount</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>At Faults Claims</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Current Insurance Provider</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Add Photos</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="clearfix"></div>
+											<div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													  <input type="radio" name="name1" checked>
+													 <span class="left">Features looking for</span>
+													
+												</div>
+											</div>
+                                         <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>WindScreen</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Third Party / Comprehensive</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Car Hire</label><br>
+												<input type="text" class="input">
+											</div>
+                                         <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Any Driver</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Road Side Assistance</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Excess Amount</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms and Conditions</span>
+													 
+												</div>
+											</div>
+									
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: FLIGHT SEARCH -->
+							
+							<!-- START: HOTEL SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="hotel3">
+								<form>
+									<div class="col-md-12 product-search-title">Insurance for bike</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  <div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  <div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Third Party / Comprehensive</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Estimated  Value</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Preferred Excess Amount</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>At Faults Claims</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Current Insurance Provider</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Add Photos</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="clearfix"></div>
+											<div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													  <input type="radio" name="name1" checked>
+													 <span class="left">Features looking for</span>
+													
+												</div>
+											</div>
+                                         <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>WindScreen</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Third Party / Comprehensive</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Car Hire</label><br>
+												<input type="text" class="input">
+											</div>
+                                         <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Any Driver</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Road Side Assistance</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Excess Amount</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms and Conditions</span>
+													 
+												</div>
+											</div>
+									
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOTEL SEARCH -->
+								
+							<!-- START: BEGIN HOLIDAY -->
+							<div role="tabpanel" class="tab-pane" id="holiday3">
+								<form>
+									<div class="col-md-12 product-search-title">Insurance for boat</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  <div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  <div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Third Party / Comprehensive</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Estimated  Value</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Preferred Excess Amount</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>At Faults Claims</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Current Insurance Provider</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Add Photos</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="clearfix"></div>
+											<div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													  <input type="radio" name="name1" checked>
+													 <span class="left">Features looking for</span>
+													
+												</div>
+											</div>
+                                         <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>WindScreen</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Third Party / Comprehensive</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Car Hire</label><br>
+												<input type="text" class="input">
+											</div>
+                                         <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Any Driver</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Road Side Assistance</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Excess Amount</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms and Conditions</span>
+													 
+												</div>
+											</div>
+									
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOLIDAYS -->
+							
+							<!-- START: CAR SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="taxi3">
+								<form>
+									<div class="col-md-12 product-search-title">Insurance for caravan</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  <div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  <div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Third Party / Comprehensive</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Estimated  Value</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Preferred Excess Amount</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>At Faults Claims</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Current Insurance Provider</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Add Photos</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="clearfix"></div>
+											<div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													  <input type="radio" name="name1" checked>
+													 <span class="left">Features looking for</span>
+													
+												</div>
+											</div>
+                                         <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>WindScreen</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Third Party / Comprehensive</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Car Hire</label><br>
+												<input type="text" class="input">
+											</div>
+                                         <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Any Driver</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Road Side Assistance</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Excess Amount</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms and Conditions</span>
+													 
+												</div>
+											</div>
+									
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CAR SEARCH -->
+							
+							<!-- START: CRUISE SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="cruise3">
+								<form>
+									<div class="col-md-12 product-search-title">Insurance for bicycle</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  <div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  <div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Third Party / Comprehensive</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Estimated  Value</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Preferred Excess Amount</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>At Faults Claims</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Current Insurance Provider</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Add Photos</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="clearfix"></div>
+											<div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													  <input type="radio" name="name1" checked>
+													 <span class="left">Features looking for</span>
+													
+												</div>
+											</div>
+                                         <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>WindScreen</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Third Party / Comprehensive</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Car Hire</label><br>
+												<input type="text" class="input">
+											</div>
+                                         <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Any Driver</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Road Side Assistance</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<label>Excess Amount</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms and Conditions</span>
+													 
+												</div>
+											</div>
+									
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CRUISE SEARCH -->
+							
+						</div>
+						<!-- END: TAB PANE -->
+
+
+</div>
+				</div>
+			
+                                    
+<!-- Start of cruise  tab-->
+                                    <div class="tab-pane fade" id="cruises-tab">
+<div class="title-container">
+<h5>Service and Maintenance</h5>
+              <p class="text-sm">We're bringing you a new level of comfort.</p>
+                                                <i class="soap-icon-doorman"></i>
+                                            </div>
+                                         
+		<div role="tabpanel" class="col-md-12 search-section tran-search-box">
+					<!-- BEGIN: CATEGORY TAB -->
+
+					<ul class="nav nav-tabs search-top" role="tablist" id="searchTab">
+						<li role="presentation" class="active text-center">
+							<a href="#flight4" aria-controls="flight" role="tab" data-toggle="tab">
+								<i class="fa fa-cab"></i> 
+								<span>Cars</SPAN>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#hotel4" aria-controls="hotel" role="tab" data-toggle="tab">
+								<i class="fa fa-motorcycle"></i> 
+								<span>Bikes</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#holiday4" aria-controls="holiday" role="tab" data-toggle="tab">
+								<i class="fa fa-ship"></i>
+								<span>Boats</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#taxi4" aria-controls="taxi" role="tab" data-toggle="tab">
+								<i class="fa fa-truck"></i>
+								<span>Caravan</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#cruise4" aria-controls="cruise" role="tab" data-toggle="tab">
+								<i class="fa fa-bicycle"></i>
+								<span>Bicycle</span>
+							</a>
+						</li>
+					</ul>
+					<!-- END: CATEGORY TAB -->
+
+					<!-- BEGIN: TAB PANELS -->
+					<div class="tab-content" >
+							<!-- BEGIN: FLIGHT SEARCH -->
+							<div role="tabpanel" class="tab-pane active" id="flight4">
+								<form>
+									<div class="col-md-12 product-search-title">Service for car</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  Diesel
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Petrol
+										</label>
+									</div>
+									
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Postcode</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Service / Maintenence Req</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Free Text</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Browse<img src="../images/browse.png"/></strong></a></span>
+												
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Covered Under Insurance</span>
+													 
+												</div>
+											</div>
+                                           <div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms and Conditions</span>
+													 
+												</div>
+											</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: FLIGHT SEARCH -->
+							
+							<!-- START: HOTEL SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="hotel4">
+								<form>
+									<div class="col-md-12 product-search-title">Service for bike</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  Diesel
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Petrol
+										</label>
+									</div>
+									
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Postcode</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Service / Maintenence Req</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Free Text</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Browse<img src="../images/browse.png"/></strong></a></span>
+												
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Covered Under Insurance</span>
+													 
+												</div>
+											</div>
+                                           <div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms and Conditions</span>
+													 
+												</div>
+											</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOTEL SEARCH -->
+								
+							<!-- START: BEGIN HOLIDAY -->
+							<div role="tabpanel" class="tab-pane" id="holiday4">
+								<form>
+									<div class="col-md-12 product-search-title">Service for boat</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  Diesel
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Petrol
+										</label>
+									</div>
+									
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Postcode</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Service / Maintenence Req</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Free Text</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Browse<img src="../images/browse.png"/></strong></a></span>
+												
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Covered Under Insurance</span>
+													 
+												</div>
+											</div>
+                                           <div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms and Conditions</span>
+													 
+												</div>
+											</div>
+									<div class="clearfix"></div>
+									
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOLIDAYS -->
+							
+							<!-- START: CAR SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="taxi4">
+								<form>
+									<div class="col-md-12 product-search-title">Service for caravan</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  Diesel
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Petrol
+										</label>
+									</div>
+									
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Postcode</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Service / Maintenence Req</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Free Text</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Browse<img src="../images/browse.png"/></strong></a></span>
+												
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Covered Under Insurance</span>
+													 
+												</div>
+											</div>
+                                           <div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms and Conditions</span>
+													 
+												</div>
+											</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CAR SEARCH -->
+							
+							<!-- START: CRUISE SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="cruise4">
+								<form>
+									<div class="col-md-12 product-search-title">Service for bicycle</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  New
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Used
+										</label>
+									</div>
+									<div class="clearfix"></div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Year</label><br>
+										<select id="car-years" name="car-years"></select>
+									</div>
+									
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Make</label><br>
+										<select id="car-makes" name="car-makes"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Model</label><br>
+										<select id="car-models" name="car-models"></select>
+									</div>
+                                  
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Variant</label><br>
+										<select id="car-model-trims" name="car-model-trims"></select>
+									</div>
+									<div class="col-md-12 search-col-padding">
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="One Way">  Diesel
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Round Trip">           Petrol
+										</label>
+									</div>
+									
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Postcode</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Service / Maintenence Req</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Free Text</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Browse<img src="../images/browse.png"/></strong></a></span>
+												
+											</div>
+											<div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Covered Under Insurance</span>
+													 
+												</div>
+											</div>
+                                           <div class="clearfix"></div>
+                                          <div class="radio">
+												<div class="col-md-6 col-sm-6 search-col-padding">
+													 <input type="radio" name="name1" checked>
+													 <span class="left">Terms and Conditions</span>
+													 
+												</div>
+											</div>
+									<div class="clearfix"></div>
+									<div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Build</button>
+									</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CRUISE SEARCH -->
+							
+						</div>
+						<!-- END: TAB PANE -->
+
+
+</div>
+				</div>
+			
+                                    
+<!-- Start of flight stt  tab-->
+                                    <div class="tab-pane fade" id="flight-status-tab">
+<div class="title-container">
+<h5>Transport of Vehicle</h5>
+              <p class="text-sm">We're bringing you a new level of comfort.</p>
+                                                <i class="soap-icon-baggage-5"></i>
+                                            </div>
+                                      
+		<div role="tabpanel" class="col-md-12 search-section tran-search-box">
+					<!-- BEGIN: CATEGORY TAB -->
+
+					<ul class="nav nav-tabs search-top" role="tablist" id="searchTab">
+						<li role="presentation" class="active text-center">
+							<a href="#flight5" aria-controls="flight" role="tab" data-toggle="tab">
+								<i class="fa fa-cab"></i> 
+								<span>Cars</SPAN>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#hotel5" aria-controls="hotel" role="tab" data-toggle="tab">
+								<i class="fa fa-motorcycle"></i> 
+								<span>Bikes</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#holiday5" aria-controls="holiday" role="tab" data-toggle="tab">
+								<i class="fa fa-ship"></i>
+								<span>Boats</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#taxi5" aria-controls="taxi" role="tab" data-toggle="tab">
+								<i class="fa  fa-truck"></i>
+								<span>Caravan</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#cruise5" aria-controls="cruise" role="tab" data-toggle="tab">
+								<i class="fa fa-bicycle"></i>
+								<span>Bicycle</span>
+							</a>
+						</li>
+					</ul>
+					<!-- END: CATEGORY TAB -->
+
+					<!-- BEGIN: TAB PANELS -->
+					<div class="tab-content" >
+							<!-- BEGIN: FLIGHT SEARCH -->
+							<div role="tabpanel" class="tab-pane active" id="flight5">
+								<form>
+									<div class="col-md-12 product-search-title">Transport for car</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>PPSR Check Type</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Vehicle Type</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN / HIN Number</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Search</button>
+									</div>
+											<div class="clearfix"></div>
+                                          
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Go</strong></a></span>
+												
+											</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: FLIGHT SEARCH -->
+							
+							<!-- START: HOTEL SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="hotel5">
+								<form>
+									<div class="col-md-12 product-search-title">Transport for bike</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>PPSR Check Type</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Vehicle Type</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN / HIN Number</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Search</button>
+									</div>
+											<div class="clearfix"></div>
+                                          
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Go</strong></a></span>
+												
+											</div>
+									<div class="clearfix"></div>
+									
+								</form>
+							</div>
+							<!-- END: HOTEL SEARCH -->
+								
+							<!-- START: BEGIN HOLIDAY -->
+							<div role="tabpanel" class="tab-pane" id="holiday5">
+								<form>
+									<div class="col-md-12 product-search-title">Transport for boat</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>PPSR Check Type</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Vehicle Type</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN / HIN Number</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Search</button>
+									</div>
+											<div class="clearfix"></div>
+                                          
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Go</strong></a></span>
+												
+											</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOLIDAYS -->
+							
+							<!-- START: CAR SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="taxi5">
+								<form>
+									<div class="col-md-12 product-search-title">Transport for caravan</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>PPSR Check Type</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Vehicle Type</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN / HIN Number</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Search</button>
+									</div>
+											<div class="clearfix"></div>
+                                          
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Go</strong></a></span>
+												
+											</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CAR SEARCH -->
+							
+							<!-- START: CRUISE SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="cruise5">
+								<form>
+									<div class="col-md-12 product-search-title">Transport for bicycle</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>PPSR Check Type</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Vehicle Type</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN / HIN Number</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Search</button>
+									</div>
+											<div class="clearfix"></div>
+                                          
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Go</strong></a></span>
+												
+											</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CRUISE SEARCH -->
+							
+						</div>
+						<!-- END: TAB PANE -->
+
+
+</div>
+				</div>
+			
+                                   
+
+<!-- Start o online-checkin-tab-->
+                                    <div class="tab-pane fade" id="online-checkin-tab">
+<div class="title-container">
+<h5>Registration of</h5>
+              <p class="text-sm">We're bringing you a new level of comfort.</p>
+                                                <i class="soap-icon-status"></i>
+                                            </div>
+                                     
+		<div role="tabpanel" class="col-md-12 search-section tran-search-box">
+					<!-- BEGIN: CATEGORY TAB -->
+
+					<ul class="nav nav-tabs search-top" role="tablist" id="searchTab">
+						<li role="presentation" class="active text-center">
+							<a href="#flight6" aria-controls="flight" role="tab" data-toggle="tab">
+								<i class="fa fa-cab"></i> 
+								<span>Cars</SPAN>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#hotel6" aria-controls="hotel" role="tab" data-toggle="tab">
+								<i class="fa fa-motorcycle"></i> 
+								<span>Bikes</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#holiday6" aria-controls="holiday" role="tab" data-toggle="tab">
+								<i class="fa fa-ship"></i>
+								<span>Boats</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#taxi6" aria-controls="taxi" role="tab" data-toggle="tab">
+								<i class="fa fa-truck"></i>
+								<span>Caravan</span>
+							</a>
+						</li>
+						<li role="presentation" class="text-center">
+							<a href="#cruise6" aria-controls="cruise" role="tab" data-toggle="tab">
+								<i class="fa fa-bicycle"></i>
+								<span>Bicycle</span>
+							</a>
+						</li>
+					</ul>
+					<!-- END: CATEGORY TAB -->
+
+					<!-- BEGIN: TAB PANELS -->
+					<div class="tab-content" >
+							<!-- BEGIN: FLIGHT SEARCH -->
+							<div role="tabpanel" class="tab-pane active" id="flight6">
+								<form>
+									<div class="col-md-12 product-search-title">Registration for car</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>PPSR Check Type</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Vehicle Type</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN / HIN Number</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Search</button>
+									</div>
+											<div class="clearfix"></div>
+                                          
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Go</strong></a></span>
+												
+											</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: FLIGHT SEARCH -->
+							
+							<!-- START: HOTEL SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="hotel6">
+								<form>
+									<div class="col-md-12 product-search-title">Registration for bike</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>PPSR Check Type</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Vehicle Type</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN / HIN Number</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Search</button>
+									</div>
+											<div class="clearfix"></div>
+                                          
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Go</strong></a></span>
+												
+											</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOTEL SEARCH -->
+								
+							<!-- START: BEGIN HOLIDAY -->
+							<div role="tabpanel" class="tab-pane" id="holiday6">
+								<form>
+									<div class="col-md-12 product-search-title">Registration for boat</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>PPSR Check Type</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Vehicle Type</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN / HIN Number</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Search</button>
+									</div>
+											<div class="clearfix"></div>
+                                          
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Go</strong></a></span>
+												
+											</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: HOLIDAYS -->
+							
+							<!-- START: CAR SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="taxi6">
+								<form>
+									<div class="col-md-12 product-search-title">Registration for caravan</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>PPSR Check Type</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Vehicle Type</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN / HIN Number</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Search</button>
+									</div>
+											<div class="clearfix"></div>
+                                          
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Go</strong></a></span>
+												
+											</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CAR SEARCH -->
+							
+							<!-- START: CRUISE SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="cruise6">
+								<form>
+									<div class="col-md-12 product-search-title">Registration for bicycle</div>
+									<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>PPSR Check Type</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Vehicle Type</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN / HIN Number</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-12 search-col-padding">
+										<button type="submit" class="search-button btn transition-effect">Search</button>
+									</div>
+											<div class="clearfix"></div>
+                                          
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>State</label><br>
+												<input type="text" class="input">
+											</div>
+                                           <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>VIN No:</label><br>
+												<input type="text" class="input">
+											</div>
+                                          <div class="col-md-6 col-sm-6 search-col-padding">
+										<label>Registration No:</label><br>
+												<input type="text" class="input">
+											</div>
+											<div class="col-md-6 col-sm-6 search-col-padding">
+												<span class="right relative"><a href="#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Go</strong></a></span>
+												
+											</div>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: CRUISE SEARCH -->
+							
+						</div>
+						<!-- END: TAB PANE -->
+
+
+</div>
+				</div>
+			
+                                    
+
+<!-- Start o online-checkin-tab-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                    
+
+
+
+
+
+
+<!-- END: SEARCH SECTION -->
+
+
+<!-- BEGIN: HOW IT WORK -->
+<section id="how-it-work">
+		<div class="row work-row">
+			<div class="container">
+				<div class="section-title text-center">
+					<h2>HOW IT WORKS?</h2>
+					<h4>EBids-R - SEARCH - SELECT - BOOK</h4>
+<h4>EBids-R => Review & Select => Submit, Track & Deposit!</h4>
+
+					<div class="space"></div>
+					
+				</div>
+				<div class="work-step">
+					<div class="col-md-4 col-sm-4 first-step text-center">
+						<i class="fa fa-search"></i>
+						<h5>EBidR</h5>
+						<p>Request EBid-Request for Vehicle (Car, Bike, Boats, Caravan, Bicycle) Finance Quotation, Insurance Quote Service & Maintenance Transports </p> 
+<h4>All in One GO!</h4>
+					</div>
+					<div class="col-md-4 col-sm-4 second-step text-center">
+						<i class="fa fa-heart-o"></i>
+						<h5>Review & SELECT</h5>
+						<p>Review, Compare and Select the best Quotation for Vehicle, Finance & Insurance which suits - you can negotiate by charting. emailing with the vehicle dealer with out sharing your details </p>
+<h4>All in One Place!</h4>
+					</div>
+					<div class="col-md-4 col-sm-4 third-step text-center">
+						<i class="fa fa-shopping-cart"></i>
+						<h5>Submit, track & deposit</h5>
+						<p>Book for Test Drive, Submit documentation for Finance Approval for only one credit check, and buy best Insurance, Make deposit towards the vehicle</p>
+<h4>Way to Go!</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+</section>
+<!--END: HOW IT WORK -->
+
+<!-- START: HOT  DEALS -->
+<section>
+	<div class="col-md-12 row hot-deals">
+		<div class="col-md-12 search-section tran-search-box">
+			<div class="section-title text-center">
+				<h2>HOT DEALS</h2>
+				<h4>SAVE MORE</h4>
+			</div>
+			<div role="tabpanel" class="text-center">
+				<!-- BEGIN: CATEGORY TAB -->
+				<ul class="nav nav-tabs search-top" role="tablist" id="hotDeal">
+					<li role="presentation" class="active text-center">
+						<a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
+							<i class="fa fa-cab"></i> 
+							<span>Cars</SPAN>
+						</a>
+					</li>
+					<li role="presentation" class="text-center">
+						<a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">
+							<i class="fa fa-motorcycle"></i> 
+							<span>Bikes</SPAN>
+						</a>
+					</li>
+					<li role="presentation" class="text-center">
+						<a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">
+							<i class="fa fa-ship"></i> 
+							<span>Boats</SPAN>
+						</a>
+					</li>
+					<li role="presentation" class="text-center">
+						<a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">
+							<i class="fa fa-truck"></i> 
+							<span>Caravan</SPAN>
+						</a>
+					</li>
+					<li role="presentation" class="text-center">
+						<a href="#tab5" aria-controls="tab5" role="tab" data-toggle="tab">
+							<i class="fa fa-bicycle"></i> 
+							<span>Bicycle</SPAN>
+						</a>
+					</li>
+				</ul>
+				<!-- END: CATEGORY TAB -->
+				<div class="clearfix"></div>
+				<!-- BEGIN: TAB PANELS -->
+				<div class="tab-content">
+					<!-- BEGIN: FLIGHT SEARCH -->
+					<div role="tabpanel" class="tab-pane active fade in" id="tab1">
+						<div class="col-md-6 hot-deal-list wow slideInLeft">
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/offer1.jpeg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/offer2.jpeg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/offer3.jpeg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<!-- New column-->
+<div class="col-md-6 hot-deal-list wow slideInLeft">
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/offer4.jpeg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/offer2.jpeg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/offer3.jpeg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+
+
+					</div>
+					<div role="tabpanel" class="tab-pane fade" id="tab2">
+						<div class="col-md-6 hot-deal-list wow slideInLeft">
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/bike1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/bike2.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/bike1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<!-- New column-->
+<div class="col-md-6 hot-deal-list wow slideInLeft">
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/bike2.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/bike1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/bike1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						
+					</div>
+					<div role="tabpanel" class="tab-pane" id="tab3">
+						<div class="col-md-6 hot-deal-list wow slideInLeft">
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/boat1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/boat1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/boat1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<!-- New column-->
+<div class="col-md-6 hot-deal-list wow slideInLeft">
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/boat1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/boat1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/boat1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="tab4">
+						<div class="col-md-6 hot-deal-list wow slideInLeft">
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/truck1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/truck1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/truck1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<!-- New column-->
+<div class="col-md-6 hot-deal-list wow slideInLeft">
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/truck1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/truck1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/truck1.jpg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="tab5">
+						<div class="col-md-6 hot-deal-list wow slideInLeft">
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/bicycle1.jpeg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/bicycle2.jpeg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/bicycle1.jpeg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<!-- New column-->
+<div class="col-md-6 hot-deal-list wow slideInLeft">
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/bicycle2.jpeg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/bicycle2.jpeg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="item">
+								<div class="col-xs-3">
+									<img src="assets/images/bicycle2.jpeg" alt="Cruise">
+								</div>
+								<div class="col-md-7 col-xs-6">
+									<h5>217-BMW-X5-SDRIVE25D NEW</h5>
+									<p class="location"><i class="fa fa-map-marker"></i> FISHWICK ART</p>
+									<p class="text-sm">Best in class loaded with all the best you have. Price-$70,000.00 Drive away Saving - $7000.</p>
+								</div>
+								<div class="col-md-2 col-xs-3">
+									<h4>$70,000.00</h4>
+									<h6>Drive away</h6>
+									<a href="#">BOOK</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: HOT DEALS -->
+               
+           <!-- <div class="featured image-box">
+                <div class="details pull-left">
+                    <h3>Tropical Beach,<br/>Hotel and Resorts</h3>
+                    <h5>THAILAND</h5>
+                </div>
+                <figure class="pull-left">
+                    <a class="badge-container" href="#">
+                        <span class="badge-content right-side">From $200</span>
+                        <img width="64" height="64" alt="" src="http://placehold.it/64x64" class="">
+                    </a>
+                </figure>
+            </div> -->
+       
+        
+        <footer id="footer">
+            <div class="bottom">
+                <div class="container">
+                    <div class="logo pull-left">
+                        <a href="homepage10.html" title="Autoscoop - home">
+                            <img src="images/logo.png" alt="Autoscoop HTML5 Template" />
+                        </a>
+                    </div>
+					<div class="pull-centre">
+                       <ul class="quick-menu pull-left">
+                        <li><a href="dealerboard.html">Dealer ACCOUNT</a></li>
+                       
+                    </ul>
+<ul class="quick-menu pull-right">
+                        <li><a href="#travelo-login" class="soap-popupbox">Dealer LOGIN</a></li>
+                        <li><a href="#travelo-signup" class="soap-popupbox">Dealer SIGNUP</a></li>
+                        
+                    </ul>
+                    </div>
+
+				
+
+                    <div class="pull-right">
+                        <a id="back-to-top" href="#" class="animated" data-animation-type="bounce"><i class="soap-icon-longarrow-up circle"></i></a>
+                    </div>
+                    <div class="copyright pull-right">
+                        <p>&copy; 2017 Autoscoop</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+    
+     <!-- Javascript -->
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.noconflict.js"></script>
+    <script type="text/javascript" src="js/modernizr.2.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.1.10.4.min.js"></script>
+    
+    <!-- Twitter Bootstrap -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    
+    <!-- load revolution slider scripts -->
+    <script type="text/javascript" src="components/revolution_slider/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="components/revolution_slider/js/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- Flex Slider -->
+    <script type="text/javascript" src="components/flexslider/jquery.flexslider-min.js"></script>
+    
+    <!-- load BXSlider scripts -->
+    <script type="text/javascript" src="components/jquery.bxslider/jquery.bxslider.min.js"></script>
+    
+    <!-- parallax -->
+    <script type="text/javascript" src="js/jquery.stellar.min.js"></script>
+    
+    <!-- waypoint -->
+    <script type="text/javascript" src="js/waypoints.min.js"></script>
+
+    <!-- load page Javascript -->
+    <script type="text/javascript" src="js/theme-scripts.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    
+    <script type="text/javascript">
+        tjq(".flexslider").flexslider({
+            animation: "fade",
+            controlNav: false,
+            animationLoop: true,
+            directionNav: false,
+            slideshow: true,
+            slideshowSpeed: 5000
+        });
+    </script>
+    
+
+</body>
+</html>

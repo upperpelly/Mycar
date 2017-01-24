@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Free coming soon template with jQuery countdown">
+<meta name="author" content="http://bootstraptaste.com">
+
+<title>Autoscoop - countdown</title>
+
+<!-- Bootstrap -->
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="assets/css/bootstrap-theme.css" rel="stylesheet">
+<link href="assets/css/font-awesome.css" rel="stylesheet">
+
+<!-- simple style -->
+<link href="assets/css/style.css" rel="stylesheet">
+
+<!-- =======================================================
+        Theme Name: WeBuild
+        Theme URL: https://bootstrapmade.com/free-bootstrap-coming-soon-template-countdwon/
+        Author: BootstrapMade
+        Author URL: https://bootstrapmade.com
+    ======================================================= -->
+</head>
+
+<body>
+
+	<!-- Facebook Login logic -->
+
+	<script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId : '249863545451459',
+				xfbml : true,
+				version : 'v2.8'
+			});
+
+			/* FB
+					.getLoginStatus(function(response) {
+						if (response.status === 'connected') {
+							document.getElementById('status').innerHTML = 'We are Connected';
+						} else if (response.status === 'not_authorized') {
+							document.getElementById('status').innerHTML = 'We are not Connected';
+						} else {
+							document.getElementById('status').innerHTML = 'We are not fb Connected';
+						}
+					},{
+						scope : 'email'
+					}); */
+		};
+
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
+		function login() {
+			FB
+					.login(
+							function(response) {
+								if (response.status === 'connected') {
+									document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
+									var url = '/me?fields=name,email';
+									FB.api(url, function(response) {
+										/* alert(response.name);
+										alert(response.email); */
+										console.log(JSON.stringify(response));
+									});
+								} else if (response.status === 'not_authorized') {
+									document.getElementById('status').innerHTML = 'We are not Connected';
+								} else {
+									document.getElementById('status').innerHTML = 'We are not fb Connected';
+								}
+							}, {
+								scope : 'email'
+							});
+
+		}
+	</script>
+
+	<!-- End FB -->
+
+	<div id="wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>Autoscoop</h1>
+					<h2 class="subtitle">We're excited to bring you the web
+						application, which will help you and you all will love to use and
+						make it part of you! Team is working to launch it, in next</h2>
+					<div id="countdown"></div>
+					<form class="form-inline signup" role="form">
+						<div class="form-group">
+							<input type="email" class="form-control" id="exampleInputEmail1"
+								placeholder="Enter your email address">
+						</div>
+						<button type="submit" class="btn btn-theme">Get notified!</button>
+					</form>
+					<div id="status"></div>
+					<div class="social">
+						<a href="#"><i class="fa fa-facebook" onclick="login()"
+							aria-hidden="true"></i></a> <a href="#"><i class="fa fa-twitter"
+							aria-hidden="true"></i></a> <a href="#"><i
+							class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#"><i
+							class="fa fa-linkedin" aria-hidden="true"></i></a>
+					</div>
+
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3">
+					<p class="copyright">&copy; Autoscoop - All Rights Reserved</p>
+					<div class="credits">
+						<!-- 
+                                All the links in the footer should remain intact.
+                                You can delete the links only if you purchased the pro version.
+                                Licensing information: https://bootstrapmade.com/license/
+                                Purchase the pro version form: https://bootstrapmade.com/buy/?theme=WeBuild
+                            -->
+						<a href="http://www.autoscoop.com.au/">Thinking Auto!...Logon
+							to autoscoop.com.au</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.countdown.min.js"></script>
+	<script type="text/javascript">
+		$('#countdown').countdown('2017/03/30', function(event) {
+			$(this).html(event.strftime('%w weeks %d days <br /> %H:%M:%S'));
+		});
+	</script>
+
+</body>
+</html>

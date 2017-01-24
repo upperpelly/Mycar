@@ -1,0 +1,2401 @@
+<!DOCTYPE html>
+<!--[if IE 8]>          <html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>          <html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->  <html> <!--<![endif]-->
+<head>
+    <!-- Page Title -->
+    <title>Autoscoop</title>
+    
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Travelo - Travel, Tour Booking HTML5 Template">
+    <meta name="author" content="SoapTheme">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="pingback" href="http://www.carqueryapi.com/xmlrpc.php" />
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/animate.min.css">
+    
+    <!-- Current Page Styles -->
+    <link rel="stylesheet" type="text/css" href="components/revolution_slider/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="components/revolution_slider/css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="components/jquery.bxslider/jquery.bxslider.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="components/flexslider/flexslider.css" media="screen" />
+    <script type="text/javascript" src="../js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="../js/cufon-yui.js"></script>
+<script type="text/javascript" src="../js/cufon-replace.js"></script>  
+<script type="text/javascript" src="../js/Cabin_400.font.js"></script>
+<script type="text/javascript" src="../js/tabs.js"></script> 
+<script type="text/javascript" src="../js/jquery.jqtransform.js" ></script>
+<script type="text/javascript" src="../js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="../js/atooltip.jquery.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+<script src="../js/carquery.0.3.4.js"type="text/javascript" ></script>
+  <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="../js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="../js/cufon-yui.js"></script>
+<script type="text/javascript" src="../js/cufon-replace.js"></script>  
+<script type="text/javascript" src="../js/Cabin_400.font.js"></script>
+<script type="text/javascript" src="../js/tabs.js"></script> 
+<script type="text/javascript" src="../js/jquery.jqtransform.js" ></script>
+<script type="text/javascript" src="../js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="../js/atooltip.jquery.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+<script src="../js/carquery.0.3.4.js"type="text/javascript" ></script>
+<script>
+$(document).ready(function() {
+
+$.ajax({
+  url: "http://www.carqueryapi.com/api/0.3/?cmd=getStats",
+  success: function(data){
+
+  $('#make_count').html(data.Stats.make_count);
+  $('#model_count').html(data.Stats.model_count);
+  $('#trim_count').html(data.Stats.trim_count);
+
+  }
+});
+
+});
+</script>
+
+    <!-- Main Style -->
+    <!--<link id="main-style" rel="stylesheet" href="css/style.css">-->
+    <script type="text/javascript">
+        var mainStyle = "style.css";
+        if (typeof localStorage != "undefined") {
+            var colorSkin = localStorage.getItem("colorSkin");
+            if (colorSkin != null) {
+                mainStyle = "style-" + colorSkin + ".css";
+            }
+        }
+        document.write('<link id="main-style" rel="stylesheet" href="css/' + mainStyle + '">');
+    </script>
+    <script>
+    window.onload= function()
+    {
+    	alert("came here for onload");
+function parseURLParameter(Parameter)
+    	{
+    		var FullURL= window.location.search.substring(1);
+    		var parametersArray = FullURL.split('&')
+    		for (var i=0; i<parametersArray.length; i++)
+    			{
+    				var currentParameter = parametersArray[i].split('=');
+    				if (currentParameter[0] == Parameter)
+    				{
+    					return currentParameter[1];
+    				}
+    			}
+    	}
+    	/* alert("pageName 11  now "); */
+    	
+    	var priceMin = parseURLParameter('price');
+    	document.getElementById('minValue').innerHTML=priceMin;
+    	
+    	var priceMax = parseURLParameter('priceMax');
+    	document.getElementById('maxValue').innerHTML=priceMax;
+    	
+    	var insMin = parseURLParameter('insMin');
+    	document.getElementById('insMin').innerHTML=insMin;
+    	
+    	var insMax = parseURLParameter('insMax');
+    	document.getElementById('insMax').innerHTML=insMax;
+    	
+    	var avgSavMin = parseURLParameter('avgSavMin');
+    	document.getElementById('avgSavMin').innerHTML=avgSavMin;
+    	
+    	var avgSavMax = parseURLParameter('avgSavMax');
+    	document.getElementById('avgSavMax').innerHTML=avgSavMax;
+    	
+    	var finMin = parseURLParameter('finMin');
+    	document.getElementById('finMin').innerHTML=finMin;
+    	
+    	var finMax = parseURLParameter('finMax');
+    	document.getElementById('finMax').innerHTML=finMax;
+    	
+    	var noDealers = parseURLParameter('noDealers');
+    	document.getElementById('noDealers').innerHTML=noDealers;
+    	
+    	var noStock = parseURLParameter('noStock');
+    	document.getElementById('noStock').innerHTML=noStock;
+    	var modelYear = parseURLParameter('modelYear');
+    	var modelDisplay = parseURLParameter('modelDisplay');
+    	var modelName = parseURLParameter('modelName');
+    	var modelTrim = parseURLParameter('modeltrim');
+    	var trimValue = parseURLParameter('trimValue');
+/* alert("in onload now"); */
+    	
+         
+      
+      var carquery = new CarQuery();
+      carquery.init();
+     /*  alert("came here"+trimValue); */
+    	carquery.populateCarDataSpec('car-model-data',trimValue); 
+    	/* carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims'); */
+    	/* alert("pageName  22 now "+document.getElementById('minValue').innerHTML);
+    	alert("pageName  12322 now "+document.getElementById('maxValue').innerHTML); */
+    }
+    
+	</script>
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<script src="../js/angular-resource.js"></script>
+<script src="../js/ui-bootstrap-tpls-0.11.0.js"></script>
+<script>
+    
+	var mainApp1 = angular.module("mainApp1", [ 'ui.bootstrap', 'ngResource' ]);
+	mainApp1.controller('overviewController', function($scope, $stateParams) {
+	    var index = $stateParams.index;
+	    var anotherKey = $stateParams.anotherKey;
+	});
+	mainApp1
+			.controller(
+					'myController1',
+					function($scope, $http) {
+
+						$scope.predicate = 'name';
+						$scope.reverse = true;
+						$scope.currentPage = 1;
+						$scope.order = function(predicate) {
+							$scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse
+									: false;
+							$scope.predicate = predicate;
+						};
+
+						$scope.updatePagination = function() {
+							$scope.totalItems = $scope.biil.details.length;
+							$scope.numPerPage = 5;
+							$scope.paginate = function(value) {
+								var begin, end, index;
+								begin = ($scope.currentPage - 1)
+										* $scope.numPerPage;
+								end = begin + $scope.numPerPage;
+								index = $scope.biil.details.indexOf(value);
+								return (begin <= index && index < end);
+							};
+						};
+						function submitSearchForm() {
+							alert("Came here");
+														
+														var jsonInputToAPI = {
+																"userId":71,
+      "carColor" : $("carColor").val(),
+	 "postCode":890,
+	 "modelYear": "2016",
+      "modelDisplay": "Buick",
+      "modelName": "Envision",
+      "modelTrim": "4dr SUV (2.5L 4cyl 6A)",
+	"make":"ss",
+	"bodyType":"ss",
+	"state":"ss",
+	"region":"ss",
+	"ausCapTer":"ss",
+	"extraExter2":"ss",
+	"extraExter3":"ss",	
+	"extraExter4":"ss",	
+	"extraExter5":"ss",	
+	"extraIntern1":"ss",	
+	"extraIntern2":"ss",	
+	"extraIntern3":"ss",	
+	"extraIntern4":"ss",	
+	"extraIntern5":"ss",
+	"incomeType":"ss",
+	"yearEmploymentBusiness":12,
+	"incomeBeforeSuperTax":"ss",
+	"incomeAfterSuperTax":"ss",
+	"ifBusinessProvideABN":"ss",
+	"creditRating":"ss",
+	"loanAmount":9.00,
+	 "loanPeriod":12,
+	 "noOfDependence":12,
+	"insuranceType":"ss",
+	"drivingLicenceType":"ss",
+	"drivingLicenceNumber":124,
+	"drivingLicenceIssuingState":"ss",
+	"noOfAtFaultClaims":12,
+	"dateOfBirth":null,
+	"indicativeExcessAmount":899,
+	"ageOfAdditionalDriver":null,
+	"sMake":"ss",
+  	"sModel":"ss",
+  	"sState":"ss",
+  	"sAusCapTer":"ss",
+  	"sRegion":"ss"
+   
+																}
+														alert("Before Call");
+														/*var wsURL = 'http://localhost:8080/MyCarDomain/api/search/car';*/
+														var wsURL = 'http://www.autoscoop.com.au/api/search/car';
+															    $http({
+																			method : 'POST',
+																			url : wsURL,
+																			data: jsonInputToAPI
+																							
+																		}).success(function(data) {
+																			alert("successful");
+																			var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId;
+																							alert("Thank You. Your Seach ID is " + data.searchId);
+																							window.location=url;								
+																						});
+
+								
+														
+													};
+
+					    
+
+						$scope.submitSearchForm = submitSearchForm;
+						$scope.init = function() {
+							$scope.biil = {
+								details : []
+							};
+							$scope.submitForm();
+						};
+
+					});
+</script>
+   <!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[84,140] -->
+<link rel="canonical" href="http://www.carqueryapi.com/demo/dependant-selects-and-car-data-display/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="CarQuery &raquo; Feed" href="http://www.carqueryapi.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CarQuery &raquo; Comments Feed" href="http://www.carqueryapi.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CarQuery &raquo; Dependent Selects and Car Data Display Comments Feed" href="http://www.carqueryapi.com/demo/dependant-selects-and-car-data-display/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.carqueryapi.com\/wp-includes\/js\/wp-emoji-release.min.js"}};
+			!function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<script type='text/javascript' src='http://www.carqueryapi.com/wp-includes/js/jquery/jquery.js'></script>
+<script type='text/javascript' src='http://www.carqueryapi.com/wp-includes/js/jquery/jquery-migrate.min.js'></script>
+<script type='text/javascript' src='http://www.carqueryapi.com/wp-content/themes/mh_impact/js/scripts.js'></script>
+<link rel='https://api.w.org/' href='http://www.carqueryapi.com/wp-json/' />
+<link rel='shortlink' href='http://www.carqueryapi.com/?p=49' />
+<link rel="alternate" type="application/json+oembed" href="http://www.carqueryapi.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.carqueryapi.com%2Fdemo%2Fdependant-selects-and-car-data-display%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.carqueryapi.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.carqueryapi.com%2Fdemo%2Fdependant-selects-and-car-data-display%2F&#038;format=xml" />
+	<style type='text/css'>
+	.download-info .download-button {
+		background-image: url(http://www.carqueryapi.com/wp-content/plugins/download-monitor/page-addon/downloadbutton.gif);
+	}
+	.download-info .more-button {
+		background-image: url(http://www.carqueryapi.com/wp-content/plugins/download-monitor/page-addon/morebutton.gif);
+	}
+	</style>
+<link rel="shortcut icon" href="favicon.ico">
+   
+    <script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<script src="../js/angular-resource.js"></script>
+<script src="../js/ui-bootstrap-tpls-0.11.0.js"></script>
+<script src="../js/angular-ui-router.js"></script>
+<script src="../js/angular.js"></script>   
+<script src="../js/myApp.js"></script> 
+    <!-- Updated Styles -->
+    <link rel="stylesheet" href="css/updates.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/custom.css">
+    
+    <!-- Responsive Styles -->
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- CSS for IE -->
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" type="text/css" href="css/ie.css" />
+    <![endif]-->
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+</head>
+<body ng-app="mainApp1" >
+    
+    <div id="page-wrapper">
+        <header id="header" class="navbar-static-top">
+            <div class="topnav hidden-xs">
+                <div class="container">
+                  <script type="text/javascript">// <![CDATA[
+$(document).ready( function() {
+
+	var carquery = new CarQuery();
+	
+	
+});
+// ]]&gt;</script>
+                    <ul class="quick-menu pull-left">
+                        <li><a href="dashboard1.html">MY ACCOUNT</a></li>
+                        
+                    </ul>
+                    <ul class="quick-menu pull-right">
+                        <li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
+                        <li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-header">
+                
+                <a href="#mobile-menu-01" data-toggle="collapse" class="mobile-menu-toggle">
+                    Mobile Menu Toggle
+                </a>
+
+                <div class="container">
+                    <h1 class="logo navbar-brand">
+                        <a href="homepage10.html" title="Autoscoop - home">
+                            <img src="images/logo.png" alt="Autoscoop HTML5 Template" />
+                        </a>
+                    </h1>
+                    
+                    <nav id="main-menu" role="navigation">
+                        <ul class="menu">
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">eBidR</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Browse</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Finance</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Insurance</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Services & Maintenance</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Transport</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            
+                            <li class="menu-item-has-children">
+                                <a href="#">Rego</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+                
+                <nav id="mobile-menu-01" class="mobile-menu collapse">
+                    <ul id="mobile-primary-menu" class="menu">
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">eBidR</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Browse</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Finance</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Insurance</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Service & Maintenance</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Transport/a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Rego</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        
+                        
+                    </ul>
+                    
+                    <ul class="mobile-topnav container">
+                        <li><a href="dashboard1.html">MY ACCOUNT</a></li>
+                        <li class="ribbon language menu-color-skin">
+                            <a href="#" data-toggle="collapse">ENGLISH</a>
+                            <ul class="menu mini">
+                                <li><a href="#" title="Dansk">Dansk</a></li>
+                                <li><a href="#" title="Deutsch">Deutsch</a></li>
+                                <li class="active"><a href="#" title="English">English</a></li>
+                                <li><a href="#" title="Espa�ol">Espa�ol</a></li>
+                                <li><a href="#" title="Fran�ais">Fran�ais</a></li>
+                                <li><a href="#" title="Italiano">Italiano</a></li>
+                                <li><a href="#" title="Magyar">Magyar</a></li>
+                                <li><a href="#" title="Nederlands">Nederlands</a></li>
+                                <li><a href="#" title="Norsk">Norsk</a></li>
+                                <li><a href="#" title="Polski">Polski</a></li>
+                                <li><a href="#" title="Portugu�s">Portugu�s</a></li>
+                                <li><a href="#" title="Suomi">Suomi</a></li>
+                                <li><a href="#" title="Svenska">Svenska</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
+                        <li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+                        <li class="ribbon currency menu-color-skin">
+                            <a href="#">USD</a>
+                            <ul class="menu mini">
+                                <li><a href="#" title="AUD">AUD</a></li>
+                                <li><a href="#" title="BRL">BRL</a></li>
+                                <li class="active"><a href="#" title="USD">USD</a></li>
+                                <li><a href="#" title="CAD">CAD</a></li>
+                                <li><a href="#" title="CHF">CHF</a></li>
+                                <li><a href="#" title="CNY">CNY</a></li>
+                                <li><a href="#" title="CZK">CZK</a></li>
+                                <li><a href="#" title="DKK">DKK</a></li>
+                                <li><a href="#" title="EUR">EUR</a></li>
+                                <li><a href="#" title="GBP">GBP</a></li>
+                                <li><a href="#" title="HKD">HKD</a></li>
+                                <li><a href="#" title="HUF">HUF</a></li>
+                                <li><a href="#" title="IDR">IDR</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                </nav>
+            </div>
+            <div id="travelo-signup" class="travelo-signup-box travelo-box">
+                <div class="login-social">
+                    <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
+                    <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
+                </div>
+                <div class="seperator"><label>OR</label></div>
+                <div class="simple-signup">
+                    <div class="text-center signup-email-section">
+                        <a href="#" class="signup-email"><i class="soap-icon-letter"></i>Sign up with Email</a>
+                    </div>
+                    <p class="description">By signing up, I agree to Autoscoop's Terms of Service, Privacy Policy, Guest Refund policy, and Host Guarantee Terms.</p>
+                </div>
+                <div class="email-signup">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="input-text full-width" placeholder="first name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="input-text full-width" placeholder="last name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="input-text full-width" placeholder="email address">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="input-text full-width" placeholder="password">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="input-text full-width" placeholder="confirm password">
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Tell me about Autoscoop news
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="description">By signing up, I agree to Autoscoop's Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms.</p>
+                        </div>
+                        <button type="submit" class="full-width btn-medium">SIGNUP</button>
+                    </form>
+                </div>
+                <div class="seperator"></div>
+                <p>Already a Autoscoop member? <a href="#travelo-login" class="goto-login soap-popupbox">Login</a></p>
+            </div>
+            <div id="travelo-login" class="travelo-login-box travelo-box">
+                <div class="login-social">
+                    <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
+                    <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
+                </div>
+                <div class="seperator"><label>OR</label></div>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="input-text full-width" placeholder="email address">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="input-text full-width" placeholder="password">
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="forgot-password pull-right">Forgot password?</a>
+                        <div class="checkbox checkbox-inline">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                </form>
+                <div class="seperator"></div>
+                <p>Don't have an account? <a href="#travelo-signup" class="goto-signup soap-popupbox">Sign up</a></p>
+            </div>
+        </header>
+        <div class="page-title-container">
+            <div class="container">
+                <div class="page-title pull-left">
+                    <h2 class="entry-title">Car Detailed</h2>
+                </div>
+                <ul class="breadcrumbs pull-right">
+                    <li><a href="homepage10.html">HOME</a></li>
+                    <li class="active">Car Detailed</li>
+                </ul>
+            </div>
+        </div>
+        <div id="slideshow">
+            <div class="fullwidthbanner-container">
+                <div class="revolution-slider rev_slider" style="height: 0; overflow: hidden;">
+                    <ul>    <!-- SLIDE  -->
+                        <li data-index="rs-1" data-transition="turnoff-vertical" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="500"  data-thumb="http://static.soaptheme.net/uploads/revslider1/concept/bg3.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="http://static.soaptheme.net/uploads/revslider1/concept/bg3.jpg"  alt="" title="Slider1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                            <!-- LAYERS -->
+
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-1" 
+                                 data-x="-481" 
+                                 data-y="324" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:50px;opacity:0;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:50px;opacity:0;s:1500;s:1500;" 
+                                data-start="500" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 5;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/badaal.png" alt="" data-no-retina> </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-2" 
+                                 data-x="203" 
+                                 data-y="102" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="x:right;skX:-85px;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="800" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 6;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/area.png" alt="" data-no-retina> </div>
+
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-3" 
+                                 data-x="389" 
+                                 data-y="205" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:50px;opacity:0;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="1100" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 7;"><img src="images/carimage2.png" alt="" data-no-retina width="450" height="125"> </div>
+
+                            <!-- LAYER NR. 4 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-4" 
+                                 data-x="250" 
+                                 data-y="342" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="1400" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 8;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/11.png" alt="" data-no-retina> </div>
+
+                            <!-- LAYER NR. 5 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-5" 
+                                 data-x="122" 
+                                 data-y="420" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="4700" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 9;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/arrow11.png" alt="" data-no-retina> </div>
+
+                            <!-- LAYER NR. 6 -->
+                            <div class="tp-caption large_bold_black2_1   tp-resizeme" 
+                                 id="slide-1-layer-6" 
+                                 data-x="139" 
+                                 data-y="428" 
+                                            data-width="['auto']"
+                                data-height="['auto']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:1500;s:1500;" 
+                                data-start="5000" 
+                                data-splitin="none" 
+                                data-splitout="none" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 10; white-space: nowrap;font-family:Arial;border-color:rgba(255, 214, 88, 1.00);"><span style="color:#fdb714">AVG SAV</span> $<span id="avgSavMin"></span> : $<span id="avgSavMax"></span> </span></div>
+
+                            <!-- LAYER NR. 7 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-7" 
+                                 data-x="194" 
+                                 data-y="191" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="1700" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 11;"><img src="images/22.png" alt="" data-no-retina> </div>
+
+                            <!-- LAYER NR. 8 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-8" 
+                                 data-x="66" 
+                                 data-y="233" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="4400" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 12;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/arrow11.png" alt="" data-no-retina> </div>
+
+                            <!-- LAYER NR. 9 -->
+                            <div class="tp-caption large_bold_black2_1   tp-resizeme" 
+                                 id="slide-1-layer-9" 
+                                 data-x="89" 
+                                 data-y="240" 
+                                            data-width="['auto']"
+                                data-height="['auto']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:1500;s:1500;" 
+                                data-start="5300" 
+                                data-splitin="none" 
+                                data-splitout="none" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 13; white-space: nowrap;font-family:Arial;border-color:rgba(255, 214, 88, 1.00);"><span style="color:#fdb714">Dealers count :  </span><span id="noDealers"></span> </span> </div>
+
+                            <!-- LAYER NR. 10 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-10" 
+                                 data-x="341" 
+                                 data-y="8" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="2000" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 14;"><img src="images/33.png" alt="" data-no-retina> </div>
+
+                            <!-- LAYER NR. 11 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-11" 
+                                 data-x="213" 
+                                 data-y="90" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="4100" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 15;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/arrow11.png" alt="" data-no-retina> </div>
+
+                            <!-- LAYER NR. 12 -->
+                            <div class="tp-caption large_bold_black2_1   tp-resizeme" 
+                                 id="slide-1-layer-12" 
+                                 data-x="232" 
+                                 data-y="97" 
+                                            data-width="['auto']"
+                                data-height="['auto']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:1500;s:1500;" 
+                                data-start="5600" 
+                                data-splitin="none" 
+                                data-splitout="none" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 16; white-space: nowrap;font-family:Arial;border-color:rgba(255, 214, 88, 1.00);"><span style="color:#fdb714">In Stock :  </span> <span id="noStock"></span></span></div>
+
+                            <!-- LAYER NR. 13 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-13" 
+                                 data-x="657" 
+                                 data-y="8" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="2300" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 17;"><img src="images/44.png" alt="" data-ww="auto" data-hh="auto" data-no-retina> </div>
+
+                            <!-- LAYER NR. 14 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-14" 
+                                 data-x="758" 
+                                 data-y="87" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:1500;s:1500;" 
+                                data-start="3800" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 18;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/arrow112.png" alt="" data-ww="auto" data-hh="auto" data-no-retina> </div>
+
+                            <!-- LAYER NR. 15 -->
+                            <div class="tp-caption large_bold_black2_1   tp-resizeme" 
+                                 id="slide-1-layer-15" 
+                                 data-x="778" 
+                                 data-y="96" 
+                                            data-width="['auto']"
+                                data-height="['auto']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="5900" 
+                                data-splitin="none" 
+                                data-splitout="none" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 19; white-space: nowrap;font-family:Arial;border-color:rgba(255, 214, 88, 1.00);"><span style="color:#fdb714">FIN Min : Max </span> $<span id="finMin"></span> : $<span id="finMax"></span></span></div>
+
+                            <!-- LAYER NR. 16 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-16" 
+                                 data-x="827" 
+                                 data-y="207" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="2600" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 20;"><img src="images/66.png" alt="" data-ww="auto" data-hh="auto" data-no-retina> </div>
+
+                            <!-- LAYER NR. 17 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-17" 
+                                 data-x="910" 
+                                 data-y="230" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:300;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:1500;s:1500;" 
+                                data-start="3500" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 21;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/arrow112.png" alt="" data-ww="auto" data-hh="auto" data-no-retina> </div>
+
+                            <!-- LAYER NR. 18 -->
+                            <div class="tp-caption large_bold_black2_1   tp-resizeme" 
+                                 id="slide-1-layer-18" 
+                                 data-x="945" 
+                                 data-y="238" 
+                                            data-width="['auto']"
+                                data-height="['auto']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="6200" 
+                                data-splitin="none" 
+                                data-splitout="none" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 22; white-space: nowrap;font-family:Arial;border-color:rgba(255, 214, 88, 1.00);"><span style="color:#fdb714">INS Min : Max </span>$<span id="insMin"></span> : $<span id="insMax"></span></span> </div>
+
+                            <!-- LAYER NR. 19 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-19" 
+                                 data-x="817" 
+                                 data-y="406" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="2900" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 23;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/77.png" alt="" data-ww="auto" data-hh="auto" data-no-retina> </div>
+
+                            <!-- LAYER NR. 20 -->
+                            <div class="tp-caption   tp-resizeme" 
+                                 id="slide-1-layer-20" 
+                                 data-x="921" 
+                                 data-y="430" 
+                                            data-width="['none','none','none','none']"
+                                data-height="['none','none','none','none']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="3200" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 24;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/arrow112.png" alt="" data-ww="auto" data-hh="auto" data-no-retina> </div>
+
+                            <!-- LAYER NR. 21 -->
+                            <div class="tp-caption large_bold_black2_1   tp-resizeme" 
+                                 id="slide-1-layer-21" 
+                                 data-x="961" 
+                                 data-y="438" 
+                                            data-width="['auto']"
+                                data-height="['auto']"
+                                data-transform_idle="o:1;"
+                     
+                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
+                                 data-transform_out="y:bottom;s:300;s:300;" 
+                                data-start="6500" 
+                                data-splitin="none" 
+                                data-splitout="none" 
+                                data-responsive_offset="on" 
+
+                                
+                                style="z-index: 25; white-space: nowrap;font-family:Arial;border-color:rgba(255, 214, 88, 1.00);"><span style="color:#fdb714">Price </span>$<span id="minValue"></span> : $<span id="maxValue"></span></div>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <section id="content">
+           <div class="container">
+                <div class="row">
+                    <div id="main" class="col-md-9">
+                    
+                    
+                        <div class="tab-container style1" id="cruise-main-content">
+                            <ul class="tabs">
+                                <li class="active"><a data-toggle="tab" href="#photos-tab">photos</a></li>
+                                <li><a data-toggle="tab" href="#calendar-tab">calendar</a></li>
+                                <li class="pull-right"><a class="button btn-small yellow-bg white-color" href="#">Car GUIDE</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="photos-tab" class="tab-pane fade in active">
+                                    <div class="photo-gallery style1" data-animation="slide" data-sync="#photos-tab .image-carousel">
+                                        <ul class="slides">
+                                            <li><img src="http://placehold.it/900x500" alt="" /></li>
+                                            <li><img src="http://placehold.it/900x500" alt="" /></li>
+                                            <li><img src="http://placehold.it/900x500" alt="" /></li>
+                                            <li><img src="http://placehold.it/900x500" alt="" /></li>
+                                            <li><img src="http://placehold.it/900x500" alt="" /></li>
+                                            <li><img src="http://placehold.it/900x500" alt="" /></li>
+                                            <li><img src="http://placehold.it/900x500" alt="" /></li>
+                                            <li><img src="http://placehold.it/900x500" alt="" /></li>
+                                            <li><img src="http://placehold.it/900x500" alt="" /></li>
+                                            <li><img src="http://placehold.it/900x500" alt="" /></li>
+                                            <li><img src="http://placehold.it/900x500" alt="" /></li>
+                                        </ul>
+                                    </div>
+                                    <div class="image-carousel style1" data-animation="slide" data-item-width="70" data-item-margin="10" data-sync="#photos-tab .photo-gallery">
+                                        <ul class="slides">
+                                            <li><img src="http://placehold.it/70x70" alt="" /></li>
+                                            <li><img src="http://placehold.it/70x70" alt="" /></li>
+                                            <li><img src="http://placehold.it/70x70" alt="" /></li>
+                                            <li><img src="http://placehold.it/70x70" alt="" /></li>
+                                            <li><img src="http://placehold.it/70x70" alt="" /></li>
+                                            <li><img src="http://placehold.it/70x70" alt="" /></li>
+                                            <li><img src="http://placehold.it/70x70" alt="" /></li>
+                                            <li><img src="http://placehold.it/70x70" alt="" /></li>
+                                            <li><img src="http://placehold.it/70x70" alt="" /></li>
+                                            <li><img src="http://placehold.it/70x70" alt="" /></li>
+                                            <li><img src="http://placehold.it/70x70" alt="" /></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="calendar-tab" class="tab-pane fade">
+                                    <label>SELECT MONTH</label>
+                                    <div class="col-sm-6 col-md-4 no-float no-padding">
+                                        <div class="selector">
+                                            <select class="full-width" id="select-month">
+                                                <option value="2014-6">June 2014</option>
+                                                <option value="2014-7">July 2014</option>
+                                                <option value="2014-8">August 2014</option>
+                                                <option value="2014-9">September 2014</option>
+                                                <option value="2014-10">October 2014</option>
+                                                <option value="2014-11">November 2014</option>
+                                                <option value="2014-12">December 2014</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <div class="calendar"></div>
+                                            <div class="calendar-legend">
+                                                <label class="available">available</label>
+                                                <label class="unavailable">unavailable</label>
+                                                <label class="past">past</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p class="description">
+                                                The calendar is updated every five minutes and is only an approximation of availability.
+<br /><br />
+Some hosts set custom pricing for certain days on their calendar, like weekends or holidays. The rates listed are per day and do not include any cleaning fee or rates for extra people the host may have for this listing. Please refer to the listing's Description tab for more details.
+<br /><br />
+We suggest that you contact the host to confirm availability and rates before submitting a reservation request.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="cruise-features" class="tab-container">
+                            <ul class="tabs">
+                                <li class="active"><a href="#cruise-description" data-toggle="tab">My Requirement</a></li>
+                                <li><a href="#cruise-availability" data-toggle="tab">Availability</a></li>
+                                <li><a href="#cruise-amenities" data-toggle="tab">Specification</a></li>
+                                <li><a href="#cruise-food-dinning" data-toggle="tab">Currently in Stock</a></li>
+                                <li><a href="#cruise-reviews" data-toggle="tab">Reviews</a></li>
+                                <li><a href="#cruise-write-review" data-toggle="tab">Write a Review</a></li>
+                             </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="cruise-description">
+                                 <div id="main" class="col-sms-8 col-sm-9 col-md-11">
+                        <div class="booking-section travelo-box">
+                            
+                            <form class="booking-form" >
+                                <div class="person-information">
+                                    <h2>Car Requirement</h2>
+                                    <div class="form-group row">
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Post</label>
+                                            <input type="text" id="postCode" name="postCode" class="input-text full-width" value="2913" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Colour</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="carColor" name="carColor">
+                                                    <option>Red</option>
+                                                    <option>Blue</option>
+                                                    <option>Green</option>
+                                                    <option>Grey</option>
+                                                    <option>Silver</option>
+                                                    <option>Black</option>
+                                                    <option>White</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Transmission</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Automatic</option>
+                                                    <option>Manual</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="form-group row">
+                                       <div class="col-sm-5 col-md-4">
+                                            <label>Drive Type</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Two Wheel</option>
+                                                    <option>Four Wheel</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div> 
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Fuel Type</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Diesel</option>
+                                                    <option>Petrol</option>
+                                                    <option>Electric</option>
+                                                    <option>Gas</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Seats</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>2</option>
+                                                    <option>5</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Vehicle Purpose</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Business</option>
+                                                    <option>Private</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Extra External 1</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Bull Bar</option>
+                                                    <option>Nudge Bar</option>
+                                                    <option>Roof Back</option>
+                                                    <option>Bonnect Protection</option>
+                                                    <option>Side Step</option>
+                                                    <option>Snokel Set</option>
+                                                    <option>Two bar</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Extra External 2</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Bull Bar</option>
+                                                    <option>Nudge Bar</option>
+                                                    <option>Roof Back</option>
+                                                    <option>Bonnect Protection</option>
+                                                    <option>Side Step</option>
+                                                    <option>Snokel Set</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Extra External 3</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Bull Bar</option>
+                                                    <option>Nudge Bar</option>
+                                                    <option>Roof Back</option>
+                                                    <option>Bonnect Protection</option>
+                                                    <option>Side Step</option>
+                                                    <option>Snokel Set</option>
+                                                    
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Extra External 4</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Bull Bar</option>
+                                                    <option>Nudge Bar</option>
+                                                    <option>Roof Back</option>
+                                                    <option>Bonnect Protection</option>
+                                                    <option>Side Step</option>
+                                                    <option>Snokel Set</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Extra External 5</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Bull Bar</option>
+                                                    <option>Nudge Bar</option>
+                                                    <option>Roof Back</option>
+                                                    <option>Bonnect Protection</option>
+                                                    <option>Side Step</option>
+                                                    <option>Snokel Set</option>
+                                                    
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                       <div class="col-sm-5 col-md-4">
+                                            <label>Extra Internal 1</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>leather Seats</option>
+                                                    <option>Audio System</option>
+                                                    <option>Car Play</option>
+                                                    <option>Satellite Navigation</option>
+                                                    <option>Car Mats</option>
+                                                    <option>Alarm with Remote</option>
+                                                    <option>Custom Speakers</option>
+                                                    <option>Heated Front Seats</option>
+                                                    <option>Heated Rear Seats</option>
+                                                    <option>lane Change Warning</option>
+                                                    <option>Paint Non Matilic</option>
+                                                    <option>Paint Matilic</option>
+                                                    <option>Air Condition</option>
+                                                    <option>Air Condition rear</option>
+                                                    <option>Blind Spot Warrning</option>
+                                                    <option>lumbar Support Seats</option>
+                                                    <option>Sunroof</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Extra Internal 2</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>leather Seats</option>
+                                                    <option>Audio System</option>
+                                                    <option>Car Play</option>
+                                                    <option>Satellite Navigation</option>
+                                                    <option>Car Mats</option>
+                                                    <option>Alarm with Remote</option>
+                                                    <option>Custom Speakers</option>
+                                                    <option>Heated Front Seats</option>
+                                                    <option>Heated Rear Seats</option>
+                                                    <option>lane Change Warning</option>
+                                                    <option>Paint Non Matilic</option>
+                                                    <option>Paint Matilic</option>
+                                                    <option>Air Condition</option>
+                                                    <option>Air Condition rear</option>
+                                                    <option>Blind Spot Warrning</option>
+                                                    <option>lumbar Support Seats</option>
+                                                    <option>Sunroof</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Extra Internal 3</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>leather Seats</option>
+                                                    <option>Audio System</option>
+                                                    <option>Car Play</option>
+                                                    <option>Satellite Navigation</option>
+                                                    <option>Car Mats</option>
+                                                    <option>Alarm with Remote</option>
+                                                    <option>Custom Speakers</option>
+                                                    <option>Heated Front Seats</option>
+                                                    <option>Heated Rear Seats</option>
+                                                    <option>lane Change Warning</option>
+                                                    <option>Paint Non Matilic</option>
+                                                    <option>Paint Matilic</option>
+                                                    <option>Air Condition</option>
+                                                    <option>Air Condition rear</option>
+                                                    <option>Blind Spot Warrning</option>
+                                                    <option>lumbar Support Seats</option>
+                                                    <option>Sunroof</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="form-group row">
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Extra Internal 4</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>leather Seats</option>
+                                                    <option>Audio System</option>
+                                                    <option>Car Play</option>
+                                                    <option>Satellite Navigation</option>
+                                                    <option>Car Mats</option>
+                                                    <option>Alarm with Remote</option>
+                                                    <option>Custom Speakers</option>
+                                                    <option>Heated Front Seats</option>
+                                                    <option>Heated Rear Seats</option>
+                                                    <option>lane Change Warning</option>
+                                                    <option>Paint Non Matilic</option>
+                                                    <option>Paint Matilic</option>
+                                                    <option>Air Condition</option>
+                                                    <option>Air Condition rear</option>
+                                                    <option>Blind Spot Warrning</option>
+                                                    <option>lumbar Support Seats</option>
+                                                    <option>Sunroof</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Extra Internal 5</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>leather Seats</option>
+                                                    <option>Audio System</option>
+                                                    <option>Car Play</option>
+                                                    <option>Satellite Navigation</option>
+                                                    <option>Car Mats</option>
+                                                    <option>Alarm with Remote</option>
+                                                    <option>Custom Speakers</option>
+                                                    <option>Heated Front Seats</option>
+                                                    <option>Heated Rear Seats</option>
+                                                    <option>lane Change Warning</option>
+                                                    <option>Paint Non Matilic</option>
+                                                    <option>Paint Matilic</option>
+                                                    <option>Air Condition</option>
+                                                    <option>Air Condition rear</option>
+                                                    <option>Blind Spot Warrning</option>
+                                                    <option>lumbar Support Seats</option>
+                                                    <option>Sunroof</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Free text</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder="" />
+                                        </div>
+                                        
+                                    </div>
+                                   
+                                </div>
+                                <hr />
+                                <div class="card-information">
+                                    <h2>Finance Requirement</h2>
+                                    <div class="form-group row">
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Income Type</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Salary</option>
+                                                    <option>From Business</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Year Employement / Business</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Income before Super & Tax</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Income After Super & Tax</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>If Business Provide ABN</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Credit Rating</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Very Good</option>
+                                                    <option>Good</option>
+                                                     <option>Not Good</option>
+                                                    <option>Not Sure</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Loan Amoutn</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Loan Period</label>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option>1</option>
+                                                     <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option>9</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Number of Dependencies</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <hr />
+                                <h2>Insurance</h2>
+                                <div class="form-group row">
+                                    <div class="col-sm-5 col-md-4">
+                                        <label>Insurance Type</label>
+                                        <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Comprahensive</option>
+                                                    <option>Third Party</option>
+                                                </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-5 col-md-4">
+                                        <label>Driving License Type</label>
+                                        <div class="selector">
+                                                <select class="full-width">
+                                                    <option>L - learner</option>
+                                                    <option>P - Probationary</option>
+                                                    <option>F - Full Licence</option>
+                                                </select>
+                                            </div>
+                                    </div>
+                                
+                                <div class="col-sm-5 col-md-4">
+                                        <label>Driving License Number</label>
+                                        <div class="selector">
+                                                <select class="full-width">
+                                                    <option>Comprahensive</option>
+                                                    <option>Third Party</option>
+                                                </select>
+                                            </div>
+                                    </div>
+                             </div>
+                                <div class="form-group row">
+                                    
+                                    <div class="col-sm-5 col-md-4">
+                                        <label>Driving License Issuing State</label>
+                                        <div class="selector">
+                                                <select class="full-width">
+                                                    <option>ACT</option>
+                                                    <option>VIC</option>
+                                                    <option>NSW</option>
+                                                    <option>NT</option>
+                                                    <option>TAS</option>
+                                                    <option>SA</option>
+                                                     <option>WA</option>
+                                                </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-5 col-md-4">
+                                        <label>Number of AtFaults Claims</label>
+                                        <input type="text" class="input-text full-width" value="" placeholder="" />
+                                    </div>
+                                  <div class="col-sm-5 col-md-4">
+                                        <label>Indicative Excess Amount</label>
+                                        <input type="text" class="input-text full-width" value="" placeholder="" />
+                                    </div>  
+                                    
+				 </div>
+                                
+                                <div class="form-group row">
+                                <div class="col-sm-10 col-md-8">
+                                            <label>Date of Birth</label>
+                                            <div class="constant-column-2">
+                                            <div class="selector">
+                                                    <select class="full-width">
+                                                        <option>Day</option>
+                                                    </select>
+                                                </div>
+                                                <div class="selector">
+                                                    <select class="full-width">
+                                                        <option>month</option>
+                                                    </select>
+                                                </div>
+                                                <div class="selector">
+                                                    <select class="full-width">
+                                                        <option>year</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                
+                                    
+                                    
+                                </div>
+                                <div class="form-group row">
+                                <div class="col-sm-10 col-md-8">
+                                            <label>Age of Additional Driver</label>
+                                            <div class="constant-column-2">
+                                            <div class="selector">
+                                                    <select class="full-width">
+                                                        <option>Day</option>
+                                                    </select>
+                                                </div>
+                                                <div class="selector">
+                                                    <select class="full-width">
+                                                        <option>month</option>
+                                                    </select>
+                                                </div>
+                                                <div class="selector">
+                                                    <select class="full-width">
+                                                        <option>year</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   </div>     
+                                        
+                                <hr>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> By continuing, you agree to the <a href="#"><span class="skin-color">Terms and Conditions</span></a>.
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group row" ng-click="submitSearchForm()" ng-controller="myController1">
+                                    <div class="col-sm-6 col-md-5">
+                                        <button type="submit" class="full-width btn-large">CONFIRM BOOKING</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>   			
+                                   
+                                </div>
+                                <div class="tab-pane fade" id="cruise-availability">
+                                    <div class="border-box travelo-box clearfix">
+                                        <h4 class="title col-xs-12">Select a Stateroom Category</h4>
+                                        <form class="update-search-form">
+                                            <div class="form-group col-xs-6 col-md-3">
+                                                <label>Date</label>
+                                                <div class="datepicker-wrap">
+                                                    <input type="text" class="input-text full-width" placeholder="mon, Jan 26, 2014">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xs-6 col-md-3">
+                                                <label>Room category</label>
+                                                <div class="selector">
+                                                    <select>
+                                                        <option value="">Suite</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xs-8 col-md-4">
+                                                <label>Price</label>
+                                                <div class="selector">
+                                                    <select>
+                                                        <option value="">Up to $300</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xs-4 col-md-2">
+                                                <label>&nbsp;</label>
+                                                <button type="submit" class="icon-check full-width">PROCEED</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <h2>Rooms Available</h2>
+                                    <div class="room-list listing-style3 hotel">
+                                        <article class="box">
+                                            <figure class="col-sm-4 col-md-3">
+                                                <a class="hover-effect popup-gallery" href="ajax/cruise-slideshow-popup.html"><img src="http://placehold.it/230x160" alt=""></a>
+                                            </figure>
+                                            <div class="details col-xs-12 col-sm-8 col-md-9">
+                                                <div>
+                                                    <div>
+                                                        <div class="box-title">
+                                                            <h4 class="title">Grand Suite</h4>
+                                                            <dl class="description">
+                                                                <dt>Deck:</dt>
+                                                                <dd>Upper</dd>
+                                                                <dt>Size:</dt>
+                                                                <dd>330 sq ft Balcony: 70 sq ft.</dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="amenities">
+                                                            <i class="soap-icon-wifi circle"></i>
+                                                            <i class="soap-icon-fitnessfacility circle"></i>
+                                                            <i class="soap-icon-fork circle"></i>
+                                                            <i class="soap-icon-television circle"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="price-section">
+                                                        <span class="price"><small>PER/NIGHT</small>$121</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
+                                                    <div class="action-section">
+                                                        <a href="cruise-booking.html" class="button btn-small full-width text-center">BOOK NOW</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="box">
+                                            <figure class="col-sm-4 col-md-3">
+                                                <a class="hover-effect popup-gallery" href="ajax/cruise-slideshow-popup.html"><img src="http://placehold.it/230x160" alt=""></a>
+                                            </figure>
+                                            <div class="details col-xs-12 col-sm-8 col-md-9">
+                                                <div>
+                                                    <div>
+                                                        <div class="box-title">
+                                                            <h4 class="title">Junior Suite</h4>
+                                                            <dl class="description">
+                                                                <dt>Deck:</dt>
+                                                                <dd>Verandah</dd>
+                                                                <dt>Size:</dt>
+                                                                <dd>220 sq ft Balcony: 30 sq ft.</dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="amenities">
+                                                            <i class="soap-icon-wifi circle"></i>
+                                                            <i class="soap-icon-fitnessfacility circle"></i>
+                                                            <i class="soap-icon-fork circle"></i>
+                                                            <i class="soap-icon-television circle"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="price-section">
+                                                        <span class="price"><small>PER/NIGHT</small>$325</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
+                                                    <div class="action-section">
+                                                        <a href="cruise-booking.html" class="button btn-small full-width text-center">BOOK NOW</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="box">
+                                            <figure class="col-sm-4 col-md-3">
+                                                <a class="hover-effect popup-gallery" href="ajax/cruise-slideshow-popup.html"><img src="http://placehold.it/230x160" alt=""></a>
+                                            </figure>
+                                            <div class="details col-xs-12 col-sm-8 col-md-9">
+                                                <div>
+                                                    <div>
+                                                        <div class="box-title">
+                                                            <h4 class="title">Junior Suite (obstructed view)</h4>
+                                                            <dl class="description">
+                                                                <dt>Deck:</dt>
+                                                                <dd>Upper</dd>
+                                                                <dt>Size:</dt>
+                                                                <dd>220 sq ft Balcony: 30 sq ft.</dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="amenities">
+                                                            <i class="soap-icon-wifi circle"></i>
+                                                            <i class="soap-icon-fitnessfacility circle"></i>
+                                                            <i class="soap-icon-fork circle"></i>
+                                                            <i class="soap-icon-television circle"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="price-section">
+                                                        <span class="price"><small>PER/NIGHT</small>$248</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
+                                                    <div class="action-section">
+                                                        <a href="cruise-booking.html" class="button btn-small full-width text-center">BOOK NOW</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <a href="#" class="load-more full-width button btn-large fourty-space">LOAD MORE ROOMS</a>
+                                    
+                                </div>
+                                <div class="tab-pane fade" id="cruise-amenities">
+                                    <h2>Standard Specifications</h2>
+                                    
+                                    <div id="car-model-data"></div>
+
+                                </div>
+                                <div class="tab-pane fade" id="cruise-food-dinning">
+                                    <div class="box">
+                                        <h2>Food and Dinning on Ship</h2>
+                                        <p>Maecenas vitae turpis condimentum metus tincidunt semper bibendum ut orci. Donec eget accumsan est. Duis laoreet sagittis elit et vehicula. Cras viverra posuere condimentum. Donec urna arcu, venenatis quis augue sit amet, mattis gravida nunc. Integer faucibus, tortor a tristique adipiscing, arcu metus luctus libero, nec vulputate risus elit id nibh.</p>
+                                    </div>
+                                    <div class="food-dinning-list image-box style2">
+                                        <div class="box">
+                                            <figure>
+                                                <a href="#"><img src="http://placehold.it/250x160" alt=""></a>
+                                            </figure>
+                                            <div class="details">
+                                                <div class="review-score">
+                                                    <div class="five-stars-container" data-placement="bottom" data-toggle="tooltip" title="4 stars"><div class="five-stars" style="width: 80%;"></div></div>
+                                                    <span class="review">27 reviews</span>
+                                                </div>
+                                                <div class="box-title">
+                                                    <h4 class="title">Sushi Bar</h4>
+                                                    <dl>
+                                                        <dt>Seating Times:</dt>
+                                                        <dd>Open nightly prior to dinner.</dd>
+                                                    </dl>
+                                                </div>
+                                                <hr class="hidden-xs">
+                                                <p>Watch the sushi chef prepare fresh Nigiri salmon, California rolls, Nigiri Toro, and other delicious Japanese delicacies for your enjoyment. Then grab some chopsticks and sample these colorful creations.</p>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <figure>
+                                                <a href="#"><img src="http://placehold.it/250x160" alt=""></a>
+                                            </figure>
+                                            <div class="details">
+                                                <div class="review-score">
+                                                    <div class="five-stars-container" data-placement="bottom" data-toggle="tooltip" title="4 stars"><div class="five-stars" style="width: 80%;"></div></div>
+                                                    <span class="review">27 reviews</span>
+                                                </div>
+                                                <div class="box-title">
+                                                    <h4 class="title">My Time Dining</h4>
+                                                    <dl>
+                                                        <dt>Seating Times:</dt>
+                                                        <dd>5:45 - 9:30 PM.</dd>
+                                                    </dl>
+                                                </div>
+                                                <hr class="hidden-xs">
+                                                <p>Watch the sushi chef prepare fresh Nigiri salmon, California rolls, Nigiri Toro, and other delicious Japanese delicacies for your enjoyment. Then grab some chopsticks and sample these colorful creations.</p>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <figure>
+                                                <a href="#"><img src="http://placehold.it/250x160" alt=""></a>
+                                            </figure>
+                                            <div class="details">
+                                                <div class="review-score">
+                                                    <div class="five-stars-container" data-placement="bottom" data-toggle="tooltip" title="4 stars"><div class="five-stars" style="width: 80%;"></div></div>
+                                                    <span class="review">27 reviews</span>
+                                                </div>
+                                                <div class="box-title">
+                                                    <h4 class="title">Carnivale &amp; Mardi Gras Dining Rooms</h4>
+                                                    <dl>
+                                                        <dt>Seating Times:</dt>
+                                                        <dd>Lunch: Noon to 1:30 PM; Dinner: 5:45-6:15 PM</dd>
+                                                    </dl>
+                                                </div>
+                                                <hr class="hidden-xs">
+                                                <p>Watch the sushi chef prepare fresh Nigiri salmon, California rolls, Nigiri Toro, and other delicious Japanese delicacies for your enjoyment. Then grab some chopsticks and sample these colorful creations.</p>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <figure>
+                                                <a href="#"><img src="http://placehold.it/250x160" alt=""></a>
+                                            </figure>
+                                            <div class="details">
+                                                <div class="review-score">
+                                                    <div class="five-stars-container" data-placement="bottom" data-toggle="tooltip" title="4 stars"><div class="five-stars" style="width: 80%;"></div></div>
+                                                    <span class="review">27 reviews</span>
+                                                </div>
+                                                <div class="box-title">
+                                                    <h4 class="title">Brasserie Bar &amp; Grill</h4>
+                                                    <dl>
+                                                        <dt>Seating Times:</dt>
+                                                        <dd>7 AM to midnight.</dd>
+                                                    </dl>
+                                                </div>
+                                                <hr class="hidden-xs">
+                                                <p>Watch the sushi chef prepare fresh Nigiri salmon, California rolls, Nigiri Toro, and other delicious Japanese delicacies for your enjoyment. Then grab some chopsticks and sample these colorful creations.</p>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <figure>
+                                                <a href="#"><img src="http://placehold.it/250x160" alt=""></a>
+                                            </figure>
+                                            <div class="details">
+                                                <div class="review-score">
+                                                    <div class="five-stars-container" data-placement="bottom" data-toggle="tooltip" title="3 stars"><div class="five-stars" style="width: 60%;"></div></div>
+                                                    <span class="review">27 reviews</span>
+                                                </div>
+                                                <div class="box-title">
+                                                    <h4 class="title">Room Service</h4>
+                                                    <dl>
+                                                        <dt>Seating Times:</dt>
+                                                        <dd>Available 24 hours.</dd>
+                                                    </dl>
+                                                </div>
+                                                <hr class="hidden-xs">
+                                                <p>Watch the sushi chef prepare fresh Nigiri salmon, California rolls, Nigiri Toro, and other delicious Japanese delicacies for your enjoyment. Then grab some chopsticks and sample these colorful creations.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="button btn-large full-width uppercase">Load More Food &amp; Dinning Listings</a>
+                                </div>
+                                <div class="tab-pane fade" id="cruise-reviews">
+                                    <div class="intro table-wrapper full-width hidden-table-sms">
+                                        <div class="rating table-cell col-sm-4">
+                                            <span class="score">3.9/5.0</span>
+                                            <div class="five-stars-container"><div class="five-stars" style="width: 78%;"></div></div>
+                                            <a href="#" class="goto-writereview-pane button green btn-small full-width">WRITE A REVIEW</a>
+                                        </div>
+                                        <div class="table-cell col-sm-8">
+                                            <div class="detailed-rating">
+                                                <ul class="clearfix">
+                                                    <li class="col-md-6"><div class="each-rating"><label>Ship Quality</label><div class="five-stars-container"><div class="five-stars" style="width: 78%;"></div></div></div></li>
+                                                    <li class="col-md-6"><div class="each-rating"><label>Ship Staff Quality</label><div class="five-stars-container"><div class="five-stars" style="width: 78%;"></div></div></div></li>
+                                                    <li class="col-md-6"><div class="each-rating"><label>Dining/Food</label><div class="five-stars-container"><div class="five-stars" style="width: 78%;"></div></div></div></li>
+                                                    <li class="col-md-6"><div class="each-rating"><label>Activities</label><div class="five-stars-container"><div class="five-stars" style="width: 78%;"></div></div></div></li>
+                                                    <li class="col-md-6"><div class="each-rating"><label>rooms Quality</label><div class="five-stars-container"><div class="five-stars" style="width: 78%;"></div></div></div></li>
+                                                    <li class="col-md-6"><div class="each-rating"><label>Play areas</label><div class="five-stars-container"><div class="five-stars" style="width: 78%;"></div></div></div></li>
+                                                    <li class="col-md-6"><div class="each-rating"><label>Cleanliness</label><div class="five-stars-container"><div class="five-stars" style="width: 78%;"></div></div></div></li>
+                                                    <li class="col-md-6"><div class="each-rating"><label>fitness facility</label><div class="five-stars-container"><div class="five-stars" style="width: 78%;"></div></div></div></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="guest-reviews">
+                                        <h2>Guest Reviews</h2>
+                                        <div class="guest-review table-wrapper">
+                                            <div class="col-xs-3 col-md-2 author table-cell">
+                                                <a href="#"><img src="http://placehold.it/270x263" alt="" width="270" height="263" /></a>
+                                                <p class="name">Jessica Brown</p>
+                                                <p class="date">NOV, 12, 2013</p>
+                                            </div>
+                                            <div class="col-xs-9 col-md-10 table-cell comment-container">
+                                                <div class="comment-header clearfix">
+                                                    <h4 class="comment-title">Pretty good for a weekend</h4>
+                                                    <div class="review-score">
+                                                        <div class="five-stars-container"><div class="five-stars" style="width: 80%;"></div></div>
+                                                        <span class="score">4.0/5.0</span>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-content">
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stand dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="guest-review table-wrapper">
+                                            <div class="col-xs-3 col-md-2 author table-cell">
+                                                <a href="#"><img src="http://placehold.it/270x263" alt="" width="270" height="263" /></a>
+                                                <p class="name">David Jhon</p>
+                                                <p class="date">NOV, 12, 2013</p>
+                                            </div>
+                                            <div class="col-xs-9 col-md-10 table-cell comment-container">
+                                                <div class="comment-header clearfix">
+                                                    <h4 class="comment-title">First time cruise - FANTASTIC</h4>
+                                                    <div class="review-score">
+                                                        <div class="five-stars-container"><div class="five-stars" style="width: 64%;"></div></div>
+                                                        <span class="score">3.2/5.0</span>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-content">
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stand dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="guest-review table-wrapper">
+                                            <div class="col-xs-3 col-md-2 author table-cell">
+                                                <a href="#"><img src="http://placehold.it/270x263" alt="" width="270" height="263" /></a>
+                                                <p class="name">Kyle Martin</p>
+                                                <p class="date">NOV, 12, 2013</p>
+                                            </div>
+                                            <div class="col-xs-9 col-md-10 table-cell comment-container">
+                                                <div class="comment-header clearfix">
+                                                    <h4 class="comment-title">5-day Carnival Inspiration out of Tampa</h4>
+                                                    <div class="review-score">
+                                                        <div class="five-stars-container"><div class="five-stars" style="width: 76%;"></div></div>
+                                                        <span class="score">3.8/5.0</span>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-content">
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stand dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="button full-width btn-large">LOAD MORE REVIEWS</a>
+                                </div>
+                                <div class="tab-pane fade" id="cruise-write-review">
+                                    <div class="main-rating table-wrapper full-width hidden-table-sms intro">
+                                        <article class="image-box box cruise listing-style1 photo table-cell col-sm-4">
+                                            <figure>
+                                                <a class="hover-effect" title="" href="#"><img width="270" height="160" alt="" src="http://placehold.it/270x160"></a>
+                                            </figure>
+                                            <div class="details">
+                                                <h4 class="box-title">Carnival Cruise Lines<small>Carnival inspiration</small></h4>
+                                                <div class="feedback">
+                                                    <div title="4 stars" class="five-stars-container" data-toggle="tooltip" data-placement="bottom"><span class="five-stars" style="width: 80%;"></span></div>
+                                                    <span class="review">270 reviews</span>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <div class="table-cell col-sm-8">
+                                            <div class="overall-rating">
+                                                <h4>Your overall Rating of this property</h4>
+                                                <div class="star-rating clearfix">
+                                                    <div class="five-stars-container"><div class="five-stars" style="width: 80%;"></div></div>
+                                                    <span class="status">VERY GOOD</span>
+                                                </div>
+                                                <div class="detailed-rating">
+                                                    <ul class="clearfix">
+                                                        <li class="col-md-6"><div class="each-rating"><label>Ship Quality</label><div class="five-stars-container editable-rating" data-original-stars="4"></div></div></li>
+                                                        <li class="col-md-6"><div class="each-rating"><label>Ship Staff Quality</label><div class="five-stars-container editable-rating" data-original-stars="4"></div></div></li>
+                                                        <li class="col-md-6"><div class="each-rating"><label>Dining/Food</label><div class="five-stars-container editable-rating" data-original-stars="4"></div></div></li>
+                                                        <li class="col-md-6"><div class="each-rating"><label>Activities</label><div class="five-stars-container editable-rating" data-original-stars="4"></div></div></li>
+                                                        <li class="col-md-6"><div class="each-rating"><label>rooms Quality</label><div class="five-stars-container editable-rating" data-original-stars="4"></div></div></li>
+                                                        <li class="col-md-6"><div class="each-rating"><label>Play areas</label><div class="five-stars-container editable-rating" data-original-stars="4"></div></div></li>
+                                                        <li class="col-md-6"><div class="each-rating"><label>Cleanliness</label><div class="five-stars-container editable-rating" data-original-stars="4"></div></div></li>
+                                                        <li class="col-md-6"><div class="each-rating"><label>fitness facility</label><div class="five-stars-container editable-rating" data-original-stars="4"></div></div></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form class="review-form">
+                                        <div class="form-group col-md-5 no-float no-padding">
+                                            <h4 class="title">Title of your review</h4>
+                                            <input type="text" name="review-title" class="input-text full-width" value="" placeholder="enter a review title" />
+                                        </div>
+                                        <div class="form-group">
+                                            <h4 class="title">Your review</h4>
+                                            <textarea class="input-text full-width" placeholder="enter your review (minimum 200 characters)" rows="5"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <h4 class="title">What sort of Trip was this?</h4>
+                                            <ul class="sort-trip clearfix">
+                                                <li><a href="#"><i class="soap-icon-businessbag circle"></i></a><span>Business</span></li>
+                                                <li><a href="#"><i class="soap-icon-couples circle"></i></a><span>Couples</span></li>
+                                                <li><a href="#"><i class="soap-icon-family circle"></i></a><span>Family</span></li>
+                                                <li><a href="#"><i class="soap-icon-friends circle"></i></a><span>Friends</span></li>
+                                                <li><a href="#"><i class="soap-icon-user circle"></i></a><span>Solo</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="form-group col-md-5 no-float no-padding">
+                                            <h4 class="title">When did you travel?</h4>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option value="2014-6">June 2014</option>
+                                                    <option value="2014-7">July 2014</option>
+                                                    <option value="2014-8">August 2014</option>
+                                                    <option value="2014-9">September 2014</option>
+                                                    <option value="2014-10">October 2014</option>
+                                                    <option value="2014-11">November 2014</option>
+                                                    <option value="2014-12">December 2014</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <h4 class="title">Add a tip to help travelers choose a good ship</h4>
+                                            <textarea class="input-text full-width" rows="3" placeholder="write something here"></textarea>
+                                        </div>
+                                        <div class="form-group col-md-5 no-float no-padding">
+                                            <h4 class="title">Do you have photos to share? <small>(Optional)</small> </h4>
+                                            <div class="fileinput full-width">
+                                                <input type="file" class="input-text" data-placeholder="select image/s" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <h4 class="title">Share with friends <small>(Optional)</small></h4>
+                                            <p>Share your review with your friends on different social media networks.</p>
+                                            <ul class="social-icons icon-circle clearfix">
+                                                <li class="twitter"><a title="Twitter" href="#" data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
+                                                <li class="facebook"><a title="Facebook" href="#" data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
+                                                <li class="googleplus"><a title="GooglePlus" href="#" data-toggle="tooltip"><i class="soap-icon-googleplus"></i></a></li>
+                                                <li class="pinterest"><a title="Pinterest" href="#" data-toggle="tooltip"><i class="soap-icon-pinterest"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="form-group col-md-5 no-float no-padding no-margin">
+                                            <button type="submit" class="btn-large full-width">SUBMIT REVIEW</button>
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                    <div class="sidebar col-md-3">
+                        <article class="detailed-logo">
+                            <figure>
+                                <img width="320" height="80" src="http://placehold.it/320x80" alt="">
+                            </figure>
+                            <div class="details">
+                                <h2 class="box-title">4 Night Baja Mexico<small>mon, Jan 26, 2014</small></h2>
+                                <span class="price clearfix">
+                                    <small class="pull-left">from</small>
+                                    <span class="pull-right">$239</span>
+                                </span>
+                                <div class="feedback clearfix">
+                                    <div title="4 stars" class="five-stars-container" data-toggle="tooltip" data-placement="bottom"><span class="five-stars" style="width: 80%;"></span></div>
+                                    <span class="review pull-right">270 reviews</span>
+                                </div>
+                                <p class="description">Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
+                                <a class="button yellow full-width uppercase btn-small">add to wishlist</a>
+                            </div>
+                        </article>
+                        <div class="travelo-box contact-box">
+                            <h4>Need Autoscoop Help?</h4>
+                            <p>We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
+                            <address class="contact-details">
+                                <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
+                                <br>
+                                <a class="contact-email" href="#">help@autoscoop.com</a>
+                            </address>
+                        </div>
+                        <div class="travelo-box book-with-us-box">
+                            <h4>Why Book with us?</h4>
+                            <ul>
+                                <li>
+                                    <i class="soap-icon-hotel-1 circle"></i>
+                                    <h5 class="title"><a href="#">135,00+ Hotels</a></h5>
+                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
+                                </li>
+                                <li>
+                                    <i class="soap-icon-savings circle"></i>
+                                    <h5 class="title"><a href="#">Low Rates &amp; Savings</a></h5>
+                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
+                                </li>
+                                <li>
+                                    <i class="soap-icon-support circle"></i>
+                                    <h5 class="title"><a href="#">Excellent Support</a></h5>
+                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer id="footer">
+            <div class="footer-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <h2>Discover</h2>
+                            <ul class="discover triangle hover row">
+                                <li class="col-xs-6"><a href="#">Safety</a></li>
+                                <li class="col-xs-6"><a href="#">About</a></li>
+                                <li class="col-xs-6"><a href="#">Travelo Picks</a></li>
+                                <li class="col-xs-6"><a href="#">Latest Jobs</a></li>
+                                <li class="active col-xs-6"><a href="#">Mobile</a></li>
+                                <li class="col-xs-6"><a href="#">Press Releases</a></li>
+                                <li class="col-xs-6"><a href="#">Why Host</a></li>
+                                <li class="col-xs-6"><a href="#">Blog Posts</a></li>
+                                <li class="col-xs-6"><a href="#">Social Connect</a></li>
+                                <li class="col-xs-6"><a href="#">Help Topics</a></li>
+                                <li class="col-xs-6"><a href="#">Site Map</a></li>
+                                <li class="col-xs-6"><a href="#">Policies</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <h2>Autoscoop News</h2>
+                            <ul class="travel-news">
+                                <li>
+                                    <div class="thumb">
+                                        <a href="#">
+                                            <img src="images/news01.png" alt="" width="63" height="63" />
+                                        </a>
+                                    </div>
+                                    <div class="description">
+                                        <h5 class="s-title"><a href="#">Amazing Places</a></h5>
+                                        <p>Purus ac congue arcu cursus ut vitae pulvinar massaidp.</p>
+                                        <span class="date">25 Sep, 2013</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="thumb">
+                                        <a href="#">
+                                            <img src="images/news02.png" alt="" width="63" height="63" />
+                                        </a>
+                                    </div>
+                                    <div class="description">
+                                        <h5 class="s-title"><a href="#">Travel Insurance</a></h5>
+                                        <p>Purus ac congue arcu cursus ut vitae pulvinar massaidp.</p>
+                                        <span class="date">24 Sep, 2013</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <h2>Mailing List</h2>
+                            <p>Sign up for our mailing list to get latest updates and offers.</p>
+                            <br />
+                            <div class="icon-check">
+                                <input type="text" class="input-text full-width" placeholder="your email" />
+                            </div>
+                            <br />
+                            <span>We respect your privacy</span>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <h2>About Travelo</h2>
+                            <p>Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massaidp nequetiam lore elerisque.</p>
+                            <br />
+                            <address class="contact-details">
+                                <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
+                                <br />
+                                <a href="#" class="contact-email">help@travelo.com</a>
+                            </address>
+                            <ul class="social-icons clearfix">
+                                <li class="twitter"><a title="twitter" href="#" data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
+                                <li class="googleplus"><a title="googleplus" href="#" data-toggle="tooltip"><i class="soap-icon-googleplus"></i></a></li>
+                                <li class="facebook"><a title="facebook" href="#" data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
+                                <li class="linkedin"><a title="linkedin" href="#" data-toggle="tooltip"><i class="soap-icon-linkedin"></i></a></li>
+                                <li class="vimeo"><a title="vimeo" href="#" data-toggle="tooltip"><i class="soap-icon-vimeo"></i></a></li>
+                                <li class="dribble"><a title="dribble" href="#" data-toggle="tooltip"><i class="soap-icon-dribble"></i></a></li>
+                                <li class="flickr"><a title="flickr" href="#" data-toggle="tooltip"><i class="soap-icon-flickr"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom gray-area">
+                <div class="container">
+                    <div class="logo pull-left">
+                        <a href="index.html" title="Travelo - home">
+                            <img src="images/logo.png" alt="Travelo HTML5 Template" />
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <a id="back-to-top" href="#" class="animated" data-animation-type="bounce"><i class="soap-icon-longarrow-up circle"></i></a>
+                    </div>
+                    <div class="copyright pull-right">
+                        <p>&copy; 2014 Travelo</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div id="style-changer" class="style-changer dark">
+        <div class="style-changer-header">
+            <a href="#" class="style-toggle open">
+                <i class="fa fa-gear"></i>
+            </a>
+            <h2 class="style-main-title">Customize Travelo</h2>
+        </div>
+        <div class="style-chagner-main">
+            <label for="header-style">header style</label>
+            <div class="selector">
+                <select class="full-width" name="header-style" id="header-style">
+                    <option value="">Default Style</option>
+                    <option value="style1">Style1</option>
+                    <option value="style2">Style2</option>
+                    <option value="style3">Style3</option>
+                    <option value="style4">Style4</option>
+                    <option value="style5">Style5</option>
+                    <option value="style6">Style6</option>
+                    <option value="style7">Style7</option>
+                </select>
+            </div>
+            <!--<label for="inner-start-style">inner start style</label>
+            <div class="selector">
+                <select class="full-width" name="inner-start-style" id="inner-start-style">
+                    <option value="">Default Style</option>
+                    <option value="style1">Style1</option>
+                    <option value="style2">Style2</option>
+                    <option value="style3">Style3</option>
+                    <option value="style4">Style4</option>
+                    <option value="style5">Style5</option>
+                    <option value="style6">Style6</option>
+                </select>
+            </div>
+            <label for="search-style">search style</label>
+            <div class="selector">
+                <select class="full-width" name="search-style" id="search-style">
+                    <option value="">please select</option>
+                </select>
+            </div>-->
+            <label for="footer-style">footer style</label>
+            <div class="selector">
+                <select class="full-width" name="footer-style" id="footer-style">
+                    <option value="">Default Style</option>
+                    <option value="style1">Style1</option>
+                    <option value="style2">Style2</option>
+                    <option value="style3">Style3</option>
+                    <option value="style4">Style4</option>
+                    <option value="style5">Style5</option>
+                    <option value="style6">Style6</option>
+                </select>
+            </div>
+            <label>design skins</label>
+            <ul class="design-skins column-5 clearfix">
+                <li class="active light-blue"><a href="#"><i class="soap-icon-check-1"></i></a></li>
+                <li class="purple"><a href="#"><i class="soap-icon-check-1"></i></a></li>
+                <li class="orange"><a href="#"><i class="soap-icon-check-1"></i></a></li>
+                <li class="light-orange"><a href="#"><i class="soap-icon-check-1"></i></a></li>
+                <li class="sea-blue"><a href="#"><i class="soap-icon-check-1"></i></a></li>
+                <li class="sky-blue"><a href="#"><i class="soap-icon-check-1"></i></a></li>
+                <li class="dark-orange"><a href="#"><i class="soap-icon-check-1"></i></a></li>
+                <li class="dark-blue"><a href="#"><i class="soap-icon-check-1"></i></a></li>
+                <li class="light-yellow"><a href="#"><i class="soap-icon-check-1"></i></a></li>
+                <li class="red"><a href="#"><i class="soap-icon-check-1"></i></a></li>
+            </ul>
+            <a class="button full-width btn-medium green uppercase" href="#">apply settings</a>
+        </div>
+    </div>
+    
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.noconflict.js"></script>
+    <script type="text/javascript" src="js/modernizr.2.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.1.10.4.min.js"></script>
+    
+    <!-- Twitter Bootstrap -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    
+    <!-- load revolution slider scripts -->
+    <script type="text/javascript" src="components/revolution_slider/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="components/revolution_slider/js/jquery.themepunch.revolution.min.js"></script>
+    
+    <!-- load BXSlider scripts -->
+    <script type="text/javascript" src="components/jquery.bxslider/jquery.bxslider.min.js"></script>
+
+    <!-- Flex Slider -->
+    <script type="text/javascript" src="components/flexslider/jquery.flexslider-min.js"></script>
+
+    <!-- Google Map Api -->
+    <script type='text/javascript' src="//maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script type="text/javascript" src="js/gmap3.min.js"></script>
+    
+    <!-- parallax -->
+    <script type="text/javascript" src="js/jquery.stellar.min.js"></script>
+    
+    <!-- waypoint -->
+    <script type="text/javascript" src="js/waypoints.min.js"></script>
+
+    <!-- load page Javascript -->
+    <script type="text/javascript" src="js/theme-scripts.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    
+    <script type="text/javascript">
+        tjq(document).ready(function() {
+            tjq('.revolution-slider').revolution(
+            {
+                sliderType:"standard",
+				sliderLayout:"auto",
+				dottedOverlay:"none",
+				delay:9000,
+				navigation: {
+					keyboardNavigation:"off",
+					keyboard_direction: "horizontal",
+					mouseScrollNavigation:"off",
+					mouseScrollReverse:"default",
+					onHoverStop:"on",
+					touch:{
+						touchenabled:"on",
+						swipe_threshold: 75,
+						swipe_min_touches: 1,
+						swipe_direction: "horizontal",
+						drag_block_vertical: false
+					}
+					,
+					arrows: {
+						style:"default",
+						enable:true,
+						hide_onmobile:false,
+						hide_onleave:false,
+						tmp:'',
+						left: {
+							h_align:"left",
+							v_align:"center",
+							h_offset:20,
+							v_offset:0
+						},
+						right: {
+							h_align:"right",
+							v_align:"center",
+							h_offset:20,
+							v_offset:0
+						}
+					}
+				},
+				visibilityLevels:[1240,1024,778,480],
+				gridwidth:1170,
+				gridheight:646,
+				lazyType:"none",
+				shadow:0,
+				spinner:"spinner4",
+				stopLoop:"off",
+				stopAfterLoops:-1,
+				stopAtSlide:-1,
+				shuffle:"off",
+				autoHeight:"off",
+				hideThumbsOnMobile:"off",
+				hideSliderAtLimit:0,
+				hideCaptionAtLimit:0,
+				hideAllCaptionAtLilmit:0,
+				debugMode:false,
+				fallbacks: {
+					simplifyAll:"off",
+					nextSlideOnWindowFocus:"off",
+					disableFocusListener:false,
+				}
+            });
+        });
+    </script>
+</body>
+</html>
