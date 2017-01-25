@@ -105,84 +105,85 @@ $.ajax({
 							};
 						};
 						function submitSearchForm() {
-							alert("Came here");
+var e = document.getElementById("car-model-trims"); 
+var strUser = e.options[e.selectedIndex].text;							
+alert("Came here"+$('#stockNo').val());
 														
 														var jsonInputToAPI = {
 																"refId":1,
-																"modelYear": "2016",
-															      "modelDisplay": "Buick",
-															      "modelName": "Envision",
-															      "modelTrim": "4dr SUV (2.5L 4cyl 6A)",
-															      "typeOfCar": null,
-															      "vehicleDescriptin": null,
-															      "make": null,
-															      "model": null,
-															      "variant": null,
-															      "price": 540,
-															      "bodyType": null,
-															      "transmission": null,
-															      "fuelType": null,
-															      "engine": null,
-															      "regNo": "23",
-															      "driveType": "ss",
-															      "kilometer": 120,
-															      "extColor": null,
-															      "warranty": null,
-															      "regExpiryDate": null,
-															      "vinNumber": "ss",
-															      "vendorStockNo": 2,
-															      "noOfDoors": 0,
-															      "intColor": null,
-															      "wheelSize": null,
-															      "seatMake": null,
-															      "extFittingFlex1": null,
-															      "extFittingFlex2": null,
-															      "extFittingFlex3": null,
-															      "extFittingFlex4": null,
-															      "extFittingFlex5": null,
-															      "extFittingFlex6": null,
-															      "extFittingFlex7": null,
-															      "extFittingFlex8": null,
-															      "extFittingFlex9": null,
-															      "extFittingFlex10": null,
-															      "intFittingFlex1": null,
-															      "intFittingFlex2": null,
-															      "intFittingFlex3": null,
-															      "intFittingFlex4": null,
-															      "intFittingFlex5": null,
-															      "intFittingFlex6": null,
-															      "intFittingFlex7": null,
-															      "intFittingFlex8": null,
-															      "intFittingFlex9": null,
-															      "intFittingFlex10": null,
-															      "salePersonLooking": null,
-															      "contName": null,
-															      "contPhone": 0,
-															      "contEmail": null,
-															      "logBookService": false,
-															      "cameIntoInv": null,
-															      "counterOfViewingCar": 0,
-															      "counterOfEnquiryCar": 0,
-															      "saleDate": null,
-															      "features": [],
-															      "photos": [],
-															      "carColor": null,
-															      "state": null,
-															      "region": null,
-															      "postCode": 0,
-															      "yearOfMake": null,
-															      "ausCapTer": null,
-															      "insCompAmountMin": 0,
-															      "insCompAmountMax": 0,
-															      "dealAmountMin": 0,
-															      "dealAmountMax": 0,
-															      "insthirdInsuanceMin": 0,
-															      "insthirdInsuanceMax": 0,
-															      "finAmountMin": 0,
-															      "newCar": false,
-															      "stockItem": false
-																}
-														alert("Before Call");
+
+"modelYear": $('#car-years').val(),
+"modelDisplay": $('#car-makes').val(),
+"modelName": $('#car-models').val(),															      
+"modelTrim": strUser,
+"typeOfCar": $('#vehicleCondition').val(),
+"vehicleDescriptin": $('#headerText').val(),
+"make": $('#financeOwning').val(),
+"variant": $('#hotOffer').val(),
+"price": $('#displayPrice').val(),
+"bodyType": $('#bodyType').val(),
+"transmission": $('#transmission').val(),
+"fuelType": $('#fuelType').val(),
+"engine": null,
+"regNo": $('#regno').val(),
+"driveType": $('#driveType').val(),
+"kilometer": 120,
+"extColor": null,
+"warranty": null,
+"regExpiryDate": null,
+"vinNumber": $('#vinnumber').val(),
+"vendorStockNo": $('#stockNo').val(),
+"noOfDoors": 0,
+"intColor": null,
+"wheelSize": $('#labelOnVehicle').val(),
+"seatMake": $('#detailDescription').val(),
+"extFittingFlex1": $('#extraExternal').val(),
+"extFittingFlex2": null,
+"extFittingFlex3": null,
+"extFittingFlex4": null,
+"extFittingFlex5": null,
+"extFittingFlex6": null,
+"extFittingFlex7": null,
+"extFittingFlex8": null,
+"extFittingFlex9": null,
+"extFittingFlex10": null,
+"intFittingFlex1": $('#extraInternal').val(),
+"intFittingFlex2": null,
+"intFittingFlex3": null,
+"intFittingFlex4": null,
+"intFittingFlex5": null,
+"intFittingFlex6": null,
+"intFittingFlex7": null,
+"intFittingFlex8": null,
+"intFittingFlex9": null,
+"intFittingFlex10": null,
+"salePersonLooking": $('#accidentHistory').val(),
+"contName": null,
+"contPhone": 0,
+"contEmail": null,
+"logBookService": false,
+"cameIntoInv": null,
+"counterOfViewingCar": 0,
+"counterOfEnquiryCar": 0,
+"saleDate": null,
+"features": [],
+"photos": [],
+"carColor": $('#color').val(),
+"state": $('#RegState').val(),
+"region": $('#vehicleType').val(),
+"postCode": 0,
+"yearOfMake": null,
+"ausCapTer": null,
+"insCompAmountMin": 0,
+"insCompAmountMax": 0,
+"dealAmountMin": $('#QRangeMin').val(),
+"dealAmountMax": $('#QRangeMax').val(),
+"insthirdInsuanceMin": 0,
+"insthirdInsuanceMax": 0,
+"finAmountMin": 0,
+"newCar": false,
+"stockItem": false															}
+														alert("Before Call"+$('#accidentHistory').val());
 														/*var wsURL = 'http://localhost:8080/MyCarDomain/api/dealer/addInventory';*/
 														 var wsURL = 'http://www.autoscoop.com.au/api/dealer/addInventory'; 
 															    $http({
@@ -1513,26 +1514,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     <div class="tab-pane fade in active" id="family2">
                         
                         
-                        <div class="col-sm-42">
-                            <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" href="#tgg1" data-toggle="collapse">Bulk Upload of Inventory</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tgg1">
-                                       <div class="panel-content">
-                                           <h2>Latest template download</h2>
-                                           
-                                        </div><!-- end content --> 
-                                    </div>
-                                </div>
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" href="#tgg2" data-toggle="collapse">Manual Entry</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tgg2">
-                                       <div class="panel-content">
-                                           <div class="col-sm-5 col-md-4">
+                        <div class="col-sm-5 col-md-4">
                                             <label>Year</label>
                                             <div class="selector">
                                                 <select id="car-years" name="car-years" class="full-width">
@@ -1599,7 +1581,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         <div class="col-sm-5 col-md-4">
                                             <label>Vehicle Type</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="vehicleType" name="vehicleType">
                                                     <option>Car</option>
                                                     <option>Motor Bike</option>
                                                     <option>Caravan</option>
@@ -1608,9 +1590,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Vehicle Condition</label>
-                                            <div class="selector">
-                                                <select class="full-width">
+                                            <label>Veh-Condition</label>
+                                            <div class="selector" >
+                                                <select class="full-width" id="vehicleCondition" name="vehicleCondition">
                                                     <option>New</option>
                                                     <option>Used</option>
                                                     <option>Demo</option>
@@ -1619,22 +1601,23 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Header Text</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="2913" placeholder=""  id="headerText" name="headerText"/>
                                         </div>
                                         
                                     </div>
                                     <div class="form-group row">
                                     <div class="col-sm-5 col-md-4">
-                                            <label>Display Price (Drive away price)</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Display Price (Drive away)</label>
+                                            <input type="text" class="input-text full-width" value="2913" placeholder="" id="displayPrice" name="displayPrice"
+/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Quotation Range Min</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="2913" placeholder="" id="QRangeMin" name="QRangeMin"/>
                                         </div>
                                        <div class="col-sm-5 col-md-4">
                                             <label>Quotation Range Max</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="2913" placeholder="" id="QRangeMax" name="QRangeMax"/>
                                         </div>
                                         
                                     </div>
@@ -1643,7 +1626,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         <div class="col-sm-5 col-md-4">
                                             <label>Body Type</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="bodyType" name="bodyType">
                                                     <option>sedan</option>
                                                     <option>suv</option>
                                                     <option>wagon</option>
@@ -1652,14 +1635,14 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         </div>
                                        <div class="col-sm-5 col-md-4">
                                             <label>VIN Number</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="2913" placeholder="" id="vinnumber" name="vinnumber"/>
                                         </div>
                                         
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
                                             <label>Registration Number</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="2913" placeholder=""  id="regno" name="regno"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Registration End Date</label>
@@ -1679,7 +1662,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                          <div class="col-sm-5 col-md-4">
                                             <label>Registration State</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="RegState" name="RegState">
                                                     <option>NT</option>
                                                     <option>VIC</option>
                                                     
@@ -1691,7 +1674,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         <div class="col-sm-5 col-md-4">
                                             <label>Colour</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="color" name="color">
                                                     <option>Red</option>
                                                     <option>Blue</option>
                                                     <option>Green</option>
@@ -1706,7 +1689,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                        <div class="col-sm-5 col-md-4">
                                             <label>Transmission</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width"  id="transmission" name="transmission">
                                                     <option>Automatic</option>
                                                     <option>Manual</option>
                                                     
@@ -1716,7 +1699,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         <div class="col-sm-5 col-md-4">
                                             <label>Fuel Type</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="fuelType" name="fuelType">
                                                     <option>Diesel</option>
                                                     <option>Petrol</option>
                                                     <option>Electric</option>
@@ -1729,7 +1712,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                        <div class="col-sm-5 col-md-4">
                                             <label>Drive Type</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="driveType" name="driveType">
                                                     <option>Two Wheel</option>
                                                     <option>Four Wheel</option>
                                                     
@@ -1739,7 +1722,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         <div class="col-sm-5 col-md-4">
                                             <label>Extra External</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="extraExternal" name="extraExternal">
                                                     <option>leather Seats</option>
                                                     <option>Audio System</option>
                                                     <option>Car Play</option>
@@ -1763,7 +1746,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         <div class="col-sm-5 col-md-4">
                                             <label>Extra Internal </label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="extraInternal" name="extraInternal">
                                                     <option>leather Seats</option>
                                                     <option>Audio System</option>
                                                     <option>Car Play</option>
@@ -1788,9 +1771,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     <div class="form-group row">
                                          <div class="col-sm-5 col-md-4">
-                                            <label>Finance Owning</label>
+                                            <label>Finance to be Owning</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="financeOwning" name="financeOwning">
                                                     <option>Yes</option>
                                                     <option>No</option>
                                                 </select>
@@ -1799,7 +1782,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                          <div class="col-sm-5 col-md-4">
                                             <label>Accident History</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="accidentHistory" name="accidentHistory">
                                                     <option>Yes</option>
                                                     <option>No</option>
                                                 </select>
@@ -1807,15 +1790,15 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Detail Description</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="detailDescription" name="detailDescription"/>
                                         </div>
                                         
                                     </div>
                                    <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
                                             <label>Hot Offer</label>
-                                            <div class="selector">
-                                                <select class="full-width">
+                                            <div class="selector" >
+                                                <select class="full-width" id="hotOffer" name="hotOffer">
                                                     <option>1 Week</option>
                                                     <option>2 Weeks</option>
                                                 </select>
@@ -1845,7 +1828,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         <div class="col-sm-5 col-md-4">
                                             <label>Label on Vehicle</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="labelOnVehicle" name="labelOnVehicle">
                                                     <option>Runout sale</option>
                                                     <option>Month End sale</option>
                                                 </select>
@@ -1853,7 +1836,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Available Stock</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="free text" placeholder="" id="stockNo" name="stockNo"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Upload Photos</label>
@@ -1886,14 +1869,6 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     
                                 </div>
-                            </div>
-                        </div>
-  
-                                        </div><!-- end content --> 
-                                    </div>
-                                </div>
-                                
-                                
                             </div>
                         </div>
                         

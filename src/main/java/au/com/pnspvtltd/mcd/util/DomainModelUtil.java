@@ -12,6 +12,9 @@ import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
+import au.com.pnspvtltd.mcd.domain.ComingSoonUser;
+import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
+
 
 public class DomainModelUtil {
 	public static UserVO fromUser(final User user) {
@@ -33,6 +36,41 @@ public class DomainModelUtil {
 		return userVO;
 	}
 
+	
+
+	public static ComingSoonVO fromComingSoonUser(final ComingSoonUser user) {
+
+		if (user == null) {
+			return null;
+		}
+
+		ComingSoonVO userVO = new ComingSoonVO();
+		try {
+			BeanUtils.copyProperties(userVO, user);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userVO;
+	}
+	
+	public static ComingSoonUser toComingSoonUser(final ComingSoonVO userVO) {
+		ComingSoonUser user = new ComingSoonUser();
+		try {
+			BeanUtils.copyProperties(user, userVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
 	public static User toUser(final UserVO userVO) {
 		User user = new User();
 		try {
@@ -47,6 +85,7 @@ public class DomainModelUtil {
 		return user;
 	}
 
+	
 	public static InventoryVO fromInventory(final Inventory inventory, boolean isMinified) {
 
 		if (inventory == null) {
