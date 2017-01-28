@@ -1308,6 +1308,35 @@ var modelTrim;
         });
     },
     
+    dashBoardCallSearch : function(model_data_id)
+    {
+     this.model_data_id = model_data_id;
+          $("#"+this.model_data_id).html("Loading Model Data...");
+
+        var sender = this;
+
+        //Get Car Model JSON for the selected make
+        alert("came here now changed are 3 Oct1");
+        $.ajax({  
+        	/*headers: {"X-My-Custom-Header": "*"},*/
+       	    type: "GET",  
+       	    url: "http://localhost:8080/MyCarDomain/api/user/70",  
+       	       success: function(result){
+            	   alert(result.abnNumber);
+                 
+               } 
+       	  }); 
+       /* $.ajax({
+            url: "http://localhost:8080/MyCarDomain/api/user/70",
+            data: { signature: authHeader },
+            type: "GET",
+            beforeSend: function(xhr){xhr.setRequestHeader('X-Test-Header', 'test-value');},
+            success: function() { alert('Success!' + authHeader); }
+         });*/
+    },
+    
+
+    
     populateSearchResult : function(model_id)
     {
      this.cur_trim = model_id;

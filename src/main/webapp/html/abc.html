@@ -80,6 +80,11 @@ $.ajax({
         document.write('<link id="main-style" rel="stylesheet" href="css/' + mainStyle + '">');
     </script>
     <script>
+    var modelYear=null;
+    var modelDisplay =null;
+    var modelName = null;
+    var trimValue =  null;
+    var modelTrim = null;
     window.onload= function()
     {
     	alert("came here for onload");
@@ -127,11 +132,11 @@ function parseURLParameter(Parameter)
     	
     	var noStock = parseURLParameter('noStock');
     	document.getElementById('noStock').innerHTML=noStock;
-    	var modelYear = parseURLParameter('modelYear');
-    	var modelDisplay = parseURLParameter('modelDisplay');
-    	var modelName = parseURLParameter('modelName');
-    	var modelTrim = parseURLParameter('modeltrim');
-    	var trimValue = parseURLParameter('trimValue');
+    	modelYear = parseURLParameter('modelYear');
+    	modelDisplay = parseURLParameter('modelDisplay');
+    	modelName = parseURLParameter('modelName');
+    	modelTrim = parseURLParameter('modeltrim');
+    	trimValue = parseURLParameter('trimValue');
 /* alert("in onload now"); */
     	
          
@@ -185,11 +190,15 @@ function parseURLParameter(Parameter)
 						};
 						function submitSearchForm() {
 													
-alert("Came here"+$('#driveType').val());
+alert("Came here"+modelTrim);
 
 														
 														var jsonInputToAPI = {
 																"userId":71,
+																"modelYear":modelYear,
+																"modelDisplay": modelDisplay,
+																"modelName": modelName,															      
+																"modelTrim": modelTrim,
       "carColor" : $("carColor").val(),
 	 "postCode":$('#postCode').val(),
 	"make":"ss",
