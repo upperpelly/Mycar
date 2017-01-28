@@ -1253,7 +1253,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address / Mobile Number">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="clearfix"></div> 
 					<div class="clearfix"></div> 
@@ -2889,6 +2889,42 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 
 									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
+                                            <label>Post Code</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="ins-postcode" name="ins-postcode"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Insurance Type</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>Compulsary Third Party  ( CTP )</option>
+                                                    <option>Third Party Property</option>
+                                                    <option>Third Party, Fire and Theft</option>
+                                                    <option>Comprehensive</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>REGO No</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="ins-postcode" name="ins-postcode"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>REGO State</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>ACT</option>
+                                                    <option>NT</option>
+                                                    <option>QLD</option>
+                                                    <option>VIC</option>
+                                                    <option>NSW</option>
+                                                    <option>TAS</option>
+                                                    <option>SA</option>
+                                                    <option>WA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+									<div class="col-sm-5 col-md-4">
                                             <label>Year</label>
                                             <div class="selector">
                                                 <select id="car-years" name="car-years" class="full-width">
@@ -2896,7 +2932,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-									
+									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Make</label>
                                             <div class="selector">
@@ -2922,24 +2958,42 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="clearfix"></div>
+                                       <div class="col-sm-5 col-md-4">
+                                            <label>Market Value</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="ins-postcode" name="ins-postcode"/>
+                                        </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Insurance Type</label>
+                                            <label>Agreed Value</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="ins-postcode" name="ins-postcode"/>
+                                        </div>
+									<div class="clearfix"></div>
+									<div class="col-sm-5 col-md-4">
+                                            <label>Finance</label>
                                             <div class="selector">
                                                 <select class="full-width" id="incomeType" name="incomeType">
-                                                    <option>Compulsary Third Party  ( CTP )</option>
-                                                    <option>Third Party Property</option>
-                                                    <option>Third Party, Fire and Theft</option>
-                                                    <option>Comprehensive</option>
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+									<div class="col-sm-5 col-md-4">
+                                            <label>Finance Provider</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>AAMI</option>
+                                                    <option>AMP Limited</option>
+                                                    <option>AXA</option>
+                                                    <option>Bingle</option>
+                                                    <option>Budget Direct</option>
+                                                    <option>CGU Insurance</option>
+                                                    <option>Colonial Mutual</option>
                                                 </select>
                                             </div>
                                         </div>
 									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
-                                            <label>Veh-Estimated Value</label>
-                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="yearEmployement" name="yearEmployement"/>
-                                        </div>
-                                        
-                                        <div class="col-sm-5 col-md-4">
                                             <label>Driving License Type</label>
                                             <div class="selector">
                                                 <select class="full-width" id="incomeType" name="incomeType">
@@ -2970,7 +3024,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-sm-5 col-md-4">
+                                        <div class="clearfix"></div>
+									    <div class="col-sm-5 col-md-4">
                                             <label>Number of At Faults Claims</label>
                                             <div class="selector">
                                                 <select class="full-width" id="incomeType" name="incomeType">
@@ -2979,7 +3034,11 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-                                        
+                                    <div class="col-sm-5 col-md-4">
+                                            <label>Other Issues (If any)</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="yearEmployement" name="yearEmployement"/>
+                                        </div>
+                                        <div class="clearfix"></div>    
                                         <div class="col-sm-5 col-md-4">
                                             <label>Current Ins-Provider</label>
                                             <div class="selector">
@@ -2995,11 +3054,12 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Excess Amount</label>
+                                            <label>Preferred Excess Amount</label>
                                             <input type="text" class="input-text full-width" value="" placeholder=""  id="excessAmount" name="excessAmount"/>
                                         </div>									
 									<div class="clearfix"></div>
 									<div class="clearfix"></div>
+									<hr>
 									<div class="col-sm-10">
                             <div class="toggle-container box">
                                 <div class="panel style1">
@@ -3058,7 +3118,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address / Mobile Number">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 							<div class="clearfix"></div>
 									<div class="col-md-12 search-col-padding">
@@ -3090,6 +3150,43 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 
 									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
+                                            <label>Post Code</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-ins-postCode" name="bike-ins-postCode"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Insurance Type</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="bike-insuranceType" name="bike-insuranceType">
+                                                    <option>Compulsary Third Party  ( CTP )</option>
+                                                    <option>Third Party Property</option>
+                                                    <option>Third Party, Fire and Theft</option>
+                                                    <option>Comprehensive</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>REGO No</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-ins-Regno" name="bike-ins-Regno"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>REGO State</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="bike-ins-RegoState" name="bike-ins-RegoState">
+                                                    <option>ACT</option>
+                                                    <option>NT</option>
+                                                    <option>QLD</option>
+                                                    <option>VIC</option>
+                                                    <option>NSW</option>
+                                                    <option>TAS</option>
+                                                    <option>SA</option>
+                                                    <option>WA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+									<div class="col-sm-5 col-md-4">
                                             <label>Year</label>
                                             <div class="selector">
                                                 <select id="bike-insurance-years" name="bike-insurance-years" class="full-width">
@@ -3097,7 +3194,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-									
+									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Make</label>
                                             <div class="selector">
@@ -3123,24 +3220,44 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                        
+									<div class="clearfix"></div>
+									
+									<div class="col-sm-5 col-md-4">
+                                            <label>Market Value</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-ins-marketValue" name="bike-ins-marketValue"/>
+                                        </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Insurance Type</label>
+                                            <label>Agreed Value</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-ins-agreedValue" name="bike-ins-agreedValue"/>
+                                        </div>
+									<div class="clearfix"></div>
+									<div class="col-sm-5 col-md-4">
+                                            <label>Finance</label>
                                             <div class="selector">
-                                                <select class="full-width" id="bike-insuranceType" name="bike-insuranceType">
-                                                    <option>Compulsary Third Party  ( CTP )</option>
-                                                    <option>Third Party Property</option>
-                                                    <option>Third Party, Fire and Theft</option>
-                                                    <option>Comprehensive</option>
+                                                <select class="full-width" id="bike-ins-finance" name="bike-ins-finance">
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+									<div class="col-sm-5 col-md-4">
+                                            <label>Finance Provider</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="bike-ins-financeProv" name="bike-ins-financeProv">
+                                                    <option>AAMI</option>
+                                                    <option>AMP Limited</option>
+                                                    <option>AXA</option>
+                                                    <option>Bingle</option>
+                                                    <option>Budget Direct</option>
+                                                    <option>CGU Insurance</option>
+                                                    <option>Colonial Mutual</option>
                                                 </select>
                                             </div>
                                         </div>
 									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
-                                            <label>Veh-Estimated Value</label>
-                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="bike-insurance-VehEstimtd" name="bike-insurance-VehEstimtd"/>
-                                        </div>
-                                        
-                                        <div class="col-sm-5 col-md-4">
                                             <label>Driving License Type</label>
                                             <div class="selector">
                                                 <select class="full-width" id="bike-insurance-DrivingLicenseType" name="bike-insurance-DrivingLicenseType">
@@ -3171,7 +3288,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-sm-5 col-md-4">
+									<div class="clearfix"></div>
+									                                            <div class="col-sm-5 col-md-4">
                                             <label>Number of At Faults Claims</label>
                                             <div class="selector">
                                                 <select class="full-width" id="bike-insurance-NumberAtFaults" name="bike-insurance-NumberAtFaults">
@@ -3181,6 +3299,12 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </div>
                                         
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Other Issues (If any)</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="bike-ins-OtherIssue" name="bike-ins-OtherIssue"/>
+                                        </div>
+                                    
+                                    <div class="clearfix"></div>    
                                         <div class="col-sm-5 col-md-4">
                                             <label>Current Ins-Provider</label>
                                             <div class="selector">
@@ -3196,11 +3320,12 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Excess Amount</label>
+                                            <label>Preferred Excess Amount</label>
                                             <input type="text" class="input-text full-width" value="" placeholder=""  id="bike-insurance-excessAmount" name="bike-insurance-excessAmount"/>
                                         </div>									
 									<div class="clearfix"></div>
 									<div class="clearfix"></div>
+									<hr>
 									<div class="col-sm-10">
                             <div class="toggle-container box">
                                 <div class="panel style1">
@@ -3259,7 +3384,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address / Mobile Number">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 							<div class="clearfix"></div>
 									<div class="col-md-12 search-col-padding">
@@ -3291,6 +3416,42 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 
 									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
+                                            <label>Post Code</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-ins-postCode" name="bike-ins-postCode"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Insurance Type</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="boat-insuranceType" name="boat-insuranceType">
+                                                    <option>Compulsary Third Party  ( CTP )</option>
+                                                    <option>Third Party Property</option>
+                                                    <option>Third Party, Fire and Theft</option>
+                                                    <option>Comprehensive</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>REGO No</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-ins-Regno" name="bike-ins-Regno"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>REGO State</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="bike-ins-RegoState" name="bike-ins-RegoState">
+                                                    <option>ACT</option>
+                                                    <option>NT</option>
+                                                    <option>QLD</option>
+                                                    <option>VIC</option>
+                                                    <option>NSW</option>
+                                                    <option>TAS</option>
+                                                    <option>SA</option>
+                                                    <option>WA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+									<div class="col-sm-5 col-md-4">
                                             <label>Year</label>
                                             <div class="selector">
                                                 <select id="boat-insurance-years" name="boat-insurance-years" class="full-width">
@@ -3298,7 +3459,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-									
+									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Make</label>
                                             <div class="selector">
@@ -3324,23 +3485,43 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                        
+									<div class="clearfix"></div>
+									<div class="col-sm-5 col-md-4">
+                                            <label>Market Value</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-ins-marketValue" name="bike-ins-marketValue"/>
+                                        </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Insurance Type</label>
+                                            <label>Agreed Value</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-ins-agreedValue" name="bike-ins-agreedValue"/>
+                                        </div>
+									<div class="clearfix"></div>
+									<div class="col-sm-5 col-md-4">
+                                            <label>Finance</label>
                                             <div class="selector">
-                                                <select class="full-width" id="boat-insuranceType" name="boat-insuranceType">
-                                                    <option>Compulsary Third Party  ( CTP )</option>
-                                                    <option>Third Party Property</option>
-                                                    <option>Third Party, Fire and Theft</option>
-                                                    <option>Comprehensive</option>
+                                                <select class="full-width" id="bike-ins-finance" name="bike-ins-finance">
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+									<div class="col-sm-5 col-md-4">
+                                            <label>Finance Provider</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="bike-ins-financeProv" name="bike-ins-financeProv">
+                                                    <option>AAMI</option>
+                                                    <option>AMP Limited</option>
+                                                    <option>AXA</option>
+                                                    <option>Bingle</option>
+                                                    <option>Budget Direct</option>
+                                                    <option>CGU Insurance</option>
+                                                    <option>Colonial Mutual</option>
                                                 </select>
                                             </div>
                                         </div>
 									<div class="clearfix"></div>
-									<div class="col-sm-5 col-md-4">
-                                            <label>Veh-Estimated Value</label>
-                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="boat-insurance-VehEstimtd" name="boat-insurance-VehEstimtd"/>
-                                        </div>
-                                        
+									    
                                         <div class="col-sm-5 col-md-4">
                                             <label>Driving License Type</label>
                                             <div class="selector">
@@ -3372,6 +3553,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="clearfix"></div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Number of At Faults Claims</label>
                                             <div class="selector">
@@ -3381,7 +3563,11 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-                                        
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Other Issues (If any)</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="bike-ins-OtherIssue" name="bike-ins-OtherIssue"/>
+                                        </div>
+                                        <div class="clearfix"></div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Current Ins-Provider</label>
                                             <div class="selector">
@@ -3397,11 +3583,12 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Excess Amount</label>
+                                            <label>Preferred Excess Amount</label>
                                             <input type="text" class="input-text full-width" value="" placeholder=""  id="boat-insurance-excessAmount" name="boat-insurance-excessAmount"/>
                                         </div>									
 									<div class="clearfix"></div>
 									<div class="clearfix"></div>
+									<hr>
 									<div class="col-sm-10">
                             <div class="toggle-container box">
                                 <div class="panel style1">
@@ -3460,7 +3647,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address / Mobile Number">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 							<div class="clearfix"></div>
 									<div class="col-md-12 search-col-padding">
@@ -3492,6 +3679,42 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 
 									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
+                                            <label>Post Code</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-ins-postCode" name="bike-ins-postCode"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Insurance Type</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="caravan-insuranceType" name="caravan-insuranceType">
+                                                    <option>Compulsary Third Party  ( CTP )</option>
+                                                    <option>Third Party Property</option>
+                                                    <option>Third Party, Fire and Theft</option>
+                                                    <option>Comprehensive</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>REGO No</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-ins-Regno" name="bike-ins-Regno"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>REGO State</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="bike-ins-RegoState" name="bike-ins-RegoState">
+                                                    <option>ACT</option>
+                                                    <option>NT</option>
+                                                    <option>QLD</option>
+                                                    <option>VIC</option>
+                                                    <option>NSW</option>
+                                                    <option>TAS</option>
+                                                    <option>SA</option>
+                                                    <option>WA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+									<div class="col-sm-5 col-md-4">
                                             <label>Year</label>
                                             <div class="selector">
                                                 <select id="caravan-insurance-years" name="caravan-insurance-years" class="full-width">
@@ -3499,7 +3722,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-									
+									 <div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Make</label>
                                             <div class="selector">
@@ -3525,22 +3748,44 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                       
+									<div class="clearfix"></div>
+									
+									<div class="col-sm-5 col-md-4">
+                                            <label>Market Value</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-ins-marketValue" name="bike-ins-marketValue"/>
+                                        </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Insurance Type</label>
+                                            <label>Agreed Value</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-ins-agreedValue" name="bike-ins-agreedValue"/>
+                                        </div>
+									<div class="clearfix"></div>
+									<div class="col-sm-5 col-md-4">
+                                            <label>Finance</label>
                                             <div class="selector">
-                                                <select class="full-width" id="caravan-insuranceType" name="caravan-insuranceType">
-                                                    <option>Compulsary Third Party  ( CTP )</option>
-                                                    <option>Third Party Property</option>
-                                                    <option>Third Party, Fire and Theft</option>
-                                                    <option>Comprehensive</option>
+                                                <select class="full-width" id="bike-ins-finance" name="bike-ins-finance">
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+									<div class="col-sm-5 col-md-4">
+                                            <label>Finance Provider</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="bike-ins-financeProv" name="bike-ins-financeProv">
+                                                    <option>AAMI</option>
+                                                    <option>AMP Limited</option>
+                                                    <option>AXA</option>
+                                                    <option>Bingle</option>
+                                                    <option>Budget Direct</option>
+                                                    <option>CGU Insurance</option>
+                                                    <option>Colonial Mutual</option>
                                                 </select>
                                             </div>
                                         </div>
 									<div class="clearfix"></div>
-									<div class="col-sm-5 col-md-4">
-                                            <label>Veh-Estimated Value</label>
-                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="caravan-insurance-VehEstimtd" name="caravan-insurance-VehEstimtd"/>
-                                        </div>
+									
                                         
                                         <div class="col-sm-5 col-md-4">
                                             <label>Driving License Type</label>
@@ -3573,6 +3818,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="clearfix"></div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Number of At Faults Claims</label>
                                             <div class="selector">
@@ -3582,7 +3828,11 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-                                        
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Other Issues (If any)</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="bike-ins-OtherIssue" name="bike-ins-OtherIssue"/>
+                                        </div>
+                                        <div class="clearfix"></div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Current Ins-Provider</label>
                                             <div class="selector">
@@ -3598,11 +3848,12 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Excess Amount</label>
+                                            <label>Preferred Excess Amount</label>
                                             <input type="text" class="input-text full-width" value="" placeholder=""  id="caravan-insurance-excessAmount" name="caravan-insurance-excessAmount"/>
                                         </div>									
 									<div class="clearfix"></div>
 									<div class="clearfix"></div>
+									<hr>
 									<div class="col-sm-10">
                             <div class="toggle-container box">
                                 <div class="panel style1">
@@ -3661,7 +3912,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address / Mobile Number">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 							<div class="clearfix"></div>
 									<div class="col-md-12 search-col-padding">
@@ -3839,19 +4090,12 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 								<form class="form-inline signup" role="form">
 									<div class="col-md-12 product-search-title">Service for car</div>
 									<div class="clearfix"></div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">New</span></a>.
-                                        </label>
-                                    </div>
-                                
-                                
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">Used</span></a>.
-                                        </label>
-                                    </div>
+                                    
 									<div class="clearfix"></div>
+									<div class="col-sm-5 col-md-4">
+                                            <label>Post Code</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="serv-postCode" name="serv-postCode""/>
+                                        </div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Year</label>
                                             <div class="selector">
@@ -3860,7 +4104,28 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-									
+									<div class="clearfix"></div>
+									<div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>REGO No</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="ins-postcode" name="ins-postcode"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>REGO State</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>ACT</option>
+                                                    <option>NT</option>
+                                                    <option>QLD</option>
+                                                    <option>VIC</option>
+                                                    <option>NSW</option>
+                                                    <option>TAS</option>
+                                                    <option>SA</option>
+                                                    <option>WA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Make</label>
                                             <div class="selector">
@@ -3887,11 +4152,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </div>
 									<div class="clearfix"></div>
-									<div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">Covered Under Insurance</span></a>.
-                                        </label>
-                                    </div>	
+										
                                         <div class="col-sm-5 col-md-4">
                                             <label>Fuel Type</label>
                                             <div class="selector">
@@ -3941,7 +4202,35 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="clearfix"></div>
+                                        
                                         <div class="col-sm-5 col-md-4">
+                                            <label>Covered Under Insurance</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+									<div class="col-sm-5 col-md-4">
+                                            <label>Insurance Provider</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>AAMI</option>
+                                                    <option>AMP Limited</option>
+                                                    <option>AXA</option>
+                                                    <option>Bingle</option>
+                                                    <option>Budget Direct</option>
+                                                    <option>CGU Insurance</option>
+                                                    <option>Colonial Mutual</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                    <div class="clearfix"></div>
+                                        <div class="col-sm-80 col-md-90">
                                             <label>Free Text Field</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="coverInsurance" name="coverInsurnace"/>
                                         </div>	
@@ -3960,7 +4249,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="clearfix"></div>
 					<div class="col-md-12 search-col-padding">
@@ -3976,20 +4265,11 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 								<form class="form-inline signup" role="form">
 									<div class="col-md-12 product-search-title">Service for bike</div>
 									<div class="clearfix"></div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">New</span></a>.
-                                        </label>
-                                    </div>
-                                
-                                
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">Used</span></a>.
-                                        </label>
-                                    </div>
-									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
+                                            <label>Post Code</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="serv-postCode" name="serv-postCode""/>
+                                        </div>
+                                    <div class="col-sm-5 col-md-4">
                                             <label>Year</label>
                                             <div class="selector">
                                                 <select id="bike-servmaint-years" name="bike-servmaint-years" class="full-width">
@@ -3997,7 +4277,28 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-									
+									<div class="clearfix"></div>
+									<div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>REGO No</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="ins-postcode" name="ins-postcode"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>REGO State</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>ACT</option>
+                                                    <option>NT</option>
+                                                    <option>QLD</option>
+                                                    <option>VIC</option>
+                                                    <option>NSW</option>
+                                                    <option>TAS</option>
+                                                    <option>SA</option>
+                                                    <option>WA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Make</label>
                                             <div class="selector">
@@ -4024,11 +4325,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </div>
 									<div class="clearfix"></div>
-									<div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">Covered Under Insurance</span></a>.
-                                        </label>
-                                    </div>	
+										
                                         <div class="col-sm-5 col-md-4">
                                             <label>Fuel Type</label>
                                             <div class="selector">
@@ -4078,7 +4375,34 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="clearfix"></div>
                                         <div class="col-sm-5 col-md-4">
+                                            <label>Covered Under Insurance</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+									<div class="col-sm-5 col-md-4">
+                                            <label>Insurance Provider</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>AAMI</option>
+                                                    <option>AMP Limited</option>
+                                                    <option>AXA</option>
+                                                    <option>Bingle</option>
+                                                    <option>Budget Direct</option>
+                                                    <option>CGU Insurance</option>
+                                                    <option>Colonial Mutual</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                    <div class="clearfix"></div>
+                                        <div class="col-sm-80 col-md-90">
                                             <label>Free Text Field</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-servmaint-FreeText" name="bike-servmaint-FreeText"/>
                                         </div>	
@@ -4097,7 +4421,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="clearfix"></div>
 					<div class="col-md-12 search-col-padding">
@@ -4113,19 +4437,12 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 								<form class="form-inline signup" role="form">
 									<div class="col-md-12 product-search-title">Service for boat</div>
 									<div class="clearfix"></div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">New</span></a>.
-                                        </label>
-                                    </div>
-                                
-                                
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">Used</span></a>.
-                                        </label>
-                                    </div>
-									<div class="clearfix"></div>
+                                   
+									
+									<div class="col-sm-5 col-md-4">
+                                            <label>Post Code</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="serv-postCode" name="serv-postCode""/>
+                                        </div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Year</label>
                                             <div class="selector">
@@ -4134,7 +4451,28 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-									
+									<div class="clearfix"></div>
+									<div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>REGO No</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="ins-postcode" name="ins-postcode"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>REGO State</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>ACT</option>
+                                                    <option>NT</option>
+                                                    <option>QLD</option>
+                                                    <option>VIC</option>
+                                                    <option>NSW</option>
+                                                    <option>TAS</option>
+                                                    <option>SA</option>
+                                                    <option>WA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Make</label>
                                             <div class="selector">
@@ -4161,11 +4499,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </div>
 									<div class="clearfix"></div>
-									<div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">Covered Under Insurance</span></a>.
-                                        </label>
-                                    </div>	
+										
                                         <div class="col-sm-5 col-md-4">
                                             <label>Fuel Type</label>
                                             <div class="selector">
@@ -4215,7 +4549,35 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="clearfix"></div>
+                                        
                                         <div class="col-sm-5 col-md-4">
+                                            <label>Covered Under Insurance</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+									<div class="col-sm-5 col-md-4">
+                                            <label>Insurance Provider</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>AAMI</option>
+                                                    <option>AMP Limited</option>
+                                                    <option>AXA</option>
+                                                    <option>Bingle</option>
+                                                    <option>Budget Direct</option>
+                                                    <option>CGU Insurance</option>
+                                                    <option>Colonial Mutual</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                    <div class="clearfix"></div>
+                                        <div class="col-sm-80 col-md-90">
                                             <label>Free Text Field</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="boat-servmaint-FreeText" name="boat-servmaint-FreeText"/>
                                         </div>	
@@ -4234,7 +4596,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="clearfix"></div>
 					<div class="col-md-12 search-col-padding">
@@ -4250,19 +4612,10 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 								<form class="form-inline signup" role="form">
 									<div class="col-md-12 product-search-title">Service for caravan</div>
 									<div class="clearfix"></div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">New</span></a>.
-                                        </label>
-                                    </div>
-                                
-                                
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">Used</span></a>.
-                                        </label>
-                                    </div>
-									<div class="clearfix"></div>
+                                    <div class="col-sm-5 col-md-4">
+                                            <label>Post Code</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="serv-postCode" name="serv-postCode""/>
+                                        </div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Year</label>
                                             <div class="selector">
@@ -4271,7 +4624,28 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-									
+									<div class="clearfix"></div>
+									<div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>REGO No</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="ins-postcode" name="ins-postcode"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>REGO State</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>ACT</option>
+                                                    <option>NT</option>
+                                                    <option>QLD</option>
+                                                    <option>VIC</option>
+                                                    <option>NSW</option>
+                                                    <option>TAS</option>
+                                                    <option>SA</option>
+                                                    <option>WA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Make</label>
                                             <div class="selector">
@@ -4298,11 +4672,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </div>
 									<div class="clearfix"></div>
-									<div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">Covered Under Insurance</span></a>.
-                                        </label>
-                                    </div>	
+									
                                         <div class="col-sm-5 col-md-4">
                                             <label>Fuel Type</label>
                                             <div class="selector">
@@ -4352,7 +4722,37 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="clearfix"></div>
+                                        
                                         <div class="col-sm-5 col-md-4">
+                                            <label>Covered Under Insurance</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+									<div class="col-sm-5 col-md-4">
+                                            <label>Insurance Provider</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>AAMI</option>
+                                                    <option>AMP Limited</option>
+                                                    <option>AXA</option>
+                                                    <option>Bingle</option>
+                                                    <option>Budget Direct</option>
+                                                    <option>CGU Insurance</option>
+                                                    <option>Colonial Mutual</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                    <div class="clearfix"></div>
+                                        <div class="clearfix"></div>
+                                        
+                                        <div class="col-sm-80 col-md-90">
                                             <label>Free Text Field</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="caravan-servmaint-FreeText" name="caravan-servmaint-FreeText"/>
                                         </div>	
@@ -4371,7 +4771,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="clearfix"></div>
 					<div class="col-md-12 search-col-padding">
@@ -4525,6 +4925,25 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<div role="tabpanel" class="tab-pane active" id="flight5">
 								<form class="form-inline signup" role="form">
 									<div class="col-md-12 product-search-title">Transport for car</div>
+									<div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>From Post Code / Address</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>To Post Code / Address</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Transport Type Requiered</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Pick Update & Time</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
+                                        </div>
+                                        <div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>No of Cars</label>
                                             <div class="selector">
@@ -4536,6 +4955,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                      <div class="clearfix"></div>
                                        
 									<div class="col-sm-5 col-md-4">
                                             <label>Year</label>
@@ -4545,7 +4965,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-									
+									 <div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Make</label>
                                             <div class="selector">
@@ -4571,42 +4991,30 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>From Post Code / Address</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>To Post Code / Address</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Transport Type Requiered</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Pick Update & Time</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Requied Delivery date</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
-                                        </div>
+                                        
+                                        
                                         <div class="clearfix"></div>
                                         <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
+                                        <div class="clearfix"></div>
+                                        <div class="col-sm-90 col-md-90">
                                             <label>Free text</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="clearfix"></div>
-                                        <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">Transport Insurance</span></a>.
-                                        </label>
-                                    </div>
+                                       
+									<div class="col-sm-5 col-md-4">
+                                            <label>Transport Insurnace Required</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+									
+                                         <div class="clearfix"></div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Upload Photos</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
@@ -4626,7 +5034,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="col-md-12 search-col-padding">
 									<button ng-click="go()" class="button">Request Quotation</button>
@@ -4641,6 +5049,25 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<div role="tabpanel" class="tab-pane" id="hotel5">
 								<form class="form-inline signup" role="form">
 									<div class="col-md-12 product-search-title">Transport for bike</div>
+									<div class="clearfix"></div>
+									 <div class="col-sm-5 col-md-4">
+                                            <label>From Post Code / Address</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-trans-frompost" name="bike-trans-frompost"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>To Post Code / Address</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-trans-topost" name="bike-trans-topost"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Transport Type Requiered</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-transtypereq" name="bike-transtypereq"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Pick Update & Time</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-trans-pickupdate" name="bike-trans-pickUpdate"/>
+                                        </div>
+                                        <div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>No of Cars</label>
                                             <div class="selector">
@@ -4652,7 +5079,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-                                       
+                                      <div class="clearfix"></div> 
 									<div class="col-sm-5 col-md-4">
                                             <label>Year</label>
                                             <div class="selector">
@@ -4661,7 +5088,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-									
+									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Make</label>
                                             <div class="selector">
@@ -4688,41 +5115,23 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>From Post Code / Address</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-trans-frompost" name="bike-trans-frompost"/>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>To Post Code / Address</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-trans-topost" name="bike-trans-topost"/>
-                                        </div>
+                                       
                                         <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Transport Type Requiered</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-transtypereq" name="bike-transtypereq"/>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Pick Update & Time</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-trans-pickupdate" name="bike-trans-pickUpdate"/>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Requied Delivery date</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-trans-reqDelDate" name="bike-trans-reqDelDate"/>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
+                                        <div class="col-sm-80 col-md-90">
                                             <label>Free text</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-trans-freetext" name="bike-trans-freetext"/>
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="clearfix"></div>
-                                        <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">Transport Insurance</span></a>.
-                                        </label>
-                                    </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Transport Insurnace Required</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Upload Photos</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
@@ -4742,7 +5151,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="col-md-12 search-col-padding">
 									<button ng-click="go()" class="button">Request Quotation</button>
@@ -4757,6 +5166,25 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<div role="tabpanel" class="tab-pane" id="holiday5">
 								<form class="form-inline signup" role="form">
 									<div class="col-md-12 product-search-title">Transport for boat</div>
+									<div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>From Post Code / Address</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="boat-trans-frompost" name="boat-trans-frompost"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>To Post Code / Address</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="boat-trans-topost" name="boat-trans-trans-topost"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Transport Type Requiered</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="boat-trans-typereq" name="boat-trans-typereq"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Pick Update & Time</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="boat-trans-pickupdate" name="boat-trans-pickUpdate"/>
+                                        </div>
+                                        <div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>No of Cars</label>
                                             <div class="selector">
@@ -4768,7 +5196,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-                                       
+                                       <div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Year</label>
                                             <div class="selector">
@@ -4777,7 +5205,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-									
+									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Make</label>
                                             <div class="selector">
@@ -4803,42 +5231,26 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                        
                                         <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>From Post Code / Address</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="boat-trans-frompost" name="boat-trans-frompost"/>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>To Post Code / Address</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="boat-trans-topost" name="boat-trans-trans-topost"/>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Transport Type Requiered</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="boat-trans-typereq" name="boat-trans-typereq"/>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Pick Update & Time</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="boat-trans-pickupdate" name="boat-trans-pickUpdate"/>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Requied Delivery date</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="bike-trans-reqDelDate" name="bike-trans-reqDelDate"/>
-                                        </div>
+                                        
                                         <div class="clearfix"></div>
                                         <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
+                                        <div class="col-sm-80 col-md-90">
                                             <label>Free text</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="boat-trans-freetext" name="boat-trans-freetext"/>
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="clearfix"></div>
-                                        <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">Transport Insurance</span></a>.
-                                        </label>
-                                    </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Transport Insurnace Required</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Upload Photos</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
@@ -4873,6 +5285,25 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<div role="tabpanel" class="tab-pane" id="taxi5">
 								<form class="form-inline signup" role="form">
 									<div class="col-md-12 product-search-title">Transport for caravan</div>
+									 <div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>From Post Code / Address</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="caravan-trans-frompost" name="caravan-trans-frompost"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>To Post Code / Address</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="caravan-trans-topost" name="caravan-trans-topost"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Transport Type Requiered</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="caravan-trans-typereq" name="caravan-trans-typereq"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Pick Update & Time</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="caravan-trans-pickupdate" name="caravan-trans-pickUpdate"/>
+                                        </div>
+                                        <div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>No of Cars</label>
                                             <div class="selector">
@@ -4884,7 +5315,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-                                       
+                                    <div class="clearfix"></div>   
 									<div class="col-sm-5 col-md-4">
                                             <label>Year</label>
                                             <div class="selector">
@@ -4893,7 +5324,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-									
+									<div class="clearfix"></div>
 									<div class="col-sm-5 col-md-4">
                                             <label>Make</label>
                                             <div class="selector">
@@ -4919,42 +5350,24 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>From Post Code / Address</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="caravan-trans-frompost" name="caravan-trans-frompost"/>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>To Post Code / Address</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="caravan-trans-topost" name="caravan-trans-topost"/>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Transport Type Requiered</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="caravan-trans-typereq" name="caravan-trans-typereq"/>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Pick Update & Time</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="caravan-trans-pickupdate" name="caravan-trans-pickUpdate"/>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Requied Delivery date</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="caravan-trans-reqDelDate" name="caravan-trans-reqDelDate"/>
-                                        </div>
+                                       
                                         <div class="clearfix"></div>
                                         <div class="clearfix"></div>
-                                        <div class="col-sm-5 col-md-4">
+                                        <div class="col-sm-80 col-md-90">
                                             <label>Free text</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="caravan-trans-freetext" name="caravan-trans-freetext"/>
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="clearfix"></div>
-                                        <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="skin-color">Transport Insurance</span></a>.
-                                        </label>
-                                    </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Transport Insurnace Required</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="incomeType" name="incomeType">
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Upload Photos</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
@@ -4974,7 +5387,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="col-md-12 search-col-padding">
 									<button ng-click="go()" class="button">Request Quotation</button>
@@ -5094,6 +5507,74 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<!-- BEGIN: FLIGHT SEARCH -->
 							<div role="tabpanel" class="tab-pane active" id="flight6">
 								<form class="form-inline signup" role="form">
+									<div class="col-md-12 product-search-title">Registration for car</div>
+									    <div class="col-sm-5 col-md-4">
+                                            <label>State</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="car-reg-state" name="car-reg-state">
+                                                    <option>ACT</option>
+                                                    <option>VIC</option>
+                                                    <option>NSW</option>
+                                                    <option>QLD</option>
+                                                    <option>SA</option>
+                                                    <option>NT</option>
+                                                    <option>WA</option>
+                                                    <option>TAS</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Vehicle Type</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="car-reg-vehType" name="car-reg-vehType">
+                                                    <option>Light Vehicle</option>
+                                                    <option>Heavy Vehicle</option>
+                                                     <option>Motor Bike</option>
+                                                    <option>Boat</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>VIN / HIN </label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="car-reg-vinhin" name="car-reg-vinhin"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Registration No</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="car-reg-no" name="car-reg-no"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="clearfix"></div>
+                                        <div class="social">
+						<a href="#"><i class="fa fa-facebook" onclick="login()"
+							aria-hidden="true"></i></a> <a href="#"><i class="fa fa-twitter"
+							aria-hidden="true"></i></a> <a href="#"><i
+							class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#"><i
+							class="fa fa-linkedin" aria-hidden="true"></i></a>
+					</div>
+					<div>
+									
+						<div class="form-group">
+							<input type="email" class="form-control" id="exampleInputEmail1"
+								placeholder="Enter your email address / Mobile Number">
+						</div>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
+					</div>
+					<div class="col-md-12 search-col-padding">
+									<button ng-click="go()" class="button">Go to Renewal</button>
+										<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
+									</div>
+									
+									<div class="clearfix"></div>
+								</form>
+							</div>
+							<!-- END: FLIGHT SEARCH -->
+							
+							<!-- START: HOTEL SEARCH -->
+							<div role="tabpanel" class="tab-pane" id="hotel6">
+								<div role="tabpanel" class="tab-pane active" id="flight6">
+								<form class="form-inline signup" role="form">
 									<div class="col-md-12 product-search-title">Registration for bike</div>
 									    <div class="col-sm-5 col-md-4">
                                             <label>State</label>
@@ -5146,7 +5627,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address / Mobile Number">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="col-md-12 search-col-padding">
 									<button ng-click="go()" class="button">Go to Renewal</button>
@@ -5156,11 +5637,6 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 									<div class="clearfix"></div>
 								</form>
 							</div>
-							<!-- END: FLIGHT SEARCH -->
-							
-							<!-- START: HOTEL SEARCH -->
-							<div role="tabpanel" class="tab-pane" id="hotel6">
-								http://www.autoscoop.com.au/api/user/1
 							</div>
 							<!-- END: HOTEL SEARCH -->
 								
@@ -5219,7 +5695,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address / Mobile Number">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="col-md-12 search-col-padding">
 									<button ng-click="go()" class="button">Go to Renewal</button>
@@ -5286,7 +5762,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address / Mobile Number">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="col-md-12 search-col-padding">
 									<button ng-click="go()" class="button">Go to Renewal</button>
@@ -5446,7 +5922,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address / Mobile Number">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="col-md-12 search-col-padding">
 									<button ng-click="go()" class="button">Go to Renewal</button>
@@ -5502,7 +5978,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address / Mobile Number">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="col-md-12 search-col-padding">
 									<button ng-click="go()" class="button">Go to Renewal</button>
@@ -5558,7 +6034,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address / Mobile Number">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="col-md-12 search-col-padding">
 									<button ng-click="go()" class="button">Go to Renewal</button>
@@ -5614,7 +6090,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							<input type="email" class="form-control" id="exampleInputEmail1"
 								placeholder="Enter your email address / Mobile Number">
 						</div>
-						<button type="submit" class="btn btn-theme">Get notified!</button>
+						<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 					</div>
 					<div class="col-md-12 search-col-padding">
 									<button ng-click="go()" class="button">Go to Renewal</button>

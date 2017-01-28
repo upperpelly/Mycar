@@ -6,7 +6,7 @@ public class ComingSoonVO {
 	
 	
 	
-		public long getComingSoonUserID() {
+		public Long getComingSoonUserID() {
 		return comingSoonUserID;
 	}
 	public void setComingSoonUserID(Long comingSoonUserID) {
