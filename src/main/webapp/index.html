@@ -7,8 +7,84 @@
 <meta name="description"
 	content="Free coming soon template with jQuery countdown">
 <meta name="author" content="http://bootstraptaste.com">
-
+<meta name="google-signin-client_id" content="814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com">
 <title>Autoscoop - countdown</title>
+
+<!-- Linked In login -->
+
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  api_key: 81vl95zfoimc37
+</script>
+
+<script type="text/javascript">
+
+    function onLinkedInLoad() {
+        IN.UI.Authorize().place();      
+        IN.Event.on(IN, "auth", function () { onLogin(); });
+        IN.Event.on(IN, "logout", function () { onLogout(); });
+    }
+
+    function onLogin() {
+    	IN.API.Raw("/people/~:(id,firstName,lastName,emailAddress)?format=json").result(onSuccess).error(onError);
+    }
+    function onSuccess(data) {
+        console.log(data);
+        console.log(data.firstName);
+        console.log(data.lastName);
+        console.log(data.emailAddress); 
+    }
+
+    // Handle an error response from the API call
+    function onError(error) {
+        console.log(error);
+    }
+  
+</script>
+<!--  -->
+
+<!-- Gmail Login -->
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/api.js" async defer></script>
+
+<script>
+
+<!--- client_id for Production: 814821459166-2snv3tdshqgusiuhjnuoedrg0akt83ol.apps.googleusercontent.com -->
+
+function onSignInG()
+{
+	gapi.load('auth2', function() {
+		  auth2 = gapi.auth2.init({
+		    client_id: '814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com',
+		    });
+
+		  // Sign the user in, and then retrieve their ID.
+		  auth2.signIn().then(function() {
+			  var profile = auth2.currentUser.get().getBasicProfile();
+			  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+			  console.log('Name: ' + profile.getName());
+			  console.log('Image URL: ' + profile.getImageUrl());
+			  console.log('Email: ' + profile.getEmail());
+			  document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
+/* 		    onSignIn(googleUser);
+ */		  });
+		});
+	
+	
+}
+/* function onSignIn(googleUser) {
+		alert("Came here");
+	  var profile = googleUser.getBasicProfile();
+	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  console.log('Name: ' + profile.getName());
+	  console.log('Image URL: ' + profile.getImageUrl());
+	  console.log('Email: ' + profile.getEmail());
+	} */
+
+</script>
+
+<!-- End Gmail -->
+
 
 <!-- Bootstrap -->
 <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -33,7 +109,7 @@
 	<script>
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '249863545451459',
+				appId : '238604546585672',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -71,8 +147,8 @@
 									document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
 									var url = '/me?fields=name,email';
 									FB.api(url, function(response) {
-										/* alert(response.name);
-										alert(response.email); */
+										alert(response.name);
+										alert(response.email);
 										console.log(JSON.stringify(response));
 									});
 								} else if (response.status === 'not_authorized') {
@@ -110,8 +186,8 @@
 						<a href="#"><i class="fa fa-facebook" onclick="login()"
 							aria-hidden="true"></i></a> <a href="#"><i class="fa fa-twitter"
 							aria-hidden="true"></i></a> <a href="#"><i
-							class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#"><i
-							class="fa fa-linkedin" aria-hidden="true"></i></a>
+							class="fa fa-google-plus" onclick="onSignInG()"  aria-hidden="true"></i></a> <a href="#"><i
+							class="fa fa-linkedin" onclick="onLinkedInLoad()" aria-hidden="true"></i></a>
 					</div>
 
 				</div>
