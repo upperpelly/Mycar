@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import au.com.pnspvtltd.mcd.domain.BlogTemplate;
 import au.com.pnspvtltd.mcd.domain.CarModelTemplate;
+import au.com.pnspvtltd.mcd.domain.ComingSoonUser;
 import au.com.pnspvtltd.mcd.domain.CountryTemplate;
 import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.Inventory;
@@ -22,6 +23,7 @@ import au.com.pnspvtltd.mcd.domain.UserReviewTemplate;
 import au.com.pnspvtltd.mcd.domain.YoutubeTemplate;
 import au.com.pnspvtltd.mcd.web.model.BlogTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
+import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
 import au.com.pnspvtltd.mcd.web.model.CountryTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
@@ -58,6 +60,7 @@ public class DomainModelUtil {
 	}
 
 	public User toUser(final UserVO userVO) {
+
 		User user = new User();
 		try {
 			BeanUtils.copyProperties(user, userVO);
@@ -71,8 +74,40 @@ public class DomainModelUtil {
 		return user;
 	}
 
-	public InventoryVO fromInventory(final Inventory inventory, boolean isMinified) {
+	public ComingSoonVO fromComingSoonUser(final ComingSoonUser user) {
 
+		if (user == null) {
+			return null;
+		}
+
+		ComingSoonVO userVO = new ComingSoonVO();
+		try {
+			BeanUtils.copyProperties(userVO, user);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userVO;
+	}
+
+	public ComingSoonUser toComingSoonUser(final ComingSoonVO userVO) {
+		ComingSoonUser user = new ComingSoonUser();
+		try {
+			BeanUtils.copyProperties(user, userVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+	}
+
+	public InventoryVO fromInventory(final Inventory inventory, boolean isMinified) {
 		if (inventory == null) {
 			return null;
 		}
@@ -168,11 +203,10 @@ public class DomainModelUtil {
 								"userReviewTemplate", "specificationTemplate" });
 			} else {
 
-				
 				org.springframework.beans.BeanUtils.copyProperties(carModelTemplate, carModelTemplateVO,
 						new String[] { "photosTemplate", "countryTemplate", "youtubeTemplate", "blogTemplate",
 								"userReviewTemplate", "specificationTemplate" });
-				
+
 				if (carModelTemplate.getBlogTemplate() != null) {
 					List<BlogTemplateVO> blogTemplates = new ArrayList<>();
 					for (BlogTemplate blogTemplate : carModelTemplate.getBlogTemplate()) {

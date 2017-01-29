@@ -80,6 +80,11 @@ $.ajax({
         document.write('<link id="main-style" rel="stylesheet" href="css/' + mainStyle + '">');
     </script>
     <script>
+    var modelYear=null;
+    var modelDisplay =null;
+    var modelName = null;
+    var trimValue =  null;
+    var modelTrim = null;
     window.onload= function()
     {
     	alert("came here for onload");
@@ -127,11 +132,11 @@ function parseURLParameter(Parameter)
     	
     	var noStock = parseURLParameter('noStock');
     	document.getElementById('noStock').innerHTML=noStock;
-    	var modelYear = parseURLParameter('modelYear');
-    	var modelDisplay = parseURLParameter('modelDisplay');
-    	var modelName = parseURLParameter('modelName');
-    	var modelTrim = parseURLParameter('modeltrim');
-    	var trimValue = parseURLParameter('trimValue');
+    	modelYear = parseURLParameter('modelYear');
+    	modelDisplay = parseURLParameter('modelDisplay');
+    	modelName = parseURLParameter('modelName');
+    	modelTrim = parseURLParameter('modeltrim');
+    	trimValue = parseURLParameter('trimValue');
 /* alert("in onload now"); */
     	
          
@@ -184,54 +189,55 @@ function parseURLParameter(Parameter)
 							};
 						};
 						function submitSearchForm() {
-							alert("Came here");
+													
+alert("Came here"+modelTrim);
+
 														
 														var jsonInputToAPI = {
 																"userId":71,
+																"modelYear":modelYear,
+																"modelDisplay": modelDisplay,
+																"modelName": modelName,															      
+																"modelTrim": modelTrim,
       "carColor" : $("carColor").val(),
-	 "postCode":890,
-	 "modelYear": "2016",
-      "modelDisplay": "Buick",
-      "modelName": "Envision",
-      "modelTrim": "4dr SUV (2.5L 4cyl 6A)",
+	 "postCode":$('#postCode').val(),
 	"make":"ss",
-	"bodyType":"ss",
+	"bodyType":$('#driveType').val(),
 	"state":"ss",
-	"region":"ss",
+	"region":$('#freetext').val(),
 	"ausCapTer":"ss",
-	"extraExter2":"ss",
-	"extraExter3":"ss",	
-	"extraExter4":"ss",	
-	"extraExter5":"ss",	
-	"extraIntern1":"ss",	
-	"extraIntern2":"ss",	
-	"extraIntern3":"ss",	
-	"extraIntern4":"ss",	
-	"extraIntern5":"ss",
-	"incomeType":"ss",
-	"yearEmploymentBusiness":12,
-	"incomeBeforeSuperTax":"ss",
-	"incomeAfterSuperTax":"ss",
-	"ifBusinessProvideABN":"ss",
-	"creditRating":"ss",
-	"loanAmount":9.00,
-	 "loanPeriod":12,
-	 "noOfDependence":12,
-	"insuranceType":"ss",
-	"drivingLicenceType":"ss",
-	"drivingLicenceNumber":124,
-	"drivingLicenceIssuingState":"ss",
-	"noOfAtFaultClaims":12,
+	"extraExter2":$('#extraExternal2').val(),
+	"extraExter3":$('#extraExternal3').val(),	
+	"extraExter4":$('#extraExternal4').val(),	
+	"extraExter5":$('#extraExternal5').val(),	
+	"extraIntern1":$('#extraInternal1').val(),	
+	"extraIntern2":$('#extraInternal2').val(),	
+	"extraIntern3":$('#extraInternal3').val(),	
+	"extraIntern4":$('#extraInternal4').val(),	
+	"extraIntern5":$('#extraInternal5').val(),
+	"incomeType":$('#incomeType').val(),
+	"yearEmploymentBusiness":$('#yearEmployement').val(),
+	"incomeBeforeSuperTax":$('#incomebefore').val(),
+	"incomeAfterSuperTax":$('#incomeAfter').val(),
+	"ifBusinessProvideABN":$('#ifBusPABN').val(),
+	"creditRating":$('#creditRating').val(),
+	"loanAmount":$('#loanAmount').val(),
+	 "loanPeriod":$('#loanPeriod').val(),
+	 "noOfDependence":$('#noDependencies').val(),
+	"insuranceType":$('#insuranceType').val(),
+	"drivingLicenceType":$('#drivingLicenseType').val(),
+	"drivingLicenceNumber":$('drivingLicenseNumber').val(),
+	"drivingLicenceIssuingState":$('drivingLicenseIssuingState').val(),
+	"noOfAtFaultClaims":$('noOfAtFaultsClaims').val(),
 	"dateOfBirth":null,
-	"indicativeExcessAmount":899,
+	"indicativeExcessAmount":$('indicativeExcessAmount').val(),
 	"ageOfAdditionalDriver":null,
-	"sMake":"ss",
-  	"sModel":"ss",
-  	"sState":"ss",
-  	"sAusCapTer":"ss",
-  	"sRegion":"ss"
-   
-																}
+	"sMake":$('#fuelType').val(),
+  	"sModel":$('#seats').val(),
+  	"sState":$('#extraExternal1').val(),
+  	"sAusCapTer":$('#vehiclePurpose').val(),
+  	"sRegion":$('#transmission').val()
+  }
 														alert("Before Call");
 														/*var wsURL = 'http://localhost:8080/MyCarDomain/api/search/car';*/
 														var wsURL = 'http://www.autoscoop.com.au/api/search/car';
@@ -1174,7 +1180,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Transmission</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width"id="transmission" name="transmission" >
                                                     <option>Automatic</option>
                                                     <option>Manual</option>
                                                     
@@ -1187,7 +1193,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                        <div class="col-sm-5 col-md-4">
                                             <label>Drive Type</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="driveType" name="driveType">
                                                     <option>Two Wheel</option>
                                                     <option>Four Wheel</option>
                                                     
@@ -1197,7 +1203,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Fuel Type</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="fuelType" name="fuelType">
                                                     <option>Diesel</option>
                                                     <option>Petrol</option>
                                                     <option>Electric</option>
@@ -1208,7 +1214,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Seats</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="seats" name="seats">
                                                     <option>2</option>
                                                     <option>5</option>
                                                     <option>7</option>
@@ -1222,7 +1228,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Vehicle Purpose</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width"  id="vehiclePurpose" name="vehiclePurpose">
                                                     <option>Business</option>
                                                     <option>Private</option>
                                                 </select>
@@ -1231,7 +1237,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Extra External 1</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="extraExternal1" name="extraExternal1">
                                                     <option>Bull Bar</option>
                                                     <option>Nudge Bar</option>
                                                     <option>Roof Back</option>
@@ -1246,7 +1252,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                          <div class="col-sm-5 col-md-4">
                                             <label>Extra External 2</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="extraExternal2" name="extraExternal2">
                                                     <option>Bull Bar</option>
                                                     <option>Nudge Bar</option>
                                                     <option>Roof Back</option>
@@ -1262,7 +1268,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Extra External 3</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="extraExternal3" name="extraExternal3">
                                                     <option>Bull Bar</option>
                                                     <option>Nudge Bar</option>
                                                     <option>Roof Back</option>
@@ -1277,7 +1283,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Extra External 4</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="extraExternal4" name="extraExternal4">
                                                     <option>Bull Bar</option>
                                                     <option>Nudge Bar</option>
                                                     <option>Roof Back</option>
@@ -1291,7 +1297,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Extra External 5</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="extraExternal5" name="extraExternal5">
                                                     <option>Bull Bar</option>
                                                     <option>Nudge Bar</option>
                                                     <option>Roof Back</option>
@@ -1308,7 +1314,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                        <div class="col-sm-5 col-md-4">
                                             <label>Extra Internal 1</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width"  id="extraInternal1" name="extraInternal1">
                                                     <option>leather Seats</option>
                                                     <option>Audio System</option>
                                                     <option>Car Play</option>
@@ -1332,7 +1338,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Extra Internal 2</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="extraInternal2" name="extraInternal2">
                                                     <option>leather Seats</option>
                                                     <option>Audio System</option>
                                                     <option>Car Play</option>
@@ -1356,7 +1362,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Extra Internal 3</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="extraInternal3" name="extraInternal3">
                                                     <option>leather Seats</option>
                                                     <option>Audio System</option>
                                                     <option>Car Play</option>
@@ -1383,7 +1389,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                          <div class="col-sm-5 col-md-4">
                                             <label>Extra Internal 4</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="extraInternal4" name="extraInternal4">
                                                     <option>leather Seats</option>
                                                     <option>Audio System</option>
                                                     <option>Car Play</option>
@@ -1407,7 +1413,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Extra Internal 5</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="extraInternal5" name="extraInternal5">
                                                     <option>leather Seats</option>
                                                     <option>Audio System</option>
                                                     <option>Car Play</option>
@@ -1430,7 +1436,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Free text</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
                                         </div>
                                         
                                     </div>
@@ -1443,7 +1449,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Income Type</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="incomeType" name="incomeType">
                                                     <option>Salary</option>
                                                     <option>From Business</option>
                                                 </select>
@@ -1451,27 +1457,27 @@ We suggest that you contact the host to confirm availability and rates before su
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Year Employement / Business</label>
-                                            <input type="text" class="input-text full-width" value="" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="yearEmployement" name="yearEmployement"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Income before Super & Tax</label>
-                                            <input type="text" class="input-text full-width" value="" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="incomebefore" name="incomebefore"/>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         
                                         <div class="col-sm-5 col-md-4">
                                             <label>Income After Super & Tax</label>
-                                            <input type="text" class="input-text full-width" value="" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="incomeAfter" name="incomeAfter"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>If Business Provide ABN</label>
-                                            <input type="text" class="input-text full-width" value="" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="ifBusPABN" name="ifBusPABN"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Credit Rating</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="creditRating" name="creditRating">
                                                     <option>Very Good</option>
                                                     <option>Good</option>
                                                      <option>Not Good</option>
@@ -1482,13 +1488,13 @@ We suggest that you contact the host to confirm availability and rates before su
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Loan Amoutn</label>
-                                            <input type="text" class="input-text full-width" value="" placeholder="" />
+                                            <label>Loan Amount</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="loanAmount" name="loanAmount"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Loan Period</label>
                                             <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="loanPeriod" name="loanPeriod">
                                                     <option>1</option>
                                                      <option>2</option>
                                                     <option>3</option>
@@ -1503,7 +1509,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         </div>
                                          <div class="col-sm-5 col-md-4">
                                             <label>Number of Dependencies</label>
-                                            <input type="text" class="input-text full-width" value="" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="noDependencies" name="noDependencies"/>
                                         </div>
                                     </div>
                                     
@@ -1514,7 +1520,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                     <div class="col-sm-5 col-md-4">
                                         <label>Insurance Type</label>
                                         <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="insuranceType" name="insuranceType">
                                                     <option>Comprahensive</option>
                                                     <option>Third Party</option>
                                                 </select>
@@ -1523,7 +1529,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                     <div class="col-sm-5 col-md-4">
                                         <label>Driving License Type</label>
                                         <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="drivingLicenseType" name="drivingLicenseType">
                                                     <option>L - learner</option>
                                                     <option>P - Probationary</option>
                                                     <option>F - Full Licence</option>
@@ -1534,7 +1540,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                 <div class="col-sm-5 col-md-4">
                                         <label>Driving License Number</label>
                                         <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="drivingLicenseNumber" name="drivingLicenseNumber">
                                                     <option>Comprahensive</option>
                                                     <option>Third Party</option>
                                                 </select>
@@ -1546,7 +1552,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                     <div class="col-sm-5 col-md-4">
                                         <label>Driving License Issuing State</label>
                                         <div class="selector">
-                                                <select class="full-width">
+                                                <select class="full-width" id="drivingLicenseIssuingState" name="drivingLicenseIssuingState">
                                                     <option>ACT</option>
                                                     <option>VIC</option>
                                                     <option>NSW</option>
@@ -1559,11 +1565,11 @@ We suggest that you contact the host to confirm availability and rates before su
                                     </div>
                                     <div class="col-sm-5 col-md-4">
                                         <label>Number of AtFaults Claims</label>
-                                        <input type="text" class="input-text full-width" value="" placeholder="" />
+                                        <input type="text" class="input-text full-width" value="" placeholder=""  id="noOfAtFaultsClaims" name="noOfAtFaultsClaims"/>
                                     </div>
                                   <div class="col-sm-5 col-md-4">
                                         <label>Indicative Excess Amount</label>
-                                        <input type="text" class="input-text full-width" value="" placeholder="" />
+                                        <input type="text" class="input-text full-width" value="" placeholder="" id="indicativeExcessAmount" name="indicativeExcessAmount"/>
                                     </div>  
                                     
 				 </div>

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,19 +17,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import au.com.pnspvtltd.mcd.service.UserService;
-import au.com.pnspvtltd.mcd.web.model.UserVO;
+import au.com.pnspvtltd.mcd.service.ComingSoonService;
+import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
 
 @RestController
-@CrossOrigin
-public class UserController {
+public class ComingSoonController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ComingSoonController.class);
 
 	@Autowired
-	UserService userService;
+	ComingSoonService userService;
 
-	@GetMapping(value = "user/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	/*@GetMapping(value = "user/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public UserVO getUser(@PathVariable Long id, HttpServletResponse response) {
 		LOGGER.debug("Received request to get User with id {} ", id);
 		UserVO user = userService.findById(id);
@@ -38,17 +36,17 @@ public class UserController {
 			response.setStatus(HttpStatus.NO_CONTENT.value());
 		}
 		return user;
-	}
+	}*/
 
-	@PostMapping("user")
-	public UserVO createUser(@RequestBody UserVO userVO, HttpServletResponse response) {
-		LOGGER.debug("Received request to create User with email {}", userVO.getEmail());
-		UserVO createdUser = userService.createUser(userVO);
+	@PostMapping("comingsoonuser")
+	public ComingSoonVO createUser(@RequestBody ComingSoonVO userVO, HttpServletResponse response) {
+		LOGGER.debug("Received request to create User with email {}", userVO.getComingSoonUserEmail());
+		ComingSoonVO createdUser = userService.createUser(userVO);
 		response.setStatus(HttpStatus.CREATED.value());
 		return createdUser;
 	}
 
-	@PutMapping("user")
+	/*@PutMapping("user")
 	public UserVO updateUser(@RequestBody UserVO userVO, HttpServletResponse response) {
 		LOGGER.debug("Received request to update User {}", userVO);
 		UserVO updatedUser = userService.updateUser(userVO);
@@ -83,5 +81,5 @@ public class UserController {
 			user.setPassword(null);
 		}
 		return new ResponseEntity<>(user, status);
-	}
+	}*/
 }
