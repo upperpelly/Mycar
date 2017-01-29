@@ -52,10 +52,10 @@ app.controller('myCtrl', function($scope,$http) {
 		jsonInputToAPI.flex3=flex3;
 		/* var wsURL = 'http://localhost:8080/MyCarDomain/api/comingsoonuser'; */
 		var wsURL = 'http://www.autoscoop.com.au/api/comingsoonuser';
-		alert(jsonInputToAPI.comingSoonUserEmail);
+		/* alert(jsonInputToAPI.comingSoonUserEmail);
 		alert(jsonInputToAPI.flex1);
 		alert(jsonInputToAPI.flex2);
-		alert(jsonInputToAPI.flex3);
+		alert(jsonInputToAPI.flex3); */
 		
 	    if(flex3==1 || flex3==2 || flex3==3 || flex3==4 || flex3==5)
 	    	{
@@ -66,7 +66,7 @@ app.controller('myCtrl', function($scope,$http) {
 				data: jsonInputToAPI
 								
 			}).success(function(data) {
-				alert("successful");
+				/* alert("successful"); */
 				document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
 							});
 	    	}
