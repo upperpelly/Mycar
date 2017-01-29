@@ -19,14 +19,16 @@ public class SearchServiceImpl implements SearchService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
+	@Autowired
+	private DomainModelUtil domainModelUtil;
 
 	@Override
 	@Transactional
 	public String whenUserSearchForCar(SearchVO searchVO) {
 
 		User user = userRepository.findOne(searchVO.getUserId());
-		Search search = DomainModelUtil.toSearch(searchVO);
+		Search search = domainModelUtil.toSearch(searchVO);
 		user.getSearch().add(search);
 		userRepository.flush();
 		return "{\"userId\":" + searchVO.getUserId() + ",\"searchId\":" + search.getCarSearchId() + "}";

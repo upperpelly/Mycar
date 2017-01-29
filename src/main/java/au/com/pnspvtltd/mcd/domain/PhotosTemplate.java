@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "templatephotos")
 public class PhotosTemplate implements Serializable {
 
-	private long templatePhotoId;
+	private Long templatePhotoId;
 	private String photo1;
 	private String flex1;
 	private String flex2;
@@ -68,11 +68,11 @@ public class PhotosTemplate implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "TEMPLATEPHOTOID")
-	public long getTemplatePhotoId() {
+	public Long getTemplatePhotoId() {
 		return this.templatePhotoId;
 	}
 
-	public void setTemplatePhotoId(long templatePhotoId) {
+	public void setTemplatePhotoId(Long templatePhotoId) {
 		this.templatePhotoId = templatePhotoId;
 	}
 

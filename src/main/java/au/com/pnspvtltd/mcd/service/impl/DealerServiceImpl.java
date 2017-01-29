@@ -25,20 +25,22 @@ public class DealerServiceImpl implements DealerService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(DealerServiceImpl.class);
 
 	@Autowired
-	DealerRepository dealerRepository;
+	private DealerRepository dealerRepository;
+	@Autowired
+	private DomainModelUtil domainModelUtil;
 
 	@Override
 	@Transactional(readOnly = true)
 	public DealerVO findById(Long id) {
 		Dealer dealer = dealerRepository.findOne(id);
-		return (dealer != null ? DomainModelUtil.fromDealer(dealer) : null);
+		return (dealer != null ? domainModelUtil.fromDealer(dealer) : null);
 	}
 
 	@Override
 	@Transactional
 	public DealerVO createDealer(DealerVO dealerVO) {
 		dealerVO.setDealerId(null);
-		return DomainModelUtil.fromDealer(dealerRepository.save(DomainModelUtil.toDealer(dealerVO)));
+		return domainModelUtil.fromDealer(dealerRepository.save(domainModelUtil.toDealer(dealerVO)));
 	}
 
 	@Override
@@ -62,7 +64,7 @@ public class DealerServiceImpl implements DealerService {
 		}
 
 		Dealer dealer = dealerRepository.save(dealerToUpdate);
-		return DomainModelUtil.fromDealer(dealer);
+		return domainModelUtil.fromDealer(dealer);
 
 	}
 
@@ -71,7 +73,7 @@ public class DealerServiceImpl implements DealerService {
 	public List<DealerVO> findAllDealers() {
 		List<DealerVO> dealerVOs = new ArrayList<>();
 		for (Dealer dealer : dealerRepository.findAll()) {
-			dealerVOs.add(DomainModelUtil.fromDealer(dealer));
+			dealerVOs.add(domainModelUtil.fromDealer(dealer));
 		}
 		return dealerVOs;
 	}
@@ -79,14 +81,14 @@ public class DealerServiceImpl implements DealerService {
 	@Override
 	@Transactional(readOnly = true)
 	public DealerVO findDealerByEmail(String email) {
-		return DomainModelUtil.fromDealer(dealerRepository.findByEmailIgnoreCase(email));
+		return domainModelUtil.fromDealer(dealerRepository.findByEmailIgnoreCase(email));
 	}
 
 	@Override
 	@Transactional
 	public String addInventory(InventoryVO inventoryVO) {
 		Dealer dealer = dealerRepository.findOne(inventoryVO.getRefId());
-		Inventory inventory = DomainModelUtil.toInventory(inventoryVO);
+		Inventory inventory = domainModelUtil.toInventory(inventoryVO);
 		dealer.getInventory().add(inventory);
 		dealerRepository.flush();
 		return "{\"dealerId\":" + dealer.getDealerId() + ",\"inventoryId\":" + inventory.getRepoId() + "}";
