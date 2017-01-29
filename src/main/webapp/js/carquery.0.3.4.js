@@ -1316,13 +1316,34 @@ var modelTrim;
         var sender = this;
 
         //Get Car Model JSON for the selected make
-        alert("came here now changed are 3 Oct1");
+        //http://localhost:8080/MyCarDomain/api/user/1
+        /*alert("came here now changed are 3 Oct1");*/
         $.ajax({  
         	/*headers: {"X-My-Custom-Header": "*"},*/
        	    type: "GET",  
-       	    url: "http://localhost:8080/MyCarDomain/api/user/70",  
+       	    url: "http://www.autoscoop.com.au/api/user/1",  
        	       success: function(result){
-            	   alert(result.abnNumber);
+       	    	   alert(result.abnNumber);
+            	   alert(result.userId);
+            	   alert(result.search);
+            	   alert(result.search[0].carSearchId);
+            	   alert(result.search.length);
+            	   out="";
+            	   /*alert(Object.keys( result.search ).length);*/
+            	   /*var json = JSON.parse(result1);*/
+            	   /*var json = $.parseJSON(result1);*/
+            	   for(i=0;i<result.search.length;i++)
+           		{
+           		alert(result.search[i].carSearchId); //111 111-1111
+           		alert(result.search[i].modelDisplay);
+           		alert(result.search[i].modelTrim);
+           		alert(result.search[i].modelYear);
+           		out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelTrim+'</td>'+'<td>'+result.search[i].modelDisplay+'</td>'+'<td>'+result.search[i].modelYear+'</td>'+'</tr>';
+           		
+           		
+           		}
+            	   alert(out);
+            	   $("#"+sender.model_data_id).append(out);
                  
                } 
        	  }); 
