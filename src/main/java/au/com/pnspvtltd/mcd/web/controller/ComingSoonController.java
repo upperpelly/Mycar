@@ -2,6 +2,7 @@ package au.com.pnspvtltd.mcd.web.controller;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -18,13 +19,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.service.ComingSoonService;
+import au.com.pnspvtltd.mcd.service.SmtpMailSender;
 import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
 
 @RestController
 public class ComingSoonController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ComingSoonController.class);
-
+	
+	@Autowired
+	private SmtpMailSender smtp;
+	
+	ComingSoonController user;
 	@Autowired
 	ComingSoonService userService;
 
@@ -43,7 +49,30 @@ public class ComingSoonController {
 		LOGGER.debug("Received request to create User with email {}", userVO.getComingSoonUserEmail());
 		ComingSoonVO createdUser = userService.createUser(userVO);
 		response.setStatus(HttpStatus.CREATED.value());
+		
+		try {
+			smtp.sendMail(userVO.getComingSoonUserEmail(),"Autoscoop","You have been successfully Registered");
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+/*		user.sendMessage(userVO.getComingSoonUserEmail());*/
 		return createdUser;
+	}
+
+
+	
+	public void sendMessage(String rec)
+	{
+		
+		String recipient=rec;
+		try {
+			smtp.sendMail(recipient,"Autoscoop","You have been successfully Registered");
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*return "Mail has been sent";*/
 	}
 
 	/*@PutMapping("user")
