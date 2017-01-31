@@ -32,7 +32,15 @@ public class Deal_SearchFinance implements Serializable {
 	private String incomeType;
 	private String creditRating;
 	private Date dateOfBirth;
-	
+	private Long userId;
+	@Column(name = "USERID")
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
 	@Column(name = "ISNEW")
 	public boolean isNew() {

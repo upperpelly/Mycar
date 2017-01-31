@@ -29,6 +29,15 @@ public class Deal_SearchServMaint implements Serializable {
 	private boolean coveredUnderIns;
 	private String curInsProv;
 	private String freeText;
+	private Long userId;
+	@Column(name = "USERID")
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

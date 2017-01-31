@@ -27,6 +27,15 @@ public class Deal_SearchTransp implements Serializable {
 	private String freeText;
 	private boolean transpInsReq;
 	private String uploadPhotos;
+	private Long userId;
+	@Column(name = "USERID")
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 	@Column(name = "FROMPOSTADDR")
 	public String getFromPostCodeAddr() {
 		return fromPostCodeAddr;

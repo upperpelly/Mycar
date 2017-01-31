@@ -65,7 +65,15 @@ import javax.persistence.Table;
 	private Date dateOfBirth;
 	private double indicativeExcessAmount;
 	private Date ageOfAdditionalDriver;
+	private Long userId;
+	@Column(name = "USERID")
+	public Long getUserId() {
+		return userId;
+	}
 
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 		
 	/*end*/
 	

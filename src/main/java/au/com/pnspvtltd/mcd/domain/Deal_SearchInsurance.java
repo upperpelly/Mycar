@@ -38,7 +38,15 @@ public class Deal_SearchInsurance implements Serializable {
 	private double prefExcessAmount;
 	private Date dateOfBirth;
 	private Date ageOfAdditionalDriver;
-	
+	private Long userId;
+	@Column(name = "USERID")
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 	@Column(name = "ISNEW")
 	public boolean isNew() {
 		return isNew;
