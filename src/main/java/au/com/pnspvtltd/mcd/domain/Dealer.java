@@ -96,7 +96,7 @@ public class Dealer implements Serializable {
 		return dealSearch;
 	}
 
-	public void setSearch(List<Deal_Search_Repo> search) {
+	public void setDealSearch(List<Deal_Search_Repo> search) {
 		this.dealSearch = search;
 	}
 	
