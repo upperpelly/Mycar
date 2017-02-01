@@ -919,6 +919,226 @@ CarQuery.prototype = {
      return out;
     },
 
+carDataHTMLMRP : function(data)
+    {
+alert("came in mrp1");     
+var sold_in_us = "No";
+     if(data.model_sold_in_us == "1") sold_in_us = "Yes";
+
+ var out = '<table class="model-data">';
+
+     out += '<tr><th colspan="2">'+data.model_year+' '+data.make_display+' '+data.model_name+' '+data.model_trim+'</th></tr>';
+
+
+
+
+     out += '<tr><td colspan="2"><hr/></td></tr>';
+ 
+
+out += '<tr><td>Country of Origin:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.make_country+'" placeholder="" id="data_make_country" name="data_make_country"/>'+'</td></tr>';
+
+     out += '<tr><td>Sold in US and Australia:</td><td>'+sold_in_us+'</td></tr>';
+     
+out += '<tr><td>Body Style:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_body+'" placeholder="" id="data_model_body" name="data_model_body"/>'+'</td></tr>';
+
+     //Output Color Data
+     out += '<tr><td colspan="2"><hr/></td></tr>';
+     out += '<tr><td valign="top">Exterior Colors :</td><td>';
+     out += this.carColorHTML(data.ExtColors) + '</td></tr>';
+     out += '<tr><td valign="top">Interior Colors:</td><td>';
+     out += this.carColorHTML(data.IntColors) + '</td></tr>';
+
+     out += '<tr><td colspan="2"><hr/></td></tr>';
+     
+out += '<tr><td>Engine Location:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_position+'" placeholder="" id="data_model_engine_position" name="data_model_engine_position"/>'+'</td></tr>';
+     
+out += '<tr><td>Engine Type:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_type+'" placeholder="" id="data_model_engine_type" name="data_model_engine_type"/>'+'</td></tr>';
+     
+out += '<tr><td>Engine Cylinders:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_cyl+'" placeholder="" id="data_model_engine_cyl" name="data_model_engine_cyl"/>'+'</td></tr>';
+
+     
+out += '<tr><td>Engine Displacement (cc):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_cc+'" placeholder="" id="data_model_engine_cc" name="data_model_engine_cc"/>'+'</td></tr>';
+     
+out += '<tr><td>Engine Displacement (l):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_l+'" placeholder="" id="data_model_engine_l" name="data_model_engine_l"/>'+'</td></tr>';
+
+     
+out += '<tr><td>Engine Displacement (cubic inches):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_ci+'" placeholder="" id="data_model_engine_ci" name="data_model_engine_ci"/>'+'</td></tr>';
+
+     
+out += '<tr><td>Engine Bore (mm):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_bore_mm+'" placeholder="" id="data_model_engine_bore_mm" name="data_model_engine_bore_mm"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Engine Bore (in):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_bore_in+'" placeholder="" id="data_model_engine_bore_in" name="data_model_engine_bore_in"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Engine Stroke (mm):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_stroke_mm+'" placeholder="" id="data_model_engine_stroke_mm" name="data_model_engine_stroke_mm"/>'+'</td></tr>';
+
+
+    
+
+out += '<tr><td>Engine Stroke (in):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_stroke_in+'" placeholder="" id="data_model_engine_stroke_in" name="data_model_engine_stroke_in"/>'+'</td></tr>';
+
+
+     
+
+out += '<tr><td>Engine Valves Per Cylinder:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_valves_per_cyl+'" placeholder="" id="data_model_engine_valves_per_cyl" name="data_model_engine_valves_per_cyl"/>'+'</td></tr>';
+
+    
+
+out += '<tr><td>Engine Valves:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_valves+'" placeholder="" id="data_model_engine_valves" name="data_model_engine_valves"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Engine Max Power (HP):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_power_hp+'" placeholder="" id="data_model_engine_power_hp" name="data_model_engine_power_hp"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Engine Max Power (PS):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_power_ps+'" placeholder="" id="data_model_engine_power_ps" name="data_model_engine_power_ps"/>'+'</td></tr>';
+
+    
+
+out += '<tr><td>Engine Max Power (kW):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_power_kw+'" placeholder="" id="data_model_engine_power_kw" name="data_model_engine_power_kw"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Engine Max Power RPM:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_power_rpm+'" placeholder="" id="data_model_engine_power_rpm" name="data_model_engine_power_rpm"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Engine Max Torque (Nm):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_torque_nm+'" placeholder="" id="data_model_engine_torque_nm" name="data_model_engine_torque_nm"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Engine Max Torque (Lb-Ft):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_torque_lbft+'" placeholder="" id="data_model_engine_torque_lbft" name="data_model_engine_torque_lbft"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Engine Max Torque (kgf-m):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_torque_kgm+'" placeholder="" id="data_model_engine_torque_kgm" name="data_model_engine_torque_kgm"/>'+'</td></tr>';
+
+    
+
+out += '<tr><td>Engine Max Torque RPM:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_torque_rpm+'" placeholder="" id="data_model_engine_torque_rpm" name="data_model_engine_torque_rpm"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Engine Compression Ratio:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_compression+'" placeholder="" id="data_model_engine_compression" name="data_model_engine_compression"/>'+'</td></tr>';
+
+    
+
+out += '<tr><td>Engine Fuel Type:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_fuel+'" placeholder="" id="data_model_engine_fuel" name="data_model_engine_fuel"/>'+'</td></tr>';
+
+     out += '<tr><td colspan="2"><hr/></td></tr>';
+     
+
+out += '<tr><td>Drive:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_drive+'" placeholder="" id="data_model_drive" name="data_model_drive"/>'+'</td></tr>';
+
+
+    
+
+out += '<tr><td>Transmission Type:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_transmission_type+'" placeholder="" id="data_model_transmission_type" name="data_model_transmission_type"/>'+'</td></tr>';
+
+
+     
+
+out += '<tr><td>Top Speed (KPH):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_top_speed_kph+'" placeholder="" id="data_model_top_speed_kph" name="data_model_top_speed_kph"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Top Speed (MPH):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_top_speed_mph+'" placeholder="" id="data_model_top_speed_mph" name="data_model_top_speed_mph"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>0-100 kph (0-62mph):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_0_to_100_kph+'" placeholder="" id="data_model_0_to_100_kph" name="data_model_0_to_100_kph"/>'+'</td></tr>';
+
+     out += '<tr><td colspan="2"><hr/></td></tr>';
+    
+     out += '<tr><td>Doors:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_doors+'" placeholder="" id="data.model_doors" name="data.model_doors"/>'+'</td></tr>';
+
+    
+
+out += '<tr><td>Seats:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_seats+'" placeholder="" id="data_model_seats" name="data_model_seats"/>'+'</td></tr>';
+
+
+     
+
+out += '<tr><td>Weight (kg):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_weight_kg+'" placeholder="" id="data_model_weight_kg" name="data_model_weight_kg"/>'+'</td></tr>';
+
+    
+
+out += '<tr><td>Weight (lbs):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_weight_lbs+'" placeholder="" id="data_model_weight_lbs" name="data_model_weight_lbs"/>'+'</td></tr>';
+
+   
+
+out += '<tr><td>Length (mm):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_length_mm+'" placeholder="" id="data_model_length_mm" name="data_model_length_mm"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Length (in):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_length_in+'" placeholder="" id="data_model_length_in" name="data_model_length_in"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Width (mm):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_width_mm+'" placeholder="" id="data_model_length_in" name="data_model_length_in"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Width (in):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_width_in+'" placeholder="" id="data_model_width_in" name="data_model_width_in"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Height (mm):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_height_mm+'" placeholder="" id="data_model_height_mm" name="data_model_height_mm"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Height (in):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_height_in+'" placeholder="" id="data_model_height_in" name="data_model_height_in"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Wheelbase (mm):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_wheelbase_mm+'" placeholder="" id="data_model_wheelbase_mm" name="data_model_wheelbase_mm"/>'+'</td></tr>';
+
+
+out += '<tr><td>Wheelbase (in):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_wheelbase_in+'" placeholder="" id="data_model_wheelbase_in" name="data_model_wheelbase_in"/>'+'</td></tr>';     
+
+out += '<tr><td>Fuel Economy City(l/100km):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_lkm_city+'" placeholder="" id="data_model_lkm_city" name="data_model_lkm_city"/>'+'</td></tr>';
+
+
+     
+
+out += '<tr><td>Fuel Economy City(mpg):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_mpg_city+'" placeholder="" id="data_model_mpg_city" name="data_model_mpg_city"/>'+'</td></tr>';
+
+
+     
+
+out += '<tr><td>Fuel Economy HWY(l/100km):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_lkm_hwy+'" placeholder="" id="data_model_lkm_hwy" name="data_model_lkm_hwy"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Fuel Economy HWY(mpg):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_mpg_hwy+'" placeholder="" id="data_model_mpg_hwy" name="data_model_mpg_hwy"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Fuel Economy Mixed(l/100km):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_lkm_mixed+'" placeholder="" id="data_model_lkm_mixed" name="data_model_lkm_mixed"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Fuel Economy Mixed(mpg):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_mpg_mixed+'" placeholder="" id="data_model_mpg_mixed" name="data_model_mpg_mixed"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Fuel Capacity(l):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_fuel_cap_l+'" placeholder="" id="data_model_fuel_cap_l" name="data_model_fuel_cap_l"/>'+'</td></tr>';
+
+     
+
+out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_fuel_cap_g+'" placeholder="" id="data_model_fuel_cap_g" name="data_model_fuel_cap_g"/>'+'</td></tr>';
+
+     out += '</table>';
+
+     out = out.replace(/>null</g, ">Not Available<");
+
+     return out;
+    },
+
     carDataHTML : function(data)
     {
      var sold_in_us = "No";
@@ -1154,6 +1374,50 @@ modelTrim=data[0].model_trim;
         }
         });
     },
+populateCarDataMRP : function(model_data_id)
+    {
+alert("came here after change mrp");
+  var country;
+var modelYear;
+var modelDisplay;
+var modelName;
+var modelTrim;
+     this.model_data_id = model_data_id;
+ this.cur_trim = $("select#"+this.trim_select_id).val();
+
+ //Make sure there is a trim selected
+ if(this.cur_trim == null || this.cur_trim == "")
+ {
+  $("#"+this.model_data_id).html("");
+  alert('Please select a year, make, and model.');
+  return;
+ }
+
+  //Set a loading message while we retrieve the data
+        $("#"+this.model_data_id).html("Loading Model Data...");
+
+        var sender = this;
+/*alert("this.cur_trim"+this.cur_trim);
+alert(this.cur_year);
+alert(this.cur_model);
+alert(this.cur_make);*/
+
+        //Get Car Model JSON for the selected make
+     $.getJSON(this.base_url+"?callback=?", {cmd:"getModel", model:this.cur_trim}, function(data) {
+
+     if(!sender.responseError(data))
+     {
+      var out = sender.carDataHTMLMRP(data[0]);
+country = data[0].make_country;
+modelYear= data[0].model_year;
+modelDisplay=data[0].make_display;
+modelName=data[0].model_name;
+modelTrim=data[0].model_trim;
+         $("#"+sender.model_data_id).html(out);
+        }
+        });
+    },
+
     populateCarDataSpec : function(model_data_id, modelTrim)
     {
     	//alert("inside js");
