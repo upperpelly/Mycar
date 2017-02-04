@@ -11,12 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DEALSEARCHFINANCE")
-public class Deal_SearchFinance implements Serializable {
+@Table(name = "dealsearchfinance")
+public class DealerSearchFinance implements Serializable {
 
 	
 	private boolean isNew;
-	private Long dealSearchFinanceId;
+	private Long dealerSearchFinanceId;
 	private String postCode;
 	
 	private int year;
@@ -105,12 +105,12 @@ public class Deal_SearchFinance implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "DEALSEARCHFINANCEID")
-	public Long getDealSearchFinanceId() {
-		return dealSearchFinanceId;
+	public Long getDealerSearchFinanceId() {
+		return dealerSearchFinanceId;
 	}
 
-	public void setDealSearchFinanceId(Long searchInsuranceId) {
-		this.dealSearchFinanceId = searchInsuranceId;
+	public void setDealerSearchFinanceId(Long dealerSearchFinanceId) {
+		this.dealerSearchFinanceId = dealerSearchFinanceId;
 	}
 	@Column(name = "VEHVALUE")
 	public double getVehValue() {

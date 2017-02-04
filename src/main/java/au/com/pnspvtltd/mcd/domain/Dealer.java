@@ -40,11 +40,11 @@ public class Dealer implements Serializable {
 	private int postcode;
 	List<Inventory> inventory;
 
-	List<Deal_Search_Repo> dealSearch;
-	List<Deal_SearchInsurance> dealSearchInsurance;
-	List<Deal_SearchFinance> dealSearchFinance;
-	List<Deal_SearchServMaint> dealSearchServMaint;
-	List<Deal_SearchTransp> dealSearchTransp;
+	List<DealerSearch> dealSearch;
+	List<DealerSearchInsurance> dealSearchInsurance;
+	List<DealerSearchFinance> dealSearchFinance;
+	List<DealerSearchServMaint> dealSearchServMaint;
+	List<DealerSearchTransp> dealSearchTransp;
 
 	public @Column(name = "ISADMIN") boolean isAdmin() {
 		return isAdmin;
@@ -92,50 +92,50 @@ public class Dealer implements Serializable {
 	}
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
-	public List<Deal_Search_Repo> getDealSearch() {
+	public List<DealerSearch> getDealSearch() {
 		return dealSearch;
 	}
 
-	public void setDealSearch(List<Deal_Search_Repo> search) {
+	public void setDealSearch(List<DealerSearch> search) {
 		this.dealSearch = search;
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
-	public List<Deal_SearchFinance> getDealSearchFinance() {
+	public List<DealerSearchFinance> getDealSearchFinance() {
 		return dealSearchFinance;
 	}
 
-	public void setDealSearchFinance(List<Deal_SearchFinance> search) {
+	public void setDealSearchFinance(List<DealerSearchFinance> search) {
 		this.dealSearchFinance = search;
 	}
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
-	public List<Deal_SearchInsurance> getDealSearchInsurance() {
+	public List<DealerSearchInsurance> getDealSearchInsurance() {
 		return dealSearchInsurance;
 	}
 
-	public void setDealSearchInsurance(List<Deal_SearchInsurance> search) {
+	public void setDealSearchInsurance(List<DealerSearchInsurance> search) {
 		this.dealSearchInsurance = search;
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
-	public List<Deal_SearchServMaint> getDealSearchServMaint() {
+	public List<DealerSearchServMaint> getDealSearchServMaint() {
 		return dealSearchServMaint;
 	}
 
-	public void setDealSearchServMaint(List<Deal_SearchServMaint> search) {
+	public void setDealSearchServMaint(List<DealerSearchServMaint> search) {
 		this.dealSearchServMaint = search;
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
-	public List<Deal_SearchTransp> getDealSearchTransp() {
+	public List<DealerSearchTransp> getDealSearchTransp() {
 		return dealSearchTransp;
 	}
 
-	public void setDealSearchTransp(List<Deal_SearchTransp> search) {
+	public void setDealSearchTransp(List<DealerSearchTransp> search) {
 		this.dealSearchTransp = search;
 	}
 	

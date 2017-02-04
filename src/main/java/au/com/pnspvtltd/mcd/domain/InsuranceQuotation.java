@@ -1,38 +1,27 @@
 package au.com.pnspvtltd.mcd.domain;
 
-
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.mysql.jdbc.Blob;
 
 /**
  * Entity implementation class for Entity: CARMODEL
  * 
  */
-@Entity @Table(name = "INSURANCE_QUOATION") public class Insurance_Quotation implements Serializable 
-{
-
+@Entity
+@Table(name = "insurance_quoation")
+public class InsuranceQuotation implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2795828321233759004L;
-	
 
 	/**
 	 * 
@@ -40,18 +29,18 @@ import com.mysql.jdbc.Blob;
 	// Unique Quotation id
 	private Long insQuotId;
 	// dealer id
-	private long dealerId;
+	private Long dealerId;
 	// user id
-	private long userId;
-	// dealer search lead id
-	private long dealSearchId;
-	// user search lead id
-	private long carSearchId;
-	// inventory reference id
-	private long refId;
+	private Long userId;
+	// dealer insurance lead id
+	private Long dealSearchId;
+	// user insurance lead id
+	private Long carSearchId;
+	// inventory repo id
+	private Long refId;
 	private boolean autoBid;
 	private boolean moveToUser;
-	
+
 	public boolean isAutoBid() {
 		return autoBid;
 	}
@@ -72,7 +61,7 @@ import com.mysql.jdbc.Blob;
 	private String modelDisplay;
 	private String modelName;
 	private String modelTrim;
-	
+
 	private String dealerName;
 	private String dealerABN;
 	private String quotHeaderFreeText;
@@ -101,28 +90,28 @@ import com.mysql.jdbc.Blob;
 	private String adhoc2;
 	private String adhoc3;
 	private String adhoc4;
-	
-	public long getDealSearchId() {
+
+	public Long getDealSearchId() {
 		return dealSearchId;
 	}
 
-	public void setDealSearchId(long dealSearchId) {
+	public void setDealSearchId(Long dealSearchId) {
 		this.dealSearchId = dealSearchId;
 	}
-	
-	public long getCarSearchId() {
+
+	public Long getCarSearchId() {
 		return carSearchId;
 	}
 
-	public void setCarSearchId(long carSearchId) {
+	public void setCarSearchId(Long carSearchId) {
 		this.carSearchId = carSearchId;
 	}
 
-	public long getRefId() {
+	public Long getRefId() {
 		return refId;
 	}
 
-	public void setRefId(long refId) {
+	public void setRefId(Long refId) {
 		this.refId = refId;
 	}
 
@@ -318,143 +307,136 @@ import com.mysql.jdbc.Blob;
 		this.offerPrice3 = offerPrice3;
 	}
 
-	
-
-	public long getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
-			
-			public long getDealerId() {
-				return dealerId;
-			}
+	public Long getDealerId() {
+		return dealerId;
+	}
 
-			public void setDealerId(long dealerId) {
-				this.dealerId = dealerId;
-			}
+	public void setDealerId(Long dealerId) {
+		this.dealerId = dealerId;
+	}
 
-			public String getAdhoc1() {
-				return adhoc1;
-			}
+	public String getAdhoc1() {
+		return adhoc1;
+	}
 
-			public void setAdhoc1(String adhoc1) {
-				this.adhoc1 = adhoc1;
-			}
+	public void setAdhoc1(String adhoc1) {
+		this.adhoc1 = adhoc1;
+	}
 
-			public String getAdhoc2() {
-				return adhoc2;
-			}
+	public String getAdhoc2() {
+		return adhoc2;
+	}
 
-			public void setAdhoc2(String adhoc2) {
-				this.adhoc2 = adhoc2;
-			}
+	public void setAdhoc2(String adhoc2) {
+		this.adhoc2 = adhoc2;
+	}
 
-			public String getAdhoc3() {
-				return adhoc3;
-			}
+	public String getAdhoc3() {
+		return adhoc3;
+	}
 
-			public void setAdhoc3(String adhoc3) {
-				this.adhoc3 = adhoc3;
-			}
+	public void setAdhoc3(String adhoc3) {
+		this.adhoc3 = adhoc3;
+	}
 
-			public String getAdhoc4() {
-				return adhoc4;
-			}
+	public String getAdhoc4() {
+		return adhoc4;
+	}
 
-			public void setAdhoc4(String adhoc4) {
-				this.adhoc4 = adhoc4;
-			}
+	public void setAdhoc4(String adhoc4) {
+		this.adhoc4 = adhoc4;
+	}
 
-			public String getFlex1() {
-				return flex1;
-			}
+	public String getFlex1() {
+		return flex1;
+	}
 
-			public void setFlex1(String flex1) {
-				this.flex1 = flex1;
-			}
+	public void setFlex1(String flex1) {
+		this.flex1 = flex1;
+	}
 
-			public String getFlex2() {
-				return flex2;
-			}
+	public String getFlex2() {
+		return flex2;
+	}
 
-			public void setFlex2(String flex2) {
-				this.flex2 = flex2;
-			}
+	public void setFlex2(String flex2) {
+		this.flex2 = flex2;
+	}
 
-			public String getFlex3() {
-				return flex3;
-			}
+	public String getFlex3() {
+		return flex3;
+	}
 
-			public void setFlex3(String flex3) {
-				this.flex3 = flex3;
-			}
+	public void setFlex3(String flex3) {
+		this.flex3 = flex3;
+	}
 
-			public String getFlex4() {
-				return flex4;
-			}
+	public String getFlex4() {
+		return flex4;
+	}
 
-			public void setFlex4(String flex4) {
-				this.flex4 = flex4;
-			}
+	public void setFlex4(String flex4) {
+		this.flex4 = flex4;
+	}
 
-			private String flex1;
-			private String flex2;
-			private String flex3;
-			private String flex4;
-			
-			public Insurance_Quotation() {
-		        super();
-		    }
+	private String flex1;
+	private String flex2;
+	private String flex3;
+	private String flex4;
 
-		    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "INSQUOTID") public Long getInsQuotId() {
-		        return this.insQuotId;
-		    }
+	public InsuranceQuotation() {
+		super();
+	}
 
-		    public void setInsQuotId(Long quotId) {
-				this.insQuotId = quotId;
-			}
-		    
-			public String getModelYear() {
-				return modelYear;
-			}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "INSQUOTID")
+	public Long getInsQuotId() {
+		return this.insQuotId;
+	}
 
-			public void setModelYear(String modelYear) {
-				this.modelYear = modelYear;
-			}
+	public void setInsQuotId(Long quotId) {
+		this.insQuotId = quotId;
+	}
 
-			public String getModelDisplay() {
-				return modelDisplay;
-			}
+	public String getModelYear() {
+		return modelYear;
+	}
 
-			public void setModelDisplay(String modelDisplay) {
-				this.modelDisplay = modelDisplay;
-			}
+	public void setModelYear(String modelYear) {
+		this.modelYear = modelYear;
+	}
 
-			public String getModelName() {
-				return modelName;
-			}
+	public String getModelDisplay() {
+		return modelDisplay;
+	}
 
-			public void setModelName(String modelName) {
-				this.modelName = modelName;
-			}
+	public void setModelDisplay(String modelDisplay) {
+		this.modelDisplay = modelDisplay;
+	}
 
-			public String getModelTrim() {
-				return modelTrim;
-			}
+	public String getModelName() {
+		return modelName;
+	}
 
-			public void setModelTrim(String modelTrim) {
-				this.modelTrim = modelTrim;
-			}
-				
+	public void setModelName(String modelName) {
+		this.modelName = modelName;
+	}
 
-	
+	public String getModelTrim() {
+		return modelTrim;
+	}
 
-	
-    
-    
-	
+	public void setModelTrim(String modelTrim) {
+		this.modelTrim = modelTrim;
+	}
+
 }

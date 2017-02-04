@@ -1,18 +1,6 @@
-package au.com.pnspvtltd.mcd.domain;
+package au.com.pnspvtltd.mcd.web.model;
 
-import java.io.Serializable;
-import java.sql.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "searchservmaint")
-public class SearchServMaint implements Serializable {
+public class SearchServMaintVO {
 
 	private Long searchServMaintId;
 	private String postCode;
@@ -29,10 +17,7 @@ public class SearchServMaint implements Serializable {
 	private boolean coveredUnderIns;
 	private String curInsProv;
 	private String freeText;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "SEARCHSERVMAINTID")
+
 	public Long getSearchServMaintId() {
 		return searchServMaintId;
 	}
@@ -40,7 +25,7 @@ public class SearchServMaint implements Serializable {
 	public void setSearchServMaintId(Long searchServMaintId) {
 		this.searchServMaintId = searchServMaintId;
 	}
-	@Column(name = "FUELTYPE")
+
 	public String getFeulType() {
 		return feulType;
 	}
@@ -48,7 +33,7 @@ public class SearchServMaint implements Serializable {
 	public void setFeulType(String feulType) {
 		this.feulType = feulType;
 	}
-	@Column(name = "SERVMAINTL1")
+
 	public String getServMaintL1() {
 		return servMaintL1;
 	}
@@ -56,7 +41,7 @@ public class SearchServMaint implements Serializable {
 	public void setServMaintL1(String servMaintL1) {
 		this.servMaintL1 = servMaintL1;
 	}
-	@Column(name = "SERVMAINTL2")
+
 	public String getServMaintL2() {
 		return servMaintL2;
 	}
@@ -64,7 +49,7 @@ public class SearchServMaint implements Serializable {
 	public void setServMaintL2(String servMaintL2) {
 		this.servMaintL2 = servMaintL2;
 	}
-	@Column(name = "UPLOADPHOTO")
+
 	public String getUploadPhotos() {
 		return uploadPhotos;
 	}
@@ -72,7 +57,7 @@ public class SearchServMaint implements Serializable {
 	public void setUploadPhotos(String uploadPhotos) {
 		this.uploadPhotos = uploadPhotos;
 	}
-	@Column(name = "COVEREDUNDINS")
+
 	public boolean isCoveredUnderIns() {
 		return coveredUnderIns;
 	}
@@ -80,7 +65,7 @@ public class SearchServMaint implements Serializable {
 	public void setCoveredUnderIns(boolean coveredUnderIns) {
 		this.coveredUnderIns = coveredUnderIns;
 	}
-	@Column(name = "FREETEXT")
+
 	public String getFreeText() {
 		return freeText;
 	}
@@ -89,7 +74,6 @@ public class SearchServMaint implements Serializable {
 		this.freeText = freeText;
 	}
 
-	@Column(name = "POSTCODE")
 	public String getPostCode() {
 		return postCode;
 	}
@@ -97,7 +81,7 @@ public class SearchServMaint implements Serializable {
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
-	@Column(name = "REGONO")
+
 	public String getRegNo() {
 		return regNo;
 	}
@@ -105,7 +89,7 @@ public class SearchServMaint implements Serializable {
 	public void setRegNo(String regNo) {
 		this.regNo = regNo;
 	}
-	@Column(name = "REGOSTATE")
+
 	public String getRegoState() {
 		return regoState;
 	}
@@ -113,7 +97,7 @@ public class SearchServMaint implements Serializable {
 	public void setRegoState(String regoState) {
 		this.regoState = regoState;
 	}
-	@Column(name = "YEAR")
+
 	public int getYear() {
 		return year;
 	}
@@ -121,7 +105,7 @@ public class SearchServMaint implements Serializable {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	@Column(name = "MAKE")
+
 	public String getMake() {
 		return make;
 	}
@@ -129,7 +113,7 @@ public class SearchServMaint implements Serializable {
 	public void setMake(String make) {
 		this.make = make;
 	}
-	@Column(name = "MODEL")
+
 	public String getModel() {
 		return model;
 	}
@@ -137,7 +121,7 @@ public class SearchServMaint implements Serializable {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	@Column(name = "VARIANT")
+
 	public String getVariant() {
 		return variant;
 	}
@@ -145,7 +129,7 @@ public class SearchServMaint implements Serializable {
 	public void setVariant(String variant) {
 		this.variant = variant;
 	}
-	@Column(name = "CURINSPROV")
+
 	public String getCurInsProv() {
 		return curInsProv;
 	}
@@ -153,6 +137,5 @@ public class SearchServMaint implements Serializable {
 	public void setCurInsProv(String curInsProv) {
 		this.curInsProv = curInsProv;
 	}
-		
 
 }

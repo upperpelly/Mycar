@@ -14,9 +14,14 @@ import au.com.pnspvtltd.mcd.domain.CarModelTemplate;
 import au.com.pnspvtltd.mcd.domain.ComingSoonUser;
 import au.com.pnspvtltd.mcd.domain.CountryTemplate;
 import au.com.pnspvtltd.mcd.domain.Dealer;
+import au.com.pnspvtltd.mcd.domain.DealerSearch;
+import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
+import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
 import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.PhotosTemplate;
 import au.com.pnspvtltd.mcd.domain.Search;
+import au.com.pnspvtltd.mcd.domain.SearchFinance;
+import au.com.pnspvtltd.mcd.domain.SearchInsurance;
 import au.com.pnspvtltd.mcd.domain.SpecificationTemplate;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserReviewTemplate;
@@ -28,6 +33,8 @@ import au.com.pnspvtltd.mcd.web.model.CountryTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.PhotosTemplateVO;
+import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
+import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.SpecificationTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.UserReviewTemplateVO;
@@ -140,6 +147,7 @@ public class DomainModelUtil {
 		return inventory;
 	}
 
+	// User Car/Search Details lead
 	public Search toSearch(final SearchVO searchVO) {
 
 		Search search = new Search();
@@ -153,6 +161,86 @@ public class DomainModelUtil {
 			e.printStackTrace();
 		}
 		return search;
+	}
+
+	// Dealer Vehicle Lead
+	public DealerSearch toDealerSearch(final SearchVO searchVO) {
+
+		DealerSearch dealerSearch = new DealerSearch();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// User Finance Lead
+	public SearchFinance toSearchFinance(final SearchFinanceVO searchFinanceVO) {
+
+		SearchFinance searchFinance = new SearchFinance();
+		try {
+			BeanUtils.copyProperties(searchFinance, searchFinanceVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchFinance;
+	}
+
+	// Dealer Finance Lead
+	public DealerSearchFinance toDealerSearchFinance(final SearchFinanceVO searchFinanceVO) {
+
+		DealerSearchFinance dealerSearchFinance = new DealerSearchFinance();
+		try {
+			BeanUtils.copyProperties(dealerSearchFinance, searchFinanceVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchFinance;
+	}
+
+	// User Insurance Lead
+	public SearchInsurance toSearchInsurance(final SearchInsuranceVO searchInsuranceVO) {
+
+		SearchInsurance searchInsurance = new SearchInsurance();
+		try {
+			BeanUtils.copyProperties(searchInsurance, searchInsuranceVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchInsurance;
+	}
+
+	// Dealer Insurance Lead
+	public DealerSearchInsurance toDealerSearchInsurance(final SearchInsuranceVO searchInsuranceVO) {
+
+		DealerSearchInsurance dealerSearchInsurance = new DealerSearchInsurance();
+		try {
+			BeanUtils.copyProperties(dealerSearchInsurance, searchInsuranceVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchInsurance;
 	}
 
 	public DealerVO fromDealer(final Dealer dealer) {

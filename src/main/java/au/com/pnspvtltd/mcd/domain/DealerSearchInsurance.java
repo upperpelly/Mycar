@@ -11,17 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DEALSEARCHINSURANCE")
-public class Deal_SearchInsurance implements Serializable {
+@Table(name = "dealsearchinsurance")
+public class DealerSearchInsurance implements Serializable {
 
 	private boolean isNew;
-	private Long dealSearchInsuranceId;
+	private Long dealerSearchInsuranceId;
 	private String postCode;
 	private String insuranceType;
 	private String regNo;
 	private String regoState;
 	private int year;
-	
+
 	private String make;
 	private String model;
 	private String variant;
@@ -39,6 +39,7 @@ public class Deal_SearchInsurance implements Serializable {
 	private Date dateOfBirth;
 	private Date ageOfAdditionalDriver;
 	private Long userId;
+
 	@Column(name = "USERID")
 	public Long getUserId() {
 		return userId;
@@ -47,6 +48,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
+
 	@Column(name = "ISNEW")
 	public boolean isNew() {
 		return isNew;
@@ -64,6 +66,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+
 	@Column(name = "AGEOFADDITIONALDRIV")
 	public Date getAgeOfAdditionalDriver() {
 		return ageOfAdditionalDriver;
@@ -81,6 +84,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
+
 	@Column(name = "INSURANCETYPE")
 	public String getInsuranceType() {
 		return insuranceType;
@@ -89,6 +93,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setInsuranceType(String insuranceType) {
 		this.insuranceType = insuranceType;
 	}
+
 	@Column(name = "REGONO")
 	public String getRegNo() {
 		return regNo;
@@ -97,6 +102,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setRegNo(String regNo) {
 		this.regNo = regNo;
 	}
+
 	@Column(name = "REGOSTATE")
 	public String getRegoState() {
 		return regoState;
@@ -105,6 +111,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setRegoState(String regoState) {
 		this.regoState = regoState;
 	}
+
 	@Column(name = "YEAR")
 	public int getYear() {
 		return year;
@@ -113,6 +120,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setYear(int year) {
 		this.year = year;
 	}
+
 	@Column(name = "MAKE")
 	public String getMake() {
 		return make;
@@ -121,6 +129,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setMake(String make) {
 		this.make = make;
 	}
+
 	@Column(name = "MODEL")
 	public String getModel() {
 		return model;
@@ -129,6 +138,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setModel(String model) {
 		this.model = model;
 	}
+
 	@Column(name = "VARIANT")
 	public String getVariant() {
 		return variant;
@@ -137,6 +147,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setVariant(String variant) {
 		this.variant = variant;
 	}
+
 	@Column(name = "MARKETVALUE")
 	public double getMarketValue() {
 		return marketValue;
@@ -145,6 +156,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setMarketValue(double marketValue) {
 		this.marketValue = marketValue;
 	}
+
 	@Column(name = "AGREEDVALUE")
 	public double getAgreedValue() {
 		return agreedValue;
@@ -153,6 +165,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setAgreedValue(double agreedValue) {
 		this.agreedValue = agreedValue;
 	}
+
 	@Column(name = "ISFINANCE")
 	public boolean isFinance() {
 		return finance;
@@ -161,6 +174,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setFinance(boolean finance) {
 		this.finance = finance;
 	}
+
 	@Column(name = "FINANCEPROV")
 	public String getFinanceProvider() {
 		return financeProvider;
@@ -169,6 +183,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setFinanceProvider(String financeProvider) {
 		this.financeProvider = financeProvider;
 	}
+
 	@Column(name = "DRIVINGLICENSETYPE")
 	public String getDrivingLicenseType() {
 		return drivingLicenseType;
@@ -177,6 +192,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setDrivingLicenseType(String drivingLicenseType) {
 		this.drivingLicenseType = drivingLicenseType;
 	}
+
 	@Column(name = "DRIVINGLICENSENO")
 	public String getDrivingLicenseNo() {
 		return drivingLicenseNo;
@@ -185,6 +201,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setDrivingLicenseNo(String drivingLicenseNo) {
 		this.drivingLicenseNo = drivingLicenseNo;
 	}
+
 	@Column(name = "DRIVINGLICENSEISSUESTATE")
 	public String getDrivingLicenseIssueState() {
 		return drivingLicenseIssueState;
@@ -193,6 +210,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setDrivingLicenseIssueState(String drivingLicenseIssueState) {
 		this.drivingLicenseIssueState = drivingLicenseIssueState;
 	}
+
 	@Column(name = "NOOFFAULTS")
 	public int getNoOfAtFaults() {
 		return noOfAtFaults;
@@ -201,6 +219,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setNoOfAtFaults(int noOfAtFaults) {
 		this.noOfAtFaults = noOfAtFaults;
 	}
+
 	@Column(name = "OTHERISSUES")
 	public String getOtherIssues() {
 		return otherIssues;
@@ -209,6 +228,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setOtherIssues(String otherIssues) {
 		this.otherIssues = otherIssues;
 	}
+
 	@Column(name = "CURINSPROV")
 	public String getCurInsProv() {
 		return curInsProv;
@@ -217,6 +237,7 @@ public class Deal_SearchInsurance implements Serializable {
 	public void setCurInsProv(String curInsProv) {
 		this.curInsProv = curInsProv;
 	}
+
 	@Column(name = "PREFEXCESSAMT")
 	public double getPrefExcessAmount() {
 		return prefExcessAmount;
@@ -226,17 +247,15 @@ public class Deal_SearchInsurance implements Serializable {
 		this.prefExcessAmount = prefExcessAmount;
 	}
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "DEALSEARCHINSURANCEID")
-	public Long getDealSearchInsuranceId() {
-		return dealSearchInsuranceId;
+	public Long getDealerSearchInsuranceId() {
+		return dealerSearchInsuranceId;
 	}
 
-	public void setDealSearchInsuranceId(Long searchInsuranceId) {
-		this.dealSearchInsuranceId = searchInsuranceId;
+	public void setDealerSearchInsuranceId(Long dealerSearchInsuranceId) {
+		this.dealerSearchInsuranceId = dealerSearchInsuranceId;
 	}
-	
 
 }

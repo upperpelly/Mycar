@@ -1,20 +1,10 @@
-package au.com.pnspvtltd.mcd.domain;
+package au.com.pnspvtltd.mcd.web.model;
 
-import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class DealerSearchTranspVO {
 
-@Entity
-@Table(name = "searchtransp")
-public class SearchTransp implements Serializable {
-
-	private Long searchTranspId;
+	private Long dealerSearchTranspId;
 	private String fromPostCodeAddr;
 	private String toPostCodeAddr;
 	private String transTypeReq;
@@ -27,7 +17,16 @@ public class SearchTransp implements Serializable {
 	private String freeText;
 	private boolean transpInsReq;
 	private String uploadPhotos;
-	@Column(name = "FROMPOSTADDR")
+	private Long userId;
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
 	public String getFromPostCodeAddr() {
 		return fromPostCodeAddr;
 	}
@@ -35,7 +34,7 @@ public class SearchTransp implements Serializable {
 	public void setFromPostCodeAddr(String fromPostCodeAddr) {
 		this.fromPostCodeAddr = fromPostCodeAddr;
 	}
-	@Column(name = "TOPOSTADDR")
+
 	public String getToPostCodeAddr() {
 		return toPostCodeAddr;
 	}
@@ -43,7 +42,7 @@ public class SearchTransp implements Serializable {
 	public void setToPostCodeAddr(String toPostCodeAddr) {
 		this.toPostCodeAddr = toPostCodeAddr;
 	}
-	@Column(name = "TRANSTYPEREQ")
+
 	public String getTransTypeReq() {
 		return transTypeReq;
 	}
@@ -51,7 +50,7 @@ public class SearchTransp implements Serializable {
 	public void setTransTypeReq(String transTypeReq) {
 		this.transTypeReq = transTypeReq;
 	}
-	@Column(name = "PICKUPDATETIME")
+
 	public Date getPickUpDateTime() {
 		return pickUpDateTime;
 	}
@@ -59,7 +58,7 @@ public class SearchTransp implements Serializable {
 	public void setPickUpDateTime(Date pickUpDateTime) {
 		this.pickUpDateTime = pickUpDateTime;
 	}
-	@Column(name = "NOOFCARS")
+
 	public int getNoOfCars() {
 		return noOfCars;
 	}
@@ -67,7 +66,7 @@ public class SearchTransp implements Serializable {
 	public void setNoOfCars(int noOfCars) {
 		this.noOfCars = noOfCars;
 	}
-	@Column(name = "ISTRANSINSREQ")
+
 	public boolean isTranspInsReq() {
 		return transpInsReq;
 	}
@@ -76,17 +75,14 @@ public class SearchTransp implements Serializable {
 		this.transpInsReq = transpInsReq;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "SEARCHTRANSPID")
-	public Long getSearchTranspId() {
-		return searchTranspId;
+	public Long getDealerSearchTranspId() {
+		return dealerSearchTranspId;
 	}
 
-	public void setSearchTranspId(Long searchTranspId) {
-		this.searchTranspId = searchTranspId;
+	public void setDealerSearchTranspId(Long dealerSearchTranspId) {
+		this.dealerSearchTranspId = dealerSearchTranspId;
 	}
-		@Column(name = "UPLOADPHOTO")
+
 	public String getUploadPhotos() {
 		return uploadPhotos;
 	}
@@ -94,7 +90,7 @@ public class SearchTransp implements Serializable {
 	public void setUploadPhotos(String uploadPhotos) {
 		this.uploadPhotos = uploadPhotos;
 	}
-	@Column(name = "FREETEXT")
+
 	public String getFreeText() {
 		return freeText;
 	}
@@ -103,7 +99,6 @@ public class SearchTransp implements Serializable {
 		this.freeText = freeText;
 	}
 
-	@Column(name = "YEAR")
 	public int getYear() {
 		return year;
 	}
@@ -111,7 +106,7 @@ public class SearchTransp implements Serializable {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	@Column(name = "MAKE")
+
 	public String getMake() {
 		return make;
 	}
@@ -119,7 +114,7 @@ public class SearchTransp implements Serializable {
 	public void setMake(String make) {
 		this.make = make;
 	}
-	@Column(name = "MODEL")
+
 	public String getModel() {
 		return model;
 	}
@@ -127,7 +122,7 @@ public class SearchTransp implements Serializable {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	@Column(name = "VARIANT")
+
 	public String getVariant() {
 		return variant;
 	}
@@ -135,6 +130,5 @@ public class SearchTransp implements Serializable {
 	public void setVariant(String variant) {
 		this.variant = variant;
 	}
-			
 
 }

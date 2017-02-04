@@ -1,20 +1,8 @@
-package au.com.pnspvtltd.mcd.domain;
+package au.com.pnspvtltd.mcd.web.model;
 
-import java.io.Serializable;
-import java.sql.Date;
+public class DealerSearchServMaintVO {
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "DEALSEARCHSERVMAINT")
-public class Deal_SearchServMaint implements Serializable {
-
-	private Long dealSearchServMaintId;
+	private Long dealerSearchServMaintId;
 	private String postCode;
 	private int year;
 	private String regNo;
@@ -30,7 +18,7 @@ public class Deal_SearchServMaint implements Serializable {
 	private String curInsProv;
 	private String freeText;
 	private Long userId;
-	@Column(name = "USERID")
+
 	public Long getUserId() {
 		return userId;
 	}
@@ -38,18 +26,15 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "DEALSEARCHSERVMAINTID")
-	public Long getDealSearchServMaintId() {
-		return dealSearchServMaintId;
+
+	public Long getDealerSearchServMaintId() {
+		return dealerSearchServMaintId;
 	}
 
-	public void setDealSearchServMaintId(Long searchServMaintId) {
-		this.dealSearchServMaintId = searchServMaintId;
+	public void setDealerSearchServMaintId(Long dealerSearchServMaintId) {
+		this.dealerSearchServMaintId = dealerSearchServMaintId;
 	}
-	@Column(name = "FUELTYPE")
+
 	public String getFeulType() {
 		return feulType;
 	}
@@ -57,7 +42,7 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setFeulType(String feulType) {
 		this.feulType = feulType;
 	}
-	@Column(name = "SERVMAINTL1")
+
 	public String getServMaintL1() {
 		return servMaintL1;
 	}
@@ -65,7 +50,7 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setServMaintL1(String servMaintL1) {
 		this.servMaintL1 = servMaintL1;
 	}
-	@Column(name = "SERVMAINTL2")
+
 	public String getServMaintL2() {
 		return servMaintL2;
 	}
@@ -73,7 +58,7 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setServMaintL2(String servMaintL2) {
 		this.servMaintL2 = servMaintL2;
 	}
-	@Column(name = "UPLOADPHOTO")
+
 	public String getUploadPhotos() {
 		return uploadPhotos;
 	}
@@ -81,7 +66,7 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setUploadPhotos(String uploadPhotos) {
 		this.uploadPhotos = uploadPhotos;
 	}
-	@Column(name = "COVEREDUNDINS")
+
 	public boolean isCoveredUnderIns() {
 		return coveredUnderIns;
 	}
@@ -89,7 +74,7 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setCoveredUnderIns(boolean coveredUnderIns) {
 		this.coveredUnderIns = coveredUnderIns;
 	}
-	@Column(name = "FREETEXT")
+
 	public String getFreeText() {
 		return freeText;
 	}
@@ -98,7 +83,6 @@ public class Deal_SearchServMaint implements Serializable {
 		this.freeText = freeText;
 	}
 
-	@Column(name = "POSTCODE")
 	public String getPostCode() {
 		return postCode;
 	}
@@ -106,7 +90,7 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
-	@Column(name = "REGONO")
+
 	public String getRegNo() {
 		return regNo;
 	}
@@ -114,7 +98,7 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setRegNo(String regNo) {
 		this.regNo = regNo;
 	}
-	@Column(name = "REGOSTATE")
+
 	public String getRegoState() {
 		return regoState;
 	}
@@ -122,7 +106,7 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setRegoState(String regoState) {
 		this.regoState = regoState;
 	}
-	@Column(name = "YEAR")
+
 	public int getYear() {
 		return year;
 	}
@@ -130,7 +114,7 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	@Column(name = "MAKE")
+
 	public String getMake() {
 		return make;
 	}
@@ -138,7 +122,7 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setMake(String make) {
 		this.make = make;
 	}
-	@Column(name = "MODEL")
+
 	public String getModel() {
 		return model;
 	}
@@ -146,7 +130,7 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	@Column(name = "VARIANT")
+
 	public String getVariant() {
 		return variant;
 	}
@@ -154,7 +138,7 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setVariant(String variant) {
 		this.variant = variant;
 	}
-	@Column(name = "CURINSPROV")
+
 	public String getCurInsProv() {
 		return curInsProv;
 	}
@@ -162,6 +146,5 @@ public class Deal_SearchServMaint implements Serializable {
 	public void setCurInsProv(String curInsProv) {
 		this.curInsProv = curInsProv;
 	}
-		
 
 }

@@ -13,14 +13,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "inventoryrepo")
 public class Inventory implements Serializable {
 
+	private Dealer dealer;
 	private Long repoId;
-	private long refId;
+	private Long refId;
 	private String modelYear;
 	private String modelDisplay;
 	private String modelName;
@@ -132,11 +134,11 @@ public class Inventory implements Serializable {
 
 	// carQuery
 
-	public long getRefId() {
+	public Long getRefId() {
 		return refId;
 	}
 
-	public void setRefId(long dealerId) {
+	public void setRefId(Long dealerId) {
 		this.refId = dealerId;
 	}
 
@@ -803,4 +805,16 @@ public class Inventory implements Serializable {
 	public void setMake(String make) {
 		this.make = make;
 	}
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public Dealer getDealer() {
+		return dealer;
+	}
+
+	public void setDealer(Dealer dealer) {
+		this.dealer = dealer;
+	}
+	
+	
 }
