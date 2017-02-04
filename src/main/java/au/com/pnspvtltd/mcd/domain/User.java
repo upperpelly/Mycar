@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "userrepo")
 public class User implements Serializable {
@@ -38,7 +39,11 @@ public class User implements Serializable {
 	private boolean payDeposit;
 
 	List<Search> search;
-
+	List<SearchInsurance> searchInsurance;
+	List<SearchFinance> searchFinance;
+	List<SearchServMaint> searchServMaint;
+	List<SearchTransp> searchTransp;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "USERID")
@@ -202,7 +207,7 @@ public class User implements Serializable {
 		this.payDeposit = payDeposit;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
 	public List<Search> getSearch() {
 		return search;
@@ -211,5 +216,43 @@ public class User implements Serializable {
 	public void setSearch(List<Search> search) {
 		this.search = search;
 	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "userId")
+	public List<SearchInsurance> getSearchInsurance() {
+		return searchInsurance;
+	}
+
+	public void setSearchInsurance(List<SearchInsurance> search) {
+		this.searchInsurance = search;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "userId")
+	public List<SearchFinance> getSearchFinance() {
+		return searchFinance;
+	}
+
+	public void setSearchFinance(List<SearchFinance> search) {
+		this.searchFinance = search;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "userId")
+	public List<SearchServMaint> getSearchServMaint() {
+		return searchServMaint;
+	}
+
+	public void setSearchServMaint(List<SearchServMaint> search) {
+		this.searchServMaint = search;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "userId")
+	public List<SearchTransp> getSearchTransp() {
+		return searchTransp;
+	}
+
+	public void setSearchTransp(List<SearchTransp> search) {
+		this.searchTransp = search;
+	}
+
 
 }

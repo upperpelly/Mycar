@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "templateyoutube")
 public class YoutubeTemplate implements Serializable {
 
-	private long templateYoutubeId;
+	private Long templateYoutubeId;
 	private String ylink1;
 	private String flex1;
 	private String flex2;
@@ -68,11 +68,11 @@ public class YoutubeTemplate implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "TEMPLATEYOUTUBEID")
-	public long getTemplateYoutubeId() {
+	public Long getTemplateYoutubeId() {
 		return this.templateYoutubeId;
 	}
 
-	public void setTemplateYoutubeId(long templateYoutubeId) {
+	public void setTemplateYoutubeId(Long templateYoutubeId) {
 		this.templateYoutubeId = templateYoutubeId;
 	}
 

@@ -66,6 +66,296 @@ $.ajax({
 
 });
 </script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<script src="../js/angular-resource.js"></script>
+<script src="../js/ui-bootstrap-tpls-0.11.0.js"></script>
+<script>
+    
+	var mainApp1 = angular.module("mainApp1", [ 'ui.bootstrap', 'ngResource' ]);
+	mainApp1.controller('overviewController', function($scope, $stateParams) {
+	    var index = $stateParams.index;
+	    var anotherKey = $stateParams.anotherKey;
+	});
+	mainApp1
+			.controller(
+					'myController1',
+					function($scope, $http) {
+
+						$scope.predicate = 'name';
+						$scope.reverse = true;
+						$scope.currentPage = 1;
+						$scope.order = function(predicate) {
+							$scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse
+									: false;
+							$scope.predicate = predicate;
+						};
+
+						$scope.updatePagination = function() {
+							$scope.totalItems = $scope.biil.details.length;
+							$scope.numPerPage = 5;
+							$scope.paginate = function(value) {
+								var begin, end, index;
+								begin = ($scope.currentPage - 1)
+										* $scope.numPerPage;
+								end = begin + $scope.numPerPage;
+								index = $scope.biil.details.indexOf(value);
+								return (begin <= index && index < end);
+							};
+						};
+						function submitSearchForm() {
+													
+alert("Came here"+$('#data_model_body').val());
+var e = document.getElementById("car-model-trims"); 
+var strUser = e.options[e.selectedIndex].text;
+		
+														var jsonInputToAPI = {
+  "tempModelId": null,
+  "modelYear": $('#car-years').val(),
+  "modelDisplay": $('#car-makes').val(),
+  "modelName": $('#car-models').val(),
+  "modelTrim": strUser ,
+  "mrlp": $("mrpPrice").val(),
+  "extraCost": $("extraCost").val(),
+  "onRoadCost": $("onRoadCost").val(),
+  "avgPrice": $("driveAwayPrice").val(),
+  "photosTemplate": [
+    {
+      "templatePhotoId": null,
+      "photo1": $("uploadphoto1").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templatePhotoId": null,
+      "photo1": $("uploadphoto2").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templatePhotoId": null,
+      "photo1": $("uploadphoto3").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templatePhotoId": null,
+      "photo1": $("uploadphoto4").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    }
+  ],
+  "countryTemplate": [
+    {
+      "templateCountryId": null,
+      "country": $("country1").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateCountryId": null,
+      "country": $("country2").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateCountryId": null,
+      "country": $("country3").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateCountryId": null,
+      "country": $("country4").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    }
+  ],
+  "youtubeTemplate": [
+    {
+      "templateYoutubeId": null,
+      "ylink1": $("uploadLink1").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateYoutubeId": null,
+      "ylink1": $("uploadLink2").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateYoutubeId": null,
+      "ylink1": $("uploadLink3").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateYoutubeId": null,
+      "ylink1": $("uploadLink4").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    }
+  ],
+  "blogTemplate": [
+    {
+      "templateBlogId": null,
+      "blink1": $("writeBlog1").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateBlogId": null,
+      "blink1": $("writeBlog2").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateBlogId": null,
+      "blink1": $("writeBlog3").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateBlogId": null,
+      "blink1": $("writeBlog4").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    }
+  ],
+  "userReviewTemplate": [
+    {
+      "templateUserReviewId": null,
+      "review1": "review1",
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    }
+  ],
+  "specificationTemplate": {
+    "templateSpecificationId": null,
+    "colorName1": "colorName1",
+    "colorName2": "colorName2",
+    "colorName3": "colorName3",
+    "colorName4": "colorName4",
+    "colorName5": "colorName5",
+    "makeCountry": $("data_make_country").val(),
+    "modelBody": $("data_model_body").val(),
+    "modelEnginePosition": $("data_model_engine_position").val(),
+    "modelEngineType": $("data_model_engine_type").val(),
+    "modelEngineCyl": $("data_model_engine_cyl").val(),
+    "modelEnginecc": $("data_model_engine_cc").val(),
+    "modelEnginel": $("data_model_engine_l").val(),
+    "modelEngineci": $("data_model_engine_ci").val(),
+    "modelEngineBoremm": $("data_model_engine_bore_mm").val(),
+    "modelEngineBorein": $("data_model_engine_bore_in").val(),
+    "modelEngineStrokemm": $("data_model_engine_stroke_mm").val(),
+    "modelEngineStrokein": $("data_model_engine_stroke_in").val(),
+    "modelEngineValvespercyl": $("data_model_engine_valves_per_cyl").val(),
+    "modelEngineValves": $("data_model_engine_valves").val(),
+    "modelEnginePowerhp": $("data_model_engine_power_hp").val(),
+    "modelEnginePowerps": $("data_model_engine_power_ps").val(),
+    "modelEnginePowerkw": $("data_model_engine_power_kw").val(),
+    "modelEnginePowerrpm": $("data_model_engine_power_rpm").val(),
+    "modelEngineTorquenm": $("data_model_engine_torque_nm").val(),
+    "modelEngineTorquelbft": $("data_model_engine_torque_lbft").val(),
+    "modelEngineTorquekgm": $("data_model_engine_torque_kgm").val(),
+    "modelEngineTorquerpm": $("data_model_engine_torque_rpm").val(),
+    "modelEngineCompression": $("data_model_engine_compression").val(),
+    "modelEngineFuel": $("data_model_engine_fuel").val(),
+    "modelDrive": $("data_model_drive").val(),
+    "modelTransmissionType": $("data_model_transmission_type").val(),
+    "modelTopSpeedkph": $("data_model_top_speed_kph").val(),
+    "modelTopSpeedmph": $("data_model_top_speed_mph").val(),
+    "model0to100kph": $("data_model_0_to_100_kph").val(),
+    "modelDoors": $("data.model_doors").val(),
+    "modelSeats": $("data_model_seats").val(),
+    "modelWeightkg": $("data_model_weight_kg").val(),
+    "modelWeightlbs": $("data_model_weight_lbs").val(),
+    "modelLengthmm": $("data_model_length_mm").val(),
+    "modelLengthin": $("data_model_length_in").val(),
+      "modelWidthmm": $("data_model_width_mm").val(),
+    "modelWidthin": $("data_model_width_in").val(),
+    "modelHeightmm": $("data_model_height_mm").val(),
+    "modelHeightin": $("data_model_height_in").val(),
+    "modelWheelbasemm": $("data_model_wheelbase_mm").val(),
+    "modelWheelbasein": $("data_model_wheelbase_in").val(),
+    "modellkmCity": $("data_model_lkm_city").val(),
+    "modelmpgCity": $("data_model_mpg_city").val(),
+    "modellkmhwy": $("data_model_lkm_hwy").val(),
+    "modelmpghwy": $("data_model_mpg_hwy").val(),
+    "modellkmMixed": $("data_model_lkm_mixed").val(),
+    "modelmpgMixed": $("data_model_mpg_mixed").val(),
+    "modelFuelcapl": $("data_model_fuel_cap_l").val(),
+    "modelFuelcapg": $("data_model_fuel_cap_g").val()
+  }
+}
+														alert("Before Call");
+														var wsURL = 'http://localhost:8080/MyCarDomain/api/search/car';
+														/*var wsURL = 'http://www.autoscoop.com.au/api/carModelTemplate';*/
+															    $http({
+																			method : 'POST',
+																			url : wsURL,
+																			data: jsonInputToAPI
+																							
+																		}).success(function(data) {
+																			alert("successful");
+																							alert("Thank You. Your Seach ID is "+data.tempModelId);
+																							
+																						});
+
+								
+														
+													};
+
+					    
+
+						$scope.submitSearchForm = submitSearchForm;
+						$scope.init = function() {
+							$scope.biil = {
+								details : []
+							};
+							$scope.submitForm();
+						};
+
+					});
+</script>
+
+
     <!-- Main Style -->
     <link id="main-style" rel="stylesheet" href="css/style.css">
    <!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[84,140] -->
@@ -143,7 +433,7 @@ img.emoji {
       <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
     <![endif]-->
 </head>
-<body>
+<body ng-app="mainApp1" >
     
     <div id="page-wrapper">
         <header id="header" class="navbar-static-top">
@@ -158,7 +448,7 @@ carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-mode
 
 //Set onclick function for the US filter checkbox and show data button
 $('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
-$('#cq-show-data').click(  function(){ carquery.populateCarData('car-model-data'); } );
+$('#cq-show-data').click(  function(){ carquery.populateCarDataMRP('car-model-data'); } );
 $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model-data','price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); } );
 	
 });
@@ -539,7 +829,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         <button id="cq-show-data" type="button" class="full-width btn-large" onclick="showDiv()">Next</button>
                                     </div>
 
-<div class="form-group row">
+<div class="form-group row" ng-click="submitSearchForm()" ng-controller="myController1">
                                     <div class="col-sm-6 col-md-5">
                                         <button type="submit" class="full-width btn-large">CONFIRM SAVE</button>
                                     </div>
@@ -570,19 +860,19 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
                                             <label>MRLP price</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="mrpPrice" name="mrpPrice"/>
                                         </div>
                                       <div class="col-sm-5 col-md-4">
                                             <label>Extra Cost</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="extraCost" name="extraCost"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>On Road Cost</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="onRoadCost" name="onRoadCost"/>
                                         </div>
                                          <div class="col-sm-5 col-md-4">
                                             <label>Drive away price</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="driveAwayPrice" name="driveAwayPrice"/>
                                         </div>
                                     </div>
                                    
@@ -600,20 +890,20 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     <h2>Please Upload photos</h2>
                                        <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Upload photo1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Upload photo 1</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto1" name="uploadphoto1"/>
                                         </div>
                                       <div class="col-sm-5 col-md-4">
-                                            <label>Upload photo1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Upload photo 2</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto2" name="uploadphoto2"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Upload photo1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Upload photo 3</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto3" name="uploadphoto3"/>
                                         </div>
                                          <div class="col-sm-5 col-md-4">
-                                            <label>Upload photo1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Upload photo 4</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
                                         </div>
                                     </div>
                                     </div>
@@ -621,20 +911,20 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     <h2>Please Upload Youtube links</h2>
                                        <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Upload link1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Upload link 1</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink1" name="uploadlink1"/>
                                         </div>
                                       <div class="col-sm-5 col-md-4">
-                                            <label>Upload link1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Upload link 2</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink2" name="uploadlink2"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Upload link1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Upload link 3</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink3" name="uploadlink3"/>
                                         </div>
                                          <div class="col-sm-5 col-md-4">
-                                            <label>Upload link1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Upload link 4</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink4" name="uploadlink4"/>
                                         </div>
                                     </div>
                                     </div>
@@ -642,20 +932,20 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     <h2>Please write review</h2>
                                        <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Review1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Review 1</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="writeReview1" name="writeReview1"/>
                                         </div>
                                       <div class="col-sm-5 col-md-4">
-                                            <label>Review1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Review 2</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="writeReview2" name="writeReview2"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Review1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Review 3</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="writeReview3" name="writeReview3"/>
                                         </div>
                                          <div class="col-sm-5 col-md-4">
-                                            <label>Review1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Review 4</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="writeReview4" name="writeReview4"/>
                                         </div>
                                     </div>
                                     </div>
@@ -663,20 +953,20 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     <h2>Please write blogs</h2>
                                        <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Blog1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Blog 1</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="writeBlog1" name="writeBlog1"/>
                                         </div>
                                       <div class="col-sm-5 col-md-4">
-                                            <label>Blog1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Blog 2</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="writeBlog2" name="writeBlog2"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Blog1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Blog 3</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="writeBlog3" name="writeBlog3"/>
                                         </div>
                                          <div class="col-sm-5 col-md-4">
-                                            <label>Blog1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Blog 4</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="writeBlog4" name="writeBlog4"/>
                                         </div>
                                     </div>
                                     </div>
@@ -684,20 +974,20 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     <h2>Please provide available countries</h2>
                                        <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Country1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Country 1</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="country1" name="country1"/>
                                         </div>
                                       <div class="col-sm-5 col-md-4">
-                                            <label>Country1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Country 2</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="country2" name="country2"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Country1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Country 3</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="country3" name="country3"/>
                                         </div>
                                          <div class="col-sm-5 col-md-4">
-                                            <label>Country1</label>
-                                            <input type="text" class="input-text full-width" value="2913" placeholder="" />
+                                            <label>Country 4</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="country4" name="country4"/>
                                         </div>
                                     </div>
                                     </div>

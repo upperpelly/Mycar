@@ -1,7 +1,6 @@
 package au.com.pnspvtltd.mcd.service.impl;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -22,14 +21,16 @@ public class InventoryServiceImpl implements InventoryService{
 	private static final Logger LOGGER = LoggerFactory.getLogger(InventoryServiceImpl.class);
 	
 	@Autowired
-	InventoryRepository inventoryRepository;
+	private InventoryRepository inventoryRepository;
+	@Autowired
+	private DomainModelUtil domainModelUtil;
 	
 	@Override
 	public List<InventoryVO> getMinifiedInventoryFor(String modelYear, String modelDisplay, String modelName, String modelTrim) {
 		
 		List<InventoryVO> inventoryVOs = new ArrayList<>();
 		for(Inventory inventory : inventoryRepository.getInventoryFor(modelYear, modelDisplay, modelName, modelTrim)){
-			inventoryVOs.add(DomainModelUtil.fromInventory(inventory, true));
+			inventoryVOs.add(domainModelUtil.fromInventory(inventory, true));
 		}
 		return inventoryVOs;
 	}
