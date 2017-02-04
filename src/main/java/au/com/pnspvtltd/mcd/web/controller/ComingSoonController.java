@@ -51,7 +51,7 @@ public class ComingSoonController {
 		response.setStatus(HttpStatus.CREATED.value());
 		
 		try {
-			smtp.sendMail(userVO.getComingSoonUserEmail(),"Autoscoop","You have been successfully Registered");
+			smtp.sendMail(userVO.getComingSoonUserEmail(),"Autoscoop Notification","You have been successfully Registered");
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
