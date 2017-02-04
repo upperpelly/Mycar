@@ -362,7 +362,7 @@ alert("Came here inside sumit Search form");
 }
 														 alert("Before Call12"); 
 														/*var wsURL = 'http://localhost:8080/MyCarDomain/api/carModelTemplate';*/
-														var wsURL = 'http://autoscoop.com.au/api/carModelTemplate';
+														var wsURL = 'http://www.autoscoop.com.au/api/carModelTemplate';
 														alert("url"+wsURL);
 															    $http({
 																			method : 'POST',
@@ -463,7 +463,7 @@ $.ajax({
 	    type: "GET",  
 	    url: url,  
 	       success: function(result){
-	    	   alert("successfully searched in Autoscoop DB12");
+	    	   alert("successfully searched in Autoscoop DB");
 	    	   /*alert("result value"+result.tempModelId);*/
 	    	   if(result.tempModelId !== undefined){
 	    		   alert("Template Card Model found with CardModel ID : "+result.tempModelId);
