@@ -21,6 +21,44 @@ public class SearchFinanceVO {
 	private String incomeType;
 	private String creditRating;
 	private Date dateOfBirth;
+	
+	private int yearEmploymentBusiness;
+	private String incomeBeforeSuperTax;
+	private String incomeAfterSuperTax;
+	private String ifBusinessProvideABN;
+	
+	
+	public int getYearEmploymentBusiness() {
+		return yearEmploymentBusiness;
+	}
+
+	public void setYearEmploymentBusiness(int yearEmploymentBusiness) {
+		this.yearEmploymentBusiness = yearEmploymentBusiness;
+	}
+
+	public String getIncomeBeforeSuperTax() {
+		return incomeBeforeSuperTax;
+	}
+
+	public void setIncomeBeforeSuperTax(String incomeBeforeSuperTax) {
+		this.incomeBeforeSuperTax = incomeBeforeSuperTax;
+	}
+
+	public String getIncomeAfterSuperTax() {
+		return incomeAfterSuperTax;
+	}
+
+	public void setIncomeAfterSuperTax(String incomeAfterSuperTax) {
+		this.incomeAfterSuperTax = incomeAfterSuperTax;
+	}
+
+	public String getIfBusinessProvideABN() {
+		return ifBusinessProvideABN;
+	}
+
+	public void setIfBusinessProvideABN(String ifBusinessProvideABN) {
+		this.ifBusinessProvideABN = ifBusinessProvideABN;
+	}
 
 	public boolean isNew() {
 		return isNew;

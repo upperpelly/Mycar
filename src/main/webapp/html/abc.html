@@ -203,11 +203,13 @@ alert("Came here"+modelTrim);
 																	"modelTrim": modelTrim,
 																			"carColor" : $("carColor").val(),
 																			 "postCode":$('#postCode').val(),
-																			"make":"ss",
+																			"make":$('#seats').val(),
 																			"bodyType":$('#driveType').val(),
-																			"state":"ss",
+																			"state":$('#fuelType').val(),
 																			"region":$('#freetext').val(),
-																			"ausCapTer":"ss",
+																			"ausCapTer":$('#vehiclePurpose').val(),
+																			"region":$('#transmission').val(),
+																			"sMake":$('#extraExternal1').val(),
 																			"extraExter2":$('#extraExternal2').val(),
 																			"extraExter3":$('#extraExternal3').val(),	
 																			"extraExter4":$('#extraExternal4').val(),	
@@ -223,24 +225,41 @@ alert("Came here"+modelTrim);
 																	"modelDisplay": modelDisplay,
 																	"modelName": modelName,															      
 																	"modelTrim": modelTrim,
+																	"postCode":$('#postCode').val(),
 																	"incomeType":$('#incomeType').val(),
 																	"yearEmploymentBusiness":$('#yearEmployement').val(),
 																	"incomeBeforeSuperTax":$('#incomebefore').val(),
 																	"incomeAfterSuperTax":$('#incomeAfter').val(),
 																	"ifBusinessProvideABN":$('#ifBusPABN').val(),
 																	"creditRating":$('#creditRating').val(),
+																	"vehValue":$('#vehValue').val(),
+																	"balloonPay":$('#balloonPay').val(),
+																	"annualIncome":$('#annualIncome').val(),
 																	"loanAmount":$('#loanAmount').val(),
 																	 "loanPeriod":$('#loanPeriod').val(),
-																	 "noOfDependence":$('#noDependencies').val(),
+																	 "dateOfBirth":null,
+																	 "noOfDependence":$('#noDependencies').val()
 																},
 																"insuranceLead":{
 																	"modelYear":modelYear,
 																	"modelDisplay": modelDisplay,
 																	"modelName": modelName,															      
 																	"modelTrim": modelTrim,
+																	"postCode":$('#postCode').val(),
+																	"insuranceType":$('#insuranceType').val(),
+																	"regNo":$('#reg-no').val(),
+																	"regoState":$('#regoState').val(),
+																	"marketValue":$('#marketValue').val(),
+																	"agreedValue":$('#agreedValue').val(),
+																	"otherIssues":$('#OtherIssue').val(),
+																	"prefExcessAmount":$('#insurance-excessAmount').val(),
 																	"drivingLicenceType":$('#drivingLicenseType').val(),
 																	"drivingLicenceNumber":$('drivingLicenseNumber').val(),
-																	"drivingLicenceIssuingState":$('drivingLicenseIssuingState').val()
+																	"drivingLicenceIssuingState":$('drivingLicenseIssuingState').val(),
+																	"noOfAtFaultClaims":$('noOfAtFaultsClaims').val(),
+																	"dateOfBirth":null,
+																	"indicativeExcessAmount":$('indicativeExcessAmount').val(),
+																	"ageOfAdditionalDriver":null
 																}
 															}
 
@@ -292,7 +311,7 @@ alert("Came here"+modelTrim);
   	"sRegion":$('#transmission').val()
   } */
 														alert("Before Call");
-														var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/car';
+														/*var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/car';*/
 														var wsURL = 'http://www.autoscoop.com.au/api/eBid/car';
 															    $http({
 																			method : 'POST',
@@ -1213,7 +1232,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                     <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
                                             <label>Post</label>
-                                            <input type="text" id="postCode" name="postCode" class="input-text full-width" value="2913" placeholder="" />
+                                            <input type="text" id="postCode" name="postCode" class="input-text full-width" value="" placeholder="" />
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Colour</label>
@@ -1287,8 +1306,13 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Extra External 1</label>
+                                        
+                                        
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="form-group row">
+                                    <div class="col-sm-5 col-md-4">
+                                            <label>Extra External Fitting 1</label>
                                             <div class="selector">
                                                 <select class="full-width" id="extraExternal1" name="extraExternal1">
                                                     <option>Bull Bar</option>
@@ -1302,8 +1326,18 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 </select>
                                             </div>
                                         </div>
-                                         <div class="col-sm-5 col-md-4">
-                                            <label>Extra External 2</label>
+                                        </div>
+                                    
+                             <div class="toggle-container box">
+                                <div class="panel style1">
+                                    <h4 class="panel-title">
+                                        <a href="#tgg1" data-toggle="collapse">Additional Extra External Fittings</a>
+                                    </h4>
+                                    <div class="panel-collapse collapse" id="tgg1">
+                                        <div class="panel-content">
+                                       <div class="form-group row">
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Extra External Fitting 2</label>
                                             <div class="selector">
                                                 <select class="full-width" id="extraExternal2" name="extraExternal2">
                                                     <option>Bull Bar</option>
@@ -1316,10 +1350,8 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Extra External 3</label>
+                                            <label>Extra External Fitting 3</label>
                                             <div class="selector">
                                                 <select class="full-width" id="extraExternal3" name="extraExternal3">
                                                     <option>Bull Bar</option>
@@ -1334,7 +1366,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                             </div>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Extra External 4</label>
+                                            <label>Extra External Fitting 4</label>
                                             <div class="selector">
                                                 <select class="full-width" id="extraExternal4" name="extraExternal4">
                                                     <option>Bull Bar</option>
@@ -1348,7 +1380,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                             </div>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Extra External 5</label>
+                                            <label>Extra External Fitting 5</label>
                                             <div class="selector">
                                                 <select class="full-width" id="extraExternal5" name="extraExternal5">
                                                     <option>Bull Bar</option>
@@ -1363,9 +1395,14 @@ We suggest that you contact the host to confirm availability and rates before su
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                        </div><!-- end content -->
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                                 <div class="form-group row">
                                        <div class="col-sm-5 col-md-4">
-                                            <label>Extra Internal 1</label>
+                                            <label>Extra Internal Fitting 1</label>
                                             <div class="selector">
                                                 <select class="full-width"  id="extraInternal1" name="extraInternal1">
                                                     <option>leather Seats</option>
@@ -1388,8 +1425,18 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 </select>
                                             </div>
                                         </div>
+                                        
+                                        
+                                    </div>    
+                                  <div class="toggle-container box">
+                                <div class="panel style1">
+                                    <h4 class="panel-title">
+                                        <a href="#tgg2" data-toggle="collapse">Additional Extra Internal Fittings</a>
+                                    </h4>
+                                    <div class="panel-collapse collapse" id="tgg2">
+                                        <div class="panel-content">
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Extra Internal 2</label>
+                                            <label>Extra Internal Fitting 2</label>
                                             <div class="selector">
                                                 <select class="full-width" id="extraInternal2" name="extraInternal2">
                                                     <option>leather Seats</option>
@@ -1413,7 +1460,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                             </div>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Extra Internal 3</label>
+                                            <label>Extra Internal Fitting 3</label>
                                             <div class="selector">
                                                 <select class="full-width" id="extraInternal3" name="extraInternal3">
                                                     <option>leather Seats</option>
@@ -1436,11 +1483,8 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 </select>
                                             </div>
                                         </div>
-                                        
-                                    </div>
-                                    <div class="form-group row">
-                                         <div class="col-sm-5 col-md-4">
-                                            <label>Extra Internal 4</label>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Extra Internal Fitting 4</label>
                                             <div class="selector">
                                                 <select class="full-width" id="extraInternal4" name="extraInternal4">
                                                     <option>leather Seats</option>
@@ -1464,7 +1508,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                             </div>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
-                                            <label>Extra Internal 5</label>
+                                            <label>Extra Internal Fitting 5</label>
                                             <div class="selector">
                                                 <select class="full-width" id="extraInternal5" name="extraInternal5">
                                                     <option>leather Seats</option>
@@ -1487,7 +1531,16 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-sm-5 col-md-4">
+                                        </div><!-- end content -->
+                                    </div>
+                                </div>
+                                 
+                            </div>  
+                                    
+                              <div class="clearfix"></div>     
+                                    <div class="form-group row">
+                                         
+                                        <div class="col-sm-80 col-md-90">
                                             <label>Free text</label>
                                             <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
                                         </div>
@@ -1496,8 +1549,16 @@ We suggest that you contact the host to confirm availability and rates before su
                                    
                                 </div>
                                 <hr />
-                                <div class="card-information">
-                                    <h2>Finance Requirement</h2>
+                                
+                                <div class="toggle-container box">
+                                <div class="panel style1">
+                                    <h4 class="panel-title">
+                                        <a href="#tgg4" data-toggle="collapse">Finance Requirement</a>
+                                    </h4>
+                                    <div class="panel-collapse collapse" id="tgg4">
+                                        <div class="panel-content">
+                                        <div class="card-information">
+                                    <h2>Enter Finance Requirement</h2>
                                     <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
                                             <label>Income Type</label>
@@ -1540,6 +1601,21 @@ We suggest that you contact the host to confirm availability and rates before su
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                    <div class="col-sm-5 col-md-4">
+                                            <label>Vehicle Value</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="vehValue" name="vehValue"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Balloon Pay</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="balloonPay" name="balloonPay"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Annual Income</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="annualIncome" name="annualIncome"/>
+                                        </div>
+                                         
+                                    </div>
+                                    <div class="form-group row">
                                         <div class="col-sm-5 col-md-4">
                                             <label>Loan Amount</label>
                                             <input type="text" class="input-text full-width" value="" placeholder=""  id="loanAmount" name="loanAmount"/>
@@ -1567,8 +1643,24 @@ We suggest that you contact the host to confirm availability and rates before su
                                     </div>
                                     
                                 </div>
+                                        </div><!-- end content -->
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                                
+                                
+                                
                                 <hr />
-                                <h2>Insurance</h2>
+                                
+                                <div class="toggle-container box">
+                                <div class="panel style1">
+                                    <h4 class="panel-title">
+                                        <a href="#tgg5" data-toggle="collapse">Insurance Requirements</a>
+                                    </h4>
+                                    <div class="panel-collapse collapse" id="tgg5">
+                                        <div class="panel-content">
+                                        <h2>Enter Insurance Details</h2>
                                 <div class="form-group row">
                                     <div class="col-sm-5 col-md-4">
                                         <label>Insurance Type</label>
@@ -1579,6 +1671,25 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 </select>
                                             </div>
                                     </div>
+                                    <div class="col-sm-5 col-md-4">
+                                            <label>REGO No</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="reg-no" name="reg-no"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>REGO State</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="regoState" name="regoState">
+                                                    <option>ACT</option>
+                                                    <option>NT</option>
+                                                    <option>QLD</option>
+                                                    <option>VIC</option>
+                                                    <option>NSW</option>
+                                                    <option>TAS</option>
+                                                    <option>SA</option>
+                                                    <option>WA</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     <div class="col-sm-5 col-md-4">
                                         <label>Driving License Type</label>
                                         <div class="selector">
@@ -1601,7 +1712,22 @@ We suggest that you contact the host to confirm availability and rates before su
                                     </div>
                              </div>
                                 <div class="form-group row">
-                                    
+                                    <div class="col-sm-5 col-md-4">
+                                            <label>Market Value</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="marketValue" name="marketValue"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Agreed Value</label>
+                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="agreedValue" name="agreedValue"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Other Issues (If any)</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="OtherIssue" name="OtherIssue"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Preferred Excess Amount</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="insurance-excessAmount" name="insurance-excessAmount"/>
+                                        </div>
                                     <div class="col-sm-5 col-md-4">
                                         <label>Driving License Issuing State</label>
                                         <div class="selector">
@@ -1628,52 +1754,33 @@ We suggest that you contact the host to confirm availability and rates before su
 				 </div>
                                 
                                 <div class="form-group row">
-                                <div class="col-sm-10 col-md-8">
-                                            <label>Date of Birth</label>
-                                            <div class="constant-column-2">
-                                            <div class="selector">
-                                                    <select class="full-width">
-                                                        <option>Day</option>
-                                                    </select>
-                                                </div>
-                                                <div class="selector">
-                                                    <select class="full-width">
-                                                        <option>month</option>
-                                                    </select>
-                                                </div>
-                                                <div class="selector">
-                                                    <select class="full-width">
-                                                        <option>year</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
+                                
+                                 <div class="col-xs-6">
+                                                        <div class="datepicker-wrap">
+                                                            <input type="text" name="date_of_birth" class="input-text full-width" placeholder="Date of Birth" />
+                                                        </div>
+                                                    </div>
+                                
+                                <div class="col-xs-6">
+                                                        <div class="datepicker-wrap">
+                                                            <input type="text" name="date_of_birth" class="input-text full-width" placeholder="Age of Additional Driver" />
+                                                        </div>
+                                                    </div>
+                                
+                                
                                 
                                     
                                     
                                 </div>
-                                <div class="form-group row">
-                                <div class="col-sm-10 col-md-8">
-                                            <label>Age of Additional Driver</label>
-                                            <div class="constant-column-2">
-                                            <div class="selector">
-                                                    <select class="full-width">
-                                                        <option>Day</option>
-                                                    </select>
-                                                </div>
-                                                <div class="selector">
-                                                    <select class="full-width">
-                                                        <option>month</option>
-                                                    </select>
-                                                </div>
-                                                <div class="selector">
-                                                    <select class="full-width">
-                                                        <option>year</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                   </div>     
+                               
+                                        </div><!-- end content -->
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                                
+                                
+                                     
                                         
                                 <hr>
                                 <div class="form-group">
