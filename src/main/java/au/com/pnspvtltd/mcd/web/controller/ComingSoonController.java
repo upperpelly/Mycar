@@ -1,5 +1,6 @@
 package au.com.pnspvtltd.mcd.web.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -45,7 +46,7 @@ public class ComingSoonController {
 	}*/
 
 	@PostMapping("comingsoonuser")
-	public ComingSoonVO createUser(@RequestBody ComingSoonVO userVO, HttpServletResponse response) {
+	public ComingSoonVO createUser(@RequestBody ComingSoonVO userVO, HttpServletResponse response) throws UnsupportedEncodingException {
 		LOGGER.debug("Received request to create User with email {}", userVO.getComingSoonUserEmail());
 		ComingSoonVO createdUser = userService.createUser(userVO);
 		response.setStatus(HttpStatus.CREATED.value());
@@ -62,7 +63,7 @@ public class ComingSoonController {
 
 
 	
-	public void sendMessage(String rec)
+	public void sendMessage(String rec) throws UnsupportedEncodingException
 	{
 		
 		String recipient=rec;

@@ -1,5 +1,7 @@
 package au.com.pnspvtltd.mcd.service;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ public class MailController {
 	
 	
 	@RequestMapping("/send")
-	public String sendMessage()
+	public String sendMessage() throws UnsupportedEncodingException
 	{
 		try {
 			smtp.sendMail("srmkanjerla@gmail.com","Autoscoop","You have been successfully Registered");
