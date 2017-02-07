@@ -17,6 +17,8 @@ import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
+import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
+import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.PhotosTemplate;
 import au.com.pnspvtltd.mcd.domain.Search;
@@ -25,12 +27,15 @@ import au.com.pnspvtltd.mcd.domain.SearchInsurance;
 import au.com.pnspvtltd.mcd.domain.SpecificationTemplate;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserReviewTemplate;
+import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.domain.YoutubeTemplate;
 import au.com.pnspvtltd.mcd.web.model.BlogTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
 import au.com.pnspvtltd.mcd.web.model.CountryTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.PhotosTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
@@ -39,6 +44,7 @@ import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.SpecificationTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.UserReviewTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.YoutubeTemplateVO;
 
 @Component
@@ -47,7 +53,7 @@ public class DomainModelUtil {
 	@Autowired
 	private NullAwareBeanUtils nullAwareBeanUtils;
 
-	public UserVO fromUser(final User user) {
+	public UserVO fromUser(final User user, boolean isMinified) {
 
 		if (user == null) {
 			return null;
@@ -55,7 +61,37 @@ public class DomainModelUtil {
 
 		UserVO userVO = new UserVO();
 		try {
-			BeanUtils.copyProperties(userVO, user);
+
+			org.springframework.beans.BeanUtils.copyProperties(user, userVO,
+					new String[] { "search", "searchInsurance", "searchFinance", "searchServMaint", "searchTransp" });
+
+			if (!isMinified) {
+				List<SearchVO> searchVOs = new ArrayList<>();
+				for (Search search : user.getSearch()) {
+					SearchVO searchVO = new SearchVO();
+					BeanUtils.copyProperties(searchVO, search);
+					searchVOs.add(searchVO);
+				}
+				userVO.setSearch(searchVOs);
+
+				List<SearchInsuranceVO> searchInsuranceVOs = new ArrayList<>();
+				for (SearchInsurance searchInsurance : user.getSearchInsurance()) {
+					SearchInsuranceVO SearchInsuranceVO = new SearchInsuranceVO();
+					BeanUtils.copyProperties(SearchInsuranceVO, searchInsurance);
+					searchInsuranceVOs.add(SearchInsuranceVO);
+				}
+				userVO.setSearchInsurance(searchInsuranceVOs);
+
+				List<SearchFinanceVO> searchFinanceVOs = new ArrayList<>();
+				for (SearchFinance searchFinance : user.getSearchFinance()) {
+					SearchFinanceVO searchFinanceVO = new SearchFinanceVO();
+					BeanUtils.copyProperties(searchFinanceVO, searchFinance);
+					searchFinanceVOs.add(searchFinanceVO);
+				}
+				userVO.setSearchFinance(searchFinanceVOs);
+
+			}
+
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -444,6 +480,39 @@ public class DomainModelUtil {
 			e.printStackTrace();
 		}
 		return carModelTemplate;
+	}
+
+	public VehicleQuotationVO fromVehicleQuotation(final VehicleQuotation vehicleQuotation) {
+		VehicleQuotationVO vehicleQuotationVO = new VehicleQuotationVO();
+		try {
+			BeanUtils.copyProperties(vehicleQuotationVO, vehicleQuotation);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vehicleQuotationVO;
+	}
+
+	public InsuranceQuotationVO fromInsuranceQuotation(final InsuranceQuotation insuranceQuotation) {
+		InsuranceQuotationVO insuranceQuotationVO = new InsuranceQuotationVO();
+		try {
+			BeanUtils.copyProperties(insuranceQuotationVO, insuranceQuotation);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return insuranceQuotationVO;
+	}
+
+	public FinanceQuotationVO fromFinanceQuotation(final FinanceQuotation financeQuotation) {
+		FinanceQuotationVO financeQuotationVO = new FinanceQuotationVO();
+		try {
+			BeanUtils.copyProperties(financeQuotationVO, financeQuotation);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return financeQuotationVO;
 	}
 
 }

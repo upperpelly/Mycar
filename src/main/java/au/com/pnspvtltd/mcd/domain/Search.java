@@ -67,7 +67,7 @@ public class Search implements Serializable {
 		return this.carSearchId;
 	}
 
-	public void setCarSearchId(long carMakeId) {
+	public void setCarSearchId(Long carMakeId) {
 		this.carSearchId = carMakeId;
 	}
 

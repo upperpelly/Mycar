@@ -2,8 +2,6 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.util.List;
 
-import au.com.pnspvtltd.mcd.domain.Search;
-
 public class UserVO {
 
 	private Long userId;
@@ -25,6 +23,13 @@ public class UserVO {
 	private boolean facebook;
 	private boolean payDeposit;
 	List<SearchVO> search;
+	List<SearchInsuranceVO> searchInsurance;
+	List<SearchFinanceVO> searchFinance;
+	List<SearchServMaintVO> searchServMaint;
+	List<SearchTranspVO> searchTransp;
+	List<VehicleQuotationVO> vehicleQuotation;
+	List<InsuranceQuotationVO> insuranceQuotation;
+	List<FinanceQuotationVO> financeQuotation;
 
 	public Long getUserId() {
 		return userId;
@@ -176,6 +181,62 @@ public class UserVO {
 
 	public void setSearch(List<SearchVO> search) {
 		this.search = search;
+	}
+
+	public List<SearchInsuranceVO> getSearchInsurance() {
+		return searchInsurance;
+	}
+
+	public void setSearchInsurance(List<SearchInsuranceVO> searchInsurance) {
+		this.searchInsurance = searchInsurance;
+	}
+
+	public List<SearchFinanceVO> getSearchFinance() {
+		return searchFinance;
+	}
+
+	public void setSearchFinance(List<SearchFinanceVO> searchFinance) {
+		this.searchFinance = searchFinance;
+	}
+
+	public List<SearchServMaintVO> getSearchServMaint() {
+		return searchServMaint;
+	}
+
+	public void setSearchServMaint(List<SearchServMaintVO> searchServMaint) {
+		this.searchServMaint = searchServMaint;
+	}
+
+	public List<SearchTranspVO> getSearchTransp() {
+		return searchTransp;
+	}
+
+	public void setSearchTransp(List<SearchTranspVO> searchTransp) {
+		this.searchTransp = searchTransp;
+	}
+
+	public List<VehicleQuotationVO> getVehicleQuotation() {
+		return vehicleQuotation;
+	}
+
+	public void setVehicleQuotation(List<VehicleQuotationVO> vehicleQuotation) {
+		this.vehicleQuotation = vehicleQuotation;
+	}
+
+	public List<InsuranceQuotationVO> getInsuranceQuotation() {
+		return insuranceQuotation;
+	}
+
+	public void setInsuranceQuotation(List<InsuranceQuotationVO> insuranceQuotation) {
+		this.insuranceQuotation = insuranceQuotation;
+	}
+
+	public List<FinanceQuotationVO> getFinanceQuotation() {
+		return financeQuotation;
+	}
+
+	public void setFinanceQuotation(List<FinanceQuotationVO> financeQuotation) {
+		this.financeQuotation = financeQuotation;
 	}
 
 }
