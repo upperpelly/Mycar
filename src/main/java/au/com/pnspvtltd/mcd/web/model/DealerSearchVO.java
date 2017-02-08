@@ -1,6 +1,7 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
+import java.util.List;
 
 public class DealerSearchVO {
 
@@ -32,6 +33,8 @@ public class DealerSearchVO {
 	private double indicativeExcessAmount;
 	private Date ageOfAdditionalDriver;
 	private Long userId;
+
+	
 
 	public Long getUserId() {
 		return userId;
@@ -501,4 +504,5 @@ public class DealerSearchVO {
 		this.sPcode = sPcode;
 	}
 
+	
 }

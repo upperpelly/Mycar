@@ -1,11 +1,14 @@
 package au.com.pnspvtltd.mcd.service.impl;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import au.com.pnspvtltd.mcd.domain.ComingSoonUser;
 import au.com.pnspvtltd.mcd.repository.ComingSoonRepository;
 import au.com.pnspvtltd.mcd.service.ComingSoonService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
@@ -67,5 +70,15 @@ public class ComingSoonServiceImpl implements ComingSoonService {
 	 * email){ return
 	 * DomainModelUtil.fromUser(userRepository.findByEmailIgnoreCase(email)); }
 	 */
+
+	@Override
+	@Transactional(readOnly = true)
+	public ComingSoonVO findUserByEmail(String email) {
+		List<ComingSoonUser> comingSoonUsers = userRepository.findByComingSoonUserEmailIgnoreCase(email);
+		if (comingSoonUsers == null || comingSoonUsers.isEmpty()) {
+			return null;
+		}
+		return domainModelUtil.fromComingSoonUser(comingSoonUsers.get(0));
+	}
 
 }

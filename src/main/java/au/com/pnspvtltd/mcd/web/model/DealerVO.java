@@ -27,6 +27,16 @@ public class DealerVO {
 
 	List<InventoryVO> inventory;
 
+	List<DealerSearchVO> dealSearch;
+	List<DealerSearchInsuranceVO> dealSearchInsurance;
+	List<DealerSearchFinanceVO> dealSearchFinance;
+	List<DealerSearchServMaintVO> dealSearchServMaint;
+	List<DealerSearchTranspVO> dealSearchTransp;
+
+	List<VehicleQuotationVO> vehicleQuotation;
+	List<InsuranceQuotationVO> insuranceQuotation;
+	List<FinanceQuotationVO> financeQuotation;
+
 	public Long getDealerId() {
 		return dealerId;
 	}
@@ -193,6 +203,70 @@ public class DealerVO {
 
 	public void setInventory(List<InventoryVO> inventory) {
 		this.inventory = inventory;
+	}
+
+	public List<DealerSearchVO> getDealSearch() {
+		return dealSearch;
+	}
+
+	public void setDealSearch(List<DealerSearchVO> dealSearch) {
+		this.dealSearch = dealSearch;
+	}
+
+	public List<DealerSearchInsuranceVO> getDealSearchInsurance() {
+		return dealSearchInsurance;
+	}
+
+	public void setDealSearchInsurance(List<DealerSearchInsuranceVO> dealSearchInsurance) {
+		this.dealSearchInsurance = dealSearchInsurance;
+	}
+
+	public List<DealerSearchFinanceVO> getDealSearchFinance() {
+		return dealSearchFinance;
+	}
+
+	public void setDealSearchFinance(List<DealerSearchFinanceVO> dealSearchFinance) {
+		this.dealSearchFinance = dealSearchFinance;
+	}
+
+	public List<DealerSearchServMaintVO> getDealSearchServMaint() {
+		return dealSearchServMaint;
+	}
+
+	public void setDealSearchServMaint(List<DealerSearchServMaintVO> dealSearchServMaint) {
+		this.dealSearchServMaint = dealSearchServMaint;
+	}
+
+	public List<DealerSearchTranspVO> getDealSearchTransp() {
+		return dealSearchTransp;
+	}
+
+	public void setDealSearchTransp(List<DealerSearchTranspVO> dealSearchTransp) {
+		this.dealSearchTransp = dealSearchTransp;
+	}
+
+	public List<VehicleQuotationVO> getVehicleQuotation() {
+		return vehicleQuotation;
+	}
+
+	public void setVehicleQuotation(List<VehicleQuotationVO> vehicleQuotation) {
+		this.vehicleQuotation = vehicleQuotation;
+	}
+
+	public List<InsuranceQuotationVO> getInsuranceQuotation() {
+		return insuranceQuotation;
+	}
+
+	public void setInsuranceQuotation(List<InsuranceQuotationVO> insuranceQuotation) {
+		this.insuranceQuotation = insuranceQuotation;
+	}
+
+	public List<FinanceQuotationVO> getFinanceQuotation() {
+		return financeQuotation;
+	}
+
+	public void setFinanceQuotation(List<FinanceQuotationVO> financeQuotation) {
+		this.financeQuotation = financeQuotation;
 	}
 
 }

@@ -12,12 +12,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import au.com.pnspvtltd.mcd.domain.Dealer;
+import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
+import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
+import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.repository.DealerRepository;
+import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
+import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
+import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 @Service
 public class DealerServiceImpl implements DealerService {
@@ -27,20 +36,53 @@ public class DealerServiceImpl implements DealerService {
 	@Autowired
 	private DealerRepository dealerRepository;
 	@Autowired
+	private VehicleQuotationRepository vehicleQuotationRepository;
+	@Autowired
+	private InsuranceQuotationRepository insuranceQuotationRepository;
+	@Autowired
+	private FinanceQuotationRepository financeQuotationRepository;
+	@Autowired
 	private DomainModelUtil domainModelUtil;
 
 	@Override
 	@Transactional(readOnly = true)
 	public DealerVO findById(Long id) {
 		Dealer dealer = dealerRepository.findOne(id);
-		return (dealer != null ? domainModelUtil.fromDealer(dealer) : null);
+		DealerVO dealerVO = null;
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromDealer(dealer, false);
+			
+			List<VehicleQuotation> vehicleQuotations = vehicleQuotationRepository.findByDealerId(id);
+			List<VehicleQuotationVO> vehicleQuotationVOs = new ArrayList<>();
+			for (VehicleQuotation vehicleQuotation : vehicleQuotations) {
+				vehicleQuotationVOs.add(domainModelUtil.fromVehicleQuotation(vehicleQuotation));
+			}
+			dealerVO.setVehicleQuotation(vehicleQuotationVOs);
+
+			List<InsuranceQuotation> insuranceQuotations = insuranceQuotationRepository.findByDealerId(id);
+			List<InsuranceQuotationVO> insuranceQuotationVOs = new ArrayList<>();
+			for (InsuranceQuotation insuranceQuotation : insuranceQuotations) {
+				insuranceQuotationVOs.add(domainModelUtil.fromInsuranceQuotation(insuranceQuotation));
+			}
+			dealerVO.setInsuranceQuotation(insuranceQuotationVOs);
+
+			List<FinanceQuotation> financeQuotations = financeQuotationRepository.findByDealerId(id);
+			List<FinanceQuotationVO> financeQuotationVOs = new ArrayList<>();
+			for (FinanceQuotation financeQuotation : financeQuotations) {
+				financeQuotationVOs.add(domainModelUtil.fromFinanceQuotation(financeQuotation));
+			}
+			dealerVO.setFinanceQuotation(financeQuotationVOs);
+
+			
+		}
+		return dealerVO;
 	}
 
 	@Override
 	@Transactional
 	public DealerVO createDealer(DealerVO dealerVO) {
 		dealerVO.setDealerId(null);
-		return domainModelUtil.fromDealer(dealerRepository.save(domainModelUtil.toDealer(dealerVO)));
+		return domainModelUtil.fromDealer(dealerRepository.save(domainModelUtil.toDealer(dealerVO)), true);
 	}
 
 	@Override
@@ -64,7 +106,7 @@ public class DealerServiceImpl implements DealerService {
 		}
 
 		Dealer dealer = dealerRepository.save(dealerToUpdate);
-		return domainModelUtil.fromDealer(dealer);
+		return domainModelUtil.fromDealer(dealer, true);
 
 	}
 
@@ -73,7 +115,7 @@ public class DealerServiceImpl implements DealerService {
 	public List<DealerVO> findAllDealers() {
 		List<DealerVO> dealerVOs = new ArrayList<>();
 		for (Dealer dealer : dealerRepository.findAll()) {
-			dealerVOs.add(domainModelUtil.fromDealer(dealer));
+			dealerVOs.add(domainModelUtil.fromDealer(dealer, true));
 		}
 		return dealerVOs;
 	}
@@ -81,7 +123,7 @@ public class DealerServiceImpl implements DealerService {
 	@Override
 	@Transactional(readOnly = true)
 	public DealerVO findDealerByEmail(String email) {
-		return domainModelUtil.fromDealer(dealerRepository.findByEmailIgnoreCase(email));
+		return domainModelUtil.fromDealer(dealerRepository.findByEmailIgnoreCase(email), true);
 	}
 
 	@Override

@@ -33,6 +33,9 @@ import au.com.pnspvtltd.mcd.web.model.BlogTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
 import au.com.pnspvtltd.mcd.web.model.CountryTemplateVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
@@ -279,7 +282,7 @@ public class DomainModelUtil {
 		return dealerSearchInsurance;
 	}
 
-	public DealerVO fromDealer(final Dealer dealer) {
+	public DealerVO fromDealer(final Dealer dealer, boolean isMinified) {
 
 		if (dealer == null) {
 			return null;
@@ -287,7 +290,47 @@ public class DomainModelUtil {
 
 		DealerVO dealerVO = new DealerVO();
 		try {
-			BeanUtils.copyProperties(dealerVO, dealer);
+
+			org.springframework.beans.BeanUtils.copyProperties(dealer, dealerVO,
+					new String[] { "inventory", "dealSearch", "dealSearchInsurance", "dealSearchFinance",
+							"dealSearchServMaint", "dealSearchTransp" });
+
+			if (!isMinified) {
+
+				List<InventoryVO> inventoryVOs = new ArrayList<>();
+				for (Inventory inventory : dealer.getInventory()) {
+					InventoryVO inventoryVO = new InventoryVO();
+					BeanUtils.copyProperties(inventoryVO, inventory);
+					inventoryVOs.add(inventoryVO);
+				}
+				dealerVO.setInventory(inventoryVOs);
+
+				List<DealerSearchVO> searchVOs = new ArrayList<>();
+				for (DealerSearch search : dealer.getDealSearch()) {
+					DealerSearchVO searchVO = new DealerSearchVO();
+					BeanUtils.copyProperties(searchVO, search);
+					searchVOs.add(searchVO);
+				}
+				dealerVO.setDealSearch(searchVOs);
+
+				List<DealerSearchInsuranceVO> searchInsuranceVOs = new ArrayList<>();
+				for (DealerSearchInsurance searchInsurance : dealer.getDealSearchInsurance()) {
+					DealerSearchInsuranceVO SearchInsuranceVO = new DealerSearchInsuranceVO();
+					BeanUtils.copyProperties(SearchInsuranceVO, searchInsurance);
+					searchInsuranceVOs.add(SearchInsuranceVO);
+				}
+				dealerVO.setDealSearchInsurance(searchInsuranceVOs);
+
+				List<DealerSearchFinanceVO> searchFinanceVOs = new ArrayList<>();
+				for (DealerSearchFinance searchFinance : dealer.getDealSearchFinance()) {
+					DealerSearchFinanceVO searchFinanceVO = new DealerSearchFinanceVO();
+					BeanUtils.copyProperties(searchFinanceVO, searchFinance);
+					searchFinanceVOs.add(searchFinanceVO);
+				}
+				dealerVO.setDealSearchFinance(searchFinanceVOs);
+
+			}
+
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -295,6 +338,7 @@ public class DomainModelUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		return dealerVO;
 	}
 
