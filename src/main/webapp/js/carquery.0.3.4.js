@@ -1364,14 +1364,14 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
      out += '</table>';
      /*alert("12"+data.templateSpecificationId);*/
      out = out.replace(/>null</g, ">Not Available<");
-     alert("final"+data.templateSpecificationId);
+     //alert("final"+data.templateSpecificationId);
 var sender = this;
      /*return out; come here*/
-alert("final");
-alert("sender"+sender);
+//alert("final");
+//alert("sender"+sender);
 this.model_data_id = "car-model-data";
 
-alert(""+this.model_data_id);
+//alert(""+this.model_data_id);
 $("#"+sender.model_data_id).html(out);
 
     },
@@ -1843,6 +1843,7 @@ var strUser = e.options[e.selectedIndex].text;
 this.model_data_id = model_data_id;
 /*http://localhost:8080/api/carModelTemplateFor?modelYear=2016&modelDisplay=Buick&modelName=Envision&modelTrim=4dr SUV (2.5L 4cyl 6A)*/
 var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;
+/*var url= "http://localhost:8080/MyCarDomain/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;*/
 /*alert("url"+url);*/
 /*var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;*/
 /*var wsURL = 'http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;*/
@@ -2167,7 +2168,7 @@ var modelTrim;
     dashBoardCallSearch : function(model_data_id)
     {
      this.model_data_id = model_data_id;
-          $("#"+this.model_data_id).html("Loading Model Data...");
+          //$("#"+this.model_data_id).html("Loading Model Data...");
 
         var sender = this;
 
@@ -2177,29 +2178,71 @@ var modelTrim;
         $.ajax({  
         	/*headers: {"X-My-Custom-Header": "*"},*/
        	    type: "GET",  
-       	    url: "http://www.autoscoop.com.au/api/user/1",  
+       	    url: "http://www.autoscoop.com.au/api/user/1", 
+       	 /*url: "http://localhost:8080/MyCarDomain/api/user/1",*/
        	       success: function(result){
-       	    	   alert(result.abnNumber);
+       	    	   /*alert(result.abnNumber);
             	   alert(result.userId);
             	   alert(result.search);
             	   alert(result.search[0].carSearchId);
-            	   alert(result.search.length);
+            	   alert(result.search.length);*/
             	   out="";
             	   /*alert(Object.keys( result.search ).length);*/
             	   /*var json = JSON.parse(result1);*/
             	   /*var json = $.parseJSON(result1);*/
+            	   var finMax = result.search.length;
+            	   document.getElementById('finMax').innerHTML=finMax;
+            	   out += '<tr><th colspan="2">'+"Car Search ID"+'       '+"Model Trim"+'     '+"Model Display"+'        '+"Model Year"+'</th></tr>';
             	   for(i=0;i<result.search.length;i++)
            		{
-           		alert(result.search[i].carSearchId); //111 111-1111
+           		/*alert(result.search[i].carSearchId); //111 111-1111
            		alert(result.search[i].modelDisplay);
            		alert(result.search[i].modelTrim);
-           		alert(result.search[i].modelYear);
+           		alert(result.search[i].modelYear);*/
            		out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelTrim+'</td>'+'<td>'+result.search[i].modelDisplay+'</td>'+'<td>'+result.search[i].modelYear+'</td>'+'</tr>';
            		
            		
            		}
-            	   alert(out);
+            	   //alert(out);
             	   $("#"+sender.model_data_id).append(out);
+            	   alert("came here 2");
+            	   out1="";
+            	   /*alert(Object.keys( result.search ).length);*/
+            	   /*var json = JSON.parse(result1);*/
+            	   /*var json = $.parseJSON(result1);*/
+            	   var finMax = result.search.length;
+            	   document.getElementById('finMax').innerHTML=finMax;
+            	   out1 += '<tr><th colspan="2">'+"Car Finance ID"+'       '+"Vehicle Value"+'     '+"Balloon Pay"+'        '+"Loan Amount"+'</th></tr>';
+            	   for(i=0;i<result.searchFinance.length;i++)
+           		{
+           		/*alert(result.search[i].carSearchId); //111 111-1111
+           		alert(result.search[i].modelDisplay);
+           		alert(result.search[i].modelTrim);
+           		alert(result.search[i].modelYear);*/
+           		out1= out1+'<tr>'+'<td>'+result.searchFinance[i].searchFinanceId+'</td>'+'<td>'+result.searchFinance[i].vehValue+'</td>'+'<td>'+result.searchFinance[i].balloonPay+'</td>'+'<td>'+result.searchFinance[i].loanAmount+'</td>'+'</tr>';
+           		
+           		
+           		}
+            	  sender.forFinance("data1",out1);
+            	   
+            	   /*this.model_data_id = "data1";
+            	   alert("came here"+this.model_data_id);
+            	   $("#"+sender.model_data_id).append(out1);*/
+            	  /* alert("came here"+this.model_data_id);
+            	   */
+            	  out2="";
+            	   document.getElementById('finMax').innerHTML=finMax;
+            	   out2 += '<tr><th colspan="2">'+"Car Insurance ID"+'       '+"Insurance Type"+'     '+"Market Value"+'        '+"Agreed Value"+'</th></tr>';
+            	   for(i=0;i<result.searchInsurance.length;i++)
+           		{
+           		
+           		out2= out2+'<tr>'+'<td>'+result.searchInsurance[i].searchInsuranceId+'</td>'+'<td>'+result.searchInsurance[i].insuranceType+'</td>'+'<td>'+result.searchInsurance[i].marketValue+'</td>'+'<td>'+result.searchInsurance[i].agreedValue+'</td>'+'</tr>';
+           		
+           		
+           		}
+            	   
+            	   sender.forFinance("car-model-data2",out2);
+            	   
                  
                } 
        	  }); 
@@ -2212,6 +2255,26 @@ var modelTrim;
          });*/
     },
     
+    forFinance : function(model_data_id, out)
+    {
+     this.model_data_id = model_data_id;
+          //$("#"+this.model_data_id).html("Loading Model Data...");
+     alert("came here 2 inside");
+        var sender = this;
+alert("out"+out);
+        
+            	   //alert(out);
+            	   $("#"+sender.model_data_id).append(out);
+            	   alert("came here 2");
+            	  
+       /* $.ajax({
+            url: "http://localhost:8080/MyCarDomain/api/user/70",
+            data: { signature: authHeader },
+            type: "GET",
+            beforeSend: function(xhr){xhr.setRequestHeader('X-Test-Header', 'test-value');},
+            success: function() { alert('Success!' + authHeader); }
+         });*/
+    },
 
     
     populateSearchResult : function(model_id)
