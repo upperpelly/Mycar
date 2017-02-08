@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Generator" content="EditPlus®">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<meta name="google-signin-client_id" content="814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com">
+
+<title>Document</title>
+</head>
+<body>
+
+<script>
+function onSignIn(googleUser) {
+	  var profile = googleUser.getBasicProfile();
+	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  console.log('Name: ' + profile.getName());
+	  console.log('Image URL: ' + profile.getImageUrl());
+	  console.log('Email: ' + profile.getEmail());
+	}
+
+</script>
+
+
+
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script>
+		  window.fbAsyncInit = function() {
+			FB.init({
+			  appId      : '238604546585672',
+			  xfbml      : true,
+			  version    : 'v2.8'
+			});
+			
+			 FB.getLoginStatus(function(response){
+				  if(response.status === 'connected')
+					  {
+					  document.getElementById('status').innerHTML = 'We are Connected';
+					  }
+				  else if(response.status === 'not_authorized')
+					  {
+					  document.getElementById('status').innerHTML = 'We are not Connected'; 
+					  }
+				  else
+					  {
+					  document.getElementById('status').innerHTML = 'We are not fb Connected';
+					  }
+			  });
+		  };
+
+		  (function(d, s, id){
+			 var js, fjs = d.getElementsByTagName(s)[0];
+			 if (d.getElementById(id)) {return;}
+			 js = d.createElement(s); js.id = id;
+			 js.src = "https://connect.facebook.net/en_US/sdk.js";
+			 fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
+		 
+		 
+		 function login()
+		 {
+			 FB.login(function(response){
+				 if(response.status === 'connected')
+				  {
+				  document.getElementById('status').innerHTML = 'We are Connected';
+				  var url = '/me?fields=name,email';
+		             FB.api(url, function (response) {
+		                 alert(response.name);
+		                 alert(response.email);
+		                 console.log(JSON.stringify(response));
+		             });
+				  }
+			  else if(response.status === 'not_authorized')
+				  {
+				  document.getElementById('status').innerHTML = 'We are not Connected'; 
+				  }
+			  else
+				  {
+				  document.getElementById('status').innerHTML = 'We are not fb Connected';
+				  }
+			 },{scope: 'email'});
+			 
+			 
+		 }
+</script>
+	<div id="status"></div>
+	<button onclick="login()">Login</button>
+	
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	
+
+
+</body>
+</html>

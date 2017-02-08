@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Generator" content="EditPlus®">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+    api_key: 81vl95zfoimc37
+</script>
+
+<script type="text/javascript">
+    
+    // Setup an event listener to make an API call once auth is complete
+    function onLinkedInLoad() {
+    	alert("I am here")
+        IN.Event.on(IN, "auth", getProfileData);
+    }
+
+    // Handle the successful return from the API call
+    function onSuccess(data) {
+        console.log(data);
+        console.log(data.firstName);
+        console.log(data.lastName);
+        console.log(data.emailAddress); 
+    }
+
+    // Handle an error response from the API call
+    function onError(error) {
+        console.log(error);
+    }
+
+    // Use the API call wrapper to request the member's basic profile data
+    function getProfileData() {
+        IN.API.Raw("/people/~:(id,firstName,lastName,emailAddress)?format=json").result(onSuccess).error(onError);
+    } 
+    
+  /*   
+    function onLinkedInLoad() {
+        IN.Event.on(IN, "auth", onLinkedInAuth);
+    }
+
+    // 2. Runs when the viewer has authenticated
+    function onLinkedInAuth() {
+
+        IN.API.Profile("me").fields("first-name", "last-name", "email-address").result(function (data) {
+            console.log(data);
+        }).error(function (data) {
+            console.log(data);
+        });
+     } */
+
+</script>
+<!--  -->
+
+
+<title>LinkedIn</title>
+</head>
+<body>
+	<!-- Linked in app -->
+
+
+	<div id="status"></div>
+		<script type="IN/Login"></script>
+	
+	<button onclick="onLinkedInLoad()">LinkedIn</button>
+</body>
+</html>
