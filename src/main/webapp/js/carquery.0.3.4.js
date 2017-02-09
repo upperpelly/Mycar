@@ -1144,13 +1144,13 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
 carDataHTMLMRP123 : function(model_data_id)
     {
 this.model_data_id = model_data_id;
-alert(""+this.model_data_id);
+//alert(""+this.model_data_id);
 },
     carDataHTMLMRP12 : function(data, modelYear, modelDisplay, modelName, modelTrim, model_data_id)
     {
-alert("came in mrp112");     
+//alert("came in mrp112");     
 this.model_data_id = model_data_id;
-alert(""+this.model_data_id);
+//alert(""+this.model_data_id);
 var sold_in_us = "No";
      /*if(data.model_sold_in_us == "1") sold_in_us = "Yes";*/
 
@@ -1842,8 +1842,8 @@ var strUser = e.options[e.selectedIndex].text;
 
 this.model_data_id = model_data_id;
 /*http://localhost:8080/api/carModelTemplateFor?modelYear=2016&modelDisplay=Buick&modelName=Envision&modelTrim=4dr SUV (2.5L 4cyl 6A)*/
-var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;
-/*var url= "http://localhost:8080/MyCarDomain/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;*/
+/*var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;*/
+var url= "http://localhost:8080/MyCarDomain/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;
 /*alert("url"+url);*/
 /*var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;*/
 /*var wsURL = 'http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;*/
@@ -2144,7 +2144,7 @@ var modelTrim;
       var out = sender.carDataHTMLStore(data[0]);
       if(!$('#idno').val()==""){
       out += 'idno|'+$('#idno').val()+'*';}
-         alert("came here now changed are 3 Oct1");
+         //alert("came here now changed are 3 Oct1");
          $.ajax({  
         	    /*type: "GET",  
         	    url: "EmployeeServlet",*/  
@@ -2165,12 +2165,14 @@ var modelTrim;
         });
     },
     
-    dashBoardCallSearch : function(model_data_id)
+    dashBoardCallSearch : function(model_data_id, userid)
     {
      this.model_data_id = model_data_id;
           //$("#"+this.model_data_id).html("Loading Model Data...");
-
         var sender = this;
+/*var url = "http://www.autoscoop.com.au/api/user/"+userid;*/
+var url = "http://localhost:8080/MyCarDomain/api/user/"+userid;
+//alert("user id"+url);
 
         //Get Car Model JSON for the selected make
         //http://localhost:8080/MyCarDomain/api/user/1
@@ -2178,7 +2180,7 @@ var modelTrim;
         $.ajax({  
         	/*headers: {"X-My-Custom-Header": "*"},*/
        	    type: "GET",  
-       	    url: "http://www.autoscoop.com.au/api/user/1", 
+       	    url: url, 
        	 /*url: "http://localhost:8080/MyCarDomain/api/user/1",*/
        	       success: function(result){
        	    	   /*alert(result.abnNumber);
@@ -2205,7 +2207,7 @@ var modelTrim;
            		}
             	   //alert(out);
             	   $("#"+sender.model_data_id).append(out);
-            	   alert("came here 2");
+            	   //alert("came here 2");
             	   out1="";
             	   /*alert(Object.keys( result.search ).length);*/
             	   /*var json = JSON.parse(result1);*/
@@ -2242,6 +2244,45 @@ var modelTrim;
            		}
             	   
             	   sender.forFinance("car-model-data2",out2);
+//alert("result.search.length"+result.vehicleQuotation.length);
+out3="";
+            	   document.getElementById('finMax').innerHTML=finMax;
+            	   out3 += '<tr><th colspan="2">'+"Car Quotation ID"+'       '+"Insurance Type"+'     '+"Market Value"+'        '+"Agreed Value"+'</th></tr>';
+            	   for(i=0;i<result.vehicleQuotation.length;i++)
+           		{
+           		
+           		out3= out3+'<tr>'+'<td>'+result.vehicleQuotation[i].quotId+'</td>'+'<td>'+result.vehicleQuotation[i].dealerName+'</td>'+'<td>'+result.vehicleQuotation[i].dealerStockNo+'</td>'+'<td>'+result.vehicleQuotation[i].driveAwayPrice+'</td>'+'</tr>';
+           		
+           		
+           		}
+            	   
+            	   sender.forFinance("quo-model-data",out3);
+//alert("result.search.length"+result.financeQuotation.length);
+out4="";
+            	   document.getElementById('finMax').innerHTML=finMax;
+            	   out4 += '<tr><th colspan="2">'+"Car Quotation ID"+'       '+"Insurance Type"+'     '+"Market Value"+'        '+"Agreed Value"+'</th></tr>';
+            	   for(i=0;i<result.financeQuotation.length;i++)
+           		{
+           		
+           		out4= out4+'<tr>'+'<td>'+result.financeQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.vehicleQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.vehicleQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.vehicleQuotation[i].vehicleQuotationId+'</td>'+'</tr>';
+           		
+           		
+           		}
+            	   
+            	   sender.forFinance("quo-data1",out4);
+//alert("result.search.length"+result.insuranceQuotation.length);
+out5="";
+            	   document.getElementById('finMax').innerHTML=finMax;
+            	   out5 += '<tr><th colspan="2">'+"Car Quotation ID"+'       '+"Insurance Type"+'     '+"Market Value"+'        '+"Agreed Value"+'</th></tr>';
+            	   for(i=0;i<result.insuranceQuotation.length;i++)
+           		{
+           		
+           		out5= out5+'<tr>'+'<td>'+result.insuranceQuotation[i].insuranceQuotationId+'</td>'+'<td>'+result.insuranceQuotation[i].insuranceQuotationId+'</td>'+'<td>'+result.insuranceQuotation[i].insuranceQuotationId+'</td>'+'<td>'+result.insuranceQuotation[i].insuranceQuotationId+'</td>'+'</tr>';
+           		
+           		
+           		}
+            	   
+            	   sender.forFinance("quo-model-data2",out5);
             	   
                  
                } 
@@ -2259,13 +2300,13 @@ var modelTrim;
     {
      this.model_data_id = model_data_id;
           //$("#"+this.model_data_id).html("Loading Model Data...");
-     alert("came here 2 inside");
+     //alert("came here 2 inside");
         var sender = this;
-alert("out"+out);
+//alert("out"+out);
         
             	   //alert(out);
             	   $("#"+sender.model_data_id).append(out);
-            	   alert("came here 2");
+            	   //alert("came here 2");
             	  
        /* $.ajax({
             url: "http://localhost:8080/MyCarDomain/api/user/70",

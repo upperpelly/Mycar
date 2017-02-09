@@ -89,11 +89,17 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 		// Get Inventory matching the User EBid for Car
 		// (Model, Make, Year, Trim)
+		
+		String withOutSpace = search.getModelTrim().replaceAll("%20", " ");
+		System.out.println("without"+withOutSpace);
+		System.out.println("with"+search.getModelTrim());
+		
 		List<Inventory> inventories = inventoryRepository.getInventoryFor(search.getModelYear(),
-				search.getModelDisplay(), search.getModelName(), search.getModelTrim());
-
+				search.getModelDisplay(), search.getModelName(), withOutSpace);
+		boolean present = false;
 		for (Inventory inventory : inventories) {
-
+			present = true;
+			System.out.println("details"+inventory.getRepoId()+inventory.getModelYear()+inventory.getModelDisplay()+inventory.getModelName()+inventory.getModelTrim());
 			Dealer dealer = inventory.getDealer();
 
 			DealerSearch dealerSearch = null;
@@ -140,8 +146,9 @@ public class UserEBidServiceImpl implements UserEBidService {
 			}
 
 			inventoryRepository.flush();
-
+			System.out.println("isDealer"+dealer.isDealer());
 			if (dealer.isDealer()) {
+				System.out.println("create quotation when"+dealer.isDealer());
 				createVehicleQuotation(user, dealer, search, dealerSearch, inventory);
 			}
 			if (dealer.isFinancer()) {
@@ -152,15 +159,17 @@ public class UserEBidServiceImpl implements UserEBidService {
 			}
 
 		}
-
-		
+System.out.println("present value"+present);
+		if(!present){
+			System.out.println("inventory not present");
+		}
 		return "{\"userId\":" + userEBidVO.getUserId() + ",\"searchId\":" + search.getCarSearchId() + "}";
 
 	}
 
 	private void createVehicleQuotation(User user, Dealer dealer, Search search, DealerSearch dealerSearch,
 			Inventory inventory) {
-
+		System.out.println("create quotation when dealer ID"+dealer.getDealerId());
 		VehicleQuotation vehicleQuotation = new VehicleQuotation();
 		vehicleQuotation.setDealerId(dealer.getDealerId());
 		vehicleQuotation.setUserId(user.getUserId());

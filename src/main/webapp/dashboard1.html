@@ -79,7 +79,7 @@ $.ajax({
   <script>
     window.onload= function()
     {
-    	alert("came here for onload");
+    	//alert("came here for onload");
 function parseURLParameter(Parameter)
     	{
 		
@@ -100,7 +100,7 @@ function parseURLParameter(Parameter)
     	/* alert("pageName 11  now "); */
     	
     	var userId = parseURLParameter('userId');
-    	
+    	//userId="71";
     	//document.getElementById('minValue').innerHTML=priceMin;
     	
     	var searchId = parseURLParameter('searchId');
@@ -108,8 +108,8 @@ function parseURLParameter(Parameter)
     	
     	
       var carquery = new CarQuery();
-      alert("Before call");
-      carquery.dashBoardCallSearch('car-model-data'); 
+      //alert("Before call");
+      carquery.dashBoardCallSearch('car-model-data',userId); 
       
       createCORSRequest("GET", "http://localhost:8080/MyCarDomain/api/user/70");
     	
@@ -121,7 +121,7 @@ function parseURLParameter(Parameter)
 	        // XHR has 'withCredentials' property only if it supports CORS
 	        xhr.open(method, url, true);
 	    } else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
-	    	alert("came here");
+	    	//alert("came here");
 	    	xhr = new XDomainRequest();
 	        alert(xhr.open(method, url));
 	    } else {
@@ -214,15 +214,15 @@ alert("Came here"+$('#driveType').val());
   	"sRegion":$('#transmission').val()
   }
 														alert("Before Call");
-														/*var wsURL = 'http://localhost:8080/MyCarDomain/api/search/car';*/
-														var wsURL = 'http://www.autoscoop.com.au/api/search/car';
+														var wsURL = 'http://localhost:8080/MyCarDomain/api/search/car';
+														/*var wsURL = 'http://www.autoscoop.com.au/api/search/car';*/
 															    $http({
 																			method : 'POST',
 																			url : wsURL,
 																			data: jsonInputToAPI
 																							
 																		}).success(function(data) {
-																			alert("successful");
+																			alert("Successfully Stored..");
 																			var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId;
 																							alert("Thank You. Your Seach ID is " + data.searchId);
 																							window.location=url;								
@@ -313,15 +313,17 @@ img.emoji {
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
       <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
     <![endif]-->
 </head>
 <body ng-app="mainApp1">
-    
+   
     <div id="page-wrapper">
         <header id="header" class="navbar-static-top">
             <div class="topnav hidden-xs">
                 <div class="container">
+
                     <ul class="quick-menu pull-left">
                         <li><a href="dashboard1.html">MY ACCOUNT</a></li>
                         
@@ -1561,13 +1563,13 @@ img.emoji {
                                     <li><a href="#friends24" data-toggle="tab"><i class="fa fa-bicycle"></i>My Bicycles</a></li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane fade" id="family2">
+                                    <div class="tab-pane fade in active" id="family2">
                                         <h4>List of Search leads</h4>
                                          <table id="car-model-data">                                        
                                         
                                         </table>
                                     </div>
-                                    <div class="tab-pane fade in active" id="honeymoon2">
+                                    <div class="tab-pane fade" id="honeymoon2">
                                         <h4>My Bike</h4>
                                         
                                     </div>
@@ -1619,10 +1621,10 @@ img.emoji {
                                     <li><a href="#friends25" data-toggle="tab"><i class="fa fa-bicycle"></i>My Bicycles</a></li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane fade" id="family3">
+                                    <div class="tab-pane fade  in active" id="family3">
                                         <h4>My Car</h4>
                                     </div>
-                                    <div class="tab-pane fade in active" id="honeymoon3">
+                                    <div class="tab-pane fade" id="honeymoon3">
                                         <h4>My Bike</h4>
                                         
                                     </div>
@@ -1650,55 +1652,126 @@ img.emoji {
                     </div>
                               <!--  end -->
                             </div>
-                            <div id="settings" class="tab-pane fade">
-                                
-                                <!--  Start -->
+                          
+                          <div id="settings" class="tab-pane fade">
+                          <!--  Start -->
+                              
                               <div class="tab-container full-width-style arrow-left dashboard">
                         <ul class="tabs">
-                            <li class="active"><a data-toggle="tab" href="#dashboard2"><i class="soap-icon-car circle"></i>Vehicle</a></li>
-                            <li class=""><a data-toggle="tab" href="#profile2"><i class="soap-icon-savings circle"></i>Finance</a></li>
-                            <li class=""><a data-toggle="tab" href="#travel-stories2"><i class="soap-icon-insurance circle"></i>Insurance</a></li>
-                            <li class=""><a data-toggle="tab" href="#settings2"><i class="soap-icon-doorman circle"></i>Serv &Maint</a></li>                            
-                            <li class=""><a data-toggle="tab" href="#wishlist2"><i class="soap-icon-baggage-5 circle"></i>Transport</a></li>
-                            <li class=""><a data-toggle="tab" href="#booking2"><i class="soap-icon-status circle"></i>Rego</a></li>
+                            <li class="active"><a data-toggle="tab" href="#qdashboard1"><i class="soap-icon-car circle"></i>Vehicle</a></li>
+                            <li class=""><a data-toggle="tab" href="#qprofile1"><i class="soap-icon-savings circle"></i>Finance</a></li>
+                            <li class=""><a data-toggle="tab" href="#qtravel-stories1"><i class="soap-icon-insurance circle"></i>Insurance</a></li>
+                            <li class=""><a data-toggle="tab" href="#qsettings1"><i class="soap-icon-doorman circle"></i>Service & Maintenance</a></li>                            
+                            <li class=""><a data-toggle="tab" href="#qwishlist1"><i class="soap-icon-baggage-5 circle"></i>Transport</a></li>
+                            <li class=""><a data-toggle="tab" href="#qbooking1"><i class="soap-icon-status circle"></i>Rego</a></li>
                         </ul>
                         <div class="tab-content">
-                            <div id="dashboard2" class="tab-pane fade in active">
-                               
-                                <p>Quotation Vehicle area!</p>
+                            <div id="qdashboard1" class="tab-pane fade in active">
+                               <div class="col-md-18">
+                           
+                            <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
+                            <img src="images/VehQuo.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;">
+                            <div class="tab-container trans-style box">
+                                <ul class="tabs full-width">
+                                   <li class="active"><a href="#qfamily2" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
+                                    <li><a href="#qhoneymoon2" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
+                                    <li><a href="#qweekends2" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
+                                    <li><a href="#qfriends2" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li>
+                                    <li><a href="#qfriends24" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="qfamily2">
+                                        <h4>List of Vehicle Quotation</h4>
+                                         <table id="quo-model-data">                                        
+                                        
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="qhoneymoon2">
+                                        <h4>My Bike</h4>
+                                        
+                                    </div>
+                                    <div class="tab-pane fade" id="qweekends2">
+                                        <h4>My Boats</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="qfriends2">
+                                        <h4>My Caravans</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="qfriends24">
+                                        <h4>My Bicycles</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                                 <br />
                                 
                                
                             </div>
-                            <div id="profile2" class="tab-pane fade">
-                            <p>Quotation Finance area!</p>
+                            <div id="qprofile1" class="tab-pane fade">
+                            <p>EBid - R Finance area!</p>
+                            
                                 <br />
-                              
+                                <h4>List of Finance leads</h4>
+                              <table id="quo-data1">                                        
+                                        
+                                        </table>
                             </div>
-                            <div id="travel-stories2" class="tab-pane fade">
-                              <h2>Quotation Insurance area!</h2>
+                            <div id="qtravel-stories1" class="tab-pane fade">
+                              <h2>EBid - R Insurance area!</h2>
+                               
+                                <br />
+                              <h4>List of Insurance leads</h4>
+                              <table id="quo-model-data2">                                        
+                                        
+                                        </table>
                             </div>
-                             <div id="settings2" class="tab-pane fade">
-                                <h2>Quotation Service & Maintenance area!</h2>
+                             <div id="qsettings1" class="tab-pane fade">
+                                <h2>EBid - R Service & Maintenance area!</h2>
+                                 <div class="col-md-18">
+                           
+                            <img src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;">
+                            <div class="tab-container trans-style box">
+                                <ul class="tabs full-width">
+                                   <li class="active"><a href="#family3" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
+                                    <li><a href="#honeymoon3" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
+                                    <li><a href="#weekends3" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
+                                    <li><a href="#friends3" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li>
+                                    <li><a href="#friends25" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade  in active" id="family3">
+                                        <h4>My Car</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="honeymoon3">
+                                        <h4>My Bike</h4>
+                                        
+                                    </div>
+                                    <div class="tab-pane fade" id="weekends3">
+                                        <h4>My Boats</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="friends3">
+                                        <h4>My Caravans</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="friends25">
+                                        <h4>My Bicycles</h4>
+                                    </div>
+                                </div>
                             </div>
-                            <div id="wishlist2" class="tab-pane fade">
-                                <h2>Quotation Transport area!</h2>
+                        </div>
+                            </div>
+                            <div id="qwishlist1" class="tab-pane fade">
+                                <h2>EBid - R Transport area!</h2>
                                 
                             </div>
-                            <div id="booking2" class="tab-pane fade">
-                                <h2>Quotation Rego area!</h2>
-                              
-
-                            </div>
+                            
                             
                            
                         </div>
                     </div>
-                              <!--  end -->
-                                
-                            </div>
-                        </div>
-                    </div>
+                              
+                          
+                          
+                          </div>
+                            
                 </div>
             </div>
         </section>
@@ -1844,6 +1917,6 @@ img.emoji {
             tjq(".edit-profile").hide();
         });
     </script>
+ <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '9e83805c-9ddf-4721-9be5-6ee17f806f8c', f: true }); done = true; } }; })();</script>
 </body>
 </html>
-

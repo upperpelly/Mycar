@@ -107,10 +107,10 @@ $.ajax({
 						function submitSearchForm() {
 var e = document.getElementById("car-model-trims"); 
 var strUser = e.options[e.selectedIndex].text;							
-alert("Came here c"+ $('#autoBid').val());
+//alert("Came here c"+ $('#autoBid').val());
 														
 														var jsonInputToAPI = {
-																"refId":1,
+																"refId":29,
 
 "modelYear": $('#car-years').val(),
 "modelDisplay": $('#car-makes').val(),
@@ -181,18 +181,18 @@ alert("Came here c"+ $('#autoBid').val());
 "insthirdInsuanceMin": 0,
 "insthirdInsuanceMax": 0,
 "finAmountMin": 0,
-"newCar": $('#postClassified').val(),
-"stockItem": $('#autoBid').val()															}
-														alert("Before Call"+$('#accidentHistory').val());
-														/*var wsURL = 'http://localhost:8080/MyCarDomain/api/dealer/addInventory';*/
-														var wsURL = 'http://www.autoscoop.com.au/api/dealer/addInventory'; 
+"newCar": true,
+"isStockItem": true															}
+														//alert("Before Call"+$('#accidentHistory').val());
+														var wsURL = 'http://localhost:8080/MyCarDomain/api/dealer/addInventory';
+														/*var wsURL = 'http://www.autoscoop.com.au/api/dealer/addInventory'; */
 															    $http({
 																			method : 'POST',
 																			url : wsURL,
 																			data: jsonInputToAPI
 																							
 																		}).success(function(data) {
-																			alert("successful");
+																			alert("Successfully Stored.. ");
 																			alert("Thank You. Your Inventory is saved"+data.inventoryId);
 																											
 																						});

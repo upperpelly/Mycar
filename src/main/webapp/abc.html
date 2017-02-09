@@ -87,7 +87,7 @@ $.ajax({
     var modelTrim = null;
     window.onload= function()
     {
-    	alert("came here for onload");
+    	//alert("came here for onload");
 function parseURLParameter(Parameter)
     	{
     		var FullURL= window.location.search.substring(1);
@@ -190,12 +190,14 @@ function parseURLParameter(Parameter)
 						};
 						function submitSearchForm() {
 													
+/* alert("Came here"+modelYear);
+alert("Came here"+modelDisplay);
+alert("Came here"+modelName);
 alert("Came here"+modelTrim);
-
-														
+ */														
 														var jsonInputToAPI = 
 														{
-																"userId":1,
+																"userId":76,
 																"searchLead":{
 																	"modelYear":modelYear,
 																	"modelDisplay": modelDisplay,
@@ -310,16 +312,16 @@ alert("Came here"+modelTrim);
   	"sAusCapTer":$('#vehiclePurpose').val(),
   	"sRegion":$('#transmission').val()
   } */
-														alert("Before Call");
-														/*var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/car';*/
-														var wsURL = 'http://www.autoscoop.com.au/api/eBid/car';
+														//alert("Before Call");
+														var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/car';
+														/*var wsURL = 'http://www.autoscoop.com.au/api/eBid/car';*/
 															    $http({
 																			method : 'POST',
 																			url : wsURL,
 																			data: jsonInputToAPI
 																							
 																		}).success(function(data) {
-																			alert("successful");
+																			alert("Successfully Stored.. ");
 																			var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId;
 																							alert("Thank You. Your Seach ID is " + data.searchId);
 																							window.location=url;								
