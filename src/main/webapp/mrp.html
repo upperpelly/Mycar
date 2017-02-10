@@ -453,8 +453,8 @@ alert("inside showdiv");
 var e = document.getElementById("car-model-trims"); 
 var strUser = e.options[e.selectedIndex].text;
 
-var url= "http://localhost:8080/MyCarDomain/api/carModelTemplateFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;
-/*var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;*/
+/*var url= "http://localhost:8080/MyCarDomain/api/carModelTemplateFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;*/
+var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;
 alert(url);
 /*var sender = this;    */
 var carquery = new CarQuery();

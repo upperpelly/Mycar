@@ -1591,6 +1591,7 @@ select option {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
+  color:black;
 }
 .selector span.custom-select:before {
   position: absolute;
@@ -12758,6 +12759,7 @@ input.input-text, textarea, .selector select + .custom-select {
   transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
   border: 1px solid transparent;
   cursor: text;
+  color:black;
 }
 
 input.input-text:focus, textarea:focus, .selector select:focus + .custom-select {

@@ -177,7 +177,12 @@ System.out.println("present value"+present);
 		vehicleQuotation.setCarSearchId(search.getCarSearchId());
 		vehicleQuotation.setRefId(inventory.getRepoId());
 		vehicleQuotation.setAutoBid(inventory.isStockItem());
-
+		vehicleQuotation.setDealerStockNo(inventory.getVendorStockNo());
+		vehicleQuotation.setDriveAwayPrice(inventory.getPrice());
+		vehicleQuotation.setModelYear(inventory.getModelYear());
+		vehicleQuotation.setModelDisplay(inventory.getModelDisplay());
+		vehicleQuotation.setModelName(inventory.getModelName());
+		vehicleQuotation.setModelTrim(inventory.getModelTrim());
 		vehicleQuotationRepository.save(vehicleQuotation);
 
 	}

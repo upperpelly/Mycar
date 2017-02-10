@@ -169,7 +169,7 @@ function parseURLParameter(Parameter)
 						};
 						function submitSearchForm() {
 													
-alert("Came here"+$('#driveType').val());
+//alert("Came here"+$('#driveType').val());
 
 														
 														var jsonInputToAPI = {
@@ -214,8 +214,8 @@ alert("Came here"+$('#driveType').val());
   	"sRegion":$('#transmission').val()
   }
 														alert("Before Call");
-														var wsURL = 'http://localhost:8080/MyCarDomain/api/search/car';
-														/*var wsURL = 'http://www.autoscoop.com.au/api/search/car';*/
+														/*var wsURL = 'http://localhost:8080/MyCarDomain/api/search/car';*/
+														var wsURL = 'http://www.autoscoop.com.au/api/search/car';
 															    $http({
 																			method : 'POST',
 																			url : wsURL,
@@ -647,9 +647,10 @@ img.emoji {
                                                     <dl>
                                                     <dd>EBid Requests</dd>
                                                     <span id="finMax"></span>
-                                                        <dt class="display-counter" data-value="10" >0</dt>
+                                                        <!-- <dt class="display-counter" data-value="10" >0</dt> -->
                                                     <dd>Quotation Received</dd>
-                                                        <dt class="display-counter" data-value="6">0</dt>
+                                                    <span id="qtRecd"></span>
+                                                       <!--  <dt class="display-counter" data-value="6">0</dt> -->
                                                         
                                                     </dl>
                                                     <i class="icon soap-icon-pets"></i>
@@ -667,9 +668,11 @@ img.emoji {
                                                 <div class="numbers counters-box">
                                                     <dl>
                                                     <dd>Fin Requests</dd>
-                                                        <dt class="display-counter" data-value="8">0</dt>
+                                                    <span id="finCt"></span>
+                                                        <!-- <dt class="display-counter" data-value="8">0</dt> -->
                                                        <dd>Quotation Received</dd> 
-                                                        <dt class="display-counter" data-value="6">0</dt>
+                                                       <span id="finQCt"></span>
+                                                        <!-- <dt class="display-counter" data-value="6">0</dt> -->
                                                         
                                                     </dl>
                                                     <i class="icon soap-icon-savings"></i>
@@ -687,9 +690,11 @@ img.emoji {
                                                 <div class="numbers counters-box">
                                                     <dl>
                                                     <dd>Ins Requests</dd>
-                                                        <dt class="display-counter" data-value="6">0</dt>
+                                                    <span id="insRCt"></span>
+                                                        <!-- <dt class="display-counter" data-value="6">0</dt> -->
                                                         <dd>Quotation Received</dd>
-                                                        <dt class="display-counter" data-value="6">0</dt>
+                                                        <span id="insQCt"></span>
+                                                        <!-- <dt class="display-counter" data-value="6">0</dt> -->
                                                         
                                                     </dl>
                                                     <i class="icon soap-icon-insurance"></i>
@@ -707,9 +712,11 @@ img.emoji {
                                                 <div class="numbers counters-box">
                                                     <dl>
                                                     <dd>Serv Requests</dd>
-                                                        <dt class="display-counter" data-value="15">0</dt>
+                                                    <span id="servRCt"></span>
+                                                        <!-- <dt class="display-counter" data-value="15">0</dt> -->
                                                         <dd>Quotation Received</dd>
-                                                        <dt class="display-counter" data-value="10">0</dt>
+                                                        <span id="servQCt"></span>
+                                                        <!-- <dt class="display-counter" data-value="10">0</dt> -->
                                                         
                                                     </dl>
                                                     <i class="icon soap-icon-doorman"></i>
@@ -727,9 +734,11 @@ img.emoji {
                                                 <div class="numbers counters-box">
                                                     <dl>
                                                     <dd>Tranp Requests</dd>
-                                                        <dt class="display-counter" data-value="15">0</dt>
+                                                    <span id="trasRCt"></span>
+                                                        <!-- <dt class="display-counter" data-value="15">0</dt> -->
                                                         <dd>Quotation Received</dd>
-                                                        <dt class="display-counter" data-value="12">0</dt>
+                                                        <span id="trasQCt"></span>
+                                                        <!-- <dt class="display-counter" data-value="12">0</dt> -->
                                                         
                                                     </dl>
                                                     <i class="icon soap-icon-baggage-5"></i>
@@ -747,9 +756,11 @@ img.emoji {
                                                 <div class="numbers counters-box">
                                                     <dl>
                                                     <dd>Rego Requests</dd>
-                                                        <dt class="display-counter" data-value="15">0</dt>
+                                                    <span id="regoRCt"></span>
+                                                        <!-- <dt class="display-counter" data-value="15">0</dt> -->
                                                         <dd>Quotation Received</dd>
-                                                        <dt class="display-counter" data-value="12">0</dt>
+                                                        <span id="regoQCt"></span>
+                                                        <!-- <dt class="display-counter" data-value="12">0</dt> -->
                                                         
                                                     </dl>
                                                     <i class="icon soap-icon-status"></i>
