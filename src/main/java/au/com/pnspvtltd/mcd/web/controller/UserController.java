@@ -84,4 +84,17 @@ public class UserController {
 		}
 		return new ResponseEntity<>(user, status);
 	}
+	
+	@PostMapping(value = "user/login/social", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<UserVO> loginSocial(@RequestBody UserVO userVO, HttpServletResponse response) {
+		LOGGER.debug("User with email {} tries to login", userVO.getEmail());
+		UserVO user = userService.findUserByEmail(userVO.getEmail());
+		HttpStatus status = HttpStatus.OK;
+		if (user == null) {
+			user = userService.createUser(userVO);
+			response.setStatus(HttpStatus.CREATED.value());
+			return new ResponseEntity<>(user, status);
+		} 
+		return new ResponseEntity<>(user, status);
+	}
 }

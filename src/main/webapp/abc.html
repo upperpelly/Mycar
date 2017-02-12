@@ -86,6 +86,7 @@ $.ajax({
     var trimValue =  null;
     var modelTrim = null;
     var userId = null;
+    firstName=null;
     window.onload= function()
     {
     	//alert("came here for onload");
@@ -138,8 +139,15 @@ function parseURLParameter(Parameter)
     	modelName = parseURLParameter('modelName');
     	modelTrim = parseURLParameter('modeltrim');
     	trimValue = parseURLParameter('trimValue');
+    	firstName = parseURLParameter('firstName');
     	userId = parseURLParameter('userId');
-    	alert("inside abc userid"+userId);
+    	alert("inside abc userid"+firstName);
+    	if(userId!= null){
+			alert(firstName);
+			document.getElementById('welcomeDiv').style.display = "block";
+			document.getElementById('welcomeDiv1').style.display = "none";
+			document.getElementById('userId').innerHTML="<b>"+"Hi "+firstName+"</b>";
+		}
 /* alert("in onload now"); */
     	
          
@@ -154,6 +162,18 @@ function parseURLParameter(Parameter)
     }
     
 	</script>
+	
+	
+	<script>
+function redirect() {
+	alert("Thank You. Your Seach ID is ");
+	alert("userid"+userId);
+	var url="dashboard1.html?userId="+userId+"&searchId="+searchId+"&firstName="+firstName;
+	
+	window.location=url;
+}</script>
+	
+	
 	<script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 <script src="js/angular-resource.js"></script>
@@ -325,7 +345,7 @@ alert("Came here"+modelTrim);
 																							
 																		}).success(function(data) {
 																			alert("Successfully Stored.. ");
-																			var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId;
+																			var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId+"&firstName="+firstName;
 																							alert("Thank You. Your Seach ID is " + data.searchId);
 																							window.location=url;								
 																						});
@@ -433,12 +453,29 @@ $(document).ready( function() {
 });
 // ]]&gt;</script>
                     <ul class="quick-menu pull-left">
-                        <li><a href="dashboard1.html">MY ACCOUNT</a></li>
+                        <li><a href="dashboard1.html" onClick="redirect()">MY ACCOUNT</a></li>
                         
                     </ul>
-                    <ul class="quick-menu pull-right">
-                        <li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
-                        <li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+                   <ul class="quick-menu pull-right" id="welcomeDiv1" style="display:block">
+						<li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
+						<li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+
+					</ul>
+					
+					<ul class="quick-menu pull-right" id="welcomeDiv" style="display:none">
+                        <li class="ribbon">
+                            <a href="#"><span id="userId"></span></a>
+                            <ul class="menu mini uppercase">
+                                <li><a href="dashboard1.html#dashboard" class="location-reload">Overview</a></li>
+                                <li><a href="dashboard1.html#profile" class="location-reload">Profile</a></li>
+                                <li><a href="dashboard1.html#travel-stories" class="location-reload">Ebid-R</a></li>
+                                <li><a href="dashboard1.html#settings" class="location-reload">Quotation</a></li>
+                                <li><a href="dashboard1.html#wishlist" class="location-reload">Wishlist</a></li>
+                                <li><a href="dashboard1.html#booking" class="location-reload">Booking</a></li>
+                                <li><a href="dashboard1.html#rego" class="location-reload">Rego</a></li>
+                                <li><a href="#">signout</a></li>
+                            </ul>
+                        </li>
                         
                     </ul>
                 </div>
@@ -1547,7 +1584,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                          
                                         <div class="col-sm-80 col-md-90">
                                             <label>Free text</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="freetext" name="freetext"/>
+                                            <input type="text" class="input-text full-width" placeholder="free text" placeholder=""  id="freetext" name="freetext"/>
                                         </div>
                                         
                                     </div>
@@ -1678,7 +1715,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                     </div>
                                     <div class="col-sm-5 col-md-4">
                                             <label>REGO No</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="reg-no" name="reg-no"/>
+                                            <input type="text" class="input-text full-width"  placeholder="REGO No"  id="reg-no" name="reg-no"/>
                                         </div>
                                          <div class="col-sm-5 col-md-4">
                                             <label>REGO State</label>
@@ -1719,11 +1756,11 @@ We suggest that you contact the host to confirm availability and rates before su
                                 <div class="form-group row">
                                     <div class="col-sm-5 col-md-4">
                                             <label>Market Value</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="marketValue" name="marketValue"/>
+                                            <input type="text" class="input-text full-width" placeholder="Market Value"  id="marketValue" name="marketValue"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Agreed Value</label>
-                                            <input type="text" class="input-text full-width" value="free text" placeholder=""  id="agreedValue" name="agreedValue"/>
+                                            <input type="text" class="input-text full-width" placeholder="Agreed Value"  id="agreedValue" name="agreedValue"/>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Other Issues (If any)</label>

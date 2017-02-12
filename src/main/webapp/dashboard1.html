@@ -104,7 +104,13 @@ function parseURLParameter(Parameter)
     	//document.getElementById('minValue').innerHTML=priceMin;
     	
     	var searchId = parseURLParameter('searchId');
-    	
+    	var firstName = parseURLParameter('firstName');
+    	if(userId!= null){
+			alert(firstName);
+			document.getElementById('welcomeDiv').style.display = "block";
+			document.getElementById('welcomeDiv1').style.display = "none";
+			document.getElementById('userId').innerHTML="<b>"+"Hi "+firstName+"</b>";
+		}
     	
     	
       var carquery = new CarQuery();
@@ -324,14 +330,20 @@ img.emoji {
             <div class="topnav hidden-xs">
                 <div class="container">
 
-                    <ul class="quick-menu pull-left">
+                    <!-- <ul class="quick-menu pull-left">
                         <li><a href="dashboard1.html">MY ACCOUNT</a></li>
                         
-                    </ul>
+                    </ul> -->
                     
-                    <ul class="quick-menu pull-right">
+                    <ul class="quick-menu pull-right" id="welcomeDiv1" style="display:block">
+						<li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
+						<li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+
+					</ul>
+					
+					<ul class="quick-menu pull-right" id="welcomeDiv" style="display:none">
                         <li class="ribbon">
-                            <a href="#">Jessica Brown</a>
+                            <a href="#"><span id="userId"></span></a>
                             <ul class="menu mini uppercase">
                                 <li><a href="dashboard1.html#dashboard" class="location-reload">Overview</a></li>
                                 <li><a href="dashboard1.html#profile" class="location-reload">Profile</a></li>
@@ -345,6 +357,8 @@ img.emoji {
                         </li>
                         
                     </ul>
+                    
+                    
                 </div>
             </div>
             

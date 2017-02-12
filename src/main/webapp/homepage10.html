@@ -189,6 +189,7 @@ email=null;
 flex1=null;
 flex2=null;
 flex3=null;
+firstName =null;
 
 	var mainApp1 = angular.module("mainApp1", [ 'ui.bootstrap', 'ngResource' ]);
 	mainApp1.controller('overviewController', function($scope, $stateParams) {
@@ -212,8 +213,8 @@ flex3=null;
 		jsonInputToAPI.password=document.getElementById("examplePass").value;
 		alert(jsonInputToAPI.email);
 		alert(jsonInputToAPI.password);
-		/*var wsURL = 'http://localhost:8080/MyCarDomain/api/user/login'; */
-		   var wsURL = 'http://www.autoscoop.com.au/api/user';
+		var wsURL = 'http://localhost:8080/MyCarDomain/api/user/login'; 
+		   //var wsURL = 'http://www.autoscoop.com.au/api/user/login';
 		/* alert(jsonInputToAPI.comingSoonUserEmail);
 		alert(jsonInputToAPI.flex1);
 		alert(jsonInputToAPI.flex2);
@@ -227,6 +228,7 @@ flex3=null;
 				alert("successful Login");
 				alert("userid"+data.userId);
 				userId=data.userId;
+				firstName=data.firstName;
 				alert(data.firstName);
 				document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
 				if(userId!= null){
@@ -234,6 +236,9 @@ flex3=null;
 					document.getElementById('welcomeDiv').style.display = "block";
 					document.getElementById('welcomeDiv1').style.display = "none";
 					document.getElementById('userId').innerHTML="<b>"+"Hi "+data.firstName+"</b>";
+				}
+				else{
+					alert("User Id or password not present");
 				}
 							});
 	    	
@@ -256,8 +261,8 @@ $scope.submitForm1 = function() {
 		jsonInputToAPI.lastName=flex1;
 		
 		alert(flex1);
-		/*var wsURL = 'http://localhost:8080/MyCarDomain/api/user';*/ 
-		   var wsURL = 'http://www.autoscoop.com.au/api/user';
+		var wsURL = 'http://localhost:8080/MyCarDomain/api/user/login/social'; 
+		//   var wsURL = 'http://www.autoscoop.com.au/api/user/login/social';
 		/* alert(jsonInputToAPI.comingSoonUserEmail);
 		alert(jsonInputToAPI.flex1);
 		alert(jsonInputToAPI.flex2);
@@ -275,6 +280,7 @@ $scope.submitForm1 = function() {
 				alert("successful");
 				alert("userid"+userId);
 				userId=data.userId;
+				firstName=data.firstName;
 				document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
 				if(userId!= null){
 					alert(data.firstName);
@@ -359,9 +365,9 @@ var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?mo
 								
 							}).success(function(data) {
 								/* alert(data.priceMin); */
-								/* alert(trimValue); */
+								 alert(firstName); 
 								var url="abc.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
-										"&modelYear="+modelYear+"&modelDisplay="+modelDisplay+"&modelName="+modelName+"&modeltrim="+strUser+"&trimValue="+trimValue+"&userId="+userId;
+										"&modelYear="+modelYear+"&modelDisplay="+modelDisplay+"&modelName="+modelName+"&modeltrim="+strUser+"&trimValue="+trimValue+"&userId="+userId+"&firstName="+firstName;
 								/* alert(url); */ 
 								window.location = url;
 								
