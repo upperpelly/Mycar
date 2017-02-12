@@ -6,4 +6,5 @@ import au.com.pnspvtltd.mcd.domain.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 	User findByEmailIgnoreCase(String emailId);
+	
 }

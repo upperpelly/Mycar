@@ -125,7 +125,7 @@ function onSignInG()
 {
 	gapi.load('auth2', function() {
 		  auth2 = gapi.auth2.init({
-		    client_id: '814821459166-2snv3tdshqgusiuhjnuoedrg0akt83ol.apps.googleusercontent.com',
+		    client_id: '814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com',
 		    });
 
 		  // Sign the user in, and then retrieve their ID.
@@ -182,6 +182,7 @@ $.ajax({
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 <script src="js/angular-resource.js"></script>
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
+
 <script>
 var userId=null;
 email=null;
@@ -199,6 +200,49 @@ flex3=null;
 					'myController1',
 					function($scope, $http) {
 						
+					//Login start
+					
+					$scope.submitForm12 = function() {
+	alert("invoke login ");
+		/*alert($scope.email);
+		alert(email); */
+		
+		var jsonInputToAPI = {"email":"","password":""};
+		jsonInputToAPI.email=document.getElementById("exampleEmail").value;
+		jsonInputToAPI.password=document.getElementById("examplePass").value;
+		alert(jsonInputToAPI.email);
+		alert(jsonInputToAPI.password);
+		/*var wsURL = 'http://localhost:8080/MyCarDomain/api/user/login'; */
+		   var wsURL = 'http://www.autoscoop.com.au/api/user';
+		/* alert(jsonInputToAPI.comingSoonUserEmail);
+		alert(jsonInputToAPI.flex1);
+		alert(jsonInputToAPI.flex2);
+		alert(jsonInputToAPI.flex3); */
+		 	$http({
+				method : 'POST',
+				url : wsURL,
+				data: jsonInputToAPI
+								
+			}).success(function(data) {
+				alert("successful Login");
+				alert("userid"+data.userId);
+				userId=data.userId;
+				alert(data.firstName);
+				document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
+				if(userId!= null){
+					alert(data.firstName);
+					document.getElementById('welcomeDiv').style.display = "block";
+					document.getElementById('welcomeDiv1').style.display = "none";
+					document.getElementById('userId').innerHTML="<b>"+"Hi "+data.firstName+"</b>";
+				}
+							});
+	    	
+		 
+	    	
+	    
+	}
+
+					//Login End						
 					
 // social login start
 
@@ -232,9 +276,16 @@ $scope.submitForm1 = function() {
 				alert("userid"+userId);
 				userId=data.userId;
 				document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
+				if(userId!= null){
+					alert(data.firstName);
+					document.getElementById('welcomeDiv').style.display = "block";
+					document.getElementById('welcomeDiv1').style.display = "none";
+					document.getElementById('userId').innerHTML="<b>"+"Hi "+data.firstName+"</b>";
+				}
 							});
 	    	}
 	    
+		
 	    	
 	    
 	}
@@ -273,8 +324,8 @@ var strUser = e.options[e.selectedIndex].text;
 alert("userid"+userId);			
 
 								 
-var wsURL = 'http://www.autoscoop.com.au/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;
-/*var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;*/   
+/*var wsURL = 'http://www.autoscoop.com.au/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;*/
+var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;   
 /* var wsURL = 'http://sample-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser; */
 /* alert(wsURL);
  */							/* var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear=2008&modelDisplay=BMW&modelName=116&modelTrim=i Exclusive'; */
@@ -329,6 +380,14 @@ var wsURL = 'http://www.autoscoop.com.au/api/inventory/getStatisticsFor?modelYea
 
 					});
 </script>
+<script>
+function redirect() {
+	alert("Thank You. Your Seach ID is ");
+	alert("userid"+userId);
+	var url="dashboard1.html?userId="+userId+"&searchId="+searchId;
+	
+	window.location=url;
+}</script>
 <!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[84,140] -->
 <link rel="canonical"
 	href="http://www.carqueryapi.com/demo/dependant-selects-and-car-data-display/" />
@@ -501,7 +560,7 @@ section#content {
 	<script>
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '249863545451459',
+				appId : '238604546585672',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -584,14 +643,35 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 // ]]&gt;</script>
 
 					<ul class="quick-menu pull-left">
-						<li><a href="dashboard1.html">MY ACCOUNT</a></li>
+						<li><a href="dashboard1.html" onClick="redirect()">MY ACCOUNT</a></li>
 
 					</ul>
-					<ul class="quick-menu pull-right">
+					<!-- <div id="welcomeDiv" style="display:none">
+					
+					<span id="userId"></span>
+					</div> -->
+					<ul class="quick-menu pull-right" id="welcomeDiv1" style="display:block">
 						<li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
 						<li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
 
 					</ul>
+					
+					<ul class="quick-menu pull-right" id="welcomeDiv" style="display:none">
+                        <li class="ribbon">
+                            <a href="#"><span id="userId"></span></a>
+                            <ul class="menu mini uppercase">
+                                <li><a href="dashboard1.html#dashboard" class="location-reload">Overview</a></li>
+                                <li><a href="dashboard1.html#profile" class="location-reload">Profile</a></li>
+                                <li><a href="dashboard1.html#travel-stories" class="location-reload">Ebid-R</a></li>
+                                <li><a href="dashboard1.html#settings" class="location-reload">Quotation</a></li>
+                                <li><a href="dashboard1.html#wishlist" class="location-reload">Wishlist</a></li>
+                                <li><a href="dashboard1.html#booking" class="location-reload">Booking</a></li>
+                                <li><a href="dashboard1.html#rego" class="location-reload">Rego</a></li>
+                                <li><a href="#">signout</a></li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
 				</div>
 			</div>
 
@@ -877,7 +957,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 				</div>
 				<form>
 					<div class="form-group">
-						<input type="text" class="input-text full-width"
+						<input type="email" class="input-text full-width"
 							placeholder="email address">
 					</div>
 					<div class="form-group">
@@ -1111,15 +1191,25 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
+													<!-- Show userid -->
 
 													<br /> <br />
 													<div>
 
 														<div class="form-group">
-															<input type="email" class="form-control"
-																id="exampleInputEmail1"
+															<input type="email12" class="form-control"
+																id="exampleEmail"
 																placeholder="Enter your email address / Mobile Number">
 														</div>
+														<div class="form-group">
+															<input type="password" class="form-control"
+																id="examplePass"
+																placeholder="password" >
+														</div>
+														<div class="col-md-12 search-col-padding">
+														<button ng-click="submitForm12()" class="button">Login</button>
+														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
+													</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
 													<div class="clearfix"></div>
