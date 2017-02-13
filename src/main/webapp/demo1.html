@@ -10,21 +10,6 @@
 <script src="assets/js/jquery.countdown.min.js"></script>
 <!-- added end -->
 
-<script type="text/javascript">// <![CDATA[
-$(document).ready( function() {
-
-var carquery = new CarQuery();
-carquery.init();
-carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
-
-//Set onclick function for the US filter checkbox and show data button
-$('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
-$('#cq-show-data').click(  function(){ carquery.populateCarData('car-model-data'); } );
-$('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model-data','price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); } );
-});
-// ]]&gt;</script>
-
-
 
 <!-- Meta Tags -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,74 +22,6 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
-
-	<script>
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId : '238604546585672',
-				xfbml : true,
-				version : 'v2.8'
-			});
-
-			/* FB
-					.getLoginStatus(function(response) {
-						if (response.status === 'connected') {
-							document.getElementById('status').innerHTML = 'We are Connected';
-						} else if (response.status === 'not_authorized') {
-							document.getElementById('status').innerHTML = 'We are not Connected';
-						} else {
-							document.getElementById('status').innerHTML = 'We are not fb Connected';
-						}
-					},{
-						scope : 'email'
-					}); */
-		};
-
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) {
-				return;
-			}
-			js = d.createElement(s);
-			js.id = id;
-			js.src = "https://connect.facebook.net/en_US/sdk.js";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-
-		function login() {
-			FB
-					.login(
-							function(response) {
-								if (response.status === 'connected') {
-									/* document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>'; */
-									var url = '/me?fields=name,email';
-									FB.api(url, function(response) {
-										/* alert(response.name);
-										alert(response.email); */
-										email=response.email;
-										flex1=response.name;// username
-										flex2=response.id;// id
-										flex3=1;//1-FB 2-G+ 3-Twitter 4-LinkedIn 5-initial
-										console.log(JSON.stringify(response));
-										angular.element(document.getElementById('myController1')).scope().submitForm1();
-									});
-								} else if (response.status === 'not_authorized') {
-									document.getElementById('status').innerHTML = 'We are not Connected';
-								} else {
-									document.getElementById('status').innerHTML = 'We are not fb Connected';
-								}
-							}, {
-								scope : 'email'
-							});
-
-		}
-	</script>
-
-	<!-- End FB -->
-
-
-
 
 <!-- angular JS script Start -->
 <script
@@ -265,14 +182,11 @@ $.ajax({
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 <script src="js/angular-resource.js"></script>
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
-
 <script>
-var userId=null;
 email=null;
 flex1=null;
 flex2=null;
 flex3=null;
-firstName =null;
 
 	var mainApp1 = angular.module("mainApp1", [ 'ui.bootstrap', 'ngResource' ]);
 	mainApp1.controller('overviewController', function($scope, $stateParams) {
@@ -284,53 +198,6 @@ firstName =null;
 					'myController1',
 					function($scope, $http) {
 						
-					//Login start
-					
-					$scope.submitForm12 = function() {
-	alert("invoke login ");
-		/*alert($scope.email);
-		alert(email); */
-		
-		var jsonInputToAPI = {"email":"","password":""};
-		jsonInputToAPI.email=document.getElementById("exampleEmail").value;
-		jsonInputToAPI.password=document.getElementById("examplePass").value;
-		alert(jsonInputToAPI.email);
-		alert(jsonInputToAPI.password);
-		var wsURL = 'http://localhost:8080/MyCarDomain/api/user/login'; 
-		   //var wsURL = 'http://www.autoscoop.com.au/api/user/login';
-		/* alert(jsonInputToAPI.comingSoonUserEmail);
-		alert(jsonInputToAPI.flex1);
-		alert(jsonInputToAPI.flex2);
-		alert(jsonInputToAPI.flex3); */
-		 	$http({
-				method : 'POST',
-				url : wsURL,
-				data: jsonInputToAPI
-								
-			}).success(function(data) {
-				alert("successful Login");
-				alert("userid"+data.userId);
-				userId=data.userId;
-				firstName=data.firstName;
-				alert(data.firstName);
-				document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
-				if(userId!= null){
-					alert(data.firstName);
-					document.getElementById('welcomeDiv').style.display = "block";
-					document.getElementById('welcomeDiv1').style.display = "none";
-					document.getElementById('userId').innerHTML="<b>"+"Hi "+data.firstName+"</b>";
-				}
-				else{
-					alert("User Id or password not present");
-				}
-							});
-	    	
-		 
-	    	
-	    
-	}
-
-					//Login End						
 					
 // social login start
 
@@ -344,8 +211,8 @@ $scope.submitForm1 = function() {
 		jsonInputToAPI.lastName=flex1;
 		
 		alert(flex1);
-		var wsURL = 'http://localhost:8080/MyCarDomain/api/user/login/social'; 
-		//   var wsURL = 'http://www.autoscoop.com.au/api/user/login/social';
+		var wsURL = 'http://localhost:8080/MyCarDomain/api/user'; 
+		/*   var wsURL = 'http://www.autoscoop.com.au/api/user';
 		/* alert(jsonInputToAPI.comingSoonUserEmail);
 		alert(jsonInputToAPI.flex1);
 		alert(jsonInputToAPI.flex2);
@@ -361,20 +228,11 @@ $scope.submitForm1 = function() {
 								
 			}).success(function(data) {
 				alert("successful");
-				alert("userid"+userId);
-				userId=data.userId;
-				firstName=data.firstName;
+				
 				document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
-				if(userId!= null){
-					alert(data.firstName);
-					document.getElementById('welcomeDiv').style.display = "block";
-					document.getElementById('welcomeDiv1').style.display = "none";
-					document.getElementById('userId').innerHTML="<b>"+"Hi "+data.firstName+"</b>";
-				}
 							});
 	    	}
 	    
-		
 	    	
 	    
 	}
@@ -410,11 +268,11 @@ var e = document.getElementById("car-model-trims");
 var strUser = e.options[e.selectedIndex].text;
 
 							
-alert("userid"+userId);			
+						
 
 								 
-/*var wsURL = 'http://www.autoscoop.com.au/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;*/
-var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;   
+var wsURL = 'http://www.autoscoop.com.au/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;  
+/*var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;*/   
 /* var wsURL = 'http://sample-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser; */
 /* alert(wsURL);
  */							/* var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear=2008&modelDisplay=BMW&modelName=116&modelTrim=i Exclusive'; */
@@ -448,9 +306,9 @@ var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?mo
 								
 							}).success(function(data) {
 								/* alert(data.priceMin); */
-								 alert(firstName); 
+								/* alert(trimValue); */
 								var url="abc.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
-										"&modelYear="+modelYear+"&modelDisplay="+modelDisplay+"&modelName="+modelName+"&modeltrim="+strUser+"&trimValue="+trimValue+"&userId="+userId+"&firstName="+firstName;
+										"&modelYear="+modelYear+"&modelDisplay="+modelDisplay+"&modelName="+modelName+"&modeltrim="+strUser+"&trimValue="+trimValue;
 								/* alert(url); */ 
 								window.location = url;
 								
@@ -469,14 +327,6 @@ var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?mo
 
 					});
 </script>
-<script>
-function redirect() {
-	alert("Thank You. Your Seach ID is ");
-	alert("userid"+userId);
-	var url="dashboard1.html?userId="+userId+"&searchId="+searchId;
-	
-	window.location=url;
-}</script>
 <!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[84,140] -->
 <link rel="canonical"
 	href="http://www.carqueryapi.com/demo/dependant-selects-and-car-data-display/" />
@@ -644,66 +494,130 @@ section#content {
 <body class="load-full-screen" ng-app="mainApp1"
 	ng-controller="myController1" id="myController1">
 
-	
+	<!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
+
+	<script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId : '238604546585672',
+				xfbml : true,
+				version : 'v2.8'
+			});
+
+			/* FB
+					.getLoginStatus(function(response) {
+						if (response.status === 'connected') {
+							document.getElementById('status').innerHTML = 'We are Connected';
+						} else if (response.status === 'not_authorized') {
+							document.getElementById('status').innerHTML = 'We are not Connected';
+						} else {
+							document.getElementById('status').innerHTML = 'We are not fb Connected';
+						}
+					},{
+						scope : 'email'
+					}); */
+		};
+
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
+		function login() {
+			FB
+					.login(
+							function(response) {
+								if (response.status === 'connected') {
+									/* document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>'; */
+									var url = '/me?fields=name,email';
+									FB.api(url, function(response) {
+										/* alert(response.name);
+										alert(response.email); */
+										email=response.email;
+										flex1=response.name;// username
+										flex2=response.id;// id
+										flex3=1;//1-FB 2-G+ 3-Twitter 4-LinkedIn 5-initial
+										console.log(JSON.stringify(response));
+										angular.element(document.getElementById('myController1')).scope().submitForm1();
+									});
+								} else if (response.status === 'not_authorized') {
+									document.getElementById('status').innerHTML = 'We are not Connected';
+								} else {
+									document.getElementById('status').innerHTML = 'We are not fb Connected';
+								}
+							}, {
+								scope : 'email'
+							});
+
+		}
+	</script>
+
+	<!-- End FB -->
+
+
 	<div id="page-wrapper" class="site-wrapper">
-<!-- Header start -->
-	 <header id="header" class="navbar-static-top style6">
-            <div class="container">
-                <h1 class="logo navbar-brand">
-                    <a href="index.html" title="Travelo - home">
-                        <img src="images/logo.png" alt="Travelo HTML5 Template" />
-                    </a>
-                </h1>
-                
-                <div class="topnav">
-                    <ul class="quick-menu pull-right clearfix">
-                        <li><a href="#">ACCOUNT</a></li>
-                        <li class="ribbon">
-                            <a href="#">English</a>
-                            <ul class="menu mini">
-                                <li><a href="#" title="Dansk">Dansk</a></li>
-                                <li><a href="#" title="Deutsch">Deutsch</a></li>
-                                <li class="active"><a href="#" title="English">English</a></li>
-                                <li><a href="#" title="Español">Español</a></li>
-                                <li><a href="#" title="Français">Français</a></li>
-                                <li><a href="#" title="Italiano">Italiano</a></li>
-                                <li><a href="#" title="Magyar">Magyar</a></li>
-                                <li><a href="#" title="Nederlands">Nederlands</a></li>
-                                <li><a href="#" title="Norsk">Norsk</a></li>
-                                <li><a href="#" title="Polski">Polski</a></li>
-                                <li><a href="#" title="Português">Português</a></li>
-                                <li><a href="#" title="Suomi">Suomi</a></li>
-                                <li><a href="#" title="Svenska">Svenska</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="pull-right hidden-mobile">
-                    <button class="btn-medium blue-bg soap-popupbox" data-target="#travelo-signup">SIGNUP</button>
-                    <button class="btn-medium soap-popupbox" data-target="#travelo-login">LOGIN</button>
-                    <a href="http://themeforest.net/item/travelo-responsive-travel-booking-site-template/8346649?ref=SoapTheme" class="button btn-medium yellow" style="padding: 0 15px;"><i class="soap-icon-shopping"></i> LOG BOOK</a>
-                </div>
-            </div>
-            <a href="#mobile-menu-01" data-toggle="collapse" class="mobile-menu-toggle">
-                Mobile Menu Toggle
-            </a>
-            
-            <div class="main-navigation">
-                <div class="container">
-                    <nav id="main-menu" role="navigation">
-                        <ul class="menu">                            
-                            <li class="menu-item-has-children">
-                                <a href="homepage10.html">eBidR</a>
+		<header id="header" class="navbar-static-top">
+
+			<div class="topnav hidden-xs">
+
+				<div class="container">
+					<script type="text/javascript">// <![CDATA[
+$(document).ready( function() {
+
+var carquery = new CarQuery();
+carquery.init();
+carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+
+//Set onclick function for the US filter checkbox and show data button
+$('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
+$('#cq-show-data').click(  function(){ carquery.populateCarData('car-model-data'); } );
+$('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model-data','price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); } );
+});
+// ]]&gt;</script>
+
+					<ul class="quick-menu pull-left">
+						<li><a href="dashboard1.html">MY ACCOUNT</a></li>
+
+					</ul>
+					<ul class="quick-menu pull-right">
+						<li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
+						<li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+
+					</ul>
+				</div>
+			</div>
+
+			<div class="main-header">
+
+				<a href="#mobile-menu-01" data-toggle="collapse"
+					class="mobile-menu-toggle"> Mobile Menu Toggle </a>
+
+				<div class="container">
+					<h1 class="logo navbar-brand">
+						<a href="homepage10.html" title="Autoscoop - home"> <img
+							src="images/logo.png" alt="Autoscoop HTML5 Template" />
+						</a>
+					</h1>
+
+					<nav id="main-menu" role="navigation">
+						<ul class="menu">
+							<li class="menu-item-has-children active"><a
+								href="homepage10.html">eBidR</a>
 								<ul>
 									<li><a href="homepage10.html">Cars</a></li>
 									<li><a href="homepage10.html">Bikes</a></li>
 									<li><a href="homepage10.html">Boats</a></li>
 									<li><a href="homepage10.html">Caravan</a></li>
 									<li><a href="homepage10.html">Bicycle</a></li>
-								</ul>
-                            </li>
-                           <li class="menu-item-has-children"><a href="homepage10.html">Browse</a>
+
+								</ul></li>
+							<li class="menu-item-has-children"><a href="homepage10.html">Browse</a>
 								<ul>
 									<li><a href="homepage10.html">Cars</a></li>
 									<li><a href="homepage10.html">Bikes</a></li>
@@ -731,7 +645,7 @@ section#content {
 
 								</ul></li>
 							<li class="menu-item-has-children"><a href="homepage10.html">Service
-									& Maintenance</a>
+									& Maintennance</a>
 								<ul>
 									<li><a href="homepage10.html">Cars</a></li>
 									<li><a href="homepage10.html">Bikes</a></li>
@@ -759,19 +673,13 @@ section#content {
 									<li><a href="homepage10.html">Bicycle</a></li>
 
 								</ul></li>
-                        </ul>
-                    </nav>
-                    <ul class="social-icons clearfix pull-right hidden-mobile">
-                        <li class="twitter"><a title="twitter" href="#" data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
-                        <li class="facebook"><a title="facebook" href="#" data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
-                        <li class="linkedin"><a title="linkedin" href="#" data-toggle="tooltip"><i class="soap-icon-linkedin"></i></a></li>
-                        <li class="vimeo"><a title="vimeo" href="#" data-toggle="tooltip"><i class="soap-icon-vimeo"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <nav id="mobile-menu-01" class="mobile-menu collapse">
-                <ul id="mobile-primary-menu" class="menu">
+
+						</ul>
+					</nav>
+				</div>
+
+				<nav id="mobile-menu-01" class="mobile-menu collapse">
+					<ul id="mobile-primary-menu" class="menu">
 						<li class="menu-item-has-children"><a href="homepage10.html">eBidR</a>
 							<ul>
 								<li><a href="homepage10.html">Cars</a></li>
@@ -848,126 +756,148 @@ section#content {
 
 							</ul></li>
 					</ul>
-                
-                <ul class="mobile-topnav container">
-                    <li><a href="#">MY ACCOUNT</a></li>
-                    <li class="ribbon language menu-color-skin">
-                        <a href="#" data-toggle="collapse">ENGLISH</a>
-                        <ul class="menu mini">
-                            <li><a href="#" title="Dansk">Dansk</a></li>
-                            <li><a href="#" title="Deutsch">Deutsch</a></li>
-                            <li class="active"><a href="#" title="English">English</a></li>
-                            <li><a href="#" title="Español">Español</a></li>
-                            <li><a href="#" title="Français">Français</a></li>
-                            <li><a href="#" title="Italiano">Italiano</a></li>
-                            <li><a href="#" title="Magyar">Magyar</a></li>
-                            <li><a href="#" title="Nederlands">Nederlands</a></li>
-                            <li><a href="#" title="Norsk">Norsk</a></li>
-                            <li><a href="#" title="Polski">Polski</a></li>
-                            <li><a href="#" title="Português">Português</a></li>
-                            <li><a href="#" title="Suomi">Suomi</a></li>
-                            <li><a href="#" title="Svenska">Svenska</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
-                    <li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
-                    <li class="ribbon currency menu-color-skin">
-                        <a href="#">USD</a>
-                        <ul class="menu mini">
-                            <li><a href="#" title="AUD">AUD</a></li>
-                            <li><a href="#" title="BRL">BRL</a></li>
-                            <li class="active"><a href="#" title="USD">USD</a></li>
-                            <li><a href="#" title="CAD">CAD</a></li>
-                            <li><a href="#" title="CHF">CHF</a></li>
-                            <li><a href="#" title="CNY">CNY</a></li>
-                            <li><a href="#" title="CZK">CZK</a></li>
-                            <li><a href="#" title="DKK">DKK</a></li>
-                            <li><a href="#" title="EUR">EUR</a></li>
-                            <li><a href="#" title="GBP">GBP</a></li>
-                            <li><a href="#" title="HKD">HKD</a></li>
-                            <li><a href="#" title="HUF">HUF</a></li>
-                            <li><a href="#" title="IDR">IDR</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                
-            </nav>
-            <div id="travelo-signup" class="travelo-signup-box travelo-box">
-                <div class="login-social">
-                    <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
-                    <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
-                </div>
-                <div class="seperator"><label>OR</label></div>
-                <div class="simple-signup">
-                    <div class="text-center signup-email-section">
-                        <a href="#" class="signup-email"><i class="soap-icon-letter"></i>Sign up with Email</a>
-                    </div>
-                    <p class="description">By signing up, I agree to Travelo's Terms of Service, Privacy Policy, Guest Refund olicy, and Host Guarantee Terms.</p>
-                </div>
-                <div class="email-signup">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="input-text full-width" placeholder="first name">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="input-text full-width" placeholder="last name">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="input-text full-width" placeholder="email address">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="input-text full-width" placeholder="password">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="input-text full-width" placeholder="confirm password">
-                        </div>
-                        <div class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Tell me about Travelo news
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <p class="description">By signing up, I agree to Travelo's Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms.</p>
-                        </div>
-                        <button type="submit" class="full-width btn-medium">SIGNUP</button>
-                    </form>
-                </div>
-                <div class="seperator"></div>
-                <p>Already a Travelo member? <a href="#travelo-login" class="goto-login soap-popupbox">Login</a></p>
-            </div>
-            <div id="travelo-login" class="travelo-login-box travelo-box">
-                <div class="login-social">
-                    <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
-                    <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
-                </div>
-                <div class="seperator"><label>OR</label></div>
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="input-text full-width" placeholder="email address">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="input-text full-width" placeholder="password">
-                    </div>
-                    <div class="form-group">
-                        <a href="#" class="forgot-password pull-right">Forgot password?</a>
-                        <div class="checkbox checkbox-inline">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
-                        </div>
-                    </div>
-                </form>
-                <div class="seperator"></div>
-                <p>Don't have an account? <a href="#travelo-signup" class="goto-signup soap-popupbox">Sign up</a></p>
-            </div>
-        </header>
-	
 
-<!-- Header End -->
+					<ul class="mobile-topnav container">
+						<li><a href="#">MY ACCOUNT</a></li>
+						<li class="ribbon language menu-color-skin"><a href="#"
+							data-toggle="collapse">ENGLISH</a>
+							<ul class="menu mini">
+								<li><a href="#" title="Dansk">Dansk</a></li>
+								<li><a href="#" title="Deutsch">Deutsch</a></li>
+								<li class="active"><a href="#" title="English">English</a></li>
+								<li><a href="#" title="EspaÃ±ol">EspaÃ±ol</a></li>
+								<li><a href="#" title="FranÃ§ais">FranÃ§ais</a></li>
+								<li><a href="#" title="Italiano">Italiano</a></li>
+								<li><a href="#" title="Magyar">Magyar</a></li>
+								<li><a href="#" title="Nederlands">Nederlands</a></li>
+								<li><a href="#" title="Norsk">Norsk</a></li>
+								<li><a href="#" title="Polski">Polski</a></li>
+								<li><a href="#" title="PortuguÃªs">PortuguÃªs</a></li>
+								<li><a href="#" title="Suomi">Suomi</a></li>
+								<li><a href="#" title="Svenska">Svenska</a></li>
+							</ul></li>
+						<li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
+						<li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+						<li class="ribbon currency menu-color-skin"><a href="#">USD</a>
+							<ul class="menu mini">
+								<li><a href="#" title="AUD">AUD</a></li>
+								<li><a href="#" title="BRL">BRL</a></li>
+								<li class="active"><a href="#" title="USD">USD</a></li>
+								<li><a href="#" title="CAD">CAD</a></li>
+								<li><a href="#" title="CHF">CHF</a></li>
+								<li><a href="#" title="CNY">CNY</a></li>
+								<li><a href="#" title="CZK">CZK</a></li>
+								<li><a href="#" title="DKK">DKK</a></li>
+								<li><a href="#" title="EUR">EUR</a></li>
+								<li><a href="#" title="GBP">GBP</a></li>
+								<li><a href="#" title="HKD">HKD</a></li>
+								<li><a href="#" title="HUF">HUF</a></li>
+								<li><a href="#" title="IDR">IDR</a></li>
+							</ul></li>
+					</ul>
+
+				</nav>
+			</div>
 
 
+
+
+
+			<div id="travelo-signup" class="travelo-signup-box travelo-box">
+				<div class="login-social">
+					<a href="#" class="button login-facebook"><i
+						class="soap-icon-facebook" onclick="login()"></i>Login with
+						Facebook</a> <a href="#" class="button login-googleplus"><i
+						class="soap-icon-googleplus"></i>Login with Google+</a>
+				</div>
+				<div class="seperator">
+					<label>OR</label>
+				</div>
+				<div class="simple-signup">
+					<div class="text-center signup-email-section">
+						<a href="#" class="signup-email"><i class="soap-icon-letter"></i>Sign
+							up with Email</a>
+					</div>
+					<p class="description">By signing up, I agree to Autoscoop's
+						Terms of Service, Privacy Policy and Host Guarantee Terms.</p>
+				</div>
+				<div class="email-signup">
+					<form>
+						<div class="form-group">
+							<input type="text" class="input-text full-width"
+								placeholder="first name">
+						</div>
+						<div class="form-group">
+							<input type="text" class="input-text full-width"
+								placeholder="last name">
+						</div>
+						<div class="form-group">
+							<input type="text" class="input-text full-width"
+								placeholder="email address">
+						</div>
+						<div class="form-group">
+							<input type="password" class="input-text full-width"
+								placeholder="password">
+						</div>
+						<div class="form-group">
+							<input type="password" class="input-text full-width"
+								placeholder="confirm password">
+						</div>
+						<div class="form-group">
+							<div class="checkbox">
+								<label> <input type="checkbox"> Tell me about
+									Autoscoop news
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<p class="description">By signing up, I agree to Autoscoop's
+								Terms of Service, Privacy Policy and Host Guarantee Terms.</p>
+						</div>
+						<button type="submit" class="full-width btn-medium">SIGNUP</button>
+					</form>
+				</div>
+				<div class="seperator"></div>
+				<p>
+					Already a Autoscoop member? <a href="#travelo-login"
+						class="goto-login soap-popupbox">Login</a>
+				</p>
+			</div>
+			<div id="travelo-login" class="travelo-login-box travelo-box">
+				<div class="login-social">
+					<a href="#" class="button login-facebook"><i
+						class="soap-icon-facebook"></i>Login with Facebook</a> <a href="#"
+						class="button login-googleplus"><i
+						class="soap-icon-googleplus"></i>Login with Google+</a>
+				</div>
+				<div class="seperator">
+					<label>OR</label>
+				</div>
+				<form>
+					<div class="form-group">
+						<input type="text" class="input-text full-width"
+							placeholder="email address">
+					</div>
+					<div class="form-group">
+						<input type="password" class="input-text full-width"
+							placeholder="password">
+					</div>
+					<div class="form-group">
+						<a href="#" class="forgot-password pull-right">Forgot
+							password?</a>
+						<div class="checkbox checkbox-inline">
+							<label> <input type="checkbox"> Remember me
+							</label>
+						</div>
+					</div>
+				</form>
+				<div class="seperator"></div>
+				<p>
+					Don't have an account? <a href="#travelo-signup"
+						class="goto-signup soap-popupbox">Sign up</a>
+				</p>
+			</div>
+		</header>
 
 		<!-- BEGIN: SEARCH SECTION -->
 
@@ -1179,25 +1109,15 @@ section#content {
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
-													<!-- Show userid -->
 
 													<br /> <br />
 													<div>
 
 														<div class="form-group">
-															<input type="email12" class="form-control"
-																id="exampleEmail"
+															<input type="email" class="form-control"
+																id="exampleInputEmail1"
 																placeholder="Enter your email address / Mobile Number">
 														</div>
-														<div class="form-group">
-															<input type="password" class="form-control"
-																id="examplePass"
-																placeholder="password" >
-														</div>
-														<div class="col-md-12 search-col-padding">
-														<button ng-click="submitForm12()" class="button">Login</button>
-														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
-													</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
 													<div class="clearfix"></div>
