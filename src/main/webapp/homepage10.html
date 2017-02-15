@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="load-full-screen">
 <head>
+
 <!-- Page Title -->
 <title>Autoscoop</title>
 
@@ -39,7 +40,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 
-	<script>
+<script>
 		window.fbAsyncInit = function() {
 			FB.init({
 				appId : '238604546585672',
@@ -101,7 +102,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 		}
 	</script>
 
-	<!-- End FB -->
+<!-- End FB -->
 
 
 
@@ -408,6 +409,7 @@ $scope.submitForm1 = function() {
 
 var e = document.getElementById("car-model-trims"); 
 var strUser = e.options[e.selectedIndex].text;
+document.getElementById("login").click();
 
 							
 alert("userid"+userId);			
@@ -598,7 +600,7 @@ section#content {
 }
 
 #main {
-	padding-top: 200px;
+	padding-top: 100px;
 }
 
 .page-title, .page-description {
@@ -639,71 +641,77 @@ section#content {
 	font-weight: bold;
 	text-shadow: 2px -2px rgba(0, 0, 0, 0.2);
 }
+
+.social {
+	font-size: large;
+}
 </style>
+
+
 </head>
 <body class="load-full-screen" ng-app="mainApp1"
 	ng-controller="myController1" id="myController1">
 
-	
+
 	<div id="page-wrapper" class="site-wrapper">
-<!-- Header start -->
-	 <header id="header" class="navbar-static-top style6">
-            <div class="container">
-                <h1 class="logo navbar-brand">
-                    <a href="index.html" title="Travelo - home">
-                        <img src="images/logo.png" alt="Travelo HTML5 Template" />
-                    </a>
-                </h1>
-                
-                <div class="topnav">
-                    <ul class="quick-menu pull-right clearfix">
-                        <li><a href="#">ACCOUNT</a></li>
-                        <li class="ribbon">
-                            <a href="#">English</a>
-                            <ul class="menu mini">
-                                <li><a href="#" title="Dansk">Dansk</a></li>
-                                <li><a href="#" title="Deutsch">Deutsch</a></li>
-                                <li class="active"><a href="#" title="English">English</a></li>
-                                <li><a href="#" title="Español">Español</a></li>
-                                <li><a href="#" title="Français">Français</a></li>
-                                <li><a href="#" title="Italiano">Italiano</a></li>
-                                <li><a href="#" title="Magyar">Magyar</a></li>
-                                <li><a href="#" title="Nederlands">Nederlands</a></li>
-                                <li><a href="#" title="Norsk">Norsk</a></li>
-                                <li><a href="#" title="Polski">Polski</a></li>
-                                <li><a href="#" title="Português">Português</a></li>
-                                <li><a href="#" title="Suomi">Suomi</a></li>
-                                <li><a href="#" title="Svenska">Svenska</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="pull-right hidden-mobile">
-                    <button class="btn-medium blue-bg soap-popupbox" data-target="#travelo-signup">SIGNUP</button>
-                    <button class="btn-medium soap-popupbox" data-target="#travelo-login">LOGIN</button>
-                    <a href="http://themeforest.net/item/travelo-responsive-travel-booking-site-template/8346649?ref=SoapTheme" class="button btn-medium yellow" style="padding: 0 15px;"><i class="soap-icon-shopping"></i> LOG BOOK</a>
-                </div>
-            </div>
-            <a href="#mobile-menu-01" data-toggle="collapse" class="mobile-menu-toggle">
-                Mobile Menu Toggle
-            </a>
-            
-            <div class="main-navigation">
-                <div class="container">
-                    <nav id="main-menu" role="navigation">
-                        <ul class="menu">                            
-                            <li class="menu-item-has-children">
-                                <a href="homepage10.html">eBidR</a>
+		<!-- Header start -->
+		<header id="header" class="navbar-static-top style6">
+			<div class="container">
+				<h1 class="logo navbar-brand">
+					<a href="index.html" title="Travelo - home"> <img
+						src="images/logo.png" alt="Travelo HTML5 Template" />
+					</a>
+				</h1>
+
+				<div class="topnav">
+					<ul class="quick-menu pull-right clearfix">
+						<li><a href="#">ACCOUNT</a></li>
+						<li class="ribbon"><a href="#">English</a>
+							<ul class="menu mini">
+								<li><a href="#" title="Dansk">Dansk</a></li>
+								<li><a href="#" title="Deutsch">Deutsch</a></li>
+								<li class="active"><a href="#" title="English">English</a></li>
+								<li><a href="#" title="Español">Español</a></li>
+								<li><a href="#" title="Français">Français</a></li>
+								<li><a href="#" title="Italiano">Italiano</a></li>
+								<li><a href="#" title="Magyar">Magyar</a></li>
+								<li><a href="#" title="Nederlands">Nederlands</a></li>
+								<li><a href="#" title="Norsk">Norsk</a></li>
+								<li><a href="#" title="Polski">Polski</a></li>
+								<li><a href="#" title="Português">Português</a></li>
+								<li><a href="#" title="Suomi">Suomi</a></li>
+								<li><a href="#" title="Svenska">Svenska</a></li>
+							</ul></li>
+					</ul>
+				</div>
+
+				<div class="pull-right hidden-mobile">
+					<button class="btn-medium blue-bg soap-popupbox"
+						data-target="#travelo-signup">SIGNUP</button>
+					<button class="btn-medium soap-popupbox"
+						data-target="#travelo-login" id="login">LOGIN</button>
+					<a
+						href="http://themeforest.net/item/travelo-responsive-travel-booking-site-template/8346649?ref=SoapTheme"
+						class="button btn-medium yellow" style="padding: 0 15px;"><i
+						class="soap-icon-shopping"></i> LOG BOOK</a>
+				</div>
+			</div>
+			<a href="#mobile-menu-01" data-toggle="collapse"
+				class="mobile-menu-toggle"> Mobile Menu Toggle </a>
+
+			<div class="main-navigation">
+				<div class="container">
+					<nav id="main-menu" role="navigation">
+						<ul class="menu">
+							<li class="menu-item-has-children"><a href="homepage10.html">eBidR</a>
 								<ul>
 									<li><a href="homepage10.html">Cars</a></li>
 									<li><a href="homepage10.html">Bikes</a></li>
 									<li><a href="homepage10.html">Boats</a></li>
 									<li><a href="homepage10.html">Caravan</a></li>
 									<li><a href="homepage10.html">Bicycle</a></li>
-								</ul>
-                            </li>
-                           <li class="menu-item-has-children"><a href="homepage10.html">Browse</a>
+								</ul></li>
+							<li class="menu-item-has-children"><a href="homepage10.html">Browse</a>
 								<ul>
 									<li><a href="homepage10.html">Cars</a></li>
 									<li><a href="homepage10.html">Bikes</a></li>
@@ -759,213 +767,240 @@ section#content {
 									<li><a href="homepage10.html">Bicycle</a></li>
 
 								</ul></li>
-                        </ul>
-                    </nav>
-                    <ul class="social-icons clearfix pull-right hidden-mobile">
-                        <li class="twitter"><a title="twitter" href="#" data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
-                        <li class="facebook"><a title="facebook" href="#" data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
-                        <li class="linkedin"><a title="linkedin" href="#" data-toggle="tooltip"><i class="soap-icon-linkedin"></i></a></li>
-                        <li class="vimeo"><a title="vimeo" href="#" data-toggle="tooltip"><i class="soap-icon-vimeo"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <nav id="mobile-menu-01" class="mobile-menu collapse">
-                <ul id="mobile-primary-menu" class="menu">
-						<li class="menu-item-has-children"><a href="homepage10.html">eBidR</a>
-							<ul>
-								<li><a href="homepage10.html">Cars</a></li>
-								<li><a href="homepage10.html">Bikes</a></li>
-								<li><a href="homepage10.html">Boats</a></li>
-								<li><a href="homepage10.html">Caravan</a></li>
-								<li><a href="homepage10.html">Bicycle</a></li>
-
-							</ul></li>
-						<li class="menu-item-has-children"><a href="homepage10.html">Browse</a>
-							<ul>
-								<li><a href="homepage10.html">Cars</a></li>
-								<li><a href="homepage10.html">Bikes</a></li>
-								<li><a href="homepage10.html">Boats</a></li>
-								<li><a href="homepage10.html">Caravan</a></li>
-								<li><a href="homepage10.html">Bicycle</a></li>
-
-							</ul></li>
-						<li class="menu-item-has-children"><a href="homepage10.html">Finance</a>
-							<ul>
-								<li><a href="homepage10.html">Cars</a></li>
-								<li><a href="homepage10.html">Bikes</a></li>
-								<li><a href="homepage10.html">Boats</a></li>
-								<li><a href="homepage10.html">Caravan</a></li>
-								<li><a href="homepage10.html">Bicycle</a></li>
-
-							</ul></li>
-						<li class="menu-item-has-children"><a href="homepage10.html">Insurance</a>
-							<ul>
-								<li><a href="homepage10.html">Cars</a></li>
-								<li><a href="homepage10.html">Bikes</a></li>
-								<li><a href="homepage10.html">Boats</a></li>
-								<li><a href="homepage10.html">Caravan</a></li>
-								<li><a href="homepage10.html">Bicycle</a></li>
-
-							</ul></li>
-						<li class="menu-item-has-children"><a href="homepage10.html">Service
-								& Maintenance</a>
-							<ul>
-								<li><a href="homepage10.html">Cars</a></li>
-								<li><a href="homepage10.html">Bikes</a></li>
-								<li><a href="homepage10.html">Boats</a></li>
-								<li><a href="homepage10.html">Caravan</a></li>
-								<li><a href="homepage10.html">Bicycle</a></li>
-
-							</ul></li>
-						<li class="menu-item-has-children"><a href="homepage10.html">Transport</a>
-							<ul>
-								<li><a href="homepage10.html">Cars</a></li>
-								<li><a href="homepage10.html">Bikes</a></li>
-								<li><a href="homepage10.html">Boats</a></li>
-								<li><a href="homepage10.html">Caravan</a></li>
-								<li><a href="homepage10.html">Bicycle</a></li>
-
-							</ul></li>
-
-						<li class="menu-item-has-children"><a href="homepage10.html">Rego</a>
-							<ul>
-								<li><a href="homepage10.html">Cars</a></li>
-								<li><a href="homepage10.html">Bikes</a></li>
-								<li><a href="homepage10.html">Boats</a></li>
-								<li><a href="homepage10.html">Caravan</a></li>
-								<li><a href="homepage10.html">Bicycle</a></li>
-
-							</ul></li>
-						<li class="menu-item-has-children"><a href="homepage10.html">Check
-								Vehicle</a>
-							<ul>
-								<li><a href="homepage10.html">Cars</a></li>
-								<li><a href="homepage10.html">Bikes</a></li>
-								<li><a href="homepage10.html">Boats</a></li>
-								<li><a href="homepage10.html">Caravan</a></li>
-								<li><a href="homepage10.html">Bicycle</a></li>
-
-							</ul></li>
+						</ul>
+					</nav>
+					<ul class="social-icons clearfix pull-right hidden-mobile">
+						<li class="twitter"><a title="twitter" href="#"
+							data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
+						<li class="facebook"><a title="facebook" href="#"
+							data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
+						<li class="linkedin"><a title="linkedin" href="#"
+							data-toggle="tooltip"><i class="soap-icon-linkedin"></i></a></li>
+						<li class="vimeo"><a title="vimeo" href="#"
+							data-toggle="tooltip"><i class="soap-icon-vimeo"></i></a></li>
 					</ul>
-                
-                <ul class="mobile-topnav container">
-                    <li><a href="#">MY ACCOUNT</a></li>
-                    <li class="ribbon language menu-color-skin">
-                        <a href="#" data-toggle="collapse">ENGLISH</a>
-                        <ul class="menu mini">
-                            <li><a href="#" title="Dansk">Dansk</a></li>
-                            <li><a href="#" title="Deutsch">Deutsch</a></li>
-                            <li class="active"><a href="#" title="English">English</a></li>
-                            <li><a href="#" title="Español">Español</a></li>
-                            <li><a href="#" title="Français">Français</a></li>
-                            <li><a href="#" title="Italiano">Italiano</a></li>
-                            <li><a href="#" title="Magyar">Magyar</a></li>
-                            <li><a href="#" title="Nederlands">Nederlands</a></li>
-                            <li><a href="#" title="Norsk">Norsk</a></li>
-                            <li><a href="#" title="Polski">Polski</a></li>
-                            <li><a href="#" title="Português">Português</a></li>
-                            <li><a href="#" title="Suomi">Suomi</a></li>
-                            <li><a href="#" title="Svenska">Svenska</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
-                    <li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
-                    <li class="ribbon currency menu-color-skin">
-                        <a href="#">USD</a>
-                        <ul class="menu mini">
-                            <li><a href="#" title="AUD">AUD</a></li>
-                            <li><a href="#" title="BRL">BRL</a></li>
-                            <li class="active"><a href="#" title="USD">USD</a></li>
-                            <li><a href="#" title="CAD">CAD</a></li>
-                            <li><a href="#" title="CHF">CHF</a></li>
-                            <li><a href="#" title="CNY">CNY</a></li>
-                            <li><a href="#" title="CZK">CZK</a></li>
-                            <li><a href="#" title="DKK">DKK</a></li>
-                            <li><a href="#" title="EUR">EUR</a></li>
-                            <li><a href="#" title="GBP">GBP</a></li>
-                            <li><a href="#" title="HKD">HKD</a></li>
-                            <li><a href="#" title="HUF">HUF</a></li>
-                            <li><a href="#" title="IDR">IDR</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                
-            </nav>
-            <div id="travelo-signup" class="travelo-signup-box travelo-box">
-                <div class="login-social">
-                    <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
-                    <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
-                </div>
-                <div class="seperator"><label>OR</label></div>
-                <div class="simple-signup">
-                    <div class="text-center signup-email-section">
-                        <a href="#" class="signup-email"><i class="soap-icon-letter"></i>Sign up with Email</a>
-                    </div>
-                    <p class="description">By signing up, I agree to Travelo's Terms of Service, Privacy Policy, Guest Refund olicy, and Host Guarantee Terms.</p>
-                </div>
-                <div class="email-signup">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="input-text full-width" placeholder="first name">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="input-text full-width" placeholder="last name">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="input-text full-width" placeholder="email address">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="input-text full-width" placeholder="password">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="input-text full-width" placeholder="confirm password">
-                        </div>
-                        <div class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Tell me about Travelo news
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <p class="description">By signing up, I agree to Travelo's Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms.</p>
-                        </div>
-                        <button type="submit" class="full-width btn-medium">SIGNUP</button>
-                    </form>
-                </div>
-                <div class="seperator"></div>
-                <p>Already a Travelo member? <a href="#travelo-login" class="goto-login soap-popupbox">Login</a></p>
-            </div>
-            <div id="travelo-login" class="travelo-login-box travelo-box">
-                <div class="login-social">
-                    <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
-                    <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
-                </div>
-                <div class="seperator"><label>OR</label></div>
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="input-text full-width" placeholder="email address">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="input-text full-width" placeholder="password">
-                    </div>
-                    <div class="form-group">
-                        <a href="#" class="forgot-password pull-right">Forgot password?</a>
-                        <div class="checkbox checkbox-inline">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
-                        </div>
-                    </div>
-                </form>
-                <div class="seperator"></div>
-                <p>Don't have an account? <a href="#travelo-signup" class="goto-signup soap-popupbox">Sign up</a></p>
-            </div>
-        </header>
-	
+				</div>
+			</div>
 
-<!-- Header End -->
+			<nav id="mobile-menu-01" class="mobile-menu collapse">
+				<ul id="mobile-primary-menu" class="menu">
+					<li class="menu-item-has-children"><a href="homepage10.html">eBidR</a>
+						<ul>
+							<li><a href="homepage10.html">Cars</a></li>
+							<li><a href="homepage10.html">Bikes</a></li>
+							<li><a href="homepage10.html">Boats</a></li>
+							<li><a href="homepage10.html">Caravan</a></li>
+							<li><a href="homepage10.html">Bicycle</a></li>
+
+						</ul></li>
+					<li class="menu-item-has-children"><a href="homepage10.html">Browse</a>
+						<ul>
+							<li><a href="homepage10.html">Cars</a></li>
+							<li><a href="homepage10.html">Bikes</a></li>
+							<li><a href="homepage10.html">Boats</a></li>
+							<li><a href="homepage10.html">Caravan</a></li>
+							<li><a href="homepage10.html">Bicycle</a></li>
+
+						</ul></li>
+					<li class="menu-item-has-children"><a href="homepage10.html">Finance</a>
+						<ul>
+							<li><a href="homepage10.html">Cars</a></li>
+							<li><a href="homepage10.html">Bikes</a></li>
+							<li><a href="homepage10.html">Boats</a></li>
+							<li><a href="homepage10.html">Caravan</a></li>
+							<li><a href="homepage10.html">Bicycle</a></li>
+
+						</ul></li>
+					<li class="menu-item-has-children"><a href="homepage10.html">Insurance</a>
+						<ul>
+							<li><a href="homepage10.html">Cars</a></li>
+							<li><a href="homepage10.html">Bikes</a></li>
+							<li><a href="homepage10.html">Boats</a></li>
+							<li><a href="homepage10.html">Caravan</a></li>
+							<li><a href="homepage10.html">Bicycle</a></li>
+
+						</ul></li>
+					<li class="menu-item-has-children"><a href="homepage10.html">Service
+							& Maintenance</a>
+						<ul>
+							<li><a href="homepage10.html">Cars</a></li>
+							<li><a href="homepage10.html">Bikes</a></li>
+							<li><a href="homepage10.html">Boats</a></li>
+							<li><a href="homepage10.html">Caravan</a></li>
+							<li><a href="homepage10.html">Bicycle</a></li>
+
+						</ul></li>
+					<li class="menu-item-has-children"><a href="homepage10.html">Transport</a>
+						<ul>
+							<li><a href="homepage10.html">Cars</a></li>
+							<li><a href="homepage10.html">Bikes</a></li>
+							<li><a href="homepage10.html">Boats</a></li>
+							<li><a href="homepage10.html">Caravan</a></li>
+							<li><a href="homepage10.html">Bicycle</a></li>
+
+						</ul></li>
+
+					<li class="menu-item-has-children"><a href="homepage10.html">Rego</a>
+						<ul>
+							<li><a href="homepage10.html">Cars</a></li>
+							<li><a href="homepage10.html">Bikes</a></li>
+							<li><a href="homepage10.html">Boats</a></li>
+							<li><a href="homepage10.html">Caravan</a></li>
+							<li><a href="homepage10.html">Bicycle</a></li>
+
+						</ul></li>
+					<li class="menu-item-has-children"><a href="homepage10.html">Check
+							Vehicle</a>
+						<ul>
+							<li><a href="homepage10.html">Cars</a></li>
+							<li><a href="homepage10.html">Bikes</a></li>
+							<li><a href="homepage10.html">Boats</a></li>
+							<li><a href="homepage10.html">Caravan</a></li>
+							<li><a href="homepage10.html">Bicycle</a></li>
+
+						</ul></li>
+				</ul>
+
+				<ul class="mobile-topnav container">
+					<li><a href="#">MY ACCOUNT</a></li>
+					<li class="ribbon language menu-color-skin"><a href="#"
+						data-toggle="collapse">ENGLISH</a>
+						<ul class="menu mini">
+							<li><a href="#" title="Dansk">Dansk</a></li>
+							<li><a href="#" title="Deutsch">Deutsch</a></li>
+							<li class="active"><a href="#" title="English">English</a></li>
+							<li><a href="#" title="Español">Español</a></li>
+							<li><a href="#" title="Français">Français</a></li>
+							<li><a href="#" title="Italiano">Italiano</a></li>
+							<li><a href="#" title="Magyar">Magyar</a></li>
+							<li><a href="#" title="Nederlands">Nederlands</a></li>
+							<li><a href="#" title="Norsk">Norsk</a></li>
+							<li><a href="#" title="Polski">Polski</a></li>
+							<li><a href="#" title="Português">Português</a></li>
+							<li><a href="#" title="Suomi">Suomi</a></li>
+							<li><a href="#" title="Svenska">Svenska</a></li>
+						</ul></li>
+					<li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
+					<li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+					<li class="ribbon currency menu-color-skin"><a href="#">USD</a>
+						<ul class="menu mini">
+							<li><a href="#" title="AUD">AUD</a></li>
+							<li><a href="#" title="BRL">BRL</a></li>
+							<li class="active"><a href="#" title="USD">USD</a></li>
+							<li><a href="#" title="CAD">CAD</a></li>
+							<li><a href="#" title="CHF">CHF</a></li>
+							<li><a href="#" title="CNY">CNY</a></li>
+							<li><a href="#" title="CZK">CZK</a></li>
+							<li><a href="#" title="DKK">DKK</a></li>
+							<li><a href="#" title="EUR">EUR</a></li>
+							<li><a href="#" title="GBP">GBP</a></li>
+							<li><a href="#" title="HKD">HKD</a></li>
+							<li><a href="#" title="HUF">HUF</a></li>
+							<li><a href="#" title="IDR">IDR</a></li>
+						</ul></li>
+				</ul>
+
+			</nav>
+			<div id="travelo-signup" class="travelo-signup-box travelo-box">
+				<div class="login-social">
+					<a href="#" class="button login-facebook"><i
+						class="soap-icon-facebook"></i>Login with Facebook</a> <a href="#"
+						class="button login-googleplus"><i
+						class="soap-icon-googleplus"></i>Login with Google+</a>
+				</div>
+				<div class="seperator">
+					<label>OR</label>
+				</div>
+				<div class="simple-signup">
+					<div class="text-center signup-email-section">
+						<a href="#" class="signup-email"><i class="soap-icon-letter"></i>Sign
+							up with Email</a>
+					</div>
+					<p class="description">By signing up, I agree to Travelo's
+						Terms of Service, Privacy Policy, Guest Refund olicy, and Host
+						Guarantee Terms.</p>
+				</div>
+				<div class="email-signup">
+					<form>
+						<div class="form-group">
+							<input type="text" class="input-text full-width"
+								placeholder="first name">
+						</div>
+						<div class="form-group">
+							<input type="text" class="input-text full-width"
+								placeholder="last name">
+						</div>
+						<div class="form-group">
+							<input type="text" class="input-text full-width"
+								placeholder="email address">
+						</div>
+						<div class="form-group">
+							<input type="password" class="input-text full-width"
+								placeholder="password">
+						</div>
+						<div class="form-group">
+							<input type="password" class="input-text full-width"
+								placeholder="confirm password">
+						</div>
+						<div class="form-group">
+							<div class="checkbox">
+								<label> <input type="checkbox"> Tell me about
+									Travelo news
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<p class="description">By signing up, I agree to Travelo's
+								Terms of Service, Privacy Policy, Guest Refund Policy, and Host
+								Guarantee Terms.</p>
+						</div>
+						<button type="submit" class="full-width btn-medium">SIGNUP</button>
+					</form>
+				</div>
+				<div class="seperator"></div>
+				<p>
+					Already a Travelo member? <a href="#travelo-login"
+						class="goto-login soap-popupbox">Login</a>
+				</p>
+			</div>
+			<div id="travelo-login" class="travelo-login-box travelo-box">
+				<div class="login-social">
+					<a href="#" class="button login-facebook"><i
+						class="soap-icon-facebook"></i>Login with Facebook</a> <a href="#"
+						class="button login-googleplus"><i
+						class="soap-icon-googleplus"></i>Login with Google+</a>
+				</div>
+				<div class="seperator">
+					<label>OR</label>
+				</div>
+				<form>
+					<div class="form-group">
+						<input type="text" class="input-text full-width"
+							placeholder="email address">
+					</div>
+					<div class="form-group">
+						<input type="password" class="input-text full-width"
+							placeholder="password">
+					</div>
+					<div class="form-group">
+						<a href="#" class="forgot-password pull-right">Forgot
+							password?</a>
+						<div class="checkbox checkbox-inline">
+							<label> <input type="checkbox"> Remember me
+							</label>
+						</div>
+					</div>
+				</form>
+				<div class="seperator"></div>
+				<p>
+					Don't have an account? <a href="#travelo-signup"
+						class="goto-signup soap-popupbox">Sign up</a>
+				</p>
+			</div>
+		</header>
+
+
+		<!-- Header End -->
 
 
 
@@ -1088,8 +1123,8 @@ section#content {
 										<div class="tab-content">
 											<!-- BEGIN: FLIGHT SEARCH -->
 											<div role="tabpanel" class="tab-pane active" id="flight">
-												<form class="form-inline signup" name="invForm"
-													ng-submit="submitForm()">
+												<form class="form-inline signup" name="invForm" ng-submit="submitForm()"
+													>
 
 													<div class="col-md-12 product-search-title">Ebbiding
 														for car</div>
@@ -1169,35 +1204,31 @@ section#content {
 													<div id="status"></div>
 													<button type="submit" hidden="hidden"
 														ng-click="submitForm1()"></button>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 													<!-- Show userid -->
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email12" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleEmail"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
-														<div class="form-group">
-															<input type="password" class="form-control"
-																id="examplePass"
-																placeholder="password" >
-														</div>
-														<div class="col-md-12 search-col-padding">
-														<button ng-click="submitForm12()" class="button">Login</button>
-														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
-													</div>
+														<!-- Imp check -->
+														<!-- <div class="col-md-12 search-col-padding">
+															<button ng-click="submitForm12()" class="button">Login</button>
+															<button type="submit" class="search-button btn transition-effect">Build</button>
+														</div> -->
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
 													<div class="clearfix"></div>
@@ -1213,7 +1244,7 @@ section#content {
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-12 search-col-padding">
-														<button ng-click="go()" class="button">build</button>
+														<button  class="button" >build</button>
 														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
 													</div>
 													<div class="clearfix"></div>
@@ -1302,24 +1333,24 @@ section#content {
 													</div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -1426,24 +1457,24 @@ section#content {
 													</div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -1549,24 +1580,24 @@ section#content {
 													</div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br />
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -1673,24 +1704,24 @@ section#content {
 													</div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -1929,24 +1960,24 @@ section#content {
 													</div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -2106,24 +2137,24 @@ section#content {
 													</div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -2303,24 +2334,24 @@ section#content {
 													</div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -2513,24 +2544,24 @@ section#content {
 													</div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -2788,24 +2819,24 @@ section#content {
 
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -2962,24 +2993,24 @@ section#content {
 
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -3140,24 +3171,24 @@ section#content {
 
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -3321,24 +3352,24 @@ section#content {
 
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -3735,24 +3766,24 @@ section#content {
 
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -3774,7 +3805,7 @@ section#content {
 														for bike</div>
 													<div class="clearfix"></div>
 													<div class="checkbox">
-														<label> <input type="checkbox"><span
+														<label> &nbsp<input type="checkbox"><span
 															class="skin-color">New</span></a>.
 														</label>
 													</div>
@@ -4040,24 +4071,24 @@ section#content {
 
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -4342,24 +4373,24 @@ section#content {
 
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -4646,24 +4677,24 @@ section#content {
 
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -5002,24 +5033,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
-																id="exampleInputEmail1"
-																placeholder="Enter your email address">
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
+																id="exampleEmail"
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -5198,24 +5229,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
-																id="exampleInputEmail1"
-																placeholder="Enter your email address">
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
+																id="exampleEmail"
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -5397,24 +5428,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
-																id="exampleInputEmail1"
-																placeholder="Enter your email address">
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
+																id="exampleEmail"
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -5597,24 +5628,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
-																id="exampleInputEmail1"
-																placeholder="Enter your email address">
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
+																id="exampleEmail"
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -5881,24 +5912,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
-																id="exampleInputEmail1"
-																placeholder="Enter your email address">
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
+																id="exampleEmail"
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -6024,24 +6055,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
-																id="exampleInputEmail1"
-																placeholder="Enter your email address">
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
+																id="exampleEmail"
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -6169,24 +6200,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
-																id="exampleInputEmail1"
-																placeholder="Enter your email address">
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
+																id="exampleEmail"
+																placeholder="Email / Mobile Number">
 														</div>
 														<button type="submit" class="btn btn-theme">Get
 															notified!</button>
@@ -6313,24 +6344,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
-																id="exampleInputEmail1"
-																placeholder="Enter your email address">
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
+																id="exampleEmail"
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -6495,24 +6526,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
-																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
+																id="exampleEmail"
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -6577,24 +6608,24 @@ section#content {
 														<div class="clearfix"></div>
 														<div class="clearfix"></div>
 														<div id="status"></div>
-														<br /> <br />
-														<div class="social">
-															<a href="#"><i class="fa fa-facebook"
-																onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-																class="fa fa-twitter" aria-hidden="true"></i></a> <a
-																href="#"><i class="fa fa-google-plus"
-																onclick="onSignInG()" aria-hidden="true"></i></a> <a
-																href="#"><i class="fa fa-linkedin"
-																onclick="onLinkedInLoad()" aria-hidden="true"></i></a>
-														</div>
+														<br /> <br /> 
+														<div class="social col-md-12 col-sm-12">
+														<a href="#"><i class="fa fa-facebook"
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
+															class="fa fa-google-plus" onclick="onSignInG()"
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
+															class="fa fa-linkedin" onclick="onLinkedInLoad()"
+															aria-hidden="true"></i></a>
+													</div>
 
-														<br /> <br />
+														<br /> <br /> 
 														<div>
 
-															<div class="form-group">
-																<input type="email" class="form-control"
+															<div class="form-group col-md-6 col-sm-6">
+																<input type="email" class="input-text full-width"
 																	id="exampleInputEmail1"
-																	placeholder="Enter your email address / Mobile Number">
+																	placeholder="Email / Mobile Number">
 															</div>
 															<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 														</div>
@@ -6659,24 +6690,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -6740,24 +6771,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -6910,24 +6941,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -6982,24 +7013,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -7054,24 +7085,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
@@ -7126,24 +7157,24 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br />
-													<div class="social">
+													<br /> <br /> 
+												<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a> <a href="#"><i
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> <a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br />
+													<br /> <br /> 
 													<div>
 
-														<div class="form-group">
-															<input type="email" class="form-control"
+														<div class="form-group col-md-6 col-sm-6">
+															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
-																placeholder="Enter your email address / Mobile Number">
+																placeholder="Email / Mobile Number">
 														</div>
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
