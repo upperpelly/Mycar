@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
+import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 
 @RestController
 
@@ -22,5 +23,9 @@ public class UserEBidController {
 	@PostMapping("eBid/car")
 	public String eBidForCar(@RequestBody UserEBidVO userEBidVO) {
 		return userEBidService.whenUserEBidForCar(userEBidVO);
+	}
+	@PostMapping("eBid/myVehicle")
+	public String addMyVehicle(@RequestBody UserMyVehicleVO userEBidVO) {
+		return userEBidService.createMyVehicle(userEBidVO);
 	}
 }

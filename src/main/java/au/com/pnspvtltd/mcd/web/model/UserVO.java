@@ -2,6 +2,8 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.util.List;
 
+import au.com.pnspvtltd.mcd.domain.MyVehicle;
+
 public class UserVO {
 
 	private Long userId;
@@ -27,6 +29,7 @@ public class UserVO {
 	List<SearchFinanceVO> searchFinance;
 	List<SearchServMaintVO> searchServMaint;
 	List<SearchTranspVO> searchTransp;
+	List<MyVehicleVO> myVehicle;
 	List<VehicleQuotationVO> vehicleQuotation;
 	List<InsuranceQuotationVO> insuranceQuotation;
 	List<FinanceQuotationVO> financeQuotation;
@@ -37,6 +40,14 @@ public class UserVO {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
+	}
+
+	public List<MyVehicleVO> getMyVehicle() {
+		return myVehicle;
+	}
+
+	public void setMyVehicle(List<MyVehicleVO> myVehicle) {
+		this.myVehicle = myVehicle;
 	}
 
 	public String getPassword() {

@@ -43,7 +43,18 @@ public class User implements Serializable {
 	List<SearchFinance> searchFinance;
 	List<SearchServMaint> searchServMaint;
 	List<SearchTransp> searchTransp;
+	List<MyVehicle> myVehicle;
 	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "userId")
+	public List<MyVehicle> getMyVehicle() {
+		return myVehicle;
+	}
+
+	public void setMyVehicle(List<MyVehicle> myVehicle) {
+		this.myVehicle = myVehicle;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "USERID")

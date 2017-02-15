@@ -2370,6 +2370,20 @@ var insQCt=result.insuranceQuotation.length;
             	   
             	   sender.forFinance("quo-model-data2",out5);
             	   
+            	 //alert("result.search.length"+result.insuranceQuotation.length);
+            	   out6="";
+            	  
+            	               	   out6 += '<tr><th colspan="2">'+"My Vehicle ID"+'       '+"Year"+'     '+"Make"+'        '+"Model"+'</th></tr>';
+            	               	   for(i=0;i<result.myVehicle.length;i++)
+            	              		{
+            	              		
+            	              		out6= out6+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
+            	              		
+            	              		
+            	              		}
+            	               	   
+            	               	   sender.forFinance("quo-model-data4",out6);
+            	   
                  
                } 
        	  }); 

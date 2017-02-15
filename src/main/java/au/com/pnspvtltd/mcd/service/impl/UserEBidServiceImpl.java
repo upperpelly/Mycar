@@ -16,6 +16,7 @@ import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
+import au.com.pnspvtltd.mcd.domain.MyVehicle;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.SearchInsurance;
@@ -29,6 +30,7 @@ import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
+import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 
 @Service
 public class UserEBidServiceImpl implements UserEBidService {
@@ -166,7 +168,31 @@ System.out.println("present value"+present);
 		return "{\"userId\":" + userEBidVO.getUserId() + ",\"searchId\":" + search.getCarSearchId() + "}";
 
 	}
+	
+	@Override
+	@Transactional
+	public String createMyVehicle(UserMyVehicleVO userEBidVO) {
 
+		// Find the User
+		User user = userRepository.findOne(userEBidVO.getUserId());
+
+		// Create User MyVehicle Details (MyVehicle details)
+		MyVehicle search = domainModelUtil.toMyVehicle(userEBidVO.getMyVehicleVO());
+		if (user.getMyVehicle() != null) {
+			user.getMyVehicle().add(search);
+		} else {
+			List<MyVehicle> userVehicleLeads = new ArrayList<>();
+			userVehicleLeads.add(search);
+			user.setMyVehicle(userVehicleLeads);
+		}
+
+		
+
+		userRepository.flush();
+
+				return "{\"userId\":" + userEBidVO.getUserId() + ",\"myVehicleId\":" + search.getMyVehicleId() + "}";
+
+	}
 	private void createVehicleQuotation(User user, Dealer dealer, Search search, DealerSearch dealerSearch,
 			Inventory inventory) {
 		System.out.println("create quotation when dealer ID"+dealer.getDealerId());

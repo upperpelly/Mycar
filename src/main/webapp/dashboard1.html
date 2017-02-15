@@ -9,7 +9,7 @@
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Autoscoop HTML5 Template">
+    <meta name="description" content="Travelo - Travel, Tour Booking HTML5 Template">
     <meta name="author" content="SoapTheme">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +17,9 @@
     
     <!-- Theme Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="pingback" href="http://www.carqueryapi.com/xmlrpc.php" />
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/animate.min.css">
     
     <!-- Current Page Styles -->
@@ -50,7 +51,7 @@
 <script type="text/javascript" src="js/script.js"></script>
 <script src="js/carquery.0.3.4.js"type="text/javascript" ></script>
 <script>
-/* $(document).ready(function() {
+$(document).ready(function() {
 
 $.ajax({
   url: "http://www.carqueryapi.com/api/0.3/?cmd=getStats",
@@ -64,19 +65,22 @@ $.ajax({
 });
 
 });
- */</script>
-    <!-- Main Style -->
-    <link id="main-style" rel="stylesheet" href="css/style.css">
-    
-    <!-- Updated Styles -->
-    <link rel="stylesheet" href="css/updates.css">
+</script>
 
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="css/custom.css">
-    
-    <!-- Responsive Styles -->
-    <link rel="stylesheet" href="css/responsive.css">
-  <script>
+    <!-- Main Style -->
+    <!--<link id="main-style" rel="stylesheet" href="css/style.css">-->
+    <script type="text/javascript">
+        var mainStyle = "style.css";
+        if (typeof localStorage != "undefined") {
+            var colorSkin = localStorage.getItem("colorSkin");
+            if (colorSkin != null) {
+                mainStyle = "style-" + colorSkin + ".css";
+            }
+        }
+        document.write('<link id="main-style" rel="stylesheet" href="css/' + mainStyle + '">');
+    </script>
+    <script>
+    var userId=null;
     window.onload= function()
     {
     	//alert("came here for onload");
@@ -99,7 +103,7 @@ function parseURLParameter(Parameter)
     	}
     	/* alert("pageName 11  now "); */
     	
-    	var userId = parseURLParameter('userId');
+    	userId = parseURLParameter('userId');
     	//userId="71";
     	//document.getElementById('minValue').innerHTML=priceMin;
     	
@@ -136,6 +140,11 @@ function parseURLParameter(Parameter)
 	    return xhr;
 	}
 	</script>
+	
+	
+	
+	
+	
 	<script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 <script src="js/angular-resource.js"></script>
@@ -174,65 +183,67 @@ function parseURLParameter(Parameter)
 							};
 						};
 						function submitSearchForm() {
+													alert("came here"+userId);
 													
-//alert("Came here"+$('#driveType').val());
+													var jsonInputToAPI = {"userId":userId,
+															"myVehicleVO":{
+																"myVehicleId":null,
+																"year": $('#car-years').val(),															      
+																"make":$('#car-makes').val(),
+																		"model" :$('#car-models').val(),
+																		 "variant":$('#car-model-trims').val(),
+																		"vin":$('#vin').val(),
+																		"regNum":$('#regNo').val(),
+																		"regState":$('#car-model-trims').val(),
+																		"regExpDate":null,
+																		"insProv":$('#regState').val(),
+																		"insProvMan":$('#insProv').val(),
+																		"insPremPaid":$('#insPrePaid').val(),
+																		"insPremPaidFreq":$('#premPaidFreq').val(),
+																		"insExpiry":null,	
+																		"odoMeter":$('#odoMeter').val(),	
+																		"lastServiceDt":null,	
+																		"nextServiceDt":null,	
+																		"nextServKms":$('#nextServMaiKms').val(),	
+																		"finProvider":$('#finProv').val(),	
+																		"loanAmt1":$('#loanAmount').val(),	
+																		"loanTakenDt":null,
+																			"loanPaidFreq":$('#loanPaidFreq').val(),	
+																		"loanAmt2":$('#laonAmount1').val(),	
+																		"loanPeriod":$('#laonPeriod').val(),	
+																		"loanInterest":$('#laonIntRate').val(),
+																			"fuelCardProvider":$('#fuelCardProv').val(),	
+																		"valFuelCard":$('#valFuelCard').val(),	
+																		"fuelType":$('#fuelType').val(),
+																			"photo1":$('#photo1').val(),	
+																		"photo2":$('#photo2').val(),	
+																		"photo3":$('#photo3').val(),
+																			"flex1":"flex1",	
+																		"flex2":"flex1",	
+																		"flex3":"flex1",
+																			"flex4":"flex1",	
+																		"flex5":12,	
+																		"flex6":12,
+																		"flex7":12,
+																			"flex8":null,	
+																		"flex9":null
+															}
+															}
 
-														
-														var jsonInputToAPI = {
-																"userId":71,
-      "carColor" : $("carColor").val(),
-	 "postCode":$('#postCode').val(),
-	"make":"ss",
-	"bodyType":$('#driveType').val(),
-	"state":"ss",
-	"region":$('#freetext').val(),
-	"ausCapTer":"ss",
-	"extraExter2":$('#extraExternal2').val(),
-	"extraExter3":$('#extraExternal3').val(),	
-	"extraExter4":$('#extraExternal4').val(),	
-	"extraExter5":$('#extraExternal5').val(),	
-	"extraIntern1":$('#extraInternal1').val(),	
-	"extraIntern2":$('#extraInternal2').val(),	
-	"extraIntern3":$('#extraInternal3').val(),	
-	"extraIntern4":$('#extraInternal4').val(),	
-	"extraIntern5":$('#extraInternal5').val(),
-	"incomeType":$('#incomeType').val(),
-	"yearEmploymentBusiness":$('#yearEmployement').val(),
-	"incomeBeforeSuperTax":$('#incomebefore').val(),
-	"incomeAfterSuperTax":$('#incomeAfter').val(),
-	"ifBusinessProvideABN":$('#ifBusPABN').val(),
-	"creditRating":$('#creditRating').val(),
-	"loanAmount":$('#loanAmount').val(),
-	 "loanPeriod":$('#loanPeriod').val(),
-	 "noOfDependence":$('#noDependencies').val(),
-	"insuranceType":$('#insuranceType').val(),
-	"drivingLicenceType":$('#drivingLicenseType').val(),
-	"drivingLicenceNumber":$('drivingLicenseNumber').val(),
-	"drivingLicenceIssuingState":$('drivingLicenseIssuingState').val(),
-	"noOfAtFaultClaims":$('noOfAtFaultsClaims').val(),
-	"dateOfBirth":null,
-	"indicativeExcessAmount":$('indicativeExcessAmount').val(),
-	"ageOfAdditionalDriver":null,
-	"sMake":$('#fuelType').val(),
-  	"sModel":$('#seats').val(),
-  	"sState":$('#extraExternal1').val(),
-  	"sAusCapTer":$('#vehiclePurpose').val(),
-  	"sRegion":$('#transmission').val()
-  }
-														alert("Before Call");
-														var wsURL = 'http://localhost:8080/MyCarDomain/api/search/car';
-														//var wsURL = 'http://www.autoscoop.com.au/api/search/car';
-															    $http({
-																			method : 'POST',
-																			url : wsURL,
-																			data: jsonInputToAPI
-																							
-																		}).success(function(data) {
-																			alert("Successfully Stored..");
-																			var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId;
-																							alert("Thank You. Your Seach ID is " + data.searchId);
-																							window.location=url;								
-																						});
+
+													alert("Before Call");
+													var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
+													//var wsURL = 'http://www.autoscoop.com.au/api/search/car';
+														    $http({
+																		method : 'POST',
+																		url : wsURL,
+																		data: jsonInputToAPI
+																						
+																	}).success(function(data) {
+																		alert("Successfully Stored..");
+																						alert("Thank You. Your MyVehicle ID is " + data.myVehicleId);
+																														
+																					});
 
 								
 														
@@ -250,7 +261,7 @@ function parseURLParameter(Parameter)
 
 					});
 </script>
- <!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[84,140] -->
+   <!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[84,140] -->
 <link rel="canonical" href="http://www.carqueryapi.com/demo/dependant-selects-and-car-data-display/" />
 <!-- /all in one seo pack -->
 <link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
@@ -309,27 +320,52 @@ img.emoji {
     
     <!-- Responsive Styles -->
     <link rel="stylesheet" href="css/responsive.css">
-  
+    
     <!-- CSS for IE -->
     <!--[if lte IE 9]>
         <link rel="stylesheet" type="text/css" href="css/ie.css" />
     <![endif]-->
     
-    
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-
       <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
     <![endif]-->
 </head>
-<body ng-app="mainApp1">
-   
+<body ng-app="mainApp1" >
+    
     <div id="page-wrapper">
         <header id="header" class="navbar-static-top">
             <div class="topnav hidden-xs">
                 <div class="container">
+                  <script type="text/javascript">// <![CDATA[
+$(document).ready( function() {
 
+var carquery = new CarQuery();
+carquery.init();
+carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+
+//Set onclick function for the US filter checkbox and show data button
+$('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
+$('#cq-show-data').click(  function(){ carquery.populateCarData('car-model-data'); } );
+$('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model-data','price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); } );
+});
+// ]]&gt;</script>
+                   <div class="container">
+<script type="text/javascript">// <![CDATA[
+$(document).ready( function() {
+
+var carquery = new CarQuery();
+carquery.init();
+carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+
+//Set onclick function for the US filter checkbox and show data button
+$('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
+$('#cq-show-data').click(  function(){ carquery.populateCarData('car-model-data'); } );
+$('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model-data','price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); } );
+});
+// ]]&gt;</script>
                     <!-- <ul class="quick-menu pull-left">
                         <li><a href="dashboard1.html">MY ACCOUNT</a></li>
                         
@@ -642,6 +678,8 @@ img.emoji {
                         <ul class="tabs">
                             <li class="active"><a data-toggle="tab" href="#dashboard"><i class="soap-icon-anchor circle"></i>Overview</a></li>
                             <li class=""><a data-toggle="tab" href="#profile"><i class="soap-icon-user circle"></i>Profile</a></li>
+                            <li class=""><a data-toggle="tab" href="#cruise-description"><i class="soap-icon-status circle"></i>My Vehicle Entry Form</a></li>
+                            <li class=""><a data-toggle="tab" href="#VehicleQuotation12"><i class="soap-icon-status circle"></i>My Vehicle Details</a></li>
                             <li class=""><a data-toggle="tab" href="#travel-stories"><i class="soap-icon-pets circle"></i>Ebid-R</a></li>
                             <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-status circle"></i>Quotation</a></li>                            
                             <li class=""><a data-toggle="tab" href="#wishlist"><i class="soap-icon-wishlist circle"></i>Wishlist</a></li>
@@ -1559,6 +1597,493 @@ img.emoji {
                              <div id="rego" class="tab-pane fade">
                              <h2>Registration area</h2>
                              </div>
+                             <!-- My Vehicle Entry Start -->
+                             <div class="tab-pane fade" id="cruise-description">
+                                 <div id="main" class="col-sms-8 col-sm-9 col-md-11">
+                        <div class="booking-section travelo-box">
+                            
+                            <form class="booking-form"  >
+                                
+                                    
+                                    <div class="toggle-container box">
+                                <div class="panel style1">
+                                    <h4 class="panel-title">
+                                        <a href="#tgg444" data-toggle="collapse">Car Details</a>
+                                    </h4>
+                                    <div class="panel-collapse collapse" id="tgg444">
+                                        <div class="panel-content">
+                                       <div class="form-group row">
+                                       <div class="col-sm-5 col-md-4">
+                                            <label>Vehicle Type</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="vehicleType" name="vehicleType">
+                                                    <option>My Car</option>
+                                                    <option>My Bike</option>
+                                                    <option>My Boat</option>
+                                                    <option>My Caravans</option>
+                                                    <option>My Bicycles</option>
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Serial No</label>
+                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Vehicle Location Post Code / Address</label>
+                                            <input type="text" id="lPostCode" name="lPostCode" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+														<label>Year</label>
+														<div class="selector">
+															<select id="car-years" name="car-years"
+																class="full-width">
+
+															</select>
+														</div>
+													</div>
+										<div class="col-sm-5 col-md-4">
+														<label>Make</label>
+														<div class="selector">
+															<select id="car-makes" name="car-makes"
+																class="full-width">
+
+															</select>
+														</div>
+													</div>													
+													<div class="col-sm-5 col-md-4">
+														<label>Model</label>
+														<div class="selector">
+															<select id="car-models" name="car-models"
+																class="full-width">
+
+															</select>
+														</div>
+													</div>
+													<div class="col-sm-5 col-md-4">
+														<label>Variant</label>
+														<div class="selector">
+															<select id="car-model-trims" name="car-model-trims"
+																class="full-width">
+
+															</select>
+														</div>
+													</div>
+                                        
+                                        
+                                        
+                                    </div>
+                                        </div><!-- end content -->
+                                    </div>
+                                </div>
+                                 
+                            </div>
+													
+												<div class="toggle-container box">
+                                <div class="panel style1">
+                                    <h4 class="panel-title">
+                                        <a href="#tgg29" data-toggle="collapse">Registration Info</a>
+                                    </h4>
+                                    <div class="panel-collapse collapse" id="tgg29">
+                                        <div class="panel-content">
+                                       <div class="form-group row">
+                                       <div class="col-sm-5 col-md-4">
+                                            <label>VIN /HIN Number</label>
+                                            <input type="text" id="vin" name="vin" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Registraion Number</label>
+                                            <input type="text" id="regNo" name="regNo" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Registration State</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="regState" name="regState">
+                                                    <option>ACT</option>
+                                                    <option>NSW</option>
+                                                    <option>VIC</option>
+                                                    <option>QLD</option>
+                                                    <option>NT</option>
+                                                    <option>TAS</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-xs-6">
+                                                        <div class="datepicker-wrap">
+                                                            <input type="text" name="date_of_birth" class="input-text full-width" placeholder="Registration Expiry Date" />
+                                                        </div>
+                                                    </div>
+                                        
+                                        
+                                        
+                                    </div>
+                                        </div><!-- end content -->
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                            
+                            <div class="toggle-container box">
+                                <div class="panel style1">
+                                    <h4 class="panel-title">
+                                        <a href="#tgg42" data-toggle="collapse">Insurance Info</a>
+                                    </h4>
+                                    <div class="panel-collapse collapse" id="tgg42">
+                                        <div class="panel-content">
+                                       <div class="form-group row">
+                                       
+                                         
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Insurance Provider</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="insProv" name="insProv">
+                                                    <option>INs</option>
+                                                    <option>INs</option>
+                                                    <option>ins</option>
+                                                    <option>QLD</option>
+                                                    <option>NT</option>
+                                                    <option>Other</option>
+                                                    
+                                                    
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Insurance Premium Paid</label>
+                                            <input type="text" id="insPrePaid" name="insPrePaid" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Insurance Premium Paid Frequency</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="premPaidFreq" name="premPaidFreq">
+                                                    <option>Weekly </option>
+                                                    <option>Fourthnightly </option>
+                                                    <option>Monthly</option>
+                                                    
+                                                    
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-xs-6">
+                                                        <div class="datepicker-wrap">
+                                                            <input type="text" name="date_of_birth" class="input-text full-width" placeholder="Insurance Expiry Date" />
+                                                        </div>
+                                                    </div>
+                                        
+                                        
+                                        
+                                    </div>
+                                        </div><!-- end content -->
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                            
+                             <div class="toggle-container box">
+                                <div class="panel style1">
+                                    <h4 class="panel-title">
+                                        <a href="#tgg52" data-toggle="collapse">Maintenance info</a>
+                                    </h4>
+                                    <div class="panel-collapse collapse" id="tgg52">
+                                        <div class="panel-content">
+                                       <div class="form-group row">
+                                       
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Current Odo Meter Reading</label>
+                                            <input type="text" id="odoMeter" name="odoMeter" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                         <div class="col-xs-6">
+                                                        <div class="datepicker-wrap">
+                                                            <input type="text" name="date_of_birth" class="input-text full-width" placeholder="Last Service & Maintenance Date" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <div class="datepicker-wrap">
+                                                            <input type="text" name="date_of_birth" class="input-text full-width" placeholder="Next Service & Maintenance Date" />
+                                                        </div>
+                                                    </div>
+                                        
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Next Service & Maintenance Kms</label>
+                                            <input type="text" id="nextServMaiKms" name="nextServMaiKms" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        
+                                        
+                                        
+                                    </div>
+                                        </div><!-- end content -->
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                            	
+                            	<div class="toggle-container box">
+                                <div class="panel style1">
+                                    <h4 class="panel-title">
+                                        <a href="#tgg62" data-toggle="collapse">Finance info</a>
+                                    </h4>
+                                    <div class="panel-collapse collapse" id="tgg62">
+                                        <div class="panel-content">
+                                       <div class="form-group row">
+                                       <div class="col-sm-5 col-md-4">
+                                            <label>Finance Provider</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="finProv" name="finProv">
+                                                    <option>Red</option>
+                                                    <option>Blue</option>
+                                                    <option>Green</option>
+                                                    <option>Grey</option>
+                                                    <option>Silver</option>
+                                                    <option>Black</option>
+                                                    <option>White</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Loan Amount 1</label>
+                                            <input type="text" id="loanAmount" name="loanAmount" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                         <div class="col-xs-6">
+                                                        <div class="datepicker-wrap">
+                                                            <input type="text" name="date_of_birth" class="input-text full-width" placeholder="Loan Taken date" />
+                                                        </div>
+                                                    </div>
+                                        
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Load Paid frequency</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="loanPaidFreq" name="loanPaidFreq">
+                                                    <option>Red</option>
+                                                    <option>Blue</option>
+                                                    <option>Green</option>
+                                                    <option>Grey</option>
+                                                    <option>Silver</option>
+                                                    <option>Black</option>
+                                                    <option>White</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Loan Amount 2</label>
+                                            <input type="text" id="laonAmount1" name="laonAmount1" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Loan Period</label>
+                                            <input type="text" id="laonPeriod" name="laonPeriod" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Loan Current Interest Rate</label>
+                                            <input type="text" id="laonIntRate" name="laonIntRate" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        
+                                                    
+                                        
+                                        
+                                        
+                                    </div>
+                                        </div><!-- end content -->
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                            
+                            <div class="toggle-container box">
+                                <div class="panel style1">
+                                    <h4 class="panel-title">
+                                        <a href="#tgg82" data-toggle="collapse">Fuel Card info</a>
+                                    </h4>
+                                    <div class="panel-collapse collapse" id="tgg82">
+                                        <div class="panel-content">
+                                       <div class="form-group row">
+                                       <div class="col-sm-5 col-md-4">
+                                            <label>Fuel Card Provider</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="fuelCardProv" name="fuelCardProv">
+                                                    <option>Manual Entry</option>
+                                                    <option>Blue</option>
+                                                    <option>Green</option>
+                                                    <option>Grey</option>
+                                                    <option>Silver</option>
+                                                    <option>Black</option>
+                                                    <option>White</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Value Of Fuel Card</label>
+                                            <input type="text" id="valFuelCard" name="valFuelCard" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                       
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Fuel Type</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="fuelType" name="fuelType">
+                                                    <option>Petrol</option>
+                                                    <option>Gas</option>
+                                                    <option>Diesel</option>
+                                                    <option>Elictric</option>
+                                                    <option>Bio</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                        </div><!-- end content -->
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                            <div class="toggle-container box">
+                                <div class="panel style1">
+                                    <h4 class="panel-title">
+                                        <a href="#tgg92" data-toggle="collapse">Photos</a>
+                                    </h4>
+                                    <div class="panel-collapse collapse" id="tgg92">
+                                        <div class="panel-content">
+                                       <div class="form-group row">
+                                       
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Photo 1</label>
+                                            <input type="text" id="photo1" name="photo1" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                       
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Photo 2</label>
+                                            <input type="text" id="photo2" name="photo2" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Photo 3</label>
+                                            <input type="text" id="photo3" name="photo3" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                        </div><!-- end content -->
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                            
+                                        
+                                        
+                                        
+                                   
+                                
+                           
+                                
+                              
+                                <div class="checkbox">
+														<label> <input type="checkbox"><span
+															class="skin-color">Activate</span></a>.
+														</label>
+													</div>
+                                
+                                     
+                                        
+                                
+                                
+                                <!-- <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <button type="submit" class="full-width btn-large">LOG BOOK</button>
+                                    </div>
+                                    <div class="form-group row" ng-click="submitSearchForm()" ng-controller="myController1">
+                                        <button type="button" class="full-width btn-large">SAVE</button>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <button type="submit" class="full-width btn-large">SELL MY VEHICLE</button>
+                                    </div>
+                                </div> -->
+                                 
+                               <div class="form-group row" ng-click="submitSearchForm()" ng-controller="myController1">
+                                    <div class="col-sm-6 col-md-5">
+                                        <button type="submit" class="full-width btn-large">Save</button>
+                                    </div>
+                                </div>
+
+                                   
+                                    
+                                    
+                                 <!-- <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <button onclick="go12()" class="button">Save</button>
+                                         <a href="#" class="button login-facebook"><i
+						class="soap-icon-facebook" onclick="go12()"></i>Login with
+						Facebook</a> <a href="#" class="button login-googleplus"><i
+						class="soap-icon-googleplus"></i>Login with Google+</a>
+                                    </div>
+                                </div>   --> 
+                            
+                                   
+                                 
+                                    
+                               
+                                    
+                                   
+                                
+                               
+                            </form>
+                        </div>
+                    </div>   			
+                                   
+                                </div>
+                             <!-- End of Vehicle Entry -->
+                             
+                             <!-- Start of My Vehicle Entry -->
+                             <div id="VehicleQuotation12" class="tab-pane fade">
+                                
+                           <div class="col-md-18">
+                           
+                            <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
+                            <img src="images/EBidRbg3.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;">
+                            <div class="tab-container trans-style box">
+                                <ul class="tabs full-width">
+                                   <li class="active"><a href="#family2-qd" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
+                                    <li><a href="#honeymoon2-qd" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
+                                    <li><a href="#weekends2-qd" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
+                                    <li><a href="#friends2-qd" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li
+                                    <li><a href="#friends24-qd" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="family2-qd">
+                                        <h4>Car Details</h4>
+                                          <h4>List of Search leads</h4>
+                                         <table id="quo-model-data4">                                        
+                                        
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="honeymoon2-qd">
+                                        <h4>Bike</h4>
+                                        
+                                    </div>
+                                    <div class="tab-pane fade" id="weekends2-qd">
+                                        <h4>Boats</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="friends2-qd">
+                                        <h4>Caravans</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="friends24-qd">
+                                        <h4>Bicycles</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                
+                            </div>
+                             <!-- End of Vehicle Entry -->
+                             
+                             
+                             
+                             
                             <div id="travel-stories" class="tab-pane fade">
                               <!--  Start -->
                               
@@ -1942,6 +2467,7 @@ img.emoji {
             tjq(".edit-profile").hide();
         });
     </script>
- <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '9e83805c-9ddf-4721-9be5-6ee17f806f8c', f: true }); done = true; } }; })();</script>
+ 
+<script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '9e83805c-9ddf-4721-9be5-6ee17f806f8c', f: true }); done = true; } }; })();</script>
 </body>
 </html>

@@ -20,6 +20,7 @@ import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
+import au.com.pnspvtltd.mcd.domain.MyVehicle;
 import au.com.pnspvtltd.mcd.domain.PhotosTemplate;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
@@ -40,6 +41,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.PhotosTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
@@ -66,7 +68,7 @@ public class DomainModelUtil {
 		try {
 
 			org.springframework.beans.BeanUtils.copyProperties(user, userVO,
-					new String[] { "search", "searchInsurance", "searchFinance", "searchServMaint", "searchTransp" });
+					new String[] { "search", "searchInsurance", "searchFinance", "searchServMaint", "searchTransp", "myVehicle" });
 
 			if (!isMinified) {
 				List<SearchVO> searchVOs = new ArrayList<>();
@@ -92,6 +94,14 @@ public class DomainModelUtil {
 					searchFinanceVOs.add(searchFinanceVO);
 				}
 				userVO.setSearchFinance(searchFinanceVOs);
+				
+				List<MyVehicleVO> myVehicleVOs = new ArrayList<>();
+				for (MyVehicle myVehicle : user.getMyVehicle()) {
+					MyVehicleVO myVehicleVO = new MyVehicleVO();
+					BeanUtils.copyProperties(myVehicleVO, myVehicle);
+					myVehicleVOs.add(myVehicleVO);
+				}
+				userVO.setMyVehicle(myVehicleVOs);
 
 			}
 
@@ -186,6 +196,22 @@ public class DomainModelUtil {
 		return inventory;
 	}
 
+	// User Car/MyVehicle Details lead
+		public MyVehicle toMyVehicle(final MyVehicleVO searchVO) {
+
+			MyVehicle search = new MyVehicle();
+			try {
+				BeanUtils.copyProperties(search, searchVO);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return search;
+		}
+	
 	// User Car/Search Details lead
 	public Search toSearch(final SearchVO searchVO) {
 
