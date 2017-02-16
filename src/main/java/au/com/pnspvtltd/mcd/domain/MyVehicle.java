@@ -9,6 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import java.util.List;
+import javax.persistence.FetchType;
+import javax.persistence.CascadeType;
+
 
 @Entity
 @Table(name = "myvehicle")
@@ -74,7 +80,38 @@ public class MyVehicle implements Serializable {
 	private double flex7;
 	private Date flex8;
 	private Date flex9;
-	
+	List<MyVehicleLogBook> myVehicleLogBook;
+	List<MyVehicleFuelExpenses> myVehicleFuelExpenses;
+	List<MyVehicleServMaint> myVehicleServMaint;
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "myVehicleId")
+	public List<MyVehicleLogBook> getMyVehicleLogBook() {
+		return myVehicleLogBook;
+	}
+
+	public void setMyVehicleLogBook(List<MyVehicleLogBook> myVehicleLogBook) {
+		this.myVehicleLogBook = myVehicleLogBook;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "myVehicleId")
+	public List<MyVehicleFuelExpenses> getMyVehicleFuelExpenses() {
+		return myVehicleFuelExpenses;
+	}
+
+	public void setMyVehicleFuelExpenses(
+			List<MyVehicleFuelExpenses> myVehicleFuelExpenses) {
+		this.myVehicleFuelExpenses = myVehicleFuelExpenses;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "myVehicleId")
+	public List<MyVehicleServMaint> getMyVehicleServMaint() {
+		return myVehicleServMaint;
+	}
+
+	public void setMyVehicleServMaint(List<MyVehicleServMaint> myVehicleServMaint) {
+		this.myVehicleServMaint = myVehicleServMaint;
+	}
+
 	@Column(name = "postalCode")
 		public int getPostalCode() {
 		return postalCode;

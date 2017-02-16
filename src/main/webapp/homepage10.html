@@ -43,7 +43,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 <script>
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '238604546585672',
+				appId : '249863545451459',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -104,7 +104,14 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 <!-- End FB -->
 
-
+<script>
+function redirect() {
+	alert("Thank You. Your Seach ID is ");
+	alert("userid"+userId);
+	var url="dashboard1.html?userId="+userId+"&searchId="+searchId+"&firstName="+firstName;
+	
+	window.location=url;
+}</script>
 
 
 <!-- angular JS script Start -->
@@ -209,7 +216,7 @@ function onSignInG()
 {
 	gapi.load('auth2', function() {
 		  auth2 = gapi.auth2.init({
-		    client_id: '814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com',
+		    client_id: '814821459166-2snv3tdshqgusiuhjnuoedrg0akt83ol.apps.googleusercontent.com',
 		    });
 
 		  // Sign the user in, and then retrieve their ID.
@@ -297,8 +304,8 @@ firstName =null;
 		jsonInputToAPI.password=document.getElementById("examplePass").value;
 		alert(jsonInputToAPI.email);
 		alert(jsonInputToAPI.password);
-		var wsURL = 'http://localhost:8080/MyCarDomain/api/user/login'; 
-		   //var wsURL = 'http://www.autoscoop.com.au/api/user/login';
+		//var wsURL = 'http://localhost:8080/MyCarDomain/api/user/login'; 
+		   var wsURL = 'http://www.autoscoop.com.au/api/user/login';
 		/* alert(jsonInputToAPI.comingSoonUserEmail);
 		alert(jsonInputToAPI.flex1);
 		alert(jsonInputToAPI.flex2);
@@ -345,8 +352,8 @@ $scope.submitForm1 = function() {
 		jsonInputToAPI.lastName=flex1;
 		
 		alert(flex1);
-		var wsURL = 'http://localhost:8080/MyCarDomain/api/user/login/social'; 
-		//   var wsURL = 'http://www.autoscoop.com.au/api/user/login/social';
+		//var wsURL = 'http://localhost:8080/MyCarDomain/api/user/login/social'; 
+		   var wsURL = 'http://www.autoscoop.com.au/api/user/login/social';
 		/* alert(jsonInputToAPI.comingSoonUserEmail);
 		alert(jsonInputToAPI.flex1);
 		alert(jsonInputToAPI.flex2);
@@ -415,8 +422,8 @@ document.getElementById("login").click();
 alert("userid"+userId);			
 
 								 
-/*var wsURL = 'http://www.autoscoop.com.au/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;*/
-var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;   
+var wsURL = 'http://www.autoscoop.com.au/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;
+//var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;   
 /* var wsURL = 'http://sample-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser; */
 /* alert(wsURL);
  */							/* var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear=2008&modelDisplay=BMW&modelName=116&modelTrim=i Exclusive'; */
@@ -862,42 +869,11 @@ section#content {
 				</ul>
 
 				<ul class="mobile-topnav container">
-					<li><a href="#">MY ACCOUNT</a></li>
-					<li class="ribbon language menu-color-skin"><a href="#"
-						data-toggle="collapse">ENGLISH</a>
-						<ul class="menu mini">
-							<li><a href="#" title="Dansk">Dansk</a></li>
-							<li><a href="#" title="Deutsch">Deutsch</a></li>
-							<li class="active"><a href="#" title="English">English</a></li>
-							<li><a href="#" title="Español">Español</a></li>
-							<li><a href="#" title="Français">Français</a></li>
-							<li><a href="#" title="Italiano">Italiano</a></li>
-							<li><a href="#" title="Magyar">Magyar</a></li>
-							<li><a href="#" title="Nederlands">Nederlands</a></li>
-							<li><a href="#" title="Norsk">Norsk</a></li>
-							<li><a href="#" title="Polski">Polski</a></li>
-							<li><a href="#" title="Português">Português</a></li>
-							<li><a href="#" title="Suomi">Suomi</a></li>
-							<li><a href="#" title="Svenska">Svenska</a></li>
-						</ul></li>
+					<li><a onClick="redirect()" >MY ACCOUNT</a></li>
+					
 					<li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
 					<li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
-					<li class="ribbon currency menu-color-skin"><a href="#">USD</a>
-						<ul class="menu mini">
-							<li><a href="#" title="AUD">AUD</a></li>
-							<li><a href="#" title="BRL">BRL</a></li>
-							<li class="active"><a href="#" title="USD">USD</a></li>
-							<li><a href="#" title="CAD">CAD</a></li>
-							<li><a href="#" title="CHF">CHF</a></li>
-							<li><a href="#" title="CNY">CNY</a></li>
-							<li><a href="#" title="CZK">CZK</a></li>
-							<li><a href="#" title="DKK">DKK</a></li>
-							<li><a href="#" title="EUR">EUR</a></li>
-							<li><a href="#" title="GBP">GBP</a></li>
-							<li><a href="#" title="HKD">HKD</a></li>
-							<li><a href="#" title="HUF">HUF</a></li>
-							<li><a href="#" title="IDR">IDR</a></li>
-						</ul></li>
+					
 				</ul>
 
 			</nav>
