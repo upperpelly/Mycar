@@ -11,9 +11,18 @@
 <script src="assets/js/jquery.countdown.min.js"></script>
 <!-- added end -->
 
+
 <script type="text/javascript">// <![CDATA[
 $(document).ready( function() {
-
+$body = $("body");
+	
+    $(document).ajaxStart(function(){
+    	$body.addClass("loading");
+    });
+    
+    $(document).ajaxStop(function(){
+    	$body.removeClass("loading");
+    });
 var carquery = new CarQuery();
 carquery.init();
 carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
@@ -25,7 +34,27 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 });
 // ]]&gt;</script>
 
-
+<style type="text/css">
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('http://i.stack.imgur.com/FhHRx.gif') 
+                50% 50% 
+                no-repeat;
+}
+body.loading {
+    overflow: hidden;   
+}
+body.loading .modal {
+    display: block;
+}
+</style>
 
 <!-- Meta Tags -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -104,14 +133,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 <!-- End FB -->
 
-<script>
-function redirect() {
-	alert("Thank You. Your Seach ID is ");
-	alert("userid"+userId);
-	var url="dashboard1.html?userId="+userId+"&searchId="+searchId+"&firstName="+firstName;
-	
-	window.location=url;
-}</script>
+
 
 
 <!-- angular JS script Start -->
@@ -416,10 +438,10 @@ $scope.submitForm1 = function() {
 
 var e = document.getElementById("car-model-trims"); 
 var strUser = e.options[e.selectedIndex].text;
-document.getElementById("login").click();
+/* document.getElementById("login").click(); */
 
 							
-alert("userid"+userId);			
+		
 
 								 
 var wsURL = 'http://www.autoscoop.com.au/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;
@@ -451,19 +473,19 @@ var wsURL = 'http://www.autoscoop.com.au/api/inventory/getStatisticsFor?modelYea
 							var trimValue=$('#car-model-trims').val();
 							//alert ("model"+modelYear);
 							
-							$http({
-								method : 'GET',
-								url : wsURL
-								
-							}).success(function(data) {
-								/* alert(data.priceMin); */
-								 alert(firstName); 
-								var url="abc.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
-										"&modelYear="+modelYear+"&modelDisplay="+modelDisplay+"&modelName="+modelName+"&modeltrim="+strUser+"&trimValue="+trimValue+"&userId="+userId+"&firstName="+firstName;
-								/* alert(url); */ 
-								window.location = url;
-								
-							}); 
+							$.ajax({
+					            url: wsURL,
+					            type: 'GET',
+					            success: function (data) {
+					            	
+										var url="abc.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
+												"&modelYear="+modelYear+"&modelDisplay="+modelDisplay+"&modelName="+modelName+"&modeltrim="+strUser+"&trimValue="+trimValue+"&userId="+userId+"&firstName="+firstName;
+										/* alert(url); */ 
+										window.location = url;
+					            }
+					        });
+							
+							
 
 							// start
 							
@@ -670,35 +692,24 @@ section#content {
 					</a>
 				</h1>
 
-				<div class="topnav">
+				<div class="topnav" >
 					<ul class="quick-menu pull-right clearfix">
-						<li><a href="#">ACCOUNT</a></li>
-						<li class="ribbon"><a href="#">English</a>
-							<ul class="menu mini">
-								<li><a href="#" title="Dansk">Dansk</a></li>
-								<li><a href="#" title="Deutsch">Deutsch</a></li>
-								<li class="active"><a href="#" title="English">English</a></li>
-								<li><a href="#" title="Español">Español</a></li>
-								<li><a href="#" title="Français">Français</a></li>
-								<li><a href="#" title="Italiano">Italiano</a></li>
-								<li><a href="#" title="Magyar">Magyar</a></li>
-								<li><a href="#" title="Nederlands">Nederlands</a></li>
-								<li><a href="#" title="Norsk">Norsk</a></li>
-								<li><a href="#" title="Polski">Polski</a></li>
-								<li><a href="#" title="Português">Português</a></li>
-								<li><a href="#" title="Suomi">Suomi</a></li>
-								<li><a href="#" title="Svenska">Svenska</a></li>
-							</ul></li>
+						<li><a onClick="redirect()">ACCOUNT</a></li>
+						
 					</ul>
 				</div>
+				<div id="welcomeDiv" style="display:block" class="pull-right hidden-mobile">
+					
+					<span id="userId"></span>
+					</div>
 
-				<div class="pull-right hidden-mobile">
+				<div id="welcomeDiv1" style="display:none" class="pull-right hidden-mobile">
 					<button class="btn-medium blue-bg soap-popupbox"
 						data-target="#travelo-signup">SIGNUP</button>
 					<button class="btn-medium soap-popupbox"
 						data-target="#travelo-login" id="login">LOGIN</button>
 					<a
-						href="http://themeforest.net/item/travelo-responsive-travel-booking-site-template/8346649?ref=SoapTheme"
+						href="#"
 						class="button btn-medium yellow" style="padding: 0 15px;"><i
 						class="soap-icon-shopping"></i> LOG BOOK</a>
 				</div>
@@ -869,10 +880,16 @@ section#content {
 				</ul>
 
 				<ul class="mobile-topnav container">
-					<li><a onClick="redirect()" >MY ACCOUNT</a></li>
+					<li><a onClick="redirect()">MY ACCOUNT</a></li>
+					<ul class="quick-menu pull-right" id="welcomeDiv1" style="display:block">
+						<li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
+						<li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+
+					</ul>
+					<ul class="quick-menu pull-right" id="welcomeDiv" style="display:none">
+					<a href="#"><span id="userId"></span></a>
+					</ul>
 					
-					<li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
-					<li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
 					
 				</ul>
 
@@ -8050,7 +8067,8 @@ section#content {
             slideshowSpeed: 5000
         });
     </script>
-
+<!-- Loading -->
+<div class="modal"><!-- Place at bottom of page --></div>
 
 </body>
 </html>

@@ -21,6 +21,9 @@ import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.MyVehicle;
+import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
+import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
+import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
 import au.com.pnspvtltd.mcd.domain.PhotosTemplate;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
@@ -41,6 +44,10 @@ import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookStoreVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.PhotosTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
@@ -196,6 +203,22 @@ public class DomainModelUtil {
 		return inventory;
 	}
 
+	public MyVehicleLogBook toMyVehicleLogBook(final MyVehicleLogBookVO inventoryVO) {
+		MyVehicleLogBook inventory = new MyVehicleLogBook();
+		try {
+			BeanUtils.copyProperties(inventory, inventoryVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventory;
+	}
+
+	
+	
 	// User Car/MyVehicle Details lead
 		public MyVehicle toMyVehicle(final MyVehicleVO searchVO) {
 
@@ -227,8 +250,59 @@ public class DomainModelUtil {
 		}
 		return search;
 	}
+	
+	// User myVehicle/myVehicleLogBook Details lead
+		public MyVehicleLogBook toLogBook(final MyVehicleLogBookVO searchVO) {
 
-	// Dealer Vehicle Lead
+			MyVehicleLogBook search = new MyVehicleLogBook();
+			try {
+				BeanUtils.copyProperties(search, searchVO);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return search;
+		}
+
+
+		// User myVehicle/myVehicleFuelExpenses Details lead
+				public MyVehicleFuelExpenses toFuelExpenses(final MyVehicleFuelExpensesVO searchVO) {
+
+					MyVehicleFuelExpenses search = new MyVehicleFuelExpenses();
+					try {
+						BeanUtils.copyProperties(search, searchVO);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return search;
+				}
+
+
+				// User myVehicle/myVehicleFuelExpenses Details lead
+				public MyVehicleServMaint toServMaint(final MyVehicleServMaintVO searchVO) {
+
+					MyVehicleServMaint search = new MyVehicleServMaint();
+					try {
+						BeanUtils.copyProperties(search, searchVO);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return search;
+				}
+
+				
+		// Dealer Vehicle Lead
 	public DealerSearch toDealerSearch(final SearchVO searchVO) {
 
 		DealerSearch dealerSearch = new DealerSearch();

@@ -1,8 +1,13 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
+
+import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
+import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
+import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
 
 public class MyVehicleVO {
 
@@ -86,10 +91,36 @@ public class MyVehicleVO {
 	private double flex7;
 	private Date flex8;
 	private Date flex9;
+	List<MyVehicleLogBook> myVehicleLogBook;
+	List<MyVehicleFuelExpenses> myVehicleFuelExpenses;
+	List<MyVehicleServMaint> myVehicleServMaint;
+	
+	
+	
 
-	
-	
-	
+	public List<MyVehicleLogBook> getMyVehicleLogBook() {
+		return myVehicleLogBook;
+	}
+
+	public void setMyVehicleLogBook(List<MyVehicleLogBook> myVehicleLogBook) {
+		this.myVehicleLogBook = myVehicleLogBook;
+	}
+
+	public List<MyVehicleFuelExpenses> getMyVehicleFuelExpenses() {
+		return myVehicleFuelExpenses;
+	}
+
+	public void setMyVehicleFuelExpenses(List<MyVehicleFuelExpenses> myVehicleFuelExpenses) {
+		this.myVehicleFuelExpenses = myVehicleFuelExpenses;
+	}
+
+	public List<MyVehicleServMaint> getMyVehicleServMaint() {
+		return myVehicleServMaint;
+	}
+
+	public void setMyVehicleServMaint(List<MyVehicleServMaint> myVehicleServMaint) {
+		this.myVehicleServMaint = myVehicleServMaint;
+	}
 
 	public int getPostalCode() {
 		return postalCode;

@@ -1841,12 +1841,11 @@ var e = document.getElementById("car-model-trims");
 var strUser = e.options[e.selectedIndex].text;
 
 this.model_data_id = model_data_id;
-/*http://localhost:8080/api/carModelTemplateFor?modelYear=2016&modelDisplay=Buick&modelName=Envision&modelTrim=4dr SUV (2.5L 4cyl 6A)*/
+
 var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;
 //var url= "http://localhost:8080/MyCarDomain/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;
 /*alert("url"+url);*/
-/*var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;*/
-/*var wsURL = 'http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;*/
+
 var sender = this;    
 $.ajax({  
 	/*headers: {"X-My-Custom-Header": "*"},*/
@@ -2174,7 +2173,7 @@ var modelTrim;
 //alert("user id"+url);
 
         //Get Car Model JSON for the selected make
-        //http://localhost:8080/MyCarDomain/api/user/1
+        
         /*alert("came here now changed are 3 Oct1");*/
         $.ajax({  
         	/*headers: {"X-My-Custom-Header": "*"},*/

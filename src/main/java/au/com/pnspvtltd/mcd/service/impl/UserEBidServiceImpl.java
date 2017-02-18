@@ -29,6 +29,8 @@ import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
+import au.com.pnspvtltd.mcd.web.model.UserEBidInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 
@@ -168,6 +170,147 @@ System.out.println("present value"+present);
 		return "{\"userId\":" + userEBidVO.getUserId() + ",\"searchId\":" + search.getCarSearchId() + "}";
 
 	}
+	@Override
+	@Transactional
+	public String whenUserEBidForFinance(UserEBidFinanceVO userEBidVO) {
+
+		// Find the User
+		User user = userRepository.findOne(userEBidVO.getUserId());
+
+		
+		// Create User Finance Lead
+		SearchFinance searchFinance = domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
+		if (user.getSearchFinance() != null) {
+			user.getSearchFinance().add(searchFinance);
+		} else {
+			List<SearchFinance> userFinanceLeads = new ArrayList<>();
+			userFinanceLeads.add(searchFinance);
+			user.setSearchFinance(userFinanceLeads);
+		}
+
+		
+
+		userRepository.flush();
+
+		// Get Inventory matching the User EBid for Car
+		// (Model, Make, Year, Trim)
+		
+		String withOutSpace = searchFinance.getVariant().replaceAll("%20", " ");
+		System.out.println("without"+withOutSpace);
+		System.out.println("with"+searchFinance.getVariant());
+		
+		List<Inventory> inventories = inventoryRepository.getInventoryFor(String.valueOf(searchFinance.getYear()),
+				searchFinance.getMake(), searchFinance.getVariant(), withOutSpace);
+		boolean present = false;
+		for (Inventory inventory : inventories) {
+			present = true;
+			System.out.println("details"+inventory.getRepoId()+inventory.getModelYear()+inventory.getModelDisplay()+inventory.getModelName()+inventory.getModelTrim());
+			Dealer dealer = inventory.getDealer();
+
+			
+			DealerSearchFinance dealerSearchFinance = null;
+			
+
+			
+			// Create Dealer Finance Lead if he provides finance
+			if (dealer.isFinancer()) {
+				dealerSearchFinance = domainModelUtil.toDealerSearchFinance(userEBidVO.getFinanceLead());
+				dealerSearchFinance.setUserId(user.getUserId());
+				if (dealer.getDealSearchFinance() != null) {
+					dealer.getDealSearchFinance().add(dealerSearchFinance);
+				} else {
+					List<DealerSearchFinance> dealerFinanceLeads = new ArrayList<>();
+					dealerFinanceLeads.add(dealerSearchFinance);
+					dealer.setDealSearchFinance(dealerFinanceLeads);
+				}
+			}
+			
+			
+			inventoryRepository.flush();
+			System.out.println("isDealer"+dealer.isDealer());
+			
+			if (dealer.isFinancer()) {
+				createFinanceQuotation(user, dealer, searchFinance, dealerSearchFinance, inventory);
+			}
+			
+
+		}
+System.out.println("present value"+present);
+		if(!present){
+			System.out.println("inventory not present");
+		}
+		return "{\"userId\":" + userEBidVO.getUserId() + ",\"searchId\":" +  "}";
+
+	}
+	
+	@Override
+	@Transactional
+	public String whenUserEBidForInsurance(UserEBidInsuranceVO userEBidVO) {
+
+		// Find the User
+		User user = userRepository.findOne(userEBidVO.getUserId());
+
+		
+		// Create User Insurance Lead
+		SearchInsurance searchInsurance = domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
+		if (user.getSearchInsurance() != null) {
+			user.getSearchInsurance().add(searchInsurance);
+		} else {
+			List<SearchInsurance> userInsuranceLeads = new ArrayList<>();
+			userInsuranceLeads.add(searchInsurance);
+			user.setSearchInsurance(userInsuranceLeads);
+		}
+
+		userRepository.flush();
+
+		// Get Inventory matching the User EBid for Car
+		// (Model, Make, Year, Trim)
+		
+		String withOutSpace = searchInsurance.getVariant().replaceAll("%20", " ");
+		System.out.println("without"+withOutSpace);
+		System.out.println("with"+searchInsurance.getVariant());
+		
+		List<Inventory> inventories = inventoryRepository.getInventoryFor(String.valueOf(searchInsurance.getMake()),
+				searchInsurance.getModel(), searchInsurance.getVariant(), withOutSpace);
+		boolean present = false;
+		for (Inventory inventory : inventories) {
+			present = true;
+			System.out.println("details"+inventory.getRepoId()+inventory.getModelYear()+inventory.getModelDisplay()+inventory.getModelName()+inventory.getModelTrim());
+			Dealer dealer = inventory.getDealer();
+
+
+			DealerSearchInsurance dealerSearchInsurance = null;
+
+			// Create Dealer Insurance Lead if he provides insurance
+			if (dealer.isInsurer()) {
+				dealerSearchInsurance = domainModelUtil.toDealerSearchInsurance(userEBidVO.getInsuranceLead());
+				dealerSearchInsurance.setUserId(user.getUserId());
+				if (dealer.getDealSearchInsurance() != null) {
+					dealer.getDealSearchInsurance().add(dealerSearchInsurance);
+				} else {
+					List<DealerSearchInsurance> dealerInsuranceLeads = new ArrayList<>();
+					dealerInsuranceLeads.add(dealerSearchInsurance);
+					dealer.setDealSearchInsurance(dealerInsuranceLeads);
+				}
+			}
+
+			inventoryRepository.flush();
+			System.out.println("isDealer"+dealer.isDealer());
+			if (dealer.isInsurer()) {
+				createInsuranceQuotation(user, dealer, searchInsurance, dealerSearchInsurance, inventory);
+			}
+
+		}
+System.out.println("present value"+present);
+		if(!present){
+			System.out.println("inventory not present");
+		}
+		return "{\"userId\":" + userEBidVO.getUserId() + ",\"searchId\":" +  "}";
+
+	}
+	
+
+	
 	
 	@Override
 	@Transactional
