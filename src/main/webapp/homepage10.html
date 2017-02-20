@@ -410,6 +410,98 @@ $scope.submitForm1 = function() {
 	}
 	
 	//social login end
+	
+	
+	// Insurance lead post
+	$scope.postInsuranceLead = function() {
+	alert("invoke in ins lead");
+		/*alert($scope.email);
+		alert(email); */
+		var jsonInputToAPI = {"userId":23,
+				"insuranceLead":{
+				"isNew":1,
+			"searchInsuranceId":null,
+			"postCode":"test",
+			"insuranceType":"t",
+			"regNo":"we",
+			"regoState":"TS",
+			"year":2013,
+			"make":"ss",
+			"model":"lssa",
+			"variant":"sada",
+			"marketValue":0.21,
+			"agreedValue":0.232,
+			"finance":1,
+			"financeProvider":"lssa",
+			"drivingLicenseType":"sada",
+			"drivingLicenseNo":"lssa",
+			"drivingLicenseIssueState":"sada",
+			"noOfAtFaults":45,
+			"otherIssues":"lssa",
+			"curInsProv":"sada",
+			"prefExcessAmount":0.21,
+			"dateOfBirth":null,
+			"ageOfAdditionalDriver":null
+				}
+			};
+		jsonInputToAPI.insuranceLead.isNew=document.getElementById("myCheck").value;
+		jsonInputToAPI.insuranceLead.regNo =$('#ins-regono').val();
+		jsonInputToAPI.insuranceLead.postCode=$('#ins-postcode').val();
+		jsonInputToAPI.insuranceLead.insuranceType =$('#insuranceType').val();
+		jsonInputToAPI.insuranceLead.regoState=$('#ins-regost').val();
+		
+		jsonInputToAPI.insuranceLead.year =$('#car-years').val();
+		jsonInputToAPI.insuranceLead.make=$('#car-makes').val();
+		jsonInputToAPI.insuranceLead.model =$('#car-models').val();
+		jsonInputToAPI.insuranceLead.variant=$('#car-model-trims').val();
+		
+		jsonInputToAPI.insuranceLead.marketValue =$('#ins-market').val();
+		jsonInputToAPI.insuranceLead.agreedValue=$('#ins-agree').val();
+		jsonInputToAPI.insuranceLead.finance =$('#ins-finance').val();
+		jsonInputToAPI.insuranceLead.financeProvider=$('#ins-fin-prov').val();
+		
+		jsonInputToAPI.insuranceLead.drivingLicenseType =$('#ins-lic-type').val();
+		jsonInputToAPI.insuranceLead.drivingLicenseNo=$('#ins-lic-no').val();
+		jsonInputToAPI.insuranceLead.drivingLicenseIssueState =$('#ins-lic-iss-state').val();
+		jsonInputToAPI.insuranceLead.noOfAtFaults=$('#ins-faults').val();
+		
+		//jsonInputToAPI.insuranceLead.otherIssues =$('#ins-regono').val();
+		jsonInputToAPI.insuranceLead.curInsProv=$('#curr-ins-prov').val();
+		jsonInputToAPI.insuranceLead.prefExcessAmount =$('#ins-excessAmount').val();
+		//jsonInputToAPI.insuranceLead.dateOfBirth=$('#ins-regost').val();
+		//jsonInputToAPI.insuranceLead.ageOfAdditionalDriver=$('#ins-regost').val();
+		alert(jsonInputToAPI.insuranceLead.isNew);
+		alert(jsonInputToAPI.insuranceLead.regNo);
+		/* jsonInputToAPI.email=$('#car-years').val();
+		jsonInputToAPI.firstName=$('#car-years').val();
+		jsonInputToAPI.lastName=$('#car-years').val(); */
+		
+
+		var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/insurance'; 
+		//  var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
+		/* alert(jsonInputToAPI.comingSoonUserEmail);
+		alert(jsonInputToAPI.flex1);
+		alert(jsonInputToAPI.flex2);
+		alert(jsonInputToAPI.flex3); */
+		
+	   
+	    	$http({
+				method : 'POST',
+				url : wsURL,
+				data: jsonInputToAPI
+								
+			}).success(function(data) {
+				alert("successful");
+				document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
+							});
+	    
+	    
+		
+	    	
+	    
+	}
+	
+	// Insurance lead post end
 						$scope.predicate = 'name';
 						$scope.reverse = true;
 						$scope.currentPage = 1;
@@ -703,7 +795,7 @@ section#content {
 					<span id="userId"></span>
 					</div>
 
-				<div id="welcomeDiv1" style="display:none" class="pull-right hidden-mobile">
+				<div id="welcomeDiv1" style="display:block" class="pull-right hidden-mobile">
 					<button class="btn-medium blue-bg soap-popupbox"
 						data-target="#travelo-signup">SIGNUP</button>
 					<button class="btn-medium soap-popupbox"
@@ -788,14 +880,14 @@ section#content {
 						</ul>
 					</nav>
 					<ul class="social-icons clearfix pull-right hidden-mobile">
-						<li class="twitter"><a title="twitter" href="#"
-							data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
 						<li class="facebook"><a title="facebook" href="#"
 							data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
+						<li class="twitter"><a title="twitter" href="#"
+							data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
+						<li class="google"><a title="google" href="#"
+							data-toggle="tooltip"><i class="soap-icon-googleplus"></i></a></li>
 						<li class="linkedin"><a title="linkedin" href="#"
 							data-toggle="tooltip"><i class="soap-icon-linkedin"></i></a></li>
-						<li class="vimeo"><a title="vimeo" href="#"
-							data-toggle="tooltip"><i class="soap-icon-vimeo"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -3502,12 +3594,11 @@ section#content {
 										<div class="tab-content">
 											<!-- BEGIN: FLIGHT SEARCH -->
 											<div role="tabpanel" class="tab-pane active" id="flight3">
-												<form class="form-inline signup" role="form">
-													<div class="col-md-12 product-search-title">Insurance
-														for car</div>
+												<form class="form-inline signup" role="form" ng-submit="postInsuranceLead()">
+													<div class="col-md-12 product-search-title">Insurance for car</div>
 													<div class="clearfix"></div>
 													<div class="checkbox">
-														<label> <input type="checkbox"><span
+														<label> <input type="checkbox" id="myCheck" value="1"><span
 															class="skin-color">New</span></a>.
 														</label>
 													</div>
@@ -3528,7 +3619,7 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Insurance Type</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
+															<select class="full-width" id="insuranceType"
 																name="incomeType">
 																<option>Compulsary Third Party ( CTP )</option>
 																<option>Third Party Property</option>
@@ -3541,12 +3632,12 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>REGO No</label> <input type="text"
 															class="input-text full-width" value="free text"
-															placeholder="" id="ins-postcode" name="ins-postcode" />
+															placeholder="" id="ins-regono" name="ins-postcode" />
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>REGO State</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
+															<select class="full-width" id="ins-regost"
 																name="incomeType">
 																<option>ACT</option>
 																<option>NT</option>
@@ -3602,21 +3693,21 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Market Value</label> <input type="text"
 															class="input-text full-width" value="free text"
-															placeholder="" id="ins-postcode" name="ins-postcode" />
+															placeholder="" id="ins-market" name="ins-postcode" />
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Agreed Value</label> <input type="text"
 															class="input-text full-width" value="free text"
-															placeholder="" id="ins-postcode" name="ins-postcode" />
+															placeholder="" id="ins-agree" name="ins-postcode" />
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Finance</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
+															<select class="full-width" id="ins-finance"
 																name="incomeType">
-																<option>Yes</option>
-																<option>No</option>
+																<option value="true">Yes</option>
+																<option value="false">No</option>
 															</select>
 														</div>
 													</div>
@@ -3624,7 +3715,7 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Finance Provider</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
+															<select class="full-width" id="ins-fin-prov"
 																name="incomeType">
 																<option>AAMI</option>
 																<option>AMP Limited</option>
@@ -3640,7 +3731,7 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Driving License Type</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
+															<select class="full-width" id="ins-lic-type"
 																name="incomeType">
 																<option>L-Learner</option>
 																<option>P-probation</option>
@@ -3653,13 +3744,13 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Driving License Number</label> <input type="text"
 															class="input-text full-width" value="" placeholder=""
-															id="yearEmployement" name="yearEmployement" />
+															id="ins-lic-no" name="yearEmployement" />
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Driving License Issue State</label>
 														<div class="selector">
 															<select class="full-width" id="incomeType"
-																name="incomeType">
+																name="ins-lic-iss-state">
 																<option>ACT</option>
 																<option>NT</option>
 																<option>QLD</option>
@@ -3675,7 +3766,7 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Number of At Faults Claims</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
+															<select class="full-width" id="ins-faults"
 																name="incomeType">
 																<option>1</option>
 																<option>2</option>
@@ -3685,13 +3776,13 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Other Issues (If any)</label> <input type="text"
 															class="input-text full-width" value="" placeholder=""
-															id="yearEmployement" name="yearEmployement" />
+															id="otherissues" name="yearEmployement" />
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Current Ins-Provider</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
+															<select class="full-width" id="curr-ins-prov"
 																name="incomeType">
 																<option>AAMI</option>
 																<option>AMP Limited</option>
@@ -3706,7 +3797,7 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Preferred Excess Amount</label> <input type="text"
 															class="input-text full-width" value="" placeholder=""
-															id="excessAmount" name="excessAmount" />
+															id="ins-excessAmount" name="excessAmount" />
 													</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
