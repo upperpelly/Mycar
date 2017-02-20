@@ -1,13 +1,14 @@
 package au.com.pnspvtltd.mcd;
 
+import javax.servlet.Filter;
+
 import org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
 public class DispatcherServletCustomConfiguration{
@@ -22,6 +23,22 @@ public class DispatcherServletCustomConfiguration{
         ServletRegistrationBean registration = new ServletRegistrationBean(
                 dispatcherServlet(), new String[]{"/api/*", "/"});
         registration.setName(DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_REGISTRATION_BEAN_NAME);
+        return registration;
+    }
+    
+    @Bean
+    public Filter filterToSupportPUTOperations(){
+    	return new HiddenHttpMethodFilter();
+    }
+    
+    @Bean
+    public FilterRegistrationBean registerFilterToSupportPUTOperations() {
+
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(filterToSupportPUTOperations());
+        registration.addUrlPatterns(new String[]{"/api/*"});
+        registration.setName("FilterToSupportPUTOperations");
+        //registration.setOrder(1);
         return registration;
     }
     
