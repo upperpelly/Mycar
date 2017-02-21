@@ -68,11 +68,26 @@ body.loading .modal {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
+<script>function showDiv1() {
+	alert("came here");
+	var carquery = new CarQuery();
+	carquery.init();
+	carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
+}
+</script>
+
+<script>function showDiv2() {
+	alert("came here");
+	var carquery = new CarQuery();
+	carquery.init();
+	carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin');
+}
+</script>
 
 <script>
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '249863545451459',
+				appId : '238604546585672',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -238,7 +253,7 @@ function onSignInG()
 {
 	gapi.load('auth2', function() {
 		  auth2 = gapi.auth2.init({
-		    client_id: '814821459166-2snv3tdshqgusiuhjnuoedrg0akt83ol.apps.googleusercontent.com',
+		    client_id: '814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com',
 		    });
 
 		  // Sign the user in, and then retrieve their ID.
@@ -417,7 +432,7 @@ $scope.submitForm1 = function() {
 	alert("invoke in ins lead");
 		/*alert($scope.email);
 		alert(email); */
-		var jsonInputToAPI = {"userId":23,
+		var jsonInputToAPI = {"userId":userId,
 				"insuranceLead":{
 				"isNew":1,
 			"searchInsuranceId":null,
@@ -444,16 +459,20 @@ $scope.submitForm1 = function() {
 			"ageOfAdditionalDriver":null
 				}
 			};
+
+		var insLeadTrim = document.getElementById("car-model-trims-ins"); 
+		var strUserIns = insLeadTrim.options[insLeadTrim.selectedIndex].text;
+		
 		jsonInputToAPI.insuranceLead.isNew=document.getElementById("myCheck").value;
 		jsonInputToAPI.insuranceLead.regNo =$('#ins-regono').val();
 		jsonInputToAPI.insuranceLead.postCode=$('#ins-postcode').val();
 		jsonInputToAPI.insuranceLead.insuranceType =$('#insuranceType').val();
 		jsonInputToAPI.insuranceLead.regoState=$('#ins-regost').val();
 		
-		jsonInputToAPI.insuranceLead.year =$('#car-years').val();
-		jsonInputToAPI.insuranceLead.make=$('#car-makes').val();
-		jsonInputToAPI.insuranceLead.model =$('#car-models').val();
-		jsonInputToAPI.insuranceLead.variant=$('#car-model-trims').val();
+		jsonInputToAPI.insuranceLead.year =$('#car-years-ins').val();
+		jsonInputToAPI.insuranceLead.make=$('#car-makes-ins').val();
+		jsonInputToAPI.insuranceLead.model =$('#car-models-ins').val();
+		jsonInputToAPI.insuranceLead.variant=strUserIns;
 		
 		jsonInputToAPI.insuranceLead.marketValue =$('#ins-market').val();
 		jsonInputToAPI.insuranceLead.agreedValue=$('#ins-agree').val();
@@ -491,8 +510,12 @@ $scope.submitForm1 = function() {
 				data: jsonInputToAPI
 								
 			}).success(function(data) {
-				alert("successful");
-				document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
+				alert("successfully stored");
+				alert("Redirecting to Dashboard..");
+				var url="dashboard1.html?userId="+userId+"&firstName="+firstName;
+				
+				window.location=url;
+				/* document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>'; */
 							});
 	    
 	    
@@ -502,6 +525,88 @@ $scope.submitForm1 = function() {
 	}
 	
 	// Insurance lead post end
+	
+		// Finance lead post
+	$scope.postFinanceLead = function() {
+	alert("invoke in ins finance lead");
+		/*alert($scope.email);
+		alert(email); */
+		var jsonInputToAPI = {"userId":userId,
+				"financeLead":{
+					"modelYear":2013,
+					"modelDisplay": "",
+					"modelName": "",															      
+					"modelTrim": "",
+					"postCode":"",
+					"incomeType":"",
+					"yearEmploymentBusiness":"",
+					"incomeBeforeSuperTax":"",
+					"incomeAfterSuperTax":"",
+					"ifBusinessProvideABN":"",
+					"creditRating":"",
+					"vehValue":"",
+					"balloonPay":"",
+					"annualIncome":"",
+					"loanAmount":"",
+					 "loanPeriod":"",
+					 "dateOfBirth":null,
+					 "noOfDependence":""
+				}
+			};
+		
+		var insLeadTrim1 = document.getElementById("car-model-trims-fin"); 
+		var strUserfin = insLeadTrim1.options[insLeadTrim1.selectedIndex].text;
+		
+		jsonInputToAPI.financeLead.vehValue =$('#finVehicleValue').val();
+		jsonInputToAPI.financeLead.postCode=$('#fin-postCode').val();
+		jsonInputToAPI.financeLead.balloonPay =$('#finBalloonPayment').val();
+		jsonInputToAPI.financeLead.loanAmount=$('#finLoanAmount').val();
+		
+		jsonInputToAPI.financeLead.year =$('#car-years-fin').val();
+		jsonInputToAPI.financeLead.make=$('#car-makes-fin').val();
+		jsonInputToAPI.financeLead.model =$('#car-models-fin').val();
+		jsonInputToAPI.financeLead.variant=strUserfin;
+		
+		jsonInputToAPI.financeLead.loanPeriod =$('#finLoanPeriod').val();
+		
+		
+		jsonInputToAPI.financeLead.annualIncome=$('#finAnnualIncome').val();
+		jsonInputToAPI.financeLead.creditRating =$('#finCreditRating').val();
+		
+		jsonInputToAPI.financeLead.incomeType=$('#finIncomeType').val();
+		
+		
+
+		var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/finance'; 
+		//  var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
+		/* alert(jsonInputToAPI.comingSoonUserEmail);
+		alert(jsonInputToAPI.flex1);
+		alert(jsonInputToAPI.flex2);
+		alert(jsonInputToAPI.flex3); */
+		
+	   
+	    	$http({
+				method : 'POST',
+				url : wsURL,
+				data: jsonInputToAPI
+								
+			}).success(function(data) {
+				alert("successfully stored");
+				alert("Redirecting to Dashboard..");
+				var url="dashboard1.html?userId="+userId+"&firstName="+firstName;
+				
+				window.location=url;
+				/* document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>'; */
+							});
+	    
+	    
+		
+	    	
+	    
+	}
+	
+	// Insurance lead post end
+	
 						$scope.predicate = 'name';
 						$scope.reverse = true;
 						$scope.currentPage = 1;
@@ -1135,10 +1240,10 @@ section#content {
 										class="soap-icon-pets"></i>eBid-R</a></li>
 								<li><a href="#flights-tab" data-toggle="tab"><i
 										class="soap-icon-search"></i>Browse</a></li>
-								<li><a href="#flight-and-hotel-tab" data-toggle="tab"><i
+								<li><a href="#flight-and-hotel-tab" data-toggle="tab" onclick="showDiv2()"><i
 										class="soap-icon-savings"></i>Finance</a></li>
-								<li><a href="#cars-tab" data-toggle="tab"><i
-										class="soap-icon-insurance"></i>Insurance</a></li>
+								<li><a href="#cars-tab" data-toggle="tab" onclick="showDiv1()"><i
+										class="soap-icon-insurance" ></i>Insurance</a></li>
 								<li><a href="#cruises-tab" data-toggle="tab"><i
 										class="soap-icon-doorman"></i>Serv & Maint</a></li>
 								<li><a href="#flight-status-tab" data-toggle="tab"><i
@@ -2763,7 +2868,7 @@ section#content {
 										<div class="tab-content">
 											<!-- BEGIN: FLIGHT SEARCH -->
 											<div role="tabpanel" class="tab-pane active" id="flight2">
-												<form class="form-inline signup" role="form">
+												<form class="form-inline signup" role="form" ng-submit="postFinanceLead()" >
 													<div class="col-md-12 product-search-title">Finance
 														for car</div>
 													<div class="clearfix"></div>
@@ -2781,14 +2886,14 @@ section#content {
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
-														<label>Post</label> <input type="text" id="postCode"
-															name="postCode" class="input-text full-width"
-															value="2913" placeholder="" />
+														<label>Post Code</label> <input type="text" id="fin-postCode"
+															name="fin-postCode" class="input-text full-width"
+															value="" placeholder="Post Code" />
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Year</label>
 														<div class="selector">
-															<select id="car-years" name="car-years"
+															<select id="car-years-fin" name="car-years-fin"
 																class="full-width">
 
 															</select>
@@ -2798,7 +2903,7 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Make</label>
 														<div class="selector">
-															<select id="car-makes" name="car-makes"
+															<select id="car-makes-fin" name="car-makes-fin"
 																class="full-width">
 
 															</select>
@@ -2807,7 +2912,7 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Model</label>
 														<div class="selector">
-															<select id="car-models" name="car-models"
+															<select id="car-models-fin" name="car-models-fin"
 																class="full-width">
 
 															</select>
@@ -2817,7 +2922,7 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Variant</label>
 														<div class="selector">
-															<select id="car-model-trims" name="car-model-trims"
+															<select id="car-model-trims-fin" name="car-model-trims-fin"
 																class="full-width">
 
 															</select>
@@ -2827,26 +2932,26 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Vehicle Value</label> <input type="text"
-															id="vehicleValue" name="vehicleValue"
-															class="input-text full-width" value="2913" placeholder="" />
+															id="finVehicleValue" name="finVehicleValue"
+															class="input-text full-width" value="" placeholder="Vehicle Value" />
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Balloon Pay</label> <input type="text"
-															id="balloonPayment" name="balloonPayment"
-															class="input-text full-width" value="2913" placeholder="" />
+															id="finBalloonPayment" name="finBalloonPayment"
+															class="input-text full-width" value="" placeholder="Balloon Pay" />
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Loan Amount</label> <input type="text"
-															id="loanAmount" name="loanAmount"
-															class="input-text full-width" value="2913" placeholder="" />
+															id="finLoanAmount" name="finLoanAmount"
+															class="input-text full-width" value="" placeholder="loan Amount" />
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Loan Period</label>
 														<div class="selector">
-															<select class="full-width" id="loanPeriod"
-																name="loanPeriod">
+															<select class="full-width" id="finLoanPeriod"
+																name="finLoanPeriod">
 																<option>1</option>
 																<option>2</option>
 																<option>3</option>
@@ -2862,8 +2967,8 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Income Type</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
-																name="incomeType">
+															<select class="full-width" id="finIncomeType"
+																name="finIncomeType">
 																<option>Salaried</option>
 																<option>Self Employed</option>
 																<option>Business</option>
@@ -2872,14 +2977,14 @@ section#content {
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Annual Income</label> <input type="text"
-															id="loanAmount" name="loanAmount"
-															class="input-text full-width" value="2913" placeholder="" />
+															id="finAnnualIncome" name="finAnnualIncome"
+															class="input-text full-width" value="" placeholder="Annual Income" />
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Credit Rating</label>
 														<div class="selector">
-															<select class="full-width" id="transmission"
-																name="transmission">
+															<select class="full-width" id="finCreditRating"
+																name="finCreditRating">
 																<option>Below Average</option>
 																<option>Average</option>
 																<option>Good</option>
@@ -2890,17 +2995,11 @@ section#content {
 														</div>
 													</div>
 													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>Date Of Birth</label>
-														<div class="selector">
-															<select class="full-width" id="transmission"
-																name="transmission">
-																<option>Automatic</option>
-																<option>Manual</option>
-
-															</select>
-														</div>
-													</div>
+													<div class="col-xs-6">
+                                                        <div class="datepicker-wrap">
+                                                            <input type="text" name="date_of_birth" class="input-text full-width" placeholder="Date of Birth" />
+                                                        </div>
+                                                    </div>
 
 													<div class="clearfix"></div>
 													<div id="status"></div>
@@ -3613,8 +3712,8 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Post Code</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="ins-postcode" name="ins-postcode" />
+															class="input-text full-width" value=""
+															placeholder="Post Code" id="ins-postcode" name="ins-postcode" />
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Insurance Type</label>
@@ -3631,8 +3730,8 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>REGO No</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="ins-regono" name="ins-postcode" />
+															class="input-text full-width" value=""
+															placeholder="Rego No" id="ins-regono" name="ins-postcode" />
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>REGO State</label>
@@ -3654,7 +3753,7 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Year</label>
 														<div class="selector">
-															<select id="car-years" name="car-years"
+															<select id="car-years-ins" name="car-years-ins"
 																class="full-width">
 
 															</select>
@@ -3664,7 +3763,7 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Make</label>
 														<div class="selector">
-															<select id="car-makes" name="car-makes"
+															<select id="car-makes-ins" name="car-makes-ins"
 																class="full-width">
 
 															</select>
@@ -3673,7 +3772,7 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Model</label>
 														<div class="selector">
-															<select id="car-models" name="car-models"
+															<select id="car-models-ins" name="car-models-ins"
 																class="full-width">
 
 															</select>
@@ -3683,7 +3782,7 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Variant</label>
 														<div class="selector">
-															<select id="car-model-trims" name="car-model-trims"
+															<select id="car-model-trims-ins" name="car-model-trims-ins"
 																class="full-width">
 
 															</select>
@@ -3692,13 +3791,13 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Market Value</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="ins-market" name="ins-postcode" />
+															class="input-text full-width" value=""
+															placeholder="Market Value" id="ins-market" name="ins-postcode" />
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Agreed Value</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="ins-agree" name="ins-postcode" />
+															class="input-text full-width" value=""
+															placeholder="Agreed Value" id="ins-agree" name="ins-postcode" />
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
@@ -3743,7 +3842,7 @@ section#content {
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Driving License Number</label> <input type="text"
-															class="input-text full-width" value="" placeholder=""
+															class="input-text full-width" value="" placeholder="Driving License Number"
 															id="ins-lic-no" name="yearEmployement" />
 													</div>
 													<div class="col-sm-5 col-md-4">
@@ -3775,7 +3874,7 @@ section#content {
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Other Issues (If any)</label> <input type="text"
-															class="input-text full-width" value="" placeholder=""
+															class="input-text full-width" value="" placeholder="Other Issues(If any)"
 															id="otherissues" name="yearEmployement" />
 													</div>
 													<div class="clearfix"></div>
@@ -3796,7 +3895,7 @@ section#content {
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Preferred Excess Amount</label> <input type="text"
-															class="input-text full-width" value="" placeholder=""
+															class="input-text full-width" value="" placeholder="Preferred Excess Amount"
 															id="ins-excessAmount" name="excessAmount" />
 													</div>
 													<div class="clearfix"></div>
@@ -3806,10 +3905,10 @@ section#content {
 														<div class="toggle-container box">
 															<div class="panel style1">
 																<h4 class="panel-title">
-																	<a href="#tgg1" data-toggle="collapse">Additional
+																	<a href="#tgg102" data-toggle="collapse">Additional
 																		Options / Features</a>
 																</h4>
-																<div class="panel-collapse collapse in" id="tgg1">
+																<div class="panel-collapse collapse" id="tgg102">
 																	<div class="panel-content">
 																		<h2>Road Side Assitance</h2>
 																		<div class="clearfix"></div>
@@ -3818,7 +3917,7 @@ section#content {
 																				class="skin-color">Wind Screen</span></a>.
 																			</label>
 																		</div>
-
+																		<div class="clearfix"></div>
 
 																		<div class="checkbox">
 																			<label> <input type="checkbox"><span

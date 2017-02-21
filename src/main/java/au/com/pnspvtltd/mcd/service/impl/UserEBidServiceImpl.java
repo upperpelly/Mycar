@@ -200,7 +200,7 @@ System.out.println("present value"+present);
 		System.out.println("with"+searchFinance.getVariant());
 		
 		List<Inventory> inventories = inventoryRepository.getInventoryFor(String.valueOf(searchFinance.getYear()),
-				searchFinance.getMake(), searchFinance.getVariant(), withOutSpace);
+				searchFinance.getMake(), searchFinance.getModel(), withOutSpace);
 		boolean present = false;
 		for (Inventory inventory : inventories) {
 			present = true;
@@ -239,7 +239,7 @@ System.out.println("present value"+present);
 		if(!present){
 			System.out.println("inventory not present");
 		}
-		return "{\"userId\":" + userEBidVO.getUserId() + ",\"searchId\":" +  "}";
+		return "{\"userId\":" + userEBidVO.getUserId() +  "}";
 
 	}
 	
@@ -270,8 +270,10 @@ System.out.println("present value"+present);
 		System.out.println("without"+withOutSpace);
 		System.out.println("with"+searchInsurance.getVariant());
 		
-		List<Inventory> inventories = inventoryRepository.getInventoryFor(String.valueOf(searchInsurance.getMake()),
-				searchInsurance.getModel(), searchInsurance.getVariant(), withOutSpace);
+		
+		
+		List<Inventory> inventories = inventoryRepository.getInventoryFor(String.valueOf(searchInsurance.getYear()),
+				searchInsurance.getMake(), searchInsurance.getModel(), withOutSpace);
 		boolean present = false;
 		for (Inventory inventory : inventories) {
 			present = true;
@@ -305,7 +307,7 @@ System.out.println("present value"+present);
 		if(!present){
 			System.out.println("inventory not present");
 		}
-		return "{\"userId\":" + userEBidVO.getUserId() + ",\"searchId\":" +  "}";
+		return "{\"userId\":" + userEBidVO.getUserId()+  "}";
 
 	}
 	
