@@ -94,12 +94,9 @@ public class UserEBidServiceImpl implements UserEBidService {
 		// Get Inventory matching the User EBid for Car
 		// (Model, Make, Year, Trim)
 		
-		String withOutSpace = search.getModelTrim().replaceAll("%20", " ");
-		System.out.println("without"+withOutSpace);
-		System.out.println("with"+search.getModelTrim());
 		
 		List<Inventory> inventories = inventoryRepository.getInventoryFor(search.getModelYear(),
-				search.getModelDisplay(), search.getModelName(), withOutSpace);
+				search.getModelDisplay(), search.getModelName(), search.getModelTrim());
 		boolean present = false;
 		for (Inventory inventory : inventories) {
 			present = true;

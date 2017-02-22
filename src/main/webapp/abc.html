@@ -50,6 +50,7 @@
 <script type="text/javascript" src="js/atooltip.jquery.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script src="js/carquery.0.3.4.js"type="text/javascript" ></script>
+<script src="js/util.js" type="text/javascript"/>
 <script>
 $(document).ready(function() {
 
@@ -90,58 +91,44 @@ $.ajax({
     searchId=null;
     window.onload= function()
     {
-    	//alert("came here for onload");
-function parseURLParameter(Parameter)
-    	{
-    		var FullURL= window.location.search.substring(1);
-    		var parametersArray = FullURL.split('&')
-    		for (var i=0; i<parametersArray.length; i++)
-    			{
-    				var currentParameter = parametersArray[i].split('=');
-    				if (currentParameter[0] == Parameter)
-    				{
-    					return currentParameter[1];
-    				}
-    			}
-    	}
     	/* alert("pageName 11  now "); */
     	
-    	var priceMin = parseURLParameter('price');
+    	var priceMin = URL.getParameter('price');
     	document.getElementById('minValue').innerHTML=priceMin;
     	
-    	var priceMax = parseURLParameter('priceMax');
+    	var priceMax = URL.getParameter('priceMax');
     	document.getElementById('maxValue').innerHTML=priceMax;
     	
-    	var insMin = parseURLParameter('insMin');
+    	var insMin = URL.getParameter('insMin');
     	document.getElementById('insMin').innerHTML=insMin;
     	
-    	var insMax = parseURLParameter('insMax');
+    	var insMax = URL.getParameter('insMax');
     	document.getElementById('insMax').innerHTML=insMax;
     	
-    	var avgSavMin = parseURLParameter('avgSavMin');
+    	var avgSavMin = URL.getParameter('avgSavMin');
     	document.getElementById('avgSavMin').innerHTML=avgSavMin;
     	
-    	var avgSavMax = parseURLParameter('avgSavMax');
+    	var avgSavMax = URL.getParameter('avgSavMax');
     	document.getElementById('avgSavMax').innerHTML=avgSavMax;
     	
-    	var finMin = parseURLParameter('finMin');
+    	var finMin = URL.getParameter('finMin');
     	document.getElementById('finMin').innerHTML=finMin;
     	
-    	var finMax = parseURLParameter('finMax');
+    	var finMax = URL.getParameter('finMax');
     	document.getElementById('finMax').innerHTML=finMax;
     	
-    	var noDealers = parseURLParameter('noDealers');
+    	var noDealers = URL.getParameter('noDealers');
     	document.getElementById('noDealers').innerHTML=noDealers;
     	
-    	var noStock = parseURLParameter('noStock');
+    	var noStock = URL.getParameter('noStock');
     	document.getElementById('noStock').innerHTML=noStock;
-    	modelYear = parseURLParameter('modelYear');
-    	modelDisplay = parseURLParameter('modelDisplay');
-    	modelName = parseURLParameter('modelName');
-    	modelTrim = parseURLParameter('modeltrim');
-    	trimValue = parseURLParameter('trimValue');
-    	firstName = parseURLParameter('firstName');
-    	userId = parseURLParameter('userId');
+    	modelYear = URL.getParameter('modelYear');
+    	modelDisplay = URL.getParameter('modelDisplay');
+    	modelName = URL.getParameter('modelName');
+    	modelTrim = URL.getParameter('modeltrim');
+    	trimValue = URL.getParameter('trimValue');
+    	firstName = URL.getParameter('firstName');
+    	userId = URL.getParameter('userId');
     	alert("inside abc userid"+firstName);
     	if(userId!= null){
 			alert(firstName);

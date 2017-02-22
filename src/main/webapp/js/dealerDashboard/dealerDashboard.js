@@ -1,30 +1,10 @@
 $(window).load(function(){
 	
-	function parseURLParameter(Parameter)
-	{
-	
-var FullURL= window.location.search.substring(1);
-	
-		var parametersArray = FullURL.split('&')
-		
-		for (var i=0; i<parametersArray.length; i++)
-			{
-				var currentParameter = parametersArray[i].split('=');
-				
-				if (currentParameter[0] == Parameter)
-				{
-					return currentParameter[1];
-				}
-			}
-	}
 	/* alert("pageName 11  now "); */
 	
-	var dealerId = parseURLParameter('dealerId');
+	var dealerId = URL.getParameter('dealerId');
 	
 	dealerId="28";
-	
-	
-	
 	
   
   //alert("Before call");
