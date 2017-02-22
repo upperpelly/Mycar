@@ -19,16 +19,25 @@ var FullURL= window.location.search.substring(1);
 	}
 	/* alert("pageName 11  now "); */
 	
-	var dealerId = parseURLParameter('dealerId');
+	var userId = parseURLParameter('userId');
+	//userId="71";
+	//document.getElementById('minValue').innerHTML=priceMin;
 	
-	dealerId="28";
+	var searchId = parseURLParameter('searchId');
+	var firstName = parseURLParameter('firstName');
+	if(userId!= null){
+		alert(firstName);
+		document.getElementById('welcomeDiv').style.display = "block";
+		document.getElementById('welcomeDiv1').style.display = "none";
+		document.getElementById('userId').innerHTML="<b>"+"Hi "+firstName+"</b>";
+	}
 	
 	
 	
 	
   
   //alert("Before call");
-  dealerBoardCallSearch('inventory-list',dealerId); 
+	dashBoardCallSearch('car-model-data',userId); 
   
   createCORSRequest("GET", "api/user/70");
 	
@@ -49,13 +58,14 @@ function createCORSRequest(method, url){
     return xhr;
 }
 
-function dealerBoardCallSearch(model_data_id, userid)
+function dashBoardCallSearch(model_data_id, userid)
 {
+	alert("inside");
  this.model_data_id = model_data_id;
       //$("#"+this.model_data_id).html("Loading Model Data...");
     var sender = this;
-    /*var url = "http://www.autoscoop.com.au/api/dealer/"+userid;*/
-var url = "api/dealer/"+userid;
+var url = "api/user/"+userid;
+//var url = "http://localhost:8080/MyCarDomain/api/user/"+userid;
 //alert("user id"+url);
 
     //Get Car Model JSON for the selected make
@@ -65,7 +75,6 @@ var url = "api/dealer/"+userid;
     	/*headers: {"X-My-Custom-Header": "*"},*/
    	    type: "GET",  
    	    url: url, 
-   	 //async: false,
    	 /*url: "http://localhost:8080/MyCarDomain/api/user/1",*/
    	       success: function(result){
    	    	   /*alert(result.abnNumber);
@@ -77,60 +86,126 @@ var url = "api/dealer/"+userid;
         	   /*alert(Object.keys( result.search ).length);*/
         	   /*var json = JSON.parse(result1);*/
         	   /*var json = $.parseJSON(result1);*/
-        	  
-        	   out += '<tr><th colspan="2">'+"Inventory ID"+'       '+"Model Trim"+'     '+"Model Display"+'        '+"Model Year"+'</th></tr>';
-        	   for(i=0;i<result.inventory.length;i++)
+        	   var finMax = result.search.length;
+        	   document.getElementById('finMax').innerHTML=finMax;
+        	   out += '<tr><th colspan="2">'+"Car Search ID"+'       '+"Model Trim"+'     '+"Model Display"+'        '+"Model Year"+'</th></tr>';
+        	   for(i=0;i<result.search.length;i++)
        		{
        		/*alert(result.search[i].carSearchId); //111 111-1111
        		alert(result.search[i].modelDisplay);
        		alert(result.search[i].modelTrim);
        		alert(result.search[i].modelYear);*/
-       		out= out+'<tr>'+'<td>'+result.inventory[i].repoId+'</td>'+'<td>'+result.inventory[i].modelTrim+'</td>'+'<td>'+result.inventory[i].modelDisplay+'</td>'+'<td>'+result.inventory[i].modelYear+'</td>'+'</tr>';
+       		out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelTrim+'</td>'+'<td>'+result.search[i].modelDisplay+'</td>'+'<td>'+result.search[i].modelYear+'</td>'+'</tr>';
        		
        		
        		}
         	   //alert(out);
-        	   $("#"+model_data_id).append(out);
+        	   $("#"+sender.model_data_id).append(out);
         	   //alert("came here 2");
-        	   out2="";
+        	   out1="";
         	   /*alert(Object.keys( result.search ).length);*/
         	   /*var json = JSON.parse(result1);*/
         	   /*var json = $.parseJSON(result1);*/
-        	   out2 += '<tr><th colspan="2">'+"Quotation ID"+'       '+"Model Trim"+'     '+"Model Display"+'        '+"Model Year"+'</th></tr>';
-        	   for(i=0;i<result.vehicleQuotation.length;i++)
+        	   var finCt = result.search.length;
+        	   document.getElementById('finCt').innerHTML=finCt;
+        	   out1 += '<tr><th colspan="2">'+"Car Finance ID"+'       '+"Vehicle Value"+'     '+"Balloon Pay"+'        '+"Loan Amount"+'</th></tr>';
+        	   for(i=0;i<result.searchFinance.length;i++)
        		{
        		/*alert(result.search[i].carSearchId); //111 111-1111
        		alert(result.search[i].modelDisplay);
        		alert(result.search[i].modelTrim);
        		alert(result.search[i].modelYear);*/
-       		out2= out2+'<tr>'+'<td>'+result.vehicleQuotation[i].quotId+'</td>'+'<td>'+result.vehicleQuotation[i].modelTrim+'</td>'+'<td>'+result.vehicleQuotation[i].modelDisplay+'</td>'+'<td>'+result.vehicleQuotation[i].modelYear+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleQuotationModal-' + result.vehicleQuotation[i].quotId + '" data-details=\'' + JSON.stringify(result.vehicleQuotation[i]) + '\' class="anchor-editDealerVehicleQuotationModal" data-toggle="modal" data-target="#editDealerVehicleQuotationModal">Edit</a></td></tr>';
+       		out1= out1+'<tr>'+'<td>'+result.searchFinance[i].searchFinanceId+'</td>'+'<td>'+result.searchFinance[i].vehValue+'</td>'+'<td>'+result.searchFinance[i].balloonPay+'</td>'+'<td>'+result.searchFinance[i].loanAmount+'</td>'+'</tr>';
        		
        		
        		}
-        	  forFinance("quotation1",out2);
+        	  forFinance("data1",out1);
         	   
-        	  out1="";
-       	   /*alert(Object.keys( result.search ).length);*/
-       	   /*var json = JSON.parse(result1);*/
-       	   /*var json = $.parseJSON(result1);*/
-       	   out1 += '<tr><th colspan="2">'+"Car Finance ID"+'       '+"Model Year"+'     '+"Model Display"+'        '+"Model Name"+'</th></tr>';
-       	   for(i=0;i<result.dealSearch.length;i++)
-      		{
-      		/*alert(result.search[i].carSearchId); //111 111-1111
-      		alert(result.search[i].modelDisplay);
-      		alert(result.search[i].modelTrim);
-      		alert(result.search[i].modelYear);*/
-      		out1= out1+'<tr>'+'<td>'+result.dealSearch[i].dealSearchId+'</td>'+'<td>'+result.dealSearch[i].modelYear+'</td>'+'<td>'+result.dealSearch[i].modelDisplay+'</td>'+'<td>'+result.dealSearch[i].modelName+'</td>'+'</tr>'+result.dealSearch[i].modelTrim+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleQuotationModal-' + result.dealSearch[i].dealSearchId + '" data-details=\'' + JSON.stringify(result.dealSearch[i]) + '\' class="anchor-editDealerVehicleQuotationModal" data-toggle="modal" data-target="#editDealerVehicleQuotationModal">Edit</a></td></tr>';
-      		
-      		
-      		}
-       	  forFinance("data1",out1);
-        
-       	registerEditDealerVehicleQuotationModal();
-             
+        	   /*this.model_data_id = "data1";
+        	   alert("came here"+this.model_data_id);
+        	   $("#"+sender.model_data_id).append(out1);*/
+        	  /* alert("came here"+this.model_data_id);
+        	   */
+        	  out2="";
+        	  var insRCt=result.searchInsurance.length;
+        	   document.getElementById('insRCt').innerHTML=insRCt;
+        	   out2 += '<tr><th colspan="2">'+"Car Insurance ID"+'       '+"Insurance Type"+'     '+"Market Value"+'        '+"Agreed Value"+'</th></tr>';
+        	   for(i=0;i<result.searchInsurance.length;i++)
+       		{
+       		
+       		out2= out2+'<tr>'+'<td>'+result.searchInsurance[i].searchInsuranceId+'</td>'+'<td>'+result.searchInsurance[i].insuranceType+'</td>'+'<td>'+result.searchInsurance[i].marketValue+'</td>'+'<td>'+result.searchInsurance[i].agreedValue+'</td>'+'</tr>';
+       		
+       		
+       		}
+        	   
+        	   forFinance("car-model-data2",out2);
+//alert("result.search.length"+result.vehicleQuotation.length);
+        	   out3="";
+        	   var qtRecd = result.vehicleQuotation.length;
+        	   document.getElementById('qtRecd').innerHTML=qtRecd;
+        	   out3 += '<tr><th colspan="2">'+"Car Quotation ID"+'       '+"Dealer Name"+'     '+"Dealer Stock No"+'        '+"drive away Price"+'</th></tr>';
+        	   for(i=0;i<result.vehicleQuotation.length;i++)
+       		{
+       		
+       		out3= out3+'<tr>'+'<td>'+result.vehicleQuotation[i].quotId+'</td>'+'<td>'+result.vehicleQuotation[i].dealerName+'</td>'+'<td>'+result.vehicleQuotation[i].dealerStockNo+'</td>'+'<td>'+result.vehicleQuotation[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleQuotationModal-' + result.vehicleQuotation[i].quotId + '" data-details=\'' + JSON.stringify(result.vehicleQuotation[i]) + '\' class="anchor-editDealerVehicleQuotationModal" data-toggle="modal" data-target="#editDealerVehicleQuotationModal">Edit</a></td></tr>';
+       		
+       		
+       		}
+        	   
+        	   forFinance("quo-model-data",out3);
+//alert("result.search.length"+result.financeQuotation.length);
+out4="";
+var finQCt=result.financeQuotation.length;
+document.getElementById('finQCt').innerHTML=finQCt;
+        	   out4 += '<tr><th colspan="2">'+"Car Quotation ID"+'       '+"Insurance Type"+'     '+"Market Value"+'        '+"Agreed Value"+'</th></tr>';
+        	   for(i=0;i<result.financeQuotation.length;i++)
+       		{
+       		
+       		out4= out4+'<tr>'+'<td>'+result.financeQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.vehicleQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.vehicleQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.vehicleQuotation[i].vehicleQuotationId+'</td>'+'</tr>';
+       		
+       		
+       		}
+        	   
+        	   forFinance("quo-data1",out4);
+//alert("result.search.length"+result.insuranceQuotation.length);
+out5="";
+var insQCt=result.insuranceQuotation.length;
+        	   document.getElementById('insQCt').innerHTML=insQCt;
+        	   out5 += '<tr><th colspan="2">'+"Car Quotation ID"+'       '+"Insurance Type"+'     '+"Market Value"+'        '+"Agreed Value"+'</th></tr>';
+        	   for(i=0;i<result.insuranceQuotation.length;i++)
+       		{
+       		
+       		out5= out5+'<tr>'+'<td>'+result.insuranceQuotation[i].insuranceQuotationId+'</td>'+'<td>'+result.insuranceQuotation[i].insuranceQuotationId+'</td>'+'<td>'+result.insuranceQuotation[i].insuranceQuotationId+'</td>'+'<td>'+result.insuranceQuotation[i].insuranceQuotationId+'</td>'+'</tr>';
+       		
+       		
+       		}
+        	   
+        	   forFinance("quo-model-data2",out5);
+        	   
+        	 //alert("result.search.length"+result.insuranceQuotation.length);
+        	   out6="";
+        	  
+        	               	   out6 += '<tr><th colspan="2">'+"My Vehicle ID"+'       '+"Year"+'     '+"Make"+'        '+"Model"+'</th></tr>';
+        	               	   for(i=0;i<result.myVehicle.length;i++)
+        	              		{
+        	              		
+        	              		out6= out6+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
+        	              		
+        	              		
+        	              		}
+        	               	   
+        	               	   forFinance("quo-model-data4",out6);
+        	   
+        	               	registerEditDealerVehicleQuotationModal();
            } 
    	  }); 
-   
+   /* $.ajax({
+        url: "http://localhost:8080/MyCarDomain/api/user/70",
+        data: { signature: authHeader },
+        type: "GET",
+        beforeSend: function(xhr){xhr.setRequestHeader('X-Test-Header', 'test-value');},
+        success: function() { alert('Success!' + authHeader); }
+     });*/
 }
 
 function forFinance(model_data_id, out)
@@ -181,6 +256,7 @@ function registerEditDealerVehicleQuotationModal(){
 	
 		
 	$('a.anchor-editDealerVehicleQuotationModal').on('click', function(event) {
+		
 		
 		var data = $(event.target).data('details');
 		//var json = JSON.stringify(data);

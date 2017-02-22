@@ -9,7 +9,7 @@ import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 
 public interface VehicleQuotationRepository extends JpaRepository<VehicleQuotation, Long> {
 
-	@Query("SELECT vehicleQuotation FROM VehicleQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1 AND vehicleQuotation.autoBid=true")
+	@Query("SELECT vehicleQuotation FROM VehicleQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1 AND (vehicleQuotation.autoBid=true OR vehicleQuotation.moveToUser=true)")
 	List<VehicleQuotation> getQuotationsForUser(Long userId);
 
 	List<VehicleQuotation> findByDealerId(Long dealerId);

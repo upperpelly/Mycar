@@ -49,7 +49,7 @@ public class MyVehicleController {
 	public String addMyVehicleFuelExpenses(@RequestBody MyVehicleLogBookStoreVO inventoryVO, HttpServletResponse response) {
 		LOGGER.debug("Received request to add myvehicle fuel Expenses by the myvehicle with Id {}"+inventoryVO.getMyVehicleId());
 		response.setStatus(HttpStatus.CREATED.value());
-		return myVehicleService.addMyVehicleLogBook(inventoryVO);
+		return myVehicleService.addMyVehicleFuelExpenses(inventoryVO);
 	}
 
 	
