@@ -50,6 +50,7 @@
 <script type="text/javascript" src="js/atooltip.jquery.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script src="js/carquery.0.3.4.js"type="text/javascript" ></script>
+<script src="js/util.js" type="text/javascript"/>
 <script>
 $(document).ready(function() {
 
@@ -84,31 +85,14 @@ $.ajax({
     window.onload= function()
     {
     	//alert("came here for onload");
-function parseURLParameter(Parameter)
-    	{
-		
-	var FullURL= window.location.search.substring(1);
-		
-    		var parametersArray = FullURL.split('&')
-    		
-    		for (var i=0; i<parametersArray.length; i++)
-    			{
-    				var currentParameter = parametersArray[i].split('=');
-    				
-    				if (currentParameter[0] == Parameter)
-    				{
-    					return currentParameter[1];
-    				}
-    			}
-    	}
-    	/* alert("pageName 11  now "); */
-    	
-    	userId = parseURLParameter('userId');
+
+    	   	
+    	userId = URL.getParameter('userId');
     	//userId="71";
     	//document.getElementById('minValue').innerHTML=priceMin;
     	
-    	var searchId = parseURLParameter('searchId');
-    	var firstName = parseURLParameter('firstName');
+    	var searchId = URL.getParameter('searchId');
+    	var firstName = URL.getParameter('firstName');
     	if(userId!= null){
 			alert(firstName);
 			document.getElementById('welcomeDiv').style.display = "block";
