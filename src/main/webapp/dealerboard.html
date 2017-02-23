@@ -131,7 +131,7 @@ function dealerBoardCallSearch(model_data_id, userid)
  this.model_data_id = model_data_id;
       //$("#"+this.model_data_id).html("Loading Model Data...");
     var sender = this;
-    /*var url = "http://www.autoscoop.com.au/api/dealer/"+userid;*/
+   // var url = "http://www.autoscoop.com.au/api/dealer/"+userid;
 var url = "api/dealer/"+userid;
 //alert("user id"+url);
 
@@ -155,14 +155,14 @@ var url = "api/dealer/"+userid;
         	   /*var json = JSON.parse(result1);*/
         	   /*var json = $.parseJSON(result1);*/
         	  
-        	   out += '<tr><th colspan="2">'+"Inventory ID"+'       '+"Model Trim"+'     '+"Model Display"+'        '+"Model Year"+'</th></tr>';
+        	   out += '<tr><th>'+"Inventory ID"+'</th><th>'+"Variant"+'</th><th>'+"Make"+'</th><th>'+"Year"+'</th><th>'+"Operation"+'</th></tr>';
         	   for(i=0;i<result.inventory.length;i++)
        		{
        		/*alert(result.search[i].carSearchId); //111 111-1111
        		alert(result.search[i].modelDisplay);
        		alert(result.search[i].modelTrim);
        		alert(result.search[i].modelYear);*/
-       		out= out+'<tr>'+'<td>'+result.inventory[i].repoId+'</td>'+'<td>'+result.inventory[i].modelTrim+'</td>'+'<td>'+result.inventory[i].modelDisplay+'</td>'+'<td>'+result.inventory[i].modelYear+'</td>'+'</tr>';
+       		out= out+'<tr>'+'<td>'+result.inventory[i].repoId+'</td>'+'<td>'+result.inventory[i].modelTrim+'</td>'+'<td>'+result.inventory[i].modelDisplay+'</td>'+'<td>'+result.inventory[i].modelYear+'</td>'+'<td><a href="#" id="anchor-editDealerIvemtoryModal-' + result.inventory[i].repoId + '" data-details=\'' + JSON.stringify(result.inventory[i]) + '\' class="anchor-editDealerIvemtoryModal" data-toggle="modal" data-target="#editDealerIvemtoryModal">View</a></td></tr>'
        		
        		
        		}
@@ -173,7 +173,7 @@ var url = "api/dealer/"+userid;
         	   /*alert(Object.keys( result.search ).length);*/
         	   /*var json = JSON.parse(result1);*/
         	   /*var json = $.parseJSON(result1);*/
-        	   out2 += '<tr><th colspan="2">'+"Quotation ID"+'       '+"Model Trim"+'     '+"Model Display"+'        '+"Model Year"+'</th></tr>';
+        	   out2 += '<tr><th>'+"Quotation ID"+'</th><th>'+"Variant"+'</th><th>'+"Make"+'</th><th>'+"Year"+'</th><th>'+"Operation"+'</th></tr>';
         	   for(i=0;i<result.vehicleQuotation.length;i++)
        		{
        		/*alert(result.search[i].carSearchId); //111 111-1111
@@ -190,21 +190,22 @@ var url = "api/dealer/"+userid;
        	   /*alert(Object.keys( result.search ).length);*/
        	   /*var json = JSON.parse(result1);*/
        	   /*var json = $.parseJSON(result1);*/
-       	   out1 += '<tr><th colspan="2">'+"Car Finance ID"+'       '+"Model Year"+'     '+"Model Display"+'        '+"Model Name"+'</th></tr>';
+       	   out1 += '<tr><th>'+"Car Lead ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Variant"+'</th><th>'+"Operation"+'</th></tr>';
        	   for(i=0;i<result.dealSearch.length;i++)
       		{
       		/*alert(result.search[i].carSearchId); //111 111-1111
       		alert(result.search[i].modelDisplay);
       		alert(result.search[i].modelTrim);
       		alert(result.search[i].modelYear);*/
-      		out1= out1+'<tr>'+'<td>'+result.dealSearch[i].dealSearchId+'</td>'+'<td>'+result.dealSearch[i].modelYear+'</td>'+'<td>'+result.dealSearch[i].modelDisplay+'</td>'+'<td>'+result.dealSearch[i].modelName+'</td>'+'</tr>'+result.dealSearch[i].modelTrim+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleQuotationModal-' + result.dealSearch[i].dealSearchId + '" data-details=\'' + JSON.stringify(result.dealSearch[i]) + '\' class="anchor-editDealerVehicleQuotationModal" data-toggle="modal" data-target="#editDealerVehicleQuotationModal">Edit</a></td></tr>';
+      		out1= out1+'<tr>'+'<td>'+result.dealSearch[i].dealSearchId+'</td><td>'+result.dealSearch[i].modelYear+'</td><td>'+result.dealSearch[i].modelDisplay+'</td><td>'+result.dealSearch[i].modelName+'</td><td>'+result.dealSearch[i].modelTrim+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchLeadsModal-' + result.dealSearch[i].dealSearchId + '" data-details=\'' + JSON.stringify(result.dealSearch[i]) + '\' class="anchor-editDealerVehicleSearchLeadsModal" data-toggle="modal" data-target="#editDealerVehicleSearchLeadsModal">View</a></td></tr>';
       		
       		
       		}
        	  forFinance("data1",out1);
         
        	registerEditDealerVehicleQuotationModal();
-             
+       	registereditDealerVehicleSearchLeadsModal();
+       	registereditDealerIvemtoryModal();
            } 
    	  }); 
    
@@ -272,11 +273,24 @@ function registerEditDealerVehicleQuotationModal(){
 			<tr><td>Quotation ID</td><td>' + data.quotId + '</td></tr>\
 			<tr><td>' + quotIdHiddenField + '</td></tr>\
 			<tr><td>User ID</td><td>' + data.userId + '</td></tr>\
-			<tr><td>Model Year</td><td>' + data.modelYear + '</td></tr>\
-			<tr><td>Model Name</td><td>' + data.modelName + '</td></tr>\
-			<tr><td>Model Display</td><td>' + data.modelDisplay + '</td></tr>\
+			<tr><td>Year</td><td>' + data.modelYear + '</td></tr>\
+			<tr><td>Make</td><td>' + data.modelName + '</td></tr>\
+			<tr><td>Model</td><td>' + data.modelDisplay + '</td></tr>\
 			<tr><td>Move To User</td><td>' + moveToUser + '</td></tr>\
 			<tr><td>Auto Bid</td><td>' + data.autoBid + '</td></tr>\
+			<tr><td>Dealer Id</td><td>' + data.dealerId + '</td><td>Dealer Search Id</td><td>' + data.dealSearchId + '</td></tr>\
+			<tr><td>Car Search Id</td><td>' + data.carSearchId + '</td><td>Ref Id</td><td>' + data.refId + '</td></tr>\
+			<tr><td>Dealer Name</td><td>' + data.dealerName + '</td><td>Dealer ABN</td><td>' + data.dealerABN + '</td></tr>\
+			<tr><td>Quot Header FreeText</td><td>' + data.quotHeaderFreeText + '</td><td>VIN Number</td><td>' + data.vinNumber + '</td></tr>\
+			<tr><td>Rego No</td><td>' + data.regoNo + '</td><td>Rego End Date</td><td>' + data.regoEndDate + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regoStat + '</td><td>Dealer Stock No</td><td>' + data.dealerStockNo + '</td></tr>\
+			<tr><td>No Of Kms</td><td>' + data.noOfKms + '</td><td>Drive Away Price</td><td>' + data.driveAwayPrice + '</td></tr>\
+			<tr><td>Negotiable</td><td>' + data.negotiable + '</td><td>Offer Valid Date</td><td>' + data.offerValidDate + '</td></tr>\
+			<tr><td>First Come Serve</td><td>' + data.firstCumServe + '</td><td>Color</td><td>' + data.color + '</td></tr>\
+			<tr><td>Transmission</td><td>' + data.transmission + '</td><td>Drive Type</td><td>' + data.driveType + '</td></tr>\
+			<tr><td>Fuel Type</td><td>' + data.fuelType + '</td><td>No Of Seats</td><td>' + data.noOfSeats + '</td></tr>\
+			<tr><td>No Of Doors</td><td>' + data.noOfDoors + '</td><td>Dealer Preferred Location</td><td>' + data.delPrefLocation + '</td></tr>\
+			<tr><td>Offer Price 2</td><td>' + data.offerPrice2 + '</td><td>Offer Price 3</td><td>' + data.offerPrice3 + '</td></tr>\
 			</table></form>';
 		
 		$(".edit-dealer-vehicle-quotation-content").html(editDealerVehicleQuotationForm);
@@ -331,8 +345,253 @@ function registerEditDealerVehicleQuotationModal(){
 	
 }
 
-	
-	
+//for dealer Search
+
+
+
+function registereditDealerVehicleSearchLeadsModal(){
+
+
+
+//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+
+var editDealerVehicleSearchLeadsModal = '<div class="modal fade" id="editDealerVehicleSearchLeadsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+<div class="modal-dialog">\
+<div class="modal-content">\
+<div class="modal-header">\
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+<h4 class="modal-title" id="myModalLabel">View Vehicle Search Leads</h4>\
+</div>\
+<form id="edit-dealer-search-lead-content-form">\
+<div class="modal-body edit-dealer-search-lead-content">\
+</div>\
+<div class="modal-footer">\
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+</div>\
+</form>\
+</div>\
+</div>\
+</div>';
+
+$(document.body).append(editDealerVehicleSearchLeadsModal);
+
+$('a.anchor-editDealerVehicleSearchLeadsModal').on('click', function(event) {
+
+var data = $(event.target).data('details');
+
+//var json = JSON.stringify(data);
+
+var quotIdHiddenField = '<input type="hidden" name="quotId" value="' + data.dealSearchId + '" />';
+
+/*var moveToUser = '<input type="checkbox" name="moveToUser" />';
+
+if(data.moveToUser)
+
+moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
+
+var editDealerVehicleQuotationForm = '<form id="edit-dealer-search-lead-content-form"><table>\
+<tr><td>Search ID</td><td>' + data.dealSearchId + '</td></tr>\
+<tr><td>' + quotIdHiddenField + '</td></tr>\
+<tr><td>User ID</td><td>' + data.userId + '</td></tr>\
+<tr><td>Model Year</td><td>' + data.modelYear + '</td></tr>\
+<tr><td>Model Name</td><td>' + data.modelName + '</td></tr>\
+<tr><td>Model Display</td><td>' + data.modelDisplay + '</td></tr>\
+<tr><td>Move To User</td><td>' + '</td></tr>\
+<tr><td>Auto Bid</td><td>' + data.autoBid + '</td></tr>\
+</table></form>';
+$(".edit-dealer-search-lead-content").html(editDealerVehicleQuotationForm);
+
+});
+
+$.fn.convertFormDataToJSON = function(){
+
+var checkboxes = [];
+
+$(this).find('input:checkbox:checked').each(function(){
+
+checkboxes.push($(this).attr("name"));
+
+});
+
+var o = {};
+
+var a = this.serializeArray();
+
+$.each(a, function() {
+
+if (o[this.name] != undefined) {
+
+if (!o[this.name].push) {
+
+o[this.name] = [o[this.name]];
+
+}
+
+if($.inArray(this.name, checkboxes) != -1)
+
+o[this.name].push('true' || '');
+
+else
+
+o[this.name].push(this.value || '');
+
+} else {
+
+if($.inArray(this.name, checkboxes) != -1)
+
+o[this.name] = 'true' || '';
+
+else
+
+o[this.name] = this.value || '';
+
+}
+
+});
+
+return JSON.stringify(o);
+
+}
+
+}
+
+//End	
+
+
+//for inventory Search
+
+
+
+function registereditDealerIvemtoryModal(){
+
+
+
+//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+
+var editDealerIvemtoryModal = '<div class="modal fade" id="editDealerIvemtoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+<div class="modal-dialog">\
+<div class="modal-content">\
+<div class="modal-header">\
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+<h4 class="modal-title" id="myModalLabel">View Vehicle Inventory</h4>\
+</div>\
+<form id="edit-dealer-inventory-form">\
+<div class="modal-body edit-dealer-inventory-content">\
+</div>\
+<div class="modal-footer">\
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+</div>\
+</form>\
+</div>\
+</div>\
+</div>';
+
+$(document.body).append(editDealerIvemtoryModal);
+
+$('a.anchor-editDealerIvemtoryModal').on('click', function(event) {
+
+var data = $(event.target).data('details');
+
+//var json = JSON.stringify(data);
+
+var quotIdHiddenField = '<input type="hidden" name="quotId" value="' + data.dealSearchId + '" />';
+
+/*var moveToUser = '<input type="checkbox" name="moveToUser" />';
+
+if(data.moveToUser)
+
+moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
+
+var editDealerIvemtoryModal = '<form id="edit-dealer-inventory-form"><table>\
+<tr><td>Inventory ID</td><td>' + data.repoId + '</td></tr>\
+<tr><td>Dealer ID</td><td>' + data.refId + '</td></tr>\
+<tr><td>Year</td><td>' + data.modelYear + '</td></tr>\
+<tr><td>Make</td><td>' + data.modelName + '</td></tr>\
+<tr><td>Model</td><td>' + data.modelDisplay + '</td></tr>\
+<tr><td>Variant</td><td>' + data.modelTrim + '</td></tr>\
+<tr><td>Type Of  Car</td><td>' + data.typeOfCar + '</td></tr>\
+<tr><td>Vehicle Description</td><td>' + data.vehicleDescriptin + '</td></tr>\
+<tr><td>Model price</td><td>' + data.price + '</td></tr>\
+<tr><td>Body Type</td><td>' + data.bodyType + '</td></tr>\
+<tr><td>Transmission</td><td>' + data.transmission + '</td></tr>\
+<tr><td>Fuel Type</td><td>' + data.fuelType + '</td></tr>\
+<tr><td>Engine</td><td>' + data.engine + '</td></tr>\
+<tr><td>RegNo</td><td>' + data.regNo + '</td></tr>\
+<tr><td>Drive Type</td><td>' + data.driveType + '</td></tr>\
+<tr><td>Kilometer</td><td>' + data.kilometer + '</td></tr>\
+<tr><td>Ext Color</td><td>' + data.extColor + '</td></tr>\
+<tr><td>Registration Expiry Date</td><td>' + data.regExpiryDate + '</td></tr>\
+<tr><td>VIN Number</td><td>' + data.vinNumber + '</td></tr>\
+<tr><td>Vendor Stock No</td><td>' + data.vendorStockNo + '</td></tr>\
+<tr><td>No Of Doors/td><td>' + data.noOfDoors + '</td></tr>\
+<tr><td>AutoBID</td><td>' + data.stockItem + '</td></tr>\
+<tr><td>Move to User</td><td>' + data.newCar + '</td></tr>\
+<tr><td>Dealer Amount Max</td><td>' + data.dealAmountMax + '</td></tr>\
+<tr><td>Dealer Amount Min</td><td>' + data.dealAmountMin + '</td></tr>\
+<tr><td>Year Of Make</td><td>' + data.yearOfMake + '</td></tr>\
+<tr><td>PostCode</td><td>' + data.postCode + '</td></tr>\
+<tr><td>Region</td><td>' + data.region + '</td></tr>\
+<tr><td>State</td><td>' + data.state + '</td></tr>\
+</table></form>';
+$(".edit-dealer-inventory-content").html(editDealerIvemtoryModal);
+
+});
+
+$.fn.convertFormDataToJSON = function(){
+
+var checkboxes = [];
+
+$(this).find('input:checkbox:checked').each(function(){
+
+checkboxes.push($(this).attr("name"));
+
+});
+
+var o = {};
+
+var a = this.serializeArray();
+
+$.each(a, function() {
+
+if (o[this.name] != undefined) {
+
+if (!o[this.name].push) {
+
+o[this.name] = [o[this.name]];
+
+}
+
+if($.inArray(this.name, checkboxes) != -1)
+
+o[this.name].push('true' || '');
+
+else
+
+o[this.name].push(this.value || '');
+
+} else {
+
+if($.inArray(this.name, checkboxes) != -1)
+
+o[this.name] = 'true' || '';
+
+else
+
+o[this.name] = this.value || '';
+
+}
+
+});
+
+return JSON.stringify(o);
+
+}
+
+}
+
+//End	
+
+
 });
 	</script>
  <script type="text/javascript">
@@ -543,6 +802,87 @@ img.emoji {
 	background: none !important;
 	padding: 0 !important;
 }
+</style>
+
+<!-- Edit button -->
+<style>
+.anchor-editDealerVehicleQuotationModal:link, .anchor-editDealerVehicleQuotationModal:visited {
+    background-color: #33a557;
+    color: white;
+    border: 2px solid green;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.anchor-editDealerVehicleQuotationModal:hover, .anchor-editDealerVehicleQuotationModal:active {
+    background-color: #2b7542;
+    color: white;
+    border-radius: 5px;
+}
+
+.anchor-editDealerVehicleSearchLeadsModal:link, .anchor-editDealerVehicleSearchLeadsModal:visited {
+    background-color: #33a557;
+    color: white;
+    border: 2px solid green;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.anchor-editDealerVehicleSearchLeadsModal:hover, .anchor-editDealerVehicleSearchLeadsModal:active {
+    background-color: #2b7542;
+    color: white;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+.anchor-editDealerIvemtoryModal:link, .anchor-editDealerIvemtoryModal:visited {
+    background-color: #33a557;
+    color: white;
+    border: 2px solid green;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.anchor-editDealerIvemtoryModal:hover, .anchor-editDealerIvemtoryModal:active {
+    background-color: #2b7542;
+    color: white;
+    border-radius: 5px;
+}
+</style>
+
+<!-- Table alignment -->
+<style>
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th{
+background-color: rgb(253, 183, 20);
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover{background-color:rgb(253, 183, 20);}
+
 </style>
 <script type='text/javascript' src='http://www.carqueryapi.com/wp-includes/js/jquery/jquery.js'></script>
 <script type='text/javascript' src='http://www.carqueryapi.com/wp-includes/js/jquery/jquery-migrate.min.js'></script>
