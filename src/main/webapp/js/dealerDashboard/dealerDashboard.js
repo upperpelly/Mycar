@@ -58,7 +58,7 @@ var url = "api/dealer/"+userid;
         	   /*var json = JSON.parse(result1);*/
         	   /*var json = $.parseJSON(result1);*/
         	  
-        	   out += '<tr><th colspan="2">'+"Inventory ID"+'       '+"Model Trim"+'     '+"Model Display"+'        '+"Model Year"+'</th></tr>';
+        	   out += '<tr><th>'+"Inventory ID"+'</th><th>'+"Model Trim"+'</th><th>'+"Model Display"+'</th><th>'+"Model Year"+'</th></tr>';
         	   for(i=0;i<result.inventory.length;i++)
        		{
        		/*alert(result.search[i].carSearchId); //111 111-1111
@@ -76,7 +76,7 @@ var url = "api/dealer/"+userid;
         	   /*alert(Object.keys( result.search ).length);*/
         	   /*var json = JSON.parse(result1);*/
         	   /*var json = $.parseJSON(result1);*/
-        	   out2 += '<tr><th colspan="2">'+"Quotation ID"+'       '+"Model Trim"+'     '+"Model Display"+'        '+"Model Year"+'</th></tr>';
+        	   out2 += '<tr><th>'+"Quotation ID"+'</th><th>'+"Model Trim"+'</th><th>'+"Model Display"+'</th><th>'+"Model Year"+'</th></tr>';
         	   for(i=0;i<result.vehicleQuotation.length;i++)
        		{
        		/*alert(result.search[i].carSearchId); //111 111-1111
@@ -93,7 +93,7 @@ var url = "api/dealer/"+userid;
        	   /*alert(Object.keys( result.search ).length);*/
        	   /*var json = JSON.parse(result1);*/
        	   /*var json = $.parseJSON(result1);*/
-       	   out1 += '<tr><th colspan="2">'+"Car Finance ID"+'       '+"Model Year"+'     '+"Model Display"+'        '+"Model Name"+'</th></tr>';
+       	   out1 += '<tr><th>'+"Car Finance ID"+'</th><th>'+"Model Year"+'</th><th>'+"Model Display"+'</th><th>'+"Model Name"+'</th></tr>';
        	   for(i=0;i<result.dealSearch.length;i++)
       		{
       		/*alert(result.search[i].carSearchId); //111 111-1111

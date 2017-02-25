@@ -929,12 +929,12 @@ var sold_in_us = "No";
 
  var out = '<table class="model-data">';
 
-    out += '<tr><th colspan="2">'+data.model_year+' '+data.make_display+' '+data.model_name+' '+data.model_trim+'</th></tr>';
+    out += '<tr><th>'+data.model_year+'</th><th>'+data.make_display+'</th><th>'+data.model_name+'</th><th>'+data.model_trim+'</th></tr>';
 
 /*alert(""+data.templateSpecificationId);*/
 
 
-     out += '<tr><td colspan="2"><hr/></td></tr>';
+     out += '<tr><td><hr/></td></tr>';
      out += '<tr><td>Specification Id:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.templateSpecificationId+'" placeholder="" id="data_templateSpecificationId" name="data_templateSpecificationId"/>'+'</td></tr>';
 
 out += '<tr><td>Country of Origin:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.make_country+'" placeholder="" id="data_make_country" name="data_make_country"/>'+'</td></tr>';
@@ -944,13 +944,13 @@ out += '<tr><td>Country of Origin:</td><td>'+'<input type="text" class="input-te
 out += '<tr><td>Body Style:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_body+'" placeholder="" id="data_model_body" name="data_model_body"/>'+'</td></tr>';
 
      //Output Color Data
-     out += '<tr><td colspan="2"><hr/></td></tr>';
+     out += '<tr><td><hr/></td></tr>';
      out += '<tr><td valign="top">Exterior Colors :</td><td>';
      out += this.carColorHTML(data.ExtColors) + '</td></tr>';
      out += '<tr><td valign="top">Interior Colors:</td><td>';
      out += this.carColorHTML(data.IntColors) + '</td></tr>';
 
-     out += '<tr><td colspan="2"><hr/></td></tr>';
+     out += '<tr><td><hr/></td></tr>';
      
 out += '<tr><td>Engine Location:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_position+'" placeholder="" id="data_model_engine_position" name="data_model_engine_position"/>'+'</td></tr>';
      
@@ -1031,7 +1031,7 @@ out += '<tr><td>Engine Compression Ratio:</td><td>'+'<input type="text" class="i
 
 out += '<tr><td>Engine Fuel Type:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_engine_fuel+'" placeholder="" id="data_model_engine_fuel" name="data_model_engine_fuel"/>'+'</td></tr>';
 
-     out += '<tr><td colspan="2"><hr/></td></tr>';
+     out += '<tr><td><hr/></td></tr>';
      
 
 out += '<tr><td>Drive:</td><td>'+'<input type="text" class="input-text full-width" value="'+data.model_drive+'" placeholder="" id="data_model_drive" name="data_model_drive"/>'+'</td></tr>';
@@ -1156,7 +1156,7 @@ var sold_in_us = "No";
 
  var out = '<table class="model-data">';
 
-     out += '<tr><th colspan="2">'+modelYear+' '+modelDisplay+' '+modelName+' '+modelTrim+'</th></tr>';
+     out += '<tr><th>'+modelYear+'</th><th>'+modelDisplay+'</th><th>'+modelName+'</th><th>'+modelTrim+'</th></tr>';
 
 /*alert(""+data.templateSpecificationId);*/
 
@@ -1605,7 +1605,7 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
 
  var out = '<table class="model-data">';
 
-     out += '<tr><th colspan="2">'+data.model_year+' '+data.make_display+' '+data.model_name+' '+data.model_trim+'</th></tr>';
+     out += '<tr><th>'+data.model_year+'</th><th>'+data.make_display+'</th><th>'+data.model_name+'</th><th>'+data.model_trim+'</th></tr>';
 
      out += '<tr><td colspan="2"><hr/></td></tr>';
      out += '<tr><td>Country of Origin:</td><td>'+data.make_country+'</td></tr>';
@@ -1842,8 +1842,9 @@ var strUser = e.options[e.selectedIndex].text;
 
 this.model_data_id = model_data_id;
 
-var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;
+//var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;
 //var url= "http://localhost:8080/MyCarDomain/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;
+var url="api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;
 /*alert("url"+url);*/
 
 var sender = this;    
@@ -2168,8 +2169,9 @@ var modelTrim;
      this.model_data_id = model_data_id;
           //$("#"+this.model_data_id).html("Loading Model Data...");
         var sender = this;
-        var url = "http://www.autoscoop.com.au/api/dealer/"+userid;
+        //var url = "http://www.autoscoop.com.au/api/dealer/"+userid;
         //var url = "http://localhost:8080/MyCarDomain/api/dealer/"+userid;
+        var url = "api/dealer/"+userid;
 //alert("user id"+url);
 
         //Get Car Model JSON for the selected make
@@ -2191,7 +2193,7 @@ var modelTrim;
             	   /*var json = JSON.parse(result1);*/
             	   /*var json = $.parseJSON(result1);*/
             	  
-            	   out += '<tr><th colspan="2">'+"Inventory ID"+'       '+"Model Trim"+'     '+"Model Display"+'        '+"Model Year"+'</th></tr>';
+            	   out += '<tr><th>'+"Inventory ID"+'</th><th>'+"Model Trim"+'</th><th>'+"Model Display"+'</th><th>'+"Model Year"+'</th></tr>';
             	   for(i=0;i<result.inventory.length;i++)
            		{
            		/*alert(result.search[i].carSearchId); //111 111-1111
@@ -2209,7 +2211,7 @@ var modelTrim;
             	   /*alert(Object.keys( result.search ).length);*/
             	   /*var json = JSON.parse(result1);*/
             	   /*var json = $.parseJSON(result1);*/
-            	   out2 += '<tr><th colspan="2">'+"Quotation ID"+'       '+"Model Trim"+'     '+"Model Display"+'        '+"Model Year"+'</th></tr>';
+            	   out2 += '<tr><th>'+"Quotation ID"+'</th><th>'+"Model Trim"+'</th><th>'+"Model Display"+'</th><th>'+"Model Year"+'</th></tr>';
             	   for(i=0;i<result.vehicleQuotation.length;i++)
            		{
            		/*alert(result.search[i].carSearchId); //111 111-1111
@@ -2226,7 +2228,7 @@ var modelTrim;
            	   /*alert(Object.keys( result.search ).length);*/
            	   /*var json = JSON.parse(result1);*/
            	   /*var json = $.parseJSON(result1);*/
-           	   out1 += '<tr><th colspan="2">'+"Car Finance ID"+'       '+"Model Year"+'     '+"Model Display"+'        '+"Model Name"+'</th></tr>';
+           	   out1 += '<tr><th>'+"Car Finance ID"+'</th><th>'+"Model Year"+'</th><th>'+"Model Display"+'</th><th>'+"Model Name"+'</th></tr>';
            	   for(i=0;i<result.dealSearch.length;i++)
           		{
           		/*alert(result.search[i].carSearchId); //111 111-1111
@@ -2251,8 +2253,9 @@ var modelTrim;
      this.model_data_id = model_data_id;
           //$("#"+this.model_data_id).html("Loading Model Data...");
         var sender = this;
-var url = "http://www.autoscoop.com.au/api/user/"+userid;
+        //var url = "http://www.autoscoop.com.au/api/user/"+userid;
 //var url = "http://localhost:8080/MyCarDomain/api/user/"+userid;
+var url = "api/user/"+userid;
 //alert("user id"+url);
 
         //Get Car Model JSON for the selected make
@@ -2275,7 +2278,7 @@ var url = "http://www.autoscoop.com.au/api/user/"+userid;
             	   /*var json = $.parseJSON(result1);*/
             	   var finMax = result.search.length;
             	   document.getElementById('finMax').innerHTML=finMax;
-            	   out += '<tr><th colspan="2">'+"Car Search ID"+'       '+"Model Trim"+'     '+"Model Display"+'        '+"Model Year"+'</th></tr>';
+            	   out += '<tr><th>'+"Car Search ID"+'</th><th>'+"Model Trim"+'</th><th>'+"Model Display"+'</th><th>'+"Model Year"+'</th></tr>';
             	   for(i=0;i<result.search.length;i++)
            		{
            		/*alert(result.search[i].carSearchId); //111 111-1111
@@ -2295,7 +2298,7 @@ var url = "http://www.autoscoop.com.au/api/user/"+userid;
             	   /*var json = $.parseJSON(result1);*/
             	   var finCt = result.search.length;
             	   document.getElementById('finCt').innerHTML=finCt;
-            	   out1 += '<tr><th colspan="2">'+"Car Finance ID"+'       '+"Vehicle Value"+'     '+"Balloon Pay"+'        '+"Loan Amount"+'</th></tr>';
+            	   out1 += '<tr><th>'+"Car Finance ID"+'</th><th>'+"Vehicle Value"+'</th><th>'+"Balloon Pay"+'</th><th>'+"Loan Amount"+'</th></tr>';
             	   for(i=0;i<result.searchFinance.length;i++)
            		{
            		/*alert(result.search[i].carSearchId); //111 111-1111
@@ -2316,7 +2319,7 @@ var url = "http://www.autoscoop.com.au/api/user/"+userid;
             	  out2="";
             	  var insRCt=result.searchInsurance.length;
             	   document.getElementById('insRCt').innerHTML=insRCt;
-            	   out2 += '<tr><th colspan="2">'+"Car Insurance ID"+'       '+"Insurance Type"+'     '+"Market Value"+'        '+"Agreed Value"+'</th></tr>';
+            	   out2 += '<tr><th>'+"Car Insurance ID"+'</th><th>'+"Insurance Type"+'</th><th>'+"Market Value"+'</th><th>'+"Agreed Value"+'</th></tr>';
             	   for(i=0;i<result.searchInsurance.length;i++)
            		{
            		
@@ -2330,7 +2333,7 @@ var url = "http://www.autoscoop.com.au/api/user/"+userid;
             	   out3="";
             	   var qtRecd = result.vehicleQuotation.length;
             	   document.getElementById('qtRecd').innerHTML=qtRecd;
-            	   out3 += '<tr><th colspan="2">'+"Car Quotation ID"+'       '+"Dealer Name"+'     '+"Dealer Stock No"+'        '+"drive away Price"+'</th></tr>';
+            	   out3 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th></tr>';
             	   for(i=0;i<result.vehicleQuotation.length;i++)
            		{
            		
@@ -2344,7 +2347,7 @@ var url = "http://www.autoscoop.com.au/api/user/"+userid;
 out4="";
 var finQCt=result.financeQuotation.length;
 document.getElementById('finQCt').innerHTML=finQCt;
-            	   out4 += '<tr><th colspan="2">'+"Car Quotation ID"+'       '+"Insurance Type"+'     '+"Market Value"+'        '+"Agreed Value"+'</th></tr>';
+            	   out4 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Insurance Type"+'</th><th>'+"Market Value"+'</th><th>'+"Agreed Value"+'</th></tr>';
             	   for(i=0;i<result.financeQuotation.length;i++)
            		{
            		
@@ -2358,7 +2361,7 @@ document.getElementById('finQCt').innerHTML=finQCt;
 out5="";
 var insQCt=result.insuranceQuotation.length;
             	   document.getElementById('insQCt').innerHTML=insQCt;
-            	   out5 += '<tr><th colspan="2">'+"Car Quotation ID"+'       '+"Insurance Type"+'     '+"Market Value"+'        '+"Agreed Value"+'</th></tr>';
+            	   out5 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Insurance Type"+'</th><th>'+"Market Value"+'</th><th>'+"Agreed Value"+'</th></tr>';
             	   for(i=0;i<result.insuranceQuotation.length;i++)
            		{
            		
@@ -2372,7 +2375,7 @@ var insQCt=result.insuranceQuotation.length;
             	 //alert("result.search.length"+result.insuranceQuotation.length);
             	   out6="";
             	  
-            	               	   out6 += '<tr><th colspan="2">'+"My Vehicle ID"+'       '+"Year"+'     '+"Make"+'        '+"Model"+'</th></tr>';
+            	               	   out6 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>';
             	               	   for(i=0;i<result.myVehicle.length;i++)
             	              		{
             	              		
