@@ -1,5 +1,16 @@
-$(window).load(function(){
-	
+var userId;
+var firstName;
+
+window.onload= function(){
+	$body = $("body");
+
+	$(document).ajaxStart(function(){
+		$body.addClass("loading");
+	});
+
+	$(document).ajaxStop(function(){
+		$body.removeClass("loading");
+	});
 	function parseURLParameter(Parameter)
 	{
 	
@@ -19,14 +30,14 @@ var FullURL= window.location.search.substring(1);
 	}
 	/* alert("pageName 11  now "); */
 	
-	var userId = parseURLParameter('userId');
+	userId = parseURLParameter('userId');
 	//userId="71";
 	//document.getElementById('minValue').innerHTML=priceMin;
-	
+	document.getElementById('firstName').innerHTML=firstName;
 	var searchId = parseURLParameter('searchId');
-	var firstName = parseURLParameter('firstName');
+	firstName = parseURLParameter('firstName');
 	if(userId!= null){
-		alert(firstName);
+		//alert(firstName);
 		document.getElementById('welcomeDiv').style.display = "block";
 		document.getElementById('welcomeDiv1').style.display = "none";
 		document.getElementById('userId').innerHTML="<b>"+"Hi "+firstName+"</b>";
@@ -51,7 +62,7 @@ function createCORSRequest(method, url){
     } else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
     	//alert("came here");
     	xhr = new XDomainRequest();
-        alert(xhr.open(method, url));
+        //alert(xhr.open(method, url));
     } else {
         xhr = null;
     }
@@ -60,11 +71,13 @@ function createCORSRequest(method, url){
 
 function dashBoardCallSearch(model_data_id, userid)
 {
-	alert("inside");
+	//alert("inside");
  this.model_data_id = model_data_id;
       //$("#"+this.model_data_id).html("Loading Model Data...");
     var sender = this;
-var url = "api/user/"+userid;
+    //var url = "http://www.autoscoop.com.au/api/user/"+userid;
+   var url = "api/user/"+userid;
+   //var url = "http://localhost:8080/MyCarDomain/api/user/"+userid;
 //var url = "http://localhost:8080/MyCarDomain/api/user/"+userid;
 //alert("user id"+url);
 
@@ -143,7 +156,7 @@ var url = "api/user/"+userid;
         	   out3="";
         	   var qtRecd = result.vehicleQuotation.length;
         	   document.getElementById('qtRecd').innerHTML=qtRecd;
-        	   out3 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th><th>'+'Operation'+'</th></tr>';
+        	   out3 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
         	   for(i=0;i<result.vehicleQuotation.length;i++)
        		{
        		
@@ -193,9 +206,48 @@ var insQCt=result.insuranceQuotation.length;
         	              		
         	              		
         	              		}
-        	               	   
+        	               	
         	               	   forFinance("quo-model-data4",out6);
-        	   
+        	               	   
+        	               	   
+        	               	 out7="";
+        	           	  
+      	               	   out7 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>';
+      	               	   for(i=0;i<result.myVehicle.length;i++)
+      	              		{
+      	              		
+      	              		out7= out7+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
+      	              		
+      	              		
+      	              		}
+      	              
+        	               	   forFinance("logBook4",out7);
+        	               	   
+        	               	out8="";
+          	           	  
+       	               	   out8 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>';
+       	               	   for(i=0;i<result.myVehicle.length;i++)
+       	              		{
+       	              		
+       	              		out8= out8+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
+       	              		
+       	              		
+       	              		}
+       	               	   
+         	               	forFinance("fuelCard4",out8);
+         	               	
+         	               out9="";
+         	           	  
+      	               	   out9 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>';
+      	               	   for(i=0;i<result.myVehicle.length;i++)
+      	              		{
+      	              		
+      	              		out9= out9+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
+      	              		
+      	              		
+      	              		}
+      	               	   
+        	               	forFinance("servMaint4",out9);
         	               	registerEditDealerVehicleQuotationModal();
            } 
    	  }); 
@@ -344,4 +396,93 @@ function registerEditDealerVehicleQuotationModal(){
 
 	
 	
-});
+}
+
+// end of window onload
+
+
+function redirect() {
+	alert("Thank You. Your Seach ID is ");
+
+	var url="homepage10.html?userId="+userId+"&firstName="+firstName;
+	
+	window.location=url;
+}
+
+
+//angular JS start
+var mainApp1 = angular.module("mainApp1", []);
+mainApp1.controller(
+				'myController1',function($scope, $http) {
+					$scope.submitSearchForm = function() {
+												
+												var jsonInputToAPI = {"userId":userId,
+														"myVehicleVO":{
+															"myVehicleId":null,
+															"year": $('#car-years').val(),															      
+															"make":$('#car-makes').val(),
+																	"model" :$('#car-models').val(),
+																	 "variant":$('#car-model-trims').val(),
+																	"vin":$('#vin').val(),
+																	"regNum":$('#regNo').val(),
+																	"regState":$('#car-model-trims').val(),
+																	"regExpDate":null,
+																	"insProv":$('#regState').val(),
+																	"insProvMan":$('#insProv').val(),
+																	"insPremPaid":$('#insPrePaid').val(),
+																	"insPremPaidFreq":$('#premPaidFreq').val(),
+																	"insExpiry":null,	
+																	"odoMeter":$('#odoMeter').val(),	
+																	"lastServiceDt":null,	
+																	"nextServiceDt":null,	
+																	"nextServKms":$('#nextServMaiKms').val(),	
+																	"finProvider":$('#finProv').val(),	
+																	"loanAmt1":$('#loanAmount').val(),	
+																	"loanTakenDt":null,
+																		"loanPaidFreq":$('#loanPaidFreq').val(),	
+																	"loanAmt2":$('#laonAmount1').val(),	
+																	"loanPeriod":$('#laonPeriod').val(),	
+																	"loanInterest":$('#laonIntRate').val(),
+																		"fuelCardProvider":$('#fuelCardProv').val(),	
+																	"valFuelCard":$('#valFuelCard').val(),	
+																	"fuelType":$('#fuelType').val(),
+																		"photo1":$('#photo1').val(),	
+																	"photo2":$('#photo2').val(),	
+																	"photo3":$('#photo3').val(),
+																		"flex1":"flex1",	
+																	"flex2":"flex1",	
+																	"flex3":"flex1",
+																		"flex4":"flex1",	
+																	"flex5":12,	
+																	"flex6":12,
+																	"flex7":12,
+																		"flex8":null,	
+																	"flex9":null
+														}
+														}
+
+
+												//alert("Before Call");
+												//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
+												//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
+												var wsURL = 'api/eBid/myVehicle';
+												
+													    $http({
+																	method : 'POST',
+																	url : wsURL,
+																	data: jsonInputToAPI
+																					
+																}).success(function(data) {
+																	alert("Successfully Stored..");
+																					alert("Thank You. Your MyVehicle ID is " + data.myVehicleId);
+																													
+																				});													
+												};
+
+				});
+
+//angular JS end
+
+
+
+

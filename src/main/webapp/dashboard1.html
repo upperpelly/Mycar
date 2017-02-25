@@ -49,7 +49,6 @@
   <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-<!-- <script type="text/javascript" src="js/jquery-1.5.2.js" ></script> -->
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/cufon-replace.js"></script>  
 <script type="text/javascript" src="js/Cabin_400.font.js"></script>
@@ -77,590 +76,25 @@ $.ajax({
 });
 </script>
 
-    <!-- Main Style -->
-    <!--<link id="main-style" rel="stylesheet" href="css/style.css">-->
-    <script type="text/javascript">
-        var mainStyle = "style.css";
-        if (typeof localStorage != "undefined") {
-            var colorSkin = localStorage.getItem("colorSkin");
-            if (colorSkin != null) {
-                mainStyle = "style-" + colorSkin + ".css";
-            }
+
+<!-- Main Style -->
+<!--<link id="main-style" rel="stylesheet" href="css/style.css">-->
+<script type="text/javascript">
+    var mainStyle = "style.css";
+    if (typeof localStorage != "undefined") {
+        var colorSkin = localStorage.getItem("colorSkin");
+        if (colorSkin != null) {
+            mainStyle = "style-" + colorSkin + ".css";
         }
-        document.write('<link id="main-style" rel="stylesheet" href="css/' + mainStyle + '">');
-    </script>
-    <script src="js/userDashboard/userDashboard.js" type="text/javascript"/>
-
-<script>
-var userId;
-var firstName;
-window.onload= function(){
-	
-	function parseURLParameter(Parameter)
-	{
-	
-var FullURL= window.location.search.substring(1);
-	
-		var parametersArray = FullURL.split('&')
-		
-		for (var i=0; i<parametersArray.length; i++)
-			{
-				var currentParameter = parametersArray[i].split('=');
-				
-				if (currentParameter[0] == Parameter)
-				{
-					return currentParameter[1];
-				}
-			}
-	}
-	/* alert("pageName 11  now "); */
-	
-	userId = parseURLParameter('userId');
-	//userId="71";
-	//document.getElementById('minValue').innerHTML=priceMin;
-	document.getElementById('firstName').innerHTML=firstName;
-	var searchId = parseURLParameter('searchId');
-	firstName = parseURLParameter('firstName');
-	if(userId!= null){
-		alert(firstName);
-		document.getElementById('welcomeDiv').style.display = "block";
-		document.getElementById('welcomeDiv1').style.display = "none";
-		document.getElementById('userId').innerHTML="<b>"+"Hi "+firstName+"</b>";
-	}
-	
-	
-	
-	
-  
-  //alert("Before call");
-	dashBoardCallSearch('car-model-data',userId); 
-  
-  createCORSRequest("GET", "api/user/70");
-	
-
-function createCORSRequest(method, url){
-	
-    var xhr = new XMLHttpRequest();
-    if ("withCredentials" in xhr){
-        // XHR has 'withCredentials' property only if it supports CORS
-        xhr.open(method, url, true);
-    } else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
-    	//alert("came here");
-    	xhr = new XDomainRequest();
-        alert(xhr.open(method, url));
-    } else {
-        xhr = null;
     }
-    return xhr;
-}
-
-function dashBoardCallSearch(model_data_id, userid)
-{
-	alert("inside");
- this.model_data_id = model_data_id;
-      //$("#"+this.model_data_id).html("Loading Model Data...");
-    var sender = this;
-    //var url = "http://www.autoscoop.com.au/api/user/"+userid;
-   var url = "api/user/"+userid;
-   //var url = "http://localhost:8080/MyCarDomain/api/user/"+userid;
-//var url = "http://localhost:8080/MyCarDomain/api/user/"+userid;
-//alert("user id"+url);
-
-    //Get Car Model JSON for the selected make
-    //http://localhost:8080/MyCarDomain/api/user/1
-    /*alert("came here now changed are 3 Oct1");*/
-    $.ajax({  
-    	/*headers: {"X-My-Custom-Header": "*"},*/
-   	    type: "GET",  
-   	    url: url, 
-   	 /*url: "http://localhost:8080/MyCarDomain/api/user/1",*/
-   	       success: function(result){
-   	    	   /*alert(result.abnNumber);
-        	   alert(result.userId);
-        	   alert(result.search);
-        	   alert(result.search[0].carSearchId);
-        	   alert(result.search.length);*/
-        	   out="";
-        	   /*alert(Object.keys( result.search ).length);*/
-        	   /*var json = JSON.parse(result1);*/
-        	   /*var json = $.parseJSON(result1);*/
-        	   var finMax = result.search.length;
-        	   document.getElementById('finMax').innerHTML=finMax;
-        	   out += '<tr><th>'+"Car Search ID"+'</th><th>'+"Model Trim"+'</th><th>'+"Model Display"+'</th><th>'+"Model Year"+'</th></tr>';
-        	   for(i=0;i<result.search.length;i++)
-       		{
-       		/*alert(result.search[i].carSearchId); //111 111-1111
-       		alert(result.search[i].modelDisplay);
-       		alert(result.search[i].modelTrim);
-       		alert(result.search[i].modelYear);*/
-       		out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelTrim+'</td>'+'<td>'+result.search[i].modelDisplay+'</td>'+'<td>'+result.search[i].modelYear+'</td>'+'</tr>';
-       		
-       		
-       		}
-        	   //alert(out);
-        	   $("#"+sender.model_data_id).append(out);
-        	   //alert("came here 2");
-        	   out1="";
-        	   /*alert(Object.keys( result.search ).length);*/
-        	   /*var json = JSON.parse(result1);*/
-        	   /*var json = $.parseJSON(result1);*/
-        	   var finCt = result.search.length;
-        	   document.getElementById('finCt').innerHTML=finCt;
-        	   out1 += '<tr><th>'+"Car Finance ID"+'</th><th>'+"Vehicle Value"+'</th><th>'+"Balloon Pay"+'</th><th>'+"Loan Amount"+'</th></tr>';
-        	   for(i=0;i<result.searchFinance.length;i++)
-       		{
-       		/*alert(result.search[i].carSearchId); //111 111-1111
-       		alert(result.search[i].modelDisplay);
-       		alert(result.search[i].modelTrim);
-       		alert(result.search[i].modelYear);*/
-       		out1= out1+'<tr>'+'<td>'+result.searchFinance[i].searchFinanceId+'</td>'+'<td>'+result.searchFinance[i].vehValue+'</td>'+'<td>'+result.searchFinance[i].balloonPay+'</td>'+'<td>'+result.searchFinance[i].loanAmount+'</td>'+'</tr>';
-       		
-       		
-       		}
-        	  forFinance("data1",out1);
-        	   
-        	   /*this.model_data_id = "data1";
-        	   alert("came here"+this.model_data_id);
-        	   $("#"+sender.model_data_id).append(out1);*/
-        	  /* alert("came here"+this.model_data_id);
-        	   */
-        	  out2="";
-        	  var insRCt=result.searchInsurance.length;
-        	   document.getElementById('insRCt').innerHTML=insRCt;
-        	   out2 += '<tr><th>'+"Car Insurance ID"+'</th><th>'+"Insurance Type"+'</th><th>'+"Market Value"+'</th><th>'+"Agreed Value"+'</th></tr>';
-        	   for(i=0;i<result.searchInsurance.length;i++)
-       		{
-       		
-       		out2= out2+'<tr>'+'<td>'+result.searchInsurance[i].searchInsuranceId+'</td>'+'<td>'+result.searchInsurance[i].insuranceType+'</td>'+'<td>'+result.searchInsurance[i].marketValue+'</td>'+'<td>'+result.searchInsurance[i].agreedValue+'</td>'+'</tr>';
-       		
-       		
-       		}
-        	   
-        	   forFinance("car-model-data2",out2);
-//alert("result.search.length"+result.vehicleQuotation.length);
-        	   out3="";
-        	   var qtRecd = result.vehicleQuotation.length;
-        	   document.getElementById('qtRecd').innerHTML=qtRecd;
-        	   out3 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th></tr>';
-        	   for(i=0;i<result.vehicleQuotation.length;i++)
-       		{
-       		
-       		out3= out3+'<tr>'+'<td>'+result.vehicleQuotation[i].quotId+'</td>'+'<td>'+result.vehicleQuotation[i].dealerName+'</td>'+'<td>'+result.vehicleQuotation[i].dealerStockNo+'</td>'+'<td>'+result.vehicleQuotation[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleQuotationModal-' + result.vehicleQuotation[i].quotId + '" data-details=\'' + JSON.stringify(result.vehicleQuotation[i]) + '\' class="anchor-editDealerVehicleQuotationModal" data-toggle="modal" data-target="#editDealerVehicleQuotationModal">Edit</a></td></tr>';
-       		
-       		
-       		}
-        	   
-        	   forFinance("quo-model-data",out3);
-//alert("result.search.length"+result.financeQuotation.length);
-out4="";
-var finQCt=result.financeQuotation.length;
-document.getElementById('finQCt').innerHTML=finQCt;
-        	   out4 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Insurance Type"+'</th><th>'+"Market Value"+'</th><th>'+"Agreed Value"+'</th></tr>';
-        	   for(i=0;i<result.financeQuotation.length;i++)
-       		{
-       		
-       		out4= out4+'<tr>'+'<td>'+result.financeQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.vehicleQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.vehicleQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.vehicleQuotation[i].vehicleQuotationId+'</td>'+'</tr>';
-       		
-       		
-       		}
-        	   
-        	   forFinance("quo-data1",out4);
-//alert("result.search.length"+result.insuranceQuotation.length);
-out5="";
-var insQCt=result.insuranceQuotation.length;
-        	   document.getElementById('insQCt').innerHTML=insQCt;
-        	   out5 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Insurance Type"+'</th><th>'+"Market Value"+'</th><th>'+"Agreed Value"+'</th></tr>';
-        	   for(i=0;i<result.insuranceQuotation.length;i++)
-       		{
-       		
-       		out5= out5+'<tr>'+'<td>'+result.insuranceQuotation[i].insuranceQuotationId+'</td>'+'<td>'+result.insuranceQuotation[i].insuranceQuotationId+'</td>'+'<td>'+result.insuranceQuotation[i].insuranceQuotationId+'</td>'+'<td>'+result.insuranceQuotation[i].insuranceQuotationId+'</td>'+'</tr>';
-       		
-       		
-       		}
-        	   
-        	   forFinance("quo-model-data2",out5);
-        	   
-        	 //alert("result.search.length"+result.insuranceQuotation.length);
-        	   out6="";
-        	  
-        	               	   out6 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>';
-        	               	   for(i=0;i<result.myVehicle.length;i++)
-        	              		{
-        	              		
-        	              		out6= out6+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
-        	              		
-        	              		
-        	              		}
-        	               	alert(out6);
-        	               	   forFinance("quo-model-data4",out6);
-        	               	   
-        	               	   
-        	               	 out7="";
-        	           	  
-      	               	   out7 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>';
-      	               	   for(i=0;i<result.myVehicle.length;i++)
-      	              		{
-      	              		
-      	              		out7= out7+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
-      	              		
-      	              		
-      	              		}
-      	               	alert("sai");
-        	               	   forFinance("logBook4",out7);
-        	               	   
-        	               	out8="";
-          	           	  
-       	               	   out8 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>';
-       	               	   for(i=0;i<result.myVehicle.length;i++)
-       	              		{
-       	              		
-       	              		out8= out8+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
-       	              		
-       	              		
-       	              		}
-       	               	   
-         	               	forFinance("fuelCard4",out8);
-         	               	
-         	               out9="";
-         	           	  
-      	               	   out9 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>';
-      	               	   for(i=0;i<result.myVehicle.length;i++)
-      	              		{
-      	              		
-      	              		out9= out9+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
-      	              		
-      	              		
-      	              		}
-      	               	   
-        	               	forFinance("servMaint4",out9);
-        	               	registerEditDealerVehicleQuotationModal();
-           } 
-   	  }); 
-   /* $.ajax({
-        url: "http://localhost:8080/MyCarDomain/api/user/70",
-        data: { signature: authHeader },
-        type: "GET",
-        beforeSend: function(xhr){xhr.setRequestHeader('X-Test-Header', 'test-value');},
-        success: function() { alert('Success!' + authHeader); }
-     });*/
-}
-
-function forFinance(model_data_id, out)
-{
- this.model_data_id = model_data_id;
-      //$("#"+this.model_data_id).html("Loading Model Data...");
- //alert("came here 2 inside");
-    
-//alert("out"+out);
-    
-        	   //alert(out);
-        	   $("#"+model_data_id).append(out);
-        	   //alert("came here 2");
-        	  
-   /* $.ajax({
-        url: "http://localhost:8080/MyCarDomain/api/user/70",
-        data: { signature: authHeader },
-        type: "GET",
-        beforeSend: function(xhr){xhr.setRequestHeader('X-Test-Header', 'test-value');},
-        success: function() { alert('Success!' + authHeader); }
-     });*/
-}
-
-function registerEditDealerVehicleQuotationModal(){       
-
-
-	//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
-	var editDealerVehicleQuotationModal = '<div class="modal fade" id="editDealerVehicleQuotationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
-	    <div class="modal-dialog">\
-	        <div class="modal-content">\
-	            <div class="modal-header">\
-	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-	                <h4 class="modal-title" id="myModalLabel">Edit Vehicle Quotation</h4>\
-	            </div>\
-		        <form id="edit-dealer-vehicle-quotation-content-form">\
-				<div class="modal-body edit-dealer-vehicle-quotation-content">\
-	            </div>\
-	            <div class="modal-footer">\
-	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
-	                <button type="button" class="btn btn-primary submit-editDealerVehicleQuotationModal" data-dismiss="modal">Save changes</button>\
-	            </div>\
-	            </form>\
-	        </div>\
-	    </div>\
-	</div>';
-
-	$(document.body).append(editDealerVehicleQuotationModal);
-	
-		
-	$('a.anchor-editDealerVehicleQuotationModal').on('click', function(event) {
-		
-		
-		var data = $(event.target).data('details');
-		//var json = JSON.stringify(data);
-		
-		var quotIdHiddenField = '<input type="hidden" name="quotId" value="' + data.quotId + '" />';
-		var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
-		if(data.moveToUser)
-		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
-		
-		
-		var editDealerVehicleQuotationForm = '<form id="edit-dealer-vehicle-quotation-content-form"><table>\
-			<tr><td>Quotation ID</td><td>' + data.quotId + '</td></tr>\
-			<tr><td>' + quotIdHiddenField + '</td></tr>\
-			<tr><td>User ID</td><td>' + data.userId + '</td></tr>\
-			<tr><td>Model Year</td><td>' + data.modelYear + '</td></tr>\
-			<tr><td>Model Name</td><td>' + data.modelName + '</td></tr>\
-			<tr><td>Model Display</td><td>' + data.modelDisplay + '</td></tr>\
-			<tr><td>Auto Bid</td><td>' + data.autoBid + '</td></tr>\
-			<tr><td>Dealer Id</td><td>' + data.dealerId + '</td><td>Dealer Search Id</td><td>' + data.dealSearchId + '</td></tr>\
-			<tr><td>Car Search Id</td><td>' + data.carSearchId + '</td><td>Ref Id</td><td>' + data.refId + '</td></tr>\
-			<tr><td>Dealer Name</td><td>' + data.dealerName + '</td><td>Dealer ABN</td><td>' + data.dealerABN + '</td></tr>\
-			<tr><td>Quot Header FreeText</td><td>' + data.quotHeaderFreeText + '</td><td>VIN Number</td><td>' + data.vinNumber + '</td></tr>\
-			<tr><td>Rego No</td><td>' + data.regoNo + '</td><td>Rego End Date</td><td>' + data.regoEndDate + '</td></tr>\
-			<tr><td>Rego State</td><td>' + data.regoStat + '</td><td>Dealer Stock No</td><td>' + data.dealerStockNo + '</td></tr>\
-			<tr><td>No Of Kms</td><td>' + data.noOfKms + '</td><td>Drive Away Price</td><td>' + data.driveAwayPrice + '</td></tr>\
-			<tr><td>Negotiable</td><td>' + data.negotiable + '</td><td>Offer Valid Date</td><td>' + data.offerValidDate + '</td></tr>\
-			<tr><td>First Come Serve</td><td>' + data.firstCumServe + '</td><td>Color</td><td>' + data.color + '</td></tr>\
-			<tr><td>Transmission</td><td>' + data.transmission + '</td><td>Drive Type</td><td>' + data.driveType + '</td></tr>\
-			<tr><td>Fuel Type</td><td>' + data.fuelType + '</td><td>No Of Seats</td><td>' + data.noOfSeats + '</td></tr>\
-			<tr><td>No Of Doors</td><td>' + data.noOfDoors + '</td><td>Dealer Preferred Location</td><td>' + data.delPrefLocation + '</td></tr>\
-			<tr><td>Offer Price 2</td><td>' + data.offerPrice2 + '</td><td>Offer Price 3</td><td>' + data.offerPrice3 + '</td></tr>\
-			</table></form>';
-		
-		$(".edit-dealer-vehicle-quotation-content").html(editDealerVehicleQuotationForm);
-	});
-	
-	$('button.submit-editDealerVehicleQuotationModal').on('click', function(e) {
-		
-		var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
-		
-		
-		$.ajax({  
-			type: "POST",  
-			url: "api/vehicleQuotation?_method=PUT",
-			data: jsonInput,
-			contentType:'application/json',
-			success: function(result){
-				$("#anchor-editDealerVehicleQuotationModal-" + result.quotId).data('details', result);
-				alert("Successfully upated and moved to user");
-				
-			}
-		});
-
-		
-	});
-	
-	$.fn.convertFormDataToJSON = function(){
-		var checkboxes = [];
-		$(this).find('input:checkbox:checked').each(function(){
-			checkboxes.push($(this).attr("name"));
-		});
-		var o = {};
-	    var a = this.serializeArray();
-	    $.each(a, function() {
-	        if (o[this.name] != undefined) {
-	            if (!o[this.name].push) {
-	                o[this.name] = [o[this.name]];
-	            }
-	            if($.inArray(this.name, checkboxes) != -1)
-	              o[this.name].push('true' || '');
-	            else
-	            	o[this.name].push(this.value || '');
-	        } else {
-	        	if($.inArray(this.name, checkboxes) != -1)
-	        		o[this.name] = 'true' || '';
-		        else
-		           	o[this.name] = this.value || '';
-	        }
-	    });
-	    return JSON.stringify(o);
-	}
-
-	
-}
-
-	
-	
-}
-
+    document.write('<link id="main-style" rel="stylesheet" href="css/' + mainStyle + '">');
 </script>
 
-<script>
-function redirect() {
-	alert("Thank You. Your Seach ID is ");
-	alert("userid"+userId);
-	var url="homepage10.html?userId="+userId+"&firstName="+firstName;
-	
-	window.location=url;
-}
-</script>
-
-
-   <!--  <script>
-    var userId=null;
-    window.onload= function()
-    {
-    	//alert("came here for onload");
-
-    	   	
-    	userId = URL.getParameter('userId');
-    	//userId="71";
-    	//document.getElementById('minValue').innerHTML=priceMin;
-    	
-    	var searchId = URL.getParameter('searchId');
-    	var firstName = URL.getParameter('firstName');
-    	if(userId!= null){
-			alert(firstName);
-			document.getElementById('welcomeDiv').style.display = "block";
-			document.getElementById('welcomeDiv1').style.display = "none";
-			document.getElementById('userId').innerHTML="<b>"+"Hi "+firstName+"</b>";
-		}
-    	
-    	
-      var carquery = new CarQuery();
-      //alert("Before call");
-      carquery.dashBoardCallSearch('car-model-data',userId); 
-      
-      createCORSRequest("GET", "http://localhost:8080/MyCarDomain/api/user/70");
-    	
-    }
-    function createCORSRequest(method, url){
-    	
-	    var xhr = new XMLHttpRequest();
-	    if ("withCredentials" in xhr){
-	        // XHR has 'withCredentials' property only if it supports CORS
-	        xhr.open(method, url, true);
-	    } else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
-	    	//alert("came here");
-	    	xhr = new XDomainRequest();
-	        alert(xhr.open(method, url));
-	    } else {
-	        xhr = null;
-	    }
-	    return xhr;
-	}
-	</script> -->
-	
-	 
-	
-	
-	<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 <script src="js/angular-resource.js"></script>
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<script src="js/userDashboard/userDashboard.js" type="text/javascript"/>
 <script>
-    
-	var mainApp1 = angular.module("mainApp1", [ 'ui.bootstrap', 'ngResource' ]);
-	mainApp1.controller('overviewController', function($scope, $stateParams) {
-	    var index = $stateParams.index;
-	    var anotherKey = $stateParams.anotherKey;
-	});
-	mainApp1
-			.controller(
-					'myController1',
-					function($scope, $http) {
-
-						$scope.predicate = 'name';
-						$scope.reverse = true;
-						$scope.currentPage = 1;
-						$scope.order = function(predicate) {
-							$scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse
-									: false;
-							$scope.predicate = predicate;
-						};
-
-						$scope.updatePagination = function() {
-							$scope.totalItems = $scope.biil.details.length;
-							$scope.numPerPage = 5;
-							$scope.paginate = function(value) {
-								var begin, end, index;
-								begin = ($scope.currentPage - 1)
-										* $scope.numPerPage;
-								end = begin + $scope.numPerPage;
-								index = $scope.biil.details.indexOf(value);
-								return (begin <= index && index < end);
-							};
-						};
-						function submitSearchForm() {
-													alert("came here"+userId);
-													
-													var jsonInputToAPI = {"userId":userId,
-															"myVehicleVO":{
-																"myVehicleId":null,
-																"year": $('#car-years').val(),															      
-																"make":$('#car-makes').val(),
-																		"model" :$('#car-models').val(),
-																		 "variant":$('#car-model-trims').val(),
-																		"vin":$('#vin').val(),
-																		"regNum":$('#regNo').val(),
-																		"regState":$('#car-model-trims').val(),
-																		"regExpDate":null,
-																		"insProv":$('#regState').val(),
-																		"insProvMan":$('#insProv').val(),
-																		"insPremPaid":$('#insPrePaid').val(),
-																		"insPremPaidFreq":$('#premPaidFreq').val(),
-																		"insExpiry":null,	
-																		"odoMeter":$('#odoMeter').val(),	
-																		"lastServiceDt":null,	
-																		"nextServiceDt":null,	
-																		"nextServKms":$('#nextServMaiKms').val(),	
-																		"finProvider":$('#finProv').val(),	
-																		"loanAmt1":$('#loanAmount').val(),	
-																		"loanTakenDt":null,
-																			"loanPaidFreq":$('#loanPaidFreq').val(),	
-																		"loanAmt2":$('#laonAmount1').val(),	
-																		"loanPeriod":$('#laonPeriod').val(),	
-																		"loanInterest":$('#laonIntRate').val(),
-																			"fuelCardProvider":$('#fuelCardProv').val(),	
-																		"valFuelCard":$('#valFuelCard').val(),	
-																		"fuelType":$('#fuelType').val(),
-																			"photo1":$('#photo1').val(),	
-																		"photo2":$('#photo2').val(),	
-																		"photo3":$('#photo3').val(),
-																			"flex1":"flex1",	
-																		"flex2":"flex1",	
-																		"flex3":"flex1",
-																			"flex4":"flex1",	
-																		"flex5":12,	
-																		"flex6":12,
-																		"flex7":12,
-																			"flex8":null,	
-																		"flex9":null
-															}
-															}
-
-
-													alert("Before Call");
-													//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
-													//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
-													var wsURL = 'api/eBid/myVehicle/';
-													
-														    $http({
-																		method : 'POST',
-																		url : wsURL,
-																		data: jsonInputToAPI
-																						
-																	}).success(function(data) {
-																		alert("Successfully Stored..");
-																						alert("Thank You. Your MyVehicle ID is " + data.myVehicleId);
-																														
-																					});
-
-								
-														
-													};
-
-					    
-
-						$scope.submitSearchForm = submitSearchForm;
-						$scope.init = function() {
-							$scope.biil = {
-								details : []
-							};
-							$scope.submitForm();
-						};
-
-					});
 </script>
 <!-- Main Style -->
     <link id="main-style" rel="stylesheet" href="css/style.css">
@@ -690,6 +124,27 @@ img.emoji {
 	vertical-align: -0.1em !important;
 	background: none !important;
 	padding: 0 !important;
+}
+</style>
+<style type="text/css">
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('http://i.stack.imgur.com/FhHRx.gif') 
+                50% 50% 
+                no-repeat;
+}
+body.loading {
+    overflow: hidden;   
+}
+body.loading .modal {
+    display: block;
 }
 </style>
 <script type='text/javascript' src='http://www.carqueryapi.com/wp-includes/js/jquery/jquery.js'></script>
@@ -747,9 +202,9 @@ tr:hover{background-color:rgb(253, 183, 20);}
 
 </style>
 <link rel="shortcut icon" href="favicon.ico">
-   
+   <!-- 
     <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script> -->
 <script src="js/angular-resource.js"></script>
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
 <script src="js/angular-ui-router.js"></script>
@@ -2044,9 +1499,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                              <!-- My Vehicle Entry Start -->
                              <div class="tab-pane fade" id="cruise-description">
                                  <div id="main" class="col-sms-8 col-sm-9 col-md-11">
-                        <div class="booking-section travelo-box">
+                        <div class="booking-section travelo-box" ng-controller="myController1">
                             
-                            <form class="booking-form"  >
+                            <form class="booking-form">
                                 
                                     
                                     <div class="toggle-container box">
@@ -2448,9 +1903,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                 </div> -->
                                  
-                               <div class="form-group row" ng-click="submitSearchForm()" ng-controller="myController1">
+                               <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
-                                        <button type="submit" class="full-width btn-large">Save</button>
+                                        <button class="full-width btn-large" ng-click="submitSearchForm()" >Save</button>
                                     </div>
                                 </div>
 
@@ -3059,5 +2514,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
     </script>
  
 <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '9e83805c-9ddf-4721-9be5-6ee17f806f8c', f: true }); done = true; } }; })();</script>
+
+
+<!-- Loading -->
+<div class="modal"><!-- Place at bottom of page --></div>
 </body>
 </html>
