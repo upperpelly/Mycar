@@ -154,7 +154,9 @@ var url = "api/dealer/"+userid;
         	   /*alert(Object.keys( result.search ).length);*/
         	   /*var json = JSON.parse(result1);*/
         	   /*var json = $.parseJSON(result1);*/
-        	  
+        	  var invC = 0;
+        	  var invC = result.inventory.length;
+        	   document.getElementById('invC').innerHTML=invC;
         	   out += '<tr><th>'+"Inventory ID"+'</th><th>'+"Variant"+'</th><th>'+"Make"+'</th><th>'+"Year"+'</th><th>'+"Operation"+'</th></tr>';
         	   for(i=0;i<result.inventory.length;i++)
        		{
@@ -173,6 +175,9 @@ var url = "api/dealer/"+userid;
         	   /*alert(Object.keys( result.search ).length);*/
         	   /*var json = JSON.parse(result1);*/
         	   /*var json = $.parseJSON(result1);*/
+        	   var vehQRecd = 0;
+        	    var vehQRecd = result.vehicleQuotation.length;
+        	   document.getElementById('vehQRecd').innerHTML=vehQRecd;
         	   out2 += '<tr><th>'+"Quotation ID"+'</th><th>'+"Variant"+'</th><th>'+"Make"+'</th><th>'+"Year"+'</th><th>'+"Operation"+'</th></tr>';
         	   for(i=0;i<result.vehicleQuotation.length;i++)
        		{
@@ -190,6 +195,9 @@ var url = "api/dealer/"+userid;
        	   /*alert(Object.keys( result.search ).length);*/
        	   /*var json = JSON.parse(result1);*/
        	   /*var json = $.parseJSON(result1);*/
+       	   var vehMax = 0;
+       	    var vehMax = result.dealSearch.length;
+        	   document.getElementById('vehMax').innerHTML=vehMax;
        	   out1 += '<tr><th>'+"Car Lead ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Variant"+'</th><th>'+"Operation"+'</th></tr>';
        	   for(i=0;i<result.dealSearch.length;i++)
       		{
@@ -203,6 +211,39 @@ var url = "api/dealer/"+userid;
       		}
        	  forFinance("data1",out1);
         
+       	var finMax = 0;
+   	    var finMax = result.dealSearchFinance.length;
+    	   document.getElementById('finMax').innerHTML=finMax;
+   	   out5 += '<tr><th>'+"Car Lead ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Variant"+'</th><th>'+"Operation"+'</th></tr>';
+   	   for(i=0;i<result.dealSearchFinance.length;i++)
+  		{
+  		/*alert(result.search[i].carSearchId); //111 111-1111
+  		alert(result.search[i].modelDisplay);
+  		alert(result.search[i].modelTrim);
+  		alert(result.search[i].modelYear);*/
+  		out5= out5+'<tr>'+'<td>'+result.dealSearchFinance[i].dealerSearchFinanceId+'</td><td>'+result.dealSearchFinance[i].year+'</td><td>'+result.dealSearchFinance[i].make+'</td><td>'+result.dealSearchFinance[i].model+'</td><td>'+result.dealSearchFinance[i].variant+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchLeadsModal-' + result.dealSearchFinance[i].dealSearchId + '" data-details=\'' + JSON.stringify(result.dealSearchFinance[i]) + '\' class="anchor-editDealerVehicleSearchLeadsModal" data-toggle="modal" data-target="#editDealerVehicleSearchLeadsModal">View</a></td></tr>';
+  		
+  		
+  		}
+   	  forFinance("data1",out5);
+       	  
+   	var finQRecd = 0;
+	    var finQRecd = result.financeQuotation.length;
+	   document.getElementById('finQRecd').innerHTML=finQRecd;
+	   out6 += '<tr><th>'+"Car Lead ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Variant"+'</th><th>'+"Operation"+'</th></tr>';
+	   for(i=0;i<result.financeQuotation.length;i++)
+		{
+		/*alert(result.search[i].carSearchId); //111 111-1111
+		alert(result.search[i].modelDisplay);
+		alert(result.search[i].modelTrim);
+		alert(result.search[i].modelYear);*/
+		out6= out6+'<tr>'+'<td>'+result.financeQuotation[i].finQuotId+'</td><td>'+result.financeQuotation[i].modelYear+'</td><td>'+result.financeQuotation[i].modelDisplay+'</td><td>'+result.financeQuotation[i].modelName+'</td><td>'+result.financeQuotation[i].modelTrim+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchLeadsModal-' + result.financeQuotation[i].finQuotId + '" data-details=\'' + JSON.stringify(result.financeQuotation[i]) + '\' class="anchor-editDealerVehicleSearchLeadsModal" data-toggle="modal" data-target="#editDealerVehicleSearchLeadsModal">View</a></td></tr>';
+		
+		
+		}
+	  forFinance("data1",out6);
+   	  
+   	  
        	registerEditDealerVehicleQuotationModal();
        	registereditDealerVehicleSearchLeadsModal();
        	registereditDealerIvemtoryModal();
@@ -1270,18 +1311,17 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                         <div class="tab-content">
                             <div id="dashboard" class="tab-pane fade in active">
                                 <h1 class="no-margin skin-color">Hi Honda Dealer, Welcome to Autoscoop!</h1>
-                                <p>All your Lead requests and Quotations responses with us will appear here and you’ll be able to manage everything!</p>
+                                <p>All your Lead requests and Quotations responses with us will appear here and youâ€™ll be able to manage everything!</p>
                                 <br />
                                 <div class="row block">
-                                    <div class="col-sm-5 col-md-3">
-                                        <a href="dashboard1.html#travel-stories">
+                                <div class="col-sm-5 col-md-2">
+                                        <a href="#inventory-store">
                                             <div class="fact blue">
                                                 <div class="numbers counters-box">
                                                     <dl>
-                                                    <dd>Vehicle Leads Received</dd>
-                                                        <dt class="display-counter" data-value="10">0</dt>
-                                                    <dd>Quotation Sent</dd>
-                                                        <dt class="display-counter" data-value="6">0</dt>
+                                                    <dd>Inventory Count</dd>
+                                                     <span id="invC"></span>
+                                                       <!--  <dt class="display-counter" data-value="10">0</dt> -->
                                                         
                                                     </dl>
                                                     <i class="icon soap-icon-pets"></i>
@@ -1293,15 +1333,39 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-sm-5 col-md-3">
+                                    <div class="col-sm-5 col-md-2">
+                                        <a href="dashboard1.html#travel-stories">
+                                            <div class="fact blue">
+                                                <div class="numbers counters-box">
+                                                    <dl>
+                                                    <dd>Vehicle Leads Received</dd>
+                                                     <span id="vehMax"></span>
+                                                        <!-- <dt class="display-counter" data-value="10">0</dt> -->
+                                                    <dd>Quotation Sent</dd>
+                                                        <span id="vehQRecd"></span>
+                                                        <!-- <dt class="display-counter" data-value="6">0</dt> -->
+                                                        
+                                                    </dl>
+                                                    <i class="icon soap-icon-pets"></i>
+                                                </div>
+                                                <div class="description">
+                                                    <i class="icon soap-icon-longarrow-right"></i>
+                                                    <span>View Leads</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-5 col-md-2">
                                         <a href="dashboard1.html#settings">
                                             <div class="fact yellow">
                                                 <div class="numbers counters-box">
                                                     <dl>
                                                     <dd>Finance Leads Received</dd>
-                                                        <dt class="display-counter" data-value="8">0</dt>
-                                                       <dd>Quotation Sent</dd> 
-                                                        <dt class="display-counter" data-value="6">0</dt>
+                                                    <span id="finMax"></span>
+                                                        <!-- <dt class="display-counter" data-value="8">0</dt> -->
+                                                       <dd>Quotation Sent</dd>
+                                                       <span id="finQRecd"></span> 
+                                                        <!-- <dt class="display-counter" data-value="6">0</dt> -->
                                                         
                                                     </dl>
                                                     <i class="icon soap-icon-savings"></i>
@@ -1314,15 +1378,18 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         </a>
                                     </div>
                                     
-                                    <div class="col-sm-5 col-md-3">
+                                    <div class="col-sm-5 col-md-2">
                                         <a href="dashboard1.html#settings">
                                             <div class="fact green">
                                                 <div class="numbers counters-box">
                                                     <dl>
                                                     <dd>Serv && Maintenance Leads</dd>
-                                                        <dt class="display-counter" data-value="15">0</dt>
+                                                    <span id="servMax"></span>
+                                                        <!-- <dt class="display-counter" data-value="15">0</dt> -->
                                                         <dd>Quotation Sent</dd>
-                                                        <dt class="display-counter" data-value="10">0</dt>
+                                                        <span id="servQRecd"></span>
+                                                        
+                                                        <!-- <dt class="display-counter" data-value="10">0</dt> -->
                                                         
                                                     </dl>
                                                     <i class="icon soap-icon-doorman"></i>
@@ -1334,15 +1401,17 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-sm-5 col-md-3">
+                                    <div class="col-sm-5 col-md-2">
                                         <a href="dashboard1.html#settings">
                                             <div class="fact blue">
                                                 <div class="numbers counters-box">
                                                     <dl>
                                                     <dd>Spares Leads Received</dd>
-                                                        <dt class="display-counter" data-value="15">0</dt>
+                                          <span id="spareMax"></span>              
+                                                        <!-- <dt class="display-counter" data-value="15">0</dt> -->
                                                         <dd>Quotation Sent</dd>
-                                                        <dt class="display-counter" data-value="12">0</dt>
+                                                        <span id="spareQRecd"></span>
+                                                        <!-- <dt class="display-counter" data-value="12">0</dt> -->
                                                         
                                                     </dl>
                                                     <i class="icon soap-icon-baggage-5"></i>
@@ -1571,7 +1640,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         </div>
                                     </article>
                                     
-                                    <h2>Today’s Suggestions</h2>
+                                    <h2>Todayâ€™s Suggestions</h2>
                                     <div class="suggestions image-carousel style2" data-animation="slide" data-item-width="170" data-item-margin="22">
                                         <ul class="slides">
                                             <li>
