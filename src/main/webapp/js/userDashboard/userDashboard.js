@@ -108,12 +108,13 @@ function dashBoardCallSearch(model_data_id, userid)
        		alert(result.search[i].modelDisplay);
        		alert(result.search[i].modelTrim);
        		alert(result.search[i].modelYear);*/
-       		out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelTrim+'</td>'+'<td>'+result.search[i].modelDisplay+'</td>'+'<td>'+result.search[i].modelYear+'</td>'+'</tr>';
+       		out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelTrim+'</td>'+'<td>'+result.search[i].modelDisplay+'</td>'+'<td>'+result.search[i].modelYear+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
        		
        		
        		}
         	   //alert(out);
-        	   $("#"+sender.model_data_id).append(out);
+        	   forFinance("car-model-data",out);/*
+        	   $("#"+sender.model_data_id).append(out);*/
         	   //alert("came here 2");
         	   out1="";
         	   /*alert(Object.keys( result.search ).length);*/
@@ -128,7 +129,7 @@ function dashBoardCallSearch(model_data_id, userid)
        		alert(result.search[i].modelDisplay);
        		alert(result.search[i].modelTrim);
        		alert(result.search[i].modelYear);*/
-       		out1= out1+'<tr>'+'<td>'+result.searchFinance[i].searchFinanceId+'</td>'+'<td>'+result.searchFinance[i].vehValue+'</td>'+'<td>'+result.searchFinance[i].balloonPay+'</td>'+'<td>'+result.searchFinance[i].loanAmount+'</td>'+'</tr>';
+       		out1= out1+'<tr>'+'<td>'+result.searchFinance[i].searchFinanceId+'</td>'+'<td>'+result.searchFinance[i].vehValue+'</td>'+'<td>'+result.searchFinance[i].balloonPay+'</td>'+'<td>'+result.searchFinance[i].loanAmount+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleFinanceModal-' + result.searchFinance[i].searchFinanceId + '" data-details=\'' + JSON.stringify(result.searchFinance[i]) + '\' class="anchor-editDealerVehicleFinanceModal" data-toggle="modal" data-target="#editDealerVehicleFinanceModal">View</a></td></tr>';
        		
        		
        		}
@@ -146,7 +147,7 @@ function dashBoardCallSearch(model_data_id, userid)
         	   for(i=0;i<result.searchInsurance.length;i++)
        		{
        		
-       		out2= out2+'<tr>'+'<td>'+result.searchInsurance[i].searchInsuranceId+'</td>'+'<td>'+result.searchInsurance[i].insuranceType+'</td>'+'<td>'+result.searchInsurance[i].marketValue+'</td>'+'<td>'+result.searchInsurance[i].agreedValue+'</td>'+'</tr>';
+       		out2= out2+'<tr>'+'<td>'+result.searchInsurance[i].searchInsuranceId+'</td>'+'<td>'+result.searchInsurance[i].insuranceType+'</td>'+'<td>'+result.searchInsurance[i].marketValue+'</td>'+'<td>'+result.searchInsurance[i].agreedValue+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleInsuranceModal-' + result.searchInsurance[i].searchInsuranceId + '" data-details=\'' + JSON.stringify(result.searchInsurance[i]) + '\' class="anchor-editDealerVehicleInsuranceModal" data-toggle="modal" data-target="#editDealerVehicleInsuranceModal">View</a></td></tr>';
        		
        		
        		}
@@ -174,7 +175,7 @@ document.getElementById('finQCt').innerHTML=finQCt;
         	   for(i=0;i<result.financeQuotation.length;i++)
        		{
        		
-       		out4= out4+'<tr>'+'<td>'+result.financeQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.vehicleQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.vehicleQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.vehicleQuotation[i].vehicleQuotationId+'</td>'+'</tr>';
+       		out4= out4+'<tr>'+'<td>'+result.financeQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.financeQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.financeQuotation[i].vehicleQuotationId+'</td>'+'<td>'+result.financeQuotation[i].vehicleQuotationId+'</td>'+'</tr>';
        		
        		
        		}
@@ -202,7 +203,7 @@ var insQCt=result.insuranceQuotation.length;
         	               	   for(i=0;i<result.myVehicle.length;i++)
         	              		{
         	              		
-        	              		out6= out6+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
+        	              		out6= out6+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleDetailModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailModal" data-toggle="modal" data-target="#editDealerVehicleDetailModal">View</a></td></tr>';
         	              		
         	              		
         	              		}
@@ -249,6 +250,10 @@ var insQCt=result.insuranceQuotation.length;
       	               	   
         	               	forFinance("servMaint4",out9);
         	               	registerEditDealerVehicleQuotationModal();
+        	               	registerEditDealerVehicleSearchModal();
+        	               	registerEditDealerVehicleFinanceModal();
+        	               	registerEditDealerVehicleInsuranceModal();
+        	               	registerEditDealerVehicleDetailModal();
            } 
    	  }); 
    /* $.ajax({
@@ -394,8 +399,371 @@ function registerEditDealerVehicleQuotationModal(){
 	
 }
 
+function registerEditDealerVehicleSearchModal(){       
+
+
+	//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+	var editDealerVehicleSearchModal = '<div class="modal fade" id="editDealerVehicleSearchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+	    <div class="modal-dialog">\
+	        <div class="modal-content">\
+	            <div class="modal-header">\
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+	                <h4 class="modal-title" id="myModalLabel">View Vehicle Search Details</h4>\
+	            </div>\
+		        <form id="edit-dealer-vehicle-search-content-form">\
+				<div class="modal-body edit-dealer-vehicle-search-content">\
+	            </div>\
+	            <div class="modal-footer">\
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+				</div>\
+	            </form>\
+	        </div>\
+	    </div>\
+	</div>';
+
+	$(document.body).append(editDealerVehicleSearchModal);
 	
+		
+	$('a.anchor-editDealerVehicleSearchModal').on('click', function(event) {
+		
+		
+		var data = $(event.target).data('details');
+		//var json = JSON.stringify(data);
+		
+		var quotIdHiddenField = '<input type="hidden" name="carSearchId" value="' + data.carSearchId + '" />';
+		/*var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
+		if(data.moveToUser)
+		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
+		
+		
+		var editDealerVehicleSearchForm = '<form id="edit-dealer-vehicle-search-content-form"><table>\
+			<tr><td>Search ID</td><td>' + data.carSearchId + '</td></tr>\
+			<tr><td>' + quotIdHiddenField + '</td></tr>\
+			<tr><td>Model Year</td><td>' + data.modelYear + '</td></tr>\
+			<tr><td>Model Name</td><td>' + data.modelName + '</td></tr>\
+			<tr><td>Model Display</td><td>' + data.modelDisplay + '</td></tr>\
+			</table></form>';
+		
+		$(".edit-dealer-vehicle-search-content").html(editDealerVehicleSearchForm);
+	});
 	
+		
+	$.fn.convertFormDataToJSON = function(){
+		var checkboxes = [];
+		$(this).find('input:checkbox:checked').each(function(){
+			checkboxes.push($(this).attr("name"));
+		});
+		var o = {};
+	    var a = this.serializeArray();
+	    $.each(a, function() {
+	        if (o[this.name] != undefined) {
+	            if (!o[this.name].push) {
+	                o[this.name] = [o[this.name]];
+	            }
+	            if($.inArray(this.name, checkboxes) != -1)
+	              o[this.name].push('true' || '');
+	            else
+	            	o[this.name].push(this.value || '');
+	        } else {
+	        	if($.inArray(this.name, checkboxes) != -1)
+	        		o[this.name] = 'true' || '';
+		        else
+		           	o[this.name] = this.value || '';
+	        }
+	    });
+	    return JSON.stringify(o);
+	}
+
+	
+}	
+
+function registerEditDealerVehicleFinanceModal(){       
+
+
+	//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+	var editDealerVehicleFinanceModal = '<div class="modal fade" id="editDealerVehicleFinanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+	    <div class="modal-dialog">\
+	        <div class="modal-content">\
+	            <div class="modal-header">\
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+	                <h4 class="modal-title" id="myModalLabel">View Vehicle Finance Details</h4>\
+	            </div>\
+		        <form id="edit-dealer-vehicle-finance-content-form">\
+				<div class="modal-body edit-dealer-vehicle-finance-content">\
+	            </div>\
+	            <div class="modal-footer">\
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+				</div>\
+	            </form>\
+	        </div>\
+	    </div>\
+	</div>';
+
+	$(document.body).append(editDealerVehicleFinanceModal);
+	
+		
+	$('a.anchor-editDealerVehicleFinanceModal').on('click', function(event) {
+		
+		
+		var data = $(event.target).data('details');
+		//var json = JSON.stringify(data);
+		
+		var quotIdHiddenField = '<input type="hidden" name="financeSearchId" value="' + data.searchFinanceId + '" />';
+		/*var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
+		if(data.moveToUser)
+		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
+		
+		
+		var editDealerVehicleFinanceForm = '<form id="edit-dealer-vehicle-finance-content-form"><table>\
+			<tr><td>Search ID</td><td>' + data.searchFinanceId + '</td></tr>\
+			<tr><td>' + quotIdHiddenField + '</td></tr>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
+			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+			<tr><td>Vehicle Value</td><td>' + data.vehValue + '</td></tr>\
+			<tr><td>Balloon Pay</td><td>' + data.balloonPay + '</td></tr>\
+			<tr><td>Loan Amount</td><td>' + data.loanAmount + '</td></tr>\
+			<tr><td>Loan Period</td><td>' + data.loanPeriod + '</td></tr>\
+			<tr><td>Annual Income</td><td>' + data.annualIncome + '</td></tr>\
+			<tr><td>Income Type</td><td>' + data.incomeType + '</td></tr>\
+			<tr><td>Credit Rating</td><td>' + data.creditRating + '</td></tr>\
+			<tr><td>Date of Birth</td><td>' + data.dateOfBirth + '</td></tr>\
+			<tr><td>Year Employment Business</td><td>' + data.yearEmploymentBusiness + '</td></tr>\
+			<tr><td>Income Before Super Tax</td><td>' + data.incomeBeforeSuperTax + '</td></tr>\
+			<tr><td>Income After Super Tax</td><td>' + data.incomeAfterSuperTax + '</td></tr>\
+			<tr><td>If Business Provide ABN</td><td>' + data.ifBusinessProvideABN + '</td></tr>\
+			</table></form>';
+		
+		$(".edit-dealer-vehicle-finance-content").html(editDealerVehicleFinanceForm);
+	});
+	
+		
+	$.fn.convertFormDataToJSON = function(){
+		var checkboxes = [];
+		$(this).find('input:checkbox:checked').each(function(){
+			checkboxes.push($(this).attr("name"));
+		});
+		var o = {};
+	    var a = this.serializeArray();
+	    $.each(a, function() {
+	        if (o[this.name] != undefined) {
+	            if (!o[this.name].push) {
+	                o[this.name] = [o[this.name]];
+	            }
+	            if($.inArray(this.name, checkboxes) != -1)
+	              o[this.name].push('true' || '');
+	            else
+	            	o[this.name].push(this.value || '');
+	        } else {
+	        	if($.inArray(this.name, checkboxes) != -1)
+	        		o[this.name] = 'true' || '';
+		        else
+		           	o[this.name] = this.value || '';
+	        }
+	    });
+	    return JSON.stringify(o);
+	}
+
+	
+}	
+
+function registerEditDealerVehicleInsuranceModal(){       
+
+
+	//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+	var editDealerVehicleInsuranceModal = '<div class="modal fade" id="editDealerVehicleInsuranceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+	    <div class="modal-dialog">\
+	        <div class="modal-content">\
+	            <div class="modal-header">\
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+	                <h4 class="modal-title" id="myModalLabel">View Vehicle Insurance Details</h4>\
+	            </div>\
+		        <form id="edit-dealer-vehicle-insurance-content-form">\
+				<div class="modal-body edit-dealer-vehicle-insurance-content">\
+	            </div>\
+	            <div class="modal-footer">\
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+				</div>\
+	            </form>\
+	        </div>\
+	    </div>\
+	</div>';
+
+	$(document.body).append(editDealerVehicleInsuranceModal);
+	
+		
+	$('a.anchor-editDealerVehicleInsuranceModal').on('click', function(event) {
+		
+		
+		var data = $(event.target).data('details');
+		//var json = JSON.stringify(data);
+		
+		var quotIdHiddenField = '<input type="hidden" name="financeSearchId" value="' + data.searchInsuranceId + '" />';
+		/*var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
+		if(data.moveToUser)
+		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
+		
+		
+		var editDealerVehicleInsuranceForm = '<form id="edit-dealer-vehicle-insurance-content-form"><table>\
+			<tr><td>Search ID</td><td>' + data.searchInsuranceId + '</td></tr>\
+			<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model</td><td>' + data.model + '</td></tr>\
+			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+			<tr><td>insuranceType</td><td>' + data.insuranceType + '</td></tr>\
+			<tr><td>Registration No:</td><td>' + data.regNo + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+			<tr><td>Market Value</td><td>' + data.marketValue + '</td></tr>\
+			<tr><td>Agreed Value</td><td>' + data.agreedValue + '</td></tr>\
+			<tr><td>Finance</td><td>' + data.finance + '</td></tr>\
+			<tr><td>Finance Provider</td><td>'+ data.financeProvider + '</td></tr>\
+			<tr><td>Driving License Type</td><td>' + data.drivingLicenseType + '</td></tr>\
+			<tr><td>Driving License No:</td><td>' + data.drivingLicenseNo + '</td></tr>\
+			<tr><td>Driving License Issue State</td><td>' + data.drivingLicenseIssueState + '</td></tr>\
+			<tr><td>No Of AtFaults</td><td>' + data.noOfAtFaults + '</td></tr>\
+			<tr><td>Other Issues</td><td>' + data.otherIssues + '</td></tr>\
+			<tr><td>Current Ins-Prov</td><td>' + data.curInsProv + '</td></tr>\
+			<tr><td>Pref Excess Amount</td><td>' + data.prefExcessAmount + '</td></tr>\
+			<tr><td>DateOfBirth</td><td>' + data.dateOfBirth + '</td></tr>\
+			<tr><td>Age Of Additional Driver</td><td>' + data.ageOfAdditionalDriver + '</td></tr>\
+			</table></form>';
+		
+		$(".edit-dealer-vehicle-insurance-content").html(editDealerVehicleInsuranceForm);
+	});
+	
+		
+	$.fn.convertFormDataToJSON = function(){
+		var checkboxes = [];
+		$(this).find('input:checkbox:checked').each(function(){
+			checkboxes.push($(this).attr("name"));
+		});
+		var o = {};
+	    var a = this.serializeArray();
+	    $.each(a, function() {
+	        if (o[this.name] != undefined) {
+	            if (!o[this.name].push) {
+	                o[this.name] = [o[this.name]];
+	            }
+	            if($.inArray(this.name, checkboxes) != -1)
+	              o[this.name].push('true' || '');
+	            else
+	            	o[this.name].push(this.value || '');
+	        } else {
+	        	if($.inArray(this.name, checkboxes) != -1)
+	        		o[this.name] = 'true' || '';
+		        else
+		           	o[this.name] = this.value || '';
+	        }
+	    });
+	    return JSON.stringify(o);
+	}
+
+	
+}	
+
+function registerEditDealerVehicleDetailModal(){       
+
+
+	//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+	var editDealerVehicleDetailModal = '<div class="modal fade" id="editDealerVehicleDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+	    <div class="modal-dialog">\
+	        <div class="modal-content">\
+	            <div class="modal-header">\
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+	                <h4 class="modal-title" id="myModalLabel">View My Vehicle Details</h4>\
+	            </div>\
+		        <form id="edit-dealer-vehicle-detail-content-form">\
+				<div class="modal-body edit-dealer-vehicle-detail-content">\
+	            </div>\
+	            <div class="modal-footer">\
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+				</div>\
+	            </form>\
+	        </div>\
+	    </div>\
+	</div>';
+
+	$(document.body).append(editDealerVehicleDetailModal);
+	
+		
+	$('a.anchor-editDealerVehicleDetailModal').on('click', function(event) {
+		
+		
+		var data = $(event.target).data('details');
+		//var json = JSON.stringify(data);
+		
+		var quotIdHiddenField = '<input type="hidden" name="myVehicleId" value="' + data.myVehicleId + '" />';
+		/*var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
+		if(data.moveToUser)
+		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
+		
+		
+		var editDealerVehicleDetailForm = '<form id="edit-dealer-vehicle-detail-content-form"><table>\
+			<tr><td>My Vehicle ID</td><td>' + data.myVehicleId + '</td></tr>\
+			<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model</td><td>' + data.model + '</td></tr>\
+			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+			<tr><td>VIN</td><td>' + data.vin + '</td></tr>\
+			<tr><td>Registration No:</td><td>' + data.regNum + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regState + '</td></tr>\
+			<tr><td>Reg Expirty Date</td><td>' + data.regExpDate + '</td></tr>\
+			<tr><td>Insurance Provider</td><td>' + data.insProv + '</td></tr>\
+			<tr><td>Insurance Provider Man</td><td>' + data.insProvMan + '</td></tr>\
+			<tr><td>Insurance Premium Paid</td><td>'+ data.insPremPaid + '</td></tr>\
+			<tr><td>Insurance Premium Freq</td><td>' + data.insPremPaidFreq + '</td></tr>\
+			<tr><td>Insurance Expiry</td><td>' + data.insExpiry + '</td></tr>\
+			<tr><td>ODO Meter</td><td>' + data.odoMeter + '</td></tr>\
+			<tr><td>Last Service Dt</td><td>' + data.lastServiceDt + '</td></tr>\
+			<tr><td>Next Service Dt</td><td>' + data.nextServiceDt + '</td></tr>\
+			<tr><td>Next Service Kms</td><td>' + data.nextServKms + '</td></tr>\
+			<tr><td>Finance Provider</td><td>' + data.finProvider + '</td></tr>\
+			<tr><td>Loan Amount1</td><td>' + data.loanAmt1 + '</td></tr>\
+			<tr><td>Age Of Additional Driver</td><td>' + data.loanTakenDt + '</td></tr>\
+			<tr><td>Loan Paid Freq</td><td>' + data.loanPaidFreq + '</td></tr>\
+			<tr><td>Loan Period</td><td>' + data.loanPeriod + '</td></tr>\
+			<tr><td>Loan Interest</td><td>' + data.loanInterest + '</td></tr>\
+			<tr><td>Fuel Card Provider</td><td>' + data.fuelCardProvider + '</td></tr>\
+			<tr><td>value Fuel Card</td><td>' + data.valFuelCard + '</td></tr>\
+			<tr><td>Fuel Type</td><td>' + data.fuelType + '</td></tr>\
+			</table></form>';
+		
+		$(".edit-dealer-vehicle-detail-content").html(editDealerVehicleDetailForm);
+	});
+	
+		
+	$.fn.convertFormDataToJSON = function(){
+		var checkboxes = [];
+		$(this).find('input:checkbox:checked').each(function(){
+			checkboxes.push($(this).attr("name"));
+		});
+		var o = {};
+	    var a = this.serializeArray();
+	    $.each(a, function() {
+	        if (o[this.name] != undefined) {
+	            if (!o[this.name].push) {
+	                o[this.name] = [o[this.name]];
+	            }
+	            if($.inArray(this.name, checkboxes) != -1)
+	              o[this.name].push('true' || '');
+	            else
+	            	o[this.name].push(this.value || '');
+	        } else {
+	        	if($.inArray(this.name, checkboxes) != -1)
+	        		o[this.name] = 'true' || '';
+		        else
+		           	o[this.name] = this.value || '';
+	        }
+	    });
+	    return JSON.stringify(o);
+	}
+
+	
+}
+
 }
 
 // end of window onload
