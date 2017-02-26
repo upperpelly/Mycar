@@ -308,6 +308,9 @@ public class DomainModelUtil {
 		DealerSearch dealerSearch = new DealerSearch();
 		try {
 			BeanUtils.copyProperties(dealerSearch, searchVO);
+			dealerSearch.setsPostCode(searchVO.getPostCode());
+			dealerSearch.setsCarColor(searchVO.getCarColor());
+			
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
