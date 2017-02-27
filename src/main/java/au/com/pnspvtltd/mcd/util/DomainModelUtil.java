@@ -45,7 +45,6 @@ import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
-import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookStoreVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
@@ -74,8 +73,8 @@ public class DomainModelUtil {
 		UserVO userVO = new UserVO();
 		try {
 
-			org.springframework.beans.BeanUtils.copyProperties(user, userVO,
-					new String[] { "search", "searchInsurance", "searchFinance", "searchServMaint", "searchTransp", "myVehicle" });
+			org.springframework.beans.BeanUtils.copyProperties(user, userVO, new String[] { "search", "searchInsurance",
+					"searchFinance", "searchServMaint", "searchTransp", "myVehicle" });
 
 			if (!isMinified) {
 				List<SearchVO> searchVOs = new ArrayList<>();
@@ -101,7 +100,7 @@ public class DomainModelUtil {
 					searchFinanceVOs.add(searchFinanceVO);
 				}
 				userVO.setSearchFinance(searchFinanceVOs);
-				
+
 				List<MyVehicleVO> myVehicleVOs = new ArrayList<>();
 				for (MyVehicle myVehicle : user.getMyVehicle()) {
 					MyVehicleVO myVehicleVO = new MyVehicleVO();
@@ -217,24 +216,22 @@ public class DomainModelUtil {
 		return inventory;
 	}
 
-	
-	
 	// User Car/MyVehicle Details lead
-		public MyVehicle toMyVehicle(final MyVehicleVO searchVO) {
+	public MyVehicle toMyVehicle(final MyVehicleVO searchVO) {
 
-			MyVehicle search = new MyVehicle();
-			try {
-				BeanUtils.copyProperties(search, searchVO);
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return search;
+		MyVehicle search = new MyVehicle();
+		try {
+			BeanUtils.copyProperties(search, searchVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	
+		return search;
+	}
+
 	// User Car/Search Details lead
 	public Search toSearch(final SearchVO searchVO) {
 
@@ -250,59 +247,56 @@ public class DomainModelUtil {
 		}
 		return search;
 	}
-	
+
 	// User myVehicle/myVehicleLogBook Details lead
-		public MyVehicleLogBook toLogBook(final MyVehicleLogBookVO searchVO) {
+	public MyVehicleLogBook toLogBook(final MyVehicleLogBookVO searchVO) {
 
-			MyVehicleLogBook search = new MyVehicleLogBook();
-			try {
-				BeanUtils.copyProperties(search, searchVO);
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return search;
+		MyVehicleLogBook search = new MyVehicleLogBook();
+		try {
+			BeanUtils.copyProperties(search, searchVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return search;
+	}
 
+	// User myVehicle/myVehicleFuelExpenses Details lead
+	public MyVehicleFuelExpenses toFuelExpenses(final MyVehicleFuelExpensesVO searchVO) {
 
-		// User myVehicle/myVehicleFuelExpenses Details lead
-				public MyVehicleFuelExpenses toFuelExpenses(final MyVehicleFuelExpensesVO searchVO) {
+		MyVehicleFuelExpenses search = new MyVehicleFuelExpenses();
+		try {
+			BeanUtils.copyProperties(search, searchVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return search;
+	}
 
-					MyVehicleFuelExpenses search = new MyVehicleFuelExpenses();
-					try {
-						BeanUtils.copyProperties(search, searchVO);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return search;
-				}
+	// User myVehicle/myVehicleFuelExpenses Details lead
+	public MyVehicleServMaint toServMaint(final MyVehicleServMaintVO searchVO) {
 
+		MyVehicleServMaint search = new MyVehicleServMaint();
+		try {
+			BeanUtils.copyProperties(search, searchVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return search;
+	}
 
-				// User myVehicle/myVehicleFuelExpenses Details lead
-				public MyVehicleServMaint toServMaint(final MyVehicleServMaintVO searchVO) {
-
-					MyVehicleServMaint search = new MyVehicleServMaint();
-					try {
-						BeanUtils.copyProperties(search, searchVO);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return search;
-				}
-
-				
-		// Dealer Vehicle Lead
+	// Dealer Vehicle Lead
 	public DealerSearch toDealerSearch(final SearchVO searchVO) {
 
 		DealerSearch dealerSearch = new DealerSearch();
@@ -310,7 +304,7 @@ public class DomainModelUtil {
 			BeanUtils.copyProperties(dealerSearch, searchVO);
 			dealerSearch.setsPostCode(searchVO.getPostCode());
 			dealerSearch.setsCarColor(searchVO.getCarColor());
-			
+
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -443,6 +437,39 @@ public class DomainModelUtil {
 		}
 
 		return dealerVO;
+	}
+
+	public DealerSearchVO fromDealerSearch(final DealerSearch dealerSearch) {
+		DealerSearchVO searchVO = new DealerSearchVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+
+	public DealerSearchInsuranceVO fromDealerSearchInsurance(final DealerSearchInsurance dealerSearchInsurance) {
+		DealerSearchInsuranceVO dealerSearchInsuranceVO = new DealerSearchInsuranceVO();
+		try {
+			BeanUtils.copyProperties(dealerSearchInsuranceVO, dealerSearchInsurance);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchInsuranceVO;
+	}
+
+	public DealerSearchFinanceVO fromDealerSearchFinance(final DealerSearchFinance dealerSearchFinance) {
+		DealerSearchFinanceVO dealerSearchFinanceVO = new DealerSearchFinanceVO();
+		try {
+			BeanUtils.copyProperties(dealerSearchFinanceVO, dealerSearchFinance);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchFinanceVO;
 	}
 
 	public Dealer toDealer(final DealerVO dealerVO) {
