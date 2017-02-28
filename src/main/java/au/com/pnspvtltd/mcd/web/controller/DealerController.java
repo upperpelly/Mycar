@@ -18,9 +18,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.service.DealerService;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
-import au.com.pnspvtltd.mcd.web.model.UserVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 @RestController
 public class DealerController {
@@ -91,5 +96,46 @@ public class DealerController {
 		response.setStatus(HttpStatus.CREATED.value());
 		return dealerService.addInventory(inventoryVO);
 	}
+	
+	@GetMapping(value = "dealer/{id}/inventory", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<InventoryVO> getInventory(@PathVariable Long id) {
+		LOGGER.debug("Received request to get Dealer Inventory with id {} ", id);
+		return dealerService.getInventory(id);
+	}
 
+	@GetMapping(value = "dealer/{id}/search", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<DealerSearchVO> getDealerSearch(@PathVariable Long id) {
+		LOGGER.debug("Received request to get Dealer Search with id {} ", id);
+		return dealerService.getDealerSearch(id);
+	}
+	
+	@GetMapping(value = "dealer/{id}/searchInsurance", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<DealerSearchInsuranceVO> getDealerSearchInsurance(@PathVariable Long id) {
+		LOGGER.debug("Received request to get Dealer Search Insurance with id {} ", id);
+		return dealerService.getDealerSearchInsurance(id);
+	}
+	
+	@GetMapping(value = "dealer/{id}/searchFinance", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<DealerSearchFinanceVO> getDealerSearchFinance(@PathVariable Long id) {
+		LOGGER.debug("Received request to get Dealer Search Finance with id {} ", id);
+		return dealerService.getDealerSearchFinance(id);
+	}
+	
+	@GetMapping(value = "dealer/{id}/vehicleQuotation", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<VehicleQuotationVO> getDealerVehicleQuotation(@PathVariable Long id) {
+		LOGGER.debug("Received request to get Dealer Vehicle Quotation with id {} ", id);
+		return dealerService.getDealerVehicleQuotation(id);
+	}
+	
+	@GetMapping(value = "dealer/{id}/insuranceQuotation", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<InsuranceQuotationVO> getDealerInsuranceQuotation(@PathVariable Long id) {
+		LOGGER.debug("Received request to get Dealer Insurance Quotation with id {} ", id);
+		return dealerService.getDealerInsuranceQuotation(id);
+	}
+	
+	@GetMapping(value = "dealer/{id}/financeQuotation", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<FinanceQuotationVO> getDealerFinanceQuotation(@PathVariable Long id) {
+		LOGGER.debug("Received request to get Dealer Finance Quotation with id {} ", id);
+		return dealerService.getDealerFinanceQuotation(id);
+	}
 }

@@ -1,11 +1,10 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
-import java.util.List;
 
 public class DealerSearchVO {
 
-	private Long dealSearchId;
+	private Long dealerSearchId;
 	private String extraExter2;
 	private String extraExter3;
 	private String extraExter4;
@@ -252,12 +251,12 @@ public class DealerSearchVO {
 		this.ageOfAdditionalDriver = ageOfAdditionalDriver;
 	}
 
-	public Long getDealSearchId() {
-		return this.dealSearchId;
+	public Long getDealerSearchId() {
+		return this.dealerSearchId;
 	}
 
-	public void setDealSearchId(Long dealSearchId) {
-		this.dealSearchId = dealSearchId;
+	public void setDealerSearchId(Long dealerSearchId) {
+		this.dealerSearchId = dealerSearchId;
 	}
 
 	// carQuery

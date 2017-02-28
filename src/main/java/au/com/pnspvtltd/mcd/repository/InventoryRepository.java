@@ -21,4 +21,6 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 	" ORDER BY inv.price")
 	public List<InventoryVO> getPriceAndVendorStockInventoryFor(String modelYear, String modelDisplay, String modelName,
 			String modelTrim);
+	
+	public List<Inventory> findByDealer(Dealer dealer);
 }

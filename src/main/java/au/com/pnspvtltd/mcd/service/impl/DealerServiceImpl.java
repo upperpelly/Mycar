@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import au.com.pnspvtltd.mcd.domain.Dealer;
+import au.com.pnspvtltd.mcd.domain.DealerSearch;
+import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
+import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
@@ -19,9 +22,13 @@ import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.repository.DealerRepository;
 import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
+import au.com.pnspvtltd.mcd.repository.InventoryRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
@@ -35,6 +42,8 @@ public class DealerServiceImpl implements DealerService {
 
 	@Autowired
 	private DealerRepository dealerRepository;
+	@Autowired
+	private InventoryRepository InventoryRepository;
 	@Autowired
 	private VehicleQuotationRepository vehicleQuotationRepository;
 	@Autowired
@@ -50,9 +59,9 @@ public class DealerServiceImpl implements DealerService {
 		Dealer dealer = dealerRepository.findOne(id);
 		DealerVO dealerVO = null;
 		if(dealer != null){
-			dealerVO = domainModelUtil.fromDealer(dealer, false);
+			dealerVO = domainModelUtil.fromDealer(dealer, true);
 			
-			List<VehicleQuotation> vehicleQuotations = vehicleQuotationRepository.findByDealerId(id);
+			/*List<VehicleQuotation> vehicleQuotations = vehicleQuotationRepository.findByDealerId(id);
 			List<VehicleQuotationVO> vehicleQuotationVOs = new ArrayList<>();
 			for (VehicleQuotation vehicleQuotation : vehicleQuotations) {
 				vehicleQuotationVOs.add(domainModelUtil.fromVehicleQuotation(vehicleQuotation));
@@ -72,7 +81,7 @@ public class DealerServiceImpl implements DealerService {
 				financeQuotationVOs.add(domainModelUtil.fromFinanceQuotation(financeQuotation));
 			}
 			dealerVO.setFinanceQuotation(financeQuotationVOs);
-
+*/
 			
 		}
 		return dealerVO;
@@ -134,6 +143,76 @@ public class DealerServiceImpl implements DealerService {
 		dealer.getInventory().add(inventory);
 		dealerRepository.flush();
 		return "{\"dealerId\":" + dealer.getDealerId() + ",\"inventoryId\":" + inventory.getRepoId() + "}";
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<InventoryVO> getInventory(Long dealerId) {
+		Dealer dealer = new Dealer();
+		dealer.setDealerId(dealerId);
+		
+		List<InventoryVO> inventoryList = new ArrayList<>();
+		
+		for(Inventory inventory : InventoryRepository.findByDealer(dealer)){
+			inventoryList.add(domainModelUtil.fromInventory(inventory, true));
+		}
+		return inventoryList;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<DealerSearchVO> getDealerSearch(Long dealerId) {
+		List<DealerSearchVO> dealerSearchList = new ArrayList<>(); 
+		for(DealerSearch dealerSearch : dealerRepository.findOne(dealerId).getDealSearch()){
+			dealerSearchList.add(domainModelUtil.fromDealerSearch(dealerSearch));
+		}
+		return dealerSearchList;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<DealerSearchInsuranceVO> getDealerSearchInsurance(Long dealerId) {
+		List<DealerSearchInsuranceVO> dealerSearchInsuranceList = new ArrayList<>(); 
+		for(DealerSearchInsurance dealerSearchInsurance : dealerRepository.findOne(dealerId).getDealSearchInsurance()){
+			dealerSearchInsuranceList.add(domainModelUtil.fromDealerSearchInsurance(dealerSearchInsurance));
+		}
+		return dealerSearchInsuranceList;
+	}
+
+	@Override
+	public List<DealerSearchFinanceVO> getDealerSearchFinance(Long dealerId) {
+		List<DealerSearchFinanceVO> dealerSearchFinanceList = new ArrayList<>(); 
+		for(DealerSearchFinance dealerSearchFinance : dealerRepository.findOne(dealerId).getDealSearchFinance()){
+			dealerSearchFinanceList.add(domainModelUtil.fromDealerSearchFinance(dealerSearchFinance));
+		}
+		return dealerSearchFinanceList;
+	}
+
+	@Override
+	public List<VehicleQuotationVO> getDealerVehicleQuotation(Long dealerId) {
+		List<VehicleQuotationVO> vehicleQuotationVOs = new ArrayList<>();
+		for (VehicleQuotation vehicleQuotation : vehicleQuotationRepository.findByDealerId(dealerId)) {
+			vehicleQuotationVOs.add(domainModelUtil.fromVehicleQuotation(vehicleQuotation));
+		}
+		return vehicleQuotationVOs; 
+	}
+
+	@Override
+	public List<InsuranceQuotationVO> getDealerInsuranceQuotation(Long dealerId) {
+		List<InsuranceQuotationVO> insuranceQuotationVOs = new ArrayList<>();
+		for (InsuranceQuotation insuranceQuotation : insuranceQuotationRepository.findByDealerId(dealerId)) {
+			insuranceQuotationVOs.add(domainModelUtil.fromInsuranceQuotation(insuranceQuotation));
+		}
+		return insuranceQuotationVOs; 
+	}
+
+	@Override
+	public List<FinanceQuotationVO> getDealerFinanceQuotation(Long dealerId) {
+		List<FinanceQuotationVO> financeQuotationVOs = new ArrayList<>();
+		for (FinanceQuotation financeQuotation : financeQuotationRepository.findByDealerId(dealerId)) {
+			financeQuotationVOs.add(domainModelUtil.fromFinanceQuotation(financeQuotation));
+		}
+		return financeQuotationVOs;
 	}
 
 }
