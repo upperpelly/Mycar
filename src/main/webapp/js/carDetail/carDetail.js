@@ -1,6 +1,35 @@
 /**
  * Its all about Car detail screen
  */
+// Check if "key" exists in the storage
+var value = $.jStorage.get("key");
+if(!value){
+    // if not - load the data from the server
+//alert("can inside");
+    value = load_data_from_server()
+    // and save it
+    $.jStorage.set("key",value);
+}
+//alert("can"+value.userId);
+
+
+var value1 = $.jStorage.get("carKey");
+if(!value1){
+    // if not - load the data from the server
+//alert("can inside");
+    value1 = load_data_from_server()
+    // and save it
+    $.jStorage.set("carKey",value1);
+}
+//alert(value1.priceMin+"&priceMax="+value1.priceMax+"I can user");
+
+function signingout(){
+	
+	 $.jStorage.deleteKey("key");
+	 $.jStorage.deleteKey("carKey");
+	 alert("Successfully Logged Out");
+	 window.location="homepage10.html";
+}
 
 var modelYear=null;
     var modelDisplay =null;
@@ -14,46 +43,54 @@ var modelYear=null;
     {
     	/* alert("pageName 11  now "); */
     	
-    	var priceMin = URL.getParameter('price');
+    	var priceMin = value1.priceMin;
     	document.getElementById('minValue').innerHTML=priceMin;
     	
-    	var priceMax = URL.getParameter('priceMax');
+    	var priceMax = value1.priceMax;
     	document.getElementById('maxValue').innerHTML=priceMax;
     	
-    	var insMin = URL.getParameter('insMin');
+    	var insMin = value1.insMin;
     	document.getElementById('insMin').innerHTML=insMin;
     	
-    	var insMax = URL.getParameter('insMax');
+    	var insMax = value1.insMax;
     	document.getElementById('insMax').innerHTML=insMax;
     	
-    	var avgSavMin = URL.getParameter('avgSavMin');
+    	var avgSavMin = value1.avgSavMin;
     	document.getElementById('avgSavMin').innerHTML=avgSavMin;
     	
-    	var avgSavMax = URL.getParameter('avgSavMax');
+    	var avgSavMax = value1.avgSavMax;
     	document.getElementById('avgSavMax').innerHTML=avgSavMax;
     	
-    	var finMin = URL.getParameter('finMin');
+    	var finMin = value1.finMin;
     	document.getElementById('finMin').innerHTML=finMin;
     	
-    	var finMax = URL.getParameter('finMax');
+    	var finMax = value1.finMax;
     	document.getElementById('finMax').innerHTML=finMax;
     	
-    	var noDealers = URL.getParameter('noDealers');
+    	var noDealers = value1.noDealers;
     	document.getElementById('noDealers').innerHTML=noDealers;
     	
-    	var noStock = URL.getParameter('noStock');
+    	var noStock = value1.noStock;
     	document.getElementById('noStock').innerHTML=noStock;
-    	modelYear = URL.getParameter('modelYear');
-    	modelDisplay = URL.getParameter('modelDisplay');
-    	modelName = URL.getParameter('modelName');
-    	modelTrim = URL.getParameter('modeltrim');
-    	trimValue = URL.getParameter('trimValue');
-    	firstName = URL.getParameter('firstName');
-    	userId = URL.getParameter('userId');
+    	modelYear = value1.modelYear;
+    	modelDisplay = value1.modelDisplay;
+    	modelName = value1.modelName;
+    	modelTrim = value1.modelTrim;
+    	trimValue = value1.trimValue;
+    	firstName = value.firstName;
+    	userId = value.userId;
+    	
+    	/*alert("yr"+modelYear);
+    	alert("model"+modelDisplay);
+    	alert("Make"+modelName);
+    	alert("modelTrim"+modelTrim);
+    	alert("trimValue"+trimValue);
+    	alert("firstName"+firstName)
+    	
     	alert(userId);
-    	alert("inside abc userid"+firstName);
+    	alert("inside abc userid"+firstName);*/
     	if(userId!= null){
-			alert(firstName);
+			//alert(firstName);
 			document.getElementById('welcomeDiv').style.display = "block";
 			document.getElementById('welcomeDiv1').style.display = "none";
 			document.getElementById('userId').innerHTML="<b>"+"Hi "+firstName+"</b>";
@@ -75,9 +112,10 @@ var modelYear=null;
     
 
     function redirect() {
-    	alert("Thank You. Your Seach ID is ");
-    	alert("userid"+userId);
-    	var url="dashboard1.html?userId="+userId+"&searchId="+searchId+"&firstName="+firstName;
+    	alert("Thank You. Your are redirected.. ");
+    	//alert("userid"+userId);
+    	var url="dashboard1.html";
+    	//var url="dashboard1.html?userId="+userId+"&searchId="+searchId+"&firstName="+firstName;
     	
     	window.location=url;
     }
@@ -125,8 +163,8 @@ alert("Came here"+modelDisplay);
 alert("Came here"+modelName);
 alert("Came here"+modelTrim);							
  */														
- 														alert("submit form");
- 														alert(userId);
+ 														//alert("submit form");
+ 														//alert(userId);
 														var jsonInputToAPI = 
 														{
 																"userId":99,
@@ -230,7 +268,8 @@ alert("Came here"+modelTrim);
 																		}).success(function(data) {
 																			$body.removeClass("loading");
 																			alert("Successfully Stored.. ");
-																			var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId+"&firstName="+firstName;
+																			var url="dashboard1.html";
+																			/*var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId+"&firstName="+firstName;*/
 																							alert("Thank You. Your Seach ID is " + data.searchId);
 																							window.location=url;								
 																						}); 

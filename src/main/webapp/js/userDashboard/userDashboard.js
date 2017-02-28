@@ -1,3 +1,21 @@
+// Check if "key" exists in the storage
+var value = $.jStorage.get("key");
+if(!value){
+    // if not - load the data from the server
+//alert("can inside");
+    value = load_data_from_server()
+    // and save it
+    $.jStorage.set("key",value);
+}
+//alert("can"+value.userId);
+
+function signingout(){
+	
+	 $.jStorage.deleteKey("key");
+	 $.jStorage.deleteKey("carKey");
+	 alert("Successfully Logged Out");
+	 window.location="homepage10.html";
+}
 var userId;
 var firstName;
 
@@ -30,12 +48,13 @@ var FullURL= window.location.search.substring(1);
 	}
 	/* alert("pageName 11  now "); */
 	
-	userId = parseURLParameter('userId');
+	userId = value.userId;
+	firstName = value.firstName;
 	//userId="71";
 	//document.getElementById('minValue').innerHTML=priceMin;
-	document.getElementById('firstName').innerHTML=firstName;
-	var searchId = parseURLParameter('searchId');
-	firstName = parseURLParameter('firstName');
+	document.getElementById('firstName').innerHTML=value.firstName;
+	//var searchId = parseURLParameter('searchId');
+	
 	if(userId!= null){
 		//alert(firstName);
 		document.getElementById('welcomeDiv').style.display = "block";

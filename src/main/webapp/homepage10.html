@@ -67,7 +67,7 @@ body.loading .modal {
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
+
 <script>function showDiv1() {
 	alert("came here");
 	var carquery = new CarQuery();
@@ -88,14 +88,17 @@ body.loading .modal {
     {
     	/* alert("pageName 11  now "); */
     	
-    	userId = URL.getParameter('userId');
-    	
-    	firstName = URL.getParameter('firstName');	}
-alert("in onload now"); 
+    	if(alreadyLogged()){
+    		var value = $.jStorage.get("key");
+    		document.getElementById('welcomeDiv').style.display = "block";
+			document.getElementById('welcomeDiv1').style.display = "none";
+			document.getElementById('userId').innerHTML="<b>"+"Hi "+value.firstName+"</b>";
+    	} 
     }
     
 	</script>
 <script>
+<!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 		window.fbAsyncInit = function() {
 			FB.init({
 				appId : '249863545451459',
@@ -321,8 +324,42 @@ $.ajax({
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 <script src="js/angular-resource.js"></script>
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="js/jstorage.js"></script>
+<script type="text/javascript">
+function setting(data){
+//var value = {"myVehicleId":10,"postalCode":0,"year":2016,"make":"honda","model":"Accord Hybrid","variant":"67748","vin":"22","regNum":"22","regState":"67748","regExpDate":null,"insProv":"ACT","insProvMan":"INs","insPremPaid":22,"insPremPaidFreq":"Weekly ","insExpiry":null,"odoMeter":"22","lastServiceDt":null,"nextServiceDt":null,"nextServKms":22,"finProvider":"Red","loanAmt1":22,"loanTakenDt":null,"loanPaidFreq":"Red","loanAmt2":22,"loanPeriod":22,"loanInterest":22,"fuelCardProvider":"Manual Entry","valFuelCard":"22","fuelType":"Petrol","photo1":"","photo2":"","photo3":"","flex1":"flex1","flex2":"flex1","flex3":"flex1","flex4":"flex1","flex5":12,"flex6":12,"flex7":12,"flex8":null,"flex9":null,"myVehicleLogBook":[],"myVehicleFuelExpenses":[],"myVehicleServMaint":[]};
+$.jStorage.set("key",data);
+$.jStorage.setTTL("mykey", 30000); // expires in 3 seconds
+         // alert("came here");
 
+}
+
+function alreadyLogged(){
+	var value = $.jStorage.get("key");
+	//alert("Checking logged or not");
+	if(!value){
+	    // if not - return false
+	return false;
+	}
+	else{
+		//alert("Successfully logged in..");
+		return true;
+	}
+	
+
+}
+
+function carDetailHtml(data){
+	//var value = {"myVehicleId":10,"postalCode":0,"year":2016,"make":"honda","model":"Accord Hybrid","variant":"67748","vin":"22","regNum":"22","regState":"67748","regExpDate":null,"insProv":"ACT","insProvMan":"INs","insPremPaid":22,"insPremPaidFreq":"Weekly ","insExpiry":null,"odoMeter":"22","lastServiceDt":null,"nextServiceDt":null,"nextServKms":22,"finProvider":"Red","loanAmt1":22,"loanTakenDt":null,"loanPaidFreq":"Red","loanAmt2":22,"loanPeriod":22,"loanInterest":22,"fuelCardProvider":"Manual Entry","valFuelCard":"22","fuelType":"Petrol","photo1":"","photo2":"","photo3":"","flex1":"flex1","flex2":"flex1","flex3":"flex1","flex4":"flex1","flex5":12,"flex6":12,"flex7":12,"flex8":null,"flex9":null,"myVehicleLogBook":[],"myVehicleFuelExpenses":[],"myVehicleServMaint":[]};
+	$.jStorage.set("carKey",data);
+	$.jStorage.setTTL("userSession", 30000); // expires in 3 seconds
+	          //alert("came here user");
+
+	}
+</script>
 <script>
+
 var userId=null;
 email=null;
 flex1=null;
@@ -365,14 +402,18 @@ firstName =null;
 				data: jsonInputToAPI
 								
 			}).success(function(data) {
-				alert("successful Login");
-				alert("userid"+data.userId);
+				alert("successful Login will set session");
+				setting(data);
+				/* $.jStorage.set("key",data);
+				$.jStorage.setTTL("key", 3000); // expires in 3 seconds
+				          alert("successfully set to session key"+data.userId);*/
+				//alert("userid"+data.userId);
 				userId=data.userId;
 				firstName=data.firstName;
-				alert(data.firstName);
+				//alert(data.firstName); 
 				document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
 				if(userId!= null){
-					alert(data.firstName);
+					//alert(data.firstName);
 					document.getElementById('welcomeDiv').style.display = "block";
 					document.getElementById('welcomeDiv1').style.display = "none";
 					document.getElementById('userId').innerHTML="<b>"+"Hi "+data.firstName+"</b>";
@@ -392,7 +433,7 @@ firstName =null;
 // social login start
 
 $scope.submitForm1 = function() {
-	alert("invoke");
+	//alert("invoke");
 		/*alert($scope.email);
 		alert(email); */
 		var jsonInputToAPI = {"userId":73,"password":"Sairam","abnNumber":"s121s","firstName":"muf","lastName":"ss","email":"ss@gmail.com","mobile":98,"landLine":98,"streetNumber":"ss","streetName":"ss","areaName":"ss","subOrb":"ss","state":"ss","postCode":98,"drivingLicense":"ss","issueState":"ss","facebook":false,"payDeposit":true,"search":null,"searchInsurance":null,"searchFinance":null,"searchServMaint":null,"searchTransp":null,"vehicleQuotation":null,"insuranceQuotation":null,"financeQuotation":null};
@@ -400,7 +441,7 @@ $scope.submitForm1 = function() {
 		jsonInputToAPI.firstName=flex1;
 		jsonInputToAPI.lastName=flex1;
 		
-		alert(flex1);
+		//alert(flex1);
 		var wsURL = 'api/user/login/social';
 		//var wsURL = 'http://localhost:8080/MyCarDomain/api/user/login/social';
 		//  var wsURL = 'http://www.autoscoop.com.au/api/user/login/social';
@@ -418,13 +459,18 @@ $scope.submitForm1 = function() {
 				data: jsonInputToAPI
 								
 			}).success(function(data) {
-				alert("successful");
-				alert("userid"+userId);
+				alert("successful login set to session");
+				setting(data);
+				/* $.jStorage.set("key",data);
+				$.jStorage.setTTL("key", 3000); // expires in 3 seconds
+				          alert("successfully set to session key"+data.userId); */
+				//alert("userid"+data.userId);
+				//alert("userid"+userId);
 				userId=data.userId;
 				firstName=data.firstName;
 				document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>';
 				if(userId!= null){
-					alert(data.firstName);
+					//alert(data.firstName);
 					document.getElementById('welcomeDiv').style.display = "block";
 					document.getElementById('welcomeDiv1').style.display = "none";
 					document.getElementById('userId').innerHTML="<b>"+"Hi "+data.firstName+"</b>";
@@ -442,7 +488,7 @@ $scope.submitForm1 = function() {
 	
 	// Insurance lead post
 	$scope.postInsuranceLead = function() {
-	alert("invoke in ins lead");
+	//alert("invoke in ins lead");
 		/*alert($scope.email);
 		alert(email); */
 		var jsonInputToAPI = {"userId":userId,
@@ -526,7 +572,7 @@ $scope.submitForm1 = function() {
 			}).success(function(data) {
 				alert("successfully stored");
 				alert("Redirecting to Dashboard..");
-				var url="dashboard1.html?userId="+userId+"&firstName="+firstName;
+				var url="dashboard1.html";
 				
 				window.location=url;
 				/* document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>'; */
@@ -608,7 +654,7 @@ $scope.submitForm1 = function() {
 			}).success(function(data) {
 				alert("successfully stored");
 				alert("Redirecting to Dashboard..");
-				var url="dashboard1.html?userId="+userId+"&firstName="+firstName;
+				var url="dashboard1.html";
 				
 				window.location=url;
 				/* document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>'; */
@@ -685,20 +731,29 @@ var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&
 							var modelName=$('#car-models').val();
 							var trimValue=$('#car-model-trims').val();
 							//alert ("model"+modelYear);
-							
+							if(alreadyLogged()){
 							$.ajax({
 					            url: wsURL,
 					            type: 'GET',
 					            success: function (data) {
+					            	data.modelYear=modelYear;
+					            	data.modelDisplay=modelDisplay;
+					            	data.modelName=modelName;
+					            	data.trimValue=trimValue;
 					            	
-										var url="abc.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
-												"&modelYear="+modelYear+"&modelDisplay="+modelDisplay+"&modelName="+modelName+"&modeltrim="+strUser+"&trimValue="+trimValue+"&userId="+userId+"&firstName="+firstName;
+					            	carDetailHtml(data);
+					            	
+										/* var url="abc.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
+												"&modelYear="+modelYear+"&modelDisplay="+modelDisplay+"&modelName="+modelName+"&modeltrim="+strUser+"&trimValue="+trimValue+"&userId="+userId+"&firstName="+firstName; */
 										/* alert(url); */ 
+										
+										var url="abc.html";
 										window.location = url;
 					            }
 					        });
 							
-							
+							}
+							else{alert("Please Login and Build")}
 
 							// start
 							
@@ -712,12 +767,13 @@ var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&
 						};
 
 					});
+	
 </script>
 <script>
 function redirect() {
 	alert("Thank You. Your Seach ID is ");
 	alert("userid"+userId);
-	var url="dashboard1.html?userId="+userId+"&firstName="+firstName;
+	var url="dashboard1.html";
 	
 	window.location=url;
 }</script>
