@@ -6,7 +6,7 @@ var value = $.jStorage.get("key");
 if(!value){
     // if not - load the data from the server
 //alert("can inside");
-    value = load_data_from_server()
+    /*value = ()*/
     // and save it
     $.jStorage.set("key",value);
 }
@@ -17,7 +17,7 @@ var value1 = $.jStorage.get("carKey");
 if(!value1){
     // if not - load the data from the server
 //alert("can inside");
-    value1 = load_data_from_server()
+    /*value1 = load_data_from_server()*/
     // and save it
     $.jStorage.set("carKey",value1);
 }
@@ -125,46 +125,14 @@ var modelYear=null;
     
     
 
-	var mainApp1 = angular.module("mainApp1", [ 'ui.bootstrap', 'ngResource' ]);
-	mainApp1.controller('overviewController', function($scope, $stateParams) {
-	    var index = $stateParams.index;
-	    var anotherKey = $stateParams.anotherKey;
-	});
-	mainApp1
-			.controller(
-					'myController1',
-					function($scope,$http) {
-
-						$scope.predicate = 'name';
-						$scope.reverse = true;
-						$scope.currentPage = 1;
-						$scope.order = function(predicate) {
-							$scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse
-									: false;
-							$scope.predicate = predicate;
-						};
-
-						$scope.updatePagination = function() {
-							$scope.totalItems = $scope.biil.details.length;
-							$scope.numPerPage = 5;
-							$scope.paginate = function(value) {
-								var begin, end, index;
-								begin = ($scope.currentPage - 1)
-										* $scope.numPerPage;
-								end = begin + $scope.numPerPage;
-								index = $scope.biil.details.indexOf(value);
-								return (begin <= index && index < end);
-							};
-						};
-						function submitSearchForm() {
-													
-/* alert("Came here"+modelYear);
-alert("Came here"+modelDisplay);
-alert("Came here"+modelName);
-alert("Came here"+modelTrim);							
- */														
- 														//alert("submit form");
- 														//alert(userId);
+	var mainApp1 = angular.module("mainApp1", []);
+	mainApp1.controller('myController1',function($scope,$http) {
+		alert("inside c");
+		$scope.submitSearchForm = function (isValid) {													
+ 														alert("submit form");
+ 														alert(isValid);
+													if(isValid)
+														{
 														var jsonInputToAPI = 
 														{
 																"userId":99,
@@ -224,7 +192,7 @@ alert("Came here"+modelTrim);
 																	"marketValue":$('#marketValue').val(),
 																	"agreedValue":$('#agreedValue').val(),
 																	"otherIssues":$('#OtherIssue').val(),
-																	"prefExcessAmount":$('#insurance-excessAmount').val(),
+																	"prefExcessAmount":$('#insuranceExcessAmount').val(),
 																	"drivingLicenceType":$('#drivingLicenseType').val(),
 																	"drivingLicenceNumber":$('drivingLicenseNumber').val(),
 																	"drivingLicenceIssuingState":$('drivingLicenseIssuingState').val(),
@@ -238,29 +206,11 @@ alert("Came here"+modelTrim);
 														$body = $("body");
 														$body.addClass("loading");
 													   
-													    
-													    	
-												
-															
-															
 														//alert("Before Call");
 														var wsURL = 'api/eBid/car';
 														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/car';
 														//var wsURL = 'http://www.autoscoop.com.au/api/eBid/car';
-														/* 
-														$.ajax({  
-			type: "POST",  
-			url: wsURL,
-			data: jsonInputToAPI,
-			contentType:'application/json',
-			success: function(data){
-				alert("Successfully Stored.. ");
-				var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId+"&firstName="+firstName;
-								alert("Thank You. Your Search ID is " + data.searchId);
-								window.location=url;	
-				
-			}
-		}); */							   $http({
+																   $http({
 																			method : 'POST',
 																			url : wsURL,
 																			data: jsonInputToAPI
@@ -273,19 +223,14 @@ alert("Came here"+modelTrim);
 																							alert("Thank You. Your Seach ID is " + data.searchId);
 																							window.location=url;								
 																						}); 
-
-								
-														
+														}
+													else
+														{
+														alert("invalid");
+														//$("form:input.ng-invalid,select.ng-invalid").first().focus();
+														$('input.ng-invalid').first().focus();
+														$('select.ng-invalid').first().focus();
+														}
+																										
 													};
-
-					    
-
-						$scope.submitSearchForm = submitSearchForm;
-						$scope.init = function() {
-							$scope.biil = {
-								details : []
-							};
-							$scope.submitForm();
-						};
-
 					});

@@ -35,6 +35,13 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 // ]]&gt;</script>
 
 <style type="text/css">
+
+input.ng-invalid.ng-dirty{
+	border:2px solid red;
+}
+select.ng-invalid{
+	border:2px solid red;
+}
 .modal {
     display:    none;
     position:   fixed;
@@ -199,8 +206,8 @@ body.loading .modal {
 <script type="text/javascript" src="js/atooltip.jquery.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script src="js/carquery.0.3.4.js" type="text/javascript"></script>
-<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css12/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css12/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <script type="text/javascript" src="js/jquery-1.5.2.js"></script>
 <script type="text/javascript" src="js/cufon-yui.js"></script>
@@ -267,7 +274,7 @@ function onSignInG()
 {
 	gapi.load('auth2', function() {
 		  auth2 = gapi.auth2.init({
-		    client_id: '814821459166-2snv3tdshqgusiuhjnuoedrg0akt83ol.apps.googleusercontent.com',
+		    client_id: '814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com',
 		    });
 
 		  // Sign the user in, and then retrieve their ID.
@@ -1385,24 +1392,22 @@ section#content {
 										<div class="tab-content">
 											<!-- BEGIN: FLIGHT SEARCH -->
 											<div role="tabpanel" class="tab-pane active" id="flight">
-												<form class="form-inline signup" name="invForm" ng-submit="submitForm()"
-													>
+												<form class="form-inline signup" name="ebidfrm" ng-submit="submitForm()" novalidate>
 
-													<div class="col-md-12 product-search-title">Ebbiding
-														for car</div>
+													<div class="col-md-12 product-search-title">eBidding for car</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="checkbox">
-														<label> <input type="checkbox"><span
+														<label> <input type="checkbox" name="newUsed"><span
 															class="skin-color">New</span></a>.
 														</label>
 													</div>
 
 
 													<div class="checkbox">
-														<label> <input type="checkbox"><span
+														<label> <input type="checkbox" name="newUsed><span
 															class="skin-color">Used</span></a>.
 														</label>
 													</div>
@@ -1411,41 +1416,41 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Year</label>
 														<div class="selector">
-															<select id="car-years" name="car-years"
-																class="full-width">
-
+															<select id="car-years" name="caryears" ng-model="caryears" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Make</label>
 														<div class="selector">
-															<select id="car-makes" name="car-makes"
-																class="full-width">
-
+															<select id="car-makes" name="carmakes" ng-model="carmakes" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Model</label>
 														<div class="selector">
-															<select id="car-models" name="car-models"
-																class="full-width">
-
+															<select id="car-models" name="carmodels" ng-model="carmodels" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span ng-show="ebidfrm.carmodels.$error.required && (!ebidfrm.carmodels.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Variant</label>
 														<div class="selector">
-															<select id="car-model-trims" name="car-model-trims"
-																class="full-width">
-
+															<select id="car-model-trims" name="carmodeltrims"  ng-model="carmodeltrims"
+																class="full-width" required>
 															</select>
 														</div>
+														<span ng-show="ebidfrm.carmodeltrims.$error.required && (!ebidfrm.carmodeltrims.$pristine || ebidfrm.$submitted)"><b>Car Variant is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 
@@ -1464,8 +1469,8 @@ section#content {
 													</div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<button type="submit" hidden="hidden"
-														ng-click="submitForm1()"></button>
+													<!-- <button type="submit" hidden="hidden"
+														ng-click="submitForm1()"></button> -->
 													<br /> <br /> 
 													<div class="social col-md-12 col-sm-12">
 														<a href="#"><i class="fa fa-facebook"
@@ -1481,10 +1486,13 @@ section#content {
 													<br /> <br /> 
 													<div>
 
-														<div class="form-group col-md-6 col-sm-6">
-															<input type="email" class="input-text full-width"
+														<div class="col-md-6 col-sm-6" ng-class="{'has-error':!ebidfrm.email.$valid,'has-success':ebidfrm.email.$valid}">
+															<input type="email" class="input-text full-width" name="email" ng-model="email"
 																id="exampleEmail"
-																placeholder="Email / Mobile Number">
+																placeholder="Email / Mobile Number" required>
+															<span ng-show="ebidfrm.email.$error.required && (!ebidfrm.email.$pristine || ebidfrm.$submitted)"><b>Email Address is Required</b></span>
+															<span style="color:red" ng-show="ebidfrm.email.$error.email && (!ebidfrm.email.$pristine || ebidfrm.$submitted)">Please Provide correct Email Address</span>
+															<!-- <pre>{{ebidfrm.email.$valid}}</pre> -->
 														</div>
 														<!-- Imp check -->
 														<!-- <div class="col-md-12 search-col-padding">
@@ -1506,8 +1514,8 @@ section#content {
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-12 search-col-padding">
-														<button  class="button" >build</button>
-														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
+														<button type="submit" class="button">Build</button>
+														<!-- <button type="submit" class="search-button btn transition-effect">Build</button>  ng-disabled="ebidfrm.$invalid" -->
 													</div>
 													<div class="clearfix"></div>
 												</form>
@@ -1518,7 +1526,7 @@ section#content {
 											<div role="tabpanel" class="tab-pane" id="hotel">
 												<form class="form-inline signup">
 
-													<div class="col-md-12 product-search-title">Ebbiding
+													<div class="col-md-12 product-search-title">eBidding
 														for bike</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
@@ -1642,7 +1650,7 @@ section#content {
 											<div role="tabpanel" class="tab-pane" id="holiday">
 												<form class="form-inline signup">
 
-													<div class="col-md-12 product-search-title">Ebbiding
+													<div class="col-md-12 product-search-title">eBidding
 														for boat</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
@@ -1765,7 +1773,7 @@ section#content {
 											<div role="tabpanel" class="tab-pane" id="taxi">
 												<form class="form-inline signup">
 
-													<div class="col-md-12 product-search-title">Ebbiding
+													<div class="col-md-12 product-search-title">eBidding
 														for caravan</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
@@ -1890,7 +1898,7 @@ section#content {
 											<div role="tabpanel" class="tab-pane" id="cruise">
 												<form class="form-inline signup">
 
-													<div class="col-md-12 product-search-title">Ebbiding
+													<div class="col-md-12 product-search-title">eBidding
 														for bicycle</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>

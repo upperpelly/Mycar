@@ -24,14 +24,14 @@ $(window).load(function(){
 	
 	$body = $("body");
 
-	$(document).ajaxStart(function(){
+	/*$(document).ajaxStart(function(){
 		$body.addClass("loading");
 	});
 
 	$(document).ajaxStop(function(){
 		$body.removeClass("loading");
 	});
-	
+	*/
 	function parseURLParameter(Parameter)
 	{
 	
@@ -209,23 +209,8 @@ var url = "api/dealer/"+userid;
 
 function forFinance(model_data_id, out)
 {
- this.model_data_id = model_data_id;
-      //$("#"+this.model_data_id).html("Loading Model Data...");
- //alert("came here 2 inside");
-    
-//alert("out"+out);
-    
-        	   //alert(out);
-        	   $("#"+model_data_id).append(out);
-        	   //alert("came here 2");
-        	  
-   /* $.ajax({
-        url: "http://localhost:8080/MyCarDomain/api/user/70",
-        data: { signature: authHeader },
-        type: "GET",
-        beforeSend: function(xhr){xhr.setRequestHeader('X-Test-Header', 'test-value');},
-        success: function() { alert('Success!' + authHeader); }
-     });*/
+		 this.model_data_id = model_data_id;
+		 $("#"+model_data_id).append(out);
 }
 
 function registerEditDealerVehicleQuotationModal(){       
@@ -600,130 +585,95 @@ return JSON.stringify(o);
 
 
 
-
-var mainApp1 = angular.module("mainApp1", [ 'ui.bootstrap', 'ngResource' ]);
-mainApp1.controller('overviewController', function($scope, $stateParams) {
-    var index = $stateParams.index;
-    var anotherKey = $stateParams.anotherKey;
-});
-mainApp1
-		.controller(
-				'myController1',
-				function($scope, $http) {
-
-					$scope.predicate = 'name';
-					$scope.reverse = true;
-					$scope.currentPage = 1;
-					$scope.order = function(predicate) {
-						$scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse
-								: false;
-						$scope.predicate = predicate;
-					};
-
-					$scope.updatePagination = function() {
-						$scope.totalItems = $scope.biil.details.length;
-						$scope.numPerPage = 5;
-						$scope.paginate = function(value) {
-							var begin, end, index;
-							begin = ($scope.currentPage - 1)
-									* $scope.numPerPage;
-							end = begin + $scope.numPerPage;
-							index = $scope.biil.details.indexOf(value);
-							return (begin <= index && index < end);
-						};
-					};
-					function submitSearchForm() {
-var e = document.getElementById("car-model-trims"); 
-var strUser = e.options[e.selectedIndex].text;	
-var autobid=false;
-autobid = document.getElementById("autoBid").value;
-
-//var classified = document.getElementById("postClassified").value;
-
-
-//below line refers to 'jpCheckbox' class
-alert("Came here c"+autobid);
-
-
-													
-													var jsonInputToAPI = {
-															"refId":29,
-
-"modelYear": $('#car-years').val(),
-"modelDisplay": $('#car-makes').val(),
-"modelName": $('#car-models').val(),															      
-"modelTrim": strUser,
-"typeOfCar": $('#vehicleCondition').val(),
-"vehicleDescriptin": $('#headerText').val(),
-"make": $('#financeOwning').val(),
-"variant": $('#hotOffer').val(),
-"price": $('#displayPrice').val(),
-"bodyType": $('#bodyType').val(),
-"transmission": $('#transmission').val(),
-"fuelType": $('#fuelType').val(),
-"engine": null,
-"regNo": $('#regno').val(),
-"driveType": $('#driveType').val(),
-"kilometer": 120,
-"extColor": null,
-"warranty": null,
-"regExpiryDate": null,
-"vinNumber": $('#vinnumber').val(),
-"vendorStockNo": $('#stockNo').val(),
-"noOfDoors": 0,
-"intColor": null,
-"wheelSize": $('#labelOnVehicle').val(),
-"seatMake": $('#detailDescription').val(),
-"extFittingFlex1": $('#extraExternal').val(),
-"extFittingFlex2": null,
-"extFittingFlex3": null,
-"extFittingFlex4": null,
-"extFittingFlex5": null,
-"extFittingFlex6": null,
-"extFittingFlex7": null,
-"extFittingFlex8": null,
-"extFittingFlex9": null,
-"extFittingFlex10": null,
-"intFittingFlex1": $('#extraInternal').val(),
-"intFittingFlex2": null,
-"intFittingFlex3": null,
-"intFittingFlex4": null,
-"intFittingFlex5": null,
-"intFittingFlex6": null,
-"intFittingFlex7": null,
-"intFittingFlex8": null,
-"intFittingFlex9": null,
-"intFittingFlex10": null,
-"salePersonLooking": $('#accidentHistory').val(),
-"contName": null,
-"contPhone": 0,
-"contEmail": null,
-"logBookService": false,
-"cameIntoInv": null,
-"counterOfViewingCar": 0,
-"counterOfEnquiryCar": 0,
-"saleDate": null,
-"features": [],
-"photos": [],
-"carColor": $('#color').val(),
-"state": $('#RegState').val(),
-"region": $('#vehicleType').val(),
-"postCode": 0,
-"yearOfMake": null,
-"ausCapTer": null,
-"insCompAmountMin": 0,
-"insCompAmountMax": 0,
-"dealAmountMin": $('#QRangeMin').val(),
-"dealAmountMax": $('#QRangeMax').val(),
-"insthirdInsuanceMin": 0,
-"insthirdInsuanceMax": 0,
-"finAmountMin": 0,
-"newCar": false,
-"isStockItem": autoBid															}
+var mainApp1 = angular.module("mainApp12", []);
+mainApp1.controller('myController12',function($scope,$http) {
+	alert("inside dealer c");
+	$scope.submitSearchForm = function() {
+								var e = document.getElementById("car-model-trims"); 
+								var strUser = e.options[e.selectedIndex].text;	
+								var autobid=false;
+								autobid = document.getElementById("autoBid").value;
+								//var classified = document.getElementById("postClassified").value;
+								alert("Came here c"+autobid);			
+								var jsonInputToAPI = {
+																	"refId":29,
+																	"modelYear": $('#car-years').val(),
+																	"modelDisplay": $('#car-makes').val(),
+																	"modelName": $('#car-models').val(),															      
+																	"modelTrim": strUser,
+																	"typeOfCar": $('#vehicleCondition').val(),
+																	"vehicleDescriptin": $('#headerText').val(),
+																	"make": $('#financeOwning').val(),
+																	"variant": $('#hotOffer').val(),
+																	"price": $('#displayPrice').val(),
+																	"bodyType": $('#bodyType').val(),
+																	"transmission": $('#transmission').val(),
+																	"fuelType": $('#fuelType').val(),
+																	"engine": null,
+																	"regNo": $('#regno').val(),
+																	"driveType": $('#driveType').val(),
+																	"kilometer": 120,
+																	"extColor": null,
+																	"warranty": null,
+																	"regExpiryDate": null,
+																	"vinNumber": $('#vinnumber').val(),
+																	"vendorStockNo": $('#stockNo').val(),
+																	"noOfDoors": 0,
+																	"intColor": null,
+																	"wheelSize": $('#labelOnVehicle').val(),
+																	"seatMake": $('#detailDescription').val(),
+																	"extFittingFlex1": $('#extraExternal').val(),
+																	"extFittingFlex2": null,
+																	"extFittingFlex3": null,
+																	"extFittingFlex4": null,
+																	"extFittingFlex5": null,
+																	"extFittingFlex6": null,
+																	"extFittingFlex7": null,
+																	"extFittingFlex8": null,
+																	"extFittingFlex9": null,
+																	"extFittingFlex10": null,
+																	"intFittingFlex1": $('#extraInternal').val(),
+																	"intFittingFlex2": null,
+																	"intFittingFlex3": null,
+																	"intFittingFlex4": null,
+																	"intFittingFlex5": null,
+																	"intFittingFlex6": null,
+																	"intFittingFlex7": null,
+																	"intFittingFlex8": null,
+																	"intFittingFlex9": null,
+																	"intFittingFlex10": null,
+																	"salePersonLooking": $('#accidentHistory').val(),
+																	"contName": null,
+																	"contPhone": 0,
+																	"contEmail": null,
+																	"logBookService": false,
+																	"cameIntoInv": null,
+																	"counterOfViewingCar": 0,
+																	"counterOfEnquiryCar": 0,
+																	"saleDate": null,
+																	"features": [],
+																	"photos": [],
+																	"carColor": $('#color').val(),
+																	"state": $('#RegState').val(),
+																	"region": $('#vehicleType').val(),
+																	"postCode": 0,
+																	"yearOfMake": null,
+																	"ausCapTer": null,
+																	"insCompAmountMin": 0,
+																	"insCompAmountMax": 0,
+																	"dealAmountMin": $('#QRangeMin').val(),
+																	"dealAmountMax": $('#QRangeMax').val(),
+																	"insthirdInsuanceMin": 0,
+																	"insthirdInsuanceMax": 0,
+																	"finAmountMin": 0,
+																	"newCar": false,
+																	"isStockItem": autoBid
+													}
 													
 													//alert("Before Call"+$('#accidentHistory').val());
 													//var wsURL = 'http://localhost:8080/MyCarDomain/api/dealer/addInventory';
 													//var wsURL = 'http://www.autoscoop.com.au/api/dealer/addInventory';
+								
 													var wsURL = 'api/dealer/addInventory';
 														    $http({
 																		method : 'POST',
@@ -735,20 +685,6 @@ alert("Came here c"+autobid);
 																		alert("Thank You. Your Inventory is saved"+data.inventoryId);
 																										
 																					});
-
-							
-													
 												};
-
-				    
-
-					$scope.submitSearchForm = submitSearchForm;
-					$scope.init = function() {
-						$scope.biil = {
-							details : []
-						};
-						$scope.submitForm();
-					};
-
 				});
 

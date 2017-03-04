@@ -3,7 +3,7 @@ var value = $.jStorage.get("key");
 if(!value){
     // if not - load the data from the server
 //alert("can inside");
-    value = load_data_from_server()
+    //value = load_data_from_server()
     // and save it
     $.jStorage.set("key",value);
 }
@@ -798,9 +798,9 @@ function redirect() {
 
 
 //angular JS start
-var mainApp1 = angular.module("mainApp1", []);
-mainApp1.controller(
-				'myController1',function($scope, $http) {
+var mainApp1 = angular.module("mainApp13", []);
+mainApp1.controller('myController13',function($scope, $http) {
+					alert("in user con");
 					$scope.submitSearchForm = function() {
 												
 												var jsonInputToAPI = {"userId":userId,
@@ -867,7 +867,7 @@ mainApp1.controller(
 												};
 
 				});
-
+//angular.bootstrap(document, ['mainApp1']);
 //angular JS end
 
 
