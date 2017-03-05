@@ -1,5 +1,6 @@
 // Check if "key" exists in the storage
 var value = $.jStorage.get("key");
+var fbUserId = $.jStorage.get("fbKey");
 if(!value){
     // if not - load the data from the server
 //alert("can inside");

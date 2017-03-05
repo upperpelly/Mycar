@@ -979,7 +979,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                           <div class="view-profile">
                                     <article class="image-box style2 box innerstyle personal-details">
                                         <figure>
-                                            <a title="" href="#"><img width="270" height="263" alt="" src="https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/facebook-1186345048139971/Sheela_passport.jpg"></a>
+                                            <a title="" href="#"><img width="270" height="263" alt="" src="https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/facebook-1214163228677502/DSC_0006.JPG"></a>
                                         </figure>
                                         <div class="details">
                                             <a href="#" class="button btn-mini pull-right edit-profile-btn">EDIT PROFILE</a>
@@ -2560,7 +2560,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
 
-        var fbUserId;
+
 
 
         var bucket = new AWS.S3({
@@ -2729,33 +2729,63 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
             });
+            
+            
+            FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					bucket.config.credentials = new AWS.WebIdentityCredentials({
 
 
-            FB.login(function (response) {
+	                    ProviderId: 'graph.facebook.com',
 
 
-                bucket.config.credentials = new AWS.WebIdentityCredentials({
+	                    RoleArn: roleArn,
 
 
-                    ProviderId: 'graph.facebook.com',
+	                    WebIdentityToken: response.authResponse.accessToken
 
 
-                    RoleArn: roleArn,
+	                });
 
 
-                    WebIdentityToken: response.authResponse.accessToken
+	                //fbUserId = response.authResponse.userID;
 
 
-                });
+	                button.style.display = 'block';
+				}
+				else {
+					FB.login(function (response) {
 
 
-                fbUserId = response.authResponse.userID;
+		                bucket.config.credentials = new AWS.WebIdentityCredentials({
 
 
-                button.style.display = 'block';
+		                    ProviderId: 'graph.facebook.com',
 
 
-            });
+		                    RoleArn: roleArn,
+
+
+		                    WebIdentityToken: response.authResponse.accessToken
+
+
+		                });
+
+
+		                fbUserId = response.authResponse.userID;
+
+
+		                button.style.display = 'block';
+
+
+		            });
+				}
+			},{
+				scope : 'email'
+			}); 
+
+
+           
 
 
         };

@@ -7,6 +7,7 @@
     <title>Autoscoop</title>
 
     <!-- Meta Tags -->
+    
     <meta charset="utf-8">
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Autoscoop HTML5 Template">
@@ -46,8 +47,8 @@
 <script type="text/javascript" src="js/atooltip.jquery.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script src="js/carquery.0.3.4.js"type="text/javascript" ></script>
-  <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<!--   <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all"> -->
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/cufon-replace.js"></script>
@@ -56,7 +57,7 @@
 <script type="text/javascript" src="js/jquery.jqtransform.js" ></script>
 <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
 <script type="text/javascript" src="js/atooltip.jquery.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
+<!-- <script type="text/javascript" src="js/script.js"></script> -->
 <script src="js/carquery.0.3.4.js"type="text/javascript" ></script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 
@@ -97,7 +98,7 @@ $.ajax({
 <script src="js/angular-resource.js"></script>
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
-<script src="js/dealerRegistration/dealerRegistration.js" type="text/javascript"/>
+<script src="js/dealerRegistration/dealerReg.js" type="text/javascript"/>
 <script>
 </script>
 <!-- Main Style -->
@@ -168,8 +169,8 @@ body.loading .modale {
 	</style>
 
 
-<!-- Table alignment -->
-<style>
+<!-- table alignment -->
+<!-- <style>
 .anchor-editDealerVehicleQuotationModal:link, .anchor-editDealerVehicleQuotationModal:visited {
     background-color: #33a557;
     color: white;
@@ -274,11 +275,8 @@ th, td {
 tr:nth-child(even){background-color: #f2f2f2}
 tr:hover{background-color:rgb(253, 183, 20);}
 
-</style>
+</style> -->
 <link rel="shortcut icon" href="favicon.ico">
-   <!--
-    <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script> -->
 <script src="js/angular-resource.js"></script>
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
 <script src="js/angular-ui-router.js"></script>
@@ -305,7 +303,7 @@ tr:hover{background-color:rgb(253, 183, 20);}
       <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
     <![endif]-->
 </head>
-<body ng-app="mainApp1" >
+<body ng-app="mainApp1d" >
 
     <div id="page-wrapper">
         <header id="header" class="navbar-static-top">
@@ -793,506 +791,578 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
                                  <div id="main" class="col-sms-8 col-sm-9 col-md-11">
-                        <div class="booking-section travelo-box" ng-controller="myController1">
+                        <div class="booking-section travelo-box" ng-controller="myController1d">
 
                             <form class="booking-form">
-                                 <h1>Request to register with us..</h1>
-
- <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tggcre" data-toggle="collapse">Credential Details</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tggcre">
-                                        <div class="panel-content">
-                                       <div class="form-group row">
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Email Address</label>
-                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
-                                        </div>
-                                         <div class="col-sm-5 col-md-4">
-                                            <label>Password</label>
-                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
-                                        </div>
-                                         <div class="col-sm-5 col-md-4">
-                                            <label>Confirm Password</label>
-                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
-                                        </div>
-                                         
-
-                                    </div>
-                                        </div><!-- end content -->
-                                    </div>
-                                </div>
-
-                            </div>
-
-                                    <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tgg444" data-toggle="collapse">Required Info</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tgg444">
-                                        <div class="panel-content">
-                                       <div class="form-group row">
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>ABN Number</label>
-                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
-                                        </div>
-                                         <div class="col-sm-5 col-md-4">
-                                            <label>Dealer License No</label>
-                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
-                                        </div>
-                                         <div class="col-sm-5 col-md-4">
-                                            <label>DealerShip Group</label>
-                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
-                                        </div>
-                                         <div class="col-sm-5 col-md-4">
-                                            <label>Dealer Website</label>
-                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
-                                        </div>
-                                         <div class="col-sm-5 col-md-4">
-                                            <label>Dealer Address</label>
-                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
-                                        </div>
-                                       
-                                        
-
-
-                                    </div>
-                                        </div><!-- end content -->
-                                    </div>
-                                </div>
-
-                            </div>
-
-												<div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tgg29" data-toggle="collapse">Service Type</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tgg29">
-                                        <div class="panel-content">
-                                       <div class="form-group row">
-                                       
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Vehicle</span></a>.
-                                        </label>
-                                    </div>
+                                 <h1>Request to register with us....Just in <i>Four..</i> steps</h1>
+                                 
+                                   <!-- ******************************* -->  
+                                  <div class="tab-container">
+										  <ul class="nav nav-pills">
+										    <li class="active"><a data-toggle="pill" href="#home">Step 1</a></li>
+										    <li id="first" class="disabled"><a id="first1" href="#menu1">Step 2</a></li>
+										    <li id="second" class="disabled"><a id="second1" href="#menu2">Step 3</a></li>
+										    <li id="third" class="disabled"><a id="third1" href="#menu3">Step 4</a></li>
+										  </ul>
+										  
+										  <div class="tab-content">
+										    <div id="home" class="tab-pane fade in active">
+														     		 <div class="toggle-container box">
+				                                <div class="panel style1">
+				                                    <h4 class="panel-title">
+				                                        <a href="#tggcre" data-toggle="collapse">Credential Details</a>
+				                                    </h4>
+				                                    <div class="panel-collapse collapse" id="tggcre">
+				                                        <div class="panel-content">
+				                                       <div class="form-group row">
+				                                        <div class="col-sm-5 col-md-4">
+				                                            <label>Email Address</label>
+				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                        </div>
+				                                         <div class="col-sm-5 col-md-4">
+				                                            <label>Password</label>
+				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                        </div>
+				                                         <div class="col-sm-5 col-md-4">
+				                                            <label>Confirm Password</label>
+				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                        </div>
+				                                         
+				
+				                                    </div>
+				                                        </div><!-- end content -->
+				                                    </div>
+				                                </div>
+				
+				                            </div>
+				                            
+				                            
+				                            
+				                            
+				                                    <div class="toggle-container box">
+				                                <div class="panel style1">
+				                                    <h4 class="panel-title">
+				                                        <a href="#tgg444" data-toggle="collapse">Required Info</a>
+				                                    </h4>
+				                                    <div class="panel-collapse collapse" id="tgg444">
+				                                        <div class="panel-content">
+				                                       <div class="form-group row">
+				                                        <div class="col-sm-5 col-md-4">
+				                                            <label>ABN Number</label>
+				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                        </div>
+				                                         <div class="col-sm-5 col-md-4">
+				                                            <label>Dealer License No</label>
+				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                        </div>
+				                                         <div class="col-sm-5 col-md-4">
+				                                            <label>DealerShip Group</label>
+				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                        </div>
+				                                         <div class="col-sm-5 col-md-4">
+				                                            <label>Dealer Website</label>
+				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                        </div>
+				                                         <div class="col-sm-5 col-md-4">
+				                                            <label>Dealer Address</label>
+				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                        </div>
+				                                       
+				                                        
+				
+				
+				                                    </div>
+				                                        </div><!-- end content -->
+				                                    </div>
+				                                </div>
+				
+				                            </div>
+				                            
+				                            <div class="col-sm-6 col-md-5">
+                                       				 <button class="full-width btn-large" ng-click="firstForm()" >Next</button>
+                                   			 </div>
+                            	    </div>
+                            	    <!-- First Tab end -->
+										    <div id="menu1" class="tab-pane fade">
+															      <div class="toggle-container box">
+					                                <div class="panel style1">
+					                                    <h4 class="panel-title">
+					                                        <a href="#tgg29" data-toggle="collapse">Service Type</a>
+					                                    </h4>
+					                                    <div class="panel-collapse collapse" id="tgg29">
+					                                        <div class="panel-content">
+					                                       <div class="form-group row">
+					                                       
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Vehicle</span></a>.
+					                                        </label>
+					                                    </div>
+					                                
+					                                        <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Vehicle Finance</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Vehicle Insurance</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Parking</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Toll</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Transport</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Spares</span></a>.
+					                                        </label>
+					                                    </div>
+					                                        
+					                                         
+					
+					
+					
+					                                    </div>
+					                                        </div><!-- end content -->
+					                                    </div>
+					                                </div>
+					
+					                            </div>
+					                            
+					                            
+					                            
+					                            <div class="toggle-container box">
+					                                <div class="panel style1">
+					                                    <h4 class="panel-title">
+					                                        <a href="#tgg42" data-toggle="collapse">Vehicle Type</a>
+					                                    </h4>
+					                                    <div class="panel-collapse collapse" id="tgg42">
+					                                        <div class="panel-content">
+					                                       <div class="form-group row">
+					
+					<div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">New Cars</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Used Cars</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Both Cars</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">New Bikes</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Used Bikes</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Both Bikes</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">New Boats</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Used Boats</span></a>.
+					                                        </label>
+					                                    </div>
+					                                       <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Both Boats</span></a>.
+					                                        </label>
+					                                    </div>                                        
+					                                                                                
+					
+					
+					
+					                                    </div>
+					                                        </div><!-- end content -->
+					                                    </div>
+					                                </div>
+					
+					                            </div>
                                 
-                                        <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Vehicle Finance</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Vehicle Insurance</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Parking</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Toll</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Transport</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Spares</span></a>.
-                                        </label>
-                                    </div>
-                                        
-                                         
-
-
-
-                                    </div>
-                                        </div><!-- end content -->
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tgg42" data-toggle="collapse">Vehicle Type</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tgg42">
-                                        <div class="panel-content">
-                                       <div class="form-group row">
-
-<div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">New Cars</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Used Cars</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Both Cars</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">New Bikes</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Used Bikes</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Both Bikes</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">New Boats</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Used Boats</span></a>.
-                                        </label>
-                                    </div>
-                                       <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Both Boats</span></a>.
-                                        </label>
-                                    </div>                                        
-                                                                                
-
-
-
-                                    </div>
-                                        </div><!-- end content -->
-                                    </div>
-                                </div>
-
-                            </div>
-<div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tgg62" onclick="working()" data-toggle="collapse">Area of Operation</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tgg62">
-                                        <div class="panel-content">
-                                        
-                                        <!-- Start -->
-                                        <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tggcty" data-toggle="collapse">Austalia</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tggcty">
-                                        <div class="panel-content">
-                                       <div class="form-group row">
-
-                                         <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Australia</span></a>.
-                                        </label>
-                                    </div>
-
-
-                                    </div>
-                                        </div><!-- end content -->
-                                    </div>
-                                </div>
-
-                            </div>
-                                        <!-- End -->
-                                        <!-- Start -->
-                                        <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tggvic" data-toggle="collapse">Vic</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tggvic">
-                                        <div class="panel-content">
-                                       <div class="form-group row">
-
-                                         <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Victoria</span></a>.
-                                        </label>
-                                    </div>   
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Queensland</span></a>.
-                                        </label>
-                                    </div>   
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Tasmania</span></a>.
-                                        </label>
-                                    </div>   
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All South Australia</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Northern Territory</span></a>.
-                                        </label>
-                                    </div>   
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Western Australia</span></a>.
-                                        </label>
-                                    </div>
-
-
-                                    </div>
-                                        </div><!-- end content -->
-                                    </div>
-                                </div>
-
-                            </div>
-                                        <!-- End -->
-                                        
-                                                                                <!-- Start -->
-                                        <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tggpostcode" data-toggle="collapse">Postcode wise</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tggpostcode">
-                                        <div class="panel-content">
-                                       <div class="form-group row">
-
-                                         <div id="my-container">
-                                        
-                                             
-<center><br />
-<input type="button" value="Add row" onclick="javascript:appendRow()" class="append_row"/><br />
-<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
-<input type="button" value="Delete rows" onclick="javascript:deleteRows()" class="delete"/><br />
-<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
-<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-<table id="my-table" align="center" cellspacing="0" cellpadding="0" border="0">
-<tr><th>Country</th><th>State</th><th>Region</th><th>Post Code</th></tr>
-
-</table>
-<p></center>
-</div>
-
-
-                                    </div>
-                                        </div><!-- end content -->
-                                    </div>
-                                </div>
-
-                            </div>
-                                        <!-- End -->
-                                       
-                                        </div><!-- end content -->
-                                    </div>
-                                </div>
-
-                            </div>
+                                			<div class="col-sm-6 col-md-5">
+                                       				 <button class="full-width btn-large" ng-click="secondForm()" >Next</button>
+                                   			 </div>
+                                
+										    </div>
+										    
+										    <!-- Second Tab end -->
+										    <div id="menu2" class="tab-pane fade">
+																       <div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tgg62" onclick="working()" data-toggle="collapse">Area of Operation</a>
+						                                    </h4>
+						                                    <div class="panel-collapse collapse" id="tgg62">
+						                                        <div class="panel-content">
+						                                        
+						                                        <!-- Start -->
+						                                        <div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tggcty" data-toggle="collapse">Austalia</a>
+						                                    </h4>
+						                                    <div class="panel-collapse collapse" id="tggcty">
+						                                        <div class="panel-content">
+						                                       <div class="form-group row">
+						
+						                                         <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Australia</span></a>.
+						                                        </label>
+						                                    </div>
+						
+						
+						                                    </div>
+						                                        </div><!-- end content -->
+						                                    </div>
+						                                </div>
+						
+						                            </div>
+						                                        <!-- End -->
+						                                        <!-- Start -->
+						                                        <div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tggvic" data-toggle="collapse">Vic</a>
+						                                    </h4>
+						                                    <div class="panel-collapse collapse" id="tggvic">
+						                                        <div class="panel-content">
+						                                       <div class="form-group row">
+						
+						                                         <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Victoria</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Queensland</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Tasmania</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All South Australia</span></a>.
+						                                        </label>
+						                                    </div>
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Northern Territory</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Western Australia</span></a>.
+						                                        </label>
+						                                    </div>
+						
+						
+						                                    </div>
+						                                        </div><!-- end content -->
+						                                    </div>
+						                                </div>
+						
+						                            </div>
+						                                        <!-- End -->
+						                                        
+						                                                                                <!-- Start -->
+						                                        <div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tggpostcode" data-toggle="collapse">Postcode wise</a>
+						                                    </h4>
+						                                    <div class="panel-collapse collapse" id="tggpostcode">
+						                                        <div class="panel-content">
+						                                       <div class="form-group row">
+						
+						                                         <div id="my-container">
+						                                        
+						                                             
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>Country</th><th>State</th><th>Region</th><th>Post Code</th></tr>
+						
+						</table>
+						<p></center>
+						</div>
+						
+						
+						                                    </div>
+						                                        </div><!-- end content -->
+						                                    </div>
+						                                </div>
+						
+						                            </div>
+						                                        <!-- End -->
+						                                       
+						                                        </div><!-- end content -->
+						                                    </div>
+						                                </div>
+						
+						                            </div>
+						                                        
+						                                        
+						                                        
+						                                        
+						                       <div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tgg82" data-toggle="collapse">Serv && Maintanance</a>
+						                                    </h4>
+						                                    <div class="panel-collapse collapse" id="tgg82">
+						                                        <div class="panel-content">
+						                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>Select Services</th><th>Offered</th></tr>
+						
+						</table>
+						<p></center>
+						</div>
+						                                        </div><!-- end content -->
+						                                    </div>
+						                                </div>
+						
+						                            </div>
                             
-                            <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tgg82" data-toggle="collapse">Serv && Maintainence</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tgg82">
-                                        <div class="panel-content">
-                                       <div id="my-container">
-<center><br />
-<input type="button" value="Add row" onclick="javascript:appendRow()" class="append_row"/><br />
-<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
-<input type="button" value="Delete rows" onclick="javascript:deleteRows()" class="delete"/><br />
-<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
-<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-<table id="my-table" align="center" cellspacing="0" cellpadding="0" border="0">
-<tr><th>Select Services</th><th>Offered</th></tr>
-
-</table>
-<p></center>
-</div>
-                                        </div><!-- end content -->
+                            
+				                            	<div class="col-sm-6 col-md-5">
+				                                       				 <button class="full-width btn-large" ng-click="thirdForm()" >Next</button>
+				                                   			 </div>
+										    </div>
+										    <!--  Third tab end -->
+										    <div id="menu3" class="tab-pane fade">
+										      <div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tggsubs" data-toggle="collapse">Subsription</a>
+						                                    </h4>
+						                                    <div class="panel-collapse collapse" id="tggsubs">
+						                                        <div class="panel-content">
+						                                        
+						                                        <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Basic</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Bronze</span></a>.
+						                                        </label>
+						                                    </div>
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Silver</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Gold</span></a>.
+						                                        </label>
+						                                    </div>
+						                                        <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Platinum</span></a>.
+						                                        </label>
+						                                    </div>
+						                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>services</th><th>Leads</th></tr>
+						
+						</table>
+						<p></center>
+						</div>
+						                                        </div><!-- end content -->
+						                                    </div>
+						                                </div>
+						
+						                            </div>
+						
+						
+						
+						   <div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tgg52" data-toggle="collapse">Make Type</a>
+						                                    </h4>
+						                                    <div class="panel-collapse collapse" id="tgg52">
+						                                        <div class="panel-content">
+						                                       
+						                           
+						                            <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
+						                            <img src="images/EBidRbg3.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;">
+						                            <div class="tab-container trans-style box">
+						                                <ul class="tabs full-width">
+						                                   <li class="active"><a href="#family2-qd" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
+						                                    <li><a href="#honeymoon2-qd" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
+						                                    <li><a href="#weekends2-qd" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
+						                                    <li><a href="#friends2-qd" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li
+						                                    <li><a href="#friends24-qd" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
+						                                </ul>
+						                                <div class="tab-content">
+						                                    <div class="tab-pane fade in active" id="family2-qd">
+						                                        <h4>Make Type</h4>
+						                                         
+						                                         <!-- Start -->
+						                                        <div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tggallmakes" data-toggle="collapse">All Makes</a>
+						                                    </h4>
+						                                    <div class="panel-collapse collapse" id="tggallmakes">
+						                                        <div class="panel-content">
+						                                       <div class="form-group row">
+						
+						                                         <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Makes</span></a>.
+						                                        </label>
+						                                    </div>
+						
+						
+						                                    </div>
+						                                        </div><!-- end content -->
+						                                    </div>
+						                                </div>
+						
+						                            </div>
+						                                        <!-- End -->
+						                                       <!-- Start -->
+						                                        <div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tggindmakes" data-toggle="collapse">Individual Makes</a>
+						                                    </h4>
+						                                    <div class="panel-collapse collapse" id="tggindmakes">
+						                                        <div class="panel-content">
+						                                       <div class="form-group row">
+						
+						                                                 <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow1()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows1()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>Select Brand</th><th>Offered</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+						
+						
+						                                    </div>
+						                                        </div><!-- end content -->
+						                                    </div>
+						                                </div>
+						
+						                            </div>
+						                                        <!-- End -->  
+						                                          
+						                                                                     
+						                                        
+						                                        </table>
+						                                    </div>
+						                                    <div class="tab-pane fade" id="honeymoon2-qd">
+						                                        <h4>Bike</h4>
+						                                        
+						                                    </div>
+						                                    <div class="tab-pane fade" id="weekends2-qd">
+						                                        <h4>Boats</h4>
+						                                    </div>
+						                                    <div class="tab-pane fade" id="friends2-qd">
+						                                        <h4>Caravans</h4>
+						                                    </div>
+						                                    <div class="tab-pane fade" id="friends24-qd">
+						                                        <h4>Bicycles</h4>
+						                                    </div>
+						                                </div>
+						                            </div>
+						                        
+						                                        </div><!-- end content -->
+						                                    </div>
+						                                </div>
+						
+						                            </div>
+						                            
+						                      <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <button class="full-width btn-large" ng-click="submitSearchForm()" >Register</button>
                                     </div>
                                 </div>
+						                            
+																    </div>
+																  </div>
+								</div>
+								  
+								  
+								  
+								  
+								                            
+                       <!-- ******************************* -->     
 
-                            </div>
+ 								
+
+
+											
+
                             
-                            <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tggsubs" data-toggle="collapse">Subsription</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tggsubs">
-                                        <div class="panel-content">
-                                        
-                                        <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Basic</span></a>.
-                                        </label>
-                                    </div>   
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Bronze</span></a>.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Silver</span></a>.
-                                        </label>
-                                    </div>   
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Gold</span></a>.
-                                        </label>
-                                    </div>
-                                        <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Platinum</span></a>.
-                                        </label>
-                                    </div>
-                                       <div id="my-container">
-<center><br />
-<input type="button" value="Add row" onclick="javascript:appendRow()" class="append_row"/><br />
-<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
-<input type="button" value="Delete rows" onclick="javascript:deleteRows()" class="delete"/><br />
-<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
-<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-<table id="my-table" align="center" cellspacing="0" cellpadding="0" border="0">
-<tr><th>services</th><th>Leads</th></tr>
 
-</table>
-<p></center>
-</div>
-                                        </div><!-- end content -->
-                                    </div>
-                                </div>
-
-                            </div>
                             
-                             <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tgg52" data-toggle="collapse">Make Type</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tgg52">
-                                        <div class="panel-content">
-                                       
+                            
                            
-                            <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
-                            <img src="images/EBidRbg3.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;">
-                            <div class="tab-container trans-style box">
-                                <ul class="tabs full-width">
-                                   <li class="active"><a href="#family2-qd" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
-                                    <li><a href="#honeymoon2-qd" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
-                                    <li><a href="#weekends2-qd" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
-                                    <li><a href="#friends2-qd" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li
-                                    <li><a href="#friends24-qd" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="family2-qd">
-                                        <h4>Make Type</h4>
-                                         
-                                         <!-- Start -->
-                                        <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tggallmakes" data-toggle="collapse">All Makes</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tggallmakes">
-                                        <div class="panel-content">
-                                       <div class="form-group row">
-
-                                         <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Makes</span></a>.
-                                        </label>
-                                    </div>
-
-
-                                    </div>
-                                        </div><!-- end content -->
-                                    </div>
-                                </div>
-
-                            </div>
-                                        <!-- End -->
-                                       <!-- Start -->
-                                        <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tggindmakes" data-toggle="collapse">Individual Makes</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tggindmakes">
-                                        <div class="panel-content">
-                                       <div class="form-group row">
-
-                                                 <div id="my-container">
-<center><br />
-<input type="button" value="Add row" onclick="javascript:appendRow1()" class="append_row"/><br />
-<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
-<input type="button" value="Delete rows" onclick="javascript:deleteRows1()" class="delete"/><br />
-<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
-<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
-<tr><th>Select Brand</th><th>Offered</th></tr>
-
-</table>
-<p></center>
-</div>   
-
-
-                                    </div>
-                                        </div><!-- end content -->
-                                    </div>
-                                </div>
-
-                            </div>
-                                        <!-- End -->  
-                                          
-                                                                     
-                                        
-                                        </table>
-                                    </div>
-                                    <div class="tab-pane fade" id="honeymoon2-qd">
-                                        <h4>Bike</h4>
-                                        
-                                    </div>
-                                    <div class="tab-pane fade" id="weekends2-qd">
-                                        <h4>Boats</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="friends2-qd">
-                                        <h4>Caravans</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="friends24-qd">
-                                        <h4>Bicycles</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                                        </div><!-- end content -->
-                                    </div>
-                                </div>
-
-                            </div>
+                            
+                          
 
                             	
 
@@ -1324,11 +1394,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                 </div> -->
 
-                               <div class="form-group row">
-                                    <div class="col-sm-6 col-md-5">
-                                        <button class="full-width btn-large" ng-click="submitSearchForm()" >Register</button>
-                                    </div>
-                                </div>
+                               
 
 
 

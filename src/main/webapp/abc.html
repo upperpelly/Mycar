@@ -118,12 +118,18 @@ $.ajax({
 			!function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
 		</script>
 		<style type="text/css">
-/* 		input.ng-invalid.ng-dirty{
+	input.ng-invalid.ng-dirty{
 	border:2px solid red;
 }
 input.ng-valid{
 	border:2px solid green;
-} */
+} 
+select.ng-invalid.ng-dirty{
+	border:2px solid red;
+}
+select.ng-valid.ng-dirty{
+	border:2px solid green;
+} 
 img.wp-smiley,
 img.emoji {
 	display: inline !important;
@@ -1039,10 +1045,10 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Post</label>
                                             <input type="text" id="postCode" name="postCode" ng-model="postCode" ng-minlength="4" ng-pattern="/^[0-9]*$/" ng-maxlength="4" class="input-text full-width" required>
-                                            <span ng-show="frm.postCode.$error.pattern && (!frm.postCode.$pristine || frm.$submitted)"><b>POST must be Numeric</b></span>
-                                            <span ng-show="frm.postCode.$error.required && (!frm.postCode.$pristine || frm.$submitted)"><b>POST is Required</b></span> 
-                                           <span ng-show="frm.postCode.$error.minlength && (!frm.postCode.$pristine || frm.$submitted) && !frm.postCode.$error.pattern"><b>POST must be of 4 digits</b></span>
-                                           <span ng-show="frm.postCode.$error.maxlength && (!frm.postCode.$pristine || frm.$submitted) && !frm.postCode.$error.pattern"><b>POST must be of 4 digits only.</b></span>
+                                            <span style="color:red" ng-show="frm.postCode.$error.pattern && (!frm.postCode.$pristine || frm.$submitted)"><b>POST must be Numeric</b></span>
+                                            <span  style="color:red" ng-show="frm.postCode.$error.required && (!frm.postCode.$pristine || frm.$submitted)"><b>POST is Required</b></span> 
+                                           <span style="color:red" ng-show="frm.postCode.$error.minlength && (!frm.postCode.$pristine || frm.$submitted) && !frm.postCode.$error.pattern"><b>POST must be of 4 digits</b></span>
+                                           <span style="color:red" ng-show="frm.postCode.$error.maxlength && (!frm.postCode.$pristine || frm.$submitted) && !frm.postCode.$error.pattern"><b>POST must be of 4 digits only.</b></span>
                                            <pre>{{frm.postCode | json}}</pre>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
@@ -1060,7 +1066,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 </select>
                                                 
                                             </div>
-                                            <span ng-show="frm.carColor.$error.required && (!frm.carColor.$pristine || frm.$submitted)"><b>Car color is Required</b></span>
+                                            <span style="color:red" ng-show="frm.carColor.$error.required && (!frm.carColor.$pristine || frm.$submitted)"><b>Car color is Required</b></span>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
                                             <label>Transmission</label>
@@ -1381,7 +1387,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                     <option>From Business</option>
                                                 </select>
                                             </div>
-                                            <span ng-show="frm.incomeType.$error.required && (!frm.incomeType.$pristine || frm.$submitted)"><b>Income Type is Required</b></span>
+                                            <span style="color:red" ng-show="frm.incomeType.$error.required && (!frm.incomeType.$pristine || frm.$submitted)"><b>Income Type is Required</b></span>
                                             
                                         </div>
                                         <div class="col-sm-5 col-md-4">
@@ -1413,7 +1419,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                     <option>Not Sure</option>
                                                 </select>
                                             </div>
-                                            <span ng-show="frm.creditRating.$error.required && (!frm.creditRating.$pristine || frm.$submitted)"><b>Credit Rating is Required</b></span>
+                                            <span style="color:red" ng-show="frm.creditRating.$error.required && (!frm.creditRating.$pristine || frm.$submitted)"><b>Credit Rating is Required</b></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -1428,7 +1434,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Annual Income</label>
                                             <input type="text" class="input-text full-width" value="" placeholder=""  ng-model="annualIncome" id="annualIncome" name="annualIncome" ng-pattern="/^[0-9]*$/" required/>
-                                            <span ng-show="frm.annualIncome.$error.pattern && (!frm.annualIncome.$pristine || frm.$submitted)"><b>Annual Income must be Numeric</b></span>
+                                            <span style="color:red" ng-show="frm.annualIncome.$error.pattern && (!frm.annualIncome.$pristine || frm.$submitted)"><b>Annual Income must be Numeric</b></span>
                                             <span style="color:red"  ng-show="frm.annualIncome.$error.required && (!frm.annualIncome.$pristine || frm.$submitted) && !frm.annualIncome.$error.pattern"><b>Annual Income is Required</b></span>
                                         </div>
                                          
@@ -1437,7 +1443,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4" ng-class="{'has-error':!frm.loanAmount.$valid,'has-success':frm.loanAmount.$valid}">
                                             <label>Loan Amount</label>
                                             <input type="text" class="input-text full-width" placeholder=""  id="loanAmount"  ng-model="loanAmount" ng-pattern="/^[0-9]*$/" name="loanAmount" required>
-                                            <span ng-show="frm.loanAmount.$error.pattern && (!frm.loanAmount.$pristine || frm.$submitted)"><b>Loan Amount must be Numeric</b></span>
+                                            <span style="color:red" ng-show="frm.loanAmount.$error.pattern && (!frm.loanAmount.$pristine || frm.$submitted)"><b>Loan Amount must be Numeric</b></span>
                                             <span style="color:red"  ng-show="frm.loanAmount.$error.required && (!frm.loanAmount.$pristine || frm.$submitted) && !frm.loanAmount.$error.pattern"><b>Loan Amount is Required</b></span>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
@@ -1455,7 +1461,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                     <option>9</option>
                                                 </select>
                                             </div>
-                                            <span ng-show="frm.loanPeriod.$error.required && (!frm.loanPeriod.$pristine || frm.$submitted)"><b>Loan Period is Required</b></span>
+                                            <span style="color:red" ng-show="frm.loanPeriod.$error.required && (!frm.loanPeriod.$pristine || frm.$submitted)"><b>Loan Period is Required</b></span>
                                         </div>
                                          <div class="col-sm-5 col-md-4">
                                             <label>Number of Dependencies</label>
@@ -1491,7 +1497,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                     <option>Third Party</option>
                                                 </select>
                                         </div>
-                                        <span ng-show="frm.insuranceType.$error.required && (!frm.insuranceType.$pristine || frm.$submitted)"><b>Insurance Type is Required</b></span>
+                                        <span style="color:red" ng-show="frm.insuranceType.$error.required && (!frm.insuranceType.$pristine || frm.$submitted)"><b>Insurance Type is Required</b></span>
                                     </div>
                                     <div class="col-sm-5 col-md-4">
                                             <label>REGO No</label>
@@ -1511,27 +1517,30 @@ We suggest that you contact the host to confirm availability and rates before su
                                                     <option>WA</option>
                                                 </select>
                                             </div>
-                                            <span ng-show="frm.regoState.$error.required && (!frm.regoState.$pristine || frm.$submitted)"><b>REGO State is Required</b></span>
+                                            <span style="color:red" ng-show="frm.regoState.$error.required && (!frm.regoState.$pristine || frm.$submitted)"><b>REGO State is Required</b></span>
                                         </div>
                                     <div class="col-sm-5 col-md-4">
                                         <label>Driving License Type</label>
                                         <div class="selector">
-                                                <select class="full-width" id="drivingLicenseType" name="drivingLicenseType">
+                                                <select class="full-width" id="drivingLicenseType" ng-model="drivingLicenseType" name="drivingLicenseType" required>
                                                     <option>L - learner</option>
                                                     <option>P - Probationary</option>
                                                     <option>F - Full Licence</option>
                                                 </select>
                                             </div>
+                                        <span style="color:red" ng-show="frm.drivingLicenseType.$error.required && (!frm.drivingLicenseType.$pristine || frm.$submitted)"><b>Driving LicenseType is Required</b></span>
                                     </div>
                                 
                                 <div class="col-sm-5 col-md-4">
                                         <label>Driving License Number</label>
                                         <div class="selector">
-                                                <select class="full-width" id="drivingLicenseNumber" name="drivingLicenseNumber">
+                                        <input type="text" class="input-text full-width" placeholder="Driving License Number" id="drivingLicenseNumber" ng-model="drivingLicenseNumber" name="drivingLicenseNumber" required>
+                                               <!--  <select class="full-width" id="drivingLicenseNumber" ng-model="drivingLicenseNumber" name="drivingLicenseNumber" required>
                                                     <option>Comprahensive</option>
                                                     <option>Third Party</option>
-                                                </select>
+                                                </select> -->
                                             </div>
+                                         <span style="color:red" ng-show="frm.drivingLicenseNumber.$error.required && (!frm.drivingLicenseNumber.$pristine || frm.$submitted)"><b>Driving License Number is Required</b></span>
                                     </div>
                              </div>
                                 <div class="form-group row">
@@ -1542,7 +1551,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Agreed Value</label>
                                             <input type="text" class="input-text full-width" placeholder="Agreed Value" ng-pattern="/^[0-9]*$/"  ng-model="agreedValue" id="agreedValue" name="agreedValue" required/>
-                                            <span ng-show="frm.agreedValue.$error.pattern && (!frm.agreedValue.$pristine || frm.$submitted)"><b>Agreed Value must be Numeric</b></span>
+                                            <span style="color:red" ng-show="frm.agreedValue.$error.pattern && (!frm.agreedValue.$pristine || frm.$submitted)"><b>Agreed Value must be Numeric</b></span>
                                             <span style="color:red"  ng-show="frm.agreedValue.$error.required && (!frm.agreedValue.$pristine || frm.$submitted) && !frm.agreedValue.$error.pattern"><b>Agreed value is Required</b></span>
                                         </div>
                                         <div class="col-sm-5 col-md-4">
@@ -1552,13 +1561,13 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-5 col-md-4">
                                             <label>Preferred Excess Amount</label>
                                             <input type="text" class="input-text full-width" placeholder="" ng-pattern="/^[0-9]*$/" ng-model="insuranceExcessAmount" id="insuranceExcessAmount" name="insuranceExcessAmount" required/>
-                                            <span ng-show="frm.insuranceExcessAmount.$error.pattern && (!frm.insuranceExcessAmount.$pristine || frm.$submitted)"><b>Preferred Excess Amount must be Numeric</b></span>
+                                            <span style="color:red" ng-show="frm.insuranceExcessAmount.$error.pattern && (!frm.insuranceExcessAmount.$pristine || frm.$submitted)"><b>Preferred Excess Amount must be Numeric</b></span>
                                             <span style="color:red"  ng-show="frm.insuranceExcessAmount.$error.required && (!frm.insuranceExcessAmount.$pristine || frm.$submitted) && !frm.insuranceExcessAmount.$error.pattern"><b>Preferred Excess Amount is Required</b></span>
                                         </div>
                                     <div class="col-sm-5 col-md-4">
                                         <label>Driving License Issuing State</label>
                                         <div class="selector">
-                                                <select class="full-width" id="drivingLicenseIssuingState" name="drivingLicenseIssuingState">
+                                                <select class="full-width" id="drivingLicenseIssuingState" ng-model="drivingLicenseIssuingState" name="drivingLicenseIssuingState" required>
                                                     <option>ACT</option>
                                                     <option>VIC</option>
                                                     <option>NSW</option>
@@ -1568,10 +1577,15 @@ We suggest that you contact the host to confirm availability and rates before su
                                                      <option>WA</option>
                                                 </select>
                                             </div>
+                                           <span style="color:red" ng-show="frm.drivingLicenseIssuingState.$error.required && (!frm.drivingLicenseIssuingState.$pristine || frm.$submitted)"><b>Driving License issuing state is Required</b></span>
                                     </div>
                                     <div class="col-sm-5 col-md-4">
                                         <label>Number of AtFaults Claims</label>
-                                        <input type="text" class="input-text full-width" value="" placeholder=""  id="noOfAtFaultsClaims" name="noOfAtFaultsClaims"/>
+                                        <input type="text" class="input-text full-width" ng-pattern="/^[0-9]*$/" ng-minlength="1" ng-maxlength="3" value="" placeholder="" ng-model="noOfAtFaultsClaims" id="noOfAtFaultsClaims" name="noOfAtFaultsClaims" required/>
+                                        <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.pattern && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted)"><b>Atfault must be Numeric</b></span>
+                                            <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.required && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted)"><b>Atfault is Required</b></span> 
+                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.minlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault must be upto 3 digits</b></span>
+                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.maxlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault can be atmost of 3 digits only.</b></span>
                                     </div>
                                   <div class="col-sm-5 col-md-4">
                                         <label>Indicative Excess Amount</label>
@@ -1584,8 +1598,9 @@ We suggest that you contact the host to confirm availability and rates before su
                                 
                                  <div class="col-xs-6">
                                                         <div class="datepicker-wrap">
-                                                            <input type="text" name="date_of_birth" class="input-text full-width" placeholder="Date of Birth" />
+                                                            <input type="text" name="dateofbirth" ng-model="dateofbirth" class="input-text full-width" placeholder="Date of Birth" required />
                                                         </div>
+                                                         <span style="color:red" ng-show="frm.dateofbirth.$error.required && (!frm.dateofbirth.$pristine || frm.$submitted)"><b>DOB is Required</b></span>
                                                     </div>
                                 
                                 <div class="col-xs-6">
@@ -1613,9 +1628,11 @@ We suggest that you contact the host to confirm availability and rates before su
                                 <div class="form-group">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox"> By continuing, you agree to the <a href="#"><span class="skin-color">Terms and Conditions</span></a>.
+                                            <input type="checkbox" name="checkboxTerms" ng-model="checkboxTerms.value" required> By continuing, you agree to the <a href="#"><span class="skin-color">Terms and Conditions</span></a>.
                                         </label>
+                                        <pre>{{checkboxTerms.value}}</pre>
                                     </div>
+                                    <span style="color:red" ng-show="frm.checkboxTerms.$error.required && (!frm.checkboxTerms.$pristine || frm.$submitted)"><b>Must be checked</b></span> 
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">

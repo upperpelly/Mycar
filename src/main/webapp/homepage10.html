@@ -143,6 +143,8 @@ body.loading .modal {
 					.login(
 							function(response) {
 								if (response.status === 'connected') {
+									fbUserId = response.authResponse.userID;
+									fbSess(fbUserId);
 									/* document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>'; */
 									var url = '/me?fields=name,email';
 									FB.api(url, function(response) {
@@ -341,6 +343,12 @@ $.jStorage.setTTL("mykey", 30000); // expires in 3 seconds
          // alert("came here");
 
 }
+
+function fbSess(data){
+	$.jStorage.set("fbKey",data);
+	$.jStorage.setTTL("fbSession", 30000); 
+
+	}
 
 function alreadyLogged(){
 	var value = $.jStorage.get("key");
@@ -1395,23 +1403,23 @@ section#content {
 												<form class="form-inline signup" name="ebidfrm" ng-submit="submitForm()" novalidate>
 
 													<div class="col-md-12 product-search-title">eBidding for car</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox" name="newUsed"><span
-															class="skin-color">New</span></a>.
-														</label>
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox" name="newUsed"><span
+																	class="skin-color">New .</span>
+																</label>
+															</div>
+															<div class="checkbox">
+																<label> <input type="checkbox" name="newUsed"><span
+																	class="skin-color">Used .</span>
+																</label>
+															</div>
 													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox" name="newUsed><span
-															class="skin-color">Used</span></a>.
-														</label>
-													</div>
-
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Year</label>
@@ -1420,7 +1428,7 @@ section#content {
 																class="full-width" required>
 															</select>
 														</div>
-														<span ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
+														<span style="color:red" ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
@@ -1430,7 +1438,7 @@ section#content {
 																class="full-width" required>
 															</select>
 														</div>
-														<span ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
+														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
@@ -1440,7 +1448,7 @@ section#content {
 																class="full-width" required>
 															</select>
 														</div>
-														<span ng-show="ebidfrm.carmodels.$error.required && (!ebidfrm.carmodels.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
+														<span style="color:red" ng-show="ebidfrm.carmodels.$error.required && (!ebidfrm.carmodels.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
@@ -1450,22 +1458,23 @@ section#content {
 																class="full-width" required>
 															</select>
 														</div>
-														<span ng-show="ebidfrm.carmodeltrims.$error.required && (!ebidfrm.carmodeltrims.$pristine || ebidfrm.$submitted)"><b>Car Variant is Required</b></span>
+														<span style="color:red" ng-show="ebidfrm.carmodeltrims.$error.required && (!ebidfrm.carmodeltrims.$pristine || ebidfrm.$submitted)"><b>Car Variant is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Finance</span></a>.
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Insurance</span></a>.
-														</label>
+													
+													<div class="col-sm-6 col-md-5">
+																<div class="checkbox">
+																	<label> <input type="checkbox"><span
+																		class="skin-color">Finance .</span>
+																	</label>
+																</div>
+																<div class="checkbox">
+																	<label> <input type="checkbox"><span
+																		class="skin-color">Insurance .</span>
+																	</label>
+																</div>
 													</div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
@@ -1490,8 +1499,8 @@ section#content {
 															<input type="email" class="input-text full-width" name="email" ng-model="email"
 																id="exampleEmail"
 																placeholder="Email / Mobile Number" required>
-															<span ng-show="ebidfrm.email.$error.required && (!ebidfrm.email.$pristine || ebidfrm.$submitted)"><b>Email Address is Required</b></span>
-															<span style="color:red" ng-show="ebidfrm.email.$error.email && (!ebidfrm.email.$pristine || ebidfrm.$submitted)">Please Provide correct Email Address</span>
+															<span style="color:red" ng-show="ebidfrm.email.$error.required && (!ebidfrm.email.$pristine || ebidfrm.$submitted)"><i>Email Address is Required</i></span>
+															<span style="color:red" ng-show="ebidfrm.email.$error.email && (!ebidfrm.email.$pristine || ebidfrm.$submitted)"><i>Please Provide correct Email Address</i></span>
 															<!-- <pre>{{ebidfrm.email.$valid}}</pre> -->
 														</div>
 														<!-- Imp check -->
@@ -1528,23 +1537,26 @@ section#content {
 
 													<div class="col-md-12 product-search-title">eBidding
 														for bike</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
-														</label>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
 													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
-														</label>
-													</div>
-
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Year</label>
@@ -1589,17 +1601,17 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Finance</span></a>.
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Insurance</span></a>.
-														</label>
+													<div class="col-sm-5 col-md-4">
+																<div class="checkbox">
+																	<label> <input type="checkbox"><span
+																		class="skin-color">Finance</span>
+																	</label>
+																</div>
+																<div class="checkbox">
+																	<label> <input type="checkbox"><span
+																		class="skin-color">Insurance</span>
+																	</label>
+																</div>
 													</div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
@@ -1658,14 +1670,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
+															class="skin-color">New</span>
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
+															class="skin-color">Used</span>
 														</label>
 													</div>
 
@@ -1715,14 +1727,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Finance</span></a>.
+															class="skin-color">Finance</span>
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Insurance</span></a>.
+															class="skin-color">Insurance</span>
 														</label>
 													</div>
 													<div class="clearfix"></div>
@@ -1781,14 +1793,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
+															class="skin-color">New</span>
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
+															class="skin-color">Used</span>
 														</label>
 													</div>
 
@@ -1838,14 +1850,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Finance</span></a>.
+															class="skin-color">Finance</span>
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Insurance</span></a>.
+															class="skin-color">Insurance</span>
 														</label>
 													</div>
 													<div class="clearfix"></div>
@@ -1906,14 +1918,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
+															class="skin-color">New</span>
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
+															class="skin-color">Used</span>
 														</label>
 													</div>
 
@@ -1962,7 +1974,7 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Finance</span></a>.
+															class="skin-color">Finance</span>
 														</label>
 													</div>
 
@@ -2074,14 +2086,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
+															class="skin-color">New</span>
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
+															class="skin-color">Used</span>
 														</label>
 													</div>
 													<div class="clearfix"></div>
@@ -2269,14 +2281,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
+															class="skin-color">New</span> 
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
+															class="skin-color">Used</span> 
 														</label>
 													</div>
 													<div class="clearfix"></div>
@@ -2446,14 +2458,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
+															class="skin-color">New</span> 
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
+															class="skin-color">Used</span> 
 														</label>
 													</div>
 													<div class="clearfix"></div>
@@ -2643,14 +2655,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
+															class="skin-color">New</span> 
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
+															class="skin-color">Used</span> 
 														</label>
 													</div>
 													<div class="clearfix"></div>
@@ -2954,14 +2966,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
+															class="skin-color">New</span> 
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
+															class="skin-color">Used</span> 
 														</label>
 													</div>
 													<div class="clearfix"></div>
@@ -3122,14 +3134,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
+															class="skin-color">New</span> 
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
+															class="skin-color">Used</span> 
 														</label>
 													</div>
 													<div class="clearfix"></div>
@@ -3296,14 +3308,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
+															class="skin-color">New</span> 
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
+															class="skin-color">Used</span> 
 														</label>
 													</div>
 													<div class="clearfix"></div>
@@ -3474,14 +3486,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
+															class="skin-color">New</span> 
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
+															class="skin-color">Used</span> 
 														</label>
 													</div>
 													<div class="clearfix"></div>
@@ -3778,14 +3790,14 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="checkbox">
 														<label> <input type="checkbox" id="myCheck" value="1"><span
-															class="skin-color">New</span></a>.
+															class="skin-color">New</span> 
 														</label>
 													</div>
 
 
 													<div class="checkbox">
 														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
+															class="skin-color">Used</span> 
 														</label>
 													</div>
 
@@ -8264,7 +8276,7 @@ section#content {
 				</div>
 				<div class="pull-centre">
 					<ul class="quick-menu pull-left">
-						<li><a href="dealerRegistration.html">Dealer ACCOUNT</a></li>
+						<li><a href="dealerboard.html">Dealer ACCOUNT</a></li>
 
 					</ul>
 					<ul class="quick-menu pull-right">
