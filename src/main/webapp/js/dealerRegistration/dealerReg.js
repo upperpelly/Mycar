@@ -6,7 +6,8 @@ mainApp1.controller(
 						alert("in first form");
 						$('#first').removeClass('disabled');
 				        $('#first1').attr('data-toggle','pill');
-				        document.getElementById("first1").onclick;
+				        document.getElementById("first1").click();
+				        //$('#menu1').show();
 				        //$('a#first1').click();
 					};
 					
@@ -14,15 +15,16 @@ mainApp1.controller(
 						alert("in second form");
 						$('#second').removeClass('disabled');
 				        $('#second1').attr('data-toggle','pill');
-				        $('#second1').click();
+				        document.getElementById("second1").click();
+				        //$('#second1').click();
+				        //$('#menu2').show();
 					};
 					
 					$scope.thirdForm = function() {
 						alert("in third form");
 						$('#third').removeClass('disabled');
 				        $('#third1').attr('data-toggle','pill');
-				        $('#third1').click();
-				        
+				        document.getElementById("third1").click();	        
 					};
 					
 					

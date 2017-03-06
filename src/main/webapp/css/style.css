@@ -8336,12 +8336,12 @@ ul.search-tabs li.active a {
   font-size: 24px;
 }
 .search-box-wrapper.style1 .search-box > ul.search-tabs li.active > a {
-  border-right-color: #fff;
+  border-right-color: rgb(55, 120, 177);
   filter: alpha(opacity=100);
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   -moz-opacity: 1;
   -khtml-opacity: 1;
-  opacity: 1;
+  background-color: #3d4f63;
 }
 .search-box-wrapper.style1 .search-box > ul.search-tabs li.active > a > i {
   color: #fdb714;
@@ -8358,7 +8358,7 @@ ul.search-tabs li.active a {
   border-bottom: none;
 }
 .search-box-wrapper.style1 .search-tab-content {
-  background: #fff;
+  background: transparent;
   float: left;
   width: 69%;
   padding: 0;

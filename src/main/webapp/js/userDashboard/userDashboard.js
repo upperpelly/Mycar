@@ -14,6 +14,7 @@ function signingout(){
 	
 	 $.jStorage.deleteKey("key");
 	 $.jStorage.deleteKey("carKey");
+	 $.jStorage.deleteKey("fbKey");
 	 alert("Successfully Logged Out");
 	 window.location="homepage10.html";
 }

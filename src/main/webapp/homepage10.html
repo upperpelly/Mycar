@@ -34,6 +34,15 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 });
 // ]]&gt;</script>
 
+<!-- Layout -->
+<style>
+.search-box-wrapper.style1 .search-tab-content {
+    background: transparent;
+}
+
+</style>
+
+
 <style type="text/css">
 
 input.ng-invalid.ng-dirty{
@@ -76,7 +85,7 @@ body.loading .modal {
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 <script>function showDiv1() {
-	alert("came here");
+	//alert("came here");
 	var carquery = new CarQuery();
 	carquery.init();
 	carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
@@ -84,7 +93,7 @@ body.loading .modal {
 </script>
 
 <script>function showDiv2() {
-	alert("came here");
+	//alert("came here");
 	var carquery = new CarQuery();
 	carquery.init();
 	carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin');
@@ -978,7 +987,7 @@ section#content {
 
 				<div class="topnav" >
 					<ul class="quick-menu pull-right clearfix">
-						<li><a onClick="redirect()">ACCOUNT</a></li>
+						<li><button onClick="redirect()">ACCOUNT</button></li>
 						
 					</ul>
 				</div>
@@ -1355,8 +1364,7 @@ section#content {
 								</ul>
 							</div>
 
-							<div role="tabpanel" class="search-tab-content tran-search-box"
-								style="background-image: url('parachute.jpeg');">
+							<div role="tabpanel" class="search-tab-content tran-search-box">
 								<!-- Start of eBidR -->
 								<div role="tabpanel" class="tab-pane active" id="hotels-tab">
 									<div class="title-container">
@@ -1664,21 +1672,25 @@ section#content {
 
 													<div class="col-md-12 product-search-title">eBidding
 														for boat</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span>
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span>
-														</label>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
 													</div>
 
 													<div class="clearfix"></div>
@@ -1787,21 +1799,25 @@ section#content {
 
 													<div class="col-md-12 product-search-title">eBidding
 														for caravan</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span>
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span>
-														</label>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
 													</div>
 
 													<div class="clearfix"></div>
@@ -1912,23 +1928,26 @@ section#content {
 
 													<div class="col-md-12 product-search-title">eBidding
 														for bicycle</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span>
-														</label>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
 													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span>
-														</label>
-													</div>
-
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Year</label>
@@ -2083,19 +2102,23 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Browse
 														for car</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span>
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span>
-														</label>
-													</div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox" name=""><span
+																	class="skin-color">New .</span>
+																</label>
+															</div>
+															<div class="checkbox">
+																<label> <input type="checkbox" name=""><span
+																	class="skin-color">Used .</span>
+																</label>
+															</div>
+													</div>	
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Post code</label>
@@ -2278,18 +2301,25 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Browse
 														for bike</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span> 
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span> 
-														</label>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
@@ -2455,18 +2485,25 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Browse
 														for boat</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span> 
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span> 
-														</label>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
@@ -2652,18 +2689,22 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Browse
 														for caravan</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span> 
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span> 
-														</label>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox" name=""><span
+																	class="skin-color">New .</span>
+																</label>
+															</div>
+															<div class="checkbox">
+																<label> <input type="checkbox" name=""><span
+																	class="skin-color">Used .</span>
+																</label>
+															</div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
@@ -2862,6 +2903,26 @@ section#content {
 												<form>
 													<div class="col-md-12 product-search-title">Browse
 														for bicycle</div>
+														<div class="col-md-12">&nbsp</div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
+													</div>
 													<div class="col-md-12 search-col-padding">
 														<label class="radio-inline"> <input type="radio"
 															name="inlineRadioOptions" id="inlineRadio1"
@@ -2963,18 +3024,22 @@ section#content {
 												<form class="form-inline signup" role="form" ng-submit="postFinanceLead()" >
 													<div class="col-md-12 product-search-title">Finance
 														for car</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span> 
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span> 
-														</label>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox" name=""><span
+																	class="skin-color">New .</span>
+																</label>
+															</div>
+															<div class="checkbox">
+																<label> <input type="checkbox" name=""><span
+																	class="skin-color">Used .</span>
+																</label>
+															</div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
@@ -3131,18 +3196,25 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Finance
 														for bike</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span> 
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span> 
-														</label>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
@@ -3305,18 +3377,25 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Finance
 														for boat</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span> 
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span> 
-														</label>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
@@ -3483,18 +3562,22 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Finance
 														for caravan</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span> 
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span> 
-														</label>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox" name=""><span
+																	class="skin-color">New .</span>
+																</label>
+															</div>
+															<div class="checkbox">
+																<label> <input type="checkbox" name=""><span
+																	class="skin-color">Used .</span>
+																</label>
+															</div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
@@ -3664,6 +3747,26 @@ section#content {
 												<form>
 													<div class="col-md-12 product-search-title">Finance
 														for bicycle</div>
+														<div class="col-md-12">&nbsp</div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
+													</div>
 													<div class="col-md-12 search-col-padding">
 														<label class="radio-inline"> <input type="radio"
 															name="inlineRadioOptions" id="inlineRadio1"
@@ -3787,18 +3890,22 @@ section#content {
 											<div role="tabpanel" class="tab-pane active" id="flight3">
 												<form class="form-inline signup" role="form" ng-submit="postInsuranceLead()">
 													<div class="col-md-12 product-search-title">Insurance for car</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox" id="myCheck" value="1"><span
-															class="skin-color">New</span> 
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span> 
-														</label>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox" name=""><span
+																	class="skin-color">New .</span>
+																</label>
+															</div>
+															<div class="checkbox">
+																<label> <input type="checkbox" name=""><span
+																	class="skin-color">Used .</span>
+																</label>
+															</div>
 													</div>
 
 													<div class="clearfix"></div>
@@ -4078,18 +4185,25 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Insurance
 														for bike</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> &nbsp<input type="checkbox"><span
-															class="skin-color">New</span></a>.
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
-														</label>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
 													</div>
 
 													<div class="clearfix"></div>
@@ -4383,18 +4497,25 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Insurance
 														for boat</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
-														</label>
-													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
-														</label>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
 													</div>
 
 													<div class="clearfix"></div>
@@ -4685,20 +4806,23 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Insurance
 														for caravan</div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">New</span></a>.
-														</label>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox" name=""><span
+																	class="skin-color">New .</span>
+																</label>
+															</div>
+															<div class="checkbox">
+																<label> <input type="checkbox" name=""><span
+																	class="skin-color">Used .</span>
+																</label>
+															</div>
 													</div>
-
-
-													<div class="checkbox">
-														<label> <input type="checkbox"><span
-															class="skin-color">Used</span></a>.
-														</label>
-													</div>
-
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Post Code</label> <input type="text"
@@ -4989,6 +5113,26 @@ section#content {
 												<form>
 													<div class="col-md-12 product-search-title">Insurance
 														for bicycle</div>
+														<div class="col-md-12">&nbsp</div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
+													</div>
 													<div class="col-md-12 search-col-padding">
 														<label class="radio-inline"> <input type="radio"
 															name="inlineRadioOptions" id="inlineRadio1"
@@ -5146,6 +5290,9 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Service
 														for car</div>
+														
+													<div class="col-md-12">&nbsp</div>
+													
 													<div class="clearfix"></div>
 
 													<div class="clearfix"></div>
@@ -5345,6 +5492,7 @@ section#content {
 													<div class="col-md-12 product-search-title">Service
 														for bike</div>
 													<div class="clearfix"></div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Post Code</label> <input type="text"
 															class="input-text full-width" value="free text"
@@ -5541,7 +5689,7 @@ section#content {
 													<div class="col-md-12 product-search-title">Service
 														for boat</div>
 													<div class="clearfix"></div>
-
+													<div class="col-md-12">&nbsp</div>
 
 													<div class="col-sm-5 col-md-4">
 														<label>Post Code</label> <input type="text"
@@ -5739,6 +5887,7 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Service
 														for caravan</div>
+														<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Post Code</label> <input type="text"
@@ -5939,6 +6088,26 @@ section#content {
 												<form>
 													<div class="col-md-12 product-search-title">Service
 														for bicycle</div>
+														<div class="col-md-12">&nbsp</div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													
+													<div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">New</span></a>.
+																</label>
+															</div>
+		
+		
+															<div class="checkbox">
+																<label> <input type="checkbox"><span
+																	class="skin-color">Used</span></a>.
+																</label>
+															</div>
+													</div>
 													<div class="col-md-12 search-col-padding">
 														<label class="radio-inline"> <input type="radio"
 															name="inlineRadioOptions" id="inlineRadio1"
@@ -6078,6 +6247,7 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Transport
 														for car</div>
+														<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>From Post Code / Address</label> <input type="text"
@@ -6224,6 +6394,7 @@ section#content {
 													<div class="col-md-12 product-search-title">Transport
 														for bike</div>
 													<div class="clearfix"></div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="col-sm-5 col-md-4">
 														<label>From Post Code / Address</label> <input type="text"
 															class="input-text full-width" value="free text"
@@ -6366,6 +6537,8 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Transport
 														for boat</div>
+														
+													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>From Post Code / Address</label> <input type="text"
@@ -6513,6 +6686,7 @@ section#content {
 													<div class="col-md-12 product-search-title">Transport
 														for caravan</div>
 													<div class="clearfix"></div>
+													<div class="col-md-12">&nbsp</div>
 													<div class="col-sm-5 col-md-4">
 														<label>From Post Code / Address</label> <input type="text"
 															class="input-text full-width" value="free text"
@@ -6655,6 +6829,7 @@ section#content {
 												<form>
 													<div class="col-md-12 product-search-title">Transport
 														for bicycle</div>
+														<div class="col-md-12">&nbsp</div>
 													<div class="col-md-6 col-sm-6 search-col-padding">
 														<label>PPSR Check Type</label><br> <input type="text"
 															class="input">
@@ -6758,6 +6933,7 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Registration
 														for car</div>
+														<div class="col-md-12">&nbsp</div>
 													<div class="col-sm-5 col-md-4">
 														<label>State</label>
 														<div class="selector">
@@ -6839,6 +7015,7 @@ section#content {
 													<form class="form-inline signup" role="form">
 														<div class="col-md-12 product-search-title">Registration
 															for bike</div>
+															<div class="col-md-12">&nbsp</div>
 														<div class="col-sm-5 col-md-4">
 															<label>State</label>
 															<div class="selector">
@@ -6921,6 +7098,7 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Registration
 														for boat</div>
+														<div class="col-md-12">&nbsp</div>
 													<div class="col-sm-5 col-md-4">
 														<label>State</label>
 														<div class="selector">
@@ -7002,6 +7180,7 @@ section#content {
 												<form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Registration
 														for caravan</div>
+														<div class="col-md-12">&nbsp</div>
 													<div class="col-sm-5 col-md-4">
 														<label>State</label>
 														<div class="selector">
@@ -7083,6 +7262,7 @@ section#content {
 												<form>
 													<div class="col-md-12 product-search-title">Registration
 														for bicycle</div>
+														<div class="col-md-12">&nbsp</div>
 													<div class="col-md-6 col-sm-6 search-col-padding">
 														<label>PPSR Check Type</label><br> <input type="text"
 															class="input">
@@ -7469,6 +7649,7 @@ section#content {
 												<form>
 													<div class="col-md-12 product-search-title">Registration
 														for bicycle</div>
+														<div class="col-md-12">&nbsp</div>
 													<div class="col-md-6 col-sm-6 search-col-padding">
 														<label>PPSR Check Type</label><br> <input type="text"
 															class="input">
@@ -7532,7 +7713,56 @@ section#content {
 						</div>
 					</div>
 				</div>
-
+				<div class="sidebar col-md-3">
+                        <article class="detailed-logo">
+                            <figure>
+                                <img width="320" height="80" src="http://placehold.it/320x80" alt="">
+                            </figure>
+                            <div class="details">
+                                <h2 class="box-title"><cufon class="cufon cufon-canvas" alt="4 " style="width: 17px; height: 20.0004px;"><canvas width="33" height="25" style="width: 33px; height: 25px; top: -3px; left: -1px;"></canvas><cufontext>4 </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Night " style="width: 52px; height: 20.0004px;"><canvas width="68" height="25" style="width: 68px; height: 25px; top: -3px; left: -1px;"></canvas><cufontext>Night </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Baja " style="width: 41px; height: 20.0004px;"><canvas width="58" height="25" style="width: 58px; height: 25px; top: -3px; left: -1px;"></canvas><cufontext>Baja </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Mexico" style="width: 62px; height: 20.0004px;"><canvas width="72" height="25" style="width: 72px; height: 25px; top: -3px; left: -1px;"></canvas><cufontext>Mexico</cufontext></cufon><small><cufon class="cufon cufon-canvas" alt="mon, " style="width: 32px; height: 10px;"><canvas width="39" height="13" style="width: 39px; height: 13px; top: -2px; left: 0px;"></canvas><cufontext>mon, </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Jan " style="width: 21px; height: 10px;"><canvas width="29" height="13" style="width: 29px; height: 13px; top: -2px; left: 0px;"></canvas><cufontext>Jan </cufontext></cufon><cufon class="cufon cufon-canvas" alt="26, " style="width: 19px; height: 10px;"><canvas width="26" height="13" style="width: 26px; height: 13px; top: -2px; left: 0px;"></canvas><cufontext>26, </cufontext></cufon><cufon class="cufon cufon-canvas" alt="2014" style="width: 25px; height: 10px;"><canvas width="30" height="13" style="width: 30px; height: 13px; top: -2px; left: 0px;"></canvas><cufontext>2014</cufontext></cufon></small></h2>
+                                <span class="price clearfix">
+                                    <small class="pull-left">from</small>
+                                    <span class="pull-right">$239</span>
+                                </span>
+                                <div class="feedback clearfix">
+                                    <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="4 stars"><span class="five-stars" style="width: 80%;"></span></div>
+                                    <span class="review pull-right">270 reviews</span>
+                                </div>
+                                <p class="description">Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
+                                <a class="button yellow full-width uppercase btn-small">add to wishlist</a>
+                            </div>
+                        </article>
+                        <div class="travelo-box contact-box">
+                            <h4><cufon class="cufon cufon-canvas" alt="Need " style="width: 42px; height: 15.9996px;"><canvas width="55" height="20" style="width: 55px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>Need </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Autoscoop " style="width: 79px; height: 15.9996px;"><canvas width="92" height="20" style="width: 92px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>Autoscoop </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Help?" style="width: 41px; height: 15.9996px;"><canvas width="50" height="20" style="width: 50px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>Help?</cufontext></cufon></h4>
+                            <p>We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
+                            <address class="contact-details">
+                                <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
+                                <br>
+                                <a class="contact-email" href="#">help@autoscoop.com</a>
+                            </address>
+                        </div>
+                        <div class="travelo-box book-with-us-box">
+                            <h4><cufon class="cufon cufon-canvas" alt="Why " style="width: 37px; height: 15.9996px;"><canvas width="50" height="20" style="width: 50px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>Why </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Book " style="width: 39px; height: 15.9996px;"><canvas width="53" height="20" style="width: 53px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>Book </cufontext></cufon><cufon class="cufon cufon-canvas" alt="with " style="width: 34px; height: 15.9996px;"><canvas width="47" height="20" style="width: 47px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>with </cufontext></cufon><cufon class="cufon cufon-canvas" alt="us?" style="width: 23px; height: 15.9996px;"><canvas width="32" height="20" style="width: 32px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>us?</cufontext></cufon></h4>
+                            <ul>
+                                <li>
+                                    <i class="soap-icon-hotel-1 circle"></i>
+                                    <h5 class="title"><a href="#">135,00+ Hotels</a></h5>
+                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
+                                </li>
+                                <li>
+                                    <i class="soap-icon-savings circle"></i>
+                                    <h5 class="title"><a href="#">Low Rates &amp; Savings</a></h5>
+                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
+                                </li>
+                                <li>
+                                    <i class="soap-icon-support circle"></i>
+                                    <h5 class="title"><a href="#">Excellent Support</a></h5>
+                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
 			</div>
 	</div>
 
