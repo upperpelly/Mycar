@@ -117,7 +117,7 @@ body.loading .modal {
 <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '249863545451459',
+				appId : '238604546585672',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -285,7 +285,7 @@ function onSignInG()
 {
 	gapi.load('auth2', function() {
 		  auth2 = gapi.auth2.init({
-		    client_id: '814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com',
+		    client_id: '814821459166-2snv3tdshqgusiuhjnuoedrg0akt83ol.apps.googleusercontent.com',
 		    });
 
 		  // Sign the user in, and then retrieve their ID.
@@ -754,6 +754,7 @@ var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&
 							var modelDisplay= $('#car-makes').val();
 							var modelName=$('#car-models').val();
 							var trimValue=$('#car-model-trims').val();
+							var modelTrim=strUser;
 							//alert ("model"+modelYear);
 							if(alreadyLogged()){
 							$.ajax({
@@ -763,6 +764,7 @@ var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&
 					            	data.modelYear=modelYear;
 					            	data.modelDisplay=modelDisplay;
 					            	data.modelName=modelName;
+					            	data.modelTrim=modelTrim;
 					            	data.trimValue=trimValue;
 					            	
 					            	carDetailHtml(data);

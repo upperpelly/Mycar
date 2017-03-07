@@ -127,15 +127,15 @@ var modelYear=null;
 
 	var mainApp1 = angular.module("mainApp1", []);
 	mainApp1.controller('myController1',function($scope,$http) {
-		alert("inside c");
+		//alert("inside c");
 		$scope.submitSearchForm = function (isValid) {													
- 														alert("submit form");
- 														alert(isValid);
+ 														//alert("submit form");
+ 														//alert(isValid);
 													if(isValid)
 														{
 														var jsonInputToAPI = 
 														{
-																"userId":99,
+																"userId":userId,
 																"searchLead":{
 																	"modelYear":modelYear,
 																	"modelDisplay": modelDisplay,
@@ -226,7 +226,7 @@ var modelYear=null;
 														}
 													else
 														{
-														alert("invalid");
+														alert("Please enter the fields which are mandatory and highlighted in Red.");
 														//$("form:input.ng-invalid,select.ng-invalid").first().focus();
 														$('input.ng-invalid').first().focus();
 														$('select.ng-invalid').first().focus();

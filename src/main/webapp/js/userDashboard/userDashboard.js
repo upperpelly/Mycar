@@ -89,6 +89,87 @@ function createCORSRequest(method, url){
     }
     return xhr;
 }
+function dashBoardPhotoUpdate()
+{
+// start of 
+
+	
+	var jsonInputToAPI = {"userId":userId,
+			"photo":null,
+			"myVehicleVO":{
+				"myVehicleId":null,
+				"year": $('#car-years').val(),															      
+				"make":$('#car-makes').val(),
+						"model" :$('#car-models').val(),
+						 "variant":$('#car-model-trims').val(),
+						"vin":$('#vin').val(),
+						"regNum":$('#regNo').val(),
+						"regState":$('#car-model-trims').val(),
+						"regExpDate":null,
+						"insProv":$('#regState').val(),
+						"insProvMan":$('#insProv').val(),
+						"insPremPaid":$('#insPrePaid').val(),
+						"insPremPaidFreq":$('#premPaidFreq').val(),
+						"insExpiry":null,	
+						"odoMeter":$('#odoMeter').val(),	
+						"lastServiceDt":null,	
+						"nextServiceDt":null,	
+						"nextServKms":$('#nextServMaiKms').val(),	
+						"finProvider":$('#finProv').val(),	
+						"loanAmt1":$('#loanAmount').val(),	
+						"loanTakenDt":null,
+							"loanPaidFreq":$('#loanPaidFreq').val(),	
+						"loanAmt2":$('#laonAmount1').val(),	
+						"loanPeriod":$('#laonPeriod').val(),	
+						"loanInterest":$('#laonIntRate').val(),
+							"fuelCardProvider":$('#fuelCardProv').val(),	
+						"valFuelCard":$('#valFuelCard').val(),	
+						"fuelType":$('#fuelType').val(),
+							"photo1":$('#photo1').val(),	
+						"photo2":$('#photo2').val(),	
+						"photo3":$('#photo3').val(),
+							"flex1":"flex1",	
+						"flex2":"flex1",	
+						"flex3":"flex1",
+							"flex4":"flex1",	
+						"flex5":12,	
+						"flex6":12,
+						"flex7":12,
+							"flex8":null,	
+						"flex9":null
+			}
+			}
+
+
+	//alert("Before Call");
+	//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
+	//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
+	
+	
+		   /* $http({
+						method : 'POST',
+						url : wsURL,
+						data: jsonInputToAPI
+										
+					}).success(function(data) {
+						alert("Successfully Stored..");
+										alert("Thank You. Your MyVehicle ID is " + data.myVehicleId);
+																		
+									});	*/
+	
+	$.ajax({  
+		type: "POST",  
+		url: "api/eBid/updatePhoto?_method=PUT",
+		data: jsonInputToAPI,
+		contentType:'application/json',
+		success: function(result){
+			
+			alert("Successfully upated photo to user");
+			
+		}
+	});
+	
+}
 
 function dashBoardCallSearch(model_data_id, userid)
 {
@@ -868,6 +949,10 @@ mainApp1.controller('myController13',function($scope, $http) {
 																				});													
 												};
 
+												
+
+
+												
 				});
 //angular.bootstrap(document, ['mainApp1']);
 //angular JS end
