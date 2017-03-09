@@ -396,7 +396,7 @@ function changeTraveloElementUI() {
             buttonImageOnly: true,
             changeYear: false,
             /*showOtherMonths: true,*/
-            minDate: minDate,
+            //minDate: minDate,
             dateFormat: "mm/dd/yy",
             dayNamesMin: ["S", "M", "T", "W", "T", "F", "S"],
             beforeShow: function(input, inst) {

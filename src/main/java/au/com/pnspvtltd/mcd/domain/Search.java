@@ -5,10 +5,14 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
 
 @Entity
 @Table(name = "searchrepo")
@@ -59,6 +63,8 @@ public class Search implements Serializable {
 	private String extraIntern3;	
 	private String extraIntern4;	
 	private String extraIntern5;
+	
+	private LeadInitiatedBy leadInitiatedBy;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -336,5 +342,16 @@ public class Search implements Serializable {
 	public void setExtraIntern5(String extraIntern5) {
 		this.extraIntern5 = extraIntern5;
 	}
+
+	@Enumerated(EnumType.STRING)
+	public LeadInitiatedBy getLeadInitiatedBy() {
+		return leadInitiatedBy;
+	}
+
+	public void setLeadInitiatedBy(LeadInitiatedBy leadInitiatedBy) {
+		this.leadInitiatedBy = leadInitiatedBy;
+	}
+	
+	
 	
 }
