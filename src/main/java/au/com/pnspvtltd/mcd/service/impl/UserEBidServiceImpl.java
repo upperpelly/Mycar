@@ -22,6 +22,7 @@ import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.SearchInsurance;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
 import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InventoryRepository;
@@ -61,6 +62,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 		// Create User Search Lead (Vehicle Lead)
 		Search search = domainModelUtil.toSearch(userEBidVO.getSearchLead());
+		search.setLeadInitiatedBy(LeadInitiatedBy.USER);
 		if (user.getSearch() != null) {
 			user.getSearch().add(search);
 		} else {

@@ -127,7 +127,10 @@ var modelYear=null;
 
 	var mainApp1 = angular.module("mainApp1", []);
 	mainApp1.controller('myController1',function($scope,$http) {
-		//alert("inside c");
+		//alert("inside c"+$('#dateofbirth').val());
+		alert($scope.dateofbirth);
+		
+		
 		$scope.submitSearchForm = function (isValid) {													
  														//alert("submit form");
  														//alert(isValid);

@@ -93,7 +93,7 @@ function dashBoardPhotoUpdate()
 {
 // start of 
 
-	
+	alert("came her");
 	var jsonInputToAPI = {"userId":userId,
 			"photo":null,
 			"myVehicleVO":{
