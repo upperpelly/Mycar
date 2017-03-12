@@ -289,7 +289,7 @@ function registerEditDealerVehicleQuotationModal(){
 	$('button.submit-editDealerVehicleQuotationModal').on('click', function(e) {
 		
 		var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
-		
+		alert(jsonInput);
 		
 		$.ajax({  
 			type: "POST",  

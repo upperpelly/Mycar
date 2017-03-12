@@ -18,6 +18,7 @@ import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
+import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 
@@ -51,9 +52,9 @@ public class UserEBidController {
 		return userEBidService.createMyVehicle(userEBidVO);
 	}
 	
-	@PutMapping("eBid/updatePhoto")
+	@PutMapping("updatePhoto")
 	@Transactional
-	public UserMyVehicleVO updatePhoto(@RequestBody UserMyVehicleVO userMyVehicleVO,
+	public UserPhotoVO updatePhoto(@RequestBody UserPhotoVO userMyVehicleVO,
 			HttpServletResponse response) {
 		LOGGER.debug("Received request to update photo {}", userMyVehicleVO.getUserId());
 	    //TODO: create a service for VehicleQutotation to update quotation details

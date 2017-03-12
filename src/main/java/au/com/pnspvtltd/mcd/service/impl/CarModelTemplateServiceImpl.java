@@ -47,11 +47,40 @@ public class CarModelTemplateServiceImpl implements CarModelTemplateService {
 	@Transactional(readOnly = true)
 	public List<CarModelTemplateVO> getAllCarModelTemplates() {
 		List<CarModelTemplate> carModelTemplates = carModelTemplateRepository.findAll();
+		//carModelTemplateRepository.findAll(modelYear)
 		List<CarModelTemplateVO> carModelTemplateVOs = new ArrayList<>();
 		for (CarModelTemplate carModelTemplate : carModelTemplates) {
 			carModelTemplateVOs.add(domainModelUtil.fromCarModelTemplate(carModelTemplate, false));
 		}
 		return carModelTemplateVOs;
+	}
+
+	@Override
+	public List<String> getAllCarModelYears() {
+		// TODO Auto-generated method stub
+		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelYears();
+		return carModelTemplates;
+	}
+
+	@Override
+	public List<String> getAllCarModelMakesForYear(String modelYear) {
+		// TODO Auto-generated method stub
+		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelMakesForYear(modelYear);
+		return carModelTemplates;
+	}
+
+	@Override
+	public List<String> getAllCarModelNamesForMake(String modelDisplay, String modelYear) {
+		// TODO Auto-generated method stub
+		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelNamesForMake(modelDisplay,modelYear);
+		return carModelTemplates;
+	}
+
+	@Override
+	public List<String> getAllCarModelVariantsForModel(String modelName,String modelDisplay,String modelYear) {
+		// TODO Auto-generated method stub
+		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelVariantsForModel(modelName,modelDisplay,modelYear);
+		return carModelTemplates;
 	}
 
 }

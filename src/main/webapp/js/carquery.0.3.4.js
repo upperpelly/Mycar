@@ -29,7 +29,7 @@ var CarQuery = function(){}
 
 CarQuery.prototype = {
 
-    base_url:   "http://www.carqueryapi.com/api/0.3/",
+    base_url:   "http://localhost:8080/MyCarDomain",
     body:  "",
     body_id:  "cq-body",
     color_ext_select_id:null,
@@ -736,27 +736,36 @@ CarQuery.prototype = {
      $("select#"+this.year_select_id).html("<option value=''>Loading Years...</option>");
 
         var sender = this;
-
-        $.getJSON(this.base_url+"?callback=?", {cmd:"getYears"}, function(data) {
+        this.base_url = 'http://localhost:8080/MyCarDomain/api/carModelYears';
+        //alert(base_url);
+        alert(this.base_url);
+        $.getJSON(this.base_url, function(data) {
 
      if(!sender.responseError(data))
      {
-         var options = sender.empty_option_html;
-
+    	 var options = '<option value="">Please choose a Year</option>';
+         //console.log(data);
+         
          //Set min and max year range
-         var minYear = data.Years.min_year;
+         /*var minYear = data.Years.min_year;
          var maxYear = data.Years.max_year;
-
+         alert(data[0]);
          if(sender.year_select_min != null && minYear < sender.year_select_min )
           minYear = sender.year_select_min;
          if(sender.year_select_max != null && maxYear > sender.year_select_max )
-          maxYear = sender.year_select_max;
-
-         for (var i = maxYear; i >= minYear; i--)
+          maxYear = sender.year_select_max;*/
+         
+         
+         /*alert(data[0]);
+         alert(data.length);
+         alert(data);
+         var len= JSON.stringify(data);
+         alert(len);*/
+         for (var i = 0; i < data.length; i++)
          {
-            options += '<option value="' + i + '">' + i + '</option>';
+            options += '<option value="' + data[i] + '">' + data[i] + '</option>';
          }
-
+         //alert(options);
       $("select#"+sender.year_select_id).html(options);
 
       $("select#"+sender.make_select_id).html(sender.empty_option_html);
@@ -826,8 +835,11 @@ CarQuery.prototype = {
     {
  if(!this.responseError(data))
  {
-         var options = '<option value="">Please choose a make</option>';
-  var makes = data.Makes;
+         var options = '<option value="">Please choose a Make</option>';
+         alert(options);
+         console.log(data);
+         alert(data);
+/*  var makes = data;
   for (var key in makes)
   {
         if (makes.hasOwnProperty(key))
@@ -837,7 +849,12 @@ CarQuery.prototype = {
 
    options += '<option value="' + makes[key].make_id + '" '+s+'>' + makes[key].make_display + '</option>';
      }
+  }*/
+  for (var i = 0; i < data.length; i++)
+  {
+     options += '<option value="' + data[i] + '">' + data[i] + '</option>';
   }
+  alert(options);
 
   $("select#"+this.make_select_id).html(options);
  }
@@ -845,23 +862,32 @@ CarQuery.prototype = {
 
     populateModelSelect: function(data)
     {
-     var models = data.Models;
+    	var options = '<option value="">Please choose a Model</option>';
+        alert(options);
+        console.log(data);
+        for (var i = 0; i < data.length; i++)
+        {
+           options += '<option value="' + data[i] + '">' + data[i] + '</option>';
+        }
+        alert(options);
+    	
+    	//var models = data.Models;
 
-        var options = '';
+        /*var options = '';
         for (var i = 0; i < models.length; i++)
         {
            var s = '';
     if(this.settings.model != null && this.settings.model == models[i].model_name) s = 'selected="selected"';
 
            options += '<option value="' + models[i].model_name + '" '+s+'>' + models[i].model_name + '</option>';
-        }
+        }*/
 
        $("select#"+this.model_select_id).html(options);
     },
 
     populateTrimSelect: function(data)
     {
-        var trims = data.Trims;
+        /*var trims = data.Trims;
         var display;
 
         var options = '';
@@ -874,7 +900,16 @@ CarQuery.prototype = {
          if(trim_display == "") trim_display = this.default_trim_name;
 
           options += '<option value="' + trims[i].model_id + '" '+s+'>' +  trim_display + '</option>';
+        }*/
+    	
+    	var options = '<option value="">Please choose a Variant</option>';
+        alert(options);
+        console.log(data);
+        for (var i = 0; i < data.length; i++)
+        {
+           options += '<option value="' + data[i] + '">' + data[i] + '</option>';
         }
+        alert(options);
 
        $("select#"+this.trim_select_id).html(options);
 
@@ -2492,9 +2527,11 @@ var insQCt=result.insuranceQuotation.length;
         $("select#"+this.make_select_id).html("<option value=''>Loading Makes...</option>");
 
         var sender = this;
-
+        //this.base_url = 'http://localhost:8080/MyCarDomain/api/carModelMakesForYear?modelYear='+this.cur_year;
+        this.base_url = 'http://localhost:8080/MyCarDomain/api/carModelMakesForYear';
+        alert(this.base_url);
         //Get Car Model JSON for the selected make
-     $.getJSON(this.base_url+"?callback=?", {cmd:"getMakes", year:this.cur_year, sold_in_us:this.sold_in_us}, function(data) {
+     $.getJSON(this.base_url, {modelYear:this.cur_year}, function(data) {
 
      if(!sender.responseError(data))
      {
@@ -2524,9 +2561,12 @@ var insQCt=result.insuranceQuotation.length;
      $("select#"+this.model_select_id).html("<option value=''>Loading Models...</option>");
 
      var sender = this;
+     
+
+     this.base_url = 'http://localhost:8080/MyCarDomain/api/carModelNamesForMake';
 
      //Get Car Model JSON for the selected make
- $.getJSON(this.base_url+"?callback=?", {cmd:"getModels", make:this.cur_make, year:this.cur_year, sold_in_us:this.sold_in_us}, function(data) {
+ $.getJSON(this.base_url, {modelDisplay:this.cur_make, modelYear:this.cur_year}, function(data) {
 
   if(!sender.responseError(data))
   {
@@ -2562,13 +2602,13 @@ var insQCt=result.insuranceQuotation.length;
         $("select#"+this.trim_select_id).html("<option value=''>Loading Trims...</option>");
 
         var sender = this;
-
+        this.base_url =	'http://localhost:8080/MyCarDomain/api/carModelVariantForModel';
         //Get Car Model JSON for the selected make
-     $.getJSON(this.base_url+"?callback=?", {cmd:"getTrims", make:this.cur_make, year:this.cur_year, model:this.cur_model, sold_in_us:this.sold_in_us, full_results:0 }, function(data) {
+     $.getJSON(this.base_url, {modelDisplay:this.cur_make, modelYear:this.cur_year, modelName:this.cur_model}, function(data) {
 
       if(!sender.responseError(data))
           sender.populateTrimSelect(data);
-
+      		
              sender.cur_trim = $('select#'+sender.trim_select_id).val();
         });
     },
