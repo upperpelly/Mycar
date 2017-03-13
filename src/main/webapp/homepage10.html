@@ -774,6 +774,7 @@ var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&
 							var modelDisplay= $('#car-makes').val();
 							var modelName=$('#car-models').val();
 							var trimValue=$('#car-model-trims').val();
+							var modelTrim=strUser;
 							//alert ("model"+modelYear);
 							if(alreadyLogged()){
 							$.ajax({
@@ -783,6 +784,7 @@ var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&
 					            	data.modelYear=modelYear;
 					            	data.modelDisplay=modelDisplay;
 					            	data.modelName=modelName;
+					            	data.modelTrim=modelTrim;
 					            	data.trimValue=trimValue;
 					            	
 					            	carDetailHtml(data);
