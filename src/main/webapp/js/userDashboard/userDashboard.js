@@ -9,6 +9,24 @@ if(!value){
     $.jStorage.set("key",value);
 }
 //alert("can"+value.userId);
+console.log(value);
+alert(value);
+//alert("can"+value.userId);
+	var userDetails ='<a href="#" class="button btn-mini pull-right edit-profile-btn">EDIT PROFILE</a>\
+	<h2 class="box-title fullname">' + value.firstName + value.lastName + '</h2>\
+	<dl class="term-description">\
+    <dt>user name:</dt><dd>' + value.email + '</dd>\
+    <dt>first name:</dt><dd>' + value.firstName + '</dd>\
+    <dt>last name:</dt><dd>' + value.lastName + '</dd>\
+    <dt>phone number:</dt><dd>' + value.mobile + '</dd>\
+    <dt>Date of birth:</dt><dd>15 August 1985</dd>\
+    <dt>Street Address and number:</dt><dd>' + value.streetName + '</dd>\
+    <dt>Town / City:</dt><dd>' + value.areaName + '</dd>\
+    <dt>ZIP code:</dt><dd>' + value.postCode + '</dd>\
+    <dt>Country:</dt><dd>Australia</dd>\
+	</dl>';
+	alert(userDetails);
+$('#userdetails').append(userDetails);
 
 function signingout(){
 	

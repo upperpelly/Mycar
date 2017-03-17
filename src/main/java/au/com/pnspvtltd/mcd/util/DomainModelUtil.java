@@ -29,6 +29,27 @@ import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.SearchInsurance;
 import au.com.pnspvtltd.mcd.domain.SpecificationTemplate;
+import au.com.pnspvtltd.mcd.domain.TempCarModelColour;
+import au.com.pnspvtltd.mcd.domain.TempCarModelCountry;
+import au.com.pnspvtltd.mcd.domain.TempCarModelExpertRating;
+import au.com.pnspvtltd.mcd.domain.TempCarModelExtFitting;
+import au.com.pnspvtltd.mcd.domain.TempCarModelFullSpecDimension;
+import au.com.pnspvtltd.mcd.domain.TempCarModelFullSpecEngine;
+import au.com.pnspvtltd.mcd.domain.TempCarModelFullSpecFuel;
+import au.com.pnspvtltd.mcd.domain.TempCarModelFullSpecStandEq;
+import au.com.pnspvtltd.mcd.domain.TempCarModelFullSpecWarranty;
+import au.com.pnspvtltd.mcd.domain.TempCarModelFullSpecWheel;
+import au.com.pnspvtltd.mcd.domain.TempCarModelHeader;
+import au.com.pnspvtltd.mcd.domain.TempCarModelIntFitting;
+import au.com.pnspvtltd.mcd.domain.TempCarModelOptEqpAddOn;
+import au.com.pnspvtltd.mcd.domain.TempCarModelOptionalFeatureAddOn;
+import au.com.pnspvtltd.mcd.domain.TempCarModelOverview;
+import au.com.pnspvtltd.mcd.domain.TempCarModelPhotos;
+import au.com.pnspvtltd.mcd.domain.TempCarModelPricing;
+import au.com.pnspvtltd.mcd.domain.TempCarModelRelatedModel;
+import au.com.pnspvtltd.mcd.domain.TempCarModelUserRating;
+import au.com.pnspvtltd.mcd.domain.TempCarModelVehReview;
+import au.com.pnspvtltd.mcd.domain.TempCarModelVideos;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserReviewTemplate;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
@@ -53,6 +74,27 @@ import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.SpecificationTemplateVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelColourVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelCountryVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelExpertRatingVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelExtFittingVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelFullSpecDimensionVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelFullSpecEngineVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelFullSpecFuelVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelFullSpecStandEqVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelFullSpecWarrantyVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelFullSpecWheelVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelHeaderVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelIntFittingVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelOptEqpAddOnVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelOptionalFeatureAddOnVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelOverviewVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelPhotosVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelPricingVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelRelatedModelVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelUserRatingVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelVehReviewVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelVideosVO;
 import au.com.pnspvtltd.mcd.web.model.UserReviewTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
@@ -486,6 +528,479 @@ public class DomainModelUtil {
 		return dealer;
 	}
 
+	
+	
+	public TempCarModelHeaderVO fromTempCarModelTemplate(final TempCarModelHeader carModelTemplate, boolean isMinified) {
+		if (carModelTemplate == null) {
+			return null;
+		}
+
+		TempCarModelHeaderVO carModelTemplateVO = new TempCarModelHeaderVO();
+
+		try {
+
+			if (isMinified) {
+				org.springframework.beans.BeanUtils.copyProperties(carModelTemplate, carModelTemplateVO,
+						new String[] { "TempCarModelPricing", "TempCarModelPricing", "TempCarModelOptionalFeatureAddOn", "TempCarModelColour",
+								"TempCarModelFullSpecEngine", "TempCarModelFullSpecDimension","TempCarModelFullSpecFuel", "TempCarModelFullSpecWarranty",
+								"TempCarModelFullSpecStandEq", "TempCarModelOptEqpAddOn","TempCarModelRelatedModel", "TempCarModelVehReview",
+								"TempCarModelVideos", "TempCarModelExtFitting","TempCarModelIntFitting", "TempCarModelUserRating",
+								"TempCarModelExpertRating", "TempCarModelCountry","TempCarModelFullSpecWheel"});
+			} else {
+
+				org.springframework.beans.BeanUtils.copyProperties(carModelTemplate, carModelTemplateVO,
+						new String[] { "TempCarModelPricing", "TempCarModelPricing", "TempCarModelOptionalFeatureAddOn", "TempCarModelColour",
+								"TempCarModelFullSpecEngine", "TempCarModelFullSpecDimension","TempCarModelFullSpecFuel", "TempCarModelFullSpecWarranty",
+								"TempCarModelFullSpecStandEq", "TempCarModelOptEqpAddOn","TempCarModelRelatedModel", "TempCarModelVehReview",
+								"TempCarModelVideos", "TempCarModelExtFitting","TempCarModelIntFitting", "TempCarModelUserRating",
+								"TempCarModelExpertRating", "TempCarModelCountry","TempCarModelFullSpecWheel" });
+
+				if (carModelTemplate.getCarModel() != null) {
+					List<TempCarModelOverviewVO> blogTemplates = new ArrayList<>();
+					for (TempCarModelOverview blogTemplate : carModelTemplate.getCarModel()) {
+						TempCarModelOverviewVO blogTemplateVO = new TempCarModelOverviewVO();
+						BeanUtils.copyProperties(blogTemplateVO, blogTemplate);
+						blogTemplates.add(blogTemplateVO);
+					}
+					carModelTemplateVO.setCarModel(blogTemplates);
+				}
+
+				if (carModelTemplate.getCarModel1() != null) {
+					List<TempCarModelPricingVO> countryTemplates = new ArrayList<>();
+					for (TempCarModelPricing countryTemplate : carModelTemplate.getCarModel1()) {
+						TempCarModelPricingVO countryTemplateVO = new TempCarModelPricingVO();
+						BeanUtils.copyProperties(countryTemplateVO, countryTemplate);
+						countryTemplates.add(countryTemplateVO);
+					}
+					carModelTemplateVO.setCarModel1(countryTemplates);
+				}
+
+				if (carModelTemplate.getCarModel2() != null) {
+					List<TempCarModelOptionalFeatureAddOnVO> photosTemplates = new ArrayList<>();
+					for (TempCarModelOptionalFeatureAddOn photosTemplate : carModelTemplate.getCarModel2()) {
+						TempCarModelOptionalFeatureAddOnVO photosTemplateVO = new TempCarModelOptionalFeatureAddOnVO();
+						BeanUtils.copyProperties(photosTemplateVO, photosTemplate);
+						photosTemplates.add(photosTemplateVO);
+					}
+					carModelTemplateVO.setCarModel2(photosTemplates);
+				}
+
+				if (carModelTemplate.getCarModel3() != null) {
+					List<TempCarModelColourVO> userReviewTemplates = new ArrayList<>();
+					for (TempCarModelColour userReviewTemplate : carModelTemplate.getCarModel3()) {
+						TempCarModelColourVO userReviewTemplateVO = new TempCarModelColourVO();
+						BeanUtils.copyProperties(userReviewTemplateVO, userReviewTemplate);
+						userReviewTemplates.add(userReviewTemplateVO);
+					}
+					carModelTemplateVO.setCarModel3(userReviewTemplates);
+				}
+
+				if (carModelTemplate.getCarModel4() != null) {
+					List<TempCarModelFullSpecEngineVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelFullSpecEngine youtubeTemplate : carModelTemplate.getCarModel4()) {
+						TempCarModelFullSpecEngineVO youtubeTemplateVO = new TempCarModelFullSpecEngineVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel4(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel5() != null) {
+					List<TempCarModelFullSpecDimensionVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelFullSpecDimension youtubeTemplate : carModelTemplate.getCarModel5()) {
+						TempCarModelFullSpecDimensionVO youtubeTemplateVO = new TempCarModelFullSpecDimensionVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel5(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel6() != null) {
+					List<TempCarModelFullSpecFuelVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelFullSpecFuel youtubeTemplate : carModelTemplate.getCarModel6()) {
+						TempCarModelFullSpecFuelVO youtubeTemplateVO = new TempCarModelFullSpecFuelVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel6(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel7() != null) {
+					List<TempCarModelFullSpecWarrantyVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelFullSpecWarranty youtubeTemplate : carModelTemplate.getCarModel7()) {
+						TempCarModelFullSpecWarrantyVO youtubeTemplateVO = new TempCarModelFullSpecWarrantyVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel7(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel8() != null) {
+					List<TempCarModelFullSpecStandEqVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelFullSpecStandEq youtubeTemplate : carModelTemplate.getCarModel8()) {
+						TempCarModelFullSpecStandEqVO youtubeTemplateVO = new TempCarModelFullSpecStandEqVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel8(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel9() != null) {
+					List<TempCarModelOptEqpAddOnVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelOptEqpAddOn youtubeTemplate : carModelTemplate.getCarModel9()) {
+						TempCarModelOptEqpAddOnVO youtubeTemplateVO = new TempCarModelOptEqpAddOnVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel9(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel10() != null) {
+					List<TempCarModelRelatedModelVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelRelatedModel youtubeTemplate : carModelTemplate.getCarModel10()) {
+						TempCarModelRelatedModelVO youtubeTemplateVO = new TempCarModelRelatedModelVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel10(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel11() != null) {
+					List<TempCarModelPhotosVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelPhotos youtubeTemplate : carModelTemplate.getCarModel11()) {
+						TempCarModelPhotosVO youtubeTemplateVO = new TempCarModelPhotosVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel11(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel12() != null) {
+					List<TempCarModelVehReviewVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelVehReview youtubeTemplate : carModelTemplate.getCarModel12()) {
+						TempCarModelVehReviewVO youtubeTemplateVO = new TempCarModelVehReviewVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel12(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel13() != null) {
+					List<TempCarModelVideosVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelVideos youtubeTemplate : carModelTemplate.getCarModel13()) {
+						TempCarModelVideosVO youtubeTemplateVO = new TempCarModelVideosVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel13(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel14() != null) {
+					List<TempCarModelExtFittingVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelExtFitting youtubeTemplate : carModelTemplate.getCarModel14()) {
+						TempCarModelExtFittingVO youtubeTemplateVO = new TempCarModelExtFittingVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel14(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel15() != null) {
+					List<TempCarModelIntFittingVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelIntFitting youtubeTemplate : carModelTemplate.getCarModel15()) {
+						TempCarModelIntFittingVO youtubeTemplateVO = new TempCarModelIntFittingVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel15(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel16() != null) {
+					List<TempCarModelUserRatingVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelUserRating youtubeTemplate : carModelTemplate.getCarModel16()) {
+						TempCarModelUserRatingVO youtubeTemplateVO = new TempCarModelUserRatingVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel16(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel17() != null) {
+					List<TempCarModelExpertRatingVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelExpertRating youtubeTemplate : carModelTemplate.getCarModel17()) {
+						TempCarModelExpertRatingVO youtubeTemplateVO = new TempCarModelExpertRatingVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel17(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel18() != null) {
+					List<TempCarModelCountryVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelCountry youtubeTemplate : carModelTemplate.getCarModel18()) {
+						TempCarModelCountryVO youtubeTemplateVO = new TempCarModelCountryVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel18(youtubeTemplates);
+				}
+				
+				if (carModelTemplate.getCarModel19() != null) {
+					List<TempCarModelFullSpecWheelVO> youtubeTemplates = new ArrayList<>();
+					for (TempCarModelFullSpecWheel youtubeTemplate : carModelTemplate.getCarModel19()) {
+						TempCarModelFullSpecWheelVO youtubeTemplateVO = new TempCarModelFullSpecWheelVO();
+						BeanUtils.copyProperties(youtubeTemplateVO, youtubeTemplate);
+						youtubeTemplates.add(youtubeTemplateVO);
+					}
+					carModelTemplateVO.setCarModel19(youtubeTemplates);
+				}
+
+			}
+
+		} catch (BeansException ex) {
+			ex.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return carModelTemplateVO;
+	}
+
+	
+	public TempCarModelHeader toTempCarModelTemplate(final TempCarModelHeaderVO carModelTemplateVO) {
+
+		TempCarModelHeader carModelTemplate = new TempCarModelHeader();
+
+		try {
+
+			if (carModelTemplateVO.getCarModel() != null) {
+				List<TempCarModelOverview> blogTemplates = new ArrayList<>();
+				for (TempCarModelOverviewVO blogTemplateVO : carModelTemplateVO.getCarModel()) {
+					TempCarModelOverview blogTemplate = new TempCarModelOverview();
+					BeanUtils.copyProperties(blogTemplate, blogTemplateVO);
+					blogTemplates.add(blogTemplate);
+				}
+				carModelTemplate.setCarModel(blogTemplates);
+				carModelTemplateVO.setCarModel(null);
+			}
+
+			if (carModelTemplateVO.getCarModel1() != null) {
+				List<TempCarModelPricing> countryTemplates = new ArrayList<>();
+				for (TempCarModelPricingVO countryTemplateVO : carModelTemplateVO.getCarModel1()) {
+					TempCarModelPricing countryTemplate = new TempCarModelPricing();
+					BeanUtils.copyProperties(countryTemplate, countryTemplateVO);
+					countryTemplates.add(countryTemplate);
+				}
+				carModelTemplate.setCarModel1(countryTemplates);
+				carModelTemplateVO.setCarModel1(null);
+			}
+
+			if (carModelTemplateVO.getCarModel2() != null) {
+				List<TempCarModelOptionalFeatureAddOn> photosTemplates = new ArrayList<>();
+				for (TempCarModelOptionalFeatureAddOnVO photosTemplateVO : carModelTemplateVO.getCarModel2()) {
+					TempCarModelOptionalFeatureAddOn photosTemplate = new TempCarModelOptionalFeatureAddOn();
+					BeanUtils.copyProperties(photosTemplate, photosTemplateVO);
+					photosTemplates.add(photosTemplate);
+				}
+				carModelTemplate.setCarModel2(photosTemplates);
+				carModelTemplateVO.setCarModel2(null);
+			}
+
+			
+			if (carModelTemplateVO.getCarModel3() != null) {
+				List<TempCarModelColour> userReviewTemplates = new ArrayList<>();
+				for (TempCarModelColourVO userReviewTemplateVO : carModelTemplateVO.getCarModel3()) {
+					TempCarModelColour userReviewTemplate = new TempCarModelColour();
+					BeanUtils.copyProperties(userReviewTemplate, userReviewTemplateVO);
+					userReviewTemplates.add(userReviewTemplate);
+				}
+				carModelTemplate.setCarModel3(userReviewTemplates);
+				carModelTemplateVO.setCarModel3(null);
+			}
+
+			if (carModelTemplateVO.getCarModel4() != null) {
+				List<TempCarModelFullSpecEngine> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelFullSpecEngineVO youtubeTemplateVO : carModelTemplateVO.getCarModel4()) {
+					TempCarModelFullSpecEngine youtubeTemplate = new TempCarModelFullSpecEngine();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel4(youtubeTemplates);
+				carModelTemplateVO.setCarModel4(null);
+			}
+			if (carModelTemplateVO.getCarModel5() != null) {
+				List<TempCarModelFullSpecDimension> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelFullSpecDimensionVO youtubeTemplateVO : carModelTemplateVO.getCarModel5()) {
+					TempCarModelFullSpecDimension youtubeTemplate = new TempCarModelFullSpecDimension();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel5(youtubeTemplates);
+				carModelTemplateVO.setCarModel5(null);
+			}
+			if (carModelTemplateVO.getCarModel6() != null) {
+				List<TempCarModelFullSpecFuel> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelFullSpecFuelVO youtubeTemplateVO : carModelTemplateVO.getCarModel6()) {
+					TempCarModelFullSpecFuel youtubeTemplate = new TempCarModelFullSpecFuel();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel6(youtubeTemplates);
+				carModelTemplateVO.setCarModel6(null);
+			}
+			if (carModelTemplateVO.getCarModel7() != null) {
+				List<TempCarModelFullSpecWarranty> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelFullSpecWarrantyVO youtubeTemplateVO : carModelTemplateVO.getCarModel7()) {
+					TempCarModelFullSpecWarranty youtubeTemplate = new TempCarModelFullSpecWarranty();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel7(youtubeTemplates);
+				carModelTemplateVO.setCarModel7(null);
+			}
+			if (carModelTemplateVO.getCarModel8() != null) {
+				List<TempCarModelFullSpecStandEq> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelFullSpecStandEqVO youtubeTemplateVO : carModelTemplateVO.getCarModel8()) {
+					TempCarModelFullSpecStandEq youtubeTemplate = new TempCarModelFullSpecStandEq();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel8(youtubeTemplates);
+				carModelTemplateVO.setCarModel8(null);
+			}
+			if (carModelTemplateVO.getCarModel9() != null) {
+				List<TempCarModelOptEqpAddOn> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelOptEqpAddOnVO youtubeTemplateVO : carModelTemplateVO.getCarModel9()) {
+					TempCarModelOptEqpAddOn youtubeTemplate = new TempCarModelOptEqpAddOn();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel9(youtubeTemplates);
+				carModelTemplateVO.setCarModel9(null);
+			}
+			if (carModelTemplateVO.getCarModel10() != null) {
+				List<TempCarModelRelatedModel> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelRelatedModelVO youtubeTemplateVO : carModelTemplateVO.getCarModel10()) {
+					TempCarModelRelatedModel youtubeTemplate = new TempCarModelRelatedModel();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel10(youtubeTemplates);
+				carModelTemplateVO.setCarModel10(null);
+			}
+			if (carModelTemplateVO.getCarModel11() != null) {
+				List<TempCarModelPhotos> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelPhotosVO youtubeTemplateVO : carModelTemplateVO.getCarModel11()) {
+					TempCarModelPhotos youtubeTemplate = new TempCarModelPhotos();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel11(youtubeTemplates);
+				carModelTemplateVO.setCarModel11(null);
+			}
+			if (carModelTemplateVO.getCarModel12() != null) {
+				List<TempCarModelVehReview> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelVehReviewVO youtubeTemplateVO : carModelTemplateVO.getCarModel12()) {
+					TempCarModelVehReview youtubeTemplate = new TempCarModelVehReview();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel12(youtubeTemplates);
+				carModelTemplateVO.setCarModel12(null);
+			}
+			if (carModelTemplateVO.getCarModel13() != null) {
+				List<TempCarModelVideos> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelVideosVO youtubeTemplateVO : carModelTemplateVO.getCarModel13()) {
+					TempCarModelVideos youtubeTemplate = new TempCarModelVideos();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel13(youtubeTemplates);
+				carModelTemplateVO.setCarModel13(null);
+			}
+			if (carModelTemplateVO.getCarModel14() != null) {
+				List<TempCarModelExtFitting> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelExtFittingVO youtubeTemplateVO : carModelTemplateVO.getCarModel14()) {
+					TempCarModelExtFitting youtubeTemplate = new TempCarModelExtFitting();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel14(youtubeTemplates);
+				carModelTemplateVO.setCarModel14(null);
+			}
+			if (carModelTemplateVO.getCarModel15() != null) {
+				List<TempCarModelIntFitting> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelIntFittingVO youtubeTemplateVO : carModelTemplateVO.getCarModel15()) {
+					TempCarModelIntFitting youtubeTemplate = new TempCarModelIntFitting();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel15(youtubeTemplates);
+				carModelTemplateVO.setCarModel15(null);
+			}
+			if (carModelTemplateVO.getCarModel16() != null) {
+				List<TempCarModelUserRating> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelUserRatingVO youtubeTemplateVO : carModelTemplateVO.getCarModel16()) {
+					TempCarModelUserRating youtubeTemplate = new TempCarModelUserRating();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel16(youtubeTemplates);
+				carModelTemplateVO.setCarModel16(null);
+			}
+			if (carModelTemplateVO.getCarModel17() != null) {
+				List<TempCarModelExpertRating> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelExpertRatingVO youtubeTemplateVO : carModelTemplateVO.getCarModel17()) {
+					TempCarModelExpertRating youtubeTemplate = new TempCarModelExpertRating();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel17(youtubeTemplates);
+				carModelTemplateVO.setCarModel17(null);
+			}
+			if (carModelTemplateVO.getCarModel18() != null) {
+				List<TempCarModelCountry> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelCountryVO youtubeTemplateVO : carModelTemplateVO.getCarModel18()) {
+					TempCarModelCountry youtubeTemplate = new TempCarModelCountry();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel18(youtubeTemplates);
+				carModelTemplateVO.setCarModel18(null);
+			}
+			if (carModelTemplateVO.getCarModel19() != null) {
+				List<TempCarModelFullSpecWheel> youtubeTemplates = new ArrayList<>();
+				for (TempCarModelFullSpecWheelVO youtubeTemplateVO : carModelTemplateVO.getCarModel19()) {
+					TempCarModelFullSpecWheel youtubeTemplate = new TempCarModelFullSpecWheel();
+					BeanUtils.copyProperties(youtubeTemplate, youtubeTemplateVO);
+					youtubeTemplates.add(youtubeTemplate);
+				}
+				carModelTemplate.setCarModel19(youtubeTemplates);
+				carModelTemplateVO.setCarModel19(null);
+			}
+			
+			nullAwareBeanUtils.copyProperties(carModelTemplate, carModelTemplateVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return carModelTemplate;
+	}
+	
+	
+	
+	
+	
+	
+	
 	public CarModelTemplateVO fromCarModelTemplate(final CarModelTemplate carModelTemplate, boolean isMinified) {
 		if (carModelTemplate == null) {
 			return null;

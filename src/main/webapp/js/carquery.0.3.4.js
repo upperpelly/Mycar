@@ -738,7 +738,7 @@ CarQuery.prototype = {
         var sender = this;
         this.base_url = 'http://localhost:8080/MyCarDomain/api/carModelYears';
         //alert(base_url);
-        alert(this.base_url);
+        //alert(this.base_url);
         $.getJSON(this.base_url, function(data) {
 
      if(!sender.responseError(data))
@@ -836,9 +836,9 @@ CarQuery.prototype = {
  if(!this.responseError(data))
  {
          var options = '<option value="">Please choose a Make</option>';
-         alert(options);
+         //alert(options);
          console.log(data);
-         alert(data);
+         //alert(data);
 /*  var makes = data;
   for (var key in makes)
   {
@@ -854,7 +854,7 @@ CarQuery.prototype = {
   {
      options += '<option value="' + data[i] + '">' + data[i] + '</option>';
   }
-  alert(options);
+  //alert(options);
 
   $("select#"+this.make_select_id).html(options);
  }
@@ -863,13 +863,13 @@ CarQuery.prototype = {
     populateModelSelect: function(data)
     {
     	var options = '<option value="">Please choose a Model</option>';
-        alert(options);
+        //alert(options);
         console.log(data);
         for (var i = 0; i < data.length; i++)
         {
            options += '<option value="' + data[i] + '">' + data[i] + '</option>';
         }
-        alert(options);
+        //alert(options);
     	
     	//var models = data.Models;
 
@@ -903,13 +903,13 @@ CarQuery.prototype = {
         }*/
     	
     	var options = '<option value="">Please choose a Variant</option>';
-        alert(options);
+        //alert(options);
         console.log(data);
         for (var i = 0; i < data.length; i++)
         {
            options += '<option value="' + data[i] + '">' + data[i] + '</option>';
         }
-        alert(options);
+        //alert(options);
 
        $("select#"+this.trim_select_id).html(options);
 
