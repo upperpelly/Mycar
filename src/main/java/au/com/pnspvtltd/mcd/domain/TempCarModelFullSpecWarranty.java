@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * Entity implementation class for Entity: TEMPCARMODELOVERVIEW
  * 
  */
-@Entity @Table(name = "TEMPCARMODELFULLSPECWARRANTY") public class TempCarModelFullSpecWarranty implements Serializable 
+@Entity @Table(name = "tempcarmodelfullspecwarranty") public class TempCarModelFullSpecWarranty implements Serializable 
 {
 
 

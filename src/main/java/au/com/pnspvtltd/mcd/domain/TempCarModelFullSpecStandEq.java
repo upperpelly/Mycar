@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * Entity implementation class for Entity: TEMPCARMODELOVERVIEW
  * 
  */
-@Entity @Table(name = "TEMPCARMODELFULLSPECSTANDEQ") public class TempCarModelFullSpecStandEq implements Serializable 
+@Entity @Table(name = "tempcarmodelfullspecstandeq") public class TempCarModelFullSpecStandEq implements Serializable 
 {
 
 

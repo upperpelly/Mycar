@@ -192,6 +192,7 @@ var isChecked = false;
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
                 createCell(row.insertCell(i), i, 'row');
             }
+            alert("ca"+$('#text2').val());
         }
         // create DIV element and append to the table cell
         function createCell(cell, text, style) {

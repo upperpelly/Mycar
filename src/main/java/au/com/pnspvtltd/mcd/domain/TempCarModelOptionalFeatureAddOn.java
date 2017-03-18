@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * Entity implementation class for Entity: TEMPCARMODELOVERVIEW
  * 
  */
-@Entity @Table(name = "TEMPCARMODELOPTIONALFEAT") public class TempCarModelOptionalFeatureAddOn implements Serializable 
+@Entity @Table(name = "tempcarmodeloptionalfeat") public class TempCarModelOptionalFeatureAddOn implements Serializable 
 {
 
 

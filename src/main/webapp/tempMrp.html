@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<!--[if IE 8]>          <html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>          <html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->  <html> <!--<![endif]-->
+<head>
+    <!-- Page Title -->
+    <title>Autoscoop</title>
+    
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Autoscoop HTML5 Template">
+    <meta name="author" content="SoapTheme">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="pingback" href="http://www.carqueryapi.com/xmlrpc.php" />
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/animate.min.css">
+    
+    <!-- Current Page Styles -->
+    <link rel="stylesheet" type="text/css" href="components/revolution_slider/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="components/revolution_slider/css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="components/jquery.bxslider/jquery.bxslider.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="components/flexslider/flexslider.css" media="screen" />
+    <script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>  
+<script type="text/javascript" src="js/Cabin_400.font.js"></script>
+<script type="text/javascript" src="js/tabs.js"></script> 
+<script type="text/javascript" src="js/jquery.jqtransform.js" ></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="js/atooltip.jquery.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script src="js/mrp/mrp.js" type="text/javascript"/>
+<script src="js/carquery.0.3.4.js"type="text/javascript" ></script>
+  <link rel="stylesheet" href="css12/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css12/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>  
+<script type="text/javascript" src="js/Cabin_400.font.js"></script>
+<script type="text/javascript" src="js/tabs.js"></script> 
+<script type="text/javascript" src="js/jquery.jqtransform.js" ></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="js/atooltip.jquery.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script src="js/carquery.0.3.4.js"type="text/javascript" ></script>
+<script>
+$(document).ready(function() {
+
+$.ajax({
+  url: "http://www.carqueryapi.com/api/0.3/?cmd=getStats",
+  success: function(data){
+
+  $('#make_count').html(data.Stats.make_count);
+  $('#model_count').html(data.Stats.model_count);
+  $('#trim_count').html(data.Stats.trim_count);
+
+  }
+});
+
+});
+</script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<script src="js/angular-resource.js"></script>
+<script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
+<script>
+    
+	var mainApp1 = angular.module("mainApp1", [ 'ui.bootstrap', 'ngResource' ]);
+	mainApp1.controller('overviewController', function($scope, $stateParams) {
+	    var index = $stateParams.index;
+	    var anotherKey = $stateParams.anotherKey;
+	});
+	mainApp1
+			.controller(
+					'myController1',
+					function($scope, $http) {
+
+						$scope.predicate = 'name';
+						$scope.reverse = true;
+						$scope.currentPage = 1;
+						$scope.order = function(predicate) {
+							$scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse
+									: false;
+							$scope.predicate = predicate;
+						};
+
+						$scope.updatePagination = function() {
+							$scope.totalItems = $scope.biil.details.length;
+							$scope.numPerPage = 5;
+							$scope.paginate = function(value) {
+								var begin, end, index;
+								begin = ($scope.currentPage - 1)
+										* $scope.numPerPage;
+								end = begin + $scope.numPerPage;
+								index = $scope.biil.details.indexOf(value);
+								return (begin <= index && index < end);
+							};
+						};
+						function submitSearchForm() {
+							
+							
+/* First retreive from DB if present
+  
+ */
+ /* alert("Came here"+$('#data_model_body').val()); */
+ var e = document.getElementById("car-model-trims"); 
+ var strUser = e.options[e.selectedIndex].text;
+ /* alert("mrlp"+$("#mrpPrice").val()); */
+ 	
+ 
+ /*
+ end
+ */
+alert("Came here inside sumit Search form");													
+
+		
+														var jsonInputToAPI = {
+  "tempModelId": null,
+  "modelYear": $('#car-years').val(),
+  "modelDisplay": $('#car-makes').val(),
+  "modelName": $('#car-models').val(),
+  "modelTrim": strUser ,
+  "mrlp": $("#mrpPrice").val(),
+  "extraCost": $("#extraCost").val(),
+  "onRoadCost": $("#onRoadCost").val(),
+  "avgPrice": $("#driveAwayPrice").val(),
+  "photosTemplate": [
+    {
+      "templatePhotoId": null,
+      "photo1": $("#uploadphoto1").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templatePhotoId": null,
+      "photo1": $("#uploadphoto2").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templatePhotoId": null,
+      "photo1": $("#uploadphoto3").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templatePhotoId": null,
+      "photo1": $("#uploadphoto4").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    }
+  ],
+  "countryTemplate": [
+    {
+      "templateCountryId": null,
+      "country": $("#country1").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateCountryId": null,
+      "country": $("#country2").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateCountryId": null,
+      "country": $("#country3").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateCountryId": null,
+      "country": $("#country4").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    }
+  ],
+  "youtubeTemplate": [
+    {
+      "templateYoutubeId": null,
+      "ylink1": $("#uploadLink1").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateYoutubeId": null,
+      "ylink1": $("uploadLink2").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateYoutubeId": null,
+      "ylink1": $("#uploadLink3").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateYoutubeId": null,
+      "ylink1": $("#uploadLink4").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    }
+  ],
+  "blogTemplate": [
+    {
+      "templateBlogId": null,
+      "blink1": $("#writeBlog1").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateBlogId": null,
+      "blink1": $("#writeBlog2").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateBlogId": null,
+      "blink1": $("#writeBlog3").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+{
+      "templateBlogId": null,
+      "blink1": $("#writeBlog4").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    }
+  ],
+  "userReviewTemplate": [
+    {
+      "templateUserReviewId": null,
+      "review1": $("#writeReview1").val(),
+      "flex1": "flex1",
+      "flex2": "flex2",
+      "flex3": "flex3",
+      "flex4": "flex4"
+    },
+    {
+        "templateUserReviewId": null,
+        "review1": $("#writeReview2").val(),
+        "flex1": "flex1",
+        "flex2": "flex2",
+        "flex3": "flex3",
+        "flex4": "flex4"
+      },
+      {
+          "templateUserReviewId": null,
+          "review1": $("#writeReview3").val(),
+          "flex1": "flex1",
+          "flex2": "flex2",
+          "flex3": "flex3",
+          "flex4": "flex4"
+        },
+        {
+            "templateUserReviewId": null,
+            "review1": $("#writeReview4").val(),
+            "flex1": "flex1",
+            "flex2": "flex2",
+            "flex3": "flex3",
+            "flex4": "flex4"
+          }
+  ],
+  "specificationTemplate": {
+    "templateSpecificationId": null,
+    "colorName1": "colorName1",
+    "colorName2": "colorName2",
+    "colorName3": "colorName3",
+    "colorName4": "colorName4",
+    "colorName5":  $("#data_model_engine_compression").val(),
+    "makeCountry": $("#data_make_country").val(),
+    "modelBody": $("#data_model_body").val(),
+    "modelEnginePosition": $("#data_model_engine_position").val(),
+    "modelEngineType": $("#data_model_engine_type").val(),
+    "modelEngineCyl": $("#data_model_engine_cyl").val(),
+    "modelEnginecc": $("#data_model_engine_cc").val(),
+    "modelEnginel": $("#data_model_engine_l").val(),
+    "modelEngineci": $("#data_model_engine_ci").val(),
+    "modelEngineBoremm": $("#data_model_engine_bore_mm").val(),
+    "modelEngineBorein": $("#data_model_engine_bore_in").val(),
+    "modelEngineStrokemm": $("#data_model_engine_stroke_mm").val(),
+    "modelEngineStrokein": $("#data_model_engine_stroke_in").val(),
+    "modelEngineValvespercyl": $("#data_model_engine_valves_per_cyl").val(),
+    "modelEngineValves": $("#data_model_engine_valves").val(),
+    "modelEnginePowerhp": $("#data_model_engine_power_hp").val(),
+    "modelEnginePowerps": $("#data_model_engine_power_ps").val(),
+    "modelEnginePowerkw": $("#data_model_engine_power_kw").val(),
+    "modelEnginePowerrpm": $("#data_model_engine_power_rpm").val(),
+    "modelEngineTorquenm": $("#data_model_engine_torque_nm").val(),
+    "modelEngineTorquelbft": $("#data_model_engine_torque_lbft").val(),
+    "modelEngineTorquekgm": $("#data_model_engine_torque_kgm").val(),
+    "modelEngineTorquerpm": $("#data_model_engine_torque_rpm").val(),
+    "modelEngineCompression": 0,
+    "modelEngineFuel": $("#data_model_engine_fuel").val(),
+    "modelDrive": $("#data_model_drive").val(),
+    "modelTransmissionType": $("#data_model_transmission_type").val(),
+    "modelTopSpeedkph": $("#data_model_top_speed_kph").val(),
+    "modelTopSpeedmph": $("#data_model_top_speed_mph").val(),
+    "model0to100kph": $("#data_model_0_to_100_kph").val(),
+      "modelDoors": $("#data_model_doors").val(),
+    "modelSeats": $("#data_model_seats").val(),
+    "modelWeightkg": $("#data_model_weight_kg").val(),
+    "modelWeightlbs": $("#data_model_weight_lbs").val(),
+    "modelLengthmm": $("#data_model_length_mm").val(),
+    "modelLengthin": $("#data_model_length_in").val(),
+      "modelWidthmm": $("#data_model_width_mm").val(),
+    "modelWidthin": $("#data_model_width_in").val(),
+    "modelHeightmm": $("#data_model_height_mm").val(),
+    "modelHeightin": $("#data_model_height_in").val(),
+    "modelWheelbasemm": $("#data_model_wheelbase_mm").val(),
+    "modelWheelbasein": $("#data_model_wheelbase_in").val(),
+    "modellkmCity": $("#data_model_lkm_city").val(),
+    "modelmpgCity": $("#data_model_mpg_city").val(),
+    "modellkmhwy": $("#data_model_lkm_hwy").val(),
+    "modelmpghwy": $("#data_model_mpg_hwy").val(),
+    "modellkmMixed": $("#data_model_lkm_mixed").val(),
+    "modelmpgMixed": $("#data_model_mpg_mixed").val(),
+    "modelFuelcapl": $("#data_model_fuel_cap_l").val(),
+    "modelFuelcapg": $("#data_model_fuel_cap_g").val()
+  }
+}
+														 alert("Before Call12"); 
+														var wsURL = 'api/carModelTemplate';
+														//var wsURL = 'http://localhost:8080/MyCarDomain/api/carModelTemplate';
+														//var wsURL = 'http://www.autoscoop.com.au/api/carModelTemplate';
+														alert("url"+wsURL);
+															    $http({
+																			method : 'POST',
+																			url : wsURL,
+																			data: jsonInputToAPI
+																							
+																		}).success(function(data) {
+																			alert("successful");
+																							alert("Thank You. Your Seach ID is "+data.tempModelId);
+																							
+																						});
+
+								
+														
+													};
+
+					    
+
+						$scope.submitSearchForm = submitSearchForm;
+						$scope.init = function() {
+							$scope.biil = {
+								details : []
+							};
+							$scope.submitForm();
+						};
+
+					});
+</script>
+
+
+    <!-- Main Style -->
+    <link id="main-style" rel="stylesheet" href="css/style.css">
+   <!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[84,140] -->
+<link rel="canonical" href="http://www.carqueryapi.com/demo/dependant-selects-and-car-data-display/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="CarQuery &raquo; Feed" href="http://www.carqueryapi.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CarQuery &raquo; Comments Feed" href="http://www.carqueryapi.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CarQuery &raquo; Dependent Selects and Car Data Display Comments Feed" href="http://www.carqueryapi.com/demo/dependant-selects-and-car-data-display/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.carqueryapi.com\/wp-includes\/js\/wp-emoji-release.min.js"}};
+			!function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<script type='text/javascript' src='http://www.carqueryapi.com/wp-includes/js/jquery/jquery.js'></script>
+<script type='text/javascript' src='http://www.carqueryapi.com/wp-includes/js/jquery/jquery-migrate.min.js'></script>
+<script type='text/javascript' src='http://www.carqueryapi.com/wp-content/themes/mh_impact/js/scripts.js'></script>
+<link rel='https://api.w.org/' href='http://www.carqueryapi.com/wp-json/' />
+<link rel='shortlink' href='http://www.carqueryapi.com/?p=49' />
+<link rel="alternate" type="application/json+oembed" href="http://www.carqueryapi.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.carqueryapi.com%2Fdemo%2Fdependant-selects-and-car-data-display%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.carqueryapi.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.carqueryapi.com%2Fdemo%2Fdependant-selects-and-car-data-display%2F&#038;format=xml" />
+	<style type='text/css'>
+	.download-info .download-button {
+		background-image: url(http://www.carqueryapi.com/wp-content/plugins/download-monitor/page-addon/downloadbutton.gif);
+	}
+	.download-info .more-button {
+		background-image: url(http://www.carqueryapi.com/wp-content/plugins/download-monitor/page-addon/morebutton.gif);
+	}
+	</style>
+<link rel="shortcut icon" href="favicon.ico">
+   
+    <script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<script src="js/angular-resource.js"></script>
+<script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
+<script src="js/angular-ui-router.js"></script>
+<script src="js/angular.js"></script>   
+<script src="js/myApp.js"></script> 
+    <script>function showDiv1() {
+/*document.getElementById('welcomeDiv').style.display = "block";*/
+/* start of transfer */
+alert("inside showdiv");
+var e = document.getElementById("car-model-trims"); 
+var strUser = e.options[e.selectedIndex].text;
+
+var url= "http://localhost:8080/MyCarDomain/api/carModelTemplateFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;
+//var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;
+alert(url);
+/*var sender = this;    */
+var carquery = new CarQuery();
+$.ajax({  
+	/*headers: {"X-My-Custom-Header": "*"},*/
+	    type: "GET",  
+	    url: url,  
+	       success: function(result){
+	    	   alert("successfully searched in Autoscoop DB");
+	    	   /*alert("result value"+result.tempModelId);*/
+	    	   if(result.tempModelId !== undefined){
+	    		   alert("Template Card Model found with CardModel ID : "+result.tempModelId);
+	    		   alert("Populating.. data with CardModel ID : "+result.tempModelId);
+	    		   document.getElementById("tempCarModelId").value = result.tempModelId;
+	    		   document.getElementById("mrpPrice").value = result.mrlp;
+	    		   document.getElementById("extraCost").value = result.extraCost;
+	    		   document.getElementById("onRoadCost").value = result.onRoadCost;
+	    		   document.getElementById("driveAwayPrice").value = result.avgPrice;
+	    		   for(i=0;i<result.photosTemplate.length;i++)
+	           		{
+	    			   document.getElementById("uploadphoto"+(i+1)+"Id").value= result.photosTemplate[i].templatePhotoId; //111 111-1111
+	    			   /*alert("id"+"uploadphoto"+(i+1)+"Id");*/
+	    			   document.getElementById("uploadphoto"+(i+1)).value= result.photosTemplate[i].photo1;
+	    			   /*alert("value"+"uploadphoto"+(i+1));*/
+	    			   
+	    			}
+	    		   for(i=0;i<result.countryTemplate.length;i++)
+	           		{
+	    			   document.getElementById("country"+(i+1)+"Id").value= result.countryTemplate[i].templateCountryId; //111 111-1111
+	    			   document.getElementById("country"+(i+1)).value= result.countryTemplate[i].country;
+	    			   
+	    			}
+	    		   for(i=0;i<result.youtubeTemplate.length;i++)
+	           		{
+	    			   document.getElementById("uploadLink"+(i+1)+"Id").value= result.youtubeTemplate[i].templateYoutubeId; //111 111-1111
+	    			   document.getElementById("uploadLink"+(i+1)).value= result.youtubeTemplate[i].ylink1;
+	    			   
+	    			}
+	    		   for(i=0;i<result.blogTemplate.length;i++)
+	           		{
+	    			   document.getElementById("writeBlog"+(i+1)+"Id").value= result.blogTemplate[i].templateBlogId; //111 111-1111
+	    			   document.getElementById("writeBlog"+(i+1)).value= result.blogTemplate[i].blink1;
+	    			   
+	    			}
+	    		   for(i=0;i<result.userReviewTemplate.length;i++)
+	           		{
+	    			   document.getElementById("writeReview"+(i+1)+"Id").value= result.userReviewTemplate[i].templateUserReviewId; //111 111-1111
+	    			   document.getElementById("writeReview"+(i+1)).value= result.userReviewTemplate[i].review1;
+	    			   
+	    			}
+	    		   /*alert(""+result.specificationTemplate.templateSpecificationId);*/
+carquery.carDataHTMLMRP12(result.specificationTemplate,result.modelYear, result.modelDisplay, result.modelName, result.modelTrim, 'car-model-data');
+	    		   
+	    		  
+	    		            
+	    	   }
+	    	   else {
+	    		   
+	    		   alert("No record found in Autoscoop DB, Now you can create a new one");
+	    		   document.getElementById("tempCarModelId").value = "";
+	    		   document.getElementById("mrpPrice").value = "";
+	    		   document.getElementById("extraCost").value = "";
+	    		   document.getElementById("onRoadCost").value = "";
+	    		   document.getElementById("driveAwayPrice").value = "";
+	    		   
+	    		   document.getElementById("uploadphoto1Id").value= "";
+    			   document.getElementById("uploadphoto1").value= "";
+    			   document.getElementById("uploadphoto2Id").value= "";
+    			   document.getElementById("uploadphoto2").value= "";
+    			   document.getElementById("uploadphoto3Id").value= "";
+    			   document.getElementById("uploadphoto3").value= "";
+    			   document.getElementById("uploadphoto4Id").value= "";
+    			   document.getElementById("uploadphoto4").value= "";
+    			   
+    			   document.getElementById("country1Id").value= "";
+    			   document.getElementById("country1").value= "";
+    			   document.getElementById("country2Id").value= "";
+    			   document.getElementById("country2").value= "";
+    			   document.getElementById("country3Id").value= "";
+    			   document.getElementById("country3").value= "";
+    			   document.getElementById("country4Id").value= "";
+    			   document.getElementById("country4").value= "";
+    			   
+    			   document.getElementById("uploadLink1Id").value= "";
+    			   document.getElementById("uploadLink1").value= "";
+    			   document.getElementById("uploadLink2Id").value= "";
+    			   document.getElementById("uploadLink2").value= "";
+    			   document.getElementById("uploadLink3Id").value= "";
+    			   document.getElementById("uploadLink3").value= "";
+    			   document.getElementById("uploadLink4Id").value= "";
+    			   document.getElementById("uploadLink4").value= "";
+    			   
+    			   document.getElementById("writeBlog1Id").value= "";
+    			   document.getElementById("writeBlog1").value= "";
+    			   document.getElementById("writeBlog2Id").value= "";
+    			   document.getElementById("writeBlog2").value= "";
+    			   document.getElementById("writeBlog3Id").value= "";
+    			   document.getElementById("writeBlog3").value= "";
+    			   document.getElementById("writeBlog4Id").value= "";
+    			   document.getElementById("writeBlog4").value= "";
+    			   
+    			   document.getElementById("writeReview1Id").value= "";
+    			   document.getElementById("writeReview1").value= "";
+    			   document.getElementById("writeReview2Id").value= "";
+    			   document.getElementById("writeReview2").value= "";
+    			   document.getElementById("writeReview3Id").value= "";
+    			   document.getElementById("writeReview3").value= "";
+    			   document.getElementById("writeReview4Id").value= "";
+    			   document.getElementById("writeReview4").value= "";
+    			   carquery .carDataHTMLMRPEmpty();
+    			   
+    			   carquery .populateCarDataMRP('car-model-data');
+	    	   }
+	    	   
+       } 
+	  }); 
+
+
+/* End of transfer*/
+
+
+    	   
+    }</script>
+    <!-- Updated Styles -->
+    <link rel="stylesheet" href="css/updates.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/custom.css">
+    
+    <!-- Responsive Styles -->
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- CSS for IE -->
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" type="text/css" href="css/ie.css" />
+    <![endif]-->
+    
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+</head>
+<body ng-app="mainApp1" >
+    
+    <div id="page-wrapper">
+        <header id="header" class="navbar-static-top">
+            <div class="topnav hidden-xs">
+                <div class="container">
+                   <script type="text/javascript">// <![CDATA[
+$(document).ready( function() {
+
+	var carquery = new CarQuery();
+	carquery.init();
+carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+
+//Set onclick function for the US filter checkbox and show data button
+$('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
+$('#cq-show-data').click(  function(){ carquery.populateCarDataBeforeMRP('car-model-data'); } );
+$('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model-data','price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); } );
+	
+});
+// ]]&gt;</script>
+                    <ul class="quick-menu pull-left">
+                        <li><a href="dashboard1.html">MY ACCOUNT</a></li>
+                        
+                    </ul>
+                    
+                    <ul class="quick-menu pull-right">
+                        <li class="ribbon">
+                            <a href="#">Honda</a>
+                            <ul class="menu mini uppercase">
+                                <li><a href="dashboard1.html#dashboard" class="location-reload">Overview</a></li>
+                                <li><a href="dashboard1.html#profile" class="location-reload">Profile</a></li>
+                                <li><a href="dashboard1.html#travel-stories" class="location-reload">Messages</a></li>
+                                <li><a href="dashboard1.html#settings" class="location-reload">Vehicle Leads</a></li>
+                                <li><a href="dashboard1.html#wishlist" class="location-reload">Finance Leads</a></li>
+                                <li><a href="dashboard1.html#booking" class="location-reload">Serv && Maint Leads</a></li>
+                                <li><a href="dashboard1.html#rego" class="location-reload">Spare Part Leads</a></li>
+                              <li><a href="dashboard1.html#rego" class="location-reload">Vehicle Inventory Management</a></li>
+                                <li><a href="#">signout</a></li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-header">
+                
+                <a href="#mobile-menu-01" data-toggle="collapse" class="mobile-menu-toggle">
+                    Mobile Menu Toggle
+                </a>
+
+                <div class="container">
+                    <h1 class="logo navbar-brand">
+                        <a href="homepage10.html" title="Autoscoop - home">
+                            <img src="images/logo.png" alt="Autoscoop HTML5 Template" />
+                        </a>
+                    </h1>
+                    
+                    <nav id="main-menu" role="navigation">
+                        <ul class="menu">
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">eBid-R</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Browse</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Finance</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Insurance</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Service & Maintenance</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Transport</a>
+                               <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            
+                            <li class="menu-item-has-children">
+                                <a href="homepage10.html">Rego</a>
+                                <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+                
+                <nav id="mobile-menu-01" class="mobile-menu collapse">
+                    <ul id="mobile-primary-menu" class="menu">
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">eBid-R</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Browse</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Finance</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Insurance</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Service & Maintenance</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Transport</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        
+                        <li class="menu-item-has-children">
+                            <a href="homepage10.html">Rego</a>
+                            <ul>
+                                    <li><a href="homepage10.html">Cars</a></li>
+                                    <li><a href="homepage10.html">Bikes</a></li>
+                                    <li><a href="homepage10.html">Boats</a></li>
+                                    <li><a href="homepage10.html">Caravan</a></li>
+                                    <li><a href="homepage10.html">Bicycle</a></li>
+                                   
+                                </ul>
+                        </li>
+                        
+                    </ul>
+                    
+                    <ul class="mobile-topnav container">
+                        <li><a href="homepage10.html">MY ACCOUNT</a></li>
+                        
+                        <li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
+                        <li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+                        
+                    </ul>
+                    
+                </nav>
+            </div>
+            <div id="travelo-signup" class="travelo-signup-box travelo-box">
+                <div class="login-social">
+                    <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
+                    <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
+                </div>
+                <div class="seperator"><label>OR</label></div>
+                <div class="simple-signup">
+                    <div class="text-center signup-email-section">
+                        <a href="#" class="signup-email"><i class="soap-icon-letter"></i>Sign up with Email</a>
+                    </div>
+                    <p class="description">By signing up, I agree to Autoscoop's Terms of Service, Privacy Policy, Guest Refund olicy, and Host Guarantee Terms.</p>
+                </div>
+                <div class="email-signup">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="input-text full-width" placeholder="first name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="input-text full-width" placeholder="last name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="input-text full-width" placeholder="email address">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="input-text full-width" placeholder="password">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="input-text full-width" placeholder="confirm password">
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Tell me about Autoscoop news
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="description">By signing up, I agree to Autoscoop's Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms.</p>
+                        </div>
+                        <button type="submit" class="full-width btn-medium">SIGNUP</button>
+                    </form>
+                </div>
+                <div class="seperator"></div>
+                <p>Already a Autoscoop member? <a href="#travelo-login" class="goto-login soap-popupbox">Login</a></p>
+            </div>
+            <div id="travelo-login" class="travelo-login-box travelo-box">
+                <div class="login-social">
+                    <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
+                    <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
+                </div>
+                <div class="seperator"><label>OR</label></div>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="input-text full-width" placeholder="email address">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="input-text full-width" placeholder="password">
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="forgot-password pull-right">Forgot password?</a>
+                        <div class="checkbox checkbox-inline">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                </form>
+                <div class="seperator"></div>
+                <p>Don't have an account? <a href="#travelo-signup" class="goto-signup soap-popupbox">Sign up</a></p>
+            </div>
+        </header>
+        <div class="page-title-container">
+            <div class="container">
+                <div class="page-title pull-left">
+                    <h2 class="entry-title">My Account</h2>
+                </div>
+                <ul class="breadcrumbs pull-right">
+                    <li><a href="homepage10.html">HOME</a></li>
+                    <li class="active">My Account</li>
+                </ul>
+            </div>
+        </div>
+        <section id="content" class="gray-area">
+            <div class="container">
+                <div id="main">
+                    <div class="tab-container full-width-style arrow-left dashboard">
+                        <ul class="tabs">
+                            <li class="active"><a data-toggle="tab" href="#cruise-features"><i class="soap-icon-businessbag circle"></i>Vehicle Inventory Management</a></li>
+<li class=""><a data-toggle="tab" href="#rego"><i class="soap-icon-businessbag circle"></i>More area</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            
+                             
+                          
+                          <!-- start of Vehicle Inventory -->
+                          
+                          <div id="cruise-features" class="tab-pane fade in active">
+                          <div class="col-md-60">
+                           
+                            <img src="images/bg3.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;">
+                            <div class="tab-container trans-style box">
+                                <ul class="tabs full-width">
+                                   <li class="active"><a href="#family2" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
+                                    <li><a href="#honeymoon2" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
+                                    <li><a href="#weekends2" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
+                                    <li><a href="#friends2" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li>
+                                    <li><a href="#friends24" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="family2">
+                        
+
+ <div class="col-sm-5 col-md-4">
+                                            <label>Year</label>
+                                            <div class="selector">
+                                                <select id="car-years" name="car-years" class="full-width">
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+									<div class="col-sm-5 col-md-4">
+                                            <label>Make</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="mrpPrice" name="mrpPrice"/>
+                                        </div>
+                                        
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Model</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="mrpPrice" name="mrpPrice"/>
+                                        </div>
+                                        
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Variant</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="mrpPrice" name="mrpPrice"/>
+                                        </div>
+									<div class="col-sm-5 col-md-4">
+                                            <label>Series</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="mrpPrice" name="mrpPrice"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Batch</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="mrpPrice" name="mrpPrice"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Trim</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="mrpPrice" name="mrpPrice"/>
+                                        </div>
+                                  
+									<div class="clearfix"></div>
+                                 	
+								        <hr>
+									
+<!-- <span class="right relative">
+												<p><br />
+  <input id="cq-show-data" class="button1" type="button" value="Standandard Specification" /></p></span> -->
+  <div class="clearfix"></div>
+  
+  <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <button id="cq-show-data" type="button" class="full-width btn-large" onclick="showDiv1()">Next</button>
+                                    </div>
+
+<div class="form-group row" ng-click="submitSearchForm()" ng-controller="myController1">
+                                    <div class="col-sm-6 col-md-5">
+                                        <button type="submit" class="full-width btn-large">CONFIRM SAVE</button>
+                                    </div>
+                                </div>
+
+
+                                </div>
+  
+  <div id="welcomeDiv" class="col-md-42" >
+                            <div class="tab-container style1">
+                                <ul class="tabs full-width" height=10>
+                                    <li class="active"><a href="#unlimited-layouts" data-toggle="tab">Header</a></li>
+                                    <li><a href="#photos" data-toggle="tab">Overview</a></li>
+<li><a href="#links" data-toggle="tab">Pricing</a></li>
+<li><a href="#review" data-toggle="tab">User Review </a></li>
+<li><a href="#blogs" data-toggle="tab">Blogs</a></li>
+<li><a href="#country" data-toggle="tab">Available Country</a></li>
+<li><a href="#design-inovation" data-toggle="tab">Standard Specification</a></li>
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="unlimited-layouts">
+                                        <div class="booking-section travelo-box">
+                            
+                            <form class="booking-form">
+                                <div class="person-information">
+                                    <h2>Header</h2>
+                                    <div class="form-group row">
+                                    <div class="col-sm-5 col-md-4">
+                                            <label>Template car Model Id</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="tempCarModelId" name="tempCarModelId"/>
+                                        </div>
+                                        
+                                        								
+                                        
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Engine Size</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="mrpPrice" name="mrpPrice"/>
+                                        </div>
+                                      <div class="col-sm-5 col-md-4">
+                                            <label>Cylinder</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="extraCost" name="extraCost"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Number of Gears</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="onRoadCost" name="onRoadCost"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Transmission</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="driveAwayPrice" name="driveAwayPrice"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Drive Type</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="driveAwayPrice" name="driveAwayPrice"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Fuel Type</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="driveAwayPrice" name="driveAwayPrice"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Number of Doors</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="driveAwayPrice" name="driveAwayPrice"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Body Type</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="driveAwayPrice" name="driveAwayPrice"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Seating Capacity</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="driveAwayPrice" name="driveAwayPrice"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Manufacture Year</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="driveAwayPrice" name="driveAwayPrice"/>
+                                        </div>
+                                    </div>
+                                   
+                                   
+                                    
+                                </div>
+                               
+                     
+                                
+                                
+                            </form>
+                        </div>
+                                    </div>
+                                    
+																	
+                                    
+<div class="tab-pane fade" id="photos">
+                                    <h2>Overview</h2>
+                                       <div class="form-group row">
+                                       <div class="col-sm-5 col-md-4">
+                                            <label>photo 1 ID</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto1Id" name="uploadphoto1Id"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Price</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto1" name="uploadphoto1"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Price Guide (EGC)</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto2Id" name="uploadphoto2Id"/>
+                                        </div>
+                                      <div class="col-sm-5 col-md-4">
+                                            <label>Drive</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto2" name="uploadphoto2"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Badge</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto3Id" name="uploadphoto3Id"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>FuelType</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto3" name="uploadphoto3"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Series</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4Id" name="uploadphoto4Id"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Recommended RON Rating</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Body</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Release Year</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>No. Doors</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>VIN</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Seat Capacity</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Country of Origin</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Transmission</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Overall Green Star Rating</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>ANCAP Safety Rating</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>ANCAP Safety Rating</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Number of Gears</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Steering</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Manufacture Year</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadphoto4" name="uploadphoto4"/>
+                                        </div>
+                                        
+                                    </div>
+                                    </div>
+										
+                                    
+<div class="tab-pane fade" id="links">
+                                    <h2>Pricing</h2>
+                                       <div class="form-group row">
+                                       <div class="col-sm-5 col-md-4">
+                                            <label>Upload link 1 ID</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink1Id" name="uploadlink1Id"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Redbook Price Guide</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink1" name="uploadlink1"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>State</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink2Id" name="uploadlink2Id"/>
+                                        </div>
+                                      <div class="col-sm-5 col-md-4">
+                                            <label>Prices</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink2" name="uploadlink2"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Private Price Guide - Min</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink3Id" name="uploadlink3Id"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Private Price Guide - Max</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink3" name="uploadlink3"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Trade in Price Guide - Min</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink4Id" name="uploadlink4Id"/>
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Trade in Price Guide - Max</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink4" name="uploadlink4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Average Km - Min</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink4" name="uploadlink4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Average Km - Max</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink4" name="uploadlink4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Price When New	State</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink4" name="uploadlink4"/>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Rego</label>
+                                            <input type="text" class="input-text full-width" value="" placeholder="" id="uploadLink4" name="uploadlink4"/>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    </div>
+<div class="tab-pane fade" id="review">
+                                    <h2>Optional Features Addons</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						                                        
+						                                             
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Optional Features</th><th>Price</th></tr>
+						
+						</table>
+						<p></center>
+						</div>
+                                    </div>
+                                    </div>
+<div class="tab-pane fade" id="blogs">
+                                    <h2>Available Colours</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow1()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows1()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Available Colour</th><th>Price</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                    </div>
+                                    </div>
+<div class="tab-pane fade" id="country">
+                                    <h2>Full Spec Engine</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow2()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows2()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Available Colour</th><th>Price</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- new one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Full Spec Fuel</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow3()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows3()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Spec Description</th><th>Full Spec Value</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- third one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Full Spec Dimension</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow4()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows4()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Spec Description</th><th>Full Spec Value</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- four one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Full Spec Wheels</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow5()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows5()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Spec Description</th><th>Full Spec Value</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- five one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Full Spec Warranty</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow6()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows6()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Spec Description</th><th>Full Spec Value</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- six one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Full Spec Standard Equipment</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow7()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows7()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Spec Description</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- seven one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Optional Equipment - Addons</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow8()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows8()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Optional Equipment - Addons- Detail Description</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- Eight one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Related Models</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow9()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows9()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Related Model Trim</th><th>Related Model Description</th><th>Related Model Price when New</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- nine one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Photos</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow10()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows10()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Add Photo</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- ten one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Vehicle Reviews</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow11()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows11()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Add Review</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- eleven one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Vehicle Videos</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow12()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows12()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Add Video</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- twelve one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>External Fitting</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow13()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows13()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Add Review</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- thirteen one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Internal Fitting</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow14()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows14()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Add Review</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- fourteen one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>User Rating</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow15()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows15()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>User Rating 1</th><th>User Rating 2</th><th>User Rating 3</th><th>User Rating 4</th><th>User Rating 5</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- fifteen one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Expert Rating</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow16()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows16()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Rating</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <!-- sixteen one -->
+                                    <div class="tab-pane fade" id="country">
+                                    <h2>Country</h2>
+                                       <div class="form-group row">
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow17()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows17()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>ID</th><th>Country</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="design-inovation">
+                                    <h2>Standard Specification</h2>
+                                       <div id="car-model-data"></div> 
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+
+                                                              
+                                    </div>
+                                    <div class="tab-pane fade" id="honeymoon2">
+                                        <h4>My Bike</h4>
+                                        
+                                    </div>
+                                    <div class="tab-pane fade" id="weekends2">
+                                        <h4>My Boats</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="friends2">
+                                        <h4>My Caravans</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="friends24">
+                                        <h4>My Bicycles</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                <br />
+                                
+                               
+       
+                    </div>
+                          <!-- en d of vehciicle Inventory-->
+                <div id="rego" class="tab-pane fade">
+                             <h2>More tabs</h2>
+                             </div>          
+                          
+                          
+                            <div id="travel-stories" class="tab-pane fade">
+                              <!--  Start -->
+                              
+                              <div class="tab-container full-width-style arrow-left dashboard">
+                        <ul class="tabs">
+                            <li class="active"><a data-toggle="tab" href="#dashboard1"><i class="soap-icon-car circle"></i>Vehicle</a></li>
+                            <li class=""><a data-toggle="tab" href="#profile1"><i class="soap-icon-savings circle"></i>Finance</a></li>
+                            <li class=""><a data-toggle="tab" href="#travel-stories1"><i class="soap-icon-insurance circle"></i>Insurance</a></li>
+                            <li class=""><a data-toggle="tab" href="#settings1"><i class="soap-icon-doorman circle"></i>Service & Maintenance</a></li>                            
+                            <li class=""><a data-toggle="tab" href="#wishlist1"><i class="soap-icon-baggage-5 circle"></i>Transport</a></li>
+                            <li class=""><a data-toggle="tab" href="#booking1"><i class="soap-icon-status circle"></i>Rego</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="dashboard1" class="tab-pane fade in active">
+                               
+                                <p>EBid - R Vehicle area!</p>
+                                <div class="col-md-18">
+                           
+                            <img src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;">
+                            <div class="tab-container trans-style box">
+                                <ul class="tabs full-width">
+                                   <li class="active"><a href="#family2" data-toggle="tab"><i class="fa fa-cab"></i>My Cars</a></li>
+                                    <li><a href="#honeymoon2" data-toggle="tab"><i class="fa fa-motorcycle"></i>My Bikes</a></li>
+                                    <li><a href="#weekends2" data-toggle="tab"><i class="fa fa-ship"></i>My Boats</a></li>
+                                    <li><a href="#friends2" data-toggle="tab"><i class="fa fa-truck"></i>My Caravans</a></li>
+                                    <li><a href="#friends24" data-toggle="tab"><i class="fa fa-bicycle"></i>My Bicycles</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade" id="family2">
+                                        <h4>My Car</h4>
+                                    </div>
+                                    <div class="tab-pane fade in active" id="honeymoon2">
+                                        <h4>My Bike</h4>
+                                        
+                                    </div>
+                                    <div class="tab-pane fade" id="weekends2">
+                                        <h4>My Boats</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="friends2">
+                                        <h4>My Caravans</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="friends24">
+                                        <h4>My Bicycles</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                <br />
+                                
+                               
+                            </div>
+                            <div id="profile1" class="tab-pane fade">
+                            <p>EBid - R Finance area!</p>
+                                <br />
+                              
+                            </div>
+                            <div id="travel-stories1" class="tab-pane fade">
+                              <h2>EBid - R Insurance area!</h2>
+                            </div>
+                             <div id="settings1" class="tab-pane fade">
+                                <h2>EBid - R Service & Maintenance area!</h2>
+                                 <div class="col-md-18">
+                           
+                            <img src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;">
+                            <div class="tab-container trans-style box">
+                                <ul class="tabs full-width">
+                                   <li class="active"><a href="#family3" data-toggle="tab"><i class="fa fa-cab"></i>My Cars</a></li>
+                                    <li><a href="#honeymoon3" data-toggle="tab"><i class="fa fa-motorcycle"></i>My Bikes</a></li>
+                                    <li><a href="#weekends3" data-toggle="tab"><i class="fa fa-ship"></i>My Boats</a></li>
+                                    <li><a href="#friends3" data-toggle="tab"><i class="fa fa-truck"></i>My Caravans</a></li>
+                                    <li><a href="#friends25" data-toggle="tab"><i class="fa fa-bicycle"></i>My Bicycles</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade" id="family3">
+                                        <h4>My Car</h4>
+                                    </div>
+                                    <div class="tab-pane fade in active" id="honeymoon3">
+                                        <h4>My Bike</h4>
+                                        
+                                    </div>
+                                    <div class="tab-pane fade" id="weekends3">
+                                        <h4>My Boats</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="friends3">
+                                        <h4>My Caravans</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="friends25">
+                                        <h4>My Bicycles</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                            <div id="wishlist1" class="tab-pane fade">
+                                <h2>EBid - R Transport area!</h2>
+                                
+                            </div>
+                            
+                            
+                           
+                        </div>
+                    </div>
+                              <!--  end -->
+                            </div>
+                            <div id="settings" class="tab-pane fade">
+                                
+                                <!--  Start -->
+                              <div class="tab-container full-width-style arrow-left dashboard">
+                        <ul class="tabs">
+                            <li class="active"><a data-toggle="tab" href="#dashboard2"><i class="soap-icon-car circle"></i>Vehicle</a></li>
+                            <li class=""><a data-toggle="tab" href="#profile2"><i class="soap-icon-savings circle"></i>Finance</a></li>
+                            <li class=""><a data-toggle="tab" href="#travel-stories2"><i class="soap-icon-insurance circle"></i>Insurance</a></li>
+                            <li class=""><a data-toggle="tab" href="#settings2"><i class="soap-icon-doorman circle"></i>Serv &Maint</a></li>                            
+                            <li class=""><a data-toggle="tab" href="#wishlist2"><i class="soap-icon-baggage-5 circle"></i>Transport</a></li>
+                            <li class=""><a data-toggle="tab" href="#booking2"><i class="soap-icon-status circle"></i>Rego</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="dashboard2" class="tab-pane fade in active">
+                               
+                                <p>Quotation Vehicle area!</p>
+                                <br />
+                                
+                               
+                            </div>
+                            <div id="profile2" class="tab-pane fade">
+                            <p>Quotation Finance area!</p>
+                                <br />
+                              
+                            </div>
+                            <div id="travel-stories2" class="tab-pane fade">
+                              <h2>Quotation Insurance area!</h2>
+                            </div>
+                             <div id="settings2" class="tab-pane fade">
+                                <h2>Quotation Service & Maintenance area!</h2>
+                            </div>
+                            <div id="wishlist2" class="tab-pane fade">
+                                <h2>Quotation Transport area!</h2>
+                                
+                            </div>
+                            <div id="booking2" class="tab-pane fade">
+                                <h2>Quotation Rego area!</h2>
+                              
+
+                            </div>
+                            
+                           
+                        </div>
+                    </div>
+                              <!--  end -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <footer id="footer">
+            <div class="footer-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <h2>Discover</h2>
+                            <ul class="discover triangle hover row">
+                                <li class="col-xs-6"><a href="#">Safety</a></li>
+                                <li class="col-xs-6"><a href="#">About</a></li>
+                                <li class="col-xs-6"><a href="#">Travelo Picks</a></li>
+                                <li class="col-xs-6"><a href="#">Latest Jobs</a></li>
+                                <li class="active col-xs-6"><a href="#">Mobile</a></li>
+                                <li class="col-xs-6"><a href="#">Press Releases</a></li>
+                                <li class="col-xs-6"><a href="#">Why Host</a></li>
+                                <li class="col-xs-6"><a href="#">Blog Posts</a></li>
+                                <li class="col-xs-6"><a href="#">Social Connect</a></li>
+                                <li class="col-xs-6"><a href="#">Help Topics</a></li>
+                                <li class="col-xs-6"><a href="#">Site Map</a></li>
+                                <li class="col-xs-6"><a href="#">Policies</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <h2>Travel News</h2>
+                            <ul class="travel-news">
+                                <li>
+                                    <div class="thumb">
+                                        <a href="#">
+                                            <img src="http://placehold.it/63x63" alt="" width="63" height="63" />
+                                        </a>
+                                    </div>
+                                    <div class="description">
+                                        <h5 class="s-title"><a href="#">Amazing Places</a></h5>
+                                        <p>Purus ac congue arcu cursus ut vitae pulvinar massaidp.</p>
+                                        <span class="date">25 Sep, 2013</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="thumb">
+                                        <a href="#">
+                                            <img src="http://placehold.it/63x63" alt="" width="63" height="63" />
+                                        </a>
+                                    </div>
+                                    <div class="description">
+                                        <h5 class="s-title"><a href="#">Travel Insurance</a></h5>
+                                        <p>Purus ac congue arcu cursus ut vitae pulvinar massaidp.</p>
+                                        <span class="date">24 Sep, 2013</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <h2>Mailing List</h2>
+                            <p>Sign up for our mailing list to get latest updates and offers.</p>
+                            <br />
+                            <div class="icon-check">
+                                <input type="text" class="input-text full-width" placeholder="your email" />
+                            </div>
+                            <br />
+                            <span>We respect your privacy</span>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <h2>About Autoscoop</h2>
+                            <p>Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massaidp nequetiam lore elerisque.</p>
+                            <br />
+                            <address class="contact-details">
+                                <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
+                                <br />
+                                <a href="#" class="contact-email">help@Autoscoop.com</a>
+                            </address>
+                            <ul class="social-icons clearfix">
+                                <li class="twitter"><a title="twitter" href="#" data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
+                                <li class="googleplus"><a title="googleplus" href="#" data-toggle="tooltip"><i class="soap-icon-googleplus"></i></a></li>
+                                <li class="facebook"><a title="facebook" href="#" data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
+                                <li class="linkedin"><a title="linkedin" href="#" data-toggle="tooltip"><i class="soap-icon-linkedin"></i></a></li>
+                                <li class="vimeo"><a title="vimeo" href="#" data-toggle="tooltip"><i class="soap-icon-vimeo"></i></a></li>
+                                <li class="dribble"><a title="dribble" href="#" data-toggle="tooltip"><i class="soap-icon-dribble"></i></a></li>
+                                <li class="flickr"><a title="flickr" href="#" data-toggle="tooltip"><i class="soap-icon-flickr"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom gray-area">
+                <div class="container">
+                    <div class="logo pull-left">
+                        <a href="homepage10.html" title="Autoscoop - home">
+                            <img src="images/logo.png" alt="Autoscoop HTML5 Template" />
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <a id="back-to-top" href="#" class="animated" data-animation-type="bounce"><i class="soap-icon-longarrow-up circle"></i></a>
+                    </div>
+                    <div class="copyright pull-right">
+                        <p>&copy; 2017 Autoscoop</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.noconflict.js"></script>
+    <script type="text/javascript" src="js/modernizr.2.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.1.10.4.min.js"></script>
+    
+    <!-- Twitter Bootstrap -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+
+    <!-- Flex Slider -->
+    <script type="text/javascript" src="components/flexslider/jquery.flexslider-min.js"></script>
+    
+    <!-- parallax -->
+    <script type="text/javascript" src="js/jquery.stellar.min.js"></script>
+    
+    <!-- waypoint -->
+    <script type="text/javascript" src="js/waypoints.min.js"></script>
+
+    <!-- load page Javascript -->
+    <script type="text/javascript" src="js/theme-scripts.js"></script>
+    
+    <script type="text/javascript">
+        tjq(document).ready(function() {
+            tjq("#profile .edit-profile-btn").click(function(e) {
+                e.preventDefault();
+                tjq(".view-profile").fadeOut();
+                tjq(".edit-profile").fadeIn();
+            });
+
+            setTimeout(function() {
+                tjq(".notification-area").append('<div class="info-box block"><span class="close"></span><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ab quis a dolorem, placeat eos doloribus esse repellendus quasi libero illum dolore. Esse minima voluptas magni impedit, iusto, obcaecati dignissimos.</p></div>');
+            }, 10000);
+        });
+        tjq('a[href="#profile"]').on('shown.bs.tab', function (e) {
+            tjq(".view-profile").show();
+            tjq(".edit-profile").hide();
+        });
+    </script>
+</body>
+</html>
