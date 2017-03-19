@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="components/jquery.bxslider/jquery.bxslider.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="components/flexslider/flexslider.css" media="screen" />
     <script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/cufon-replace.js"></script>  
 <script type="text/javascript" src="js/Cabin_400.font.js"></script>
@@ -68,331 +69,9 @@ $.ajax({
 });
 </script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script> -->
 <script src="js/angular-resource.js"></script>
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
-<script>
-    
-	var mainApp1 = angular.module("mainApp1", [ 'ui.bootstrap', 'ngResource' ]);
-	mainApp1.controller('overviewController', function($scope, $stateParams) {
-	    var index = $stateParams.index;
-	    var anotherKey = $stateParams.anotherKey;
-	});
-	mainApp1
-			.controller(
-					'myController1',
-					function($scope, $http) {
-
-						$scope.predicate = 'name';
-						$scope.reverse = true;
-						$scope.currentPage = 1;
-						$scope.order = function(predicate) {
-							$scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse
-									: false;
-							$scope.predicate = predicate;
-						};
-
-						$scope.updatePagination = function() {
-							$scope.totalItems = $scope.biil.details.length;
-							$scope.numPerPage = 5;
-							$scope.paginate = function(value) {
-								var begin, end, index;
-								begin = ($scope.currentPage - 1)
-										* $scope.numPerPage;
-								end = begin + $scope.numPerPage;
-								index = $scope.biil.details.indexOf(value);
-								return (begin <= index && index < end);
-							};
-						};
-						function submitSearchForm() {
-							
-							
-/* First retreive from DB if present
-  
- */
- /* alert("Came here"+$('#data_model_body').val()); */
- var e = document.getElementById("car-model-trims"); 
- var strUser = e.options[e.selectedIndex].text;
- /* alert("mrlp"+$("#mrpPrice").val()); */
- 	
- 
- /*
- end
- */
-alert("Came here inside sumit Search form");													
-
-		
-														var jsonInputToAPI = {
-  "tempModelId": null,
-  "modelYear": $('#car-years').val(),
-  "modelDisplay": $('#car-makes').val(),
-  "modelName": $('#car-models').val(),
-  "modelTrim": strUser ,
-  "mrlp": $("#mrpPrice").val(),
-  "extraCost": $("#extraCost").val(),
-  "onRoadCost": $("#onRoadCost").val(),
-  "avgPrice": $("#driveAwayPrice").val(),
-  "photosTemplate": [
-    {
-      "templatePhotoId": null,
-      "photo1": $("#uploadphoto1").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-{
-      "templatePhotoId": null,
-      "photo1": $("#uploadphoto2").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-{
-      "templatePhotoId": null,
-      "photo1": $("#uploadphoto3").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-{
-      "templatePhotoId": null,
-      "photo1": $("#uploadphoto4").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    }
-  ],
-  "countryTemplate": [
-    {
-      "templateCountryId": null,
-      "country": $("#country1").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-{
-      "templateCountryId": null,
-      "country": $("#country2").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-{
-      "templateCountryId": null,
-      "country": $("#country3").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-{
-      "templateCountryId": null,
-      "country": $("#country4").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    }
-  ],
-  "youtubeTemplate": [
-    {
-      "templateYoutubeId": null,
-      "ylink1": $("#uploadLink1").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-{
-      "templateYoutubeId": null,
-      "ylink1": $("uploadLink2").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-{
-      "templateYoutubeId": null,
-      "ylink1": $("#uploadLink3").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-{
-      "templateYoutubeId": null,
-      "ylink1": $("#uploadLink4").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    }
-  ],
-  "blogTemplate": [
-    {
-      "templateBlogId": null,
-      "blink1": $("#writeBlog1").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-{
-      "templateBlogId": null,
-      "blink1": $("#writeBlog2").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-{
-      "templateBlogId": null,
-      "blink1": $("#writeBlog3").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-{
-      "templateBlogId": null,
-      "blink1": $("#writeBlog4").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    }
-  ],
-  "userReviewTemplate": [
-    {
-      "templateUserReviewId": null,
-      "review1": $("#writeReview1").val(),
-      "flex1": "flex1",
-      "flex2": "flex2",
-      "flex3": "flex3",
-      "flex4": "flex4"
-    },
-    {
-        "templateUserReviewId": null,
-        "review1": $("#writeReview2").val(),
-        "flex1": "flex1",
-        "flex2": "flex2",
-        "flex3": "flex3",
-        "flex4": "flex4"
-      },
-      {
-          "templateUserReviewId": null,
-          "review1": $("#writeReview3").val(),
-          "flex1": "flex1",
-          "flex2": "flex2",
-          "flex3": "flex3",
-          "flex4": "flex4"
-        },
-        {
-            "templateUserReviewId": null,
-            "review1": $("#writeReview4").val(),
-            "flex1": "flex1",
-            "flex2": "flex2",
-            "flex3": "flex3",
-            "flex4": "flex4"
-          }
-  ],
-  "specificationTemplate": {
-    "templateSpecificationId": null,
-    "colorName1": "colorName1",
-    "colorName2": "colorName2",
-    "colorName3": "colorName3",
-    "colorName4": "colorName4",
-    "colorName5":  $("#data_model_engine_compression").val(),
-    "makeCountry": $("#data_make_country").val(),
-    "modelBody": $("#data_model_body").val(),
-    "modelEnginePosition": $("#data_model_engine_position").val(),
-    "modelEngineType": $("#data_model_engine_type").val(),
-    "modelEngineCyl": $("#data_model_engine_cyl").val(),
-    "modelEnginecc": $("#data_model_engine_cc").val(),
-    "modelEnginel": $("#data_model_engine_l").val(),
-    "modelEngineci": $("#data_model_engine_ci").val(),
-    "modelEngineBoremm": $("#data_model_engine_bore_mm").val(),
-    "modelEngineBorein": $("#data_model_engine_bore_in").val(),
-    "modelEngineStrokemm": $("#data_model_engine_stroke_mm").val(),
-    "modelEngineStrokein": $("#data_model_engine_stroke_in").val(),
-    "modelEngineValvespercyl": $("#data_model_engine_valves_per_cyl").val(),
-    "modelEngineValves": $("#data_model_engine_valves").val(),
-    "modelEnginePowerhp": $("#data_model_engine_power_hp").val(),
-    "modelEnginePowerps": $("#data_model_engine_power_ps").val(),
-    "modelEnginePowerkw": $("#data_model_engine_power_kw").val(),
-    "modelEnginePowerrpm": $("#data_model_engine_power_rpm").val(),
-    "modelEngineTorquenm": $("#data_model_engine_torque_nm").val(),
-    "modelEngineTorquelbft": $("#data_model_engine_torque_lbft").val(),
-    "modelEngineTorquekgm": $("#data_model_engine_torque_kgm").val(),
-    "modelEngineTorquerpm": $("#data_model_engine_torque_rpm").val(),
-    "modelEngineCompression": 0,
-    "modelEngineFuel": $("#data_model_engine_fuel").val(),
-    "modelDrive": $("#data_model_drive").val(),
-    "modelTransmissionType": $("#data_model_transmission_type").val(),
-    "modelTopSpeedkph": $("#data_model_top_speed_kph").val(),
-    "modelTopSpeedmph": $("#data_model_top_speed_mph").val(),
-    "model0to100kph": $("#data_model_0_to_100_kph").val(),
-      "modelDoors": $("#data_model_doors").val(),
-    "modelSeats": $("#data_model_seats").val(),
-    "modelWeightkg": $("#data_model_weight_kg").val(),
-    "modelWeightlbs": $("#data_model_weight_lbs").val(),
-    "modelLengthmm": $("#data_model_length_mm").val(),
-    "modelLengthin": $("#data_model_length_in").val(),
-      "modelWidthmm": $("#data_model_width_mm").val(),
-    "modelWidthin": $("#data_model_width_in").val(),
-    "modelHeightmm": $("#data_model_height_mm").val(),
-    "modelHeightin": $("#data_model_height_in").val(),
-    "modelWheelbasemm": $("#data_model_wheelbase_mm").val(),
-    "modelWheelbasein": $("#data_model_wheelbase_in").val(),
-    "modellkmCity": $("#data_model_lkm_city").val(),
-    "modelmpgCity": $("#data_model_mpg_city").val(),
-    "modellkmhwy": $("#data_model_lkm_hwy").val(),
-    "modelmpghwy": $("#data_model_mpg_hwy").val(),
-    "modellkmMixed": $("#data_model_lkm_mixed").val(),
-    "modelmpgMixed": $("#data_model_mpg_mixed").val(),
-    "modelFuelcapl": $("#data_model_fuel_cap_l").val(),
-    "modelFuelcapg": $("#data_model_fuel_cap_g").val()
-  }
-}
-														 alert("Before Call12"); 
-														var wsURL = 'api/carModelTemplate';
-														//var wsURL = 'http://localhost:8080/MyCarDomain/api/carModelTemplate';
-														//var wsURL = 'http://www.autoscoop.com.au/api/carModelTemplate';
-														alert("url"+wsURL);
-															    $http({
-																			method : 'POST',
-																			url : wsURL,
-																			data: jsonInputToAPI
-																							
-																		}).success(function(data) {
-																			alert("successful");
-																							alert("Thank You. Your Seach ID is "+data.tempModelId);
-																							
-																						});
-
-								
-														
-													};
-
-					    
-
-						$scope.submitSearchForm = submitSearchForm;
-						$scope.init = function() {
-							$scope.biil = {
-								details : []
-							};
-							$scope.submitForm();
-						};
-
-					});
-</script>
 
 
     <!-- Main Style -->
@@ -440,19 +119,18 @@ img.emoji {
 	}
 	</style>
 <link rel="shortcut icon" href="favicon.ico">
-   
-    <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+
 <script src="js/angular-resource.js"></script>
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
 <script src="js/angular-ui-router.js"></script>
 <script src="js/angular.js"></script>   
 <script src="js/myApp.js"></script> 
-    <script>function showDiv1() {
+<script>
+function showDiv1() {
 /*document.getElementById('welcomeDiv').style.display = "block";*/
 /* start of transfer */
 alert("inside showdiv");
-var e = document.getElementById("car-model-trims"); 
+//var e = document.getElementById("car-model-trims"); 
 var strUser = e.options[e.selectedIndex].text;
 
 var url= "http://localhost:8080/MyCarDomain/api/carModelTemplateFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;
@@ -601,7 +279,7 @@ carquery.carDataHTMLMRP12(result.specificationTemplate,result.modelYear, result.
       <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
     <![endif]-->
 </head>
-<body ng-app="mainApp1" >
+<body ng-app="mainAppMrp" >
     
     <div id="page-wrapper">
         <header id="header" class="navbar-static-top">
@@ -998,7 +676,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         <button id="cq-show-data" type="button" class="full-width btn-large" onclick="showDiv1()">Next</button>
                                     </div>
 
-<div class="form-group row" ng-click="submitSearchForm()" ng-controller="myController1">
+<div class="form-group row" ng-click="submitSearchForm()" ng-controller="mrpController1">
                                     <div class="col-sm-6 col-md-5">
                                         <button type="submit" class="full-width btn-large">CONFIRM SAVE</button>
                                     </div>
@@ -1009,14 +687,29 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
   
   <div id="welcomeDiv" class="col-md-42" >
                             <div class="tab-container style1">
-                                <ul class="tabs full-width" height=10>
+                                <ul class="tabs" height=10>
                                     <li class="active"><a href="#unlimited-layouts" data-toggle="tab">Header</a></li>
                                     <li><a href="#photos" data-toggle="tab">Overview</a></li>
 <li><a href="#links" data-toggle="tab">Pricing</a></li>
-<li><a href="#review" data-toggle="tab">User Review </a></li>
-<li><a href="#blogs" data-toggle="tab">Blogs</a></li>
-<li><a href="#country" data-toggle="tab">Available Country</a></li>
-<li><a href="#design-inovation" data-toggle="tab">Standard Specification</a></li>
+<li><a href="#review" data-toggle="tab">Optional Features-Addons</a></li>
+<li><a href="#blogs" data-toggle="tab">Colour</a></li>
+<li><a href="#country" data-toggle="tab">Full Spec Engine</a></li>
+<li><a href="#FullSpecDimension" data-toggle="tab">Full Spec Dimension</a></li>
+<li><a href="#fullSpecFuel" data-toggle="tab">Full Spec Fuel</a></li>
+<li><a href="#fullSpecWheels" data-toggle="tab">Full Spec Wheels</a></li>
+<li><a href="#warranty" data-toggle="tab">Warranty</a></li>
+<li><a href="#fullSpecStandEquip" data-toggle="tab">Full Spec Stand Equip</a></li>
+<li><a href="#optionalEquipmentAddons" data-toggle="tab">Optional Equipment-Addons</a></li>
+<li><a href="#relatedModels" data-toggle="tab">Related Models</a></li>
+<li><a href="#photos" data-toggle="tab">Photos</a></li>
+<li><a href="#vehicleReviews" data-toggle="tab">Vehicle Reviews</a></li>
+<li><a href="#videos" data-toggle="tab">Videos</a></li>
+<li><a href="#fittingExternal" data-toggle="tab">Fitting External</a></li>
+<li><a href="#fittingInternal" data-toggle="tab">Fitting Internal</a></li>
+<li><a href="#userRating" data-toggle="tab">User Rating</a></li>
+<li><a href="#expertRating" data-toggle="tab">Expert Rating</a></li>
+<li><a href="#country24" data-toggle="tab">Country</a></li>
+
                                     
                                 </ul>
                                 <div class="tab-content">
@@ -1290,7 +983,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows2()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table2" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Available Colour</th><th>Price</th></tr>
 						
 						</table>
@@ -1300,7 +993,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- new one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="fullSpecFuel">
                                     <h2>Full Spec Fuel</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1310,7 +1003,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows3()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table3" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Spec Description</th><th>Full Spec Value</th></tr>
 						
 						</table>
@@ -1320,7 +1013,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- third one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="FullSpecDimension">
                                     <h2>Full Spec Dimension</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1330,7 +1023,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows4()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table4" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Spec Description</th><th>Full Spec Value</th></tr>
 						
 						</table>
@@ -1340,7 +1033,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- four one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="fullSpecWheels">
                                     <h2>Full Spec Wheels</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1350,7 +1043,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows5()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table5" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Spec Description</th><th>Full Spec Value</th></tr>
 						
 						</table>
@@ -1360,7 +1053,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- five one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="warranty">
                                     <h2>Full Spec Warranty</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1370,7 +1063,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows6()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table6" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Spec Description</th><th>Full Spec Value</th></tr>
 						
 						</table>
@@ -1380,7 +1073,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- six one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="fullSpecStandEquip">
                                     <h2>Full Spec Standard Equipment</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1390,7 +1083,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows7()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table7" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Spec Description</th></tr>
 						
 						</table>
@@ -1400,7 +1093,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- seven one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="optionalEquipmentAddons">
                                     <h2>Optional Equipment - Addons</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1410,7 +1103,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows8()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table8" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Optional Equipment - Addons- Detail Description</th></tr>
 						
 						</table>
@@ -1420,7 +1113,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- Eight one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="relatedModels">
                                     <h2>Related Models</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1430,7 +1123,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows9()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table9" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Related Model Trim</th><th>Related Model Description</th><th>Related Model Price when New</th></tr>
 						
 						</table>
@@ -1440,7 +1133,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- nine one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="photos">
                                     <h2>Photos</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1450,7 +1143,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows10()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table10" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Add Photo</th></tr>
 						
 						</table>
@@ -1460,7 +1153,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- ten one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="vehicleReviews">
                                     <h2>Vehicle Reviews</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1470,7 +1163,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows11()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table11" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Add Review</th></tr>
 						
 						</table>
@@ -1480,7 +1173,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- eleven one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="videos">
                                     <h2>Vehicle Videos</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1490,7 +1183,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows12()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table12" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Add Video</th></tr>
 						
 						</table>
@@ -1500,7 +1193,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- twelve one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="fittingExternal">
                                     <h2>External Fitting</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1510,7 +1203,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows13()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table13" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Add Review</th></tr>
 						
 						</table>
@@ -1520,7 +1213,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- thirteen one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="fittingInternal">
                                     <h2>Internal Fitting</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1530,7 +1223,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows14()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table14" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Add Review</th></tr>
 						
 						</table>
@@ -1540,7 +1233,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- fourteen one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="userRating">
                                     <h2>User Rating</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1550,7 +1243,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows15()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table15" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>User Rating 1</th><th>User Rating 2</th><th>User Rating 3</th><th>User Rating 4</th><th>User Rating 5</th></tr>
 						
 						</table>
@@ -1560,7 +1253,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- fifteen one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="expertRating">
                                     <h2>Expert Rating</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1570,7 +1263,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows16()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table16" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Rating</th></tr>
 						
 						</table>
@@ -1580,7 +1273,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div>
                                     </div>
                                     <!-- sixteen one -->
-                                    <div class="tab-pane fade" id="country">
+                                    <div class="tab-pane fade" id="country24">
                                     <h2>Country</h2>
                                        <div class="form-group row">
                                        <div id="my-container">
@@ -1590,7 +1283,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows17()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table17" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>ID</th><th>Country</th></tr>
 						
 						</table>
@@ -1599,10 +1292,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         <div class="clearfix"></div>
                                     </div>
                                     </div>
-                                    <div class="tab-pane fade" id="design-inovation">
-                                    <h2>Standard Specification</h2>
-                                       <div id="car-model-data"></div> 
-                                    </div>
+                                    
                                     
                                 </div>
                             </div>

@@ -26,7 +26,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellCountry(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }// append row to the HTML table
         function appendRow16() {
@@ -35,7 +35,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellExpertingRating(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }// append row to the HTML table
         function appendRow15() {
@@ -44,8 +44,9 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellUserRating(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
+            alert("ca"+$('#userRating10').val());
         }// append row to the HTML table
         function appendRow14() {
             var tbl = document.getElementById('my-table14'), // table reference
@@ -53,7 +54,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFittingInternal(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }// append row to the HTML table
         function appendRow13() {
@@ -62,7 +63,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFittingExternal(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }// append row to the HTML table
         function appendRow12() {
@@ -71,7 +72,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellVideos(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }// append row to the HTML table
         function appendRow11() {
@@ -80,7 +81,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellVehicleReviews(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -90,7 +91,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellPhotos(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -100,7 +101,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellRelatedModels(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -110,7 +111,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellOptionalEquipmentAddOns(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -120,7 +121,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFullSpecStandardEquip(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -130,7 +131,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellWarranty(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -140,7 +141,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFullSpecWheels(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -150,7 +151,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFullSpecFuel(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -160,7 +161,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFullSpecDimension(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -170,7 +171,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFullSpecEngine(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
         
@@ -181,7 +182,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellAvailableColour(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
         function appendRow() {
@@ -190,25 +191,301 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellOptionalFeaturesAddons(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
-            alert("ca"+$('#text2').val());
+            alert("ca"+$('#createCellOptionalFeaturesAddons2').val());
         }
         // create DIV element and append to the table cell
-        function createCell(cell, text, style) {
+        function createCellOptionalFeaturesAddons(cell, row, text, style) {
             var div = document.createElement('div'); // create DIV element
                 //txt = document.createTextNode(text); // create text node
             
             var newInput = document.createElement("INPUT");
-            newInput.id = "text" + text;
-            newInput.name = "text" + text;
+            newInput.id = "createCellOptionalFeaturesAddons" +row + text;
+            newInput.name = "createCellOptionalFeaturesAddons" +row+ text;
             newInput.type = "text";
             
             div.appendChild(newInput);                    // append text node to the DIV
             div.setAttribute('class', style);        // set DIV class attribute
-            div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
             cell.appendChild(div);                   // append DIV to the table cell
         }
+        
+        
+        // create DIV element and append to the table cell
+        function createCellAvailableColour(cell, row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "availableColour" + +row + text;
+            newInput.name = "availableColour" +row +  text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFullSpecEngine(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fullSpecEngine" + row +text;
+            newInput.name = "fullSpecEngine" + row +text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFullSpecDimension(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fullSpecDimension" + row+text;
+            newInput.name = "fullSpecDimension" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFullSpecFuel(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fullSpecFuel" + row+text;
+            newInput.name = "fullSpecFuel" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFullSpecWheels(cell,  row,text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fullSpecWheels" + row+text;
+            newInput.name = "fullSpecWheels" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellWarranty(cell,  row,text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "warranty" + row+text;
+            newInput.name = "warranty" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFullSpecStandardEquip(cell,  row,text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fullSpecStandardEquip" + row+text;
+            newInput.name = "fullSpecStandardEquip" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellOptionalEquipmentAddOns(cell,  row,text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "optionalEquipmentAddOns" +row+ text;
+            newInput.name = "optionalEquipmentAddOns" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellRelatedModels(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "relatedModels" +row+ text;
+            newInput.name = "relatedModels" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellPhotos(cell,  row,text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "photo" + row+text;
+            newInput.name = "photo" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellVehicleReviews(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "vehicleReviews" + row+text;
+            newInput.name = "vehicleReviews" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellVideos(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "videos" + row+text;
+            newInput.name = "videos" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFittingExternal(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fittingExternal" + row+text;
+            newInput.name = "fittingExternal" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFittingInternal(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fittingInternal" + row+text;
+            newInput.name = "fittingInternal" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellUserRating(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "userRating" + row+ text;
+            newInput.name = "userRating" + row+ text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellExpertingRating(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "expertingRating" + row+ text;
+            newInput.name = "expertingRating" + row+ text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellCountry(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "country" + row+ text;
+            newInput.name = "country" + row+ text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        
+        
         
      // append column to the HTML table
         function appendColumn() {
@@ -372,14 +649,14 @@ var isChecked = false;
 
 
 // Check if "key" exists in the storage
-var value = $.jStorage.get("key");
+/*//var value = $.jStorage.get("key");
 if(!value){
     // if not - load the data from the server
 //alert("can inside");
     //value = load_data_from_server()
     // and save it
     $.jStorage.set("key",value);
-}
+}*/
 //alert("can"+value.userId);
 
 function signingout(){
@@ -1171,66 +1448,959 @@ function redirect() {
 
 
 //angular JS start
-var mainApp1 = angular.module("mainApp1", []);
-mainApp1.controller(
-				'myController1',function($scope, $http) {
-					$scope.firstForm = function() {
-						alert("in first form");
-						$('li>a').addClass('dropdown-toggle');
-				        $('li>a').attr('data-toggle','pill');
-					}
-					$scope.submitSearchForm = function() {
+var mainAppMrp = angular.module("mainAppMrp", []);
+mainAppMrp.controller('mrpController1',function($scope, $http) {
+						$scope.submitSearchForm = function() {
+												//alert("came here");
 												
-												var jsonInputToAPI = {"userId":userId,
-														"myVehicleVO":{
-															"myVehicleId":null,
-															"year": $('#car-years').val(),															      
-															"make":$('#car-makes').val(),
-																	"model" :$('#car-models').val(),
-																	 "variant":$('#car-model-trims').val(),
-																	"vin":$('#vin').val(),
-																	"regNum":$('#regNo').val(),
-																	"regState":$('#car-model-trims').val(),
-																	"regExpDate":null,
-																	"insProv":$('#regState').val(),
-																	"insProvMan":$('#insProv').val(),
-																	"insPremPaid":$('#insPrePaid').val(),
-																	"insPremPaidFreq":$('#premPaidFreq').val(),
-																	"insExpiry":null,	
-																	"odoMeter":$('#odoMeter').val(),	
-																	"lastServiceDt":null,	
-																	"nextServiceDt":null,	
-																	"nextServKms":$('#nextServMaiKms').val(),	
-																	"finProvider":$('#finProv').val(),	
-																	"loanAmt1":$('#loanAmount').val(),	
-																	"loanTakenDt":null,
-																		"loanPaidFreq":$('#loanPaidFreq').val(),	
-																	"loanAmt2":$('#laonAmount1').val(),	
-																	"loanPeriod":$('#laonPeriod').val(),	
-																	"loanInterest":$('#laonIntRate').val(),
-																		"fuelCardProvider":$('#fuelCardProv').val(),	
-																	"valFuelCard":$('#valFuelCard').val(),	
-																	"fuelType":$('#fuelType').val(),
-																		"photo1":$('#photo1').val(),	
-																	"photo2":$('#photo2').val(),	
-																	"photo3":$('#photo3').val(),
-																		"flex1":"flex1",	
-																	"flex2":"flex1",	
-																	"flex3":"flex1",
-																		"flex4":"flex1",	
-																	"flex5":12,	
-																	"flex6":12,
-																	"flex7":12,
-																		"flex8":null,	
-																	"flex9":null
-														}
-														}
+								                var jsonInputToAPI = {"tempCarModelHeaderId": null,
+														  "modelYear": "2016",
+														  "modelDisplay": "",
+														  "modelName": "modelName",
+														  "modelVariant":"modelVariant",
+														 "modelSeries":"modelSeries",
+														  "modelBatch":"modelBatch",
+														  "engineSize" : null,
+														  "cylinder" : null,
+														  "noOfGears" : null,
+														 "transimission" : null,
+														"driveType" :  null,
+														"fuelType" :  null,
+														"modelDoors" :  null,
+														"modelBody" :  null,
+														"modelSeats":  null,
+														"manfYear" :  null,
+														"creationDate" : null,
+														"modifiedDate" : null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null,
+														  "modelTrim": null, 
+														   "carModel": [
+														    {
+														      "tempCarModelOverviewId": null,
+														      
+															
+														 "price": null,
+														"priceGuideEGC":null,
+														 "drive":	null,
+														 "Badge":null,	
+														 "fuelType":	null,
+														 "series":	null,
+														 "recommendedRonRating":null,
+														 "body":null,
+														 "releaseYear":null,
+														 "noOfDoors":null,
+														 "vin":null,
+														 "seatCapacity":null,
+														 "countryOfOrigin":null,
+														 "transmission":null,
+														 "overallGreenStarRating":null,
+														 "ancapSafetyRating":null,
+														 "NoOfGears":null,
+														 "steering":null,
+														 "manfYear":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
 
+
+
+
+														    },
+
+														{
+														       "tempCarModelOverviewId": null,
+														      
+															
+														 "price": null,
+														"priceGuideEGC":null,
+														 "drive":	null,
+														 "Badge":null,	
+														 "fuelType":	null,
+														 "series":	null,
+														 "recommendedRonRating":null,
+														 "body":null,
+														 "releaseYear":null,
+														 "noOfDoors":null,
+														 "vin":null,
+														 "seatCapacity":null,
+														 "countryOfOrigin":null,
+														 "transmission":null,
+														 "overallGreenStarRating":null,
+														 "ancapSafetyRating":null,
+														 "NoOfGears":null,
+														 "steering":null,
+														 "manfYear":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    }
+														  ],
+														  "carModel1": [
+														    {
+														      "tempCarModelPricingId": null,
+														      
+														 "prices":null,
+														 "redbookPriceGuide":null,
+														 "privatePriceGuideMin":null,	
+														 "privatePriceGuideMax":null,	
+														 "tradePriceGuideMin":null,	
+														 "tradePriceGuideMax":null,
+														 "averageKmMin":null,
+														 "averageKmMax":null,
+														 "priceWhenNew":null,
+														 "state":null,
+														 "rego":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    },
+
+														{
+														      "tempCarModelPricingId": null,
+														      
+														 "prices":null,
+														 "redbookPriceGuide":null,
+														 "privatePriceGuideMin":null,	
+														 "privatePriceGuideMax":null,	
+														 "tradePriceGuideMin":null,	
+														 "tradePriceGuideMax":null,
+														 "averageKmMin":null,
+														 "averageKmMax":null,
+														 "priceWhenNew":null,
+														 "state":null,
+														 "rego":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    }
+														  ],
+														  "carModel2": [
+														    {
+														      "tempCarModelOptFeatId": null,
+														      
+															
+															 "prices":null,
+															"optionaFeature":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+
+														{
+														     "tempCarModelOptFeatId": null,
+														      
+															
+															 "prices":null,
+															"optionaFeature":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    }
+														  ],
+														  "carModel3": [
+														    {
+														      "tempCarModelColourId": null,
+
+														"price":null,
+														 "availableColour":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    },
+
+														{
+														     "tempCarModelColourId": null,
+
+														"price":null,
+														 "availableColour":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    }
+														  ],
+														  "carModel4": [
+														    {
+														      "tempCarModelFullSpecId": null,
+
+														"specDescription":null,
+														"fullSpecValue":null,
+															
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    
+														        {
+														                  "tempCarModelFullSpecId": null,
+
+														"specDescription":null,
+														"fullSpecValue":null,
+															
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														          }
+														  ], "carModel5": [
+														    {
+														      "tempCarModelFullSpecDimId": null,
+														      
+														       "specDescription":null,
+														 "fullSpecValue":null,
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    
+														        {
+														            "tempCarModelFullSpecDimId": null,
+														      
+														       "specDescription":null,
+														 "fullSpecValue":null,
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														          }
+														  ], "carModel6": [
+														    {
+														      "tempCarModelFullSpecFuelId": null,
+
+														"specDescription":null,
+														"fullSpecValue":null,
+															
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    
+														        {
+														                  "tempCarModelFullSpecFuelId": null,
+
+														"specDescription":null,
+														"fullSpecValue":null,
+															
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														          }
+														  ], "carModel7": [
+														    {
+														      "tempCarModelFullSpecWarrantyId": null,
+
+
+
+															
+														"specDescription":null,
+														 "fullSpecValue":null,
+																"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+
+														    },
+														    {
+														      "tempCarModelFullSpecWarrantyId": null,
+
+
+
+															
+														"specDescription":null,
+														 "fullSpecValue":null,
+																"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel8": [
+														    {
+														      "tempCarModelFullSpecStandEqId": null,
+														"specDescription":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null	
+														    },
+														    {
+														      "tempCarModelFullSpecStandEqId": null,
+														"specDescription":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null	
+														      }
+														  ], "carModel9": [
+														    {
+														      "tempCarModelOptEqpAddOnId": null,
+														"specDescription":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null	
+
+
+														    },
+														    {
+														      "tempCarModelOptEqpAddOnId": null,
+														"specDescription":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null	
+														 }
+														  ], "carModel10": [
+														    {
+														      "tempCarModelRelatedModelId": null,
+														"realatedModelTrim":null,
+														"relatedModelDescription":null,
+														"relatedModelPriceWhenNew":null,
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    {
+														      "tempCarModelRelatedModelId": null,
+														"realatedModelTrim":null,
+														"relatedModelDescription":null,
+														"relatedModelPriceWhenNew":null,
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel11": [
+														    {
+														      "tempCarModelPhotosId": null,
+														 "specDescription":null,
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+
+														    },
+														    {
+														       "tempCarModelPhotosId": null,
+														 "specDescription":null,
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel12": [
+														    {
+														      "tempCarModelVehReviewId": null,
+														      "review1": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    },
+														    {
+														        "tempCarModelVehReviewId": null,
+														      "review1": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel13": [
+														    {
+														      "tempCarModelVideosId": null,
+														      "ylink1": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    {
+														        "tempCarModelVideosId": null,
+														      "ylink1": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel14": [
+														    {
+														      "tempCarModelExtFittingId": null,
+														      "extFittingDescription": null,
+														      "price": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    {
+														        "tempCarModelExtFittingId": null,
+														      "extFittingDescription": null,
+														      "price": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel15": [
+														    {
+														      "tempCarModelIntFittingId": null,
+														      "intFittingDescription": null,
+														      "price": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    {
+														        "tempCarModelIntFittingId": null,
+														      "intFittingDescription": null,
+														      "price": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel16": [
+														    {
+														      "tempCarModelUserRatingId": null,
+														      "ratingCatagery2": null,
+														      "ratingCatagery1": null,
+														      "ratingCatagery3": null,
+														      "ratingCatagery4": null,
+														      "ratingCatagery5": null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    }
+														  ], "carModel17": [
+														    {
+														      "tempCarModelExpRatingId": null,
+														      "expertRating": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    },
+														    {
+														       "tempCarModelExpRatingId": null,
+														      "expertRating": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel18": [
+														    {
+														      "tempCarModelExpRatingId": null,
+														      "expertRating": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    },
+														    {
+														        "tempCarModelExpRatingId": null,
+														      "expertRating": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel19": [
+														    {
+														      "tempCarModelFullSpecWheelId": null,
+														      "specDescription": null,
+														      "fullSpecValue": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    },{
+														      "tempCarModelFullSpecWheelId": null,
+														      "specDescription": null,
+														      "fullSpecValue": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    }
+														  ]}
+								              /*  alert("Json print d c");
+								               alert(JSON.stringify(jsonInputToAPI.carModel2[0].tempCarModelOptFeatId));*/
+								               
+								               
+								              /* "carModel16": [
+															    {
+															      "tempCarModelUserRatingId": null,
+															      "ratingCatagery2": null,
+															      "ratingCatagery1": null,
+															      "ratingCatagery3": null,
+															      "ratingCatagery4": null,
+															      "ratingCatagery5": null,
+															"flex1": null,
+															"flex2" : null,
+															 "flex3":null,	
+															" flex4" : null,
+															"flex5": null,
+															"flex6" : null,
+															 "flex7" : null,
+															 "flex8" : null,
+															 "flex9" : null,
+															 "flex10" : null,
+															 "flex11" : null,
+															 "flex12" : null*/
+								            // insert table cells to the new row
+								                
+								                var tbl = document.getElementById('my-table'), // table reference
+									               row = tbl.rows.length;      // append table row
+									                var i;
+									                alert("row length"+tbl.rows.length);
+									                alert("col lenght"+tbl.rows[0].cells.length);
+					                for (j = 1; j < tbl.rows.length; j++) {
+					                		jsonInputToAPI.carModel2[j-1].tempCarModelOptFeatId=null;   	
+								            for (i = 1; i < tbl.rows[j].cells.length; i++) {
+									            	
+									            	//alert("ca"+$('#createCellOptionalFeaturesAddons'+j+i).val());
+									            	if(i%2==1)
+									            		jsonInputToAPI.carModel2[j-1].optionaFeature=$('#createCellOptionalFeaturesAddons'+j+i).val();
+									            	if(i%2==0)
+									            		jsonInputToAPI.carModel2[j-1].prices=$('#createCellOptionalFeaturesAddons'+j+i).val();
+									            	//alert(""+'createCellOptionalFeaturesAddons'+i);
+									            	
+								            }
+								            jsonInputToAPI.carModel2[j-1]["flex1"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex2"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex3"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex4"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex5"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex6"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex7"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex8"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex9"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex10"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex11"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex12"]=null;
+								    }  
+								               /* alert("Json print");
+								                alert(JSON.stringify(jsonInputToAPI.carModel2));*/
+												
+								                // user rating
+					                var tbl15 = document.getElementById('my-table15'), // table reference
+						               row = tbl15.rows.length;      // append table row
+						                var i;
+						                alert("row length"+tbl15.rows.length);
+						                alert("col lenght"+tbl15.rows[0].cells.length);         
+								                alert("Json print d e userRating");
+									               alert(JSON.stringify(jsonInputToAPI.carModel16[0].tempCarModelUserRatingId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl15.rows.length; j++) {
+						                	alert("changes now");
+						                	i=0;
+						                		jsonInputToAPI.carModel16[j-1].tempCarModelUserRatingId=null;
+						                		
+						                		jsonInputToAPI.carModel16[j-1].ratingCatagery1=$('#userRating'+j+'0').val();
+						                		alert("changes for"+$('#userRating'+j+'0').val());
+						                		jsonInputToAPI.carModel16[j-1].ratingCatagery2=$('#userRating'+j+'1').val(); 
+						                		jsonInputToAPI.carModel16[j-1].ratingCatagery3=$('#userRating'+j+'2').val(); 
+						                		jsonInputToAPI.carModel16[j-1].ratingCatagery4=$('#userRating'+j+'3').val(); 
+						                		jsonInputToAPI.carModel16[j-1].ratingCatagery5=$('#userRating'+j+'4').val(); 
+									         
+						                		jsonInputToAPI.carModel16[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print");
+									                alert(JSON.stringify(jsonInputToAPI.carModel16));
+													
+								                
+								                
+								             /*   
+								                "carModel2": [
+								                
+								                
+															    {
+															      "tempCarModelOptFeatId": null,
+															      
+																
+																 "prices":null,
+																"optionaFeature":null,
+															"flex1": null,
+															"flex2" : null,
+															 "flex3":null,	
+															" flex4" : null,
+															"flex5": null,
+															"flex6" : null,
+															 "flex7" : null,
+															 "flex8" : null,
+															 "flex9" : null,
+															 "flex10" : null,
+															 "flex11" : null,
+															 "flex12" : null
+															    },
+								                
+								                */
+								                
+												
 
 												//alert("Before Call");
 												//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 												//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
-												var wsURL = 'api/eBid/myVehicle';
+												var wsURL = 'api/tempCarModelTemplate';
 												
 													    $http({
 																	method : 'POST',
