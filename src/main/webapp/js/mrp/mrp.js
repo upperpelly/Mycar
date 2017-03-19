@@ -1454,22 +1454,22 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 												//alert("came here");
 												
 								                var jsonInputToAPI = {"tempCarModelHeaderId": null,
-														  "modelYear": "2016",
-														  "modelDisplay": "",
-														  "modelName": "modelName",
-														  "modelVariant":"modelVariant",
-														 "modelSeries":"modelSeries",
-														  "modelBatch":"modelBatch",
-														  "engineSize" : null,
-														  "cylinder" : null,
-														  "noOfGears" : null,
-														 "transimission" : null,
-														"driveType" :  null,
-														"fuelType" :  null,
-														"modelDoors" :  null,
-														"modelBody" :  null,
-														"modelSeats":  null,
-														"manfYear" :  null,
+														  "modelYear": $('#car-years').val(),
+														  "modelDisplay": $('#Make').val(),
+														  "modelName": $('#Model').val(),
+														  "modelVariant":$('#Variant').val(),
+														 "modelSeries":$('#Series').val(),
+														  "modelBatch":$('#Batch').val(),
+														  "engineSize" : $('#engineSizeHead').val(),
+														  "cylinder" : $('#cylinderHead').val(),
+														  "noOfGears" : $('#numberofGearsHead').val(),
+														 "transimission" : $('#transmissionHead').val(),
+														"driveType" :  $('#driveTypeHead').val(),
+														"fuelType" :  $('#fuelTypeHead').val(),
+														"modelDoors" :  $('#numberofDoorsHead').val(),
+														"modelBody" :  $('#bodyTypeHead').val(),
+														"modelSeats":  $('#seatingCapacityHead').val(),
+														"manfYear" :  $('#manufactureYearHead').val(),
 														"creationDate" : null,
 														"modifiedDate" : null,
 														"flex1": null,
@@ -1484,31 +1484,31 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 														 "flex10" : null,
 														 "flex11" : null,
 														 "flex12" : null,
-														  "modelTrim": null, 
+														  "modelTrim":$('#Trim').val(), 
 														   "carModel": [
 														    {
 														      "tempCarModelOverviewId": null,
 														      
 															
-														 "price": null,
-														"priceGuideEGC":null,
-														 "drive":	null,
-														 "Badge":null,	
-														 "fuelType":	null,
-														 "series":	null,
-														 "recommendedRonRating":null,
-														 "body":null,
-														 "releaseYear":null,
-														 "noOfDoors":null,
-														 "vin":null,
-														 "seatCapacity":null,
-														 "countryOfOrigin":null,
-														 "transmission":null,
-														 "overallGreenStarRating":null,
-														 "ancapSafetyRating":null,
-														 "NoOfGears":null,
-														 "steering":null,
-														 "manfYear":null,
+														 "price": $('#priceOverview').val(),
+														"priceGuideEGC":$('#priceGuideEGC').val(),
+														 "drive":	$('#driveOverview').val(),
+														 "Badge":$('#badgeOverview').val(),	
+														 "fuelType":$('#fuelTypeOverview').val(),
+														 "series":	$('#seriesOverview').val(),
+														 "recommendedRonRating":$('#recommendedRONRating').val(),
+														 "body":$('#bodyOverview').val(),
+														 "releaseYear":$('#releaseYear').val(),
+														 "noOfDoors":$('#noofDoors').val(),
+														 "vin":$('#VIN').val(),
+														 "seatCapacity":$('#seatCapacity').val(),
+														 "countryOfOrigin":$('#countryofOrigin').val(),
+														 "transmission":$('#TransmissionOver').val(),
+														 "overallGreenStarRating":$('#OverallGreenStarRating').val(),
+														 "ancapSafetyRating":$('#ANCAPSafetyRating').val(),
+														 "NoOfGears":$('#NumberofGears').val(),
+														 "steering":$('#Steering').val(),
+														 "manfYear":$('#ManufactureYear').val(),
 														"flex1": null,
 														"flex2" : null,
 														 "flex3":null,	
@@ -1525,60 +1525,22 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 
 
 
-														    },
-
-														{
-														       "tempCarModelOverviewId": null,
-														      
-															
-														 "price": null,
-														"priceGuideEGC":null,
-														 "drive":	null,
-														 "Badge":null,	
-														 "fuelType":	null,
-														 "series":	null,
-														 "recommendedRonRating":null,
-														 "body":null,
-														 "releaseYear":null,
-														 "noOfDoors":null,
-														 "vin":null,
-														 "seatCapacity":null,
-														 "countryOfOrigin":null,
-														 "transmission":null,
-														 "overallGreenStarRating":null,
-														 "ancapSafetyRating":null,
-														 "NoOfGears":null,
-														 "steering":null,
-														 "manfYear":null,
-														"flex1": null,
-														"flex2" : null,
-														 "flex3":null,	
-														" flex4" : null,
-														"flex5": null,
-														"flex6" : null,
-														 "flex7" : null,
-														 "flex8" : null,
-														 "flex9" : null,
-														 "flex10" : null,
-														 "flex11" : null,
-														 "flex12" : null
-														    }
-														  ],
+														    }														  ],
 														  "carModel1": [
 														    {
 														      "tempCarModelPricingId": null,
 														      
-														 "prices":null,
-														 "redbookPriceGuide":null,
-														 "privatePriceGuideMin":null,	
-														 "privatePriceGuideMax":null,	
-														 "tradePriceGuideMin":null,	
-														 "tradePriceGuideMax":null,
-														 "averageKmMin":null,
-														 "averageKmMax":null,
-														 "priceWhenNew":null,
-														 "state":null,
-														 "rego":null,
+														 "prices":$('#pricesPricing').val(),
+														 "redbookPriceGuide":$('#redbookPriceGuide').val(),
+														 "privatePriceGuideMin":$('#privatePriceGuideMin').val(),	
+														 "privatePriceGuideMax":$('#privatePriceGuideMax').val(),	
+														 "tradePriceGuideMin":$('#tradePriceGuideMin').val(),	
+														 "tradePriceGuideMax":$('#tradePriceGuideMax').val(),
+														 "averageKmMin":$('#averageKmMin').val(),
+														 "averageKmMax":$('#averageKmMax').val(),
+														 "priceWhenNew":$('#priceWhenNewState').val(),
+														 "state":$('#statePricing').val(),
+														 "rego":$('#regoPricing').val(),
 														"flex1": null,
 														"flex2" : null,
 														 "flex3":null,	
@@ -1592,36 +1554,7 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 														 "flex11" : null,
 														 "flex12" : null
 
-														    },
-
-														{
-														      "tempCarModelPricingId": null,
-														      
-														 "prices":null,
-														 "redbookPriceGuide":null,
-														 "privatePriceGuideMin":null,	
-														 "privatePriceGuideMax":null,	
-														 "tradePriceGuideMin":null,	
-														 "tradePriceGuideMax":null,
-														 "averageKmMin":null,
-														 "averageKmMax":null,
-														 "priceWhenNew":null,
-														 "state":null,
-														 "rego":null,
-														"flex1": null,
-														"flex2" : null,
-														 "flex3":null,	
-														" flex4" : null,
-														"flex5": null,
-														"flex6" : null,
-														 "flex7" : null,
-														 "flex8" : null,
-														 "flex9" : null,
-														 "flex10" : null,
-														 "flex11" : null,
-														 "flex12" : null
-														    }
-														  ],
+														    }														  ],
 														  "carModel2": [
 														    {
 														      "tempCarModelOptFeatId": null,
@@ -2479,7 +2412,7 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 						                alert("row length for full spec wheels"+tbl5.rows.length);
 						                alert("col lenght for full spec wheels"+tbl5.rows[0].cells.length);         
 								                alert("Json print d e for full spec wheels");
-									               alert(JSON.stringify(jsonInputToAPI.carModel19[0].tempCarModelFullSpecWheelId));
+									               //alert(JSON.stringify(jsonInputToAPI.carModel19[0].tempCarModelFullSpecWheelId));
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl5.rows.length; j++) {
 						                	
@@ -2504,7 +2437,7 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel19[j-1]["flex12"]=null;
 									    }  
 									                alert("Json print for full spec wheels");
-									                alert(JSON.stringify(jsonInputToAPI.carModel7));
+									                alert(JSON.stringify(jsonInputToAPI.carModel19));
 					                
 					                
 					               
@@ -2629,7 +2562,6 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 						                		
 						                		jsonInputToAPI.carModel10[j-1].relatedModelDescription=$('#relatedModels'+j+'1').val(); 
 						                		jsonInputToAPI.carModel10[j-1].relatedModelPriceWhenNew=$('#relatedModels'+j+'2').val(); 
-						                		jsonInputToAPI.carModel10[j-1].ratingCatagery4=$('#relatedModels'+j+'3').val(); 
 									         
 						                		jsonInputToAPI.carModel10[j-1]["flex1"]=null;
 								            	jsonInputToAPI.carModel10[j-1]["flex2"]=null;
