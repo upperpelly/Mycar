@@ -2,6 +2,14 @@ package au.com.pnspvtltd.mcd.web.model;
 
 public class InventoryStatisticsVO {
 
+	public TempCarModelHeaderVO getTempCarModelHeaderVO() {
+		return tempCarModelHeaderVO;
+	}
+
+	public void setTempCarModelHeaderVO(TempCarModelHeaderVO tempCarModelHeaderVO) {
+		this.tempCarModelHeaderVO = tempCarModelHeaderVO;
+	}
+
 	private double priceMin;
 	private double priceMax;
 	private double finMin;
@@ -12,6 +20,8 @@ public class InventoryStatisticsVO {
 	private double avgSavMax;
 	private int noDealers;
 	private int noStock;
+	
+	private TempCarModelHeaderVO tempCarModelHeaderVO;
 
 	public double getPriceMin() {
 		return priceMin;

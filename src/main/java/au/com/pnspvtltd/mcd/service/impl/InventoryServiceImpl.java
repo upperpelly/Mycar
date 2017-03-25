@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service;
 
 import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.repository.InventoryRepository;
+import au.com.pnspvtltd.mcd.repository.TempCarModelTemplateRepository;
 import au.com.pnspvtltd.mcd.service.InventoryService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.InventoryStatisticsVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.TempCarModelHeaderVO;
 
 @Service
 public class InventoryServiceImpl implements InventoryService{
@@ -22,6 +24,13 @@ public class InventoryServiceImpl implements InventoryService{
 	
 	@Autowired
 	private InventoryRepository inventoryRepository;
+	
+	@Autowired
+	private TempCarModelTemplateServiceImpl tempCarModelTemplateServiceImpl; 
+
+	//@Autowired
+	//private TempCarModelTemplateRepository tempCarModelTemplateRepository;
+	
 	@Autowired
 	private DomainModelUtil domainModelUtil;
 	
@@ -43,12 +52,14 @@ public class InventoryServiceImpl implements InventoryService{
 
 	@Override
 	public InventoryStatisticsVO getStatisticsFor(String modelYear, String modelDisplay, String modelName,
-			String modelTrim) {
+			String modelTrim, String autoscoopTrim) {
 		
 		InventoryStatisticsVO inventoryStatisticsVO = new InventoryStatisticsVO();
-		List<InventoryVO> inventoryVOsSortedByPrice = getPriceAndVendorStockInventoryFor(modelYear, modelDisplay, modelName, modelTrim);
+		List<InventoryVO> inventoryVOsSortedByPrice = getPriceAndVendorStockInventoryFor(modelYear, modelDisplay, modelName, modelTrim.trim());
+		// retrieve from tempcarModelHeader
+		TempCarModelHeaderVO tempCarHeaderVO = tempCarModelTemplateServiceImpl.getCarModelTemplateForAutoTrim(autoscoopTrim);
 		
-		
+		inventoryStatisticsVO.setTempCarModelHeaderVO(tempCarHeaderVO);
 		int vendorStockCount = 0;
 		
 		for(InventoryVO inventoryVO : inventoryVOsSortedByPrice){

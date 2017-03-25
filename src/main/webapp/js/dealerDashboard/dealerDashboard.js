@@ -2,7 +2,7 @@ var isChecked = false;
 
         function allSelected() 
         {
-           alert("inside check box");
+           //alert("inside check box");
         	// this line is for toggle the check
             //isChecked = !isChecked;
         	if(!isChecked){
@@ -74,7 +74,7 @@ function createCORSRequest(method, url){
     } else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
     	//alert("came here");
     	xhr = new XDomainRequest();
-        alert(xhr.open(method, url));
+        //alert(xhr.open(method, url));
     } else {
         xhr = null;
     }
@@ -119,7 +119,7 @@ function dealerBoardCallSearch(model_data_id, userid)
         	  else
         		  {
         		  out='<h2>No records for Inventory</h2>';
-        		  alert("inventory biscuit");
+        		  //alert("inventory biscuit");
         		  }
 
          	    $("#"+model_data_id).append(out);
@@ -289,7 +289,7 @@ function registerEditDealerVehicleQuotationModal(){
 	$('button.submit-editDealerVehicleQuotationModal').on('click', function(e) {
 		
 		var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
-		alert(jsonInput);
+		//alert(jsonInput);
 		
 		$.ajax({  
 			type: "POST",  

@@ -21,9 +21,9 @@ public class InventoryController {
 	@GetMapping(value = "inventory/getStatisticsFor", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public InventoryStatisticsVO getStatisticsFor(@RequestParam("modelYear") String modelYear,
 			@RequestParam("modelDisplay") String modelDisplay, @RequestParam("modelName") String modelName,
-			@RequestParam("modelTrim") String modelTrim) {
+			@RequestParam("modelTrim") String modelTrim ,@RequestParam("autoscoopTrim") String autoscoopTrim) {
 
-		return inventoryService.getStatisticsFor(modelYear, modelDisplay, modelName, modelTrim);
+		return inventoryService.getStatisticsFor(modelYear, modelDisplay, modelName, modelTrim,autoscoopTrim);
 
 	}
 

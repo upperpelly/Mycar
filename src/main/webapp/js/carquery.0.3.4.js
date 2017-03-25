@@ -111,7 +111,7 @@ CarQuery.prototype = {
     {
  $.ajaxSetup({
    "error":function() {
-     alert('Bad Response from CarQuery API.\nThe service may not be avilable at this time.');
+     //alert('Bad Response from Autoscoop API.\nThe service may not be avilable at this time.');
  }});
 
  //Check if initial values were set
@@ -470,7 +470,7 @@ CarQuery.prototype = {
      $("select#"+model_select_id).bind('change', function(){sender.modelSelectChange();});
     },
 
-    initYearMakeModelTrim: function(year_select_id, make_select_id, model_select_id, trim_select_id)
+    initYearMakeModelTrim: function(year_select_id, make_select_id, model_select_id, trim_select_id,autotrim_select_id)
     {
         //alert("came here");
     	
@@ -479,7 +479,7 @@ CarQuery.prototype = {
      this.make_select_id =  make_select_id;
      this.model_select_id = model_select_id;
      this.trim_select_id = trim_select_id;
-
+     this.autotrim_select_id = autotrim_select_id;
      //Populate the car-years select element
      this.populateYearSelect();
 
@@ -496,6 +496,8 @@ CarQuery.prototype = {
 
      //Set the change event for the trim dropdown to save the selected trim
      $("select#"+trim_select_id).bind('change', function(){sender.trimSelectChange();});
+     
+     $("select#"+autotrim_select_id).bind('change', function(){sender.autotrimSelectChange();});
     },
 
     initModelData: function(model_data_id)
@@ -736,7 +738,7 @@ CarQuery.prototype = {
      $("select#"+this.year_select_id).html("<option value=''>Loading Years...</option>");
 
         var sender = this;
-        this.base_url = 'http://localhost:8080/MyCarDomain/api/carModelYears';
+        this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelYears';
         //alert(base_url);
         //alert(this.base_url);
         $.getJSON(this.base_url, function(data) {
@@ -859,6 +861,38 @@ CarQuery.prototype = {
   $("select#"+this.make_select_id).html(options);
  }
     },
+    
+    
+    
+    //auto trim select populate
+    populateAutoTrimSelect: function(data)
+    {
+ if(!this.responseError(data))
+ {
+         var options = '<option value="">Please choose a Auto Trim</option>';
+         //alert(options);
+         //console.log(data);
+         //alert(data);
+/*  var makes = data;
+  for (var key in makes)
+  {
+        if (makes.hasOwnProperty(key))
+        {
+         var s = '';
+         if(this.settings.make != null && this.settings.make == makes[key].make_id) s = 'selected="selected"';
+
+   options += '<option value="' + makes[key].make_id + '" '+s+'>' + makes[key].make_display + '</option>';
+     }
+  }*/
+  for (var i = 0; i < data.length; i++)
+  {
+     options += '<option value="' + data[i] + '">' + data[i] + '</option>';
+  }
+  //alert(options);
+
+  $("select#"+this.autotrim_select_id).html(options);
+ }
+    },//end of auto trim
 
     populateModelSelect: function(data)
     {
@@ -884,7 +918,31 @@ CarQuery.prototype = {
 
        $("select#"+this.model_select_id).html(options);
     },
+    populateColorSelect: function(data)
+    {
+    	//alert("insided color");
+    	var options = '<option value="">Please choose a Color</option>';
+        //alert(options);
+        console.log(data);
+        for (var i = 0; i < data.length; i++)
+        {
+           options += '<option value="' + data[i] + '">' + data[i] + '</option>';
+        }
+        //alert(options);
+    	
+    	//var models = data.Models;
 
+        /*var options = '';
+        for (var i = 0; i < models.length; i++)
+        {
+           var s = '';
+    if(this.settings.model != null && this.settings.model == models[i].model_name) s = 'selected="selected"';
+
+           options += '<option value="' + models[i].model_name + '" '+s+'>' + models[i].model_name + '</option>';
+        }*/
+        this.model_select_id="carColor";	
+       $("#carColor").html(options);
+    },
     populateTrimSelect: function(data)
     {
         /*var trims = data.Trims;
@@ -904,7 +962,7 @@ CarQuery.prototype = {
     	
     	var options = '<option value="">Please choose a Variant</option>';
         //alert(options);
-        console.log(data);
+        //console.log(data);
         for (var i = 0; i < data.length; i++)
         {
            options += '<option value="' + data[i] + '">' + data[i] + '</option>';
@@ -1715,32 +1773,100 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
      return out;
     },
     
+    
     carDataHTMLSpec : function(data)
     {
      var sold_in_us = "No";
-     if(data.model_sold_in_us == "1") sold_in_us = "Yes";
+     //if(data.model_sold_in_us == "1") sold_in_us = "Yes";
 
  var out = '<table class="model-data">';
 
-     out += '<tr><th colspan="2">'+data.model_year+' '+data.make_display+' '+data.model_name+' '+data.model_trim+'</th></tr>';
+     out += '<tr><th colspan="2">'+data.tempCarModelHeaderVO.modelYear+' '+data.tempCarModelHeaderVO.modelDisplay+' '+data.tempCarModelHeaderVO.modelName+' '+data.tempCarModelHeaderVO.modelVariant+'</th></tr>';
 
+     out += '<tr><td colspan="2">Car Model Header<hr/></td></tr>';
+     out += '<tr><td>Autoscoop Trim:</td><td>'+data.tempCarModelHeaderVO.flex1+'</td></tr>';
+     out += '<tr><td>Model Series:</td><td>'+data.tempCarModelHeaderVO.modelSeries+'</td></tr>';
+     out += '<tr><td>Model Batch:</td><td>'+data.tempCarModelHeaderVO.modelBatch+'</td></tr>';
+     out += '<tr><td>Model Trim:</td><td>'+data.tempCarModelHeaderVO.modelTrim+'</td></tr>';
+     out += '<tr><td>Manufactured Year:</td><td>'+data.tempCarModelHeaderVO.manfYear+'</td></tr>';
+     out += '<tr><td>Model Body:</td><td>'+data.tempCarModelHeaderVO.modelBody+'</td></tr>';
+     out += '<tr><td>Engine size:</td><td>'+data.tempCarModelHeaderVO.engineSize+'</td></tr>';
+     out += '<tr><td>Engine Cylinders:</td><td>'+data.tempCarModelHeaderVO.cylinder+'</td></tr>';
+     out += '<tr><td>No of Gears:</td><td>'+data.tempCarModelHeaderVO.noOfGears+'</td></tr>';
+     out += '<tr><td>Engine Fuel Type:</td><td>'+data.tempCarModelHeaderVO.fuelType+'</td></tr>';
+     out += '<tr><td>Drive:</td><td>'+data.tempCarModelHeaderVO.driveType+'</td></tr>';
+     out += '<tr><td>Transmission Type:</td><td>'+data.tempCarModelHeaderVO.transimission+'</td></tr>';
+     out += '<tr><td>Changed Doors:<html:text property="region" </td><td>'+data.tempCarModelHeaderVO.modelDoors+'</td></tr>';
+     out += '<tr><td>Seats:</td><td>'+data.tempCarModelHeaderVO.modelSeats+'</td></tr>';
+    
+     out +='<br/>';
+     
+     out += '<tr><td colspan="2">Car Model Overview<hr/></td></tr>';
+     out += '<tr><td>price:</td><td>'+data.tempCarModelHeaderVO.carModel[0].price+'</td></tr>';
+     if(data.tempCarModelHeaderVO.carModel[0].priceGuideEGC!=null)
+    	 out += '<tr><td>Price Guide EGC:</td><td>'+data.tempCarModelHeaderVO.carModel[0].priceGuideEGC+'</td></tr>';
+     if(data.tempCarModelHeaderVO.carModel[0].fuelType!=null)
+    	 out += '<tr><td>Fuel Type:</td><td>'+data.tempCarModelHeaderVO.carModel[0].fuelType+'</td></tr>';
+     if(data.tempCarModelHeaderVO.carModel[0].series!=null)
+    	 out += '<tr><td>Series:</td><td>'+data.tempCarModelHeaderVO.carModel[0].series+'</td></tr>';
+     if(data.tempCarModelHeaderVO.carModel[0].recommendedRonRating!=null)	
+    	 out += '<tr><td>Recommended Ron Rating:</td><td>'+data.tempCarModelHeaderVO.carModel[0].recommendedRonRating+'</td></tr>';
+     if(data.tempCarModelHeaderVO.carModel[0].body!=null)
+    	 out += '<tr><td>Body:</td><td>'+data.tempCarModelHeaderVO.carModel[0].body+'</td></tr>';
+     if(data.tempCarModelHeaderVO.carModel[0].releaseYear!=null)
+    	 out += '<tr><td>Release Year:</td><td>'+data.tempCarModelHeaderVO.carModel[0].releaseYear+'</td></tr>';
+     if(data.tempCarModelHeaderVO.carModel[0].noOfDoors!=null)
+    	 out += '<tr><td>No Of Doors:</td><td>'+data.tempCarModelHeaderVO.carModel[0].noOfDoors+'</td></tr>';
+     if(data.tempCarModelHeaderVO.carModel[0].fuelType!=null)
+    	 out += '<tr><td>VIN:</td><td>'+data.tempCarModelHeaderVO.carModel[0].vin+'</td></tr>';
+     out += '<tr><td>Seat Capacity:</td><td>'+data.tempCarModelHeaderVO.carModel[0].seatCapacity+'</td></tr>';
+     out += '<tr><td>Transmission:</td><td>'+data.tempCarModelHeaderVO.carModel[0].transmission+'</td></tr>';
+     if(data.tempCarModelHeaderVO.carModel[0].overallGreenStarRating!=null)     
+    	 out += '<tr><td>Overall GreenStar Rating:</td><td>'+data.tempCarModelHeaderVO.carModel[0].overallGreenStarRating+'</td></tr>';
+     if(data.tempCarModelHeaderVO.carModel[0].ancapSafetyRating!=null)
+    	 out += '<tr><td>ancap Safety Rating:</td><td>'+data.tempCarModelHeaderVO.carModel[0].ancapSafetyRating+'</td></tr>';
+     out += '<tr><td>Steering:</td><td>'+data.tempCarModelHeaderVO.carModel[0].steering+'</td></tr>';
+     if(data.tempCarModelHeaderVO.carModel[0].manfYear!=null)  
+    	 out += '<tr><td>Manufacture Year:</td><td>'+data.tempCarModelHeaderVO.carModel[0].manfYear+'</td></tr>';
+     out += '<tr><td>No Of Gears:</td><td>'+data.tempCarModelHeaderVO.carModel[0].noOfGears+'</td></tr>';
+     out += '<tr><td>Badge:</td><td>'+data.tempCarModelHeaderVO.carModel[0].badge+'</td></tr>';
+     out += '<tr><td>Country of Origin:</td><td>'+data.tempCarModelHeaderVO.carModel[0].countryOfOrigin+'</td></tr>';
+     
+     
+     out += '<tr><td>Car Model Pricing:</td><td>Yes</td></tr>';
+     
      out += '<tr><td colspan="2"><hr/></td></tr>';
-     out += '<tr><td>Country of Origin:</td><td>'+data.make_country+'</td></tr>';
-     out += '<tr><td>Sold in US and Australia:</td><td>'+sold_in_us+'</td></tr>';
-     out += '<tr><td>Body Style:</td><td>'+data.model_body+'</td></tr>';
-
-     //Output Color Data
-     out += '<tr><td colspan="2"><hr/></td></tr>';
-     out += '<tr><td valign="top">Exterior Colors changes now:</td><td>';
-     out += this.carColorHTML(data.ExtColors) + '</td></tr>';
-     out += '<tr><td valign="top">Interior Colors:</td><td>';
-     out += this.carColorHTML(data.IntColors) + '</td></tr>';
-
-     out += '<tr><td colspan="2"><hr/></td></tr>';
-     out += '<tr><td>Engine Location:</td><td>'+data.model_engine_position+'</td></tr>';
-     out += '<tr><td>Engine Type:</td><td>'+data.model_engine_type+'</td></tr>';
-     out += '<tr><td>Engine Cylinders:</td><td>'+data.model_engine_cyl+'</td></tr>';
-     out += '<tr><td>Engine Displacement (cc):</td><td>'+data.model_engine_cc+'</td></tr>';
+     out += '<tr><td valign="top">Available Color:</td><td>'+data.tempCarModelHeaderVO.carModel1[0].availableColour+'</td></tr>';
+     out += '<tr><td valign="top">prices:</td><td>'+data.tempCarModelHeaderVO.carModel1[0].prices+'</td></tr>';
+     out += '<tr><td valign="top">redbookPriceGuide:</td><td>'+data.tempCarModelHeaderVO.carModel1[0].redbookPriceGuide+'</td></tr>';
+     out += '<tr><td valign="top">privatePriceGuideMin:</td><td>'+data.tempCarModelHeaderVO.carModel1[0].privatePriceGuideMin+'</td></tr>';
+     out += '<tr><td valign="top">privatePriceGuideMax:</td><td>'+data.tempCarModelHeaderVO.carModel1[0].privatePriceGuideMax+'</td></tr>';
+     out += '<tr><td valign="top">tradePriceGuideMin:</td><td>'+data.tempCarModelHeaderVO.carModel1[0].tradePriceGuideMin+'</td></tr>';
+     out += '<tr><td valign="top">tradePriceGuideMax:</td><td>'+data.tempCarModelHeaderVO.carModel1[0].tradePriceGuideMax+'</td></tr>';
+     out += '<tr><td valign="top">averageKmMin:</td><td>'+data.tempCarModelHeaderVO.carModel1[0].averageKmMin+'</td></tr>';
+     out += '<tr><td valign="top">averageKmMax:</td><td>'+data.tempCarModelHeaderVO.carModel1[0].averageKmMax+'</td></tr>';
+     out += '<tr><td valign="top">priceWhenNew:</td><td>'+data.tempCarModelHeaderVO.carModel1[0].priceWhenNew+'</td></tr>';
+     out += '<tr><td valign="top">state:</td><td>'+data.tempCarModelHeaderVO.carModel1[0].state+'</td></tr>';
+     out += '<tr><td valign="top">rego:</td><td>'+data.tempCarModelHeaderVO.carModel1[0].rego+'</td></tr>';
+     
+     out += '<tr><td colspan="2">Car Model Colours<hr/></td></tr>';
+     
+      
+	   
+     out += '<tr><th>'+"Available Colour"+'</th><th>'+"Price"+'</th><th>'+'</th></tr>';
+     var options = '<option value="">Please choose a Color</option>';  
+     for(i=0;i<data.tempCarModelHeaderVO.carModel3.length;i++)
+		{
+		
+		out= out+'<tr>'+'<td>'+data.tempCarModelHeaderVO.carModel3[i].availableColour+'</td>'+'<td>'+data.tempCarModelHeaderVO.carModel3[i].price+'</td>' + '</tr>';
+		options += '<option value="' +data.tempCarModelHeaderVO.carModel3[i].availableColour+ '">' +data.tempCarModelHeaderVO.carModel3[i].availableColour + '</option>';
+		
+		}
+	   
+       //alert(options);
+       $("#carColor").html(options);
+	   
+     /*out += '<tr><td>Engine Displacement (cc):</td><td>'+data.model_engine_cc+'</td></tr>';
      out += '<tr><td>Engine Displacement (l):</td><td>'+data.model_engine_l+'</td></tr>';
      out += '<tr><td>Engine Displacement (cubic inches):</td><td>'+data.model_engine_ci+'</td></tr>';
      out += '<tr><td>Engine Bore (mm):</td><td>'+data.model_engine_bore_mm+'</td></tr>';
@@ -1758,20 +1884,12 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
      out += '<tr><td>Engine Max Torque (kgf-m):</td><td>'+data.model_engine_torque_kgm+'</td></tr>';
      out += '<tr><td>Engine Max Torque RPM:</td><td>'+data.model_engine_torque_rpm+'</td></tr>';
      out += '<tr><td>Engine Compression Ratio:</td><td>'+data.model_engine_compression+'</td></tr>';
-     out += '<tr><td>Engine Fuel Type:</td><td>'+data.model_engine_fuel+'</td></tr>';
+*/       
+     //out += '<tr><td>0-100 kph (0-62mph):</td><td>'+data.model_0_to_100_kph+'</td></tr>';
 
      out += '<tr><td colspan="2"><hr/></td></tr>';
-     out += '<tr><td>Drive:</td><td>'+data.model_drive+'</td></tr>';
-     out += '<tr><td>Transmission Type:</td><td>'+data.model_transmission_type+'</td></tr>';
-     out += '<tr><td>Top Speed (KPH):</td><td>'+data.model_top_speed_kph+'</td></tr>';
-     out += '<tr><td>Top Speed (MPH):</td><td>'+data.model_top_speed_mph+'</td></tr>';
-     out += '<tr><td>0-100 kph (0-62mph):</td><td>'+data.model_0_to_100_kph+'</td></tr>';
-
-     out += '<tr><td colspan="2"><hr/></td></tr>';
-     //out += '<tr><td>Doors:</td><td>'+data.model_doors+'</td></tr>';
-     out += '<tr><td>Changed Doors:<html:text property="region" </td><td>'+data.model_doors+'</td></tr>';
-     out += '<tr><td>Seats:</td><td>'+data.model_seats+'</td></tr>';
-     out += '<tr><td>Weight (kg):</td><td>'+data.model_weight_kg+'</td></tr>';
+     //out += '<tr><td>Doors:</td><td>'+data.model_doors'</td></tr>';averageKmMin averageKmMax
+     /* out += '<tr><td>Weight (kg):</td><td>'+data.tempCarModelHeaderVO.carModel1[0].averageKmMin+'</td></tr>';
      out += '<tr><td>Weight (lbs):</td><td>'+data.model_weight_lbs+'</td></tr>';
      out += '<tr><td>Length (mm):</td><td>'+data.model_length_mm+'</td></tr>';
      out += '<tr><td>Length (in):</td><td>'+data.model_length_in+'</td></tr>';
@@ -1789,13 +1907,156 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
      out += '<tr><td>Fuel Economy Mixed(mpg):</td><td>'+data.model_mpg_mixed+'</td></tr>';
      out += '<tr><td>Fuel Capacity(l):</td><td>'+data.model_fuel_cap_l+'</td></tr>';
      out += '<tr><td>Fuel Capacity(g):</td><td>'+data.model_fuel_cap_g+'</td></tr>';
-
+*/
      out += '</table>';
 
      out = out.replace(/>null</g, ">Not Available<");
 
      return out;
     },
+    
+    
+    carDataHTMLSpecDealer : function(data)
+    {
+     var sold_in_us = "No";
+     //if(data.model_sold_in_us == "1") sold_in_us = "Yes";
+
+ var out = '<table class="model-data">';
+
+     out += '<tr><th colspan="2">'+data.modelYear+' '+data.modelDisplay+' '+data.modelName+' '+data.modelVariant+'</th></tr>';
+
+     out += '<tr><td colspan="2">Car Model Header<hr/></td></tr>';
+     out += '<tr><td>Autoscoop Trim:</td><td>'+data.flex1+'</td></tr>';
+     out += '<tr><td>Model Series:</td><td>'+data.modelSeries+'</td></tr>';
+     out += '<tr><td>Model Batch:</td><td>'+data.modelBatch+'</td></tr>';
+     out += '<tr><td>Model Trim:</td><td>'+data.modelTrim+'</td></tr>';
+     out += '<tr><td>Manufactured Year:</td><td>'+data.manfYear+'</td></tr>';
+     out += '<tr><td>Model Body:</td><td>'+data.modelBody+'</td></tr>';
+     out += '<tr><td>Engine size:</td><td>'+data.engineSize+'</td></tr>';
+     out += '<tr><td>Engine Cylinders:</td><td>'+data.cylinder+'</td></tr>';
+     out += '<tr><td>No of Gears:</td><td>'+data.noOfGears+'</td></tr>';
+     out += '<tr><td>Engine Fuel Type:</td><td>'+data.fuelType+'</td></tr>';
+     out += '<tr><td>Drive:</td><td>'+data.driveType+'</td></tr>';
+     out += '<tr><td>Transmission Type:</td><td>'+data.transimission+'</td></tr>';
+     out += '<tr><td>Changed Doors:<html:text property="region" </td><td>'+data.modelDoors+'</td></tr>';
+     out += '<tr><td>Seats:</td><td>'+data.modelSeats+'</td></tr>';
+    
+     out +='<br/>';
+     
+     out += '<tr><td colspan="2">Car Model Overview<hr/></td></tr>';
+     out += '<tr><td>price:</td><td>'+data.carModel[0].price+'</td></tr>';
+     if(data.carModel[0].priceGuideEGC!=null)
+    	 out += '<tr><td>Price Guide EGC:</td><td>'+data.carModel[0].priceGuideEGC+'</td></tr>';
+     if(data.carModel[0].fuelType!=null)
+    	 out += '<tr><td>Fuel Type:</td><td>'+data.carModel[0].fuelType+'</td></tr>';
+     if(data.carModel[0].series!=null)
+    	 out += '<tr><td>Series:</td><td>'+data.carModel[0].series+'</td></tr>';
+     if(data.carModel[0].recommendedRonRating!=null)	
+    	 out += '<tr><td>Recommended Ron Rating:</td><td>'+data.carModel[0].recommendedRonRating+'</td></tr>';
+     if(data.carModel[0].body!=null)
+    	 out += '<tr><td>Body:</td><td>'+data.carModel[0].body+'</td></tr>';
+     if(data.carModel[0].releaseYear!=null)
+    	 out += '<tr><td>Release Year:</td><td>'+data.carModel[0].releaseYear+'</td></tr>';
+     if(data.carModel[0].noOfDoors!=null)
+    	 out += '<tr><td>No Of Doors:</td><td>'+data.carModel[0].noOfDoors+'</td></tr>';
+     if(data.carModel[0].fuelType!=null)
+    	 out += '<tr><td>VIN:</td><td>'+data.carModel[0].vin+'</td></tr>';
+     out += '<tr><td>Seat Capacity:</td><td>'+data.carModel[0].seatCapacity+'</td></tr>';
+     out += '<tr><td>Transmission:</td><td>'+data.carModel[0].transmission+'</td></tr>';
+     if(data.carModel[0].overallGreenStarRating!=null)     
+    	 out += '<tr><td>Overall GreenStar Rating:</td><td>'+data.carModel[0].overallGreenStarRating+'</td></tr>';
+     if(data.carModel[0].ancapSafetyRating!=null)
+    	 out += '<tr><td>ancap Safety Rating:</td><td>'+data.carModel[0].ancapSafetyRating+'</td></tr>';
+     out += '<tr><td>Steering:</td><td>'+data.carModel[0].steering+'</td></tr>';
+     if(data.carModel[0].manfYear!=null)  
+    	 out += '<tr><td>Manufacture Year:</td><td>'+data.carModel[0].manfYear+'</td></tr>';
+     out += '<tr><td>No Of Gears:</td><td>'+data.carModel[0].noOfGears+'</td></tr>';
+     out += '<tr><td>Badge:</td><td>'+data.carModel[0].badge+'</td></tr>';
+     out += '<tr><td>Country of Origin:</td><td>'+data.carModel[0].countryOfOrigin+'</td></tr>';
+     
+     
+     out += '<tr><td>Car Model Pricing:</td><td>Yes</td></tr>';
+     
+     out += '<tr><td colspan="2"><hr/></td></tr>';
+     out += '<tr><td valign="top">Available Color:</td><td>'+data.carModel1[0].availableColour+'</td></tr>';
+     out += '<tr><td valign="top">prices:</td><td>'+data.carModel1[0].prices+'</td></tr>';
+     out += '<tr><td valign="top">redbookPriceGuide:</td><td>'+data.carModel1[0].redbookPriceGuide+'</td></tr>';
+     out += '<tr><td valign="top">privatePriceGuideMin:</td><td>'+data.carModel1[0].privatePriceGuideMin+'</td></tr>';
+     out += '<tr><td valign="top">privatePriceGuideMax:</td><td>'+data.carModel1[0].privatePriceGuideMax+'</td></tr>';
+     out += '<tr><td valign="top">tradePriceGuideMin:</td><td>'+data.carModel1[0].tradePriceGuideMin+'</td></tr>';
+     out += '<tr><td valign="top">tradePriceGuideMax:</td><td>'+data.carModel1[0].tradePriceGuideMax+'</td></tr>';
+     out += '<tr><td valign="top">averageKmMin:</td><td>'+data.carModel1[0].averageKmMin+'</td></tr>';
+     out += '<tr><td valign="top">averageKmMax:</td><td>'+data.carModel1[0].averageKmMax+'</td></tr>';
+     out += '<tr><td valign="top">priceWhenNew:</td><td>'+data.carModel1[0].priceWhenNew+'</td></tr>';
+     out += '<tr><td valign="top">state:</td><td>'+data.carModel1[0].state+'</td></tr>';
+     out += '<tr><td valign="top">rego:</td><td>'+data.carModel1[0].rego+'</td></tr>';
+     
+     out += '<tr><td colspan="2">Car Model Colours<hr/></td></tr>';
+     
+      
+	   
+     out += '<tr><th>'+"Available Colour"+'</th><th>'+"Price"+'</th><th>'+'</th></tr>';
+     var options = '<option value="">Please choose a Color</option>';  
+     for(i=0;i<data.carModel3.length;i++)
+		{
+		
+		out= out+'<tr>'+'<td>'+data.carModel3[i].availableColour+'</td>'+'<td>'+data.carModel3[i].price+'</td>' + '</tr>';
+		options += '<option value="' +data.carModel3[i].availableColour+ '">' +data.carModel3[i].availableColour + '</option>';
+		
+		}
+	   
+       //alert(options);
+       $("#carColor").html(options);
+	   
+     /*out += '<tr><td>Engine Displacement (cc):</td><td>'+data.model_engine_cc+'</td></tr>';
+     out += '<tr><td>Engine Displacement (l):</td><td>'+data.model_engine_l+'</td></tr>';
+     out += '<tr><td>Engine Displacement (cubic inches):</td><td>'+data.model_engine_ci+'</td></tr>';
+     out += '<tr><td>Engine Bore (mm):</td><td>'+data.model_engine_bore_mm+'</td></tr>';
+     out += '<tr><td>Engine Bore (in):</td><td>'+data.model_engine_bore_in+'</td></tr>';
+     out += '<tr><td>Engine Stroke (mm):</td><td>'+data.model_engine_stroke_mm+'</td></tr>';
+     out += '<tr><td>Engine Stroke (in):</td><td>'+data.model_engine_stroke_in+'</td></tr>';
+     out += '<tr><td>Engine Valves Per Cylinder:</td><td>'+data.model_engine_valves_per_cyl+'</td></tr>';
+     out += '<tr><td>Engine Valves:</td><td>'+data.model_engine_valves+'</td></tr>';
+     out += '<tr><td>Engine Max Power (HP):</td><td>'+data.model_engine_power_hp+'</td></tr>';
+     out += '<tr><td>Engine Max Power (PS):</td><td>'+data.model_engine_power_ps+'</td></tr>';
+     out += '<tr><td>Engine Max Power (kW):</td><td>'+data.model_engine_power_kw+'</td></tr>';
+     out += '<tr><td>Engine Max Power RPM:</td><td>'+data.model_engine_power_rpm+'</td></tr>';
+     out += '<tr><td>Engine Max Torque (Nm):</td><td>'+data.model_engine_torque_nm+'</td></tr>';
+     out += '<tr><td>Engine Max Torque (Lb-Ft):</td><td>'+data.model_engine_torque_lbft+'</td></tr>';
+     out += '<tr><td>Engine Max Torque (kgf-m):</td><td>'+data.model_engine_torque_kgm+'</td></tr>';
+     out += '<tr><td>Engine Max Torque RPM:</td><td>'+data.model_engine_torque_rpm+'</td></tr>';
+     out += '<tr><td>Engine Compression Ratio:</td><td>'+data.model_engine_compression+'</td></tr>';
+*/       
+     //out += '<tr><td>0-100 kph (0-62mph):</td><td>'+data.model_0_to_100_kph+'</td></tr>';
+
+     out += '<tr><td colspan="2"><hr/></td></tr>';
+     //out += '<tr><td>Doors:</td><td>'+data.model_doors'</td></tr>';averageKmMin averageKmMax
+     /* out += '<tr><td>Weight (kg):</td><td>'+data.tempCarModelHeaderVO.carModel1[0].averageKmMin+'</td></tr>';
+     out += '<tr><td>Weight (lbs):</td><td>'+data.model_weight_lbs+'</td></tr>';
+     out += '<tr><td>Length (mm):</td><td>'+data.model_length_mm+'</td></tr>';
+     out += '<tr><td>Length (in):</td><td>'+data.model_length_in+'</td></tr>';
+     out += '<tr><td>Width (mm):</td><td>'+data.model_width_mm+'</td></tr>';
+     out += '<tr><td>Width (in):</td><td>'+data.model_width_in+'</td></tr>';
+     out += '<tr><td>Height (mm):</td><td>'+data.model_height_mm+'</td></tr>';
+     out += '<tr><td>Height (in):</td><td>'+data.model_height_in+'</td></tr>';
+     out += '<tr><td>Wheelbase (mm):</td><td>'+data.model_wheelbase_mm+'</td></tr>';
+     out += '<tr><td>Wheelbase (in):</td><td>'+data.model_wheelbase_in+'</td></tr>';
+     out += '<tr><td>Fuel Economy City(l/100km):</td><td>'+data.model_lkm_city+'</td></tr>';
+     out += '<tr><td>Fuel Economy City(mpg):</td><td>'+data.model_mpg_city+'</td></tr>';
+     out += '<tr><td>Fuel Economy HWY(l/100km):</td><td>'+data.model_lkm_hwy+'</td></tr>';
+     out += '<tr><td>Fuel Economy HWY(mpg):</td><td>'+data.model_mpg_hwy+'</td></tr>';
+     out += '<tr><td>Fuel Economy Mixed(l/100km):</td><td>'+data.model_lkm_mixed+'</td></tr>';
+     out += '<tr><td>Fuel Economy Mixed(mpg):</td><td>'+data.model_mpg_mixed+'</td></tr>';
+     out += '<tr><td>Fuel Capacity(l):</td><td>'+data.model_fuel_cap_l+'</td></tr>';
+     out += '<tr><td>Fuel Capacity(g):</td><td>'+data.model_fuel_cap_g+'</td></tr>';
+*/
+     out += '</table>';
+
+     out = out.replace(/>null</g, ">Not Available<");
+
+     return out;
+    },
+    
     populateCarDataList : function(model_id)
     {
      //Show this list
@@ -1840,7 +2101,7 @@ var modelTrim;
  if(this.cur_trim == null || this.cur_trim == "")
  {
   $("#"+this.model_data_id).html("");
-  alert('Please select a year, make, and model.');
+  //alert('Please select a year, make, and model.');
   return;
  }
 
@@ -1888,11 +2149,11 @@ $.ajax({
 	    type: "GET",  
 	    url: url,  
 	       success: function(result){
-	    	   alert("successfully searched in Autoscoop DB");
+	    	   //alert("successfully searched in Autoscoop DB");
 	    	   /*alert("result value"+result.tempModelId);*/
 	    	   if(result.tempModelId !== undefined){
 	    		   alert("Template Card Model found with CardModel ID : "+result.tempModelId);
-	    		   alert("Populating.. data with CardModel ID : "+result.tempModelId);
+	    		   //alert("Populating.. data with CardModel ID : "+result.tempModelId);
 	    		   document.getElementById("tempCarModelId").value = result.tempModelId;
 	    		   document.getElementById("mrpPrice").value = result.mrlp;
 	    		   document.getElementById("extraCost").value = result.extraCost;
@@ -1999,7 +2260,34 @@ $.ajax({
 
     },
 
-    
+    populateCarDataSpecDealer : function(model_data_id, trim)
+    {
+			//alert("inside DataSpecDealer");
+			this.model_data_id = model_data_id;
+
+//var url= "http://www.autoscoop.com.au/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;
+//var url= "http://localhost:8080/MyCarDomain/api/carModelTemplateFor?modelYear="+this.cur_year+"&modelDisplay="+this.cur_make+"&modelName="+this.cur_model+"&modelTrim="+strUser;
+var url="api/tempCarModelTemplateForAutoTrim?flex1="+trim;
+/*alert("url"+url);*/
+
+var sender = this;    
+$.ajax({  
+	/*headers: {"X-My-Custom-Header": "*"},*/
+	    type: "GET",  
+	    url: url,  
+	       success: function(result){
+	    	   //var sender = this;
+	           //alert(JSON.stringify(result));
+	    	   var out = sender.carDataHTMLSpecDealer(result);
+	           //alert(out);
+	           $("#"+sender.model_data_id).html(out);
+	    	   
+       } 
+	  }); 
+
+
+    },
+
 populateCarDataMRP : function(model_data_id)
     {
 
@@ -2017,7 +2305,7 @@ var modelTrim;
  if(this.cur_trim == null || this.cur_trim == "")
  {
   $("#"+this.model_data_id).html("");
-  alert('Please select a year, make, and model.');
+  //alert('Please select a year, make, and model.');
   return;
  }
 
@@ -2046,7 +2334,7 @@ modelTrim=data[0].model_trim;
         });
     },
 
-    populateCarDataSpec : function(model_data_id, modelTrim)
+    populateCarDataSpec : function(model_data_id, value1)
     {
     	//alert("inside js");
   var country;
@@ -2063,12 +2351,24 @@ this.cur_trim  = modelTrim;
  
 //alert(this.cur_trim);
   //Set a loading message while we retrieve the data
-        $("#"+this.model_data_id).html("Loading Model Data...");
+        $("#"+this.model_data_id).html("Loading Model Data Specification...");
 
         var sender = this;
+        var out = sender.carDataHTMLSpec(value1);
+        //alert(out);
+        country = value1.make_country;
+        modelYear= value1.model_year;
+        modelDisplay=value1.make_display;
+        modelName=value1.model_name;
+        modelTrim=value1.model_trim;
+        
+        $("#"+sender.model_data_id).html(out);
+        //alert("in");
+        //alert(value1.tempCarModelHeaderVO.carModel3);
+        //populateColorSelect(value1.tempCarModelHeaderVO.carModel3);//data.tempCarModelHeaderVO.carModel3
 /*alert(this.cur_trim);*/
         //Get Car Model JSON for the selected make
-     $.getJSON(this.base_url+"?callback=?", {cmd:"getModel", model:this.cur_trim}, function(data) {
+/*     $.getJSON(this.base_url+"?callback=?", {cmd:"getModel", model:this.cur_trim}, function(data) {
 
      if(!sender.responseError(data))
      {
@@ -2081,10 +2381,14 @@ modelTrim=data[0].model_trim;
          $("#"+sender.model_data_id).html(out);
         }
         });
+     
+     
+*/ 
+        
     },
     populateCarDataStore : function(model_data_id,price, regNo, driveType, kilometer, vinNumber, vendorStockNo, stockItem)
     {
-    	alert("NOW "+$('#price').val());
+    	//alert("NOW "+$('#price').val());
     	this.price= price;
     	this.regNo= regNo;
     	this.driveType= driveType;
@@ -2094,7 +2398,7 @@ modelTrim=data[0].model_trim;
     	this.stockItem= stockItem; 
     	
 this.price= $('#price').val();
-alert("price"+price);
+//alert("price"+price);
 this.regNo= $('#regNo').val();
 this.driveType= $('#driveType').val();
 this.kilometer= $('#kilometer').val();
@@ -2109,7 +2413,7 @@ this.stockItem= $("select#"+this.stockItem).val();
  if(this.cur_trim == null || this.cur_trim == "")
  {
   $("#"+this.model_data_id).html("");
-  alert('Please select a year, make, and model.');
+  //alert('Please select a year, make, and model.');
   return;
  }
 
@@ -2162,7 +2466,7 @@ var modelTrim;
  if(this.cur_trim == null || this.cur_trim == "")
  {
   $("#"+this.model_data_id).html("");
-  alert('Please select a year, make, and model.');
+  //alert('Please select a year, make, and model.');
   return;
  }
 
@@ -2284,7 +2588,7 @@ var modelTrim;
 
     dashBoardCallSearch : function(model_data_id, userid)
     {
-    	alert("inside");
+    	//alert("inside");
      this.model_data_id = model_data_id;
           //$("#"+this.model_data_id).html("Loading Model Data...");
         var sender = this;
@@ -2527,9 +2831,9 @@ var insQCt=result.insuranceQuotation.length;
         $("select#"+this.make_select_id).html("<option value=''>Loading Makes...</option>");
 
         var sender = this;
-        //this.base_url = 'http://localhost:8080/MyCarDomain/api/carModelMakesForYear?modelYear='+this.cur_year;
-        this.base_url = 'http://localhost:8080/MyCarDomain/api/carModelMakesForYear';
-        alert(this.base_url);
+        //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelMakesForYear?modelYear='+this.cur_year;
+        this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelMakesForYear';
+        //alert(this.base_url);
         //Get Car Model JSON for the selected make
      $.getJSON(this.base_url, {modelYear:this.cur_year}, function(data) {
 
@@ -2540,6 +2844,40 @@ var insQCt=result.insuranceQuotation.length;
         }
         });
     },
+    // Start of auto trim
+    yearSelectChange: function ()
+    {
+        this.cur_year = $("select#"+this.year_select_id).val();
+
+        //Set Cookie to save year selection
+        this.saveSetting('year', this.cur_year);
+
+         //if no year supplied, clear makes, models, return;
+ if(this.cur_year == "")
+ {
+  $("select#"+this.make_select_id).html(this.empty_option_html);
+  $("select#"+this.model_select_id).html(this.empty_option_html);
+  $("select#"+this.trim_select_id).html(this.empty_option_html);
+      return;
+     }
+
+      //Set a loading message while we retrieve the data
+        $("select#"+this.make_select_id).html("<option value=''>Loading Makes...</option>");
+
+        var sender = this;
+        //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelMakesForYear?modelYear='+this.cur_year;
+        this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelMakesForYear';
+        //alert(this.base_url);
+        //Get Car Model JSON for the selected make
+     $.getJSON(this.base_url, {modelYear:this.cur_year}, function(data) {
+
+     if(!sender.responseError(data))
+     {
+         sender.populateMakeSelect(data);
+         sender.makeSelectChange();
+        }
+        });
+    },// End of auto trim select 
 
     makeSelectChange: function ()
     {
@@ -2563,7 +2901,7 @@ var insQCt=result.insuranceQuotation.length;
      var sender = this;
      
 
-     this.base_url = 'http://localhost:8080/MyCarDomain/api/carModelNamesForMake';
+     this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelNamesForMake';
 
      //Get Car Model JSON for the selected make
  $.getJSON(this.base_url, {modelDisplay:this.cur_make, modelYear:this.cur_year}, function(data) {
@@ -2602,7 +2940,7 @@ var insQCt=result.insuranceQuotation.length;
         $("select#"+this.trim_select_id).html("<option value=''>Loading Trims...</option>");
 
         var sender = this;
-        this.base_url =	'http://localhost:8080/MyCarDomain/api/carModelVariantForModel';
+        this.base_url =	'http://localhost:8080/MyCarDomain/api/tempCarModelVariantForModel';
         //Get Car Model JSON for the selected make
      $.getJSON(this.base_url, {modelDisplay:this.cur_make, modelYear:this.cur_year, modelName:this.cur_model}, function(data) {
 
@@ -2615,12 +2953,28 @@ var insQCt=result.insuranceQuotation.length;
 
     trimSelectChange: function ()
     {
+         
      this.cur_trim = $("select#"+this.trim_select_id).val();
 
  //If value has been selected, save trim selection
  if(this.cur_trim != "" && this.cur_trim != null)
   this.saveSetting('trim', this.cur_trim);
 
+ $("select#"+this.autotrim_select_id).html("<option value=''>Loading Autoscoop Trims...</option>");
+ 
+ var sender = this;
+ //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelMakesForYear?modelYear='+this.cur_year;
+ this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelTrimForAllSelect';
+ //alert(this.base_url);
+ //Get Car Model JSON for the selected make modelVariant, String modelName, String modelDisplay, String modelYear
+$.getJSON(this.base_url, {modelDisplay:this.cur_make, modelYear:this.cur_year, modelName:this.cur_model,modelTrim:this.cur_trim}, function(data) {
+
+if(!sender.responseError(data))
+{
+  sender.populateAutoTrimSelect(data);
+ }
+ });
+ 
  //If we have set color option dropdowns, populate them
      if(this.color_int_select_id != null || this.color_ext_select_id != null)
       this.populateColorSelects(this.cur_trim);

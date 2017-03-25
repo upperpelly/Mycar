@@ -14,4 +14,7 @@ public interface TempCarModelTemplateService {
 	List<String> getAllCarModelMakesForYear(String modelYear);
 	List<String> getAllCarModelNamesForMake(String modelDisplay,String modelYear);
 	List<String> getAllCarModelVariantsForModel(String modelName,String modelDisplay,String modelYear);
+	List<String> getAllCarModelTrimForAllSelect(String modelTrim, String modelName, String modelDisplay,
+			String modelYear);
+	TempCarModelHeaderVO getCarModelTemplateForAutoTrim(String flex1);
 }

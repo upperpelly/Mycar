@@ -83,4 +83,19 @@ public class TempCarModelTemplateServiceImpl implements TempCarModelTemplateServ
 		return carModelTemplates;
 	}
 
+	@Override
+	public List<String> getAllCarModelTrimForAllSelect(String modelTrim, String modelName, String modelDisplay,
+			String modelYear) {
+		// TODO Auto-generated method stub
+		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelTrimForAllSelect(modelTrim,modelName,modelDisplay,modelYear);
+		return carModelTemplates;
+	}
+
+	@Override
+	public TempCarModelHeaderVO getCarModelTemplateForAutoTrim(String flex1) {
+		return domainModelUtil.fromTempCarModelTemplate(
+				carModelTemplateRepository.findByFlex1IgnoreCase(flex1),
+				false);
+	}
+
 }

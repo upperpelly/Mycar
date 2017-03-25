@@ -9,8 +9,8 @@ if(!value){
     $.jStorage.set("key",value);
 }
 //alert("can"+value.userId);
-console.log(value);
-alert(value);
+/*console.log(value);
+alert(value);*/
 //alert("can"+value.userId);
 	var userDetails ='<a href="#" class="button btn-mini pull-right edit-profile-btn">EDIT PROFILE</a>\
 	<h2 class="box-title fullname">' + value.firstName + value.lastName + '</h2>\
@@ -25,7 +25,7 @@ alert(value);
     <dt>ZIP code:</dt><dd>' + value.postCode + '</dd>\
     <dt>Country:</dt><dd>Australia</dd>\
 	</dl>';
-	alert(userDetails);
+	//alert(userDetails);
 $('#userdetails').append(userDetails);
 
 function signingout(){
@@ -111,7 +111,7 @@ function dashBoardPhotoUpdate()
 {
 // start of 
 
-	alert("came her");
+	//alert("came her");
 	var jsonInputToAPI = {"userId":userId,
 			"photo":null,
 			"myVehicleVO":{

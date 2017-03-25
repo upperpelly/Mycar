@@ -22,7 +22,8 @@ if(!value1){
     $.jStorage.set("carKey",value1);
 }
 //alert(value1.priceMin+"&priceMax="+value1.priceMax+"I can user");
-
+//alert(JSON.stringify(value1));
+console.log(JSON.stringify(value1));
 function signingout(){
 	
 	 $.jStorage.deleteKey("key");
@@ -102,7 +103,7 @@ var modelYear=null;
       var carquery = new CarQuery();
       carquery.init();
      /*  alert("came here"+trimValue); */
-    	carquery.populateCarDataSpec('car-model-data',trimValue); 
+    	carquery.populateCarDataSpec('car-model-data',value1); 
     	/* carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims'); */
     	/* alert("pageName  22 now "+document.getElementById('minValue').innerHTML);
     	alert("pageName  12322 now "+document.getElementById('maxValue').innerHTML); */
@@ -128,7 +129,7 @@ var modelYear=null;
 	var mainApp1 = angular.module("mainApp1", []);
 	mainApp1.controller('myController1',function($scope,$http) {
 		//alert("inside c"+$('#dateofbirth').val());
-		alert($scope.dateofbirth);
+		//alert($scope.dateofbirth);
 		
 		
 		$scope.submitSearchForm = function (isValid) {													

@@ -277,11 +277,11 @@ $(document).ready( function() {
 
 	var carquery = new CarQuery();
 	carquery.init();
-carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
 
 //Set onclick function for the US filter checkbox and show data button
 $('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
-$('#cq-show-data').click(  function(){ carquery.populateCarData('car-model-data'); } );
+$('#cq-show-data').click(  function(){ carquery.populateCarDataSpecDealer('car-model-data', $('#car-model-auto-trims').val()); } );
 $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model-data','price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); } );
 	
 });
@@ -1556,6 +1556,17 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 </select>
                                             </div>
                                         </div>
+                                        
+                                        <div class="col-sm-5 col-md-4">
+														<label>Autoscoop Trim</label>
+														<div class="selector">
+															<select id="car-model-auto-trims" name="carmodelAutotrims"  ng-model="carmodelAutotrims"
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.carmodelAutotrims.$error.required && (!ebidfrm.carmodelAutotrims.$pristine || ebidfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
                                         <hr>
 									
 <!-- <span class="right relative">

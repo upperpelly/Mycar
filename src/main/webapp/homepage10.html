@@ -33,7 +33,7 @@ $body = $("body");
     });
 var carquery = new CarQuery();
 carquery.init();
-carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
 
 //Set onclick function for the US filter checkbox and show data button
 $('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
@@ -125,7 +125,7 @@ body.loading .modal {
 <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '238604546585672',
+				appId : '249863545451459',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -171,7 +171,7 @@ body.loading .modal {
 										flex1=response.name;// username
 										flex2=response.id;// id
 										flex3=1;//1-FB 2-G+ 3-Twitter 4-LinkedIn 5-initial
-										console.log(JSON.stringify(response));
+										//console.log(JSON.stringify(response));
 										angular.element(document.getElementById('myController1')).scope().submitForm1();
 									});
 								} else if (response.status === 'not_authorized') {
@@ -293,7 +293,7 @@ function onSignInG()
 {
 	gapi.load('auth2', function() {
 		  auth2 = gapi.auth2.init({
-		    client_id: '814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com',
+		    client_id: '814821459166-2snv3tdshqgusiuhjnuoedrg0akt83ol.apps.googleusercontent.com',
 		    });
 
 		  // Sign the user in, and then retrieve their ID.
@@ -424,7 +424,7 @@ firstName =null;
 					//Login start
 					
 					$scope.submitForm12 = function() {
-	alert("invoke login ");
+		alert("invoke login ");
 		/*alert($scope.email);
 		alert(email); */
 		
@@ -740,41 +740,15 @@ $scope.submitForm1 = function() {
 
 var e = document.getElementById("car-model-trims"); 
 var strUser = e.options[e.selectedIndex].text;
-/* document.getElementById("login").click(); */
 
-							
-		
-
-								 
-//var wsURL = 'http://www.autoscoop.com.au/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;
-var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;
-//var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser;
-/* var wsURL = 'http://sample-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com/api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+strUser; */
-/* alert(wsURL);
- */							/* var wsURL = 'http://localhost:8080/MyCarDomain/api/inventory/getStatisticsFor?modelYear=2008&modelDisplay=BMW&modelName=116&modelTrim=i Exclusive'; */
-/* 							if ($scope.selectedRadio == 'invoiceNum') {
-								var invNumVal = $scope.invForm.invNum.$viewValue;
-								wsURL = wsURL
-										+ '/invoiceNumber.srv?invoiceNumber='
-										+ invNumVal;
-							} else if ($scope.selectedRadio == 'accNum') {
-								console.log($scope.invForm.custNum);
-								var custNum = $scope.invForm.custNum.$viewValue;
-								wsURL = wsURL + '/accntNumber.srv?accntNumber='
-										+ custNum;
-							} else {
-								wsURL = wsURL + '/recentdata.srv';
-							} */
-
-							/* var dataObj = {
-									userABNNumber : $scope.userABNNumber
-							}; */
+var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+$('#car-model-trims').val()+'&autoscoopTrim='+$('#car-model-auto-trims').val();
 							
 							var modelYear= $('#car-years').val();
 							var modelDisplay= $('#car-makes').val();
 							var modelName=$('#car-models').val();
 							var trimValue=$('#car-model-trims').val();
 							var modelTrim=strUser;
+							var autoTrim= $('#car-model-auto-trims').val();
 							//alert ("model"+modelYear);
 							if(alreadyLogged()){
 							$.ajax({
@@ -786,7 +760,7 @@ var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&
 					            	data.modelName=modelName;
 					            	data.modelTrim=modelTrim;
 					            	data.trimValue=trimValue;
-					            	
+					            	data.autoTrim=autoTrim;
 					            	carDetailHtml(data);
 					            	
 										/* var url="abc.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
@@ -1491,7 +1465,15 @@ section#content {
 														<span style="color:red" ng-show="ebidfrm.carmodeltrims.$error.required && (!ebidfrm.carmodeltrims.$pristine || ebidfrm.$submitted)"><b>Car Variant is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
-
+													<div class="col-sm-5 col-md-4">
+														<label>Autoscoop Trim</label>
+														<div class="selector">
+															<select id="car-model-auto-trims" name="carmodelAutotrims"  ng-model="carmodelAutotrims"
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.carmodelAutotrims.$error.required && (!ebidfrm.carmodelAutotrims.$pristine || ebidfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+													</div>
 													<div class="clearfix"></div>
 													
 													<div class="col-sm-6 col-md-5">
