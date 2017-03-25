@@ -738,7 +738,8 @@ CarQuery.prototype = {
      $("select#"+this.year_select_id).html("<option value=''>Loading Years...</option>");
 
         var sender = this;
-        this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelYears';
+        //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelYears';
+        this.base_url = 'api/tempCarModelYears';
         //alert(base_url);
         //alert(this.base_url);
         $.getJSON(this.base_url, function(data) {
@@ -2832,7 +2833,8 @@ var insQCt=result.insuranceQuotation.length;
 
         var sender = this;
         //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelMakesForYear?modelYear='+this.cur_year;
-        this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelMakesForYear';
+        //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelMakesForYear';
+        this.base_url = 'api/tempCarModelMakesForYear';
         //alert(this.base_url);
         //Get Car Model JSON for the selected make
      $.getJSON(this.base_url, {modelYear:this.cur_year}, function(data) {
@@ -2866,7 +2868,8 @@ var insQCt=result.insuranceQuotation.length;
 
         var sender = this;
         //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelMakesForYear?modelYear='+this.cur_year;
-        this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelMakesForYear';
+        //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelMakesForYear';
+        this.base_url = 'api/tempCarModelMakesForYear';
         //alert(this.base_url);
         //Get Car Model JSON for the selected make
      $.getJSON(this.base_url, {modelYear:this.cur_year}, function(data) {
@@ -2901,7 +2904,9 @@ var insQCt=result.insuranceQuotation.length;
      var sender = this;
      
 
-     this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelNamesForMake';
+     //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelNamesForMake';
+     
+     this.base_url = 'api/tempCarModelNamesForMake';
 
      //Get Car Model JSON for the selected make
  $.getJSON(this.base_url, {modelDisplay:this.cur_make, modelYear:this.cur_year}, function(data) {
@@ -2940,7 +2945,8 @@ var insQCt=result.insuranceQuotation.length;
         $("select#"+this.trim_select_id).html("<option value=''>Loading Trims...</option>");
 
         var sender = this;
-        this.base_url =	'http://localhost:8080/MyCarDomain/api/tempCarModelVariantForModel';
+        //this.base_url =	'http://localhost:8080/MyCarDomain/api/tempCarModelVariantForModel';
+        this.base_url =	'api/tempCarModelVariantForModel';
         //Get Car Model JSON for the selected make
      $.getJSON(this.base_url, {modelDisplay:this.cur_make, modelYear:this.cur_year, modelName:this.cur_model}, function(data) {
 
@@ -2964,7 +2970,8 @@ var insQCt=result.insuranceQuotation.length;
  
  var sender = this;
  //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelMakesForYear?modelYear='+this.cur_year;
- this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelTrimForAllSelect';
+ //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelTrimForAllSelect';
+ this.base_url = 'api/tempCarModelTrimForAllSelect';
  //alert(this.base_url);
  //Get Car Model JSON for the selected make modelVariant, String modelName, String modelDisplay, String modelYear
 $.getJSON(this.base_url, {modelDisplay:this.cur_make, modelYear:this.cur_year, modelName:this.cur_model,modelTrim:this.cur_trim}, function(data) {

@@ -137,14 +137,16 @@ var modelYear=null;
  														//alert(isValid);
 													if(isValid)
 														{
+														
 														var jsonInputToAPI = 
 														{
 																"userId":userId,
 																"searchLead":{
-																	"modelYear":modelYear,
-																	"modelDisplay": modelDisplay,
-																	"modelName": modelName,															      
+																	"modelYear":value1.modelYear,
+																	"modelDisplay": value1.modelDisplay,
+																	"modelName": value1.modelName,															      
 																	"modelTrim": modelTrim,
+																	"sModel": value1.autoTrim,
 																			"carColor" : $('#carColor').val(),
 																			 "postCode":$('#postCode').val(),
 																			"make":$('#seats').val(),
@@ -165,9 +167,9 @@ var modelYear=null;
 																			"extraIntern5":$('#extraInternal5').val()
 																},
 																"financeLead":{
-																	"modelYear":modelYear,
-																	"modelDisplay": modelDisplay,
-																	"modelName": modelName,															      
+																	"modelYear":value1.modelYear,
+																	"modelDisplay": value1.modelDisplay,
+																	"modelName": value1.modelName,															      
 																	"modelTrim": modelTrim,
 																	"postCode":$('#postCode').val(),
 																	"incomeType":$('#incomeType').val(),
@@ -185,9 +187,9 @@ var modelYear=null;
 																	 "noOfDependence":$('#noDependencies').val()
 																},
 																"insuranceLead":{
-																	"modelYear":modelYear,
-																	"modelDisplay": modelDisplay,
-																	"modelName": modelName,															      
+																	"modelYear":value1.modelYear,
+																	"modelDisplay": value1.modelDisplay,
+																	"modelName": value1.modelName,															      
 																	"modelTrim": modelTrim,
 																	"postCode":$('#postCode').val(),
 																	"insuranceType":$('#insuranceType').val(),

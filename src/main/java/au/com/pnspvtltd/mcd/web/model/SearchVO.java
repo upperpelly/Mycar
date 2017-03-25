@@ -39,7 +39,15 @@ public class SearchVO {
 	private boolean comprehensiveCover;
 	private boolean thirdPartyCover;
 	private String ausCapTer;
+	// FLEX1
+	private String sModel;
+	public String getsModel() {
+		return sModel;
+	}
 
+	public void setsModel(String sModel) {
+		this.sModel = sModel;
+	}
 	private String sMake;
 	private String extraExter2;
 	private String extraExter3;	

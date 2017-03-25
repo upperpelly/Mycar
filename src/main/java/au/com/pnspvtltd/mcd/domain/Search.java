@@ -26,6 +26,18 @@ public class Search implements Serializable {
 	private boolean finance;
 	private boolean insurance;
 	private boolean dealer;
+	// FLEX1
+	private String sModel;
+	
+	@Column(name = "SMODEL")
+	public String getsModel() {
+		return sModel;
+	}
+
+	public void setsModel(String sModel) {
+		this.sModel = sModel;
+	}
+
 	/* Mapping 
 	 * "carColor" : $("carColor").val(),
 																			 "postCode":$('#postCode').val(),
@@ -53,7 +65,8 @@ public class Search implements Serializable {
 	private boolean thirdPartyCover;
 	private String ausCapTer;
 
-	private String sMake;
+	
+	
 	private String extraExter2;
 	private String extraExter3;	
 	private String extraExter4;	

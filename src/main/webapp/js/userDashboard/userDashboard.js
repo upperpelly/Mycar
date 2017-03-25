@@ -221,14 +221,14 @@ function dashBoardCallSearch(model_data_id, userid)
         	   /*var json = $.parseJSON(result1);*/
         	   var finMax = result.search.length;
         	   document.getElementById('finMax').innerHTML=finMax;
-        	   out += '<tr><th>'+"Car Search ID"+'</th><th>'+"Model Trim"+'</th><th>'+"Model Display"+'</th><th>'+"Model Year"+'</th><th>'+"Operation"+'</th></tr>';
+        	   out += '<tr><th>'+"Car Search ID"+'</th><th>'+"Autoscoop Trim"+'</th><th>'+'</th><th>'+"Model Trim"+'</th><th>'+"Model Display"+'</th><th>'+"Model Year"+'</th><th>'+"Operation"+'</th></tr>';
         	   for(i=0;i<result.search.length;i++)
        		{
        		/*alert(result.search[i].carSearchId); //111 111-1111
        		alert(result.search[i].modelDisplay);
        		alert(result.search[i].modelTrim);
        		alert(result.search[i].modelYear);*/
-       		out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelTrim+'</td>'+'<td>'+result.search[i].modelDisplay+'</td>'+'<td>'+result.search[i].modelYear+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+       		out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td>'+result.search[i].modelTrim+'</td>'+'<td>'+result.search[i].modelDisplay+'</td>'+'<td>'+result.search[i].modelYear+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
        		
        		
        		}

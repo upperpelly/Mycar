@@ -53,8 +53,16 @@ public class CountyRegPostSubController {
 	//Variant in Select Box
 		@GetMapping(value = "postcodes", produces = { MediaType.APPLICATION_JSON_VALUE })
 		public List<Integer> getPostCodeForCSR(@RequestParam("country") String country,@RequestParam("state") String state,@RequestParam("region") String region) {
-			LOGGER.info("Received request to get All postcodes");
+			LOGGER.info("Received request to get All postcodes for criteria");
 			return countyRegPostSubService.getPostCodeForCSR(country,state,region);
+
+		}
+		
+		
+		@GetMapping(value = "postcodesLike", produces = { MediaType.APPLICATION_JSON_VALUE })
+		public List<Integer> getPostCodeForLike(@RequestParam("substr") String substr) {
+			LOGGER.info("Received request to get All postcodes for like");
+			return countyRegPostSubService.getPostCodeForLike(substr);
 
 		}
 
