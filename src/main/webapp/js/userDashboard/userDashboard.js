@@ -339,7 +339,35 @@ var insQCt=result.insuranceQuotation.length;
         	               	
         	               	   forFinance("quo-model-data4",out6);
         	               	   
-        	               	   
+        	               	   //start
+        	               	 var options = '<option value="">Please choose a car</option>';  
+        	                 for(i=0;i<result.myVehicle.length;i++)
+        	            		{
+        	            		
+        	            		//out= out+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].make+'</td>' + '</tr>';
+        	            		options += '<option value="' +result.myVehicle[i].myVehicleId+ '">' +result.myVehicle[i].make + '</option>';
+        	            		
+        	            		}
+        	            	   
+        	                   //alert(options);
+        	                   $("#vehicleTypeLogBook").html(options);
+        	               	   // end
+        	                   
+        	                 //start
+          	               	 var option1s = '<option value="">Please choose a car</option>';  
+          	                 for(i=0;i<result.myVehicle.length;i++)
+          	            		{
+          	            		
+          	            		//out= out+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].make+'</td>' + '</tr>';
+          	            		option1s += '<option value="' +result.myVehicle[i].myVehicleId+ '">' +result.myVehicle[i].make + '</option>';
+          	            		
+          	            		}
+          	            	   
+          	                   //alert(options);
+          	                   $("#vehicleTypeServMaint").html(option1s);
+          	               	   // end
+          	                   
+        	                   
         	               	 out7="";
         	           	  
       	               	   out7 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>';
@@ -920,7 +948,7 @@ function redirect() {
 //angular JS start
 var mainApp1 = angular.module("mainApp13", []);
 mainApp1.controller('myController13',function($scope, $http) {
-					alert("in user con");
+					//alert("in user con");
 					$scope.submitSearchForm = function() {
 												
 												var jsonInputToAPI = {"userId":userId,
@@ -986,7 +1014,112 @@ mainApp1.controller('myController13',function($scope, $http) {
 																				});													
 												};
 
-												
+																			
+											
+												$scope.submitSearchFormLogBook = function() {
+													alert("inside Log Book");
+													alert(""+$('#vehicleTypeLogBook').val());
+													var jsonInputToAPI = {"myVehicleId":$('#vehicleTypeLogBook').val(),
+															"myVehicleLogBookVO":{
+																"myVehicleServMaintId":null,
+																"recordType": $('#vehicleTypeLogBook').val(),															      
+																"tripType":$('#tripType').val(),
+																		"tripDescription" :$('#tripDescription').val(),
+																		 "fromLocation":$('#lPostCode').val(),
+																		"toLocation":$('#tPostCode').val(),
+																		"flex1":$('#lAPostCode').val(),
+																		"flex2":$('#tAPostCode').val(),
+																		"odoMeterStartOfTrip":$('#odoMeterStartTripKmsMiles').val(),
+																		"odoMeterEndOfTrip":$('#odometerEndoftheTrip').val(),
+																		"routeKm":$('#routKmsMiles').val(),
+																		"flex5":0,
+																		"flex6":0,
+																		"flex7":0
+															}
+															}
+
+													console.log(JSON.stringify(jsonInputToAPI));
+													//alert("Before Call");
+													//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
+													//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
+													var wsURL = 'api/myvehicle/addMyVehicleLogBook';
+													
+														    $http({
+																		method : 'POST',
+																		url : wsURL,
+																		data: jsonInputToAPI
+																						
+																	}).success(function(data) {
+																		alert("Successfully Stored..");
+																						alert("Thank You. Your MyVehicle ID is ");
+																														
+																					});													
+													};
+													
+													$scope.submitSearchFormServMaint = function() {
+														alert("inside Serv Maint");
+														var jsonInputToAPI = {"userId":userId,
+																"myVehicleVO":{
+																	"myVehicleId":null,
+																	"year": $('#car-years').val(),															      
+																	"make":$('#car-makes').val(),
+																			"model" :$('#car-models').val(),
+																			 "variant":$('#car-model-trims').val(),
+																			"vin":$('#vin').val(),
+																			"regNum":$('#regNo').val(),
+																			"regState":$('#car-model-trims').val(),
+																			"regExpDate":null,
+																			"insProv":$('#regState').val(),
+																			"insProvMan":$('#insProv').val(),
+																			"insPremPaid":$('#insPrePaid').val(),
+																			"insPremPaidFreq":$('#premPaidFreq').val(),
+																			"insExpiry":null,	
+																			"odoMeter":$('#odoMeter').val(),	
+																			"lastServiceDt":null,	
+																			"nextServiceDt":null,	
+																			"nextServKms":$('#nextServMaiKms').val(),	
+																			"finProvider":$('#finProv').val(),	
+																			"loanAmt1":$('#loanAmount').val(),	
+																			"loanTakenDt":null,
+																				"loanPaidFreq":$('#loanPaidFreq').val(),	
+																			"loanAmt2":$('#laonAmount1').val(),	
+																			"loanPeriod":$('#laonPeriod').val(),	
+																			"loanInterest":$('#laonIntRate').val(),
+																				"fuelCardProvider":$('#fuelCardProv').val(),	
+																			"valFuelCard":$('#valFuelCard').val(),	
+																			"fuelType":$('#fuelType').val(),
+																				"photo1":$('#photo1').val(),	
+																			"photo2":$('#photo2').val(),	
+																			"photo3":$('#photo3').val(),
+																				"flex1":"flex1",	
+																			"flex2":"flex1",	
+																			"flex3":"flex1",
+																				"flex4":"flex1",	
+																			"flex5":12,	
+																			"flex6":12,
+																			"flex7":12,
+																				"flex8":null,	
+																			"flex9":null
+																}
+																}
+
+
+														//alert("Before Call");
+														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
+														//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
+														var wsURL = 'api/eBid/myVehicle';
+														
+															    $http({
+																			method : 'POST',
+																			url : wsURL,
+																			data: jsonInputToAPI
+																							
+																		}).success(function(data) {
+																			alert("Successfully Stored..");
+																							alert("Thank You. Your MyVehicle ID is " + data.myVehicleId);
+																															
+																						});													
+														};
 
 
 												

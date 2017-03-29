@@ -2255,41 +2255,100 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                         </ul>
                         <div class="tab-content">
                             <div id="l1Dashboard1" class="tab-pane fade in active">
-                               <div class="col-md-18">
-                           
-                            <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
-                            <img src="images/VehQuo.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;">
-                            <div class="tab-container trans-style box">
-                                <ul class="tabs full-width">
-                                   <li class="active"><a href="#logfamily2" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
-                                    <li><a href="#loghoneymoon2" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
-                                    <li><a href="#logweekends2" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
-                                    <li><a href="#logfriends2" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li>
-                                    <li><a href="#logfriends24" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="logfamily2">
-                                        <h4>List of Car Details</h4>
-                                         <table id="logBook4">                                        
-                                        
-                                        </table>
+                            <div id="main" class="col-sms-8 col-sm-9 col-md-11">
+                        <div class="booking-section travelo-box" ng-controller="myController13">
+                            
+                            <form class="booking-form">
+                               <div class="form-group row">
+                                       <div class="col-sm-5 col-md-4">
+                                            <label>Vehicle Type</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="vehicleTypeLogBook" name="vehicleTypeLogBook">
+                                                   <!--  <option>My Car</option>
+                                                    <option>My Bike</option>
+                                                    <option>My Boat</option>
+                                                    <option>My Caravans</option>
+                                                    <option>My Bicycles</option> -->
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                    <div class="col-sm-5 col-md-4">
+                                            <label>Trip Type</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="tripType" name="tripType">
+                                                    <option>Private</option>
+                                                    <option>Business</option>
+                                                    <option>Other</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Trip Description</label>
+                                            <input type="text" id="tripDescription" name="tripDescription" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>From Location Post Code</label>
+                                            <input type="text" id="lPostCode" name="lPostCode" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>From Location Address</label>
+                                            <input type="text" id="lAPostCode" name="lAPostCode" class="input-text full-width" value="" placeholder="" />
+                                        </div>																							                                        
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>To Location Post Code</label>
+                                            <input type="text" id="lPostCode" name="lPostCode" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>To Location Address</label>
+                                            <input type="text" id="lPostCode" name="lPostCode" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Odo Meter Start of the Trip Kms/Miles</label>
+                                            <input type="text" id="lPostCode" name="lPostCode" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Odometer End of the Trip</label>
+                                            <input type="text" id="lPostCode" name="lPostCode" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Rout Kms/Miles</label>
+                                            <input type="text" id="lPostCode" name="lPostCode" class="input-text full-width" value="" placeholder="" />
+                                        </div>
                                     </div>
-                                    <div class="tab-pane fade" id="loghoneymoon2">
-                                        <h4>My Bike</h4>
-                                        
-                                    </div>
-                                    <div class="tab-pane fade" id="logweekends2">
-                                        <h4>My Boats</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="logfriends2">
-                                        <h4>My Caravans</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="logfriends24">
-                                        <h4>My Bicycles</h4>
+                                    <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <button class="full-width btn-large" ng-click="submitSearchFormLogBook()" >Save</button>
                                     </div>
                                 </div>
-                            </div>
+
+                                   
+                                    
+                                    
+                                 <!-- <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <button onclick="go12()" class="button">Save</button>
+                                         <a href="#" class="button login-facebook"><i
+						class="soap-icon-facebook" onclick="go12()"></i>Login with
+						Facebook</a> <a href="#" class="button login-googleplus"><i
+						class="soap-icon-googleplus"></i>Login with Google+</a>
+                                    </div>
+                                </div>   --> 
+                            
+                                   
+                                 
+                                    
+                               
+                                    
+                                   
+                                
+                               
+                            </form>
                         </div>
+                    </div>   			
+                                   
+                               
                                 <br />
                                 
                                
@@ -2337,41 +2396,99 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             </div>
                             
                             <div id="l3Travel-stories1" class="tab-pane fade">
-                               <div class="col-md-18">
-                           
-                            <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
-                            <img src="images/VehQuo.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;">
-                            <div class="tab-container trans-style box">
-                                <ul class="tabs full-width">
-                                   <li class="active"><a href="#servfamily2" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
-                                    <li><a href="#servhoneymoon2" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
-                                    <li><a href="#servweekends2" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
-                                    <li><a href="#servfriends2" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li>
-                                    <li><a href="#servfriends24" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="servfamily2">
-                                        <h4>List of Car Details</h4>
-                                         <table id="servMaint4">                                        
-                                        
-                                        </table>
+                            <div id="main" class="col-sms-8 col-sm-9 col-md-11">
+                        <div class="booking-section travelo-box" ng-controller="myController13">
+                            
+                            <form class="booking-form">
+                                <div class="form-group row">
+                                       <div class="col-sm-5 col-md-4">
+                                            <label>Vehicle Type</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="vehicleTypeServMaint" name="vehicleTypeServMaint">
+                                                   <!--  <option>My Car</option>
+                                                    <option>My Bike</option>
+                                                    <option>My Boat</option>
+                                                    <option>My Caravans</option>
+                                                    <option>My Bicycles</option> -->
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                                                            <div class="col-sm-5 col-md-4">
+                                            <label>Mechanic Name/Company name</label>
+                                            <input type="text" id="mechanicNameCompanyName" name="mechanicNameCompanyName" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Type of Service & maintenance</label>
+                                            <div class="selector">
+                                                <select class="full-width" id="typeServiceMaintenance" name="typeServiceMaintenance">
+                                                    <option>Private</option>
+                                                    <option>Business</option>
+                                                    <option>Other</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Mechanic Address</label>
+                                            <input type="text" id="mechanicAddress" name="mechanicAddress" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Contact Details</label>
+                                            <input type="text" id="contactDetails" name="contactDetails" class="input-text full-width" value="" placeholder="" />
+                                        </div>																							                                        
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Odo Meter Kms/Miles</label>
+                                            <input type="text" id="odoMeterKmsMilesServMaint" name="odoMeterKmsMilesServMaint" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Total Amount</label>
+                                            <input type="text" id="totalAmount" name="totalAmount" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Next Service/Maintenance OdoMeter Kms/mils</label>
+                                            <input type="text" id="NextServiceMaintenanceOdoMeterKmsmils" name="NextServiceMaintenanceOdoMeterKmsmils" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-5 col-md-4">
+                                            <label>Next Service / Maintenance Date</label>
+                                            <input type="text" id="nextServiceMaintenanceDate" name="nextServiceMaintenanceDate" class="input-text full-width" value="" placeholder="" />
+                                        </div>
+                                         <div class="col-sm-5 col-md-4">
+                                            <label>Photo of the Invoice</label>
+                                            <input type="text" id="photoInvoice" name="photoInvoice" class="input-text full-width" value="" placeholder="" />
+                                        </div>
                                     </div>
-                                    <div class="tab-pane fade" id="servhoneymoon2">
-                                        <h4>My Bike</h4>
-                                        
-                                    </div>
-                                    <div class="tab-pane fade" id="servweekends2">
-                                        <h4>My Boats</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="servfriends2">
-                                        <h4>My Caravans</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="servfriends24">
-                                        <h4>My Bicycles</h4>
+                                    
+                                     <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <button class="full-width btn-large" ng-click="submitSearchFormServMaint()" >Save</button>
                                     </div>
                                 </div>
-                            </div>
+
+                                   
+                                    
+                                    
+                                 <!-- <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <button onclick="go12()" class="button">Save</button>
+                                         <a href="#" class="button login-facebook"><i
+						class="soap-icon-facebook" onclick="go12()"></i>Login with
+						Facebook</a> <a href="#" class="button login-googleplus"><i
+						class="soap-icon-googleplus"></i>Login with Google+</a>
+                                    </div>
+                                </div>   --> 
+                            
+                                   
+                                 
+                                    
+                               
+                                    
+                                   
+                                
+                               
+                            </form>
                         </div>
+                    </div>
                                 <br />
                                 
                                
