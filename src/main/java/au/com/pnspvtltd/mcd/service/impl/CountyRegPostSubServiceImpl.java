@@ -54,4 +54,11 @@ public class CountyRegPostSubServiceImpl implements CountyRegPostSubService {
 		return postcodes;
 	}
 
+	@Override
+	public List<Integer> getPostCodeForLike(String substr) {
+		// TODO Auto-generated method stub
+		List<Integer> postcodes = countyRegPostSubRepository.getPostCodeForLike(substr.concat("%"));
+		return postcodes;
+	}
+
 }

@@ -168,6 +168,7 @@ body.loading .modal {
 										/* alert(response.name);
 										alert(response.email); */
 										email=response.email;
+										$('#exampleEmail').val(email);									
 										flex1=response.name;// username
 										flex2=response.id;// id
 										flex3=1;//1-FB 2-G+ 3-Twitter 4-LinkedIn 5-initial
@@ -263,6 +264,7 @@ body.loading .modal {
         console.log(data.lastName);
         console.log(data.emailAddress);
         email=data.emailAddress;
+        $('#exampleEmail').val(email);
         flex1=data.firstName+" "+data.lastName;// username
         flex2=data.id;// id
         flex3=4;//1-FB 2-G+ 3-Twitter 4-LinkedIn
@@ -306,6 +308,7 @@ function onSignInG()
 			  email=profile.getEmail();
 			  flex1=profile.getName();// username
 			  flex2=profile.getId();// id
+			  $('#exampleEmail').val(email);
 			  flex3=2;//1-FB 2-G+ 3-Twitter 4-LinkedIn 5-initial
 			  angular.element(document.getElementById('myController1')).scope().submitForm1();
 /* 		    onSignIn(googleUser);

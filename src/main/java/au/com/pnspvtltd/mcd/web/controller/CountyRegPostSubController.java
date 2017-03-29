@@ -1,5 +1,6 @@
 package au.com.pnspvtltd.mcd.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -62,8 +63,13 @@ public class CountyRegPostSubController {
 		@GetMapping(value = "postcodesLike", produces = { MediaType.APPLICATION_JSON_VALUE })
 		public List<Integer> getPostCodeForLike(@RequestParam("substr") String substr) {
 			LOGGER.info("Received request to get All postcodes for like");
-			return countyRegPostSubService.getPostCodeForLike(substr);
-
+			List<Integer> sl= countyRegPostSubService.getPostCodeForLike(substr);
+			List<Integer> s2 = new ArrayList<Integer>(10);
+			for(int i=0;i<10 && i <sl.size();i++)
+			{
+				s2.add(sl.get(i));
+			}
+			return s2;
 		}
 
 }

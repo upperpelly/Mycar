@@ -12,22 +12,7 @@ if(!value){
 /*console.log(value);
 alert(value);*/
 //alert("can"+value.userId);
-	var userDetails ='<a href="#" class="button btn-mini pull-right edit-profile-btn">EDIT PROFILE</a>\
-	<h2 class="box-title fullname">' + value.firstName + value.lastName + '</h2>\
-	<dl class="term-description">\
-    <dt>user name:</dt><dd>' + value.email + '</dd>\
-    <dt>first name:</dt><dd>' + value.firstName + '</dd>\
-    <dt>last name:</dt><dd>' + value.lastName + '</dd>\
-    <dt>phone number:</dt><dd>' + value.mobile + '</dd>\
-    <dt>Date of birth:</dt><dd>15 August 1985</dd>\
-    <dt>Street Address and number:</dt><dd>' + value.streetName + '</dd>\
-    <dt>Town / City:</dt><dd>' + value.areaName + '</dd>\
-    <dt>ZIP code:</dt><dd>' + value.postCode + '</dd>\
-    <dt>Country:</dt><dd>Australia</dd>\
-	</dl>';
-	//alert(userDetails);
-$('#userdetails').append(userDetails);
-
+	
 function signingout(){
 	
 	 $.jStorage.deleteKey("key");
@@ -49,6 +34,29 @@ window.onload= function(){
 	$(document).ajaxStop(function(){
 		$body.removeClass("loading");
 	});
+	
+	
+	//changed to Onload
+	
+	var userDetails ='<a href="#" class="button btn-mini pull-right edit-profile-btn">EDIT PROFILE</a>\
+		<h2 class="box-title fullname">' + value.firstName + '</h2>\
+		<dl class="term-description">\
+	    <dt>user name:</dt><dd>' +value.email+ '</dd>\
+	    <dt>first name:</dt><dd>' +value.firstName+ '</dd>\
+	    <dt>last name:</dt><dd>' +value.lastName+ '</dd>\
+	    <dt>phone number:</dt><dd>' +value.mobile+ '</dd>\
+	    <dt>Date of birth:</dt><dd>15 August 1985</dd>\
+	    <dt>Street Address and number:</dt><dd>' +value.streetName+ '</dd>\
+	    <dt>Town / City:</dt><dd>' +value.areaName+'</dd>\
+	    <dt>ZIP code:</dt><dd>' +value.postCode+ '</dd>\
+	    <dt>Country:</dt><dd>Australia</dd>\
+		</dl>';
+	/*alert("onload");
+		alert(userDetails);
+		console.log(userDetails);*/
+	$(".userdetails").append(userDetails);
+
+	
 	function parseURLParameter(Parameter)
 	{
 	
@@ -221,15 +229,16 @@ function dashBoardCallSearch(model_data_id, userid)
         	   /*var json = $.parseJSON(result1);*/
         	   var finMax = result.search.length;
         	   document.getElementById('finMax').innerHTML=finMax;
-        	   out += '<tr><th>'+"Car Search ID"+'</th><th>'+"Autoscoop Trim"+'</th><th>'+'</th><th>'+"Model Trim"+'</th><th>'+"Model Display"+'</th><th>'+"Model Year"+'</th><th>'+"Operation"+'</th></tr>';
-        	   for(i=0;i<result.search.length;i++)
+        	   //out += '<tr><th>'+"Car Search ID"+'</th><th>'+"Autoscoop Trim"+'</th><th>'+'</th><th>'+"Model Trim"+'</th><th>'+"Model Display"+'</th><th>'+"Model Year"+'</th><th>'+"Operation"+'</th></tr>';
+        	   out += '<tr><th>'+"Car Ebid ID"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th><th>'+"Operation"+'</th></tr>';
+        	   for(i=result.search.length-1;i>=0;i--)
        		{
        		/*alert(result.search[i].carSearchId); //111 111-1111
        		alert(result.search[i].modelDisplay);
        		alert(result.search[i].modelTrim);
        		alert(result.search[i].modelYear);*/
-       		out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td>'+result.search[i].modelTrim+'</td>'+'<td>'+result.search[i].modelDisplay+'</td>'+'<td>'+result.search[i].modelYear+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
-       		
+       		//out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td>'+result.search[i].modelTrim+'</td>'+'<td>'+result.search[i].modelDisplay+'</td>'+'<td>'+result.search[i].modelYear+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+        		   out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
        		
        		}
         	   //alert(out);
@@ -415,8 +424,9 @@ function registerEditDealerVehicleQuotationModal(){
 	        <div class="modal-content">\
 	            <div class="modal-header">\
 	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-	                <h4 class="modal-title" id="myModalLabel">Edit Vehicle Quotation</h4>\
+	                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
 	            </div>\
+				<h4 class="modal-title" id="myModalLabel"><center>Edit Vehicle Quotation</center></h4>\
 		        <form id="edit-dealer-vehicle-quotation-content-form">\
 				<div class="modal-body edit-dealer-vehicle-quotation-content">\
 	            </div>\
@@ -425,7 +435,8 @@ function registerEditDealerVehicleQuotationModal(){
 	                <button type="button" class="btn btn-primary submit-editDealerVehicleQuotationModal" data-dismiss="modal">Save changes</button>\
 	            </div>\
 	            </form>\
-	        </div>\
+				<p><center>&copy; 2017 Autoscoop</center></p>\
+		</div>\
 	    </div>\
 	</div>';
 
@@ -528,14 +539,16 @@ function registerEditDealerVehicleSearchModal(){
 	        <div class="modal-content">\
 	            <div class="modal-header">\
 	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-	                <h4 class="modal-title" id="myModalLabel">View Vehicle Search Details</h4>\
+	                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
 	            </div>\
+				<h4 class="modal-title" id="myModalLabel"><center>View Vehicle Search Details</center></h4>\
 		        <form id="edit-dealer-vehicle-search-content-form">\
 				<div class="modal-body edit-dealer-vehicle-search-content">\
 	            </div>\
 	            <div class="modal-footer">\
-	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
-				</div>\
+	                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>\
+		<p><center>&copy; 2017 Autoscoop</center></p>\
+			</div>\
 	            </form>\
 	        </div>\
 	    </div>\
@@ -606,8 +619,9 @@ function registerEditDealerVehicleFinanceModal(){
 	        <div class="modal-content">\
 	            <div class="modal-header">\
 	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-	                <h4 class="modal-title" id="myModalLabel">View Vehicle Finance Details</h4>\
+	                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
 	            </div>\
+				<h4 class="modal-title" id="myModalLabel"><center>View Vehicle Finance Details</center></h4>\
 		        <form id="edit-dealer-vehicle-finance-content-form">\
 				<div class="modal-body edit-dealer-vehicle-finance-content">\
 	            </div>\
@@ -615,6 +629,7 @@ function registerEditDealerVehicleFinanceModal(){
 	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
 				</div>\
 	            </form>\
+				<p><center>&copy; 2017 Autoscoop</center></p>\
 	        </div>\
 	    </div>\
 	</div>';
@@ -697,8 +712,9 @@ function registerEditDealerVehicleInsuranceModal(){
 	        <div class="modal-content">\
 	            <div class="modal-header">\
 	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-	                <h4 class="modal-title" id="myModalLabel">View Vehicle Insurance Details</h4>\
+	                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
 	            </div>\
+				<h4 class="modal-title" id="myModalLabel"><center>View Vehicle Insurance Details</center></h4>\
 		        <form id="edit-dealer-vehicle-insurance-content-form">\
 				<div class="modal-body edit-dealer-vehicle-insurance-content">\
 	            </div>\
@@ -706,6 +722,7 @@ function registerEditDealerVehicleInsuranceModal(){
 	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
 				</div>\
 	            </form>\
+	        	<p><center>&copy; 2017 Autoscoop</center></p>\
 	        </div>\
 	    </div>\
 	</div>';
@@ -792,8 +809,9 @@ function registerEditDealerVehicleDetailModal(){
 	        <div class="modal-content">\
 	            <div class="modal-header">\
 	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-	                <h4 class="modal-title" id="myModalLabel">View My Vehicle Details</h4>\
+	                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
 	            </div>\
+				<h4 class="modal-title" id="myModalLabel"><center>View My Vehicle Details</center></h4>\
 		        <form id="edit-dealer-vehicle-detail-content-form">\
 				<div class="modal-body edit-dealer-vehicle-detail-content">\
 	            </div>\
@@ -801,6 +819,7 @@ function registerEditDealerVehicleDetailModal(){
 	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
 				</div>\
 	            </form>\
+				<p><center>&copy; 2017 Autoscoop</center></p>\
 	        </div>\
 	    </div>\
 	</div>';

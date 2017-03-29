@@ -180,7 +180,9 @@ body.loading .modale {
     display: inline-block;
     border-radius: 5px;
 }
-
+.anchor-editDealerVehicleQuotationModal{
+ float:right;
+}
 .anchor-editDealerVehicleQuotationModal:hover, .anchor-editDealerVehicleQuotationModal:active {
     background-color: #2b7542;
     color: white;
@@ -650,9 +652,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                         <ul class="tabs">
                             <li class="active"><a data-toggle="tab" href="#dashboard"><i class="soap-icon-anchor circle"></i>Overview</a></li>
                             <li class=""><a data-toggle="tab" href="#profile"><i class="soap-icon-user circle"></i>Profile</a></li>
-                            <li class=""><a data-toggle="tab" href="#cruise-description"><i class="soap-icon-status circle"></i>My Vehicle Entry Form</a></li>
-                            <li class=""><a data-toggle="tab" href="#VehicleQuotation12"><i class="soap-icon-status circle"></i>My Vehicle Details</a></li>
-                            <li class=""><a data-toggle="tab" href="#logbook"><i class="soap-icon-status circle"></i>My Log Book / Fuel Card</a></li>
+                            <li class=""><a data-toggle="tab" href="#cruise-description"><i class="soap-icon-status circle"></i>My Vehicle</a></li>
+                            <li class=""><a data-toggle="tab" href="#VehicleQuotation12"><i class="soap-icon-status circle"></i>My Vehicle Garage</a></li>
+                            <li class=""><a data-toggle="tab" href="#logbook"><i class="soap-icon-status circle"></i>Log Book</a></li>
                             <li class=""><a data-toggle="tab" href="#travel-stories"><i class="soap-icon-pets circle"></i>Ebid-R</a></li>
                             <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-status circle"></i>Quotation</a></li>                            
                             <li class=""><a data-toggle="tab" href="#wishlist"><i class="soap-icon-wishlist circle"></i>Wishlist</a></li>
@@ -981,7 +983,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         <figure>
                                             <a title="" href="#"><img width="270" height="263" alt="" src="https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/facebook-997151330415103/DSC_1184 copy._1.JPG"></a>
                                         </figure>
-                                        <div class="userdetails" id="userdetails">
+                                        <div class="userdetails">
                                            
                                         </div>
                                     </article>
@@ -2013,12 +2015,10 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             <li class=""><a data-toggle="tab" href="#travel-stories1"><i class="soap-icon-insurance circle"></i>Insurance</a></li>
                             <li class=""><a data-toggle="tab" href="#settings1"><i class="soap-icon-doorman circle"></i>Service & Maintenance</a></li>                            
                             <li class=""><a data-toggle="tab" href="#wishlist1"><i class="soap-icon-baggage-5 circle"></i>Transport</a></li>
-                            <li class=""><a data-toggle="tab" href="#booking1"><i class="soap-icon-status circle"></i>Rego</a></li>
+                            <!-- <li class=""><a data-toggle="tab" href="#booking1"><i class="soap-icon-status circle"></i>Rego</a></li> -->
                         </ul>
                         <div class="tab-content">
                             <div id="dashboard1" class="tab-pane fade in active">
-                               
-                                <p>EBid - R Vehicle area!</p>
                                 <div class="col-md-18">
                            
                             <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
@@ -2033,7 +2033,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane fade in active" id="family2">
-                                        <h4>List of Search leads</h4>
+                                        <h4>Vehicle EBID Request</h4>
                                          <table id="car-model-data">                                        
                                         
                                         </table>

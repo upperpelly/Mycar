@@ -13,4 +13,6 @@ public interface CountyRegPostSubService {
 	List<String> getAllRegionsForCountynState(String modelDisplay, String modelYear);
 
 	List<Integer> getPostCodeForCSR(String modelName, String modelDisplay, String modelYear);
+
+	List<Integer> getPostCodeForLike(String substr);
 }
