@@ -2,8 +2,10 @@ package au.com.pnspvtltd.mcd.service;
 
 import java.util.List;
 
+import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelCardStoreVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookStoreVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintStoreVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 
@@ -19,6 +21,6 @@ public interface MyVehicleService {
 
 	UserVO findUserByEmail(String email);*/
 	String addMyVehicleLogBook(MyVehicleLogBookStoreVO inventoryVO);
-	String addMyVehicleFuelExpenses(MyVehicleLogBookStoreVO inventoryVO);
-	String addMyVehicleServMaint(MyVehicleLogBookStoreVO inventoryVO);
+	String addMyVehicleFuelExpenses(MyVehicleFuelCardStoreVO inventoryVO);
+	String addMyVehicleServMaint(MyVehicleServMaintStoreVO inventoryVO);
 }

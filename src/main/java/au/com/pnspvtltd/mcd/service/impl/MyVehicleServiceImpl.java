@@ -33,8 +33,10 @@ import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelCardStoreVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookStoreVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintStoreVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
@@ -70,7 +72,7 @@ public class MyVehicleServiceImpl implements MyVehicleService {
 	
 	@Override
 	@Transactional
-	public String addMyVehicleFuelExpenses(MyVehicleLogBookStoreVO inventoryVO) {
+	public String addMyVehicleFuelExpenses(MyVehicleFuelCardStoreVO inventoryVO) {
 		
 		// Find the MyVehicle
 				MyVehicle myVehicle = myVehicleRepository.findOne(inventoryVO.getMyVehicleId());
@@ -90,7 +92,7 @@ public class MyVehicleServiceImpl implements MyVehicleService {
 	
 	@Override
 	@Transactional
-	public String addMyVehicleServMaint(MyVehicleLogBookStoreVO inventoryVO) {
+	public String addMyVehicleServMaint(MyVehicleServMaintStoreVO inventoryVO) {
 		
 		// Find the MyVehicle
 				MyVehicle myVehicle = myVehicleRepository.findOne(inventoryVO.getMyVehicleId());

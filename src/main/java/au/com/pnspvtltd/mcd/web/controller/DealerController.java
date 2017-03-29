@@ -24,6 +24,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
@@ -95,6 +96,13 @@ public class DealerController {
 		LOGGER.debug("Received request to add inventory by the Dealer with Id {}", inventoryVO.getRefId());
 		response.setStatus(HttpStatus.CREATED.value());
 		return dealerService.addInventory(inventoryVO);
+	}
+	
+	@PostMapping("dealer/addInventoryList")
+	public String addInventoryList(@RequestBody InventoryListVO inventoryVO, HttpServletResponse response) {
+		LOGGER.debug("Received request to add inventory List by the Dealer with Id {}");
+		response.setStatus(HttpStatus.CREATED.value());
+		return dealerService.addInventoryList(inventoryVO);
 	}
 	
 	@GetMapping(value = "dealer/{id}/inventory", produces = { MediaType.APPLICATION_JSON_VALUE })

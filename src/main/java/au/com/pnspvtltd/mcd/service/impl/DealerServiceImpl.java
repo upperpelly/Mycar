@@ -2,6 +2,7 @@ package au.com.pnspvtltd.mcd.service.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -32,6 +33,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
@@ -145,6 +147,26 @@ public class DealerServiceImpl implements DealerService {
 		return "{\"dealerId\":" + dealer.getDealerId() + ",\"inventoryId\":" + inventory.getRepoId() + "}";
 	}
 
+	@Override
+	@Transactional
+	public String addInventoryList(InventoryListVO inventoryVO) {
+		List<Inventory> inventory = domainModelUtil.toInventoryList(inventoryVO);
+		Iterator<Inventory> it = inventory.iterator();
+		List<InventoryVO> listVO = inventoryVO.getInventoryVO();
+		Iterator<InventoryVO> it2 = listVO.iterator();
+		while(it.hasNext() && it2.hasNext()){
+		Inventory localInven = it.next();
+		InventoryVO localInvenVO = it2.next();
+		Dealer dealer = dealerRepository.findOne(localInvenVO.getRefId());
+		
+		dealer.getInventory().add(localInven);
+		dealerRepository.flush();
+		}
+		return "{\"dealerId\":" + "" + ",\"inventoryId\":" + "" + "}";
+	}
+	
+	
+	
 	@Override
 	@Transactional(readOnly = true)
 	public List<InventoryVO> getInventory(Long dealerId) {

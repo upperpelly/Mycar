@@ -2,6 +2,7 @@ package au.com.pnspvtltd.mcd.util;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -64,6 +65,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
@@ -242,6 +244,29 @@ public class DomainModelUtil {
 			e.printStackTrace();
 		}
 		return inventory;
+	}
+	
+	public List<Inventory> toInventoryList(final InventoryListVO inventoryListVO) {
+		
+		List<InventoryVO> inventoryVOList;
+		inventoryVOList = inventoryListVO.getInventoryVO();
+		List<Inventory> inventoryList = new ArrayList<Inventory>();
+		Iterator<InventoryVO> it = inventoryVOList.iterator();
+			for(;it.hasNext();){
+			InventoryVO local = it.next();	
+			Inventory inventory = new Inventory();
+			try {
+				BeanUtils.copyProperties(inventory, local);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			inventoryList.add(inventory);
+			}
+		return inventoryList;
 	}
 
 	public MyVehicleLogBook toMyVehicleLogBook(final MyVehicleLogBookVO inventoryVO) {

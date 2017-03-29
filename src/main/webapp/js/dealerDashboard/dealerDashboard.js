@@ -682,7 +682,8 @@ mainApp1.controller('myController12',function($scope,$http) {
 													//alert("Before Call"+$('#accidentHistory').val());
 													//var wsURL = 'http://localhost:8080/MyCarDomain/api/dealer/addInventory';
 													//var wsURL = 'http://www.autoscoop.com.au/api/dealer/addInventory';
-								
+								alert(JSON.stringify(jsonInputToAPI));
+								console.log(JSON.stringify(jsonInputToAPI));
 													var wsURL = 'api/dealer/addInventory';
 														    $http({
 																		method : 'POST',

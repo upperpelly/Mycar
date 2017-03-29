@@ -22,8 +22,10 @@ import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.service.MyVehicleService;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelCardStoreVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookStoreVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintStoreVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 
 @RestController
@@ -46,7 +48,7 @@ public class MyVehicleController {
 	}
 
 	@PostMapping("myvehicle/addMyVehicleFuelExpenses")
-	public String addMyVehicleFuelExpenses(@RequestBody MyVehicleLogBookStoreVO inventoryVO, HttpServletResponse response) {
+	public String addMyVehicleFuelExpenses(@RequestBody MyVehicleFuelCardStoreVO inventoryVO, HttpServletResponse response) {
 		LOGGER.debug("Received request to add myvehicle fuel Expenses by the myvehicle with Id {}"+inventoryVO.getMyVehicleId());
 		response.setStatus(HttpStatus.CREATED.value());
 		return myVehicleService.addMyVehicleFuelExpenses(inventoryVO);
@@ -54,7 +56,7 @@ public class MyVehicleController {
 
 	
 	@PostMapping("myvehicle/addMyVehicleServMaint")
-	public String addMyVehicleServMaint(@RequestBody MyVehicleLogBookStoreVO inventoryVO, HttpServletResponse response) {
+	public String addMyVehicleServMaint(@RequestBody MyVehicleServMaintStoreVO inventoryVO, HttpServletResponse response) {
 		LOGGER.debug("Received request to add myvehicle serv maint by the myvehicle with Id {}"+inventoryVO.getMyVehicleId());
 		response.setStatus(HttpStatus.CREATED.value());
 		return myVehicleService.addMyVehicleServMaint(inventoryVO);

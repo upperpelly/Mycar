@@ -5,27 +5,8 @@ public class MyVehicleLogBookStoreVO {
 	private Long myVehicleId;
 
 	private MyVehicleLogBookVO myVehicleLogBookVO;
-	private MyVehicleFuelExpensesVO myVehicleFuelExpensesVO;
-	private MyVehicleServMaintVO myVehicleServMaintVO;
 	
 	
-
-	public MyVehicleFuelExpensesVO getMyVehicleFuelExpensesVO() {
-		return myVehicleFuelExpensesVO;
-	}
-
-	public void setMyVehicleFuelExpensesVO(MyVehicleFuelExpensesVO myVehicleFuelExpensesVO) {
-		this.myVehicleFuelExpensesVO = myVehicleFuelExpensesVO;
-	}
-
-	public MyVehicleServMaintVO getMyVehicleServMaintVO() {
-		return myVehicleServMaintVO;
-	}
-
-	public void setMyVehicleServMaintVO(MyVehicleServMaintVO myVehicleServMaintVO) {
-		this.myVehicleServMaintVO = myVehicleServMaintVO;
-	}
-
 	public Long getMyVehicleId() {
 		return myVehicleId;
 	}
