@@ -1021,7 +1021,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 													alert(""+$('#vehicleTypeLogBook').val());
 													var jsonInputToAPI = {"myVehicleId":$('#vehicleTypeLogBook').val(),
 															"myVehicleLogBookVO":{
-																"myVehicleServMaintId":null,
+																"myVehicleLogBookId":null,
 																"recordType": $('#vehicleTypeLogBook').val(),															      
 																"tripType":$('#tripType').val(),
 																		"tripDescription" :$('#tripDescription').val(),
@@ -1044,7 +1044,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 													//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
 													var wsURL = 'api/myvehicle/addMyVehicleLogBook';
 													
-														    $http({
+														  /*  $http({
 																		method : 'POST',
 																		url : wsURL,
 																		data: jsonInputToAPI
@@ -1053,7 +1053,44 @@ mainApp1.controller('myController13',function($scope, $http) {
 																		alert("Successfully Stored..");
 																						alert("Thank You. Your MyVehicle ID is ");
 																														
-																					});													
+																					});	
+														    */
+														    
+														    
+														    $http({
+														    		method : 'POST',
+																	url : wsURL,
+																	data: jsonInputToAPI
+														    }).
+														    then(function onSuccess(response) {
+														      // Handle success
+														      var data = response.data;
+														      var status = response.status;
+														      var statusText = response.statusText;
+														      var headers = response.headers;
+														      var config = response.config;
+														      alert(status);
+														      alert(statusText);
+														      alert(JSON.stringify(data));
+														      alert(headers);
+														      alert(config);
+														      alert("Successfully Stored..");
+																alert("Thank You. Your MyVehicle ID is ");
+															
+														    }, function onError(response) {
+														      // Handle error
+														      /*var data = response.data;
+														      var status = response.status;
+														      var statusText = response.statusText;
+														      var headers = response.headers;
+														      var config = response.config;*/
+														      alert("Something went wrong in error storing LogBook");
+														     /* alert(status);
+														      alert(statusText);
+														      alert(JSON.stringify(data));
+														      alert(headers);
+														      alert(config);*/
+														    });
 													};
 													
 													$scope.submitSearchFormServMaint = function() {

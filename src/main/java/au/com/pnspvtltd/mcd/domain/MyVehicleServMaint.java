@@ -231,6 +231,4 @@ public class MyVehicleServMaint implements Serializable {
 	public void setMyVehicleServMaintId(Long searchInsuranceId) {
 		this.myVehicleServMaintId = searchInsuranceId;
 	}
-	
-
 }

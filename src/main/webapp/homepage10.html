@@ -168,7 +168,7 @@ body.loading .modal {
 										/* alert(response.name);
 										alert(response.email); */
 										email=response.email;
-										$('#exampleEmail').val(email);									
+										//$('#exampleEmail').val(email);									
 										flex1=response.name;// username
 										flex2=response.id;// id
 										flex3=1;//1-FB 2-G+ 3-Twitter 4-LinkedIn 5-initial
@@ -264,7 +264,7 @@ body.loading .modal {
         console.log(data.lastName);
         console.log(data.emailAddress);
         email=data.emailAddress;
-        $('#exampleEmail').val(email);
+        //$('#exampleEmail').val(email);
         flex1=data.firstName+" "+data.lastName;// username
         flex2=data.id;// id
         flex3=4;//1-FB 2-G+ 3-Twitter 4-LinkedIn
@@ -308,7 +308,7 @@ function onSignInG()
 			  email=profile.getEmail();
 			  flex1=profile.getName();// username
 			  flex2=profile.getId();// id
-			  $('#exampleEmail').val(email);
+			  //$('#exampleEmail').val(email);
 			  flex3=2;//1-FB 2-G+ 3-Twitter 4-LinkedIn 5-initial
 			  angular.element(document.getElementById('myController1')).scope().submitForm1();
 /* 		    onSignIn(googleUser);
@@ -1417,7 +1417,7 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 															<div class="checkbox">
-																<label> <input type="checkbox" name="newUsed"><span
+																<label> <input type="checkbox" name="newUsed" checked><span
 																	class="skin-color">New .</span>
 																</label>
 															</div>
@@ -1478,15 +1478,15 @@ section#content {
 														<span style="color:red" ng-show="ebidfrm.carmodelAutotrims.$error.required && (!ebidfrm.carmodelAutotrims.$pristine || ebidfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
-													
+													<div class="col-md-12">&nbsp</div>
 													<div class="col-sm-6 col-md-5">
 																<div class="checkbox">
-																	<label> <input type="checkbox"><span
+																	<label> <input type="checkbox" checked><span
 																		class="skin-color">Finance .</span>
 																	</label>
 																</div>
 																<div class="checkbox">
-																	<label> <input type="checkbox"><span
+																	<label> <input type="checkbox" checked><span
 																		class="skin-color">Insurance .</span>
 																	</label>
 																</div>
@@ -1508,7 +1508,7 @@ section#content {
 													<!-- Show userid -->
 
 													<br /> <br /> 
-													<div>
+													<!-- <div>
 
 														<div class="col-md-6 col-sm-6" ng-class="{'has-error':!ebidfrm.email.$valid,'has-success':ebidfrm.email.$valid}">
 															<input type="email" class="input-text full-width" name="email" ng-model="email"
@@ -1516,29 +1516,28 @@ section#content {
 																placeholder="Email / Mobile Number" required>
 															<span style="color:red" ng-show="ebidfrm.email.$error.required && (!ebidfrm.email.$pristine || ebidfrm.$submitted)"><i>Email Address is Required</i></span>
 															<span style="color:red" ng-show="ebidfrm.email.$error.email && (!ebidfrm.email.$pristine || ebidfrm.$submitted)"><i>Please Provide correct Email Address</i></span>
-															<!-- <pre>{{ebidfrm.email.$valid}}</pre> -->
+															<pre>{{ebidfrm.email.$valid}}</pre>
 														</div>
-														<!-- Imp check -->
-														<!-- <div class="col-md-12 search-col-padding">
+														Imp check
+														<div class="col-md-12 search-col-padding">
 															<button ng-click="submitForm12()" class="button">Login</button>
 															<button type="submit" class="search-button btn transition-effect">Build</button>
-														</div> -->
-														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
-													</div>
+														</div>
+														<button type="submit" class="btn btn-theme">Get notified!</button>
+													</div> -->
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="form-group">
 														<div class="checkbox">
-															<label> <input type="checkbox"><a
-																href="#"><span class="skin-color">Terms and
+															<label> <input type="checkbox"><a data-toggle="modal" data-target="#termsnconditionsModal"><span class="skin-color">Terms and
 																		Conditions</span></a>.
 															</label>
 														</div>
 													</div>
 													<div class="clearfix"></div>
-													<div class="col-md-12 search-col-padding">
-														<button type="submit" class="button">Build</button>
+													<div class="col-md-6 col-sm-6 search-col-padding">
+														<button type="submit" class="btn btn-primary btn-block">Build</button>
 														<!-- <button type="submit" class="search-button btn transition-effect">Build</button>  ng-disabled="ebidfrm.$invalid" -->
 													</div>
 													<div class="clearfix"></div>
@@ -7720,116 +7719,12 @@ section#content {
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-4 col-md-3" id="main">
-						
-					   <article class="detailed-logo">
-                            <figure>
-                                <img width="320" height="80" src="http://placehold.it/320x80" alt="">
-                            </figure>
-                            <button style="background-color: #fdb714;" type="button" class="btn btn-block" data-toggle="collapse" data-target="#demo">
-							      <span class="glyphicon glyphicon-minus"></span> Open
-							    </button>
-							  <div id="demo" class="collapse">
-							    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-							  </div>
-                            <div class="details">
-                            	<div class="toggle-container filters-container">
-                                <div class="panel style1 arrow-right">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#modify-search-panel" class="collapsed">Modify Search</a>
-                                    </h4>
-                                    <div id="modify-search-panel" class="panel-collapse collapse">
-                                        <div class="panel-content">
-                                            <form method="post">
-                                                <div class="form-group">
-                                                    <label>destination</label>
-                                                    <input type="text" class="input-text full-width" placeholder="" value="Paris" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>check in</label>
-                                                    <div class="datepicker-wrap">
-                                                        <input type="text" name="date_from" class="input-text full-width" placeholder="mm/dd/yy" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>check out</label>
-                                                    <div class="datepicker-wrap">
-                                                        <input type="text" name="date_to" class="input-text full-width" placeholder="mm/dd/yy" />
-                                                    </div>
-                                                </div>
-                                                <br />
-                                                <button class="btn-medium icon-check uppercase full-width">search again</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-						</div>
-                                <h2 class="box-title"><cufon class="cufon cufon-canvas" alt="4 " style="width: 17px; height: 20.0004px;"><canvas width="33" height="25" style="width: 33px; height: 25px; top: -3px; left: -1px;"></canvas><cufontext>4 </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Night " style="width: 52px; height: 20.0004px;"><canvas width="68" height="25" style="width: 68px; height: 25px; top: -3px; left: -1px;"></canvas><cufontext>Night </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Baja " style="width: 41px; height: 20.0004px;"><canvas width="58" height="25" style="width: 58px; height: 25px; top: -3px; left: -1px;"></canvas><cufontext>Baja </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Mexico" style="width: 62px; height: 20.0004px;"><canvas width="72" height="25" style="width: 72px; height: 25px; top: -3px; left: -1px;"></canvas><cufontext>Mexico</cufontext></cufon><small><cufon class="cufon cufon-canvas" alt="mon, " style="width: 32px; height: 10px;"><canvas width="39" height="13" style="width: 39px; height: 13px; top: -2px; left: 0px;"></canvas><cufontext>mon, </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Jan " style="width: 21px; height: 10px;"><canvas width="29" height="13" style="width: 29px; height: 13px; top: -2px; left: 0px;"></canvas><cufontext>Jan </cufontext></cufon><cufon class="cufon cufon-canvas" alt="26, " style="width: 19px; height: 10px;"><canvas width="26" height="13" style="width: 26px; height: 13px; top: -2px; left: 0px;"></canvas><cufontext>26, </cufontext></cufon><cufon class="cufon cufon-canvas" alt="2014" style="width: 25px; height: 10px;"><canvas width="30" height="13" style="width: 30px; height: 13px; top: -2px; left: 0px;"></canvas><cufontext>2014</cufontext></cufon></small></h2>
-                                <span class="price clearfix">
-                                    <small class="pull-left">from</small>
-                                    <span class="pull-right">$239</span>
-                                </span>
-                                <div class="feedback clearfix">
-                                    <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="4 stars"><span class="five-stars" style="width: 80%;"></span></div>
-                                    <span class="review pull-right">270 reviews</span>
-                                </div>
-                                <p class="description">Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
-                                <a class="button yellow full-width uppercase btn-small">add to wishlist</a>
-                            </div>
-                        </article>
-                        <div class="travelo-box contact-box">
-                            <h4><cufon class="cufon cufon-canvas" alt="Need " style="width: 42px; height: 15.9996px;"><canvas width="55" height="20" style="width: 55px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>Need </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Autoscoop " style="width: 79px; height: 15.9996px;"><canvas width="92" height="20" style="width: 92px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>Autoscoop </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Help?" style="width: 41px; height: 15.9996px;"><canvas width="50" height="20" style="width: 50px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>Help?</cufontext></cufon></h4>
-                            <p>We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
-                            <address class="contact-details">
-                                <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
-                                <br>
-                                <a class="contact-email" href="#">help@autoscoop.com</a>
-                            </address>
-                        </div>
-                        <div class="travelo-box book-with-us-box">
-                            <h4><cufon class="cufon cufon-canvas" alt="Why " style="width: 37px; height: 15.9996px;"><canvas width="50" height="20" style="width: 50px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>Why </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Book " style="width: 39px; height: 15.9996px;"><canvas width="53" height="20" style="width: 53px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>Book </cufontext></cufon><cufon class="cufon cufon-canvas" alt="with " style="width: 34px; height: 15.9996px;"><canvas width="47" height="20" style="width: 47px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>with </cufontext></cufon><cufon class="cufon cufon-canvas" alt="us?" style="width: 23px; height: 15.9996px;"><canvas width="32" height="20" style="width: 32px; height: 20px; top: -3px; left: -1px;"></canvas><cufontext>us?</cufontext></cufon></h4>
-                            <ul>
-                                <li>
-                                    <i class="soap-icon-hotel-1 circle"></i>
-                                    <h5 class="title"><a href="#">135,00+ Hotels</a></h5>
-                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
-                                </li>
-                                <li>
-                                    <i class="soap-icon-savings circle"></i>
-                                    <h5 class="title"><a href="#">Low Rates &amp; Savings</a></h5>
-                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
-                                </li>
-                                <li>
-                                    <i class="soap-icon-support circle"></i>
-                                    <h5 class="title"><a href="#">Excellent Support</a></h5>
-                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                    </div>
+				<!-- Side box start -->
+
 			</div>
+			<!-- Side box end -->
+			
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	<!-- END: SEARCH SECTION -->
 
@@ -7877,658 +7772,6 @@ section#content {
 	</section>
 	<!--END: HOW IT WORK -->
 
-	<!-- START: HOT  DEALS -->
-	<section>
-		<div class="col-md-12 row hot-deals">
-			<div class="col-md-12 search-section tran-search-box">
-				<div class="section-title text-center">
-					<h2>HOT DEALS</h2>
-					<h4>SAVE MORE</h4>
-				</div>
-				<div role="tabpanel" class="text-center">
-					<!-- BEGIN: CATEGORY TAB -->
-					<ul class="nav nav-tabs search-top" role="tablist" id="hotDeal">
-						<li role="presentation" class="active text-center"><a
-							href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
-								<i class="fa fa-cab"></i> <span>Cars</SPAN>
-						</a></li>
-						<li role="presentation" class="text-center"><a href="#tab2"
-							aria-controls="tab2" role="tab" data-toggle="tab"> <i
-								class="fa fa-motorcycle"></i> <span>Bikes</SPAN>
-						</a></li>
-						<li role="presentation" class="text-center"><a href="#tab3"
-							aria-controls="tab3" role="tab" data-toggle="tab"> <i
-								class="fa fa-ship"></i> <span>Boats</SPAN>
-						</a></li>
-						<li role="presentation" class="text-center"><a href="#tab4"
-							aria-controls="tab4" role="tab" data-toggle="tab"> <i
-								class="fa fa-truck"></i> <span>Caravan</SPAN>
-						</a></li>
-						<li role="presentation" class="text-center"><a href="#tab5"
-							aria-controls="tab5" role="tab" data-toggle="tab"> <i
-								class="fa fa-bicycle"></i> <span>Bicycle</SPAN>
-						</a></li>
-					</ul>
-					<!-- END: CATEGORY TAB -->
-					<div class="clearfix"></div>
-					<!-- BEGIN: TAB PANELS -->
-					<div class="tab-content">
-						<!-- BEGIN: FLIGHT SEARCH -->
-						<div role="tabpanel" class="tab-pane active fade in" id="tab1">
-							<div class="col-md-6 hot-deal-list wow slideInLeft">
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/offer1.jpeg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/offer2.jpeg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/offer3.jpeg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<!-- New column-->
-							<div class="col-md-6 hot-deal-list wow slideInLeft">
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/offer4.jpeg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/offer2.jpeg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/offer3.jpeg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-
-
-						</div>
-						<div role="tabpanel" class="tab-pane fade" id="tab2">
-							<div class="col-md-6 hot-deal-list wow slideInLeft">
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/bike1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/bike2.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/bike1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<!-- New column-->
-							<div class="col-md-6 hot-deal-list wow slideInLeft">
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/bike2.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/bike1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/bike1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-
-						</div>
-						<div role="tabpanel" class="tab-pane" id="tab3">
-							<div class="col-md-6 hot-deal-list wow slideInLeft">
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/boat1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/boat1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/boat1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<!-- New column-->
-							<div class="col-md-6 hot-deal-list wow slideInLeft">
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/boat1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/boat1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/boat1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-						<div role="tabpanel" class="tab-pane" id="tab4">
-							<div class="col-md-6 hot-deal-list wow slideInLeft">
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/truck1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/truck1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/truck1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<!-- New column-->
-							<div class="col-md-6 hot-deal-list wow slideInLeft">
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/truck1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/truck1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/truck1.jpg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-						<div role="tabpanel" class="tab-pane" id="tab5">
-							<div class="col-md-6 hot-deal-list wow slideInLeft">
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/bicycle1.jpeg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/bicycle2.jpeg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/bicycle1.jpeg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<!-- New column-->
-							<div class="col-md-6 hot-deal-list wow slideInLeft">
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/bicycle2.jpeg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/bicycle2.jpeg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="item">
-									<div class="col-xs-3">
-										<img src="assets/images/bicycle2.jpeg" alt="Cruise">
-									</div>
-									<div class="col-md-7 col-xs-6">
-										<h5>217-BMW-X5-SDRIVE25D NEW</h5>
-										<p class="location">
-											<i class="fa fa-map-marker"></i> FISHWICK ART
-										</p>
-										<p class="text-sm">Best in class loaded with all the best
-											you have. Price-$70,000.00 Drive away Saving - $7000.</p>
-									</div>
-									<div class="col-md-2 col-xs-3">
-										<h4>$70,000.00</h4>
-										<h6>Drive away</h6>
-										<a href="#">BOOK</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- END: HOT DEALS -->
-
 	<!-- <div class="featured image-box">
                 <div class="details pull-left">
                     <h3>Tropical Beach,<br/>Hotel and Resorts</h3>
@@ -8551,22 +7794,6 @@ section#content {
 						src="images/logo.png" alt="Autoscoop HTML5 Template" />
 					</a>
 				</div>
-				<div class="pull-centre">
-					<ul class="quick-menu pull-left">
-						<li><a href="dealerboard.html">Dealer ACCOUNT</a></li>
-
-					</ul>
-					<ul class="quick-menu pull-right">
-						<li><a href="#travelo-login" class="soap-popupbox">Dealer
-								LOGIN</a></li>
-						<li><a href="#travelo-signup" class="soap-popupbox">Dealer
-								SIGNUP</a></li>
-
-					</ul>
-				</div>
-
-
-
 				<div class="pull-right">
 					<a id="back-to-top" href="#" class="animated"
 						data-animation-type="bounce"><i
@@ -8628,6 +7855,28 @@ section#content {
     </script>
 <!-- Loading -->
 <div class="modal"><!-- Place at bottom of page --></div>
+ <!-- terms & Conditions Modal -->
+  <div class="modal fade" id="termsnconditionsModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Terms and Conditions</h4>
+        </div>
+        <div class="modal-body">
+          <p>You are liable to Autoscoop</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
 
 </body>
 </html>

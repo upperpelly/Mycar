@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "myvehiclelogbook")
 public class MyVehicleLogBook implements Serializable {
 
-	private Long myVehicleServMaintId;
+	private Long myVehicleLogBookId;
 	private Date date;
 	private Date Time;
 	private String recordType;
@@ -25,8 +25,6 @@ public class MyVehicleLogBook implements Serializable {
 	private String odoMeterStartOfTrip;
 	private String odoMeterEndOfTrip;
 	private int routeKm;
-	
-	
 	private String flex1;
 	private String flex2;
 	private String flex3;
@@ -195,13 +193,13 @@ public class MyVehicleLogBook implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "myVehicleServMaintId")
-	public Long getMyVehicleServMaintId() {
-		return myVehicleServMaintId;
+	@Column(name = "MYVEHICLELOGBOOKID")
+	public Long getMyVehicleLogBookId() {
+		return myVehicleLogBookId;
 	}
 
-	public void setMyVehicleServMaintId(Long searchInsuranceId) {
-		this.myVehicleServMaintId = searchInsuranceId;
+	public void setMyVehicleLogBookId(Long myVehicleLogBookId) {
+		this.myVehicleLogBookId = myVehicleLogBookId;
 	}
 	
 

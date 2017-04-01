@@ -67,7 +67,8 @@ public class MyVehicleServiceImpl implements MyVehicleService {
 					myVehicle.setMyVehicleLogBook(myvehicleLogBook);
 				}
 				myVehicleRepository.flush();
-		return "{\"myVehicleId\":" + myVehicle.getMyVehicleId() + ",\"myVehicleLogBookId\":" + search.getMyVehicleServMaintId() + "}";
+				System.out.println("{\"myVehicleId\":" + myVehicle.getMyVehicleId() + ",\"myVehicleLogBookId\":" + search.getMyVehicleLogBookId() + "}");
+		return "{\"myVehicleId\":" + myVehicle.getMyVehicleId() + ",\"myVehicleLogBookId\":" + search.getMyVehicleLogBookId() + "}";
 	}
 	
 	@Override

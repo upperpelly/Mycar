@@ -19,7 +19,7 @@ public class MyVehicleLogBookVO {
 	 * */
 	
 	
-	private Long myVehicleServMaintId;
+	private Long myVehicleLogBookId;
 	private Date date;
 	private Date Time;
 	private String recordType;
@@ -41,11 +41,11 @@ public class MyVehicleLogBookVO {
 	private double flex7;
 	private Date flex8;
 	private Date flex9;
-	public Long getMyVehicleServMaintId() {
-		return myVehicleServMaintId;
+	public Long getMyVehicleLogBookId() {
+		return myVehicleLogBookId;
 	}
-	public void setMyVehicleServMaintId(Long myVehicleServMaintId) {
-		this.myVehicleServMaintId = myVehicleServMaintId;
+	public void setMyVehicleLogBookId(Long myVehicleLogBookId) {
+		this.myVehicleLogBookId = myVehicleLogBookId;
 	}
 	public Date getDate() {
 		return date;
