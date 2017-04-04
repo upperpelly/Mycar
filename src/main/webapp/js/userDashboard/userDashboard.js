@@ -383,12 +383,12 @@ var insQCt=result.insuranceQuotation.length;
         	               	   
         	               	out8="";
           	           	  
-       	               	   out8 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>';
+       	               	   out8 += '<tr><th>'+"Activity"+'</th><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>';
        	               	   for(i=0;i<result.myVehicle.length;i++)
        	              		{
        	              		
-       	              		out8= out8+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
-       	              		
+       	              		//out8= out8+'<tr><td><a href="#" id="anchor-editDealerVehicleInsuranceModal" class="logBookBtn">Log Book</a></td>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
+       	               		out8= out8+'<td><a href="#" id="anchor-editDealerVehicleDetailLogBookModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailLogBookModal" data-toggle="modal" data-target="#editDealerVehicleDetailLogBookModal">LogBook</a></td><td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
        	              		
        	              		}
        	               	   
@@ -411,6 +411,7 @@ var insQCt=result.insuranceQuotation.length;
         	               	registerEditDealerVehicleFinanceModal();
         	               	registerEditDealerVehicleInsuranceModal();
         	               	registerEditDealerVehicleDetailModal();
+        	               	registerEditDealerVehicleDetailLogBookModal();
            } 
    	  }); 
    /* $.ajax({
@@ -930,6 +931,96 @@ function registerEditDealerVehicleDetailModal(){
 
 	
 }
+
+
+function registerEditDealerVehicleDetailLogBookModal(){       
+
+// change here
+	
+	//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+	var editDealerVehicleDetailLogBookModal = '<div id="selectedRecord">\
+		<h4><center>Log Book Details for Vehicle</center></h4><a class="button btn-mini pull-right" id="BackToVehicles">Back To Vehicles Log</a>\
+		<div class="edit-dealer-vehicle-detail-logbook-content">\
+	            </div>\
+		<ul class="nav nav-tabs">\
+	    <li class="active"><a data-toggle="tab" href="#logTrip">Log Trip</a></li>\
+	    <li><a data-toggle="tab" href="#LogExp">Log Expenses</a></li>\
+	    <li><a data-toggle="tab" href="#ServMain">Service & Maintenance Log</a></li>\
+	  </ul>\
+	  <div class="tab-content">\
+	    <div id="logTrip" class="tab-pane fade in active">\
+	    <div class="col-md-12"><button id="LogNewButton">Log a New Trip</button></div>\
+	      <h3>HOME</h3>\
+	      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\
+	    </div>\
+	    <div id="LogExp" class="tab-pane fade">\
+		<div class="col-md-12"><button id="LogNewExpButton">Log a New Expenses</button></div>\
+	      <p>Your Expenses goes here</p>\
+	    </div>\
+	    <div id="ServMain" class="tab-pane fade">\
+		<div class="col-md-12"><button id="LogNewSerButton">Log New Service & Maintenance</button></div>\
+	      <p>Your Service & maintenance goes here</p>\
+	    </div>\
+	  </div>\
+ 	  </div>';
+
+	//$(document.body).append(editDealerVehicleDetailLogBookModal);
+		
+	$('a.anchor-editDealerVehicleDetailLogBookModal').on('click', function(event) {
+		
+		$('#fuelCard4').hide();
+		var data = $(event.target).data('details');
+		//var json = JSON.stringify(data);
+		
+		var quotIdHiddenField = '<input type="hidden" name="myVehicleId" value="' + data.myVehicleId + '" />';
+		/*var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
+		if(data.moveToUser)
+		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
+		
+		
+		var editDealerVehicleDetailLogBookForm = '<table>\
+			<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Variant"+'</th></tr>\
+			<tr><td>' + data.myVehicleId + '</td>\
+			<td>' + data.year + '</td>\
+			<td>' + data.make + '</td>\
+			<td>' + data.model + '</td>\
+			<td>' + data.variant + '</td></tr>\
+			</table>';
+		$("#fuelCard41").append(editDealerVehicleDetailLogBookModal);
+		$(".edit-dealer-vehicle-detail-logbook-content").html(editDealerVehicleDetailLogBookForm);
+		
+	});
+	
+		
+	$.fn.convertFormDataToJSON = function(){
+		var checkboxes = [];
+		$(this).find('input:checkbox:checked').each(function(){
+			checkboxes.push($(this).attr("name"));
+		});
+		var o = {};
+	    var a = this.serializeArray();
+	    $.each(a, function() {
+	        if (o[this.name] != undefined) {
+	            if (!o[this.name].push) {
+	                o[this.name] = [o[this.name]];
+	            }
+	            if($.inArray(this.name, checkboxes) != -1)
+	              o[this.name].push('true' || '');
+	            else
+	            	o[this.name].push(this.value || '');
+	        } else {
+	        	if($.inArray(this.name, checkboxes) != -1)
+	        		o[this.name] = 'true' || '';
+		        else
+		           	o[this.name] = this.value || '';
+	        }
+	    });
+	    return JSON.stringify(o);
+	}
+
+	
+}
+
 
 }
 
