@@ -23,8 +23,10 @@ function signingout(){
 }
 var userId;
 var firstName;
-
-window.onload= function(){
+//window.onload= function(){
+$(document).ready(function(){
+	
+	//alert("user js");
 	$body = $("body");
 
 	$(document).ajaxStart(function(){
@@ -223,6 +225,7 @@ function dashBoardCallSearch(model_data_id, userid)
         	   alert(result.search);
         	   alert(result.search[0].carSearchId);
         	   alert(result.search.length);*/
+   	    	   //alert("processing the data");
         	   out="";
         	   /*alert(Object.keys( result.search ).length);*/
         	   /*var json = JSON.parse(result1);*/
@@ -393,6 +396,7 @@ var insQCt=result.insuranceQuotation.length;
        	              		}
        	               	   
          	               	forFinance("fuelCard4",out8);
+         	               	//alert("logbook loaded");
          	               	
          	               out9="";
          	           	  
@@ -936,12 +940,14 @@ function registerEditDealerVehicleDetailModal(){
 function registerEditDealerVehicleDetailLogBookModal(){       
 
 // change here
-	
+	//alert("log html gene");
 	//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
-	var editDealerVehicleDetailLogBookModal = '<div id="selectedRecord">\
+	/*var editDealerVehicleDetailLogBookModal = '<div id="selectedRecord">\
 		<h4><center>Log Book Details for Vehicle</center></h4><a class="button btn-mini pull-right" id="BackToVehicles">Back To Vehicles Log</a>\
 		<div class="edit-dealer-vehicle-detail-logbook-content">\
 	            </div>\
+		<br/>\
+		<br/>\
 		<ul class="nav nav-tabs">\
 	    <li class="active"><a data-toggle="tab" href="#logTrip">Log Trip</a></li>\
 	    <li><a data-toggle="tab" href="#LogExp">Log Expenses</a></li>\
@@ -950,8 +956,71 @@ function registerEditDealerVehicleDetailLogBookModal(){
 	  <div class="tab-content">\
 	    <div id="logTrip" class="tab-pane fade in active">\
 	    <div class="col-md-12"><button id="LogNewButton">Log a New Trip</button></div>\
-	      <h3>HOME</h3>\
-	      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\
+		<div class="booking-section travelo-box" id="LogNew">\
+		<form class="booking-form">\
+    	<div class="form-group row">\
+		   <div class="col-sm-6 col-md-6">\
+				<label>Vehicle Type</label>\
+				<input type="text" id="vehicleType" name="vehicleType" class="input-text full-width" value="" placeholder="" />\
+			</div>\
+			<div class="col-sm-6 col-md-6">\
+					<label>Trip Type</label>\
+					<div class="selector">\
+						<select class="full-width" id="tripType" name="tripType">\
+							<option>Private</option>\
+							<option>Business</option>\
+							<option>Other</option>\
+						</select>\
+					</div>\
+			 </div>\
+		</div>\
+		<div class="form-group row">\
+			<div class="col-sm-6 col-md-6">\
+				<label>Trip Description</label>\
+				<input type="text" id="tripDescription" name="tripDescription" class="input-text full-width" value="" placeholder="" />\
+			</div>\
+			<div class="col-sm-6 col-md-6">\
+				<label>From Location Post Code</label>\
+				<input type="text" id="lPostCode" name="lPostCode" class="input-text full-width" value="" placeholder="" />\
+			</div>\
+		</div>\
+		<div class="form-group row">\
+			<div class="col-sm-6 col-md-6">\
+				<label>From Location Address</label>\
+				<input type="text" id="lAPostCode" name="lAPostCode" class="input-text full-width" value="" placeholder="" />\
+			</div>\
+			<div class="col-sm-6 col-md-6">\
+				<label>To Location Post Code</label>\
+				<input type="text" id="tPostCode" name="tPostCode" class="input-text full-width" value="" placeholder="" />\
+			</div>\
+		</div>\
+		<div class="form-group row">\
+			<div class="col-sm-6 col-md-6">\
+				<label>To Location Address</label>\
+				<input type="text" id="tAPostCode" name="tAPostCode" class="input-text full-width" value="" placeholder="" />\
+			</div>\
+			<div class="col-sm-6 col-md-6">\
+				<label>Odo Meter Start of the Trip Kms/Miles</label>\
+				<input type="text" id="odoMeterStartTripKmsMiles" name="odoMeterStartTripKmsMiles" class="input-text full-width" value="" placeholder="" />\
+			</div>\
+		</div>\
+		<div class="form-group row">\
+			<div class="col-sm-6 col-md-6">\
+				<label>Odometer End of the Trip</label>\
+				<input type="text" id="odometerEndoftheTrip" name="odometerEndoftheTrip" class="input-text full-width" value="" placeholder="" />\
+			</div>\
+			 <div class="col-sm-6 col-md-6">\
+				<label>Rout Kms/Miles</label>\
+				<input type="text" id="routKmsMiles" name="routKmsMiles" class="input-text full-width" value="" placeholder="" />\
+			</div>\
+		</div>\
+        <div class="form-group row">\
+			<div class="col-sm-6 col-md-5">\
+				<button type="button" class="full-width btn-large" id="LogSave" >Save</button>\
+			</div>\
+        </div>\
+		</form>\
+		</div>\
 	    </div>\
 	    <div id="LogExp" class="tab-pane fade">\
 		<div class="col-md-12"><button id="LogNewExpButton">Log a New Expenses</button></div>\
@@ -962,13 +1031,14 @@ function registerEditDealerVehicleDetailLogBookModal(){
 	      <p>Your Service & maintenance goes here</p>\
 	    </div>\
 	  </div>\
- 	  </div>';
+ 	  </div>';*/
 
 	//$(document.body).append(editDealerVehicleDetailLogBookModal);
 		
 	$('a.anchor-editDealerVehicleDetailLogBookModal').on('click', function(event) {
-		
-		$('#fuelCard4').hide();
+		//alert("invoke sscnews click");
+		$('#fuelCard4').toggle();
+		//document.getElementById("fuelCard4").style.display = "none";
 		var data = $(event.target).data('details');
 		//var json = JSON.stringify(data);
 		
@@ -977,7 +1047,8 @@ function registerEditDealerVehicleDetailLogBookModal(){
 		if(data.moveToUser)
 		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
 		
-		
+		$('#fuelCard41').toggle();
+		//document.getElementById("fuelCard41").style.display = "block";
 		var editDealerVehicleDetailLogBookForm = '<table>\
 			<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Variant"+'</th></tr>\
 			<tr><td>' + data.myVehicleId + '</td>\
@@ -986,10 +1057,62 @@ function registerEditDealerVehicleDetailLogBookModal(){
 			<td>' + data.model + '</td>\
 			<td>' + data.variant + '</td></tr>\
 			</table>';
-		$("#fuelCard41").append(editDealerVehicleDetailLogBookModal);
+		//$("#fuelCard41").append(editDealerVehicleDetailLogBookModal);
 		$(".edit-dealer-vehicle-detail-logbook-content").html(editDealerVehicleDetailLogBookForm);
-		
+		 $("#BackToVehicles").click(function(){
+		        $('#fuelCard41').hide();
+		        //$( "#fuelCard41" ).empty();
+		        $('#fuelCard4').show();
+		        //document.getElementById("fuelCard41").style.display = "none";
+		        //document.getElementById("fuelCard4").style.display = "block";
+		        //alert("The paragraph ssswas showed.");
+		    });
+		 
+		   
+		 
+		 $("#LogSave").click(function(){
+		        //alert("Log Save alertsssaasa.");
+		        //angular.element(document.getElementById('LogNew')).scope().submitSearchFormLogBook();
+
+				//alert("inside Log Book");
+				//alert(""+$('#vehicleTypeLogBook').val());
+				var jsonInputToAPI = {"myVehicleId":data.myVehicleId,
+						"myVehicleLogBookVO":{
+							"myVehicleLogBookId":null,
+							"recordType": $('#vehicleTypeLogBook').val(),															      
+							"tripType":$('#tripType').val(),
+									"tripDescription" :$('#tripDescription').val(),
+									 "fromLocation":$('#lPostCode').val(),
+									"toLocation":$('#tPostCode').val(),
+									"flex1":$('#lAPostCode').val(),
+									"flex2":$('#tAPostCode').val(),
+									"odoMeterStartOfTrip":$('#odoMeterStartTripKmsMiles').val(),
+									"odoMeterEndOfTrip":$('#odometerEndoftheTrip').val(),
+									"routeKm":$('#routKmsMiles').val(),
+									"flex5":0,
+									"flex6":0,
+									"flex7":0
+						}
+						}
+
+				var wsURL = 'api/myvehicle/addMyVehicleLogBook';
+				//alert("before Ajax");
+				alert($('#lPostCode').val());
+				$.ajax({  
+					type: "POST",  
+					url: wsURL,
+					data: JSON.stringify(jsonInputToAPI),
+					contentType:'application/json',
+					success: function(result){
+						
+						alert("Successfully saved");
+						
+					}
+				});
+				
+		    });
 	});
+	
 	
 		
 	$.fn.convertFormDataToJSON = function(){
@@ -1022,13 +1145,13 @@ function registerEditDealerVehicleDetailLogBookModal(){
 }
 
 
-}
+});
 
 // end of window onload
 
 
 function redirect() {
-	alert("Thank You. Your Seach ID is ");
+	//alert("Thank You. Your Seach ID is ");
 
 	var url="homepage10.html?userId="+userId+"&firstName="+firstName;
 	
@@ -1108,8 +1231,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 																			
 											
 												$scope.submitSearchFormLogBook = function() {
-													alert("inside Log Book");
-													alert(""+$('#vehicleTypeLogBook').val());
+													//alert("inside Log Book");
+													//alert(""+$('#vehicleTypeLogBook').val());
 													var jsonInputToAPI = {"myVehicleId":$('#vehicleTypeLogBook').val(),
 															"myVehicleLogBookVO":{
 																"myVehicleLogBookId":null,

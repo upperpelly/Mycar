@@ -17,15 +17,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import au.com.pnspvtltd.mcd.domain.MyVehicle;
 import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
+import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.service.MyVehicleService;
+import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelCardStoreVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookStoreVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintStoreVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 
 @RestController
@@ -35,9 +39,10 @@ public class MyVehicleController {
 	
 	@Autowired
 	MyVehicleService myVehicleService;
+	@Autowired
+	MyVehicleRepository myVehicleRepository;
 	
-	
-	
+	DomainModelUtil domainModelUtil;
 	
 	
 	@PostMapping("myvehicle/addMyVehicleLogBook")
@@ -47,6 +52,23 @@ public class MyVehicleController {
 		return myVehicleService.addMyVehicleLogBook(inventoryVO);
 	}
 
+	
+	@GetMapping(value = "Myvehicle/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public MyVehicleVO getMyVehicleLogBook(@PathVariable Long id, HttpServletResponse response) {
+		LOGGER.debug("Received request to get myvehicle log book by the myvehicle with Id {}");
+		MyVehicle myVehicle = myVehicleRepository.findOne(id);
+		System.out.println(myVehicle.toString());
+		MyVehicleVO myVehicleVO= null;
+		if (myVehicle != null) {
+			myVehicleVO = domainModelUtil.FromMyVehicle(myVehicle);
+			System.out.println(myVehicleVO.getMyVehicleId());
+			response.setStatus(HttpStatus.NO_CONTENT.value());
+		}
+		return myVehicleVO;
+	}
+
+	
+	
 	@PostMapping("myvehicle/addMyVehicleFuelExpenses")
 	public String addMyVehicleFuelExpenses(@RequestBody MyVehicleFuelCardStoreVO inventoryVO, HttpServletResponse response) {
 		LOGGER.debug("Received request to add myvehicle fuel Expenses by the myvehicle with Id {}"+inventoryVO.getMyVehicleId());

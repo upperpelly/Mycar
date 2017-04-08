@@ -298,6 +298,24 @@ public class DomainModelUtil {
 		}
 		return search;
 	}
+	
+	
+	//From Vehcile
+	
+	public MyVehicleVO FromMyVehicle(final MyVehicle myVehicle) {
+
+		MyVehicleVO myVehicleVO = new MyVehicleVO();
+		try {
+			BeanUtils.copyProperties(myVehicleVO, myVehicle);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return myVehicleVO;
+	}
 
 	// User Car/Search Details lead
 	public Search toSearch(final SearchVO searchVO) {

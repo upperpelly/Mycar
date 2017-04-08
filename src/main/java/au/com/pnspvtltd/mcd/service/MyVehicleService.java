@@ -23,4 +23,5 @@ public interface MyVehicleService {
 	String addMyVehicleLogBook(MyVehicleLogBookStoreVO inventoryVO);
 	String addMyVehicleFuelExpenses(MyVehicleFuelCardStoreVO inventoryVO);
 	String addMyVehicleServMaint(MyVehicleServMaintStoreVO inventoryVO);
+	List<MyVehicleLogBookStoreVO> getMyVehicleLogBook(MyVehicleLogBookStoreVO inventoryVO);
 }

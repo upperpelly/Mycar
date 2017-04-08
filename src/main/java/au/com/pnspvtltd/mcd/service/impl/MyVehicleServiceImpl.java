@@ -110,4 +110,10 @@ public class MyVehicleServiceImpl implements MyVehicleService {
 		return "{\"myVehicleId\":" + myVehicle.getMyVehicleId() + ",\"myVehicleServMaintId\":" + search.getMyVehicleServMaintId() + "}";
 	}
 
+	@Override
+	public List<MyVehicleLogBookStoreVO> getMyVehicleLogBook(MyVehicleLogBookStoreVO inventoryVO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
