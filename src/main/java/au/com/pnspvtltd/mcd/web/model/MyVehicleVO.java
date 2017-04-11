@@ -91,34 +91,34 @@ public class MyVehicleVO {
 	private double flex7;
 	private Date flex8;
 	private Date flex9;
-	List<MyVehicleLogBook> myVehicleLogBook;
-	List<MyVehicleFuelExpenses> myVehicleFuelExpenses;
-	List<MyVehicleServMaint> myVehicleServMaint;
+	List<MyVehicleLogBookVO> myVehicleLogBook;
+	List<MyVehicleFuelExpensesVO> myVehicleFuelExpenses;
+	List<MyVehicleServMaintVO> myVehicleServMaint;
 	
 	
 	
 
-	public List<MyVehicleLogBook> getMyVehicleLogBook() {
+	public List<MyVehicleLogBookVO> getMyVehicleLogBook() {
 		return myVehicleLogBook;
 	}
 
-	public void setMyVehicleLogBook(List<MyVehicleLogBook> myVehicleLogBook) {
-		this.myVehicleLogBook = myVehicleLogBook;
+	public void setMyVehicleLogBook(List<MyVehicleLogBookVO> myVehicleLogBookVOs) {
+		this.myVehicleLogBook = myVehicleLogBookVOs;
 	}
 
-	public List<MyVehicleFuelExpenses> getMyVehicleFuelExpenses() {
+	public List<MyVehicleFuelExpensesVO> getMyVehicleFuelExpenses() {
 		return myVehicleFuelExpenses;
 	}
 
-	public void setMyVehicleFuelExpenses(List<MyVehicleFuelExpenses> myVehicleFuelExpenses) {
+	public void setMyVehicleFuelExpenses(List<MyVehicleFuelExpensesVO> myVehicleFuelExpenses) {
 		this.myVehicleFuelExpenses = myVehicleFuelExpenses;
 	}
 
-	public List<MyVehicleServMaint> getMyVehicleServMaint() {
+	public List<MyVehicleServMaintVO> getMyVehicleServMaint() {
 		return myVehicleServMaint;
 	}
 
-	public void setMyVehicleServMaint(List<MyVehicleServMaint> myVehicleServMaint) {
+	public void setMyVehicleServMaint(List<MyVehicleServMaintVO> myVehicleServMaint) {
 		this.myVehicleServMaint = myVehicleServMaint;
 	}
 

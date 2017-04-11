@@ -61,4 +61,16 @@ public class CountyRegPostSubServiceImpl implements CountyRegPostSubService {
 		return postcodes;
 	}
 
+	@Override
+	public boolean existsPostcodeForState(String state, int postcode) {
+		// TODO Auto-generated method stub
+		return countyRegPostSubRepository.existsPostcodeForState(state, postcode);
+	}
+
+	@Override
+	public boolean existsPostcodeForRegion(String region, int postcode) {
+		// TODO Auto-generated method stub
+		return countyRegPostSubRepository.existsPostcodeForRegion(region, postcode);
+	}
+
 }

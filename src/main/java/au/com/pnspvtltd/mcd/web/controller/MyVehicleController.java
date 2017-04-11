@@ -41,8 +41,8 @@ public class MyVehicleController {
 	MyVehicleService myVehicleService;
 	@Autowired
 	MyVehicleRepository myVehicleRepository;
-	
-	DomainModelUtil domainModelUtil;
+	@Autowired
+	private DomainModelUtil domainModelUtil;
 	
 	
 	@PostMapping("myvehicle/addMyVehicleLogBook")
@@ -58,11 +58,11 @@ public class MyVehicleController {
 		LOGGER.debug("Received request to get myvehicle log book by the myvehicle with Id {}");
 		MyVehicle myVehicle = myVehicleRepository.findOne(id);
 		System.out.println(myVehicle.toString());
-		MyVehicleVO myVehicleVO= null;
+		MyVehicleVO myVehicleVO= new MyVehicleVO();
 		if (myVehicle != null) {
+			System.out.println(myVehicle.getMyVehicleId());
 			myVehicleVO = domainModelUtil.FromMyVehicle(myVehicle);
-			System.out.println(myVehicleVO.getMyVehicleId());
-			response.setStatus(HttpStatus.NO_CONTENT.value());
+			//response.setStatus(HttpStatus.NO_CONTENT.value());
 		}
 		return myVehicleVO;
 	}

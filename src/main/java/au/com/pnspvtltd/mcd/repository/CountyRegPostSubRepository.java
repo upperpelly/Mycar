@@ -35,6 +35,12 @@ public interface CountyRegPostSubRepository extends JpaRepository<CountyRegPostS
 	//@QueryHints(@QueryHint(name = JDBC_MAX_ROWS, value = "1"))
 	public List<Integer> getPostCodeForLike(String substr);
 	
+	@Query("select CASE WHEN COUNT(countyRegPostSub) > 0 THEN true ELSE false END from CountyRegPostSub countyRegPostSub WHERE countyRegPostSub.state=?1 AND countyRegPostSub.postCode=?2")
+	public boolean existsPostcodeForState(String state,int postcode);
+	
+	@Query("select CASE WHEN COUNT(countyRegPostSub) > 0 THEN true ELSE false END from CountyRegPostSub countyRegPostSub WHERE countyRegPostSub.region=?1 AND countyRegPostSub.postCode=?2")
+	public boolean existsPostcodeForRegion(String region,int postcode);
+	
 	//public List<CountyRegPostSub> findByPostCode	
 	
 	//public CarModelTemplate getCarModelYear();

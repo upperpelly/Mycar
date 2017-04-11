@@ -65,7 +65,7 @@ public class CountyRegPostSub implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "TEMPLATECOUNTRYID")
+	@Column(name = "COUNTYREGPOSTSUBID")
 	public int getcountyRegPostSubid() {
 		return this.countyRegPostSubid;
 	}

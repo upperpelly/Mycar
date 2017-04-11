@@ -601,13 +601,43 @@ function registerEditDealerVehicleSearchModal(){
 		if(data.moveToUser)
 		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
 		
-		
+		alert(JSON.stringify(data));
 		var editDealerVehicleSearchForm = '<form id="edit-dealer-vehicle-search-content-form"><table>\
 			<tr><td>Search ID</td><td>' + data.carSearchId + '</td></tr>\
 			<tr><td>' + quotIdHiddenField + '</td></tr>\
 			<tr><td>Model Year</td><td>' + data.modelYear + '</td></tr>\
 			<tr><td>Model Name</td><td>' + data.modelName + '</td></tr>\
 			<tr><td>Model Display</td><td>' + data.modelDisplay + '</td></tr>\
+			<tr><td>Model Trim</td><td>' + data.modelTrim + '</td></tr>\
+			<tr><td>Finance</td><td>' + data.finance + '</td></tr>\
+			<tr><td>Insurance</td><td>' + data.insurance + '</td></tr>\
+			<tr><td>Dealer</td><td>' + data.dealer + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Body Type</td><td>' + data.bodyType + '</td></tr>\
+			<tr><td>Car Color</td><td>' + data.carColor + '</td></tr>\
+			<tr><td>State</td><td>' + data.state + '</td></tr>\
+			<tr><td>Region</td><td>' + data.region + '</td></tr>\
+			<tr><td>PostCode</td><td>' + data.postCode + '</td></tr>\
+			<tr><td>Finance Amount Min</td><td>' + data.finAmountMin + '</td></tr>\
+			<tr><td>Finance Amount Max</td><td>' + data.finAmountMax + '</td></tr>\
+			<tr><td>Support 24/7</td><td>' + data.support247 + '</td></tr>\
+			<tr><td>Road Side Assistance</td><td>' + data.roadSideAssistance + '</td></tr>\
+			<tr><td>Guarantee Replacement</td><td>' + data.guaranteeReplacement + '</td></tr>\
+			<tr><td>Hiring Car</td><td>' + data.hiringCar + '</td></tr>\
+			<tr><td>Comprehensive Cover</td><td>' + data.comprehensiveCover + '</td></tr>\
+			<tr><td>ThirdParty Cover</td><td>' + data.thirdPartyCover + '</td></tr>\
+			<tr><td>AusCapTer</td><td>' + data.ausCapTer + '</td></tr>\
+			<tr><td>SModel</td><td>' + data.sModel + '</td></tr>\
+			<tr><td>SMake</td><td>' + data.sMake + '</td></tr>\
+			<tr><td>Extra External 1</td><td>' + data.ExtraExter2 + '</td></tr>\
+			<tr><td>Extra External 2</td><td>' + data.ExtraExter3 + '</td></tr>\
+			<tr><td>Extra External 3</td><td>' + data.ExtraExter4 + '</td></tr>\
+			<tr><td>Extra External 4</td><td>' + data.ExtraExter5 + '</td></tr>\
+			<tr><td>Extra Internal 1</td><td>' + data.ExtraIntern1 + '</td></tr>\
+			<tr><td>Extra Internal 2</td><td>' + data.ExtraIntern2 + '</td></tr>\
+			<tr><td>Extra Internal 3</td><td>' + data.ExtraIntern3 + '</td></tr>\
+			<tr><td>Extra Internal 4</td><td>' + data.ExtraIntern4 + '</td></tr>\
+			<tr><td>Extra Internal 5</td><td>' + data.ExtraIntern5 + '</td></tr>\
 			</table></form>';
 		
 		$(".edit-dealer-vehicle-search-content").html(editDealerVehicleSearchForm);
@@ -1036,7 +1066,7 @@ function registerEditDealerVehicleDetailLogBookModal(){
 	//$(document.body).append(editDealerVehicleDetailLogBookModal);
 		
 	$('a.anchor-editDealerVehicleDetailLogBookModal').on('click', function(event) {
-		//alert("invoke sscnews click");
+		alert("invoke sscnews click");
 		$('#fuelCard4').toggle();
 		//document.getElementById("fuelCard4").style.display = "none";
 		var data = $(event.target).data('details');
@@ -1048,6 +1078,105 @@ function registerEditDealerVehicleDetailLogBookModal(){
 		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
 		
 		$('#fuelCard41').toggle();
+		var wsURL = 'api/Myvehicle/'+data.myVehicleId;
+		$.ajax({  
+			type: "GET",  
+			url: wsURL,
+			contentType:'application/json',
+			success: function(result){
+				alert(JSON.stringify(result));
+				var LogT = result.myVehicleLogBook;
+				outLogT="";
+				alert(LogT);
+				alert(result.myVehicleLogBook.length);
+				alert("viscuit");
+				if(LogT)
+					{
+					/*var logTripTable = '<table>\
+						<tr><th>'+"Trip Type"+'</th><th>'+"TripStart Addr"+'</th><th>'+"TripEnd Addr"+'</th><th>'+"Trip Date"+'</th><th>'+"OdoMeter Start"+'</th><th>'+"OdoMeter End"+'</th><th>'+"No of Kms"+'</th><th>'+"Purpose of Trim"+'</th><th>'+"Driver Name"+'</th><th>'+"Trip Log Date"+'</th></tr>\
+						<tr><td>' + data.myVehicleId + '</td>\
+						<td>' + data.year + '</td>\
+						<td>' + data.make + '</td>\
+						<td>' + data.model + '</td>\
+						<td>' + data.variant + '</td></tr>\
+						</table>';*/
+					logTlen = result.myVehicleLogBook.length;
+					outLogT += '<tr><th>'+"Trip Type"+'</th><th>'+"TripStart Addr"+'</th><th>'+"TripEnd Addr"+'</th><th>'+"Trip Date"+'</th><th>'+"OdoMeter Start"+'</th><th>'+"OdoMeter End"+'</th><th>'+"No of Kms"+'</th><th>'+"Purpose of Trip"+'</th><th>'+"Driver Name"+'</th><th>'+"Trip Log Date"+'</th></tr>';
+	           	    for(i=0;i<logTlen;i++)
+	          		 {
+	           	    	outLogT= outLogT+'<tr>'+'<td>'+result.myVehicleLogBook[i].tripType+'</td>'+'<td>'+result.myVehicleLogBook[i].fromLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].toLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].date+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterStartOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterEndOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].routeKm+'</td>'+'<td>'+result.myVehicleLogBook[i].tripDescription+'</td>'+'<td>'+result.myVehicleLogBook[i].flex1+'</td></tr>';
+	          		 }
+					}
+				else
+					{
+					outLogT='<h2>No records for Log Trips</h2>';
+					}
+				$('#logTripTable').html(outLogT);
+				
+				
+				var LogE = result.myVehicleFuelExpenses;
+				outLogE="";
+				if(LogE)
+				{
+					/*var  logServMainTable = '<table>\
+						<tr><th>'+"Type of Service"+'</th><th>'+"Date of Service"+'</th><th>'+"Mileage/OdoMeter @Service"+'</th><th>'+"Detail Work Performed"+'</th><th>'+"List of Service"+'</th><th>'+"Notes"+'</th><th>'+"Technician"+'</th><th>'+"Service & maintenancec Company"+'</th><th>'+"Uploadedd Maintenance record"+'</th></tr>\
+						<tr><td>' + data.myVehicleId + '</td>\
+						<td>' + data.year + '</td>\
+						<td>' + data.make + '</td>\
+						<td>' + data.model + '</td>\
+						<td>' + data.variant + '</td></tr>\
+						</table>';*/
+					logElen = result.myVehicleFuelExpenses.length;
+					outLogE += '<tr><th>'+"Expensive Type"+'</th><th>'+"Expensive Category"+'</th><th>'+"Expensive Date"+'</th><th>'+"Expensive Description"+'</th><th>'+"Amount"+'</th><th>'+"Uploaded Photo"+'</th></tr>';
+	           	    for(i=0;i<logElen;i++)
+	          		 {
+	           	    	outLogE= outLogE+'<tr>'+'<td>'+result.myVehicleFuelExpenses[i].recordType+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].business+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].date+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].others+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].amount+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].photoOfInvoice+'</td></tr>';
+	          		 }
+
+				}
+			else
+				{
+				outLogE='<h2>No records for log Expenses</h2>';
+				}
+				$('#logExpTable').html(outLogE);
+				
+				
+				
+				
+				var LogS = result.myVehicleServMaint;
+				outLogS="";
+				if(LogS)
+				{
+					/*var logExpTable = '<table>\
+						<tr><th>'+"Expensive Type"+'</th><th>'+"Expensive Category"+'</th><th>'+"Expensive Date"+'</th><th>'+"Expensive Description"+'</th><th>'+"Amount"+'</th><th>'+"Uploaded Photo"+'</th></tr>\
+						<tr><td>' + data.myVehicleId + '</td>\
+						<td>' + data.year + '</td>\
+						<td>' + data.make + '</td>\
+						<td>' + data.model + '</td>\
+						<td>' + data.variant + '</td></tr>\
+						</table>';
+					*/
+					logSlen = result.myVehicleServMaint.length;
+					outLogS += '<tr><th>'+"Type of Service"+'</th><th>'+"Date of Service"+'</th><th>'+"Mileage/OdoMeter @Service"+'</th><th>'+"Detail Work Performed"+'</th><th>'+"List of Service"+'</th><th>'+"Notes"+'</th><th>'+"Technician"+'</th><th>'+"Service & maintenancec Company"+'</th><th>'+"Uploaded Maintenance record"+'</th></tr>'; 
+						
+	           	    for(i=0;i<logSlen;i++)
+	          		 {
+	           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].flex1+'</td>'+'<td>'+result.myVehicleServMaint[i].flex2+'</td>'+'<td>'+result.myVehicleServMaint[i].flex3+'</td><td>'+result.myVehicleServMaint[i].mechanicName+'</td>'+'<td>'+result.myVehicleServMaint[i].companyName+'</td><td>'+result.myVehicleServMaint[i].flex4+'</td></tr>';
+	          		 }
+				}
+			else
+				{
+				outLogS='<h2>No records for Service maintenance</h2>';
+				}
+				$('#logServMainTable').html(outLogS);
+			}
+		});
+		
+		
+		
+		
+		
+		
 		//document.getElementById("fuelCard41").style.display = "block";
 		var editDealerVehicleDetailLogBookForm = '<table>\
 			<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Variant"+'</th></tr>\

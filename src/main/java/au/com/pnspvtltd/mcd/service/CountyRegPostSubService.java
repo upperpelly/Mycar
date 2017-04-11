@@ -15,4 +15,8 @@ public interface CountyRegPostSubService {
 	List<Integer> getPostCodeForCSR(String modelName, String modelDisplay, String modelYear);
 
 	List<Integer> getPostCodeForLike(String substr);
+
+	boolean existsPostcodeForState(String state, int postcode);
+
+	boolean existsPostcodeForRegion(String region, int postcode);
 }

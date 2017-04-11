@@ -2333,7 +2333,11 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 													  </ul> 
 													  <div class="tab-content"> 
 													    <div id="logTrip" class="tab-pane fade in active"> 
-													    <div class="col-md-12"><button id="LogNewButton">Log a New Trip</button></div> 
+													    <div class="row">
+													    <div class="col-md-6"><button id="LogNewButton">Log a New Trip</button></div>
+													    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+													    </div>
+													    
 														<div class="booking-section travelo-box" id="LogNew"> 
 														<form class="booking-form"> 
 												    	<div class="form-group row">
@@ -2394,11 +2398,21 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 															</div> 
 												        </div> 
 														</form> 
-														</div> 
+														</div>
+														<table id="logTripTable">
+														</table> 
 													    </div> 
 													    <div id="LogExp" class="tab-pane fade"> 
-														<div class="col-md-12"><button id="LogNewExpButton">Log a New Expenses</button></div> 
-													      <p>Your Expenses goes here</p> 
+													    <div class="row">
+													    <div class="col-md-6"><button id="LogNewExpButton">Log a New Expenses</button></div>
+													    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+													    </div>
+														 
+													      <p>Your Expenses goes here</p>
+													      
+													      
+													      <table id="logExpTable">
+														</table>  
 													    </div> 
 													    <div id="ServMain" class="tab-pane fade">
 														<div class="col-md-12"><button id="LogNewSerButton">Log New Service & Maintenance</button></div> 
@@ -2462,6 +2476,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 									                                </div>
 									                            </form>
 									                        </div>
+									                        <table id="logServMainTable"></table>
 													    </div>
 													  </div>
 												</div>

@@ -34,6 +34,21 @@ public class CountyRegPostSubController {
 
 	}
 	
+	@GetMapping(value = "statePostcode", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public boolean existsPostcodeForState(@RequestParam("state") String state,@RequestParam("postcode") int postcode) {
+		LOGGER.info("Received request to get bool for state postcode existence");
+		return countyRegPostSubService.existsPostcodeForState(state,postcode);
+
+	}
+	
+	
+
+	@GetMapping(value = "regionPostcode", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public boolean existsPostcodeForRegion(@RequestParam("region") String region,@RequestParam("postcode") int postcode) {
+		LOGGER.info("Received request to get bool for region postcode existence");
+		return countyRegPostSubService.existsPostcodeForRegion(region,postcode);
+
+	}
 	//Makes in select box
 	@GetMapping(value = "states", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<String> getAllStatesForCountry(@RequestParam("country") String country) {

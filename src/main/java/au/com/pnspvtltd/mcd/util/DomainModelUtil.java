@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.BeanUtilsBean;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -305,8 +306,37 @@ public class DomainModelUtil {
 	public MyVehicleVO FromMyVehicle(final MyVehicle myVehicle) {
 
 		MyVehicleVO myVehicleVO = new MyVehicleVO();
+		
 		try {
-			BeanUtils.copyProperties(myVehicleVO, myVehicle);
+			//BeanUtils.copyProperties(myVehicleVO, myVehicle);
+			org.springframework.beans.BeanUtils.copyProperties(myVehicle, myVehicleVO, new String[] {"myVehicleLogBook","myVehicleFuelExpenses","myVehicleServMaint"});
+			List<MyVehicleLogBookVO> myVehicleLogBookVOs = new ArrayList<>();
+			for (MyVehicleLogBook myVehicleLogBook : myVehicle.getMyVehicleLogBook()) {
+				MyVehicleLogBookVO myVehicleLogBookVO = new MyVehicleLogBookVO();
+				BeanUtils.copyProperties(myVehicleLogBookVO, myVehicleLogBook);
+				myVehicleLogBookVOs.add(myVehicleLogBookVO);
+			}
+			myVehicleVO.setMyVehicleLogBook(myVehicleLogBookVOs);
+			
+			
+			List<MyVehicleFuelExpensesVO> myVehicleFuelExpensesVOs = new ArrayList<>();
+			for (MyVehicleFuelExpenses myVehicleFuelExpenses : myVehicle.getMyVehicleFuelExpenses()) {
+				MyVehicleFuelExpensesVO myVehicleFuelExpensesVO = new MyVehicleFuelExpensesVO();
+				BeanUtils.copyProperties(myVehicleFuelExpensesVO, myVehicleFuelExpenses);
+				myVehicleFuelExpensesVOs.add(myVehicleFuelExpensesVO);
+			}
+			myVehicleVO.setMyVehicleFuelExpenses(myVehicleFuelExpensesVOs);
+			
+			
+			
+			List<MyVehicleServMaintVO> myVehicleServMaintVOs = new ArrayList<>();
+			for (MyVehicleServMaint myVehicleServMaint : myVehicle.getMyVehicleServMaint()) {
+				MyVehicleServMaintVO myVehicleServMaintVO = new MyVehicleServMaintVO();
+				BeanUtils.copyProperties(myVehicleServMaintVO, myVehicleServMaint);
+				myVehicleServMaintVOs.add(myVehicleServMaintVO);
+			}
+			myVehicleVO.setMyVehicleServMaint(myVehicleServMaintVOs);
+			
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
