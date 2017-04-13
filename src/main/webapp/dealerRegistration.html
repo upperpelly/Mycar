@@ -619,10 +619,10 @@ $(document).ready( function() {
                 <div class="seperator"><label>OR</label></div>
                 <form>
                     <div class="form-group">
-                        <input type="text" class="input-text full-width" placeholder="email address">
+                        <input type="text" class="input-text full-width" placeholder="email address" ng-model="dealerEmail" name="dealerEmail" id="dealerEmail">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="input-text full-width" placeholder="password">
+                        <input type="password" class="input-text full-width" placeholder="password" ng-model="dealerPass" name="dealerPass" id="dealerPass" >
                     </div>
                     <div class="form-group">
                         <a href="#" class="forgot-password pull-right">Forgot password?</a>
@@ -631,6 +631,9 @@ $(document).ready( function() {
                                 <input type="checkbox"> Remember me
                             </label>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" ng-click="loginDealerForm()">Sign IN</button>
                     </div>
                 </form>
                 <div class="seperator"></div>

@@ -1394,6 +1394,24 @@ mainApp1.controller(
 				        document.getElementById("third1").click();	        
 					};
 					
+					$scope.loginDealerForm = function() {
+						alert("in Delaer form");
+
+						var jsonInputToAPI = {"email":"","password":""};
+						jsonInputToAPI.email=document.getElementById("dealerEmail").value;
+						jsonInputToAPI.password=document.getElementById("dealerPass").value;
+						var wsURL = 'api/dealer/login';
+						
+					    $http({
+									method : 'POST',
+									url : wsURL,
+									data: jsonInputToAPI
+													
+								}).success(function(data) {
+									alert("Successfully Logged In");	
+												});	
+					};
+					
 					$scope.submitSearchForm = function() {
 						alert("came here");
 						var newCarVehDeal=false;
