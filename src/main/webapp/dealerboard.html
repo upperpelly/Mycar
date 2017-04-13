@@ -1527,7 +1527,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 	<option value="json"> FORMULAE</option>
 	</select><br />
 
-	<!-- <div id="drop">Drop a spreadsheet file here to see sheet data</div> -->
+	<div id="drop">Drop a spreadsheet file here to see sheet data</div>
 	<p><input type="file" name="xlfile" id="xlf" /> ... or click here to select a file</p>
 	<textarea id="b64data">... or paste a base64-encoding here</textarea>
 	<input type="button" id="dotext" value="Click here to process the base64 text" onclick="b64it();"/><br />
@@ -2331,6 +2331,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 	/*jshint browser:true */
 	/*global XLSX */
 	var X = XLSX;
+	alert();
 	var XW = {
 	/* worker message */
 	msg: 'xlsx',

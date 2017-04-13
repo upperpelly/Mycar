@@ -46,6 +46,195 @@ public class Dealer implements Serializable {
 	List<DealerSearchServMaint> dealSearchServMaint;
 	List<DealerSearchTransp> dealSearchTransp;
 
+	List<VehicleDealerDetails> vehicleDealerDetails;
+	List<VehicleDealerFinanceDetails> vehicleDealerFinanceDetails;
+	List<VehicleDealerInsuranceDetails> vehicleDealerInsuranceDetails;
+	List<VehicleDealerServMaintDetails> vehicleDealerServMaintDetails;
+	List<VehicleDealerMakeList> vehicleDealerMakeList;
+	List<VehicleDealerAreaOfOperState> vehicleDealerAreaOfOperState;
+	List<VehicleDealerAreaOfOperRegion> vehicleDealerRegion;
+	List<VehicleDealerAreaOfOperPostCode> vehicleDealerPostCode;
+	
+	// start
+	
+	
+	private boolean isServMaint;
+	private boolean isSparesAccess;
+	private boolean isVehTransProv;
+	private boolean isAreaOfOperartinAllAus;
+	private boolean isAreaOfOperartinStates;
+	private boolean isAreaOfOperartinPostcodes;
+	private boolean isAllMakes;
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public List<VehicleDealerDetails> getVehicleDealerDetails() {
+		return vehicleDealerDetails;
+	}
+
+	public void setVehicleDealerDetails(
+			List<VehicleDealerDetails> vehicleDealerDetails) {
+		this.vehicleDealerDetails = vehicleDealerDetails;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public List<VehicleDealerFinanceDetails> getVehicleDealerFinanceDetails() {
+		return vehicleDealerFinanceDetails;
+	}
+
+	public void setVehicleDealerFinanceDetails(
+			List<VehicleDealerFinanceDetails> vehicleDealerFinanceDetails) {
+		this.vehicleDealerFinanceDetails = vehicleDealerFinanceDetails;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public List<VehicleDealerInsuranceDetails> getVehicleDealerInsuranceDetails() {
+		return vehicleDealerInsuranceDetails;
+	}
+
+	public void setVehicleDealerInsuranceDetails(
+			List<VehicleDealerInsuranceDetails> vehicleDealerInsuranceDetails) {
+		this.vehicleDealerInsuranceDetails = vehicleDealerInsuranceDetails;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public List<VehicleDealerServMaintDetails> getVehicleDealerServMaintDetails() {
+		return vehicleDealerServMaintDetails;
+	}
+
+	public void setVehicleDealerServMaintDetails(
+			List<VehicleDealerServMaintDetails> vehicleDealerServMaintDetails) {
+		this.vehicleDealerServMaintDetails = vehicleDealerServMaintDetails;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public List<VehicleDealerMakeList> getVehicleDealerMakeList() {
+		return vehicleDealerMakeList;
+	}
+
+	public void setVehicleDealerMakeList(
+			List<VehicleDealerMakeList> vehicleDealerMakeList) {
+		this.vehicleDealerMakeList = vehicleDealerMakeList;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public List<VehicleDealerAreaOfOperState> getVehicleDealerAreaOfOperState() {
+		return vehicleDealerAreaOfOperState;
+	}
+
+	public void setVehicleDealerAreaOfOperState(
+			List<VehicleDealerAreaOfOperState> vehicleDealerAreaOfOperState) {
+		this.vehicleDealerAreaOfOperState = vehicleDealerAreaOfOperState;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public List<VehicleDealerAreaOfOperRegion> getVehicleDealerRegion() {
+		return vehicleDealerRegion;
+	}
+
+	public void setVehicleDealerRegion(
+			List<VehicleDealerAreaOfOperRegion> vehicleDealerRegion) {
+		this.vehicleDealerRegion = vehicleDealerRegion;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public List<VehicleDealerAreaOfOperPostCode> getVehicleDealerPostCode() {
+		return vehicleDealerPostCode;
+	}
+
+	public void setVehicleDealerPostCode(
+			List<VehicleDealerAreaOfOperPostCode> vehicleDealerPostCode) {
+		this.vehicleDealerPostCode = vehicleDealerPostCode;
+	}
+
+	@Column(name = "ISSERVMAINT") public boolean isServMaint() {
+		return isServMaint;
+	}
+
+	public void setServMaint(boolean isServMaint) {
+		this.isServMaint = isServMaint;
+	}
+
+	@Column(name = "ISSPARESACCESS") public boolean isSparesAccess() {
+		return isSparesAccess;
+	}
+
+	public void setSparesAccess(boolean isSparesAccess) {
+		this.isSparesAccess = isSparesAccess;
+	}
+
+	@Column(name = "ISVEHTRANSPROV") public boolean isVehTransProv() {
+		return isVehTransProv;
+	}
+
+	public void setVehTransProv(boolean isVehTransProv) {
+		this.isVehTransProv = isVehTransProv;
+	}
+
+	@Column(name = "ISAREAOFOPERALLAUS") public boolean isAreaOfOperartinAllAus() {
+		return isAreaOfOperartinAllAus;
+	}
+
+	public void setAreaOfOperartinAllAus(boolean isAreaOfOperartinAllAus) {
+		this.isAreaOfOperartinAllAus = isAreaOfOperartinAllAus;
+	}
+
+	@Column(name = "ISAREAOFOPERINSTATES") public boolean isAreaOfOperartinStates() {
+		return isAreaOfOperartinStates;
+	}
+
+	public void setAreaOfOperartinStates(boolean isAreaOfOperartinStates) {
+		this.isAreaOfOperartinStates = isAreaOfOperartinStates;
+	}
+
+	@Column(name = "ISAREAOFOPERPOSTCODE") public boolean isAreaOfOperartinPostcodes() {
+		return isAreaOfOperartinPostcodes;
+	}
+
+	public void setAreaOfOperartinPostcodes(boolean isAreaOfOperartinPostcodes) {
+		this.isAreaOfOperartinPostcodes = isAreaOfOperartinPostcodes;
+	}
+
+	@Column(name = "ISALLMAKES")public boolean isAllMakes() {
+		return isAllMakes;
+	}
+
+	public void setAllMakes(boolean isAllMakes) {
+		this.isAllMakes = isAllMakes;
+	}
+
+	@Column(name = "ISMAKELIST") public boolean isMakeList() {
+		return isMakeList;
+	}
+
+	public void setMakeList(boolean isMakeList) {
+		this.isMakeList = isMakeList;
+	}
+
+	@Column(name = "LICENSENO") public String getLicenseNo() {
+		return licenseNo;
+	}
+
+	public void setLicenseNo(String licenseNo) {
+		this.licenseNo = licenseNo;
+	}
+
+	@Column(name = "DEALGROUP") public String getDealGroup() {
+		return dealGroup;
+	}
+
+	public void setDealGroup(String dealGroup) {
+		this.dealGroup = dealGroup;
+	}
+
+	private boolean isMakeList;
+	private String licenseNo;
+	private String dealGroup;
+	
+	
+	
+	
+	
+	
 	public @Column(name = "ISADMIN") boolean isAdmin() {
 		return isAdmin;
 	}

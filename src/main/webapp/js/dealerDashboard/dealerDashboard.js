@@ -290,6 +290,7 @@ function registerEditDealerVehicleQuotationModal(){
 		
 		var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
 		//alert(jsonInput);
+		console.log(JSON.stringify(jsonInput));
 		
 		$.ajax({  
 			type: "POST",  
@@ -676,7 +677,7 @@ mainApp1.controller('myController12',function($scope,$http) {
 																	"insthirdInsuanceMax": 0,
 																	"finAmountMin": 0,
 																	"newCar": false,
-																	"isStockItem": autoBid
+																	"StockItem": autoBid
 													}
 													
 													//alert("Before Call"+$('#accidentHistory').val());

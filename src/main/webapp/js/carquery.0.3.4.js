@@ -470,6 +470,37 @@ CarQuery.prototype = {
      $("select#"+model_select_id).bind('change', function(){sender.modelSelectChange();});
     },
 
+    initMakeTrim922: function(year_select_id, make_select_id)
+    {
+        //alert("came here");
+    	
+    	//Set the ids for the select elements
+     this.year_select_id =  year_select_id;
+     this.make_select_id =  make_select_id;
+     //this.model_select_id = model_select_id;
+     //this.trim_select_id = trim_select_id;
+     //this.autotrim_select_id = autotrim_select_id;
+     //Populate the car-years select element
+     this.populateYearSelect();
+
+     var sender = this;
+
+     //Set the change event for the years dropdown to populate the makes select
+     $("select#"+year_select_id).bind('change', function(){sender.yearSelectChange();});
+
+     //Set the change event for the makes dropdown to populate the models select
+     $("select#"+make_select_id).bind('change', function(){sender.makeSelectChange();});
+
+     //Set the change event for the models dropdown to populate the trims select
+     //$("select#"+model_select_id).bind('change', function(){sender.modelSelectChange();});
+
+     //Set the change event for the trim dropdown to save the selected trim
+     //$("select#"+trim_select_id).bind('change', function(){sender.trimSelectChange();});
+     
+     //$("select#"+autotrim_select_id).bind('change', function(){sender.autotrimSelectChange();});
+    },
+    
+    
     initYearMakeModelTrim: function(year_select_id, make_select_id, model_select_id, trim_select_id,autotrim_select_id)
     {
         //alert("came here");

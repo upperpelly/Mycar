@@ -26,16 +26,198 @@ public class DealerVO {
 	private int postcode;
 
 	List<InventoryVO> inventory;
-
 	List<DealerSearchVO> dealSearch;
 	List<DealerSearchInsuranceVO> dealSearchInsurance;
 	List<DealerSearchFinanceVO> dealSearchFinance;
 	List<DealerSearchServMaintVO> dealSearchServMaint;
 	List<DealerSearchTranspVO> dealSearchTransp;
+	
+	
+	List<VehicleDealerDetailsVO> vehicleDealerDetails;
+	List<VehicleDealerFinanceDetailsVO> vehicleDealerFinanceDetails;
+	List<VehicleDealerInsuranceDetailsVO> vehicleDealerInsuranceDetails;
+	List<VehicleDealerServMaintDetailsVO> vehicleDealerServMaintDetails;
+	List<VehicleDealerMakeListhVO> vehicleDealerMakeList;
+	List<VehicleDealerAreaOfOperStateVO> vehicleDealerAreaOfOperState;
+	List<VehicleDealerAreaOfOperRegionVO> vehicleDealerRegion;
+	List<VehicleDealerAreaOfOperPostCodeVO> vehicleDealerPostCode;
+	
+	// start
+	
+	
+	private boolean isServMaint;
+	private boolean isSparesAccess;
+	private boolean isVehTransProv;
+	private boolean isAreaOfOperartinAllAus;
+	private boolean isAreaOfOperartinStates;
+	private boolean isAreaOfOperartinPostcodes;
+	private boolean isAllMakes;
+	
+	public List<VehicleDealerDetailsVO> getVehicleDealerDetails() {
+		return vehicleDealerDetails;
+	}
+
+	public void setVehicleDealerDetails(
+			List<VehicleDealerDetailsVO> vehicleDealerDetails) {
+		this.vehicleDealerDetails = vehicleDealerDetails;
+	}
+	
+	public List<VehicleDealerFinanceDetailsVO> getVehicleDealerFinanceDetails() {
+		return vehicleDealerFinanceDetails;
+	}
+
+	public void setVehicleDealerFinanceDetails(
+			List<VehicleDealerFinanceDetailsVO> vehicleDealerFinanceDetails) {
+		this.vehicleDealerFinanceDetails = vehicleDealerFinanceDetails;
+	}
+	
+	public List<VehicleDealerInsuranceDetailsVO> getVehicleDealerInsuranceDetails() {
+		return vehicleDealerInsuranceDetails;
+	}
+
+	public void setVehicleDealerInsuranceDetails(
+			List<VehicleDealerInsuranceDetailsVO> vehicleDealerInsuranceDetails) {
+		this.vehicleDealerInsuranceDetails = vehicleDealerInsuranceDetails;
+	}
+	
+	public List<VehicleDealerServMaintDetailsVO> getVehicleDealerServMaintDetails() {
+		return vehicleDealerServMaintDetails;
+	}
+
+	public void setVehicleDealerServMaintDetails(
+			List<VehicleDealerServMaintDetailsVO> vehicleDealerServMaintDetails) {
+		this.vehicleDealerServMaintDetails = vehicleDealerServMaintDetails;
+	}
+	
+	public List<VehicleDealerMakeListhVO> getVehicleDealerMakeList() {
+		return vehicleDealerMakeList;
+	}
+
+	public void setVehicleDealerMakeList(
+			List<VehicleDealerMakeListhVO> vehicleDealerMakeList) {
+		this.vehicleDealerMakeList = vehicleDealerMakeList;
+	}
+	
+	public List<VehicleDealerAreaOfOperStateVO> getVehicleDealerAreaOfOperState() {
+		return vehicleDealerAreaOfOperState;
+	}
+
+	public void setVehicleDealerAreaOfOperState(
+			List<VehicleDealerAreaOfOperStateVO> vehicleDealerAreaOfOperState) {
+		this.vehicleDealerAreaOfOperState = vehicleDealerAreaOfOperState;
+	}
+	
+	public List<VehicleDealerAreaOfOperRegionVO> getVehicleDealerRegion() {
+		return vehicleDealerRegion;
+	}
+
+	public void setVehicleDealerRegion(
+			List<VehicleDealerAreaOfOperRegionVO> vehicleDealerRegion) {
+		this.vehicleDealerRegion = vehicleDealerRegion;
+	}
+	
+	public List<VehicleDealerAreaOfOperPostCodeVO> getVehicleDealerPostCode() {
+		return vehicleDealerPostCode;
+	}
+
+	public void setVehicleDealerPostCode(
+			List<VehicleDealerAreaOfOperPostCodeVO> vehicleDealerPostCode) {
+		this.vehicleDealerPostCode = vehicleDealerPostCode;
+	}
+
+	public boolean isServMaint() {
+		return isServMaint;
+	}
+
+	public void setServMaint(boolean isServMaint) {
+		this.isServMaint = isServMaint;
+	}
+
+	public boolean isSparesAccess() {
+		return isSparesAccess;
+	}
+
+	public void setSparesAccess(boolean isSparesAccess) {
+		this.isSparesAccess = isSparesAccess;
+	}
+
+	public boolean isVehTransProv() {
+		return isVehTransProv;
+	}
+
+	public void setVehTransProv(boolean isVehTransProv) {
+		this.isVehTransProv = isVehTransProv;
+	}
+
+	public boolean isAreaOfOperartinAllAus() {
+		return isAreaOfOperartinAllAus;
+	}
+
+	public void setAreaOfOperartinAllAus(boolean isAreaOfOperartinAllAus) {
+		this.isAreaOfOperartinAllAus = isAreaOfOperartinAllAus;
+	}
+
+	public boolean isAreaOfOperartinStates() {
+		return isAreaOfOperartinStates;
+	}
+
+	public void setAreaOfOperartinStates(boolean isAreaOfOperartinStates) {
+		this.isAreaOfOperartinStates = isAreaOfOperartinStates;
+	}
+
+	public boolean isAreaOfOperartinPostcodes() {
+		return isAreaOfOperartinPostcodes;
+	}
+
+	public void setAreaOfOperartinPostcodes(boolean isAreaOfOperartinPostcodes) {
+		this.isAreaOfOperartinPostcodes = isAreaOfOperartinPostcodes;
+	}
+
+	public boolean isAllMakes() {
+		return isAllMakes;
+	}
+
+	public void setAllMakes(boolean isAllMakes) {
+		this.isAllMakes = isAllMakes;
+	}
+
+	public boolean isMakeList() {
+		return isMakeList;
+	}
+
+	public void setMakeList(boolean isMakeList) {
+		this.isMakeList = isMakeList;
+	}
+
+	public String getLicenseNo() {
+		return licenseNo;
+	}
+
+	public void setLicenseNo(String licenseNo) {
+		this.licenseNo = licenseNo;
+	}
+
+	public String getDealGroup() {
+		return dealGroup;
+	}
+
+	public void setDealGroup(String dealGroup) {
+		this.dealGroup = dealGroup;
+	}
+
+	private boolean isMakeList;
+	private String licenseNo;
+	private String dealGroup;
+	
+	
+	
 
 	List<VehicleQuotationVO> vehicleQuotation;
 	List<InsuranceQuotationVO> insuranceQuotation;
 	List<FinanceQuotationVO> financeQuotation;
+	
+	
+	
 
 	public Long getDealerId() {
 		return dealerId;

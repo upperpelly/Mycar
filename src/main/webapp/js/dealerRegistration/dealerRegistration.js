@@ -26,7 +26,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellCountry(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }// append row to the HTML table
         function appendRow16() {
@@ -35,7 +35,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellExpertingRating(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }// append row to the HTML table
         function appendRow15() {
@@ -44,8 +44,9 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellUserRating(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
+            alert("ca"+$('#userRating10').val());
         }// append row to the HTML table
         function appendRow14() {
             var tbl = document.getElementById('my-table14'), // table reference
@@ -53,7 +54,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFittingInternal(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }// append row to the HTML table
         function appendRow13() {
@@ -62,7 +63,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFittingExternal(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }// append row to the HTML table
         function appendRow12() {
@@ -71,7 +72,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellVideos(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }// append row to the HTML table
         function appendRow11() {
@@ -80,7 +81,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellVehicleReviews(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -90,17 +91,18 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellPhotos(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
         function appendRow9() {
+        	alert("append invoke");
             var tbl = document.getElementById('my-table9'), // table reference
                 row = tbl.insertRow(tbl.rows.length),      // append table row
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellRelatedModels(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -110,7 +112,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellOptionalEquipmentAddOns(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -120,7 +122,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFullSpecStandardEquip(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -130,7 +132,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellWarranty(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -140,7 +142,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFullSpecWheels(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -150,7 +152,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFullSpecFuel(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -160,7 +162,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFullSpecDimension(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
      // append row to the HTML table
@@ -170,7 +172,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellFullSpecEngine(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
         
@@ -181,7 +183,7 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellAvailableColour(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
         }
         function appendRow() {
@@ -190,24 +192,301 @@ var isChecked = false;
                 i;
             // insert table cells to the new row
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
-                createCell(row.insertCell(i), i, 'row');
+            	createCellOptionalFeaturesAddons(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
+            alert("ca"+$('#createCellOptionalFeaturesAddons2').val());
         }
         // create DIV element and append to the table cell
-        function createCell(cell, text, style) {
+        function createCellOptionalFeaturesAddons(cell, row, text, style) {
             var div = document.createElement('div'); // create DIV element
                 //txt = document.createTextNode(text); // create text node
             
             var newInput = document.createElement("INPUT");
-            newInput.id = "text" + text;
-            newInput.name = "text" + text;
+            newInput.id = "createCellOptionalFeaturesAddons" +row + text;
+            newInput.name = "createCellOptionalFeaturesAddons" +row+ text;
             newInput.type = "text";
             
             div.appendChild(newInput);                    // append text node to the DIV
             div.setAttribute('class', style);        // set DIV class attribute
-            div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
             cell.appendChild(div);                   // append DIV to the table cell
         }
+        
+        
+        // create DIV element and append to the table cell
+        function createCellAvailableColour(cell, row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "availableColour" + +row + text;
+            newInput.name = "availableColour" +row +  text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFullSpecEngine(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fullSpecEngine" + row +text;
+            newInput.name = "fullSpecEngine" + row +text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFullSpecDimension(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fullSpecDimension" + row+text;
+            newInput.name = "fullSpecDimension" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFullSpecFuel(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fullSpecFuel" + row+text;
+            newInput.name = "fullSpecFuel" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFullSpecWheels(cell,  row,text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fullSpecWheels" + row+text;
+            newInput.name = "fullSpecWheels" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellWarranty(cell,  row,text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "warranty" + row+text;
+            newInput.name = "warranty" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFullSpecStandardEquip(cell,  row,text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fullSpecStandardEquip" + row+text;
+            newInput.name = "fullSpecStandardEquip" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellOptionalEquipmentAddOns(cell,  row,text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "optionalEquipmentAddOns" +row+ text;
+            newInput.name = "optionalEquipmentAddOns" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellRelatedModels(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "relatedModels" +row+ text;
+            newInput.name = "relatedModels" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellPhotos(cell,  row,text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "photo" + row+text;
+            newInput.name = "photo" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellVehicleReviews(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "vehicleReviews" + row+text;
+            newInput.name = "vehicleReviews" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellVideos(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "videos" + row+text;
+            newInput.name = "videos" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFittingExternal(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fittingExternal" + row+text;
+            newInput.name = "fittingExternal" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellFittingInternal(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "fittingInternal" + row+text;
+            newInput.name = "fittingInternal" + row+text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellUserRating(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "userRating" + row+ text;
+            newInput.name = "userRating" + row+ text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellExpertingRating(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "expertingRating" + row+ text;
+            newInput.name = "expertingRating" + row+ text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        // create DIV element and append to the table cell
+        function createCellCountry(cell,  row, text, style) {
+            var div = document.createElement('div'); // create DIV element
+                //txt = document.createTextNode(text); // create text node
+            
+            var newInput = document.createElement("INPUT");
+            newInput.id = "country" + row+ text;
+            newInput.name = "country" + row+ text;
+            newInput.type = "text";
+            
+            div.appendChild(newInput);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
+        }
+        
+        
+        
         
      // append column to the HTML table
         function appendColumn() {
@@ -371,14 +650,14 @@ var isChecked = false;
 
 
 // Check if "key" exists in the storage
-var value = $.jStorage.get("key");
+/*//var value = $.jStorage.get("key");
 if(!value){
     // if not - load the data from the server
 //alert("can inside");
     //value = load_data_from_server()
     // and save it
     $.jStorage.set("key",value);
-}
+}*/
 //alert("can"+value.userId);
 
 function signingout(){
@@ -1170,66 +1449,1440 @@ function redirect() {
 
 
 //angular JS start
-var mainApp1 = angular.module("mainApp1", []);
-mainApp1.controller(
-				'myController1',function($scope, $http) {
-					$scope.firstForm = function() {
-						alert("in first form");
-						$('li>a').addClass('dropdown-toggle');
-				        $('li>a').attr('data-toggle','pill');
-					}
-					$scope.submitSearchForm = function() {
+var mainAppMrp = angular.module("mainAppMrp", []);
+mainAppMrp.controller('mrpController1',function($scope, $http) {
+						$scope.submitSearchForm = function() {
+												//alert("came here");
 												
-												var jsonInputToAPI = {"userId":userId,
-														"myVehicleVO":{
-															"myVehicleId":null,
-															"year": $('#car-years').val(),															      
-															"make":$('#car-makes').val(),
-																	"model" :$('#car-models').val(),
-																	 "variant":$('#car-model-trims').val(),
-																	"vin":$('#vin').val(),
-																	"regNum":$('#regNo').val(),
-																	"regState":$('#car-model-trims').val(),
-																	"regExpDate":null,
-																	"insProv":$('#regState').val(),
-																	"insProvMan":$('#insProv').val(),
-																	"insPremPaid":$('#insPrePaid').val(),
-																	"insPremPaidFreq":$('#premPaidFreq').val(),
-																	"insExpiry":null,	
-																	"odoMeter":$('#odoMeter').val(),	
-																	"lastServiceDt":null,	
-																	"nextServiceDt":null,	
-																	"nextServKms":$('#nextServMaiKms').val(),	
-																	"finProvider":$('#finProv').val(),	
-																	"loanAmt1":$('#loanAmount').val(),	
-																	"loanTakenDt":null,
-																		"loanPaidFreq":$('#loanPaidFreq').val(),	
-																	"loanAmt2":$('#laonAmount1').val(),	
-																	"loanPeriod":$('#laonPeriod').val(),	
-																	"loanInterest":$('#laonIntRate').val(),
-																		"fuelCardProvider":$('#fuelCardProv').val(),	
-																	"valFuelCard":$('#valFuelCard').val(),	
-																	"fuelType":$('#fuelType').val(),
-																		"photo1":$('#photo1').val(),	
-																	"photo2":$('#photo2').val(),	
-																	"photo3":$('#photo3').val(),
-																		"flex1":"flex1",	
-																	"flex2":"flex1",	
-																	"flex3":"flex1",
-																		"flex4":"flex1",	
-																	"flex5":12,	
-																	"flex6":12,
-																	"flex7":12,
-																		"flex8":null,	
-																	"flex9":null
-														}
-														}
+								                var jsonInputToAPI = {"tempCarModelHeaderId": null,
+														  "modelYear": $('#car-years').val(),
+														  "modelDisplay": $('#Make').val(),
+														  "modelName": $('#Model').val(),
+														  "modelVariant":$('#Variant').val(),
+														 "modelSeries":$('#Series').val(),
+														  "modelBatch":$('#Batch').val(),
+														  "engineSize" : $('#engineSizeHead').val(),
+														  "cylinder" : $('#cylinderHead').val(),
+														  "noOfGears" : $('#numberofGearsHead').val(),
+														 "transimission" : $('#transmissionHead').val(),
+														"driveType" :  $('#driveTypeHead').val(),
+														"fuelType" :  $('#fuelTypeHead').val(),
+														"modelDoors" :  $('#numberofDoorsHead').val(),
+														"modelBody" :  $('#bodyTypeHead').val(),
+														"modelSeats":  $('#seatingCapacityHead').val(),
+														"manfYear" :  $('#manufactureYearHead').val(),
+														"creationDate" : null,
+														"modifiedDate" : null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null,
+														  "modelTrim":$('#Trim').val(), 
+														   "carModel": [
+														    {
+														      "tempCarModelOverviewId": null,
+														      
+															
+														 "price": $('#priceOverview').val(),
+														"priceGuideEGC":$('#priceGuideEGC').val(),
+														 "drive":	$('#driveOverview').val(),
+														 "Badge":$('#badgeOverview').val(),	
+														 "fuelType":$('#fuelTypeOverview').val(),
+														 "series":	$('#seriesOverview').val(),
+														 "recommendedRonRating":$('#recommendedRONRating').val(),
+														 "body":$('#bodyOverview').val(),
+														 "releaseYear":$('#releaseYear').val(),
+														 "noOfDoors":$('#noofDoors').val(),
+														 "vin":$('#VIN').val(),
+														 "seatCapacity":$('#seatCapacity').val(),
+														 "countryOfOrigin":$('#countryofOrigin').val(),
+														 "transmission":$('#TransmissionOver').val(),
+														 "overallGreenStarRating":$('#OverallGreenStarRating').val(),
+														 "ancapSafetyRating":$('#ANCAPSafetyRating').val(),
+														 "NoOfGears":$('#NumberofGears').val(),
+														 "steering":$('#Steering').val(),
+														 "manfYear":$('#ManufactureYear').val(),
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
 
+
+
+
+														    }														  ],
+														  "carModel1": [
+														    {
+														      "tempCarModelPricingId": null,
+														      
+														 "prices":$('#pricesPricing').val(),
+														 "redbookPriceGuide":$('#redbookPriceGuide').val(),
+														 "privatePriceGuideMin":$('#privatePriceGuideMin').val(),	
+														 "privatePriceGuideMax":$('#privatePriceGuideMax').val(),	
+														 "tradePriceGuideMin":$('#tradePriceGuideMin').val(),	
+														 "tradePriceGuideMax":$('#tradePriceGuideMax').val(),
+														 "averageKmMin":$('#averageKmMin').val(),
+														 "averageKmMax":$('#averageKmMax').val(),
+														 "priceWhenNew":$('#priceWhenNewState').val(),
+														 "state":$('#statePricing').val(),
+														 "rego":$('#regoPricing').val(),
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    }														  ],
+														  "carModel2": [
+														    {
+														      "tempCarModelOptFeatId": null,
+														      
+															
+															 "prices":null,
+															"optionaFeature":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+
+														{
+														     "tempCarModelOptFeatId": null,
+														      
+															
+															 "prices":null,
+															"optionaFeature":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    }
+														  ],
+														  "carModel3": [
+														    {
+														      "tempCarModelColourId": null,
+
+														"price":null,
+														 "availableColour":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    },
+
+														{
+														     "tempCarModelColourId": null,
+
+														"price":null,
+														 "availableColour":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    }
+														  ],
+														  "carModel4": [
+														    {
+														      "tempCarModelFullSpecId": null,
+
+														"specDescription":null,
+														"fullSpecValue":null,
+															
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    
+														        {
+														                  "tempCarModelFullSpecId": null,
+
+														"specDescription":null,
+														"fullSpecValue":null,
+															
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														          }
+														  ], "carModel5": [
+														    {
+														      "tempCarModelFullSpecDimId": null,
+														      
+														       "specDescription":null,
+														 "fullSpecValue":null,
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    
+														        {
+														            "tempCarModelFullSpecDimId": null,
+														      
+														       "specDescription":null,
+														 "fullSpecValue":null,
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														          }
+														  ], "carModel6": [
+														    {
+														      "tempCarModelFullSpecFuelId": null,
+
+														"specDescription":null,
+														"fullSpecValue":null,
+															
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    
+														        {
+														                  "tempCarModelFullSpecFuelId": null,
+
+														"specDescription":null,
+														"fullSpecValue":null,
+															
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														          }
+														  ], "carModel7": [
+														    {
+														      "tempCarModelFullSpecWarrantyId": null,
+
+
+
+															
+														"specDescription":null,
+														 "fullSpecValue":null,
+																"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+
+														    },
+														    {
+														      "tempCarModelFullSpecWarrantyId": null,
+
+
+
+															
+														"specDescription":null,
+														 "fullSpecValue":null,
+																"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel8": [
+														    {
+														      "tempCarModelFullSpecStandEqId": null,
+														"specDescription":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null	
+														    },
+														    {
+														      "tempCarModelFullSpecStandEqId": null,
+														"specDescription":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null	
+														      }
+														  ], "carModel9": [
+														    {
+														      "tempCarModelOptEqpAddOnId": null,
+														"specDescription":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null	
+
+
+														    },
+														    {
+														      "tempCarModelOptEqpAddOnId": null,
+														"specDescription":null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null	
+														 }
+														  ], "carModel10": [
+														    {
+														      "tempCarModelRelatedModelId": null,
+														"realatedModelTrim":null,
+														"relatedModelDescription":null,
+														"relatedModelPriceWhenNew":null,
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    {
+														      "tempCarModelRelatedModelId": null,
+														"realatedModelTrim":null,
+														"relatedModelDescription":null,
+														"relatedModelPriceWhenNew":null,
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel11": [
+														    {
+														      "tempCarModelPhotosId": null,
+														 "specDescription":null,
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+
+														    },
+														    {
+														       "tempCarModelPhotosId": null,
+														 "specDescription":null,
+															"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel12": [
+														    {
+														      "tempCarModelVehReviewId": null,
+														      "review1": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    },
+														    {
+														        "tempCarModelVehReviewId": null,
+														      "review1": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel13": [
+														    {
+														      "tempCarModelVideosId": null,
+														      "ylink1": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    {
+														        "tempCarModelVideosId": null,
+														      "ylink1": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel14": [
+														    {
+														      "tempCarModelExtFittingId": null,
+														      "extFittingDescription": null,
+														      "price": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    {
+														        "tempCarModelExtFittingId": null,
+														      "extFittingDescription": null,
+														      "price": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel15": [
+														    {
+														      "tempCarModelIntFittingId": null,
+														      "intFittingDescription": null,
+														      "price": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														    },
+														    {
+														        "tempCarModelIntFittingId": null,
+														      "intFittingDescription": null,
+														      "price": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel16": [
+														    {
+														      "tempCarModelUserRatingId": null,
+														      "ratingCatagery2": null,
+														      "ratingCatagery1": null,
+														      "ratingCatagery3": null,
+														      "ratingCatagery4": null,
+														      "ratingCatagery5": null,
+														"flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    }
+														  ], "carModel17": [
+														    {
+														      "tempCarModelExpRatingId": null,
+														      "expertRating": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    },
+														    {
+														       "tempCarModelExpRatingId": null,
+														      "expertRating": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel18": [
+														    {
+														      "tempCarModelExpRatingId": null,
+														      "expertRating": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    },
+														    {
+														        "tempCarModelExpRatingId": null,
+														      "expertRating": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+														      }
+														  ], "carModel19": [
+														    {
+														      "tempCarModelFullSpecWheelId": null,
+														      "specDescription": null,
+														      "fullSpecValue": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    },{
+														      "tempCarModelFullSpecWheelId": null,
+														      "specDescription": null,
+														      "fullSpecValue": null,
+														      "flex1": null,
+														"flex2" : null,
+														 "flex3":null,	
+														" flex4" : null,
+														"flex5": null,
+														"flex6" : null,
+														 "flex7" : null,
+														 "flex8" : null,
+														 "flex9" : null,
+														 "flex10" : null,
+														 "flex11" : null,
+														 "flex12" : null
+
+														    }
+														  ]}
+								              /*  alert("Json print d c");
+								               alert(JSON.stringify(jsonInputToAPI.carModel2[0].tempCarModelOptFeatId));*/
+								               
+								               
+								              /* "carModel16": [
+															    {
+															      "tempCarModelUserRatingId": null,
+															      "ratingCatagery2": null,
+															      "ratingCatagery1": null,
+															      "ratingCatagery3": null,
+															      "ratingCatagery4": null,
+															      "ratingCatagery5": null,
+															"flex1": null,
+															"flex2" : null,
+															 "flex3":null,	
+															" flex4" : null,
+															"flex5": null,
+															"flex6" : null,
+															 "flex7" : null,
+															 "flex8" : null,
+															 "flex9" : null,
+															 "flex10" : null,
+															 "flex11" : null,
+															 "flex12" : null*/
+								            // insert table cells to the new row
+								                
+								                var tbl = document.getElementById('my-table'), // table reference
+									               row = tbl.rows.length;      // append table row
+									                var i;
+									                alert("row length for Optional Addon Features"+tbl.rows.length);
+									                alert("col lenght for Optional Addon Features"+tbl.rows[0].cells.length);
+					                for (j = 1; j < tbl.rows.length; j++) {
+					                		jsonInputToAPI.carModel2[j-1].tempCarModelOptFeatId=null;   	
+								            for (i = 1; i < tbl.rows[j].cells.length; i++) {
+									            	
+									            	//alert("ca"+$('#createCellOptionalFeaturesAddons'+j+i).val());
+									            	if(i%2==1)
+									            		jsonInputToAPI.carModel2[j-1].optionaFeature=$('#createCellOptionalFeaturesAddons'+j+i).val();
+									            	if(i%2==0)
+									            		jsonInputToAPI.carModel2[j-1].prices=$('#createCellOptionalFeaturesAddons'+j+i).val();
+									            	//alert(""+'createCellOptionalFeaturesAddons'+i);
+									            	
+								            }
+								            jsonInputToAPI.carModel2[j-1]["flex1"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex2"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex3"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex4"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex5"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex6"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex7"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex8"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex9"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex10"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex11"]=null;
+							            	jsonInputToAPI.carModel2[j-1]["flex12"]=null;
+								    }  
+								               /* alert("Json print");
+								                alert(JSON.stringify(jsonInputToAPI.carModel2));*/
+					               
+					                // table 1
+					                
+					                var tbl1 = document.getElementById('my-table1'), // table reference
+						               row = tbl1.rows.length;      // append table row
+						                var i;
+						                alert("row length for avaliable colours"+tbl1.rows.length);
+						                alert("col lenght for available colours"+tbl1.rows[0].cells.length);         
+								                alert("Json print d e tempCarModelColourId");
+									               alert(JSON.stringify(jsonInputToAPI.carModel3[0].tempCarModelColourId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl1.rows.length; j++) {
+						                	//alert("changes now");
+						                	i=0;
+						                		jsonInputToAPI.carModel3[j-1].tempCarModelColourId=null;
+						                		
+						                		jsonInputToAPI.carModel3[j-1].price=$('#availableColour'+j+'0').val();
+						                		
+						                		jsonInputToAPI.carModel3[j-1].availableColour=$('#availableColour'+j+'1').val(); 
+									         
+						                		jsonInputToAPI.carModel3[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel3[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel3[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel3[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel3[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel3[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel3[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel3[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel3[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel3[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel3[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel3[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print");
+									                alert(JSON.stringify(jsonInputToAPI.carModel3));
+					                
+					                
+					                // table 2
+					                var tbl2 = document.getElementById('my-table2'), // table reference
+						               row = tbl2.rows.length;      // append table row
+						                var i;
+						                alert("row length Full spec Engine"+tbl2.rows.length);
+						                alert("col lenght Full spec Engine"+tbl2.rows[0].cells.length);         
+								                alert("Json print d e Full spec Engine");
+									               alert(JSON.stringify(jsonInputToAPI.carModel4[0].tempCarModelUserRatingId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl2.rows.length; j++) {
+						                	
+						                	i=0;
+						                		jsonInputToAPI.carModel4[j-1].tempCarModelFullSpecId=null;
+						                		
+						                		jsonInputToAPI.carModel4[j-1].specDescription=$('#fullSpecEngine'+j+'0').val();
+						                		
+						                		jsonInputToAPI.carModel4[j-1].fullSpecValue=$('#fullSpecEngine'+j+'1').val(); 
+									         
+						                		jsonInputToAPI.carModel4[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel4[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel4[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel4[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel4[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel4[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel4[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel4[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel4[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel4[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel4[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel4[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print for Engine");
+									                alert(JSON.stringify(jsonInputToAPI.carModel4));
+					                
+					                
+					                // table 3
+					                var tbl3 = document.getElementById('my-table3'), // table reference
+						               row = tbl3.rows.length;      // append table row
+						                var i;
+						                alert("row length for Full Spec Dimensions"+tbl3.rows.length);
+						                alert("col lenght for full Spec Dimensions"+tbl3.rows[0].cells.length);         
+								                alert("Json print d e Full spec Dimensions");
+									              // alert(JSON.stringify(jsonInputToAPI.carModel5[0].tempCarModelUserRatingId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl3.rows.length; j++) {
+
+						                
+						                	i=0;
+						                		jsonInputToAPI.carModel5[j-1].tempCarModelFullSpecDimId=null;
+						                		
+						                		jsonInputToAPI.carModel5[j-1].specDescription=$('#fullSpecDimension'+j+'0').val();
+						                		
+						                		jsonInputToAPI.carModel5[j-1].fullSpecValue=$('#fullSpecDimension'+j+'1').val(); 
+									         
+						                		jsonInputToAPI.carModel5[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel5[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel5[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel5[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel5[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel5[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel5[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel5[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel5[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel5[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel5[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel5[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print for Full spec Dimension");
+									                alert(JSON.stringify(jsonInputToAPI.carModel5));
+					                
+					                
+					                // table 4
+					                
+					                var tbl4 = document.getElementById('my-table4'), // table reference
+						               row = tbl4.rows.length;      // append table row
+						                var i;
+						                alert("row length for Full spec Fuel"+tbl4.rows.length);
+						                alert("col lenght for Full spec Fuel"+tbl4.rows[0].cells.length);         
+								                alert("Json print d e for Full spec Fuel");
+									               //alert(JSON.stringify(jsonInputToAPI.carModel6[0].tempCarModelUserRatingId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl4.rows.length; j++) {
+						                	
+						                	i=0;
+						                		jsonInputToAPI.carModel6[j-1].tempCarModelFullSpecFuelId=null;
+						                		
+						                		jsonInputToAPI.carModel6[j-1].specDescription=$('#fullSpecFuel'+j+'0').val();
+						                		
+						                		jsonInputToAPI.carModel6[j-1].fullSpecValue=$('#fullSpecFuel'+j+'1').val(); 
+						                		jsonInputToAPI.carModel6[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel6[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel6[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel6[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel6[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel6[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel6[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel6[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel6[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel6[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel6[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel6[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print");
+									                alert(JSON.stringify(jsonInputToAPI.carModel6));
+					                
+					                // table 5
+					                
+					                var tbl5 = document.getElementById('my-table5'), // table reference
+						               row = tbl5.rows.length;      // append table row
+						                var i;
+						                alert("row length for full spec wheels"+tbl5.rows.length);
+						                alert("col lenght for full spec wheels"+tbl5.rows[0].cells.length);         
+								                alert("Json print d e for full spec wheels");
+									               //alert(JSON.stringify(jsonInputToAPI.carModel19[0].tempCarModelFullSpecWheelId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl5.rows.length; j++) {
+						                	
+						                	i=0;
+						                		jsonInputToAPI.carModel19[j-1].tempCarModelFullSpecWheelId=null;
+						                		
+						                		jsonInputToAPI.carModel19[j-1].specDescription=$('#fullSpecWheels'+j+'0').val();
+						                		
+						                		jsonInputToAPI.carModel19[j-1].fullSpecValue=$('#fullSpecWheels'+j+'1').val(); 
+									         
+						                		jsonInputToAPI.carModel19[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel19[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel19[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel19[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel19[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel19[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel19[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel19[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel19[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel19[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel19[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel19[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print for full spec wheels");
+									                alert(JSON.stringify(jsonInputToAPI.carModel19));
+					                
+					                
+					               
+					                // table 6
+					                
+					                var tbl6 = document.getElementById('my-table6'), // table reference
+						               row = tbl6.rows.length;      // append table row
+						                var i;
+						                alert("row length for Warranty "+tbl6.rows.length);
+						                alert("col lenght for Warranty"+tbl6.rows[0].cells.length);         
+								                alert("Json print d e Warranty");
+									               alert(JSON.stringify(jsonInputToAPI.carModel7[0].tempCarModelFullSpecWarrantyId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl6.rows.length; j++) {
+						                	
+						                	i=0;
+						                		jsonInputToAPI.carModel7[j-1].tempCarModelFullSpecWarrantyId=null;
+						                		
+						                		jsonInputToAPI.carModel7[j-1].specDescription=$('#warranty'+j+'0').val();
+						                		
+						                		jsonInputToAPI.carModel7[j-1].fullSpecValue=$('#warranty'+j+'1').val(); 
+									         
+						                		jsonInputToAPI.carModel7[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel7[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel7[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel7[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel7[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel7[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel7[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel7[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel7[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel7[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel7[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel7[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print for Warranty");
+									                alert(JSON.stringify(jsonInputToAPI.carModel7));
+					                
+					                
+				// table 7
+					                var tbl7 = document.getElementById('my-table7'), // table reference
+						               row = tbl7.rows.length;      // append table row
+						                var i;
+						                alert("row length Full spec Standard Equip"+tbl7.rows.length);
+						                alert("col lenght Full spec Standard Equip"+tbl7.rows[0].cells.length);         
+								                alert("Json print d e Full spec Standard Equip");
+									               //alert(JSON.stringify(jsonInputToAPI.carModel9[0].tempCarModelUserRatingId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl7.rows.length; j++) {
+						                
+						                	i=0;
+						                		jsonInputToAPI.carModel8[j-1].tempCarModelFullSpecStandEqId=null;
+						                		
+						                		jsonInputToAPI.carModel8[j-1].specDescription=$('#fullSpecStandardEquip'+j+'0').val();
+						                		
+						                		
+									         
+						                		jsonInputToAPI.carModel8[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel8[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel8[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel8[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel8[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel8[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel8[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel8[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel8[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel8[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel8[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel8[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print Full spec Standard Equip");
+									                alert(JSON.stringify(jsonInputToAPI.carModel8));
+					                
+					                
+					                // tabl 8
+					                var tbl8 = document.getElementById('my-table8'), // table reference
+						               row = tbl8.rows.length;      // append table row
+						                var i;
+						                alert("row length optionalEquipmentAddOns"+tbl8.rows.length);
+						                alert("col lenght optionalEquipmentAddOns"+tbl8.rows[0].cells.length);         
+								                alert("Json print d e optionalEquipmentAddOns");
+									               alert(JSON.stringify(jsonInputToAPI.carModel9[0].tempCarModelOptEqpAddOnId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl8.rows.length; j++) {
+						              
+						                	i=0;
+						                		jsonInputToAPI.carModel9[j-1].tempCarModelOptEqpAddOnId=null;
+						                		
+						                		jsonInputToAPI.carModel9[j-1].specDescription=$('#optionalEquipmentAddOns'+j+'0').val();
+									         
+						                		jsonInputToAPI.carModel9[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel9[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel9[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel9[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel9[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel9[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel9[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel9[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel9[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel9[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel9[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel9[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print optionalEquipmentAddOns");
+									                alert(JSON.stringify(jsonInputToAPI.carModel9));
+					                
+					                
+					                // table 9
+					                var tbl9 = document.getElementById('my-table9'), // table reference
+						               row = tbl9.rows.length;      // append table row
+						                var i;
+						                alert("row length relatedModels"+tbl9.rows.length);
+						                alert("col lenght relatedModels"+tbl9.rows[0].cells.length);         
+								                alert("Json print d e relatedModels");
+									        
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl9.rows.length; j++) {
+						                	i=0;
+						                		jsonInputToAPI.carModel10[j-1].tempCarModelRelatedModelId=null;
+						                		
+						                		jsonInputToAPI.carModel10[j-1].realatedModelTrim=$('#relatedModels'+j+'0').val();
+						                		
+						                		jsonInputToAPI.carModel10[j-1].relatedModelDescription=$('#relatedModels'+j+'1').val(); 
+						                		jsonInputToAPI.carModel10[j-1].relatedModelPriceWhenNew=$('#relatedModels'+j+'2').val(); 
+									         
+						                		jsonInputToAPI.carModel10[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel10[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel10[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel10[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel10[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel10[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel10[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel10[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel10[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel10[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel10[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel10[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print relatedModels");
+									                alert(JSON.stringify(jsonInputToAPI.carModel11));
+					                
+					                // table 10
+					                
+					                
+					                var tbl10 = document.getElementById('my-table10'), // table reference
+						               row = tbl10.rows.length;      // append table row
+						                var i;
+						                alert("row length photo"+tbl10.rows.length);
+						                alert("col lenght photo"+tbl10.rows[0].cells.length);         
+								                alert("Json print d e photo");
+									               //alert(JSON.stringify(jsonInputToAPI.carModel11[0].tempCarModelPhotosId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl10.rows.length; j++) {
+						                	
+						                	i=0;
+						                		jsonInputToAPI.carModel11[j-1].tempCarModelPhotosId=null;
+						                		
+						                		jsonInputToAPI.carModel11[j-1].specDescription=$('#photo'+j+'0').val();
+									         
+						                		jsonInputToAPI.carModel11[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel11[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel11[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel11[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel11[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel11[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel11[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel11[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel11[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel11[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel11[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel11[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print photo");
+									                alert(JSON.stringify(jsonInputToAPI.carModel11));
+									                
+									             var tbl11 = document.getElementById('my-table11'), // table reference
+										               row = tbl11.rows.length;      // append table row
+										                var i;
+										                alert("row length vehicleReviews"+tbl11.rows.length);
+										                alert("col lenght vehicleReviews"+tbl11.rows[0].cells.length);         
+												                alert("Json print d e vehicleReviews");
+													               //alert(JSON.stringify(jsonInputToAPI.carModel12[0].tempCarModelPhotosId));
+													            // insert table cells to the new row
+										                for (j = 1; j < tbl11.rows.length; j++) {
+										                	
+										                	i=0;
+										                		jsonInputToAPI.carModel12[j-1].tempCarModelVehReviewId=null;
+										                		
+										                		jsonInputToAPI.carModel12[j-1].review1=$('#vehicleReviews'+j+'0').val();
+													         
+										                		jsonInputToAPI.carModel12[j-1]["flex1"]=null;
+												            	jsonInputToAPI.carModel12[j-1]["flex2"]=null;
+												            	jsonInputToAPI.carModel12[j-1]["flex3"]=null;
+												            	jsonInputToAPI.carModel12[j-1]["flex4"]=null;
+												            	jsonInputToAPI.carModel12[j-1]["flex5"]=null;
+												            	jsonInputToAPI.carModel12[j-1]["flex6"]=null;
+												            	jsonInputToAPI.carModel12[j-1]["flex7"]=null;
+												            	jsonInputToAPI.carModel12[j-1]["flex8"]=null;
+												            	jsonInputToAPI.carModel12[j-1]["flex9"]=null;
+												            	jsonInputToAPI.carModel12[j-1]["flex10"]=null;
+												            	jsonInputToAPI.carModel12[j-1]["flex11"]=null;
+												            	jsonInputToAPI.carModel12[j-1]["flex12"]=null;
+													    }  
+													                alert("Json printvehicleReviews");
+													                alert(JSON.stringify(jsonInputToAPI.carModel12));
+					                // till now here
+					                // table 11
+					                var tbl12= document.getElementById('my-table12'), // table reference
+						               row = tbl12.rows.length;      // append table row
+						                var i;
+						                alert("row length videos"+tbl12.rows.length);
+						                alert("col lenght videos"+tbl12.rows[0].cells.length);         
+								                alert("Json print d e videos");
+									               alert(JSON.stringify(jsonInputToAPI.carModel13[0].tempCarModelVideosId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl12.rows.length; j++) {
+						                	
+						                	i=0;
+						                		jsonInputToAPI.carModel13[j-1].tempCarModelVideosId=null;
+						                		
+						                		jsonInputToAPI.carModel13[j-1].ylink1=$('#videos'+j+'0').val(); 
+									         
+						                		jsonInputToAPI.carModel13[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel13[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel13[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel13[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel13[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel13[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel13[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel13[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel13[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel13[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel13[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel13[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print videos");
+									                alert(JSON.stringify(jsonInputToAPI.carModel13));
+					                
+					                
+					                
+					                // table 12
+					                var tbl13 = document.getElementById('my-table13'), // table reference
+						               row = tbl13.rows.length;      // append table row
+						                var i;
+						                alert("row length fittingExternal"+tbl13.rows.length);
+						                alert("col lenght fittingExternal"+tbl13.rows[0].cells.length);         
+								                alert("Json print d e fittingExternal");
+									               alert(JSON.stringify(jsonInputToAPI.carModel14[0].tempCarModelExtFittingId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl13.rows.length; j++) {
+						                	i=0;
+						                		jsonInputToAPI.carModel14[j-1].tempCarModelExtFittingId=null;
+						                		
+						                		jsonInputToAPI.carModel14[j-1].extFittingDescription=$('#fittingExternal'+j+'0').val();
+						                		
+						                		jsonInputToAPI.carModel14[j-1].price=$('#fittingExternal'+j+'1').val();  
+									         
+						                		jsonInputToAPI.carModel14[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel14[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel14[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel14[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel14[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel14[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel14[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel14[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel14[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel14[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel14[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel14[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print  fittingExternal");
+									                alert(JSON.stringify(jsonInputToAPI.carModel14));
+					                
+					                
+					                // table 13
+					                
+					                var tbl14 = document.getElementById('my-table14'), // table reference
+						               row = tbl14.rows.length;      // append table row
+						                var i;
+						                alert("row length fittingInternal"+tbl14.rows.length);
+						                alert("col lenght fittingInternal"+tbl14.rows[0].cells.length);         
+								                alert("Json print d e fittingInternal");
+									               alert(JSON.stringify(jsonInputToAPI.carModel15[0].tempCarModelIntFittingId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl14.rows.length; j++) {
+						                	i=0;
+						                		jsonInputToAPI.carModel15[j-1].tempCarModelIntFittingId=null;
+						                		
+						                		jsonInputToAPI.carModel15[j-1].intFittingDescription=$('#fittingInternal'+j+'0').val();
+						                		
+						                		jsonInputToAPI.carModel15[j-1].price=$('#fittingInternal'+j+'1').val();  
+									         
+						                		jsonInputToAPI.carModel15[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel15[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel15[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel15[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel15[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel15[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel15[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel15[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel15[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel15[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel15[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel15[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print fittingInternal");
+									                alert(JSON.stringify(jsonInputToAPI.carModel15));
+					                
+					                
+					                
+					               
+												
+								                // user rating
+					                var tbl15 = document.getElementById('my-table15'), // table reference
+						               row = tbl15.rows.length;      // append table row
+						                var i;
+						                alert("row length"+tbl15.rows.length);
+						                alert("col lenght"+tbl15.rows[0].cells.length);         
+								                alert("Json print d e userRating");
+									               alert(JSON.stringify(jsonInputToAPI.carModel16[0].tempCarModelUserRatingId));
+									            // insert table cells to the new row
+						                for (j = 1; j < tbl15.rows.length; j++) {
+						                	alert("changes now");
+						                	i=0;
+						                		jsonInputToAPI.carModel16[j-1].tempCarModelUserRatingId=null;
+						                		
+						                		jsonInputToAPI.carModel16[j-1].ratingCatagery1=$('#userRating'+j+'0').val();
+						                		alert("changes for"+$('#userRating'+j+'0').val());
+						                		jsonInputToAPI.carModel16[j-1].ratingCatagery2=$('#userRating'+j+'1').val(); 
+						                		jsonInputToAPI.carModel16[j-1].ratingCatagery3=$('#userRating'+j+'2').val(); 
+						                		jsonInputToAPI.carModel16[j-1].ratingCatagery4=$('#userRating'+j+'3').val(); 
+						                		jsonInputToAPI.carModel16[j-1].ratingCatagery5=$('#userRating'+j+'4').val(); 
+									         
+						                		jsonInputToAPI.carModel16[j-1]["flex1"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex2"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex3"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex4"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex5"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex6"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex7"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex8"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex9"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex10"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex11"]=null;
+								            	jsonInputToAPI.carModel16[j-1]["flex12"]=null;
+									    }  
+									                alert("Json print");
+									                alert(JSON.stringify(jsonInputToAPI.carModel16));
+													
+									             // table 14 
+									                var tbl16 = document.getElementById('my-table16'), // table reference
+										               row = tbl16.rows.length;      // append table row
+										                var i;
+										                alert("row length expertingRating"+tbl16.rows.length);
+										                alert("col lenght expertingRating"+tbl16.rows[0].cells.length);         
+												                alert("Json print d e expertingRating");
+													               alert(JSON.stringify(jsonInputToAPI.carModel17[0].tempCarModelExpRatingId));
+													            // insert table cells to the new row
+										                for (j = 1; j < tbl16.rows.length; j++) {
+										                	
+										                	i=0;
+										                		jsonInputToAPI.carModel17[j-1].tempCarModelExpRatingId=null;
+										                		
+										                		jsonInputToAPI.carModel17[j-1].expertRating=$('#expertingRating'+j+'0').val();
+										                	 
+										                		jsonInputToAPI.carModel17[j-1]["flex1"]=null;
+												            	jsonInputToAPI.carModel17[j-1]["flex2"]=null;
+												            	jsonInputToAPI.carModel17[j-1]["flex3"]=null;
+												            	jsonInputToAPI.carModel17[j-1]["flex4"]=null;
+												            	jsonInputToAPI.carModel17[j-1]["flex5"]=null;
+												            	jsonInputToAPI.carModel17[j-1]["flex6"]=null;
+												            	jsonInputToAPI.carModel17[j-1]["flex7"]=null;
+												            	jsonInputToAPI.carModel17[j-1]["flex8"]=null;
+												            	jsonInputToAPI.carModel17[j-1]["flex9"]=null;
+												            	jsonInputToAPI.carModel17[j-1]["flex10"]=null;
+												            	jsonInputToAPI.carModel17[j-1]["flex11"]=null;
+												            	jsonInputToAPI.carModel17[j-1]["flex12"]=null;
+													    }  
+													                alert("Json print expertingRating");
+													                alert(JSON.stringify(jsonInputToAPI.carModel17));
+									                
+													                 var tbl17 = document.getElementById('my-table17'), // table reference
+														               row = tbl17.rows.length;      // append table row
+														                var i;
+														                alert("row length country"+tbl17.rows.length);
+														                alert("col lenght country"+tbl17.rows[0].cells.length);         
+																                alert("Json print d e country");
+																	               alert(JSON.stringify(jsonInputToAPI.carModel18[0].tempCarModelCountryId));
+																	            // insert table cells to the new row
+														                for (j = 1; j < tbl17.rows.length; j++) {
+														                	
+														                	i=0;
+														                		jsonInputToAPI.carModel18[j-1].tempCarModelCountryId=null;
+														                		
+														                		jsonInputToAPI.carModel18[j-1].country=$('#country'+j+'0').val();
+														                	 
+														                		jsonInputToAPI.carModel18[j-1]["flex1"]=null;
+																            	jsonInputToAPI.carModel18[j-1]["flex2"]=null;
+																            	jsonInputToAPI.carModel18[j-1]["flex3"]=null;
+																            	jsonInputToAPI.carModel18[j-1]["flex4"]=null;
+																            	jsonInputToAPI.carModel18[j-1]["flex5"]=null;
+																            	jsonInputToAPI.carModel18[j-1]["flex6"]=null;
+																            	jsonInputToAPI.carModel18[j-1]["flex7"]=null;
+																            	jsonInputToAPI.carModel18[j-1]["flex8"]=null;
+																            	jsonInputToAPI.carModel18[j-1]["flex9"]=null;
+																            	jsonInputToAPI.carModel18[j-1]["flex10"]=null;
+																            	jsonInputToAPI.carModel18[j-1]["flex11"]=null;
+																            	jsonInputToAPI.carModel18[j-1]["flex12"]=null;
+																	    }  
+																	                alert("Json print country");
+																	                alert(JSON.stringify(jsonInputToAPI.carModel18));
+													            
+								             /*   
+								                "carModel2": [
+								                
+								                
+															    {
+															      "tempCarModelOptFeatId": null,
+															      
+																
+																 "prices":null,
+																"optionaFeature":null,
+															"flex1": null,
+															"flex2" : null,
+															 "flex3":null,	
+															" flex4" : null,
+															"flex5": null,
+															"flex6" : null,
+															 "flex7" : null,
+															 "flex8" : null,
+															 "flex9" : null,
+															 "flex10" : null,
+															 "flex11" : null,
+															 "flex12" : null
+															    },
+								                
+								                */
+								                
+												
 
 												//alert("Before Call");
 												//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 												//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
-												var wsURL = 'api/eBid/myVehicle';
+												var wsURL = 'api/tempCarModelTemplate';
 												
 													    $http({
 																	method : 'POST',

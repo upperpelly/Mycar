@@ -47,6 +47,7 @@
 <script type="text/javascript" src="js/atooltip.jquery.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script src="js/carquery.0.3.4.js"type="text/javascript" ></script>
+<script src="js/postcodecarquery.0.3.5.js" type="text/javascript"></script>
 <!--   <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all"> -->
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
@@ -312,30 +313,36 @@ tr:hover{background-color:rgb(253, 183, 20);}
                   <script type="text/javascript">// <![CDATA[
 $(document).ready( function() {
 
-var carquery = new CarQuery();
+var carquery = new PostCodeCarQuery();
 carquery.init();
 carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
 
-//Set onclick function for the US filter checkbox and show data button
-$('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
-$('#cq-show-data').click(  function(){ carquery.populateCarData('car-model-data'); } );
-$('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model-data','price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); } );
+
+
 });
 // ]]&gt;</script>
-                   <div class="container">
 <script type="text/javascript">// <![CDATA[
 $(document).ready( function() {
 
-var carquery = new CarQuery();
+var carquery = new PostCodeCarQuery();
 carquery.init();
-carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+carquery.initYearMakeModelTrim12('car-yearsreg', 'car-makesreg', 'car-modelsreg');
 
-//Set onclick function for the US filter checkbox and show data button
-$('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
-$('#cq-show-data').click(  function(){ carquery.populateCarData('car-model-data'); } );
-$('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model-data','price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); } );
+
 });
 // ]]&gt;</script>
+<script type="text/javascript">// <![CDATA[
+$(document).ready( function() {
+
+	var carquery = new CarQuery();
+	carquery.init();
+	carquery.initMakeTrim922('car-years922', 'car-makes922');
+
+
+});
+// ]]&gt;</script>
+                   <div class="container">
+
                     <!-- <ul class="quick-menu pull-left">
                         <li><a href="dashboard1.html">MY ACCOUNT</a></li>
 
@@ -817,11 +824,11 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 				                                       <div class="form-group row">
 				                                        <div class="col-sm-5 col-md-4">
 				                                            <label>Email Address</label>
-				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                            <input type="text" id="emailAddressC" name="emailAddressC" class="input-text full-width" value="" placeholder="" />
 				                                        </div>
 				                                         <div class="col-sm-5 col-md-4">
 				                                            <label>Password</label>
-				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                            <input type="text" id="passwordC" name="passwordC" class="input-text full-width" value="" placeholder="" />
 				                                        </div>
 				                                         <div class="col-sm-5 col-md-4">
 				                                            <label>Confirm Password</label>
@@ -849,23 +856,23 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 				                                       <div class="form-group row">
 				                                        <div class="col-sm-5 col-md-4">
 				                                            <label>ABN Number</label>
-				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                            <input type="text" id="abnNumber" name="abnNumber" class="input-text full-width" value="" placeholder="" />
 				                                        </div>
 				                                         <div class="col-sm-5 col-md-4">
 				                                            <label>Dealer License No</label>
-				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                            <input type="text" id="dLicenseNo" name="dLicenseNo" class="input-text full-width" value="" placeholder="" />
 				                                        </div>
 				                                         <div class="col-sm-5 col-md-4">
 				                                            <label>DealerShip Group</label>
-				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                            <input type="text" id="dGroup" name="dGroup" class="input-text full-width" value="" placeholder="" />
 				                                        </div>
 				                                         <div class="col-sm-5 col-md-4">
 				                                            <label>Dealer Website</label>
-				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                            <input type="text" id="dWebSite" name="dWebSite" class="input-text full-width" value="" placeholder="" />
 				                                        </div>
 				                                         <div class="col-sm-5 col-md-4">
 				                                            <label>Dealer Address</label>
-				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
+				                                            <input type="text" id="dAddress" name="dAddress" class="input-text full-width" value="" placeholder="" />
 				                                        </div>
 				                                       
 				                                        
@@ -887,7 +894,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 															      <div class="toggle-container box">
 					                                <div class="panel style1">
 					                                    <h4 class="panel-title">
-					                                        <a href="#tgg29" data-toggle="collapse">Service Type</a>
+					                                        <a href="#tgg29" data-toggle="collapse">Vehicle Dealer</a>
 					                                    </h4>
 					                                    <div class="panel-collapse collapse" id="tgg29">
 					                                        <div class="panel-content">
@@ -895,45 +902,23 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 					                                       
 					                                    <div class="checkbox">
 					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Vehicle</span></a>.
+					                                            <input type="checkbox" id="newCarVehDeal" name="newCarVehDeal" class="jpCheckbox" onclick="allSelected1()"><span class="skin-color">New Cars</span></a>.
 					                                        </label>
+					                                        
 					                                    </div>
 					                                
 					                                        <div class="checkbox">
 					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Vehicle Finance</span></a>.
+					                                            <input type="checkbox" id="usedCarVehDeal" name="usedCarVehDeal" class="jpCheckbox" onclick="allSelected2()"><span class="skin-color">Used Casr</span></a>.
 					                                        </label>
 					                                    </div>
 					                                    <div class="checkbox">
 					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Vehicle Insurance</span></a>.
+					                                            <input type="checkbox" id="bothCarVehDeal" name="bothCarVehDeal" class="jpCheckbox" onclick="allSelected3()"><span class="skin-color">Both New and Used Cars</span></a>.
 					                                        </label>
 					                                    </div>
-					                                    <div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Parking</span></a>.
-					                                        </label>
-					                                    </div>
-					                                    <div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Toll</span></a>.
-					                                        </label>
-					                                    </div>
-					                                    <div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Transport</span></a>.
-					                                        </label>
-					                                    </div>
-					                                    <div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Spares</span></a>.
-					                                        </label>
-					                                    </div>
-					                                        
-					                                         
-					
-					
-					
+					                                    
+					                                   
 					                                    </div>
 					                                        </div><!-- end content -->
 					                                    </div>
@@ -941,63 +926,187 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 					
 					                            </div>
 					                            
-					                            
-					                            
 					                            <div class="toggle-container box">
 					                                <div class="panel style1">
 					                                    <h4 class="panel-title">
-					                                        <a href="#tgg42" data-toggle="collapse">Vehicle Type</a>
+					                                        <a href="#tgg292" data-toggle="collapse">We Provide Finance / Loan Broker Institute</a>
+					                                    </h4>
+					                                    <div class="panel-collapse collapse" id="tgg292">
+					                                        <div class="panel-content">
+					                                       <div class="form-group row">
+					                                       
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="indivFL" name="indivFL" class="jpCheckbox" onclick="allSelected4()"><span class="skin-color">I am Individual</span></a>.
+					                                        </label>
+					                                        
+					                                    </div>
+					                                
+					                                        <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="licFL" name="licFL" class="jpCheckbox" onclick="allSelected5()"><span class="skin-color">I am Licensed Broker</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="finFL" name="finFL" class="jpCheckbox" onclick="allSelected6()"><span class="skin-color">I am Financial Institute</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    
+					                                   <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="newCarFL" name="newCarFL" class="jpCheckbox" onclick="allSelected7()"><span class="skin-color">New Cars</span></a>.
+					                                        </label>
+					                                        
+					                                    </div>
+					                                
+					                                        <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="usedCarFL" name="usedCarFL" class="jpCheckbox" onclick="allSelected8()"><span class="skin-color">Used Casr</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="bothCarFL" name="bothCarFL" class="jpCheckbox" onclick="allSelected9()"><span class="skin-color">Both New and Used Cars</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    
+					                                    </div>
+					                                        </div><!-- end content -->
+					                                    </div>
+					                                </div>
+					
+					                            </div>
+					                            <div class="toggle-container box">
+					                                <div class="panel style1">
+					                                    <h4 class="panel-title">
+					                                        <a href="#tgg294" data-toggle="collapse">We Provide Service and Maintenance </a>
+					                                    </h4>
+					                                    <div class="panel-collapse collapse" id="tgg294">
+					                                        <div class="panel-content">
+					                                       <div class="form-group row">
+					                                       
+					                                    
+					                                    
+					                                   <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="newCarSM" name="newCarSM" class="jpCheckbox" onclick="allSelected10()"><span class="skin-color">New Cars</span></a>.
+					                                        </label>
+					                                        
+					                                    </div>
+					                                
+					                                        <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="usedCarSM" name="usedCarSM" class="jpCheckbox" onclick="allSelected11()"><span class="skin-color">Used Casr</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="bothCarSM" name="bothCarSM" class="jpCheckbox" onclick="allSelected12()"><span class="skin-color">Both New and Used Cars</span></a>.
+					                                        </label>
+					                                    </div>
+					                                    
+					                                    </div>
+					                                        </div><!-- end content -->
+					                                    </div>
+					                                </div>
+					
+					                            </div>
+					                            <div class="checkbox">
+					                                        <label>
+					                                            <input type="checkbox" id="spareAcc" name=""spareAcc"" class="jpCheckbox" onclick="allSelected13()"><span class="skin-color">We Provide Spares and Accessories</span></a>.
+					                                        </label>
+					                                        
+					                                    </div>
+					                            <div class="toggle-container box">
+					                                <div class="panel style1">
+					                                    <h4 class="panel-title">
+					                                        <a href="#tgg42" data-toggle="collapse">We Vehicle Transport Provider</a>
 					                                    </h4>
 					                                    <div class="panel-collapse collapse" id="tgg42">
 					                                        <div class="panel-content">
 					                                       <div class="form-group row">
 					
-					<div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">New Cars</span></a>.
-					                                        </label>
-					                                    </div>
-					                                    <div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Used Cars</span></a>.
-					                                        </label>
-					                                    </div>
-					                                    <div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Both Cars</span></a>.
-					                                        </label>
-					                                    </div>
-					                                    <div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">New Bikes</span></a>.
-					                                        </label>
-					                                    </div>
-					                                    <div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Used Bikes</span></a>.
-					                                        </label>
-					                                    </div>
-					                                    <div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Both Bikes</span></a>.
-					                                        </label>
-					                                    </div>
-					                                    <div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">New Boats</span></a>.
-					                                        </label>
-					                                    </div>
-					                                    <div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Used Boats</span></a>.
-					                                        </label>
-					                                    </div>
-					                                       <div class="checkbox">
-					                                        <label>
-					                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">Both Boats</span></a>.
-					                                        </label>
-					                                    </div>                                        
-					                                                                                
+					<div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tggtransPr" data-toggle="collapse">Austalia</a>
+						                                    </h4>
+						                                    <div class="panel-collapse collapse" id="tggtransPr">
+						                                        <div class="panel-content">
+						                                       <div class="form-group row">
+						
+						                                         <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="allAusTrans" name="allAusTrans" class="jpCheckbox" onclick="allSelected14()"><span class="skin-color">All Australia</span></a>.
+						                                        </label>
+						                                    </div>
+						
+						
+						                                    </div>
+						                                        </div><!-- end content -->
+						                                    </div>
+						                                </div>
+						
+						                            </div>
+						                                        <!-- End -->
+						                                        <!-- Start -->
+						                                        <div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tggProv" data-toggle="collapse">Select the States</a>
+						                                    </h4>
+						                                    <div class="panel-collapse collapse" id="tggProv">
+						                                        <div class="panel-content">
+						                                       <div class="form-group row">
+																<div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="act" name="act" class="jpCheckbox" onclick="allSelected15()"><span class="skin-color">Australian Capital Territory(ACT)</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="nsw" name="nsw" class="jpCheckbox" onclick="allSelected16()"><span class="skin-color">New South Wales (NSW)</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                         <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="vic" name="vic" class="jpCheckbox" onclick="allSelected17()"><span class="skin-color">Victoria (VIC)</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="qld" name="qld" class="jpCheckbox" onclick="allSelected18()"><span class="skin-color">Queensland (QLD)</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="tas" name="tas" class="jpCheckbox" onclick="allSelected19()"><span class="skin-color">Tasmania (TAS)</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="sa" name="sa" class="jpCheckbox" onclick="allSelected20()"><span class="skin-color">South Australia (SA)</span></a>.
+						                                        </label>
+						                                    </div>
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="nt" name="nt" class="jpCheckbox" onclick="allSelected21()"><span class="skin-color">Northern Territory (NT)</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="wa" name="wa" class="jpCheckbox" onclick="allSelected22()"><span class="skin-color">Western Australia (WA)</span></a>.
+						                                        </label>
+						                                    </div>
+						
+						
+						                                    </div>
+						                                        </div><!-- end content -->
+						                                    </div>
+						                                </div>
+						
+						                            </div>                                          
 					
 					
 					
@@ -1036,7 +1145,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						
 						                                         <div class="checkbox">
 						                                        <label>
-						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Australia</span></a>.
+						                                            <input type="checkbox" id="allAusAop" name="allAusAop" class="jpCheckbox" onclick="allSelected23()"><span class="skin-color">All Australia</span></a>.
 						                                        </label>
 						                                    </div>
 						
@@ -1052,40 +1161,49 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						                                        <div class="toggle-container box">
 						                                <div class="panel style1">
 						                                    <h4 class="panel-title">
-						                                        <a href="#tggvic" data-toggle="collapse">Vic</a>
+						                                        <a href="#tggvic" data-toggle="collapse">Select the States</a>
 						                                    </h4>
 						                                    <div class="panel-collapse collapse" id="tggvic">
 						                                        <div class="panel-content">
 						                                       <div class="form-group row">
-						
+																<div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="actAOP" name="actAOP" class="jpCheckbox" onclick="allSelected24()"><span class="skin-color">Australian Capital Territory(ACT)</span></a>.
+						                                        </label>
+						                                    </div>   
+						                                    <div class="checkbox">
+						                                        <label>
+						                                            <input type="checkbox" id="nswAOP" name="nswAOP" class="jpCheckbox" onclick="allSelected25()"><span class="skin-color">New South Wales (NSW)</span></a>.
+						                                        </label>
+						                                    </div>   
 						                                         <div class="checkbox">
 						                                        <label>
-						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Victoria</span></a>.
+						                                            <input type="checkbox" id="vicAOP" name="vicAOP" class="jpCheckbox" onclick="allSelected26()"><span class="skin-color">Victoria (VIC)</span></a>.
 						                                        </label>
 						                                    </div>   
 						                                    <div class="checkbox">
 						                                        <label>
-						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Queensland</span></a>.
+						                                            <input type="checkbox" id="qldAOP" name="qldAOP" class="jpCheckbox" onclick="allSelected27()"><span class="skin-color">Queensland (QLD)</span></a>.
 						                                        </label>
 						                                    </div>   
 						                                    <div class="checkbox">
 						                                        <label>
-						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Tasmania</span></a>.
+						                                            <input type="checkbox" id="tasAOP" name="tasAOP" class="jpCheckbox" onclick="allSelected28()"><span class="skin-color">Tasmania (TAS)</span></a>.
 						                                        </label>
 						                                    </div>   
 						                                    <div class="checkbox">
 						                                        <label>
-						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All South Australia</span></a>.
+						                                            <input type="checkbox" id="saAOP" name="saAOP" class="jpCheckbox" onclick="allSelected29()"><span class="skin-color">South Australia (SA)</span></a>.
 						                                        </label>
 						                                    </div>
 						                                    <div class="checkbox">
 						                                        <label>
-						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Northern Territory</span></a>.
+						                                            <input type="checkbox" id="ntAOP" name="ntAOP" class="jpCheckbox" onclick="allSelected30()"><span class="skin-color">Northern Territory (NT)</span></a>.
 						                                        </label>
 						                                    </div>   
 						                                    <div class="checkbox">
 						                                        <label>
-						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Western Australia</span></a>.
+						                                            <input type="checkbox" id="waAOP" name="waAOP" class="jpCheckbox" onclick="allSelected31()"><span class="skin-color">Western Australia (WA)</span></a>.
 						                                        </label>
 						                                    </div>
 						
@@ -1098,36 +1216,154 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						                            </div>
 						                                        <!-- End -->
 						                                        
+						                                        <!-- Start Region  -->
+						                                         <div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tggstate" data-toggle="collapse">Select Specific Region</a>
+						                                    </h4>
+						                                    
+						                                    
+						                                    
+													
+													<div class="clearfix"></div>
+						                                    <div class="panel-collapse collapse" id="tggstate">
+						                                        <div class="panel-content">
+						                                       <div class="form-group row">
+						                                       
+						                                       <div class="col-sm-5 col-md-4">
+														<label>Country</label>
+														<div class="selector">
+															<select id="car-yearsreg" name="caryearsreg" ng-model="caryears" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>State</label>
+														<div class="selector">
+															<select id="car-makesreg" name="carmakesreg" ng-model="carmakes" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>Region</label>
+														<div class="selector">
+															<select id="car-modelsreg" name="carmodelsreg" ng-model="carmodels" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.carmodels.$error.required && (!ebidfrm.carmodels.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
+													</div>
+													
+													<div class="clearfix"></div>
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow91()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows9()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table91" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>Country</th><th>State</th><th>Region</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+						                                        </div>
+						                                    </div>
+						                                    
+						                                    
+						                                </div>
+						
+						                            </div>
+						                                        
+						                                        <!-- Region End -->
+						                                        
+						                                        
+						                                        
+						                                        
 						                                                                                <!-- Start -->
 						                                        <div class="toggle-container box">
 						                                <div class="panel style1">
 						                                    <h4 class="panel-title">
 						                                        <a href="#tggpostcode" data-toggle="collapse">Postcode wise</a>
 						                                    </h4>
+						                                    
+						                                    
+						                                    
+													
+													<div class="clearfix"></div>
 						                                    <div class="panel-collapse collapse" id="tggpostcode">
 						                                        <div class="panel-content">
 						                                       <div class="form-group row">
-						
-						                                         <div id="my-container">
-						                                        
-						                                             
+						                                       
+						                                       <div class="col-sm-5 col-md-4">
+														<label>Country</label>
+														<div class="selector">
+															<select id="car-years" name="caryears" ng-model="caryears" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>State</label>
+														<div class="selector">
+															<select id="car-makes" name="carmakes" ng-model="carmakes" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>Region</label>
+														<div class="selector">
+															<select id="car-models" name="carmodels" ng-model="carmodels" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.carmodels.$error.required && (!ebidfrm.carmodels.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>Post Code</label>
+														<div class="selector">
+															<select id="car-model-trims" name="carmodeltrims"  ng-model="carmodeltrims"
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.carmodeltrims.$error.required && (!ebidfrm.carmodeltrims.$pristine || ebidfrm.$submitted)"><b>Car Variant is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+                                       <div id="my-container">
 						<center><br />
-						<input type="button" value="Add row" onclick="javascript:appendRow()" class="append_row"/><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow9()" class="append_row"/><br />
 						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
-						<input type="button" value="Delete rows" onclick="javascript:deleteRows()" class="delete"/><br />
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows9()" class="delete"/><br />
 						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
 						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table" align="center" cellspacing="0" cellpadding="0" border="0">
+						<table id="my-table9" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>Country</th><th>State</th><th>Region</th><th>Post Code</th></tr>
 						
 						</table>
 						<p></center>
-						</div>
-						
-						
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+						                                        </div>
 						                                    </div>
-						                                        </div><!-- end content -->
-						                                    </div>
+						                                    
+						                                    
 						                                </div>
 						
 						                            </div>
@@ -1264,7 +1500,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						
 						                                         <div class="checkbox">
 						                                        <label>
-						                                            <input type="checkbox" id="autoBid" name="autoBid" class="jpCheckbox" onclick="allSelected()"><span class="skin-color">All Makes</span></a>.
+						                                            <input type="checkbox" id="allMakes" name="allMakes" class="jpCheckbox" onclick="allSelected32()"><span class="skin-color">All Makes</span></a>.
 						                                        </label>
 						                                    </div>
 						
@@ -1276,23 +1512,64 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						
 						                            </div>
 						                                        <!-- End -->
+						                                       
+						                                        
 						                                       <!-- Start -->
 						                                        <div class="toggle-container box">
 						                                <div class="panel style1">
 						                                    <h4 class="panel-title">
-						                                        <a href="#tggindmakes" data-toggle="collapse">Individual Makes</a>
+						                                        <a href="#tggindmakes" data-toggle="collapse">Select New Car Makes you sell</a>
 						                                    </h4>
 						                                    <div class="panel-collapse collapse" id="tggindmakes">
 						                                        <div class="panel-content">
-						                                       <div class="form-group row">
+						                                         <div class="form-group row">
+						                                       
+						                                       <div class="col-sm-5 col-md-4">
+														<label>Year</label>
+														<div class="selector">
+															<select id="car-years922" name="caryears922" ng-model="caryears" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>Make</label>
+														<div class="selector">
+															<select id="car-makes922" name="carmakes922" ng-model="carmakes" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													
+													<div class="clearfix"></div>
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow922()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows9()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table922" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>Selected Make</th><th>Offered</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+						                                       <!-- <div class="form-group row">
 						
 						                                                 <div id="my-container">
 						<center><br />
 						<input type="button" value="Add row" onclick="javascript:appendRow1()" class="append_row"/><br />
-						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						 <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />
 						<input type="button" value="Delete rows" onclick="javascript:deleteRows1()" class="delete"/><br />
-						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
-						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						 <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>
 						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
 						<tr><th>Select Brand</th><th>Offered</th></tr>
 						
@@ -1301,7 +1578,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 						</div>   
 						
 						
-						                                    </div>
+						                                    </div> -->
 						                                        </div><!-- end content -->
 						                                    </div>
 						                                </div>
