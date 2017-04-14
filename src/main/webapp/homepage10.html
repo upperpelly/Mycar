@@ -741,10 +741,10 @@ $scope.submitForm1 = function() {
 
 						$scope.submitForm = function() {
 
-var e = document.getElementById("car-model-trims"); 
-var strUser = e.options[e.selectedIndex].text;
+							var e = document.getElementById("car-model-trims"); 
+							var strUser = e.options[e.selectedIndex].text;
 
-var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+$('#car-model-trims').val()+'&autoscoopTrim='+$('#car-model-auto-trims').val();
+							var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+$('#car-model-trims').val()+'&autoscoopTrim='+$('#car-model-auto-trims').val();
 							
 							var modelYear= $('#car-years').val();
 							var modelDisplay= $('#car-makes').val();
@@ -794,11 +794,16 @@ var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&
 </script>
 <script>
 function redirect() {
-	alert("Thank You. Your Seach ID is ");
-	alert("userid"+userId);
-	var url="dashboard1.html";
+	if(alreadyLogged())
+		{
+				var url="dashboard1.html";
+				window.location=url;
+		}
+	else{
+		alert("Please Login & go to Dashboard");
+	}
 	
-	window.location=url;
+	
 }</script>
 <!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[84,140] -->
 <link rel="canonical"
@@ -1188,9 +1193,9 @@ section#content {
 			</nav>
 			<div id="travelo-signup" class="travelo-signup-box travelo-box">
 				<div class="login-social">
-					<a href="#" class="button login-facebook"><i
+					<a href="#" class="button login-facebook" onclick="login()"><i
 						class="soap-icon-facebook"></i>Login with Facebook</a> <a href="#"
-						class="button login-googleplus"><i
+						class="button login-googleplus" onclick="onSignInG()"><i
 						class="soap-icon-googleplus"></i>Login with Google+</a>
 				</div>
 				<div class="seperator">
@@ -1250,9 +1255,9 @@ section#content {
 			</div>
 			<div id="travelo-login" class="travelo-login-box travelo-box">
 				<div class="login-social">
-					<a href="#" class="button login-facebook"><i
+					<a href="#" class="button login-facebook" onclick="login()"><i
 						class="soap-icon-facebook"></i>Login with Facebook</a> <a href="#"
-						class="button login-googleplus"><i
+						class="button login-googleplus" onclick="onSignInG()"><i
 						class="soap-icon-googleplus"></i>Login with Google+</a>
 				</div>
 				<div class="seperator">

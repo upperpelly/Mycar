@@ -12,7 +12,25 @@ if(!value){
 }
 //alert("can"+value.userId);
 
+function alreadyLogged(){
+	var value = $.jStorage.get("key");
+	//alert("Checking logged or not");
+	if(!value){
+	    // if not - return false
+	return false;
+	}
+	else{
+		//alert("Successfully logged in..");
+		return true;
+	}
+	
 
+}
+if(!alreadyLogged())
+{
+		var url="homepage10.html";
+		window.location=url;
+}
 var value1 = $.jStorage.get("carKey");
 if(!value1){
     // if not - load the data from the server

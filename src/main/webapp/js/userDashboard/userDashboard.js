@@ -1,6 +1,26 @@
 // Check if "key" exists in the storage
 var value = $.jStorage.get("key");
 var fbUserId = $.jStorage.get("fbKey");
+var myVehicleIDuse=null;
+function alreadyLogged(){
+	var value = $.jStorage.get("key");
+	//alert("Checking logged or not");
+	if(!value){
+	    // if not - return false
+	return false;
+	}
+	else{
+		//alert("Successfully logged in..");
+		return true;
+	}
+	
+
+}
+if(!alreadyLogged())
+{
+		var url="homepage10.html";
+		window.location=url;
+}
 if(!value){
     // if not - load the data from the server
 //alert("can inside");
@@ -20,6 +40,19 @@ function signingout(){
 	 $.jStorage.deleteKey("fbKey");
 	 alert("Successfully Logged Out");
 	 window.location="homepage10.html";
+}
+function stringToDate(_date,_format,_delimiter)
+{
+            var formatLowerCase=_format.toLowerCase();
+            var formatItems=formatLowerCase.split(_delimiter);
+            var dateItems=_date.split(_delimiter);
+            var monthIndex=formatItems.indexOf("mm");
+            var dayIndex=formatItems.indexOf("dd");
+            var yearIndex=formatItems.indexOf("yyyy");
+            var month=parseInt(dateItems[monthIndex]);
+            month-=1;
+            var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+            return formatedDate;
 }
 var userId;
 var firstName;
@@ -601,7 +634,7 @@ function registerEditDealerVehicleSearchModal(){
 		if(data.moveToUser)
 		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
 		
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 		var editDealerVehicleSearchForm = '<form id="edit-dealer-vehicle-search-content-form"><table>\
 			<tr><td>Search ID</td><td>' + data.carSearchId + '</td></tr>\
 			<tr><td>' + quotIdHiddenField + '</td></tr>\
@@ -1066,7 +1099,7 @@ function registerEditDealerVehicleDetailLogBookModal(){
 	//$(document.body).append(editDealerVehicleDetailLogBookModal);
 		
 	$('a.anchor-editDealerVehicleDetailLogBookModal').on('click', function(event) {
-		alert("invoke sscnews click");
+		//alert("invoke sscs clddaick");
 		$('#fuelCard4').toggle();
 		//document.getElementById("fuelCard4").style.display = "none";
 		var data = $(event.target).data('details');
@@ -1078,19 +1111,20 @@ function registerEditDealerVehicleDetailLogBookModal(){
 		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
 		
 		$('#fuelCard41').toggle();
+		myVehicleIDuse = data.myVehicleId;
 		var wsURL = 'api/Myvehicle/'+data.myVehicleId;
 		$.ajax({  
 			type: "GET",  
 			url: wsURL,
 			contentType:'application/json',
 			success: function(result){
-				alert(JSON.stringify(result));
+				//alert(JSON.stringify(result));
 				var LogT = result.myVehicleLogBook;
 				outLogT="";
-				alert(LogT);
-				alert(result.myVehicleLogBook.length);
-				alert("viscuit");
-				if(LogT)
+				//alert(LogT);
+				//alert(result.myVehicleLogBook.length);
+				//alert("viscuit");
+				if(LogT && result.myVehicleLogBook.length!=0)
 					{
 					/*var logTripTable = '<table>\
 						<tr><th>'+"Trip Type"+'</th><th>'+"TripStart Addr"+'</th><th>'+"TripEnd Addr"+'</th><th>'+"Trip Date"+'</th><th>'+"OdoMeter Start"+'</th><th>'+"OdoMeter End"+'</th><th>'+"No of Kms"+'</th><th>'+"Purpose of Trim"+'</th><th>'+"Driver Name"+'</th><th>'+"Trip Log Date"+'</th></tr>\
@@ -1116,7 +1150,8 @@ function registerEditDealerVehicleDetailLogBookModal(){
 				
 				var LogE = result.myVehicleFuelExpenses;
 				outLogE="";
-				if(LogE)
+				//alert(result.myVehicleFuelExpenses.length);
+				if(LogE && result.myVehicleFuelExpenses.length!=0)
 				{
 					/*var  logServMainTable = '<table>\
 						<tr><th>'+"Type of Service"+'</th><th>'+"Date of Service"+'</th><th>'+"Mileage/OdoMeter @Service"+'</th><th>'+"Detail Work Performed"+'</th><th>'+"List of Service"+'</th><th>'+"Notes"+'</th><th>'+"Technician"+'</th><th>'+"Service & maintenancec Company"+'</th><th>'+"Uploadedd Maintenance record"+'</th></tr>\
@@ -1142,10 +1177,10 @@ function registerEditDealerVehicleDetailLogBookModal(){
 				
 				
 				
-				
+				//alert(result.myVehicleServMaint.length);
 				var LogS = result.myVehicleServMaint;
 				outLogS="";
-				if(LogS)
+				if(LogS && result.myVehicleServMaint.length!=0)
 				{
 					/*var logExpTable = '<table>\
 						<tr><th>'+"Expensive Type"+'</th><th>'+"Expensive Category"+'</th><th>'+"Expensive Date"+'</th><th>'+"Expensive Description"+'</th><th>'+"Amount"+'</th><th>'+"Uploaded Photo"+'</th></tr>\
@@ -1199,7 +1234,7 @@ function registerEditDealerVehicleDetailLogBookModal(){
 		 
 		   
 		 
-		 $("#LogSave").click(function(){
+		/*$("#LogSave").click(function(){
 		        //alert("Log Save alertsssaasa.");
 		        //angular.element(document.getElementById('LogNew')).scope().submitSearchFormLogBook();
 
@@ -1239,7 +1274,7 @@ function registerEditDealerVehicleDetailLogBookModal(){
 					}
 				});
 				
-		    });
+		    });*/
 	});
 	
 	
@@ -1293,51 +1328,56 @@ var mainApp1 = angular.module("mainApp13", []);
 mainApp1.controller('myController13',function($scope, $http) {
 					//alert("in user con");
 					$scope.submitSearchForm = function() {
-												
-												var jsonInputToAPI = {"userId":userId,
-														"myVehicleVO":{
-															"myVehicleId":null,
-															"year": $('#car-years').val(),															      
-															"make":$('#car-makes').val(),
-																	"model" :$('#car-models').val(),
-																	 "variant":$('#car-model-trims').val(),
-																	"vin":$('#vin').val(),
-																	"regNum":$('#regNo').val(),
-																	"regState":$('#car-model-trims').val(),
-																	"regExpDate":null,
-																	"insProv":$('#regState').val(),
-																	"insProvMan":$('#insProv').val(),
-																	"insPremPaid":$('#insPrePaid').val(),
-																	"insPremPaidFreq":$('#premPaidFreq').val(),
-																	"insExpiry":null,	
-																	"odoMeter":$('#odoMeter').val(),	
-																	"lastServiceDt":null,	
-																	"nextServiceDt":null,	
-																	"nextServKms":$('#nextServMaiKms').val(),	
-																	"finProvider":$('#finProv').val(),	
-																	"loanAmt1":$('#loanAmount').val(),	
-																	"loanTakenDt":null,
-																		"loanPaidFreq":$('#loanPaidFreq').val(),	
-																	"loanAmt2":$('#laonAmount1').val(),	
-																	"loanPeriod":$('#laonPeriod').val(),	
-																	"loanInterest":$('#laonIntRate').val(),
-																		"fuelCardProvider":$('#fuelCardProv').val(),	
-																	"valFuelCard":$('#valFuelCard').val(),	
-																	"fuelType":$('#fuelType').val(),
-																		"photo1":$('#photo1').val(),	
-																	"photo2":$('#photo2').val(),	
-																	"photo3":$('#photo3').val(),
-																		"flex1":"flex1",	
-																	"flex2":"flex1",	
-																	"flex3":"flex1",
-																		"flex4":"flex1",	
-																	"flex5":12,	
-																	"flex6":12,
-																	"flex7":12,
-																		"flex8":null,	
-																	"flex9":null
-														}
-														}
+						var RegExpDate= stringToDate($('#RegExpDate').val(),"dd/MM/yyyy","/");
+						var InsExpDate= stringToDate($('#InsExpDate').val(),"dd/MM/yyyy","/");
+						var LastServDate= stringToDate($('#LastServDate').val(),"dd/MM/yyyy","/");
+						var NextServDate= stringToDate($('#NextServDate').val(),"dd/MM/yyyy","/");
+						var LoanTakenDate = stringToDate($('#LoanTakenDate').val(),"dd/MM/yyyy","/");
+
+						var jsonInputToAPI = {"userId":userId,
+								"myVehicleVO":{
+									"myVehicleId":null,
+									"year": $('#car-years').val(),															      
+									"make":$('#car-makes').val(),
+											"model" :$('#car-models').val(),
+											 "variant":$('#car-model-trims').val(),
+											"vin":$('#vin').val(),
+											"regNum":$('#regNo').val(),
+											"regState":$('#car-model-trims').val(),
+											"regExpDate":RegExpDate,
+											"insProv":$('#regState').val(),
+											"insProvMan":$('#insProv').val(),
+											"insPremPaid":$('#insPrePaid').val(),
+											"insPremPaidFreq":$('#premPaidFreq').val(),
+											"insExpiry":InsExpDate,	
+											"odoMeter":$('#odoMeter').val(),	
+											"lastServiceDt":LastServDate,	
+											"nextServiceDt":NextServDate,	
+											"nextServKms":$('#nextServMaiKms').val(),	
+											"finProvider":$('#finProv').val(),	
+											"loanAmt1":$('#loanAmount').val(),	
+											"loanTakenDt":LoanTakenDate,
+												"loanPaidFreq":$('#loanPaidFreq').val(),	
+											"loanAmt2":$('#laonAmount1').val(),	
+											"loanPeriod":$('#laonPeriod').val(),	
+											"loanInterest":$('#laonIntRate').val(),
+												"fuelCardProvider":$('#fuelCardProv').val(),	
+											"valFuelCard":$('#valFuelCard').val(),	
+											"fuelType":$('#fuelType').val(),
+												"photo1":$('#photo1').val(),	
+											"photo2":$('#photo2').val(),	
+											"photo3":$('#photo3').val(),
+												"flex1":"flex1",	
+											"flex2":"flex1",	
+											"flex3":"flex1",
+												"flex4":"flex1",	
+											"flex5":12,	
+											"flex6":12,
+											"flex7":12,
+												"flex8":null,	
+											"flex9":null
+								}
+								}
 
 
 												//alert("Before Call");
@@ -1355,14 +1395,16 @@ mainApp1.controller('myController13',function($scope, $http) {
 																					alert("Thank You. Your MyVehicle ID is " + data.myVehicleId);
 																													
 																				});													
-												};
+							};//end of submitsearch
 
 																			
 											
 												$scope.submitSearchFormLogBook = function() {
-													//alert("inside Log Book");
-													//alert(""+$('#vehicleTypeLogBook').val());
-													var jsonInputToAPI = {"myVehicleId":$('#vehicleTypeLogBook').val(),
+													alert("inside Log Book");
+													alert(myVehicleIDuse);												
+													
+													//alert(data.myVehicleId);
+													var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 															"myVehicleLogBookVO":{
 																"myVehicleLogBookId":null,
 																"recordType": $('#vehicleTypeLogBook').val(),															      
@@ -1381,7 +1423,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 															}
 															}
 
-													console.log(JSON.stringify(jsonInputToAPI));
+													//console.log(JSON.stringify(jsonInputToAPI));
 													//alert("Before Call");
 													//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 													//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
@@ -1412,13 +1454,13 @@ mainApp1.controller('myController13',function($scope, $http) {
 														      var statusText = response.statusText;
 														      var headers = response.headers;
 														      var config = response.config;
-														      alert(status);
+														      /*alert(status);
 														      alert(statusText);
 														      alert(JSON.stringify(data));
 														      alert(headers);
-														      alert(config);
-														      alert("Successfully Stored..");
-																alert("Thank You. Your MyVehicle ID is ");
+														      alert(config);*/
+														      alert("Your Log is Successfully Stored..");
+														      //alert("Thank You. Your MyVehicle ID is ");
 															
 														    }, function onError(response) {
 														      // Handle error
@@ -1427,7 +1469,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 														      var statusText = response.statusText;
 														      var headers = response.headers;
 														      var config = response.config;*/
-														      alert("Something went wrong in error storing LogBook");
+														      alert("Something went wrong in error storing LogBook\n Please try Again");
 														     /* alert(status);
 														      alert(statusText);
 														      alert(JSON.stringify(data));
@@ -1437,49 +1479,35 @@ mainApp1.controller('myController13',function($scope, $http) {
 													};
 													
 													$scope.submitSearchFormServMaint = function() {
-														alert("inside Serv Maint");
-														var jsonInputToAPI = {"userId":userId,
-																"myVehicleVO":{
-																	"myVehicleId":null,
-																	"year": $('#car-years').val(),															      
-																	"make":$('#car-makes').val(),
-																			"model" :$('#car-models').val(),
-																			 "variant":$('#car-model-trims').val(),
-																			"vin":$('#vin').val(),
-																			"regNum":$('#regNo').val(),
-																			"regState":$('#car-model-trims').val(),
-																			"regExpDate":null,
-																			"insProv":$('#regState').val(),
-																			"insProvMan":$('#insProv').val(),
-																			"insPremPaid":$('#insPrePaid').val(),
-																			"insPremPaidFreq":$('#premPaidFreq').val(),
-																			"insExpiry":null,	
-																			"odoMeter":$('#odoMeter').val(),	
-																			"lastServiceDt":null,	
-																			"nextServiceDt":null,	
-																			"nextServKms":$('#nextServMaiKms').val(),	
-																			"finProvider":$('#finProv').val(),	
-																			"loanAmt1":$('#loanAmount').val(),	
-																			"loanTakenDt":null,
-																				"loanPaidFreq":$('#loanPaidFreq').val(),	
-																			"loanAmt2":$('#laonAmount1').val(),	
-																			"loanPeriod":$('#laonPeriod').val(),	
-																			"loanInterest":$('#laonIntRate').val(),
-																				"fuelCardProvider":$('#fuelCardProv').val(),	
-																			"valFuelCard":$('#valFuelCard').val(),	
-																			"fuelType":$('#fuelType').val(),
-																				"photo1":$('#photo1').val(),	
-																			"photo2":$('#photo2').val(),	
-																			"photo3":$('#photo3').val(),
-																				"flex1":"flex1",	
-																			"flex2":"flex1",	
-																			"flex3":"flex1",
-																				"flex4":"flex1",	
-																			"flex5":12,	
-																			"flex6":12,
-																			"flex7":12,
-																				"flex8":null,	
-																			"flex9":null
+														alert("inside Sesdarv Maint");
+														alert(myVehicleIDuse);
+														var vehicleTypeServMaint= stringToDate($('#vehicleTypeServMaint').val(),"dd/MM/yyyy","/");
+														var nextServiceMaintenanceDate= stringToDate($('#nextServiceMaintenanceDate').val(),"dd/MM/yyyy","/");
+														var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
+																"myVehicleServMaintVO":{
+																	"myVehicleServMaintId":null,
+																	"date":vehicleTypeServMaint,
+																	"Time":null,
+																	"recordType":"Service&Maintenance",
+																	"mechanicName":$('#mechanicNameCompanyName').val(),
+																	"companyName":"pqrs",
+																	"typeOfServMaint":$('#typeServiceMaintenance').val(),
+																	"mechanicAddress":$('#mechanicAddress').val(),
+																	"contactDetails":$('#contactDetails').val(),
+																	"odoMeterKm":$('#odoMeterKmsMilesServMaint').val(),
+																	"totalAmount":$('#totalAmount').val(),
+																	"nextOdoMeterKm":$('#NextServiceMaintenanceOdoMeterKmsmils').val(),
+																	"nextServDate":nextServiceMaintenanceDate,
+																	"uploadPhoto":"XYz",
+																	"flex1":null,
+																	"flex2":null,
+																	"flex3":null,
+																	"flex4":null,
+																	"flex5":0,
+																	"flex6":0,
+																	"flex7":0,
+																	"flex8":null,
+																	"flex9":null
 																}
 																}
 
@@ -1487,7 +1515,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 														//alert("Before Call");
 														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 														//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
-														var wsURL = 'api/eBid/myVehicle';
+														var wsURL = 'api/myvehicle/addMyVehicleServMaint';
 														
 															    $http({
 																			method : 'POST',
@@ -1495,8 +1523,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 																			data: jsonInputToAPI
 																							
 																		}).success(function(data) {
-																			alert("Successfully Stored..");
-																							alert("Thank You. Your MyVehicle ID is " + data.myVehicleId);
+																			alert("Service & Maintenance Successfully Stored..");
 																															
 																						});													
 														};
