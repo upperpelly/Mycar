@@ -247,6 +247,17 @@ function dashBoardCallSearch(model_data_id, userid)
     //Get Car Model JSON for the selected make
     //http://localhost:8080/MyCarDomain/api/user/1
     /*alert("came here now changed are 3 Oct1");*/
+   $('#car-model-data').html('<img src="images/LoadImg.gif"></img>');
+   $('#data1').html('<img src="images/LoadImg.gif"></img>');
+   $('#car-model-data2').html('<img src="images/LoadImg.gif"></img>');
+   $('#quo-model-data').html('<img src="images/LoadImg.gif"></img>');
+   $('#quo-data1').html('<img src="images/LoadImg.gif"></img>');
+   $('#quo-model-data2').html('<img src="images/LoadImg.gif"></img>');
+   $('#quo-model-data4').html('<img src="images/LoadImg.gif"></img>');
+   $('#logBook4').html('<img src="images/LoadImg.gif"></img>');
+   $('#fuelCard4').html('<img src="images/LoadImg.gif"></img>');
+   $('#servMaint4').html('<img src="images/LoadImg.gif"></img>');
+   
     $.ajax({  
     	/*headers: {"X-My-Custom-Header": "*"},*/
    	    type: "GET",  
@@ -274,9 +285,11 @@ function dashBoardCallSearch(model_data_id, userid)
        		alert(result.search[i].modelTrim);
        		alert(result.search[i].modelYear);*/
        		//out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td>'+result.search[i].modelTrim+'</td>'+'<td>'+result.search[i].modelDisplay+'</td>'+'<td>'+result.search[i].modelYear+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
-        		   out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+        		   out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
        		
        		}
+        	   out = out.replace(/>null</g, ">--NA--<");
+        	   out = out.replace(/>undefined</g, ">--NA--<");
         	   //alert(out);
         	   forFinance("car-model-data",out);/*
         	   $("#"+sender.model_data_id).append(out);*/
@@ -294,10 +307,12 @@ function dashBoardCallSearch(model_data_id, userid)
        		alert(result.search[i].modelDisplay);
        		alert(result.search[i].modelTrim);
        		alert(result.search[i].modelYear);*/
-       		out1= out1+'<tr>'+'<td>'+result.searchFinance[i].searchFinanceId+'</td>'+'<td>'+result.searchFinance[i].vehValue+'</td>'+'<td>'+result.searchFinance[i].balloonPay+'</td>'+'<td>'+result.searchFinance[i].loanAmount+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleFinanceModal-' + result.searchFinance[i].searchFinanceId + '" data-details=\'' + JSON.stringify(result.searchFinance[i]) + '\' class="anchor-editDealerVehicleFinanceModal" data-toggle="modal" data-target="#editDealerVehicleFinanceModal">View</a></td></tr>';
+       		out1= out1+'<tr>'+'<td>'+result.searchFinance[i].searchFinanceId+'</td>'+'<td>'+result.searchFinance[i].vehValue+'</td>'+'<td>'+result.searchFinance[i].balloonPay+'</td>'+'<td>'+result.searchFinance[i].loanAmount+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleFinanceModal-' + result.searchFinance[i].searchFinanceId + '" data-details=\'' + JSON.stringify(result.searchFinance[i]) + '\' class="anchor-editDealerVehicleFinanceModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleFinanceModal">View</a></td></tr>';
        		
        		
        		}
+        	   out1 = out1.replace(/>null</g, ">--NA--<");
+        	   out1 = out1.replace(/>undefined</g, ">--NA--<");
         	  forFinance("data1",out1);
         	   
         	   /*this.model_data_id = "data1";
@@ -312,11 +327,12 @@ function dashBoardCallSearch(model_data_id, userid)
         	   for(i=0;i<result.searchInsurance.length;i++)
        		{
        		
-       		out2= out2+'<tr>'+'<td>'+result.searchInsurance[i].searchInsuranceId+'</td>'+'<td>'+result.searchInsurance[i].insuranceType+'</td>'+'<td>'+result.searchInsurance[i].marketValue+'</td>'+'<td>'+result.searchInsurance[i].agreedValue+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleInsuranceModal-' + result.searchInsurance[i].searchInsuranceId + '" data-details=\'' + JSON.stringify(result.searchInsurance[i]) + '\' class="anchor-editDealerVehicleInsuranceModal" data-toggle="modal" data-target="#editDealerVehicleInsuranceModal">View</a></td></tr>';
+       		out2= out2+'<tr>'+'<td>'+result.searchInsurance[i].searchInsuranceId+'</td>'+'<td>'+result.searchInsurance[i].insuranceType+'</td>'+'<td>'+result.searchInsurance[i].marketValue+'</td>'+'<td>'+result.searchInsurance[i].agreedValue+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleInsuranceModal-' + result.searchInsurance[i].searchInsuranceId + '" data-details=\'' + JSON.stringify(result.searchInsurance[i]) + '\' class="anchor-editDealerVehicleInsuranceModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleInsuranceModal">View</a></td></tr>';
        		
        		
        		}
-        	   
+        	   out2 = out2.replace(/>null</g, ">--NA--<");
+        	   out2 = out2.replace(/>undefined</g, ">--NA--<");
         	   forFinance("car-model-data2",out2);
 //alert("result.search.length"+result.vehicleQuotation.length);
         	   out3="";
@@ -326,17 +342,18 @@ function dashBoardCallSearch(model_data_id, userid)
         	   for(i=0;i<result.vehicleQuotation.length;i++)
        		{
        		
-       		out3= out3+'<tr>'+'<td>'+result.vehicleQuotation[i].quotId+'</td>'+'<td>'+result.vehicleQuotation[i].dealerName+'</td>'+'<td>'+result.vehicleQuotation[i].dealerStockNo+'</td>'+'<td>'+result.vehicleQuotation[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleQuotationModal-' + result.vehicleQuotation[i].quotId + '" data-details=\'' + JSON.stringify(result.vehicleQuotation[i]) + '\' class="anchor-editDealerVehicleQuotationModal" data-toggle="modal" data-target="#editDealerVehicleQuotationModal">Edit</a></td></tr>';
+       		out3= out3+'<tr>'+'<td>'+result.vehicleQuotation[i].quotId+'</td>'+'<td>'+result.vehicleQuotation[i].dealerName+'</td>'+'<td>'+result.vehicleQuotation[i].dealerStockNo+'</td>'+'<td>'+result.vehicleQuotation[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleQuotationModal-' + result.vehicleQuotation[i].quotId + '" data-details=\'' + JSON.stringify(result.vehicleQuotation[i]) + '\' class="anchor-editDealerVehicleQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleQuotationModal">Edit</a></td></tr>';
        		
        		
        		}
-        	   
+        	   out3 = out3.replace(/>null</g, ">--NA--<");
+        	   out3 = out3.replace(/>undefined</g, ">--NA--<");
         	   forFinance("quo-model-data",out3);
-//alert("result.search.length"+result.financeQuotation.length);
-out4="";
-var finQCt=result.financeQuotation.length;
-document.getElementById('finQCt').innerHTML=finQCt;
-        	   out4 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Insurance Type"+'</th><th>'+"Market Value"+'</th><th>'+"Agreed Value"+'</th></tr>';
+			//alert("result.search.length"+result.financeQuotation.length);
+			out4="";
+			var finQCt=result.financeQuotation.length;
+			document.getElementById('finQCt').innerHTML=finQCt;
+			        	   out4 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Insurance Type"+'</th><th>'+"Market Value"+'</th><th>'+"Agreed Value"+'</th></tr>';
         	   for(i=0;i<result.financeQuotation.length;i++)
        		{
        		
@@ -344,7 +361,8 @@ document.getElementById('finQCt').innerHTML=finQCt;
        		
        		
        		}
-        	   
+        	   out4 = out4.replace(/>null</g, ">--NA--<");
+        	   out4 = out4.replace(/>undefined</g, ">--NA--<");
         	   forFinance("quo-data1",out4);
 //alert("result.search.length"+result.insuranceQuotation.length);
 out5="";
@@ -358,22 +376,24 @@ var insQCt=result.insuranceQuotation.length;
        		
        		
        		}
-        	   
+        	   out5 = out5.replace(/>null</g, ">--NA--<");
+        	   out5 = out5.replace(/>undefined</g, ">--NA--<");
         	   forFinance("quo-model-data2",out5);
         	   
         	 //alert("result.search.length"+result.insuranceQuotation.length);
         	   out6="";
         	  
-        	               	   out6 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Operation"+'</th></tr>';
-        	               	   for(i=0;i<result.myVehicle.length;i++)
-        	              		{
-        	              		
-        	              		out6= out6+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleDetailModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailModal" data-toggle="modal" data-target="#editDealerVehicleDetailModal">View</a></td></tr>';
-        	              		
-        	              		
-        	              		}
-        	               	
-        	               	   forFinance("quo-model-data4",out6);
+           	   out6 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Operation"+'</th></tr>';
+           	   for(i=0;i<result.myVehicle.length;i++)
+          		{
+          		
+          		out6= out6+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleDetailModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailModal">View</a></td></tr>';
+          		
+          		
+          		}
+           	out6 = out6.replace(/>null</g, ">--NA--<");
+           	out6 = out6.replace(/>undefined</g, ">--NA--<");
+           	   forFinance("quo-model-data4",out6);
         	               	   
         	               	   //start
         	               	 var options = '<option value="">Please choose a car</option>';  
@@ -414,7 +434,8 @@ var insQCt=result.insuranceQuotation.length;
       	              		
       	              		
       	              		}
-      	              
+      	               	out7 = out7.replace(/>null</g, ">--NA--<");
+      	              out7 = out7.replace(/>undefined</g, ">--NA--<");
         	               	   forFinance("logBook4",out7);
         	               	   
         	               	out8="";
@@ -424,10 +445,11 @@ var insQCt=result.insuranceQuotation.length;
        	              		{
        	              		
        	              		//out8= out8+'<tr><td><a href="#" id="anchor-editDealerVehicleInsuranceModal" class="logBookBtn">Log Book</a></td>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
-       	               		out8= out8+'<td><a href="#" id="anchor-editDealerVehicleDetailLogBookModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailLogBookModal" data-toggle="modal" data-target="#editDealerVehicleDetailLogBookModal">LogBook</a></td><td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
+       	               		out8= out8+'<td><a href="#" id="anchor-editDealerVehicleDetailLogBookModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailLogBookModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailLogBookModal">LogBook</a></td><td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
        	              		
        	              		}
-       	               	   
+       	               	out8 = out8.replace(/>null</g, ">--NA--<");
+       	             out8 = out8.replace(/>undefined</g, ">--NA--<");
          	               	forFinance("fuelCard4",out8);
          	               	//alert("logbook loaded");
          	               	
@@ -441,7 +463,8 @@ var insQCt=result.insuranceQuotation.length;
       	              		
       	              		
       	              		}
-      	               	   
+      	               	out9 = out9.replace(/>null</g, ">--NA--<");
+      	          	out9 = out9.replace(/>undefined</g, ">--NA--<");
         	               	forFinance("servMaint4",out9);
         	               	registerEditDealerVehicleQuotationModal();
         	               	registerEditDealerVehicleSearchModal();
@@ -469,7 +492,7 @@ function forFinance(model_data_id, out)
 //alert("out"+out);
     
         	   //alert(out);
-        	   $("#"+model_data_id).append(out);
+        	   $("#"+model_data_id).html(out);
         	   //alert("came here 2");
         	  
    /* $.ajax({
@@ -543,7 +566,8 @@ function registerEditDealerVehicleQuotationModal(){
 			<tr><td>No Of Doors</td><td>' + data.noOfDoors + '</td><td>Dealer Preferred Location</td><td>' + data.delPrefLocation + '</td></tr>\
 			<tr><td>Offer Price 2</td><td>' + data.offerPrice2 + '</td><td>Offer Price 3</td><td>' + data.offerPrice3 + '</td></tr>\
 			</table></form>';
-		
+		editDealerVehicleQuotationForm = editDealerVehicleQuotationForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicleQuotationForm = editDealerVehicleQuotationForm.replace(/>undefined</g, ">--NA--<");
 		$(".edit-dealer-vehicle-quotation-content").html(editDealerVehicleQuotationForm);
 	});
 	
@@ -672,7 +696,8 @@ function registerEditDealerVehicleSearchModal(){
 			<tr><td>Extra Internal 4</td><td>' + data.ExtraIntern4 + '</td></tr>\
 			<tr><td>Extra Internal 5</td><td>' + data.ExtraIntern5 + '</td></tr>\
 			</table></form>';
-		
+		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>undefined</g, ">--NA--<");
 		$(".edit-dealer-vehicle-search-content").html(editDealerVehicleSearchForm);
 	});
 	
@@ -765,7 +790,8 @@ function registerEditDealerVehicleFinanceModal(){
 			<tr><td>Income After Super Tax</td><td>' + data.incomeAfterSuperTax + '</td></tr>\
 			<tr><td>If Business Provide ABN</td><td>' + data.ifBusinessProvideABN + '</td></tr>\
 			</table></form>';
-		
+		editDealerVehicleFinanceForm = editDealerVehicleFinanceForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicleFinanceForm = editDealerVehicleFinanceForm.replace(/>undefined</g, ">--NA--<");
 		$(".edit-dealer-vehicle-finance-content").html(editDealerVehicleFinanceForm);
 	});
 	
@@ -862,7 +888,8 @@ function registerEditDealerVehicleInsuranceModal(){
 			<tr><td>DateOfBirth</td><td>' + data.dateOfBirth + '</td></tr>\
 			<tr><td>Age Of Additional Driver</td><td>' + data.ageOfAdditionalDriver + '</td></tr>\
 			</table></form>';
-		
+		editDealerVehicleInsuranceForm = editDealerVehicleInsuranceForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicleInsuranceForm = editDealerVehicleInsuranceForm.replace(/>undefined</g, ">--NA--<");
 		$(".edit-dealer-vehicle-insurance-content").html(editDealerVehicleInsuranceForm);
 	});
 	
@@ -965,7 +992,8 @@ function registerEditDealerVehicleDetailModal(){
 			<tr><td>value Fuel Card</td><td>' + data.valFuelCard + '</td></tr>\
 			<tr><td>Fuel Type</td><td>' + data.fuelType + '</td></tr>\
 			</table></form>';
-		
+		editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>undefined</g, ">--NA--<");
 		$(".edit-dealer-vehicle-detail-content").html(editDealerVehicleDetailForm);
 	});
 	
@@ -1140,6 +1168,8 @@ function registerEditDealerVehicleDetailLogBookModal(){
 	          		 {
 	           	    	outLogT= outLogT+'<tr>'+'<td>'+result.myVehicleLogBook[i].tripType+'</td>'+'<td>'+result.myVehicleLogBook[i].fromLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].toLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].date+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterStartOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterEndOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].routeKm+'</td>'+'<td>'+result.myVehicleLogBook[i].tripDescription+'</td>'+'<td>'+result.myVehicleLogBook[i].flex1+'</td></tr>';
 	          		 }
+	           	 outLogT = outLogT.replace(/>null</g, ">--NA--<");
+	           	outLogT = outLogT.replace(/>undefined</g, ">--NA--<");
 					}
 				else
 					{
@@ -1167,6 +1197,8 @@ function registerEditDealerVehicleDetailLogBookModal(){
 	          		 {
 	           	    	outLogE= outLogE+'<tr>'+'<td>'+result.myVehicleFuelExpenses[i].recordType+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].business+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].date+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].others+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].amount+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].photoOfInvoice+'</td></tr>';
 	          		 }
+	           	 outLogE = outLogE.replace(/>null</g, ">--NA--<");
+	           	outLogE = outLogE.replace(/>undefined</g, ">--NA--<");
 
 				}
 			else
@@ -1198,6 +1230,8 @@ function registerEditDealerVehicleDetailLogBookModal(){
 	          		 {
 	           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].flex1+'</td>'+'<td>'+result.myVehicleServMaint[i].flex2+'</td>'+'<td>'+result.myVehicleServMaint[i].flex3+'</td><td>'+result.myVehicleServMaint[i].mechanicName+'</td>'+'<td>'+result.myVehicleServMaint[i].companyName+'</td><td>'+result.myVehicleServMaint[i].flex4+'</td></tr>';
 	          		 }
+	           	 outLogS = outLogS.replace(/>null</g, ">--NA--<");
+	           	outLogS = outLogS.replace(/>undefined</g, ">--NA--<");
 				}
 			else
 				{
@@ -1221,6 +1255,8 @@ function registerEditDealerVehicleDetailLogBookModal(){
 			<td>' + data.model + '</td>\
 			<td>' + data.variant + '</td></tr>\
 			</table>';
+		editDealerVehicleDetailLogBookForm = editDealerVehicleDetailLogBookForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicleDetailLogBookForm = editDealerVehicleDetailLogBookForm.replace(/>undefined</g, ">--NA--<");
 		//$("#fuelCard41").append(editDealerVehicleDetailLogBookModal);
 		$(".edit-dealer-vehicle-detail-logbook-content").html(editDealerVehicleDetailLogBookForm);
 		 $("#BackToVehicles").click(function(){
@@ -1479,14 +1515,14 @@ mainApp1.controller('myController13',function($scope, $http) {
 													};
 													
 													$scope.submitSearchFormServMaint = function() {
-														alert("inside Sesdarv Maint");
-														alert(myVehicleIDuse);
-														var vehicleTypeServMaint= stringToDate($('#vehicleTypeServMaint').val(),"dd/MM/yyyy","/");
-														var nextServiceMaintenanceDate= stringToDate($('#nextServiceMaintenanceDate').val(),"dd/MM/yyyy","/");
+														/*alert("inside Sesdarv Maint");
+														alert(myVehicleIDuse);*/
+														/*var vehicleTypeServMaint= stringToDate($('#vehicleTypeServMaint').val(),"dd/MM/yyyy","/");
+														var nextServiceMaintenanceDate= stringToDate($('#nextServiceMaintenanceDate').val(),"dd/MM/yyyy","/");*/
 														var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 																"myVehicleServMaintVO":{
 																	"myVehicleServMaintId":null,
-																	"date":vehicleTypeServMaint,
+																	"date":$('#vehicleTypeServMaint').val(),
 																	"Time":null,
 																	"recordType":"Service&Maintenance",
 																	"mechanicName":$('#mechanicNameCompanyName').val(),
@@ -1497,7 +1533,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 																	"odoMeterKm":$('#odoMeterKmsMilesServMaint').val(),
 																	"totalAmount":$('#totalAmount').val(),
 																	"nextOdoMeterKm":$('#NextServiceMaintenanceOdoMeterKmsmils').val(),
-																	"nextServDate":nextServiceMaintenanceDate,
+																	"nextServDate":$('#nextServiceMaintenanceDate').val(),
 																	"uploadPhoto":"XYz",
 																	"flex1":null,
 																	"flex2":null,
@@ -1527,6 +1563,54 @@ mainApp1.controller('myController13',function($scope, $http) {
 																															
 																						});													
 														};
+														
+														
+														
+														
+														$scope.submitMyVehicleFuelExpenses = function() {
+															alert("inside Fuel Expe");
+															//alert(myVehicleIDuse);
+															var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
+																	"myVehicleFuelExpensesVO":{
+																		"myVehicleFuelExpensesId":null,
+																		"date":$('#ExpDate').val(),
+																		"Time":$.now(),
+																		"recordType":"Fuel Expense",
+																		"noOfLitres":2,
+																		"amount":$('#ExpAmt').val(),
+																		"business":$('#ExpType').val(),
+																		"private2":" ",
+																		"others":$('#ExpDesc').val(),
+																		"photoOfInvoice":" ",
+																		"flex1":null,
+																		"flex2":null,
+																		"flex3":null,
+																		"flex4":null,
+																		"flex5":0,
+																		"flex6":0,
+																		"flex7":0,
+																		"flex8":null,
+																		"flex9":null
+																	}
+																	}
+
+
+															//alert("Before Call");
+															//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
+															//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
+															var wsURL = 'api/myvehicle/addMyVehicleFuelExpenses';
+															
+																    $http({
+																				method : 'POST',
+																				url : wsURL,
+																				data: jsonInputToAPI
+																								
+																			}).success(function(data) {
+																				alert("Fuel Expenses Successfully Stored..");
+																																
+																							});													
+															};
+
 
 
 												

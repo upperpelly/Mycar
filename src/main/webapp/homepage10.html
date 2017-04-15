@@ -78,6 +78,25 @@ body.loading {
 body.loading .modal {
     display: block;
 }
+.Signinmodal{
+ display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('images/Signin.gif') 
+                50% 50% 
+                no-repeat;
+}
+body.loadingSign {
+    overflow: hidden;   
+}
+body.loadingSign .Signinmodal {
+    display: block;
+}
 </style>
 
 <!-- Meta Tags -->
@@ -496,7 +515,9 @@ $scope.submitForm1 = function() {
 		alert(jsonInputToAPI.flex1);
 		alert(jsonInputToAPI.flex2);
 		alert(jsonInputToAPI.flex3); */
-		
+
+		$body = $("body");
+		$body.addClass("loadingSign");
 	    if(flex3==1 || flex3==2 || flex3==3 || flex3==4 || flex3==5)
 	    	{
 	    	
@@ -524,6 +545,7 @@ $scope.submitForm1 = function() {
 				}
 							});
 	    	}
+	    $body.removeClass("loadingSign");
 	    
 		
 	    	
@@ -804,7 +826,24 @@ function redirect() {
 	}
 	
 	
-}</script>
+}
+function redirectWithLogbook(){
+	if(alreadyLogged())
+	{
+			var url="dashboard1.html";
+			var data1 = true;
+			$.jStorage.set("keyLogBook",data1);
+			$.jStorage.setTTL("mykeyLogBook", 30000);
+			window.location=url;
+	}
+else{
+	$( ".social" ).focus();
+	alert("Please Login & go to LogBook");
+}
+}
+
+
+</script>
 <!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[84,140] -->
 <link rel="canonical"
 	href="http://www.carqueryapi.com/demo/dependant-selects-and-car-data-display/" />
@@ -995,21 +1034,21 @@ section#content {
 						
 					</ul>
 				</div>
-				<div id="welcomeDiv" style="display:block" class="pull-right hidden-mobile">
+				<div id="homeLogbook" onClick="redirectWithLogbook()" class="pull-right hidden-mobile"><a href="#"	class="button btn-medium yellow" style="padding: 0 15px;"><i
+						class="soap-icon-shopping"></i> LOG BOOK</a>
+				</div>
+				<div id="welcomeDiv" class="pull-right hidden-mobile">
 					
-					<span id="userId"></span>
-					</div>
+					<span id="userId" center></span>&nbsp;&nbsp;
+				</div>
 
-				<div id="welcomeDiv1" style="display:block" class="pull-right hidden-mobile">
+				<div id="welcomeDiv1" class="pull-right hidden-mobile">
 					<button class="btn-medium blue-bg soap-popupbox"
 						data-target="#travelo-signup">SIGNUP</button>
 					<button class="btn-medium soap-popupbox"
 						data-target="#travelo-login" id="login">LOGIN</button>
-					<a
-						href="#"
-						class="button btn-medium yellow" style="padding: 0 15px;"><i
-						class="soap-icon-shopping"></i> LOG BOOK</a>
 				</div>
+				
 			</div>
 			<a href="#mobile-menu-01" data-toggle="collapse"
 				class="mobile-menu-toggle"> Mobile Menu Toggle </a>
@@ -1197,10 +1236,12 @@ section#content {
 						class="soap-icon-facebook"></i>Login with Facebook</a> <a href="#"
 						class="button login-googleplus" onclick="onSignInG()"><i
 						class="soap-icon-googleplus"></i>Login with Google+</a>
+						  <a href="#" class="button login-twitter" onclick=""><i class="soap-icon-twitter"></i>Login with Twitter</a>
+ 							 <a href="#" class="button login-linkedin" onclick="onLinkedInLoad()"><i class="soap-icon-linkedin"></i>Login with Linkedin</a>
 				</div>
-				<div class="seperator">
+				<!-- <div class="seperator">
 					<label>OR</label>
-				</div>
+				</div> --><!-- 
 				<div class="simple-signup">
 					<div class="text-center signup-email-section">
 						<a href="#" class="signup-email"><i class="soap-icon-letter"></i>Sign
@@ -1209,8 +1250,8 @@ section#content {
 					<p class="description">By signing up, I agree to Travelo's
 						Terms of Service, Privacy Policy, Guest Refund olicy, and Host
 						Guarantee Terms.</p>
-				</div>
-				<div class="email-signup">
+				</div> -->
+				<!-- <div class="email-signup">
 					<form>
 						<div class="form-group">
 							<input type="text" class="input-text full-width"
@@ -1246,12 +1287,12 @@ section#content {
 						</div>
 						<button type="submit" class="full-width btn-medium">SIGNUP</button>
 					</form>
-				</div>
-				<div class="seperator"></div>
-				<p>
+				</div> -->
+				<!-- <div class="seperator"></div> -->
+				<!-- <p>
 					Already a Travelo member? <a href="#travelo-login"
 						class="goto-login soap-popupbox">Login</a>
-				</p>
+				</p> -->
 			</div>
 			<div id="travelo-login" class="travelo-login-box travelo-box">
 				<div class="login-social">
@@ -1259,11 +1300,13 @@ section#content {
 						class="soap-icon-facebook"></i>Login with Facebook</a> <a href="#"
 						class="button login-googleplus" onclick="onSignInG()"><i
 						class="soap-icon-googleplus"></i>Login with Google+</a>
+						  <a href="#" class="button login-twitter" onclick=""><i class="soap-icon-twitter"></i>Login with Twitter</a>
+ 							 <a href="#" class="button login-linkedin" onclick="onLinkedInLoad()"><i class="soap-icon-linkedin"></i>Login with Linkedin</a>
 				</div>
-				<div class="seperator">
+				<!-- <div class="seperator">
 					<label>OR</label>
-				</div>
-				<form>
+				</div> -->
+				<!-- <form>
 					<div class="form-group">
 						<input type="text" class="input-text full-width"
 							placeholder="email address">
@@ -1285,7 +1328,7 @@ section#content {
 				<p>
 					Don't have an account? <a href="#travelo-signup"
 						class="goto-signup soap-popupbox">Sign up</a>
-				</p>
+				</p> -->
 			</div>
 		</header>
 
@@ -1300,33 +1343,33 @@ section#content {
 			<div id="slideshow">
 				<div class="flexslider">
 					<ul class="slides">
-						<li>
+						<li><!-- style="background-image: url('assets/images/parachute.jpeg');" -->
 							<div class="slidebg"
-								style="background-image: url('assets/images/parachute.jpeg');"></div>
+								></div>
 						</li>
 						<li>
 							<div class="slidebg"
-								style="background-image: url('assets/images/parachute.jpeg');"></div>
+								></div>
 						</li>
 						<li>
 							<div class="slidebg"
-								style="background-image: url('assets/images/parachute.jpeg');"></div>
+								></div>
 						</li>
 						<li>
 							<div class="slidebg"
-								style="background-image: url('assets/images/parachute.jpeg');"></div>
+								></div>
 						</li>
 						<li>
 							<div class="slidebg"
-								style="background-image: url('assets/images/parachute.jpeg');"></div>
+								></div>
 						</li>
 						<li>
 							<div class="slidebg"
-								style="background-image: url('assets/images/parachute.jpeg');"></div>
+								></div>
 						</li>
 						<li>
 							<div class="slidebg"
-								style="background-image: url('assets/images/parachute.jpeg');"></div>
+								></div>
 						</li>
 					</ul>
 				</div>
@@ -1415,6 +1458,15 @@ section#content {
 												<form class="form-inline signup" name="ebidfrm" ng-submit="submitForm()" novalidate>
 
 													<div class="col-md-12 product-search-title">eBidding for car</div>
+													<div id="fb-root"></div>
+														<script>(function(d, s, id) {
+														  var js, fjs = d.getElementsByTagName(s)[0];
+														  if (d.getElementById(id)) return;
+														  js = d.createElement(s); js.id = id;
+														  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=249863545451459";
+														  fjs.parentNode.insertBefore(js, fjs);
+														}(document, 'script', 'facebook-jssdk'));</script>
+													<div class="fb-like" data-href="https://www.facebook.com/autoscoop.com.au/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
@@ -7860,6 +7912,7 @@ section#content {
     </script>
 <!-- Loading -->
 <div class="modal"><!-- Place at bottom of page --></div>
+<div class="Signinmodal"><!-- Place at bottom of page --></div>
  <!-- terms & Conditions Modal -->
   <div class="modal fade" id="termsnconditionsModal" role="dialog">
     <div class="modal-dialog">

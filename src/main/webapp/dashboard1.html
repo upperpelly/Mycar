@@ -185,95 +185,6 @@ body.loading .modale {
 .selector select {
     opacity: 1;
 }
-.anchor-editDealerVehicleQuotationModal:link, .anchor-editDealerVehicleQuotationModal:visited {
-    background-color: #33a557;
-    color: white;
-    border: 2px solid green;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-}
-.anchor-editDealerVehicleQuotationModal{
- float:right;
-}
-.anchor-editDealerVehicleQuotationModal:hover, .anchor-editDealerVehicleQuotationModal:active {
-    background-color: #2b7542;
-    color: white;
-    border-radius: 5px;
-}
-
-.anchor-editDealerVehicleDetailModal:link, .anchor-editDealerVehicleDetailModal:visited {
-    background-color: #33a557;
-    color: white;
-    border: 2px solid green;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-}
-
-.anchor-editDealerVehicleDetailModal:hover, .anchor-editDealerVehicleDetailModal:active {
-    background-color: #2b7542;
-    color: white;
-    border-radius: 5px;
-}
-
-
-.anchor-editDealerVehicleInsuranceModal:link, .anchor-editDealerVehicleInsuranceModal:visited {
-    background-color: #33a557;
-    color: white;
-    border: 2px solid green;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-}
-
-.anchor-editDealerVehicleInsuranceModal:hover, .anchor-editDealerVehicleInsuranceModal:active {
-    background-color: #2b7542;
-    color: white;
-    border-radius: 5px;
-}
-
-.anchor-editDealerVehicleFinanceModal:link, .anchor-editDealerVehicleFinanceModal:visited {
-    background-color: #33a557;
-    color: white;
-    border: 2px solid green;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-}
-
-.anchor-editDealerVehicleFinanceModal:hover, .anchor-editDealerVehicleFinanceModal:active {
-    background-color: #2b7542;
-    color: white;
-    border-radius: 5px;
-}
-
-.anchor-editDealerVehicleSearchModal:link, .anchor-editDealerVehicleSearchModal:visited {
-    background-color: #33a557;
-    color: white;
-    border: 2px solid green;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-}
-
-.anchor-editDealerVehicleSearchModal:hover, .anchor-editDealerVehicleSearchModal:active {
-    background-color: #2b7542;
-    color: white;
-    border-radius: 5px;
-}
-
-
 table {
     border-collapse: collapse;
     width: 100%;
@@ -701,7 +612,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             <li class=""><a data-toggle="tab" href="#profile"><i class="soap-icon-user circle"></i>Profile</a></li>
                             <li class=""><a data-toggle="tab" href="#cruise-description"><i class="soap-icon-status circle"></i>My Vehicle</a></li>
                             <li class=""><a data-toggle="tab" href="#VehicleQuotation12"><i class="soap-icon-status circle"></i>My Vehicle Garage</a></li>
-                            <li class=""><a data-toggle="tab" href="#l2Profile1"><i class="soap-icon-status circle"></i>Log Book</a></li>
+                            <li class="" id="logBookTab"><a data-toggle="tab" href="#l2Profile1"><i class="soap-icon-status circle"></i>Log Book</a></li>
                             <li class=""><a data-toggle="tab" href="#travel-stories"><i class="soap-icon-pets circle"></i>Ebid-R</a></li>
                             <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-status circle"></i>Quotation</a></li>                            
                             <li class=""><a data-toggle="tab" href="#wishlist"><i class="soap-icon-wishlist circle"></i>Wishlist</a></li>
@@ -2454,7 +2365,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 														</div> 
 														<div class="form-group row"> 
 															<div class="col-sm-6 col-md-5"> 
-																<button type="button" class="full-width btn-large" id="LogExpSave" >Save</button> 
+																<button type="button" class="full-width btn-large" id="LogExpSave" ng-click="submitMyVehicleFuelExpenses()">Save</button> 
 															</div> 
 												        </div> 
 														</form> 
@@ -2682,7 +2593,21 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                 </div>
             </div>
         </section>
-        
+        <script>
+        var valueLogBook = $.jStorage.get("keyLogBook");
+        /* alert("escus linsit");
+        alert(valueLogBook); */
+        if(valueLogBook)
+        	{
+//        	alert("comming");
+        		$('.tabs li').removeClass('active');
+       		 		$('#dashboard').removeClass('active');
+        		 $('#logBookTab').attr('class', 'active');
+        		 $('.tabs li #logBookTab a').click();
+        		 $('.tabs li #logBookTab a').attr('aria-expanded', 'true');
+        		 $('#l2Profile1').attr('class', 'tab-pane fade active in');
+        	}
+        </script>
         
         <footer id="footer">
             <div class="footer-wrapper">
