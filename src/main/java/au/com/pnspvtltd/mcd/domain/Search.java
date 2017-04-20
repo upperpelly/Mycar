@@ -19,6 +19,9 @@ import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
 public class Search implements Serializable {
 
 	private Long carSearchId;
+	private boolean isNew;
+	private boolean isNewer;
+	private boolean isUsed;
 	private String modelYear;
 	private String modelDisplay;
 	private String modelName;
@@ -28,7 +31,30 @@ public class Search implements Serializable {
 	private boolean dealer;
 	// FLEX1
 	private String sModel;
-	
+	@Column(name = "ISUSED")
+	public boolean isUsed() {
+		return isUsed;
+	}
+
+	public void setUsed(boolean isUsed) {
+		this.isUsed = isUsed;
+	}
+	@Column(name = "ISNEWER")
+	public boolean isNewer() {
+		return isNewer;
+	}
+
+	public void setNewer(boolean isNewer) {
+		this.isNewer = isNewer;
+	}
+	@Column(name = "ISNEW")
+	public boolean isNew() {
+		return isNew;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
 	@Column(name = "SMODEL")
 	public String getsModel() {
 		return sModel;

@@ -178,8 +178,8 @@ var modelYear=null;
 			//alert("inside cdddd"+$('#startdate').data('datepicker').viewDate);
 			var dateInFormat= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");
 			var dateInFormat1= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");
-			alert("inside cdddd"+dateInFormat);
-			alert("inside cdddd"+dateInFormat1);
+			//alert("inside cdddd"+dateInFormat);
+			//alert("inside cdddd"+dateInFormat1);
 													if(isValid)
 														{
 														
@@ -187,6 +187,8 @@ var modelYear=null;
 														{
 																"userId":userId,
 																"searchLead":{
+																	"newer":value1.newCarEbid,
+																	"used":value1.usedCarEbid,
 																	"modelYear":value1.modelYear,
 																	"modelDisplay": value1.modelDisplay,
 																	"modelName": value1.modelName,															      
@@ -212,6 +214,8 @@ var modelYear=null;
 																			"extraIntern5":$('#extraInternal5').val()
 																},
 																"financeLead":{
+																	"newer":value1.newCarEbid,
+																	"used":value1.usedCarEbid,
 																	"modelYear":value1.modelYear,
 																	"modelDisplay": value1.modelDisplay,
 																	"modelName": value1.modelName,															      
@@ -232,6 +236,8 @@ var modelYear=null;
 																	 "noOfDependence":$('#noDependencies').val()
 																},
 																"insuranceLead":{
+																	"newer":value1.newCarEbid,
+																	"used":value1.usedCarEbid,
 																	"modelYear":value1.modelYear,
 																	"modelDisplay": value1.modelDisplay,
 																	"modelName": value1.modelName,															      

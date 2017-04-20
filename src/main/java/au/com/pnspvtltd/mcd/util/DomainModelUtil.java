@@ -32,6 +32,8 @@ import au.com.pnspvtltd.mcd.domain.PhotosTemplate;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.SearchInsurance;
+import au.com.pnspvtltd.mcd.domain.SearchServMaint;
+import au.com.pnspvtltd.mcd.domain.SearchTransp;
 import au.com.pnspvtltd.mcd.domain.SpecificationTemplate;
 import au.com.pnspvtltd.mcd.domain.TempCarModelColour;
 import au.com.pnspvtltd.mcd.domain.TempCarModelCountry;
@@ -87,6 +89,8 @@ import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.PhotosTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
+import au.com.pnspvtltd.mcd.web.model.SearchServMaintVO;
+import au.com.pnspvtltd.mcd.web.model.SearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.SpecificationTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelColourVO;
@@ -165,6 +169,14 @@ public class DomainModelUtil {
 					searchFinanceVOs.add(searchFinanceVO);
 				}
 				userVO.setSearchFinance(searchFinanceVOs);
+				
+				List<SearchServMaintVO> searchServMaintVOs = new ArrayList<>();
+				for (SearchServMaint searchFinance : user.getSearchServMaint()) {
+					SearchServMaintVO searchFinanceVO = new SearchServMaintVO();
+					BeanUtils.copyProperties(searchFinanceVO, searchFinance);
+					searchServMaintVOs.add(searchFinanceVO);
+				}
+				userVO.setSearchServMaint(searchServMaintVOs);
 
 				List<MyVehicleVO> myVehicleVOs = new ArrayList<>();
 				for (MyVehicle myVehicle : user.getMyVehicle()) {
@@ -501,6 +513,38 @@ public class DomainModelUtil {
 		}
 		return searchInsurance;
 	}
+	
+	// User ServMaint Lead
+		public SearchServMaint toSearchServMaint(final SearchServMaintVO searchInsuranceVO) {
+
+			SearchServMaint searchInsurance = new SearchServMaint();
+			try {
+				BeanUtils.copyProperties(searchInsurance, searchInsuranceVO);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return searchInsurance;
+		}
+		
+		// User trans Lead
+				public SearchTransp toSearchTrans(final SearchTranspVO searchInsuranceVO) {
+
+					SearchTransp searchInsurance = new SearchTransp();
+					try {
+						BeanUtils.copyProperties(searchInsurance, searchInsuranceVO);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchInsurance;
+				}
 
 	// Dealer Insurance Lead
 	public DealerSearchInsurance toDealerSearchInsurance(final SearchInsuranceVO searchInsuranceVO) {
@@ -517,6 +561,37 @@ public class DomainModelUtil {
 		}
 		return dealerSearchInsurance;
 	}
+	
+	// Dealer Transp Lead
+			public DealerSearchTransp toDealerSearchTransp(final SearchTranspVO searchInsuranceVO) {
+
+				DealerSearchTransp dealerSearchInsurance = new DealerSearchTransp();
+				try {
+					BeanUtils.copyProperties(dealerSearchInsurance, searchInsuranceVO);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return dealerSearchInsurance;
+			}
+	// Dealer ServMaint Lead
+		public DealerSearchServMaint toDealerSearchServMaint(final SearchServMaintVO searchInsuranceVO) {
+
+			DealerSearchServMaint dealerSearchInsurance = new DealerSearchServMaint();
+			try {
+				BeanUtils.copyProperties(dealerSearchInsurance, searchInsuranceVO);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return dealerSearchInsurance;
+		}
 
 	public DealerVO fromDealer(final Dealer dealer, boolean isMinified) {
 

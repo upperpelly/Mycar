@@ -5,6 +5,8 @@ import java.sql.Date;
 public class SearchInsuranceVO {
 
 	private boolean isNew;
+	private boolean isNewer;
+	private boolean isUsed;
 	private Long searchInsuranceId;
 	private String postCode;
 	private String insuranceType;
@@ -15,6 +17,7 @@ public class SearchInsuranceVO {
 	private String make;
 	private String model;
 	private String variant;
+	private String autoscoopTrim;
 	private double marketValue;
 	private double agreedValue;
 	private boolean finance;
@@ -28,6 +31,30 @@ public class SearchInsuranceVO {
 	private double prefExcessAmount;
 	private Date dateOfBirth;
 	private Date ageOfAdditionalDriver;
+
+	public String getAutoscoopTrim() {
+		return autoscoopTrim;
+	}
+
+	public void setAutoscoopTrim(String autoscoopTrim) {
+		this.autoscoopTrim = autoscoopTrim;
+	}
+
+	public boolean isNewer() {
+		return isNewer;
+	}
+
+	public void setNewer(boolean isNewer) {
+		this.isNewer = isNewer;
+	}
+
+	public boolean isUsed() {
+		return isUsed;
+	}
+
+	public void setUsed(boolean isUsed) {
+		this.isUsed = isUsed;
+	}
 
 	public boolean isNew() {
 		return isNew;

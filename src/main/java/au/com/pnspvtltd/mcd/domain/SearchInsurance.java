@@ -15,6 +15,8 @@ import javax.persistence.Table;
 public class SearchInsurance implements Serializable {
 
 	private boolean isNew;
+	private boolean isNewer;
+	private boolean isUsed;
 	private Long searchInsuranceId;
 	private String postCode;
 	private String insuranceType;
@@ -25,6 +27,7 @@ public class SearchInsurance implements Serializable {
 	private String make;
 	private String model;
 	private String variant;
+	private String autoscoopTrim;
 	private double marketValue;
 	private double agreedValue;
 	private boolean finance;
@@ -39,6 +42,32 @@ public class SearchInsurance implements Serializable {
 	private Date dateOfBirth;
 	private Date ageOfAdditionalDriver;
 	
+	@Column(name = "AUTOSCOOPTRIM")
+	public String getAutoscoopTrim() {
+		return autoscoopTrim;
+	}
+
+	public void setAutoscoopTrim(String autoscoopTrim) {
+		this.autoscoopTrim = autoscoopTrim;
+	}
+
+	@Column(name = "ISNEWER")
+	public boolean isNewer() {
+		return isNewer;
+	}
+
+	public void setNewer(boolean isNewer) {
+		this.isNewer = isNewer;
+	}
+	@Column(name = "ISUSED")
+	public boolean isUsed() {
+		return isUsed;
+	}
+
+	public void setUsed(boolean isUsed) {
+		this.isUsed = isUsed;
+	}
+
 	@Column(name = "ISNEW")
 	public boolean isNew() {
 		return isNew;

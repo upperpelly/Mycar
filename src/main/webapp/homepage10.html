@@ -11,7 +11,154 @@
 <script src="assets/js/jquery.countdown.min.js"></script>
 <!-- added end -->
 
+<script type="text/javascript">
 
+function stringToDate(_date,_format,_delimiter)
+{
+            var formatLowerCase=_format.toLowerCase();
+            var formatItems=formatLowerCase.split(_delimiter);
+            var dateItems=_date.split(_delimiter);
+            var monthIndex=formatItems.indexOf("mm");
+            var dayIndex=formatItems.indexOf("dd");
+            var yearIndex=formatItems.indexOf("yyyy");
+            var month=parseInt(dateItems[monthIndex]);
+            month-=1;
+            var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+            return formatedDate;
+}
+var isChecked1 = false;
+
+function allSelected1() 
+{
+   //alert("inside check box");
+	// this line is for toggle the check
+    //isChecked = !isChecked;
+	if(!isChecked1){
+    document.getElementById("newCarInsuran").value=true;
+    isChecked1 = !isChecked1;
+	}
+	else{
+		document.getElementById("newCarInsuran").value=false;
+	}
+		
+    //below line refers to 'jpCheckbox' class
+    //$('input:checkbox.jpCheckbox').attr('checked',isChecked);
+
+    //OR,
+    //$('input:checkbox.jpCheckbox').attr('checked','checked');
+}
+var isChecked2= false;
+
+function allSelected2() 
+{
+   //alert("inside check box");
+	// this line is for toggle the check
+    //isChecked = !isChecked;
+	if(!isChecked2){
+    document.getElementById("usedCarInsuran").value=true;
+    isChecked2 = !isChecked2;
+	}
+	else{
+		document.getElementById("usedCarInsuran").value=false;
+	}
+		
+    //below line refers to 'jpCheckbox' class
+    //$('input:checkbox.jpCheckbox').attr('checked',isChecked);
+
+    //OR,
+    //$('input:checkbox.jpCheckbox').attr('checked','checked');
+}
+
+var isChecked3 = false;
+
+function allSelected3() 
+{
+   //alert("inside check box");
+	// this line is for toggle the check
+    //isChecked = !isChecked;
+	if(!isChecked3){
+    document.getElementById("newCarFinance").value=true;
+    isChecked3 = !isChecked3;
+	}
+	else{
+		document.getElementById("newCarFinance").value=false;
+	}
+		
+    //below line refers to 'jpCheckbox' class
+    //$('input:checkbox.jpCheckbox').attr('checked',isChecked);
+
+    //OR,
+    //$('input:checkbox.jpCheckbox').attr('checked','checked');
+}
+
+var isChecked4 = false;
+
+function allSelected4() 
+{
+   //alert("inside check box");
+	// this line is for toggle the check
+    //isChecked = !isChecked;
+	if(!isChecked4){
+    document.getElementById("usedCarFinance").value=true;
+    isChecked4 = !isChecked4;
+	}
+	else{
+		document.getElementById("usedCarFinance").value=false;
+	}
+		
+    //below line refers to 'jpCheckbox' class
+    //$('input:checkbox.jpCheckbox').attr('checked',isChecked);
+
+    //OR,
+    //$('input:checkbox.jpCheckbox').attr('checked','checked');
+}
+
+var isChecked5 = false;
+
+function allSelected5() 
+{
+   //alert("inside check box");
+	// this line is for toggle the check
+    //isChecked = !isChecked;
+	if(!isChecked5){
+		alert("should come here");
+    document.getElementById("newCarEbid").value=true;
+    isChecked5 = !isChecked5;
+	}
+	else{
+		alert("not here");
+		document.getElementById("newCarEbid").value=false;
+	}
+		
+    //below line refers to 'jpCheckbox' class
+    //$('input:checkbox.jpCheckbox').attr('checked',isChecked);
+
+    //OR,
+    //$('input:checkbox.jpCheckbox').attr('checked','checked');
+}
+
+var isChecked6 = false;
+
+function allSelected6() 
+{
+   //alert("inside check box");
+	// this line is for toggle the check
+    //isChecked = !isChecked;
+	if(!isChecked6){
+    document.getElementById("usedCarEbid").value=true;
+    isChecked6 = !isChecked6;
+	}
+	else{
+		document.getElementById("usedCarEbid").value=false;
+	}
+		
+    //below line refers to 'jpCheckbox' class
+    //$('input:checkbox.jpCheckbox').attr('checked',isChecked);
+
+    //OR,
+    //$('input:checkbox.jpCheckbox').attr('checked','checked');
+} 
+</script>
 <script type="text/javascript">// <![CDATA[
 $(document).ready( function() {
 	
@@ -115,15 +262,34 @@ body.loadingSign .Signinmodal {
 	//alert("came here");
 	var carquery = new CarQuery();
 	carquery.init();
-	carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
+	//carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
+	carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins','car-model-auto-trims-ins');
 }
 </script>
-
+<script>function showDiv3() {
+	//alert("came here");
+	var carquery = new CarQuery();
+	carquery.init();
+	//carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
+	carquery.initYearMakeModelTrim('car-years-serv', 'car-makes-serv', 'car-models-serv', 'car-model-trims-serv','car-model-auto-trims-serv');
+}
+</script>
+<script>function showDiv4() {
+	alert("came here");
+	var carquery = new CarQuery();
+	carquery.init();
+	//carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
+	carquery.initYearMakeModelTrim('car-years-trans', 'car-makes-trans', 'car-models-trans', 'car-model-trims-trans','car-model-auto-trims-trans');
+}
+</script>
 <script>function showDiv2() {
 	//alert("came here");
 	var carquery = new CarQuery();
 	carquery.init();
-	carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin');
+	//  carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin','car-model-auto-trims-fin' );
+	carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin','car-model-auto-trims-fin');
+
+	//carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
 }
 </script>
    <script>
@@ -433,11 +599,7 @@ flex2=null;
 flex3=null;
 firstName =null;
 
-	var mainApp1 = angular.module("mainApp1", [ 'ui.bootstrap', 'ngResource' ]);
-	mainApp1.controller('overviewController', function($scope, $stateParams) {
-	    var index = $stateParams.index;
-	    var anotherKey = $stateParams.anotherKey;
-	});
+	var mainApp1 = angular.module("mainApp1", []);
 	mainApp1
 			.controller(
 					'myController1',
@@ -555,14 +717,184 @@ $scope.submitForm1 = function() {
 	//social login end
 	
 	
+	// trans Lead post start
+	// Insurance lead post
+	$scope.posttransLead = function() {
+	//alert("invoke in ins lead");
+		/*alert($scope.email);
+		alert(email); */
+		if(alreadyLogged()){
+		userId=$.jStorage.get("key").userId;
+		//alert("inside insurance user id"+userId);
+		
+		var jsonInputToAPI = {"userId":userId,
+				"servMaintLead":{
+				"searchServMaintId":null,
+			"postCode":"test",
+			"regNo":"we",
+			"regoState":"TS",
+			"year":2013,
+			"make":"ss",
+			"model":"lssa",
+			"variant":"sada",
+			"feulType":"sada",
+			"servMaintL1":"sada",
+			"servMaintL2":"sada",
+			"uploadPhotos":"lssa",
+			"coveredUnderIns":false,
+			"curInsProv":"lssa",
+			"freeText":"sada"
+				}
+			};
+
+		
+		jsonInputToAPI.servMaintLead.regNo =$('#serv-regono').val();
+		jsonInputToAPI.servMaintLead.postCode=$('#serv-postCode').val();
+		jsonInputToAPI.servMaintLead.servMaintL1 =$('#ServL1').val();
+		jsonInputToAPI.servMaintLead.regoState=$('#regoStateServ').val();
+		
+		jsonInputToAPI.servMaintLead.year =$('#car-years-serv').val();
+		jsonInputToAPI.servMaintLead.make=$('#car-makes-serv').val();
+		jsonInputToAPI.servMaintLead.model =$('#car-models-serv').val();
+		jsonInputToAPI.servMaintLead.variant=$('#car-model-trims-serv').val();
+		jsonInputToAPI.servMaintLead.autoscoopTrim=$('#car-model-auto-trims-serv').val();
+		
+		jsonInputToAPI.servMaintLead.feulType =$('#fuelTypeServ').val();
+		jsonInputToAPI.servMaintLead.servMaintL2=$('#ServL2').val();
+		jsonInputToAPI.servMaintLead.uploadPhotos =$('#uploadPhotoServ').val();
+		jsonInputToAPI.servMaintLead.curInsProv=$('#coverInsServ').val();
+		
+		jsonInputToAPI.servMaintLead.curInsProv =$('#InsprovServ').val();
+		jsonInputToAPI.servMaintLead.freeText=$('#freeTextServ').val();
+		
+
+		var wsURL = 'api/eBid/transserv';
+		
+		// change here
+		
+	   $body.addClass("loading");   
+	    	$http({
+				method : 'POST',
+				url : wsURL,
+				data: jsonInputToAPI
+								
+			}).success(function(data) {
+				$body.removeClass("loading");
+				alert("successfully stored");
+				alert("Redirecting to Dashboard..");
+				var url="dashboard1.html";
+				
+				window.location=url;
+				
+							});
+	    
+		}
+		else{alert("Please Login and Build")}
+		
+	    	
+	    
+	}
+	
+	// trans lead end
+	
+	// servmaint Lead post start
+	// Insurance lead post
+	$scope.postServMaintLead = function() {
+	//alert("invoke in ins lead");
+		/*alert($scope.email);
+		alert(email); */
+		if(alreadyLogged()){
+		userId=$.jStorage.get("key").userId;
+		//alert("inside insurance user id"+userId);
+		
+		var jsonInputToAPI = {"userId":userId,
+				"servMaintLead":{
+				"searchServMaintId":null,
+			"postCode":"test",
+			"regNo":"we",
+			"regoState":"TS",
+			"year":2013,
+			"make":"ss",
+			"model":"lssa",
+			"variant":"sada",
+			"feulType":"sada",
+			"servMaintL1":"sada",
+			"servMaintL2":"sada",
+			"uploadPhotos":"lssa",
+			"coveredUnderIns":false,
+			"curInsProv":"lssa",
+			"freeText":"sada"
+				}
+			};
+
+		
+		jsonInputToAPI.servMaintLead.regNo =$('#serv-regono').val();
+		jsonInputToAPI.servMaintLead.postCode=$('#serv-postCode').val();
+		jsonInputToAPI.servMaintLead.servMaintL1 =$('#ServL1').val();
+		jsonInputToAPI.servMaintLead.regoState=$('#regoStateServ').val();
+		
+		jsonInputToAPI.servMaintLead.year =$('#car-years-serv').val();
+		jsonInputToAPI.servMaintLead.make=$('#car-makes-serv').val();
+		jsonInputToAPI.servMaintLead.model =$('#car-models-serv').val();
+		jsonInputToAPI.servMaintLead.variant=$('#car-model-trims-serv').val();
+		jsonInputToAPI.servMaintLead.autoscoopTrim=$('#car-model-auto-trims-serv').val();
+		
+		jsonInputToAPI.servMaintLead.feulType =$('#fuelTypeServ').val();
+		jsonInputToAPI.servMaintLead.servMaintL2=$('#ServL2').val();
+		jsonInputToAPI.servMaintLead.uploadPhotos =$('#uploadPhotoServ').val();
+		jsonInputToAPI.servMaintLead.curInsProv=$('#coverInsServ').val();
+		
+		jsonInputToAPI.servMaintLead.curInsProv =$('#InsprovServ').val();
+		jsonInputToAPI.servMaintLead.freeText=$('#freeTextServ').val();
+		
+
+		var wsURL = 'api/eBid/servmaint';
+		
+		// change here
+		
+	   $body.addClass("loading");   
+	    	$http({
+				method : 'POST',
+				url : wsURL,
+				data: jsonInputToAPI
+								
+			}).success(function(data) {
+				$body.removeClass("loading");
+				alert("successfully stored");
+				alert("Redirecting to Dashboard..");
+				var url="dashboard1.html";
+				
+				window.location=url;
+				
+							});
+	    
+		}
+		else{alert("Please Login and Build")}
+		
+	    	
+	    
+	}
+	
+	// servmaint lead end
+	
 	// Insurance lead post
 	$scope.postInsuranceLead = function() {
 	//alert("invoke in ins lead");
 		/*alert($scope.email);
 		alert(email); */
+		if(alreadyLogged()){
+		userId=$.jStorage.get("key").userId;
+		//alert("inside insurance user id"+userId);
+		var newCarInsuran=false;
+		newCarInsuran = document.getElementById("newCarInsuran").value;
+		if(newCarInsuran=="on")newCarInsuran=false;
+		var usedCarInsuran=false;
+		usedCarInsuran = document.getElementById("usedCarInsuran").value;
+		if(usedCarInsuran=="on")newCarInsuran=false;
 		var jsonInputToAPI = {"userId":userId,
 				"insuranceLead":{
-				"isNew":1,
+				"newer":newCarInsuran,
+				"used":usedCarInsuran,
 			"searchInsuranceId":null,
 			"postCode":"test",
 			"insuranceType":"t",
@@ -572,6 +904,7 @@ $scope.submitForm1 = function() {
 			"make":"ss",
 			"model":"lssa",
 			"variant":"sada",
+			"autoscoopTrim":"sada",
 			"marketValue":0.21,
 			"agreedValue":0.232,
 			"finance":1,
@@ -591,34 +924,35 @@ $scope.submitForm1 = function() {
 		var insLeadTrim = document.getElementById("car-model-trims-ins"); 
 		var strUserIns = insLeadTrim.options[insLeadTrim.selectedIndex].text;
 		
-		jsonInputToAPI.insuranceLead.isNew=document.getElementById("myCheck").value;
-		jsonInputToAPI.insuranceLead.regNo =$('#ins-regono').val();
-		jsonInputToAPI.insuranceLead.postCode=$('#ins-postcode').val();
+		
+		jsonInputToAPI.insuranceLead.regNo =$('#regono12').val();
+		jsonInputToAPI.insuranceLead.postCode=$('#postcode11').val();
 		jsonInputToAPI.insuranceLead.insuranceType =$('#insuranceType').val();
 		jsonInputToAPI.insuranceLead.regoState=$('#ins-regost').val();
 		
 		jsonInputToAPI.insuranceLead.year =$('#car-years-ins').val();
 		jsonInputToAPI.insuranceLead.make=$('#car-makes-ins').val();
 		jsonInputToAPI.insuranceLead.model =$('#car-models-ins').val();
-		jsonInputToAPI.insuranceLead.variant=strUserIns;
+		jsonInputToAPI.insuranceLead.variant=$('#car-model-trims-ins').val();
+		jsonInputToAPI.insuranceLead.autoscoopTrim=$('#car-model-auto-trims-ins').val();
 		
-		jsonInputToAPI.insuranceLead.marketValue =$('#ins-market').val();
-		jsonInputToAPI.insuranceLead.agreedValue=$('#ins-agree').val();
+		jsonInputToAPI.insuranceLead.marketValue =$('#market').val();
+		jsonInputToAPI.insuranceLead.agreedValue=$('#agree').val();
 		jsonInputToAPI.insuranceLead.finance =$('#ins-finance').val();
 		jsonInputToAPI.insuranceLead.financeProvider=$('#ins-fin-prov').val();
 		
 		jsonInputToAPI.insuranceLead.drivingLicenseType =$('#ins-lic-type').val();
-		jsonInputToAPI.insuranceLead.drivingLicenseNo=$('#ins-lic-no').val();
+		jsonInputToAPI.insuranceLead.drivingLicenseNo=$('#licno').val();
 		jsonInputToAPI.insuranceLead.drivingLicenseIssueState =$('#ins-lic-iss-state').val();
 		jsonInputToAPI.insuranceLead.noOfAtFaults=$('#ins-faults').val();
 		
-		//jsonInputToAPI.insuranceLead.otherIssues =$('#ins-regono').val();
+		jsonInputToAPI.insuranceLead.otherIssues =$('#otherissues').val();
 		jsonInputToAPI.insuranceLead.curInsProv=$('#curr-ins-prov').val();
 		jsonInputToAPI.insuranceLead.prefExcessAmount =$('#ins-excessAmount').val();
 		//jsonInputToAPI.insuranceLead.dateOfBirth=$('#ins-regost').val();
 		//jsonInputToAPI.insuranceLead.ageOfAdditionalDriver=$('#ins-regost').val();
-		alert(jsonInputToAPI.insuranceLead.isNew);
-		alert(jsonInputToAPI.insuranceLead.regNo);
+		//alert(jsonInputToAPI.insuranceLead.isNew);
+		//alert(jsonInputToAPI.insuranceLead.regNo);
 		/* jsonInputToAPI.email=$('#car-years').val();
 		jsonInputToAPI.firstName=$('#car-years').val();
 		jsonInputToAPI.lastName=$('#car-years').val(); */
@@ -631,23 +965,26 @@ $scope.submitForm1 = function() {
 		alert(jsonInputToAPI.flex1);
 		alert(jsonInputToAPI.flex2);
 		alert(jsonInputToAPI.flex3); */
+		// change here
 		
-	   
+	   $body.addClass("loading");   
 	    	$http({
 				method : 'POST',
 				url : wsURL,
 				data: jsonInputToAPI
 								
 			}).success(function(data) {
+				$body.removeClass("loading");
 				alert("successfully stored");
 				alert("Redirecting to Dashboard..");
 				var url="dashboard1.html";
 				
 				window.location=url;
-				/* document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>'; */
+				
 							});
 	    
-	    
+		}
+		else{alert("Please Login and Build")}
 		
 	    	
 	    
@@ -656,16 +993,30 @@ $scope.submitForm1 = function() {
 	// Insurance lead post end
 	
 		// Finance lead post
-	$scope.postFinanceLead = function() {
-	alert("invoke in ins finance lead");
+	$scope.postFinanceLead = function(isValid) {
+	//alert("invoke in ins finance lead");
 		/*alert($scope.email);
 		alert(email); */
+		if(alreadyLogged()){
+		userId=$.jStorage.get("key").userId;
+		//alert("user"+userId);
+		var newCarFinance=false;
+		newCarFinance = document.getElementById("newCarFinance").value;
+		if(newCarFinance=="on")newCarFinance=false;
+		var usedCarFinance=false;
+		usedCarFinance = document.getElementById("usedCarFinance").value;
+		if(usedCarFinance=="on")usedCarFinance=false;
+		var dateInFormatFinDOB= stringToDate($('#date_of_birth').val(),"dd/MM/yyyy","/");
+		//alert(dateInFormatFinDOB);
 		var jsonInputToAPI = {"userId":userId,
 				"financeLead":{
+					"newer":newCarFinance,
+					"used":usedCarFinance,
 					"modelYear":2013,
 					"modelDisplay": "",
 					"modelName": "",															      
 					"modelTrim": "",
+					"autoscoopTrim":"sada",
 					"postCode":"",
 					"incomeType":"",
 					"yearEmploymentBusiness":"",
@@ -678,24 +1029,24 @@ $scope.submitForm1 = function() {
 					"annualIncome":"",
 					"loanAmount":"",
 					 "loanPeriod":"",
-					 "dateOfBirth":null,
+					 "dateOfBirth":dateInFormatFinDOB,
 					 "noOfDependence":""
 				}
 			};
 		
-		var insLeadTrim1 = document.getElementById("car-model-trims-fin"); 
-		var strUserfin = insLeadTrim1.options[insLeadTrim1.selectedIndex].text;
+		/* var insLeadTrim1 = document.getElementById("car-model-trims-fin"); 
+		var strUserfin = insLeadTrim1.options[insLeadTrim1.selectedIndex].text; */
 		
 		jsonInputToAPI.financeLead.vehValue =$('#finVehicleValue').val();
-		jsonInputToAPI.financeLead.postCode=$('#fin-postCode').val();
+		jsonInputToAPI.financeLead.postCode=$('#finVehicleValue1').val();
 		jsonInputToAPI.financeLead.balloonPay =$('#finBalloonPayment').val();
 		jsonInputToAPI.financeLead.loanAmount=$('#finLoanAmount').val();
 		
 		jsonInputToAPI.financeLead.year =$('#car-years-fin').val();
 		jsonInputToAPI.financeLead.make=$('#car-makes-fin').val();
 		jsonInputToAPI.financeLead.model =$('#car-models-fin').val();
-		jsonInputToAPI.financeLead.variant=strUserfin;
-		
+		jsonInputToAPI.financeLead.variant=$('#car-model-trims-fin').val();
+		jsonInputToAPI.financeLead.autoscoopTrim=$('#car-model-auto-trims-fin').val();
 		jsonInputToAPI.financeLead.loanPeriod =$('#finLoanPeriod').val();
 		
 		
@@ -705,7 +1056,7 @@ $scope.submitForm1 = function() {
 		jsonInputToAPI.financeLead.incomeType=$('#finIncomeType').val();
 		
 		
-
+			//alert("Before ajax call");
 		var wsURL = 'api/eBid/finance';
 		//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/finance';
 		//var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
@@ -714,23 +1065,25 @@ $scope.submitForm1 = function() {
 		alert(jsonInputToAPI.flex2);
 		alert(jsonInputToAPI.flex3); */
 		
-	   
+		$body.addClass("loading");   
 	    	$http({
 				method : 'POST',
 				url : wsURL,
 				data: jsonInputToAPI
 								
 			}).success(function(data) {
+				$body.removeClass("loading");
 				alert("successfully stored");
 				alert("Redirecting to Dashboard..");
 				var url="dashboard1.html";
 				
 				window.location=url;
-				/* document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>'; */
-							});
+				
+							 }); 
+		}
+		else{alert("Please Login and Build")}
 	    
-	    
-		
+	  
 	    	
 	    
 	}
@@ -762,7 +1115,15 @@ $scope.submitForm1 = function() {
 					    
 
 						$scope.submitForm = function() {
-
+							var newCarEbid=false;
+							//alert(document.getElementById("newCarEbid").value);
+							newCarEbid = document.getElementById("newCarEbid").value;
+							if(newCarEbid=="on")newCarEbid=false;
+							var usedCarEbid=false;
+							usedCarEbid = document.getElementById("usedCarEbid").value;
+							if(usedCarEbid=="on")usedCarEbid=false;
+							//alert(usedCarEbid);
+							//alert(newCarEbid);
 							var e = document.getElementById("car-model-trims"); 
 							var strUser = e.options[e.selectedIndex].text;
 
@@ -786,6 +1147,8 @@ $scope.submitForm1 = function() {
 					            	data.modelTrim=modelTrim;
 					            	data.trimValue=trimValue;
 					            	data.autoTrim=autoTrim;
+					            	data.newCarEbid=newCarEbid;
+					            	data.usedCarEbid=usedCarEbid;
 					            	carDetailHtml(data);
 					            	
 										/* var url="abc.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
@@ -1092,7 +1455,7 @@ section#content {
 									<li><a href="homepage10.html">Bicycle</a></li>
 
 								</ul></li>
-							<li class="menu-item-has-children"><a href="#cruises-tab" data-toggle="tab">Service
+							<li class="menu-item-has-children"><a href="#cruises-tab" data-toggle="tab" onclick="showDiv3()">Service
 									& Maintenance</a>
 								<ul>
 									<li><a href="homepage10.html">Cars</a></li>
@@ -1102,7 +1465,7 @@ section#content {
 									<li><a href="homepage10.html">Bicycle</a></li>
 
 								</ul></li>
-							<li class="menu-item-has-children"><a href="#flight-status-tab" data-toggle="tab">Transport</a>
+							<li class="menu-item-has-children"><a href="#flight-status-tab" data-toggle="tab" onclick="showDiv4()">Transport</a>
 								<ul>
 									<li><a href="homepage10.html">Cars</a></li>
 									<li><a href="homepage10.html">Bikes</a></li>
@@ -1174,7 +1537,7 @@ section#content {
 							<li><a href="homepage10.html">Bicycle</a></li>
 
 						</ul></li>
-					<li class="menu-item-has-children"><a href="#cruises-tab" data-toggle="tab">Service
+					<li class="menu-item-has-children"><a href="#cruises-tab" data-toggle="tab" onclick="showDiv3()">Service
 							& Maintenance</a>
 						<ul>
 							<li><a href="homepage10.html">Cars</a></li>
@@ -1184,7 +1547,7 @@ section#content {
 							<li><a href="homepage10.html">Bicycle</a></li>
 
 						</ul></li>
-					<li class="menu-item-has-children"><a href="#flight-status-tab" data-toggle="tab">Transport</a>
+					<li class="menu-item-has-children"><a href="#flight-status-tab" data-toggle="tab" onclick="showDiv4()">Transport</a>
 						<ul>
 							<li><a href="homepage10.html">Cars</a></li>
 							<li><a href="homepage10.html">Bikes</a></li>
@@ -1387,9 +1750,9 @@ section#content {
 										class="soap-icon-savings"></i>Finance</a></li>
 								<li><a href="#cars-tab" data-toggle="tab" onclick="showDiv1()"><i
 										class="soap-icon-insurance" ></i>Insurance</a></li>
-								<li><a href="#cruises-tab" data-toggle="tab"><i
+								<li><a href="#cruises-tab" data-toggle="tab" onclick="showDiv3()"><i
 										class="soap-icon-doorman"></i>Serv & Maint</a></li>
-								<li><a href="#flight-status-tab" data-toggle="tab"><i
+								<li><a href="#flight-status-tab" data-toggle="tab" onclick="showDiv4()"><i
 										class="soap-icon-baggage-5"></i>Transport</a></li>
 								<li><a href="#online-checkin-tab" data-toggle="tab"><i
 										class="soap-icon-status"></i>Rego</a></li>
@@ -1474,14 +1837,19 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 															<div class="checkbox">
-																<label> <input type="checkbox" name="newUsed" checked><span
-																	class="skin-color">New .</span>
-																</label>
+																
+																
+																<label>
+					                                            <input type="checkbox" id="newCarEbid" name="newCarEbid" class="jpCheckbox" onclick="allSelected5()"><span class="skin-color">New .</span></a>.
+					                                        </label>
 															</div>
 															<div class="checkbox">
-																<label> <input type="checkbox" name="newUsed"><span
-																	class="skin-color">Used .</span>
-																</label>
+															
+															<label>
+					                                            <input type="checkbox" id="usedCarEbid" name="usedCarEbid" class="jpCheckbox" onclick="allSelected6()"><span class="skin-color">Used .</span></a>.
+					                                        </label>
+															
+																
 															</div>
 													</div>
 													<div class="clearfix"></div>
@@ -3084,7 +3452,8 @@ section#content {
 										<div class="tab-content">
 											<!-- BEGIN: FLIGHT SEARCH -->
 											<div role="tabpanel" class="tab-pane active" id="flight2">
-												<form class="form-inline signup" role="form" ng-submit="postFinanceLead()" >
+												<form class="form-inline signup" name="ebidfinfrm" ng-submit="postFinanceLead()" novalidate>
+												
 													<div class="col-md-12 product-search-title">Finance
 														for car</div>
 													<div class="col-md-12">&nbsp</div>
@@ -3094,84 +3463,105 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 															<div class="checkbox">
-																<label> <input type="checkbox" name=""><span
-																	class="skin-color">New .</span>
-																</label>
+																<label>
+					                                            <input type="checkbox" id="newCarFinance" name="newCarFinance" class="jpCheckbox" onclick="allSelected3()"><span class="skin-color">New .</span></a>.
+					                                        </label>
 															</div>
 															<div class="checkbox">
-																<label> <input type="checkbox" name=""><span
-																	class="skin-color">Used .</span>
-																</label>
+															<label>
+					                                            <input type="checkbox" id="usedCarFinance" name="usedCarEbid" class="jpCheckbox" onclick="allSelected4()"><span class="skin-color">Used .</span></a>.
+					                                        </label>
+																
 															</div>
 													</div>
 													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
+													<!-- <div class="col-sm-5 col-md-4">
 														<label>Post Code</label> <input type="text" id="fin-postCode"
-															name="fin-postCode" class="input-text full-width"
-															value="" placeholder="Post Code" />
+															name="fin-postCode" ng-model="fin-postCode" class="input-text full-width"
+															 placeholder="Post Code" required/>
+															<span style="color:red" ng-show="ebidfinfrm.fin-postCode.$error.required && (!ebidfinfrm.fin-postCode.$pristine || ebidfinfrm.$submitted)"><b>Finance Post code is Required</b></span>
+													</div> -->
+													<div class="col-sm-5 col-md-4">
+														<label>Post Code</label> <input type="text"
+															id="finVehicleValue1" name="finVehicleValu1e" ng-model="finVehicleValue1"
+															class="input-text full-width" value="" placeholder="" required/>
+															<span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Year</label>
 														<div class="selector">
-															<select id="car-years-fin" name="car-years-fin"
-																class="full-width">
-
+															<select id="car-years-fin" name="caryearsfin" ng-model="caryearsfin" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidfinfrm.caryearsfin.$error.required && (!ebidfinfrm.caryearsfin.$pristine || ebidfinfrm.$submitted)"><b>Car year is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Make</label>
 														<div class="selector">
-															<select id="car-makes-fin" name="car-makes-fin"
-																class="full-width">
-
+															<select id="car-makes-fin" name="carmakesfin" ng-model="carmakesfin" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidfinfrm.carmakesfin.$error.required && (!ebidfinfrm.carmakesfin.$pristine || ebidfinfrm.$submitted)"><b>Car Make is Required</b></span>
 													</div>
+													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Model</label>
 														<div class="selector">
-															<select id="car-models-fin" name="car-models-fin"
-																class="full-width">
-
+															<select id="car-models-fin" name="carmodelsfin" ng-model="carmodelsfin" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidfinfrm.carmodelsfin.$error.required && (!ebidfinfrm.carmodelsfin.$pristine || ebidfinfrm.$submitted)"><b>Car model is Required</b></span>
 													</div>
-
+													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Variant</label>
 														<div class="selector">
-															<select id="car-model-trims-fin" name="car-model-trims-fin"
-																class="full-width">
-
+															<select id="car-model-trims-fin" name="carmodeltrimsfin"  ng-model="carmodeltrimsfin"
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidfinfrm.carmodeltrimsfin.$error.required && (!ebidfinfrm.carmodeltrimsfin.$pristine || ebidfinfrm.$submitted)"><b>Car Variant is Required</b></span>
 													</div>
-
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>Autoscoop Trim</label>
+														<div class="selector">
+															<select id="car-model-auto-trims-fin" name="carmodelAutotrimsfin"  ng-model="carmodelAutotrimsfin"
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfinfrm.carmodelAutotrimsfin.$error.required && (!ebidfinfrm.carmodelAutotrimsfin.$pristine || ebidfinfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Vehicle Value</label> <input type="text"
-															id="finVehicleValue" name="finVehicleValue"
-															class="input-text full-width" value="" placeholder="Vehicle Value" />
+															id="finVehicleValue" name="finVehicleValue" ng-model="finVehicleValue"
+															class="input-text full-width" value="" placeholder="Vehicle Value" required/>
+															<span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Balloon Pay</label> <input type="text"
-															id="finBalloonPayment" name="finBalloonPayment"
-															class="input-text full-width" value="" placeholder="Balloon Pay" />
+															id="finBalloonPayment" name="finBalloonPayment" ng-model="finBalloonPayment"
+															class="input-text full-width" value="" placeholder="Balloon Pay" required/>
+															<span style="color:red" ng-show="ebidfinfrm.finBalloonPayment.$error.required && (!ebidfinfrm.finBalloonPayment.$pristine || ebidfinfrm.$submitted)"><b>Finance Balloon pay is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Loan Amount</label> <input type="text"
-															id="finLoanAmount" name="finLoanAmount"
-															class="input-text full-width" value="" placeholder="loan Amount" />
+															id="finLoanAmount" name="finLoanAmount" ng-model="finLoanAmount"
+															class="input-text full-width" value="" placeholder="loan Amount" required/>
+															<span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Amount is Required</b></span>
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Loan Period</label>
 														<div class="selector">
-															<select class="full-width" id="finLoanPeriod"
-																name="finLoanPeriod">
+															<select class="full-width" id="finLoanPeriod" ng-model="finLoanPeriod"
+																name="finLoanPeriod" required>
 																<option>1</option>
 																<option>2</option>
 																<option>3</option>
@@ -3182,29 +3572,33 @@ section#content {
 																<option>8</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidfinfrm.finLoanPeriod.$error.required && (!ebidfinfrm.finLoanPeriod.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Period is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Income Type</label>
 														<div class="selector">
-															<select class="full-width" id="finIncomeType"
-																name="finIncomeType">
+															<select class="full-width" id="finIncomeType" ng-model="finIncomeType"
+																name="finIncomeType" required>
 																<option>Salaried</option>
 																<option>Self Employed</option>
 																<option>Business</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidfinfrm.finIncomeType.$error.required && (!ebidfinfrm.finIncomeType.$pristine || ebidfinfrm.$submitted)"><b>Finance Income Type is Required</b></span>
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Annual Income</label> <input type="text"
-															id="finAnnualIncome" name="finAnnualIncome"
-															class="input-text full-width" value="" placeholder="Annual Income" />
+															id="finAnnualIncome" name="finAnnualIncome" ng-model="finAnnualIncome"
+															class="input-text full-width" value="" placeholder="Annual Income" required/>
+															
+															<span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.required && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted)"><b>Finance Annual Income is Required</b></span>
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Credit Rating</label>
 														<div class="selector">
-															<select class="full-width" id="finCreditRating"
-																name="finCreditRating">
+															<select class="full-width" id="finCreditRating" ng-model="finCreditRating"
+																name="finCreditRating" required>
 																<option>Below Average</option>
 																<option>Average</option>
 																<option>Good</option>
@@ -3213,12 +3607,14 @@ section#content {
 																<option>Not Sure</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidfinfrm.finCreditRating.$error.required && (!ebidfinfrm.finCreditRating.$pristine || ebidfinfrm.$submitted)"><b>Finance Credit Rating is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-xs-6">
                                                         <div class="datepicker-wrap">
-                                                            <input type="text" name="date_of_birth" class="input-text full-width" placeholder="Date of Birth" />
+                                                            <input type="text" id="date_of_birth" name="date_of_birth" class="input-text full-width" placeholder="Date of Birth" required/>
                                                         </div>
+                                                        <span style="color:red" ng-show="ebidfinfrm.date_of_birth.$error.required && (!ebidfinfrm.date_of_birth.$pristine || ebidfinfrm.$submitted)"><b>Finance Date of Birth is Required</b></span>
                                                     </div>
 
 													<div class="clearfix"></div>
@@ -3237,12 +3633,19 @@ section#content {
 													<br /> <br /> 
 													<div>
 
-														<div class="form-group col-md-6 col-sm-6">
+														<!-- <div class="form-group col-md-6 col-sm-6">
 															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
 																placeholder="Email / Mobile Number">
-														</div>
+														</div> -->
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
+													</div>
+													<div class="form-group">
+														<div class="checkbox">
+															<label> <input type="checkbox"><a data-toggle="modal" data-target="#termsnconditionsModal"><span class="skin-color">Terms and
+																		Conditions</span></a>.
+															</label>
+														</div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-12 search-col-padding">
@@ -3951,7 +4354,8 @@ section#content {
 										<div class="tab-content">
 											<!-- BEGIN: FLIGHT SEARCH -->
 											<div role="tabpanel" class="tab-pane active" id="flight3">
-												<form class="form-inline signup" role="form" ng-submit="postInsuranceLead()">
+												<form class="form-inline signup" name="ebidinsfrm" ng-submit="postInsuranceLead()" novalidate>
+												
 													<div class="col-md-12 product-search-title">Insurance for car</div>
 													<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
@@ -3960,46 +4364,53 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 															<div class="checkbox">
-																<label> <input type="checkbox" name=""><span
-																	class="skin-color">New .</span>
-																</label>
+																
+																 <label>
+					                                            <input type="checkbox" id="newCarInsuran" name="newCarInsuran" class="jpCheckbox" onclick="allSelected1()"><span class="skin-color">New .</span></a>.
+					                                        </label>
 															</div>
 															<div class="checkbox">
-																<label> <input type="checkbox" name=""><span
-																	class="skin-color">Used .</span>
-																</label>
+																<label>
+					                                            <input type="checkbox" id="usedCarInsuran" name="usedCarInsuran" class="jpCheckbox" onclick="allSelected2()"><span class="skin-color">Used .</span></a>.
+					                                        </label>
 															</div>
 													</div>
 
 													<div class="clearfix"></div>
+													
 													<div class="col-sm-5 col-md-4">
 														<label>Post Code</label> <input type="text"
-															class="input-text full-width" value=""
-															placeholder="Post Code" id="ins-postcode" name="ins-postcode" />
+															id="postcode11" name="postcode11" ng-model="postcode11"
+															class="input-text full-width" value="" placeholder="" required/>
+															<span style="color:red" ng-show="ebidinsfrm.postcode11.$error.required && (!ebidinsfrm.postcode11.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
 													</div>
+													
+													
 													<div class="col-sm-5 col-md-4">
 														<label>Insurance Type</label>
 														<div class="selector">
-															<select class="full-width" id="insuranceType"
-																name="incomeType">
+															<select class="full-width" id="insuranceType" ng-model="insuranceType"
+																name="insuranceType" required>
 																<option>Compulsary Third Party ( CTP )</option>
 																<option>Third Party Property</option>
 																<option>Third Party, Fire and Theft</option>
 																<option>Comprehensive</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidinsfrm.insuranceType.$error.required && (!ebidinsfrm.insuranceType.$pristine || ebidinsfrm.$submitted)"><b>Insurance Type is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>REGO No</label> <input type="text"
-															class="input-text full-width" value=""
-															placeholder="Rego No" id="ins-regono" name="ins-postcode" />
+															class="input-text full-width" value="" ng-model="regono12"
+															placeholder="Rego No" id="regono12" name="regono12" required/>
+															<span style="color:red" ng-show="ebidinsfrm.regono12.$error.required && (!ebidinsfrm.regono12.$pristine || ebidinsfrm.$submitted)"><b>Rego Number is Required</b></span>
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>REGO State</label>
 														<div class="selector">
-															<select class="full-width" id="ins-regost"
-																name="incomeType">
+															<select class="full-width" id="ins-regost" ng-model="insregost"
+																name="insregost" required>
 																<option>ACT</option>
 																<option>NT</option>
 																<option>QLD</option>
@@ -4010,74 +4421,92 @@ section#content {
 																<option>WA</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidinsfrm.insregost.$error.required && (!ebidinsfrm.insregost.$pristine || ebidinsfrm.$submitted)"><b>Rego State is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Year</label>
 														<div class="selector">
-															<select id="car-years-ins" name="car-years-ins"
-																class="full-width">
-
+															<select id="car-years-ins" name="caryearsins" ng-model="caryearsins" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidinsfrm.caryearsins.$error.required && (!ebidinsfrm.caryearsins.$pristine || ebidinsfrm.$submitted)"><b>Car year is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Make</label>
 														<div class="selector">
-															<select id="car-makes-ins" name="car-makes-ins"
-																class="full-width">
-
+															<select id="car-makes-ins" name="carmakesins" ng-model="carmakesins" 
+																class="full-width" required>
 															</select>
 														</div>
-													</div>
-													<div class="col-sm-5 col-md-4">
-														<label>Model</label>
-														<div class="selector">
-															<select id="car-models-ins" name="car-models-ins"
-																class="full-width">
-
-															</select>
-														</div>
-													</div>
-
-													<div class="col-sm-5 col-md-4">
-														<label>Variant</label>
-														<div class="selector">
-															<select id="car-model-trims-ins" name="car-model-trims-ins"
-																class="full-width">
-
-															</select>
-														</div>
+														<span style="color:red" ng-show="ebidinsfrm.carmakesins.$error.required && (!ebidinsfrm.carmakesins.$pristine || ebidinsfrm.$submitted)"><b>Car Make is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
-														<label>Market Value</label> <input type="text"
-															class="input-text full-width" value=""
-															placeholder="Market Value" id="ins-market" name="ins-postcode" />
+														<label>Model</label>
+														<div class="selector">
+															<select id="car-models-ins" name="carmodelsins" ng-model="carmodelsins" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidinsfrm.carmodelsfin.$error.required && (!ebidinsfrm.carmodelsins.$pristine || ebidinsfrm.$submitted)"><b>Car model is Required</b></span>
 													</div>
+													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
-														<label>Agreed Value</label> <input type="text"
-															class="input-text full-width" value=""
-															placeholder="Agreed Value" id="ins-agree" name="ins-postcode" />
+														<label>Variant</label>
+														<div class="selector">
+															<select id="car-model-trims-ins" name="carmodeltrimsins"  ng-model="carmodeltrimsins"
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidinsfrm.carmodeltrimsins.$error.required && (!ebidinsfrm.carmodeltrimsins.$pristine || ebidinsfrm.$submitted)"><b>Car Variant is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>Autoscoop Trim</label>
+														<div class="selector">
+															<select id="car-model-auto-trims-ins" name="carmodelAutotrimsins"  ng-model="carmodelAutotrimsins"
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidinsfrm.carmodelAutotrimsins.$error.required && (!ebidinsfrm.carmodelAutotrimsfin.$pristine || ebidfinfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													
+													
+													<div class="col-sm-5 col-md-4">
+														<label>Market Value<</label> <input type="text"
+															id="market" name="market" ng-model="market"
+															class="input-text full-width" value="" placeholder="Market Value" required/>
+															<span style="color:red" ng-show="ebidinsfrm.market.$error.required && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
+													</div>
+													
+													<div class="col-sm-5 col-md-4">
+														<label>Agreed Value<</label> <input type="text"
+															id="agree" name="agree" ng-model="agree"
+															class="input-text full-width" value="" placeholder="Agreed Value" required/>
+															<span style="color:red" ng-show="ebidinsfrm.agree.$error.required && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Finance</label>
 														<div class="selector">
-															<select class="full-width" id="ins-finance"
-																name="incomeType">
+															<select class="full-width" id="ins-finance" ng-model="insfinance"
+																name="insfinance" required>
 																<option value="true">Yes</option>
 																<option value="false">No</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidinsfrm.insfinance.$error.required && (!ebidinsfrm.insfinance.$pristine || ebidinsfrm.$submitted)"><b>Finance yes / no is Required</b></span>
 													</div>
 
 													<div class="col-sm-5 col-md-4">
 														<label>Finance Provider</label>
 														<div class="selector">
-															<select class="full-width" id="ins-fin-prov"
-																name="incomeType">
+															<select class="full-width" id="ins-fin-prov" ng-model="insfinprov"
+																name="insfinprov" required>
 																<option>AAMI</option>
 																<option>AMP Limited</option>
 																<option>AXA</option>
@@ -4087,13 +4516,14 @@ section#content {
 																<option>Colonial Mutual</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidinsfrm.insfinprov.$error.required && (!ebidinsfrm.insfinprov.$pristine || ebidinsfrm.$submitted)"><b>Finance Provider if yes is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Driving License Type</label>
 														<div class="selector">
-															<select class="full-width" id="ins-lic-type"
-																name="incomeType">
+															<select class="full-width" id="ins-lic-type" ng-model="inslictype"
+																name="inslictype" required>
 																<option>L-Learner</option>
 																<option>P-probation</option>
 																<option>Full Licence</option>
@@ -4101,17 +4531,19 @@ section#content {
 
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidinsfrm.inslictype.$error.required && (!ebidinsfrm.inslictype.$pristine || ebidinsfrm.$submitted)"><b>Driving License Type is Required</b></span>
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Driving License Number</label> <input type="text"
-															class="input-text full-width" value="" placeholder="Driving License Number"
-															id="ins-lic-no" name="yearEmployement" />
+															class="input-text full-width" value="" placeholder="Driving License Number" ng-model="licno"
+															id="licno" name="licno" required/>
+															<span style="color:red" ng-show="ebidinsfrm.licno.$error.required && (!ebidinsfrm.licno.$pristine || ebidinsfrm.$submitted)"><b>Driving License Number is Required</b></span>
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Driving License Issue State</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
-																name="ins-lic-iss-state">
+															<select class="full-width" id="ins-lic-iss-state" ng-model="inslicissstate"
+																name="inslicissstate" required>
 																<option>ACT</option>
 																<option>NT</option>
 																<option>QLD</option>
@@ -4122,29 +4554,32 @@ section#content {
 																<option>WA</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidinsfrm.inslicissstate.$error.required && (!ebidinsfrm.inslicissstate.$pristine || ebidinsfrm.$submitted)"><b>Driving License Issue State is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Number of At Faults Claims</label>
 														<div class="selector">
-															<select class="full-width" id="ins-faults"
-																name="incomeType">
+															<select class="full-width" id="ins-faults" ng-model="insfaults"
+																name="insfaults" required>
 																<option>1</option>
 																<option>2</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidinsfrm.insfaults.$error.required && (!ebidinsfrm.insfaults.$pristine || ebidinsfrm.$submitted)"><b>faults is Required</b></span>
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Other Issues (If any)</label> <input type="text"
-															class="input-text full-width" value="" placeholder="Other Issues(If any)"
-															id="otherissues" name="yearEmployement" />
+															class="input-text full-width" value="" placeholder="Other Issues(If any)" ng-model="otherissues"
+															id="otherissues" name="otherissues" required/>
+															<span style="color:red" ng-show="ebidinsfrm.otherissues.$error.required && (!ebidinsfrm.otherissues.$pristine || ebidinsfrm.$submitted)"><b>Other Issues is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Current Ins-Provider</label>
 														<div class="selector">
-															<select class="full-width" id="curr-ins-prov"
-																name="incomeType">
+															<select class="full-width" id="curr-ins-prov"  ng-model="currinsprov"
+																name="currinsprov" required>
 																<option>AAMI</option>
 																<option>AMP Limited</option>
 																<option>AXA</option>
@@ -4154,11 +4589,13 @@ section#content {
 																<option>Colonial Mutual</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidinsfrm.currinsprov.$error.required && (!ebidinsfrm.currinsprov.$pristine || ebidinsfrm.$submitted)"><b>Current Insurance Provider is Required</b></span>
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Preferred Excess Amount</label> <input type="text"
 															class="input-text full-width" value="" placeholder="Preferred Excess Amount"
-															id="ins-excessAmount" name="excessAmount" />
+															id="excessAmount" name="excessAmount" ng-model="excessAmount" required/>
+															<span style="color:red" ng-show="ebidinsfrm.excessAmount.$error.required && (!ebidinsfrm.excessAmount.$pristine || ebidinsfrm.$submitted)"><b>Preferred Excess amount is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
@@ -5350,7 +5787,7 @@ section#content {
 										<div class="tab-content">
 											<!-- BEGIN: FLIGHT SEARCH -->
 											<div role="tabpanel" class="tab-pane active" id="flight4">
-												<form class="form-inline signup" role="form">
+												<form class="form-inline signup" name="ebidservfrm" ng-submit="postServMaintLead()" novalidate>
 													<div class="col-md-12 product-search-title">Service
 														for car</div>
 														
@@ -5359,32 +5796,37 @@ section#content {
 													<div class="clearfix"></div>
 
 													<div class="clearfix"></div>
+													
 													<div class="col-sm-5 col-md-4">
 														<label>Post Code</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="serv-postCode" name="serv-postCode" "/>
+															id="serv-postCode" name="servpostCode" ng-model="servpostCode"
+															class="input-text full-width" value="" placeholder="" required/>
+															<span style="color:red" ng-show="ebidservfrm.servpostCode.$error.required && (!ebidservfrm.servpostCode.$pristine || ebidservfrm.$submitted)"><b> Post Code value is Required</b></span>
 													</div>
+													
 													<div class="col-sm-5 col-md-4">
 														<label>Year</label>
 														<div class="selector">
-															<select id="car-years" name="car-years"
-																class="full-width">
-
+															<select id="car-years-serv" name="caryearsserv" ng-model="caryearsserv" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidservfrm.caryearsserv.$error.required && (!ebidservfrm.caryearsserv.$pristine || ebidservfrm.$submitted)"><b>Car year is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
+													
 													<div class="col-sm-5 col-md-4">
 														<label>REGO No</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="ins-postcode" name="ins-postcode" />
+															id="serv-regono" name="servregono" ng-model="servregono"
+															class="input-text full-width" value="" placeholder="" required/>
+															<span style="color:red" ng-show="ebidservfrm.servregono.$error.required && (!ebidservfrm.servregono.$pristine || ebidservfrm.$submitted)"><b> Rego No value is Required</b></span>
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>REGO State</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
-																name="incomeType">
+															<select class="full-width" id="regoStateServ" ng-model="regoStateServ"
+																name="regoStateServ" required>
 																<option>ACT</option>
 																<option>NT</option>
 																<option>QLD</option>
@@ -5395,43 +5837,58 @@ section#content {
 																<option>WA</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidservfrm.regoStateServ.$error.required && (!ebidservfrm.regoStateServ.$pristine || ebidservfrm.$submitted)"><b> Rego State value is Required</b></span>
 													</div>
+													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Make</label>
 														<div class="selector">
-															<select id="car-makes" name="car-makes"
-																class="full-width">
-
+															<select id="car-makes-serv" name="carmakesserv" ng-model="carmakesserv" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidservfrm.carmakesserv.$error.required && (!ebidservfrm.carmakesserv.$pristine || ebidservfrm.$submitted)"><b>Car Make is Required</b></span>
 													</div>
+													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Model</label>
 														<div class="selector">
-															<select id="car-models" name="car-models"
-																class="full-width">
-
+															<select id="car-models-serv" name="carmodelsserv" ng-model="carmodelsserv" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidservfrm.carmodelsserv.$error.required && (!ebidservfrm.carmodelsserv.$pristine || ebidservfrm.$submitted)"><b>Car model is Required</b></span>
 													</div>
-
+													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Variant</label>
 														<div class="selector">
-															<select id="car-model-trims" name="car-model-trims"
-																class="full-width">
-
+															<select id="car-model-trims-serv" name="carmodeltrimsserv"  ng-model="carmodeltrimsserv"
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidservfrm.carmodeltrimsserv.$error.required && (!ebidservfrm.carmodeltrimsserv.$pristine || ebidservfrm.$submitted)"><b>Car Variant is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
-
+													<div class="col-sm-5 col-md-4">
+														<label>Autoscoop Trim</label>
+														<div class="selector">
+															<select id="car-model-auto-trims-serv" name="carmodelAutotrimsserv"  ng-model="carmodelAutotrimsserv"
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidservfrm.carmodelAutotrimsserv.$error.required && (!ebidservfrm.carmodelAutotrimsserv.$pristine || ebidservfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													
+													<div class="clearfix"></div>
+													
 													<div class="col-sm-5 col-md-4">
 														<label>Fuel Type</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
-																name="incomeType">
+															<select class="full-width" id="fuelTypeServ" ng-model="fuelTypeServ"
+																name="fuelTypeServ" required>
 																<option>Petrol</option>
 																<option>Deisel</option>
 																<option>Hybrid</option>
@@ -5439,13 +5896,14 @@ section#content {
 																<option>Gas</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidservfrm.fuelTypeServ.$error.required && (!ebidservfrm.fuelTypeServ.$pristine || ebidservfrm.$submitted)"><b>Fuel Type is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Service & Maintenance L1</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
-																name="incomeType">
+															<select class="full-width" id="ServL1" ng-model="ServL1"
+																name="ServL1" required>
 																<option>Packaged Car Services</option>
 																<option>Log Book Servicing</option>
 																<option>New Car Servicing</option>
@@ -5454,12 +5912,13 @@ section#content {
 																<option>Wheel Alinement</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidservfrm.ServL1.$error.required && (!ebidservfrm.ServL1.$pristine || ebidservfrm.$submitted)"><b>Service Level 1 is Required</b></span>
 													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Service & Maintenance L2</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
-																name="incomeType">
+															<select class="full-width" id="ServL2" ng-model="ServL2"
+																name="ServL2" required>
 																<option>Packaged Car Services</option>
 																<option>Log Book Servicing</option>
 																<option>New Car Servicing</option>
@@ -5468,13 +5927,14 @@ section#content {
 																<option>Wheel Alinement</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidservfrm.ServL2.$error.required && (!ebidservfrm.ServL2.$pristine || ebidservfrm.$submitted)"><b>Service Level 2 is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Upload Photos</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
-																name="incomeType">
+															<select class="full-width" id="uploadPhotoServ"
+																name="uploadPhotoServ">
 																<option>Salary</option>
 																<option>From Business</option>
 															</select>
@@ -5485,19 +5945,20 @@ section#content {
 													<div class="col-sm-5 col-md-4">
 														<label>Covered Under Insurance</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
-																name="incomeType">
+															<select class="full-width" id="coverInsServ" ng-model="coverInsServ"
+																name="coverInsServ" required>
 																<option>Yes</option>
 																<option>No</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidservfrm.coverInsServ.$error.required && (!ebidservfrm.coverInsServ.$pristine || ebidservfrm.$submitted)"><b>Covered Under Insurance is Required</b></span>
 													</div>
 
 													<div class="col-sm-5 col-md-4">
 														<label>Insurance Provider</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
-																name="incomeType">
+															<select class="full-width" id="InsprovServ" ng-model="InsprovServ"
+																name="InsprovServ" required>
 																<option>AAMI</option>
 																<option>AMP Limited</option>
 																<option>AXA</option>
@@ -5507,13 +5968,14 @@ section#content {
 																<option>Colonial Mutual</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidservfrm.InsprovServ.$error.required && (!ebidservfrm.InsprovServ.$pristine || ebidservfrm.$submitted)"><b>Insurance Provider is Required</b></span>
 													</div>
 
 													<div class="clearfix"></div>
 													<div class="col-sm-80 col-md-90">
 														<label>Free Text Field</label> <input type="text"
 															class="input-text full-width" value="free text"
-															placeholder="" id="coverInsurance" name="coverInsurnace" />
+															placeholder="" id="freeTextServ" name="freeTextServ" />
 													</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
@@ -5532,11 +5994,11 @@ section#content {
 													<br /> <br /> 
 													<div>
 
-														<div class="form-group col-md-6 col-sm-6">
+														<!-- <div class="form-group col-md-6 col-sm-6">
 															<input type="email" class="input-text full-width"
 																id="exampleEmail"
 																placeholder="Email / Mobile Number">
-														</div>
+														</div> -->
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
 													<div class="clearfix"></div>
@@ -5729,11 +6191,11 @@ section#content {
 													<br /> <br /> 
 													<div>
 
-														<div class="form-group col-md-6 col-sm-6">
+														<!-- <div class="form-group col-md-6 col-sm-6">
 															<input type="email" class="input-text full-width"
 																id="exampleEmail"
 																placeholder="Email / Mobile Number">
-														</div>
+														</div> -->
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
 													<div class="clearfix"></div>
@@ -6307,107 +6769,137 @@ section#content {
 										<div class="tab-content">
 											<!-- BEGIN: FLIGHT SEARCH -->
 											<div role="tabpanel" class="tab-pane active" id="flight5">
-												<form class="form-inline signup" role="form">
+												
+												<form class="form-inline signup" name="ebidtransfrm" ng-submit="posttransLead()" novalidate>
 													<div class="col-md-12 product-search-title">Transport
 														for car</div>
 														<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
+													
 													<div class="col-sm-5 col-md-4">
-														<label>From Post Code / Address</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="freetext" name="freetext" />
+														<label>From Post Code</label> <input type="text"
+															id="trans-postCode" name="transpostCode" ng-model="transpostCode"
+															class="input-text full-width" value="" placeholder="" required/>
+															<span style="color:red" ng-show="ebidtransfrm.transpostCode.$error.required && (!ebidtransfrm.transpostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span>
 													</div>
 													<div class="col-sm-5 col-md-4">
-														<label>To Post Code / Address</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="freetext" name="freetext" />
+														<label>From Address</label> <input type="text"
+															id="trans-address" name="transaddress" ng-model="transaddress"
+															class="input-text full-width" value="" placeholder="" required/>
+															<span style="color:red" ng-show="ebidtransfrm.transaddress.$error.required && (!ebidtransfrm.transaddress.$pristine || ebidtransfrm.$submitted)"><b> From Address value is Required</b></span>
 													</div>
-													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>To Post Code</label> <input type="text"
+															id="trans-topostCode" name="transtopostCode" ng-model="transtopostCode"
+															class="input-text full-width" value="" placeholder="" required/>
+															<span style="color:red" ng-show="ebidtransfrm.transtopostCode.$error.required && (!ebidtransfrm.transtopostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span>
+													</div>
+													<div class="col-sm-5 col-md-4">
+														<label>To Address</label> <input type="text"
+															id="trans-toaddress" name="transtoaddress" ng-model="transtoaddress"
+															class="input-text full-width" value="" placeholder="" required/>
+															<span style="color:red" ng-show="ebidtransfrm.transtoaddress.$error.required && (!ebidtransfrm.transtoaddress.$pristine || ebidtransfrm.$submitted)"><b> From Address value is Required</b></span>
+													</div>
 													<div class="col-sm-5 col-md-4">
 														<label>Transport Type Requiered</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="freetext" name="freetext" />
+															id="trans-transtype" name="transtranstype" ng-model="transtranstype"
+															class="input-text full-width" value="" placeholder="" required/>
+															<span style="color:red" ng-show="ebidtransfrm.transtranstype.$error.required && (!ebidtransfrm.transtranstype.$pristine || ebidtransfrm.$submitted)"><b> From Address value is Required</b></span>
 													</div>
-													<div class="col-sm-5 col-md-4">
-														<label>Pick Update & Time</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="freetext" name="freetext" />
-													</div>
+													
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="col-xs-6">
+                                                        <div class="datepicker-wrap">
+                                                            <input type="text" id="pickup_date_of_birth" name="pickup_date_of_birth" ng-model="pickup_date_of_birth" class="input-text full-width" placeholder="Pick Update & Time" required/>
+                                                        </div>
+                                                        <span style="color:red" ng-show="ebidtransfrm.pickup_date_of_birth.$error.required && (!ebidtransfrm.pickup_date_of_birth.$pristine || ebidtransfrm.$submitted)"><b>Pick Up Date is Required</b></span>
+                                                    </div>
+													
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>No of Cars</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
-																name="incomeType">
+															<select class="full-width" id="trans-noOfCars" ng-model="transnoOfCars" name="transnoOfCars"
+															class="input-text full-width" value="" placeholder="" required>
 																<option>1</option>
 																<option>2</option>
 																<option>3</option>
 																<option>4</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidtransfrm.transnoOfCars.$error.required && (!ebidtransfrm.transnoOfCars.$pristine || ebidtransfrm.$submitted)"><b> No of Cars is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
 
 													<div class="col-sm-5 col-md-4">
 														<label>Year</label>
 														<div class="selector">
-															<select id="car-years" name="car-years"
-																class="full-width">
-
+															<select id="car-years-trans" name="caryearstrans" ng-model="caryearstrans" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidtransfrm.caryearstrans.$error.required && (!ebidtransfrm.caryearstrans.$pristine || ebidtransfrm.$submitted)"><b>Car year is Required</b></span>
 													</div>
+													
+													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Make</label>
 														<div class="selector">
-															<select id="car-makes" name="car-makes"
-																class="full-width">
-
+															<select id="car-makes-trans" name="carmakestrans" ng-model="carmakestrans" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidtransfrm.carmakestrans.$error.required && (!ebidtransfrm.carmakestrans.$pristine || ebidtransfrm.$submitted)"><b>Car Make is Required</b></span>
 													</div>
+													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Model</label>
 														<div class="selector">
-															<select id="car-models" name="car-models"
-																class="full-width">
-
+															<select id="car-models-trans" name="carmodelstrans" ng-model="carmodelstrans" 
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidtransfrm.carmodelsserv.$error.required && (!ebidtransfrm.carmodelstrans.$pristine || ebidtransfrm.$submitted)"><b>Car model is Required</b></span>
 													</div>
-
+													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Variant</label>
 														<div class="selector">
-															<select id="car-model-trims" name="car-model-trims"
-																class="full-width">
-
+															<select id="car-model-trims-trans" name="carmodeltrimstrans"  ng-model="carmodeltrimstrans"
+																class="full-width" required>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidtransfrm.carmodeltrimstrans.$error.required && (!ebidtransfrm.carmodeltrimstrans.$pristine || ebidtransfrm.$submitted)"><b>Car Variant is Required</b></span>
 													</div>
-
-
+													
+													
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="col-sm-90 col-md-90">
+													<div class="col-sm-5 col-md-4">
 														<label>Free text</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="freetext" name="freetext" />
+															id="trans-freetext" name="trans-freetext" ng-model="trans-freetext"
+															class="input-text full-width" value="" placeholder="" required/>
+															<span style="color:red" ng-show="ebidtransfrm.trans-freetext.$error.required && (!ebidtransfrm.trans-freetext.$pristine || ebidtransfrm.$submitted)"><b> free text value is Required</b></span>
 													</div>
+													
+													
+													
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 
 													<div class="col-sm-5 col-md-4">
 														<label>Transport Insurnace Required</label>
 														<div class="selector">
-															<select class="full-width" id="incomeType"
-																name="incomeType">
+															<select class="full-width" id="trans-InsuReq" ng-model="trans-InsuReq"
+																name="trans-InsuReq" required>
 																<option>Yes</option>
 																<option>No</option>
 															</select>
 														</div>
+														<span style="color:red" ng-show="ebidtransfrm.trans-InsuReq.$error.required && (!ebidtransfrm.trans-InsuReq.$pristine || ebidtransfrm.$submitted)"><b> Transport Insurance value is Required</b></span>
 													</div>
 
 
@@ -6434,11 +6926,11 @@ section#content {
 													<br /> <br /> 
 													<div>
 
-														<div class="form-group col-md-6 col-sm-6">
+														<!-- <div class="form-group col-md-6 col-sm-6">
 															<input type="email" class="input-text full-width"
 																id="exampleEmail"
 																placeholder="Email / Mobile Number">
-														</div>
+														</div> -->
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
 													<div class="col-md-12 search-col-padding">

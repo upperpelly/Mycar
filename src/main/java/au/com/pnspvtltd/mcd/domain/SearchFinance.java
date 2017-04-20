@@ -16,6 +16,8 @@ public class SearchFinance implements Serializable {
 
 	
 	private boolean isNew;
+	private boolean isNewer;
+	private boolean isUsed;
 	private Long searchFinanceId;
 	private String postCode;
 	
@@ -24,6 +26,7 @@ public class SearchFinance implements Serializable {
 	private String make;
 	private String model;
 	private String variant;
+	private String autoscoopTrim;
 	private double vehValue;
 	private double balloonPay;
 	private double loanAmount;
@@ -38,6 +41,23 @@ public class SearchFinance implements Serializable {
 	private String incomeAfterSuperTax;
 	private String ifBusinessProvideABN;
 	
+	@Column(name = "AUTOSCOOPTRIM")
+	public String getAutoscoopTrim() {
+		return autoscoopTrim;
+	}
+
+	public void setAutoscoopTrim(String autoscoopTrim) {
+		this.autoscoopTrim = autoscoopTrim;
+	}
+
+	@Column(name = "ISNEWER")
+	public boolean isNewer() {
+		return isNewer;
+	}
+
+	public void setNewer(boolean isNewer) {
+		this.isNewer = isNewer;
+	}
 	
 	public int getYearEmploymentBusiness() {
 		return yearEmploymentBusiness;
@@ -69,6 +89,14 @@ public class SearchFinance implements Serializable {
 
 	public void setIfBusinessProvideABN(String ifBusinessProvideABN) {
 		this.ifBusinessProvideABN = ifBusinessProvideABN;
+	}
+	@Column(name = "ISUSED")
+	public boolean isUsed() {
+		return isUsed;
+	}
+
+	public void setUsed(boolean isUsed) {
+		this.isUsed = isUsed;
 	}
 
 	@Column(name = "ISNEW")

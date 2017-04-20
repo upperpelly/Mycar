@@ -5,6 +5,8 @@ import java.sql.Date;
 public class SearchFinanceVO {
 
 	private boolean isNew;
+	private boolean isNewer;
+	private boolean isUsed;
 	private Long searchFinanceId;
 	private String postCode;
 
@@ -13,6 +15,7 @@ public class SearchFinanceVO {
 	private String make;
 	private String model;
 	private String variant;
+	private String autoscoopTrim;
 	private double vehValue;
 	private double balloonPay;
 	private double loanAmount;
@@ -27,7 +30,22 @@ public class SearchFinanceVO {
 	private String incomeAfterSuperTax;
 	private String ifBusinessProvideABN;
 	
+	public String getAutoscoopTrim() {
+		return autoscoopTrim;
+	}
+
+	public void setAutoscoopTrim(String autoscoopTrim) {
+		this.autoscoopTrim = autoscoopTrim;
+	}
 	
+	public boolean isNewer() {
+		return isNewer;
+	}
+
+	public void setNewer(boolean isNewer) {
+		this.isNewer = isNewer;
+	}
+
 	public int getYearEmploymentBusiness() {
 		return yearEmploymentBusiness;
 	}
@@ -58,6 +76,14 @@ public class SearchFinanceVO {
 
 	public void setIfBusinessProvideABN(String ifBusinessProvideABN) {
 		this.ifBusinessProvideABN = ifBusinessProvideABN;
+	}
+
+	public boolean isUsed() {
+		return isUsed;
+	}
+
+	public void setUsed(boolean isUsed) {
+		this.isUsed = isUsed;
 	}
 
 	public boolean isNew() {

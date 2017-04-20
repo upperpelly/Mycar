@@ -17,6 +17,9 @@ public class SearchVO {
 	 * */
 	
 	private Long carSearchId;
+	private boolean isNew;
+	private boolean isNewer;
+	private boolean isUsed;
 	private String modelYear;
 	private String modelDisplay;
 	private String modelName;
@@ -39,6 +42,31 @@ public class SearchVO {
 	private boolean comprehensiveCover;
 	private boolean thirdPartyCover;
 	private String ausCapTer;
+	
+	public boolean isNewer() {
+		return isNewer;
+	}
+
+	public void setNewer(boolean isNewer) {
+		this.isNewer = isNewer;
+	}
+
+	public boolean isUsed() {
+		return isUsed;
+	}
+
+	public void setUsed(boolean isUsed) {
+		this.isUsed = isUsed;
+	}
+
+	public boolean isNew() {
+		return isNew;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+	
 	// FLEX1
 	private String sModel;
 	public String getsModel() {

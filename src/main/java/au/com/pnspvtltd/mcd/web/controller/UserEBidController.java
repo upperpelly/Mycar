@@ -16,6 +16,8 @@ import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidInsuranceVO;
+import au.com.pnspvtltd.mcd.web.model.UserEBidServMaintVO;
+import au.com.pnspvtltd.mcd.web.model.UserEBidTransServVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
@@ -46,6 +48,15 @@ public class UserEBidController {
 	@PostMapping("eBid/finance")
 	public String eBidForFinance(@RequestBody UserEBidFinanceVO userEBidVO) {
 		return userEBidService.whenUserEBidForFinance(userEBidVO);
+	}
+	@PostMapping("eBid/transserv")
+	public String eBidForTransServ(@RequestBody UserEBidTransServVO userEBidVO) {
+		return userEBidService.whenUserEBidForTransServ(userEBidVO);
+	}
+	
+	@PostMapping("eBid/servmaint")
+	public String eBidForServMaint(@RequestBody UserEBidServMaintVO userEBidVO) {
+		return userEBidService.whenUserEBidForServMaint(userEBidVO);
 	}
 	@PostMapping("eBid/myVehicle")
 	public String addMyVehicle(@RequestBody UserMyVehicleVO userEBidVO) {

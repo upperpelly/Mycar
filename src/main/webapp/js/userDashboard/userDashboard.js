@@ -466,9 +466,33 @@ var insQCt=result.insuranceQuotation.length;
       	               	out9 = out9.replace(/>null</g, ">--NA--<");
       	          	out9 = out9.replace(/>undefined</g, ">--NA--<");
         	               	forFinance("servMaint4",out9);
+        	               	
+        	               	
+        	               	
+        	                out10="";
+        	         	   /*change here*/
+        	         	   /*var json = JSON.parse(result1);*/
+        	         	   /*var json = $.parseJSON(result1);*/
+        	         	   var servRCt = result.searchServMaint.length;
+        	         	   document.getElementById('servRCt').innerHTML=servRCt;
+        	         	   out10 += '<tr><th>'+"Car Serv Maint ID"+'</th><th>'+"Servic L1"+'</th><th>'+"Service L2"+'</th><th>'+"Rego State"+'</th><th>'+"Operation"+'</th></tr>';
+        	         	   for(i=0;i<result.searchServMaint.length;i++)
+        	        		{
+        	        		/*alert(result.search[i].carSearchId); //111 111-1111
+        	        		alert(result.search[i].modelDisplay);
+        	        		alert(result.search[i].modelTrim);
+        	        		alert(result.search[i].modelYear);*/
+        	        		out10= out10+'<tr>'+'<td>'+result.searchServMaint[i].searchServMaintId+'</td>'+'<td>'+result.searchServMaint[i].servMaintL1+'</td>'+'<td>'+result.searchServMaint[i].servMaintL2+'</td>'+'<td>'+result.searchServMaint[i].regoState+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleservmaintModal-' + result.searchFinance[i].searchServMaintId + '" data-details=\'' + JSON.stringify(result.searchServMaint[i]) + '\' class="anchor-editDealerVehicleservmaintModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmaintModal">View</a></td></tr>';
+        	        		
+        	        		
+        	        		}
+        	         	   out10 = out10.replace(/>null</g, ">--NA--<");
+        	         	   out10 = out10.replace(/>undefined</g, ">--NA--<");
+        	         	  forFinance("dataservmaint",out10);
         	               	registerEditDealerVehicleQuotationModal();
         	               	registerEditDealerVehicleSearchModal();
         	               	registerEditDealerVehicleFinanceModal();
+        	               	registerEditDealerVehicleservmaintModal();
         	               	registerEditDealerVehicleInsuranceModal();
         	               	registerEditDealerVehicleDetailModal();
         	               	registerEditDealerVehicleDetailLogBookModal();
@@ -654,14 +678,19 @@ function registerEditDealerVehicleSearchModal(){
 		//var json = JSON.stringify(data);
 		
 		var quotIdHiddenField = '<input type="hidden" name="carSearchId" value="' + data.carSearchId + '" />';
-		/*var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
-		if(data.moveToUser)
-		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
+		var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
+		if(data.newer)
+		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+		var moveToUser1 = '<input type="checkbox" name="moveToUser1" />'; 
+		if(data.used)
+		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
 		
 		//alert(JSON.stringify(data));
 		var editDealerVehicleSearchForm = '<form id="edit-dealer-vehicle-search-content-form"><table>\
 			<tr><td>Search ID</td><td>' + data.carSearchId + '</td></tr>\
 			<tr><td>' + quotIdHiddenField + '</td></tr>\
+			<tr><td>New</td><td>' + moveToUser + '</td></tr>\
+			<tr><td>Used</td><td>' + moveToUser1 + '</td></tr>\
 			<tr><td>Model Year</td><td>' + data.modelYear + '</td></tr>\
 			<tr><td>Model Name</td><td>' + data.modelName + '</td></tr>\
 			<tr><td>Model Display</td><td>' + data.modelDisplay + '</td></tr>\
@@ -730,7 +759,99 @@ function registerEditDealerVehicleSearchModal(){
 
 	
 }	
+function registerEditDealerVehicleservmaintModal(){       
 
+
+	//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+	var editDealerVehicleservmaintModal = '<div class="modal fade" id="editDealerVehicleservmaintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+	    <div class="modal-dialog">\
+	        <div class="modal-content">\
+	            <div class="modal-header">\
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+	                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+	            </div>\
+				<h4 class="modal-title" id="myModalLabel"><center>View Vehicle Service Maintainence Details</center></h4>\
+		        <form id="edit-dealer-vehicle-servmaint-content-form">\
+				<div class="modal-body edit-dealer-vehicle-servmaint-content">\
+	            </div>\
+	            <div class="modal-footer">\
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+				</div>\
+	            </form>\
+				<p><center>&copy; 2017 Autoscoop</center></p>\
+	        </div>\
+	    </div>\
+	</div>';
+
+	$(document.body).append(editDealerVehicleservmaintModal);
+	
+		
+	$('a.anchor-editDealerVehicleservmaintModal').on('click', function(event) {
+		
+		
+		var data = $(event.target).data('details');
+		//var json = JSON.stringify(data);
+		
+		var quotIdHiddenField = '<input type="hidden" name="servMaintId" value="' + data.searchServMaintId + '" />';
+		/*var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
+		if(data.newer)
+		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+		var moveToUser1 = '<input type="checkbox" name="moveToUser1" />'; 
+		if(data.used)
+		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
+
+		
+		
+		var editDealerVehicleservmaintForm = '<form id="edit-dealer-vehicle-servmaint-content-form"><table>\
+			<tr><td>Search ID</td><td>' + data.searchServMaintId + '</td></tr>\
+			<tr><td>' + quotIdHiddenField + '</td></tr>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
+			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+			<tr><td>Fuel Type</td><td>' + data.feulType + '</td></tr>\
+			<tr><td>Service Level 1</td><td>' + data.servMaintL1 + '</td></tr>\
+			<tr><td>Service Level 2</td><td>' + data.servMaintL2 + '</td></tr>\
+			<tr><td>Covered Under Insurance</td><td>' + data.coveredUnderIns + '</td></tr>\
+			<tr><td>Current Insurance Provider</td><td>' + data.curInsProv + '</td></tr>\
+			<tr><td>Free Text</td><td>' + data.freeText + '</td></tr>\
+			<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+			</table></form>';
+		editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>undefined</g, ">--NA--<");
+		$(".edit-dealer-vehicle-servmaint-content").html(editDealerVehicleservmaintForm);
+	});
+	
+		
+	$.fn.convertFormDataToJSON = function(){
+		var checkboxes = [];
+		$(this).find('input:checkbox:checked').each(function(){
+			checkboxes.push($(this).attr("name"));
+		});
+		var o = {};
+	    var a = this.serializeArray();
+	    $.each(a, function() {
+	        if (o[this.name] != undefined) {
+	            if (!o[this.name].push) {
+	                o[this.name] = [o[this.name]];
+	            }
+	            if($.inArray(this.name, checkboxes) != -1)
+	              o[this.name].push('true' || '');
+	            else
+	            	o[this.name].push(this.value || '');
+	        } else {
+	        	if($.inArray(this.name, checkboxes) != -1)
+	        		o[this.name] = 'true' || '';
+		        else
+		           	o[this.name] = this.value || '';
+	        }
+	    });
+	    return JSON.stringify(o);
+	}
+
+	
+}
 function registerEditDealerVehicleFinanceModal(){       
 
 
@@ -765,18 +886,25 @@ function registerEditDealerVehicleFinanceModal(){
 		//var json = JSON.stringify(data);
 		
 		var quotIdHiddenField = '<input type="hidden" name="financeSearchId" value="' + data.searchFinanceId + '" />';
-		/*var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
-		if(data.moveToUser)
-		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
+		var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
+		if(data.newer)
+		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+		var moveToUser1 = '<input type="checkbox" name="moveToUser1" />'; 
+		if(data.used)
+		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
+
 		
 		
 		var editDealerVehicleFinanceForm = '<form id="edit-dealer-vehicle-finance-content-form"><table>\
 			<tr><td>Search ID</td><td>' + data.searchFinanceId + '</td></tr>\
 			<tr><td>' + quotIdHiddenField + '</td></tr>\
+			<tr><td>New</td><td>' + moveToUser + '</td></tr>\
+			<tr><td>Used</td><td>' + moveToUser1 + '</td></tr>\
 			<tr><td>Year</td><td>' + data.year + '</td></tr>\
 			<tr><td>Make</td><td>' + data.make + '</td></tr>\
 			<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
 			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+			<tr><td>Autoscoop Trim</td><td>' + data.autoscoopTrim + '</td></tr>\
 			<tr><td>Vehicle Value</td><td>' + data.vehValue + '</td></tr>\
 			<tr><td>Balloon Pay</td><td>' + data.balloonPay + '</td></tr>\
 			<tr><td>Loan Amount</td><td>' + data.loanAmount + '</td></tr>\
@@ -859,18 +987,25 @@ function registerEditDealerVehicleInsuranceModal(){
 		//var json = JSON.stringify(data);
 		
 		var quotIdHiddenField = '<input type="hidden" name="financeSearchId" value="' + data.searchInsuranceId + '" />';
-		/*var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
-		if(data.moveToUser)
-		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
+		var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
+		if(data.newer)
+		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+		var moveToUser1 = '<input type="checkbox" name="moveToUser1" />'; 
+		if(data.used)
+		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
+
 		
 		
 		var editDealerVehicleInsuranceForm = '<form id="edit-dealer-vehicle-insurance-content-form"><table>\
 			<tr><td>Search ID</td><td>' + data.searchInsuranceId + '</td></tr>\
 			<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+			 <tr><td>New</td><td>' + moveToUser + '</td></tr>\
+				<tr><td>Used</td><td>' + moveToUser1 + '</td></tr>\
 			<tr><td>Year</td><td>' + data.year + '</td></tr>\
 			<tr><td>Make</td><td>' + data.make + '</td></tr>\
 			<tr><td>Model</td><td>' + data.model + '</td></tr>\
 			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+			<tr><td>Autoscoop Trim</td><td>' + data.autoscoopTrim + '</td></tr>\
 			<tr><td>insuranceType</td><td>' + data.insuranceType + '</td></tr>\
 			<tr><td>Registration No:</td><td>' + data.regNo + '</td></tr>\
 			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\

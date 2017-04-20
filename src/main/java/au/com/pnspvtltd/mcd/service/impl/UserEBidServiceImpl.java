@@ -13,6 +13,8 @@ import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
+import au.com.pnspvtltd.mcd.domain.DealerSearchServMaint;
+import au.com.pnspvtltd.mcd.domain.DealerSearchTransp;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
@@ -20,6 +22,8 @@ import au.com.pnspvtltd.mcd.domain.MyVehicle;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.SearchInsurance;
+import au.com.pnspvtltd.mcd.domain.SearchServMaint;
+import au.com.pnspvtltd.mcd.domain.SearchTransp;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
@@ -32,6 +36,8 @@ import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidInsuranceVO;
+import au.com.pnspvtltd.mcd.web.model.UserEBidServMaintVO;
+import au.com.pnspvtltd.mcd.web.model.UserEBidTransServVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 
@@ -242,6 +248,146 @@ System.out.println("present value"+present);
 
 	}
 	
+	// start
+		@Override
+		@Transactional
+		public String whenUserEBidForTransServ(UserEBidTransServVO userEBidVO) {
+
+			// Find the User
+			User user = userRepository.findOne(userEBidVO.getUserId());
+
+			
+			// Create User Insurance Lead
+			SearchTransp searchInsurance = domainModelUtil.toSearchTrans(userEBidVO.getSearchTranspLead());
+			if (user.getSearchTransp() != null) {
+				user.getSearchTransp().add(searchInsurance);
+			} else {
+				List<SearchTransp> userInsuranceLeads = new ArrayList<>();
+				userInsuranceLeads.add(searchInsurance);
+				user.setSearchTransp(userInsuranceLeads);
+			}
+
+			userRepository.flush();
+
+			// Get Inventory matching the User EBid for Car
+			// (Model, Make, Year, Trim)
+			
+			String withOutSpace = searchInsurance.getVariant().replaceAll("%20", " ");
+			System.out.println("without"+withOutSpace);
+			System.out.println("with"+searchInsurance.getVariant());
+			
+			
+			
+			List<Inventory> inventories = inventoryRepository.getInventoryFor(String.valueOf(searchInsurance.getYear()),
+					searchInsurance.getMake(), searchInsurance.getModel(), withOutSpace);
+			boolean present = false;
+			for (Inventory inventory : inventories) {
+				present = true;
+				System.out.println("details"+inventory.getRepoId()+inventory.getModelYear()+inventory.getModelDisplay()+inventory.getModelName()+inventory.getModelTrim());
+				Dealer dealer = inventory.getDealer();
+
+
+				DealerSearchTransp dealerSearchInsurance = null;
+
+				// Create Dealer Insurance Lead if he provides insurance
+				if (dealer.isSparesAccess()) {
+					dealerSearchInsurance = domainModelUtil.toDealerSearchTransp(userEBidVO.getSearchTranspLead());
+					dealerSearchInsurance.setUserId(user.getUserId());
+					if (dealer.getDealSearchTransp() != null) {
+						dealer.getDealSearchTransp().add(dealerSearchInsurance);
+					} else {
+						List<DealerSearchTransp> dealerInsuranceLeads = new ArrayList<>();
+						dealerInsuranceLeads.add(dealerSearchInsurance);
+						dealer.setDealSearchTransp(dealerInsuranceLeads);
+					}
+				}
+
+				inventoryRepository.flush();
+				System.out.println("isServMaint"+dealer.isServMaint());
+				if (dealer.isServMaint()) {
+					//createInsuranceQuotation(user, dealer, searchInsurance, dealerSearchInsurance, inventory);
+				}
+
+			}
+	System.out.println("present value"+present);
+			if(!present){
+				System.out.println("inventory not present");
+			}
+			return "{\"userId\":" + userEBidVO.getUserId()+  "}";
+
+		}
+		// end
+	// start
+	@Override
+	@Transactional
+	public String whenUserEBidForServMaint(UserEBidServMaintVO userEBidVO) {
+
+		// Find the User
+		User user = userRepository.findOne(userEBidVO.getUserId());
+
+		
+		// Create User Insurance Lead
+		SearchServMaint searchInsurance = domainModelUtil.toSearchServMaint(userEBidVO.getServMaintLead());
+		if (user.getSearchServMaint() != null) {
+			user.getSearchServMaint().add(searchInsurance);
+		} else {
+			List<SearchServMaint> userInsuranceLeads = new ArrayList<>();
+			userInsuranceLeads.add(searchInsurance);
+			user.setSearchServMaint(userInsuranceLeads);
+		}
+
+		userRepository.flush();
+
+		// Get Inventory matching the User EBid for Car
+		// (Model, Make, Year, Trim)
+		
+		String withOutSpace = searchInsurance.getVariant().replaceAll("%20", " ");
+		System.out.println("without"+withOutSpace);
+		System.out.println("with"+searchInsurance.getVariant());
+		
+		
+		
+		List<Inventory> inventories = inventoryRepository.getInventoryFor(String.valueOf(searchInsurance.getYear()),
+				searchInsurance.getMake(), searchInsurance.getModel(), withOutSpace);
+		boolean present = false;
+		for (Inventory inventory : inventories) {
+			present = true;
+			System.out.println("details"+inventory.getRepoId()+inventory.getModelYear()+inventory.getModelDisplay()+inventory.getModelName()+inventory.getModelTrim());
+			Dealer dealer = inventory.getDealer();
+
+
+			DealerSearchServMaint dealerSearchInsurance = null;
+
+			// Create Dealer Insurance Lead if he provides insurance
+			if (dealer.isServMaint()) {
+				dealerSearchInsurance = domainModelUtil.toDealerSearchServMaint(userEBidVO.getServMaintLead());
+				dealerSearchInsurance.setUserId(user.getUserId());
+				if (dealer.getDealSearchServMaint() != null) {
+					dealer.getDealSearchServMaint().add(dealerSearchInsurance);
+				} else {
+					List<DealerSearchServMaint> dealerInsuranceLeads = new ArrayList<>();
+					dealerInsuranceLeads.add(dealerSearchInsurance);
+					dealer.setDealSearchServMaint(dealerInsuranceLeads);
+				}
+			}
+
+			inventoryRepository.flush();
+			System.out.println("isServMaint"+dealer.isServMaint());
+			if (dealer.isServMaint()) {
+				//createInsuranceQuotation(user, dealer, searchInsurance, dealerSearchInsurance, inventory);
+			}
+
+		}
+System.out.println("present value"+present);
+		if(!present){
+			System.out.println("inventory not present");
+		}
+		return "{\"userId\":" + userEBidVO.getUserId()+  "}";
+
+	}
+	// end
+	
+	
 	@Override
 	@Transactional
 	public String whenUserEBidForInsurance(UserEBidInsuranceVO userEBidVO) {
@@ -382,6 +528,20 @@ System.out.println("present value"+present);
 		insuranceQuotation.setRefId(inventory.getRepoId());
 		insuranceQuotation.setAutoBid(inventory.isStockItem());
 		insuranceQuotationRepository.save(insuranceQuotation);
+
+	}
+	
+	private void createServMaintQuotation(User user, Dealer dealer, SearchServMaint userSearchInsurance,
+			DealerSearchServMaint dealerSearchInsurance, Inventory inventory) {
+
+		/*InsuranceQuotation insuranceQuotation = new InsuranceQuotation();
+		insuranceQuotation.setDealerId(dealer.getDealerId());
+		insuranceQuotation.setUserId(user.getUserId());
+		insuranceQuotation.setDealSearchId(dealerSearchInsurance.getDealerSearchInsuranceId());
+		insuranceQuotation.setCarSearchId(userSearchInsurance.getSearchInsuranceId());
+		insuranceQuotation.setRefId(inventory.getRepoId());
+		insuranceQuotation.setAutoBid(inventory.isStockItem());
+		insuranceQuotationRepository.save(insuranceQuotation);*/
 
 	}
 
