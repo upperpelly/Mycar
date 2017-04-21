@@ -177,6 +177,15 @@ public class DomainModelUtil {
 					searchServMaintVOs.add(searchFinanceVO);
 				}
 				userVO.setSearchServMaint(searchServMaintVOs);
+				
+				
+				List<SearchTranspVO> searchTranspVOs = new ArrayList<>();
+				for (SearchTransp searchFinance : user.getSearchTransp()) {
+					SearchTranspVO searchFinanceVO = new SearchTranspVO();
+					BeanUtils.copyProperties(searchFinanceVO, searchFinance);
+					searchTranspVOs.add(searchFinanceVO);
+				}
+				userVO.setSearchTransp(searchTranspVOs);
 
 				List<MyVehicleVO> myVehicleVOs = new ArrayList<>();
 				for (MyVehicle myVehicle : user.getMyVehicle()) {

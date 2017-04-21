@@ -40,7 +40,70 @@ public class SearchFinance implements Serializable {
 	private String incomeBeforeSuperTax;
 	private String incomeAfterSuperTax;
 	private String ifBusinessProvideABN;
-	
+	private String rego;
+	private String regoState;
+	private String streetNo;
+	private String streetName;
+	private String mr;
+	private String firstName;
+	private String lastName;
+	@Column(name = "REGO")
+	public String getRego() {
+		return rego;
+	}
+
+	public void setRego(String rego) {
+		this.rego = rego;
+	}
+	@Column(name = "REGOSTATE")
+	public String getRegoState() {
+		return regoState;
+	}
+
+	public void setRegoState(String regoState) {
+		this.regoState = regoState;
+	}
+	@Column(name = "STREETNO")
+	public String getStreetNo() {
+		return streetNo;
+	}
+
+	public void setStreetNo(String streetNo) {
+		this.streetNo = streetNo;
+	}
+	@Column(name = "STREETNAME")
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+	@Column(name = "MR")
+	public String getMr() {
+		return mr;
+	}
+
+	public void setMr(String mr) {
+		this.mr = mr;
+	}
+	@Column(name = "FIRSTNAME")
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	@Column(name = "LASTNAME")
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	@Column(name = "AUTOSCOOPTRIM")
 	public String getAutoscoopTrim() {
 		return autoscoopTrim;

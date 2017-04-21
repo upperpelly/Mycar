@@ -30,6 +30,70 @@ public class SearchFinanceVO {
 	private String incomeAfterSuperTax;
 	private String ifBusinessProvideABN;
 	
+	private String rego;
+	private String regoState;
+	private String streetNo;
+	private String streetName;
+	private String mr;
+	private String firstName;
+	private String lastName;
+	
+	public String getRego() {
+		return rego;
+	}
+
+	public void setRego(String rego) {
+		this.rego = rego;
+	}
+
+	public String getRegoState() {
+		return regoState;
+	}
+
+	public void setRegoState(String regoState) {
+		this.regoState = regoState;
+	}
+
+	public String getStreetNo() {
+		return streetNo;
+	}
+
+	public void setStreetNo(String streetNo) {
+		this.streetNo = streetNo;
+	}
+
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+	public String getMr() {
+		return mr;
+	}
+
+	public void setMr(String mr) {
+		this.mr = mr;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public String getAutoscoopTrim() {
 		return autoscoopTrim;
 	}
