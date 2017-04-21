@@ -726,46 +726,46 @@ $scope.submitForm1 = function() {
 		if(alreadyLogged()){
 		userId=$.jStorage.get("key").userId;
 		//alert("inside insurance user id"+userId);
+		var dateInFormatpickupDOB= stringToDate($('#pickup_date_of_birth').val(),"dd/MM/yyyy","/");
+		var InsuReq=false;
+		if($('#trans-InsuReq').val() == "Yes")  InsuReq=true;
 		
 		var jsonInputToAPI = {"userId":userId,
-				"servMaintLead":{
-				"searchServMaintId":null,
-			"postCode":"test",
-			"regNo":"we",
-			"regoState":"TS",
+				"searchTranspLead":{
+				"searchTranspId":null,
+			"fromPostCodeAddr":"test",
+			"toPostCodeAddr":"we",
+			"transTypeReq":"TS",
 			"year":2013,
 			"make":"ss",
 			"model":"lssa",
 			"variant":"sada",
-			"feulType":"sada",
-			"servMaintL1":"sada",
-			"servMaintL2":"sada",
-			"uploadPhotos":"lssa",
-			"coveredUnderIns":false,
-			"curInsProv":"lssa",
-			"freeText":"sada"
+			"pickUpDateTime":dateInFormatpickupDOB,
+			"noOfCars":0,
+			"freeText":"sada",
+			"transpInsReq":InsuReq,
+			"uploadPhotos":null
 				}
 			};
-
 		
-		jsonInputToAPI.servMaintLead.regNo =$('#serv-regono').val();
-		jsonInputToAPI.servMaintLead.postCode=$('#serv-postCode').val();
-		jsonInputToAPI.servMaintLead.servMaintL1 =$('#ServL1').val();
-		jsonInputToAPI.servMaintLead.regoState=$('#regoStateServ').val();
 		
-		jsonInputToAPI.servMaintLead.year =$('#car-years-serv').val();
-		jsonInputToAPI.servMaintLead.make=$('#car-makes-serv').val();
-		jsonInputToAPI.servMaintLead.model =$('#car-models-serv').val();
-		jsonInputToAPI.servMaintLead.variant=$('#car-model-trims-serv').val();
-		jsonInputToAPI.servMaintLead.autoscoopTrim=$('#car-model-auto-trims-serv').val();
 		
-		jsonInputToAPI.servMaintLead.feulType =$('#fuelTypeServ').val();
-		jsonInputToAPI.servMaintLead.servMaintL2=$('#ServL2').val();
-		jsonInputToAPI.servMaintLead.uploadPhotos =$('#uploadPhotoServ').val();
-		jsonInputToAPI.servMaintLead.curInsProv=$('#coverInsServ').val();
 		
-		jsonInputToAPI.servMaintLead.curInsProv =$('#InsprovServ').val();
-		jsonInputToAPI.servMaintLead.freeText=$('#freeTextServ').val();
+		jsonInputToAPI.searchTranspLead.fromPostCodeAddr =$('#trans-address').val();
+		jsonInputToAPI.searchTranspLead.toPostCodeAddr=$('#trans-toaddress').val();
+		jsonInputToAPI.searchTranspLead.transTypeReq =$('#trans-transtype').val();
+		//jsonInputToAPI.searchTranspLead.noOfCars=$('#trans-noOfCars').val();
+		
+		jsonInputToAPI.searchTranspLead.year =$('#car-years-trans').val();
+		jsonInputToAPI.searchTranspLead.make=$('#car-makes-trans').val();
+		jsonInputToAPI.searchTranspLead.model =$('#car-models-trans').val();
+		jsonInputToAPI.searchTranspLead.variant=$('#car-model-trims-trans').val();
+		//jsonInputToAPI.servMaintLead.autoscoopTrim=$('#car-model-auto-trims-serv').val();
+		
+		jsonInputToAPI.searchTranspLead.freeText =$('#trans-freetext').val();
+		//jsonInputToAPI.searchTranspLead.uploadPhotos=$('#ServL2').val();
+		
+		
 		
 
 		var wsURL = 'api/eBid/transserv';
@@ -1852,9 +1852,10 @@ section#content {
 																
 															</div>
 													</div>
+													<br/><br/>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
-														<label>Year</label>
+														<!-- <label>Year</label> -->
 														<div class="selector">
 															<select id="car-years" name="caryears" ng-model="caryears" 
 																class="full-width" required>
@@ -1862,9 +1863,10 @@ section#content {
 														</div>
 														<span style="color:red" ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
 													</div>
+																										<br/><br/>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
-														<label>Make</label>
+														<!-- <label>Make</label> -->
 														<div class="selector">
 															<select id="car-makes" name="carmakes" ng-model="carmakes" 
 																class="full-width" required>
@@ -1873,8 +1875,9 @@ section#content {
 														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
+																										<br/><br/>
 													<div class="col-sm-5 col-md-4">
-														<label>Model</label>
+														<!-- <label>Model</label> -->
 														<div class="selector">
 															<select id="car-models" name="carmodels" ng-model="carmodels" 
 																class="full-width" required>
@@ -1883,8 +1886,9 @@ section#content {
 														<span style="color:red" ng-show="ebidfrm.carmodels.$error.required && (!ebidfrm.carmodels.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
+																										<br/><br/>
 													<div class="col-sm-5 col-md-4">
-														<label>Variant</label>
+														<!-- <label>Variant</label> -->
 														<div class="selector">
 															<select id="car-model-trims" name="carmodeltrims"  ng-model="carmodeltrims"
 																class="full-width" required>
@@ -1893,8 +1897,9 @@ section#content {
 														<span style="color:red" ng-show="ebidfrm.carmodeltrims.$error.required && (!ebidfrm.carmodeltrims.$pristine || ebidfrm.$submitted)"><b>Car Variant is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
+																										<br/><br/>
 													<div class="col-sm-5 col-md-4">
-														<label>Autoscoop Trim</label>
+														<!-- <label>Autoscoop Trim</label> -->
 														<div class="selector">
 															<select id="car-model-auto-trims" name="carmodelAutotrims"  ng-model="carmodelAutotrims"
 																class="full-width" required>
@@ -1921,12 +1926,12 @@ section#content {
 													<!-- <button type="submit" hidden="hidden"
 														ng-click="submitForm1()"></button> -->
 													<br /> <br /> 
-													<div class="social col-md-12 col-sm-12">
-														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
+													<div class="social col-md-12 col-sm-12" data-toggle="tooltip" data-placement="top" title="Signup / Login section to proceed further..">
+														<a href="#" data-toggle="tooltip" data-placement="top" title="Facebook Accoount"><i class="fa fa-facebook"
+															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter Accoount"><i
+															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#" data-toggle="tooltip" data-placement="top" title="Google Accoount"><i
 															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> &nbsp<a href="#"><i
+															aria-hidden="true"></i></a> &nbsp<a href="#" data-toggle="tooltip" data-placement="top" title="LinkedIn Accoount"><i
 															class="fa fa-linkedin" onclick="onLinkedInLoad()"
 															aria-hidden="true"></i></a>
 													</div>
@@ -6880,9 +6885,9 @@ section#content {
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<label>Free text</label> <input type="text"
-															id="trans-freetext" name="trans-freetext" ng-model="trans-freetext"
+															id="trans-freetext" name="transfreetext" ng-model="transfreetext"
 															class="input-text full-width" value="" placeholder="" required/>
-															<span style="color:red" ng-show="ebidtransfrm.trans-freetext.$error.required && (!ebidtransfrm.trans-freetext.$pristine || ebidtransfrm.$submitted)"><b> free text value is Required</b></span>
+															<span style="color:red" ng-show="ebidtransfrm.transfreetext.$error.required && (!ebidtransfrm.transfreetext.$pristine || ebidtransfrm.$submitted)"><b> free text value is Required</b></span>
 													</div>
 													
 													

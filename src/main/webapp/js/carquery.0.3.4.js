@@ -511,6 +511,12 @@ CarQuery.prototype = {
      this.model_select_id = model_select_id;
      this.trim_select_id = trim_select_id;
      this.autotrim_select_id = autotrim_select_id;
+     $("select#"+this.year_select_id).html("<option value='' disabled selected>Which Year</option>");
+     $("select#"+this.make_select_id).html("<option value='' disabled selected>Make</option>");
+     $("select#"+this.model_select_id).html("<option value='' disabled selected>Model</option>");
+     $("select#"+this.trim_select_id).html("<option value='' disabled selected>Variant</option>");
+     $("select#"+this.autotrim_select_id).html("<option value='' disabled selected>Autoscoop Trim</option>");
+
      //Populate the car-years select element
      this.populateYearSelect();
 
@@ -766,7 +772,6 @@ CarQuery.prototype = {
     populateYearSelect: function()
     {
      //Set a loading message while we retrieve the data
-     $("select#"+this.year_select_id).html("<option value=''>Loading Years...</option>");
 
         var sender = this;
         //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelYears';
@@ -802,8 +807,8 @@ CarQuery.prototype = {
          //alert(options);
       $("select#"+sender.year_select_id).html(options);
 
-      $("select#"+sender.make_select_id).html(sender.empty_option_html);
-  $("select#"+sender.model_select_id).html(sender.empty_option_html);
+      $("select#"+sender.make_select_id).html("<option value='' disabled selected>Make</option>");
+  $("select#"+sender.model_select_id).html("<option value='' disabled selected>Model</option>");
 
 
   if(sender.settings.year != null)

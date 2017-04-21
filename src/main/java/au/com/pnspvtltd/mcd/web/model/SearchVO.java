@@ -17,7 +17,7 @@ public class SearchVO {
 	 * */
 	
 	private Long carSearchId;
-	private boolean isNew;
+	//private boolean isNew;
 	private boolean isNewer;
 	private boolean isUsed;
 	private String modelYear;
@@ -59,13 +59,13 @@ public class SearchVO {
 		this.isUsed = isUsed;
 	}
 
-	public boolean isNew() {
+	/*public boolean isNew() {
 		return isNew;
 	}
 
 	public void setNew(boolean isNew) {
 		this.isNew = isNew;
-	}
+	}*/
 	
 	// FLEX1
 	private String sModel;

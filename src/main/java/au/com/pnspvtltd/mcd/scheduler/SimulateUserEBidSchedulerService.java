@@ -46,7 +46,7 @@ public class SimulateUserEBidSchedulerService {
 	public void simulateUserEBid(){
 		
 		//Get Search Leads which are initiated by USER
-		List<Search> searchLeads = userSearchLeadRepository.findByLeadInitiatedBy(LeadInitiatedBy.USER);
+		//List<Search> searchLeads = userSearchLeadRepository.findByLeadInitiatedBy(LeadInitiatedBy.USER);
 		
 		//dsfsddfdsds
 		
