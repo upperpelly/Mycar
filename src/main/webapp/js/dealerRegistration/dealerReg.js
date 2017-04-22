@@ -1637,7 +1637,7 @@ mainApp1.controller(
 			    			                
 			    			                
 			    			                // table 91
-			    			                var tbl922 = document.getElementById('my-my-table922'), // table reference
+			    			                var tbl922 = document.getElementById('my-table922'), // table reference
 			    			                   row = tbl922.rows.length;      // append table row
 			    			                    var i;
 			    			                    alert("row length relatedModels91"+tbl922.rows.length);

@@ -512,6 +512,26 @@ var insQCt=result.insuranceQuotation.length;
       	         	   out11 = out11.replace(/>null</g, ">--NA--<");
       	         	   out11 = out11.replace(/>undefined</g, ">--NA--<");
       	         	  forFinance("datatranspserv",out11);
+      	         	  
+      	         	out12="";
+   	         	   
+   	         	   out12 += '<tr><th>'+"Code"+'</th><th>'+"Type Of Req"+'</th><th>'+"Description"+'</th><th>'+"Comment"+'</th><th>'+"end Date"+'</th></tr>';
+   	         	   alert(result.userNotification.length);
+   	         	   for(i=0;i<result.userNotification.length;i++)
+   	        		{
+   	        		/*alert(result.search[i].carSearchId); //111 111-1111
+   	        		alert(result.search[i].modelDisplay);
+   	        		alert(result.search[i].modelTrim);
+   	        		
+   	        		alert(result.search[i].modelYear);*/
+   	        		out12= out12+'<tr>'+'<td>'+result.userNotification[i].code+'</td>'+'<td>'+result.userNotification[i].typeOfReq+'</td>'+'<td>'+result.userNotification[i].makeDescription+'</td>'+'<td>'+result.userNotification[i].comment+'</td></tr>';
+   	        		
+   	        		
+   	        		}
+   	         	   out12 = out12.replace(/>null</g, ">--NA--<");
+   	         	   out12 = out12.replace(/>undefined</g, ">--NA--<");
+   	         	alert(out12);
+   	         	  forFinance("userNotification",out12);
         	               	registerEditDealerVehicleQuotationModal();
         	               	registerEditDealerVehicleSearchModal();
         	               	registerEditDealerVehicleFinanceModal();

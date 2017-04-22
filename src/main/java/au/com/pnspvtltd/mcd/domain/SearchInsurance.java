@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "searchinsurance")
 public class SearchInsurance implements Serializable {
 
-	private boolean isNew;
+	//private boolean isNew;
 	private boolean isNewer;
 	private boolean isUsed;
 	private Long searchInsuranceId;
@@ -68,14 +68,14 @@ public class SearchInsurance implements Serializable {
 		this.isUsed = isUsed;
 	}
 
-	@Column(name = "ISNEW")
+	/*@Column(name = "ISNEW")
 	public boolean isNew() {
 		return isNew;
 	}
 
 	public void setNew(boolean isNew) {
 		this.isNew = isNew;
-	}
+	}*/
 
 	@Column(name = "DATEOFBIRTH")
 	public Date getDateOfBirth() {

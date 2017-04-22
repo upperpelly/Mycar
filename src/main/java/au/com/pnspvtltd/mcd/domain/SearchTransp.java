@@ -9,6 +9,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "searchtransp")
@@ -26,7 +46,82 @@ public class SearchTransp implements Serializable {
 	private String variant;
 	private String freeText;
 	private boolean transpInsReq;
+	private String howMay;
+	private String fromStreetNo;
+	private String toStreetName;
+	private String toStreetNo;
+	private String fromStreetName;
+	private String kindOfTransport;
+	private boolean flexWithDateDefault;
 	private String uploadPhotos;
+	
+	List<TranspSearchMakeList> carModel;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="searchTranspId") public List<TranspSearchMakeList> getCarModel() {
+		return carModel;
+	}
+
+	public void setCarModel(List<TranspSearchMakeList> carModel) {
+		this.carModel = carModel;
+	}
+	
+	@Column(name = "howMay")
+	public String getHowMay() {
+		return howMay;
+	}
+
+	public void setHowMay(String howMay) {
+		this.howMay = howMay;
+	}
+	@Column(name = "fromStreetNo")
+	public String getFromStreetNo() {
+		return fromStreetNo;
+	}
+
+	public void setFromStreetNo(String fromStreetNo) {
+		this.fromStreetNo = fromStreetNo;
+	}
+	@Column(name = "toStreetName")
+	public String getToStreetName() {
+		return toStreetName;
+	}
+
+	public void setToStreetName(String toStreetName) {
+		this.toStreetName = toStreetName;
+	}
+	@Column(name = "toStreetNo")
+	public String getToStreetNo() {
+		return toStreetNo;
+	}
+
+	public void setToStreetNo(String toStreetNo) {
+		this.toStreetNo = toStreetNo;
+	}
+	@Column(name = "fromStreetName")
+	public String getFromStreetName() {
+		return fromStreetName;
+	}
+
+	public void setFromStreetName(String fromStreetName) {
+		this.fromStreetName = fromStreetName;
+	}
+	@Column(name = "kindOfTransport")
+	public String getKindOfTransport() {
+		return kindOfTransport;
+	}
+
+	public void setKindOfTransport(String kindOfTransport) {
+		this.kindOfTransport = kindOfTransport;
+	}
+	@Column(name = "flexWithDateDefault")
+	public boolean isFlexWithDateDefault() {
+		return flexWithDateDefault;
+	}
+
+	public void setFlexWithDateDefault(boolean flexWithDateDefault) {
+		this.flexWithDateDefault = flexWithDateDefault;
+	}
+
 	@Column(name = "FROMPOSTADDR")
 	public String getFromPostCodeAddr() {
 		return fromPostCodeAddr;

@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
+
+
 @Entity
 @Table(name = "userrepo")
 public class User implements Serializable {
@@ -44,7 +46,18 @@ public class User implements Serializable {
 	List<SearchServMaint> searchServMaint;
 	List<SearchTransp> searchTransp;
 	List<MyVehicle> myVehicle;
+	List<UserNotification> userNotification;
 	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "userId")
+	public List<UserNotification> getUserNotification() {
+		return userNotification;
+	}
+
+	public void setUserNotification(List<UserNotification> userNotification) {
+		this.userNotification = userNotification;
+	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
 	public List<MyVehicle> getMyVehicle() {

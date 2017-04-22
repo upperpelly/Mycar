@@ -2,7 +2,13 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
 import au.com.pnspvtltd.mcd.domain.MyVehicle;
+import au.com.pnspvtltd.mcd.domain.UserNotification;
 
 public class UserVO {
 
@@ -33,6 +39,18 @@ public class UserVO {
 	List<VehicleQuotationVO> vehicleQuotation;
 	List<InsuranceQuotationVO> insuranceQuotation;
 	List<FinanceQuotationVO> financeQuotation;
+	List<UserNotificationVO> userNotification;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "userId")
+	public List<UserNotificationVO> getUserNotification() {
+		return userNotification;
+	}
+
+	public void setUserNotification(List<UserNotificationVO> userNotification) {
+		this.userNotification = userNotification;
+	}
+
 
 	public Long getUserId() {
 		return userId;

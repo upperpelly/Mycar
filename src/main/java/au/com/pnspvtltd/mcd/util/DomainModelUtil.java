@@ -57,6 +57,7 @@ import au.com.pnspvtltd.mcd.domain.TempCarModelUserRating;
 import au.com.pnspvtltd.mcd.domain.TempCarModelVehReview;
 import au.com.pnspvtltd.mcd.domain.TempCarModelVideos;
 import au.com.pnspvtltd.mcd.domain.User;
+import au.com.pnspvtltd.mcd.domain.UserNotification;
 import au.com.pnspvtltd.mcd.domain.UserReviewTemplate;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperPostCode;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
@@ -114,6 +115,7 @@ import au.com.pnspvtltd.mcd.web.model.TempCarModelRelatedModelVO;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelUserRatingVO;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelVehReviewVO;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelVideosVO;
+import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserReviewTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperPostCodeVO;
@@ -143,7 +145,7 @@ public class DomainModelUtil {
 		try {
 
 			org.springframework.beans.BeanUtils.copyProperties(user, userVO, new String[] { "search", "searchInsurance",
-					"searchFinance", "searchServMaint", "searchTransp", "myVehicle" });
+					"searchFinance", "searchServMaint", "searchTransp", "myVehicle", "userNotification"  });
 
 			if (!isMinified) {
 				List<SearchVO> searchVOs = new ArrayList<>();
@@ -186,6 +188,14 @@ public class DomainModelUtil {
 					searchTranspVOs.add(searchFinanceVO);
 				}
 				userVO.setSearchTransp(searchTranspVOs);
+				
+				List<UserNotificationVO> userNotificationVOs = new ArrayList<>();
+				for (UserNotification searchFinance : user.getUserNotification()) {
+					UserNotificationVO searchFinanceVO = new UserNotificationVO();
+					BeanUtils.copyProperties(searchFinanceVO, searchFinance);
+					userNotificationVOs.add(searchFinanceVO);
+				}
+				userVO.setUserNotification(userNotificationVOs);
 
 				List<MyVehicleVO> myVehicleVOs = new ArrayList<>();
 				for (MyVehicle myVehicle : user.getMyVehicle()) {

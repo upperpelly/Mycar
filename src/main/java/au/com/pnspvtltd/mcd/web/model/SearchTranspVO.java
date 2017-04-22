@@ -1,6 +1,10 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
+import java.util.List;
+
+
+import au.com.pnspvtltd.mcd.domain.TranspSearchMakeList;
 
 public class SearchTranspVO {
 
@@ -17,6 +21,80 @@ public class SearchTranspVO {
 	private String freeText;
 	private boolean transpInsReq;
 	private String uploadPhotos;
+	private String howMay;
+	private String fromStreetNo;
+	private String toStreetName;
+	private String toStreetNo;
+	private String fromStreetName;
+	private String kindOfTransport;
+	private boolean flexWithDateDefault;
+	
+	
+public String getHowMay() {
+		return howMay;
+	}
+
+	public void setHowMay(String howMay) {
+		this.howMay = howMay;
+	}
+
+	public String getFromStreetNo() {
+		return fromStreetNo;
+	}
+
+	public void setFromStreetNo(String fromStreetNo) {
+		this.fromStreetNo = fromStreetNo;
+	}
+
+	public String getToStreetName() {
+		return toStreetName;
+	}
+
+	public void setToStreetName(String toStreetName) {
+		this.toStreetName = toStreetName;
+	}
+
+	public String getToStreetNo() {
+		return toStreetNo;
+	}
+
+	public void setToStreetNo(String toStreetNo) {
+		this.toStreetNo = toStreetNo;
+	}
+
+	public String getFromStreetName() {
+		return fromStreetName;
+	}
+
+	public void setFromStreetName(String fromStreetName) {
+		this.fromStreetName = fromStreetName;
+	}
+
+	public String getKindOfTransport() {
+		return kindOfTransport;
+	}
+
+	public void setKindOfTransport(String kindOfTransport) {
+		this.kindOfTransport = kindOfTransport;
+	}
+
+	public boolean isFlexWithDateDefault() {
+		return flexWithDateDefault;
+	}
+
+	public void setFlexWithDateDefault(boolean flexWithDateDefault) {
+		this.flexWithDateDefault = flexWithDateDefault;
+	}
+
+List<TranspSearchMakeList> carModel;
+	
+	public List<TranspSearchMakeList> getCarModel() {
+		return carModel;
+	}
+
+	public void setCarModel(List<TranspSearchMakeList> carModel) {
+		this.carModel = carModel;
+	}
 
 	public String getFromPostCodeAddr() {
 		return fromPostCodeAddr;

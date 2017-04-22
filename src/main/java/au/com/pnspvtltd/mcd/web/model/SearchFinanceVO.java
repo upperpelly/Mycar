@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class SearchFinanceVO {
 
-	private boolean isNew;
+	//private boolean isNew;
 	private boolean isNewer;
 	private boolean isUsed;
 	private Long searchFinanceId;
@@ -150,13 +150,13 @@ public class SearchFinanceVO {
 		this.isUsed = isUsed;
 	}
 
-	public boolean isNew() {
+	/*public boolean isNew() {
 		return isNew;
 	}
 
 	public void setNew(boolean isNew) {
 		this.isNew = isNew;
-	}
+	}*/
 
 	public Date getDateOfBirth() {
 		return dateOfBirth;

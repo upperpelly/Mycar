@@ -26,6 +26,681 @@ function stringToDate(_date,_format,_delimiter)
             var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
             return formatedDate;
 }
+//append row to the HTML table
+function appendRow17() {
+    var tbl = document.getElementById('my-table17'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellCountry(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}// append row to the HTML table
+function appendRow16() {
+    var tbl = document.getElementById('my-table16'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellExpertingRating(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}// append row to the HTML table
+function appendRow15() {
+    var tbl = document.getElementById('my-table15'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellUserRating(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+    //alert("ca"+$('#userRating10').val());
+}// append row to the HTML table
+function appendRow14() {
+    var tbl = document.getElementById('my-table14'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellFittingInternal(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}// append row to the HTML table
+function appendRow13() {
+    var tbl = document.getElementById('my-table13'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellFittingExternal(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}// append row to the HTML table
+function appendRow12() {
+    var tbl = document.getElementById('my-table12'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellVideos(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}// append row to the HTML table
+function appendRow11() {
+    var tbl = document.getElementById('my-table11'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellVehicleReviews(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+// append row to the HTML table
+function appendRow10() {
+    var tbl = document.getElementById('my-table10'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellPhotos(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+// append row to the HTML table
+function appendRow9() {
+	//alert("append invoke");
+    var tbl = document.getElementById('my-table9'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellRelatedModels(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+// append row to the HTML table
+function appendRow91() {
+	//alert("append invoke");
+    var tbl = document.getElementById('my-table91'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellRelatedModels91(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+// append row to the HTML table
+function appendRow922() {
+	//alert("append invoke");
+    var tbl = document.getElementById('my-table922'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellRelatedModels922(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+// append row to the HTML table
+function appendRow8() {
+    var tbl = document.getElementById('my-table8'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellOptionalEquipmentAddOns(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+// append row to the HTML table
+function appendRow7() {
+    var tbl = document.getElementById('my-table7'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellFullSpecStandardEquip(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+// append row to the HTML table
+function appendRow6() {
+    var tbl = document.getElementById('my-table6'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellWarranty(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+// append row to the HTML table
+function appendRow5() {
+    var tbl = document.getElementById('my-table5'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellFullSpecWheels(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+// append row to the HTML table
+function appendRow4() {
+    var tbl = document.getElementById('my-table4'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellFullSpecFuel(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+// append row to the HTML table
+function appendRow3() {
+    var tbl = document.getElementById('my-table3'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellFullSpecDimension(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+// append row to the HTML table
+function appendRow2() {
+    var tbl = document.getElementById('my-table2'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellFullSpecEngine(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+
+// append row to the HTML table
+function appendRow1() {
+    var tbl = document.getElementById('my-table1'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellAvailableColour(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
+function appendRow() {
+    var tbl = document.getElementById('my-table'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellOptionalFeaturesAddons(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+    //alert("ca"+$('#createCellOptionalFeaturesAddons2').val());
+}
+// create DIV element and append to the table cell
+function createCellOptionalFeaturesAddons(cell, row, text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "createCellOptionalFeaturesAddons" +row + text;
+    newInput.name = "createCellOptionalFeaturesAddons" +row+ text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+
+// create DIV element and append to the table cell
+function createCellAvailableColour(cell, row, text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "availableColour" + +row + text;
+    newInput.name = "availableColour" +row +  text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellFullSpecEngine(cell,  row, text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "fullSpecEngine" + row +text;
+    newInput.name = "fullSpecEngine" + row +text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellFullSpecDimension(cell,  row, text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "fullSpecDimension" + row+text;
+    newInput.name = "fullSpecDimension" + row+text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellFullSpecFuel(cell,  row, text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "fullSpecFuel" + row+text;
+    newInput.name = "fullSpecFuel" + row+text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellFullSpecWheels(cell,  row,text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "fullSpecWheels" + row+text;
+    newInput.name = "fullSpecWheels" + row+text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellWarranty(cell,  row,text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "warranty" + row+text;
+    newInput.name = "warranty" + row+text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellFullSpecStandardEquip(cell,  row,text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "fullSpecStandardEquip" + row+text;
+    newInput.name = "fullSpecStandardEquip" + row+text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellOptionalEquipmentAddOns(cell,  row,text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "optionalEquipmentAddOns" +row+ text;
+    newInput.name = "optionalEquipmentAddOns" + row+text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+//createCellRelatedModels(row.insertCell(i), tbl.rows.length-1, i, 'row');
+function createCellRelatedModels(cell,  row, text, style) {
+	//alert("came here1214"+$('#car-years').val());
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "relatedModels" +row+ text;
+    newInput.name = "relatedModels" + row+text;
+    newInput.type = "text";
+    switch(text){
+    case 0: newInput.value=$('#car-years').val();break;
+    case 1: newInput.value=$('#car-makes').val();break;
+    case 2: newInput.value=$('#car-models').val();break;
+    case 3: newInput.value=$('#car-model-trims').val();break;
+    }
+    
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+// create DIV element and append to the table cell
+//createCellRelatedModels(row.insertCell(i), tbl.rows.length-1, i, 'row');
+function createCellRelatedModels91(cell,  row, text, style) {
+	//alert("came here1214"+$('#car-years').val());
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "relatedModels91" +row+ text;
+    newInput.name = "relatedModels91" + row+text;
+    newInput.type = "text";
+    switch(text){
+    case 0: newInput.value=$('#car-yearsreg').val();break;
+    case 1: newInput.value=$('#car-makesreg').val();break;
+    case 2: newInput.value=$('#car-modelsreg').val();break;
+    }
+    
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+//createCellRelatedModels(row.insertCell(i), tbl.rows.length-1, i, 'row');
+function createCellRelatedModels922(cell,  row, text, style) {
+	//alert("came here1214"+$('#car-years').val());
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "relatedModels922" +row+ text;
+    newInput.name = "relatedModels922" + row+text;
+    newInput.type = "text";
+    //alert($('#car-years-trans').val());
+    //alert(text);
+    switch(text){
+    case 0: newInput.value=$('#car-years-trans').val();break;
+    case 1: newInput.value=$('#car-makes-trans').val();break;
+    case 2: newInput.value=$('#car-models-trans').val();break;
+    case 3: newInput.value=$('#car-model-trims-trans').val();break;
+    case 4: newInput.value=$('#car-model-auto-trims-trans').val();break;
+    
+    }
+    
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+// create DIV element and append to the table cell
+function createCellPhotos(cell,  row,text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "photo" + row+text;
+    newInput.name = "photo" + row+text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellVehicleReviews(cell,  row, text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "vehicleReviews" + row+text;
+    newInput.name = "vehicleReviews" + row+text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellVideos(cell,  row, text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "videos" + row+text;
+    newInput.name = "videos" + row+text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellFittingExternal(cell,  row, text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "fittingExternal" + row+text;
+    newInput.name = "fittingExternal" + row+text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellFittingInternal(cell,  row, text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "fittingInternal" + row+text;
+    newInput.name = "fittingInternal" + row+text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellUserRating(cell,  row, text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "userRating" + row+ text;
+    newInput.name = "userRating" + row+ text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellExpertingRating(cell,  row, text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "expertingRating" + row+ text;
+    newInput.name = "expertingRating" + row+ text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+// create DIV element and append to the table cell
+function createCellCountry(cell,  row, text, style) {
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "country" + row+ text;
+    newInput.name = "country" + row+ text;
+    newInput.type = "text";
+    
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+
+
+
+// append column to the HTML table
+function appendColumn() {
+    var tbl = document.getElementById('my-table'), // table reference
+        i;
+    // open loop for each row and append cell
+    for (i = 0; i < tbl.rows.length; i++) {
+        createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length), i, 'col');
+    }
+}
+
+// delete table rows with index greater then 0
+function deleteRows1() {
+    var tbl = document.getElementById('my-table1'), // table reference
+        lastRow = tbl.rows.length - 1,             // set the last row index
+        i;
+    // delete rows with index greater then 0
+    for (i = lastRow; i > 0; i--) {
+        tbl.deleteRow(i);
+    }
+}
+function deleteRows2() {
+    var tbl = document.getElementById('my-table2'), // table reference
+        lastRow = tbl.rows.length - 1,             // set the last row index
+        i;
+    // delete rows with index greater then 0
+    for (i = lastRow; i > 0; i--) {
+        tbl.deleteRow(i);
+    }
+}
+function deleteRows3() {
+    var tbl = document.getElementById('my-table3'), // table reference
+        lastRow = tbl.rows.length - 1,             // set the last row index
+        i;
+    // delete rows with index greater then 0
+    for (i = lastRow; i > 0; i--) {
+        tbl.deleteRow(i);
+    }
+}
+function deleteRows4() {
+    var tbl = document.getElementById('my-table4'), // table reference
+        lastRow = tbl.rows.length - 1,             // set the last row index
+        i;
+    // delete rows with index greater then 0
+    for (i = lastRow; i > 0; i--) {
+        tbl.deleteRow(i);
+    }
+}
+function deleteRows5() {
+    var tbl = document.getElementById('my-table5'), // table reference
+        lastRow = tbl.rows.length - 1,             // set the last row index
+        i;
+    // delete rows with index greater then 0
+    for (i = lastRow; i > 0; i--) {
+        tbl.deleteRow(i);
+    }
+}
+function deleteRows6() {
+    var tbl = document.getElementById('my-table6'), // table reference
+        lastRow = tbl.rows.length - 1,             // set the last row index
+        i;
+    // delete rows with index greater then 0
+    for (i = lastRow; i > 0; i--) {
+        tbl.deleteRow(i);
+    }
+}
+function deleteRows7() {
+    var tbl = document.getElementById('my-table7'), // table reference
+        lastRow = tbl.rows.length - 1,             // set the last row index
+        i;
+    // delete rows with index greater then 0
+    for (i = lastRow; i > 0; i--) {
+        tbl.deleteRow(i);
+    }
+}
+function deleteRows8() {
+    var tbl = document.getElementById('my-table8'), // table reference
+        lastRow = tbl.rows.length - 1,             // set the last row index
+        i;
+    // delete rows with index greater then 0
+    for (i = lastRow; i > 0; i--) {
+        tbl.deleteRow(i);
+    }
+}
+function deleteRows9() {
+    var tbl = document.getElementById('my-table9'), // table reference
+        lastRow = tbl.rows.length - 1,             // set the last row index
+        i;
+    // delete rows with index greater then 0
+    for (i = lastRow; i > 0; i--) {
+        tbl.deleteRow(i);
+    }
+}
+function deleteRows10() {
+    var tbl = document.getElementById('my-table10'), // table reference
+        lastRow = tbl.rows.length - 1,             // set the last row index
+        i;
+    // delete rows with index greater then 0
+    for (i = lastRow; i > 0; i--) {
+        tbl.deleteRow(i);
+    }
+}
+// delete table rows with index greater then 0
+function deleteRows() {
+    var tbl = document.getElementById('my-table'), // table reference
+        lastRow = tbl.rows.length - 1,             // set the last row index
+        i;
+    // delete rows with index greater then 0
+    for (i = lastRow; i > 0; i--) {
+        tbl.deleteRow(i);
+    }
+}
+ 
+// delete table columns with index greater then 0
+function deleteColumns() {
+    var tbl = document.getElementById('my-table'), // table reference
+        lastCol = tbl.rows[0].cells.length - 1,    // set the last column index
+        i, j;
+    // delete cells with index greater then 0 (for each row)
+    for (i = 0; i < tbl.rows.length; i++) {
+        for (j = lastCol; j > 0; j--) {
+            tbl.rows[i].deleteCell(j);
+        }
+    }
+}
 var isChecked1 = false;
 
 function allSelected1() 
@@ -121,12 +796,12 @@ function allSelected5()
 	// this line is for toggle the check
     //isChecked = !isChecked;
 	if(!isChecked5){
-		alert("should come here");
+		//alert("should come here");
     document.getElementById("newCarEbid").value=true;
     isChecked5 = !isChecked5;
 	}
 	else{
-		alert("not here");
+		//alert("not here");
 		document.getElementById("newCarEbid").value=false;
 	}
 		
@@ -198,7 +873,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 .search-box-wrapper.style1 .search-tab-content {
     background: transparent;
 }
-
+ul { padding:0 } 
 </style>
 
 
@@ -279,7 +954,7 @@ body.loadingSign .Signinmodal {
 }
 </script>
 <script>function showDiv4() {
-	alert("came here");
+	//alert("came here");
 	var carquery = new CarQuery();
 	carquery.init();
 	//carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
@@ -389,6 +1064,8 @@ body.loadingSign .Signinmodal {
 
 
 <!-- Theme Styles -->
+<style type="text/css">.panel{
+background-colour:#8598a9;}</style>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="pingback" href="http://www.carqueryapi.com/xmlrpc.php" />
 <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -736,6 +1413,7 @@ $scope.submitForm1 = function() {
 		var jsonInputToAPI = {"userId":userId,
 				"searchTranspLead":{
 				"searchTranspId":null,
+				"carModel": [{"make":"Make","model":"modal","variant":"variant","autoscoopTrim":"autoscoopTrim","flex1":"  flex1","flex2":"  flex2","flex3":"  flex3","flex4":"  flex4","flex5":0,"flex6":0,"flex7":0,"flex8":0,"flex9":0,"flex10":0,"flex11":null,"flex12":null,"flex13":false,"flex14":false}],
 			"fromPostCodeAddr":"test",
 			"toPostCodeAddr":"we",
 			"transTypeReq":"TS",
@@ -752,6 +1430,44 @@ $scope.submitForm1 = function() {
 			};
 		
 		
+		 // table 91
+        var tbl922 = document.getElementById('my-table922'), // table reference
+           row = tbl922.rows.length;      // append table row
+            var i;
+            alert("row length relatedModels91"+tbl922.rows.length);
+            alert("col lenght relatedModels91"+tbl922.rows[0].cells.length);         
+	                alert("Json print d e relatedModels");
+		        //alert($('#relatedModels922'+j+'0').val());
+		            // insert table cells to the new row
+            for (j = 1; j < tbl922.rows.length; j++) {
+            	i=0;
+            		jsonInputToAPI.searchTranspLead.carModel[j-1].transpSearchMakeListId=null;
+            		
+            		jsonInputToAPI.searchTranspLead.carModel[j-1].year=$('#relatedModels922'+j+'0').val();
+            		jsonInputToAPI.searchTranspLead.carModel[j-1].make=$('#relatedModels922'+j+'1').val();
+            		jsonInputToAPI.searchTranspLead.carModel[j-1].model=$('#relatedModels922'+j+'2').val();
+            		jsonInputToAPI.searchTranspLead.carModel[j-1].variant=$('#relatedModels922'+j+'3').val();
+            		jsonInputToAPI.searchTranspLead.carModel[j-1].autoscoopTrim=$('#relatedModels922'+j+'4').val();
+            		
+		         
+            		jsonInputToAPI.searchTranspLead.carModel[j-1]["flex1"]="flex1";
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex2"]="flex1";
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex3"]="flex1";
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex4"]="flex1";
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex5"]=0;
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex6"]=0;
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex7"]=0;
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex8"]=0;
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex9"]=0;
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex10"]=0;
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex11"]=null;
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex12"]=null;
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex13"]=false;
+	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex14"]=false;
+		    }  
+		                alert("Json print relatedModels");
+		                alert(JSON.stringify(jsonInputToAPI.searchTranspLead.carModel));
+
 		
 		
 		jsonInputToAPI.searchTranspLead.fromPostCodeAddr =$('#trans-address').val();
@@ -1375,6 +2091,12 @@ section#content {
 
 .social {
 	font-size: large;
+}
+.panel{
+background-color:#8598a9;}
+table{
+   border: 0;
+    color: black;
 }
 </style>
 
@@ -7285,7 +8007,67 @@ section#content {
 														<span style="color:red" ng-show="ebidtransfrm.transnoOfCars.$error.required && (!ebidtransfrm.transnoOfCars.$pristine || ebidtransfrm.$submitted)"><b> No of Cars is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
-
+	<!-- start -->
+													
+													<div class="toggle-container box">
+						                                <div class="panel style1">
+						                                    <h4 class="panel-title">
+						                                        <a href="#tggindmakes" data-toggle="collapse">Select New Car Makes</a>
+						                                    </h4>
+						                                    <div class="panel-collapse collapse" id="tggindmakes">
+						                                        <div class="panel-content">
+						                                         <div class="form-group row">
+						                                       
+						                            <!--            <div class="col-sm-5 col-md-4">
+														<label>Year</label>
+														<div class="selector">
+															<select id="car-years922" name="caryears922" ng-model="caryears" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>Make</label>
+														<div class="selector">
+															<select id="car-makes922" name="carmakes922" ng-model="carmakes" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>Model</label>
+														<div class="selector">
+															<select id="car-model922" name="carmodel922" ng-model="carmodels" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
+													</div>
+													
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>Variant</label>
+														<div class="selector">
+															<select id="car-variant922" name="carvariant922" ng-model="carvariant" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
+													</div>
+													<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>Autoscoop Trim</label>
+														<div class="selector">
+															<select id="car-autoscoop922" name="carautoscoop922" ng-model="carautoscoop" 
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
+													</div> -->
 													<div class="col-sm-5 col-md-4">
 														<label>Year</label>
 														<div class="selector">
@@ -7327,7 +8109,56 @@ section#content {
 														</div>
 														<span style="color:red" ng-show="ebidtransfrm.carmodeltrimstrans.$error.required && (!ebidtransfrm.carmodeltrimstrans.$pristine || ebidtransfrm.$submitted)"><b>Car Variant is Required</b></span>
 													</div>
-													
+														<div class="clearfix"></div>
+													<div class="col-sm-5 col-md-4">
+														<label>Autoscoop Trim</label>
+														<div class="selector">
+															<select id="car-model-auto-trims-trans" name="carmodelAutotrimstrans"  ng-model="carmodelAutotrimstrans"
+																class="full-width" required>
+															</select>
+														</div>
+														<span style="color:red" ng-show="ebidfinfrm.carmodelAutotrimsfin.$error.required && (!ebidfinfrm.carmodelAutotrimsfin.$pristine || ebidfinfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+													</div>
+                                       <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow922()" class="append_row"/><br />
+						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows9()" class="delete"/><br />
+						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
+						<table id="my-table922" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>Year</th><th>Make</th><th>Model</th><th>Variant</th><th>Autoscoop Trim</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+                                        <div class="clearfix"></div>
+                                    </div>
+						                                       <!-- <div class="form-group row">
+						
+						                                                 <div id="my-container">
+						<center><br />
+						<input type="button" value="Add row" onclick="javascript:appendRow1()" class="append_row"/><br />
+						 <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />
+						<input type="button" value="Delete rows" onclick="javascript:deleteRows1()" class="delete"/><br />
+						 <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
+						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>
+						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
+						<tr><th>Select Brand</th><th>Offered</th></tr>
+						
+						</table>
+						<p></center>
+						</div>   
+						
+						
+						                                    </div> -->
+						                                        </div><!-- end content -->
+						                                    </div>
+						                                </div>
+						
+						                            </div>
+						                                        <!-- End -->  
+													<!-- end -->
 													
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
