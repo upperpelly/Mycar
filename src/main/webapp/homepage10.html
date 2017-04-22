@@ -836,10 +836,31 @@ function allSelected6()
 </script>
 <script type="text/javascript">// <![CDATA[
 $(document).ready( function() {
-	
-	$("#collapse").click(function(){
-        $("#demo").toggle(500);
+	$("#coverageDetails").hide();
+	$("#coverageCollapse").click(function(){
+		$('#coverageGlyphi').toggleClass("glyphicon-plus").toggleClass("glyphicon-minus");
+        $("#coverageDetails").toggle(500);
+        
     });
+	
+	$("#carDetails").hide();
+	$("#carDetailsCollapse").click(function(){
+		$('#carDetailGlyphi').toggleClass("glyphicon-plus").toggleClass("glyphicon-minus");
+        $("#carDetails").toggle(500);
+        
+    });
+	
+	
+	$("#driverDetails").hide();
+	$("#driverDetailsCollapse").click(function(){
+		$('#driverDetailGlyphi').toggleClass("glyphicon-plus").toggleClass("glyphicon-minus");
+        $("#driverDetails").toggle(500);
+        
+    });
+	/* $('.glyphicon').click(function () {
+        $(this).toggleClass("glyphicon-plus").toggleClass("glyphicon-minus");
+        $("#coverageDetails").toggle(500);
+    }); */
 	
 	$("#myTab a").click(function(e){
         e.preventDefault();
@@ -5224,310 +5245,343 @@ table{
 														</div>
 													</div><br/>
 													
-													<div class="row">
-														<div class="col-sm-3 col-md-3">
-														<label>Car Registration</label>
-														</div>
-														<div class="col-sm-3 col-md-3">
-															 <input type="text"
-															class="input-text full-width" value="" ng-model="regono12"
-															placeholder="Rego No" id="regono12" name="regono12" required/>
-															<span style="color:red" ng-show="ebidinsfrm.regono12.$error.required && (!ebidinsfrm.regono12.$pristine || ebidinsfrm.$submitted)"><b>Rego Number is Required</b></span>
-														</div>
-														<div class="col-sm-3 col-md-3">
-															<div class="selector">
-																<select class="full-width" id="ins-regost" ng-model="insregost"
-																	name="insregost" required>
-																	<option value="" selected disabled>Rego State</option>
-																	<option>ACT</option>
-																	<option>NT</option>
-																	<option>QLD</option>
-																	<option>VIC</option>
-																	<option>NSW</option>
-																	<option>TAS</option>
-																	<option>SA</option>
-																	<option>WA</option>
-																</select>
-															</div>
-															<span style="color:red" ng-show="ebidinsfrm.insregost.$error.required && (!ebidinsfrm.insregost.$pristine || ebidinsfrm.$submitted)"><b>Rego State is Required</b></span>
-														</div>
-														<div class="col-sm-3 col-md-3">{If Renewal is Selected}</div>
-													</div><br/>
-													
 													
 													<div class="row">
-														<div class="col-sm-3 col-md-3">
-															<label>Vehicle Details</label>
+														<div class="col-sm-12 col-md-12">
+															<label><span id="carDetailsCollapse">
+															    <span class="glyphicon glyphicon-plus" id="carDetailGlyphi" ></span>
+															    Car Details</span></label>
+															<!-- <button type="button" class="btn btn-info">Simple collapsible</button> -->
+															  <div id="carDetails">
+															  		<div class="row">
+																			<div class="col-sm-3 col-md-3">
+																			<label>Car Registration</label>
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																				 <input type="text"
+																				class="input-text full-width" value="" ng-model="regono12"
+																				placeholder="Rego No" id="regono12" name="regono12" required/>
+																				<span style="color:red" ng-show="ebidinsfrm.regono12.$error.required && (!ebidinsfrm.regono12.$pristine || ebidinsfrm.$submitted)"><b>Rego Number is Required</b></span>
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																				<div class="selector">
+																					<select class="full-width" id="ins-regost" ng-model="insregost"
+																						name="insregost" required>
+																						<option value="" selected disabled>Rego State</option>
+																						<option>ACT</option>
+																						<option>NT</option>
+																						<option>QLD</option>
+																						<option>VIC</option>
+																						<option>NSW</option>
+																						<option>TAS</option>
+																						<option>SA</option>
+																						<option>WA</option>
+																					</select>
+																				</div>
+																				<span style="color:red" ng-show="ebidinsfrm.insregost.$error.required && (!ebidinsfrm.insregost.$pristine || ebidinsfrm.$submitted)"><b>Rego State is Required</b></span>
+																			</div>
+																			<div class="col-sm-3 col-md-3">{If Renewal is Selected}</div>
+																		</div><br/>
+																		
+																		
+																		<div class="row">
+																			<div class="col-sm-3 col-md-3">
+																				<label>Vehicle Details</label>
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																				<div class="selector">
+																				<select id="car-years-ins" name="caryearsins" ng-model="caryearsins" 
+																					class="full-width" required>
+																					<option value="" selected disabled>Year</option>
+																				</select>
+																				</div>
+																				<span style="color:red" ng-show="ebidinsfrm.caryearsins.$error.required && (!ebidinsfrm.caryearsins.$pristine || ebidinsfrm.$submitted)"><b>Car year is Required</b></span>
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																				<div class="selector">
+																				<select id="car-makes-ins" name="carmakesins" ng-model="carmakesins" 
+																					class="full-width" required>
+																					<option value="" selected disabled>Make</option>
+																				</select>
+																				</div>
+																				<span style="color:red" ng-show="ebidinsfrm.carmakesins.$error.required && (!ebidinsfrm.carmakesins.$pristine || ebidinsfrm.$submitted)"><b>Car Make is Required</b></span>
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																				<div class="selector">
+																				<select id="car-models-ins" name="carmodelsins" ng-model="carmodelsins" 
+																					class="full-width" required>
+																					<option value="" selected disabled>Model</option>
+																				</select>
+																				</div>
+																				<span style="color:red" ng-show="ebidinsfrm.carmodelsfin.$error.required && (!ebidinsfrm.carmodelsins.$pristine || ebidinsfrm.$submitted)"><b>Car model is Required</b></span>
+																			</div>
+																		</div><br/>
+																		
+																		<div class="row">
+																			<div class="col-sm-3 col-md-3">
+																			&nbsp;
+																			</div>
+																			<div class="col-sm-9 col-md-9">
+																				<div class="selector">
+																				<select id="car-model-trims-ins" name="carmodeltrimsins"  ng-model="carmodeltrimsins"
+																					class="full-width" required>
+																					<option value="" selected disabled>Variant</option>
+																				</select>
+																			</div>
+																			<span style="color:red" ng-show="ebidinsfrm.carmodeltrimsins.$error.required && (!ebidinsfrm.carmodeltrimsins.$pristine || ebidinsfrm.$submitted)"><b>Car Variant is Required</b></span>
+																			</div>
+																		</div><br/>
+																		<div class="row">
+																			<div class="col-sm-3 col-md-3">
+																			&nbsp;
+																			</div>
+																			<div class="col-sm-9 col-md-9">
+																				<div class="selector">
+																				<select id="car-model-auto-trims-ins" name="carmodelAutotrimsins"  ng-model="carmodelAutotrimsins"
+																					class="full-width" required>
+																					<option value="" selected disabled>Autoscoop Trim</option>
+																				</select>
+																			</div>
+																			<span style="color:red" ng-show="ebidinsfrm.carmodelAutotrimsins.$error.required && (!ebidinsfrm.carmodelAutotrimsfin.$pristine || ebidfinfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+																			</div>
+																		</div><br/>
+																		<div class="row">
+																			<div class="col-sm-3 col-md-3">
+																			<label>Average No of KMs/Year </label>
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																				<input type="text"
+																				id="insAvgNoOfKms" name="insAvgNoOfKms" ng-model="insAvgNoOfKms"
+																				class="input-text full-width" value="" placeholder="999999" required/>
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																			&nbsp;
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																			&nbsp;
+																			</div>
+																		</div><br/>
+																		
+																		
+																		<div class="row">
+																			<div class="col-sm-4 col-md-4">
+																			<label>Is the Car is under Finance</label>
+																			</div>
+																			<div class="col-sm-4 col-md-4">
+																				<div class="selector">
+																				<select class="full-width" id="ins-finance" ng-model="insfinance"
+																					name="insfinance" required>
+																					<option value="" selected disabled>Finance(Yes/No)</option>
+																					<option value="true">Yes</option>
+																					<option value="false">No</option>
+																				</select>
+																				</div>
+																				<span style="color:red" ng-show="ebidinsfrm.insfinance.$error.required && (!ebidinsfrm.insfinance.$pristine || ebidinsfrm.$submitted)"><b>Finance yes / no is Required</b></span>
+																			</div>
+																			<div class="col-sm-4 col-md-4">
+																				<div class="selector">
+																				<select class="full-width" id="ins-fin-prov" ng-model="insfinprov"
+																					name="insfinprov" required>
+																					<option value="" selected disabled>Finance Provider (if yes)</option>
+																					<option>AAMI</option>
+																					<option>AMP Limited</option>
+																					<option>AXA</option>
+																					<option>Bingle</option>
+																					<option>Budget Direct</option>
+																					<option>CGU Insurance</option>
+																					<option>Colonial Mutual</option>
+																				</select>
+																				</div>
+																				<span style="color:red" ng-show="ebidinsfrm.insfinprov.$error.required && (!ebidinsfrm.insfinprov.$pristine || ebidinsfrm.$submitted)"><b>Finance Provider if yes is Required</b></span>
+																			</div>
+																		</div><br/>
+																		
+																		<div class="row">
+																			<div class="col-sm-4 col-md-4">
+																			<label>Car Parked at Address</label>
+																			</div>
+																			<div class="col-sm-4 col-md-4">
+																				 <input type="text"
+																				id="postcode11" name="postcode11" ng-model="postcode11"
+																				class="input-text full-width" value="" placeholder="Post Code" required/>
+																				<span style="color:red" ng-show="ebidinsfrm.postcode11.$error.required && (!ebidinsfrm.postcode11.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
+																			</div>
+																			<div class="col-sm-4 col-md-4">
+																				<div class="selector">
+																					<select class="full-width" id="inscarParked" ng-model="inscarParked"
+																						name="inscarParked" required>
+																						<option value="" selected disabled>Where Car Parked ? </option>
+																						<option>ACT</option>
+																						<option>NT</option>
+																						<option>QLD</option>
+																						<option>VIC</option>
+																						<option>NSW</option>
+																						<option>TAS</option>
+																						<option>SA</option>
+																						<option>WA</option>
+																					</select>
+																				</div>
+																			</div>
+																		</div><br/>
+																		<div class="row">
+																			<div class="col-sm-4 col-md-4">
+																			&nbsp;
+																			</div>
+																			<div class="col-sm-4 col-md-4">
+																				<input type="text"
+																				id="insStreetNo" name="insStreetNo" ng-model="insStreetNo"
+																				class="input-text full-width" value="" placeholder="Unit/Street No" required/>
+																			</div>
+																			<div class="col-sm-4 col-md-4">
+																				<input type="text"
+																				id="insStreetName" name="insStreetName" ng-model="insStreetName"
+																				class="input-text full-width" value="" placeholder="Street Name" required/>
+																			</div>
+																		</div><br/>
+																		
+																		<div class="row">
+																			<div class="col-sm-4 col-md-4">
+																			<label>Car is Used for</label>
+																			</div>
+																			<div class="col-sm-4 col-md-4">
+																				<div class="selector">
+																					<select class="full-width" id="insCarUsage" ng-model="insCarUsage"
+																						name="insCarUsage" required>
+																						<option value="" selected disabled>Car used for ? </option>
+																						<option>Private</option>
+																						<option>Business</option>
+																						<option>Commercial</option>
+																					</select>
+																				</div>
+																			</div>
+																			<div class="col-sm-4 col-md-4">
+																				<div class="selector">
+																					<select class="full-width" id="insifBusiness" ng-model="insifBusiness"
+																						name="insifBusiness" required>
+																						<option value="" selected disabled>What type of Business (if Business) ? </option>
+																						<option>Client Visit</option>
+																						<option>Transport Customer</option>
+																						<option>Used for Ride Sharing</option>
+																					</select>
+																				</div>
+																			</div>
+																		</div><br/>
+																		
+															  <hr>
+															  </div>
 														</div>
-														<div class="col-sm-3 col-md-3">
-															<div class="selector">
-															<select id="car-years-ins" name="caryearsins" ng-model="caryearsins" 
-																class="full-width" required>
-																<option value="" selected disabled>Year</option>
-															</select>
-															</div>
-															<span style="color:red" ng-show="ebidinsfrm.caryearsins.$error.required && (!ebidinsfrm.caryearsins.$pristine || ebidinsfrm.$submitted)"><b>Car year is Required</b></span>
-														</div>
-														<div class="col-sm-3 col-md-3">
-															<div class="selector">
-															<select id="car-makes-ins" name="carmakesins" ng-model="carmakesins" 
-																class="full-width" required>
-																<option value="" selected disabled>Make</option>
-															</select>
-															</div>
-															<span style="color:red" ng-show="ebidinsfrm.carmakesins.$error.required && (!ebidinsfrm.carmakesins.$pristine || ebidinsfrm.$submitted)"><b>Car Make is Required</b></span>
-														</div>
-														<div class="col-sm-3 col-md-3">
-															<div class="selector">
-															<select id="car-models-ins" name="carmodelsins" ng-model="carmodelsins" 
-																class="full-width" required>
-																<option value="" selected disabled>Model</option>
-															</select>
-															</div>
-															<span style="color:red" ng-show="ebidinsfrm.carmodelsfin.$error.required && (!ebidinsfrm.carmodelsins.$pristine || ebidinsfrm.$submitted)"><b>Car model is Required</b></span>
-														</div>
-													</div><br/>
+													</div>
 													
-													<div class="row">
-														<div class="col-sm-3 col-md-3">
-														&nbsp;
-														</div>
-														<div class="col-sm-9 col-md-9">
-															<div class="selector">
-															<select id="car-model-trims-ins" name="carmodeltrimsins"  ng-model="carmodeltrimsins"
-																class="full-width" required>
-																<option value="" selected disabled>Variant</option>
-															</select>
-														</div>
-														<span style="color:red" ng-show="ebidinsfrm.carmodeltrimsins.$error.required && (!ebidinsfrm.carmodeltrimsins.$pristine || ebidinsfrm.$submitted)"><b>Car Variant is Required</b></span>
-														</div>
-													</div><br/>
-													<div class="row">
-														<div class="col-sm-3 col-md-3">
-														&nbsp;
-														</div>
-														<div class="col-sm-9 col-md-9">
-															<div class="selector">
-															<select id="car-model-auto-trims-ins" name="carmodelAutotrimsins"  ng-model="carmodelAutotrimsins"
-																class="full-width" required>
-																<option value="" selected disabled>Autoscoop Trim</option>
-															</select>
-														</div>
-														<span style="color:red" ng-show="ebidinsfrm.carmodelAutotrimsins.$error.required && (!ebidinsfrm.carmodelAutotrimsfin.$pristine || ebidfinfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
-														</div>
-													</div><br/>
-													<div class="row">
-														<div class="col-sm-3 col-md-3">
-														<label>Average No of KMs/Year </label>
-														</div>
-														<div class="col-sm-3 col-md-3">
-															<input type="text"
-															id="insAvgNoOfKms" name="insAvgNoOfKms" ng-model="insAvgNoOfKms"
-															class="input-text full-width" value="" placeholder="999999" required/>
-														</div>
-														<div class="col-sm-3 col-md-3">
-														&nbsp;
-														</div>
-														<div class="col-sm-3 col-md-3">
-														&nbsp;
-														</div>
-													</div><br/>
 													
 													
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-														<label>Is the Car is under Finance</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<div class="selector">
-															<select class="full-width" id="ins-finance" ng-model="insfinance"
-																name="insfinance" required>
-																<option value="" selected disabled>Finance(Yes/No)</option>
-																<option value="true">Yes</option>
-																<option value="false">No</option>
-															</select>
-															</div>
-															<span style="color:red" ng-show="ebidinsfrm.insfinance.$error.required && (!ebidinsfrm.insfinance.$pristine || ebidinsfrm.$submitted)"><b>Finance yes / no is Required</b></span>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<div class="selector">
-															<select class="full-width" id="ins-fin-prov" ng-model="insfinprov"
-																name="insfinprov" required>
-																<option value="" selected disabled>Finance Provider (if yes)</option>
-																<option>AAMI</option>
-																<option>AMP Limited</option>
-																<option>AXA</option>
-																<option>Bingle</option>
-																<option>Budget Direct</option>
-																<option>CGU Insurance</option>
-																<option>Colonial Mutual</option>
-															</select>
-															</div>
-															<span style="color:red" ng-show="ebidinsfrm.insfinprov.$error.required && (!ebidinsfrm.insfinprov.$pristine || ebidinsfrm.$submitted)"><b>Finance Provider if yes is Required</b></span>
-														</div>
-													</div><br/>
-													
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-														<label>Car Parked at Address</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															 <input type="text"
-															id="postcode11" name="postcode11" ng-model="postcode11"
-															class="input-text full-width" value="" placeholder="Post Code" required/>
-															<span style="color:red" ng-show="ebidinsfrm.postcode11.$error.required && (!ebidinsfrm.postcode11.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<div class="selector">
-																<select class="full-width" id="inscarParked" ng-model="inscarParked"
-																	name="inscarParked" required>
-																	<option value="" selected disabled>Where Car Parked ? </option>
-																	<option>ACT</option>
-																	<option>NT</option>
-																	<option>QLD</option>
-																	<option>VIC</option>
-																	<option>NSW</option>
-																	<option>TAS</option>
-																	<option>SA</option>
-																	<option>WA</option>
-																</select>
-															</div>
-														</div>
-													</div><br/>
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-														&nbsp;
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<input type="text"
-															id="insStreetNo" name="insStreetNo" ng-model="insStreetNo"
-															class="input-text full-width" value="" placeholder="Unit/Street No" required/>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<input type="text"
-															id="insStreetName" name="insStreetName" ng-model="insStreetName"
-															class="input-text full-width" value="" placeholder="Street Name" required/>
-														</div>
-													</div><br/>
-													
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-														<label>Car is Used for</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<div class="selector">
-																<select class="full-width" id="insCarUsage" ng-model="insCarUsage"
-																	name="insCarUsage" required>
-																	<option value="" selected disabled>Car used for ? </option>
-																	<option>Private</option>
-																	<option>Business</option>
-																	<option>Commercial</option>
-																</select>
-															</div>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<div class="selector">
-																<select class="full-width" id="insifBusiness" ng-model="insifBusiness"
-																	name="insifBusiness" required>
-																	<option value="" selected disabled>What type of Business (if Business) ? </option>
-																	<option>Client Visit</option>
-																	<option>Transport Customer</option>
-																	<option>Used for Ride Sharing</option>
-																</select>
-															</div>
-														</div>
-													</div><br/>
 													
 													
-													<hr>
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-														<label>Type of Coverage</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<div class="selector">
-															<select class="full-width" id="insuranceType" ng-model="insuranceType"
-																name="insuranceType" required>
-																<option value="" selected disabled>Insurance Type</option>
-																<option>Compulsary Third Party ( CTP )</option>
-																<option>Third Party Property</option>
-																<option>Third Party, Fire and Theft</option>
-																<option>Comprehensive</option>
-															</select>
-															</div>
-															<span style="color:red" ng-show="ebidinsfrm.insuranceType.$error.required && (!ebidinsfrm.insuranceType.$pristine || ebidinsfrm.$submitted)"><b>Insurance Type is Required</b></span>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															&nbsp;
-														</div>
-													</div><br/>
 													
 													
 													
 													<div class="row">
-														<div class="col-sm-4 col-md-4">
-														<label>Agreed Value of the Car</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<input type="text"
-															id="agree" name="agree" ng-model="agree"
-															class="input-text full-width" value="" placeholder="Agreed Value" required/>
-															<span style="color:red" ng-show="ebidinsfrm.agree.$error.required && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															 <input type="text"
-															id="market" name="market" ng-model="market"
-															class="input-text full-width" value="" placeholder="Market Value" required/>
-															<span style="color:red" ng-show="ebidinsfrm.market.$error.required && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
-														</div>
-													</div><br/>
+														<div class="col-sm-12 col-md-12">
+															<label><span id="coverageCollapse">
+															    <span class="glyphicon glyphicon-plus" id="coverageGlyphi"></span>
+															    Coverage Details</span></label>
+															<!-- <button type="button" class="btn btn-info">Simple collapsible</button> -->
+															  <div id="coverageDetails">
+															    <div class="row">
+																	<div class="col-sm-4 col-md-4">
+																	<label>Type of Coverage</label>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		<div class="selector">
+																		<select class="full-width" id="insuranceType" ng-model="insuranceType"
+																			name="insuranceType" required>
+																			<option value="" selected disabled>Insurance Type</option>
+																			<option>Compulsary Third Party ( CTP )</option>
+																			<option>Third Party Property</option>
+																			<option>Third Party, Fire and Theft</option>
+																			<option>Comprehensive</option>
+																		</select>
+																		</div>
+																		<span style="color:red" ng-show="ebidinsfrm.insuranceType.$error.required && (!ebidinsfrm.insuranceType.$pristine || ebidinsfrm.$submitted)"><b>Insurance Type is Required</b></span>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		&nbsp;
+																	</div>
+																</div><br/>
 													
 													
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-														<label>Preferred Excess Amount</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<input type="text"
-															class="input-text full-width" value="" placeholder="Amount"
-															id="excessAmount" name="excessAmount" ng-model="excessAmount" required/>
-															<span style="color:red" ng-show="ebidinsfrm.excessAmount.$error.required && (!ebidinsfrm.excessAmount.$pristine || ebidinsfrm.$submitted)"><b>Preferred Excess amount is Required</b></span>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															 &nbsp;
-														</div>
-													</div><br/>
+													
+																<div class="row">
+																	<div class="col-sm-4 col-md-4">
+																	<label>Agreed Value of the Car</label>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		<input type="text"
+																		id="agree" name="agree" ng-model="agree"
+																		class="input-text full-width" value="" placeholder="Agreed Value" required/>
+																		<span style="color:red" ng-show="ebidinsfrm.agree.$error.required && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		 <input type="text"
+																		id="market" name="market" ng-model="market"
+																		class="input-text full-width" value="" placeholder="Market Value" required/>
+																		<span style="color:red" ng-show="ebidinsfrm.market.$error.required && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
+																	</div>
+																</div><br/>
 													
 													
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-														<label>Current Insurer</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<div class="selector">
-															<select class="full-width" id="curr-ins-prov"  ng-model="currinsprov"
-																name="currinsprov" required>
-																<option value="" seleceted disabled>Current Insurer (if Any)</option>
-																<option>AAMI</option>
-																<option>AMP Limited</option>
-																<option>AXA</option>
-																<option>Bingle</option>
-																<option>Budget Direct</option>
-																<option>CGU Insurance</option>
-																<option>Colonial Mutual</option>
-															</select>
-														</div>
-														<span style="color:red" ng-show="ebidinsfrm.currinsprov.$error.required && (!ebidinsfrm.currinsprov.$pristine || ebidinsfrm.$submitted)"><b>Current Insurance Provider is Required</b></span>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															 &nbsp;
-														</div>
-													</div><br/>
+																<div class="row">
+																	<div class="col-sm-4 col-md-4">
+																	<label>Preferred Excess Amount</label>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		<input type="text"
+																		class="input-text full-width" value="" placeholder="Amount"
+																		id="excessAmount" name="excessAmount" ng-model="excessAmount" required/>
+																		<span style="color:red" ng-show="ebidinsfrm.excessAmount.$error.required && (!ebidinsfrm.excessAmount.$pristine || ebidinsfrm.$submitted)"><b>Preferred Excess amount is Required</b></span>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		 &nbsp;
+																	</div>
+																</div><br/>
+													
+													
+																<div class="row">
+																	<div class="col-sm-4 col-md-4">
+																	<label>Current Insurer</label>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		<div class="selector">
+																		<select class="full-width" id="curr-ins-prov"  ng-model="currinsprov"
+																			name="currinsprov" required>
+																			<option value="" seleceted disabled>Current Insurer (if Any)</option>
+																			<option>AAMI</option>
+																			<option>AMP Limited</option>
+																			<option>AXA</option>
+																			<option>Bingle</option>
+																			<option>Budget Direct</option>
+																			<option>CGU Insurance</option>
+																			<option>Colonial Mutual</option>
+																		</select>
+																	</div>
+																	<span style="color:red" ng-show="ebidinsfrm.currinsprov.$error.required && (!ebidinsfrm.currinsprov.$pristine || ebidinsfrm.$submitted)"><b>Current Insurance Provider is Required</b></span>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		 &nbsp;
+																	</div>
+																</div><br/>
+															    <hr>
+															    
+															  </div>
+														</div> 
+													</div>
+													
+													
+													
 													
 													
 										
 
-													<hr>
+													
 					<!-- 								<div class="col-sm-5 col-md-4">
 															<div class="checkbox">
 																
@@ -5542,241 +5596,210 @@ table{
 															</div>
 													</div>
  -->
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-														<label>Name</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															 <input type="text"
-															class="input-text full-width" value="" placeholder="First Name" ng-model="Insfirstname"
-															id="Insfirstname" name="Insfirstname" required/>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															  <input type="text"
-															class="input-text full-width" value="" placeholder="Last Name" ng-model="Inslastname"
-															id="Inslastname" name="Inslastname" required/>
-														</div>
-													</div><br/>	
-										
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-														<label>Contact Details</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															 <input type="text"
-															class="input-text full-width" value="" placeholder="Mobile" ng-model="InsMobile"
-															id="InsMobile" name="InsMobile" required/>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															  <input type="text"
-															class="input-text full-width" value="" placeholder="Email" ng-model="InsEmail"
-															id="InsEmail" name="InsEmail" required/>
-														</div>
-													</div><br/>	
-													
-													
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-														<label>Date of Birth</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															 <input type="date" name="insDriverDOB" id ="insDriverDOB" class="input-text full-width" placeholder="DOB" />
-														</div>
-														<div class="col-sm-4 col-md-4">
-															  &nbsp;
-														</div>
-													</div><br/>
-													
-													
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-														<label>Driving Licence Details</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															 <div class="selector">
-															<select class="full-width" id="ins-lic-type" ng-model="inslictype"
-																name="inslictype" required>
-																<option value="" selected disabled>Driving Licence Type</option>
-																<option>L-Learner</option>
-																<option>P-probation</option>
-																<option>Full Licence</option>
-																<option>OverSeas</option>
-
-															</select>
-														</div>
-														<span style="color:red" ng-show="ebidinsfrm.inslictype.$error.required && (!ebidinsfrm.inslictype.$pristine || ebidinsfrm.$submitted)"><b>Driving License Type is Required</b></span>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															 <input type="text"
-															class="input-text full-width" value="" placeholder="Driving License Number" ng-model="licno"
-															id="licno" name="licno" required/>
-															<span style="color:red" ng-show="ebidinsfrm.licno.$error.required && (!ebidinsfrm.licno.$pristine || ebidinsfrm.$submitted)"><b>Driving License Number is Required</b></span>
-														</div>
-													</div><br/>
-													
-													
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-															&nbsp;
-														</div>
-														<div class="col-sm-4 col-md-4">
-															 <input type="date" name="insLicIssueDt" id ="insLicIssueDt" class="input-text full-width" placeholder="Driving Licence issue Date" />
-														</div>
-														<div class="col-sm-4 col-md-4">
-															  <div class="selector">
-															<select class="full-width" id="ins-lic-iss-state" ng-model="inslicissstate"
-																name="inslicissstate" required>
-																<option value="" selected disabled>Issuing state</option>
-																<option>ACT</option>
-																<option>NT</option>
-																<option>QLD</option>
-																<option>VIC</option>
-																<option>NSW</option>
-																<option>TAS</option>
-																<option>SA</option>
-																<option>WA</option>
-															</select>
-														</div>
-														<span style="color:red" ng-show="ebidinsfrm.inslicissstate.$error.required && (!ebidinsfrm.inslicissstate.$pristine || ebidinsfrm.$submitted)"><b>Driving License Issue State is Required</b></span>
-														</div>
-													</div><br/>
-													
-													
-													<div class="row">
+ 													<div class="row">
 														<div class="col-sm-12 col-md-12">
-															<button type="button" id="collapse" class="btn btn-info">Simple collapsible</button>
-															  <div id="demo">
-															    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-															    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-															    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+															<label><span id="driverDetailsCollapse">
+															    <span class="glyphicon glyphicon-plus" id="driverDetailGlyphi"></span>
+															    Driver Details</span></label>
+															<!-- <button type="button" class="btn btn-info">Simple collapsible</button> -->
+															  <div id="driverDetails">
+															  	<div class="row">
+																	<div class="col-sm-4 col-md-4">
+																	<label>Name</label>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		 <input type="text"
+																		class="input-text full-width" value="" placeholder="First Name" ng-model="Insfirstname"
+																		id="Insfirstname" name="Insfirstname" required/>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		  <input type="text"
+																		class="input-text full-width" value="" placeholder="Last Name" ng-model="Inslastname"
+																		id="Inslastname" name="Inslastname" required/>
+																	</div>
+																</div><br/>	
+													
+																<div class="row">
+																	<div class="col-sm-4 col-md-4">
+																	<label>Contact Details</label>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		 <input type="text"
+																		class="input-text full-width" value="" placeholder="Mobile" ng-model="InsMobile"
+																		id="InsMobile" name="InsMobile" required/>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		  <input type="text"
+																		class="input-text full-width" value="" placeholder="Email" ng-model="InsEmail"
+																		id="InsEmail" name="InsEmail" required/>
+																	</div>
+																</div><br/>	
+																
+																
+																<div class="row">
+																	<div class="col-sm-4 col-md-4">
+																	<label>Date of Birth</label>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		 <input type="date" name="insDriverDOB" id ="insDriverDOB" class="input-text full-width" placeholder="DOB" />
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		  &nbsp;
+																	</div>
+																</div><br/>
+																
+																
+																<div class="row">
+																	<div class="col-sm-4 col-md-4">
+																	<label>Driving Licence Details</label>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		 <div class="selector">
+																		<select class="full-width" id="ins-lic-type" ng-model="inslictype"
+																			name="inslictype" required>
+																			<option value="" selected disabled>Driving Licence Type</option>
+																			<option>L-Learner</option>
+																			<option>P-probation</option>
+																			<option>Full Licence</option>
+																			<option>OverSeas</option>
+			
+																		</select>
+																	</div>
+																	<span style="color:red" ng-show="ebidinsfrm.inslictype.$error.required && (!ebidinsfrm.inslictype.$pristine || ebidinsfrm.$submitted)"><b>Driving License Type is Required</b></span>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		 <input type="text"
+																		class="input-text full-width" value="" placeholder="Driving License Number" ng-model="licno"
+																		id="licno" name="licno" required/>
+																		<span style="color:red" ng-show="ebidinsfrm.licno.$error.required && (!ebidinsfrm.licno.$pristine || ebidinsfrm.$submitted)"><b>Driving License Number is Required</b></span>
+																	</div>
+																</div><br/>
+																
+																
+																<div class="row">
+																	<div class="col-sm-4 col-md-4">
+																		&nbsp;
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		 <input type="date" name="insLicIssueDt" id ="insLicIssueDt" class="input-text full-width" placeholder="Driving Licence issue Date" />
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		  <div class="selector">
+																		<select class="full-width" id="ins-lic-iss-state" ng-model="inslicissstate"
+																			name="inslicissstate" required>
+																			<option value="" selected disabled>Issuing state</option>
+																			<option>ACT</option>
+																			<option>NT</option>
+																			<option>QLD</option>
+																			<option>VIC</option>
+																			<option>NSW</option>
+																			<option>TAS</option>
+																			<option>SA</option>
+																			<option>WA</option>
+																		</select>
+																	</div>
+																	<span style="color:red" ng-show="ebidinsfrm.inslicissstate.$error.required && (!ebidinsfrm.inslicissstate.$pristine || ebidinsfrm.$submitted)"><b>Driving License Issue State is Required</b></span>
+																	</div>
+																</div><br/>
+																
+																
+																
+																
+																
+																
+																<div class="row">
+																	<div class="col-sm-4 col-md-4">
+																		<label>Drivers Claim History</label>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		<div class="selector">
+																		<select class="full-width" id="ins-faults" ng-model="insfaults"
+																			name="insfaults" required>
+																			<option value="" selected disabled>No of at Fault claims</option>
+																			<option>1</option>
+																			<option>2</option>
+																		</select>
+																	</div>
+																	<span style="color:red" ng-show="ebidinsfrm.insfaults.$error.required && (!ebidinsfrm.insfaults.$pristine || ebidinsfrm.$submitted)"><b>faults is Required</b></span>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		<input type="date" name="insLastfaultDt" id ="insLastfaultDt"  ng-model="insLastfaultDt" class="input-text full-width" placeholder="Last Fault claim Date" />
+																	</div>
+																</div><br/>
+																
+																
+																
+																<div class="row">
+																	<div class="col-sm-3 col-md-3">
+																		<label>Licence got suspended any time</label>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		<div class="selector">
+																		<select class="full-width" id="insLICSusp" ng-model="insLICSusp"
+																			name="insLICSusp" required>
+																			<option value="" selected disabled>Licence Suspended</option>
+																			<option>Yes</option>
+																			<option>No</option>
+																		</select>
+																		</div>
+																	</div>
+																	<div class="col-sm-1 col-md-1">
+																		<label>If Yes</label>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		<div class="selector">
+																		<select class="full-width" id="insReasonSusp" ng-model="insReasonSusp"
+																			name="insReasonSusp" required>
+																			<option value="" selected disabled>Reason for Suspension</option>
+																			<option>Drink & Drive</option>
+																			<option>Overspeeding</option>
+																			<option>Accident</option>
+																			<option>Possesion of Drugs</option>
+																		</select>
+																		</div>
+																	</div>
+																</div><br/>
+																
+																
+																<div class="row">
+																	<div class="col-sm-3 col-md-3">
+																		<label>No of Drivers</label>
+																	</div>
+																	<div class="col-sm-3 col-md-3">
+																		<div class="selector">
+																		<select class="full-width" id="insDriversCt" ng-model="insDriversCt"
+																			name="insDriversCt" required>
+																			<option value="" selected disabled>0</option>
+																			<option>1</option>
+																			<option>2</option>
+																		</select>
+																		</div>
+																	</div>
+																	<div class="col-sm-3 col-md-3">
+																		&nbsp;
+																	</div>
+																	<div class="col-sm-3 col-md-3">
+																		&nbsp;
+																	</div>
+																	
+																</div>
+															  <hr>
 															  </div>
-														</div> 
+														</div>
 													</div>
 													
-													<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
-														  <div id="demo" class="collapse">
-														    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-														    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-														    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-														  </div>
-													
-													<div class="row">
-														<div class="col-sm-4 col-md-4">
-															<label>Drivers Claim History</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<div class="selector">
-															<select class="full-width" id="ins-faults" ng-model="insfaults"
-																name="insfaults" required>
-																<option value="" selected disabled>No of at Fault claims</option>
-																<option>1</option>
-																<option>2</option>
-															</select>
-														</div>
-														<span style="color:red" ng-show="ebidinsfrm.insfaults.$error.required && (!ebidinsfrm.insfaults.$pristine || ebidinsfrm.$submitted)"><b>faults is Required</b></span>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<input type="date" name="insLastfaultDt" id ="insLastfaultDt"  ng-model="insLastfaultDt" class="input-text full-width" placeholder="Last Fault claim Date" />
-														</div>
-													</div><br/>
-													
-													
-													
-													<div class="row">
-														<div class="col-sm-3 col-md-3">
-															<label>Licence got suspended any time</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<div class="selector">
-															<select class="full-width" id="insLICSusp" ng-model="insLICSusp"
-																name="insLICSusp" required>
-																<option value="" selected disabled>Licence Suspended</option>
-																<option>Yes</option>
-																<option>No</option>
-															</select>
-															</div>
-														</div>
-														<div class="col-sm-1 col-md-1">
-															<label>If Yes</label>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<div class="selector">
-															<select class="full-width" id="insReasonSusp" ng-model="insReasonSusp"
-																name="insReasonSusp" required>
-																<option value="" selected disabled>Reason for Suspension</option>
-																<option>Drink & Drive</option>
-																<option>Overspeeding</option>
-																<option>Accident</option>
-																<option>Possesion of Drugs</option>
-															</select>
-															</div>
-														</div>
-													</div><br/>
-													
-													
-													<div class="row">
-														<div class="col-sm-3 col-md-3">
-															<label>No of Drivers</label>
-														</div>
-														<div class="col-sm-3 col-md-3">
-															<div class="selector">
-															<select class="full-width" id="insDriversCt" ng-model="insDriversCt"
-																name="insDriversCt" required>
-																<option value="" selected disabled>0</option>
-																<option>1</option>
-																<option>2</option>
-															</select>
-															</div>
-														</div>
-														<div class="col-sm-3 col-md-3">
-															&nbsp;
-														</div>
-														<div class="col-sm-3 col-md-3">
-															&nbsp;
-														</div>
-														
-													</div>
-													
-													<div class="toggle-container box">
-						                                <div class="panel style1">
-						                                    <h4 class="panel-title">
-						                                        <a href="#tggcre" data-toggle="collapse">Credential Details</a>
-						                                    </h4>
-						                                    <div class="panel-collapse collapse" id="tggcre">
-						                                        <div class="panel-content">
-									                                       <div class="form-group row">
-									                                        <div class="col-sm-5 col-md-4">
-									                                            <label>Email Address</label>
-									                                            <input type="text" id="emailAddressC" name="emailAddressC" class="input-text full-width" value="" placeholder="" />
-									                                        </div>
-									                                         <div class="col-sm-5 col-md-4">
-									                                            <label>Password</label>
-									                                            <input type="text" id="passwordC" name="passwordC" class="input-text full-width" value="" placeholder="" />
-									                                        </div>
-									                                         <div class="col-sm-5 col-md-4">
-									                                            <label>Confirm Password</label>
-									                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
-									                                        </div>
-									                                         
-									
-									                                    </div>
-						                                        </div><!-- end content -->
-						                                    </div>
-						                                </div>
-						
-						                            </div>
 						                            
 						                             
 													
-													<div class="col-sm-5 col-md-4">
+													<!-- <div class="col-sm-5 col-md-4">
 														<label>Other Issues (If any)</label> <input type="text"
 															class="input-text full-width" value="" placeholder="Other Issues(If any)" ng-model="otherissues"
 															id="otherissues" name="otherissues" required/>
 															<span style="color:red" ng-show="ebidinsfrm.otherissues.$error.required && (!ebidinsfrm.otherissues.$pristine || ebidinsfrm.$submitted)"><b>Other Issues is Required</b></span>
-													</div>
+													</div> -->
 													<div class="clearfix"></div>
 													<hr>
-													<div class="col-sm-10">
+													<!-- <div class="col-sm-10">
 														<div class="toggle-container box">
 															<div class="panel style1">
 																<h4 class="panel-title">
@@ -5815,13 +5838,13 @@ table{
 																			</label>
 																		</div>
 																	</div>
-																	<!-- end content -->
+																	end content
 																</div>
 															</div>
 
 														</div>
 													</div>
-
+ -->
 													<div class="clearfix"></div>
 													<div id="status"></div>
 													<br /> <br /> 
@@ -5838,11 +5861,11 @@ table{
 													<br /> <br /> 
 													<div>
 
-														<div class="form-group col-md-6 col-sm-6">
+														<!-- <div class="form-group col-md-6 col-sm-6">
 															<input type="email" class="input-text full-width"
 																id="exampleInputEmail1"
 																placeholder="Email / Mobile Number">
-														</div>
+														</div> -->
 														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
 													</div>
 													<div class="clearfix"></div>
