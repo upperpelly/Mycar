@@ -515,8 +515,8 @@ var insQCt=result.insuranceQuotation.length;
       	         	  
       	         	out12="";
    	         	   
-   	         	   out12 += '<tr><th>'+"Code"+'</th><th>'+"Type Of Req"+'</th><th>'+"Description"+'</th><th>'+"Comment"+'</th><th>'+"end Date"+'</th></tr>';
-   	         	   alert(result.userNotification.length);
+   	         	   //out12 += '<tr><th>'+"Code"+'</th><th>'+"Type Of Req"+'</th><th>'+"Description"+'</th><th>'+"Comment"+'</th><th>'+"end Date"+'</th></tr>';
+   	         	   //alert(result.userNotification.length);
    	         	   for(i=0;i<result.userNotification.length;i++)
    	        		{
    	        		/*alert(result.search[i].carSearchId); //111 111-1111
@@ -530,8 +530,27 @@ var insQCt=result.insuranceQuotation.length;
    	        		}
    	         	   out12 = out12.replace(/>null</g, ">--NA--<");
    	         	   out12 = out12.replace(/>undefined</g, ">--NA--<");
-   	         	alert(out12);
+   	         	//alert(out12);
    	         	  forFinance("userNotification",out12);
+   	         	out14="";
+	         	   
+	         	   //out14 += '<tr><th>'+"Code"+'</th><th>'+"Type Of Req"+'</th><th>'+"Description"+'</th><th>'+"Comment"+'</th><th>'+"end Date"+'</th></tr>';
+	         	   //alert(result.userNotification.length);
+	         	   for(i=0;i<result.currentOffers.length;i++)
+	        		{
+	        		/*alert(result.search[i].carSearchId); //111 111-1111
+	        		alert(result.search[i].modelDisplay);
+	        		alert(result.search[i].modelTrim);
+	        		
+	        		alert(result.search[i].modelYear);*/
+	        		out14= out14+'<tr>'+'<td>'+result.currentOffers[i].code+'</td>'+'<td>'+result.currentOffers[i].makeDescription+'</td></tr>';
+	        		
+	        		
+	        		}
+	         	   out14 = out14.replace(/>null</g, ">--NA--<");
+	         	   out14 = out14.replace(/>undefined</g, ">--NA--<");
+	         	//alert(out12);
+	         	  forFinance("currentOffers",out14);
         	               	registerEditDealerVehicleQuotationModal();
         	               	registerEditDealerVehicleSearchModal();
         	               	registerEditDealerVehicleFinanceModal();

@@ -15,6 +15,7 @@ import au.com.pnspvtltd.mcd.domain.BlogTemplate;
 import au.com.pnspvtltd.mcd.domain.CarModelTemplate;
 import au.com.pnspvtltd.mcd.domain.ComingSoonUser;
 import au.com.pnspvtltd.mcd.domain.CountryTemplate;
+import au.com.pnspvtltd.mcd.domain.CurrentOffers;
 import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
@@ -73,6 +74,7 @@ import au.com.pnspvtltd.mcd.web.model.BlogTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
 import au.com.pnspvtltd.mcd.web.model.CountryTemplateVO;
+import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchServMaintVO;
@@ -1616,6 +1618,16 @@ public class DomainModelUtil {
 			e.printStackTrace();
 		}
 		return financeQuotationVO;
+	}
+	public CurrentOffersVO fromCurrentOffers(final CurrentOffers currentOffer) {
+		CurrentOffersVO currentOfferVO = new CurrentOffersVO();
+		try {
+			BeanUtils.copyProperties(currentOfferVO, currentOffer);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return currentOfferVO;
 	}
 
 }

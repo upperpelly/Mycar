@@ -39,10 +39,20 @@ public class UserVO {
 	List<VehicleQuotationVO> vehicleQuotation;
 	List<InsuranceQuotationVO> insuranceQuotation;
 	List<FinanceQuotationVO> financeQuotation;
+	List<CurrentOffersVO> currentOffers;
 	List<UserNotificationVO> userNotification;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
-	@JoinColumn(name = "userId")
+	
+	
+	public List<CurrentOffersVO> getCurrentOffers() {
+		return currentOffers;
+	}
+
+	public void setCurrentOffers(List<CurrentOffersVO> currentOffers) {
+		this.currentOffers = currentOffers;
+	}
+
+	
 	public List<UserNotificationVO> getUserNotification() {
 		return userNotification;
 	}

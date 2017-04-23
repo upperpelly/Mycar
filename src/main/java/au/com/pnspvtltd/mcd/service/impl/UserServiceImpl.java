@@ -11,16 +11,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import au.com.pnspvtltd.mcd.domain.CurrentOffers;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.repository.CurrentOffersRepository;
 import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.UserService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
@@ -39,6 +42,8 @@ public class UserServiceImpl implements UserService {
 	private InsuranceQuotationRepository insuranceQuotationRepository;
 	@Autowired
 	private FinanceQuotationRepository financeQuotationRepository;
+	@Autowired
+	private CurrentOffersRepository currentOffersRepository;
 	@Autowired
 	private DomainModelUtil domainModelUtil;
 
@@ -70,6 +75,13 @@ public class UserServiceImpl implements UserService {
 				financeQuotationVOs.add(domainModelUtil.fromFinanceQuotation(financeQuotation));
 			}
 			userVO.setFinanceQuotation(financeQuotationVOs);
+			
+			List<CurrentOffers> currentOffers = currentOffersRepository.findAll();
+			List<CurrentOffersVO> currentOffersVOs = new ArrayList<>();
+			for (CurrentOffers currentOffer : currentOffers) {
+				currentOffersVOs.add(domainModelUtil.fromCurrentOffers(currentOffer));
+			}
+			userVO.setCurrentOffers(currentOffersVOs);
 
 		}
 		return userVO;

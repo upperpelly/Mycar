@@ -642,7 +642,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                         <div class="tab-content">
                             <div id="dashboard" class="tab-pane fade in active">
                                 <h1 class="no-margin skin-color">Hi <span id="firstName"></span>, Welcome to Autoscoop!</h1>
-                                <p>All your trips booked with us will appear here and you’ll be able to manage everything!</p>
+                                <p>All your eBid requests booked with us will appear here and you’ll be able to manage everything!</p>
                                 <br />
                                 <div class="row block">
                                     <div class="col-sm-4 col-md-2">
@@ -783,73 +783,15 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 <div class="row block">
                                     <div class="col-md-6 notifications">
                                         <h2>Notifications</h2>
-                                      
-							       <h4>Transport Service leads</h4>
-									       <table id="userNotification">                                        
+                                         <table id="userNotification">                                        
 		                                        
 		                                        </table>
                                     </div>
                                     <div class="col-md-6">
                                         <h2>Current Offers :</h2>
-                                        <div class="recent-activity">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="icon soap-icon-plane-right circle takeoff-effect yellow-color"></i>
-                                                        <span class="price"><small>avg/person</small>$120</span>
-                                                        <h4 class="box-title">
-                                                            Indianapolis to Paris<small>Oneway flight</small>
-                                                        </h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="icon soap-icon-car circle red-color"></i>
-                                                        <span class="price"><small>per day</small>$45.39</span>
-                                                        <h4 class="box-title">
-                                                            Economy Car<small>bmw mini</small>
-                                                        </h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="icon soap-icon-cruise circle green-color"></i>
-                                                        <span class="price"><small>from</small>$578</span>
-                                                        <h4 class="box-title">
-                                                            Jacksonville to Asia<small>4 nights</small>
-                                                        </h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="icon soap-icon-hotel circle blue-color"></i>
-                                                        <span class="price"><small>Avg/night</small>$620</span>
-                                                        <h4 class="box-title">
-                                                            Hilton Hotel &amp; Resorts<small>Paris france</small>
-                                                        </h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="icon soap-icon-hotel circle blue-color"></i>
-                                                        <span class="price"><small>avg/night</small>$170</span>
-                                                        <h4 class="box-title">
-                                                            Roosevelt Hotel<small>new york</small>
-                                                        </h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="icon soap-icon-plane-right circle takeoff-effect yellow-color"></i>
-                                                        <span class="price"><small>avg/person</small>$348</span>
-                                                        <h4 class="box-title">
-                                                            Mexico to England<small>return flight</small>
-                                                        </h4>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <a href="#" class="button green btn-small full-width">VIEW ALL ACTIVITIES</a>
-                                        </div>
+                                        <table id="currentOffers">                                        
+		                                        
+		                                        </table>
                                     </div>
                                 </div>
                                 <hr>
@@ -2057,9 +1999,52 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             </div>
                           
                           <div id="settings" class="tab-pane fade">
-                          <!--  Start -->
+                          <!--  Start radio button inline-->
+                           <div id="tab">
+									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTAll" checked/>All
+									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTCars" />Car's Only
+									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTSerMai"/>S&M Only
+									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTInsu"/>Insurance Only
+									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTTrans"/>Transport Only
+									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTFinance"/>Finance Only
+									<input  type="radio" name="collapseeBIDGroup" data-target="#eQUOTFuelCard"/>Fuel Card Only
+							</div>	
+								
+							<div class="tab-content">
+							       <div class="tab-pane fade active in" id="eQUOTAll">All</div>
+							       <div class="tab-pane fade" id="eQUOTCars">
+							       Car Content
+							       		<h4>List of Car Quotations</h4>
+                                         <table id="quo-model-data"> 
+                                        </table>
+							       </div>
+							       <div class="tab-pane fade" id="eQUOTInsu">Insurance Content
+							       		<h4>List of Insurance Quotations</h4>
+                              			<table id="quo-model-data2">   </table>
+							       </div>
+							       <div class="tab-pane fade" id="eQUOTSerMai">Service & maintenance Content
+									       <h4>List of Service & Maintenance Quotations</h4>
+									       <table id="dataservmaintQuot12">                                        
+		                                        
+		                                        </table>
+							       </div>
+							       <div class="tab-pane fade" id="eQUOTTrans">Transport Content
+							       <h4>List of Transport Service Quotations</h4>
+									       <table id="datatranspserv">                                        
+		                                        
+		                                        </table></div>
+							        
+							       <div class="tab-pane fade" id="eQUOTFinance">Finance Content
+							       		<h4>List of Finance Quotations</h4>
+                              			<table id="quo-data1"></table>
+							       </div>
+							       <div class="tab-pane fade" id="eQUOTFuelCard">
+							       <h4>List of Fuel Card Quotations</h4>
+                              			<table id="quo-data-fuelCard"></table></div>
+							</div>
+                          <!-- end radio button inline -->
                               
-                              <div class="tab-container full-width-style arrow-left dashboard">
+                              <!-- <div class="tab-container full-width-style arrow-left dashboard">
                         <ul class="tabs">
                             <li class="active"><a data-toggle="tab" href="#qdashboard1"><i class="soap-icon-car circle"></i>Vehicle</a></li>
                             <li class=""><a data-toggle="tab" href="#qprofile1"><i class="soap-icon-savings circle"></i>Finance</a></li>
@@ -2072,7 +2057,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             <div id="qdashboard1" class="tab-pane fade in active">
                                <div class="col-md-18">
                            
-                            <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
+                            <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;">
                             <img src="images/VehQuo.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;">
                             <div class="tab-container trans-style box">
                                 <ul class="tabs full-width">
@@ -2169,7 +2154,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             
                            
                         </div>
-                    </div>
+                    </div> -->
                               
                           
                           
@@ -2197,16 +2182,10 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             <div id="l2Profile1" class="tab-pane fade">
                                <div class="col-md-18">
                            
-                            <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
-                            <img src="images/VehQuo.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;">
+                            
+                           
                             <div class="tab-container trans-style box">
-                                <ul class="tabs full-width">
-                                   <li class="active"><a href="#fuelfamily2" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
-                                    <li><a href="#fuelhoneymoon2" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
-                                    <li><a href="#fuelweekends2" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
-                                    <li><a href="#fuelfriends2" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li>
-                                    <li><a href="#fuelfriends24" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
-                                </ul>
+                                
                                 <div class="tab-content">
                                     <div class="tab-pane fade in active" id="fuelfamily2">
                                         <h4>List of Car Details</h4>
