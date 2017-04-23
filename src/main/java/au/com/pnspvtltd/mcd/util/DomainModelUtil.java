@@ -35,6 +35,7 @@ import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.SearchInsurance;
 import au.com.pnspvtltd.mcd.domain.SearchServMaint;
 import au.com.pnspvtltd.mcd.domain.SearchTransp;
+import au.com.pnspvtltd.mcd.domain.ServiceMaintQuotation;
 import au.com.pnspvtltd.mcd.domain.SpecificationTemplate;
 import au.com.pnspvtltd.mcd.domain.TempCarModelColour;
 import au.com.pnspvtltd.mcd.domain.TempCarModelCountry;
@@ -57,6 +58,7 @@ import au.com.pnspvtltd.mcd.domain.TempCarModelRelatedModel;
 import au.com.pnspvtltd.mcd.domain.TempCarModelUserRating;
 import au.com.pnspvtltd.mcd.domain.TempCarModelVehReview;
 import au.com.pnspvtltd.mcd.domain.TempCarModelVideos;
+import au.com.pnspvtltd.mcd.domain.TranspServiceQuotation;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
 import au.com.pnspvtltd.mcd.domain.UserReviewTemplate;
@@ -95,6 +97,7 @@ import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.SearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
+import au.com.pnspvtltd.mcd.web.model.ServiceMaintQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.SpecificationTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelColourVO;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelCountryVO;
@@ -117,6 +120,7 @@ import au.com.pnspvtltd.mcd.web.model.TempCarModelRelatedModelVO;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelUserRatingVO;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelVehReviewVO;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelVideosVO;
+import au.com.pnspvtltd.mcd.web.model.TranspServiceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserReviewTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
@@ -1611,6 +1615,26 @@ public class DomainModelUtil {
 
 	public FinanceQuotationVO fromFinanceQuotation(final FinanceQuotation financeQuotation) {
 		FinanceQuotationVO financeQuotationVO = new FinanceQuotationVO();
+		try {
+			BeanUtils.copyProperties(financeQuotationVO, financeQuotation);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return financeQuotationVO;
+	}
+	public ServiceMaintQuotationVO fromServMaintQuotation(final ServiceMaintQuotation financeQuotation) {
+		ServiceMaintQuotationVO financeQuotationVO = new ServiceMaintQuotationVO();
+		try {
+			BeanUtils.copyProperties(financeQuotationVO, financeQuotation);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return financeQuotationVO;
+	}
+	public TranspServiceQuotationVO fromTranspServQuotation(final TranspServiceQuotation financeQuotation) {
+		TranspServiceQuotationVO financeQuotationVO = new TranspServiceQuotationVO();
 		try {
 			BeanUtils.copyProperties(financeQuotationVO, financeQuotation);
 		} catch (IllegalAccessException | InvocationTargetException e) {

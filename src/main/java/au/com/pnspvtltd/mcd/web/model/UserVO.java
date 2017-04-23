@@ -39,11 +39,29 @@ public class UserVO {
 	List<VehicleQuotationVO> vehicleQuotation;
 	List<InsuranceQuotationVO> insuranceQuotation;
 	List<FinanceQuotationVO> financeQuotation;
+	List<ServiceMaintQuotationVO> servMaintQuotation;
+	List<TranspServiceQuotationVO> transpServQuotation;
 	List<CurrentOffersVO> currentOffers;
 	List<UserNotificationVO> userNotification;
 	
 	
 	
+	public List<ServiceMaintQuotationVO> getServMaintQuotation() {
+		return servMaintQuotation;
+	}
+
+	public void setServMaintQuotation(List<ServiceMaintQuotationVO> servMaintQuotation) {
+		this.servMaintQuotation = servMaintQuotation;
+	}
+
+	public List<TranspServiceQuotationVO> getTranspServQuotation() {
+		return transpServQuotation;
+	}
+
+	public void setTranspServQuotation(List<TranspServiceQuotationVO> transpServQuotation) {
+		this.transpServQuotation = transpServQuotation;
+	}
+
 	public List<CurrentOffersVO> getCurrentOffers() {
 		return currentOffers;
 	}
