@@ -11,6 +11,8 @@
 <script src="assets/js/jquery.countdown.min.js"></script>
 <!-- added end -->
 
+<!-- <script src="js/jstorage.js"></script>
+ -->
 <script type="text/javascript">
 
 function stringToDate(_date,_format,_delimiter)
@@ -851,6 +853,15 @@ $(document).ready( function() {
     });
 	
 	
+	
+	
+	$("#vehDetails").hide();
+	$("#vehDetailsCollapse").click(function(){
+		$('#vehDetailGlyphi').toggleClass("glyphicon-plus").toggleClass("glyphicon-minus");
+        $("#vehDetails").toggle(500);
+        
+    });
+	
 	$("#driverDetails").hide();
 	$("#driverDetailsCollapse").click(function(){
 		$('#driverDetailGlyphi').toggleClass("glyphicon-plus").toggleClass("glyphicon-minus");
@@ -914,6 +925,7 @@ select.ng-invalid{
     left:       0;
     height:     100%;
     width:      100%;
+
     background: rgba( 255, 255, 255, .8 ) 
                 url('http://i.stack.imgur.com/FhHRx.gif') 
                 50% 50% 
@@ -925,7 +937,7 @@ body.loading {
 body.loading .modal {
     display: block;
 }
-.Signinmodal{
+.signinmodal{
  display:    none;
     position:   fixed;
     z-index:    1000;
@@ -933,19 +945,44 @@ body.loading .modal {
     left:       0;
     height:     100%;
     width:      100%;
-    background: rgba( 255, 255, 255, .8 ) 
-                url('images/Signin.gif') 
+    background-image: url('http://i.stack.imgur.com/FhHRx.gif');
+    background-repeat: no-repeat;
+    background-position: center; 
+	/* background: rgba( 255, 255, 255, .8 ) 
+                url("images/Signin.gif") 
                 50% 50% 
-                no-repeat;
+                no-repeat;  */
 }
-body.loadingSign {
+body.moSign {
     overflow: hidden;   
 }
-body.loadingSign .Signinmodal {
+body.moSign .signinmodal {
     display: block;
 }
 </style>
+<!-- Table alignment -->
+<style>
+.selector select {
+    opacity: 1;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
+th{
+background-color: rgb(253, 183, 20);
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover{background-color:rgb(253, 183, 20);}
+
+</style>
 <!-- Meta Tags -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="utf-8">
@@ -998,7 +1035,7 @@ body.loadingSign .Signinmodal {
     	/* alert("pageName 11  now "); */
     	
     	if(alreadyLogged()){
-    		var value = $.jStorage.get("key");
+    		var value = $.jStorage.get('key');
     		document.getElementById('welcomeDiv').style.display = "block";
 			document.getElementById('welcomeDiv1').style.display = "none";
 			document.getElementById('userId').innerHTML="<b>"+"Hi "+value.firstName+"</b>";
@@ -1103,7 +1140,7 @@ background-colour:#8598a9;}</style>
 	href="components/jquery.bxslider/jquery.bxslider.css" media="screen" />
 <link rel="stylesheet" type="text/css"
 	href="components/flexslider/flexslider.css" media="screen" />
-<!-- <script type="text/javascript" src="js/jquery-1.5.2.js"></script> -->
+<script type="text/javascript" src="js/jquery-1.5.2.js"></script>
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/cufon-replace.js"></script>
 <script type="text/javascript" src="js/Cabin_400.font.js"></script>
@@ -1242,6 +1279,7 @@ $.ajax({
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script src="js/jstorage.js"></script>
 
+
 <!-- Fuelcard -->
 <script>
   $("#demo").on("hide.bs.collapse", function(){
@@ -1255,21 +1293,20 @@ $.ajax({
 
 <script type="text/javascript">
 function setting(data){
-//var value = {"myVehicleId":10,"postalCode":0,"year":2016,"make":"honda","model":"Accord Hybrid","variant":"67748","vin":"22","regNum":"22","regState":"67748","regExpDate":null,"insProv":"ACT","insProvMan":"INs","insPremPaid":22,"insPremPaidFreq":"Weekly ","insExpiry":null,"odoMeter":"22","lastServiceDt":null,"nextServiceDt":null,"nextServKms":22,"finProvider":"Red","loanAmt1":22,"loanTakenDt":null,"loanPaidFreq":"Red","loanAmt2":22,"loanPeriod":22,"loanInterest":22,"fuelCardProvider":"Manual Entry","valFuelCard":"22","fuelType":"Petrol","photo1":"","photo2":"","photo3":"","flex1":"flex1","flex2":"flex1","flex3":"flex1","flex4":"flex1","flex5":12,"flex6":12,"flex7":12,"flex8":null,"flex9":null,"myVehicleLogBook":[],"myVehicleFuelExpenses":[],"myVehicleServMaint":[]};
-$.jStorage.set("key",data);
-$.jStorage.setTTL("mykey", 30000); // expires in 3 seconds
+	$.jStorage.set('key',data);
+	$.jStorage.setTTL('mykey', 30000); // expires in 3 seconds
          // alert("came here");
 
 }
 
 function fbSess(data){
-	$.jStorage.set("fbKey",data);
-	$.jStorage.setTTL("fbSession", 30000); 
+	$.jStorage.set('fbKey',data);
+	$.jStorage.setTTL('fbSession', 30000); 
 
 	}
 
 function alreadyLogged(){
-	var value = $.jStorage.get("key");
+	var value = $.jStorage.get('key');
 	//alert("Checking logged or not");
 	if(!value){
 	    // if not - return false
@@ -1285,8 +1322,8 @@ function alreadyLogged(){
 
 function carDetailHtml(data){
 	//var value = {"myVehicleId":10,"postalCode":0,"year":2016,"make":"honda","model":"Accord Hybrid","variant":"67748","vin":"22","regNum":"22","regState":"67748","regExpDate":null,"insProv":"ACT","insProvMan":"INs","insPremPaid":22,"insPremPaidFreq":"Weekly ","insExpiry":null,"odoMeter":"22","lastServiceDt":null,"nextServiceDt":null,"nextServKms":22,"finProvider":"Red","loanAmt1":22,"loanTakenDt":null,"loanPaidFreq":"Red","loanAmt2":22,"loanPeriod":22,"loanInterest":22,"fuelCardProvider":"Manual Entry","valFuelCard":"22","fuelType":"Petrol","photo1":"","photo2":"","photo3":"","flex1":"flex1","flex2":"flex1","flex3":"flex1","flex4":"flex1","flex5":12,"flex6":12,"flex7":12,"flex8":null,"flex9":null,"myVehicleLogBook":[],"myVehicleFuelExpenses":[],"myVehicleServMaint":[]};
-	$.jStorage.set("carKey",data);
-	$.jStorage.setTTL("userSession", 30000); // expires in 3 seconds
+	$.jStorage.set('carKey',data);
+	$.jStorage.setTTL('userSession', 30000); // expires in 3 seconds
 	          //alert("came here user");
 
 	}
@@ -1380,7 +1417,7 @@ $scope.submitForm1 = function() {
 		alert(jsonInputToAPI.flex3); */
 
 		$body = $("body");
-		$body.addClass("loadingSign");
+		$body.addClass("moSign");
 	    if(flex3==1 || flex3==2 || flex3==3 || flex3==4 || flex3==5)
 	    	{
 	    	
@@ -1408,7 +1445,7 @@ $scope.submitForm1 = function() {
 				}
 							});
 	    	}
-	    $body.removeClass("loadingSign");
+	    $body.removeClass("moSign");
 	    
 		
 	    	
@@ -1425,11 +1462,11 @@ $scope.submitForm1 = function() {
 		/*alert($scope.email);
 		alert(email); */
 		if(alreadyLogged()){
-		userId=$.jStorage.get("key").userId;
+		userId=$.jStorage.get('key').userId;
 		//alert("inside insurance user id"+userId);
 		var dateInFormatpickupDOB= stringToDate($('#pickup_date_of_birth').val(),"dd/MM/yyyy","/");
 		var InsuReq=false;
-		if($('#trans-InsuReq').val() == "Yes")  InsuReq=true;
+		if($('#transInsuReq').val() == "Yes")  InsuReq=true;
 		
 		var jsonInputToAPI = {"userId":userId,
 				"searchTranspLead":{
@@ -1544,7 +1581,7 @@ $scope.submitForm1 = function() {
 		/*alert($scope.email);
 		alert(email); */
 		if(alreadyLogged()){
-		userId=$.jStorage.get("key").userId;
+		userId=$.jStorage.get('key').userId;
 		//alert("inside insurance user id"+userId);
 		
 		var jsonInputToAPI = {"userId":userId,
@@ -1623,7 +1660,7 @@ $scope.submitForm1 = function() {
 		/*alert($scope.email);
 		alert(email); */
 		if(alreadyLogged()){
-		userId=$.jStorage.get("key").userId;
+		userId=$.jStorage.get('key').userId;
 		//alert("inside insurance user id"+userId);
 		var newCarInsuran=false;
 		newCarInsuran = document.getElementById("newCarInsuran").value;
@@ -1738,7 +1775,7 @@ $scope.submitForm1 = function() {
 		/*alert($scope.email);
 		alert(email); */
 		if(alreadyLogged()){
-		userId=$.jStorage.get("key").userId;
+		userId=$.jStorage.get('key').userId;
 		//alert("user"+userId);
 		var newCarFinance=false;
 		newCarFinance = document.getElementById("newCarFinance").value;
@@ -1935,8 +1972,8 @@ function redirectWithLogbook(){
 	{
 			var url="dashboard1.html";
 			var data1 = true;
-			$.jStorage.set("keyLogBook",data1);
-			$.jStorage.setTTL("mykeyLogBook", 30000);
+			$.jStorage.set('keyLogBook',data1);
+			$.jStorage.setTTL('mykeyLogBook', 30000);
 			window.location=url;
 	}
 else{
@@ -2018,8 +2055,8 @@ img.wp-smiley, img.emoji {
 <link href="assets/css/flexslider.css" rel="stylesheet" media="screen">
 <link href="assets/css/style.css" rel="stylesheet" media="screen">
 <!-- LIGHT -->
-<link rel="stylesheet" type="text/css" href="assets/css/dummy.css"
-	id="select-style">
+<!-- <link rel="stylesheet" type="text/css" href="assets/css/dummy.css"
+	id="select-style"> -->
 <link href="assets/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet">
 
@@ -2121,9 +2158,9 @@ table{
 }
 </style>
 
-
+<!-- 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
@@ -2604,7 +2641,7 @@ table{
 																
 															</div>
 													</div>
-													<br/><br/>
+													<br/>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<!-- <label>Year</label> -->
@@ -2615,7 +2652,7 @@ table{
 														</div>
 														<span style="color:red" ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
 													</div>
-																										<br/><br/>
+																				<br/>
 													<div class="clearfix"></div>
 													<div class="col-sm-5 col-md-4">
 														<!-- <label>Make</label> -->
@@ -2627,7 +2664,7 @@ table{
 														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
-																										<br/><br/>
+																										<br/>
 													<div class="col-sm-5 col-md-4">
 														<!-- <label>Model</label> -->
 														<div class="selector">
@@ -2638,7 +2675,7 @@ table{
 														<span style="color:red" ng-show="ebidfrm.carmodels.$error.required && (!ebidfrm.carmodels.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
-																										<br/><br/>
+																										<br/>
 													<div class="col-sm-5 col-md-4">
 														<!-- <label>Variant</label> -->
 														<div class="selector">
@@ -2649,7 +2686,7 @@ table{
 														<span style="color:red" ng-show="ebidfrm.carmodeltrims.$error.required && (!ebidfrm.carmodeltrims.$pristine || ebidfrm.$submitted)"><b>Car Variant is Required</b></span>
 													</div>
 													<div class="clearfix"></div>
-																										<br/><br/>
+																										<br/>
 													<div class="col-sm-5 col-md-4">
 														<!-- <label>Autoscoop Trim</label> -->
 														<div class="selector">
@@ -5250,6 +5287,7 @@ table{
 														<div class="col-sm-12 col-md-12">
 															<label><span id="carDetailsCollapse">
 															    <span class="glyphicon glyphicon-plus" id="carDetailGlyphi" ></span>
+															    <!-- <i class="soap-icon-plus" id="carDetailGlyphi"></i> -->
 															    Car Details</span></label>
 															<!-- <button type="button" class="btn btn-info">Simple collapsible</button> -->
 															  <div id="carDetails">
@@ -6990,42 +7028,126 @@ table{
 													<div class="col-md-12 product-search-title">Service
 														for car</div>
 														
+														
+																										
 													<div class="col-md-12">&nbsp</div>
 													
 													<div class="clearfix"></div>
 
 													<div class="clearfix"></div>
 													
-													<div class="col-sm-5 col-md-4">
-														<label>Post Code</label> <input type="text"
-															id="serv-postCode" name="servpostCode" ng-model="servpostCode"
-															class="input-text full-width" value="" placeholder="" required/>
-															<span style="color:red" ng-show="ebidservfrm.servpostCode.$error.required && (!ebidservfrm.servpostCode.$pristine || ebidservfrm.$submitted)"><b> Post Code value is Required</b></span>
-													</div>
 													
-													<div class="col-sm-5 col-md-4">
-														<label>Year</label>
-														<div class="selector">
-															<select id="car-years-serv" name="caryearsserv" ng-model="caryearsserv" 
-																class="full-width" required>
-															</select>
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+														<label>Post Code</label>
 														</div>
-														<span style="color:red" ng-show="ebidservfrm.caryearsserv.$error.required && (!ebidservfrm.caryearsserv.$pristine || ebidservfrm.$submitted)"><b>Car year is Required</b></span>
-													</div>
-													<div class="clearfix"></div>
-													<div class="clearfix"></div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text"
+															id="serv-postCode" name="servpostCode" ng-model="servpostCode"
+															class="input-text full-width" value="" placeholder="Post Code" required/>
+															<span style="color:red" ng-show="ebidservfrm.servpostCode.$error.required && (!ebidservfrm.servpostCode.$pristine || ebidservfrm.$submitted)"><b> Post Code value is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+														&nbsp;
+														</div>
+														<div class="col-sm-3 col-md-3">
+														&nbsp;
+														</div>
+													</div><br/>
 													
-													<div class="col-sm-5 col-md-4">
-														<label>REGO No</label> <input type="text"
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+														<label>I am Looking for </label>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
+																<select id="lookService" name="lookService" ng-model="lookService" 
+																	class="full-width" required>
+																	<option value="" selected disabled>Service</option>
+																	<option>Buy Tyres</option>
+																	<option>Service</option>
+																	<option>Road Side Assistance</option>
+																	<option>Assistance in accident</option>
+																</select>
+															</div>
+														</div>
+														<div class="col-sm-3 col-md-3">
+														&nbsp;
+														</div>
+														<div class="col-sm-3 col-md-3">
+														&nbsp;
+														</div>
+													</div><br/>
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp;
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="selector">
+															<select class="full-width" id="servFinPro" ng-model="servFinPro"
+																name="servFinPro" required>
+																<option value="" selected disabled>Finance(Yes/No)</option>
+																<option value="true">Yes</option>
+																<option value="false">No</option>
+															</select>
+															</div>
+															<span style="color:red" ng-show="ebidservfrm.servFinPro.$error.required && (!ebidservfrm.servFinPro.$pristine || ebidservfrm.$submitted)"><b>Finance yes / no is Required</b></span>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="selector">
+															<select class="full-width" id="servFinProlist" ng-model="servFinProlist"
+																name="servFinProlist" required>
+																<option value="" selected disabled>Finance Provider (if yes)</option>
+																<option>AAMI</option>
+																<option>AMP Limited</option>
+																<option>AXA</option>
+																<option>Bingle</option>
+																<option>Budget Direct</option>
+																<option>CGU Insurance</option>
+																<option>Colonial Mutual</option>
+															</select>
+															</div>
+															<span style="color:red" ng-show="ebidservfrm.servFinProlist.$error.required && (!ebidservfrm.servFinProlist.$pristine || ebidservfrm.$submitted)"><b>Finance Provider if yes is Required</b></span>
+														</div>
+														<div class="col-sm-1 col-md-1">
+														&nbsp;
+														</div>
+													</div><br/>
+													
+													
+													
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp;
+														</div>
+														<div class="col-sm-6 col-md-6">
+															<textarea rows="4" cols="50" placeholder="Add Notes"></textarea>
+														</div>
+														<div class="col-sm-3 col-md-3">
+														&nbsp;
+														</div>
+													</div><br/>
+													
+													
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+														<label>Car Details</label>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															  <input type="text"
 															id="serv-regono" name="servregono" ng-model="servregono"
-															class="input-text full-width" value="" placeholder="" required/>
+															class="input-text full-width" value="" placeholder="Rego state" required/>
 															<span style="color:red" ng-show="ebidservfrm.servregono.$error.required && (!ebidservfrm.servregono.$pristine || ebidservfrm.$submitted)"><b> Rego No value is Required</b></span>
-													</div>
-													<div class="col-sm-5 col-md-4">
-														<label>REGO State</label>
+														</div>
+														<div class="col-sm-3 col-md-3">
 														<div class="selector">
 															<select class="full-width" id="regoStateServ" ng-model="regoStateServ"
 																name="regoStateServ" required>
+																<option value="" selected disabled>Rego State</option>
 																<option>ACT</option>
 																<option>NT</option>
 																<option>QLD</option>
@@ -7037,57 +7159,65 @@ table{
 															</select>
 														</div>
 														<span style="color:red" ng-show="ebidservfrm.regoStateServ.$error.required && (!ebidservfrm.regoStateServ.$pristine || ebidservfrm.$submitted)"><b> Rego State value is Required</b></span>
-													</div>
-													<div class="clearfix"></div>
-													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>Make</label>
-														<div class="selector">
+														</div>
+														<div class="col-sm-3 col-md-3">OR</div>
+													</div><br/>
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+														&nbsp;
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
+															<select id="car-years-serv" name="caryearsserv" ng-model="caryearsserv" 
+																class="full-width" required>
+																<option value="" selected disabled>Year</option>
+															</select>
+															</div>
+															<span style="color:red" ng-show="ebidservfrm.caryearsserv.$error.required && (!ebidservfrm.caryearsserv.$pristine || ebidservfrm.$submitted)"><b>Car year is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
 															<select id="car-makes-serv" name="carmakesserv" ng-model="carmakesserv" 
 																class="full-width" required>
+																<option value="" selected disabled>Make</option>
 															</select>
+															</div>
+															<span style="color:red" ng-show="ebidservfrm.carmakesserv.$error.required && (!ebidservfrm.carmakesserv.$pristine || ebidservfrm.$submitted)"><b>Car Make is Required</b></span>
 														</div>
-														<span style="color:red" ng-show="ebidservfrm.carmakesserv.$error.required && (!ebidservfrm.carmakesserv.$pristine || ebidservfrm.$submitted)"><b>Car Make is Required</b></span>
-													</div>
-													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>Model</label>
-														<div class="selector">
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
 															<select id="car-models-serv" name="carmodelsserv" ng-model="carmodelsserv" 
 																class="full-width" required>
+																<option value="" selected disabled>Model</option>
 															</select>
+															</div>
+															<span style="color:red" ng-show="ebidservfrm.carmodelsserv.$error.required && (!ebidservfrm.carmodelsserv.$pristine || ebidservfrm.$submitted)"><b>Car model is Required</b></span>
 														</div>
-														<span style="color:red" ng-show="ebidservfrm.carmodelsserv.$error.required && (!ebidservfrm.carmodelsserv.$pristine || ebidservfrm.$submitted)"><b>Car model is Required</b></span>
-													</div>
+													</div><br/>
+													
 													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>Variant</label>
-														<div class="selector">
+													<div class="clearfix"></div>
+													
+													<div class="clearfix"></div>
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+														&nbsp;
+														</div>
+														<div class="col-sm-6 col-md-6">
+															<div class="selector">
 															<select id="car-model-trims-serv" name="carmodeltrimsserv"  ng-model="carmodeltrimsserv"
 																class="full-width" required>
+																<option value="" selected disabled>Variant</option>
 															</select>
+															</div>
+															<span style="color:red" ng-show="ebidservfrm.carmodeltrimsserv.$error.required && (!ebidservfrm.carmodeltrimsserv.$pristine || ebidservfrm.$submitted)"><b>Car Variant is Required</b></span>
 														</div>
-														<span style="color:red" ng-show="ebidservfrm.carmodeltrimsserv.$error.required && (!ebidservfrm.carmodeltrimsserv.$pristine || ebidservfrm.$submitted)"><b>Car Variant is Required</b></span>
-													</div>
-													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>Autoscoop Trim</label>
-														<div class="selector">
-															<select id="car-model-auto-trims-serv" name="carmodelAutotrimsserv"  ng-model="carmodelAutotrimsserv"
-																class="full-width" required>
-															</select>
-														</div>
-														<span style="color:red" ng-show="ebidservfrm.carmodelAutotrimsserv.$error.required && (!ebidservfrm.carmodelAutotrimsserv.$pristine || ebidservfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
-													</div>
-													<div class="clearfix"></div>
-													
-													<div class="clearfix"></div>
-													
-													<div class="col-sm-5 col-md-4">
-														<label>Fuel Type</label>
-														<div class="selector">
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
 															<select class="full-width" id="fuelTypeServ" ng-model="fuelTypeServ"
 																name="fuelTypeServ" required>
+																<option value="" selected disabled>Fuel Type</option>
 																<option>Petrol</option>
 																<option>Deisel</option>
 																<option>Hybrid</option>
@@ -7096,13 +7226,37 @@ table{
 															</select>
 														</div>
 														<span style="color:red" ng-show="ebidservfrm.fuelTypeServ.$error.required && (!ebidservfrm.fuelTypeServ.$pristine || ebidservfrm.$submitted)"><b>Fuel Type is Required</b></span>
-													</div>
+														</div>
+													</div><br/>
 													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>Service & Maintenance L1</label>
-														<div class="selector">
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+														&nbsp;
+														</div>
+														<div class="col-sm-9 col-md-9">
+															<div class="selector">
+															<select id="car-model-auto-trims-serv" name="carmodelAutotrimsserv"  ng-model="carmodelAutotrimsserv"
+																class="full-width" required>
+																<option value="" selected disabled>Autoscoop Trim</option>
+															</select>
+															</div>
+															<span style="color:red" ng-show="ebidservfrm.carmodelAutotrimsserv.$error.required && (!ebidservfrm.carmodelAutotrimsserv.$pristine || ebidservfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+														</div>
+													</div><br/>
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+														&nbsp;
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="selector">
 															<select class="full-width" id="ServL1" ng-model="ServL1"
 																name="ServL1" required>
+																<option value="" selected disabled>Service & Maintenance L1</option>
 																<option>Packaged Car Services</option>
 																<option>Log Book Servicing</option>
 																<option>New Car Servicing</option>
@@ -7110,14 +7264,14 @@ table{
 																<option>Registraion & Inspection</option>
 																<option>Wheel Alinement</option>
 															</select>
+															</div>
+															<span style="color:red" ng-show="ebidservfrm.ServL1.$error.required && (!ebidservfrm.ServL1.$pristine || ebidservfrm.$submitted)"><b>Service Level 1 is Required</b></span>
 														</div>
-														<span style="color:red" ng-show="ebidservfrm.ServL1.$error.required && (!ebidservfrm.ServL1.$pristine || ebidservfrm.$submitted)"><b>Service Level 1 is Required</b></span>
-													</div>
-													<div class="col-sm-5 col-md-4">
-														<label>Service & Maintenance L2</label>
-														<div class="selector">
+														<div class="col-sm-4 col-md-4">
+															<div class="selector">
 															<select class="full-width" id="ServL2" ng-model="ServL2"
 																name="ServL2" required>
+																<option value="" selected disabled>Service & Maintenance L2</option>
 																<option>Packaged Car Services</option>
 																<option>Log Book Servicing</option>
 																<option>New Car Servicing</option>
@@ -7125,59 +7279,104 @@ table{
 																<option>Registraion & Inspection</option>
 																<option>Wheel Alinement</option>
 															</select>
+															</div>
+															<span style="color:red" ng-show="ebidservfrm.ServL2.$error.required && (!ebidservfrm.ServL2.$pristine || ebidservfrm.$submitted)"><b>Service Level 2 is Required</b></span>
 														</div>
-														<span style="color:red" ng-show="ebidservfrm.ServL2.$error.required && (!ebidservfrm.ServL2.$pristine || ebidservfrm.$submitted)"><b>Service Level 2 is Required</b></span>
-													</div>
-													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>Upload Photos</label>
-														<div class="selector">
-															<select class="full-width" id="uploadPhotoServ"
-																name="uploadPhotoServ">
-																<option>Salary</option>
-																<option>From Business</option>
-															</select>
+														<div class="col-sm-1 col-md-1">
+														&nbsp;
 														</div>
-													</div>
-													<div class="clearfix"></div>
-
-													<div class="col-sm-5 col-md-4">
-														<label>Covered Under Insurance</label>
-														<div class="selector">
+													</div><br/>
+													
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															<label>Is the Car Covered under Insurance ?</label> 	
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="selector">
 															<select class="full-width" id="coverInsServ" ng-model="coverInsServ"
 																name="coverInsServ" required>
+																<option value="" selected disabled	>Insurance (Yes/No)</option>
 																<option>Yes</option>
 																<option>No</option>
 															</select>
 														</div>
 														<span style="color:red" ng-show="ebidservfrm.coverInsServ.$error.required && (!ebidservfrm.coverInsServ.$pristine || ebidservfrm.$submitted)"><b>Covered Under Insurance is Required</b></span>
-													</div>
-
-													<div class="col-sm-5 col-md-4">
-														<label>Insurance Provider</label>
-														<div class="selector">
-															<select class="full-width" id="InsprovServ" ng-model="InsprovServ"
-																name="InsprovServ" required>
-																<option>AAMI</option>
-																<option>AMP Limited</option>
-																<option>AXA</option>
-																<option>Bingle</option>
-																<option>Budget Direct</option>
-																<option>CGU Insurance</option>
-																<option>Colonial Mutual</option>
-															</select>
 														</div>
-														<span style="color:red" ng-show="ebidservfrm.InsprovServ.$error.required && (!ebidservfrm.InsprovServ.$pristine || ebidservfrm.$submitted)"><b>Insurance Provider is Required</b></span>
+														<div class="col-sm-4 col-md-4">
+															<div class="selector">
+																<select class="full-width" id="InsprovServ" ng-model="InsprovServ"
+																	name="InsprovServ" required>
+																	<option value="" selected disable>Insurance Provider</option>
+																	<option>AAMI</option>
+																	<option>AMP Limited</option>
+																	<option>AXA</option>
+																	<option>Bingle</option>
+																	<option>Budget Direct</option>
+																	<option>CGU Insurance</option>
+																	<option>Colonial Mutual</option>
+																</select>
+															</div>
+															<span style="color:red" ng-show="ebidservfrm.InsprovServ.$error.required && (!ebidservfrm.InsprovServ.$pristine || ebidservfrm.$submitted)"><b>Insurance Provider is Required</b></span>
+														</div>
+														<div class="col-sm-1 col-md-1">
+														&nbsp;
+														</div>
+													</div><br/>
+												
+													<div class="clearfix"></div>
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															<label>Upload Photos</label>	
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<label>Upload Photo 1</label>
+															<input type="file"
+															class="input-text full-width" id="uploadPhotoServ1"
+																name="uploadPhotoServ1" ng-model="uploadPhotoServ1"
+															placeholder="" />
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<label>Upload Photo 2</label>
+															<input type="file"
+															class="input-text full-width" id="uploadPhotoServ2"
+																name="uploadPhotoServ2" ng-model="uploadPhotoServ2"
+															placeholder="" />
+														</div>
+														<div class="col-sm-1 col-md-1">
+															&nbsp; 	
+														</div>
 													</div>
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp; 		
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<label>Upload Photo 3</label>
+															<input type="file"
+															class="input-text full-width" id="uploadPhotoServ3"
+																name="uploadPhotoServ3" ng-model="uploadPhotoServ3"
+															placeholder="" />
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<label>Upload Photo 4</label>
+															<input type="file"
+															class="input-text full-width" id="uploadPhotoServ4"
+																name="uploadPhotoServ4" ng-model="uploadPhotoServ4"
+															placeholder="" />
+														</div>
+														<div class="col-sm-1 col-md-1">
+															&nbsp; 	
+														</div>
+													</div>
+													<div class="clearfix"></div>
+
+
 
 													<div class="clearfix"></div>
-													<div class="col-sm-80 col-md-90">
-														<label>Free Text Field</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="freeTextServ" name="freeTextServ" />
-													</div>
-													<div class="clearfix"></div>
-													<div class="clearfix"></div>
+													
 													<div id="status"></div>
 													<br /> <br /> 
 													<div class="social col-md-12 col-sm-12">
@@ -7975,64 +8174,275 @@ table{
 														<div class="col-md-12">&nbsp</div>
 													<div class="clearfix"></div>
 													
-													<div class="col-sm-5 col-md-4">
-														<label>From Post Code</label> <input type="text"
-															id="trans-postCode" name="transpostCode" ng-model="transpostCode"
-															class="input-text full-width" value="" placeholder="" required/>
-															<span style="color:red" ng-show="ebidtransfrm.transpostCode.$error.required && (!ebidtransfrm.transpostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span>
-													</div>
-													<div class="col-sm-5 col-md-4">
-														<label>From Address</label> <input type="text"
-															id="trans-address" name="transaddress" ng-model="transaddress"
-															class="input-text full-width" value="" placeholder="" required/>
-															<span style="color:red" ng-show="ebidtransfrm.transaddress.$error.required && (!ebidtransfrm.transaddress.$pristine || ebidtransfrm.$submitted)"><b> From Address value is Required</b></span>
-													</div>
-													<div class="col-sm-5 col-md-4">
-														<label>To Post Code</label> <input type="text"
-															id="trans-topostCode" name="transtopostCode" ng-model="transtopostCode"
-															class="input-text full-width" value="" placeholder="" required/>
-															<span style="color:red" ng-show="ebidtransfrm.transtopostCode.$error.required && (!ebidtransfrm.transtopostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span>
-													</div>
-													<div class="col-sm-5 col-md-4">
-														<label>To Address</label> <input type="text"
-															id="trans-toaddress" name="transtoaddress" ng-model="transtoaddress"
-															class="input-text full-width" value="" placeholder="" required/>
-															<span style="color:red" ng-show="ebidtransfrm.transtoaddress.$error.required && (!ebidtransfrm.transtoaddress.$pristine || ebidtransfrm.$submitted)"><b> From Address value is Required</b></span>
-													</div>
-													<div class="col-sm-5 col-md-4">
-														<label>Transport Type Requiered</label> <input type="text"
-															id="trans-transtype" name="transtranstype" ng-model="transtranstype"
-															class="input-text full-width" value="" placeholder="" required/>
-															<span style="color:red" ng-show="ebidtransfrm.transtranstype.$error.required && (!ebidtransfrm.transtranstype.$pristine || ebidtransfrm.$submitted)"><b> From Address value is Required</b></span>
-													</div>
-													
-													<div class="clearfix"></div>
-													<div class="clearfix"></div>
-													<div class="col-xs-6">
-                                                        <div class="datepicker-wrap">
-                                                            <input type="text" id="pickup_date_of_birth" name="pickup_date_of_birth" ng-model="pickup_date_of_birth" class="input-text full-width" placeholder="Pick Update & Time" required/>
-                                                        </div>
-                                                        <span style="color:red" ng-show="ebidtransfrm.pickup_date_of_birth.$error.required && (!ebidtransfrm.pickup_date_of_birth.$pristine || ebidtransfrm.$submitted)"><b>Pick Up Date is Required</b></span>
-                                                    </div>
-													
-													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>No of Cars</label>
-														<div class="selector">
-															<select class="full-width" id="trans-noOfCars" ng-model="transnoOfCars" name="transnoOfCars"
-															class="input-text full-width" value="" placeholder="" required>
-																<option>1</option>
-																<option>2</option>
-																<option>3</option>
-																<option>4</option>
-															</select>
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															<label>Looking to Move</label>		
 														</div>
-														<span style="color:red" ng-show="ebidtransfrm.transnoOfCars.$error.required && (!ebidtransfrm.transnoOfCars.$pristine || ebidtransfrm.$submitted)"><b> No of Cars is Required</b></span>
-													</div>
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
+																<select class="full-width" id="transVehicle" ng-model="transVehicle" name="transVehicle"
+																class="input-text full-width" required>
+																	<option value="" selected>Car</option>
+																	<option>Bike</option>
+																	<option>Truck</option>
+																	<option>Boat</option>
+																	<option>Caravan</option>
+																</select>
+															</div>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
+																<select class="full-width" id="transHow" ng-model="transHow" name="transHow"
+																class="input-text full-width" required>
+																	<option value="" selected>How May?</option>
+																	<option>Through train</option>
+																	<option>Goods Carrier</option>
+																	<option>Flight</option>
+																</select>
+															</div> 
+														</div>
+														<div class="col-sm-3 col-md-3">
+															&nbsp; 	
+														</div>
+													</div><br/>
+													
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															<label>From</label>		
+														</div>
+														<div class="col-sm-3 col-md-3">
+															 <input type="text"
+															id="transFpostCode" name="transFpostCode" ng-model="transFpostCode"
+															class="input-text full-width" value="" placeholder="Post Code" required/>
+															<span style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.required && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															 <input type="text"
+															id="transFStreetNo" name="transFStreetNo" ng-model="transFStreetNo"
+															class="input-text full-width" value="" placeholder="Street Name" required/>
+															<span style="color:red" ng-show="ebidtransfrm.transFStreetNo.$error.required && (!ebidtransfrm.transFStreetNo.$pristine || ebidtransfrm.$submitted)"><b> From Street No is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text"
+															id="transFStreetName" name="transFStreetName" ng-model="transFStreetName"
+															class="input-text full-width" value="" placeholder="Street Name" required/>
+															<span style="color:red" ng-show="ebidtransfrm.transFStreetName.$error.required && (!ebidtransfrm.transFStreetName.$pristine || ebidtransfrm.$submitted)"><b> From Street Name is Required</b></span>
+														</div>
+													</div><br/>
+													
+													
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															<label>To</label>		
+														</div>
+														<div class="col-sm-3 col-md-3">
+															 <input type="text"
+															id="transTpostCode" name="transTpostCode" ng-model="transTpostCode"
+															class="input-text full-width" value="" placeholder="Post Code" required/>
+															<span style="color:red" ng-show="ebidtransfrm.transTpostCode.$error.required && (!ebidtransfrm.transTpostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															 <input type="text"
+															id="transFStreetNo" name="transTStreetNo" ng-model="transTStreetNo"
+															class="input-text full-width" value="" placeholder="Street Name" required/>
+															<span style="color:red" ng-show="ebidtransfrm.transTStreetNo.$error.required && (!ebidtransfrm.transTStreetNo.$pristine || ebidtransfrm.$submitted)"><b> To Street No is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text"
+															id="transFStreetName" name="transTStreetName" ng-model="transTStreetName"
+															class="input-text full-width" value="" placeholder="Street Name" required/>
+															<span style="color:red" ng-show="ebidtransfrm.transTStreetName.$error.required && (!ebidtransfrm.transTStreetName.$pristine || ebidtransfrm.$submitted)"><b> To Street Name is Required</b></span>
+														</div>
+													</div><br/>
+													
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															<label>When do you want this to be picked up & delivered?</label>		
+														</div>
+														<div class="col-sm-4 col-md-4">
+															 <input type="date"
+															id="transPickup" name="transPickup" ng-model="transPickup"
+															class="input-text full-width" value="" placeholder="Post Code" required/>
+															<span style="color:red" ng-show="ebidtransfrm.transPickup.$error.required && (!ebidtransfrm.transPickup.$pristine || ebidtransfrm.$submitted)"><b> Pick up Date is Required</b></span>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<input type="checkbox" id="transPickConfirm" name="transPickConfirm" ng-model="transPickConfirm"/><label>I am Flexible with Date</label>
+															<span style="color:red" ng-show="ebidtransfrm.transPickConfirm.$error.required && (!ebidtransfrm.transPickConfirm.$pristine || ebidtransfrm.$submitted)"><b> To Street No is Required</b></span>
+														</div>
+														<div class="col-sm-1 col-md-1">
+															&nbsp;
+														</div>
+													</div><br/>
+													
+													
+														<div class="row">
+														<div class="col-sm-3 col-md-3">
+															<label>What kind of transport you need?</label>		
+														</div>
+														<div class="col-sm-3 col-md-3">
+															 <div class="selector">
+																<select class="full-width" id="transKind" ng-model="transKind" name="transKind"
+																class="input-text full-width" required>
+																	<option value="" selected>Any</option>
+																	<option>Not Sure</option>
+																	<option>Closed</option>
+																	<option>Open</option>
+																</select>
+															</div>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															&nbsp;
+														</div>
+														<div class="col-sm-3 col-md-3">
+															&nbsp;
+														</div>
+													</div><br/>
+													
+													
+													<div class="row">
+														<div class="col-sm-12 col-md-12">
+															<button type="button" id="vehDetailsCollapse">
+															    <span class="glyphicon glyphicon-plus" id="vehDetailGlyphi" style="vertical-align: middle;" ></span>
+															    <!-- <i class="soap-icon-plus" id="carDetailGlyphi"></i> -->
+															    Add Vehicle</button>
+															<!-- <button type="button" class="btn btn-info">Simple collapsible</button> -->
+															  <div id="vehDetails">
+															  		<div class="row">
+																			<div class="col-sm-3 col-md-3">
+																			<label>Car Registration</label>
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																				 <input type="text"
+																				class="input-text full-width" value="" ng-model="transregono12"
+																				placeholder="Rego No" id="transregono12" name="transregono12" required/>
+																				<span style="color:red" ng-show="ebidinsfrm.transregono12.$error.required && (!ebidinsfrm.transregono12.$pristine || ebidinsfrm.$submitted)"><b>Rego Number is Required</b></span>
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																				<div class="selector">
+																					<select class="full-width" id="transregost" ng-model="transregost"
+																						name="transregost" required>
+																						<option value="" selected disabled>State</option>
+																						<option>ACT</option>
+																						<option>NT</option>
+																						<option>QLD</option>
+																						<option>VIC</option>
+																						<option>NSW</option>
+																						<option>TAS</option>
+																						<option>SA</option>
+																						<option>WA</option>
+																					</select>
+																				</div>
+																				<span style="color:red" ng-show="ebidinsfrm.transregost.$error.required && (!ebidinsfrm.transregost.$pristine || ebidinsfrm.$submitted)"><b>Rego State is Required</b></span>
+																			</div>
+																			<div class="col-sm-3 col-md-3">&nbsp;</div>
+																		</div><br/>
+																		
+																		
+																		<div class="row">
+																			<div class="col-sm-3 col-md-3">
+																				<label>Vehicle Details</label>
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																				<div class="selector">
+																					<select id="car-years-trans" name="caryearstrans" ng-model="caryearstrans" 
+																						class="full-width" required>
+																						<option value="" selected disabled>Year</option>
+																					</select>
+																				</div>
+																				<span style="color:red" ng-show="ebidtransfrm.caryearstrans.$error.required && (!ebidtransfrm.caryearstrans.$pristine || ebidtransfrm.$submitted)"><b>Car year is Required</b></span>
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																				<div class="selector">
+																					<select id="car-makes-trans" name="carmakestrans" ng-model="carmakestrans" 
+																						class="full-width" required>
+																						<option value="" selected disabled>Make</option>
+																					</select>
+																				</div>
+																				<span style="color:red" ng-show="ebidtransfrm.carmakestrans.$error.required && (!ebidtransfrm.carmakestrans.$pristine || ebidtransfrm.$submitted)"><b>Car Make is Required</b></span>
+																			</div>
+																			<div class="col-sm-3 col-md-3">
+																				<div class="selector">
+																					<select id="car-models-trans" name="carmodelstrans" ng-model="carmodelstrans" 
+																						class="full-width" required>
+																						<option value="" selected disabled>Model</option>
+																					</select>
+																				</div>
+																				<span style="color:red" ng-show="ebidtransfrm.carmodelsserv.$error.required && (!ebidtransfrm.carmodelstrans.$pristine || ebidtransfrm.$submitted)"><b>Car model is Required</b></span>
+																			</div>
+																		</div><br/>
+																		
+																		<div class="row">
+																			<div class="col-sm-3 col-md-3">
+																			&nbsp;
+																			</div>
+																			<div class="col-sm-9 col-md-9">
+																				<div class="selector">
+																					<select id="car-model-trims-trans" name="carmodeltrimstrans"  ng-model="carmodeltrimstrans"
+																						class="full-width" required>
+																						<option value="" selected disabled>Variant</option>
+																					</select>
+																				</div>
+																				<span style="color:red" ng-show="ebidtransfrm.carmodeltrimstrans.$error.required && (!ebidtransfrm.carmodeltrimstrans.$pristine || ebidtransfrm.$submitted)"><b>Car Variant is Required</b></span>
+																			</div>
+																		</div><br/>
+																		<div class="row">
+																			<div class="col-sm-3 col-md-3">
+																			&nbsp;
+																			</div>
+																			<div class="col-sm-9 col-md-9">
+																				<div class="selector">
+																					<select id="car-model-auto-trims-trans" name="carmodelAutotrimstrans"  ng-model="carmodelAutotrimstrans"
+																						class="full-width" required>
+																					</select>
+																				</div>
+																				<span style="color:red" ng-show="ebidfinfrm.carmodelAutotrimsfin.$error.required && (!ebidfinfrm.carmodelAutotrimsfin.$pristine || ebidfinfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+																			</div>
+																		</div><br/>
+																		
+																		
+																		<div class="row">
+																			<div class="col-sm-3 col-md-3">
+																			&nbsp;
+																			</div>
+																			<div class="col-sm-9 col-md-9">
+																				 <div id="my-container">
+																							<center>
+																							<button type="button" onclick="javascript:appendRow922()" class="append_row">Add vehicle</button>
+																							<button type="button" onclick="javascript:deleteRows9()" class="delete">Delete Vehicle</button><br />
+																							<table id="my-table922" align="center" cellspacing="0" cellpadding="0" border="0">
+																								<tr><th>Year</th><th>Make</th><th>Model</th><th>Variant</th><th>Autoscoop Trim</th></tr>
+																							</table>
+																							<p></center>
+																				</div>
+																			</div>
+																		</div><br/>
+															  <hr>
+															  </div>
+														</div>
+													</div><br/>
+													
+													
+													
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															<label>Add Notes</label>
+														</div>
+														<div class="col-sm-6 col-md-6">
+															<textarea rows="4" cols="50" placeholder="Add Notes"></textarea>
+														</div>
+														<div class="col-sm-3 col-md-3">
+														&nbsp;
+														</div>
+													</div><br/>
+													
 													<div class="clearfix"></div>
 	<!-- start -->
 													
-													<div class="toggle-container box">
+													<!-- <div class="toggle-container box">
 						                                <div class="panel style1">
 						                                    <h4 class="panel-title">
 						                                        <a href="#tggindmakes" data-toggle="collapse">Select New Car Makes</a>
@@ -8040,57 +8450,7 @@ table{
 						                                    <div class="panel-collapse collapse" id="tggindmakes">
 						                                        <div class="panel-content">
 						                                         <div class="form-group row">
-						                                       
-						                            <!--            <div class="col-sm-5 col-md-4">
-														<label>Year</label>
-														<div class="selector">
-															<select id="car-years922" name="caryears922" ng-model="caryears" 
-																class="full-width" required>
-															</select>
-														</div>
-														<span style="color:red" ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
-													</div>
-													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>Make</label>
-														<div class="selector">
-															<select id="car-makes922" name="carmakes922" ng-model="carmakes" 
-																class="full-width" required>
-															</select>
-														</div>
-														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
-													</div>
-													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>Model</label>
-														<div class="selector">
-															<select id="car-model922" name="carmodel922" ng-model="carmodels" 
-																class="full-width" required>
-															</select>
-														</div>
-														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
-													</div>
-													
-													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>Variant</label>
-														<div class="selector">
-															<select id="car-variant922" name="carvariant922" ng-model="carvariant" 
-																class="full-width" required>
-															</select>
-														</div>
-														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
-													</div>
-													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>Autoscoop Trim</label>
-														<div class="selector">
-															<select id="car-autoscoop922" name="carautoscoop922" ng-model="carautoscoop" 
-																class="full-width" required>
-															</select>
-														</div>
-														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
-													</div> -->
+						                                      
 													<div class="col-sm-5 col-md-4">
 														<label>Year</label>
 														<div class="selector">
@@ -8108,6 +8468,7 @@ table{
 														<div class="selector">
 															<select id="car-makes-trans" name="carmakestrans" ng-model="carmakestrans" 
 																class="full-width" required>
+																<option value="" selected disabled>Make</option>
 															</select>
 														</div>
 														<span style="color:red" ng-show="ebidtransfrm.carmakestrans.$error.required && (!ebidtransfrm.carmakestrans.$pristine || ebidtransfrm.$submitted)"><b>Car Make is Required</b></span>
@@ -8118,6 +8479,7 @@ table{
 														<div class="selector">
 															<select id="car-models-trans" name="carmodelstrans" ng-model="carmodelstrans" 
 																class="full-width" required>
+																<option value="" selected disabled>Model</option>
 															</select>
 														</div>
 														<span style="color:red" ng-show="ebidtransfrm.carmodelsserv.$error.required && (!ebidtransfrm.carmodelstrans.$pristine || ebidtransfrm.$submitted)"><b>Car model is Required</b></span>
@@ -8128,6 +8490,7 @@ table{
 														<div class="selector">
 															<select id="car-model-trims-trans" name="carmodeltrimstrans"  ng-model="carmodeltrimstrans"
 																class="full-width" required>
+																<option value="" selected disabled>Variant</option>
 															</select>
 														</div>
 														<span style="color:red" ng-show="ebidtransfrm.carmodeltrimstrans.$error.required && (!ebidtransfrm.carmodeltrimstrans.$pristine || ebidtransfrm.$submitted)"><b>Car Variant is Required</b></span>
@@ -8142,51 +8505,29 @@ table{
 														</div>
 														<span style="color:red" ng-show="ebidfinfrm.carmodelAutotrimsfin.$error.required && (!ebidfinfrm.carmodelAutotrimsfin.$pristine || ebidfinfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
 													</div>
-                                       <div id="my-container">
-						<center><br />
-						<input type="button" value="Add row" onclick="javascript:appendRow922()" class="append_row"/><br />
-						<!--  <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />-->
-						<input type="button" value="Delete rows" onclick="javascript:deleteRows9()" class="delete"/><br />
-						<!--  <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
-						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>-->
-						<table id="my-table922" align="center" cellspacing="0" cellpadding="0" border="0">
-						<tr><th>Year</th><th>Make</th><th>Model</th><th>Variant</th><th>Autoscoop Trim</th></tr>
-						
-						</table>
-						<p></center>
-						</div>   
+			                                       <div id="my-container">
+															<center><br />
+															<button type="button" value="Add row" onclick="javascript:appendRow922()" class="append_row"/><br />
+															<button type="button" value="Delete rows" onclick="javascript:deleteRows9()" class="delete"/><br />
+															<table id="my-table922" align="center" cellspacing="0" cellpadding="0" border="0">
+																<tr><th>Year</th><th>Make</th><th>Model</th><th>Variant</th><th>Autoscoop Trim</th></tr>
+															</table>
+															<p></center>
+													</div>   
                                         <div class="clearfix"></div>
                                     </div>
-						                                       <!-- <div class="form-group row">
-						
-						                                                 <div id="my-container">
-						<center><br />
-						<input type="button" value="Add row" onclick="javascript:appendRow1()" class="append_row"/><br />
-						 <input type="button" value="Add column" onclick="javascript:appendColumn()" class="append_column"/><br />
-						<input type="button" value="Delete rows" onclick="javascript:deleteRows1()" class="delete"/><br />
-						 <input type="button" value="Delete columns" onclick="javascript:deleteColumns()" class="delete"/><br />
-						<input type="button" value="Delete both" onclick="javascript:deleteColumns();deleteRows()" class="delete"/></p>
-						<table id="my-table1" align="center" cellspacing="0" cellpadding="0" border="0">
-						<tr><th>Select Brand</th><th>Offered</th></tr>
-						
-						</table>
-						<p></center>
-						</div>   
-						
-						
-						                                    </div> -->
-						                                        </div><!-- end content -->
+						                                        </div>end content
 						                                    </div>
 						                                </div>
 						
-						                            </div>
+						                            </div> -->
 						                                        <!-- End -->  
 													<!-- end -->
 													
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
+													<!-- <div class="col-sm-5 col-md-4">
 														<label>Free text</label> <input type="text"
 															id="trans-freetext" name="transfreetext" ng-model="transfreetext"
 															class="input-text full-width" value="" placeholder="" required/>
@@ -8201,22 +8542,41 @@ table{
 													<div class="col-sm-5 col-md-4">
 														<label>Transport Insurnace Required</label>
 														<div class="selector">
-															<select class="full-width" id="trans-InsuReq" ng-model="trans-InsuReq"
+															<select class="full-width" id="transInsuReq" ng-model="transInsuReq"
 																name="trans-InsuReq" required>
 																<option>Yes</option>
 																<option>No</option>
 															</select>
 														</div>
-														<span style="color:red" ng-show="ebidtransfrm.trans-InsuReq.$error.required && (!ebidtransfrm.trans-InsuReq.$pristine || ebidtransfrm.$submitted)"><b> Transport Insurance value is Required</b></span>
+														<span style="color:red" ng-show="ebidtransfrm.transInsuReq.$error.required && (!ebidtransfrm.transInsuReq.$pristine || ebidtransfrm.$submitted)"><b> Transport Insurance value is Required</b></span>
+													</div> -->
+													
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															<label>Upload Photos</label>	
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<label>Upload Photo 1</label>
+															<input type="file"
+															class="input-text full-width" id="uploadPhotoTrans1"
+																name="uploadPhotoTrans1" ng-model="uploadPhotoTrans1"
+															placeholder="" />
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<label>Upload Photo 2</label>
+															<input type="file"
+															class="input-text full-width" id="uploadPhotoTrans2"
+																name="uploadPhotoTrans2" ng-model="uploadPhotoTrans2"
+															placeholder="" />
+														</div>
+														<div class="col-sm-1 col-md-1">
+															&nbsp; 	
+														</div>
 													</div>
-
+													
 
 													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<label>Upload Photos</label> <input type="text"
-															class="input-text full-width" value="free text"
-															placeholder="" id="freetext" name="freetext" />
-													</div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
@@ -9712,7 +10072,7 @@ table{
     </script>
 <!-- Loading -->
 <div class="modal"><!-- Place at bottom of page --></div>
-<div class="Signinmodal"><!-- Place at bottom of page --></div>
+<div class="signinmodal"><!-- Place at bottom of page --></div>
  <!-- terms & Conditions Modal -->
   <div class="modal fade" id="termsnconditionsModal" role="dialog">
     <div class="modal-dialog">
