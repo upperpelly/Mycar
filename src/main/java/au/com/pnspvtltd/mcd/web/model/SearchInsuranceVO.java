@@ -1,6 +1,14 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import au.com.pnspvtltd.mcd.domain.SearchInsAdditionalDriv;
 
 public class SearchInsuranceVO {
 
@@ -32,6 +40,185 @@ public class SearchInsuranceVO {
 	private Date dateOfBirth;
 	private Date ageOfAdditionalDriver;
 
+	private String carParkedAt;
+	private String streetNO;
+	private String streetName;
+	private String carUsedfor;
+	private String typeOfBusiness;
+	private String driverFirstName;
+	private String driverLastName;
+	private String driverMobileNo;
+	private String driverEmailId;
+	private Date licenseIssueDate;
+	private Date lastAtFaultClaimDate;
+	private String reasonForSuspension;
+	private int avgNoOfKmYr;
+	private int noOfDrivers;
+	private boolean licenseGotSuspened;
+	
+	
+public String getCarParkedAt() {
+		return carParkedAt;
+	}
+
+
+	public void setCarParkedAt(String carParkedAt) {
+		this.carParkedAt = carParkedAt;
+	}
+
+
+	public String getStreetNO() {
+		return streetNO;
+	}
+
+
+	public void setStreetNO(String streetNO) {
+		this.streetNO = streetNO;
+	}
+
+
+	public String getStreetName() {
+		return streetName;
+	}
+
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+
+	public String getCarUsedfor() {
+		return carUsedfor;
+	}
+
+
+	public void setCarUsedfor(String carUsedfor) {
+		this.carUsedfor = carUsedfor;
+	}
+
+
+	public String getTypeOfBusiness() {
+		return typeOfBusiness;
+	}
+
+
+	public void setTypeOfBusiness(String typeOfBusiness) {
+		this.typeOfBusiness = typeOfBusiness;
+	}
+
+
+	public String getDriverFirstName() {
+		return driverFirstName;
+	}
+
+
+	public void setDriverFirstName(String driverFirstName) {
+		this.driverFirstName = driverFirstName;
+	}
+
+
+	public String getDriverLastName() {
+		return driverLastName;
+	}
+
+
+	public void setDriverLastName(String driverLastName) {
+		this.driverLastName = driverLastName;
+	}
+
+
+	public String getDriverMobileNo() {
+		return driverMobileNo;
+	}
+
+
+	public void setDriverMobileNo(String driverMobileNo) {
+		this.driverMobileNo = driverMobileNo;
+	}
+
+
+	public String getDriverEmailId() {
+		return driverEmailId;
+	}
+
+
+	public void setDriverEmailId(String driverEmailId) {
+		this.driverEmailId = driverEmailId;
+	}
+
+
+	public Date getLicenseIssueDate() {
+		return licenseIssueDate;
+	}
+
+
+	public void setLicenseIssueDate(Date licenseIssueDate) {
+		this.licenseIssueDate = licenseIssueDate;
+	}
+
+
+	public Date getLastAtFaultClaimDate() {
+		return lastAtFaultClaimDate;
+	}
+
+
+	public void setLastAtFaultClaimDate(Date lastAtFaultClaimDate) {
+		this.lastAtFaultClaimDate = lastAtFaultClaimDate;
+	}
+
+
+	public String getReasonForSuspension() {
+		return reasonForSuspension;
+	}
+
+
+	public void setReasonForSuspension(String reasonForSuspension) {
+		this.reasonForSuspension = reasonForSuspension;
+	}
+
+
+	public int getAvgNoOfKmYr() {
+		return avgNoOfKmYr;
+	}
+
+
+	public void setAvgNoOfKmYr(int avgNoOfKmYr) {
+		this.avgNoOfKmYr = avgNoOfKmYr;
+	}
+
+
+	public int getNoOfDrivers() {
+		return noOfDrivers;
+	}
+
+
+	public void setNoOfDrivers(int noOfDrivers) {
+		this.noOfDrivers = noOfDrivers;
+	}
+
+
+	public boolean isLicenseGotSuspened() {
+		return licenseGotSuspened;
+	}
+
+
+	public void setLicenseGotSuspened(boolean licenseGotSuspened) {
+		this.licenseGotSuspened = licenseGotSuspened;
+	}
+
+List<SearchInsAdditionalDriv> searchInsAdditionalDriv;
+	
+	
+	public List<SearchInsAdditionalDriv> getSearchInsAdditionalDriv() {
+		return searchInsAdditionalDriv;
+	}
+
+
+	public void setSearchInsAdditionalDriv(
+			List<SearchInsAdditionalDriv> searchInsAdditionalDriv) {
+		this.searchInsAdditionalDriv = searchInsAdditionalDriv;
+	}
+	
 	public String getAutoscoopTrim() {
 		return autoscoopTrim;
 	}

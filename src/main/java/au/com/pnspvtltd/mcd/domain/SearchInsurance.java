@@ -2,12 +2,23 @@ package au.com.pnspvtltd.mcd.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -42,9 +53,165 @@ public class SearchInsurance implements Serializable {
 	private Date dateOfBirth;
 	private Date ageOfAdditionalDriver;
 	
+	private String carParkedAt;
+	private String streetNO;
+	private String streetName;
+	private String carUsedfor;
+	private String typeOfBusiness;
+	private String driverFirstName;
+	private String driverLastName;
+	private String driverMobileNo;
+	private String driverEmailId;
+	private Date licenseIssueDate;
+	private Date lastAtFaultClaimDate;
+	private String reasonForSuspension;
+	private int avgNoOfKmYr;
+	private int noOfDrivers;
+	private boolean licenseGotSuspened;
+	
+	
+List<SearchInsAdditionalDriv> searchInsAdditionalDriv;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "searchInsuranceId")
+	
+	public List<SearchInsAdditionalDriv> getSearchInsAdditionalDriv() {
+		return searchInsAdditionalDriv;
+	}
+
+
+	public void setSearchInsAdditionalDriv(
+			List<SearchInsAdditionalDriv> searchInsAdditionalDriv) {
+		this.searchInsAdditionalDriv = searchInsAdditionalDriv;
+	}
+	
+	
+	
 	@Column(name = "AUTOSCOOPTRIM")
 	public String getAutoscoopTrim() {
 		return autoscoopTrim;
+	}
+
+	
+	@Column(name = "CARPARKEDAT")
+	public String getCarParkedAt() {
+		return carParkedAt;
+	}
+
+	public void setCarParkedAt(String carParkedAt) {
+		this.carParkedAt = carParkedAt;
+	}
+	@Column(name = "STREETNO")
+	public String getStreetNO() {
+		return streetNO;
+	}
+
+	public void setStreetNO(String streetNO) {
+		this.streetNO = streetNO;
+	}
+	@Column(name = "STREETNAME")
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+	@Column(name = "CARUSEDFOR")
+	public String getCarUsedfor() {
+		return carUsedfor;
+	}
+
+	public void setCarUsedfor(String carUsedfor) {
+		this.carUsedfor = carUsedfor;
+	}
+	@Column(name = "TYPEOFBUSINESS")
+	public String getTypeOfBusiness() {
+		return typeOfBusiness;
+	}
+
+	public void setTypeOfBusiness(String typeOfBusiness) {
+		this.typeOfBusiness = typeOfBusiness;
+	}
+	@Column(name = "DRIVERFIRSTNAME")
+	public String getDriverFirstName() {
+		return driverFirstName;
+	}
+
+	public void setDriverFirstName(String driverFirstName) {
+		this.driverFirstName = driverFirstName;
+	}
+	@Column(name = "DRIVERLASTNAME")
+	public String getDriverLastName() {
+		return driverLastName;
+	}
+
+	public void setDriverLastName(String driverLastName) {
+		this.driverLastName = driverLastName;
+	}
+	@Column(name = "DRIVERMOBILENO")
+	public String getDriverMobileNo() {
+		return driverMobileNo;
+	}
+
+	public void setDriverMobileNo(String driverMobileNo) {
+		this.driverMobileNo = driverMobileNo;
+	}
+	@Column(name = "DRIVEREMAILID")
+	public String getDriverEmailId() {
+		return driverEmailId;
+	}
+
+	public void setDriverEmailId(String driverEmailId) {
+		this.driverEmailId = driverEmailId;
+	}
+	@Column(name = "LICENSEISSUEDATE")
+	public Date getLicenseIssueDate() {
+		return licenseIssueDate;
+	}
+
+	public void setLicenseIssueDate(Date licenseIssueDate) {
+		this.licenseIssueDate = licenseIssueDate;
+	}
+	@Column(name = "LASTATFAULTCLAIMDATE")
+	public Date getLastAtFaultClaimDate() {
+		return lastAtFaultClaimDate;
+	}
+
+	public void setLastAtFaultClaimDate(Date lastAtFaultClaimDate) {
+		this.lastAtFaultClaimDate = lastAtFaultClaimDate;
+	}
+	@Column(name = "REASONFORSUSPEND")
+	public String getReasonForSuspension() {
+		return reasonForSuspension;
+	}
+	@Column(name = "AUTOSCOOPTRIM")
+	public void setReasonForSuspension(String reasonForSuspension) {
+		this.reasonForSuspension = reasonForSuspension;
+	}
+	@Column(name = "AVERGNOOFKMYR")
+	public int getAvgNoOfKmYr() {
+		return avgNoOfKmYr;
+	}
+
+	public void setAvgNoOfKmYr(int avgNoOfKmYr) {
+		this.avgNoOfKmYr = avgNoOfKmYr;
+	}
+	@Column(name = "NOOFDRIVERS")
+	public int getNoOfDrivers() {
+		return noOfDrivers;
+	}
+
+	public void setNoOfDrivers(int noOfDrivers) {
+		this.noOfDrivers = noOfDrivers;
+	}
+	@Column(name = "LICENSEGOTSUSPEND")
+	public boolean isLicenseGotSuspened() {
+		return licenseGotSuspened;
+	}
+
+	public void setLicenseGotSuspened(boolean licenseGotSuspened) {
+		this.licenseGotSuspened = licenseGotSuspened;
 	}
 
 	public void setAutoscoopTrim(String autoscoopTrim) {
