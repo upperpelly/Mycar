@@ -264,57 +264,63 @@ function dashBoardCallSearch(model_data_id, userid)
    	    url: url, 
    	 /*url: "http://localhost:8080/MyCarDomain/api/user/1",*/
    	       success: function(result){
-   	    	   /*alert(result.abnNumber);
-        	   alert(result.userId);
-        	   alert(result.search);
-        	   alert(result.search[0].carSearchId);
-        	   alert(result.search.length);*/
-   	    	   //alert("processing the data");
+   	    	  
+   	    	   
+   	    	   
+   	    	   
+   	    	   
+   	    	   
+   	    	   
         	   out="";
-        	   /*alert(Object.keys( result.search ).length);*/
-        	   /*var json = JSON.parse(result1);*/
-        	   /*var json = $.parseJSON(result1);*/
+        	   
         	   var finMax = result.search.length;
         	   document.getElementById('finMax').innerHTML=finMax;
-        	   //out += '<tr><th>'+"Car Search ID"+'</th><th>'+"Autoscoop Trim"+'</th><th>'+'</th><th>'+"Model Trim"+'</th><th>'+"Model Display"+'</th><th>'+"Model Year"+'</th><th>'+"Operation"+'</th></tr>';
+        	   
         	   out += '<tr><th>'+"Car Ebid ID"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th><th>'+"Operation"+'</th></tr>';
         	   for(i=result.search.length-1;i>=0;i--)
        		{
-       		/*alert(result.search[i].carSearchId); //111 111-1111
-       		alert(result.search[i].modelDisplay);
-       		alert(result.search[i].modelTrim);
-       		alert(result.search[i].modelYear);*/
-       		//out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td>'+result.search[i].modelTrim+'</td>'+'<td>'+result.search[i].modelDisplay+'</td>'+'<td>'+result.search[i].modelYear+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
-        		   out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+       		
+       			   out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
        		
        		}
         	   out = out.replace(/>null</g, ">--NA--<");
         	   out = out.replace(/>undefined</g, ">--NA--<");
         	   //alert(out);
-        	   forFinance("car-model-data",out);/*
-        	   $("#"+sender.model_data_id).append(out);*/
-        	   //alert("came here 2");
+        	   var LogSearch = result.search;
+
+        	   if(LogSearch && result.search.length==0){
+        	   outLogT="";
+        	   outLogT='<h2>No records found</h2>';
+        	   forFinance("car-model-data",outLogT);
+        	   }
+        	   else{
+        	   forFinance("car-model-data",out);}
         	   out1="";
-        	   /*alert(Object.keys( result.search ).length);*/
-        	   /*var json = JSON.parse(result1);*/
-        	   /*var json = $.parseJSON(result1);*/
-        	   var finCt = result.search.length;
+        	   
+        	   var finCt = result.searchFinance.length;
         	   document.getElementById('finCt').innerHTML=finCt;
         	   out1 += '<tr><th>'+"Car Finance ID"+'</th><th>'+"Vehicle Value"+'</th><th>'+"Balloon Pay"+'</th><th>'+"Loan Amount"+'</th><th>'+"Operation"+'</th></tr>';
-        	   for(i=0;i<result.searchFinance.length;i++)
+        	   
+        	for(i=result.searchFinance.length-1;i>=0;i--)
        		{
-       		/*alert(result.search[i].carSearchId); //111 111-1111
-       		alert(result.search[i].modelDisplay);
-       		alert(result.search[i].modelTrim);
-       		alert(result.search[i].modelYear);*/
+       		
        		out1= out1+'<tr>'+'<td>'+result.searchFinance[i].searchFinanceId+'</td>'+'<td>'+result.searchFinance[i].vehValue+'</td>'+'<td>'+result.searchFinance[i].balloonPay+'</td>'+'<td>'+result.searchFinance[i].loanAmount+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleFinanceModal-' + result.searchFinance[i].searchFinanceId + '" data-details=\'' + JSON.stringify(result.searchFinance[i]) + '\' class="anchor-editDealerVehicleFinanceModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleFinanceModal">View</a></td></tr>';
        		
        		
        		}
         	   out1 = out1.replace(/>null</g, ">--NA--<");
         	   out1 = out1.replace(/>undefined</g, ">--NA--<");
-        	  forFinance("data1",out1);
-        	   
+        	  
+        	  var LogFinance = result.searchFinance;
+
+        	  if(LogFinance && result.searchFinance.length==0){
+        	  outLogT="";
+        	  outLogT='<h2>No records found</h2>';
+        	  forFinance("data1",outLogT);
+        	  }
+        	  else{
+        		  forFinance("data1",out1);
+        	  }
         	   /*this.model_data_id = "data1";
         	   alert("came here"+this.model_data_id);
         	   $("#"+sender.model_data_id).append(out1);*/
@@ -324,7 +330,8 @@ function dashBoardCallSearch(model_data_id, userid)
         	  var insRCt=result.searchInsurance.length;
         	   document.getElementById('insRCt').innerHTML=insRCt;
         	   out2 += '<tr><th>'+"Car Insurance ID"+'</th><th>'+"Insurance Type"+'</th><th>'+"Market Value"+'</th><th>'+"Agreed Value"+'</th><th>'+"Operation"+'</th></tr>';
-        	   for(i=0;i<result.searchInsurance.length;i++)
+        	   
+        		   for(i=result.searchInsurance.length-1;i>=0;i--)
        		{
        		
        		out2= out2+'<tr>'+'<td>'+result.searchInsurance[i].searchInsuranceId+'</td>'+'<td>'+result.searchInsurance[i].insuranceType+'</td>'+'<td>'+result.searchInsurance[i].marketValue+'</td>'+'<td>'+result.searchInsurance[i].agreedValue+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleInsuranceModal-' + result.searchInsurance[i].searchInsuranceId + '" data-details=\'' + JSON.stringify(result.searchInsurance[i]) + '\' class="anchor-editDealerVehicleInsuranceModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleInsuranceModal">View</a></td></tr>';
@@ -333,13 +340,22 @@ function dashBoardCallSearch(model_data_id, userid)
        		}
         	   out2 = out2.replace(/>null</g, ">--NA--<");
         	   out2 = out2.replace(/>undefined</g, ">--NA--<");
-        	   forFinance("car-model-data2",out2);
-//alert("result.search.length"+result.vehicleQuotation.length);
+        	   
+        	   var LogInsurance = result.searchInsurance;
+
+        	   if(LogInsurance && result.searchInsurance.length==0){
+        	   outLogT="";
+        	   outLogT='<h2>No records found</h2>';
+        	   forFinance("car-model-data2",outLogT);
+        	   }else{
+        	   forFinance("car-model-data2",out2);}
+
         	   out3="";
         	   var qtRecd = result.vehicleQuotation.length;
         	   document.getElementById('qtRecd').innerHTML=qtRecd;
         	   out3 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
-        	   for(i=0;i<result.vehicleQuotation.length;i++)
+        	   
+        		   for(i=result.vehicleQuotation.length-1;i>=0;i--)
        		{
        		
        		out3= out3+'<tr>'+'<td>'+result.vehicleQuotation[i].quotId+'</td>'+'<td>'+result.vehicleQuotation[i].dealerName+'</td>'+'<td>'+result.vehicleQuotation[i].dealerStockNo+'</td>'+'<td>'+result.vehicleQuotation[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleQuotationModal-' + result.vehicleQuotation[i].quotId + '" data-details=\'' + JSON.stringify(result.vehicleQuotation[i]) + '\' class="anchor-editDealerVehicleQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleQuotationModal">Edit</a></td></tr>';
@@ -348,13 +364,21 @@ function dashBoardCallSearch(model_data_id, userid)
        		}
         	   out3 = out3.replace(/>null</g, ">--NA--<");
         	   out3 = out3.replace(/>undefined</g, ">--NA--<");
-        	   forFinance("quo-model-data",out3);
-			//alert("result.search.length"+result.financeQuotation.length);
+        	   var LogQuotation = result.vehicleQuotation;
+
+        	   if(LogQuotation && result.vehicleQuotation.length==0){
+        	   outLogT="";
+        	   outLogT='<h2>No records found</h2>';
+        	   forFinance("quo-model-data",outLogT);
+        	   }else{
+        	   forFinance("quo-model-data",out3);}
+			
 			out4="";
 			var finQCt=result.financeQuotation.length;
 			document.getElementById('finQCt').innerHTML=finQCt;
 			        	   out4 += '<tr><th>'+"Finance Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
-        	   for(i=0;i<result.financeQuotation.length;i++)
+        	  
+        		   for(i=result.financeQuotation.length-1;i>=0;i--)
        		{
        		
         		   out4= out4+'<tr>'+'<td>'+result.financeQuotation[i].finQuotId+'</td>'+'<td>'+result.financeQuotation[i].dealerName+'</td>'+'<td>'+result.financeQuotation[i].dealerStockNo+'</td>'+'<td>'+result.financeQuotation[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerfin12QuotationModal-' + result.financeQuotation[i].finQuotId + '" data-details=\'' + JSON.stringify(result.financeQuotation[i]) + '\' class="anchor-editDealerfin12QuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerfin12QuotationModal">Edit</a></td></tr>';
@@ -362,13 +386,20 @@ function dashBoardCallSearch(model_data_id, userid)
        		}
         	   out4 = out4.replace(/>null</g, ">--NA--<");
         	   out4 = out4.replace(/>undefined</g, ">--NA--<");
-        	   forFinance("quo-data1",out4);
-//alert("result.search.length"+result.insuranceQuotation.length);
+        	   var LogFinQuo = result.financeQuotation;
+
+        	   if(LogFinQuo && result.financeQuotation.length==0){
+        	   outLogT="";
+        	   outLogT='<h2>No records found</h2>';
+        	   forFinance("quo-data1",outLogT);
+        	   }else{
+        	   forFinance("quo-data1",out4);}
+
 out5="";
 var insQCt=result.insuranceQuotation.length;
         	   document.getElementById('insQCt').innerHTML=insQCt;
         	   out5 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
-        	   for(i=0;i<result.insuranceQuotation.length;i++)
+        	   for(i=result.insuranceQuotation.length-1;i>=0;i--)
        		{
        		
        		out5= out5+'<tr>'+'<td>'+result.insuranceQuotation[i].insQuotId+'</td>'+'<td>'+result.insuranceQuotation[i].dealerName+'</td>'+'<td>'+result.insuranceQuotation[i].dealerStockNo+'</td>'+'<td>'+result.insuranceQuotation[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerins12QuotationModal-' + result.insuranceQuotation[i].insQuotId + '" data-details=\'' + JSON.stringify(result.insuranceQuotation[i]) + '\' class="anchor-editDealerins12QuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerins12QuotationModal">Edit</a></td></tr>';
@@ -376,13 +407,20 @@ var insQCt=result.insuranceQuotation.length;
        		}
         	   out5 = out5.replace(/>null</g, ">--NA--<");
         	   out5 = out5.replace(/>undefined</g, ">--NA--<");
-        	   forFinance("quo-model-data2",out5);
-        	   // start of service and Maintainence Quotations 
+        	   var LogInsQuo = result.insuranceQuotation;
+
+        	   if(LogInsQuo && result.insuranceQuotation.length==0){
+        	   outLogT="";
+        	   outLogT='<h2>No records found</h2>';
+        	   forFinance("quo-model-data2",outLogT);
+        	   } else{
+        	   forFinance("quo-model-data2",out5);}
+        	    
         	   out444="";
         	   var servQCt = result.servMaintQuotation.length;
         	   document.getElementById('servQCt').innerHTML=servQCt;
         	   out444 += '<tr><th>'+"Serv Maint Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
-        	   for(i=0;i<result.servMaintQuotation.length;i++)
+        	   for(i=result.servMaintQuotation.length-1;i>=0;i--)
        		{
        		
        		out444= out444+'<tr>'+'<td>'+result.servMaintQuotation[i].servMaintQuotId+'</td>'+'<td>'+result.servMaintQuotation[i].dealerName+'</td>'+'<td>'+result.servMaintQuotation[i].dealerStockNo+'</td>'+'<td>'+result.servMaintQuotation[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerservmaintQuotationModal-' + result.servMaintQuotation[i].servMaintQuotId + '" data-details=\'' + JSON.stringify(result.servMaintQuotation[i]) + '\' class="anchor-editDealerservmaintQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerservmaintQuotationModal">Edit</a></td></tr>';
@@ -391,13 +429,20 @@ var insQCt=result.insuranceQuotation.length;
        		}
         	   out444 = out444.replace(/>null</g, ">--NA--<");
         	   out444 = out444.replace(/>undefined</g, ">--NA--<");
-        	   forFinance("dataservmaintQuot12",out444);
-        	   // end of service and Maintainence Quotaitons
+        	   var LogServMaintQuo = result.servMaintQuotation;
+
+        	   if(LogServMaintQuo && result.servMaintQuotation.length==0){
+        	   outLogT="";
+        	   outLogT='<h2>No records found</h2>';
+        	   forFinance("dataservmaintQuot12",outLogT);
+        	   } else{
+        	   forFinance("dataservmaintQuot12",out444);}
+        	   
         	   out555="";
         	   var trasQCt = result.transpServQuotation.length;
         	   document.getElementById('trasQCt').innerHTML=trasQCt;
         	   out555 += '<tr><th>'+" Transp Serv Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
-        	   for(i=0;i<result.transpServQuotation.length;i++)
+        	   for(i=result.transpServQuotation.length-1;i>=0;i--)
        		{
        		
        		out555= out555+'<tr>'+'<td>'+result.transpServQuotation[i].TranspServQuotId+'</td>'+'<td>'+result.transpServQuotation[i].dealerName+'</td>'+'<td>'+result.transpServQuotation[i].dealerStockNo+'</td>'+'<td>'+result.transpServQuotation[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealertranspservQuotationModal-' + result.transpServQuotation[i].TranspServQuotId + '" data-details=\'' + JSON.stringify(result.transpServQuotation[i]) + '\' class="anchor-editDealertranspservQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealertranspservQuotationModal">Edit</a></td></tr>';
@@ -406,18 +451,19 @@ var insQCt=result.insuranceQuotation.length;
        		}
         	   out555 = out555.replace(/>null</g, ">--NA--<");
         	   out555 = out555.replace(/>undefined</g, ">--NA--<");
-        	   forFinance("datatranspservQuot",out555);
-        	   // start of Transp Serive Quotation registerEditDealertranspservQuotationModal
+        	   var LogTranspServQuo = result.transpServQuotation;
+
+        	   if(LogTranspServQuo && result.transpServQuotation.length==0){
+        	   outLogT="";
+        	   outLogT='<h2>No records found</h2>';
+        	   forFinance("datatranspservQuot",outLogT);
+        	   } else{
+        	   forFinance("datatranspservQuot",out555);}
         	   
-        	   
-        	   // end
-        	   
-        	   
-        	 //alert("result.search.length"+result.insuranceQuotation.length);
         	   out6="";
         	  
            	   out6 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Operation"+'</th></tr>';
-           	   for(i=0;i<result.myVehicle.length;i++)
+           	  for(i=result.myVehicle.length-1;i>=0;i--)
           		{
           		
           		out6= out6+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleDetailModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailModal">View</a></td></tr>';
@@ -426,7 +472,14 @@ var insQCt=result.insuranceQuotation.length;
           		}
            	out6 = out6.replace(/>null</g, ">--NA--<");
            	out6 = out6.replace(/>undefined</g, ">--NA--<");
-           	   forFinance("quo-model-data4",out6);
+           	var LogMyVehi = result.myVehicle;
+
+           	if(LogMyVehi && result.myVehicle.length==0){
+           	outLogT="";
+           	outLogT='<h2>No records found</h2>';
+            forFinance("quo-model-data4",outLogT);
+           	} else{
+           	   forFinance("quo-model-data4",out6);}
         	               	   
         	               	   //start
         	               	 var options = '<option value="">Please choose a car</option>';  
@@ -477,13 +530,20 @@ var insQCt=result.insuranceQuotation.length;
        	               	   for(i=0;i<result.myVehicle.length;i++)
        	              		{
        	              		
-       	              		//out8= out8+'<tr><td><a href="#" id="anchor-editDealerVehicleInsuranceModal" class="logBookBtn">Log Book</a></td>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
+       	              		
        	               		out8= out8+'<td><a href="#" id="anchor-editDealerVehicleDetailLogBookModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailLogBookModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailLogBookModal">LogBook</a></td><td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
        	              		
        	              		}
        	               	out8 = out8.replace(/>null</g, ">--NA--<");
        	             out8 = out8.replace(/>undefined</g, ">--NA--<");
-         	               	forFinance("fuelCard4",out8);
+       	          var LogMyVehLogBoSta = result.myVehicle;
+
+       	       if(LogMyVehLogBoSta && result.myVehicle.length==0){
+       	       outLogT="";
+       	       outLogT='<h2>No records found</h2>';
+       	    forFinance("fuelCard4",outLogT);
+       	       } else {
+         	               	forFinance("fuelCard4",out8);}
          	               	//alert("logbook loaded");
          	               	
          	               out9="";
@@ -503,86 +563,86 @@ var insQCt=result.insuranceQuotation.length;
         	               	
         	               	
         	                out10="";
-        	         	   /*change here*/
-        	         	   /*var json = JSON.parse(result1);*/
-        	         	   /*var json = $.parseJSON(result1);*/
+        	         	   
         	         	   var servRCt = result.searchServMaint.length;
         	         	   document.getElementById('servRCt').innerHTML=servRCt;
         	         	   out10 += '<tr><th>'+"Car Serv Maint ID"+'</th><th>'+"Servic L1"+'</th><th>'+"Service L2"+'</th><th>'+"Rego State"+'</th><th>'+"Operation"+'</th></tr>';
-        	         	   for(i=0;i<result.searchServMaint.length;i++)
+        	         	   for(i=result.searchServMaint.length-1;i>=0;i--)
         	        		{
-        	        		/*alert(result.search[i].carSearchId); //111 111-1111
-        	        		alert(result.search[i].modelDisplay);
-        	        		alert(result.search[i].modelTrim);
-        	        		alert(result.search[i].modelYear);*/
+        	        		
         	        		out10= out10+'<tr>'+'<td>'+result.searchServMaint[i].searchServMaintId+'</td>'+'<td>'+result.searchServMaint[i].servMaintL1+'</td>'+'<td>'+result.searchServMaint[i].servMaintL2+'</td>'+'<td>'+result.searchServMaint[i].regoState+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleservmaintModal-' + result.searchFinance[i].searchServMaintId + '" data-details=\'' + JSON.stringify(result.searchServMaint[i]) + '\' class="anchor-editDealerVehicleservmaintModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmaintModal">View</a></td></tr>';
         	        		
         	        		
         	        		}
         	         	   out10 = out10.replace(/>null</g, ">--NA--<");
         	         	   out10 = out10.replace(/>undefined</g, ">--NA--<");
-        	         	  forFinance("dataservmaint",out10);
+        	         	  var LogSearchServMaint = result.searchServMaint;
+
+        	         	 if(LogSearchServMaint && result.searchServMaint.length==0){
+        	         	 outLogT="";
+        	         	 outLogT='<h2>No records found</h2>';
+        	         	forFinance("dataservmaint",outLogT);
+        	         	 } else{
+        	         	  forFinance("dataservmaint",out10);}
         	         	  
         	         	  
         	         		
       	                out11="";
-      	         	   /*change here*/
-      	         	   /*var json = JSON.parse(result1);*/
-      	         	   /*var json = $.parseJSON(result1);*/
+      	         	  
       	         	   var trasRCt = result.searchTransp.length;
       	         	   document.getElementById('trasRCt').innerHTML=trasRCt;
       	         	   out11 += '<tr><th>'+"Car Trans ID"+'</th><th>'+"pickUpDateTime"+'</th><th>'+"noOfCars"+'</th><th>'+"fromPostCodeAddr"+'</th><th>'+"Operation"+'</th></tr>';
-      	         	   for(i=0;i<result.searchTransp.length;i++)
+      	         	   for(i=result.searchTransp.length-1;i>=0;i--)
       	        		{
-      	        		/*alert(result.search[i].carSearchId); //111 111-1111
-      	        		alert(result.search[i].modelDisplay);
-      	        		alert(result.search[i].modelTrim);
-      	        		alert(result.search[i].modelYear);*/
+      	        		
       	        		out11= out11+'<tr>'+'<td>'+result.searchTransp[i].searchTranspId+'</td>'+'<td>'+result.searchTransp[i].pickUpDateTime+'</td>'+'<td>'+result.searchTransp[i].noOfCars+'</td>'+'<td>'+result.searchTransp[i].fromPostCodeAddr+'</td>'+'<td><a href="#" id="anchor-editDealerVehicletranspModal-' + result.searchTransp[i].searchTranspId + '" data-details=\'' + JSON.stringify(result.searchTransp[i]) + '\' class="anchor-editDealerVehicletranspModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicletranspModal">View</a></td></tr>';
       	        		
       	        		
       	        		}
       	         	   out11 = out11.replace(/>null</g, ">--NA--<");
       	         	   out11 = out11.replace(/>undefined</g, ">--NA--<");
-      	         	  forFinance("datatranspserv",out11);
+      	         	var LogSearchTransp = result.searchTransp;
+
+      	         	if(LogSearchTransp && result.searchTransp.length==0){
+      	         	outLogT="";
+      	         	outLogT='<h2>No records found</h2>';
+      	         	forFinance("datatranspserv",outLogT);
+      	         	} else {
+      	         	  forFinance("datatranspserv",out11);}
       	         	  
       	         	out12="";
    	         	   
-   	         	   //out12 += '<tr><th>'+"Code"+'</th><th>'+"Type Of Req"+'</th><th>'+"Description"+'</th><th>'+"Comment"+'</th><th>'+"end Date"+'</th></tr>';
-   	         	   //alert(result.userNotification.length);
-   	         	   for(i=0;i<result.userNotification.length;i++)
+   	         	   
+   	         	   for(i=result.userNotification.length-1;i>=0;i--)
    	        		{
-   	        		/*alert(result.search[i].carSearchId); //111 111-1111
-   	        		alert(result.search[i].modelDisplay);
-   	        		alert(result.search[i].modelTrim);
    	        		
-   	        		alert(result.search[i].modelYear);*/
    	        		out12= out12+'<tr>'+'<td>'+result.userNotification[i].code+'</td>'+'<td>'+result.userNotification[i].typeOfReq+'</td>'+'<td>'+result.userNotification[i].makeDescription+'</td>'+'<td>'+result.userNotification[i].comment+'</td></tr>';
    	        		
    	        		
    	        		}
    	         	   out12 = out12.replace(/>null</g, ">--NA--<");
    	         	   out12 = out12.replace(/>undefined</g, ">--NA--<");
-   	         	//alert(out12);
-   	         	  forFinance("userNotification",out12);
+   	         	var LogUserNot = result.userNotification;
+
+   	         if(LogUserNot && result.userNotification.length==0){
+   	         outLogT="";
+   	         outLogT='<h2>No records found</h2>';
+   	      forFinance("userNotification",outLogT);
+   	         } else {
+   	         	  forFinance("userNotification",out12);}
    	         	out14="";
 	         	   
-	         	   //out14 += '<tr><th>'+"Code"+'</th><th>'+"Type Of Req"+'</th><th>'+"Description"+'</th><th>'+"Comment"+'</th><th>'+"end Date"+'</th></tr>';
-	         	   //alert(result.userNotification.length);
-	         	   for(i=0;i<result.currentOffers.length;i++)
+	         	   
+	         	   for(i=result.currentOffers.length-1;i>=0;i--)
 	        		{
-	        		/*alert(result.search[i].carSearchId); //111 111-1111
-	        		alert(result.search[i].modelDisplay);
-	        		alert(result.search[i].modelTrim);
 	        		
-	        		alert(result.search[i].modelYear);*/
 	        		out14= out14+'<tr>'+'<td>'+result.currentOffers[i].code+'</td>'+'<td>'+result.currentOffers[i].makeDescription+'</td></tr>';
 	        		
 	        		
 	        		}
 	         	   out14 = out14.replace(/>null</g, ">--NA--<");
 	         	   out14 = out14.replace(/>undefined</g, ">--NA--<");
-	         	//alert(out12);
+	         	
 	         	  forFinance("currentOffers",out14);
         	               	registerEditDealerVehicleQuotationModal();
         	               	registerEditDealerVehicleSearchModal();
@@ -598,34 +658,15 @@ var insQCt=result.insuranceQuotation.length;
         	               	registerEditDealerVehicleDetailLogBookModal();
            } 
    	  }); 
-   /* $.ajax({
-        url: "http://localhost:8080/MyCarDomain/api/user/70",
-        data: { signature: authHeader },
-        type: "GET",
-        beforeSend: function(xhr){xhr.setRequestHeader('X-Test-Header', 'test-value');},
-        success: function() { alert('Success!' + authHeader); }
-     });*/
+   
 }
 
 function forFinance(model_data_id, out)
 {
  this.model_data_id = model_data_id;
-      //$("#"+this.model_data_id).html("Loading Model Data...");
- //alert("came here 2 inside");
-    
-//alert("out"+out);
-    
-        	   //alert(out);
+     
         	   $("#"+model_data_id).html(out);
-        	   //alert("came here 2");
-        	  
-   /* $.ajax({
-        url: "http://localhost:8080/MyCarDomain/api/user/70",
-        data: { signature: authHeader },
-        type: "GET",
-        beforeSend: function(xhr){xhr.setRequestHeader('X-Test-Header', 'test-value');},
-        success: function() { alert('Success!' + authHeader); }
-     });*/
+        	   
 }
 function registerEditDealerservmaintQuotationModal(){       
 
