@@ -1219,7 +1219,7 @@ function onSignInG()
 {
 	gapi.load('auth2', function() {
 		  auth2 = gapi.auth2.init({
-		    client_id: '814821459166-2snv3tdshqgusiuhjnuoedrg0akt83ol.apps.googleusercontent.com',
+		    client_id: '814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com',
 		    });
 
 		  // Sign the user in, and then retrieve their ID.
@@ -1417,7 +1417,9 @@ $scope.submitForm1 = function() {
 		alert(jsonInputToAPI.flex3); */
 
 		$body = $("body");
-		$body.addClass("moSign");
+		//$body.addClass("moSign");
+		$body.addClass("loading");
+		
 	    if(flex3==1 || flex3==2 || flex3==3 || flex3==4 || flex3==5)
 	    	{
 	    	
@@ -1427,6 +1429,7 @@ $scope.submitForm1 = function() {
 				data: jsonInputToAPI
 								
 			}).success(function(data) {
+				$body.removeClass("loading");
 				alert("successful login set to session");
 				setting(data);
 				/* $.jStorage.set("key",data);
@@ -1445,7 +1448,7 @@ $scope.submitForm1 = function() {
 				}
 							});
 	    	}
-	    $body.removeClass("moSign");
+	    //$body.removeClass("moSign");
 	    
 		
 	    	
