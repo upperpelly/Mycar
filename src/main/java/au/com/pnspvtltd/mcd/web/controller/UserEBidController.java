@@ -71,7 +71,7 @@ public class UserEBidController {
 	    //TODO: create a service for VehicleQutotation to update quotation details
 		if(userMyVehicleVO != null){
 			User user = userRepository.findOne(userMyVehicleVO.getUserId());
-			user.setSubOrb(userMyVehicleVO.getPhoto());
+			user.setIssueState(userMyVehicleVO.getPhoto());
 			//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
 		}
 		return userMyVehicleVO;

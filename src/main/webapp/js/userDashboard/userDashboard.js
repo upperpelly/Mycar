@@ -73,8 +73,7 @@ $(document).ready(function(){
 	
 	//changed to Onload
 	
-	var userDetails ='<a href="#" class="button btn-mini pull-right edit-profile-btn">EDIT PROFILE</a>\
-		<h2 class="box-title fullname">' + value.firstName + '</h2>\
+	var userDetails ='<h2 class="box-title fullname">' + value.firstName + '</h2>\
 		<dl class="term-description">\
 	    <dt>user name:</dt><dd>' +value.email+ '</dd>\
 	    <dt>first name:</dt><dd>' +value.firstName+ '</dd>\
@@ -89,9 +88,16 @@ $(document).ready(function(){
 	/*alert("onload");
 		alert(userDetails);
 		console.log(userDetails);*/
-	$(".userdetails").append(userDetails);
-
 	
+	$(".userdetails").append(userDetails);
+	var default1='https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/dashboard.png';
+	var profilePic
+if(value.issueState!="ss" || value.issueState!=""){
+	profilePic = '<img width="270" height="263" alt="" src="'+value.issueState+'"'+'>';
+}
+else{profilePic = '<img width="270" height="263" alt="" src="'+default1+'"'+'>';}
+	alert(profilePic);
+	$("#profilePic").append(profilePic);
 	function parseURLParameter(Parameter)
 	{
 	
@@ -279,7 +285,8 @@ function dashBoardCallSearch(model_data_id, userid)
         	   out += '<tr><th>'+"Car Ebid ID"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th><th>'+"Operation"+'</th></tr>';
         	   for(i=result.search.length-1;i>=0;i--)
        		{
-       		
+        		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+
        			   out= out+'<tr>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
        		
        		}
@@ -466,9 +473,11 @@ var insQCt=result.insuranceQuotation.length;
            	  for(i=result.myVehicle.length-1;i>=0;i--)
           		{
           		
-          		out6= out6+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleDetailModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailModal">View</a></td></tr>';
-          		
-          		
+          		//<tr><td>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.myVehicle[i].photo1+'"/></li></ul>'+'</td></tr>'+
+           		
+           		 //out6= out6+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleDetailModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailModal">View</a></td></tr>';
+           		out6= out6+'<tr>'+'<td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleDetailModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailModal">View</a></td></tr>';
+          		//alert(out6);
           		}
            	out6 = out6.replace(/>null</g, ">--NA--<");
            	out6 = out6.replace(/>undefined</g, ">--NA--<");
@@ -1790,6 +1799,7 @@ function registerEditDealerVehicleDetailModal(){
 		
 		
 		var editDealerVehicleDetailForm = '<form id="edit-dealer-vehicle-detail-content-form"><table>\
+			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+data.photo1+'"'+' height="200" width="250"/></li></ul>\
 			<tr><td>My Vehicle ID</td><td>' + data.myVehicleId + '</td></tr>\
 			<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
 			<tr><td>Year</td><td>' + data.year + '</td></tr>\
@@ -2057,7 +2067,7 @@ function registerEditDealerVehicleDetailLogBookModal(){
 						
 	           	    for(i=0;i<logSlen;i++)
 	          		 {
-	           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].flex1+'</td>'+'<td>'+result.myVehicleServMaint[i].flex2+'</td>'+'<td>'+result.myVehicleServMaint[i].flex3+'</td><td>'+result.myVehicleServMaint[i].mechanicName+'</td>'+'<td>'+result.myVehicleServMaint[i].companyName+'</td><td>'+result.myVehicleServMaint[i].flex4+'</td></tr>';
+	           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].flex1+'</td>'+'<td>'+result.myVehicleServMaint[i].flex2+'</td>'+'<td>'+result.myVehicleServMaint[i].flex3+'</td><td>'+result.myVehicleServMaint[i].mechanicName+'</td>'+'<td>'+result.myVehicleServMaint[i].companyName+'</td><td>'+result.myVehicleServMaint[i].uploadPhoto+'</td></tr>';
 	          		 }
 	           	 outLogS = outLogS.replace(/>null</g, ">--NA--<");
 	           	outLogS = outLogS.replace(/>undefined</g, ">--NA--<");
@@ -2283,7 +2293,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 										
 					           	    for(i=0;i<logSlen;i++)
 					          		 {
-					           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].flex1+'</td>'+'<td>'+result.myVehicleServMaint[i].flex2+'</td>'+'<td>'+result.myVehicleServMaint[i].flex3+'</td><td>'+result.myVehicleServMaint[i].mechanicName+'</td>'+'<td>'+result.myVehicleServMaint[i].companyName+'</td><td>'+result.myVehicleServMaint[i].flex4+'</td></tr>';
+					           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].flex1+'</td>'+'<td>'+result.myVehicleServMaint[i].flex2+'</td>'+'<td>'+result.myVehicleServMaint[i].flex3+'</td><td>'+result.myVehicleServMaint[i].mechanicName+'</td>'+'<td>'+result.myVehicleServMaint[i].companyName+'</td><td>'+result.myVehicleServMaint[i].uploadPhoto+'</td></tr>';
 					          		 }
 					           	 outLogS = outLogS.replace(/>null</g, ">--NA--<");
 					           	outLogS = outLogS.replace(/>undefined</g, ">--NA--<");
@@ -2298,6 +2308,10 @@ mainApp1.controller('myController13',function($scope, $http) {
 					}
 
 					$scope.submitSearchForm = function() {
+						var fileChooserMyVeh = document.getElementById('file-chooser');
+						var fileMyVeh = fileChooserMyVeh.files[0];
+						var objKeyMyVeh = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileMyVeh.name;
+				//alert("Image of MyVehicle"+objKeyMyVeh);
 						var RegExpDate= stringToDate($('#RegExpDate').val(),"dd/MM/yyyy","/");
 						var InsExpDate= stringToDate($('#InsExpDate').val(),"dd/MM/yyyy","/");
 						var LastServDate= stringToDate($('#LastServDate').val(),"dd/MM/yyyy","/");
@@ -2334,7 +2348,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 												"fuelCardProvider":$('#fuelCardProv').val(),	
 											"valFuelCard":$('#valFuelCard').val(),	
 											"fuelType":$('#fuelType').val(),
-												"photo1":$('#photo1').val(),	
+											"photo1":objKeyMyVeh,	
 											"photo2":$('#photo2').val(),	
 											"photo3":$('#photo3').val(),
 												"flex1":"flex1",	
@@ -2450,11 +2464,88 @@ mainApp1.controller('myController13',function($scope, $http) {
 														    });
 													};
 													
+													$scope.submitSearchFormupdateset = function() {
+														alert("inside updatset");
+														/*alert("inside Sesdarv Maint");
+														alert(myVehicleIDuse);*/
+														/*var vehicleTypeServMaint= stringToDate($('#vehicleTypeServMaint').val(),"dd/MM/yyyy","/");
+														var nextServiceMaintenanceDate= stringToDate($('#nextServiceMaintenanceDate').val(),"dd/MM/yyyy","/");*/
+														
+														var fileChooserlogupdateset = document.getElementById('file-chooser-updateset');
+														var filefileChooserupdateset = fileChooserlogupdateset.files[0];
+														var objKeyupdateset = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + filefileChooserupdateset.name;
+														alert(objKeyupdateset);
+														var jsonInputToAPI = {"userId":value.userId,"photo":objKeyupdateset}
+														
+														/*var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
+																"myVehicleServMaintVO":{
+																	"myVehicleServMaintId":null,
+																	"date":$('#vehicleTypeServMaint').val(),
+																	"Time":null,
+																	"recordType":"Service&Maintenance",
+																	"mechanicName":$('#mechanicNameCompanyName').val(),
+																	"companyName":"pqrs",
+																	"typeOfServMaint":$('#typeServiceMaintenance').val(),
+																	"mechanicAddress":$('#mechanicAddress').val(),
+																	"contactDetails":$('#contactDetails').val(),
+																	"odoMeterKm":$('#odoMeterKmsMilesServMaint').val(),
+																	"totalAmount":$('#totalAmount').val(),
+																	"nextOdoMeterKm":$('#NextServiceMaintenanceOdoMeterKmsmils').val(),
+																	"nextServDate":$('#nextServiceMaintenanceDate').val(),
+																	"uploadPhoto":objKeyupdateset,
+																	"flex1":null,
+																	"flex2":null,
+																	"flex3":null,
+																	"flex4":null,
+																	"flex5":0,
+																	"flex6":0,
+																	"flex7":0,
+																	"flex8":null,
+																	"flex9":null
+																}
+																}*/
+
+
+														//alert("Before Call");
+														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
+														//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
+														
+														
+															   /* $http({
+																			method : 'POST',
+																			url : wsURL,
+																			data: jsonInputToAPI
+																							
+																		}).success(function(data) {
+																			$scope.vehicleRetrievalforLogBook();
+																			alert("Service & Maintenance Successfully Stored..");
+																															
+																						});*/	
+														$.ajax({  
+									                		type: "POST",  
+									                		url: "api/updatePhoto?_method=PUT",
+									                		data: JSON.stringify(jsonInputToAPI),
+									                		contentType:'application/json',
+									                		success: function(result){
+									                			
+									                			alert("Successfully upated photo to user");
+									                			
+									                		}
+									                	});
+														};
+													
+													
+													
 													$scope.submitSearchFormServMaint = function() {
 														/*alert("inside Sesdarv Maint");
 														alert(myVehicleIDuse);*/
 														/*var vehicleTypeServMaint= stringToDate($('#vehicleTypeServMaint').val(),"dd/MM/yyyy","/");
 														var nextServiceMaintenanceDate= stringToDate($('#nextServiceMaintenanceDate').val(),"dd/MM/yyyy","/");*/
+														
+														var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
+														var filefileChooserlogservmaint = fileChooserlogservmaint.files[0];
+														var objKeyfilefileChooserlogservmaint = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;
+														alert(objKeyfilefileChooserlogservmaint);
 														var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 																"myVehicleServMaintVO":{
 																	"myVehicleServMaintId":null,
@@ -2470,7 +2561,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 																	"totalAmount":$('#totalAmount').val(),
 																	"nextOdoMeterKm":$('#NextServiceMaintenanceOdoMeterKmsmils').val(),
 																	"nextServDate":$('#nextServiceMaintenanceDate').val(),
-																	"uploadPhoto":"XYz",
+																	"uploadPhoto":objKeyfilefileChooserlogservmaint,
 																	"flex1":null,
 																	"flex2":null,
 																	"flex3":null,
@@ -2505,7 +2596,11 @@ mainApp1.controller('myController13',function($scope, $http) {
 														
 														
 														$scope.submitMyVehicleFuelExpenses = function() {
-															alert("inside Fuel Expe");
+															alert("inside Fuel Expe")
+															var fileChooserLogExp = document.getElementById('file-chooser-lognewexp');
+						var filelogexp = fileChooserLogExp.files[0];
+						var objKeylogexp = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + filelogexp.name;
+				alert("Image of MyVehicle"+objKeylogexp);;
 															//alert(myVehicleIDuse);
 															var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 																	"myVehicleFuelExpensesVO":{
@@ -2518,7 +2613,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 																		"business":$('#ExpType').val(),
 																		"private2":" ",
 																		"others":$('#ExpDesc').val(),
-																		"photoOfInvoice":" ",
+																		"photoOfInvoice":objKeylogexp,
 																		"flex1":null,
 																		"flex2":null,
 																		"flex3":null,

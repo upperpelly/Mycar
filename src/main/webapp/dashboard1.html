@@ -847,10 +847,10 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                           <div class="view-profile">
                                     <article class="image-box style2 box innerstyle personal-details">
                                          <figure>
-                                            <a title="" href="#"><img width="270" height="263" alt="" src="https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/dashboard.png"></a>
+                                            <a id = "profilePic" title="" href="#"></a>
                                         </figure>
                                         <div class="userdetails">
-                                           
+                                           <a href="#" class="button btn-mini pull-right edit-profile-btn">EDIT PROFILE</a>
                                         </div>
                                     </article>
                                     
@@ -1051,7 +1051,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             <div class="row form-group">
                                                 <div class="col-sms-12 col-sm-6 no-float">
                                                     <div class="fileinput full-width">
-                                                        <input type="file" class="input-text" data-placeholder="select image/s">
+                                                        <input type="file" id="file-chooser-updateset" class="input-text" data-placeholder="select image/s">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1061,8 +1061,12 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 <textarea rows="5" class="input-text full-width" placeholder="please tell us about you"></textarea>
                                             </div>
                                             <div class="from-group">
-                                                <button type="submit" class="btn-medium col-sms-6 col-sm-4">UPDATE SETTINGS</button>
+                                                
+                                                 <button type="button" id="upload-button-updatesetting" class="full-width btn-large"
+																					ng-click="submitSearchFormupdateset()">UPDATE SETTINGS</button>
                                             </div>
+                                            
+                                           
 
                                         </div>
                                     </form>
@@ -1406,7 +1410,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 				                                    <input type="file" id="file-chooser" />
 				
 				
-												    <button id="upload-button" style="display:none">Upload to S3</button>
+												   <!--  <button id="upload-button" style="display:none">Upload to S3</button> -->
 												
 												
 												    <div id="results"></div>
@@ -1783,7 +1787,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 																	</div>
 				                               <div class="form-group row">
 				                                    <div class="col-sm-6 col-md-5">
-				                                        <button class="full-width btn-large" ng-click="submitSearchForm()" >Save</button>
+				                                        <button id="upload-button" class="full-width btn-large" ng-click="submitSearchForm()" >Save</button>
 				                                    </div>
 				                                </div> 
 				                               
@@ -2313,13 +2317,13 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 															</div> 
 															<div class="col-sm-6 col-md-6"> 
 																<label>Photo of Bill</label> 
-																<input type="file" id="file-chooser" class="input-text full-width" value="" placeholder="" />
-																<button id="upload-button" type="button">Upload</button>
+																<input type="file" id="file-chooser-lognewexp" class="input-text full-width" value="" placeholder="" />
+																<!-- <button id="upload-button-lognewexp" type="button">Upload</button> -->
 															</div> 
 														</div> 
 														<div class="form-group row"> 
 															<div class="col-sm-6 col-md-5"> 
-																<button type="button" class="full-width btn-large" id="LogExpSave" ng-click="submitMyVehicleFuelExpenses()">Save</button> 
+																<button type="button" id="upload-button-lognewexp" class="full-width btn-large" id="LogExpSave" ng-click="submitMyVehicleFuelExpenses()">Save</button> 
 															</div> 
 												        </div> 
 														</form> 
@@ -2411,16 +2415,16 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 																		<div class="form-group row">
 																			<div class="col-sm-6 col-md-6">
 																				<label>Photo of the Invoice</label> <input
-																					type="file" id="photoInvoice" name="photoInvoice"
+																					type="file" id="file-chooser-logservmaint" name="photoInvoice"
 																					class="input-text full-width" value=""
 																					placeholder="" />
 																					
-																				<button id="upload-button" type="button">Upload</button>
+																				<!-- <button id="upload-button-logservmaint" type="button">Upload</button> -->
 																			</div>
 																		</div>
 																		<div class="form-group row">
 																			<div class="col-sm-6 col-md-5">
-																				<button type="button" class="full-width btn-large"
+																				<button type="button" id="upload-button-logservmaint" class="full-width btn-large"
 																					ng-click="submitSearchFormServMaint()">Save</button>
 																			</div>
 																		</div>
@@ -2704,11 +2708,11 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
         });
     </script>
        <script type="text/javascript">
-
+       <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 
         var appId = '238604546585672';
 
-
+      //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
         var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
 
 
@@ -2741,14 +2745,23 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
         var button = document.getElementById('upload-button');
-
+        
+        var fileChooserLogExp = document.getElementById('file-chooser-lognewexp');
+        var buttonLogExp = document.getElementById('upload-button-lognewexp');
+        
+        var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
+        var buttonlogservmaint = document.getElementById('upload-button-logservmaint');
+        
+        var fileChooserupdateset = document.getElementById('file-chooser-updateset');
+        var buttonupdatesetting = document.getElementById('upload-button-updatesetting');
+        
 
         var results = document.getElementById('results');
 
 
         button.addEventListener('click', function () {
 
-
+			alert("came here on click of save");
             var file = fileChooser.files[0];
 
 
@@ -2814,7 +2827,217 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
         }, false);
 
+ // start for log Expense 
+ buttonLogExp.addEventListener('click', function () {
 
+			alert("came here on click of log Expenses");
+            var file = fileChooserLogExp.files[0];
+
+
+            if (file) {
+
+
+                results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file.type,
+
+
+                    Body: file,
+
+
+                    ACL: 'public-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+
+                    if (err) {
+
+
+                        results.innerHTML = 'ERROR: ' + err;
+
+
+                    } else {
+
+
+                        listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+
+                results.innerHTML = 'Nothing to upload.';
+
+
+            }
+
+
+        }, false);
+ // end for log expense
+ 
+ // start for update settings 
+ buttonupdatesetting.addEventListener('click', function () {
+
+			alert("came here on click of log update settings..");
+            var file = fileChooserupdateset.files[0];
+
+
+            if (file) {
+
+
+                results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file.type,
+
+
+                    Body: file,
+
+
+                    ACL: 'public-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+
+                    if (err) {
+
+
+                        results.innerHTML = 'ERROR: ' + err;
+
+
+                    } else {
+
+
+                        listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+
+                results.innerHTML = 'Nothing to upload.';
+
+
+            }
+
+
+        }, false);
+ // end for update Settings
+ // start for log service and maintainence 
+ buttonlogservmaint.addEventListener('click', function () {
+
+			alert("came here on click of log service and maintenance");
+            var file = fileChooserlogservmaint.files[0];
+
+
+            if (file) {
+
+
+                results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file.type,
+
+
+                    Body: file,
+
+
+                    ACL: 'public-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+
+                    if (err) {
+
+
+                        results.innerHTML = 'ERROR: ' + err;
+
+
+                    } else {
+
+
+                        listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+
+                results.innerHTML = 'Nothing to upload.';
+
+
+            }
+
+
+        }, false);
+ // end for log service and maintenance
+ 
+ 
+ 
         function listObjs() {
 
 
@@ -2864,120 +3087,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                 	$(".edit-dealer-vehicle-quotation-content").html(editDealerVehicleQuotationForm);
                 	
                 	var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
-                	//alert(jsonInput);
-                	/* var jsonInputToAPI = {"userId":99,
-                			"s":null,
-                			"myVehicleVO":{
-                				"myVehicleId":null,
-                				"year": $('#car-years').val(),															      
-                				"make":$('#car-makes').val(),
-                						"model" :$('#car-models').val(),
-                						 "variant":$('#car-model-trims').val(),
-                						"vin":$('#vin').val(),
-                						"regNum":$('#regNo').val(),
-                						"regState":$('#car-model-trims').val(),
-                						"regExpDate":null,
-                						"insProv":$('#regState').val(),
-                						"insProvMan":$('#insProv').val(),
-                						"insPremPaid":$('#insPrePaid').val(),
-                						"insPremPaidFreq":$('#premPaidFreq').val(),
-                						"insExpiry":null,	
-                						"odoMeter":$('#odoMeter').val(),	
-                						"lastServiceDt":null,	
-                						"nextServiceDt":null,	
-                						"nextServKms":$('#nextServMaiKms').val(),	
-                						"finProvider":$('#finProv').val(),	
-                						"loanAmt1":$('#loanAmount').val(),	
-                						"loanTakenDt":null,
-                							"loanPaidFreq":$('#loanPaidFreq').val(),	
-                						"loanAmt2":$('#laonAmount1').val(),	
-                						"loanPeriod":$('#laonPeriod').val(),	
-                						"loanInterest":$('#laonIntRate').val(),
-                							"fuelCardProvider":$('#fuelCardProv').val(),	
-                						"valFuelCard":$('#valFuelCard').val(),	
-                						"fuelType":$('#fuelType').val(),
-                							"photo1":$('#photo1').val(),	
-                						"photo2":$('#photo2').val(),	
-                						"photo3":$('#photo3').val(),
-                							"flex1":"flex1",	
-                						"flex2":"flex1",	
-                						"flex3":"flex1",
-                							"flex4":"flex1",	
-                						"flex5":12,	
-                						"flex6":12,
-                						"flex7":12,
-                							"flex8":null,	
-                						"flex9":null
-                			}
-                			} */
-                			var jsonInputToAPI = {userId:99,
-                        			photo:'12GHJF'};
-                			
-                			/* var jsonInputToAPI = {"userId":99,
-                    			"photo":"2154sdfa",
-                    			"myVehicleVO":{
-                    				"myVehicleId":null,
-                    				"year": 2012,															      
-                    				"make":"sdad",
-                    						"model" :"ssd",
-                    						 "variant":"dasdsa",
-                    						"vin":"das",
-                    						"regNum":"dasddrwq",
-                    						"regState":"dasdfsaf",
-                    						"regExpDate":null,
-                    						"insProv":"dasdasd",
-                    						"insProvMan":"dasfd",
-                    						"insPremPaid":null,
-                    						"insPremPaidFreq":null,
-                    						"insExpiry":null,	
-                    						"odoMeter":null,	
-                    						"lastServiceDt":null,	
-                    						"nextServiceDt":null,	
-                    						"nextServKms":12,	
-                    						"finProvider":"dsasdw",	
-                    						"loanAmt1":10122.3,	
-                    						"loanTakenDt":null,
-                    							"loanPaidFreq":"dasd",	
-                    						"loanAmt2":1231,	
-                    						"loanPeriod":12,	
-                    						"loanInterest":33,
-                    							"fuelCardProvider":"dsad",	
-                    						"valFuelCard":null,	
-                    						"fuelType":null,
-                    							"photo1":null,	
-                    						"photo2":null,	
-                    						"photo3":null,
-                    							"flex1":"flex1",	
-                    						"flex2":"flex1",	
-                    						"flex3":"flex1",
-                    							"flex4":"flex1",	
-                    						"flex5":12,	
-                    						"flex6":12,
-                    						"flex7":12,
-                    							"flex8":null,	
-                    						"flex9":null
-                    			}
-                    			};
- */
-                	//alert("Before Call");
-                	//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
-                	//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
-                	
-                	
-                		   /* $http({
-                						method : 'POST',
-                						url : wsURL,
-                						data: jsonInputToAPI
-                										
-                					}).success(function(data) {
-                						alert("Successfully Stored..");
-                										alert("Thank You. Your MyVehicle ID is " + data.myVehicleId);
-                																		
-                									});	*/
-                	
-                	//jsonInputToAPI.photo = objKeys;
-                	//alert(jsonInputToAPI);
-                	
+                
                 	$.ajax({  
                 		type: "POST",  
                 		url: "api/updatePhoto?_method=PUT",
