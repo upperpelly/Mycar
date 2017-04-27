@@ -1585,8 +1585,12 @@ $scope.submitForm1 = function() {
 		alert(email); */
 		if(alreadyLogged()){
 		userId=$.jStorage.get('key').userId;
-		//alert("inside insurance user id"+userId);
-		
+		fbUserId=$.jStorage.get("fbKey");
+		alert("inside insurance user id"+fbUserId);
+		var fileChooserserv1 = document.getElementById('uploadPhotoServ1');
+						var fileServ1 = fileChooserserv1.files[0];
+						var objKeyMyVeh = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ1.name;
+				alert("Image of MyVehicle"+objKeyMyVeh);
 		var jsonInputToAPI = {"userId":userId,
 				"servMaintLead":{
 				"searchServMaintId":null,
@@ -1600,7 +1604,7 @@ $scope.submitForm1 = function() {
 			"feulType":"sada",
 			"servMaintL1":"sada",
 			"servMaintL2":"sada",
-			"uploadPhotos":"lssa",
+			"uploadPhotos":objKeyMyVeh,
 			"coveredUnderIns":false,
 			"curInsProv":"lssa",
 			"freeText":"sada"
@@ -1621,7 +1625,7 @@ $scope.submitForm1 = function() {
 		
 		jsonInputToAPI.servMaintLead.feulType =$('#fuelTypeServ').val();
 		jsonInputToAPI.servMaintLead.servMaintL2=$('#ServL2').val();
-		jsonInputToAPI.servMaintLead.uploadPhotos =$('#uploadPhotoServ').val();
+		//jsonInputToAPI.servMaintLead.uploadPhotos =$('#uploadPhotoServ').val();
 		jsonInputToAPI.servMaintLead.curInsProv=$('#coverInsServ').val();
 		
 		jsonInputToAPI.servMaintLead.curInsProv =$('#InsprovServ').val();
@@ -2167,7 +2171,7 @@ table{
 <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
-
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
 </head>
 <body class="load-full-screen" ng-app="mainApp1"
 	ng-controller="myController1" id="myController1">
@@ -7376,7 +7380,7 @@ table{
 													</div>
 													<div class="clearfix"></div>
 
-
+													<div id="results"></div>
 
 													<div class="clearfix"></div>
 													
@@ -7404,7 +7408,7 @@ table{
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-12 search-col-padding">
-														<button ng-click="go()" class="button">Request
+														<button id="uploadPhotoServbutton" ng-click="go()" class="button">Request
 															Quotation</button>
 														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
 													</div>
@@ -10063,6 +10067,501 @@ table{
 	<script type="text/javascript" src="js/theme-scripts.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
 
+	       <script type="text/javascript">
+       <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
+
+        var appId = '238604546585672';
+
+      //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+        var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+
+
+        var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+
+
+        AWS.config.region = 'us-east-1';
+
+
+
+
+
+
+        var bucket = new AWS.S3({
+
+
+            params: {
+
+
+                Bucket: bucketName
+
+
+            }
+
+
+        });
+
+
+        var fileChooser = document.getElementById('uploadPhotoServ1');
+
+
+        var button = document.getElementById('id="uploadPhotoServbutton"');
+        
+        var fileChooserLogExp = document.getElementById('uploadPhotoServ2');
+       
+        
+        var fileChooserlogservmaint = document.getElementById('uploadPhotoServ3');
+       
+        
+        var fileChooserupdateset = document.getElementById('uploadPhotoServ4');
+        
+        
+
+        var results = document.getElementById('results');
+
+
+        button.addEventListener('click', function () {
+
+			alert("came here on click of save for serv and maint");
+            var file = fileChooser.files[0];
+            var file2 = fileChooserLogExp.files[0];
+            var file3 = fileChooserlogservmaint.files[0];
+            var file4 = fileChooserupdateset.files[0];
+
+            if (file) {
+
+            	alert("came here on click of save for serv and maint1");
+                results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file.type,
+
+
+                    Body: file,
+
+
+                    ACL: 'public-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+
+                    if (err) {
+
+
+                        results.innerHTML = 'ERROR: ' + err;
+
+
+                    } else {
+
+
+                        listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+
+                results.innerHTML = 'Nothing to upload.';
+
+
+            }
+            
+            // for service maint 2 start
+            if (file2) {
+
+            	alert("came here on click of save for serv and maint2");
+                results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file2.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file2.type,
+
+
+                    Body: file2,
+
+
+                    ACL: 'public-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+
+                    if (err) {
+
+
+                        results.innerHTML = 'ERROR: ' + err;
+
+
+                    } else {
+
+
+                        listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+
+                results.innerHTML = 'Nothing to upload.';
+
+
+            }
+            // end
+            
+            // for serv maint 3
+            if (file3) {
+
+            	alert("came here on click of save for serv and maint3");
+                results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file3.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file3.type,
+
+
+                    Body: file3,
+
+
+                    ACL: 'public-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+
+                    if (err) {
+
+
+                        results.innerHTML = 'ERROR: ' + err;
+
+
+                    } else {
+
+
+                        listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+
+                results.innerHTML = 'Nothing to upload.';
+
+
+            }
+            // end 
+
+            
+            // for serv main 4
+            if (file4) {
+
+            	alert("came here on click of save for serv and maint4");
+                results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file4.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file4.type,
+
+
+                    Body: file4,
+
+
+                    ACL: 'public-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+
+                    if (err) {
+
+
+                        results.innerHTML = 'ERROR: ' + err;
+
+
+                    } else {
+
+
+                        listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+
+                results.innerHTML = 'Nothing to upload.';
+
+
+            }
+            // end
+
+        }, false);
+
+ 
+ 
+ 
+ 
+        function listObjs() {
+
+
+            var prefix = 'facebook-' + fbUserId;
+
+
+            bucket.listObjects({
+
+
+                Prefix: prefix
+
+
+            }, function (err, data) {
+
+
+                if (err) {
+
+
+                    results.innerHTML = 'ERROR: ' + err;
+
+
+                } else {
+
+
+                    var objKeys = "";
+
+
+                    data.Contents.forEach(function (obj) {
+
+
+                        objKeys += obj.Key + "<br>";
+
+
+                    });
+
+					//alert("came here"+objKeys);
+                    results.innerHTML = objKeys;
+                    //dashBoardPhotoUpdate(objKeys);
+                    //alert("inside dashboard");
+                    var quotIdHiddenField = '<input type="hidden" name="userId" value="' + 99 + '" />';
+                	
+               	 
+                	
+                	
+                	var editDealerVehicleQuotationForm = '<form id="edit-dealer-vehicle-quotation-content-form"><table>\<tr><td>' + quotIdHiddenField + '</td></tr>\</table></form>';
+                	
+                	$(".edit-dealer-vehicle-quotation-content").html(editDealerVehicleQuotationForm);
+                	
+                	var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
+                
+                	$.ajax({  
+                		type: "POST",  
+                		url: "api/updatePhoto?_method=PUT",
+                		data: {"userId":99,"photo":"12GHJF"},
+                		contentType:'application/json',
+                		success: function(result){
+                			
+                			alert("Successfully upated photo to user");
+                			
+                		}
+                	});
+                	
+
+					
+
+                }
+
+
+            });
+
+
+        }
+
+
+        /*!
+
+
+         * Login to your application using Facebook.
+
+
+         * Uses the Facebook SDK for JavaScript available here:
+
+
+         * https://developers.facebook.com/docs/javascript/gettingstarted/
+
+
+         */
+
+
+        window.fbAsyncInit = function () {
+
+
+            FB.init({
+
+
+                appId: appId
+
+
+            });
+            
+            
+            FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					bucket.config.credentials = new AWS.WebIdentityCredentials({
+
+
+	                    ProviderId: 'graph.facebook.com',
+
+
+	                    RoleArn: roleArn,
+
+
+	                    WebIdentityToken: response.authResponse.accessToken
+
+
+	                });
+
+
+	                //fbUserId = response.authResponse.userID;
+
+
+	                button.style.display = 'block';
+				}
+			},{
+				scope : 'email'
+			}); 
+
+
+           
+
+
+        };
+
+
+         // Load the Facebook SDK asynchronously
+
+
+        (function (d, s, id) {
+
+
+            var js, fjs = d.getElementsByTagName(s)[0];
+
+
+            if (d.getElementById(id)) {
+
+
+                return;
+
+
+            }
+
+
+            js = d.createElement(s);
+
+
+            js.id = id;
+
+
+            js.src = "//connect.facebook.net/en_US/all.js";
+
+
+            fjs.parentNode.insertBefore(js, fjs);
+
+
+        }(document, 'script', 'facebook-jssdk'));
+
+
+    </script>
+    <script type="text/javascript">
+        tjq(document).ready(function() {
+            tjq("#profile .edit-profile-btn").click(function(e) {
+                e.preventDefault();
+                tjq(".view-profile").fadeOut();
+                tjq(".edit-profile").fadeIn();
+            });
+
+            setTimeout(function() {
+                tjq(".notification-area").append('<div class="info-box block"><span class="close"></span><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ab quis a dolorem, placeat eos doloribus esse repellendus quasi libero illum dolore. Esse minima voluptas magni impedit, iusto, obcaecati dignissimos.</p></div>');
+            }, 10000);
+        });
+        tjq('a[href="#profile"]').on('shown.bs.tab', function (e) {
+            tjq(".view-profile").show();
+            tjq(".edit-profile").hide();
+        });
+    </script> 
+	
 	<script type="text/javascript">
         tjq(".flexslider").flexslider({
             animation: "fade",

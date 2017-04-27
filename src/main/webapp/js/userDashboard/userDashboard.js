@@ -1504,6 +1504,7 @@ function registerEditDealerVehicleservmaintModal(){
 		
 		
 		var editDealerVehicleservmaintForm = '<form id="edit-dealer-vehicle-servmaint-content-form"><table>\
+			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+data.uploadPhotos+'"'+' height="200" width="250"/></li></ul>\
 			<tr><td>Search ID</td><td>' + data.searchServMaintId + '</td></tr>\
 			<tr><td>' + quotIdHiddenField + '</td></tr>\
 			<tr><td>Year</td><td>' + data.year + '</td></tr>\
