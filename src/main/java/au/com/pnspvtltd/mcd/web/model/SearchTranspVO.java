@@ -28,8 +28,35 @@ public class SearchTranspVO {
 	private String fromStreetName;
 	private String kindOfTransport;
 	private boolean flexWithDateDefault;
+	private String photo;
+	private String regoNo;
+	private String regoState;
 	
 	
+public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getRegoNo() {
+		return regoNo;
+	}
+
+	public void setRegoNo(String regoNo) {
+		this.regoNo = regoNo;
+	}
+
+	public String getRegoState() {
+		return regoState;
+	}
+
+	public void setRegoState(String regoState) {
+		this.regoState = regoState;
+	}
+
 public String getHowMay() {
 		return howMay;
 	}

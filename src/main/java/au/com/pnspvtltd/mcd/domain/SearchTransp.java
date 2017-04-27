@@ -54,9 +54,38 @@ public class SearchTransp implements Serializable {
 	private String kindOfTransport;
 	private boolean flexWithDateDefault;
 	private String uploadPhotos;
+	private String photo;
+	private String regoNo;
+	private String regoState;
+	
+	
 	
 	List<TranspSearchMakeList> carModel;
-	
+	@Column(name = "PHOTO")
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	@Column(name = "REGONO")
+	public String getRegoNo() {
+		return regoNo;
+	}
+
+	public void setRegoNo(String regoNo) {
+		this.regoNo = regoNo;
+	}
+	@Column(name = "REGOSTATE")
+	public String getRegoState() {
+		return regoState;
+	}
+
+	public void setRegoState(String regoState) {
+		this.regoState = regoState;
+	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="searchTranspId") public List<TranspSearchMakeList> getCarModel() {
 		return carModel;
 	}
