@@ -1219,7 +1219,7 @@ function onSignInG()
 {
 	gapi.load('auth2', function() {
 		  auth2 = gapi.auth2.init({
-		    client_id: '814821459166-2snv3tdshqgusiuhjnuoedrg0akt83ol.apps.googleusercontent.com',
+		    client_id: '814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com',
 		    });
 
 		  // Sign the user in, and then retrieve their ID.
@@ -1465,111 +1465,124 @@ $scope.submitForm1 = function() {
 		/*alert($scope.email);
 		alert(email); */
 		if(alreadyLogged()){
-		userId=$.jStorage.get('key').userId;
-		//alert("inside insurance user id"+userId);
-		var dateInFormatpickupDOB= stringToDate($('#pickup_date_of_birth').val(),"dd/MM/yyyy","/");
-		var InsuReq=false;
-		if($('#transInsuReq').val() == "Yes")  InsuReq=true;
-		
-		var jsonInputToAPI = {"userId":userId,
-				"searchTranspLead":{
-				"searchTranspId":null,
-				"carModel": [{"make":"Make","model":"modal","variant":"variant","autoscoopTrim":"autoscoopTrim","flex1":"  flex1","flex2":"  flex2","flex3":"  flex3","flex4":"  flex4","flex5":0,"flex6":0,"flex7":0,"flex8":0,"flex9":0,"flex10":0,"flex11":null,"flex12":null,"flex13":false,"flex14":false}],
-			"fromPostCodeAddr":"test",
-			"toPostCodeAddr":"we",
-			"transTypeReq":"TS",
-			"year":2013,
-			"make":"ss",
-			"model":"lssa",
-			"variant":"sada",
-			"pickUpDateTime":dateInFormatpickupDOB,
-			"noOfCars":0,
-			"freeText":"sada",
-			"transpInsReq":InsuReq,
-			"uploadPhotos":null
-				}
-			};
-		
-		
-		 // table 91
-        var tbl922 = document.getElementById('my-table922'), // table reference
-           row = tbl922.rows.length;      // append table row
-            var i;
-            alert("row length relatedModels91"+tbl922.rows.length);
-            alert("col lenght relatedModels91"+tbl922.rows[0].cells.length);         
-	                alert("Json print d e relatedModels");
-		        //alert($('#relatedModels922'+j+'0').val());
-		            // insert table cells to the new row
-            for (j = 1; j < tbl922.rows.length; j++) {
-            	i=0;
-            		jsonInputToAPI.searchTranspLead.carModel[j-1].transpSearchMakeListId=null;
-            		
-            		jsonInputToAPI.searchTranspLead.carModel[j-1].year=$('#relatedModels922'+j+'0').val();
-            		jsonInputToAPI.searchTranspLead.carModel[j-1].make=$('#relatedModels922'+j+'1').val();
-            		jsonInputToAPI.searchTranspLead.carModel[j-1].model=$('#relatedModels922'+j+'2').val();
-            		jsonInputToAPI.searchTranspLead.carModel[j-1].variant=$('#relatedModels922'+j+'3').val();
-            		jsonInputToAPI.searchTranspLead.carModel[j-1].autoscoopTrim=$('#relatedModels922'+j+'4').val();
-            		
-		         
-            		jsonInputToAPI.searchTranspLead.carModel[j-1]["flex1"]="flex1";
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex2"]="flex1";
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex3"]="flex1";
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex4"]="flex1";
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex5"]=0;
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex6"]=0;
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex7"]=0;
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex8"]=0;
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex9"]=0;
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex10"]=0;
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex11"]=null;
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex12"]=null;
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex13"]=false;
-	            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex14"]=false;
-		    }  
-		                alert("Json print relatedModels");
-		                alert(JSON.stringify(jsonInputToAPI.searchTranspLead.carModel));
-
-		
-		
-		jsonInputToAPI.searchTranspLead.fromPostCodeAddr =$('#trans-address').val();
-		jsonInputToAPI.searchTranspLead.toPostCodeAddr=$('#trans-toaddress').val();
-		jsonInputToAPI.searchTranspLead.transTypeReq =$('#trans-transtype').val();
-		//jsonInputToAPI.searchTranspLead.noOfCars=$('#trans-noOfCars').val();
-		
-		jsonInputToAPI.searchTranspLead.year =$('#car-years-trans').val();
-		jsonInputToAPI.searchTranspLead.make=$('#car-makes-trans').val();
-		jsonInputToAPI.searchTranspLead.model =$('#car-models-trans').val();
-		jsonInputToAPI.searchTranspLead.variant=$('#car-model-trims-trans').val();
-		//jsonInputToAPI.servMaintLead.autoscoopTrim=$('#car-model-auto-trims-serv').val();
-		
-		jsonInputToAPI.searchTranspLead.freeText =$('#trans-freetext').val();
-		//jsonInputToAPI.searchTranspLead.uploadPhotos=$('#ServL2').val();
-		
-		
-		
-
-		var wsURL = 'api/eBid/transserv';
-		
-		// change here
-		
-	   $body.addClass("loading");   
-	    	$http({
-				method : 'POST',
-				url : wsURL,
-				data: jsonInputToAPI
-								
-			}).success(function(data) {
-				$body.removeClass("loading");
-				alert("successfully stored");
-				alert("Redirecting to Dashboard..");
-				var url="dashboard1.html";
-				
-				window.location=url;
-				
-							});
-	    
+					userId=$.jStorage.get('key').userId;
+					//alert("inside insurance user id"+userId);
+					//var dateInFormatpickupDOB= stringToDate($('#pickup_date_of_birth').val(),"dd/MM/yyyy","/");
+					/* var InsuReq=false;
+					if($('#transInsuReq').val() == "Yes")  InsuReq=true; */
+					//{"transpSearchMakeListId":null,"make":"Make","model":"modal","variant":"variant","autoscoopTrim":"autoscoopTrim","flex1":"  flex1","flex2":"  flex2","flex3":"  flex3","flex4":"  flex4","flex5":0,"flex6":0,"flex7":0,"flex8":0,"flex9":0,"flex10":0,"flex11":null,"flex12":null,"flex13":false,"flex14":false}
+					var jsonInputToAPI = {"userId":userId,
+							"searchTranspLead":{
+							"searchTranspId":null,
+							"carModel": [{},{},{},{}],
+						"fromPostCodeAddr":$scope.transFpostCode,
+						"toPostCodeAddr":$scope.transTpostCode,
+						"transTypeReq":$scope.transVehicle,
+						"year":$scope.caryearstrans,
+						"make":$scope.carmakestrans,
+						"model":$scope.carmodelstrans,
+						"variant":$scope.carmodeltrimstrans,
+						"pickUpDateTime":$scope.transPickup,
+						"noOfCars":0,
+						"freeText":$scope.transAddNotes,
+						"transpInsReq":true,
+						"fromStreetNo":$scope.transFStreetNo,
+						"toStreetName":$scope.transTStreetName,
+						"toStreetNo":$scope.transTStreetNo,
+						"fromStreetName":$scope.transFStreetName,
+						"flexWithDateDefault":$scope.transPickConfirm,
+						"howMay":$scope.transHow,
+						"kindOfTransport":$scope.transKind,
+						"photo":$scope.uploadPhotoTrans2,
+						"regoNo":$scope.transregono12,
+						"regoState":$scope.transregost,
+						"uploadPhotos":$scope.uploadPhotoTrans1
+							}
+						};
+					
+					
+					 // table 91
+			        var tbl922 = document.getElementById('my-table922'), // table reference
+			           row = tbl922.rows.length;      // append table row
+			            var i;
+			           /*  alert("row length relatedModels91"+tbl922.rows.length);
+			            alert("col lenght relatedModels91"+tbl922.rows[0].cells.length);         
+				                alert("Json print d e relatedModels"); */
+					        //alert($('#relatedModels922'+j+'0').val());
+					            // insert table cells to the new row
+			            for (j = 1; j < tbl922.rows.length; j++) {
+			            	i=0;
+			            		jsonInputToAPI.searchTranspLead.carModel[j-1].transpSearchMakeListId=null;
+			            		//alert($('#relatedModels922'+j+'0').val());
+			            		jsonInputToAPI.searchTranspLead.carModel[j-1].year=$('#relatedModels922'+j+'0').val();
+			            		jsonInputToAPI.searchTranspLead.carModel[j-1].make=$('#relatedModels922'+j+'1').val();
+			            		jsonInputToAPI.searchTranspLead.carModel[j-1].model=$('#relatedModels922'+j+'2').val();
+			            		jsonInputToAPI.searchTranspLead.carModel[j-1].variant=$('#relatedModels922'+j+'3').val();
+			            		jsonInputToAPI.searchTranspLead.carModel[j-1].autoscoopTrim=$('#relatedModels922'+j+'4').val();
+			            		
+					         
+			            		jsonInputToAPI.searchTranspLead.carModel[j-1]["flex1"]="flex1";
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex2"]="flex1";
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex3"]="flex1";
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex4"]="flex1";
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex5"]=0;
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex6"]=0;
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex7"]=0;
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex8"]=0;
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex9"]=0;
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex10"]=0;
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex11"]=null;
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex12"]=null;
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex13"]=false;
+				            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex14"]=false;
+					    }  
+					                 alert("Json print relatedModels");
+					                alert(JSON.stringify(jsonInputToAPI.searchTranspLead.carModel));
+					                alert(JSON.stringify(jsonInputToAPI.searchTranspLead));
+			
+					
+					
+					/* jsonInputToAPI.searchTranspLead.fromPostCodeAddr =$('#trans-address').val();
+					jsonInputToAPI.searchTranspLead.toPostCodeAddr=$('#trans-toaddress').val();
+					jsonInputToAPI.searchTranspLead.transTypeReq =$('#trans-transtype').val();
+					//jsonInputToAPI.searchTranspLead.noOfCars=$('#trans-noOfCars').val();
+					
+					jsonInputToAPI.searchTranspLead.year =$('#car-years-trans').val();
+					jsonInputToAPI.searchTranspLead.make=$('#car-makes-trans').val();
+					jsonInputToAPI.searchTranspLead.model =$('#car-models-trans').val();
+					jsonInputToAPI.searchTranspLead.variant=$('#car-model-trims-trans').val();
+					//jsonInputToAPI.servMaintLead.autoscoopTrim=$('#car-model-auto-trims-serv').val();
+					
+					jsonInputToAPI.searchTranspLead.freeText =$('#trans-freetext').val(); */
+					//jsonInputToAPI.searchTranspLead.uploadPhotos=$('#ServL2').val();
+					
+					
+					
+			
+					var wsURL = 'api/eBid/transserv';
+					
+					// change here
+					
+				   $body.addClass("loading");   
+				    	$http({
+							method : 'POST',
+							url : wsURL,
+							data: jsonInputToAPI
+											
+						}).success(function(data) {
+							$body.removeClass("loading");
+							alert("successfully stored");
+							alert("Redirecting to Dashboard..");
+							var url="dashboard1.html";
+							
+							window.location=url;
+							
+										});
+				    
 		}
-		else{alert("Please Login and Build")}
+		else{
+			alert("Please Login and Build");
+			}
 		
 	    	
 	    
@@ -1585,34 +1598,37 @@ $scope.submitForm1 = function() {
 		alert(email); */
 		if(alreadyLogged()){
 		userId=$.jStorage.get('key').userId;
-		fbUserId=$.jStorage.get("fbKey");
-		alert("inside insurance user id"+fbUserId);
-		var fileChooserserv1 = document.getElementById('uploadPhotoServ1');
-						var fileServ1 = fileChooserserv1.files[0];
-						var objKeyMyVeh = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ1.name;
-				alert("Image of MyVehicle"+objKeyMyVeh);
+		//alert("inside insurance user id"+userId);
+		
 		var jsonInputToAPI = {"userId":userId,
 				"servMaintLead":{
 				"searchServMaintId":null,
-			"postCode":"test",
-			"regNo":"we",
-			"regoState":"TS",
-			"year":2013,
-			"make":"ss",
-			"model":"lssa",
-			"variant":"sada",
-			"feulType":"sada",
-			"servMaintL1":"sada",
-			"servMaintL2":"sada",
-			"uploadPhotos":objKeyMyVeh,
-			"coveredUnderIns":false,
-			"curInsProv":"lssa",
-			"freeText":"sada"
+			"postCode":$scope.servpostCode,
+			"regNo":$scope.servregono,
+			"regoState":$scope.regoStateServ,
+			"year":$scope.caryearsserv,
+			"make":$scope.carmakesserv,
+			"model":$scope.carmodelsserv,
+			"variant":$scope.carmodeltrimsserv,
+			"feulType":$scope.fuelTypeServ,
+			"servMaintL1":$scope.ServL1,
+			"servMaintL2":$scope.ServL2,
+			"uploadPhotos":$scope.uploadPhotoServ1,
+			"coveredUnderIns":$scope.coverInsServ,
+			"curInsProv":$scope.InsprovServ,
+			"photo1":$scope.uploadPhotoServ2,
+			"photo2":$scope.uploadPhotoServ3,
+			"photo3":$scope.uploadPhotoServ4,
+			"coveredUnderFin":$scope.servFinPro,
+			"curFinProv":$scope.servFinProlist,
+			"lookService":$scope.lookService,
+			"autoscoopTrim":$scope.carmodelAutotrimsserv,
+			"freeText":$scope.servAddNotes
 				}
 			};
 
 		
-		jsonInputToAPI.servMaintLead.regNo =$('#serv-regono').val();
+		/* jsonInputToAPI.servMaintLead.regNo =$('#serv-regono').val();
 		jsonInputToAPI.servMaintLead.postCode=$('#serv-postCode').val();
 		jsonInputToAPI.servMaintLead.servMaintL1 =$('#ServL1').val();
 		jsonInputToAPI.servMaintLead.regoState=$('#regoStateServ').val();
@@ -1625,11 +1641,11 @@ $scope.submitForm1 = function() {
 		
 		jsonInputToAPI.servMaintLead.feulType =$('#fuelTypeServ').val();
 		jsonInputToAPI.servMaintLead.servMaintL2=$('#ServL2').val();
-		//jsonInputToAPI.servMaintLead.uploadPhotos =$('#uploadPhotoServ').val();
+		jsonInputToAPI.servMaintLead.uploadPhotos =$('#uploadPhotoServ').val();
 		jsonInputToAPI.servMaintLead.curInsProv=$('#coverInsServ').val();
 		
 		jsonInputToAPI.servMaintLead.curInsProv =$('#InsprovServ').val();
-		jsonInputToAPI.servMaintLead.freeText=$('#freeTextServ').val();
+		jsonInputToAPI.servMaintLead.freeText=$('#freeTextServ').val(); */
 		
 
 		var wsURL = 'api/eBid/servmaint';
@@ -1667,108 +1683,136 @@ $scope.submitForm1 = function() {
 		/*alert($scope.email);
 		alert(email); */
 		if(alreadyLogged()){
-		userId=$.jStorage.get('key').userId;
-		//alert("inside insurance user id"+userId);
-		var newCarInsuran=false;
-		newCarInsuran = document.getElementById("newCarInsuran").value;
-		if(newCarInsuran=="on")newCarInsuran=false;
-		var usedCarInsuran=false;
-		usedCarInsuran = document.getElementById("usedCarInsuran").value;
-		if(usedCarInsuran=="on")newCarInsuran=false;
-		var jsonInputToAPI = {"userId":userId,
-				"insuranceLead":{
-				"newer":newCarInsuran,
-				"used":usedCarInsuran,
-			"searchInsuranceId":null,
-			"postCode":"test",
-			"insuranceType":"t",
-			"regNo":"we",
-			"regoState":"TS",
-			"year":2013,
-			"make":"ss",
-			"model":"lssa",
-			"variant":"sada",
-			"autoscoopTrim":"sada",
-			"marketValue":0.21,
-			"agreedValue":0.232,
-			"finance":1,
-			"financeProvider":"lssa",
-			"drivingLicenseType":"sada",
-			"drivingLicenseNo":"lssa",
-			"drivingLicenseIssueState":"sada",
-			"noOfAtFaults":45,
-			"otherIssues":"lssa",
-			"curInsProv":"sada",
-			"prefExcessAmount":0.21,
-			"dateOfBirth":null,
-			"ageOfAdditionalDriver":null
-				}
-			};
-
-		var insLeadTrim = document.getElementById("car-model-trims-ins"); 
-		var strUserIns = insLeadTrim.options[insLeadTrim.selectedIndex].text;
-		
-		
-		jsonInputToAPI.insuranceLead.regNo =$('#regono12').val();
-		jsonInputToAPI.insuranceLead.postCode=$('#postcode11').val();
-		jsonInputToAPI.insuranceLead.insuranceType =$('#insuranceType').val();
-		jsonInputToAPI.insuranceLead.regoState=$('#ins-regost').val();
-		
-		jsonInputToAPI.insuranceLead.year =$('#car-years-ins').val();
-		jsonInputToAPI.insuranceLead.make=$('#car-makes-ins').val();
-		jsonInputToAPI.insuranceLead.model =$('#car-models-ins').val();
-		jsonInputToAPI.insuranceLead.variant=$('#car-model-trims-ins').val();
-		jsonInputToAPI.insuranceLead.autoscoopTrim=$('#car-model-auto-trims-ins').val();
-		
-		jsonInputToAPI.insuranceLead.marketValue =$('#market').val();
-		jsonInputToAPI.insuranceLead.agreedValue=$('#agree').val();
-		jsonInputToAPI.insuranceLead.finance =$('#ins-finance').val();
-		jsonInputToAPI.insuranceLead.financeProvider=$('#ins-fin-prov').val();
-		
-		jsonInputToAPI.insuranceLead.drivingLicenseType =$('#ins-lic-type').val();
-		jsonInputToAPI.insuranceLead.drivingLicenseNo=$('#licno').val();
-		jsonInputToAPI.insuranceLead.drivingLicenseIssueState =$('#ins-lic-iss-state').val();
-		jsonInputToAPI.insuranceLead.noOfAtFaults=$('#ins-faults').val();
-		
-		jsonInputToAPI.insuranceLead.otherIssues =$('#otherissues').val();
-		jsonInputToAPI.insuranceLead.curInsProv=$('#curr-ins-prov').val();
-		jsonInputToAPI.insuranceLead.prefExcessAmount =$('#ins-excessAmount').val();
-		//jsonInputToAPI.insuranceLead.dateOfBirth=$('#ins-regost').val();
-		//jsonInputToAPI.insuranceLead.ageOfAdditionalDriver=$('#ins-regost').val();
-		//alert(jsonInputToAPI.insuranceLead.isNew);
-		//alert(jsonInputToAPI.insuranceLead.regNo);
-		/* jsonInputToAPI.email=$('#car-years').val();
-		jsonInputToAPI.firstName=$('#car-years').val();
-		jsonInputToAPI.lastName=$('#car-years').val(); */
-		
-
-		var wsURL = 'api/eBid/insurance';
-		//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/insurance';
-		//var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
-		/* alert(jsonInputToAPI.comingSoonUserEmail);
-		alert(jsonInputToAPI.flex1);
-		alert(jsonInputToAPI.flex2);
-		alert(jsonInputToAPI.flex3); */
-		// change here
-		
-	   $body.addClass("loading");   
-	    	$http({
-				method : 'POST',
-				url : wsURL,
-				data: jsonInputToAPI
-								
-			}).success(function(data) {
-				$body.removeClass("loading");
-				alert("successfully stored");
-				alert("Redirecting to Dashboard..");
-				var url="dashboard1.html";
-				
-				window.location=url;
-				
-							});
+					userId=$.jStorage.get('key').userId;
+					//alert("inside insurance user id"+userId);
+		/* 			var newCarInsuran=false;
+					newCarInsuran = document.getElementById("newCarInsuran").value;
+					if(newCarInsuran=="on")newCarInsuran=false;
+					var usedCarInsuran=false;
+					usedCarInsuran = document.getElementById("usedCarInsuran").value;
+					if(usedCarInsuran=="on")newCarInsuran=false; */
+					
+					
+					$scope.usedCarInsuran = false;
+					$scope.newCarInsuran = false;
+					if($scope.newCarInsuran)
+						{
+							$scope.newCarInsuran = true;
+						}else{
+							$scope.usedCarInsuran = true;
+						}
+					
+					var jsonInputToAPI = {"userId":userId,
+							"insuranceLead":{
+							"newer":$scope.newCarInsuran,
+							"used":$scope.usedCarInsuran,
+						"searchInsuranceId":null,
+						"postCode":$scope.postcode11,
+						"insuranceType":$scope.insuranceType,
+						"regNo":$scope.regono12,
+						"regoState":$scope.insregost,
+						"year":$scope.caryearsins,
+						"make":$scope.carmakesins,
+						"model":$scope.carmodelsins,
+						"variant":$scope.carmodeltrimsins,
+						"autoscoopTrim":$scope.carmodelAutotrimsins,
+						"marketValue":$scope.market,
+						"agreedValue":$scope.agree,
+						"finance":$scope.insfinance,
+						"financeProvider":$scope.insfinprov,
+						"drivingLicenseType":$scope.inslictype,
+						"drivingLicenseNo":$scope.licno,
+						"drivingLicenseIssueState":$scope.inslicissstate,
+						"noOfAtFaults":$scope.insfaults,
+						"otherIssues":"lssa",
+						"curInsProv":$scope.currinsprov,
+						"prefExcessAmount":$scope.excessAmount,
+						"dateOfBirth":$scope.insDriverDOB,
+						"ageOfAdditionalDriver":null,
+						"carParkedAt":$scope.inscarParked,
+						 "streetNO":$scope.insStreetNo,
+						 "streetName":$scope.insStreetName,
+						 "carUsedfor":$scope.insCarUsage,
+						 "typeOfBusiness":$scope.insifBusiness,
+						 "driverFirstName":$scope.Insfirstname,
+						 "driverLastName":$scope.Inslastname,
+						 "driverMobileNo":$scope.InsMobile,
+						 "driverEmailId":$scope.InsEmail,
+						 "licenseIssueDate":$scope.insLicIssueDt,
+						 "lastAtFaultClaimDate":$scope.insLastfaultDt,
+						 "reasonForSuspension":$scope.insReasonSusp,
+						"avgNoOfKmYr":$scope.insAvgNoOfKms,
+						"noOfDrivers":$scope.insDriversCt,
+						"licenseGotSuspened":$scope.insLICSusp
+							}
+						};
+			
+					/* var insLeadTrim = document.getElementById("car-model-trims-ins"); 
+					var strUserIns = insLeadTrim.options[insLeadTrim.selectedIndex].text;
+					
+					
+					jsonInputToAPI.insuranceLead.regNo =$('#regono12').val();
+					jsonInputToAPI.insuranceLead.postCode=$('#postcode11').val();
+					jsonInputToAPI.insuranceLead.insuranceType =$('#insuranceType').val();
+					jsonInputToAPI.insuranceLead.regoState=$('#ins-regost').val();
+					
+					jsonInputToAPI.insuranceLead.year =$('#car-years-ins').val();
+					jsonInputToAPI.insuranceLead.make=$('#car-makes-ins').val();
+					jsonInputToAPI.insuranceLead.model =$('#car-models-ins').val();
+					jsonInputToAPI.insuranceLead.variant=$('#car-model-trims-ins').val();
+					jsonInputToAPI.insuranceLead.autoscoopTrim=$('#car-model-auto-trims-ins').val();
+					
+					jsonInputToAPI.insuranceLead.marketValue =$('#market').val();
+					jsonInputToAPI.insuranceLead.agreedValue=$('#agree').val();
+					jsonInputToAPI.insuranceLead.finance =$('#ins-finance').val();
+					jsonInputToAPI.insuranceLead.financeProvider=$('#ins-fin-prov').val();
+					
+					jsonInputToAPI.insuranceLead.drivingLicenseType =$('#ins-lic-type').val();
+					jsonInputToAPI.insuranceLead.drivingLicenseNo=$('#licno').val();
+					jsonInputToAPI.insuranceLead.drivingLicenseIssueState =$('#ins-lic-iss-state').val();
+					jsonInputToAPI.insuranceLead.noOfAtFaults=$('#ins-faults').val();
+					
+					jsonInputToAPI.insuranceLead.otherIssues =$('#otherissues').val();
+					jsonInputToAPI.insuranceLead.curInsProv=$('#curr-ins-prov').val();
+					jsonInputToAPI.insuranceLead.prefExcessAmount =$('#ins-excessAmount').val(); */
+					//jsonInputToAPI.insuranceLead.dateOfBirth=$('#ins-regost').val();
+					//jsonInputToAPI.insuranceLead.ageOfAdditionalDriver=$('#ins-regost').val();
+					//alert(jsonInputToAPI.insuranceLead.isNew);
+					//alert(jsonInputToAPI.insuranceLead.regNo);
+					/* jsonInputToAPI.email=$('#car-years').val();
+					jsonInputToAPI.firstName=$('#car-years').val();
+					jsonInputToAPI.lastName=$('#car-years').val(); */
+					
+			
+					var wsURL = 'api/eBid/insurance';
+					//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/insurance';
+					//var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
+					/* alert(jsonInputToAPI.comingSoonUserEmail);
+					alert(jsonInputToAPI.flex1);
+					alert(jsonInputToAPI.flex2);
+					alert(jsonInputToAPI.flex3); */
+					// change here
+					
+				   $body.addClass("loading");   
+				    	$http({
+							method : 'POST',
+							url : wsURL,
+							data: jsonInputToAPI
+											
+						}).success(function(data) {
+							$body.removeClass("loading");
+							alert("successfully stored");
+							alert("Redirecting to Dashboard..");
+							var url="dashboard1.html";
+							
+							window.location=url;
+							
+										});
 	    
 		}
-		else{alert("Please Login and Build")}
+		else{
+			alert("Please Login and Build");
+			}
 		
 	    	
 	    
@@ -1782,90 +1826,110 @@ $scope.submitForm1 = function() {
 		/*alert($scope.email);
 		alert(email); */
 		if(alreadyLogged()){
-		userId=$.jStorage.get('key').userId;
-		//alert("user"+userId);
-		var newCarFinance=false;
-		newCarFinance = document.getElementById("newCarFinance").value;
-		if(newCarFinance=="on")newCarFinance=false;
-		var usedCarFinance=false;
-		usedCarFinance = document.getElementById("usedCarFinance").value;
-		if(usedCarFinance=="on")usedCarFinance=false;
-		var dateInFormatFinDOB= stringToDate($('#date_of_birth').val(),"dd/MM/yyyy","/");
-		//alert(dateInFormatFinDOB);
-		var jsonInputToAPI = {"userId":userId,
-				"financeLead":{
-					"newer":newCarFinance,
-					"used":usedCarFinance,
-					"modelYear":2013,
-					"modelDisplay": "",
-					"modelName": "",															      
-					"modelTrim": "",
-					"autoscoopTrim":"sada",
-					"postCode":"",
-					"incomeType":"",
-					"yearEmploymentBusiness":"",
-					"incomeBeforeSuperTax":"",
-					"incomeAfterSuperTax":"",
-					"ifBusinessProvideABN":"",
-					"creditRating":"",
-					"vehValue":"",
-					"balloonPay":"",
-					"annualIncome":"",
-					"loanAmount":"",
-					 "loanPeriod":"",
-					 "dateOfBirth":dateInFormatFinDOB,
-					 "noOfDependence":""
-				}
-			};
-		
-		/* var insLeadTrim1 = document.getElementById("car-model-trims-fin"); 
-		var strUserfin = insLeadTrim1.options[insLeadTrim1.selectedIndex].text; */
-		
-		jsonInputToAPI.financeLead.vehValue =$('#finVehicleValue').val();
-		jsonInputToAPI.financeLead.postCode=$('#finVehicleValue1').val();
-		jsonInputToAPI.financeLead.balloonPay =$('#finBalloonPayment').val();
-		jsonInputToAPI.financeLead.loanAmount=$('#finLoanAmount').val();
-		
-		jsonInputToAPI.financeLead.year =$('#car-years-fin').val();
-		jsonInputToAPI.financeLead.make=$('#car-makes-fin').val();
-		jsonInputToAPI.financeLead.model =$('#car-models-fin').val();
-		jsonInputToAPI.financeLead.variant=$('#car-model-trims-fin').val();
-		jsonInputToAPI.financeLead.autoscoopTrim=$('#car-model-auto-trims-fin').val();
-		jsonInputToAPI.financeLead.loanPeriod =$('#finLoanPeriod').val();
-		
-		
-		jsonInputToAPI.financeLead.annualIncome=$('#finAnnualIncome').val();
-		jsonInputToAPI.financeLead.creditRating =$('#finCreditRating').val();
-		
-		jsonInputToAPI.financeLead.incomeType=$('#finIncomeType').val();
-		
-		
-			//alert("Before ajax call");
-		var wsURL = 'api/eBid/finance';
-		//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/finance';
-		//var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
-		/* alert(jsonInputToAPI.comingSoonUserEmail);
-		alert(jsonInputToAPI.flex1);
-		alert(jsonInputToAPI.flex2);
-		alert(jsonInputToAPI.flex3); */
-		
-		$body.addClass("loading");   
-	    	$http({
-				method : 'POST',
-				url : wsURL,
-				data: jsonInputToAPI
-								
-			}).success(function(data) {
-				$body.removeClass("loading");
-				alert("successfully stored");
-				alert("Redirecting to Dashboard..");
-				var url="dashboard1.html";
+				userId=$.jStorage.get('key').userId;
+				//alert("user"+userId);
+				var newCarFinance=false;
+				//newCarFinance = document.getElementById("newCarFinance").value;
+				if(newCarFinance=="on")newCarFinance=false;
+				var usedCarFinance=false;
+				//usedCarFinance = document.getElementById("usedCarFinance").value;
+				if(usedCarFinance=="on")usedCarFinance=false;
+				var dateInFormatFinDOB= stringToDate($('#date_of_birth').val(),"dd/MM/yyyy","/");
+				$scope.usedCarFinance = false;
+				$scope.newCarFinance = false;
+				if($scope.newCarFinance)
+					{
+						$scope.newCarFinance = true;
+					}else{
+						$scope.usedCarFinance = true;
+					}
+				/* alert("bis sdsacuitssaf");
+				alert($scope.finCreditRating); */
+				//alert(dateInFormatFinDOB);
+				var jsonInputToAPI = {"userId":userId,
+						"financeLead":{
+							"newer":newCarFinance,
+							"used":usedCarFinance,
+							"year":$scope.caryearsfin,
+							"make":$scope.carmakesfin,
+							"model":$scope.carmodelsfin,															      
+							"variant":$scope.carmodeltrimsfin,
+							"autoscoopTrim":$scope.carmodelAutotrimsfin,
+							"postCode":$scope.finVehicleValue1,
+							"incomeType":$scope.finIncomeType,
+							"yearEmploymentBusiness":$scope.finNoofYears,
+							"incomeBeforeSuperTax":"",
+							"incomeAfterSuperTax":"",
+							"ifBusinessProvideABN":"",
+							"creditRating":$scope.finCreditRating,
+							"vehValue":0.0,
+							"balloonPay":"",
+							"annualIncome":$scope.finAnnualIncome,
+							"loanAmount":$scope.finLoanAmount,
+							 "loanPeriod":$scope.finLoanPeriod,
+							 "dateOfBirth":dateInFormatFinDOB,
+							 "rego":$scope.finRego,
+						 	"regoState":$scope.finRegoState,
+							 "streetNo":$scope.finStreetNo,
+							 "streetName":$scope.finStreetName,
+							 "mr":$scope.finTitlePerson,
+							 "firstName":$scope.finFnameperson,
+							 "lastName":$scope.finLnameperson
+						}
+					};
 				
-				window.location=url;
+				/* var insLeadTrim1 = document.getElementById("car-model-trims-fin"); 
+				var strUserfin = insLeadTrim1.options[insLeadTrim1.selectedIndex].text; */
 				
-							 }); 
+			/* 	jsonInputToAPI.financeLead.vehValue =$('#finVehicleValue').val();
+				jsonInputToAPI.financeLead.postCode=$('#finVehicleValue1').val();
+				jsonInputToAPI.financeLead.balloonPay =$('#finBalloonPayment').val();
+				jsonInputToAPI.financeLead.loanAmount=$('#finLoanAmount').val();
+				
+				jsonInputToAPI.financeLead.year =$('#car-years-fin').val();
+				jsonInputToAPI.financeLead.make=$('#car-makes-fin').val();
+				jsonInputToAPI.financeLead.model =$('#car-models-fin').val();
+				jsonInputToAPI.financeLead.variant=$('#car-model-trims-fin').val();
+				jsonInputToAPI.financeLead.autoscoopTrim=$('#car-model-auto-trims-fin').val();
+				jsonInputToAPI.financeLead.loanPeriod =$('#finLoanPeriod').val();
+				
+				
+				jsonInputToAPI.financeLead.annualIncome=$('#finAnnualIncome').val();
+				jsonInputToAPI.financeLead.creditRating =$('#finCreditRating').val();
+				
+				jsonInputToAPI.financeLead.incomeType=$('#finIncomeType').val(); */
+				
+				
+					//alert("Before ajax call");
+				var wsURL = 'api/eBid/finance';
+				//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/finance';
+				//var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
+				/* alert(jsonInputToAPI.comingSoonUserEmail);
+				alert(jsonInputToAPI.flex1);
+				alert(jsonInputToAPI.flex2);
+				alert(jsonInputToAPI.flex3); */
+				
+				
+				alert(JSON.stringify(jsonInputToAPI));
+				$body.addClass("loading");   
+			    	$http({
+						method : 'POST',
+						url : wsURL,
+						data: jsonInputToAPI
+										
+					}).success(function(data) {
+						$body.removeClass("loading");
+						alert("successfully stored");
+						alert("Redirecting to Dashboard..");
+						var url="dashboard1.html";
+						
+						window.location=url;
+						
+									 }); 
 		}
-		else{alert("Please Login and Build")}
+		else{
+			alert("Please Login and Build");
+			}
 	    
 	  
 	    	
@@ -2171,7 +2235,7 @@ table{
 <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
-<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
+
 </head>
 <body class="load-full-screen" ng-app="mainApp1"
 	ng-controller="myController1" id="myController1">
@@ -5783,8 +5847,8 @@ table{
 																		<select class="full-width" id="insLICSusp" ng-model="insLICSusp"
 																			name="insLICSusp" required>
 																			<option value="" selected disabled>Licence Suspended</option>
-																			<option>Yes</option>
-																			<option>No</option>
+																			<option value="true">Yes</option>
+																			<option value="false">No</option>
 																		</select>
 																		</div>
 																	</div>
@@ -7131,7 +7195,8 @@ table{
 															&nbsp;
 														</div>
 														<div class="col-sm-6 col-md-6">
-															<textarea rows="4" cols="50" placeholder="Add Notes"></textarea>
+															<textarea rows="4" cols="50" id="servAddNotes" ng-model="servAddNotes"
+																name="servAddNotes" placeholder="Add Notes"></textarea>
 														</div>
 														<div class="col-sm-3 col-md-3">
 														&nbsp;
@@ -7147,7 +7212,7 @@ table{
 														<div class="col-sm-3 col-md-3">
 															  <input type="text"
 															id="serv-regono" name="servregono" ng-model="servregono"
-															class="input-text full-width" value="" placeholder="Rego state" required/>
+															class="input-text full-width" value="" placeholder="Rego NO" required/>
 															<span style="color:red" ng-show="ebidservfrm.servregono.$error.required && (!ebidservfrm.servregono.$pristine || ebidservfrm.$submitted)"><b> Rego No value is Required</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
@@ -7304,8 +7369,8 @@ table{
 															<select class="full-width" id="coverInsServ" ng-model="coverInsServ"
 																name="coverInsServ" required>
 																<option value="" selected disabled	>Insurance (Yes/No)</option>
-																<option>Yes</option>
-																<option>No</option>
+																<option value="true">Yes</option>
+																<option value="false">No</option>
 															</select>
 														</div>
 														<span style="color:red" ng-show="ebidservfrm.coverInsServ.$error.required && (!ebidservfrm.coverInsServ.$pristine || ebidservfrm.$submitted)"><b>Covered Under Insurance is Required</b></span>
@@ -7380,7 +7445,7 @@ table{
 													</div>
 													<div class="clearfix"></div>
 
-													<div id="results"></div>
+
 
 													<div class="clearfix"></div>
 													
@@ -7408,7 +7473,7 @@ table{
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-12 search-col-padding">
-														<button id="uploadPhotoServbutton" ng-click="go()" class="button">Request
+														<button class="button">Request
 															Quotation</button>
 														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
 													</div>
@@ -7605,7 +7670,7 @@ table{
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-12 search-col-padding">
-														<button ng-click="go()" class="button">Request
+														<button class="button">Request
 															Quotation</button>
 														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
 													</div>
@@ -8439,7 +8504,8 @@ table{
 															<label>Add Notes</label>
 														</div>
 														<div class="col-sm-6 col-md-6">
-															<textarea rows="4" cols="50" placeholder="Add Notes"></textarea>
+															<textarea rows="4" cols="50" id="transAddNotes" ng-model="transAddNotes"
+																name="transAddNotes" placeholder="Add Notes"></textarea>
 														</div>
 														<div class="col-sm-3 col-md-3">
 														&nbsp;
@@ -8584,6 +8650,7 @@ table{
 													
 
 													<div class="clearfix"></div>
+
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
@@ -10067,501 +10134,6 @@ table{
 	<script type="text/javascript" src="js/theme-scripts.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
 
-	       <script type="text/javascript">
-       <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
-
-        var appId = '238604546585672';
-
-      //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-        var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-
-
-        var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
-
-
-        AWS.config.region = 'us-east-1';
-
-
-
-
-
-
-        var bucket = new AWS.S3({
-
-
-            params: {
-
-
-                Bucket: bucketName
-
-
-            }
-
-
-        });
-
-
-        var fileChooser = document.getElementById('uploadPhotoServ1');
-
-
-        var button = document.getElementById('id="uploadPhotoServbutton"');
-        
-        var fileChooserLogExp = document.getElementById('uploadPhotoServ2');
-       
-        
-        var fileChooserlogservmaint = document.getElementById('uploadPhotoServ3');
-       
-        
-        var fileChooserupdateset = document.getElementById('uploadPhotoServ4');
-        
-        
-
-        var results = document.getElementById('results');
-
-
-        button.addEventListener('click', function () {
-
-			alert("came here on click of save for serv and maint");
-            var file = fileChooser.files[0];
-            var file2 = fileChooserLogExp.files[0];
-            var file3 = fileChooserlogservmaint.files[0];
-            var file4 = fileChooserupdateset.files[0];
-
-            if (file) {
-
-            	alert("came here on click of save for serv and maint1");
-                results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
-                var objKey = 'facebook-' + fbUserId + '/' + file.name;
-
-
-                var params = {
-
-
-                    Key: objKey,
-
-
-                    ContentType: file.type,
-
-
-                    Body: file,
-
-
-                    ACL: 'public-read'
-
-
-                };
-
-
-                bucket.putObject(params, function (err, data) {
-
-
-                    if (err) {
-
-
-                        results.innerHTML = 'ERROR: ' + err;
-
-
-                    } else {
-
-
-                        listObjs();
-
-
-                    }
-
-
-                });
-
-
-            } else {
-
-
-                results.innerHTML = 'Nothing to upload.';
-
-
-            }
-            
-            // for service maint 2 start
-            if (file2) {
-
-            	alert("came here on click of save for serv and maint2");
-                results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
-                var objKey = 'facebook-' + fbUserId + '/' + file2.name;
-
-
-                var params = {
-
-
-                    Key: objKey,
-
-
-                    ContentType: file2.type,
-
-
-                    Body: file2,
-
-
-                    ACL: 'public-read'
-
-
-                };
-
-
-                bucket.putObject(params, function (err, data) {
-
-
-                    if (err) {
-
-
-                        results.innerHTML = 'ERROR: ' + err;
-
-
-                    } else {
-
-
-                        listObjs();
-
-
-                    }
-
-
-                });
-
-
-            } else {
-
-
-                results.innerHTML = 'Nothing to upload.';
-
-
-            }
-            // end
-            
-            // for serv maint 3
-            if (file3) {
-
-            	alert("came here on click of save for serv and maint3");
-                results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
-                var objKey = 'facebook-' + fbUserId + '/' + file3.name;
-
-
-                var params = {
-
-
-                    Key: objKey,
-
-
-                    ContentType: file3.type,
-
-
-                    Body: file3,
-
-
-                    ACL: 'public-read'
-
-
-                };
-
-
-                bucket.putObject(params, function (err, data) {
-
-
-                    if (err) {
-
-
-                        results.innerHTML = 'ERROR: ' + err;
-
-
-                    } else {
-
-
-                        listObjs();
-
-
-                    }
-
-
-                });
-
-
-            } else {
-
-
-                results.innerHTML = 'Nothing to upload.';
-
-
-            }
-            // end 
-
-            
-            // for serv main 4
-            if (file4) {
-
-            	alert("came here on click of save for serv and maint4");
-                results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
-                var objKey = 'facebook-' + fbUserId + '/' + file4.name;
-
-
-                var params = {
-
-
-                    Key: objKey,
-
-
-                    ContentType: file4.type,
-
-
-                    Body: file4,
-
-
-                    ACL: 'public-read'
-
-
-                };
-
-
-                bucket.putObject(params, function (err, data) {
-
-
-                    if (err) {
-
-
-                        results.innerHTML = 'ERROR: ' + err;
-
-
-                    } else {
-
-
-                        listObjs();
-
-
-                    }
-
-
-                });
-
-
-            } else {
-
-
-                results.innerHTML = 'Nothing to upload.';
-
-
-            }
-            // end
-
-        }, false);
-
- 
- 
- 
- 
-        function listObjs() {
-
-
-            var prefix = 'facebook-' + fbUserId;
-
-
-            bucket.listObjects({
-
-
-                Prefix: prefix
-
-
-            }, function (err, data) {
-
-
-                if (err) {
-
-
-                    results.innerHTML = 'ERROR: ' + err;
-
-
-                } else {
-
-
-                    var objKeys = "";
-
-
-                    data.Contents.forEach(function (obj) {
-
-
-                        objKeys += obj.Key + "<br>";
-
-
-                    });
-
-					//alert("came here"+objKeys);
-                    results.innerHTML = objKeys;
-                    //dashBoardPhotoUpdate(objKeys);
-                    //alert("inside dashboard");
-                    var quotIdHiddenField = '<input type="hidden" name="userId" value="' + 99 + '" />';
-                	
-               	 
-                	
-                	
-                	var editDealerVehicleQuotationForm = '<form id="edit-dealer-vehicle-quotation-content-form"><table>\<tr><td>' + quotIdHiddenField + '</td></tr>\</table></form>';
-                	
-                	$(".edit-dealer-vehicle-quotation-content").html(editDealerVehicleQuotationForm);
-                	
-                	var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
-                
-                	$.ajax({  
-                		type: "POST",  
-                		url: "api/updatePhoto?_method=PUT",
-                		data: {"userId":99,"photo":"12GHJF"},
-                		contentType:'application/json',
-                		success: function(result){
-                			
-                			alert("Successfully upated photo to user");
-                			
-                		}
-                	});
-                	
-
-					
-
-                }
-
-
-            });
-
-
-        }
-
-
-        /*!
-
-
-         * Login to your application using Facebook.
-
-
-         * Uses the Facebook SDK for JavaScript available here:
-
-
-         * https://developers.facebook.com/docs/javascript/gettingstarted/
-
-
-         */
-
-
-        window.fbAsyncInit = function () {
-
-
-            FB.init({
-
-
-                appId: appId
-
-
-            });
-            
-            
-            FB.getLoginStatus(function(response) {
-				if (response.status === 'connected') {
-					bucket.config.credentials = new AWS.WebIdentityCredentials({
-
-
-	                    ProviderId: 'graph.facebook.com',
-
-
-	                    RoleArn: roleArn,
-
-
-	                    WebIdentityToken: response.authResponse.accessToken
-
-
-	                });
-
-
-	                //fbUserId = response.authResponse.userID;
-
-
-	                button.style.display = 'block';
-				}
-			},{
-				scope : 'email'
-			}); 
-
-
-           
-
-
-        };
-
-
-         // Load the Facebook SDK asynchronously
-
-
-        (function (d, s, id) {
-
-
-            var js, fjs = d.getElementsByTagName(s)[0];
-
-
-            if (d.getElementById(id)) {
-
-
-                return;
-
-
-            }
-
-
-            js = d.createElement(s);
-
-
-            js.id = id;
-
-
-            js.src = "//connect.facebook.net/en_US/all.js";
-
-
-            fjs.parentNode.insertBefore(js, fjs);
-
-
-        }(document, 'script', 'facebook-jssdk'));
-
-
-    </script>
-    <script type="text/javascript">
-        tjq(document).ready(function() {
-            tjq("#profile .edit-profile-btn").click(function(e) {
-                e.preventDefault();
-                tjq(".view-profile").fadeOut();
-                tjq(".edit-profile").fadeIn();
-            });
-
-            setTimeout(function() {
-                tjq(".notification-area").append('<div class="info-box block"><span class="close"></span><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ab quis a dolorem, placeat eos doloribus esse repellendus quasi libero illum dolore. Esse minima voluptas magni impedit, iusto, obcaecati dignissimos.</p></div>');
-            }, 10000);
-        });
-        tjq('a[href="#profile"]').on('shown.bs.tab', function (e) {
-            tjq(".view-profile").show();
-            tjq(".edit-profile").hide();
-        });
-    </script> 
-	
 	<script type="text/javascript">
         tjq(".flexslider").flexslider({
             animation: "fade",

@@ -55,7 +55,9 @@ import javax.persistence.Table;
 	}
 
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "TRANSPSEARCHMAKELISTID") public Long getTranspSearchMakeListId() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "TRANSPSEARCHMAKELISTID") public Long getTranspSearchMakeListId() {
 		return transpSearchMakeListId;
 	}
 
