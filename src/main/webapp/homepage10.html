@@ -6,6 +6,7 @@
 <title>Autoscoop</title>
 
 <!-- added frm index -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
@@ -1611,8 +1612,10 @@ $scope.submitForm1 = function() {
 								
 			}).success(function(data) {
 				$body.removeClass("loading");
-				alert("successfully retreived"+data.flex1);
-				
+				alert("successfully retreived"+data.flex2);
+				if(data.flex2!="nourl"){
+					window.open(data.flex2);
+				}
 				
 							});
 	    
@@ -2748,78 +2751,112 @@ table{
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
+													
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
 															<div class="checkbox">
-																
-																
 																<label>
-					                                            <input type="checkbox" id="newCarEbid" name="newCarEbid" class="jpCheckbox" onclick="allSelected5()"><span class="skin-color">New .</span></a>.
-					                                        </label>
+						                                            <input type="checkbox" id="newCarEbid" name="newCarEbid" class="jpCheckbox" onclick="allSelected5()"><span class="skin-color">New .</span></a>.
+						                                        </label>
 															</div>
 															<div class="checkbox">
-															
-															<label>
-					                                            <input type="checkbox" id="usedCarEbid" name="usedCarEbid" class="jpCheckbox" onclick="allSelected6()"><span class="skin-color">Used .</span></a>.
-					                                        </label>
-															
-																
+																<label>
+						                                            <input type="checkbox" id="usedCarEbid" name="usedCarEbid" class="jpCheckbox" onclick="allSelected6()"><span class="skin-color">Used .</span></a>.
+						                                        </label>
 															</div>
+														</div>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
+													<!-- <div class="col-sm-5 col-md-4">
+															<div class="checkbox">
+																<label>
+						                                            <input type="checkbox" id="newCarEbid" name="newCarEbid" class="jpCheckbox" onclick="allSelected5()"><span class="skin-color">New .</span></a>.
+						                                        </label>
+															</div>
+															<div class="checkbox">
+																<label>
+						                                            <input type="checkbox" id="usedCarEbid" name="usedCarEbid" class="jpCheckbox" onclick="allSelected6()"><span class="skin-color">Used .</span></a>.
+						                                        </label>
+															</div>
+													</div> -->
 													<br/>
 													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<!-- <label>Year</label> -->
-														<div class="selector">
-															<select id="car-years" name="caryears" ng-model="caryears" 
-																class="full-width" required>
-															</select>
+													
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="selector">
+																<select id="car-years" name="caryears" ng-model="caryears" 
+																	class="full-width" required>
+																</select>
+															</div>
+															<span style="color:red" ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
 														</div>
-														<span style="color:red" ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
 																				<br/>
 													<div class="clearfix"></div>
-													<div class="col-sm-5 col-md-4">
-														<!-- <label>Make</label> -->
-														<div class="selector">
-															<select id="car-makes" name="carmakes" ng-model="carmakes" 
-																class="full-width" required>
-															</select>
+													
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="selector">
+																<select id="car-makes" name="carmakes" ng-model="carmakes" 
+																	class="full-width" required>
+																</select>
+															</div>
+															<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
 														</div>
-														<span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
+													
 													<div class="clearfix"></div>
 																										<br/>
-													<div class="col-sm-5 col-md-4">
-														<!-- <label>Model</label> -->
-														<div class="selector">
-															<select id="car-models" name="carmodels" ng-model="carmodels" 
-																class="full-width" required>
-															</select>
+																										
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="selector">
+																<select id="car-models" name="carmodels" ng-model="carmodels" 
+																	class="full-width" required>
+																</select>
+															</div>
+															<span style="color:red" ng-show="ebidfrm.carmodels.$error.required && (!ebidfrm.carmodels.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
 														</div>
-														<span style="color:red" ng-show="ebidfrm.carmodels.$error.required && (!ebidfrm.carmodels.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
+													
 													<div class="clearfix"></div>
 																										<br/>
-													<div class="col-sm-5 col-md-4">
-														<!-- <label>Variant</label> -->
-														<div class="selector">
-															<select id="car-model-trims" name="carmodeltrims"  ng-model="carmodeltrims"
-																class="full-width" required>
-															</select>
+																										
+																										
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="selector">
+																<select id="car-model-trims" name="carmodeltrims"  ng-model="carmodeltrims"
+																	class="full-width" required>
+																</select>
+															</div>
+															<span style="color:red" ng-show="ebidfrm.carmodeltrims.$error.required && (!ebidfrm.carmodeltrims.$pristine || ebidfrm.$submitted)"><b>Car Variant is Required</b></span>
 														</div>
-														<span style="color:red" ng-show="ebidfrm.carmodeltrims.$error.required && (!ebidfrm.carmodeltrims.$pristine || ebidfrm.$submitted)"><b>Car Variant is Required</b></span>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
+													
+													
 													<div class="clearfix"></div>
 																										<br/>
-													<div class="col-sm-5 col-md-4">
-														<!-- <label>Autoscoop Trim</label> -->
-														<div class="selector">
+																										
+																										
+																										
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="selector">
 															<select id="car-model-auto-trims" name="carmodelAutotrims"  ng-model="carmodelAutotrims"
 																class="full-width" required>
 															</select>
 														</div>
 														<span style="color:red" ng-show="ebidfrm.carmodelAutotrims.$error.required && (!ebidfrm.carmodelAutotrims.$pristine || ebidfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+														</div>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
+													
 													<div class="clearfix"></div>
 													<div class="col-md-12">&nbsp</div>
 													<div class="col-sm-6 col-md-5">
@@ -2871,12 +2908,18 @@ table{
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="form-group">
-														<div class="checkbox">
-															<label> <input type="checkbox"><a data-toggle="modal" data-target="#termsnconditionsModal"><span class="skin-color">Terms and
-																		Conditions</span></a>.
-															</label>
+															<!-- data-toggle="modal" data-target="#termsnconditionsModal" -->
+															
+															
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="checkbox">
+																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+															</div>
 														</div>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-6 col-sm-6 search-col-padding">
@@ -2996,13 +3039,15 @@ table{
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="form-group">
-														<div class="checkbox">
-															<label> <input type="checkbox"><a
-																href="#"><span class="skin-color">Terms and
-																		Conditions</span></a>.
-															</label>
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="checkbox">
+																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+															</div>
 														</div>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-12 search-col-padding">
@@ -3124,13 +3169,15 @@ table{
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="form-group">
-														<div class="checkbox">
-															<label> <input type="checkbox"><a
-																href="#"><span class="skin-color">Terms and
-																		Conditions</span></a>.
-															</label>
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="checkbox">
+																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+															</div>
 														</div>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-12 search-col-padding">
@@ -3251,13 +3298,15 @@ table{
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="form-group">
-														<div class="checkbox">
-															<label> <input type="checkbox"><a
-																href="#"><span class="skin-color">Terms and
-																		Conditions</span></a>.
-															</label>
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="checkbox">
+																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+															</div>
 														</div>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-12 search-col-padding">
@@ -3378,13 +3427,15 @@ table{
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="form-group">
-														<div class="checkbox">
-															<label> <input type="checkbox"><a
-																href="#"><span class="skin-color">Terms and
-																		Conditions</span></a>.
-															</label>
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="checkbox">
+																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+															</div>
 														</div>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-12 search-col-padding">
@@ -4643,39 +4694,51 @@ table{
 													<div class="clearfix"></div>
 													<div id="status"></div>
 													<br /> <br /> 
-													<div class="social col-md-12 col-sm-12">
-														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
-															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> &nbsp<a href="#"><i
-															class="fa fa-linkedin" onclick="onLinkedInLoad()"
-															aria-hidden="true"></i></a>
-													</div>
-
-													<br /> <br /> 
-													<div>
-
-														<!-- <div class="form-group col-md-6 col-sm-6">
-															<input type="email" class="input-text full-width"
-																id="exampleInputEmail1"
-																placeholder="Email / Mobile Number">
-														</div> -->
-														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
-													</div>
-													<div class="form-group">
-														<div class="checkbox">
-															<label> <input type="checkbox"><a data-toggle="modal" data-target="#termsnconditionsModal"><span class="skin-color">Terms and
-																		Conditions</span></a>.
-															</label>
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp; 		
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="social col-md-12 col-sm-12">
+																<a href="#"><i class="fa fa-facebook"
+																	onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+																	class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
+																	class="fa fa-google-plus" onclick="onSignInG()"
+																	aria-hidden="true"></i></a> &nbsp<a href="#"><i
+																	class="fa fa-linkedin" onclick="onLinkedInLoad()"
+																	aria-hidden="true"></i></a>
+															</div>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															&nbsp; 
+														</div>
+														<div class="col-sm-1 col-md-1">
+															&nbsp; 	
 														</div>
 													</div>
+													<br />	
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp; 		
+														</div>
+														<div class="col-sm-5 col-md-6">
+															<div class="checkbox">
+																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+															</div>
+														</div>
+													</div><br/>
+													<br />
 													<div class="clearfix"></div>
-													<div class="col-md-12 search-col-padding">
-													<!-- ng-click="go()"  -->
-														<button class="button">Submit for Loan Quotation</button>
-														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
-													</div>
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp; 		
+														</div>
+														<div class="col-sm-5 col-md-6">
+															<button class="button">Submit for Loan Quotation</button>
+														</div>
+													</div><br/>
 												</form>
 											</div>
 											<!-- END: FLIGHT SEARCH -->
@@ -5409,11 +5472,13 @@ table{
 													
 													<div class="row">
 														<div class="col-sm-12 col-md-12">
-															<label><span id="carDetailsCollapse">
-															    <span class="glyphicon glyphicon-plus" id="carDetailGlyphi" ></span>
-															    <!-- <i class="soap-icon-plus" id="carDetailGlyphi"></i> -->
-															    Car Details</span></label>
-															<!-- <button type="button" class="btn btn-info">Simple collapsible</button> -->
+															
+															 <label><span id="carDetailsCollapse">
+																    <span class="glyphicon glyphicon-plus" id="carDetailGlyphi" ></span>
+																    Car Details</span></label>
+															 <!-- <div class="product-search-title" id="carDetailsCollapse">
+															 		<span class="glyphicon glyphicon-plus" id="carDetailGlyphi" ></span>Car Details
+															 </div>  -->  
 															  <div id="carDetails">
 															  		<div class="row">
 																			<div class="col-sm-3 col-md-3">
@@ -5949,18 +6014,8 @@ table{
 															  </div>
 														</div>
 													</div>
-													
-						                            
-						                             
-													
-													<!-- <div class="col-sm-5 col-md-4">
-														<label>Other Issues (If any)</label> <input type="text"
-															class="input-text full-width" value="" placeholder="Other Issues(If any)" ng-model="otherissues"
-															id="otherissues" name="otherissues" required/>
-															<span style="color:red" ng-show="ebidinsfrm.otherissues.$error.required && (!ebidinsfrm.otherissues.$pristine || ebidinsfrm.$submitted)"><b>Other Issues is Required</b></span>
-													</div> -->
 													<div class="clearfix"></div>
-													<hr>
+													
 													<!-- <div class="col-sm-10">
 														<div class="toggle-container box">
 															<div class="panel style1">
@@ -6020,20 +6075,21 @@ table{
 															aria-hidden="true"></i></a>
 													</div>
 
-													<br /> <br /> 
-													<div>
-
-														<!-- <div class="form-group col-md-6 col-sm-6">
-															<input type="email" class="input-text full-width"
-																id="exampleInputEmail1"
-																placeholder="Email / Mobile Number">
-														</div> -->
-														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
-													</div>
+													<br /><br/>
 													<div class="clearfix"></div>
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="checkbox">
+																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+															</div>
+														</div>
+														<div class="col-sm-7 col-md-6"></div>
+													</div><br/>
+													
 													<div class="col-md-12 search-col-padding">
-														<button ng-click="go()" class="button">Request
-															Quotation</button>
+														<button class="button">Select your Insurance coverage</button>
 														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
 													</div>
 													<div class="clearfix"></div>
@@ -7080,14 +7136,23 @@ table{
 															class="input">
 													</div>
 													<div class="clearfix"></div>
-													<div class="radio">
+													<!-- <div class="radio">
 														<div class="col-md-6 col-sm-6 search-col-padding">
 															<input type="radio" name="name1" checked> <span
 																class="left">Terms and Conditions</span>
 
 														</div>
+													</div> -->
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="checkbox">
+																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+															</div>
+														</div>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
-
 													<div class="clearfix"></div>
 													<div class="col-md-12 search-col-padding">
 														<button type="submit"
@@ -7504,32 +7569,51 @@ table{
 													
 													<div id="status"></div>
 													<br /> <br /> 
-													<div class="social col-md-12 col-sm-12">
-														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
-															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> &nbsp<a href="#"><i
-															class="fa fa-linkedin" onclick="onLinkedInLoad()"
-															aria-hidden="true"></i></a>
+													
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp; 		
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="social col-md-12 col-sm-12">
+																<a href="#"><i class="fa fa-facebook"
+																	onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+																	class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
+																	class="fa fa-google-plus" onclick="onSignInG()"
+																	aria-hidden="true"></i></a> &nbsp<a href="#"><i
+																	class="fa fa-linkedin" onclick="onLinkedInLoad()"
+																	aria-hidden="true"></i></a>
+															</div>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															&nbsp; 
+														</div>
+														<div class="col-sm-1 col-md-1">
+															&nbsp; 	
+														</div>
 													</div>
-
-													<br /> <br /> 
-													<div>
-
-														<!-- <div class="form-group col-md-6 col-sm-6">
-															<input type="email" class="input-text full-width"
-																id="exampleEmail"
-																placeholder="Email / Mobile Number">
-														</div> -->
-														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
-													</div>
-													<div class="clearfix"></div>
-													<div class="col-md-12 search-col-padding">
-														<button id="uploadPhotoServbutton" class="button">Request
+													<br />	
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp; 		
+														</div>
+														<div class="col-sm-5 col-md-6">
+															<div class="checkbox">
+																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+															</div>
+														</div>
+													</div><br/>
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp; 		
+														</div>
+														<div class="col-sm-5 col-md-6">
+															<button id="uploadPhotoServbutton" class="button">Submit for Request
 															Quotation</button>
-														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
-													</div>
+														</div>
+													</div><br/>
 												</form>
 											</div>
 											<!-- END: FLIGHT SEARCH -->
@@ -8225,12 +8309,15 @@ table{
 														</div>
 													</div>
 													<div class="clearfix"></div>
-													<div class="radio">
-														<div class="col-md-6 col-sm-6 search-col-padding">
-															<input type="radio" name="name1" checked> <span
-																class="left">Terms and Conditions</span>
-
+													<div class="row">
+														<div class="col-sm-5 col-md-6">
+															<div class="checkbox">
+																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+															</div>
 														</div>
+														<div class="col-sm-7 col-md-6"></div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-12 search-col-padding">
@@ -8707,30 +8794,53 @@ table{
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br /> 
-													<div class="social col-md-12 col-sm-12">
-														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
-															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> &nbsp<a href="#"><i
-															class="fa fa-linkedin" onclick="onLinkedInLoad()"
-															aria-hidden="true"></i></a>
+													<br /> <br />
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp; 		
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="social col-md-12 col-sm-12">
+																<a href="#"><i class="fa fa-facebook"
+																	onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+																	class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
+																	class="fa fa-google-plus" onclick="onSignInG()"
+																	aria-hidden="true"></i></a> &nbsp<a href="#"><i
+																	class="fa fa-linkedin" onclick="onLinkedInLoad()"
+																	aria-hidden="true"></i></a>
+															</div>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															&nbsp; 
+														</div>
+														<div class="col-sm-1 col-md-1">
+															&nbsp; 	
+														</div>
 													</div>
-
-													<br /> <br /> 
-													<div>
-
-														<!-- <div class="form-group col-md-6 col-sm-6">
-															<input type="email" class="input-text full-width"
-																id="exampleEmail"
-																placeholder="Email / Mobile Number">
-														</div> -->
-														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
-													</div>
+													<br />	
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp; 		
+														</div>
+														<div class="col-sm-5 col-md-6">
+															<div class="checkbox">
+																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+															</div>
+														</div>
+													</div><br/>
+													<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp; 		
+														</div>
+														<div class="col-sm-5 col-md-6">
+															<button class="button">Submit Request for Quotation</button>
+														</div>
+													</div><br/>
+													
 													<div class="col-md-12 search-col-padding">
-														<button ng-click="go()" class="button">Request
-															Quotation</button>
+														
 														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
 													</div>
 													<div class="clearfix"></div>
@@ -9284,28 +9394,39 @@ table{
 													<div class="col-md-12 product-search-title">Registration
 														for car</div>
 														<div class="col-md-12">&nbsp</div>
-													<div class="col-sm-5 col-md-4">
-														<label>State</label>
-														<div class="selector">
-															<select class="full-width" id="car-reg-state"
-																name="carregstate" ng-model="carregstate"
-																required>
-																<option>ACT</option>
-																<option>VIC</option>
-																<option>NSW</option>
-																<option>QLD</option>
-																<option>SA</option>
-																<option>NT</option>
-																<option>WA</option>
-																<option>TAS</option>
-															</select>
+														
+													<div class="row">
+														<div class="col-sm-4 col-md-4">
+														<label>Vehicle of which State</label>
 														</div>
-														<span style="color:red" ng-show="ebidregostatefrm.carregstate.$error.required && (!ebidregostatefrm.carregstate.$pristine || ebidregostatefrm.$submitted)"><b>Rego State is Required</b></span>
-													</div>
-
-													<div class="col-sm-5 col-md-4">
+														<div class="col-sm-4 col-md-4">
+															<div class="selector">
+																<select class="full-width" id="car-reg-state"
+																	name="carregstate" ng-model="carregstate"
+																	required>
+																	<option>ACT</option>
+																	<option>VIC</option>
+																	<option>NSW</option>
+																	<option>QLD</option>
+																	<option>SA</option>
+																	<option>NT</option>
+																	<option>WA</option>
+																	<option>TAS</option>
+																</select>
+															</div>
+															<span style="color:red" ng-show="ebidregostatefrm.carregstate.$error.required && (!ebidregostatefrm.carregstate.$pristine || ebidregostatefrm.$submitted)"><b>Rego State is Required</b></span>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															&nbsp;
+														</div>
+													</div>	<br/>
+													
+													<div class="row">
+														<div class="col-sm-4 col-md-4">
 														<label>I am looking for</label>
-														<div class="selector">
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="selector">
 															<select class="full-width" id="car-reg-vehType"
 																name="carregvehType" ng-model="carregvehType"
 																required>
@@ -9317,8 +9438,25 @@ table{
 																<option>Buying Selling and Cancelling</option>
 																<option>Vehicle Inspection</option>
 															</select>
+															</div>
+															<span style="color:red" ng-show="ebidregostatefrm.carregvehType.$error.required && (!ebidregostatefrm.carregvehType.$pristine || ebidregostatefrm.$submitted)"><b>Vehicle Type is Required</b></span>
 														</div>
-														<span style="color:red" ng-show="ebidregostatefrm.carregvehType.$error.required && (!ebidregostatefrm.carregvehType.$pristine || ebidregostatefrm.$submitted)"><b>Vehicle Type is Required</b></span>
+														<div class="col-sm-4 col-md-4">
+															&nbsp;
+														</div>
+													</div>	<br/>
+													
+													
+													<div class="row">
+														<div class="col-sm-4 col-md-4">
+														&nbsp;
+														</div>
+														<div class="col-sm-4 col-md-4">
+															Note : Please allow Pop-ups to redirect Concern Page
+														</div>
+														<div class="col-sm-4 col-md-4">
+															&nbsp;
+														</div>
 													</div>
 													<!-- <div class="col-sm-5 col-md-4">
 														<label>VIN / HIN </label> <input id="car-reg-vinhin" name="carregvinhin" ng-model="carregvinhin"
@@ -9333,33 +9471,53 @@ table{
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
 													<div id="status"></div>
-													<br /> <br /> 
-													<div class="social col-md-12 col-sm-12">
-														<a href="#"><i class="fa fa-facebook"
-															onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
-															class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
-															class="fa fa-google-plus" onclick="onSignInG()"
-															aria-hidden="true"></i></a> &nbsp<a href="#"><i
-															class="fa fa-linkedin" onclick="onLinkedInLoad()"
-															aria-hidden="true"></i></a>
-													</div>
+													<br /> <br />
+													 
+													 <div class="row">
+														<div class="col-sm-4 col-md-4">
+														&nbsp;
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="social col-md-12 col-sm-12">
+																<a href="#"><i class="fa fa-facebook"
+																	onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+																	class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
+																	class="fa fa-google-plus" onclick="onSignInG()"
+																	aria-hidden="true"></i></a> &nbsp<a href="#"><i
+																	class="fa fa-linkedin" onclick="onLinkedInLoad()"
+																	aria-hidden="true"></i></a>
+															</div>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															&nbsp;
+														</div>
+													</div>	
+													<br />	
+													<div class="row">
+														<div class="col-sm-4 col-md-4">
+															&nbsp; 		
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+															</div>
+														</div>
+													</div><br/>
 
-													<br /> <br /> 
-													<div>
-
-														<!-- <div class="form-group col-md-6 col-sm-6">
-															<input type="email" class="input-text full-width"
-																id="exampleEmail"
-																placeholder="Email / Mobile Number">
-														</div> -->
-														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
-													</div>
-													<div class="col-md-12 search-col-padding">
-													<button class="button">Go to
-															Renewal</button>
-														<!-- <button ng-click="go()" class="button">Go to
-															Renewal</button> -->
-														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
+													<br /> <br />
+													
+													 <div class="row">
+														<div class="col-sm-4 col-md-4">
+														&nbsp;
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<button class="button .btn-block">Take me There!</button>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															&nbsp;
+														</div>
 													</div>
 
 													<div class="clearfix"></div>
