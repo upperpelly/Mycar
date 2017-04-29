@@ -30,6 +30,7 @@ import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
 import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
 import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
 import au.com.pnspvtltd.mcd.domain.PhotosTemplate;
+import au.com.pnspvtltd.mcd.domain.RegoStateUrl;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.SearchInsurance;
@@ -92,6 +93,7 @@ import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.PhotosTemplateVO;
+import au.com.pnspvtltd.mcd.web.model.RegoStateUrlVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchServMaintVO;
@@ -290,6 +292,24 @@ public class DomainModelUtil {
 		return inventoryVO;
 	}
 
+	public RegoStateUrlVO fromRegoStateUrl(final RegoStateUrl inventory, boolean isMinified) {
+		if (inventory == null) {
+			return null;
+		}
+
+		RegoStateUrlVO inventoryVO = new RegoStateUrlVO();
+		try {
+			// TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
+	}
 	public Inventory toInventory(final InventoryVO inventoryVO) {
 		Inventory inventory = new Inventory();
 		try {

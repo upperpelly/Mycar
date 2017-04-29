@@ -337,8 +337,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 <li><a href="dashboard1.html#profile" class="location-reload">Profile</a></li>
                                 <li><a href="dashboard1.html#travel-stories" class="location-reload">Ebid-R</a></li>
                                 <li><a href="dashboard1.html#settings" class="location-reload">Quotation</a></li>
-                                <li><a href="dashboard1.html#wishlist" class="location-reload">Wishlist</a></li>
-                                <li><a href="dashboard1.html#booking" class="location-reload">Booking</a></li>
+                                <!-- <li><a href="dashboard1.html#wishlist" class="location-reload">Wishlist</a></li> -->
+                                <!-- <li><a href="dashboard1.html#booking" class="location-reload">Booking</a></li> -->
                                 <li><a href="dashboard1.html#rego" class="location-reload">Rego</a></li>
                                 <li><a onclick= "signingout()">signout</a></li>
                             </ul>
@@ -635,8 +635,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             <li class="" id="logBookTab"><a data-toggle="tab" href="#l2Profile1"><i class="soap-icon-status circle"></i>Log Book</a></li>
                             <li class=""><a data-toggle="tab" href="#travel-stories"><i class="soap-icon-pets circle"></i>Ebid-R</a></li>
                             <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-status circle"></i>Quotation</a></li>                            
-                            <li class=""><a data-toggle="tab" href="#wishlist"><i class="soap-icon-wishlist circle"></i>Wishlist</a></li>
-                            <li class=""><a data-toggle="tab" href="#booking"><i class="soap-icon-businessbag circle"></i>Booking</a></li>
+                            <!-- <li class=""><a data-toggle="tab" href="#wishlist"><i class="soap-icon-wishlist circle"></i>Wishlist</a></li> -->
+                            <!-- <li class=""><a data-toggle="tab" href="#booking"><i class="soap-icon-businessbag circle"></i>Booking</a></li> -->
                             <li class=""><a data-toggle="tab" href="#rego"><i class="soap-icon-businessbag circle"></i>Rego</a></li>
                         </ul>
                         <div class="tab-content">
@@ -1076,7 +1076,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             
                             
                             
-                            <div id="booking" class="tab-pane fade">
+                            <!-- <div id="booking" class="tab-pane fade">
                                 <h2>Trips You have Booked!</h2>
                                 <div class="filter-section gray-area clearfix">
                                     <form>
@@ -1216,7 +1216,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 </div>
 
                             </div>
-                            <div id="wishlist" class="tab-pane fade">
+                             -->
+                            
+<!--                             <div id="wishlist" class="tab-pane fade">
                                 <h2>Your Wish List</h2>
                                 <div class="row image-box listing-style2 add-clearfix">
                                     <div class="col-sm-6 col-md-4">
@@ -1374,7 +1376,12 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                         </article>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+                            
+                            
+                            
+                            
+                            
                             <div id="rego" class="tab-pane fade">
                             <h2>Registration area</h2>
                             </div>
@@ -2967,6 +2974,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
         }, false);
  // end for update Settings
  // start for log service and maintainence 
+ 
+ 
  buttonlogservmaint.addEventListener('click', function () {
 
 			alert("came here on click of log service and maintenance");
@@ -3140,6 +3149,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
             
             
             FB.getLoginStatus(function(response) {
+            	alert("cjjkkkhkhk");
 				if (response.status === 'connected') {
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
 

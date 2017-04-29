@@ -579,7 +579,7 @@ var insQCt=result.insuranceQuotation.length;
         	         	   for(i=result.searchServMaint.length-1;i>=0;i--)
         	        		{
         	        		
-        	        		out10= out10+'<tr>'+'<td>'+result.searchServMaint[i].searchServMaintId+'</td>'+'<td>'+result.searchServMaint[i].servMaintL1+'</td>'+'<td>'+result.searchServMaint[i].servMaintL2+'</td>'+'<td>'+result.searchServMaint[i].regoState+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleservmaintModal-' + result.searchFinance[i].searchServMaintId + '" data-details=\'' + JSON.stringify(result.searchServMaint[i]) + '\' class="anchor-editDealerVehicleservmaintModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmaintModal">View</a></td></tr>';
+        	        		out10= out10+'<tr>'+'<td>'+result.searchServMaint[i].searchServMaintId+'</td>'+'<td>'+result.searchServMaint[i].servMaintL1+'</td>'+'<td>'+result.searchServMaint[i].servMaintL2+'</td>'+'<td>'+result.searchServMaint[i].regoState+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleservmaintModal-' + result.searchServMaint[i].searchServMaintId + '" data-details=\'' + JSON.stringify(result.searchServMaint[i]) + '\' class="anchor-editDealerVehicleservmaintModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmaintModal">View</a></td></tr>';
         	        		
         	        		
         	        		}
@@ -2258,10 +2258,11 @@ mainApp1.controller('myController13',function($scope, $http) {
 										<td>' + data.variant + '</td></tr>\
 										</table>';*/
 									logElen = result.myVehicleFuelExpenses.length;
+									
 									outLogE += '<tr><th>'+"Expensive Type"+'</th><th>'+"Expensive Category"+'</th><th>'+"Expensive Date"+'</th><th>'+"Expensive Description"+'</th><th>'+"Amount"+'</th><th>'+"Uploaded Photo"+'</th></tr>';
 					           	    for(i=0;i<logElen;i++)
 					          		 {
-					           	    	outLogE= outLogE+'<tr>'+'<td>'+result.myVehicleFuelExpenses[i].recordType+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].business+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].date+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].others+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].amount+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].photoOfInvoice+'</td></tr>';
+					           	    	outLogE= outLogE+'<tr>'+'<td>'+result.myVehicleFuelExpenses[i].recordType+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].business+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].date+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].others+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].amount+'</td>'+'<td><a target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Click to enlarge" href="'+result.myVehicleFuelExpenses[i].photoOfInvoice+'">'+'<img src="'+result.myVehicleFuelExpenses[i].photoOfInvoice+'" alt="invoice" data-toggle="tooltip" data-placement="top"  data-original-title="Click to enlarge" style="width:50px;height:25px"></a>'+'</td></tr>';
 					          		 }
 					           	 outLogE = outLogE.replace(/>null</g, ">--NA--<");
 					           	outLogE = outLogE.replace(/>undefined</g, ">--NA--<");
@@ -2294,7 +2295,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 										
 					           	    for(i=0;i<logSlen;i++)
 					          		 {
-					           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].flex1+'</td>'+'<td>'+result.myVehicleServMaint[i].flex2+'</td>'+'<td>'+result.myVehicleServMaint[i].flex3+'</td><td>'+result.myVehicleServMaint[i].mechanicName+'</td>'+'<td>'+result.myVehicleServMaint[i].companyName+'</td><td>'+result.myVehicleServMaint[i].uploadPhoto+'</td></tr>';
+					           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].flex1+'</td>'+'<td>'+result.myVehicleServMaint[i].flex2+'</td>'+'<td>'+result.myVehicleServMaint[i].flex3+'</td><td>'+result.myVehicleServMaint[i].mechanicName+'</td>'+'<td>'+result.myVehicleServMaint[i].companyName+'</td><td><a target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Click to enlarge" href="'+result.myVehicleServMaint[i].uploadPhoto+'"><img src="'+result.myVehicleServMaint[i].uploadPhoto+'" alt="servMain" data-toggle="tooltip" data-placement="top" data-original-title="Click to enlarge" style="width:50px;height:25px"></a>'+'</td></tr>';
 					          		 }
 					           	 outLogS = outLogS.replace(/>null</g, ">--NA--<");
 					           	outLogS = outLogS.replace(/>undefined</g, ">--NA--<");
