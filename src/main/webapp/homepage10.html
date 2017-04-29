@@ -138,6 +138,17 @@ function appendRow922() {
     	createCellRelatedModels922(row.insertCell(i), tbl.rows.length-1, i, 'row');
     }
 }
+// start for insurance
+function appendRow944() {
+	//alert("append invoke");
+    var tbl = document.getElementById('my-table944'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+    	createCellRelatedModels944(row.insertCell(i), tbl.rows.length-1, i, 'row');
+    }
+}
 // append row to the HTML table
 function appendRow8() {
     var tbl = document.getElementById('my-table8'), // table reference
@@ -421,6 +432,30 @@ function createCellRelatedModels91(cell,  row, text, style) {
     //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
     cell.appendChild(div);                   // append DIV to the table cell
 }
+// start of insurance
+// create DIV element and append to the table cell
+//createCellRelatedModels(row.insertCell(i), tbl.rows.length-1, i, 'row');
+function createCellRelatedModels944(cell,  row, text, style) {
+	//alert("came here1214"+$('#car-years').val());
+    var div = document.createElement('div'); // create DIV element
+        //txt = document.createTextNode(text); // create text node
+    
+    var newInput = document.createElement("INPUT");
+    newInput.id = "relatedModels944" +row+ text;
+    newInput.name = "relatedModels944" + row+text;
+    newInput.type = "text";
+    //alert($('#car-years-trans').val());
+    //alert(text);
+    switch(text){
+    case 3: newInput.type = "date";;break;
+    }
+    div.appendChild(newInput);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+// end of insurance
+
 
 // create DIV element and append to the table cell
 //createCellRelatedModels(row.insertCell(i), tbl.rows.length-1, i, 'row');
@@ -1762,6 +1797,7 @@ $scope.submitForm1 = function() {
 							"insuranceLead":{
 							"newer":$scope.newCarInsuran,
 							"used":$scope.usedCarInsuran,
+							"searchInsAdditionalDriv":[{"flex5":0,"flex6":0,"flex7":0,"flex8":0,"flex9":0,"flex10":0,"lastName":"ss","firstName":"ss","drivingLicenseType":"ss","dateOfBirth":null,"isflex13":0,"isflex14":0,"flex11":null,"flex12":null,"flex1":"ss","flex2":"ss","flex3":"ss","flex4":"ss"}],
 						"searchInsuranceId":null,
 						"postCode":$scope.postcode11,
 						"insuranceType":$scope.insuranceType,
@@ -1803,6 +1839,72 @@ $scope.submitForm1 = function() {
 							}
 						};
 			
+					
+					
+					 // table 91
+			        var tbl944 = document.getElementById('my-table944'), // table reference
+			           row = tbl944.rows.length;      // append table row
+			            var i;
+			           /*  alert("row length relatedModels91"+tbl922.rows.length);
+			            alert("col lenght relatedModels91"+tbl922.rows[0].cells.length);         
+				                alert("Json print d e relatedModels"); */
+					        //alert($('#relatedModels922'+j+'0').val());
+					            // insert table cells to the new row
+			            for (j = 1; j < tbl944.rows.length; j++) {
+			            	i=0;
+			            		
+			            		jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1].firstName=$('#relatedModels944'+j+'0').val();
+			            		jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1].lastName=$('#relatedModels944'+j+'1').val();
+			            		jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1].drivingLicenseType=$('#relatedModels944'+j+'2').val();
+			            		jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1].dateOfBirth=$('#relatedModels944'+j+'3').val();
+			            		
+					         
+			            		jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex1"]="flex1";
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex2"]="flex1";
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex3"]="flex1";
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex4"]="flex1";
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex5"]=0;
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex6"]=0;
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex7"]=0;
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex8"]=0;
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex9"]=0;
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex10"]=0;
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex11"]=null;
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex12"]=null;
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex13"]=false;
+				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex14"]=false;
+					    }  
+					                 alert("Json print relatedModels");
+					                alert(JSON.stringify(jsonInputToAPI.insuranceLead.searchInsAdditionalDriv));
+					                alert(JSON.stringify(jsonInputToAPI.insuranceLead));
+			
+					
+					
+					/* jsonInputToAPI.searchTranspLead.fromPostCodeAddr =$('#trans-address').val();
+					jsonInputToAPI.searchTranspLead.toPostCodeAddr=$('#trans-toaddress').val();
+					jsonInputToAPI.searchTranspLead.transTypeReq =$('#trans-transtype').val();
+					//jsonInputToAPI.searchTranspLead.noOfCars=$('#trans-noOfCars').val();
+					
+					jsonInputToAPI.searchTranspLead.year =$('#car-years-trans').val();
+					jsonInputToAPI.searchTranspLead.make=$('#car-makes-trans').val();
+					jsonInputToAPI.searchTranspLead.model =$('#car-models-trans').val();
+					jsonInputToAPI.searchTranspLead.variant=$('#car-model-trims-trans').val();
+					//jsonInputToAPI.servMaintLead.autoscoopTrim=$('#car-model-auto-trims-serv').val();
+					
+					jsonInputToAPI.searchTranspLead.freeText =$('#trans-freetext').val(); */
+					//jsonInputToAPI.searchTranspLead.uploadPhotos=$('#ServL2').val();
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 					/* var insLeadTrim = document.getElementById("car-model-trims-ins"); 
 					var strUserIns = insLeadTrim.options[insLeadTrim.selectedIndex].text;
 					
@@ -6008,6 +6110,17 @@ table{
 																	<div class="col-sm-3 col-md-3">
 																		&nbsp;
 																	</div>
+																	<div class="col-sm-9 col-md-9">
+																				 <div id="my-container">
+																							<center>
+																							<button type="button" onclick="javascript:appendRow944()" class="append_row">User Info</button>
+																							<br />
+																							<table id="my-table944" align="center" cellspacing="0" cellpadding="0" border="0">
+																								<tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
+																							</table>
+																							<p></center>
+																				</div>
+																			</div><br/>
 																	
 																</div>
 															  <hr>
