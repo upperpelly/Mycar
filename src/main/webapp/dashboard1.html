@@ -154,6 +154,13 @@ img.emoji {
 }
 </style>
 <style type="text/css">
+
+.product-search-title{
+	font-size:16px;
+    display: block;
+    font-weight: 800;
+    color: #bd191e;
+}
 .modale {
     display:    none;
     position:   fixed;
@@ -1408,246 +1415,207 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 										</div>
 							        	<div class="booking-section travelo-box" id="CreateVehicleForm">
 				                            
-				                            <form class="booking-form">
-				                                <div class="toggle-container box">
-				                                <div class="panel style1">
-				                                    <h4 class="panel-title">
-				                                        <a href="#tgg444" data-toggle="collapse">Car Details</a>
-				                                    </h4>
-				                                    <input type="file" id="file-chooser" />
-				
-				
-												   <!--  <button id="upload-button" style="display:none">Upload to S3</button> -->
-												
-												
-												    <div id="results"></div>
-												
-												
-												    <div id="fb-root"></div>
-				                                    <div class="panel-collapse collapse" id="tgg444">
-				                                        <div class="panel-content">
-				                                       <div class="form-group row">
-				                                       <div class="col-sm-5 col-md-4">
-				                                            <label>Vehicle Type</label>
-				                                            <div class="selector">
-				                                                <select class="full-width" id="vehicleType" name="vehicleType">
-				                                                    <option>My Car</option>
+				                            <form class="booking-form" name="vehFrm" ng-submit="submitSearchForm(vehFrm.$valid)" novalidate>
+				                            	<div class="row">
+				                            		<div class="col-sm-12 col-md-12 product-search-title">
+				                            		Basic info
+				                            		</div>
+				                            	</div>
+				                               <div class="row">
+														<div class="col-sm-3 col-md-3">
+															<label>Vehicle Type</label>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
+				                                                <select class="full-width" id="vehicleType" name="vehicleType" ng-model="vehicleType" required>
+				                                                    <option selected>My Car</option>
 				                                                    <option>My Bike</option>
 				                                                    <option>My Boat</option>
 				                                                    <option>My Caravans</option>
 				                                                    <option>My Bicycles</option>
-				                                                   
 				                                                </select>
 				                                            </div>
-				                                        </div>
-				                                    
-				                                        <div class="col-sm-5 col-md-4">
-				                                            <label>Serial No</label>
-				                                            <input type="text" id="serialNo" name="serialNo" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                        <div class="col-sm-5 col-md-4">
-				                                            <label>Vehicle Location Post Code / Address</label>
-				                                            <input type="text" id="lPostCode" name="lPostCode" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                        <div class="col-sm-5 col-md-4">
-																		<label>Year</label>
-																		<div class="selector">
-																			<select id="car-years" name="car-years"
-																				class="full-width">
-				
+				                                            <span style="color:red" ng-show="vehFrm.vehicleType.$error.required && (!vehFrm.vehicleType.$pristine || vehFrm.$submitted)"><b>Vehicle Type is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															&nbsp;
+														</div>
+														<div class="col-sm-3 col-md-3">
+															&nbsp;
+														</div>
+												</div>
+												
+												
+												
+												
+												<div class="row">
+														<div class="col-sm-3 col-md-3">
+															<label>Select Vehicle</label>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
+																			<select id="car-years" name="car-years" ng-model="caryears" required class="full-width">
+																					<option value="" selected disabled>Year</option>
 																			</select>
-																		</div>
-																	</div>
-														<div class="col-sm-5 col-md-4">
-																		<label>Make</label>
-																		<div class="selector">
-																			<select id="car-makes" name="car-makes"
+															</div>
+															<span style="color:red" ng-show="vehFrm.caryears.$error.required && (!vehFrm.caryears.$pristine || vehFrm.$submitted)"><b>Year is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
+																			<select id="car-makes" name="car-makes" ng-model="carmakes" required
 																				class="full-width">
-				
+																					<option value="" selected disabled>Make</option>
 																			</select>
-																		</div>
-																	</div>													
-																	<div class="col-sm-5 col-md-4">
-																		<label>Model</label>
-																		<div class="selector">
-																			<select id="car-models" name="car-models"
+															</div>
+															<span style="color:red" ng-show="vehFrm.carmakes.$error.required && (!vehFrm.carmakes.$pristine || vehFrm.$submitted)"><b>Make is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
+																			<select id="car-models" name="car-models" ng-model="carmodels" required
 																				class="full-width">
-				
+																					<option value="" selected disabled>Model</option>
 																			</select>
-																		</div>
-																	</div>
-																	<div class="col-sm-5 col-md-4">
-																		<label>Variant</label>
-																		<div class="selector">
-																			<select id="car-model-trims" name="car-model-trims"
+															</div>
+															<span style="color:red" ng-show="vehFrm.carmodels.$error.required && (!vehFrm.carmodels.$pristine || vehFrm.$submitted)"><b>Model is Required</b></span>
+														</div>
+												</div>
+												
+												
+												<div class="row">
+														<div class="col-sm-3 col-md-3">
+															&nbsp;
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
+																			<select id="car-model-trims" name="car-model-trims" ng-model="carmodeltrims" required
 																				class="full-width">
-				
+																						<option value="" selected disabled>Variant</option>
 																			</select>
-																		</div>
-																	</div>
-				                                        
-				                                        
-				                                        
-				                                    </div>
-				                                        </div><!-- end content -->
-				                                    </div>
-				                                </div>
-				                                 
-				                            </div>
-																	
-																<div class="toggle-container box">
-				                                <div class="panel style1">
-				                                    <h4 class="panel-title">
-				                                        <a href="#tgg29" data-toggle="collapse">Registration Info</a>
-				                                    </h4>
-				                                    <div class="panel-collapse collapse" id="tgg29">
-				                                        <div class="panel-content">
-				                                       <div class="form-group row">
-				                                       <div class="col-sm-5 col-md-4">
-				                                            <label>VIN /HIN Number</label>
-				                                            <input type="text" id="vin" name="vin" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                        <div class="col-sm-5 col-md-4">
-				                                            <label>Registraion Number</label>
-				                                            <input type="text" id="regNo" name="regNo" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                        <div class="col-sm-5 col-md-4">
-				                                            <label>Registration State</label>
-				                                            <div class="selector">
-				                                                <select class="full-width" id="regState" name="regState">
+															</div>
+															<span style="color:red" ng-show="vehFrm.carmodeltrims.$error.required && (!vehFrm.carmodeltrims.$pristine || vehFrm.$submitted)"><b>Trim is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															&nbsp;
+														</div>
+														<div class="col-sm-3 col-md-3">
+															&nbsp;
+														</div>
+												</div>
+												
+												
+												
+												
+												<div class="row">
+														<div class="col-sm-3 col-md-3">
+															<label>Vehicle Identity</label>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="vin" name="vin" class="input-text full-width" value=""  ng-model="vin" required placeholder="VIN /HIN Number" />
+															<span style="color:red" ng-show="vehFrm.vin.$error.required && (!vehFrm.vin.$pristine || vehFrm.$submitted)"><b>VIN /HIN Number is Required</b></span>
+														</div>
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="regNo" name="regNo" ng-model="regNo" required  class="input-text full-width" value="" placeholder="Rego No" />
+															<span style="color:red" ng-show="vehFrm.regNo.$error.required && (!vehFrm.regNo.$pristine || vehFrm.$submitted)"><b>Rego No is Required</b></span>
+														</div>
+														<div class="col-sm-1 col-md-1">
+															<div class="selector">
+				                                                <select class="full-width" id="regState" name="regState" ng-model="regState" required>
+				                                                    <option value="" selected disabled>Rego State</option>
 				                                                    <option>ACT</option>
 				                                                    <option>NSW</option>
 				                                                    <option>VIC</option>
 				                                                    <option>QLD</option>
 				                                                    <option>NT</option>
 				                                                    <option>TAS</option>
-				                                                    
 				                                                </select>
 				                                            </div>
-				                                        </div>
-				                                         <div class="col-xs-6">
-				                                                         <label>Registration Expiry Date</label>
-				                                                            <input type="date" name="RegExpDate" id = "RegExpDate" class="input-text full-width" placeholder="Registration Expiry Date" />
-				                                                        
-				                                                    </div>
-				                                        
-				                                        
-				                                        
-				                                    </div>
-				                                        </div><!-- end content -->
-				                                    </div>
-				                                </div>
-				                                 
-				                            </div>
-				                            
-				                            <div class="toggle-container box">
-				                                <div class="panel style1">
-				                                    <h4 class="panel-title">
-				                                        <a href="#tgg42" data-toggle="collapse">Insurance Info</a>
-				                                    </h4>
-				                                    <div class="panel-collapse collapse" id="tgg42">
-				                                        <div class="panel-content">
-				                                       <div class="form-group row">
-				                                       
-				                                         
-				                                        <div class="col-sm-5 col-md-4">
-				                                            <label>Insurance Provider</label>
-				                                            <div class="selector">
-				                                                <select class="full-width" id="insProv" name="insProv">
+				                                            <span style="color:red" ng-show="vehFrm.regState.$error.required && (!vehFrm.regState.$pristine || vehFrm.$submitted)"><b>Rego State is Required</b></span>
+														</div>	
+														<div class="col-sm-3 col-md-3">
+				                                       		<input type="text" onfocus="(this.type='date')" name="RegExpDate" id = "RegExpDate" class="input-text full-width" placeholder="Rego End Date" ng-model="RegExpDate" required/>
+				                                       		<span style="color:red" ng-show="vehFrm.RegExpDate.$error.required && (!vehFrm.RegExpDate.$pristine || vehFrm.$submitted)"><b>Rego End date is Required</b></span>
+														</div>
+												</div>
+												
+												
+												
+												<div class="row">
+				                            		<div class="col-sm-12 col-md-12 product-search-title">
+				                            		Insurance Details
+				                            		</div>
+				                            	</div>
+												
+												<div class="row">
+														<div class="col-sm-3 col-md-3">
+															 <div class="selector">
+				                                                <select class="full-width" id="insProv" name="insProv" ng-model="insProv" required>
+				                                                	<option value="" selected disabled>Insurance Provider</option>
 				                                                    <option>INs</option>
 				                                                    <option>INs</option>
 				                                                    <option>ins</option>
 				                                                    <option>QLD</option>
 				                                                    <option>NT</option>
 				                                                    <option>Other</option>
-				                                                    
-				                                                    
-				                                                    
 				                                                </select>
 				                                            </div>
-				                                        </div>
-				                                        <div class="col-sm-5 col-md-4">
-				                                            <label>Insurance Premium Paid</label>
-				                                            <input type="text" id="insPrePaid" name="insPrePaid" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                        <div class="col-sm-5 col-md-4">
-				                                            <label>Insurance Premium Paid Frequency</label>
-				                                            <div class="selector">
-				                                                <select class="full-width" id="premPaidFreq" name="premPaidFreq">
-				                                                    <option>Weekly </option>
-				                                                    <option>Fourthnightly </option>
-				                                                    <option>Monthly</option>
-				                                                    
-				                                                    
-				                                                    
-				                                                </select>
-				                                            </div>
-				                                        </div>
-				                                         <div class="col-xs-6">
-				                                                         <label>Insurance Expiry Date</label>
-				                                                            <input type="date" id="InsExpDate" name="InsExpDate" class="input-text full-width" placeholder="Insurance Expiry Date" />
-				                                                       
-				                                                    </div>
-				                                        
-				                                        
-				                                        
-				                                    </div>
-				                                        </div><!-- end content -->
-				                                    </div>
-				                                </div>
-				                                 
+				                                            <span style="color:red" ng-show="vehFrm.insProv.$error.required && (!vehFrm.insProv.$pristine || vehFrm.$submitted)"><b>Insurance Provider is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text" onfocus="(this.type='date')" id="InsExpDate" name="InsExpDate" class="input-text full-width" placeholder="Insurance End Date" ng-model="InsExpDate" required />
+															<span style="color:red" ng-show="vehFrm.InsExpDate.$error.required && (!vehFrm.InsExpDate.$pristine || vehFrm.$submitted)"><b>Insurance Provider is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="insPrePaid" name="insPrePaid" class="input-text full-width" value="" placeholder="Premimum Amount"  ng-model="insPrePaid" required />
+															<span style="color:red" ng-show="vehFrm.insPrePaid.$error.required && (!vehFrm.insPrePaid.$pristine || vehFrm.$submitted)"><b>Insurance Premium is Required</b></span>
+														</div>	
+														<div class="col-sm-3 col-md-3">
+				                                       		<input type="checkbox" id="insRemind" name="insRemind"  ng-model="insRemind" required />Reminder
+				                                       		<span style="color:red" ng-show="vehFrm.insRemind.$error.required && (!vehFrm.insRemind.$pristine || vehFrm.$submitted)"><b>Reminder must be checked</b></span>
+														</div>
+												</div>
+												
+												
+												
+											<div class="row">
+				                            		<div class="col-sm-12 col-md-12 product-search-title">
+				                            		Maintenance Details
+				                            		</div>
 				                            </div>
 				                            
-				                             <div class="toggle-container box">
-				                                <div class="panel style1">
-				                                    <h4 class="panel-title">
-				                                        <a href="#tgg52" data-toggle="collapse">Maintenance info</a>
-				                                    </h4>
-				                                    <div class="panel-collapse collapse" id="tgg52">
-				                                        <div class="panel-content">
-				                                       <div class="form-group row">
-				                                       
-				                                         <div class="col-sm-5 col-md-4">
-				                                            <label>Current Odo Meter Reading</label>
-				                                            <input type="text" id="odoMeter" name="odoMeter" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                         <div class="col-xs-6">
-				                                         			<label>Last Service & Maintenance Date</label>
-				                                                            <input type="date" id="LastServDate" name="LastServDate" class="input-text full-width" placeholder="Last Service & Maintenance Date" />
-				                                                     
-				                                                    </div>
-				                                                    <div class="col-xs-6">
-				                                                    <label>Next Service & Maintenance Date</label>    
-				                                                            <input type="date" id="NextServDate" name="NextServDate" class="input-text full-width" placeholder="Next Service & Maintenance Date" />
-				                                                        
-				                                                    </div>
-				                                        
-				                                        <div class="col-sm-5 col-md-4">
-				                                            <label>Next Service & Maintenance Kms</label>
-				                                            <input type="text" id="nextServMaiKms" name="nextServMaiKms" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                        
-				                                        
-				                                        
-				                                    </div>
-				                                        </div><!-- end content -->
-				                                    </div>
-				                                </div>
-				                                 
+			                            	<div class="row">
+													<div class="col-sm-3 col-md-3">
+														<input type="text" id="odoMeter" name="odoMeter" class="input-text full-width" value="" placeholder="Last Service @KMs"  ng-model="odoMeter" required />
+														<span style="color:red" ng-show="vehFrm.odoMeter.$error.required && (!vehFrm.odoMeter.$pristine || vehFrm.$submitted)"><b>Odometer reading is Required</b></span>
+													</div>
+													<div class="col-sm-3 col-md-3">
+														<input type="text"  onfocus="(this.type='date')" id="LastServDate" name="LastServDate" class="input-text full-width"   ng-model="LastServDate" required placeholder="Last Service & Maintenance Date" />
+														<span style="color:red" ng-show="vehFrm.LastServDate.$error.required && (!vehFrm.LastServDate.$pristine || vehFrm.$submitted)"><b>Odometer reading is Required</b></span>
+													</div>
+													<div class="col-sm-3 col-md-3">
+														<input type="text"  onfocus="(this.type='date')" id="NextServDate" name="NextServDate" class="input-text full-width" placeholder="Next Service & Maintenance Date"  ng-model="NextServDate" required  />
+														<span style="color:red" ng-show="vehFrm.NextServDate.$error.required && (!vehFrm.NextServDate.$pristine || vehFrm.$submitted)"><b>Odometer reading is Required</b></span>
+													</div>	
+													<div class="col-sm-3 col-md-3">
+														<input type="text" id="nextServMaiKms" name="nextServMaiKms" class="input-text full-width" value="" placeholder="Next service @ kms"   ng-model="nextServMaiKms" required />
+														<span style="color:red" ng-show="vehFrm.nextServMaiKms.$error.required && (!vehFrm.nextServMaiKms.$pristine || vehFrm.$submitted)"><b>Next service reading is Required</b></span>
+			                                       		<input type="checkbox" id="maiRemind" name="maiRemind"  ng-model="maiRemind" required  />Reminder
+			                                       		<span style="color:red" ng-show="vehFrm.maiRemind.$error.required && (!vehFrm.maiRemind.$pristine || vehFrm.$submitted)"><b>Maintenance Reminder must be checked</b></span>
+													</div>
+											</div>
+				                           
+				                           
+				                           
+				                            <div class="row">
+				                            		<div class="col-sm-12 col-md-12 product-search-title">
+				                            		Finance Info
+				                            		</div>
 				                            </div>
-				                            	
-				                            	<div class="toggle-container box">
-				                                <div class="panel style1">
-				                                    <h4 class="panel-title">
-				                                        <a href="#tgg62" data-toggle="collapse">Finance info</a>
-				                                    </h4>
-				                                    <div class="panel-collapse collapse" id="tgg62">
-				                                        <div class="panel-content">
-				                                       <div class="form-group row">
-				                                       <div class="col-sm-5 col-md-4">
-				                                            <label>Finance Provider</label>
-				                                            <div class="selector">
-				                                                <select class="full-width" id="finProv" name="finProv">
+				                            
+			                            	<div class="row">
+													<div class="col-sm-3 col-md-3">
+														 <div class="selector">
+				                                                <select class="full-width" id="finProv" name="finProv" ng-model="finProv" required >
+				                                                    <option value="" selected disabled>Finance Provider</option>
 				                                                    <option>Red</option>
 				                                                    <option>Blue</option>
 				                                                    <option>Green</option>
@@ -1657,147 +1625,50 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 				                                                    <option>White</option>
 				                                                    
 				                                                </select>
-				                                            </div>
-				                                        </div>
-				                                         <div class="col-sm-5 col-md-4">
-				                                            <label>Loan Amount 1</label>
-				                                            <input type="text" id="loanAmount" name="loanAmount" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                         <div class="col-xs-6">
-				                                                        <label>Loan Taken date</label>
-				                                                            <input type="date" id="LoanTakenDate" name="LoanTakenDate" class="input-text full-width" placeholder="Loan Taken date" />
-				                                                        
-				                                                    </div>
-				                                        
-				                                         <div class="col-sm-5 col-md-4">
-				                                            <label>Load Paid frequency</label>
-				                                            <div class="selector">
-				                                                <select class="full-width" id="loanPaidFreq" name="loanPaidFreq">
-				                                                    <option>Red</option>
-				                                                    <option>Blue</option>
-				                                                    <option>Green</option>
-				                                                    <option>Grey</option>
-				                                                    <option>Silver</option>
-				                                                    <option>Black</option>
-				                                                    <option>White</option>
-				                                                    
-				                                                </select>
-				                                            </div>
-				                                        </div>
-				                                        <div class="col-sm-5 col-md-4">
-				                                            <label>Loan Amount 2</label>
-				                                            <input type="text" id="laonAmount1" name="laonAmount1" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                        <div class="col-sm-5 col-md-4">
-				                                            <label>Loan Period</label>
-				                                            <input type="text" id="laonPeriod" name="laonPeriod" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                        <div class="col-sm-5 col-md-4">
-				                                            <label>Loan Current Interest Rate</label>
-				                                            <input type="text" id="laonIntRate" name="laonIntRate" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                        
-				                                                    
-				                                        
-				                                        
-				                                        
-				                                    </div>
-				                                        </div><!-- end content -->
-				                                    </div>
-				                                </div>
-				                                 
-				                            </div>
+				                                         </div>
+				                                         <span style="color:red" ng-show="vehFrm.finProv.$error.required && (!vehFrm.finProv.$pristine || vehFrm.$submitted)"><b>Finance Provider is Required</b></span>
+													</div>
+													<div class="col-sm-3 col-md-3">
+														<input type="text"  onfocus="(this.type='date')"" id="LoanTakenDate" name="LoanTakenDate" class="input-text full-width" placeholder="Loan Taken date" ng-model="LoanTakenDate" required/>
+														<span style="color:red" ng-show="vehFrm.LoanTakenDate.$error.required && (!vehFrm.LoanTakenDate.$pristine || vehFrm.$submitted)"><b>Loan Taken date is Required</b></span>
+													</div>
+													<div class="col-sm-3 col-md-3">
+														<input type="text" id="loanAmount" name="loanAmount" class="input-text full-width" value="" placeholder="Loan Amount" ng-model="loanAmount" required />
+														<span style="color:red" ng-show="vehFrm.loanAmount.$error.required && (!vehFrm.loanAmount.$pristine || vehFrm.$submitted)"><b>Loan Amount is Required</b></span>
+													</div>	
+													<div class="col-sm-3 col-md-3">
+														<input type="text" id="laonPeriod" name="laonPeriod" class="input-text full-width" value="" placeholder="Loan Period"  ng-model="laonPeriod" required/>
+														<span style="color:red" ng-show="vehFrm.laonPeriod.$error.required && (!vehFrm.laonPeriod.$pristine || vehFrm.$submitted)"><b>Loan Period is Required</b></span>
+			                                       		<input type="checkbox" id="finRemind" name="finRemind" ng-model="finRemind" required />Reminder
+			                                       		<span style="color:red" ng-show="vehFrm.finRemind.$error.required && (!vehFrm.finRemind.$pristine || vehFrm.$submitted)"><b>Reminder must be checked</b></span>
+													</div>
+											</div>
+											
+											
+											<div class="row">
+													<div class="col-sm-3 col-md-3">
+														 <label>Add your Vehicle Photos</label>
+													</div>
+													<div class="col-sm-3 col-md-3">
+														<input type="file" name="file1" id="file-chooser" class="inputfile" hidden />
+														<label for="file-chooser"><img src="images/imgupload.png" alt="HTML5 Icon" width="100" height="100"></label>
+													</div>
+													<div class="col-sm-3 col-md-3">
+														<input type="file" name="file2" id="file-chooser2" class="inputfile" hidden />
+														<label for="file-chooser2"><img src="images/imgupload.png" alt="HTML5 Icon" width="100" height="100"></label>
+													</div>	
+													<div class="col-sm-3 col-md-3">
+														<input type="file" name="file3" id="file-chooser3" class="inputfile" hidden />
+														<label for="file-chooser3"><img src="images/imgupload.png" alt="HTML5 Icon" width="100" height="100"></label>
+													</div>
+											</div>	<br/><br/>
 				                            
-				                            <div class="toggle-container box">
-				                                <div class="panel style1">
-				                                    <h4 class="panel-title">
-				                                        <a href="#tgg82" data-toggle="collapse">Fuel Card info</a>
-				                                    </h4>
-				                                    <div class="panel-collapse collapse" id="tgg82">
-				                                        <div class="panel-content">
-				                                       <div class="form-group row">
-				                                       <div class="col-sm-5 col-md-4">
-				                                            <label>Fuel Card Provider</label>
-				                                            <div class="selector">
-				                                                <select class="full-width" id="fuelCardProv" name="fuelCardProv">
-				                                                    <option>Manual Entry</option>
-				                                                    <option>Blue</option>
-				                                                    <option>Green</option>
-				                                                    <option>Grey</option>
-				                                                    <option>Silver</option>
-				                                                    <option>Black</option>
-				                                                    <option>White</option>
-				                                                    
-				                                                </select>
-				                                            </div>
-				                                        </div>
-				                                         <div class="col-sm-5 col-md-4">
-				                                            <label>Value Of Fuel Card</label>
-				                                            <input type="text" id="valFuelCard" name="valFuelCard" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                       
-				                                         <div class="col-sm-5 col-md-4">
-				                                            <label>Fuel Type</label>
-				                                            <div class="selector">
-				                                                <select class="full-width" id="fuelType" name="fuelType">
-				                                                    <option>Petrol</option>
-				                                                    <option>Gas</option>
-				                                                    <option>Diesel</option>
-				                                                    <option>Elictric</option>
-				                                                    <option>Bio</option>
-				                                                    
-				                                                </select>
-				                                            </div>
-				                                        </div>
-				                                        
-				                                        
+				                            <div class="row">
+				                            		<div class="col-sm-3 col-md-3">&nbsp;</div>
+				                            		<div class="col-sm-9 col-md-9">
+				                                        <button id="upload-button" class="full-width btn-medium">Save</button>
 				                                    </div>
-				                                        </div><!-- end content -->
-				                                    </div>
-				                                </div>
-				                                 
-				                            </div>
-				                            <div class="toggle-container box">
-				                                <div class="panel style1">
-				                                    <h4 class="panel-title">
-				                                        <a href="#tgg92" data-toggle="collapse">Photos</a>
-				                                    </h4>
-				                                    <div class="panel-collapse collapse" id="tgg92">
-				                                        <div class="panel-content">
-				                                       <div class="form-group row">
-				                                       
-				                                         <div class="col-sm-5 col-md-4">
-				                                            <label>Photo 1</label>
-				                                            <input type="text" id="photo1" name="photo1" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                       
-				                                         <div class="col-sm-5 col-md-4">
-				                                            <label>Photo 2</label>
-				                                            <input type="text" id="photo2" name="photo2" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                        <div class="col-sm-5 col-md-4">
-				                                            <label>Photo 3</label>
-				                                            <input type="text" id="photo3" name="photo3" class="input-text full-width" value="" placeholder="" />
-				                                        </div>
-				                                        
-				                                        
-				                                    </div>
-				                                        </div><!-- end content -->
-				                                    </div>
-				                                </div>
-				                                 
-				                            </div>
-				                                <div class="checkbox">
-																		<label> <input type="checkbox"><span
-																			class="skin-color">Activate</span></a>.
-																		</label>
-																	</div>
-				                               <div class="form-group row">
-				                                    <div class="col-sm-6 col-md-5">
-				                                        <button id="upload-button" class="full-width btn-large" ng-click="submitSearchForm()" >Save</button>
-				                                    </div>
-				                                </div> 
-				                               
+				                            </div>				                               
 				                            </form>
 				                        </div>
 											        	
@@ -2747,12 +2618,18 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
         });
 
-
+// my vehicle photo set start
         var fileChooser = document.getElementById('file-chooser');
+        //file-chooser2
+        var fileChooser2 = document.getElementById('file-chooser2');
 
-
+ //file-chooser3
+        var fileChooser3 = document.getElementById('file-chooser3');
         var button = document.getElementById('upload-button');
-        
+     // my vehicle photo set end
+       
+
+// start of Logbook set        
         var fileChooserLogExp = document.getElementById('file-chooser-lognewexp');
         var buttonLogExp = document.getElementById('upload-button-lognewexp');
         
@@ -2761,7 +2638,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
         
         var fileChooserupdateset = document.getElementById('file-chooser-updateset');
         var buttonupdatesetting = document.getElementById('upload-button-updatesetting');
-        
+     // start of Logbook set end
 
         var results = document.getElementById('results');
 
@@ -2770,18 +2647,20 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 			alert("came here on click of save");
             var file = fileChooser.files[0];
+            var file2 = fileChooser2.files[0];
+            var file3 = fileChooser3.files[0];
+// start of upload 2
 
+            if (file2) {
 
-            if (file) {
-
-
-                results.innerHTML = '';
+            	//alert("came here on click of save for serv and maint2");
+                //results.innerHTML = '';
 
 
                 //Object key will be facebook-USERID#/FILE_NAME
 
 
-                var objKey = 'facebook-' + fbUserId + '/' + file.name;
+                var objKey = 'facebook-' + fbUserId + '/' + file2.name;
 
 
                 var params = {
@@ -2830,9 +2709,133 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
             }
+           
+//end
+// start of upload 3
+ 
+            if (file3) {
+
+            	//alert("came here on click of save for serv and maint2");
+                //results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file3.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file.type,
+
+
+                    Body: file,
+
+
+                    ACL: 'public-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+
+                    if (err) {
+
+
+                        results.innerHTML = 'ERROR: ' + err;
+
+
+                    } else {
+
+
+                        listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+
+                results.innerHTML = 'Nothing to upload.';
+
+
+            }
+           
+// end
+            if (file) {
+
+
+                //results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file.type,
+
+
+                    Body: file,
+
+
+                    ACL: 'public-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+
+                    if (err) {
+
+
+                        /* results.innerHTML = 'ERROR: ' + err; */
+
+
+                    } else {
+
+
+                        listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+
+                /* results.innerHTML = 'Nothing to upload.'; */
+
+
+            }
 
 
         }, false);
+        
+        // end of funcationality for myvehicle
 
  // start for log Expense 
  buttonLogExp.addEventListener('click', function () {
@@ -2844,7 +2847,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
             if (file) {
 
 
-                results.innerHTML = '';
+                //results.innerHTML = '';
 
 
                 //Object key will be facebook-USERID#/FILE_NAME
@@ -2895,7 +2898,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
             } else {
 
 
-                results.innerHTML = 'Nothing to upload.';
+                /* results.innerHTML = 'Nothing to upload.'; */
 
 
             }
@@ -2914,7 +2917,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
             if (file) {
 
 
-                results.innerHTML = '';
+                //results.innerHTML = '';
 
 
                 //Object key will be facebook-USERID#/FILE_NAME
@@ -2947,7 +2950,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                     if (err) {
 
 
-                        results.innerHTML = 'ERROR: ' + err;
+                        /* results.innerHTML = 'ERROR: ' + err; */
 
 
                     } else {
@@ -2965,7 +2968,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
             } else {
 
 
-                results.innerHTML = 'Nothing to upload.';
+                /* results.innerHTML = 'Nothing to upload.'; */
 
 
             }
@@ -2985,7 +2988,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
             if (file) {
 
 
-                results.innerHTML = '';
+                //results.innerHTML = '';
 
 
                 //Object key will be facebook-USERID#/FILE_NAME
@@ -3018,7 +3021,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                     if (err) {
 
 
-                        results.innerHTML = 'ERROR: ' + err;
+                        /* results.innerHTML = 'ERROR: ' + err; */
 
 
                     } else {
@@ -3036,7 +3039,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
             } else {
 
 
-                results.innerHTML = 'Nothing to upload.';
+                /* results.innerHTML = 'Nothing to upload.'; */
 
 
             }
@@ -3065,7 +3068,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                 if (err) {
 
 
-                    results.innerHTML = 'ERROR: ' + err;
+                    /* results.innerHTML = 'ERROR: ' + err; */
 
 
                 } else {
@@ -3083,7 +3086,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                     });
 
 					//alert("came here"+objKeys);
-                    results.innerHTML = objKeys;
+                    /* results.innerHTML = objKeys; */
                     //dashBoardPhotoUpdate(objKeys);
                     //alert("inside dashboard");
                     var quotIdHiddenField = '<input type="hidden" name="userId" value="' + 99 + '" />';

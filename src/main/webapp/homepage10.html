@@ -1676,20 +1676,29 @@ $scope.submitForm1 = function() {
 		//alert("inside insurance user id"+fbUserId);
 		var fileChooserserv1 = document.getElementById('uploadPhotoServ1');
 						var fileServ1 = fileChooserserv1.files[0];
-						var objKeyMyVeh = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ1.name;
-						$scope.uploadPhotoServ1=objKeyMyVeh;
+						var objKeyMyVeh='noImage';
+						if(fileServ1){
+						objKeyMyVeh = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ1.name;
+						$scope.uploadPhotoServ1=objKeyMyVeh;}
 						var fileChooserserv2 = document.getElementById('uploadPhotoServ2');
 						var fileServ2 = fileChooserserv2.files[0];
-						var objKeyMyVeh2 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ2.name;
-						$scope.uploadPhotoServ2=objKeyMyVeh2;
+						var objKeyMyVeh2 = 'noImage';
+						if(fileServ2){
+						objKeyMyVeh2 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ2.name;
+						$scope.uploadPhotoServ2=objKeyMyVeh2;}
 						var fileChooserserv3 = document.getElementById('uploadPhotoServ3');
 						var fileServ3 = fileChooserserv3.files[0];
-						var objKeyMyVeh3 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ3.name;
-						$scope.uploadPhotoServ3=objKeyMyVeh3;
+						var objKeyMyVeh3 ='noImage';
+						if(fileServ3){
+						objKeyMyVeh3 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ3.name;
+						$scope.uploadPhotoServ3=objKeyMyVeh3;}
 						var fileChooserserv4 = document.getElementById('uploadPhotoServ4');
+						var objKeyMyVeh4 = 'noImage';
+						if(fileServ4){
 						var fileServ4 = fileChooserserv4.files[0];
-						var objKeyMyVeh4 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ4.name;
-						$scope.uploadPhotoServ4=objKeyMyVeh4;
+						objKeyMyVeh4 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ4.name;
+						$scope.uploadPhotoServ4=objKeyMyVeh4;}
+						
 				//alert("Image of MyVehicle"+objKeyMyVeh);
 		var jsonInputToAPI = {"userId":userId,
 				"servMaintLead":{
@@ -10890,7 +10899,7 @@ table{
          
 		//alert("fb status checked");
 		 FB.getLoginStatus(function(response) {
-         	//alert("ruwususois");
+         	alert("ruwususois");
 				if (response.status === 'connected') {
 					//alert("inside connected");
 					bucket.config.credentials = new AWS.WebIdentityCredentials({

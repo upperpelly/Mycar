@@ -2309,79 +2309,114 @@ mainApp1.controller('myController13',function($scope, $http) {
 						});
 					}
 
-					$scope.submitSearchForm = function() {
-						var fileChooserMyVeh = document.getElementById('file-chooser');
-						var fileMyVeh = fileChooserMyVeh.files[0];
-						var objKeyMyVeh = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileMyVeh.name;
-				//alert("Image of MyVehicle"+objKeyMyVeh);
-						var RegExpDate= stringToDate($('#RegExpDate').val(),"dd/MM/yyyy","/");
-						var InsExpDate= stringToDate($('#InsExpDate').val(),"dd/MM/yyyy","/");
-						var LastServDate= stringToDate($('#LastServDate').val(),"dd/MM/yyyy","/");
-						var NextServDate= stringToDate($('#NextServDate').val(),"dd/MM/yyyy","/");
-						var LoanTakenDate = stringToDate($('#LoanTakenDate').val(),"dd/MM/yyyy","/");
+					$scope.submitSearchForm = function(isValid) {
+							
+						
+							if(isValid){
+								
+								var fileChooserMyVeh = document.getElementById('file-chooser');
+								var fileMyVeh = fileChooserMyVeh.files[0];
+								var objKeyMyVeh='noImage';
+								if(fileMyVeh){
+								objKeyMyVeh = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileMyVeh.name;}
+								
+								var fileChooserMyVeh2 = document.getElementById('file-chooser2');
+								var fileMyVeh2 = fileChooserMyVeh2.files[0];
+								var objKeyMyVeh2='noImage';
+								if(fileMyVeh2){
+								objKeyMyVeh2 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileMyVeh2.name;}
+								
+								var fileChooserMyVeh3 = document.getElementById('file-chooser3');
+								var fileMyVeh3 = fileChooserMyVeh3.files[0];
+								var objKeyMyVeh3='noImage';
+								if(fileMyVeh3){
+								objKeyMyVeh3 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileMyVeh3.name;}
+									//alert("Image of MyVehicle"+objKeyMyVeh);
+								/*var RegExpDate= stringToDate($('#RegExpDate').val(),"dd/MM/yyyy","/");
+								var InsExpDate= stringToDate($('#InsExpDate').val(),"dd/MM/yyyy","/");
+								var LastServDate= stringToDate($('#LastServDate').val(),"dd/MM/yyyy","/");
+								var NextServDate= stringToDate($('#NextServDate').val(),"dd/MM/yyyy","/");
+								var LoanTakenDate = stringToDate($('#LoanTakenDate').val(),"dd/MM/yyyy","/");
+*/
+								var jsonInputToAPI = {"userId":userId,
+										"myVehicleVO":{
+											"myVehicleId":null,
+											"year": $scope.caryears,															      
+											"make":$scope.carmakes,
+													"model" :$scope.carmodels,
+													 "variant":$scope.carmodeltrims,
+													"vin":$scope.vin,
+													"regNum":$scope.regNo,
+													"regState":$scope.regState,
+													"regExpDate":$scope.RegExpDate,
+													"insProv":$scope.insProv,
+													"insProvMan":"",
+													"insPremPaid":$scope.insPrePaid,
+													"insPremPaidFreq":"",
+													"insExpiry":$scope.InsExpDate,	
+													"odoMeter":$scope.odoMeter,	//Last serv kms
+													"lastServiceDt":$scope.LastServDate,	
+													"nextServiceDt":$scope.NextServDate,	
+													"nextServKms":$scope.nextServMaiKms,	
+													"finProvider":$scope.finProv,	
+													"loanAmt1":$scope.loanAmount,//Loan Amt	
+													"loanTakenDt":$scope.LoanTakenDate,
+														"loanPaidFreq":"",	
+													"loanAmt2":0,	
+													"loanPeriod":$scope.laonPeriod,	
+													"loanInterest":1,
+														"fuelCardProvider":"",	
+													"valFuelCard":"",	
+													"fuelType":$scope.vehicleType,//Vehicle type mapped to fuel type
+													"photo1":objKeyMyVeh,	
+													"photo2":objKeyMyVeh2,	
+													"photo3":objKeyMyVeh3,
+														"flex1":"flex1",	
+													"flex2":"flex1",	
+													"flex3":"flex1",
+														"flex4":"flex1",
+													"insRemind":$scope.insRemind,
+													"maiRemind":$scope.maiRemind,
+													"finRemind":$scope.finRemind,
+													"flex5":12,	
+													"flex6":12,
+													"flex7":12,
+														"flex8":null,	
+													"flex9":null
+										}
+										}
 
-						var jsonInputToAPI = {"userId":userId,
-								"myVehicleVO":{
-									"myVehicleId":null,
-									"year": $('#car-years').val(),															      
-									"make":$('#car-makes').val(),
-											"model" :$('#car-models').val(),
-											 "variant":$('#car-model-trims').val(),
-											"vin":$('#vin').val(),
-											"regNum":$('#regNo').val(),
-											"regState":$('#car-model-trims').val(),
-											"regExpDate":RegExpDate,
-											"insProv":$('#regState').val(),
-											"insProvMan":$('#insProv').val(),
-											"insPremPaid":$('#insPrePaid').val(),
-											"insPremPaidFreq":$('#premPaidFreq').val(),
-											"insExpiry":InsExpDate,	
-											"odoMeter":$('#odoMeter').val(),	
-											"lastServiceDt":LastServDate,	
-											"nextServiceDt":NextServDate,	
-											"nextServKms":$('#nextServMaiKms').val(),	
-											"finProvider":$('#finProv').val(),	
-											"loanAmt1":$('#loanAmount').val(),	
-											"loanTakenDt":LoanTakenDate,
-												"loanPaidFreq":$('#loanPaidFreq').val(),	
-											"loanAmt2":$('#laonAmount1').val(),	
-											"loanPeriod":$('#laonPeriod').val(),	
-											"loanInterest":$('#laonIntRate').val(),
-												"fuelCardProvider":$('#fuelCardProv').val(),	
-											"valFuelCard":$('#valFuelCard').val(),	
-											"fuelType":$('#fuelType').val(),
-											"photo1":objKeyMyVeh,	
-											"photo2":$('#photo2').val(),	
-											"photo3":$('#photo3').val(),
-												"flex1":"flex1",	
-											"flex2":"flex1",	
-											"flex3":"flex1",
-												"flex4":"flex1",	
-											"flex5":12,	
-											"flex6":12,
-											"flex7":12,
-												"flex8":null,	
-											"flex9":null
+								alert(JSON.stringify(jsonInputToAPI));
+														//alert("Before Call");
+														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
+														//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
+														var wsURL = 'api/eBid/myVehicle';
+														
+															    $http({
+																			method : 'POST',
+																			url : wsURL,
+																			data: jsonInputToAPI
+																							
+																		}).success(function(data) {
+																			alert("Successfully Stored..");
+																							alert("Thank You. Your MyVehicle ID is " + data.myVehicleId);
+																															
+																						});	
+							}
+							else
+								{
+									alert("Please fill the Required fields");
 								}
-								}
-
-
-												//alert("Before Call");
-												//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
-												//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
-												var wsURL = 'api/eBid/myVehicle';
-												
-													    $http({
-																	method : 'POST',
-																	url : wsURL,
-																	data: jsonInputToAPI
-																					
-																}).success(function(data) {
-																	alert("Successfully Stored..");
-																					alert("Thank You. Your MyVehicle ID is " + data.myVehicleId);
-																													
-																				});													
+							
+						
+																		
 							};//end of submitsearch
+							
+							
+							
+							
+							
+							
 
 																			
 											

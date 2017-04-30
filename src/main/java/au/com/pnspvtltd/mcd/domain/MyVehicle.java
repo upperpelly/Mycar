@@ -80,6 +80,35 @@ public class MyVehicle implements Serializable {
 	private double flex7;
 	private Date flex8;
 	private Date flex9;
+	private boolean insRemind;
+	private boolean maiRemind;
+	private boolean finRemind;
+
+	@Column(name = "insRemind")
+	public boolean isInsRemind() {
+	return insRemind;
+	}
+
+	public void setInsRemind(boolean insRemind) {
+	this.insRemind = insRemind;
+	}
+	@Column(name = "maiRemind")
+	public boolean isMaiRemind() {
+	return maiRemind;
+	}
+
+	public void setMaiRemind(boolean maiRemind) {
+	this.maiRemind = maiRemind;
+	}
+	@Column(name = "finRemind")
+	public boolean isFinRemind() {
+	return finRemind;
+	}
+
+	public void setFinRemind(boolean finRemind) {
+	this.finRemind = finRemind;
+	}
+	
 	List<MyVehicleLogBook> myVehicleLogBook;
 	List<MyVehicleFuelExpenses> myVehicleFuelExpenses;
 	List<MyVehicleServMaint> myVehicleServMaint;

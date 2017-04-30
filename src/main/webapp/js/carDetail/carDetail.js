@@ -175,11 +175,11 @@ var modelYear=null;
 		$scope.submitSearchForm = function (isValid) {													
  														//alert("submit form");
  														//alert(isValid);
-			//alert("inside cdddd"+$('#startdate').data('datepicker').viewDate);
-			var dateInFormat= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");
-			var dateInFormat1= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");
-			//alert("inside cdddd"+dateInFormat);
-			//alert("inside cdddd"+dateInFormat1);
+														//alert("inside cdddd"+$('#startdate').data('datepicker').viewDate);
+														var dateInFormat= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");
+														var dateInFormat1= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");
+														//alert("inside cdddd"+dateInFormat);
+														//alert("inside cdddd"+dateInFormat1);
 													if(isValid)
 														{
 														
