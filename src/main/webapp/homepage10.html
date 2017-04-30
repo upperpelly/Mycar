@@ -4641,6 +4641,7 @@ table{
 																	<option>Pre Approval</option>
 																</select>
 															</div>
+															<span style="color:red" ng-show="ebidfinfrm.newCarFinance.$error.required && (!ebidfinfrm.newCarFinance.$pristine || ebidfinfrm.$submitted)"><b>Loan For ? is Required</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
 														&nbsp;
@@ -4746,9 +4747,14 @@ table{
 														</div>
 														<div class="col-sm-3 col-md-3">
 															<input type="text"
-															id="finVehicleValue1" name="finVehicleValu1e" ng-model="finVehicleValue1"
-															class="input-text full-width" value="" placeholder="Post Code" required/>
-															<span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
+															id="finVehicleValue1" name="finVehicleValue1" ng-model="finVehicleValue1"
+															class="input-text full-width" value="" placeholder="Post Code" ng-minlength="4" ng-pattern="/^[0-9]*$/" ng-maxlength="4" required/>
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+															
+															<span style="color:red" ng-show="ebidfinfrm.finVehicleValue1.$error.pattern && (!ebidfinfrm.finVehicleValue1.$pristine || ebidfinfrm.$submitted)"><b>POST must be Numeric</b></span>
+				                                            <span  style="color:red" ng-show="ebidfinfrm.finVehicleValue1.$error.required && (!ebidfinfrm.finVehicleValue1.$pristine || ebidfinfrm.$submitted)"><b>POST is Required</b></span> 
+				                                           <span style="color:red" ng-show="ebidfinfrm.finVehicleValue1.$error.minlength && (!ebidfinfrm.finVehicleValue1.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finVehicleValue1.$error.pattern"><b>POST must be of 4 digits</b></span>
+				                                           <span style="color:red" ng-show="ebidfinfrm.finVehicleValue1.$error.maxlength && (!ebidfinfrm.finVehicleValue1.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finVehicleValue1.$error.pattern"><b>POST must be of 4 digits only.</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
 															<input type="text"
@@ -4769,8 +4775,10 @@ table{
 														<div class="col-sm-3 col-md-3">
 															 <input type="text"
 															id="finLoanAmount" name="finLoanAmount" ng-model="finLoanAmount"
-															class="input-text full-width" value="" placeholder="Loan Amount" required/>
-															<span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Amount is Required</b></span>
+															class="input-text full-width" value="" placeholder="Loan Amount"  ng-pattern="/^[0-9]*$/" required/>
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Amount is Required</b></span> -->
+															<span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.pattern && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted)"><b>Loan Amount must be Numeric</b></span>
+                                            				<span style="color:red"  ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finLoanAmount.$error.pattern"><b>Loan Amount is Required</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
 															<div class="selector">
@@ -4852,14 +4860,18 @@ table{
 														</div>
 														<div class="col-sm-3 col-md-3">
 															<input type="text"
-															id="finAnnualIncome" name="finAnnualIncome" ng-model="finAnnualIncome"
+															id="finAnnualIncome" name="finAnnualIncome" ng-model="finAnnualIncome" ng-pattern="/^[0-9]*$/"
 															class="input-text full-width" value="" placeholder="Annual Income" required/>
-															<span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.required && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted)"><b>Finance Annual Income is Required</b></span>
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.required && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted)"><b>Finance Annual Income is Required</b></span> -->
+															<span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.pattern && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted)"><b>Annual Income must be Numeric</b></span>
+                                            				<span style="color:red"  ng-show="ebidfinfrm.finAnnualIncome.$error.required && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>Finance Annual Income is Required</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
 															<input type="text"
-															id="finNoofYears" name="finNoofYears" ng-model="finNoofYears"
+															id="finNoofYears" name="finNoofYears" ng-model="finNoofYears" ng-pattern="/^[0-9]*$/"
 															class="input-text full-width" value="" placeholder="No of years" required/>
+															<span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.pattern && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted)"><b>No of years must be Numeric</b></span>
+                                            				<span style="color:red"  ng-show="ebidfinfrm.finNoofYears.$error.required && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>No of years is Required</b></span>
 														</div>
 													</div><br/>
 													<div class="row">
@@ -5660,6 +5672,7 @@ table{
 																	<option>Renewal</option>
 																</select>
 															</div>
+															<span style="color:red" ng-show="ebidinsfrm.newCarInsuran.$error.required && (!ebidinsfrm.newCarInsuran.$pristine || ebidinsfrm.$submitted)"><b>Insurance for ? is Required</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
 														&nbsp;
@@ -5779,7 +5792,9 @@ table{
 																			<div class="col-sm-3 col-md-3">
 																				<input type="text"
 																				id="insAvgNoOfKms" name="insAvgNoOfKms" ng-model="insAvgNoOfKms"
-																				class="input-text full-width" value="" placeholder="999999" required/>
+																				class="input-text full-width" value="" placeholder="999999"  ng-pattern="/^[0-9]*$/" required/>
+																				 <span style="color:red" ng-show="ebidinsfrm.insAvgNoOfKms.$error.pattern && (!ebidinsfrm.insAvgNoOfKms.$pristine || ebidinsfrm.$submitted)"><b>Avg No of Kms must be Numeric</b></span>
+                                            									<span style="color:red"  ng-show="ebidinsfrm.insAvgNoOfKms.$error.required && (!ebidinsfrm.insAvgNoOfKms.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.insAvgNoOfKms.$error.pattern"><b>Avg No of Kms is Required</b></span>
 																			</div>
 																			<div class="col-sm-3 col-md-3">
 																			&nbsp;
@@ -5829,9 +5844,14 @@ table{
 																			</div>
 																			<div class="col-sm-4 col-md-4">
 																				 <input type="text"
-																				id="postcode11" name="postcode11" ng-model="postcode11"
+																				id="postcode11" name="postcode11" ng-model="postcode1111" ng-minlength="4" ng-pattern="/^[0-9]*$/" ng-maxlength="4"
 																				class="input-text full-width" value="" placeholder="Post Code" required/>
-																				<span style="color:red" ng-show="ebidinsfrm.postcode11.$error.required && (!ebidinsfrm.postcode11.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
+																				<!-- <span style="color:red" ng-show="ebidinsfrm.postcode1111.$error.required && (!ebidinsfrm.postcode1111.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+																				
+																				<span style="color:red" ng-show="ebidinsfrm.postcode11.$error.pattern && (!ebidinsfrm.postcode11.$pristine || ebidinsfrm.$submitted)"><b>POST must be Numeric</b></span>
+									                                            <span  style="color:red" ng-show="ebidinsfrm.postcode11.$error.required && (!ebidinsfrm.postcode11.$pristine || ebidinsfrm.$submitted)"><b>POST is Required</b></span> 
+									                                           <span style="color:red" ng-show="ebidinsfrm.postcode11.$error.minlength && (!ebidinsfrm.postcode11.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.postcode11.$error.pattern"><b>POST must be of 4 digits</b></span>
+									                                           <span style="color:red" ng-show="ebidinsfrm.postcode11.$error.maxlength && (!ebidinsfrm.postcode11.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.postcode11.$error.pattern"><b>POST must be of 4 digits only.</b></span>
 																			</div>
 																			<div class="col-sm-4 col-md-4">
 																				<div class="selector">
@@ -5943,15 +5963,20 @@ table{
 																	</div>
 																	<div class="col-sm-4 col-md-4">
 																		<input type="text"
-																		id="agree" name="agree" ng-model="agree"
+																		id="agree" name="agree" ng-model="agree" ng-pattern="/^[0-9]*$/" 
 																		class="input-text full-width" value="" placeholder="Agreed Value" required/>
-																		<span style="color:red" ng-show="ebidinsfrm.agree.$error.required && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
+																		<!-- <span style="color:red" ng-show="ebidinsfrm.agree.$error.required && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+																		
+																		 <span style="color:red" ng-show="ebidinsfrm.agree.$error.pattern && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted)"><b>Agreed Value must be Numeric</b></span>
+                                            							<span style="color:red"  ng-show="ebidinsfrm.agree.$error.required && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.agree.$error.pattern"><b>Agreed Value is Required</b></span>
 																	</div>
 																	<div class="col-sm-4 col-md-4">
 																		 <input type="text"
-																		id="market" name="market" ng-model="market"
+																		id="market" name="market" ng-model="market" ng-pattern="/^[0-9]*$/" 
 																		class="input-text full-width" value="" placeholder="Market Value" required/>
-																		<span style="color:red" ng-show="ebidinsfrm.market.$error.required && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
+																		 <span style="color:red" ng-show="ebidinsfrm.market.$error.pattern && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted)"><b>Market Value must be Numeric</b></span>
+                                            							<span style="color:red"  ng-show="ebidinsfrm.market.$error.required && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.market.$error.pattern"><b>Market Value is Required</b></span>
+																		<!-- <span style="color:red" ng-show="ebidinsfrm.market.$error.required && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
 																	</div>
 																</div><br/>
 													
@@ -5962,9 +5987,11 @@ table{
 																	</div>
 																	<div class="col-sm-4 col-md-4">
 																		<input type="text"
-																		class="input-text full-width" value="" placeholder="Amount"
+																		class="input-text full-width" value="" placeholder="Amount" ng-pattern="/^[0-9]*$/" 
 																		id="excessAmount" name="excessAmount" ng-model="excessAmount" required/>
-																		<span style="color:red" ng-show="ebidinsfrm.excessAmount.$error.required && (!ebidinsfrm.excessAmount.$pristine || ebidinsfrm.$submitted)"><b>Preferred Excess amount is Required</b></span>
+																		<!-- <span style="color:red" ng-show="ebidinsfrm.excessAmount.$error.required && (!ebidinsfrm.excessAmount.$pristine || ebidinsfrm.$submitted)"><b>Preferred Excess amount is Required</b></span> -->
+																		 <span style="color:red" ng-show="ebidinsfrm.excessAmount.$error.pattern && (!ebidinsfrm.excessAmount.$pristine || ebidinsfrm.$submitted)"><b>Preferred Excess amount must be Numeric</b></span>
+                                            							<span style="color:red"  ng-show="ebidinsfrm.excessAmount.$error.required && (!ebidinsfrm.excessAmount.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.excessAmount.$error.pattern"><b>Preferred Excess amount is Required</b></span>
 																	</div>
 																	<div class="col-sm-4 col-md-4">
 																		 &nbsp;
@@ -7517,6 +7544,7 @@ table{
 																	<option>Assistance in accident</option>
 																</select>
 															</div>
+															<span style="color:red" ng-show="ebidservfrm.lookService.$error.required && (!ebidservfrm.lookService.$pristine || ebidservfrm.$submitted)"><b>Service Lookup is Required</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
 														&nbsp;
@@ -8654,13 +8682,14 @@ table{
 															<div class="selector">
 																<select class="full-width" id="transVehicle" ng-model="transVehicle" name="transVehicle"
 																class="input-text full-width" required>
-																	<option value="" selected>Car</option>
+																	<option selected>Car</option>
 																	<option>Bike</option>
 																	<option>Truck</option>
 																	<option>Boat</option>
 																	<option>Caravan</option>
 																</select>
 															</div>
+															<span style="color:red" ng-show="ebidtransfrm.transVehicle.$error.required && (!ebidtransfrm.transVehicle.$pristine || ebidtransfrm.$submitted)"><b>Vehicle need to be specified</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
 															<div class="selector">
@@ -8685,9 +8714,13 @@ table{
 														</div>
 														<div class="col-sm-3 col-md-3">
 															 <input type="text"
-															id="transFpostCode" name="transFpostCode" ng-model="transFpostCode"
+															id="transFpostCode" name="transFpostCode" ng-model="transFtransFpostCode"  ng-minlength="4" ng-pattern="/^[0-9]*$/" ng-maxlength="4"
 															class="input-text full-width" value="" placeholder="Post Code" required/>
-															<span style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.required && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span>
+															<!-- <span style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.required && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span> -->
+															 <span style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.pattern && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted)"><b>POST must be Numeric</b></span>
+					                                            <span  style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.required && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted)"><b>POST is Required</b></span> 
+					                                           <span style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.minlength && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted) && !ebidtransfrm.transFpostCode.$error.pattern"><b>POST must be of 4 digits</b></span>
+					                                           <span style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.maxlength && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted) && !ebidtransfrm.transFpostCode.$error.pattern"><b>POST must be of 4 digits only.</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
 															 <input type="text"
@@ -8711,9 +8744,14 @@ table{
 														</div>
 														<div class="col-sm-3 col-md-3">
 															 <input type="text"
-															id="transTpostCode" name="transTpostCode" ng-model="transTpostCode"
+															id="transTpostCode" name="transTpostCode" ng-model="transTpostCode" ng-minlength="4" ng-pattern="/^[0-9]*$/" ng-maxlength="4"
 															class="input-text full-width" value="" placeholder="Post Code" required/>
-															<span style="color:red" ng-show="ebidtransfrm.transTpostCode.$error.required && (!ebidtransfrm.transTpostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span>
+															<!-- <span style="color:red" ng-show="ebidtransfrm.transTpostCode.$error.required && (!ebidtransfrm.transTpostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span>
+															 -->
+															<span style="color:red" ng-show="ebidtransfrm.transTpostCode.$error.pattern && (!ebidtransfrm.transTpostCode.$pristine || ebidtransfrm.$submitted)"><b>POST must be Numeric</b></span>
+					                                            <span  style="color:red" ng-show="ebidtransfrm.transTpostCode.$error.required && (!ebidtransfrm.transTpostCode.$pristine || ebidtransfrm.$submitted)"><b>POST is Required</b></span> 
+					                                           <span style="color:red" ng-show="ebidtransfrm.transTpostCode.$error.minlength && (!ebidtransfrm.transTpostCode.$pristine || ebidtransfrm.$submitted) && !ebidtransfrm.transTpostCode.$error.pattern"><b>POST must be of 4 digits</b></span>
+					                                           <span style="color:red" ng-show="ebidtransfrm.transTpostCode.$error.maxlength && (!ebidtransfrm.transTpostCode.$pristine || ebidtransfrm.$submitted) && !ebidtransfrm.transTpostCode.$error.pattern"><b>POST must be of 4 digits only.</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
 															 <input type="text"

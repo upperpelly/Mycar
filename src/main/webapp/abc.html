@@ -1594,7 +1594,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                     <div class="form-group row">
                                         <div class="col-sm-5 col-md-4" ng-class="{'has-error':!frm.loanAmount.$valid,'has-success':frm.loanAmount.$valid}">
                                             <label>Loan Amount</label>
-                                            <input type="text" class="input-text full-width" placeholder=""  id="loanAmount"  ng-model="loanAmount" ng-pattern="/^[0-9]*$/" name="loanAmount" required>
+                                            <input type="text" class="input-text full-width" placeholder="Loan Amount"  id="loanAmount"  ng-model="loanAmount" ng-pattern="/^[0-9]*$/" name="loanAmount" required>
                                             <span style="color:red" ng-show="frm.loanAmount.$error.pattern && (!frm.loanAmount.$pristine || frm.$submitted)"><b>Loan Amount must be Numeric</b></span>
                                             <span style="color:red"  ng-show="frm.loanAmount.$error.required && (!frm.loanAmount.$pristine || frm.$submitted) && !frm.loanAmount.$error.pattern"><b>Loan Amount is Required</b></span>
                                         </div>
