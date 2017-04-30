@@ -2204,6 +2204,7 @@ var mainApp1 = angular.module("mainApp13", []);
 mainApp1.controller('myController13',function($scope, $http) {
 					//alert("in user con");function vehicleRetrievalforLogBook(){
 	//alert("in angular");
+	$body = $("body");
 	$scope.vehicleRetrievalforLogBook = function() {				
 						//alert("inside ne method");
 						var wsURL = 'api/Myvehicle/'+myVehicleIDuse;
@@ -2386,7 +2387,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 										}
 										}
 
-								alert(JSON.stringify(jsonInputToAPI));
+								//alert(JSON.stringify(jsonInputToAPI));
+								$body.addClass("loading");
 														//alert("Before Call");
 														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 														//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
@@ -2398,6 +2400,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 																			data: jsonInputToAPI
 																							
 																		}).success(function(data) {
+																			$body.removeClass("loading");	
 																			alert("Successfully Stored..");
 																							alert("Thank You. Your MyVehicle ID is " + data.myVehicleId);
 																															

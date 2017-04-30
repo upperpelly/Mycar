@@ -2144,7 +2144,7 @@ $scope.submitForm1 = function() {
 				alert(jsonInputToAPI.flex3); */
 				
 				
-				alert(JSON.stringify(jsonInputToAPI));
+				//alert(JSON.stringify(jsonInputToAPI));
 				$body.addClass("loading");   
 			    	$http({
 						method : 'POST',
@@ -2225,10 +2225,12 @@ $scope.submitForm1 = function() {
 							//alert ("model"+modelYear);
 							if(alreadyLogged()){
 								if(isValid){
+									$body.addClass("loading");
 											$.ajax({
 									            url: wsURL,
 									            type: 'GET',
 									            success: function (data) {
+									            	
 									            	data.modelYear=modelYear;
 									            	data.modelDisplay=modelDisplay;
 									            	data.modelName=modelName;
@@ -2242,7 +2244,7 @@ $scope.submitForm1 = function() {
 														/* var url="abc.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
 																"&modelYear="+modelYear+"&modelDisplay="+modelDisplay+"&modelName="+modelName+"&modeltrim="+strUser+"&trimValue="+trimValue+"&userId="+userId+"&firstName="+firstName; */
 														/* alert(url); */ 
-														
+														$body.removeClass("loading");
 														var url="abc.html";
 														window.location = url;
 									            }
@@ -9093,7 +9095,7 @@ table{
 															&nbsp; 		
 														</div>
 														<div class="col-sm-5 col-md-6">
-															<button class="button">Submit Request for Quotation</button>
+															<button id = "uploadPhotoTransbutton" class="button">Submit Request for Quotation</button>
 														</div>
 													</div><br/>
 													
@@ -10682,6 +10684,14 @@ table{
         });
 
 
+        // start of transp
+        var fileChoosertransp1 = document.getElementById('uploadPhotoTrans1');
+        var fileChoosertransp1 = document.getElementById('uploadPhotoTrans2');
+
+        var buttontranp = document.getElementById('uploadPhotoTransbutton');
+        // end of transp
+        
+        
         var fileChooser = document.getElementById('uploadPhotoServ1');
 
 
@@ -10699,6 +10709,138 @@ table{
 
         var results = document.getElementById('results');
 
+        // start of transp
+         buttontranp.addEventListener('click', function () {
+
+			alert("came inside photo on click of save for serv and maint");
+            var file = fileChoosertransp1.files[0];
+            var file2 = fileChoosertransp1.files[0];
+           
+            fbUserId = $.jStorage.get("fbKey");
+            if (file) {
+
+            	//alert("came here on click of save for serv and maint1");
+                results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file.type,
+
+
+                    Body: file,
+
+
+                    ACL: 'public-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+
+                    if (err) {
+
+
+                        results.innerHTML = 'ERROR: ' + err;
+
+
+                    } else {
+
+
+                        listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+
+                results.innerHTML = 'Nothing to upload.';
+
+
+            }
+            
+            // for service maint 2 start
+            if (file2) {
+
+            	//alert("came here on click of save for serv and maint2");
+                results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file2.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file.type,
+
+
+                    Body: file,
+
+
+                    ACL: 'public-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+
+                    if (err) {
+
+
+                        results.innerHTML = 'ERROR: ' + err;
+
+
+                    } else {
+
+
+                        listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+
+                results.innerHTML = 'Nothing to upload.';
+
+
+            }
+            // end
+            
+            
+
+        }, false);
+        // end of transp
 
         button.addEventListener('click', function () {
 
