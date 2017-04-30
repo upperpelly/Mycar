@@ -11,6 +11,7 @@
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/jquery.countdown.min.js"></script>
+<script src="js/servicelevelcarquery.0.3.6.js" type="text/javascript"></script>
 <!-- added end -->
 
 <!-- <script src="js/jstorage.js"></script>
@@ -1051,6 +1052,9 @@ tr:hover{background-color:rgb(253, 183, 20);}
 	carquery.init();
 	//carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
 	carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins','car-model-auto-trims-ins');
+	var servicelevel = new ServiceLevelCarQuery();
+	servicelevel.initFinanceProviders('ins-fin-prov');
+	servicelevel.initInsuranceProviders('curr-ins-prov');
 }
 </script>
 <script>function showDiv3() {
@@ -1059,6 +1063,14 @@ tr:hover{background-color:rgb(253, 183, 20);}
 	carquery.init();
 	//carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
 	carquery.initYearMakeModelTrim('car-years-serv', 'car-makes-serv', 'car-models-serv', 'car-model-trims-serv','car-model-auto-trims-serv');
+	
+	var servicelevel = new ServiceLevelCarQuery();
+	servicelevel.init();
+	servicelevel.initYearMakeModelTrim('ServL1', 'ServL2');
+	servicelevel.initFinanceProviders('servFinProlist');
+	servicelevel.initInsuranceProviders('InsprovServ');
+
+
 }
 </script>
 <script>function showDiv4() {
