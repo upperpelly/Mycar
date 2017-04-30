@@ -1409,9 +1409,10 @@ function registerEditDealerVehicletranspModal(){
 		if(data.used)
 		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
 
-		
+		// change here
 		
 		var editDealerVehicletranspForm = '<form id="edit-dealer-vehicle-transp-content-form"><table>\
+			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+data.uploadPhotos+'"'+' height="200" width="250"/></li></ul>\
 			<tr><td>Search ID</td><td>' + data.searchTranspId + '</td></tr>\
 			<tr><td>' + quotIdHiddenField + '</td></tr>\
 			<tr><td>Year</td><td>' + data.year + '</td></tr>\
