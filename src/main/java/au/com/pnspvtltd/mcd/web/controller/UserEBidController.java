@@ -65,15 +65,26 @@ public class UserEBidController {
 	
 	@PutMapping("updatePhoto")
 	@Transactional
-	public UserPhotoVO updatePhoto(@RequestBody UserPhotoVO userMyVehicleVO,
+	public User updatePhoto(@RequestBody UserPhotoVO userMyVehicleVO,
 			HttpServletResponse response) {
+		User user = new User();
 		LOGGER.debug("Received request to update photo {}", userMyVehicleVO.getUserId());
 	    //TODO: create a service for VehicleQutotation to update quotation details
 		if(userMyVehicleVO != null){
-			User user = userRepository.findOne(userMyVehicleVO.getUserId());
+			user = userRepository.findOne(userMyVehicleVO.getUserId());
 			user.setIssueState(userMyVehicleVO.getPhoto());
+			user.setFirstName(userMyVehicleVO.getFirstName());
+			user.setLastName(userMyVehicleVO.getLastName());
+			user.setState(userMyVehicleVO.getState());
+			user.setStreetName(userMyVehicleVO.getStreetName());
+			user.setStreetNumber(userMyVehicleVO.getStreetName());
+			user.setPostCode(userMyVehicleVO.getPostCode());
+			user.setSubOrb(userMyVehicleVO.getDesc()); // desc
+			user.setAbnNumber(userMyVehicleVO.getPhoneNumber());   // phonenumber
+			user.setDrivingLicense(userMyVehicleVO.getRegion()); // region
+			//user.setAreaName(userMyVehicleVO.); // phone number
 			//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
 		}
-		return userMyVehicleVO;
+		return user;
 	}
 }

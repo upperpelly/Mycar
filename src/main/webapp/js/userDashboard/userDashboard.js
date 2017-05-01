@@ -2,6 +2,14 @@
 var value = $.jStorage.get("key");
 var fbUserId = $.jStorage.get("fbKey");
 var myVehicleIDuse=null;
+function setting(data){
+	alert("cameheretoset");
+	//$.jStorage.deleteKey(key);
+	$.jStorage.set('key',data);
+	$.jStorage.setTTL('mykey', 30000); // expires in 3 seconds
+         // alert("came here");
+
+}
 function alreadyLogged(){
 	var value = $.jStorage.get("key");
 	//alert("Checking logged or not");
@@ -78,16 +86,20 @@ $(document).ready(function(){
 	    <dt>user name:</dt><dd>' +value.email+ '</dd>\
 	    <dt>first name:</dt><dd>' +value.firstName+ '</dd>\
 	    <dt>last name:</dt><dd>' +value.lastName+ '</dd>\
-	    <dt>phone number:</dt><dd>' +value.mobile+ '</dd>\
-	    <dt>Date of birth:</dt><dd>15 August 1985</dd>\
-	    <dt>Street Address and number:</dt><dd>' +value.streetName+ '</dd>\
-	    <dt>Town / City:</dt><dd>' +value.areaName+'</dd>\
+	    <dt>phone number:</dt><dd>' +value.abnNumber+ '</dd>\
+	    <dt>Personal Description:</dt><dd>' +value.subOrb+'</dd>\
+	   <dt>Street number:</dt><dd>' +value.streetNumber+ '</dd>\
+	    <dt>Street Name:</dt><dd>' +value.streetName+ '</dd>\
+	    <dt>Post Code:</dt><dd>' +value.postCode+ '</dd>\
+	    <dt>Region:</dt><dd>' +value.drivingLicense+ '</dd>\
+	    <dt>State:</dt><dd>' +value.state+ '</dd>\
 	    <dt>ZIP code:</dt><dd>' +value.postCode+ '</dd>\
 	    <dt>Country:</dt><dd>Australia</dd>\
 		</dl>';
 	/*alert("onload");
 		alert(userDetails);
-		console.log(userDetails);*/
+		console.log(userDetails); <dt>Date of birth:</dt><dd>15 August 1985</dd>\
+	    */
 	
 	$(".userdetails").append(userDetails);
 	var default1='https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/dashboard.png';
@@ -2516,7 +2528,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 														var filefileChooserupdateset = fileChooserlogupdateset.files[0];
 														var objKeyupdateset = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + filefileChooserupdateset.name;
 														//alert(objKeyupdateset);
-														var jsonInputToAPI = {"userId":value.userId,"photo":objKeyupdateset}
+														var jsonInputToAPI = {"userId":value.userId,"photo":objKeyupdateset, "phoneNumber":$('#UserPhoneNo').val(), "firstName":$('#UserFirstName').val(),"lastName":$('#UserLastName').val(),"streetNumber":$('#UserStreetNo').val(),"streetName":$('#UserStreetName').val(),"postCode":$('#UserpostCode').val(),"region":$('#UserRegion').val(),"state":$('#UserState').val(),"desc":$('#UserDesc').val()}
 														
 														/*var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 																"myVehicleServMaintVO":{
@@ -2568,7 +2580,10 @@ mainApp1.controller('myController13',function($scope, $http) {
 									                		data: JSON.stringify(jsonInputToAPI),
 									                		contentType:'application/json',
 									                		success: function(result){
-									                			
+									                			setting(result);
+									                			var url="dashboard1.html";
+																
+																window.location=url;
 									                			alert("Successfully upated photo to user");
 									                			
 									                		}

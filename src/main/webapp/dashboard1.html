@@ -961,14 +961,16 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             <div class="row form-group">
                                                 <div class="col-sms-6 col-sm-6">
                                                     <label>First Name</label>
-                                                    <input type="text" class="input-text full-width" placeholder="">
+                                                    <input type="text" id="UserFirstName" name="UserFirstName" 
+															class="input-text full-width" value="" placeholder="First Name" >
                                                 </div>
                                                 <div class="col-sms-6 col-sm-6">
                                                     <label>Last Name</label>
-                                                    <input type="text" class="input-text full-width" placeholder="">
+                                                    <input type="text" id="UserLastName" name="UserLastName" 
+															class="input-text full-width" value="" placeholder="Last Name" >
                                                 </div>
                                             </div>
-                                            <div class="row form-group">
+                                            <!-- <div class="row form-group">
                                                 <div class="col-sms-6 col-sm-6">
                                                     <label>Email Address</label>
                                                     <input type="text" class="input-text full-width" placeholder="">
@@ -977,24 +979,23 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                     <label>Verify Email Address</label>
                                                     <input type="text" class="input-text full-width" placeholder="">
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="row form-group">
-                                                <div class="col-sms-6 col-sm-6">
-                                                    <label>Country Code</label>
-                                                    <div class="selector">
-                                                        <select class="full-width">
-                                                            <option>United Kingdom (+44)</option>
-                                                            <option>United States (+1)</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="col-sms-6 col-sm-6">
                                                     <label>Phone Number</label>
-                                                    <input type="text" class="input-text full-width" placeholder="">
+                                                    <input type="text" id="UserPhoneNo" name="UserPhoneNo" 
+															class="input-text full-width" value="" placeholder="Phone Numberr" >
                                                 </div>
+                                                <div class="col-sm-3 col-md-3">
+                                             <label>Date of Birth</label>
+				                                       		<input type="text" onfocus="(this.type='date')" name="UserDOBDate" id = "UserDOBDate" class="input-text full-width" placeholder="Date Of Birth"/>
+				                                       		
+														</div>
                                             </div>
-                                            <label>Date of Birth</label>
-                                            <div class="row form-group">
+                                           
+                                            
+                                           <!--  <div class="row form-group">
                                                 <div class="col-sms-4 col-sm-2">
                                                     <div class="selector">
                                                         <select class="full-width">
@@ -1016,21 +1017,74 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <hr>
                                             <h2>Contact Details</h2>
                                             <div class="row form-group">
-                                                <div class="col-sms-6 col-sm-6">
+                                           
+														<div class="col-sm-6 col-md-6">
+														 <label>Street Number</label>
+															 <input type="text"
+															id="UserStreetNo" name="UserStreetNo" 
+															class="input-text full-width" value="" placeholder="Street Number"/>
+															
+														</div>
+														
+														<div class="col-sm-6 col-md-6">
+														<label>Street Name</label>
+															<input type="text"
+															id="UserStreetName" name="UserStreetName" 
+															class="input-text full-width" value="" placeholder="Street Name" />
+															
+														</div>
+                                                <!-- <div class="col-sms-6 col-sm-6">
                                                     <label>Street Name</label>
                                                     <input type="text" class="input-text full-width">
                                                 </div>
                                                 <div class="col-sms-6 col-sm-6">
                                                     <label>Address</label>
                                                     <input type="text" class="input-text full-width">
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="row form-group">
-                                                <div class="col-sms-6 col-sm-6">
+                                            
+                                            <div class="col-sms-6 col-sm-6">
+                                            <label>Post code</label>
+															 <input type="text"
+															id="UserpostCode" name="UserpostCode" 
+															class="input-text full-width" value="" placeholder="Post Code" />
+															<!-- <span style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.required && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span> -->
+															
+														</div>
+														
+                                            <div class="col-sm-6 col-md-6">
+                                            <label>Region</label>
+															 <input type="text"
+															id="UserRegion" name="UserRegion" 
+															class="input-text full-width" value="" placeholder="Region" />
+															<!-- <span style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.required && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span> -->
+															
+														</div>
+														
+														<div class="col-sm-6 col-md-6">
+														<label>State</label>
+																				<div class="selector">
+																					<select class="full-width" id="UserState" 
+																						name="UserState" >
+																						<option value="" selected disabled>State</option>
+																						<option>ACT</option>
+																						<option>NT</option>
+																						<option>QLD</option>
+																						<option>VIC</option>
+																						<option>NSW</option>
+																						<option>TAS</option>
+																						<option>SA</option>
+																						<option>WA</option>
+																					</select>
+																				</div>
+																				
+																			</div>
+                                               <!--  <div class="col-sms-6 col-sm-6">
                                                     <label>City</label>
                                                     <div class="selector">
                                                         <select class="full-width">
@@ -1045,18 +1099,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                             <option value="">Select...</option>
                                                         </select>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
-                                            <div class="row form-group">
-                                                <div class="col-sms-6 col-sm-6">
-                                                    <label>Region State</label>
-                                                    <div class="selector">
-                                                        <select class="full-width">
-                                                            <option value="">Select...</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
                                             <hr>
                                             <h2>Upload Profile Photo</h2>
                                             <div class="row form-group">
@@ -1069,7 +1114,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             <hr>
                                             <h2>Describe Yourself</h2>
                                             <div class="form-group">
-                                                <textarea rows="5" class="input-text full-width" placeholder="please tell us about you"></textarea>
+                                                <textarea rows="5" id="UserDesc" name="UserDesc" class="input-text full-width" placeholder="please tell us about you"></textarea>
                                             </div>
                                             <div class="from-group">
                                                 
