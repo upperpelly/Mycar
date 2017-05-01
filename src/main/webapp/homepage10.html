@@ -2215,7 +2215,7 @@ $scope.submitForm1 = function() {
 						
 					    
 
-						$scope.submitForm = function() {
+						$scope.submitForm = function(isValid) {
 							var newCarEbid=false;
 							//alert(document.getElementById("newCarEbid").value);
 							newCarEbid = document.getElementById("newCarEbid").value;
@@ -2880,7 +2880,7 @@ table{
 								<li><a href="#online-checkin-tab" data-toggle="tab"><i
 										class="soap-icon-status"></i>Rego</a></li>
 								<li><a href="#checkVehicle12456" data-toggle="tab"><i
-										class="soap-icon-status"></i>Check Vehicle</a></li>
+										class="soap-icon-fueltank"></i>Fuel</a></li>
 
 							</ul>
 							<div class="visible-mobile">
@@ -2892,7 +2892,7 @@ table{
 									<li><a href="#cruises-tab">Serv & Maint</a></li>
 									<li><a href="#flight-status-tab">Transport</a></li>
 									<li><a href="#online-checkin-tab">Rego</a></li>
-									<li><a href="#checkVehicle12456">Check Vehicle</a></li>
+									<li><a href="#checkVehicle12456">Fuel</a></li>
 
 								</ul>
 							</div>
@@ -3120,9 +3120,10 @@ table{
 													<div class="row">
 														<div class="col-sm-5 col-md-6">
 															<div class="checkbox">
-																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																<label> <input type="checkbox" id="eCarTerms" name="eCarTerms"  ng-model="eCarTerms" required  ><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
 																			Conditions</span></a>.
 																</label>
+																<span style="color:red" ng-show="ebidfrm.eCarTerms.$error.required && (!ebidfrm.eCarTerms.$pristine || ebidfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
 															</div>
 														</div>
 														<div class="col-sm-7 col-md-6"></div>
@@ -4686,11 +4687,27 @@ table{
 															<input type="text"
 															id="finRego" name="finRego" ng-model="finRego"
 															class="input-text full-width" value="" placeholder="Rego(If Used)" required/>
+															<span style="color:red" ng-show="ebidfinfrm.finRego.$error.required && (!ebidfinfrm.finRego.$pristine || ebidfinfrm.$submitted)"><b>Rego No is Required</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
-															<input type="text"
+															<!-- <input type="text"
 															id="finRegoState" name="finRegoState" ng-model="finRegoState"
-															class="input-text full-width" value="" placeholder="Rego State" required/>
+															class="input-text full-width" value="" placeholder="Rego State" required/> -->
+															<div class="selector">
+																	<select class="full-width" id="finRegoState" ng-model="finRegoState"
+																		name="finRegoState" required>
+																		<option value="" selected disabled>Rego State</option>
+																		<option>ACT</option>
+																		<option>NT</option>
+																		<option>QLD</option>
+																		<option>VIC</option>
+																		<option>NSW</option>
+																		<option>TAS</option>
+																		<option>SA</option>
+																		<option>WA</option>
+																	</select>
+															</div>
+															<span style="color:red" ng-show="ebidfinfrm.finRegoState.$error.required && (!ebidfinfrm.finRegoState.$pristine || ebidfinfrm.$submitted)"><b>Rego State is Required</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">{If Used Car is Selected}</div>
 													</div><br/>
@@ -4946,9 +4963,10 @@ table{
 														</div>
 														<div class="col-sm-5 col-md-6">
 															<div class="checkbox">
-																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																<label> <input type="checkbox" id="fCarTerms" name="fCarTerms"  ng-model="fCarTerms" required /><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
 																			Conditions</span></a>.
 																</label>
+																<span style="color:red" ng-show="ebidfinfrm.fCarTerms.$error.required && (!ebidfinfrm.fCarTerms.$pristine || ebidfinfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
 															</div>
 														</div>
 													</div><br/>
@@ -5870,7 +5888,7 @@ table{
 																			<div class="col-sm-4 col-md-4">
 																				<div class="selector">
 																					<select class="full-width" id="inscarParked" ng-model="inscarParked"
-																						name="inscarParked" required>
+																						name="inscarParked">
 																						<option value="" selected disabled>Where Car Parked ? </option>
 																						<option>ACT</option>
 																						<option>NT</option>
@@ -5891,12 +5909,12 @@ table{
 																			<div class="col-sm-4 col-md-4">
 																				<input type="text"
 																				id="insStreetNo" name="insStreetNo" ng-model="insStreetNo"
-																				class="input-text full-width" value="" placeholder="Unit/Street No" required/>
+																				class="input-text full-width" value="" placeholder="Unit/Street No" />
 																			</div>
 																			<div class="col-sm-4 col-md-4">
 																				<input type="text"
 																				id="insStreetName" name="insStreetName" ng-model="insStreetName"
-																				class="input-text full-width" value="" placeholder="Street Name" required/>
+																				class="input-text full-width" value="" placeholder="Street Name"/>
 																			</div>
 																		</div><br/>
 																		
@@ -5907,7 +5925,7 @@ table{
 																			<div class="col-sm-4 col-md-4">
 																				<div class="selector">
 																					<select class="full-width" id="insCarUsage" ng-model="insCarUsage"
-																						name="insCarUsage" required>
+																						name="insCarUsage">
 																						<option value="" selected disabled>Car used for ? </option>
 																						<option>Private</option>
 																						<option>Business</option>
@@ -5918,7 +5936,7 @@ table{
 																			<div class="col-sm-4 col-md-4">
 																				<div class="selector">
 																					<select class="full-width" id="insifBusiness" ng-model="insifBusiness"
-																						name="insifBusiness" required>
+																						name="insifBusiness">
 																						<option value="" selected disabled>What type of Business (if Business) ? </option>
 																						<option>Client Visit</option>
 																						<option>Transport Customer</option>
@@ -6122,11 +6140,13 @@ table{
 																		 <input type="text"
 																		class="input-text full-width" value="" placeholder="First Name" ng-model="Insfirstname"
 																		id="Insfirstname" name="Insfirstname" required/>
+																		<span style="color:red" ng-show="ebidinsfrm.Insfirstname.$error.required && (!ebidinsfrm.Insfirstname.$pristine || ebidinsfrm.$submitted)"><b>First Name is Required</b></span>
 																	</div>
 																	<div class="col-sm-4 col-md-4">
 																		  <input type="text"
 																		class="input-text full-width" value="" placeholder="Last Name" ng-model="Inslastname"
 																		id="Inslastname" name="Inslastname" required/>
+																		<span style="color:red" ng-show="ebidinsfrm.Inslastname.$error.required && (!ebidinsfrm.Inslastname.$pristine || ebidinsfrm.$submitted)"><b>Last name is Required</b></span>
 																	</div>
 																</div><br/>	
 													
@@ -6138,11 +6158,13 @@ table{
 																		 <input type="text"
 																		class="input-text full-width" value="" placeholder="Mobile" ng-model="InsMobile"
 																		id="InsMobile" name="InsMobile" required/>
+																		<span style="color:red" ng-show="ebidinsfrm.InsMobile.$error.required && (!ebidinsfrm.InsMobile.$pristine || ebidinsfrm.$submitted)"><b>Mobile Number is Required</b></span>
 																	</div>
 																	<div class="col-sm-4 col-md-4">
 																		  <input type="text"
 																		class="input-text full-width" value="" placeholder="Email" ng-model="InsEmail"
 																		id="InsEmail" name="InsEmail" required/>
+																		<span style="color:red" ng-show="ebidinsfrm.InsEmail.$error.required && (!ebidinsfrm.InsEmail.$pristine || ebidinsfrm.$submitted)"><b>Email is Required</b></span>
 																	</div>
 																</div><br/>	
 																
@@ -6152,7 +6174,7 @@ table{
 																	<label>Date of Birth</label>
 																	</div>
 																	<div class="col-sm-4 col-md-4">
-																		 <input type="date" name="insDriverDOB" id ="insDriverDOB" class="input-text full-width" placeholder="DOB" />
+																		 <input type="text" name="insDriverDOB" id ="insDriverDOB" onfocus="(this.type='date')" class="input-text full-width" placeholder="DOB" />
 																	</div>
 																	<div class="col-sm-4 col-md-4">
 																		  &nbsp;
@@ -6192,7 +6214,7 @@ table{
 																		&nbsp;
 																	</div>
 																	<div class="col-sm-4 col-md-4">
-																		 <input type="date" name="insLicIssueDt" id ="insLicIssueDt" class="input-text full-width" placeholder="Driving Licence issue Date" />
+																		 <input type="text" onfocus="(this.type='date')" name="insLicIssueDt" id ="insLicIssueDt" class="input-text full-width" placeholder="Driving Licence issue Date" />
 																	</div>
 																	<div class="col-sm-4 col-md-4">
 																		  <div class="selector">
@@ -6223,18 +6245,19 @@ table{
 																		<label>Drivers Claim History</label>
 																	</div>
 																	<div class="col-sm-4 col-md-4">
-																		<div class="selector">
+																		<input type="text" name="ins-faults" id ="insfaults" name="insfaults"  class="input-text full-width" placeholder="No of at Fault claims" required />
+																		<!-- <div class="selector">
 																		<select class="full-width" id="ins-faults" ng-model="insfaults"
 																			name="insfaults" required>
 																			<option value="" selected disabled>No of at Fault claims</option>
 																			<option>1</option>
 																			<option>2</option>
 																		</select>
-																	</div>
+																	</div> -->
 																	<span style="color:red" ng-show="ebidinsfrm.insfaults.$error.required && (!ebidinsfrm.insfaults.$pristine || ebidinsfrm.$submitted)"><b>faults is Required</b></span>
 																	</div>
 																	<div class="col-sm-4 col-md-4">
-																		<input type="date" name="insLastfaultDt" id ="insLastfaultDt"  ng-model="insLastfaultDt" class="input-text full-width" placeholder="Last Fault claim Date" />
+																		<input type="text" onfocus="(this.type='date')" name="insLastfaultDt" id ="insLastfaultDt"  ng-model="insLastfaultDt" class="input-text full-width" placeholder="Last Fault claim Date" />
 																	</div>
 																</div><br/>
 																
@@ -6247,7 +6270,7 @@ table{
 																	<div class="col-sm-4 col-md-4">
 																		<div class="selector">
 																		<select class="full-width" id="insLICSusp" ng-model="insLICSusp"
-																			name="insLICSusp" required>
+																			name="insLICSusp">
 																			<option value="" selected disabled>Licence Suspended</option>
 																			<option value="true">Yes</option>
 																			<option value="false">No</option>
@@ -6260,7 +6283,7 @@ table{
 																	<div class="col-sm-4 col-md-4">
 																		<div class="selector">
 																		<select class="full-width" id="insReasonSusp" ng-model="insReasonSusp"
-																			name="insReasonSusp" required>
+																			name="insReasonSusp">
 																			<option value="" selected disabled>Reason for Suspension</option>
 																			<option>Drink & Drive</option>
 																			<option>Overspeeding</option>
@@ -6274,15 +6297,15 @@ table{
 																
 																<div class="row">
 																	<div class="col-sm-3 col-md-3">
-																		<label>No of Drivers</label>
+																		<label>No of Additional Drivers</label>
 																	</div>
 																	<div class="col-sm-3 col-md-3">
 																		<div class="selector">
 																		<select class="full-width" id="insDriversCt" ng-model="insDriversCt"
-																			name="insDriversCt" required>
-																			<option value="" selected disabled>0</option>
-																			<option>1</option>
-																			<option>2</option>
+																			name="insDriversCt">
+																			<option value="" selected disabled>No of Additional Drivers</option>
+																			<option>Yes</option>
+																			<option>No</option>
 																		</select>
 																		</div>
 																	</div>
@@ -6292,18 +6315,22 @@ table{
 																	<div class="col-sm-3 col-md-3">
 																		&nbsp;
 																	</div>
-																	<div class="col-sm-9 col-md-9">
-																				 <div id="my-container">
-																							<center>
-																							<button type="button" onclick="javascript:appendRow944()" class="append_row">User Info</button>
-																							<br />
-																							<table id="my-table944" align="center" cellspacing="0" cellpadding="0" border="0">
-																								<tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
-																							</table>
-																							<p></center>
-																				</div>
-																			</div><br/>
 																	
+																	
+																</div><br/>
+																
+																<div class="row">
+																		<div class="col-sm-12 col-md-12">
+																			<button type="button" onclick="javascript:appendRow944()" class="append_row">Add User</button>
+																		</div>
+																</div><br/>
+																
+																<div class="row">
+																		<div class="col-sm-12 col-md-12">
+																			<table id="my-table944">
+																				<tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
+																			</table>
+																		</div>
 																</div>
 															  <hr>
 															  </div>
@@ -6375,9 +6402,10 @@ table{
 													<div class="row">
 														<div class="col-sm-5 col-md-6">
 															<div class="checkbox">
-																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																<label> <input type="checkbox" id="iCarTerms" name="iCarTerms"  ng-model="iCarTerms" required><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
 																			Conditions</span></a>.
 																</label>
+																<span style="color:red" ng-show="ebidinsfrm.iCarTerms.$error.required && (!ebidinsfrm.iCarTerms.$pristine || ebidinsfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
 															</div>
 														</div>
 														<div class="col-sm-7 col-md-6"></div>
@@ -7530,9 +7558,13 @@ table{
 														</div>
 														<div class="col-sm-3 col-md-3">
 															<input type="text"
-															id="serv-postCode" name="servpostCode" ng-model="servpostCode"
+															id="serv-postCode" name="servpostCode" ng-model="servpostCode" ng-minlength="4" ng-pattern="/^[0-9]*$/" ng-maxlength="4"
 															class="input-text full-width" value="" placeholder="Post Code" required/>
-															<span style="color:red" ng-show="ebidservfrm.servpostCode.$error.required && (!ebidservfrm.servpostCode.$pristine || ebidservfrm.$submitted)"><b> Post Code value is Required</b></span>
+															<!-- <span style="color:red" ng-show="ebidservfrm.servpostCode.$error.required && (!ebidservfrm.servpostCode.$pristine || ebidservfrm.$submitted)"><b> Post Code value is Required</b></span> -->
+															<span style="color:red" ng-show="ebidservfrm.servpostCode.$error.pattern && (!ebidservfrm.servpostCode.$pristine || ebidservfrm.$submitted)"><b>POST must be Numeric</b></span>
+				                                            <span  style="color:red" ng-show="ebidservfrm.servpostCode.$error.required && (!ebidservfrm.servpostCode.$pristine || ebidservfrm.$submitted)"><b>POST is Required</b></span> 
+				                                           <span style="color:red" ng-show="ebidservfrm.servpostCode.$error.minlength && (!ebidservfrm.servpostCode.$pristine || ebidservfrm.$submitted) && !ebidservfrm.servpostCode.$error.pattern"><b>POST must be of 4 digits</b></span>
+				                                           <span style="color:red" ng-show="ebidservfrm.servpostCode.$error.maxlength && (!ebidservfrm.servpostCode.$pristine || ebidservfrm.$submitted) && !ebidservfrm.servpostCode.$error.pattern"><b>POST must be of 4 digits only.</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
 														&nbsp;
@@ -7568,7 +7600,46 @@ table{
 														</div>
 													</div><br/>
 													
+													
 													<div class="row">
+														<div class="col-sm-3 col-md-3">
+														&nbsp;
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="selector">
+															<select class="full-width" id="ServL1" ng-model="ServL1"
+																name="ServL1" required>
+																<option value="" selected disabled>Service & Maintenance L1</option>
+																<option>Packaged Car Services</option>
+																<option>Log Book Servicing</option>
+																<option>New Car Servicing</option>
+																<option>Fleet Servecing</option>
+																<option>Registraion & Inspection</option>
+																<option>Wheel Alinement</option>
+															</select>
+															</div>
+															<span style="color:red" ng-show="ebidservfrm.ServL1.$error.required && (!ebidservfrm.ServL1.$pristine || ebidservfrm.$submitted)"><b>Service Level 1 is Required</b></span>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="selector">
+															<select class="full-width" id="ServL2" ng-model="ServL2"
+																name="ServL2" required>
+																<option value="" selected disabled>Service & Maintenance L2</option>
+																<option>Packaged Car Services</option>
+																<option>Log Book Servicing</option>
+																<option>New Car Servicing</option>
+																<option>Fleet Servecing</option>
+																<option>Registraion & Inspection</option>
+																<option>Wheel Alinement</option>
+															</select>
+															</div>
+															<span style="color:red" ng-show="ebidservfrm.ServL2.$error.required && (!ebidservfrm.ServL2.$pristine || ebidservfrm.$submitted)"><b>Service Level 2 is Required</b></span>
+														</div>
+														<div class="col-sm-1 col-md-1">
+														&nbsp;
+														</div>
+													</div><br/>
+													<!-- <div class="row">
 														<div class="col-sm-3 col-md-3">
 															&nbsp;
 														</div>
@@ -7602,7 +7673,7 @@ table{
 														<div class="col-sm-1 col-md-1">
 														&nbsp;
 														</div>
-													</div><br/>
+													</div><br/> -->
 													
 													
 													
@@ -7737,44 +7808,7 @@ table{
 													
 													<div class="clearfix"></div>
 													<div class="clearfix"></div>
-													<div class="row">
-														<div class="col-sm-3 col-md-3">
-														&nbsp;
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<div class="selector">
-															<select class="full-width" id="ServL1" ng-model="ServL1"
-																name="ServL1" required>
-																<option value="" selected disabled>Service & Maintenance L1</option>
-																<option>Packaged Car Services</option>
-																<option>Log Book Servicing</option>
-																<option>New Car Servicing</option>
-																<option>Fleet Servecing</option>
-																<option>Registraion & Inspection</option>
-																<option>Wheel Alinement</option>
-															</select>
-															</div>
-															<span style="color:red" ng-show="ebidservfrm.ServL1.$error.required && (!ebidservfrm.ServL1.$pristine || ebidservfrm.$submitted)"><b>Service Level 1 is Required</b></span>
-														</div>
-														<div class="col-sm-4 col-md-4">
-															<div class="selector">
-															<select class="full-width" id="ServL2" ng-model="ServL2"
-																name="ServL2" required>
-																<option value="" selected disabled>Service & Maintenance L2</option>
-																<option>Packaged Car Services</option>
-																<option>Log Book Servicing</option>
-																<option>New Car Servicing</option>
-																<option>Fleet Servecing</option>
-																<option>Registraion & Inspection</option>
-																<option>Wheel Alinement</option>
-															</select>
-															</div>
-															<span style="color:red" ng-show="ebidservfrm.ServL2.$error.required && (!ebidservfrm.ServL2.$pristine || ebidservfrm.$submitted)"><b>Service Level 2 is Required</b></span>
-														</div>
-														<div class="col-sm-1 col-md-1">
-														&nbsp;
-														</div>
-													</div><br/>
+													
 													
 													
 													<div class="row">
@@ -7898,9 +7932,10 @@ table{
 														</div>
 														<div class="col-sm-5 col-md-6">
 															<div class="checkbox">
-																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																<label> <input type="checkbox" id="sCarTerms" name="sCarTerms"  ng-model="sCarTerms" required><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
 																			Conditions</span></a>.
 																</label>
+																<span style="color:red" ng-show="ebidservfrm.sCarTerms.$error.required && (!ebidservfrm.sCarTerms.$pristine || ebidservfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
 															</div>
 														</div>
 													</div><br/>
@@ -8739,7 +8774,7 @@ table{
 														<div class="col-sm-3 col-md-3">
 															 <input type="text"
 															id="transFStreetNo" name="transFStreetNo" ng-model="transFStreetNo"
-															class="input-text full-width" value="" placeholder="Street Name" required/>
+															class="input-text full-width" value="" placeholder="Street No" required/>
 															<span style="color:red" ng-show="ebidtransfrm.transFStreetNo.$error.required && (!ebidtransfrm.transFStreetNo.$pristine || ebidtransfrm.$submitted)"><b> From Street No is Required</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
@@ -8770,7 +8805,7 @@ table{
 														<div class="col-sm-3 col-md-3">
 															 <input type="text"
 															id="transFStreetNo" name="transTStreetNo" ng-model="transTStreetNo"
-															class="input-text full-width" value="" placeholder="Street Name" required/>
+															class="input-text full-width" value="" placeholder="Street No" required/>
 															<span style="color:red" ng-show="ebidtransfrm.transTStreetNo.$error.required && (!ebidtransfrm.transTStreetNo.$pristine || ebidtransfrm.$submitted)"><b> To Street No is Required</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
@@ -9136,9 +9171,10 @@ table{
 														</div>
 														<div class="col-sm-5 col-md-6">
 															<div class="checkbox">
-																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																<label> <input type="checkbox" id="tCarTerms" name="tCarTerms"  ng-model="tCarTerms" required ><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
 																			Conditions</span></a>.
 																</label>
+																<span style="color:red" ng-show="ebidtransfrm.tCarTerms.$error.required && (!ebidtransfrm.tCarTerms.$pristine || ebidtransfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
 															</div>
 														</div>
 													</div><br/>
@@ -9815,9 +9851,10 @@ table{
 														</div>
 														<div class="col-sm-4 col-md-4">
 															<div class="checkbox">
-																<label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																<label> <input type="checkbox" id="rCarTerms" name="rCarTerms"  ng-model="rCarTerms" required ><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
 																			Conditions</span></a>.
 																</label>
+																<span style="color:red" ng-show="ebidregostatefrm.rCarTerms.$error.required && (!ebidregostatefrm.rCarTerms.$pristine || ebidregostatefrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
 															</div>
 														</div>
 													</div><br/>
@@ -10158,7 +10195,7 @@ table{
 								<!-- Start of Check Vehicle -->
 								<div class="tab-pane fade" id="checkVehicle12456">
 									<div class="title-container">
-										<h5>Check Vehicle of</h5>
+										<h5>Fuel</h5>
 										<p class="text-sm">We're bringing you a new level of
 											comfort.</p>
 										<i class="soap-icon-status"></i>
@@ -10167,7 +10204,7 @@ table{
 									<div role="tabpanel"
 										class="col-md-12 search-section tran-search-box">
 										<!-- BEGIN: CATEGORY TAB -->
-
+											
 										<ul class="nav nav-tabs search-top" role="tablist"
 											id="searchTab">
 											<li role="presentation" class="active text-center"><a
@@ -10190,14 +10227,14 @@ table{
 												href="#cruise8" aria-controls="cruise" role="tab"
 												data-toggle="tab"> <i class="fa fa-truck"></i> <span>Heavy Truck</span>
 											</a></li>
-										</ul>
+										</ul> 
 										<!-- END: CATEGORY TAB -->
 
 										<!-- BEGIN: TAB PANELS -->
 										<div class="tab-content">
 											<!-- BEGIN: FLIGHT SEARCH -->
 											<div role="tabpanel" class="tab-pane active" id="flight8">
-												<form class="form-inline signup" role="form">
+												<!-- <form class="form-inline signup" role="form">
 													<div class="col-md-12 product-search-title">Check Car
 														Vehicle</div>
 
@@ -10251,16 +10288,17 @@ table{
 																id="exampleInputEmail1"
 																placeholder="Email / Mobile Number">
 														</div>
-														<!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
+														<button type="submit" class="btn btn-theme">Get notified!</button>
 													</div>
 													<div class="col-md-12 search-col-padding">
 														<button ng-click="go()" class="button">Go to
 															Renewal</button>
-														<!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
+														<button type="submit" class="search-button btn transition-effect">Build</button>
 													</div>
 
 													<div class="clearfix"></div>
-												</form>
+												</form> -->
+												<label>We will be available soon...</label>
 											</div>
 											<!-- END: FLIGHT SEARCH -->
 
