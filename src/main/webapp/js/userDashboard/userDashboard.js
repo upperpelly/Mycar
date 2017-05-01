@@ -96,7 +96,7 @@ if(value.issueState!="ss" || value.issueState!=""){
 	profilePic = '<img width="270" height="263" alt="" src="'+value.issueState+'"'+'>';
 }
 else{profilePic = '<img width="270" height="263" alt="" src="'+default1+'"'+'>';}
-	alert(profilePic);
+	//alert(profilePic);
 	$("#profilePic").append(profilePic);
 	function parseURLParameter(Parameter)
 	{
@@ -2425,8 +2425,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 																			
 											
 												$scope.submitSearchFormLogBook = function() {
-													alert("inside Log Book");
-													alert(myVehicleIDuse);												
+													/*alert("inside Log Book");
+													alert(myVehicleIDuse);	*/											
 													
 													//alert(data.myVehicleId);
 													var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
@@ -2506,7 +2506,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 													};
 													
 													$scope.submitSearchFormupdateset = function() {
-														alert("inside updatset");
+														//alert("inside updatset");
 														/*alert("inside Sesdarv Maint");
 														alert(myVehicleIDuse);*/
 														/*var vehicleTypeServMaint= stringToDate($('#vehicleTypeServMaint').val(),"dd/MM/yyyy","/");
@@ -2515,7 +2515,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 														var fileChooserlogupdateset = document.getElementById('file-chooser-updateset');
 														var filefileChooserupdateset = fileChooserlogupdateset.files[0];
 														var objKeyupdateset = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + filefileChooserupdateset.name;
-														alert(objKeyupdateset);
+														//alert(objKeyupdateset);
 														var jsonInputToAPI = {"userId":value.userId,"photo":objKeyupdateset}
 														
 														/*var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
@@ -2586,7 +2586,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 														var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
 														var filefileChooserlogservmaint = fileChooserlogservmaint.files[0];
 														var objKeyfilefileChooserlogservmaint = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;
-														alert(objKeyfilefileChooserlogservmaint);
+														//alert(objKeyfilefileChooserlogservmaint);
 														var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 																"myVehicleServMaintVO":{
 																	"myVehicleServMaintId":null,
@@ -2637,11 +2637,11 @@ mainApp1.controller('myController13',function($scope, $http) {
 														
 														
 														$scope.submitMyVehicleFuelExpenses = function() {
-															alert("inside Fuel Expe")
+															//alert("inside Fuel Expe")
 															var fileChooserLogExp = document.getElementById('file-chooser-lognewexp');
 						var filelogexp = fileChooserLogExp.files[0];
 						var objKeylogexp = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + filelogexp.name;
-				alert("Image of MyVehicle"+objKeylogexp);;
+				//alert("Image of MyVehicle"+objKeylogexp);;
 															//alert(myVehicleIDuse);
 															var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 																	"myVehicleFuelExpensesVO":{

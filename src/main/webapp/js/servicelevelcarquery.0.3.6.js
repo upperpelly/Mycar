@@ -502,7 +502,7 @@ ServiceLevelCarQuery.prototype = {
     },
     initFinanceProviders: function(finance_id)
     {
-       alert("came here");
+       //alert("came here");
     	//alert("came here without 12");
     	//Set the ids for the select elements
      this.finance_id =  finance_id;
@@ -522,13 +522,13 @@ ServiceLevelCarQuery.prototype = {
         //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelYears';
         this.base_url = 'api/financeProv';
         //alert(base_url);
-        alert(this.base_url);
+        //alert(this.base_url);
         
         $.getJSON(this.base_url, function(data) {
 
 			     if(!sender.responseError(data))
 			     {
-			    	 alert(data);
+			    	 //alert(data);
 			    	 var options = '<option value="">Please choose a Finance Provider</option>';
 			         //console.log(data);
 			         
@@ -551,7 +551,7 @@ ServiceLevelCarQuery.prototype = {
 			         {
 			            options += '<option value="' + data[i] + '">' + data[i] + '</option>';
 			         }
-			         alert(options);
+			         //alert(options);
 			      
 			         $("#"+finance_id).html(options);
 			     }
@@ -588,7 +588,7 @@ ServiceLevelCarQuery.prototype = {
 
 		     if(!sender.responseError(data))
 		     {
-		    	 alert(data);
+		    	 //alert(data);
 		    	 var options = '<option value="">Please choose a Insurance Provider</option>';
 		         //console.log(data);
 		         
@@ -611,7 +611,7 @@ ServiceLevelCarQuery.prototype = {
 		         {
 		            options += '<option value="' + data[i] + '">' + data[i] + '</option>';
 		         }
-		         alert(options);
+		         //alert(options);
 		      
 		         $("#"+insurance_id).html(options);
 		     }
@@ -896,7 +896,7 @@ ServiceLevelCarQuery.prototype = {
 
      if(!sender.responseError(data))
      {
-    	 var options = '<option value="">Please choose a Year</option>';
+    	 var options = '<option value="">Please choose a Level 2</option>';
          //console.log(data);
          
          //Set min and max year range
@@ -2303,7 +2303,7 @@ $.ajax({
 	    	   //alert("successfully searched in Autoscoop DB");
 	    	   /*alert("result value"+result.tempModelId);*/
 	    	   if(result.tempModelId !== undefined){
-	    		   alert("Template Card Model found with CardModel ID : "+result.tempModelId);
+	    		   //alert("Template Card Model found with CardModel ID : "+result.tempModelId);
 	    		   //alert("Populating.. data with CardModel ID : "+result.tempModelId);
 	    		   document.getElementById("tempCarModelId").value = result.tempModelId;
 	    		   document.getElementById("mrpPrice").value = result.mrlp;
