@@ -45,17 +45,16 @@ public class InventoryServiceImpl implements InventoryService{
 	}
 
 	@Override
-	public List<InventoryVO> getPriceAndVendorStockInventoryFor(String modelYear, String modelDisplay, String modelName,
-			String modelTrim) {
-		return inventoryRepository.getPriceAndVendorStockInventoryFor(modelYear, modelDisplay, modelName, modelTrim);
+	public List<InventoryVO> getPriceAndVendorStockInventoryFor(String modelYear, String modelDisplay, String modelName) {
+		return inventoryRepository.getPriceAndVendorStockInventoryFor(modelYear, modelDisplay, modelName);
 	}
 
 	@Override
 	public InventoryStatisticsVO getStatisticsFor(String modelYear, String modelDisplay, String modelName,
-			String modelTrim, String autoscoopTrim) {
+			 String autoscoopTrim) {
 		
 		InventoryStatisticsVO inventoryStatisticsVO = new InventoryStatisticsVO();
-		List<InventoryVO> inventoryVOsSortedByPrice = getPriceAndVendorStockInventoryFor(modelYear, modelDisplay, modelName, modelTrim.trim());
+		List<InventoryVO> inventoryVOsSortedByPrice = getPriceAndVendorStockInventoryFor(modelYear, modelDisplay, modelName);
 		// retrieve from tempcarModelHeader
 		TempCarModelHeaderVO tempCarHeaderVO = tempCarModelTemplateServiceImpl.getCarModelTemplateForAutoTrim(autoscoopTrim);
 		

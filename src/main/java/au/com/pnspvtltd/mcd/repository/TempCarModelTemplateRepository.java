@@ -31,8 +31,11 @@ public interface TempCarModelTemplateRepository extends JpaRepository<TempCarMod
 	@Query("select distinct tempCarModelHeader.modelVariant from TempCarModelHeader tempCarModelHeader WHERE tempCarModelHeader.modelName=?1 AND tempCarModelHeader.modelDisplay=?2 AND tempCarModelHeader.modelYear=?3")
 	public List<String> getAllCarModelVariantsForModel(String modelName,String modelDisplay,String modelYear);
 
-	@Query("select tempCarModelHeader.flex1 from TempCarModelHeader tempCarModelHeader WHERE tempCarModelHeader.modelVariant=?1 AND tempCarModelHeader.modelName=?2 AND tempCarModelHeader.modelDisplay=?3 AND tempCarModelHeader.modelYear=?4")
-	public List<String> getAllCarModelTrimForAllSelect(String modelVariant, String modelName, String modelDisplay, String modelYear);
+	/*@Query("select tempCarModelHeader.flex1 from TempCarModelHeader tempCarModelHeader WHERE tempCarModelHeader.modelVariant=?1 AND tempCarModelHeader.modelName=?2 AND tempCarModelHeader.modelDisplay=?3 AND tempCarModelHeader.modelYear=?4")
+	public List<String> getAllCarModelTrimForAllSelect(String modelVariant, String modelName, String modelDisplay, String modelYear);*/
+	
+	@Query("select tempCarModelHeader.flex1 from TempCarModelHeader tempCarModelHeader WHERE tempCarModelHeader.modelName=?1 AND tempCarModelHeader.modelDisplay=?2 AND tempCarModelHeader.modelYear=?3")
+	public List<String> getAllCarModelTrimForAllSelect(String modelName, String modelDisplay, String modelYear);
 	
 	//public CarModelTemplate getCarModelYear();
 }

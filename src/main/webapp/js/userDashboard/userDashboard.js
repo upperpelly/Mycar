@@ -3,7 +3,7 @@ var value = $.jStorage.get("key");
 var fbUserId = $.jStorage.get("fbKey");
 var myVehicleIDuse=null;
 function setting(data){
-	alert("cameheretoset");
+	//alert("cameheretoset");
 	//$.jStorage.deleteKey(key);
 	$.jStorage.set('key',data);
 	$.jStorage.setTTL('mykey', 30000); // expires in 3 seconds
@@ -243,7 +243,7 @@ function dashBoardPhotoUpdate()
 		contentType:'application/json',
 		success: function(result){
 			
-			alert("Successfully upated photo to user");
+			alert("Successfully updated ....");
 			
 		}
 	});
@@ -275,6 +275,10 @@ function dashBoardCallSearch(model_data_id, userid)
    $('#logBook4').html('<img src="images/LoadImg.gif"></img>');
    $('#fuelCard4').html('<img src="images/LoadImg.gif"></img>');
    $('#servMaint4').html('<img src="images/LoadImg.gif"></img>');
+   
+   $('#datatranspserv').html('<img src="images/LoadImg.gif"></img>');
+   $('#dataservmaint').html('<img src="images/LoadImg.gif"></img>');
+   //$('#servMaint4').html('<img src="images/LoadImg.gif"></img>');
    
     $.ajax({  
     	/*headers: {"X-My-Custom-Header": "*"},*/
@@ -2518,6 +2522,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 													};
 													
 													$scope.submitSearchFormupdateset = function() {
+														
 														//alert("inside updatset");
 														/*alert("inside Sesdarv Maint");
 														alert(myVehicleIDuse);*/
@@ -2574,17 +2579,20 @@ mainApp1.controller('myController13',function($scope, $http) {
 																			alert("Service & Maintenance Successfully Stored..");
 																															
 																						});*/	
+														$body.addClass("loading");
 														$.ajax({  
 									                		type: "POST",  
 									                		url: "api/updatePhoto?_method=PUT",
 									                		data: JSON.stringify(jsonInputToAPI),
 									                		contentType:'application/json',
 									                		success: function(result){
+									                			$body.removeClass("loading");
 									                			setting(result);
+									                			alert("Successfully upated photo to user");
 									                			var url="dashboard1.html";
 																
 																window.location=url;
-									                			alert("Successfully upated photo to user");
+									                			
 									                			
 									                		}
 									                	});

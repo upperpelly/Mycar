@@ -401,7 +401,7 @@ function createCellRelatedModels(cell,  row, text, style) {
     case 0: newInput.value=$('#car-years').val();break;
     case 1: newInput.value=$('#car-makes').val();break;
     case 2: newInput.value=$('#car-models').val();break;
-    case 3: newInput.value=$('#car-model-trims').val();break;
+    //case 3: newInput.value=$('#car-model-trims').val();break;
     }
     
     
@@ -478,8 +478,8 @@ function createCellRelatedModels922(cell,  row, text, style) {
     case 0: newInput.value=$('#car-years-trans').val();break;
     case 1: newInput.value=$('#car-makes-trans').val();break;
     case 2: newInput.value=$('#car-models-trans').val();break;
-    case 3: newInput.value=$('#car-model-trims-trans').val();break;
-    case 4: newInput.value=$('#car-model-auto-trims-trans').val();break;
+    //case 3: newInput.value=$('#car-model-trims-trans').val();break;
+    case 3: newInput.value=$('#car-model-auto-trims-trans').val();break;
     
     }
     
@@ -939,7 +939,8 @@ $body = $("body");
     });
 var carquery = new CarQuery();
 carquery.init();
-carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
+//carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
+carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-auto-trims');
 
 //Set onclick function for the US filter checkbox and show data button
 $('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
@@ -1051,7 +1052,8 @@ tr:hover{background-color:rgb(253, 183, 20);}
 	var carquery = new CarQuery();
 	carquery.init();
 	//carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
-	carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins','car-model-auto-trims-ins');
+	//carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins','car-model-auto-trims-ins');
+	carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-auto-trims-ins');
 	var servicelevel = new ServiceLevelCarQuery();
 	servicelevel.initFinanceProviders('ins-fin-prov');
 	servicelevel.initInsuranceProviders('curr-ins-prov');
@@ -1062,7 +1064,8 @@ tr:hover{background-color:rgb(253, 183, 20);}
 	var carquery = new CarQuery();
 	carquery.init();
 	//carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
-	carquery.initYearMakeModelTrim('car-years-serv', 'car-makes-serv', 'car-models-serv', 'car-model-trims-serv','car-model-auto-trims-serv');
+	//carquery.initYearMakeModelTrim('car-years-serv', 'car-makes-serv', 'car-models-serv', 'car-model-trims-serv','car-model-auto-trims-serv');
+	carquery.initYearMakeModelTrim('car-years-serv', 'car-makes-serv', 'car-models-serv', 'car-model-auto-trims-serv');
 	
 	var servicelevel = new ServiceLevelCarQuery();
 	servicelevel.init();
@@ -1078,7 +1081,8 @@ tr:hover{background-color:rgb(253, 183, 20);}
 	var carquery = new CarQuery();
 	carquery.init();
 	//carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
-	carquery.initYearMakeModelTrim('car-years-trans', 'car-makes-trans', 'car-models-trans', 'car-model-trims-trans','car-model-auto-trims-trans');
+	//carquery.initYearMakeModelTrim('car-years-trans', 'car-makes-trans', 'car-models-trans', 'car-model-trims-trans','car-model-auto-trims-trans');
+	carquery.initYearMakeModelTrim('car-years-trans', 'car-makes-trans', 'car-models-trans', 'car-model-auto-trims-trans');
 }
 </script>
 <script>function showDiv2() {
@@ -1086,7 +1090,8 @@ tr:hover{background-color:rgb(253, 183, 20);}
 	var carquery = new CarQuery();
 	carquery.init();
 	//  carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin','car-model-auto-trims-fin' );
-	carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin','car-model-auto-trims-fin');
+	//carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin','car-model-auto-trims-fin');
+	carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-auto-trims-fin');
 
 	//carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
 }
@@ -1109,7 +1114,7 @@ tr:hover{background-color:rgb(253, 183, 20);}
 <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '249863545451459',
+				appId : '238604546585672',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -2225,16 +2230,16 @@ $scope.submitForm1 = function() {
 							if(usedCarEbid=="on")usedCarEbid=false;
 							//alert(usedCarEbid);
 							//alert(newCarEbid);
-							var e = document.getElementById("car-model-trims"); 
-							var strUser = e.options[e.selectedIndex].text;
+							/* var e = document.getElementById("car-model-trims"); 
+							var strUser = e.options[e.selectedIndex].text; */
 
-							var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&modelTrim='+$('#car-model-trims').val()+'&autoscoopTrim='+$('#car-model-auto-trims').val();
+							var wsURL = 'api/inventory/getStatisticsFor?modelYear='+$('#car-years').val()+'&modelDisplay='+$('#car-makes').val()+'&modelName='+$('#car-models').val()+'&autoscoopTrim='+$('#car-model-auto-trims').val();
 							
 							var modelYear= $('#car-years').val();
 							var modelDisplay= $('#car-makes').val();
 							var modelName=$('#car-models').val();
-							var trimValue=$('#car-model-trims').val();
-							var modelTrim=strUser;
+							//var trimValue=$('#car-model-trims').val();
+							//var modelTrim=strUser;
 							var autoTrim= $('#car-model-auto-trims').val();
 							//alert ("model"+modelYear);
 							if(alreadyLogged()){
@@ -2248,8 +2253,8 @@ $scope.submitForm1 = function() {
 									            	data.modelYear=modelYear;
 									            	data.modelDisplay=modelDisplay;
 									            	data.modelName=modelName;
-									            	data.modelTrim=modelTrim;
-									            	data.trimValue=trimValue;
+									            	/* data.modelTrim=modelTrim;
+									            	data.trimValue=trimValue; */
 									            	data.autoTrim=autoTrim;
 									            	data.newCarEbid=newCarEbid;
 									            	data.usedCarEbid=usedCarEbid;
@@ -3033,7 +3038,7 @@ table{
 																										<br/>
 																										
 																										
-													<div class="row">
+													<!-- <div class="row">
 														<div class="col-sm-5 col-md-6">
 															<div class="selector">
 																<select id="car-model-trims" name="carmodeltrims"  ng-model="carmodeltrims"
@@ -3043,7 +3048,7 @@ table{
 															<span style="color:red" ng-show="ebidfrm.carmodeltrims.$error.required && (!ebidfrm.carmodeltrims.$pristine || ebidfrm.$submitted)"><b>Car Variant is Required</b></span>
 														</div>
 														<div class="col-sm-7 col-md-6"></div>
-													</div>
+													</div> -->
 													
 													
 													<div class="clearfix"></div>
@@ -4744,7 +4749,7 @@ table{
 															<span style="color:red" ng-show="ebidfinfrm.carmodelsfin.$error.required && (!ebidfinfrm.carmodelsfin.$pristine || ebidfinfrm.$submitted)"><b>Car model is Required</b></span>
 														</div>
 													</div><br/>
-													<div class="row">
+													<!-- <div class="row">
 														<div class="col-sm-3 col-md-3">
 														&nbsp;
 														</div>
@@ -4757,7 +4762,7 @@ table{
 															</div>
 															<span style="color:red" ng-show="ebidfinfrm.carmodeltrimsfin.$error.required && (!ebidfinfrm.carmodeltrimsfin.$pristine || ebidfinfrm.$submitted)"><b>Car Variant is Required</b></span>
 														</div>
-													</div><br/>
+													</div><br/> -->
 													<div class="row">
 														<div class="col-sm-3 col-md-3">
 														&nbsp;
@@ -5789,7 +5794,7 @@ table{
 																			</div>
 																		</div><br/>
 																		
-																		<div class="row">
+																		<!-- <div class="row">
 																			<div class="col-sm-3 col-md-3">
 																			&nbsp;
 																			</div>
@@ -5802,7 +5807,7 @@ table{
 																			</div>
 																			<span style="color:red" ng-show="ebidinsfrm.carmodeltrimsins.$error.required && (!ebidinsfrm.carmodeltrimsins.$pristine || ebidinsfrm.$submitted)"><b>Car Variant is Required</b></span>
 																			</div>
-																		</div><br/>
+																		</div><br/> -->
 																		<div class="row">
 																			<div class="col-sm-3 col-md-3">
 																			&nbsp;
@@ -7764,7 +7769,7 @@ table{
 														<div class="col-sm-3 col-md-3">
 														&nbsp;
 														</div>
-														<div class="col-sm-6 col-md-6">
+														<!-- <div class="col-sm-6 col-md-6">
 															<div class="selector">
 															<select id="car-model-trims-serv" name="carmodeltrimsserv"  ng-model="carmodeltrimsserv"
 																class="full-width" required>
@@ -7772,7 +7777,7 @@ table{
 															</select>
 															</div>
 															<span style="color:red" ng-show="ebidservfrm.carmodeltrimsserv.$error.required && (!ebidservfrm.carmodeltrimsserv.$pristine || ebidservfrm.$submitted)"><b>Car Variant is Required</b></span>
-														</div>
+														</div> -->
 														<div class="col-sm-3 col-md-3">
 															<div class="selector">
 															<select class="full-width" id="fuelTypeServ" ng-model="fuelTypeServ"
@@ -8933,7 +8938,7 @@ table{
 																			</div>
 																		</div><br/>
 																		
-																		<div class="row">
+																		<!-- <div class="row">
 																			<div class="col-sm-3 col-md-3">
 																			&nbsp;
 																			</div>
@@ -8946,7 +8951,7 @@ table{
 																				</div>
 																				<span style="color:red" ng-show="ebidtransfrm.carmodeltrimstrans.$error.required && (!ebidtransfrm.carmodeltrimstrans.$pristine || ebidtransfrm.$submitted)"><b>Car Variant is Required</b></span>
 																			</div>
-																		</div><br/>
+																		</div><br/> -->
 																		<div class="row">
 																			<div class="col-sm-3 col-md-3">
 																			&nbsp;

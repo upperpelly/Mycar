@@ -80,12 +80,20 @@ public class TempCarModelTemplateController {
 		
 		//String modelName,String modelDisplay,String modelYear
 		//Variant in Select Box
-			@GetMapping(value = "tempCarModelTrimForAllSelect", produces = { MediaType.APPLICATION_JSON_VALUE })
+			/*@GetMapping(value = "tempCarModelTrimForAllSelect", produces = { MediaType.APPLICATION_JSON_VALUE })
 			public List<String> getAllCarModelTrimForAllSelect(@RequestParam("modelTrim") String modelTrim,@RequestParam("modelName") String modelName,@RequestParam("modelDisplay") String modelDisplay,@RequestParam("modelYear") String modelYear) {
 				LOGGER.info("Received request to get All TempCarModelvariant");
 				return carModelTemplateService.getAllCarModelTrimForAllSelect(modelTrim,modelName,modelDisplay,modelYear);
 
+			}*/
+			
+			@GetMapping(value = "tempCarModelTrimForAllSelect", produces = { MediaType.APPLICATION_JSON_VALUE })
+			public List<String> getAllCarModelTrimForAllSelect(@RequestParam("modelName") String modelName,@RequestParam("modelDisplay") String modelDisplay,@RequestParam("modelYear") String modelYear) {
+				LOGGER.info("Received request to get All TempCarModelvariantch");
+				return carModelTemplateService.getAllCarModelTrimForAllSelect(modelName,modelDisplay,modelYear);
+
 			}
+			
 			
 			// get tempCarModelHeader for given AutoscoopTrim
 			//String modelName,String modelDisplay,String modelYear

@@ -17,10 +17,10 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 	@Query("SELECT inv FROM Inventory inv WHERE inv.modelYear=?1 AND inv.modelDisplay=?2 AND inv.modelName=?3 AND inv.modelTrim=?4")
 	public List<Inventory> getInventoryFor(String modelYear, String modelDisplay, String modelName, String modelTrim);
 
-	@Query("SELECT NEW au.com.pnspvtltd.mcd.web.model.InventoryVO (inv.price, inv.vendorStockNo) FROM Inventory inv WHERE inv.modelYear=?1 AND inv.modelDisplay=?2 AND inv.modelName=?3 AND inv.modelTrim=?4" +
+	@Query("SELECT NEW au.com.pnspvtltd.mcd.web.model.InventoryVO (inv.price, inv.vendorStockNo) FROM Inventory inv WHERE inv.modelYear=?1 AND inv.modelDisplay=?2 AND inv.modelName=?3 " +
 	" ORDER BY inv.price")
-	public List<InventoryVO> getPriceAndVendorStockInventoryFor(String modelYear, String modelDisplay, String modelName,
-			String modelTrim);
+	public List<InventoryVO> getPriceAndVendorStockInventoryFor(String modelYear, String modelDisplay, String modelName
+			);
 	
 	public List<Inventory> findByDealer(Dealer dealer);
 }

@@ -200,12 +200,12 @@ System.out.println("present value"+present);
 		// Get Inventory matching the User EBid for Car
 		// (Model, Make, Year, Trim)
 		
-		String withOutSpace = searchFinance.getVariant().replaceAll("%20", " ");
-		System.out.println("without"+withOutSpace);
-		System.out.println("with"+searchFinance.getVariant());
+		//String withOutSpace = searchFinance.getVariant().replaceAll("%20", " ");
+		//System.out.println("without"+withOutSpace);
+		//System.out.println("with"+searchFinance.getVariant());
 		
 		List<Inventory> inventories = inventoryRepository.getInventoryFor(String.valueOf(searchFinance.getYear()),
-				searchFinance.getMake(), searchFinance.getModel(), withOutSpace);
+				searchFinance.getMake(), searchFinance.getModel(),  searchFinance.getVariant());
 		boolean present = false;
 		for (Inventory inventory : inventories) {
 			present = true;
@@ -272,14 +272,14 @@ System.out.println("present value"+present);
 			// Get Inventory matching the User EBid for Car
 			// (Model, Make, Year, Trim)
 			
-			String withOutSpace = searchInsurance.getVariant().replaceAll("%20", " ");
+			/*String withOutSpace = searchInsurance.getVariant().replaceAll("%20", " ");
 			System.out.println("without"+withOutSpace);
-			System.out.println("with"+searchInsurance.getVariant());
+			System.out.println("with"+searchInsurance.getVariant());*/
 			
 			
 			
 			List<Inventory> inventories = inventoryRepository.getInventoryFor(String.valueOf(searchInsurance.getYear()),
-					searchInsurance.getMake(), searchInsurance.getModel(), withOutSpace);
+					searchInsurance.getMake(), searchInsurance.getModel(), searchInsurance.getVariant());
 			boolean present = false;
 			for (Inventory inventory : inventories) {
 				present = true;
@@ -341,14 +341,14 @@ System.out.println("present value"+present);
 		// Get Inventory matching the User EBid for Car
 		// (Model, Make, Year, Trim)
 		
-		String withOutSpace = searchInsurance.getVariant().replaceAll("%20", " ");
+		/*String withOutSpace = searchInsurance.getVariant().replaceAll("%20", " ");
 		System.out.println("without"+withOutSpace);
-		System.out.println("with"+searchInsurance.getVariant());
+		System.out.println("with"+searchInsurance.getVariant());*/
 		
 		
 		
 		List<Inventory> inventories = inventoryRepository.getInventoryFor(String.valueOf(searchInsurance.getYear()),
-				searchInsurance.getMake(), searchInsurance.getModel(), withOutSpace);
+				searchInsurance.getMake(), searchInsurance.getModel(), searchInsurance.getVariant());
 		boolean present = false;
 		for (Inventory inventory : inventories) {
 			present = true;

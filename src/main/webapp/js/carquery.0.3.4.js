@@ -501,7 +501,8 @@ CarQuery.prototype = {
     },
     
     
-    initYearMakeModelTrim: function(year_select_id, make_select_id, model_select_id, trim_select_id,autotrim_select_id)
+    //initYearMakeModelTrim: function(year_select_id, make_select_id, model_select_id, trim_select_id,autotrim_select_id)
+     initYearMakeModelTrim: function(year_select_id, make_select_id, model_select_id, autotrim_select_id)
     {
         //alert("came here");
     	
@@ -509,12 +510,12 @@ CarQuery.prototype = {
      this.year_select_id =  year_select_id;
      this.make_select_id =  make_select_id;
      this.model_select_id = model_select_id;
-     this.trim_select_id = trim_select_id;
+     //this.trim_select_id = trim_select_id;
      this.autotrim_select_id = autotrim_select_id;
      $("select#"+this.year_select_id).html("<option value='' disabled selected>Which Year</option>");
      $("select#"+this.make_select_id).html("<option value='' disabled selected>Make</option>");
      $("select#"+this.model_select_id).html("<option value='' disabled selected>Model</option>");
-     $("select#"+this.trim_select_id).html("<option value='' disabled selected>Variant</option>");
+     //$("select#"+this.trim_select_id).html("<option value='' disabled selected>Variant</option>");
      $("select#"+this.autotrim_select_id).html("<option value='' disabled selected>Autoscoop Trim</option>");
 
      //Populate the car-years select element
@@ -529,10 +530,10 @@ CarQuery.prototype = {
      $("select#"+make_select_id).bind('change', function(){sender.makeSelectChange();});
 
      //Set the change event for the models dropdown to populate the trims select
-     $("select#"+model_select_id).bind('change', function(){sender.modelSelectChange();});
+     $("select#"+model_select_id).bind('change', function(){sender.trimSelectChange();});
 
      //Set the change event for the trim dropdown to save the selected trim
-     $("select#"+trim_select_id).bind('change', function(){sender.trimSelectChange();});
+     //$("select#"+trim_select_id).bind('change', function(){sender.trimSelectChange();});
      
      $("select#"+autotrim_select_id).bind('change', function(){sender.autotrimSelectChange();});
     },
@@ -2895,7 +2896,7 @@ var insQCt=result.insuranceQuotation.length;
  {
   $("select#"+this.make_select_id).html(this.empty_option_html);
   $("select#"+this.model_select_id).html(this.empty_option_html);
-  $("select#"+this.trim_select_id).html(this.empty_option_html);
+ // $("select#"+this.trim_select_id).html(this.empty_option_html);
       return;
      }
 
@@ -2930,7 +2931,7 @@ var insQCt=result.insuranceQuotation.length;
      if(this.cur_make == "")
      {
       $("select#"+this.model_select_id).html(this.empty_option_html);
-   $("select#"+this.trim_select_id).html(this.empty_option_html);
+//   $("select#"+this.trim_select_id).html(this.empty_option_html);
       return;
      }
 
@@ -2996,8 +2997,10 @@ var insQCt=result.insuranceQuotation.length;
     trimSelectChange: function ()
     {
          
-     this.cur_trim = $("select#"+this.trim_select_id).val();
-
+     this.cur_trim = $("select#"+this.model_select_id).val();
+//alert(this.cur_trim);
+//alert(this.cur_model);
+//alert(this.cur_make);
  //If value has been selected, save trim selection
  if(this.cur_trim != "" && this.cur_trim != null)
   this.saveSetting('trim', this.cur_trim);
@@ -3010,10 +3013,11 @@ var insQCt=result.insuranceQuotation.length;
  this.base_url = 'api/tempCarModelTrimForAllSelect';
  //alert(this.base_url);
  //Get Car Model JSON for the selected make modelVariant, String modelName, String modelDisplay, String modelYear
-$.getJSON(this.base_url, {modelDisplay:this.cur_make, modelYear:this.cur_year, modelName:this.cur_model,modelTrim:this.cur_trim}, function(data) {
+$.getJSON(this.base_url, {modelDisplay:this.cur_make, modelYear:this.cur_year, modelName:this.cur_trim}, function(data) {
 
 if(!sender.responseError(data))
 {
+	alert("data retrieved.."+data);
   sender.populateAutoTrimSelect(data);
  }
  });
