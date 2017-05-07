@@ -345,7 +345,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             <a href="#"><span id="userId"></span></a>
                             <ul class="menu mini uppercase">
                                 <li><a href="dashboard1.html#dashboard" class="location-reload">Overview</a></li>
-                                <li><a href="dashboard1.html#profile" class="location-reload">Profile</a></li>
+                                <li><a href="dashboard1.html#profile" class="location-reload"  onclick="fbdown">Profile</a></li>
                                 <li><a href="dashboard1.html#travel-stories" class="location-reload">Ebid-R</a></li>
                                 <li><a href="dashboard1.html#settings" class="location-reload">Quotation</a></li>
                                 <!-- <li><a href="dashboard1.html#wishlist" class="location-reload">Wishlist</a></li> -->
@@ -640,7 +640,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                     <div class="tab-container full-width-style arrow-left dashboard">
                         <ul class="tabs">
                             <li class="active"><a data-toggle="tab" href="#dashboard"><i class="soap-icon-anchor circle"></i>Overview</a></li>
-                            <li class=""><a data-toggle="tab" href="#profile"><i class="soap-icon-user circle"></i>Profile</a></li>
+                            <li class=""><a data-toggle="tab" href="#profile" ><i class="soap-icon-user circle"></i>Profile</a></li>
                             <!-- <li class=""><a data-toggle="tab" href="#cruise-description"><i class="soap-icon-status circle"></i>My Vehicle</a></li> -->
                             <li class=""><a data-toggle="tab" href="#VehicleQuotation12"><i class="soap-icon-status circle"></i>Vehicle Garage</a></li>
                             <li class="" id="logBookTab"><a data-toggle="tab" href="#l2Profile1"><i class="soap-icon-status circle"></i>Log Book</a></li>
@@ -1439,7 +1439,148 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             
                             
                             <div id="rego" class="tab-pane fade">
-                            <h2>Registration area</h2>
+                            
+                            <!-- Start of RegO -->
+                            
+												<form class="form-inline signup" name="ebidregostatefrm" ng-submit="postRegoStateUrlLead(ebidregostatefrm.$valid)" novalidate>
+													<div class="col-md-12 product-search-title">Registration
+														for car</div>
+														<div class="col-md-12">&nbsp</div>
+														
+													<div class="row">
+														<div class="col-sm-4 col-md-4">
+														<label>Vehicle of which State</label>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="selector">
+																<select class="full-width" id="car-reg-state"
+																	name="carregstate" ng-model="carregstate"
+																	required>
+																	<option>ACT</option>
+																	<option>VIC</option>
+																	<option>NSW</option>
+																	<option>QLD</option>
+																	<option>SA</option>
+																	<option>NT</option>
+																	<option>WA</option>
+																	<option>TAS</option>
+																</select>
+															</div>
+															<span style="color:red" ng-show="ebidregostatefrm.carregstate.$error.required && (!ebidregostatefrm.carregstate.$pristine || ebidregostatefrm.$submitted)"><b>Rego State is Required</b></span>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															&nbsp;
+														</div>
+													</div>	<br/>
+													
+													<div class="row">
+														<div class="col-sm-4 col-md-4">
+														<label>I am looking for</label>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="selector">
+															<select class="full-width" id="car-reg-vehType"
+																name="carregvehType" ng-model="carregvehType"
+																required>
+																<option>Vehicle Renewal</option>
+																<option>Address Change</option>
+																<option>Check Registration</option>
+																<option>Maintain Contact Details</option>
+																<option>Transfer Vehicle Registration</option>
+																<option>Buying Selling and Cancelling</option>
+																<option>Vehicle Inspection</option>
+															</select>
+															</div>
+															<span style="color:red" ng-show="ebidregostatefrm.carregvehType.$error.required && (!ebidregostatefrm.carregvehType.$pristine || ebidregostatefrm.$submitted)"><b>Vehicle Type is Required</b></span>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															&nbsp;
+														</div>
+													</div>	<br/>
+													
+													
+													<div class="row">
+														<div class="col-sm-4 col-md-4">
+														&nbsp;
+														</div>
+														<div class="col-sm-4 col-md-4">
+															Note : Please allow Pop-ups to redirect Concern Page
+														</div>
+														<div class="col-sm-4 col-md-4">
+															&nbsp;
+														</div>
+													</div>
+													<!-- <div class="col-sm-5 col-md-4">
+														<label>VIN / HIN </label> <input id="car-reg-vinhin" name="carregvinhin" ng-model="carregvinhin"
+															class="input-text full-width" value="" placeholder="VIN HIN" required  />
+															<span style="color:red" ng-show="ebidregostatefrm.carregvinhin.$error.required && (!ebidregostatefrm.carregvinhin.$pristine || ebidregostatefrm.$submitted)"><b>VIN HIN is Required</b></span>
+													</div>
+													<div class="col-sm-5 col-md-4">
+														<label>Registration No</label> <input id="car-reg-no" name="carregno"  ng-model="carregno"
+															class="input-text full-width" value="" placeholder="Registration No" required/>
+															<span style="color:red" ng-show="ebidregostatefrm.carregno.$error.required && (!ebidregostatefrm.carregno.$pristine || ebidregostatefrm.$submitted)"><b>Registration No is Required</b></span>
+													</div> -->
+													<div class="clearfix"></div>
+													<div class="clearfix"></div>
+													<div id="status"></div>
+													<br /> <br />
+													 
+													 <div class="row">
+														<div class="col-sm-4 col-md-4">
+														&nbsp;
+														</div>
+														<!-- <div class="col-sm-4 col-md-4">
+															<div class="social col-md-12 col-sm-12">
+																<a href="#"><i class="fa fa-facebook"
+																	onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+																	class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
+																	class="fa fa-google-plus" onclick="onSignInG()"
+																	aria-hidden="true"></i></a> &nbsp<a href="#"><i
+																	class="fa fa-linkedin" onclick="onLinkedInLoad()"
+																	aria-hidden="true"></i></a>
+															</div>
+														</div> -->
+														<div class="col-sm-4 col-md-4">
+															&nbsp;
+														</div>
+													</div>	
+													<br />	
+													<div class="row">
+														<div class="col-sm-4 col-md-4">
+															&nbsp; 		
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<div class="checkbox">
+																<label> <input type="checkbox" id="rCarTerms" name="rCarTerms"  ng-model="rCarTerms" required ><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+																			Conditions</span></a>.
+																</label>
+																<span style="color:red" ng-show="ebidregostatefrm.rCarTerms.$error.required && (!ebidregostatefrm.rCarTerms.$pristine || ebidregostatefrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
+															</div>
+														</div>
+													</div><br/>
+
+													<br /> <br />
+													
+													 <div class="row">
+														<div class="col-sm-4 col-md-4">
+														&nbsp;
+														</div>
+														<div class="col-sm-4 col-md-4">
+															<button class="button .btn-block">Take me There!</button>
+														</div>
+														<div class="col-sm-4 col-md-4">
+															&nbsp;
+														</div>
+													</div>
+
+													<div class="clearfix"></div>
+												</form>
+											
+                            <!-- end of RegO -->
+                            
+                            
+                            
+                            
                             </div>
                              <!-- Start of My Vehicle Entry -->
                       <div id="VehicleQuotation12" class="tab-pane fade">
@@ -1459,7 +1600,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							        	<h4>Car Details</h4>
 							        	<!-- Vehiscle Start -->
 							        	<div class="row">
-										    <div class="col-md-6"><button id="CreateVehicleFormButton">Add new Vehicle</button></div>
+										    <div class="col-md-6"><button id="CreateVehicleFormButton" onclick="myvehicleloadImage()" >Add new Vehicle</button></div>
 										    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
 										</div>
 							        	<div class="booking-section travelo-box" id="CreateVehicleForm">
@@ -2635,39 +2776,10 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
         });
     </script>
        <script type="text/javascript">
+       function myvehicleloadImage()
+  	 {alert("came inside myvehicle image");
        <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 
-        var appId = '249863545451459';
-
-      //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-        var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
-
-
-        var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
-
-
-        AWS.config.region = 'us-east-1';
-
-
-
-
-
-
-        var bucket = new AWS.S3({
-
-
-            params: {
-
-
-                Bucket: bucketName
-
-
-            }
-
-
-        });
-
-// my vehicle photo set start
         var fileChooser = document.getElementById('file-chooser');
         //file-chooser2
         var fileChooser2 = document.getElementById('file-chooser2');
@@ -2675,21 +2787,24 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
  //file-chooser3
         var fileChooser3 = document.getElementById('file-chooser3');
         var button = document.getElementById('upload-button');
-     // my vehicle photo set end
-       
-
-// start of Logbook set        
-        var fileChooserLogExp = document.getElementById('file-chooser-lognewexp');
-        var buttonLogExp = document.getElementById('upload-button-lognewexp');
-        
-        var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
-        var buttonlogservmaint = document.getElementById('upload-button-logservmaint');
-        
-        var fileChooserupdateset = document.getElementById('file-chooser-updateset');
-        var buttonupdatesetting = document.getElementById('upload-button-updatesetting');
-     // start of Logbook set end
-
-        //var results = document.getElementById('results');
+        var appId = '238604546585672';
+	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+	      AWS.config.region = 'us-east-1';
+	      var bucket = new AWS.S3({
+	          params: {
+	              Bucket: bucketName
+	          }
+	      });
+	     alert("Successfully set..");
+	     accessToken = $.jStorage.get("fbAToken");
+	     alert(accessToken);
+				bucket.config.credentials = new AWS.WebIdentityCredentials({
+		                  ProviderId: 'graph.facebook.com',
+		                  RoleArn: roleArn,
+		                  WebIdentityToken: accessToken
+		              });
 
 
         button.addEventListener('click', function () {
@@ -2702,13 +2817,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
             if (file2) {
 
-            	//alert("came here on click of save for serv and maint2");
-                //results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
+        
                 var objKey = 'facebook-' + fbUserId + '/' + file2.name;
 
 
@@ -2718,13 +2827,13 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                     Key: objKey,
 
 
-                    ContentType: file.type,
+                    ContentType: file2.type,
 
 
-                    Body: file,
+                    Body: file2,
 
 
-                    ACL: 'public-read'
+                    ACL: 'authenticated-read'
 
 
                 };
@@ -2737,12 +2846,12 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
                         //results.innerHTML = 'ERROR: ' + err;
-
+                    	alert("Not saved My Vehicle photo 2"+err);
 
                     } else {
 
-
-                        listObjs();
+alert("Successfully saved My Vehicle photo 2 to S3");
+                       // listObjs();
 
 
                     }
@@ -2752,7 +2861,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
             } else {
-
+            	alert("Nothing to upload for My Vehicle photo 2");
 
                 //results.innerHTML = 'Nothing to upload.';
 
@@ -2764,13 +2873,6 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
  
             if (file3) {
 
-            	//alert("came here on click of save for serv and maint2");
-                //results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
                 var objKey = 'facebook-' + fbUserId + '/' + file3.name;
 
 
@@ -2780,13 +2882,13 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                     Key: objKey,
 
 
-                    ContentType: file.type,
+                    ContentType: file3.type,
 
 
-                    Body: file,
+                    Body: file3,
 
 
-                    ACL: 'public-read'
+                    ACL: 'authenticated-read'
 
 
                 };
@@ -2796,15 +2898,15 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
                     if (err) {
-
+                    	alert("Not saved My Vehicle photo 3"+err);
 
                         //results.innerHTML = 'ERROR: ' + err;
 
 
                     } else {
 
-
-                        listObjs();
+                    	alert("Successfully saved My Vehicle photo 3 to s3");
+                        //listObjs();
 
 
                     }
@@ -2815,7 +2917,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
             } else {
 
-
+            	alert("Nothing to upload for my vehicle photo 3");
                 //results.innerHTML = 'Nothing to upload.';
 
 
@@ -2825,12 +2927,6 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
             if (file) {
 
 
-                //results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
                 var objKey = 'facebook-' + fbUserId + '/' + file.name;
 
 
@@ -2846,7 +2942,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                     Body: file,
 
 
-                    ACL: 'public-read'
+                    ACL: 'authenticated-read'
 
 
                 };
@@ -2857,85 +2953,15 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
                     if (err) {
 
-
+                    	alert("Not saved My Vehicle photo 1"+err);
                         /* results.innerHTML = 'ERROR: ' + err; */
 
 
                     } else {
 
-
-                        listObjs();
-
-
-                    }
-
-
-                });
-
-
-            } else {
-
-
-                /* results.innerHTML = 'Nothing to upload.'; */
-
-
-            }
-
-
-        }, false);
-        
-        // end of funcationality for myvehicle
-
- // start for log Expense 
- buttonLogExp.addEventListener('click', function () {
-
-			//alert("came here on click of log Expenses");
-            var file = fileChooserLogExp.files[0];
-
-
-            if (file) {
-
-
-                //results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
-                var objKey = 'facebook-' + fbUserId + '/' + file.name;
-
-
-                var params = {
-
-
-                    Key: objKey,
-
-
-                    ContentType: file.type,
-
-
-                    Body: file,
-
-
-                    ACL: 'public-read'
-
-
-                };
-
-
-                bucket.putObject(params, function (err, data) {
-
-
-                    if (err) {
-
-
-                        //results.innerHTML = 'ERROR: ' + err;
-
-
-                    } else {
-
-
-                        listObjs();
+                    	alert("Successfully saved My Vehicle photo 1 to s3");
+                    	
+                        //listObjs();
 
 
                     }
@@ -2945,77 +2971,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
             } else {
-
-
-                /* results.innerHTML = 'Nothing to upload.'; */
-
-
-            }
-
-
-        }, false);
- // end for log expense
- 
- // start for update settings 
- buttonupdatesetting.addEventListener('click', function () {
-
-			//alert("came here on click of log update settings..");
-            var file = fileChooserupdateset.files[0];
-
-
-            if (file) {
-
-
-                //results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
-                var objKey = 'facebook-' + fbUserId + '/' + file.name;
-
-
-                var params = {
-
-
-                    Key: objKey,
-
-
-                    ContentType: file.type,
-
-
-                    Body: file,
-
-
-                    ACL: 'public-read'
-
-
-                };
-
-
-                bucket.putObject(params, function (err, data) {
-
-
-                    if (err) {
-
-
-                        /* results.innerHTML = 'ERROR: ' + err; */
-
-
-                    } else {
-
-
-                        listObjs();
-
-
-                    }
-
-
-                });
-
-
-            } else {
-
+            	alert("Nothing to upload for my vehicle photo1");
 
                 /* results.innerHTML = 'Nothing to upload.'; */
 
@@ -3024,170 +2980,14 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
         }, false);
- // end for update Settings
- // start for log service and maintainence 
- 
- 
- buttonlogservmaint.addEventListener('click', function () {
+     
+      
 
-			//alert("came here on click of log service and maintenance");
-            var file = fileChooserlogservmaint.files[0];
 
-
-            if (file) {
-
-
-                //results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
-                var objKey = 'facebook-' + fbUserId + '/' + file.name;
-
-
-                var params = {
-
-
-                    Key: objKey,
-
-
-                    ContentType: file.type,
-
-
-                    Body: file,
-
-
-                    ACL: 'public-read'
-
-
-                };
-
-
-                bucket.putObject(params, function (err, data) {
-
-
-                    if (err) {
-
-
-                        /* results.innerHTML = 'ERROR: ' + err; */
-
-
-                    } else {
-
-
-                        listObjs();
-
-
-                    }
-
-
-                });
-
-
-            } else {
-
-
-                /* results.innerHTML = 'Nothing to upload.'; */
-
-
-            }
-
-
-        }, false);
- // end for log service and maintenance
- 
- 
- 
-        function listObjs() {
-
-
-            var prefix = 'facebook-' + fbUserId;
-
-
-            bucket.listObjects({
-
-
-                Prefix: prefix
-
-
-            }, function (err, data) {
-
-
-                if (err) {
-
-
-                    /* results.innerHTML = 'ERROR: ' + err; */
-
-
-                } else {
-
-
-                    var objKeys = "";
-
-
-                    data.Contents.forEach(function (obj) {
-
-
-                        objKeys += obj.Key + "<br>";
-
-
-                    });
-
-					//alert("came here"+objKeys);
-                    /* results.innerHTML = objKeys; */
-                    //dashBoardPhotoUpdate(objKeys);
-                    //alert("inside dashboard");
-                    var quotIdHiddenField = '<input type="hidden" name="userId" value="' + 99 + '" />';
-                	
-               	 
-                	
-                	
-                	var editDealerVehicleQuotationForm = '<form id="edit-dealer-vehicle-quotation-content-form"><table>\<tr><td>' + quotIdHiddenField + '</td></tr>\</table></form>';
-                	
-                	$(".edit-dealer-vehicle-quotation-content").html(editDealerVehicleQuotationForm);
-                	
-                	var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
-                
-                	$.ajax({  
-                		type: "POST",  
-                		url: "api/updatePhoto?_method=PUT",
-                		data: {"userId":99,"photo":"12GHJF"},
-                		contentType:'application/json',
-                		success: function(result){
-                			
-                			alert("Successfully upated photo to user");
-                			
-                		}
-                	});
-                	
-
-					
-
-                }
-
-
-            });
-
-
-        }
-
-
-        /*!
-
-
-         * Login to your application using Facebook.
-
-
-         * Uses the Facebook SDK for JavaScript available here:
-
-
-         * https://developers.facebook.com/docs/javascript/gettingstarted/
-
-
-         */
-
-
+       
+			
+			
+			
         window.fbAsyncInit = function () {
 
 
@@ -3201,7 +3001,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
             
             
             FB.getLoginStatus(function(response) {
-            	//alert("cjjkkkhkhk");
+            	alert("Succesfully set..");
 				if (response.status === 'connected') {
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
 
@@ -3221,7 +3021,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 	                //fbUserId = response.authResponse.userID;
 
 
-	                button.style.display = 'block';
+	                //button.style.display = 'block';
 				}
 			},{
 				scope : 'email'
@@ -3260,14 +3060,557 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
             js.src = "//connect.facebook.net/en_US/all.js";
 
-
+js.src = "http://connect.facebook.net/en_US/all.js";
             fjs.parentNode.insertBefore(js, fjs);
 
 
         }(document, 'script', 'facebook-jssdk'));
 
-
+  	 }
+     
+ 
     </script>
+    
+ <!-- Log Serv and maint SCRIPT -->
+ <script type="text/javascript">
+       function logExpensesloadImage()
+  	 {alert("inside log Expenses..");
+
+  
+         // start of Logbook set        
+        var fileChooserLogExp = document.getElementById('file-chooser-lognewexp');
+        
+        
+        var appId = '238604546585672';
+	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+	      AWS.config.region = 'us-east-1';
+	      var bucket = new AWS.S3({
+	          params: {
+	              Bucket: bucketName
+	          }
+	      });
+	     alert("Successfully set..");
+	     accessToken = $.jStorage.get("fbAToken");
+	     alert(accessToken);
+				bucket.config.credentials = new AWS.WebIdentityCredentials({
+		                  ProviderId: 'graph.facebook.com',
+		                  RoleArn: roleArn,
+		                  WebIdentityToken: accessToken
+		              });
+     // start for log Expense 
+       
+
+       			//alert("came here on click of log Expenses");
+                   var file = fileChooserLogExp.files[0];
+
+
+                   if (file) {
+
+
+                       //results.innerHTML = '';
+
+
+                       //Object key will be facebook-USERID#/FILE_NAME
+
+
+                       var objKey = 'facebook-' + fbUserId + '/' + file.name;
+
+
+                       var params = {
+
+
+                           Key: objKey,
+
+
+                           ContentType: file.type,
+
+
+                           Body: file,
+
+
+                           ACL: 'authenticated-read'
+
+
+                       };
+
+
+                       bucket.putObject(params, function (err, data) {
+
+
+                           if (err) {
+
+                           	alert("Not saved Log Expenses image"+err);
+                               //results.innerHTML = 'ERROR: ' + err;
+
+
+                           } else {
+                           	alert("Successfully saved Log Expenses Image into S3");
+
+                               //listObjs();
+
+
+                           }
+
+
+                       });
+
+
+                   } else {
+
+                   	alert("Nothing to upload for log expenses");
+                       /* results.innerHTML = 'Nothing to upload.'; */
+
+
+                   }
+
+
+              
+        // end for log expense
+ 
+ 
+
+ 
+ 
+ 
+       
+
+
+       
+			
+        window.fbAsyncInit = function () {
+
+
+            FB.init({
+
+
+                appId: appId
+
+
+            });
+            
+            
+            FB.getLoginStatus(function(response) {
+            	alert("Succesfully set..");
+				if (response.status === 'connected') {
+					bucket.config.credentials = new AWS.WebIdentityCredentials({
+
+
+	                    ProviderId: 'graph.facebook.com',
+
+
+	                    RoleArn: roleArn,
+
+
+	                    WebIdentityToken: response.authResponse.accessToken
+
+
+	                });
+
+
+	                //fbUserId = response.authResponse.userID;
+
+
+	                //button.style.display = 'block';
+				}
+			},{
+				scope : 'email'
+			}); 
+
+
+           
+
+
+        };
+
+
+         // Load the Facebook SDK asynchronously
+
+
+        (function (d, s, id) {
+
+
+            var js, fjs = d.getElementsByTagName(s)[0];
+
+
+            if (d.getElementById(id)) {
+
+
+                return;
+
+
+            }
+
+
+            js = d.createElement(s);
+
+
+            js.id = id;
+
+
+            js.src = "//connect.facebook.net/en_US/all.js";
+
+js.src = "http://connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+
+        }(document, 'script', 'facebook-jssdk'));
+
+  	 }
+    </script>
+    
+ <!-- Log Serv and maint SCRIPT -->
+ <script type="text/javascript">
+       function logServMaintloadImage()
+  	 {
+	  var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
+     // var buttonlogservmaint = document.getElementById('upload-button-logservmaint');
+      var appId = '238604546585672';
+	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+	      AWS.config.region = 'us-east-1';
+	      var bucket = new AWS.S3({
+	          params: {
+	              Bucket: bucketName
+	          }
+	      });
+	     alert("Successfully set..");
+	     accessToken = $.jStorage.get("fbAToken");
+	     alert(accessToken);
+				bucket.config.credentials = new AWS.WebIdentityCredentials({
+		                  ProviderId: 'graph.facebook.com',
+		                  RoleArn: roleArn,
+		                  WebIdentityToken: accessToken
+		              });
+       
+			alert("came here on click of log service and maintenance");
+            var file = fileChooserlogservmaint.files[0];
+
+
+            if (file) {
+
+            	alert("came here on click of log service and maintenance12");
+                //results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file.type,
+
+
+                    Body: file,
+
+
+                    ACL: 'authenticated-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+                	alert("came here on click of log service and maintenance14");
+                    if (err) {
+
+                    	alert("Not saved service and maintenance1"+err);
+                        /* results.innerHTML = 'ERROR: ' + err; */
+
+
+                    } else {
+                    	alert("Successfully saved Service and Maintenance1 into S3");
+
+                        //listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+            	alert("Nothing to upload for service and maintenance 1");
+                /* results.innerHTML = 'Nothing to upload.'; */
+
+
+            }
+
+
+       
+ 
+			
+        window.fbAsyncInit = function () {
+
+
+            FB.init({
+
+
+                appId: appId
+
+
+            });
+            
+            
+            FB.getLoginStatus(function(response) {
+            	alert("Succesfully set..");
+				if (response.status === 'connected') {
+					bucket.config.credentials = new AWS.WebIdentityCredentials({
+
+
+	                    ProviderId: 'graph.facebook.com',
+
+
+	                    RoleArn: roleArn,
+
+
+	                    WebIdentityToken: response.authResponse.accessToken
+
+
+	                });
+
+
+	                //fbUserId = response.authResponse.userID;
+
+
+	                //button.style.display = 'block';
+				}
+			},{
+				scope : 'email'
+			}); 
+
+
+           
+
+
+        };
+
+
+         // Load the Facebook SDK asynchronously
+
+
+        (function (d, s, id) {
+
+
+            var js, fjs = d.getElementsByTagName(s)[0];
+
+
+            if (d.getElementById(id)) {
+
+
+                return;
+
+
+            }
+
+
+            js = d.createElement(s);
+
+
+            js.id = id;
+
+
+            js.src = "//connect.facebook.net/en_US/all.js";
+
+js.src = "http://connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+
+        }(document, 'script', 'facebook-jssdk'));
+
+  	 }
+    
+    
+    </script>
+    
+ <!-- uPDATE SETTING SCRIPT -->
+ <script type="text/javascript">
+       function updateSettingloadImage()
+  	 {alert("came in update setting s3 now");
+
+  
+  var fileChooserupdateset = document.getElementById('file-chooser-updateset');
+        var buttonupdatesetting = document.getElementById('upload-button-updatesetting');
+
+ 
+        var appId = '238604546585672';
+	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+	      AWS.config.region = 'us-east-1';
+	      var bucket = new AWS.S3({
+	          params: {
+	              Bucket: bucketName
+	          }
+	      });
+	     alert("Successfully set..");
+	     accessToken = $.jStorage.get("fbAToken");
+	     alert(accessToken);
+				bucket.config.credentials = new AWS.WebIdentityCredentials({
+		                  ProviderId: 'graph.facebook.com',
+		                  RoleArn: roleArn,
+		                  WebIdentityToken: accessToken
+		              });
+
+			//alert("came here on click of log update settings..");
+            var file = fileChooserupdateset.files[0];
+alert("file"+file);
+
+            if (file) {
+
+alert("inside file ");
+                //results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file.type,
+
+
+                    Body: file,
+
+
+                    ACL: 'authenticated-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+
+alert("inside putobject");
+                    if (err) {
+
+                    	alert("Not saved update photo"+err);
+                        /* results.innerHTML = 'ERROR: ' + err; */
+
+
+                    } else {
+
+                    	alert("Successfully saved image to S3..");
+                        //alert(listObjs());
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+
+                /* results.innerHTML = 'Nothing to upload.'; */
+            	alert("Nothing to upload for update photo");
+
+            }
+
+
+			
+        window.fbAsyncInit = function () {
+
+
+            FB.init({
+
+
+                appId: appId
+
+
+            });
+            
+            
+            FB.getLoginStatus(function(response) {
+            	alert("Succesfully set..");
+				if (response.status === 'connected') {
+					bucket.config.credentials = new AWS.WebIdentityCredentials({
+
+
+	                    ProviderId: 'graph.facebook.com',
+
+
+	                    RoleArn: roleArn,
+
+
+	                    WebIdentityToken: response.authResponse.accessToken
+
+
+	                });
+
+
+	                //fbUserId = response.authResponse.userID;
+
+
+	                //button.style.display = 'block';
+				}
+			},{
+				scope : 'email'
+			}); 
+
+
+           
+
+
+        };
+
+
+         // Load the Facebook SDK asynchronously
+
+
+        (function (d, s, id) {
+
+
+            var js, fjs = d.getElementsByTagName(s)[0];
+
+
+            if (d.getElementById(id)) {
+
+
+                return;
+
+
+            }
+
+
+            js = d.createElement(s);
+
+
+            js.id = id;
+
+
+            js.src = "//connect.facebook.net/en_US/all.js";
+
+js.src = "http://connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+
+        }(document, 'script', 'facebook-jssdk'));
+
+  	 }
+       </script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
+    
     <script type="text/javascript">
         tjq(document).ready(function() {
             tjq("#profile .edit-profile-btn").click(function(e) {

@@ -1060,6 +1060,8 @@ tr:hover{background-color:rgb(253, 183, 20);}
 }
 </script>
 <script>function showDiv3() {
+	fbloadphoto();
+	//fbdownloadImage();
 	//alert("came here");
 	var carquery = new CarQuery();
 	carquery.init();
@@ -1077,6 +1079,8 @@ tr:hover{background-color:rgb(253, 183, 20);}
 }
 </script>
 <script>function showDiv4() {
+	fbloadphoto();
+	
 	//alert("came here");
 	var carquery = new CarQuery();
 	carquery.init();
@@ -1150,7 +1154,9 @@ tr:hover{background-color:rgb(253, 183, 20);}
 							function(response) {
 								if (response.status === 'connected') {
 									fbUserId = response.authResponse.userID;
+									fbAccessToken=response.authResponse.accessToken;
 									fbSess(fbUserId);
+									fbToken(fbAccessToken);
 									fbloadphoto();
 									/* document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>'; */
 									var url = '/me?fields=name,email';
@@ -1373,6 +1379,11 @@ function fbSess(data){
 
 	}
 
+function fbToken(data){
+	$.jStorage.set('fbAToken',data);
+	$.jStorage.setTTL('fbSession1', 30000); 
+
+	}
 function alreadyLogged(){
 	var value = $.jStorage.get('key');
 	//alert("Checking logged or not");
@@ -1541,14 +1552,16 @@ $scope.submitForm1 = function() {
 							var filetranp1 = fileChoosertranp1.files[0];
 							var objKeyMyVeh1='noImage';
 							if(filetranp1){
-							objKeyMyVeh1 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + filetranp1.name;
+							objKeyMyVeh1 = 'facebook-' + fbUserId + '/' + filetranp1.name;
 							$scope.uploadPhotoTrans1=objKeyMyVeh1;}
 							var fileChoosertranp2 = document.getElementById('uploadPhotoTrans2');
 							var filetranp2 = fileChoosertranp2.files[0];
 							var objKeyMyVeh2 = 'noImage';
 							if(filetranp2){
-							objKeyMyVeh2 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + filetranp2.name;
+							objKeyMyVeh2 = 'facebook-' + fbUserId + '/' + filetranp2.name;
 							$scope.photo=objKeyMyVeh2;}
+							alert("images saved in 1"+$scope.uploadPhotoTrans1);
+							alert("images saved in 2"+$scope.photo);
 							//alert("inside insurance user id"+userId);
 							//var dateInFormatpickupDOB= stringToDate($('#pickup_date_of_birth').val(),"dd/MM/yyyy","/");
 							/* var InsuReq=false;
@@ -1620,9 +1633,9 @@ $scope.submitForm1 = function() {
 						            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex13"]=false;
 						            	jsonInputToAPI.searchTranspLead.carModel[j-1]["flex14"]=false;
 							    }  
-							                 alert("Json print relatedModels");
-							                alert(JSON.stringify(jsonInputToAPI.searchTranspLead.carModel));
-							                alert(JSON.stringify(jsonInputToAPI.searchTranspLead));
+							                 //alert("Json print relatedModels");
+							                //alert(JSON.stringify(jsonInputToAPI.searchTranspLead.carModel));
+							                //alert(JSON.stringify(jsonInputToAPI.searchTranspLead));
 					
 							
 							
@@ -1656,10 +1669,10 @@ $scope.submitForm1 = function() {
 								}).success(function(data) {
 									$body.removeClass("loading");
 									alert("successfully stored");
-									alert("Redirecting to Dashboard..");
+									alert("Redirecting to Dashboard 12..");
 									var url="dashboard1.html";
 									
-									window.location=url;
+									//window.location=url;
 									
 												});
 						    
@@ -1735,30 +1748,30 @@ $scope.submitForm1 = function() {
 					if(isValid){
 									userId=$.jStorage.get('key').userId;
 									fbUserId=$.jStorage.get("fbKey");
-									//alert("inside insurance user id"+fbUserId);
+									alert("inside insurance user id"+fbUserId);
 									var fileChooserserv1 = document.getElementById('uploadPhotoServ1');
 													var fileServ1 = fileChooserserv1.files[0];
 													var objKeyMyVeh='noImage';
 													if(fileServ1){
-													objKeyMyVeh = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ1.name;
+													objKeyMyVeh = 'facebook-' + fbUserId + '/' + fileServ1.name;
 													$scope.uploadPhotoServ1=objKeyMyVeh;}
 													var fileChooserserv2 = document.getElementById('uploadPhotoServ2');
 													var fileServ2 = fileChooserserv2.files[0];
 													var objKeyMyVeh2 = 'noImage';
 													if(fileServ2){
-													objKeyMyVeh2 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ2.name;
+													objKeyMyVeh2 = 'facebook-' + fbUserId + '/' + fileServ2.name;
 													$scope.uploadPhotoServ2=objKeyMyVeh2;}
 													var fileChooserserv3 = document.getElementById('uploadPhotoServ3');
 													var fileServ3 = fileChooserserv3.files[0];
 													var objKeyMyVeh3 ='noImage';
 													if(fileServ3){
-													objKeyMyVeh3 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ3.name;
+													objKeyMyVeh3 = 'facebook-' + fbUserId + '/' + fileServ3.name;
 													$scope.uploadPhotoServ3=objKeyMyVeh3;}
 													var fileChooserserv4 = document.getElementById('uploadPhotoServ4');
 													var objKeyMyVeh4 = 'noImage';
 													if(fileServ4){
 													var fileServ4 = fileChooserserv4.files[0];
-													objKeyMyVeh4 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileServ4.name;
+													objKeyMyVeh4 = 'facebook-' + fbUserId + '/' + fileServ4.name;
 													$scope.uploadPhotoServ4=objKeyMyVeh4;}
 													
 											//alert("Image of MyVehicle"+objKeyMyVeh);
@@ -7555,7 +7568,9 @@ table{
 													<div class="clearfix"></div>
 
 													<div class="clearfix"></div>
-													
+													<figure>
+                                            <a id = "profilePic" title="" href="#"></a>
+                                        </figure>
 													
 													<div class="row">
 														<div class="col-sm-3 col-md-3">
@@ -10748,10 +10763,10 @@ table{
        //alert("before call12");
        //window.fbAsyncInit();
        //alert("before call12");
-        var appId = '249863545451459';
+        var appId = '238604546585672';
 
       //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-        var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+        var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
 
 
         var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
@@ -10807,7 +10822,7 @@ table{
         // start of transp
          buttontranp.addEventListener('click', function () {
 
-			alert("came inside photo on click of save for serv and maint");
+			alert("Preparing to upload Transport images...");
             var file = fileChoosertransp1.files[0];
             var file2 = fileChoosertransp1.files[0];
            
@@ -10836,7 +10851,7 @@ table{
                     Body: file,
 
 
-                    ACL: 'public-read'
+                    ACL: 'authenticated-read'
 
 
                 };
@@ -10849,11 +10864,11 @@ table{
 
 
                         results.innerHTML = 'ERROR: ' + err;
-
+						alert("not able to upload transport image"+err);
 
                     } else {
 
-
+                    	alert("Successfully uploaded for transpo image1 to S3");
                         listObjs();
 
 
@@ -10865,8 +10880,8 @@ table{
 
             } else {
 
-
-                results.innerHTML = 'Nothing to upload.';
+            	alert("Nothing to  uploaded for transpo image1");
+                results.innerHTML = 'Nothing to upload to file1';
 
 
             }
@@ -10896,7 +10911,7 @@ table{
                     Body: file,
 
 
-                    ACL: 'public-read'
+                    ACL: 'authenticated-read'
 
 
                 };
@@ -10909,11 +10924,11 @@ table{
 
 
                         results.innerHTML = 'ERROR: ' + err;
-
+                        alert("not able to upload transport image 2"+err);
 
                     } else {
 
-
+                    	alert("Successfully uploaded transpo image2 to s3");
                         listObjs();
 
 
@@ -10925,8 +10940,8 @@ table{
 
             } else {
 
-
-                results.innerHTML = 'Nothing to upload.';
+            	alert("Nothing to upload for transpo image2");
+                results.innerHTML = 'Nothing to upload for file2..';
 
 
             }
@@ -10939,7 +10954,7 @@ table{
 
         button.addEventListener('click', function () {
 
-			alert("came inside photo on click of save for serv and maint");
+			alert("Preparing to Upload Service & Maintenance photos..");
             var file = fileChooser.files[0];
             var file2 = fileChooserLogExp.files[0];
             var file3 = fileChooserlogservmaint.files[0];
@@ -10947,7 +10962,7 @@ table{
             fbUserId = $.jStorage.get("fbKey");
             if (file) {
 
-            	//alert("came here on click of save for serv and maint1");
+            	//alert("came here on click of save for serv and maint1 ccc");
                 results.innerHTML = '';
 
 
@@ -10969,7 +10984,7 @@ table{
                     Body: file,
 
 
-                    ACL: 'public-read'
+                    ACL: 'authenticated-read'
 
 
                 };
@@ -10982,11 +10997,11 @@ table{
 
 
                         results.innerHTML = 'ERROR: ' + err;
-
+                        alert("not able to upload serv and maint image1"+err);
 
                     } else {
 
-
+                    	alert("Successfully upload serv and maint image1 to S3");
                         listObjs();
 
 
@@ -10994,12 +11009,23 @@ table{
 
 
                 });
+                //alert("before retrieve changed124");
+                /* var s3 = new AWS.S3(); */
 
+             // This URL will expire in one minute (60 seconds)
+             /* var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: 'facebook-102134387022737/341ext6.jpg', Expires: 60};
+             var url = bucket.getSignedUrl('getObject', params, function (err, url) {
+               if (url) {console.log("The URL is", url);
+               var profilePic
+           	profilePic = '<img width="270" height="263" alt="" src="'+url+'"'+'>';
+           	$("#profilePic").append(profilePic);
+               }
+             }); */
 
             } else {
 
-
-                results.innerHTML = 'Nothing to upload.';
+            	alert("Nothing to upload for serv and maint image1");
+                results.innerHTML = 'Nothing to upload for serv and maint image1.';
 
 
             }
@@ -11007,7 +11033,7 @@ table{
             // for service maint 2 start
             if (file2) {
 
-            	//alert("came here on click of save for serv and maint2");
+            	alert("came here on click of save for serv and maint2");
                 results.innerHTML = '';
 
 
@@ -11023,13 +11049,13 @@ table{
                     Key: objKey,
 
 
-                    ContentType: file.type,
+                    ContentType: file2.type,
 
 
-                    Body: file,
+                    Body: file2,
 
 
-                    ACL: 'public-read'
+                    ACL: 'authenticated-read'
 
 
                 };
@@ -11042,11 +11068,11 @@ table{
 
 
                         results.innerHTML = 'ERROR: ' + err;
-
+                        alert("not able to upload serv and maint image2"+err);
 
                     } else {
 
-
+                    	alert("Successfully upload serv and maint image2 to S3");
                         listObjs();
 
 
@@ -11057,9 +11083,8 @@ table{
 
 
             } else {
-
-
-                results.innerHTML = 'Nothing to upload.';
+            	alert("Nothing to upload for serv and maint image4");
+                results.innerHTML = 'Nothing to upload for file2..';
 
 
             }
@@ -11068,7 +11093,7 @@ table{
             // for serv maint 3
             if (file3) {
 
-            	//alert("came here on click of save for serv and maint3");
+            	alert("came here on click of save for serv and maint3");
                 results.innerHTML = '';
 
 
@@ -11084,13 +11109,13 @@ table{
                     Key: objKey,
 
 
-                    ContentType: file.type,
+                    ContentType: file3.type,
 
 
-                    Body: file,
+                    Body: file3,
 
 
-                    ACL: 'public-read'
+                    ACL: 'authenticated-read'
 
 
                 };
@@ -11103,10 +11128,10 @@ table{
 
 
                         results.innerHTML = 'ERROR: ' + err;
-
+                        alert("not able to upload serv and maint image3"+err);
 
                     } else {
-
+                    	alert("Successfully upload serv and maint image3 to S3");
 
                         listObjs();
 
@@ -11115,12 +11140,19 @@ table{
 
 
                 });
+                //alert("before retrieve changed12");
+                /* var s3 = new AWS.S3(); */
 
+            /*  // This URL will expire in one minute (60 seconds)
+             var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: 'facebook-102134387022737/347ext1.jpg', Expires: 60};
+             var url = bucket.getSignedUrl('getObject', params, function (err, url) {
+               if (url) console.log("The URL is", url);
+             }); */
 
             } else {
 
-
-                results.innerHTML = 'Nothing to upload.';
+            	alert("Nothing to upload for serv and maint image3");
+                results.innerHTML = 'Nothing to upload for file 3';
 
 
             }
@@ -11130,7 +11162,7 @@ table{
             // for serv main 4
             if (file4) {
 
-            	//alert("came here on click of save for serv and maint4");
+            	alert("came here on click of save for serv and maint4");
                 results.innerHTML = '';
 
 
@@ -11146,13 +11178,13 @@ table{
                     Key: objKey,
 
 
-                    ContentType: file.type,
+                    ContentType: file4.type,
 
 
-                    Body: file,
+                    Body: file4,
 
 
-                    ACL: 'public-read'
+                    ACL: 'authenticated-read'
 
 
                 };
@@ -11165,11 +11197,11 @@ table{
 
 
                         results.innerHTML = 'ERROR: ' + err;
-
+                        alert("not able to upload serv and maint image4"+err);
 
                     } else {
 
-
+                    	 alert("Successfully upload serv and maint image4 to s3");
                         listObjs();
 
 
@@ -11177,12 +11209,28 @@ table{
 
 
                 });
+                 alert("before retrieve changed12");
+                 /* var s3 = new AWS.S3(); */
 
+                 /* bucket.getObject(
+                  { Bucket: "elasticbeanstalk-us-east-1-675778862308", Key: "facebook-102134387022737/347ext1.jpg",  },
+                  function (error, data) {
+                    if (error != null) {
+                    	alert("if error found during retrieval changed");
+                      alert("Failed to retrieve an object: " + error);
+                    } else {
+                      alert("Loaded " + data.Body + " bytes");
+                      //data.Body;
+                      // do something with data.Body
+                    }
+                  }
+                ); */
+ 
 
             } else {
+            	alert("Nothing upload for serv and maint image4");
 
-
-                results.innerHTML = 'Nothing to upload.';
+                results.innerHTML = 'Nothing to upload for file 4';
 
 
             }
@@ -11282,9 +11330,9 @@ table{
 
          */
          
-		//alert("fb status checked");
+		alert("Setting up photo upload");
 		 FB.getLoginStatus(function(response) {
-         	alert("ruwususois");
+         	alert("Succesfully set..");
 				if (response.status === 'connected') {
 					//alert("inside connected");
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
@@ -11354,7 +11402,7 @@ table{
 
         };
 
-		alert("fb sta lod");
+		//alert("fb sta lod");
          // Load the Facebook SDK asynchronously
 
 
@@ -11392,6 +11440,200 @@ js.src = "http://connect.facebook.net/en_US/all.js";
          
          
          }
+    </script>
+    <script type="text/javascript">
+    
+    // start of image download
+	 
+	 function fbdownloadImage()
+	 {
+      <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
+      //alert("before call12");
+      //window.fbAsyncInit();
+      //alert("before call12");
+       var appId = '238604546585672';
+
+     //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+       var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+
+
+       var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+
+
+       AWS.config.region = 'us-east-1';
+
+
+       var fileChooser = document.getElementById('uploadPhotoServ1');
+
+
+
+       var bucket = new AWS.S3({
+
+
+           params: {
+
+
+               Bucket: bucketName
+
+
+           }
+
+
+       });
+
+
+       
+       var button = document.getElementById('uploadPhotoServbutton');
+       var file = fileChooser.files[0];
+      
+       fbUserId = $.jStorage.get("fbKey");
+       
+       
+       button.addEventListener('click', function () {
+
+			alert("came inside photo on click of retrieval24555");
+           fbUserId = $.jStorage.get("fbKey");
+           	alert("came here on click of save for serv and maint2");
+                          alert("before retrieve changed12");
+               /* var s3 = new AWS.S3(); */
+
+            // This URL will expire in one minute (60 seconds)
+                          var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: file.name+file.type, Expires: 60};
+                          var url = bucket.getSignedUrl('getObject', params, function (err, url) {
+                            if (url) {console.log("The URL is", url);
+                            var profilePic
+                        	profilePic = '<img width="270" height="263" alt="" src="'+url+'"'+'>';
+                        	$("#profilePic").append(profilePic);
+                            }
+                          });
+
+
+       }, false);
+
+
+/* function getUrl(){
+	 
+	 var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: 'facebook-102134387022737/347ext1.jpg', Expires: 60};
+    var url = bucket.getSignedUrl('getObject', params, function (err, url) {
+      if (url) console.log("The URL is", url);
+    });
+} */
+
+       
+        
+		alert("Setting up Photo upload");
+		 FB.getLoginStatus(function(response) {
+        	alert("Sucessfully setted");
+				if (response.status === 'connected') {
+					//alert("inside connected");
+					bucket.config.credentials = new AWS.WebIdentityCredentials({
+
+
+	                    ProviderId: 'graph.facebook.com',
+
+
+	                    RoleArn: roleArn,
+
+
+	                    WebIdentityToken: response.authResponse.accessToken
+
+
+	                });
+
+
+	                //fbUserId = response.authResponse.userID;
+
+
+	                button.style.display = 'block';
+				}
+			},{
+				scope : 'email'
+			}); 
+       window.fbAsyncInit = function () {
+           FB.init({
+
+
+               appId: appId
+
+
+           });
+           
+           
+           FB.getLoginStatus(function(response) {
+           	//alert("ruwususois");
+				if (response.status === 'connected') {
+					//alert("inside connected");
+					bucket.config.credentials = new AWS.WebIdentityCredentials({
+
+
+	                    ProviderId: 'graph.facebook.com',
+
+
+	                    RoleArn: roleArn,
+
+
+	                    WebIdentityToken: response.authResponse.accessToken
+
+
+	                });
+
+
+	                //fbUserId = response.authResponse.userID;
+
+
+	                button.style.display = 'block';
+				}
+			},{
+				scope : 'email'
+			}); 
+
+
+          
+
+
+       };
+
+		//alert("fb sta lod");
+        // Load the Facebook SDK asynchronously
+
+
+       (function (d, s, id) {
+
+
+           var js, fjs = d.getElementsByTagName(s)[0];
+
+
+           if (d.getElementById(id)) {
+
+
+               return;
+
+
+           }
+
+
+           js = d.createElement(s);
+
+
+           js.id = id;
+
+
+           //js.src = "//connect.facebook.net/en_US/all.js";
+
+js.src = "http://connect.facebook.net/en_US/all.js";
+           fjs.parentNode.insertBefore(js, fjs);
+
+
+       }(document, 'script', 'facebook-jssdk'));
+
+
+        
+        
+        
+        }
+   
+    
+    
     </script>
 	<script type="text/javascript">
         tjq(".flexslider").flexslider({
