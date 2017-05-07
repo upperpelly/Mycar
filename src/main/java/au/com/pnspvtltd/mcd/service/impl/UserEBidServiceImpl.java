@@ -411,14 +411,14 @@ System.out.println("present value"+present);
 		// Get Inventory matching the User EBid for Car
 		// (Model, Make, Year, Trim)
 		
-		String withOutSpace = searchInsurance.getVariant().replaceAll("%20", " ");
+		/*String withOutSpace = searchInsurance.getVariant().replaceAll("%20", " ");
 		System.out.println("without"+withOutSpace);
-		System.out.println("with"+searchInsurance.getVariant());
+		System.out.println("with"+searchInsurance.getVariant());*/
 		
 		
 		
 		List<Inventory> inventories = inventoryRepository.getInventoryFor(String.valueOf(searchInsurance.getYear()),
-				searchInsurance.getMake(), searchInsurance.getModel(), withOutSpace);
+				searchInsurance.getMake(), searchInsurance.getModel(), searchInsurance.getVariant());
 		boolean present = false;
 		for (Inventory inventory : inventories) {
 			present = true;

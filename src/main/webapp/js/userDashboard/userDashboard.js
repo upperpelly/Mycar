@@ -144,10 +144,10 @@ $(document).ready(function(){
 
 
       });
-     alert(imageName);
-     alert("bis fdscuifsdf t");
+     /*alert(imageName);
+     alert("bis fdscuifsdf t");*/
      accessToken = $.jStorage.get("fbAToken");
-     alert(accessToken);
+     //alert(accessToken);
 
 			
 			bucket.config.credentials = new AWS.WebIdentityCredentials({
@@ -166,12 +166,12 @@ $(document).ready(function(){
       
      
 			fbUserId = $.jStorage.get("fbKey");
-			alert("Trying to retrieve thfh  d 	tge photo..");
+			//alert("Trying to retrieve thfh  d 	tge photo..");
           fbUserId = $.jStorage.get("fbKey");
           var profilePic;
           var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: imageName, Expires: 60};
           url = bucket.getSignedUrl('getObject', params, function (err, url) {
-            if (url) { alert("successfully retrieved.."+url); 
+            if (url) { //alert("successfully retrieved.."+url); 
             	profilePic = '<img width="270" height="263" alt="" src="'+url+'"'+'>';
             	$("#profilePic").append(profilePic);
             }
@@ -1514,46 +1514,80 @@ function registerEditDealerVehicletranspModal(){
 	              Bucket: bucketName
 	          }
 	      });
-	     alert("bis fdscuifsdf t");
+	     //alert("bis fdscuifsdf t");
 	     accessToken = $.jStorage.get("fbAToken");
-	     alert(accessToken);
+	     //alert(accessToken);
 				bucket.config.credentials = new AWS.WebIdentityCredentials({
 		                  ProviderId: 'graph.facebook.com',
 		                  RoleArn: roleArn,
 		                  WebIdentityToken: accessToken
 		              });
 				fbUserId = $.jStorage.get("fbKey");
-				alert("Trying to retrieve photo for Serv and Maint..");
+				//alert("Trying to retrieve photo for Serv and Maint..");
 	          fbUserId = $.jStorage.get("fbKey");
-		alert("new changes now");
+		//alert("new changes now");
 		url1=" ";
 		var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: data.uploadPhotos, Expires: 60};
         bucket.getSignedUrl('getObject', params, function (err, url) {
-          if (url) { alert("successfully retrieved 12.."+url); 
+          if (url) { //alert("successfully retrieved 12.."+url); 
           url1=url;
-          var editDealerVehicletranspForm = '<form id="edit-dealer-vehicle-transp-content-form"><table>\
-  			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-  			<tr><td>Search ID</td><td>' + data.searchTranspId + '</td></tr>\
-  			<tr><td>' + quotIdHiddenField + '</td></tr>\
-  			<tr><td>Year</td><td>' + data.year + '</td></tr>\
-  			<tr><td>Make</td><td>' + data.make + '</td></tr>\
-  			<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
-  			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
-  			<tr><td>From PostCode Addr</td><td>' + data.fromPostCodeAddr + '</td></tr>\
-  			<tr><td>To PostCode Addr;</td><td>' + data.toPostCodeAddr + '</td></tr>\
-  			<tr><td>transport Type Request</td><td>' + data.transTypeReq + '</td></tr>\
-  			<tr><td>pickUpDateTime</td><td>' + data.pickUpDateTime + '</td></tr>\
-  			<tr><td>noOfCars</td><td>' + data.noOfCars + '</td></tr>\
-  			<tr><td>Free Text</td><td>' + data.freeText + '</td></tr>\
-  			<tr><td>transpInsReq</td><td>' + data.transpInsReq + '</td></tr>\
-  			</table></form>';
-  		editDealerVehicletranspForm = editDealerVehicletranspForm.replace(/>null</g, ">--NA--<");
-  		editDealerVehicletranspForm = editDealerVehicletranspForm.replace(/>undefined</g, ">--NA--<");
-  		$(".edit-dealer-vehicle-transp-content").html(editDealerVehicletranspForm);
+          var editDealerVehicletranspForm = '<form id="edit-dealer-vehicle-transp-content-form">\
+			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+			<table>\
+			<tr><td>Search ID</td><td>' + data.searchTranspId + '</td></tr>\
+			<tr><td>' + quotIdHiddenField + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Looking To Move</div></div>\
+			<tr><td>Type Of Vehicle</td><td>' + data.transTypeReq + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">From</div></div>\
+			<tr><td>Post Code</td><td>' + data.fromPostCodeAddr + '</td></tr>\
+			<tr><td>Street No</td><td>' + data.fromStreetNo + '</td></tr>\
+			<tr><td>Street Name</td><td>' + data.fromStreetName + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">To</div></div>\
+			<tr><td>Post Code</td><td>' + data.toPostCodeAddr + '</td></tr>\
+			<tr><td>Street No</td><td>' + data.toStreetNo + '</td></tr>\
+			<tr><td>Street Name</td><td>' + data.toStreetName + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Transport Stuff</div></div>\
+			<tr><td>When do You want THIS to be picked up & delivered?</td><td>' + data.pickUpDateTime + '</td></tr>\
+			<tr><td>What kin of transport You need?</td><td>' + data.toStreetName + '</td></tr>\
+			<tr><td>I am Flexible</td><td>' + data.flexWithDateDefault + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Vehicle Stuff</div></div>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Car Registration</b></h6>\
+			<tr><td>Rego No</td><td>' + data.regoNo + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Vehicle Details</b></h6>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
+			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+			<tr><td>Free Text</td><td>' + data.freeText + '</td></tr>\
+			</table>\
+			</form>';
+		editDealerVehicletranspForm = editDealerVehicletranspForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicletranspForm = editDealerVehicletranspForm.replace(/>undefined</g, ">--NA--<");
+		$(".edit-dealer-vehicle-transp-content").html(editDealerVehicletranspForm);
           }
           else{alert("not able to retrieve Trans serv"); alert("error"+err);}
         });
-		alert("url1 new changes"+url1);
+		//alert("url1 new changes"+url1);
 
 		//end
 		
@@ -1662,47 +1696,60 @@ function registerEditDealerVehicleservmaintModal(){
 	              Bucket: bucketName
 	          }
 	      });
-	     alert("bis fdscuifsdf t");
+	     //alert("bis fdscuifsdf t");
 	     accessToken = $.jStorage.get("fbAToken");
-	     alert(accessToken);
+	     //alert(accessToken);
 				bucket.config.credentials = new AWS.WebIdentityCredentials({
 		                  ProviderId: 'graph.facebook.com',
 		                  RoleArn: roleArn,
 		                  WebIdentityToken: accessToken
 		              });
 				fbUserId = $.jStorage.get("fbKey");
-				alert("Trying to retrieve photo for Serv and Maint..");
+				//alert("Trying to retrieve photo for Serv and Maint..");
 	          fbUserId = $.jStorage.get("fbKey");
-		alert("new changes now");
+		//alert("new changes now");
 		url1=" ";
 		var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: data.uploadPhotos, Expires: 60};
         bucket.getSignedUrl('getObject', params, function (err, url) {
-          if (url) { alert("successfully retrieved 12.."+url); 
+          if (url) { //alert("successfully retrieved 12.."+url); 
           url1=url;
-          var editDealerVehicleservmaintForm = '<form id="edit-dealer-vehicle-servmaint-content-form"><table>\
-  			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-  			<tr><td>Search ID</td><td>' + data.searchServMaintId + '</td></tr>\
-  			<tr><td>' + quotIdHiddenField + '</td></tr>\
-  			<tr><td>Year</td><td>' + data.year + '</td></tr>\
-  			<tr><td>Make</td><td>' + data.make + '</td></tr>\
-  			<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
-  			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
-  			<tr><td>Fuel Type</td><td>' + data.feulType + '</td></tr>\
-  			<tr><td>Service Level 1</td><td>' + data.servMaintL1 + '</td></tr>\
-  			<tr><td>Service Level 2</td><td>' + data.servMaintL2 + '</td></tr>\
-  			<tr><td>Covered Under Insurance</td><td>' + data.coveredUnderIns + '</td></tr>\
-  			<tr><td>Current Insurance Provider</td><td>' + data.curInsProv + '</td></tr>\
-  			<tr><td>Free Text</td><td>' + data.freeText + '</td></tr>\
-  			<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
-  			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
-  			</table></form>';
-  		editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>null</g, ">--NA--<");
-  		editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>undefined</g, ">--NA--<");
-  		$(".edit-dealer-vehicle-servmaint-content").html(editDealerVehicleservmaintForm);
+          var editDealerVehicleservmaintForm = '<form id="edit-dealer-vehicle-servmaint-content-form">\
+			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+			<table>\
+			<tr><td>Search ID</td><td>' + data.searchServMaintId + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">I am Looking For</div></div>\
+			<tr><td>Service</td><td>' + data.lookService + '</td></tr>\
+			<tr><td>Service & Maintenance Level 1</td><td>' + data.servMaintL1 + '</td></tr>\
+			<tr><td>Service & Maintenance Level 2</td><td>' + data.servMaintL2 + '</td></tr>\
+			<tr><td>Add Notes</td><td>' + data.freeText + '</td></tr>\
+			</table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Details</div></div>\
+			<table>\
+			<br/>\
+			<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
+			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+			<tr><td>Fuel Type</td><td>' + data.feulType + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">is the Car covered under Insurance</div></div>\
+			<table>\
+			<tr><td>Covered Under Insurance</td><td>' + data.coveredUnderIns + '</td></tr>\
+			<tr><td>Current Insurance Provider</td><td>' + data.curInsProv + '</td></tr>\
+			</table></form>';
+		editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>undefined</g, ">--NA--<");
+		$(".edit-dealer-vehicle-servmaint-content").html(editDealerVehicleservmaintForm);
           }
           else{alert("not able to retrieve serv and Maint"); alert("error"+err);}
         });
-		alert("url1 new changes"+url1);
+		//alert("url1 new changes"+url1);
 		
 		/*var editDealerVehicleservmaintForm = '<form id="edit-dealer-vehicle-servmaint-content-form"><table>\
 			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url1+'"'+' height="200" width="250"/></li></ul>\
@@ -1799,28 +1846,56 @@ function registerEditDealerVehicleFinanceModal(){
 		
 		
 		var editDealerVehicleFinanceForm = '<form id="edit-dealer-vehicle-finance-content-form"><table>\
-			<tr><td>Search ID</td><td>' + data.searchFinanceId + '</td></tr>\
-			<tr><td>' + quotIdHiddenField + '</td></tr>\
-			<tr><td>New</td><td>' + moveToUser + '</td></tr>\
-			<tr><td>Used</td><td>' + moveToUser1 + '</td></tr>\
+			<tr><td>Search Reference ID</td><td>' + data.searchFinanceId + '</td></tr>\
+			</table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Registration</div></div>\
+			<table>\
+			<tr><td>Rego No</td><td>' + data.rego + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Vehicle Details</div></div>\
+			<table>\
 			<tr><td>Year</td><td>' + data.year + '</td></tr>\
 			<tr><td>Make</td><td>' + data.make + '</td></tr>\
 			<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
-			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
 			<tr><td>Autoscoop Trim</td><td>' + data.autoscoopTrim + '</td></tr>\
-			<tr><td>Vehicle Value</td><td>' + data.vehValue + '</td></tr>\
-			<tr><td>Balloon Pay</td><td>' + data.balloonPay + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Where Do You Live ?	</div></div>\
+			<table>\
+			<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+			<tr><td>Street No</td><td>' + data.streetNo + '</td></tr>\
+			<tr><td>Street Name</td><td>' + data.streetName + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">How much Loan your Looking?</div></div>\
+			<table>\
 			<tr><td>Loan Amount</td><td>' + data.loanAmount + '</td></tr>\
 			<tr><td>Loan Period</td><td>' + data.loanPeriod + '</td></tr>\
-			<tr><td>Annual Income</td><td>' + data.annualIncome + '</td></tr>\
-			<tr><td>Income Type</td><td>' + data.incomeType + '</td></tr>\
-			<tr><td>Credit Rating</td><td>' + data.creditRating + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Tell Us About Yourself</div></div>\
+			<table>\
+			<tr><td>Title</td><td>' + data.mr + '</td></tr>\
+			<tr><td>First Name</td><td>' + data.firstName + '</td></tr>\
+			<tr><td>Last Name</td><td>' + data.lastName + '</td></tr>\
 			<tr><td>Date of Birth</td><td>' + data.dateOfBirth + '</td></tr>\
-			<tr><td>Year Employment Business</td><td>' + data.yearEmploymentBusiness + '</td></tr>\
-			<tr><td>Income Before Super Tax</td><td>' + data.incomeBeforeSuperTax + '</td></tr>\
-			<tr><td>Income After Super Tax</td><td>' + data.incomeAfterSuperTax + '</td></tr>\
-			<tr><td>If Business Provide ABN</td><td>' + data.ifBusinessProvideABN + '</td></tr>\
-			</table></form>';
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Your Income Details</div></div>\
+			<table>\
+			<tr><td>Income Type</td><td>' + data.incomeType + '</td></tr>\
+			<tr><td>Annual Income</td><td>' + data.annualIncome + '</td></tr>\
+			<tr><td>Years of Employment Business</td><td>' + data.yearEmploymentBusiness + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">My Credit Rating</div></div>\
+			<table>\
+			<tr><td>Credit Rating</td><td>' + data.creditRating + '</td></tr>\
+			</table>\
+			<br/>\
+			</form>';
 		editDealerVehicleFinanceForm = editDealerVehicleFinanceForm.replace(/>null</g, ">--NA--<");
 		editDealerVehicleFinanceForm = editDealerVehicleFinanceForm.replace(/>undefined</g, ">--NA--<");
 		$(".edit-dealer-vehicle-finance-content").html(editDealerVehicleFinanceForm);
@@ -1901,31 +1976,104 @@ function registerEditDealerVehicleInsuranceModal(){
 		
 		var editDealerVehicleInsuranceForm = '<form id="edit-dealer-vehicle-insurance-content-form"><table>\
 			<tr><td>Search ID</td><td>' + data.searchInsuranceId + '</td></tr>\
-			<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
-			 <tr><td>New</td><td>' + moveToUser + '</td></tr>\
-				<tr><td>Used</td><td>' + moveToUser1 + '</td></tr>\
+			</table>\
+			<h4>Car Details</h4>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Registration</div></div>\
+			<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Vehicle Details</b></h6>\
 			<tr><td>Year</td><td>' + data.year + '</td></tr>\
 			<tr><td>Make</td><td>' + data.make + '</td></tr>\
 			<tr><td>Model</td><td>' + data.model + '</td></tr>\
-			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
 			<tr><td>Autoscoop Trim</td><td>' + data.autoscoopTrim + '</td></tr>\
-			<tr><td>insuranceType</td><td>' + data.insuranceType + '</td></tr>\
-			<tr><td>Registration No:</td><td>' + data.regNo + '</td></tr>\
-			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
-			<tr><td>Market Value</td><td>' + data.marketValue + '</td></tr>\
-			<tr><td>Agreed Value</td><td>' + data.agreedValue + '</td></tr>\
+			<tr><td>Average No of Kms</td><td>' + data.avgNoOfKmYr + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Is the Car is Under Finance ?</b></h6>\
 			<tr><td>Finance</td><td>' + data.finance + '</td></tr>\
-			<tr><td>Finance Provider</td><td>'+ data.financeProvider + '</td></tr>\
+			<tr><td>Finance Provider</td><td>' + data.financeProvider + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Car Parked At Address</b></h6>\
+			<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+			<tr><td>Where car Parked?</td><td>' + data.carParkedAt + '</td></tr>\
+			<tr><td>Unit/StreetNo </td><td>' + data.streetNO + '</td></tr>\
+			<tr><td>Street Name</td><td>' + data.streetName + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Car is Used for</b></h6>\
+			<tr><td>Purpose</td><td>' + data.carUsedfor + '</td></tr>\
+			<tr><td>Type of Business</td><td>' + data.typeOfBusiness + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Coverage Details</div></div>\
+			<table>\
+			<tr><td>Type of Coverage</td><td>' + data.insuranceType + '</td></tr>\
+			</table>\
+			<br/>\
+			<h6 style="color:#bd191e;"><b>Agreed Value of Car</b></h6>\
+			<table>\
+			<tr><td>Agreed Value</td><td>' + data.agreedValue + '</td></tr>\
+			<tr><td>Market Value</td><td>' + data.marketValue + '</td></tr>\
+			</table>\
+			<table>\
+			<tr><td>Preferred Excess Amount</td><td>' + data.prefExcessAmount + '</td></tr>\
+			<tr><td>Current Insurer</td><td>' + data.curInsProv + '</td></tr>\
+			</table>\
+			<br/>\
+			<h5 style="color:#bd191e;"><b>Add Extra Requirements</b></h5>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>External Requirements</b></h6>\
+			<tr><td>External 1</td><td>' + data.FreeWindScreen + '</td></tr>\
+			<tr><td>External 2</td><td>' + data.AnyDriver + '</td></tr>\
+			<tr><td>External 3</td><td>' + data.Snokel + '</td></tr>\
+			<tr><td>External 4</td><td>' + data.RentalCar + '</td></tr>\
+			<tr><td>External 5</td><td>' + data.NewCarRepl + '</td></tr>\
+			</table>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Internal Requirements</b></h6>\
+			<tr><td>Internal 1</td><td>' + data.HireCar + '</td></tr>\
+			<tr><td>Internal 2</td><td>' + data.intBullBar + '</td></tr>\
+			<tr><td>Internal 3</td><td>' + data.intsnokel + '</td></tr>\
+			<tr><td>Internal 4</td><td>' + data.intNudgeBar + '</td></tr>\
+			<tr><td>Internal 5</td><td>' + data.BullBar + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Driver Details</div></div>\
+			<table>\
+			<tr><td>First Name</td><td>' + data.driverFirstName + '</td></tr>\
+			<tr><td>Last Name</td><td>' + data.driverLastName + '</td></tr>\
+			<tr><td>Mobile</td><td>' + data.driverMobileNo + '</td></tr>\
+			<tr><td>Email</td><td>' + data.driverEmailId + '</td></tr>\
+			<tr><td>Date Of Birth</td><td>' + data.dateOfBirth + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Driving Licence Details</b></h6>\
 			<tr><td>Driving License Type</td><td>' + data.drivingLicenseType + '</td></tr>\
-			<tr><td>Driving License No:</td><td>' + data.drivingLicenseNo + '</td></tr>\
+			<tr><td>Driving License No</td><td>' + data.drivingLicenseNo + '</td></tr>\
+			<tr><td>Driving License Issue Date</td><td>' + data.licenseIssueDate + '</td></tr>\
 			<tr><td>Driving License Issue State</td><td>' + data.drivingLicenseIssueState + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Drivers Claim History</b></h6>\
 			<tr><td>No Of AtFaults</td><td>' + data.noOfAtFaults + '</td></tr>\
-			<tr><td>Other Issues</td><td>' + data.otherIssues + '</td></tr>\
-			<tr><td>Current Ins-Prov</td><td>' + data.curInsProv + '</td></tr>\
-			<tr><td>Pref Excess Amount</td><td>' + data.prefExcessAmount + '</td></tr>\
-			<tr><td>DateOfBirth</td><td>' + data.dateOfBirth + '</td></tr>\
-			<tr><td>Age Of Additional Driver</td><td>' + data.ageOfAdditionalDriver + '</td></tr>\
-			</table></form>';
+			<tr><td>Last AtFault Claim Date</td><td>' + data.lastAtFaultClaimDate + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Additional Driver Details</div></div>\
+			<table>\
+			<tr><td>No Of Drivers more than 1 ?</td><td>' + data.noOfDrivers + '</td></tr>\
+			</table>\
+			</form>';
 		editDealerVehicleInsuranceForm = editDealerVehicleInsuranceForm.replace(/>null</g, ">--NA--<");
 		editDealerVehicleInsuranceForm = editDealerVehicleInsuranceForm.replace(/>undefined</g, ">--NA--<");
 		$(".edit-dealer-vehicle-insurance-content").html(editDealerVehicleInsuranceForm);
@@ -2010,61 +2158,77 @@ function registerEditDealerVehicleDetailModal(){
 	              Bucket: bucketName
 	          }
 	      });
-	     alert("bis fdscuifsdf t");
+	     //alert("bis fdscuifsdf t");
 	     accessToken = $.jStorage.get("fbAToken");
-	     alert(accessToken);
+	     //alert(accessToken);
 				bucket.config.credentials = new AWS.WebIdentityCredentials({
 		                  ProviderId: 'graph.facebook.com',
 		                  RoleArn: roleArn,
 		                  WebIdentityToken: accessToken
 		              });
 				fbUserId = $.jStorage.get("fbKey");
-				alert("Trying to retrieve photo for Serv and Maint..");
+				//alert("Trying to retrieve photo for Serv and Maint..");
 	          fbUserId = $.jStorage.get("fbKey");
-		alert("new changes now");
+		//alert("new changes now");
 		url1=" ";
 		var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: data.photo1, Expires: 60};
         bucket.getSignedUrl('getObject', params, function (err, url) {
-          if (url) { alert("successfully retrieved 12.."+url); 
+          if (url) { //alert("successfully retrieved 12.."+url); 
           url1=url;
           var editDealerVehicleDetailForm = '<form id="edit-dealer-vehicle-detail-content-form"><table>\
-  			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-  			<tr><td>My Vehicle ID</td><td>' + data.myVehicleId + '</td></tr>\
-  			<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
-  			<tr><td>Year</td><td>' + data.year + '</td></tr>\
-  			<tr><td>Make</td><td>' + data.make + '</td></tr>\
-  			<tr><td>Model</td><td>' + data.model + '</td></tr>\
-  			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
-  			<tr><td>VIN</td><td>' + data.vin + '</td></tr>\
-  			<tr><td>Registration No:</td><td>' + data.regNum + '</td></tr>\
-  			<tr><td>Rego State</td><td>' + data.regState + '</td></tr>\
-  			<tr><td>Reg Expirty Date</td><td>' + data.regExpDate + '</td></tr>\
-  			<tr><td>Insurance Provider</td><td>' + data.insProv + '</td></tr>\
-  			<tr><td>Insurance Provider Man</td><td>' + data.insProvMan + '</td></tr>\
-  			<tr><td>Insurance Premium Paid</td><td>'+ data.insPremPaid + '</td></tr>\
-  			<tr><td>Insurance Premium Freq</td><td>' + data.insPremPaidFreq + '</td></tr>\
-  			<tr><td>Insurance Expiry</td><td>' + data.insExpiry + '</td></tr>\
-  			<tr><td>ODO Meter</td><td>' + data.odoMeter + '</td></tr>\
-  			<tr><td>Last Service Dt</td><td>' + data.lastServiceDt + '</td></tr>\
-  			<tr><td>Next Service Dt</td><td>' + data.nextServiceDt + '</td></tr>\
-  			<tr><td>Next Service Kms</td><td>' + data.nextServKms + '</td></tr>\
-  			<tr><td>Finance Provider</td><td>' + data.finProvider + '</td></tr>\
-  			<tr><td>Loan Amount1</td><td>' + data.loanAmt1 + '</td></tr>\
-  			<tr><td>Age Of Additional Driver</td><td>' + data.loanTakenDt + '</td></tr>\
-  			<tr><td>Loan Paid Freq</td><td>' + data.loanPaidFreq + '</td></tr>\
-  			<tr><td>Loan Period</td><td>' + data.loanPeriod + '</td></tr>\
-  			<tr><td>Loan Interest</td><td>' + data.loanInterest + '</td></tr>\
-  			<tr><td>Fuel Card Provider</td><td>' + data.fuelCardProvider + '</td></tr>\
-  			<tr><td>value Fuel Card</td><td>' + data.valFuelCard + '</td></tr>\
-  			<tr><td>Fuel Type</td><td>' + data.fuelType + '</td></tr>\
-  			</table></form>';
-  		editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>null</g, ">--NA--<");
-  		editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>undefined</g, ">--NA--<");
-  		$(".edit-dealer-vehicle-detail-content").html(editDealerVehicleDetailForm);
+			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+			<tr><td>My Vehicle ID</td><td>' + data.myVehicleId + '</td></tr>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Basic info</div></div>\
+			<tr><td>Vehicle Type</td><td>' + data.fuelType + '</td></tr>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model</td><td>' + data.model + '</td></tr>\
+			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Vehicle Identity</b></h6>\
+			<tr><td>VIN/HIN Number</td><td>' + data.vin + '</td></tr>\
+			<tr><td>Rego No</td><td>' + data.regNum + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regState + '</td></tr>\
+			<tr><td>Rego End Date</td><td>' + data.regExpDate + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Insurance Details</div></div>\
+			<tr><td>Insurance Provider</td><td>' + data.insProv + '</td></tr>\
+			<tr><td>Insurance End Date</td><td>' + data.insExpiry + '</td></tr>\
+			<tr><td>Insurance Premium Paid</td><td>'+ data.insPremPaid + '</td></tr>\
+			<tr><td>Insurance Reminder</td><td>'+ data.insRemind + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Maintenance Details</div></div>\
+			<tr><td>Last Service @Kms</td><td>' + data.odoMeter + '</td></tr>\
+			<tr><td>Last Service Dt</td><td>' + data.lastServiceDt + '</td></tr>\
+			<tr><td>Next Service Dt</td><td>' + data.nextServiceDt + '</td></tr>\
+			<tr><td>Next Service @Kms</td><td>' + data.nextServKms + '</td></tr>\
+			<tr><td>Insurance Reminder</td><td>'+ data.maiRemind + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Finance Info</div></div>\
+			<tr><td>Finance Provider</td><td>' + data.finProvider + '</td></tr>\
+			<tr><td>Loan Taken Date</td><td>' + data.loanTakenDt + '</td></tr>\
+			<tr><td>Loan Amount</td><td>' + data.loanAmt1 + '</td></tr>\
+			<tr><td>Loan Period</td><td>' + data.loanPeriod + '</td></tr>\
+			<tr><td>Insurance Reminder</td><td>'+ data.finRemind + '</td></tr>\
+			</table>\
+			<br/>\
+			</table></form>';
+		editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>undefined</g, ">--NA--<");
+		$(".edit-dealer-vehicle-detail-content").html(editDealerVehicleDetailForm);
           }
           else{alert("not able to retrieve Trans serv"); alert("error"+err);}
         });
-		alert("url1 new changes"+url1);
+		//alert("url1 new changes"+url1);
 
 		//end
 		
@@ -2582,7 +2746,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 					}
 	// Rego State Lead Start
 	$scope.postRegoStateUrlLead = function(isValid) {
-	alert("invoke in postRegoState lead");
+	//alert("invoke in postRegoState lead");
 	
 	
 		/*alert($scope.email);
@@ -2715,8 +2879,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 																		}).success(function(data) {
 																			$body.removeClass("loading");	
 																			alert("Successfully Stored..");
-																							alert("Thank You. Your MyVehicle ID is " + data.myVehicleId);
-																															
+																							alert("Thank You. Your MyVehicle ID is " + data.myVehicleId +"and it is updating to dashboard");
+																							vehicleDetailsLoad();												
 																						});	
 							}
 							else
@@ -2728,7 +2892,44 @@ mainApp1.controller('myController13',function($scope, $http) {
 																		
 							};//end of submitsearch
 							
+						function vehicleDetailsLoad(){
+							//alert("In ch lfsfoad");
+							var wsURL = 'api/userVehicle/'+userId;//"api/user/"+userid;
+							//alert(wsURL);
+							$body.addClass("loading");
+						    $http({
+										method : 'GET',
+										url : wsURL														
+									}).success(function(data) {
+										/*alert(data);
+										alert(JSON.stringify(data));*/
+										outVehicle="";
+							        	/*alert(data.length);  
+							        	alert(data[0].myVehicleId);*/  
+										outVehicle += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Operation"+'</th></tr>';
+							           	  for(i=data.length-1;i>=0;i--)
+							          		{
+							          		
+							           		outVehicle= outVehicle+'<tr>'+'<td>'+data[i].myVehicleId+'</td>'+'<td>'+data[i].year+'</td>'+'<td>'+data[i].make+'</td>'+'<td>'+data[i].model+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleDetailModal-' + data[i].myVehicleId + '" data-details=\'' + JSON.stringify(data[i]) + '\' class="anchor-editDealerVehicleDetailModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailModal">View</a></td></tr>';
+							          		}
+							           	outVehicle = outVehicle.replace(/>null</g, ">--NA--<");
+							           	outVehicle = outVehicle.replace(/>undefined</g, ">--NA--<");
+							           	var LogMyVehic = data;
+
+							           	if(LogMyVehic && data.length==0){
+									           	outLT='<h2>No records found</h2>';
+									            //forFinance("quo-model-data4",outLT);
+									            $("#"+"quo-model-data4").html(outLT);
+							           	}
+							           	else{
+							           	   //forFinance("quo-model-data4",outVehicle);
+							           	   $("#"+"quo-model-data4").html(outVehicle);
+							           	   }
+										$body.removeClass("loading");	
+													});	
 							
+							
+						}	
 							
 							
 							

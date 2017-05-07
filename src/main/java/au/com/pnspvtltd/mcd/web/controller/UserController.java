@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.service.UserService;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 
 @RestController
@@ -38,6 +39,16 @@ public class UserController {
 			response.setStatus(HttpStatus.NO_CONTENT.value());
 		}
 		return user;
+	}
+	@GetMapping(value = "userVehicle/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<MyVehicleVO> getVehicleFor(@PathVariable Long id, HttpServletResponse response) {
+		LOGGER.debug("Received request to get User with id {} ", id);
+		UserVO user = userService.findById(id);
+		List<MyVehicleVO> userVehicles =user.getMyVehicle();
+		if (userVehicles == null) {
+			response.setStatus(HttpStatus.NO_CONTENT.value());
+		}
+		return userVehicles;
 	}
 
 	@PostMapping("user")

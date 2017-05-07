@@ -345,13 +345,13 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             <a href="#"><span id="userId"></span></a>
                             <ul class="menu mini uppercase">
                                 <li><a href="dashboard1.html#dashboard" class="location-reload">Overview</a></li>
-                                <li><a href="dashboard1.html#profile" class="location-reload"  onclick="fbdown">Profile</a></li>
+                                <li><a href="dashboard1.html#profile" class="location-reload" >Profile</a></li>
                                 <li><a href="dashboard1.html#travel-stories" class="location-reload">Ebid-R</a></li>
                                 <li><a href="dashboard1.html#settings" class="location-reload">Quotation</a></li>
                                 <!-- <li><a href="dashboard1.html#wishlist" class="location-reload">Wishlist</a></li> -->
                                 <!-- <li><a href="dashboard1.html#booking" class="location-reload">Booking</a></li> -->
                                 <li><a href="dashboard1.html#rego" class="location-reload">Rego</a></li>
-                                <li><a onclick= "signingout()">signout</a></li>
+                                <li><a href="" onclick= "signingout()">signout</a></li>
                             </ul>
                         </li>
                         
@@ -2777,7 +2777,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
     </script>
        <script type="text/javascript">
        function myvehicleloadImage()
-  	 {alert("came inside myvehicle image");
+  	 { //alert("came inside myvehicle image");
        <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 
         var fileChooser = document.getElementById('file-chooser');
@@ -2797,9 +2797,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 	              Bucket: bucketName
 	          }
 	      });
-	     alert("Successfully set..");
+	     //alert("Successfully set..");
 	     accessToken = $.jStorage.get("fbAToken");
-	     alert(accessToken);
+	     //alert(accessToken);
 				bucket.config.credentials = new AWS.WebIdentityCredentials({
 		                  ProviderId: 'graph.facebook.com',
 		                  RoleArn: roleArn,
@@ -2850,7 +2850,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
                     } else {
 
-alert("Successfully saved My Vehicle photo 2 to S3");
+						//alert("Successfully saved My Vehicle photo 2 to S3");
                        // listObjs();
 
 
@@ -2861,7 +2861,7 @@ alert("Successfully saved My Vehicle photo 2 to S3");
 
 
             } else {
-            	alert("Nothing to upload for My Vehicle photo 2");
+            	//alert("Nothing to upload for My Vehicle photo 2");
 
                 //results.innerHTML = 'Nothing to upload.';
 
@@ -2905,7 +2905,7 @@ alert("Successfully saved My Vehicle photo 2 to S3");
 
                     } else {
 
-                    	alert("Successfully saved My Vehicle photo 3 to s3");
+                    	//alert("Successfully saved My Vehicle photo 3 to s3");
                         //listObjs();
 
 
@@ -2917,7 +2917,7 @@ alert("Successfully saved My Vehicle photo 2 to S3");
 
             } else {
 
-            	alert("Nothing to upload for my vehicle photo 3");
+            	//alert("Nothing to upload for my vehicle photo 3");
                 //results.innerHTML = 'Nothing to upload.';
 
 
@@ -2959,7 +2959,7 @@ alert("Successfully saved My Vehicle photo 2 to S3");
 
                     } else {
 
-                    	alert("Successfully saved My Vehicle photo 1 to s3");
+                    	//alert("Successfully saved My Vehicle photo 1 to s3");
                     	
                         //listObjs();
 
@@ -2971,7 +2971,7 @@ alert("Successfully saved My Vehicle photo 2 to S3");
 
 
             } else {
-            	alert("Nothing to upload for my vehicle photo1");
+            	//alert("Nothing to upload for my vehicle photo1");
 
                 /* results.innerHTML = 'Nothing to upload.'; */
 
@@ -3001,7 +3001,7 @@ alert("Successfully saved My Vehicle photo 2 to S3");
             
             
             FB.getLoginStatus(function(response) {
-            	alert("Succesfully set..");
+            	//alert("Succesfully set..");
 				if (response.status === 'connected') {
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
 
@@ -3074,7 +3074,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
  <!-- Log Serv and maint SCRIPT -->
  <script type="text/javascript">
        function logExpensesloadImage()
-  	 {alert("inside log Expenses..");
+  	 {	//alert("inside log Expenses..");
 
   
          // start of Logbook set        
@@ -3091,9 +3091,9 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 	              Bucket: bucketName
 	          }
 	      });
-	     alert("Successfully set..");
+	     //alert("Successfully set..");
 	     accessToken = $.jStorage.get("fbAToken");
-	     alert(accessToken);
+	     //alert(accessToken);
 				bucket.config.credentials = new AWS.WebIdentityCredentials({
 		                  ProviderId: 'graph.facebook.com',
 		                  RoleArn: roleArn,
@@ -3146,7 +3146,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 
 
                            } else {
-                           	alert("Successfully saved Log Expenses Image into S3");
+                           	//alert("Successfully saved Log Expenses Image into S3");
 
                                //listObjs();
 
@@ -3159,7 +3159,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 
                    } else {
 
-                   	alert("Nothing to upload for log expenses");
+                   	//alert("Nothing to upload for log expenses");
                        /* results.innerHTML = 'Nothing to upload.'; */
 
 
@@ -3192,7 +3192,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
             
             
             FB.getLoginStatus(function(response) {
-            	alert("Succesfully set..");
+            	//alert("Succesfully set..");
 				if (response.status === 'connected') {
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
 
@@ -3276,22 +3276,22 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 	              Bucket: bucketName
 	          }
 	      });
-	     alert("Successfully set..");
+	     //alert("Successfully set..");
 	     accessToken = $.jStorage.get("fbAToken");
-	     alert(accessToken);
+	     //alert(accessToken);
 				bucket.config.credentials = new AWS.WebIdentityCredentials({
 		                  ProviderId: 'graph.facebook.com',
 		                  RoleArn: roleArn,
 		                  WebIdentityToken: accessToken
 		              });
        
-			alert("came here on click of log service and maintenance");
+			//alert("came here on click of log service and maintenance");
             var file = fileChooserlogservmaint.files[0];
 
 
             if (file) {
 
-            	alert("came here on click of log service and maintenance12");
+            	//alert("came here on click of log service and maintenance12");
                 //results.innerHTML = '';
 
 
@@ -3321,7 +3321,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 
                 bucket.putObject(params, function (err, data) {
 
-                	alert("came here on click of log service and maintenance14");
+                	//alert("came here on click of log service and maintenance14");
                     if (err) {
 
                     	alert("Not saved service and maintenance1"+err);
@@ -3329,7 +3329,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 
 
                     } else {
-                    	alert("Successfully saved Service and Maintenance1 into S3");
+                    	//alert("Successfully saved Service and Maintenance1 into S3");
 
                         //listObjs();
 
@@ -3342,7 +3342,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 
             } else {
 
-            	alert("Nothing to upload for service and maintenance 1");
+            	//alert("Nothing to upload for service and maintenance 1");
                 /* results.innerHTML = 'Nothing to upload.'; */
 
 
@@ -3365,7 +3365,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
             
             
             FB.getLoginStatus(function(response) {
-            	alert("Succesfully set..");
+            	//alert("Succesfully set..");
 				if (response.status === 'connected') {
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
 
@@ -3438,7 +3438,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
  <!-- uPDATE SETTING SCRIPT -->
  <script type="text/javascript">
        function updateSettingloadImage()
-  	 {alert("came in update setting s3 now");
+  	 {//alert("came in update setting s3 now");
 
   
   var fileChooserupdateset = document.getElementById('file-chooser-updateset');
@@ -3455,9 +3455,9 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 	              Bucket: bucketName
 	          }
 	      });
-	     alert("Successfully set..");
+	     //alert("Successfully set..");
 	     accessToken = $.jStorage.get("fbAToken");
-	     alert(accessToken);
+	     //alert(accessToken);
 				bucket.config.credentials = new AWS.WebIdentityCredentials({
 		                  ProviderId: 'graph.facebook.com',
 		                  RoleArn: roleArn,
@@ -3466,11 +3466,11 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 
 			//alert("came here on click of log update settings..");
             var file = fileChooserupdateset.files[0];
-alert("file"+file);
+			//alert("file"+file);
 
             if (file) {
 
-alert("inside file ");
+			//alert("inside file ");
                 //results.innerHTML = '';
 
 
@@ -3500,7 +3500,7 @@ alert("inside file ");
 
                 bucket.putObject(params, function (err, data) {
 
-alert("inside putobject");
+					//alert("inside putobject");
                     if (err) {
 
                     	alert("Not saved update photo"+err);
@@ -3509,7 +3509,7 @@ alert("inside putobject");
 
                     } else {
 
-                    	alert("Successfully saved image to S3..");
+                    	//alert("Successfully saved image to S3..");
                         //alert(listObjs());
 
 
@@ -3523,7 +3523,7 @@ alert("inside putobject");
 
 
                 /* results.innerHTML = 'Nothing to upload.'; */
-            	alert("Nothing to upload for update photo");
+            	//alert("Nothing to upload for update photo");
 
             }
 
@@ -3542,7 +3542,7 @@ alert("inside putobject");
             
             
             FB.getLoginStatus(function(response) {
-            	alert("Succesfully set..");
+            	//alert("Succesfully set..");
 				if (response.status === 'connected') {
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
 

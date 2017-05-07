@@ -877,7 +877,7 @@ CarQuery.prototype = {
  {
          var options = '<option value="">Please choose a Make</option>';
          //alert(options);
-         console.log(data);
+         //console.log(data);
          //alert(data);
 /*  var makes = data;
   for (var key in makes)
@@ -936,7 +936,7 @@ CarQuery.prototype = {
     {
     	var options = '<option value="">Please choose a Model</option>';
         //alert(options);
-        console.log(data);
+        //console.log(data);
         for (var i = 0; i < data.length; i++)
         {
            options += '<option value="' + data[i] + '">' + data[i] + '</option>';
@@ -961,7 +961,7 @@ CarQuery.prototype = {
     	//alert("insided color");
     	var options = '<option value="">Please choose a Color</option>';
         //alert(options);
-        console.log(data);
+        //console.log(data);
         for (var i = 0; i < data.length; i++)
         {
            options += '<option value="' + data[i] + '">' + data[i] + '</option>';
@@ -1821,7 +1821,7 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
 
      out += '<tr><th colspan="2">'+data.tempCarModelHeaderVO.modelYear+' '+data.tempCarModelHeaderVO.modelDisplay+' '+data.tempCarModelHeaderVO.modelName+' '+data.tempCarModelHeaderVO.modelVariant+'</th></tr>';
 
-     out += '<tr><td colspan="2">Car Model Header<hr/></td></tr>';
+     out += '<tr><td colspan="2">Car Specification<hr/></td></tr>';
      out += '<tr><td>Autoscoop Trim:</td><td>'+data.tempCarModelHeaderVO.flex1+'</td></tr>';
      out += '<tr><td>Model Series:</td><td>'+data.tempCarModelHeaderVO.modelSeries+'</td></tr>';
      out += '<tr><td>Model Batch:</td><td>'+data.tempCarModelHeaderVO.modelBatch+'</td></tr>';
@@ -1839,7 +1839,7 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
     
      out +='<br/>';
      
-     out += '<tr><td colspan="2">Car Model Overview<hr/></td></tr>';
+     /*out += '<tr><td colspan="2">Car Model Overview<hr/></td></tr>';
      out += '<tr><td>price:</td><td>'+data.tempCarModelHeaderVO.carModel[0].price+'</td></tr>';
      if(data.tempCarModelHeaderVO.carModel[0].priceGuideEGC!=null)
     	 out += '<tr><td>Price Guide EGC:</td><td>'+data.tempCarModelHeaderVO.carModel[0].priceGuideEGC+'</td></tr>';
@@ -1891,12 +1891,12 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
      
       
 	   
-     out += '<tr><th>'+"Available Colour"+'</th><th>'+"Price"+'</th><th>'+'</th></tr>';
+     out += '<tr><th>'+"Available Colour"+'</th><th>'+"Price"+'</th><th>'+'</th></tr>';*/
      var options = '<option value="">Please choose a Color</option>';  
      for(i=0;i<data.tempCarModelHeaderVO.carModel3.length;i++)
 		{
 		
-		out= out+'<tr>'+'<td>'+data.tempCarModelHeaderVO.carModel3[i].availableColour+'</td>'+'<td>'+data.tempCarModelHeaderVO.carModel3[i].price+'</td>' + '</tr>';
+		//out= out+'<tr>'+'<td>'+data.tempCarModelHeaderVO.carModel3[i].availableColour+'</td>'+'<td>'+data.tempCarModelHeaderVO.carModel3[i].price+'</td>' + '</tr>';
 		options += '<option value="' +data.tempCarModelHeaderVO.carModel3[i].availableColour+ '">' +data.tempCarModelHeaderVO.carModel3[i].availableColour + '</option>';
 		
 		}
@@ -2190,7 +2190,7 @@ $.ajax({
 	    	   //alert("successfully searched in Autoscoop DB");
 	    	   /*alert("result value"+result.tempModelId);*/
 	    	   if(result.tempModelId !== undefined){
-	    		   alert("Template Card Model found with CardModel ID : "+result.tempModelId);
+	    		   //alert("Template Card Model found with CardModel ID : "+result.tempModelId);
 	    		   //alert("Populating.. data with CardModel ID : "+result.tempModelId);
 	    		   document.getElementById("tempCarModelId").value = result.tempModelId;
 	    		   document.getElementById("mrpPrice").value = result.mrlp;
@@ -3017,7 +3017,7 @@ $.getJSON(this.base_url, {modelDisplay:this.cur_make, modelYear:this.cur_year, m
 
 if(!sender.responseError(data))
 {
-	alert("data retrieved.."+data);
+	//alert("data retrieved.."+data);
   sender.populateAutoTrimSelect(data);
  }
  });
@@ -3062,7 +3062,7 @@ if(!sender.responseError(data))
     {
      if(typeof data.error != 'undefined' && data.error != '')
  {
-   alert(data.error);
+   //alert(data.error);
   return true;
  }
  else

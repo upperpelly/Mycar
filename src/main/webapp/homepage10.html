@@ -17,6 +17,14 @@
 <!-- <script src="js/jstorage.js"></script>
  -->
 <script type="text/javascript">
+function signingout(){
+	
+	 $.jStorage.deleteKey("key");
+	 $.jStorage.deleteKey("carKey");
+	 $.jStorage.deleteKey("fbKey");
+	 alert("Successfully Logged Out");
+	 window.location="homepage10.html";
+}
 
 function stringToDate(_date,_format,_delimiter)
 {
@@ -1432,8 +1440,8 @@ firstName =null;
 											var jsonInputToAPI = {"email":"","password":""};
 											jsonInputToAPI.email=document.getElementById("exampleEmail").value;
 											jsonInputToAPI.password=document.getElementById("examplePass").value;
-											alert(jsonInputToAPI.email);
-											alert(jsonInputToAPI.password);
+											/* alert(jsonInputToAPI.email);
+											alert(jsonInputToAPI.password) */;
 											var wsURL = 'api/user/login';
 											//var wsURL = 'http://localhost:8080/MyCarDomain/api/user/login';
 											//  var wsURL = 'http://www.autoscoop.com.au/api/user/login';
@@ -1560,8 +1568,8 @@ $scope.submitForm1 = function() {
 							if(filetranp2){
 							objKeyMyVeh2 = 'facebook-' + fbUserId + '/' + filetranp2.name;
 							$scope.photo=objKeyMyVeh2;}
-							alert("images saved in 1"+$scope.uploadPhotoTrans1);
-							alert("images saved in 2"+$scope.photo);
+							/* alert("images saved in 1"+$scope.uploadPhotoTrans1);
+							alert("images saved in 2"+$scope.photo); */
 							//alert("inside insurance user id"+userId);
 							//var dateInFormatpickupDOB= stringToDate($('#pickup_date_of_birth').val(),"dd/MM/yyyy","/");
 							/* var InsuReq=false;
@@ -1672,7 +1680,7 @@ $scope.submitForm1 = function() {
 									alert("Redirecting to Dashboard 12..");
 									var url="dashboard1.html";
 									
-									//window.location=url;
+									window.location=url;
 									
 												});
 						    
@@ -1696,7 +1704,7 @@ $scope.submitForm1 = function() {
 
 	// Rego State Lead Start
 	$scope.postRegoStateUrlLead = function(isValid) {
-	alert("invoke in postRegoState lead");
+	//alert("invoke in postRegoState lead");
 	
 	
 		/*alert($scope.email);
@@ -1748,7 +1756,7 @@ $scope.submitForm1 = function() {
 					if(isValid){
 									userId=$.jStorage.get('key').userId;
 									fbUserId=$.jStorage.get("fbKey");
-									alert("inside insurance user id"+fbUserId);
+									//alert("inside insurance user id"+fbUserId);
 									var fileChooserserv1 = document.getElementById('uploadPhotoServ1');
 													var fileServ1 = fileChooserserv1.files[0];
 													var objKeyMyVeh='noImage';
@@ -1975,9 +1983,9 @@ $scope.submitForm1 = function() {
 				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex13"]=false;
 				            	jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j-1]["flex14"]=false;
 					    }  
-					                 alert("Json print relatedModels");
-					                alert(JSON.stringify(jsonInputToAPI.insuranceLead.searchInsAdditionalDriv));
-					                alert(JSON.stringify(jsonInputToAPI.insuranceLead));
+					                 //alert("Json print relatedModels");
+					                //alert(JSON.stringify(jsonInputToAPI.insuranceLead.searchInsAdditionalDriv));
+					                //alert(JSON.stringify(jsonInputToAPI.insuranceLead));
 			
 					
 					
@@ -2533,25 +2541,40 @@ table{
 				</h1>
 
 				<div class="topnav" >
-					<ul class="quick-menu pull-right clearfix">
+					<ul class="quick-menu pull-left">
 						<li><button onClick="redirect()">ACCOUNT</button></li>
-						
 					</ul>
-				</div>
-				<div id="homeLogbook" onClick="redirectWithLogbook()" class="pull-right hidden-mobile"><a href="#"	class="button btn-medium yellow" style="padding: 0 15px;"><i
+					<ul class="quick-menu pull-right" id="welcomeDiv" style="display:none">
+                        <li class="ribbon">
+                            <a href="#"><span id="userId"></span></a>
+                            <ul class="menu mini uppercase">
+                            <!--  <li><a href="dashboard1.html#dashboard" class="location-reload">Overview</a></li> -->
+                                <li><a href="dashboard1.html#profile" class="location-reload">Profile</a></li>
+                                <!-- <li><a href="dashboard1.html#travel-stories" class="location-reload">Ebid-R</a></li>
+                                <li><a href="dashboard1.html#settings" class="location-reload">Quotation</a></li>
+                                <li><a href="dashboard1.html#wishlist" class="location-reload">Wishlist</a></li>
+                                <li><a href="dashboard1.html#booking" class="location-reload">Booking</a></li>
+                                <li><a href="dashboard1.html#rego" class="location-reload">Rego</a></li> -->
+                                <li><a href="" onclick= "signingout()">Signout</a></li>
+                            </ul>
+                        </li>
+               		 </ul>
+					<div id="homeLogbook" onClick="redirectWithLogbook()" class="pull-right hidden-mobile"><a href="#"	class="button btn-medium yellow" style="padding: 0 15px;"><i
 						class="soap-icon-shopping"></i> LOG BOOK</a>
+					</div>
+					
+					<div id="welcomeDiv1" class="pull-right hidden-mobile" style="float: right;">
+						<button class="btn-medium blue-bg soap-popupbox"
+							data-target="#travelo-signup">SIGNUP</button>
+						<button class="btn-medium soap-popupbox"
+							data-target="#travelo-login" id="login">LOGIN</button>
+					</div>
 				</div>
-				<div id="welcomeDiv" class="pull-right hidden-mobile">
+				
+				<!-- <div id="welcomeDiv" class="pull-right hidden-mobile">
 					
 					<span id="userId" center></span>&nbsp;&nbsp;
-				</div>
-
-				<div id="welcomeDiv1" class="pull-right hidden-mobile">
-					<button class="btn-medium blue-bg soap-popupbox"
-						data-target="#travelo-signup">SIGNUP</button>
-					<button class="btn-medium soap-popupbox"
-						data-target="#travelo-login" id="login">LOGIN</button>
-				</div>
+				</div> -->
 				
 			</div>
 			<a href="#mobile-menu-01" data-toggle="collapse"
@@ -2729,7 +2752,22 @@ table{
 					<ul class="quick-menu pull-right" id="welcomeDiv" style="display:none">
 					<a href="#"><span id="userId"></span></a>
 					</ul>
-					
+					<ul class="quick-menu pull-right" id="welcomeDiv" style="display:none">
+                        <li class="ribbon">
+                            <a href="#"><span id="userId"></span></a>
+                            <ul class="menu mini uppercase">
+                                <!-- <li><a href="dashboard1.html#dashboard" class="location-reload">Overview</a></li>
+                                <li><a href="dashboard1.html#profile" class="location-reload">Profile</a></li>
+                                <li><a href="dashboard1.html#travel-stories" class="location-reload">Ebid-R</a></li>
+                                <li><a href="dashboard1.html#settings" class="location-reload">Quotation</a></li>
+                                <li><a href="dashboard1.html#wishlist" class="location-reload">Wishlist</a></li>
+                                <li><a href="dashboard1.html#booking" class="location-reload">Booking</a></li>
+                                <li><a href="dashboard1.html#rego" class="location-reload">Rego</a></li> -->
+                                <li><a onclick= "signingout()">Signout</a></li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
 					
 				</ul>
 
@@ -3136,15 +3174,10 @@ table{
 															
 															
 													<div class="row">
-														<div class="col-sm-5 col-md-6">
-															<div class="checkbox">
-																<label> <input type="checkbox" id="eCarTerms" name="eCarTerms"  ng-model="eCarTerms" required  ><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
-																			Conditions</span></a>.
-																</label>
-																<span style="color:red" ng-show="ebidfrm.eCarTerms.$error.required && (!ebidfrm.eCarTerms.$pristine || ebidfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
-															</div>
+														<div class="col-sm-12 col-md-12">
+														By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
+																<!-- <span style="color:red" ng-show="ebidfrm.eCarTerms.$error.required && (!ebidfrm.eCarTerms.$pristine || ebidfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span> -->
 														</div>
-														<div class="col-sm-7 col-md-6"></div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="col-md-6 col-sm-6 search-col-padding">
@@ -4980,13 +5013,17 @@ table{
 															&nbsp; 		
 														</div>
 														<div class="col-sm-5 col-md-6">
-															<div class="checkbox">
+															<!-- <div class="checkbox">
 																<label> <input type="checkbox" id="fCarTerms" name="fCarTerms"  ng-model="fCarTerms" required /><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
 																			Conditions</span></a>.
 																</label>
 																<span style="color:red" ng-show="ebidfinfrm.fCarTerms.$error.required && (!ebidfinfrm.fCarTerms.$pristine || ebidfinfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
-															</div>
-														</div>
+															</div> -->
+															By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
+														</div> <!-- 
+														<div class="col-sm-12 col-md-12">
+																By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
+														</div> -->
 													</div><br/>
 													<br />
 													<div class="clearfix"></div>
@@ -6322,8 +6359,8 @@ table{
 																		<select class="full-width" id="insDriversCt" ng-model="insDriversCt"
 																			name="insDriversCt">
 																			<option value="" selected disabled>No of Additional Drivers</option>
-																			<option>Yes</option>
-																			<option>No</option>
+																			<option value="1">Yes</option>
+																			<option value="0">No</option>
 																		</select>
 																		</div>
 																	</div>
@@ -6419,11 +6456,14 @@ table{
 													<div class="clearfix"></div>
 													<div class="row">
 														<div class="col-sm-5 col-md-6">
-															<div class="checkbox">
+															<!-- <div class="checkbox">
 																<label> <input type="checkbox" id="iCarTerms" name="iCarTerms"  ng-model="iCarTerms" required><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
 																			Conditions</span></a>.
 																</label>
 																<span style="color:red" ng-show="ebidinsfrm.iCarTerms.$error.required && (!ebidinsfrm.iCarTerms.$pristine || ebidinsfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
+															</div> -->
+															<div class="col-sm-12 col-md-12">
+																By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
 															</div>
 														</div>
 														<div class="col-sm-7 col-md-6"></div>
@@ -7951,12 +7991,13 @@ table{
 															&nbsp; 		
 														</div>
 														<div class="col-sm-5 col-md-6">
-															<div class="checkbox">
+															<!-- <div class="checkbox">
 																<label> <input type="checkbox" id="sCarTerms" name="sCarTerms"  ng-model="sCarTerms" required><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
 																			Conditions</span></a>.
 																</label>
 																<span style="color:red" ng-show="ebidservfrm.sCarTerms.$error.required && (!ebidservfrm.sCarTerms.$pristine || ebidservfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
-															</div>
+															</div> -->
+																By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
 														</div>
 													</div><br/>
 													<div class="row">
@@ -9190,12 +9231,13 @@ table{
 															&nbsp; 		
 														</div>
 														<div class="col-sm-5 col-md-6">
-															<div class="checkbox">
+															<!-- <div class="checkbox">
 																<label> <input type="checkbox" id="tCarTerms" name="tCarTerms"  ng-model="tCarTerms" required ><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
 																			Conditions</span></a>.
 																</label>
 																<span style="color:red" ng-show="ebidtransfrm.tCarTerms.$error.required && (!ebidtransfrm.tCarTerms.$pristine || ebidtransfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
-															</div>
+															</div> -->
+																By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
 														</div>
 													</div><br/>
 													<div class="row">
@@ -9870,12 +9912,13 @@ table{
 															&nbsp; 		
 														</div>
 														<div class="col-sm-4 col-md-4">
-															<div class="checkbox">
+															<!-- <div class="checkbox">
 																<label> <input type="checkbox" id="rCarTerms" name="rCarTerms"  ng-model="rCarTerms" required ><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
 																			Conditions</span></a>.
 																</label>
 																<span style="color:red" ng-show="ebidregostatefrm.rCarTerms.$error.required && (!ebidregostatefrm.rCarTerms.$pristine || ebidregostatefrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
-															</div>
+															</div> -->
+																By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
 														</div>
 													</div><br/>
 
@@ -10868,7 +10911,7 @@ table{
 
                     } else {
 
-                    	alert("Successfully uploaded for transpo image1 to S3");
+                    	//alert("Successfully uploaded for transpo image1 to S3");
                         listObjs();
 
 
@@ -10880,8 +10923,8 @@ table{
 
             } else {
 
-            	alert("Nothing to  uploaded for transpo image1");
-                results.innerHTML = 'Nothing to upload to file1';
+            	//alert("Nothing to  uploaded for transpo image1");
+                //results.innerHTML = 'Nothing to upload to file1';
 
 
             }
@@ -10928,7 +10971,7 @@ table{
 
                     } else {
 
-                    	alert("Successfully uploaded transpo image2 to s3");
+                    	//alert("Successfully uploaded transpo image2 to s3");
                         listObjs();
 
 
@@ -10940,7 +10983,7 @@ table{
 
             } else {
 
-            	alert("Nothing to upload for transpo image2");
+            	//alert("Nothing to upload for transpo image2");
                 results.innerHTML = 'Nothing to upload for file2..';
 
 
@@ -10954,7 +10997,7 @@ table{
 
         button.addEventListener('click', function () {
 
-			alert("Preparing to Upload Service & Maintenance photos..");
+			//alert("Preparing to Upload Service & Maintenance photos..");
             var file = fileChooser.files[0];
             var file2 = fileChooserLogExp.files[0];
             var file3 = fileChooserlogservmaint.files[0];
@@ -11001,7 +11044,7 @@ table{
 
                     } else {
 
-                    	alert("Successfully upload serv and maint image1 to S3");
+                    	//alert("Successfully upload serv and maint image1 to S3");
                         listObjs();
 
 
@@ -11024,8 +11067,8 @@ table{
 
             } else {
 
-            	alert("Nothing to upload for serv and maint image1");
-                results.innerHTML = 'Nothing to upload for serv and maint image1.';
+            	/* alert("Nothing to upload for serv and maint image1");
+                results.innerHTML = 'Nothing to upload for serv and maint image1.'; */
 
 
             }
@@ -11033,7 +11076,7 @@ table{
             // for service maint 2 start
             if (file2) {
 
-            	alert("came here on click of save for serv and maint2");
+            	//alert("came here on click of save for serv and maint2");
                 results.innerHTML = '';
 
 
@@ -11072,7 +11115,7 @@ table{
 
                     } else {
 
-                    	alert("Successfully upload serv and maint image2 to S3");
+                    	//alert("Successfully upload serv and maint image2 to S3");
                         listObjs();
 
 
@@ -11083,8 +11126,8 @@ table{
 
 
             } else {
-            	alert("Nothing to upload for serv and maint image4");
-                results.innerHTML = 'Nothing to upload for file2..';
+            	/* alert("Nothing to upload for serv and maint image4");
+                results.innerHTML = 'Nothing to upload for file2..'; */
 
 
             }
@@ -11093,7 +11136,7 @@ table{
             // for serv maint 3
             if (file3) {
 
-            	alert("came here on click of save for serv and maint3");
+            	//alert("came here on click of save for serv and maint3");
                 results.innerHTML = '';
 
 
@@ -11131,7 +11174,7 @@ table{
                         alert("not able to upload serv and maint image3"+err);
 
                     } else {
-                    	alert("Successfully upload serv and maint image3 to S3");
+                    	//alert("Successfully upload serv and maint image3 to S3");
 
                         listObjs();
 
@@ -11151,9 +11194,9 @@ table{
 
             } else {
 
-            	alert("Nothing to upload for serv and maint image3");
+            	/* alert("Nothing to upload for serv and maint image3");
                 results.innerHTML = 'Nothing to upload for file 3';
-
+ */
 
             }
             // end 
@@ -11162,7 +11205,7 @@ table{
             // for serv main 4
             if (file4) {
 
-            	alert("came here on click of save for serv and maint4");
+            	//alert("came here on click of save for serv and maint4");
                 results.innerHTML = '';
 
 
@@ -11201,7 +11244,7 @@ table{
 
                     } else {
 
-                    	 alert("Successfully upload serv and maint image4 to s3");
+                    	 //alert("Successfully upload serv and maint image4 to s3");
                         listObjs();
 
 
@@ -11209,7 +11252,7 @@ table{
 
 
                 });
-                 alert("before retrieve changed12");
+                 //alert("before retrieve changed12");
                  /* var s3 = new AWS.S3(); */
 
                  /* bucket.getObject(
@@ -11228,9 +11271,9 @@ table{
  
 
             } else {
-            	alert("Nothing upload for serv and maint image4");
+            	/* alert("Nothing upload for serv and maint image4");
 
-                results.innerHTML = 'Nothing to upload for file 4';
+                results.innerHTML = 'Nothing to upload for file 4'; */
 
 
             }
@@ -11330,9 +11373,9 @@ table{
 
          */
          
-		alert("Setting up photo upload");
+		//alert("Setting up photo upload");
 		 FB.getLoginStatus(function(response) {
-         	alert("Succesfully set..");
+         	//alert("Succesfully set..");
 				if (response.status === 'connected') {
 					//alert("inside connected");
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
@@ -11491,10 +11534,10 @@ js.src = "http://connect.facebook.net/en_US/all.js";
        
        button.addEventListener('click', function () {
 
-			alert("came inside photo on click of retrieval24555");
+			//alert("came inside photo on click of retrieval24555");
            fbUserId = $.jStorage.get("fbKey");
-           	alert("came here on click of save for serv and maint2");
-                          alert("before retrieve changed12");
+           	//alert("came here on click of save for serv and maint2");
+                          //alert("before retrieve changed12");
                /* var s3 = new AWS.S3(); */
 
             // This URL will expire in one minute (60 seconds)
@@ -11521,9 +11564,9 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 
        
         
-		alert("Setting up Photo upload");
+		//alert("Setting up Photo upload");
 		 FB.getLoginStatus(function(response) {
-        	alert("Sucessfully setted");
+        	//alert("Sucessfully setted");
 				if (response.status === 'connected') {
 					//alert("inside connected");
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
@@ -11649,10 +11692,10 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 <div class="modal"><!-- Place at bottom of page --></div>
 <div class="signinmodal"><!-- Place at bottom of page --></div>
  <!-- terms & Conditions Modal -->
-  <div class="modal fade" id="termsnconditionsModal" role="dialog">
+<!--   <div class="modal fade" id="termsnconditionsModal" role="dialog">
     <div class="modal-dialog">
     
-      <!-- Modal content-->
+      Modal content
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -11667,7 +11710,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
       </div>
       
     </div>
-  </div>
+  </div> -->
   
 </div>
 
