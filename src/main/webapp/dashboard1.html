@@ -1600,7 +1600,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							        	<h4>Car Details</h4>
 							        	<!-- Vehiscle Start -->
 							        	<div class="row">
-										    <div class="col-md-6"><button id="CreateVehicleFormButton" onclick="myvehicleloadImage()" >Add new Vehicle</button></div>
+										    <div class="col-md-6"><button id="CreateVehicleFormButton" >Add new Vehicle</button></div>
 										    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
 										</div>
 							        	<div class="booking-section travelo-box" id="CreateVehicleForm">
@@ -2787,9 +2787,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
  //file-chooser3
         var fileChooser3 = document.getElementById('file-chooser3');
         var button = document.getElementById('upload-button');
-        var appId = '238604546585672';
+        var appId = '249863545451459';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -2807,7 +2807,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 		              });
 
 
-        button.addEventListener('click', function () {
+       /*  button.addEventListener('click', function () { */
 
 			//alert("came here on click of save");
             var file = fileChooser.files[0];
@@ -2840,17 +2840,18 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
                 bucket.putObject(params, function (err, data) {
-
+                	alert("Successfully started to Upload the photos"+file2.name+" Please don't refresh or switch from the dashboard.. This will take some time..");
 
                     if (err) {
 
 
                         //results.innerHTML = 'ERROR: ' + err;
-                    	alert("Not saved My Vehicle photo 2"+err);
+                    	//alert("Not saved My Vehicle photo 2"+err);
+                    	alert("Sorry we are not able to upload photo "+file2.name+"for My Vehicle add.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
 
                     } else {
 
-						//alert("Successfully saved My Vehicle photo 2 to S3");
+						alert("Successfully uploaded photo "+file2.name+" to database");
                        // listObjs();
 
 
@@ -2861,7 +2862,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
             } else {
-            	//alert("Nothing to upload for My Vehicle photo 2");
+            	alert("We found Nothing to upload for My Vehicle photo 2");
 
                 //results.innerHTML = 'Nothing to upload.';
 
@@ -2895,17 +2896,18 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
                 bucket.putObject(params, function (err, data) {
-
+                	alert("Successfully started to Upload the photos"+file3.name+" Please don't refresh or switch from the dashboard.. This will take some time..");
 
                     if (err) {
-                    	alert("Not saved My Vehicle photo 3"+err);
-
+                    	//alert("Not saved My Vehicle photo 3"+err);
+                    	alert("Sorry we are not able to upload photo "+file3.name+"for My Vehicle add.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
                         //results.innerHTML = 'ERROR: ' + err;
 
 
                     } else {
 
                     	//alert("Successfully saved My Vehicle photo 3 to s3");
+                    	alert("Successfully uploaded photo "+file3.name+" to database");
                         //listObjs();
 
 
@@ -2917,7 +2919,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
             } else {
 
-            	//alert("Nothing to upload for my vehicle photo 3");
+            	alert("We found Nothing to upload for my vehicle photo 3");
                 //results.innerHTML = 'Nothing to upload.';
 
 
@@ -2950,17 +2952,17 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
                 bucket.putObject(params, function (err, data) {
 
-
+                	alert("Successfully started to Upload the photos"+file.name+" Please don't refresh or switch from the homepage.. This will take some time..");
                     if (err) {
 
-                    	alert("Not saved My Vehicle photo 1"+err);
+                    	//alert("Not saved My Vehicle photo 1"+err);
                         /* results.innerHTML = 'ERROR: ' + err; */
-
+                    	alert("Sorry we are not able to upload photo "+file.name+"for My Vehicle add.. It failed with following error"+err+"However please send the photo to autoscoop support team which will upload and link it to your account thanks");
 
                     } else {
 
                     	//alert("Successfully saved My Vehicle photo 1 to s3");
-                    	
+                    	alert("Successfully uploaded photo "+file.name+" to database");
                         //listObjs();
 
 
@@ -2971,7 +2973,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
             } else {
-            	//alert("Nothing to upload for my vehicle photo1");
+            	alert("We found Nothing to upload for my vehicle photo1");
 
                 /* results.innerHTML = 'Nothing to upload.'; */
 
@@ -2979,7 +2981,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
             }
 
 
-        }, false);
+       /*  }, false); */
      
       
 
@@ -3002,6 +3004,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
             
             FB.getLoginStatus(function(response) {
             	//alert("Succesfully set..");
+            	alert("Successfully started to Upload the photos.. Please don't refresh or switch from the dashboard.. This will take some time..");
 				if (response.status === 'connected') {
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
 
@@ -3081,9 +3084,9 @@ js.src = "http://connect.facebook.net/en_US/all.js";
         var fileChooserLogExp = document.getElementById('file-chooser-lognewexp');
         
         
-        var appId = '238604546585672';
+        var appId = '249863545451459';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -3137,17 +3140,18 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 
 
                        bucket.putObject(params, function (err, data) {
-
+                    	   alert("Successfully started to Upload the photos"+file.name+" Please don't refresh or switch from the homepage.. This will take some time..");
 
                            if (err) {
 
-                           	alert("Not saved Log Expenses image"+err);
+                           	//alert("Not saved Log Expenses image"+err);
+                           	alert("Sorry we are not able to upload photo "+file.name+"for log expenses.. It failed with following error"+err+"However please send the photo to autoscoop support team which will upload and link it to your account thanks");
                                //results.innerHTML = 'ERROR: ' + err;
 
 
                            } else {
                            	//alert("Successfully saved Log Expenses Image into S3");
-
+                           	alert("Successfully uploaded photo "+file.name+" to database");
                                //listObjs();
 
 
@@ -3192,6 +3196,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
             
             
             FB.getLoginStatus(function(response) {
+            	 alert("Successfully started to Upload the photos.. Please don't refresh or switch from the dashboard.. This will take some time..");
             	//alert("Succesfully set..");
 				if (response.status === 'connected') {
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
@@ -3266,9 +3271,9 @@ js.src = "http://connect.facebook.net/en_US/all.js";
   	 {
 	  var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
      // var buttonlogservmaint = document.getElementById('upload-button-logservmaint');
-      var appId = '238604546585672';
+      var appId = '249863545451459';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -3320,16 +3325,18 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 
 
                 bucket.putObject(params, function (err, data) {
-
+                	alert("Successfully started to Upload the photos"+file.name+" Please don't refresh or switch from the homepage.. This will take some time..");
                 	//alert("came here on click of log service and maintenance14");
                     if (err) {
 
-                    	alert("Not saved service and maintenance1"+err);
+                    	//alert("Not saved service and maintenance1"+err);
+                    	alert("Sorry we are not able to upload photo "+file2.name+"for Log service and maintenance.. It failed with following error"+err+"However please send the photo to autoscoop support team which will upload and link it to your account thanks");
                         /* results.innerHTML = 'ERROR: ' + err; */
 
 
                     } else {
-                    	//alert("Successfully saved Service and Maintenance1 into S3");
+                    	//alert("Successfully saved log Service and Maintenance1 into S3");
+                    	 alert("Successfully uploaded photo "+file.name+" to database");
 
                         //listObjs();
 
@@ -3366,6 +3373,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
             
             FB.getLoginStatus(function(response) {
             	//alert("Succesfully set..");
+            	alert("Successfully started to Upload the photos.. Please don't refresh or switch from the dashboard.. This will take some time..");
 				if (response.status === 'connected') {
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
 
@@ -3445,9 +3453,9 @@ js.src = "http://connect.facebook.net/en_US/all.js";
         var buttonupdatesetting = document.getElementById('upload-button-updatesetting');
 
  
-        var appId = '238604546585672';
+        var appId = '249863545451459';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -3499,17 +3507,18 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 
 
                 bucket.putObject(params, function (err, data) {
-
+                	alert("Successfully started to Upload the photos"+file.name+" Please don't refresh or switch from the homepage.. This will take some time..");
 					//alert("inside putobject");
                     if (err) {
 
-                    	alert("Not saved update photo"+err);
+                    	//alert("Not saved update photo"+err);
                         /* results.innerHTML = 'ERROR: ' + err; */
-
+                    	alert("Sorry we are not able to upload photo "+file.name+"for update profile.. It failed with following error"+err+"However please send the photo to autoscoop support team which will upload and link it to your account thanks");
 
                     } else {
 
                     	//alert("Successfully saved image to S3..");
+                    	alert("Successfully uploaded photo "+file.name+" to database");
                         //alert(listObjs());
 
 
@@ -3543,6 +3552,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
             
             FB.getLoginStatus(function(response) {
             	//alert("Succesfully set..");
+            	alert("Successfully started to Upload the photos.. Please don't refresh or switch from the dashboard.. This will take some time..");
 				if (response.status === 'connected') {
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
 

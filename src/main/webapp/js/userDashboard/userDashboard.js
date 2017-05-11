@@ -115,10 +115,10 @@ $(document).ready(function(){
      //alert("before call12");
      //window.fbAsyncInit();
      //alert("before call12");
-      var appId = '238604546585672';
+      var appId = '249863545451459';
 
     //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 
 
       var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
@@ -759,7 +759,7 @@ var insQCt=result.insuranceQuotation.length;
         	               	registerEditDealerVehicleInsuranceModal();
         	               	registerEditDealerVehicleDetailModal();
         	               	registerEditDealerVehicleDetailLogBookModal();
-        	               	registerEditDealerVehicleexpnseModal();
+        	               	//registerEditDealerVehicleexpnseModal();
            } 
    	  }); 
    
@@ -1505,9 +1505,9 @@ function registerEditDealerVehicletranspModal(){
 		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
 
 		// start
-		var appId = '238604546585672';
+		var appId = '249863545451459';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -1745,9 +1745,9 @@ function registerEditDealerVehicleservmaintModal(){
 		var moveToUser1 = '<input type="checkbox" name="moveToUser1" />'; 
 		if(data.used)
 		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';  // come here*/
-		var appId = '238604546585672';
+		var appId = '249863545451459';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -2248,9 +2248,9 @@ function registerEditDealerVehicleDetailModal(){
 		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
 		
 		// start
-		var appId = '238604546585672';
+		var appId = '249863545451459';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -2908,9 +2908,9 @@ alert("came inside log expenses");
 										  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
 
 										// start
-										var appId = '238604546585672';
+										var appId = '249863545451459';
 									    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-									      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+									      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 									      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 									      AWS.config.region = 'us-east-1';
 									      var bucket = new AWS.S3({
@@ -3097,9 +3097,9 @@ alert("came inside log servmaint");
 										if(data.used)
 										  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
 										// start
-										var appId = '238604546585672';
+										var appId = '249863545451459';
 									    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-									      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+									      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 									      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 									      AWS.config.region = 'us-east-1';
 									      var bucket = new AWS.S3({
