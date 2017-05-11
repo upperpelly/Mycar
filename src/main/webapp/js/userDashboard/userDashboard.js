@@ -2820,7 +2820,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 										<td>' + data.variant + '</td></tr>\
 										</table>';*/
 									logTlen = result.myVehicleLogBook.length;
-									outLogT += '<tr><th>'+"Trip Type"+'</th><th>'+"TripStart Addr"+'</th><th>'+"TripEnd Addr"+'</th><th>'+"Trip Date"+'</th><th>'+"OdoMeter Start"+'</th><th>'+"OdoMeter End"+'</th><th>'+"No of Kms"+'</th><th>'+"Purpose of Trip"+'</th><th>'+"Driver Name"+'</th><th>'+"Trip Log Date"+'</th></tr>';
+									outLogT += '<tr><th>'+"Trip Type"+'</th><th>'+"TripStart Addr"+'</th><th>'+"TripEnd Addr"+'</th><th>'+"Trip Date"+'</th><th>'+"OdoMeter Start"+'</th><th>'+"OdoMeter End"+'</th><th>'+"No of Kms"+'</th><th>'+"Purpose of Trip"+'</th><th>'+"Driver Name"+'</th><th>'+"Trip Log Date"+'</th><th>'+'View/Update'+'</th></tr>';
 					           	    for(i=0;i<logTlen;i++)
 					          		 {
 					           	    	outLogT= outLogT+'<tr>'+'<td>'+result.myVehicleLogBook[i].tripType+'</td>'+'<td>'+result.myVehicleLogBook[i].fromLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].toLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].date+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterStartOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterEndOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].routeKm+'</td>'+'<td>'+result.myVehicleLogBook[i].tripDescription+'</td>'+'<td>'+result.myVehicleLogBook[i].flex1+'</td></tr>';
