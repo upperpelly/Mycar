@@ -730,7 +730,7 @@ h5 {
 	position: relative;
 }
 .search-section .nav-tabs .active:after {
-	background: #f9676b none repeat scroll 0 0;
+	background: #ff461b none repeat scroll 0 0;  /*#f9676b*/
     content: "";
     height: 20px;
     left: 40%;
@@ -744,12 +744,13 @@ h5 {
     width: 20px;
 }
 .search-section .nav-tabs > li > a {
-	color: #ffffff;
-	background: rgba(10, 49, 82, 0.5);
+	color: rgba(0,112,210,0.97);
+	background: #ddd;
 	letter-spacing: 1px;
 	font-weight: bold;
 	border-radius: 2px 2px 0 0;
-	margin-right: 4px;
+	/*margin-right: 4px;*/
+    min-width:103px;
 }
 .search-section .nav > li > a {
 	padding: 15px;
@@ -758,15 +759,15 @@ h5 {
 	margin-bottom: 0px;
 }
 .search-section .nav-tabs > li > a:hover {
-	color: #ffffff;
-	background: #f9676b;
+	color: rgba(0,112,210,0.97);
+	background: #ddd;
 	border: 1px solid transparent;
 }
 .search-section .nav-tabs > li.active > a, 
 .search-section .nav-tabs > li.active > a:focus, 
 .search-section .nav-tabs > li.active > a:hover {
 	color: #ffffff;
-	background: #f9676b;
+	background: #ff461b;/*#f9676b;*/
 	border: 1px solid transparent;
 }
 .search-section .tab-content {
@@ -777,7 +778,7 @@ h5 {
 .search-section label {
 	font-size: 12px;
     font-weight: 600;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 .search-section .form-control {
 	background-color: transparent;
@@ -818,8 +819,8 @@ h5 {
 	font-size: 18px;
 	display: block;
 	font-weight: 800;
-	text-transform: uppercase;
-	color: #f9676b;
+	/*text-transform: uppercase;*/
+	color: #ff461b;
 }
 .search-section .search-col-padding {
 	padding-top: 15px;
@@ -1072,7 +1073,7 @@ h5 {
 	padding: 45px 0px; 
 }
 .tran-search-box .tab-content {
-	background: rgba(10, 49, 82, 0.5);
+	background: rgba(81,72,62,1);
 	color: #fff;
 }
 .tran-search-box .tab-content .form-control,
@@ -1081,8 +1082,11 @@ h5 {
 	color: #07253F;
 	background: #fff;
 }
-.tran-search-box  .nav-tabs {
+/*.tran-search-box  .nav-tabs {
 	border-bottom: 4px solid #f9676b;
+}*/
+.tran-search-box  .nav-tabs {
+	border-bottom: 2px solid #ff461b;
 }
 @media (max-width: 991px) {
 	.offer-slider,

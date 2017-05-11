@@ -1,0 +1,236 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 05/05/2017 08:01
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 40px;
+font-style: normal;
+margin-left: 24px;
+}
+#userdash.flaticon-money:before {
+    content: "\f112";
+    margin-left:0px !important;
+}
+
+#userdash.flaticon-odometer-for-kilometers-and-speed-control:before {
+    content: "\f113";
+    
+    margin-left: 0px !important;
+}
+
+#userdash.flaticon-clipboard-with-pencil:before {
+    content: "\f115";
+    margin-left: 0px !important;
+}
+
+#userdash.flaticon-car-insurance-1:before {
+    content: "\f116";
+    margin-left: 0px !important;
+}
+
+#userdash.flaticon-car-repair:before {
+    content: "\f11b";
+    margin-left: 0px !important;
+}
+
+#userdash.flaticon-trailer:before {
+    content: "\f10b";
+    margin-left: 0px !important;
+}
+#userdash.flaticon-security:before {
+    content: "\f106";
+    margin-left: 0px !important;
+}
+#userdash.flaticon-mechanic:before {
+    content: "\f105";
+    margin-left: 0px !important;
+}
+#userdash.flaticon-evacuator:before {
+    content: "\f10e";
+    margin-left: 0px !important;
+}
+
+#usrleftnav.flaticon-auction:before {
+    content: "\f11a";
+    margin-left: 0px !important;
+    font-size: 25px !important;
+}
+#usrleftnav.flaticon-private-garage:before {
+    content: "\f103";
+    margin-left: 0px !important;
+    font-size: 25px !important;
+}
+#usrleftnav.flaticon-log-file-format-symbol:before {
+    content: "\f101";
+    margin-left: 0px !important;
+    font-size: 25px !important;
+}
+#usrleftnav.flaticon-clipboard-with-pencil:before {
+    content: "\f115";
+    font-size: 25px !important;
+    margin-left: 0px !important;
+}
+
+#left-nav.flaticon-money:before { content: "\f112"; font-size: 20px !important;}
+#left-nav.flaticon-odometer-for-kilometers-and-speed-control:before { content: "\f113"; font-size: 20px !important;}
+#left-nav.flaticon-clipboard-with-pencil:before { content: "\f115"; font-size: 20px !important;}
+#left-nav.flaticon-car-insurance-1:before { content: "\f116"; font-size: 20px !important;}
+#left-nav.flaticon-car-repair:before { content: "\f11b"; font-size: 20px !important;}
+#tabsicon.flaticon-trailer:before { content: "\f10b"; margin-left:0px !important; font-size: 13px !important;}
+#left-nav.flaticon-magnifying-glass:before { content: "\f108"; font-size: 20px !important;}
+#left-nav.flaticon-fuel-1:before { content: "\f109"; font-size: 20px !important;}
+#left-nav.flaticon-evacuator:before { content: "\f10e"; font-size: 20px !important;}
+#left-nav.flaticon-mechanic:before {
+    content: "\f105";
+    font-size: 20px !important;
+}
+#left-nav.flaticon-security:before {
+    content: "\f106";
+    font-size: 20px !important;
+}
+.flaticon-statement:before {
+    content: "\f100";
+    margin-left: 0px !important;
+    font-size: 25px !important;
+}
+
+.flaticon-log-file-format-symbol:before {
+    content: "\f101";
+}
+
+.flaticon-note:before {
+    content: "\f102";
+}
+
+.flaticon-private-garage:before {
+    content: "\f103";
+}
+
+.flaticon-garage-with-opened-door-and-a-car-inside:before {
+    content: "\f104";
+}
+
+.flaticon-mechanic:before {
+    content: "\f105";
+}
+
+.flaticon-security:before {
+    content: "\f106";
+}
+
+.flaticon-car-front-in-magnifier-glass:before {
+    content: "\f107";
+}
+
+.flaticon-magnifying-glass:before {
+    content: "\f108";
+}
+
+.flaticon-fuel-1:before {
+    content: "\f109";
+}
+
+.flaticon-fuel:before {
+    content: "\f10a";
+}
+
+.flaticon-trailer:before {
+    content: "\f10b";
+}
+
+.flaticon-delivery-truck:before {
+    content: "\f10c";
+}
+
+.flaticon-ship:before {
+    content: "\f10d";
+}
+
+.flaticon-evacuator:before {
+    content: "\f10e";
+}
+
+.flaticon-money-2:before {
+    content: "\f10f";
+}
+
+.flaticon-money-1:before {
+    content: "\f110";
+}
+
+.flaticon-business:before {
+    content: "\f111";
+}
+
+.flaticon-money:before {
+    content: "\f112";
+}
+
+.flaticon-odometer-for-kilometers-and-speed-control:before {
+    content: "\f113";
+}
+
+.flaticon-motorcycle:before {
+    content: "\f114";
+}
+
+.flaticon-clipboard-with-pencil:before {
+    content: "\f115";
+}
+
+.flaticon-car-insurance-1:before {
+    content: "\f116";
+}
+
+.flaticon-car-insurance:before {
+    content: "\f117";
+}
+
+.flaticon-transport-1:before {
+    content: "\f118";
+}
+
+.flaticon-bicycle:before {
+    content: "\f119";
+}
+
+.flaticon-auction:before {
+    content: "\f11a";
+}
+
+.flaticon-car-repair:before {
+    content: "\f11b";
+}
+
+.flaticon-transport:before {
+    content: "\f11c";
+}
+
+.flaticon-car:before {
+    content: "\f11d";
+}
+
+.flaticon-sedan-car-front:before {
+    content: "\f11e";
+}
