@@ -1087,7 +1087,7 @@ tr:hover{background-color:rgb(253, 183, 20);}
 }
 </script>
 <script>function showDiv4() {
-	fbloadphoto();
+	fbtranspServ();
 	
 	//alert("came here");
 	var carquery = new CarQuery();
@@ -1165,7 +1165,7 @@ tr:hover{background-color:rgb(253, 183, 20);}
 									fbAccessToken=response.authResponse.accessToken;
 									fbSess(fbUserId);
 									fbToken(fbAccessToken);
-									fbloadphoto();
+									fbinitilize();
 									/* document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>'; */
 									var url = '/me?fields=name,email';
 									FB.api(url, function(response) {
@@ -1301,7 +1301,7 @@ function onSignInG()
 {
 	gapi.load('auth2', function() {
 		  auth2 = gapi.auth2.init({
-		    client_id: '814821459166-2snv3tdshqgusiuhjnuoedrg0akt83ol.apps.googleusercontent.com',
+		    client_id: '814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com',
 		    });
 
 		  // Sign the user in, and then retrieve their ID.
@@ -1554,6 +1554,7 @@ $scope.submitForm1 = function() {
 		if(alreadyLogged()){
 				if(isValid)
 					{	
+					//fbtranspServ();
 							userId=$.jStorage.get('key').userId;
 							fbUserId=$.jStorage.get("fbKey");
 							var fileChoosertranp1 = document.getElementById('uploadPhotoTrans1');
@@ -1678,9 +1679,9 @@ $scope.submitForm1 = function() {
 									$body.removeClass("loading");
 									alert("successfully stored");
 									alert("Redirecting to Dashboard 12..");
-									var url="dashboard1.html";
+									var url="homepage10.html";
 									
-									window.location=url;
+									//window.location=url;
 									
 												});
 						    
@@ -1754,6 +1755,7 @@ $scope.submitForm1 = function() {
 		alert(email); */
 		if(alreadyLogged()){
 					if(isValid){
+						//fbloadphoto();
 									userId=$.jStorage.get('key').userId;
 									fbUserId=$.jStorage.get("fbKey");
 									//alert("inside insurance user id"+fbUserId);
@@ -1845,9 +1847,9 @@ $scope.submitForm1 = function() {
 											$body.removeClass("loading");
 											alert("successfully stored");
 											alert("Redirecting to Dashboard..");
-											var url="dashboard1.html";
+											var url="homepage10.html";
 											
-											window.location=url;
+											//window.location=url;
 											
 														});
 					}
@@ -3004,7 +3006,7 @@ table{
 														  var js, fjs = d.getElementsByTagName(s)[0];
 														  if (d.getElementById(id)) return;
 														  js = d.createElement(s); js.id = id;
-														  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=249863545451459";
+														  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=238604546585672";
 														  fjs.parentNode.insertBefore(js, fjs);
 														}(document, 'script', 'facebook-jssdk'));</script>
 													<div class="fb-like" data-href="https://www.facebook.com/autoscoop.com.au/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
@@ -10798,204 +10800,28 @@ table{
     </script> 
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
     <!-- <script src="//connect.facebook.net/en_US/all.js&appId=238604546585672" type="text/javascript"></script> -->
-	 <script type="text/javascript">
+     <script type="text/javascript">
 	 
-	 function fbloadphoto()
+	 function fbinitilize()
 	 {
        <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
-       //alert("before call12");
-       //window.fbAsyncInit();
-       //alert("before call12");
         var appId = '238604546585672';
-
       //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
         var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-
-
         var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
-
-
         AWS.config.region = 'us-east-1';
-
-
-
-
-
-
         var bucket = new AWS.S3({
-
-
             params: {
-
-
                 Bucket: bucketName
-
-
             }
-
-
         });
-
-
-        // start of transp
-        var fileChoosertransp1 = document.getElementById('uploadPhotoTrans1');
-        var fileChoosertransp1 = document.getElementById('uploadPhotoTrans2');
-
-        var buttontranp = document.getElementById('uploadPhotoTransbutton');
-        // end of transp
-        
-        
         var fileChooser = document.getElementById('uploadPhotoServ1');
-
-
-        var button = document.getElementById('uploadPhotoServbutton');
-        
         var fileChooserLogExp = document.getElementById('uploadPhotoServ2');
-       
-        
         var fileChooserlogservmaint = document.getElementById('uploadPhotoServ3');
-       
-        
+        var button = document.getElementById('uploadPhotoServbutton');
         var fileChooserupdateset = document.getElementById('uploadPhotoServ4');
         
-        
-
-        var results = document.getElementById('results');
-
-        // start of transp
-         buttontranp.addEventListener('click', function () {
-
-			alert("Preparing to upload Transport images...");
-            var file = fileChoosertransp1.files[0];
-            var file2 = fileChoosertransp1.files[0];
-           
-            fbUserId = $.jStorage.get("fbKey");
-            if (file) {
-
-            	//alert("came here on click of save for serv and maint1");
-                results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
-                var objKey = 'facebook-' + fbUserId + '/' + file.name;
-
-
-                var params = {
-
-
-                    Key: objKey,
-
-
-                    ContentType: file.type,
-
-
-                    Body: file,
-
-
-                    ACL: 'authenticated-read'
-
-
-                };
-
-
-                bucket.putObject(params, function (err, data) {
-
-
-                    if (err) {
-
-
-                        results.innerHTML = 'ERROR: ' + err;
-						alert("not able to upload transport image"+err);
-
-                    } else {
-
-                    	//alert("Successfully uploaded for transpo image1 to S3");
-                        listObjs();
-
-
-                    }
-
-
-                });
-
-
-            } else {
-
-            	//alert("Nothing to  uploaded for transpo image1");
-                //results.innerHTML = 'Nothing to upload to file1';
-
-
-            }
-            
-            // for service maint 2 start
-            if (file2) {
-
-            	//alert("came here on click of save for serv and maint2");
-                results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
-                var objKey = 'facebook-' + fbUserId + '/' + file2.name;
-
-
-                var params = {
-
-
-                    Key: objKey,
-
-
-                    ContentType: file.type,
-
-
-                    Body: file,
-
-
-                    ACL: 'authenticated-read'
-
-
-                };
-
-
-                bucket.putObject(params, function (err, data) {
-
-
-                    if (err) {
-
-
-                        results.innerHTML = 'ERROR: ' + err;
-                        alert("not able to upload transport image 2"+err);
-
-                    } else {
-
-                    	//alert("Successfully uploaded transpo image2 to s3");
-                        listObjs();
-
-
-                    }
-
-
-                });
-
-
-            } else {
-
-            	//alert("Nothing to upload for transpo image2");
-                results.innerHTML = 'Nothing to upload for file2..';
-
-
-            }
-            // end
-            
-            
-
-        }, false);
-        // end of transp
-
-        button.addEventListener('click', function () {
+        /* button.addEventListener('click', function () {
 
 			//alert("Preparing to Upload Service & Maintenance photos..");
             var file = fileChooser.files[0];
@@ -11004,359 +10830,101 @@ table{
             var file4 = fileChooserupdateset.files[0];
             fbUserId = $.jStorage.get("fbKey");
             if (file) {
-
-            	//alert("came here on click of save for serv and maint1 ccc");
-                results.innerHTML = '';
-
-
                 //Object key will be facebook-USERID#/FILE_NAME
-
-
                 var objKey = 'facebook-' + fbUserId + '/' + file.name;
-
-
                 var params = {
-
-
                     Key: objKey,
-
-
                     ContentType: file.type,
-
-
                     Body: file,
-
-
                     ACL: 'authenticated-read'
-
-
                 };
-
-
                 bucket.putObject(params, function (err, data) {
-
-
                     if (err) {
-
-
-                        results.innerHTML = 'ERROR: ' + err;
-                        alert("not able to upload serv and maint image1"+err);
-
+                        alert("Sorry we are not able to upload photo "+file.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
                     } else {
-
                     	//alert("Successfully upload serv and maint image1 to S3");
-                        listObjs();
-
-
+                    	alert("Successfully uploaded photo "+file.name+" to database");
                     }
-
-
                 });
-                //alert("before retrieve changed124");
-                /* var s3 = new AWS.S3(); */
-
-             // This URL will expire in one minute (60 seconds)
-             /* var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: 'facebook-102134387022737/341ext6.jpg', Expires: 60};
-             var url = bucket.getSignedUrl('getObject', params, function (err, url) {
-               if (url) {console.log("The URL is", url);
-               var profilePic
-           	profilePic = '<img width="270" height="263" alt="" src="'+url+'"'+'>';
-           	$("#profilePic").append(profilePic);
-               }
-             }); */
-
             } else {
-
-            	/* alert("Nothing to upload for serv and maint image1");
-                results.innerHTML = 'Nothing to upload for serv and maint image1.'; */
-
-
+            	alert("Nothing to upload for serv and maint image1");
             }
             
             // for service maint 2 start
             if (file2) {
 
-            	//alert("came here on click of save for serv and maint2");
-                results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
-                var objKey = 'facebook-' + fbUserId + '/' + file2.name;
-
-
+            	 var objKey = 'facebook-' + fbUserId + '/' + file2.name;
                 var params = {
-
-
                     Key: objKey,
-
-
                     ContentType: file2.type,
-
-
                     Body: file2,
-
-
                     ACL: 'authenticated-read'
-
-
                 };
-
-
                 bucket.putObject(params, function (err, data) {
-
-
                     if (err) {
-
-
-                        results.innerHTML = 'ERROR: ' + err;
-                        alert("not able to upload serv and maint image2"+err);
-
+                  //alert("not able to upload serv and maint image2"+err);
+                  alert("Sorry we are not able to upload photo "+file2.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
                     } else {
-
                     	//alert("Successfully upload serv and maint image2 to S3");
-                        listObjs();
-
-
+                    	alert("Successfully uploaded photo "+file2.name+" to database");
                     }
-
-
                 });
 
 
             } else {
-            	/* alert("Nothing to upload for serv and maint image4");
-                results.innerHTML = 'Nothing to upload for file2..'; */
-
-
-            }
+            	alert("We found Nothing to upload for serv and maint image2");
+              }
             // end
             
             // for serv maint 3
             if (file3) {
-
-            	//alert("came here on click of save for serv and maint3");
-                results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
-                var objKey = 'facebook-' + fbUserId + '/' + file3.name;
-
-
+            	       var objKey = 'facebook-' + fbUserId + '/' + file3.name;
                 var params = {
-
-
                     Key: objKey,
-
-
                     ContentType: file3.type,
-
-
                     Body: file3,
-
-
                     ACL: 'authenticated-read'
-
-
                 };
-
-
                 bucket.putObject(params, function (err, data) {
-
-
                     if (err) {
-
-
-                        results.innerHTML = 'ERROR: ' + err;
-                        alert("not able to upload serv and maint image3"+err);
-
+                        //alert("not able to upload serv and maint image3"+err);
+                        alert("Sorry we are not able to upload photo "+file3.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
                     } else {
                     	//alert("Successfully upload serv and maint image3 to S3");
-
-                        listObjs();
-
-
+                    	alert("Successfully uploaded photo "+file3.name+" to database");
                     }
-
-
                 });
-                //alert("before retrieve changed12");
-                /* var s3 = new AWS.S3(); */
-
-            /*  // This URL will expire in one minute (60 seconds)
-             var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: 'facebook-102134387022737/347ext1.jpg', Expires: 60};
-             var url = bucket.getSignedUrl('getObject', params, function (err, url) {
-               if (url) console.log("The URL is", url);
-             }); */
-
             } else {
+            	alert("We found Nothing to upload for serv and maint image3");
 
-            	/* alert("Nothing to upload for serv and maint image3");
-                results.innerHTML = 'Nothing to upload for file 3';
- */
 
             }
             // end 
-
-            
-            // for serv main 4
             if (file4) {
-
-            	//alert("came here on click of save for serv and maint4");
-                results.innerHTML = '';
-
-
-                //Object key will be facebook-USERID#/FILE_NAME
-
-
-                var objKey = 'facebook-' + fbUserId + '/' + file4.name;
-
-
+			  var objKey = 'facebook-' + fbUserId + '/' + file4.name;
                 var params = {
-
-
                     Key: objKey,
-
-
                     ContentType: file4.type,
-
-
                     Body: file4,
-
-
                     ACL: 'authenticated-read'
-
-
                 };
-
-
                 bucket.putObject(params, function (err, data) {
-
-
                     if (err) {
-
-
-                        results.innerHTML = 'ERROR: ' + err;
-                        alert("not able to upload serv and maint image4"+err);
-
+			 //alert("not able to upload serv and maint image4"+err);
+			 alert("Sorry we are not able to upload photo "+file4.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
                     } else {
-
                     	 //alert("Successfully upload serv and maint image4 to s3");
-                        listObjs();
-
-
+                    	 alert("Successfully uploaded photo "+file4.name+" to database");
                     }
-
-
                 });
-                 //alert("before retrieve changed12");
-                 /* var s3 = new AWS.S3(); */
-
-                 /* bucket.getObject(
-                  { Bucket: "elasticbeanstalk-us-east-1-675778862308", Key: "facebook-102134387022737/347ext1.jpg",  },
-                  function (error, data) {
-                    if (error != null) {
-                    	alert("if error found during retrieval changed");
-                      alert("Failed to retrieve an object: " + error);
-                    } else {
-                      alert("Loaded " + data.Body + " bytes");
-                      //data.Body;
-                      // do something with data.Body
-                    }
-                  }
-                ); */
- 
 
             } else {
-            	/* alert("Nothing upload for serv and maint image4");
-
-                results.innerHTML = 'Nothing to upload for file 4'; */
-
+            	alert("We found Nothing to upload for serv and maint image4");
 
             }
             // end
 
-        }, false);
-
- 
- 
- 
- 
-        function listObjs() {
-
-
-            var prefix = 'facebook-' + fbUserId;
-
-
-            bucket.listObjects({
-
-
-                Prefix: prefix
-
-
-            }, function (err, data) {
-
-
-                if (err) {
-
-
-                    results.innerHTML = 'ERROR: ' + err;
-
-
-                } else {
-
-
-                    var objKeys = "";
-
-
-                    data.Contents.forEach(function (obj) {
-
-
-                        objKeys += obj.Key + "<br>";
-
-
-                    });
-
-					//alert("came here"+objKeys);
-                    results.innerHTML = objKeys;
-                    //dashBoardPhotoUpdate(objKeys);
-                    //alert("inside dashboard");
-                   /*  var quotIdHiddenField = '<input type="hidden" name="userId" value="' + 99 + '" />';
-                	
-               	 
-                	
-                	
-                	var editDealerVehicleQuotationForm = '<form id="edit-dealer-vehicle-quotation-content-form"><table>\<tr><td>' + quotIdHiddenField + '</td></tr>\</table></form>';
-                	
-                	$(".edit-dealer-vehicle-quotation-content").html(editDealerVehicleQuotationForm);
-                	
-                	var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
-                
-                	$.ajax({  
-                		type: "POST",  
-                		url: "api/updatePhoto?_method=PUT",
-                		data: {"userId":99,"photo":"12GHJF"},
-                		contentType:'application/json',
-                		success: function(result){
-                			
-                			alert("Successfully upated photo to user");
-                			
-                		}
-                	}); */
-                	
-
-					
-
-                }
-
-
-            });
-
-
-        }
+        }, false); */
 
 
         /*!
@@ -11375,7 +10943,7 @@ table{
          
 		//alert("Setting up photo upload");
 		 FB.getLoginStatus(function(response) {
-         	//alert("Succesfully set..");
+         	alert("You are ready to upload photos..");
 				if (response.status === 'connected') {
 					//alert("inside connected");
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
@@ -11484,89 +11052,156 @@ js.src = "http://connect.facebook.net/en_US/all.js";
          
          }
     </script>
-    <script type="text/javascript">
     
-    // start of image download
+	 <script type="text/javascript">
 	 
-	 function fbdownloadImage()
+	 function fbloadphoto()
 	 {
-      <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
-      //alert("before call12");
-      //window.fbAsyncInit();
-      //alert("before call12");
-       var appId = '238604546585672';
-
-     //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-       var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-
-
-       var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
-
-
-       AWS.config.region = 'us-east-1';
-
-
-       var fileChooser = document.getElementById('uploadPhotoServ1');
-
-
-
-       var bucket = new AWS.S3({
-
-
-           params: {
-
-
-               Bucket: bucketName
-
-
-           }
-
-
-       });
-
-
-       
-       var button = document.getElementById('uploadPhotoServbutton');
-       var file = fileChooser.files[0];
-      
-       fbUserId = $.jStorage.get("fbKey");
-       
-       
-       button.addEventListener('click', function () {
-
-			//alert("came inside photo on click of retrieval24555");
-           fbUserId = $.jStorage.get("fbKey");
-           	//alert("came here on click of save for serv and maint2");
-                          //alert("before retrieve changed12");
-               /* var s3 = new AWS.S3(); */
-
-            // This URL will expire in one minute (60 seconds)
-                          var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: file.name+file.type, Expires: 60};
-                          var url = bucket.getSignedUrl('getObject', params, function (err, url) {
-                            if (url) {console.log("The URL is", url);
-                            var profilePic
-                        	profilePic = '<img width="270" height="263" alt="" src="'+url+'"'+'>';
-                        	$("#profilePic").append(profilePic);
-                            }
-                          });
-
-
-       }, false);
-
-
-/* function getUrl(){
-	 
-	 var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: 'facebook-102134387022737/347ext1.jpg', Expires: 60};
-    var url = bucket.getSignedUrl('getObject', params, function (err, url) {
-      if (url) console.log("The URL is", url);
-    });
-} */
-
-       
+       <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
+        var appId = '238604546585672';
+      //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+        var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+        var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+        AWS.config.region = 'us-east-1';
+        var bucket = new AWS.S3({
+            params: {
+                Bucket: bucketName
+            }
+        });
+        var fileChooser = document.getElementById('uploadPhotoServ1');
+        var fileChooserLogExp = document.getElementById('uploadPhotoServ2');
+        var fileChooserlogservmaint = document.getElementById('uploadPhotoServ3');
+        var button = document.getElementById('uploadPhotoServbutton');
+        var fileChooserupdateset = document.getElementById('uploadPhotoServ4');
         
-		//alert("Setting up Photo upload");
+        button.addEventListener('click', function () {
+
+			//alert("Preparing to Upload Service & Maintenance photos..");
+            var file = fileChooser.files[0];
+            var file2 = fileChooserLogExp.files[0];
+            var file3 = fileChooserlogservmaint.files[0];
+            var file4 = fileChooserupdateset.files[0];
+            fbUserId = $.jStorage.get("fbKey");
+            if (file) {
+                //Object key will be facebook-USERID#/FILE_NAME
+                var objKey = 'facebook-' + fbUserId + '/' + file.name;
+                var params = {
+                    Key: objKey,
+                    ContentType: file.type,
+                    Body: file,
+                    ACL: 'authenticated-read'
+                };
+                bucket.putObject(params, function (err, data) {
+                	alert("Successfully started to Upload the photos"+file.name+" Please don't refresh or switch from the homepage.. This will take some time..");
+                    if (err) {
+                        alert("Sorry we are not able to upload photo "+file.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                    } else {
+                    	//alert("Successfully upload serv and maint image1 to S3");
+                    	alert("Successfully uploaded photo "+file.name+" to database");
+                    }
+                });
+            } else {
+            	alert("We found Nothing to upload for serv and maint image1");
+            }
+            
+            // for service maint 2 start
+            if (file2) {
+
+            	 var objKey = 'facebook-' + fbUserId + '/' + file2.name;
+                var params = {
+                    Key: objKey,
+                    ContentType: file2.type,
+                    Body: file2,
+                    ACL: 'authenticated-read'
+                };
+                bucket.putObject(params, function (err, data) {
+                	alert("Successfully started to Upload the photos"+file2.name+" Please don't refresh or switch from the homepage.. This will take some time..");
+                    if (err) {
+                  //alert("not able to upload serv and maint image2"+err);
+                  alert("Sorry we are not able to upload photo "+file2.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                    } else {
+                    	//alert("Successfully upload serv and maint image2 to S3");
+                    	alert("Successfully uploaded photo "+file2.name+" to database");
+                    }
+                });
+
+
+            } else {
+            	alert("We found Nothing to upload for serv and maint image2");
+              }
+            // end
+            
+            // for serv maint 3
+            if (file3) {
+            	       var objKey = 'facebook-' + fbUserId + '/' + file3.name;
+                var params = {
+                    Key: objKey,
+                    ContentType: file3.type,
+                    Body: file3,
+                    ACL: 'authenticated-read'
+                };
+                bucket.putObject(params, function (err, data) {
+                	alert("Successfully started to Upload the photos"+file3.name+" Please don't refresh or switch from the homepage.. This will take some time..");
+                    if (err) {
+                        //alert("not able to upload serv and maint image3"+err);
+                        alert("Sorry we are not able to upload photo "+file3.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                    } else {
+                    	//alert("Successfully upload serv and maint image3 to S3");
+                    	alert("Successfully uploaded photo "+file3.name+" to database");
+                    }
+                });
+            } else {
+            	alert("We found Nothing to upload for serv and maint image3");
+
+
+            }
+            // end 
+            if (file4) {
+			  var objKey = 'facebook-' + fbUserId + '/' + file4.name;
+                var params = {
+                    Key: objKey,
+                    ContentType: file4.type,
+                    Body: file4,
+                    ACL: 'authenticated-read'
+                };
+                bucket.putObject(params, function (err, data) {
+                	alert("Successfully started to Upload the photos"+file4.name+" Please don't refresh or switch from the homepage.. This will take some time..");
+                    if (err) {
+			 //alert("not able to upload serv and maint image4"+err);
+			 alert("Sorry we are not able to upload photo "+file4.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                    } else {
+                    	 //alert("Successfully upload serv and maint image4 to s3");
+                    	 alert("Successfully uploaded photo "+file4.name+" to database");
+                    }
+                });
+
+            } else {
+            	alert("We found Nothing to upload for serv and maint image4");
+
+            }
+            // end
+
+        }, false);
+
+
+        /*!
+
+
+         * Login to your application using Facebook.
+
+
+         * Uses the Facebook SDK for JavaScript available here:
+
+
+         * https://developers.facebook.com/docs/javascript/gettingstarted/
+
+
+         */
+         
+		//alert("Setting up photo upload");
 		 FB.getLoginStatus(function(response) {
-        	//alert("Sucessfully setted");
+			 alert("Please select photos to upload..");
+         	
 				if (response.status === 'connected') {
 					//alert("inside connected");
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
@@ -11592,18 +11227,18 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 			},{
 				scope : 'email'
 			}); 
-       window.fbAsyncInit = function () {
-           FB.init({
+        window.fbAsyncInit = function () {
+            FB.init({
 
 
-               appId: appId
+                appId: appId
 
 
-           });
-           
-           
-           FB.getLoginStatus(function(response) {
-           	//alert("ruwususois");
+            });
+            
+            
+            FB.getLoginStatus(function(response) {
+            	//alert("ruwususois");
 				if (response.status === 'connected') {
 					//alert("inside connected");
 					bucket.config.credentials = new AWS.WebIdentityCredentials({
@@ -11631,53 +11266,251 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 			}); 
 
 
-          
+           
 
 
-       };
+        };
 
 		//alert("fb sta lod");
-        // Load the Facebook SDK asynchronously
+         // Load the Facebook SDK asynchronously
 
 
-       (function (d, s, id) {
+        (function (d, s, id) {
 
 
-           var js, fjs = d.getElementsByTagName(s)[0];
+            var js, fjs = d.getElementsByTagName(s)[0];
 
 
-           if (d.getElementById(id)) {
+            if (d.getElementById(id)) {
 
 
-               return;
+                return;
 
 
-           }
+            }
 
 
-           js = d.createElement(s);
+            js = d.createElement(s);
 
 
-           js.id = id;
+            js.id = id;
 
 
-           //js.src = "//connect.facebook.net/en_US/all.js";
+            //js.src = "//connect.facebook.net/en_US/all.js";
 
 js.src = "http://connect.facebook.net/en_US/all.js";
-           fjs.parentNode.insertBefore(js, fjs);
+            fjs.parentNode.insertBefore(js, fjs);
 
 
-       }(document, 'script', 'facebook-jssdk'));
+        }(document, 'script', 'facebook-jssdk'));
 
 
-        
-        
-        
-        }
-   
-    
-    
+         
+         
+         
+         }
     </script>
+     <script type="text/javascript">
+	 function fbtranspServ()
+	 {
+       <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
+            var appId = '238604546585672';
+      //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+        var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+        var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+        AWS.config.region = 'us-east-1';
+        var bucket = new AWS.S3({
+            params: {
+                Bucket: bucketName
+            }
+        });
+        // start of transp
+        var fileChoosertransp1 = document.getElementById('uploadPhotoTrans1');
+        var fileChoosertransp2 = document.getElementById('uploadPhotoTrans2');
+        var buttontranp = document.getElementById('uploadPhotoTransbutton');
+        // end of transp
+       var results = document.getElementById('results');
+        // start of transp
+         buttontranp.addEventListener('click', function () {
+			alert("Preparing to upload Transport images...");
+            var file = fileChoosertransp1.files[0];
+            var file2 = fileChoosertransp2.files[0];
+            fbUserId = $.jStorage.get("fbKey");
+            if (file) {
+            	//alert("came here on click of save for serv and maint1");
+                //Object key will be facebook-USERID#/FILE_NAME
+                var objKey = 'facebook-' + fbUserId + '/' + file.name;
+                var params = {
+                    Key: objKey,
+                    ContentType: file.type,
+                    Body: file,
+                    ACL: 'authenticated-read'
+                };
+                bucket.putObject(params, function (err, data) {
+                	alert("Successfully started to Upload the photos"+file.name+" Please don't refresh or switch from the homepage.. This will take some time..");
+                    if (err) {
+                    	//alert("not able to upload transport image"+err);
+                    	alert("Sorry we are not able to upload photo "+file.name+"for transport service.. It failed with following error "+err+"However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                    } else {
+
+                    	//alert("Successfully uploaded for transpo image1 to S3");
+                    	alert("Successfully uploaded photo "+file.name+" to database");
+                      
+                    }
+                });
+
+
+            } else {
+
+            	alert("We found Nothing to upload for transport server photo1");
+    
+            }
+            if (file2) {
+                var objKey = 'facebook-' + fbUserId + '/' + file2.name;
+                var params = {
+                    Key: objKey,
+                    ContentType: file2.type,
+                    Body: file2,
+                    ACL: 'authenticated-read'
+                };
+                bucket.putObject(params, function (err, data) {
+                	alert("Successfully started to Upload the photos"+file2.name+" Please don't refresh or switch from the homepage.. This will take some time..");
+                    if (err) {
+                        //alert("not able to upload transport image 2"+err);
+                        alert("Sorry we are not able to upload photo "+file2.name+"for transport service.. It failed with following error"+err+"However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                    } else {
+                    	//alert("Successfully uploaded transpo image2 to s3");
+                    	alert("Successfully uploaded photo "+file2.name+" to database");
+
+                    }
+                });
+            } else {
+
+            	alert("We found Nothing to upload for transport server photo2");
+            }
+        }, false);
+
+        /*!
+
+
+         * Login to your application using Facebook.
+
+
+         * Uses the Facebook SDK for JavaScript available here:
+
+
+         * https://developers.facebook.com/docs/javascript/gettingstarted/
+
+
+         */
+         
+		//alert("Setting up photo upload");
+		 FB.getLoginStatus(function(response) {
+			 alert("Please select photos to upload..");
+				if (response.status === 'connected') {
+					//alert("inside connected");
+					bucket.config.credentials = new AWS.WebIdentityCredentials({
+
+
+	                    ProviderId: 'graph.facebook.com',
+
+
+	                    RoleArn: roleArn,
+
+
+	                    WebIdentityToken: response.authResponse.accessToken
+
+
+	                });
+
+
+	                //fbUserId = response.authResponse.userID;
+
+
+	                button.style.display = 'block';
+				}
+			},{
+				scope : 'email'
+			}); 
+        window.fbAsyncInit = function () {
+            FB.init({
+
+
+                appId: appId
+
+
+            });
+            
+            
+            FB.getLoginStatus(function(response) {
+            	//alert("ruwususois");
+				if (response.status === 'connected') {
+					//alert("inside connected");
+					bucket.config.credentials = new AWS.WebIdentityCredentials({
+
+
+	                    ProviderId: 'graph.facebook.com',
+
+
+	                    RoleArn: roleArn,
+
+
+	                    WebIdentityToken: response.authResponse.accessToken
+
+
+	                });
+
+
+	                //fbUserId = response.authResponse.userID;
+
+
+	                button.style.display = 'block';
+				}
+			},{
+				scope : 'email'
+			}); 
+        };
+
+		//alert("fb sta lod");
+         // Load the Facebook SDK asynchronously
+
+
+        (function (d, s, id) {
+
+
+            var js, fjs = d.getElementsByTagName(s)[0];
+
+
+            if (d.getElementById(id)) {
+
+
+                return;
+
+
+            }
+
+
+            js = d.createElement(s);
+
+
+            js.id = id;
+
+
+            //js.src = "//connect.facebook.net/en_US/all.js";
+
+js.src = "http://connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+
+        }(document, 'script', 'facebook-jssdk'));
+
+
+         
+         
+         
+         }
+    </script>
+    
 	<script type="text/javascript">
         tjq(".flexslider").flexslider({
             animation: "fade",

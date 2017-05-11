@@ -759,6 +759,7 @@ var insQCt=result.insuranceQuotation.length;
         	               	registerEditDealerVehicleInsuranceModal();
         	               	registerEditDealerVehicleDetailModal();
         	               	registerEditDealerVehicleDetailLogBookModal();
+        	               	registerEditDealerVehicleexpnseModal();
            } 
    	  }); 
    
@@ -1585,7 +1586,65 @@ function registerEditDealerVehicletranspModal(){
 		editDealerVehicletranspForm = editDealerVehicletranspForm.replace(/>undefined</g, ">--NA--<");
 		$(".edit-dealer-vehicle-transp-content").html(editDealerVehicletranspForm);
           }
-          else{alert("not able to retrieve Trans serv"); alert("error"+err);}
+          else{
+        	  alert("not able to retrieve photo for Transport Service with error However you can view the other details"+err); 
+          
+          //alert("successfully retrieved 12.."+url); 
+         
+          var editDealerVehicletranspForm = '<form id="edit-dealer-vehicle-transp-content-form">\
+			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+			<table>\
+			<tr><td>Search ID</td><td>' + data.searchTranspId + '</td></tr>\
+			<tr><td>' + quotIdHiddenField + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Looking To Move</div></div>\
+			<tr><td>Type Of Vehicle</td><td>' + data.transTypeReq + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">From</div></div>\
+			<tr><td>Post Code</td><td>' + data.fromPostCodeAddr + '</td></tr>\
+			<tr><td>Street No</td><td>' + data.fromStreetNo + '</td></tr>\
+			<tr><td>Street Name</td><td>' + data.fromStreetName + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">To</div></div>\
+			<tr><td>Post Code</td><td>' + data.toPostCodeAddr + '</td></tr>\
+			<tr><td>Street No</td><td>' + data.toStreetNo + '</td></tr>\
+			<tr><td>Street Name</td><td>' + data.toStreetName + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Transport Stuff</div></div>\
+			<tr><td>When do You want THIS to be picked up & delivered?</td><td>' + data.pickUpDateTime + '</td></tr>\
+			<tr><td>What kin of transport You need?</td><td>' + data.toStreetName + '</td></tr>\
+			<tr><td>I am Flexible</td><td>' + data.flexWithDateDefault + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Vehicle Stuff</div></div>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Car Registration</b></h6>\
+			<tr><td>Rego No</td><td>' + data.regoNo + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Vehicle Details</b></h6>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
+			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+			<tr><td>Free Text</td><td>' + data.freeText + '</td></tr>\
+			</table>\
+			</form>';
+		editDealerVehicletranspForm = editDealerVehicletranspForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicletranspForm = editDealerVehicletranspForm.replace(/>undefined</g, ">--NA--<");
+		$(".edit-dealer-vehicle-transp-content").html(editDealerVehicletranspForm);
+          }
         });
 		//alert("url1 new changes"+url1);
 
@@ -1747,7 +1806,45 @@ function registerEditDealerVehicleservmaintModal(){
 		editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>undefined</g, ">--NA--<");
 		$(".edit-dealer-vehicle-servmaint-content").html(editDealerVehicleservmaintForm);
           }
-          else{alert("not able to retrieve serv and Maint"); alert("error"+err);}
+          else{
+        	  alert("not able to retrieve photo for serv and Maint however you an view other details"+err); 
+          //alert("successfully retrieved 12.."+url); 
+         
+          var editDealerVehicleservmaintForm = '<form id="edit-dealer-vehicle-servmaint-content-form">\
+			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+			<table>\
+			<tr><td>Search ID</td><td>' + data.searchServMaintId + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">I am Looking For</div></div>\
+			<tr><td>Service</td><td>' + data.lookService + '</td></tr>\
+			<tr><td>Service & Maintenance Level 1</td><td>' + data.servMaintL1 + '</td></tr>\
+			<tr><td>Service & Maintenance Level 2</td><td>' + data.servMaintL2 + '</td></tr>\
+			<tr><td>Add Notes</td><td>' + data.freeText + '</td></tr>\
+			</table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Details</div></div>\
+			<table>\
+			<br/>\
+			<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
+			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+			<tr><td>Fuel Type</td><td>' + data.feulType + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">is the Car covered under Insurance</div></div>\
+			<table>\
+			<tr><td>Covered Under Insurance</td><td>' + data.coveredUnderIns + '</td></tr>\
+			<tr><td>Current Insurance Provider</td><td>' + data.curInsProv + '</td></tr>\
+			</table></form>';
+		editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>undefined</g, ">--NA--<");
+		$(".edit-dealer-vehicle-servmaint-content").html(editDealerVehicleservmaintForm);
+          
+          }
         });
 		//alert("url1 new changes"+url1);
 		
@@ -1930,6 +2027,9 @@ function registerEditDealerVehicleFinanceModal(){
 
 	
 }	
+
+
+
 
 function registerEditDealerVehicleInsuranceModal(){       
 
@@ -2226,7 +2326,62 @@ function registerEditDealerVehicleDetailModal(){
 		editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>undefined</g, ">--NA--<");
 		$(".edit-dealer-vehicle-detail-content").html(editDealerVehicleDetailForm);
           }
-          else{alert("not able to retrieve Trans serv"); alert("error"+err);}
+          else{
+          alert("not able to retrieve photo for My Vehicle however you an view other details"+err); 
+          //alert("successfully retrieved 12.."+url); 
+          
+          var editDealerVehicleDetailForm = '<form id="edit-dealer-vehicle-detail-content-form"><table>\
+			<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+			<tr><td>My Vehicle ID</td><td>' + data.myVehicleId + '</td></tr>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Basic info</div></div>\
+			<tr><td>Vehicle Type</td><td>' + data.fuelType + '</td></tr>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model</td><td>' + data.model + '</td></tr>\
+			<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Vehicle Identity</b></h6>\
+			<tr><td>VIN/HIN Number</td><td>' + data.vin + '</td></tr>\
+			<tr><td>Rego No</td><td>' + data.regNum + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regState + '</td></tr>\
+			<tr><td>Rego End Date</td><td>' + data.regExpDate + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Insurance Details</div></div>\
+			<tr><td>Insurance Provider</td><td>' + data.insProv + '</td></tr>\
+			<tr><td>Insurance End Date</td><td>' + data.insExpiry + '</td></tr>\
+			<tr><td>Insurance Premium Paid</td><td>'+ data.insPremPaid + '</td></tr>\
+			<tr><td>Insurance Reminder</td><td>'+ data.insRemind + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Maintenance Details</div></div>\
+			<tr><td>Last Service @Kms</td><td>' + data.odoMeter + '</td></tr>\
+			<tr><td>Last Service Dt</td><td>' + data.lastServiceDt + '</td></tr>\
+			<tr><td>Next Service Dt</td><td>' + data.nextServiceDt + '</td></tr>\
+			<tr><td>Next Service @Kms</td><td>' + data.nextServKms + '</td></tr>\
+			<tr><td>Insurance Reminder</td><td>'+ data.maiRemind + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Finance Info</div></div>\
+			<tr><td>Finance Provider</td><td>' + data.finProvider + '</td></tr>\
+			<tr><td>Loan Taken Date</td><td>' + data.loanTakenDt + '</td></tr>\
+			<tr><td>Loan Amount</td><td>' + data.loanAmt1 + '</td></tr>\
+			<tr><td>Loan Period</td><td>' + data.loanPeriod + '</td></tr>\
+			<tr><td>Insurance Reminder</td><td>'+ data.finRemind + '</td></tr>\
+			</table>\
+			<br/>\
+			</table></form>';
+		editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>null</g, ">--NA--<");
+		editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>undefined</g, ">--NA--<");
+		$(".edit-dealer-vehicle-detail-content").html(editDealerVehicleDetailForm);
+          
+          }
         });
 		//alert("url1 new changes"+url1);
 
@@ -2698,7 +2853,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 									outLogE += '<tr><th>'+"Expensive Type"+'</th><th>'+"Expensive Category"+'</th><th>'+"Expensive Date"+'</th><th>'+"Expensive Description"+'</th><th>'+"Amount"+'</th><th>'+"Uploaded Photo"+'</th></tr>';
 					           	    for(i=0;i<logElen;i++)
 					          		 {
-					           	    	outLogE= outLogE+'<tr>'+'<td>'+result.myVehicleFuelExpenses[i].recordType+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].business+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].date+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].others+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].amount+'</td>'+'<td><a target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Click to enlarge" href="'+result.myVehicleFuelExpenses[i].photoOfInvoice+'">'+'<img src="'+result.myVehicleFuelExpenses[i].photoOfInvoice+'" alt="invoice" data-toggle="tooltip" data-placement="top"  data-original-title="Click to enlarge" style="width:50px;height:25px"></a>'+'</td></tr>';
+					           	    	outLogE= outLogE+'<tr>'+'<td>'+result.myVehicleFuelExpenses[i].recordType+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].business+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].date+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].others+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].amount+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleexpnsModal-' + result.myVehicleFuelExpenses[i].myVehicleFuelExpensesId + '" data-details=\'' + JSON.stringify(result.myVehicleFuelExpenses[i]) + '\' class="anchor-editDealerVehicleexpnsModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleexpnsModal">View</a></td></tr>';
 					          		 }
 					           	 outLogE = outLogE.replace(/>null</g, ">--NA--<");
 					           	outLogE = outLogE.replace(/>undefined</g, ">--NA--<");
@@ -2709,8 +2864,166 @@ mainApp1.controller('myController13',function($scope, $http) {
 								outLogE='<h2>No records for log Expenses</h2>';
 								}
 								$('#logExpTable').html(outLogE);
-								
-								
+								registerEditDealerVehicleexpnsModal();
+								// start of logexpenses
+								function registerEditDealerVehicleexpnsModal(){       
+
+alert("came inside log expenses");
+									//Add a Bootstrap Modal DIV to vehicle expns Details
+									var editDealerVehicleexpnsModal = '<div class="modal fade" id="editDealerVehicleexpnsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+									    <div class="modal-dialog">\
+									        <div class="modal-content">\
+									            <div class="modal-header">\
+									                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+									                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+									            </div>\
+												<h4 class="modal-title" id="myModalLabel"><center>View Log Expenses Details</center></h4>\
+										        <form id="edit-dealer-vehicle-expns-content-form">\
+												<div class="modal-body edit-dealer-vehicle-expns-content">\
+									            </div>\
+									            <div class="modal-footer">\
+									                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+												</div>\
+									            </form>\
+									        	<p><center>&copy; 2017 Autoscoop</center></p>\
+									        </div>\
+									    </div>\
+									</div>';
+
+									$(document.body).append(editDealerVehicleexpnsModal);
+									
+										
+									$('a.anchor-editDealerVehicleexpnsModal').on('click', function(event) {
+										
+										
+										var data = $(event.target).data('details');
+										//var json = JSON.stringify(data);
+										
+										var quotIdHiddenField = '<input type="hidden" name="myVehicleFuelExpensesId" value="' + data.myVehicleFuelExpensesId + '" />';
+										/*var moveToUser = '<input type="checkbox" name="moveToUser" />'; */
+										/*if(data.newer)
+										  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+										var moveToUser1 = '<input type="checkbox" name="moveToUser1" />'; 
+										if(data.used)
+										  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
+
+										// start
+										var appId = '238604546585672';
+									    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+									      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+									      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+									      AWS.config.region = 'us-east-1';
+									      var bucket = new AWS.S3({
+									          params: {
+									              Bucket: bucketName
+									          }
+									      });
+									     //alert("bis fdscuifsdf t");
+									     accessToken = $.jStorage.get("fbAToken");
+									     //alert(accessToken);
+												bucket.config.credentials = new AWS.WebIdentityCredentials({
+										                  ProviderId: 'graph.facebook.com',
+										                  RoleArn: roleArn,
+										                  WebIdentityToken: accessToken
+										              });
+												fbUserId = $.jStorage.get("fbKey");
+												//alert("Trying to retrieve photo for Serv and Maint..");
+									          fbUserId = $.jStorage.get("fbKey");
+										//alert("new changes now");
+										url1=" ";
+										var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: data.photoOfInvoice, Expires: 60};
+								        bucket.getSignedUrl('getObject', params, function (err, url) {
+								          if (url) { //alert("successfully retrieved 12.."+url); 
+								          url1=url;
+								          var editDealerVehicleexpnsForm = '<form id="edit-dealer-vehicle-expns-content-form"><table>\
+								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+												<tr><td>Log Expense ID</td><td>' + data.myVehicleFuelExpensesId + '</td></tr>\
+												</table>\
+												<table>\
+												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Expense Details</div></div>\
+												<tr><td>Expensive Type</td><td>' + data.recordType + '</td></tr>\
+												<tr><td>Expensive Category</td><td>' + data.business + '</td></tr>\
+												<tr><td>Expensive Date</td><td>' + data.date + '</td></tr>\
+												<tr><td>Expensive Description</td><td>' + data.others + '</td></tr>\
+												<tr><td>Amount</td><td>' + data.amount + '</td></tr>\
+												</table>\
+												</form>';
+											editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>null</g, ">--NA--<");
+											editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>undefined</g, ">--NA--<");
+											$(".edit-dealer-vehicle-expns-content").html(editDealerVehicleexpnsForm);
+									
+								          }
+								          else{
+								        	  alert("not able to retrieve photo for Log expenses, However you can view other details"+err); 
+								          //alert("successfully retrieved 12.."+url); 
+								          
+								          var editDealerVehicleexpnsForm = '<form id="edit-dealer-vehicle-expns-content-form"><table>\
+								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+												<tr><td>Log Expense ID</td><td>' + data.myVehicleFuelExpensesId + '</td></tr>\
+												</table>\
+												<table>\
+												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Expense Details</div></div>\
+												<tr><td>Expensive Type</td><td>' + data.recordType + '</td></tr>\
+												<tr><td>Expensive Category</td><td>' + data.business + '</td></tr>\
+												<tr><td>Expensive Date</td><td>' + data.date + '</td></tr>\
+												<tr><td>Expensive Description</td><td>' + data.others + '</td></tr>\
+												<tr><td>Amount</td><td>' + data.amount + '</td></tr>\
+												</table>\
+												</form>';
+											editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>null</g, ">--NA--<");
+											editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>undefined</g, ">--NA--<");
+											$(".edit-dealer-vehicle-expns-content").html(editDealerVehicleexpnsForm);
+									
+								          
+								          }});
+										
+										/*var editDealerVehicleexpnsForm = '<form id="edit-dealer-vehicle-expns-content-form"><table>\
+											<tr><td>Log Expense ID</td><td>' + data.myVehicleFuelExpensesId + '</td></tr>\
+											</table>\
+											<table>\
+											<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Expense Details</div></div>\
+											<tr><td>Expensive Type</td><td>' + data.recordType + '</td></tr>\
+											<tr><td>Expensive Category</td><td>' + data.business + '</td></tr>\
+											<tr><td>Expensive Date</td><td>' + data.date + '</td></tr>\
+											<tr><td>Expensive Description</td><td>' + data.others + '</td></tr>\
+											<tr><td>Amount</td><td>' + data.amount + '</td></tr>\
+											</table>\
+											</form>';
+										editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>null</g, ">--NA--<");
+										editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>undefined</g, ">--NA--<");
+										$(".edit-dealer-vehicle-expns-content").html(editDealerVehicleexpnsForm);*/
+									});
+									
+										
+									$.fn.convertFormDataToJSON = function(){
+										var checkboxes = [];
+										$(this).find('input:checkbox:checked').each(function(){
+											checkboxes.push($(this).attr("name"));
+										});
+										var o = {};
+									    var a = this.serializeArray();
+									    $.each(a, function() {
+									        if (o[this.name] != undefined) {
+									            if (!o[this.name].push) {
+									                o[this.name] = [o[this.name]];
+									            }
+									            if($.inArray(this.name, checkboxes) != -1)
+									              o[this.name].push('true' || '');
+									            else
+									            	o[this.name].push(this.value || '');
+									        } else {
+									        	if($.inArray(this.name, checkboxes) != -1)
+									        		o[this.name] = 'true' || '';
+										        else
+										           	o[this.name] = this.value || '';
+									        }
+									    });
+									    return JSON.stringify(o);
+									}
+
+									
+								}	
+								//end of logexpenses
 								
 								//alert(result.myVehicleServMaint.length);
 								var LogS = result.myVehicleServMaint;
@@ -2731,7 +3044,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 										
 					           	    for(i=0;i<logSlen;i++)
 					          		 {
-					           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].flex1+'</td>'+'<td>'+result.myVehicleServMaint[i].flex2+'</td>'+'<td>'+result.myVehicleServMaint[i].flex3+'</td><td>'+result.myVehicleServMaint[i].mechanicName+'</td>'+'<td>'+result.myVehicleServMaint[i].companyName+'</td><td><a target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Click to enlarge" href="'+result.myVehicleServMaint[i].uploadPhoto+'"><img src="'+result.myVehicleServMaint[i].uploadPhoto+'" alt="servMain" data-toggle="tooltip" data-placement="top" data-original-title="Click to enlarge" style="width:50px;height:25px"></a>'+'</td></tr>';
+					           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].flex1+'</td>'+'<td>'+result.myVehicleServMaint[i].flex2+'</td>'+'<td>'+result.myVehicleServMaint[i].flex3+'</td><td>'+result.myVehicleServMaint[i].mechanicName+'</td>'+'<td>'+result.myVehicleServMaint[i].companyName+'</td><td><a href="#" id="anchor-editDealerVehicleservmtModal-' + result.myVehicleServMaint[i].myVehicleServMaintId + '" data-details=\'' + JSON.stringify(result.myVehicleServMaint[i]) + '\' class="anchor-editDealerVehicleservmtModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmtModal">View</a></td></tr>';
 					          		 }
 					           	 outLogS = outLogS.replace(/>null</g, ">--NA--<");
 					           	outLogS = outLogS.replace(/>undefined</g, ">--NA--<");
@@ -2741,6 +3054,174 @@ mainApp1.controller('myController13',function($scope, $http) {
 								outLogS='<h2>No records for Service maintenance</h2>';
 								}
 								$('#logServMainTable').html(outLogS);
+								registerEditDealerVehicleservmtModal();
+								// start of logsermaint
+								function registerEditDealerVehicleservmtModal(){       
+
+alert("came inside log servmaint");
+									//Add a Bootstrap Modal DIV to vehicle expns Details
+									var editDealerVehicleservmtModal = '<div class="modal fade" id="editDealerVehicleservmtModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+									    <div class="modal-dialog">\
+									        <div class="modal-content">\
+									            <div class="modal-header">\
+									                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+									                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+									            </div>\
+												<h4 class="modal-title" id="myModalLabel"><center>View Log Service Maintenance Details</center></h4>\
+										        <form id="edit-dealer-vehicle-servmt-content-form">\
+												<div class="modal-body edit-dealer-vehicle-servmt-content">\
+									            </div>\
+									            <div class="modal-footer">\
+									                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+												</div>\
+									            </form>\
+									        	<p><center>&copy; 2017 Autoscoop</center></p>\
+									        </div>\
+									    </div>\
+									</div>';
+
+									$(document.body).append(editDealerVehicleservmtModal);
+									
+										
+									$('a.anchor-editDealerVehicleservmtModal').on('click', function(event) {
+										
+										
+										var data = $(event.target).data('details');
+										//var json = JSON.stringify(data);
+										
+										var quotIdHiddenField = '<input type="hidden" name="myVehicleServMaintId" value="' + data.myVehicleServMaintId + '" />';
+										/*var moveToUser = '<input type="checkbox" name="moveToUser" />'; */
+										/*if(data.newer)
+										  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+										var moveToUser1 = '<input type="checkbox" name="moveToUser1" />'; 
+										if(data.used)
+										  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
+										// start
+										var appId = '238604546585672';
+									    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+									      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+									      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+									      AWS.config.region = 'us-east-1';
+									      var bucket = new AWS.S3({
+									          params: {
+									              Bucket: bucketName
+									          }
+									      });
+									     //alert("bis fdscuifsdf t");
+									     accessToken = $.jStorage.get("fbAToken");
+									     //alert(accessToken);
+												bucket.config.credentials = new AWS.WebIdentityCredentials({
+										                  ProviderId: 'graph.facebook.com',
+										                  RoleArn: roleArn,
+										                  WebIdentityToken: accessToken
+										              });
+												fbUserId = $.jStorage.get("fbKey");
+												//alert("Trying to retrieve photo for Serv and Maint..");
+									          fbUserId = $.jStorage.get("fbKey");
+										//alert("new changes now");
+										url1=" ";
+										var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: data.uploadPhoto, Expires: 60};
+								        bucket.getSignedUrl('getObject', params, function (err, url) {
+								          if (url) { //alert("successfully retrieved 12.."+url); 
+								          url1=url;
+								          var editDealerVehicleservmtForm = '<form id="edit-dealer-vehicle-servmt-content-form"><table>\
+								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+												<tr><td>Log Expense ID</td><td>' + data.myVehicleServMaintId + '</td></tr>\
+												</table>\
+												<table>\
+												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
+												<tr><td>Type of Service</td><td>' + data.typeOfServMaint + '</td></tr>\
+												<tr><td>Date of Service</td><td>' + data.date + '</td></tr>\
+												<tr><td>Mileage / ODO Meter @Service</td><td>' + data.odoMeterKm + '</td></tr>\
+												<tr><td>Detail Work Performed</td><td>' + data.flex1 + '</td></tr>\
+												<tr><td>List of Service</td><td>' + data.flex2 + '</td></tr>\
+												<tr><td>Notes</td><td>' + data.flex3 + '</td></tr>\
+												<tr><td>Technician</td><td>' + data.mechanicName + '</td></tr>\
+												<tr><td>Service and Maintenance Company</td><td>' + data.companyName + '</td></tr>\
+												</table>\
+												</form>';
+											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
+											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>undefined</g, ">--NA--<");
+											$(".edit-dealer-vehicle-servmt-content").html(editDealerVehicleservmtForm);
+									
+								          }
+								          else{alert("not able to retrieve photo for serv and maintenance, However you can view other details "+err)
+								          //alert("successfully retrieved 12.."+url); 
+								          url1=url;
+								          var editDealerVehicleservmtForm = '<form id="edit-dealer-vehicle-servmt-content-form"><table>\
+								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+												<tr><td>Log Expense ID</td><td>' + data.myVehicleServMaintId + '</td></tr>\
+												</table>\
+												<table>\
+												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
+												<tr><td>Type of Service</td><td>' + data.typeOfServMaint + '</td></tr>\
+												<tr><td>Date of Service</td><td>' + data.date + '</td></tr>\
+												<tr><td>Mileage / ODO Meter @Service</td><td>' + data.odoMeterKm + '</td></tr>\
+												<tr><td>Detail Work Performed</td><td>' + data.flex1 + '</td></tr>\
+												<tr><td>List of Service</td><td>' + data.flex2 + '</td></tr>\
+												<tr><td>Notes</td><td>' + data.flex3 + '</td></tr>\
+												<tr><td>Technician</td><td>' + data.mechanicName + '</td></tr>\
+												<tr><td>Service and Maintenance Company</td><td>' + data.companyName + '</td></tr>\
+												</table>\
+												</form>';
+											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
+											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>undefined</g, ">--NA--<");
+											$(".edit-dealer-vehicle-servmt-content").html(editDealerVehicleservmtForm);
+									
+								          
+								          }});
+										
+										
+										/*var editDealerVehicleservmtForm = '<form id="edit-dealer-vehicle-servmt-content-form"><table>\
+											<tr><td>Log Expense ID</td><td>' + data.myVehicleServMaintId + '</td></tr>\
+											</table>\
+											<table>\
+											<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
+											<tr><td>Type of Service</td><td>' + data.typeOfServMaint + '</td></tr>\
+											<tr><td>Date of Service</td><td>' + data.date + '</td></tr>\
+											<tr><td>Mileage / ODO Meter @Service</td><td>' + data.odoMeterKm + '</td></tr>\
+											<tr><td>Detail Work Performed</td><td>' + data.flex1 + '</td></tr>\
+											<tr><td>List of Service</td><td>' + data.flex2 + '</td></tr>\
+											<tr><td>Notes</td><td>' + data.flex3 + '</td></tr>\
+											<tr><td>Technician</td><td>' + data.mechanicName + '</td></tr>\
+											<tr><td>Service and Maintenance Company</td><td>' + data.companyName + '</td></tr>\
+											</table>\
+											</form>';
+										editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
+										editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>undefined</g, ">--NA--<");
+										$(".edit-dealer-vehicle-servmt-content").html(editDealerVehicleservmtForm);*/
+									});
+									
+										
+									$.fn.convertFormDataToJSON = function(){
+										var checkboxes = [];
+										$(this).find('input:checkbox:checked').each(function(){
+											checkboxes.push($(this).attr("name"));
+										});
+										var o = {};
+									    var a = this.serializeArray();
+									    $.each(a, function() {
+									        if (o[this.name] != undefined) {
+									            if (!o[this.name].push) {
+									                o[this.name] = [o[this.name]];
+									            }
+									            if($.inArray(this.name, checkboxes) != -1)
+									              o[this.name].push('true' || '');
+									            else
+									            	o[this.name].push(this.value || '');
+									        } else {
+									        	if($.inArray(this.name, checkboxes) != -1)
+									        		o[this.name] = 'true' || '';
+										        else
+										           	o[this.name] = this.value || '';
+									        }
+									    });
+									    return JSON.stringify(o);
+									}
+
+									
+								}	
+								//end of logservmaint
 							}
 						});
 					}
@@ -2791,24 +3272,24 @@ mainApp1.controller('myController13',function($scope, $http) {
 							
 						
 							if(isValid){
-								
+								myvehicleloadImage();
 								var fileChooserMyVeh = document.getElementById('file-chooser');
 								var fileMyVeh = fileChooserMyVeh.files[0];
 								var objKeyMyVeh='noImage';
 								if(fileMyVeh){
-								objKeyMyVeh = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileMyVeh.name;}
+								objKeyMyVeh = 'facebook-' + fbUserId + '/' + fileMyVeh.name;}
 								
 								var fileChooserMyVeh2 = document.getElementById('file-chooser2');
 								var fileMyVeh2 = fileChooserMyVeh2.files[0];
 								var objKeyMyVeh2='noImage';
 								if(fileMyVeh2){
-								objKeyMyVeh2 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileMyVeh2.name;}
+								objKeyMyVeh2 = 'facebook-' + fbUserId + '/' + fileMyVeh2.name;}
 								
 								var fileChooserMyVeh3 = document.getElementById('file-chooser3');
 								var fileMyVeh3 = fileChooserMyVeh3.files[0];
 								var objKeyMyVeh3='noImage';
 								if(fileMyVeh3){
-								objKeyMyVeh3 = 'https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/'+'facebook-' + fbUserId + '/' + fileMyVeh3.name;}
+								objKeyMyVeh3 = 'facebook-' + fbUserId + '/' + fileMyVeh3.name;}
 									//alert("Image of MyVehicle"+objKeyMyVeh);
 								/*var RegExpDate= stringToDate($('#RegExpDate').val(),"dd/MM/yyyy","/");
 								var InsExpDate= stringToDate($('#InsExpDate').val(),"dd/MM/yyyy","/");
