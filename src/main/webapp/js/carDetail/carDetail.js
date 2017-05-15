@@ -186,13 +186,15 @@ var modelYear=null;
 														var jsonInputToAPI = 
 														{
 																"userId":userId,
+																"finance":value1.carEbidFinan,
+																"insurance":value1.carEbidInsur,
 																"searchLead":{
 																	"newer":value1.newCarEbid,
 																	"used":value1.usedCarEbid,
 																	"modelYear":value1.modelYear,
 																	"modelDisplay": value1.modelDisplay,
 																	"modelName": value1.modelName,															      
-																	"modelTrim": modelTrim,
+																	"modelTrim": value1.autoTrim,
 																	"sModel": value1.autoTrim,
 																			"carColor" : $('#carColor').val(),
 																			 "postCode":$('#postCode').val(),

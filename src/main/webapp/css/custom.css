@@ -22,7 +22,7 @@ margin-left:10px !important;
 margin-right:5px;
 }
 .h3-color{
-    color:#fff;
+    color:#fff !important;
 }
 .wlcm-msg{
     color:rgba(0,112,210,0.97);
@@ -37,4 +37,10 @@ margin-right:5px;
 .color-dark{
     color:#000000;
     font-size:14px;
+}
+.submit-bgcolor {
+    background-color: #33475C !important;
+}
+.accrdion-bgcolor {
+    background-color: #33475C !important;
 }

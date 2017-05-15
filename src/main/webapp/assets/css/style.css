@@ -729,55 +729,56 @@ h5 {
 .search-section .nav-tabs .active {
 	position: relative;
 }
-.search-section .nav-tabs .active:after {
-	background: #ff461b none repeat scroll 0 0;  /*#f9676b*/
-    content: "";
-    height: 20px;
-    left: 40%;
-    position: absolute;
-    top: 80%;
-    transform: rotate(45deg);
-	-webkit-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-    width: 20px;
-}
-.search-section .nav-tabs > li > a {
-	color: rgba(0,112,210,0.97);
-	background: #ddd;
-	letter-spacing: 1px;
-	font-weight: bold;
-	border-radius: 2px 2px 0 0;
-	/*margin-right: 4px;*/
-    min-width:103px;
-}
+    .search-section .nav-tabs .active:after {
+        background: #33475C none repeat scroll 0 0; /*#f9676b*/
+        content: "";
+        height: 20px;
+        left: 40%;
+        position: absolute;
+        top: 80%;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        width: 20px;
+    }
+    .search-section .nav-tabs > li > a {
+        color: #fff;
+        background: #B3B3B3;
+        letter-spacing: 1px;
+        /*font-weight: bold;*/
+        border-radius: 2px 2px 0 0;
+        font-size:14px;
+        /*margin-right: 4px;*/
+        /*min-width:103px;*/
+    }
 .search-section .nav > li > a {
 	padding: 15px;
 }
 .search-section .nav-tabs > li {
 	margin-bottom: 0px;
 }
-.search-section .nav-tabs > li > a:hover {
-	color: rgba(0,112,210,0.97);
-	background: #ddd;
-	border: 1px solid transparent;
-}
-.search-section .nav-tabs > li.active > a, 
-.search-section .nav-tabs > li.active > a:focus, 
-.search-section .nav-tabs > li.active > a:hover {
-	color: #ffffff;
-	background: #ff461b;/*#f9676b;*/
-	border: 1px solid transparent;
-}
+    .search-section .nav-tabs > li > a:hover {
+        color: #fff;
+        background: #33475C;
+        border: 1px solid transparent;
+    }
+    .search-section .nav-tabs > li.active > a,
+    .search-section .nav-tabs > li.active > a:focus,
+    .search-section .nav-tabs > li.active > a:hover {
+        color: #ffffff;
+        background: #33475C; /*#f9676b;*/
+        border: 1px solid transparent;
+    }
 .search-section .tab-content {
 	color: #07253F;
 	background: #fff;
 	padding: 30px 15px;
 }
 .search-section label {
-	font-size: 12px;
-    font-weight: 600;
+	font-size: 14px;
+    font-weight: bold;
     /*text-transform: uppercase;*/
 }
 .search-section .form-control {
@@ -815,13 +816,13 @@ h5 {
 	border-bottom: 1px solid #BEC4C8;
 	border-radius: 0;
 }
-.search-section .product-search-title {
-	font-size: 18px;
-	display: block;
-	font-weight: 800;
-	/*text-transform: uppercase;*/
-	color: #ff461b;
-}
+    .search-section .product-search-title {
+        font-size: 18px;
+        display: block;
+        font-weight: 800;
+        /*text-transform: uppercase;*/
+        color: #33475C;
+    }
 .search-section .search-col-padding {
 	padding-top: 15px;
 }
@@ -829,11 +830,11 @@ h5 {
 	color: #07253F;
 }
 #ui-datepicker-div {
-	background: #07253F;
+	background: #fff;
 	z-index: 9999 !important;
 }
 #ui-datepicker-div  table {
-	margin: 10px;
+	/*margin: 10px;*/
 }
 .ui-datepicker-calendar a {
 	padding: 5px;
@@ -853,7 +854,7 @@ h5 {
 	padding: 7px;
 }
 .ui-datepicker-header {
-	margin: 10px;
+	/*margin: 10px;*/
 }
 .ui-datepicker-header .ui-datepicker-title {
 	color: #ffffff;
@@ -1073,8 +1074,8 @@ h5 {
 	padding: 45px 0px; 
 }
 .tran-search-box .tab-content {
-	background: rgba(81,72,62,1);
-	color: #fff;
+    background: #fff;
+    color: #33475C;
 }
 .tran-search-box .tab-content .form-control,
 .tran-search-box .input-group-addon,
@@ -1085,8 +1086,8 @@ h5 {
 /*.tran-search-box  .nav-tabs {
 	border-bottom: 4px solid #f9676b;
 }*/
-.tran-search-box  .nav-tabs {
-	border-bottom: 2px solid #ff461b;
+.tran-search-box .nav-tabs {
+    border-bottom: 2px solid #33475C;
 }
 @media (max-width: 991px) {
 	.offer-slider,

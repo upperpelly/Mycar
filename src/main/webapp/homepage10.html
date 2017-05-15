@@ -876,6 +876,47 @@
             //OR,
             //$('input:checkbox.jpCheckbox').attr('checked','checked');
         }
+        var isChecked896 = true;
+
+        function allSelected896() {
+            //alert("inside check box");
+            // this line is for toggle the check
+            //isChecked = !isChecked;
+            if (isChecked896) {
+                document.getElementById("carEbidFinan").value = false;
+                isChecked896 = !isChecked896;
+            }
+            else {
+                document.getElementById("carEbidFinan").value = true;
+            }
+
+            //below line refers to 'jpCheckbox' class
+            //$('input:checkbox.jpCheckbox').attr('checked',isChecked);
+
+            //OR,
+            //$('input:checkbox.jpCheckbox').attr('checked','checked');
+        }
+        
+        var isChecked996 = true;
+
+        function allSelected996() {
+            //alert("inside check box");
+            // this line is for toggle the check
+            //isChecked = !isChecked;
+            if (isChecked996) {
+                document.getElementById("carEbidInsur").value = false;
+                isChecked996 = !isChecked996;
+            }
+            else {
+                document.getElementById("carEbidInsur").value = true;
+            }
+
+            //below line refers to 'jpCheckbox' class
+            //$('input:checkbox.jpCheckbox').attr('checked',isChecked);
+
+            //OR,
+            //$('input:checkbox.jpCheckbox').attr('checked','checked');
+        }
     </script>
     <script type="text/javascript">
         // <![CDATA[
@@ -1090,26 +1131,28 @@
             servicelevel.initInsuranceProviders('InsprovServ');
 
 
-}
-</script>
-<script>function showDiv4() {
-	fbtranspServ();
-	
-	//alert("came here");
-	var carquery = new CarQuery();
-	carquery.init();
-	//carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
-	//carquery.initYearMakeModelTrim('car-years-trans', 'car-makes-trans', 'car-models-trans', 'car-model-trims-trans','car-model-auto-trims-trans');
-	carquery.initYearMakeModelTrim('car-years-trans', 'car-makes-trans', 'car-models-trans', 'car-model-auto-trims-trans');
-}
-</script>
-<script>function showDiv2() {
-	//alert("came here");
-	var carquery = new CarQuery();
-	carquery.init();
-	//  carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin','car-model-auto-trims-fin' );
-	//carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin','car-model-auto-trims-fin');
-	carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-auto-trims-fin');
+        }
+    </script>
+    <script>
+        function showDiv4() {
+            fbtranspServ();
+
+            //alert("came here");
+            var carquery = new CarQuery();
+            carquery.init();
+            //carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
+            //carquery.initYearMakeModelTrim('car-years-trans', 'car-makes-trans', 'car-models-trans', 'car-model-trims-trans','car-model-auto-trims-trans');
+            carquery.initYearMakeModelTrim('car-years-trans', 'car-makes-trans', 'car-models-trans', 'car-model-auto-trims-trans');
+        }
+    </script>
+    <script>
+        function showDiv2() {
+            //alert("came here");
+            var carquery = new CarQuery();
+            carquery.init();
+            //  carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin','car-model-auto-trims-fin' );
+            //carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin','car-model-auto-trims-fin');
+            carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-auto-trims-fin');
 
             //carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
         }
@@ -1237,7 +1280,7 @@
     <script src="js/carquery.0.3.4.js" type="text/javascript"></script>
     <link rel="stylesheet" href="css12/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="css12/layout.css" type="text/css" media="all">
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <!--<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
     <script type="text/javascript" src="js/jquery-1.5.2.js"></script>
     <script type="text/javascript" src="js/cufon-yui.js"></script>
     <script type="text/javascript" src="js/cufon-replace.js"></script>
@@ -1246,7 +1289,7 @@
     <script type="text/javascript" src="js/jquery.jqtransform.js"></script>
     <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
     <script type="text/javascript" src="js/atooltip.jquery.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>-->
     <script src="js/carquery.0.3.4.js" type="text/javascript"></script>
 
 
@@ -2252,6 +2295,14 @@ $.ajax({
                     var usedCarEbid = false;
                     usedCarEbid = document.getElementById("usedCarEbid").value;
                     if (usedCarEbid == "on") usedCarEbid = false;
+                    
+                    var carEbidFinan = false;
+                    //alert(document.getElementById("newCarEbid").value);
+                    carEbidFinan = document.getElementById("carEbidFinan").value;
+                    if (carEbidFinan == "on") carEbidFinan = true;
+                    var carEbidInsur = false;
+                    carEbidInsur = document.getElementById("carEbidInsur").value;
+                    if (carEbidInsur == "on") carEbidInsur = true;
                     //alert(usedCarEbid);
                     //alert(newCarEbid);
                     /* var e = document.getElementById("car-model-trims");
@@ -2282,6 +2333,8 @@ $.ajax({
                                     data.autoTrim = autoTrim;
                                     data.newCarEbid = newCarEbid;
                                     data.usedCarEbid = usedCarEbid;
+                                    data.carEbidFinan = carEbidFinan;
+                                    data.carEbidInsur = carEbidInsur;
                                     carDetailHtml(data);
 
                                     /* var url="abc.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
@@ -2539,7 +2592,7 @@ $.ajax({
                 </span>
 
 
-                <div class="topnav">
+                <div class="topnav" style="float:right">
                     <ul class="quick-menu pull-left">
                         <li><button onClick="redirect()">ACCOUNT</button></li>
                     </ul>
@@ -2564,14 +2617,14 @@ $.ajax({
                         </a>
                     </div>
 
-                    <div id="welcomeDiv1" class="pull-right hidden-mobile" style="float: right;">
-                        <button class="btn-medium blue-bg soap-popupbox"
+                    <div id="welcomeDiv1" class="pull-right hidden-mobile">
+                        <!--<button class="btn-medium blue-bg soap-popupbox"
                                 data-target="#travelo-signup">
                             SIGNUP
-                        </button>
+                        </button>-->
                         <button class="btn-medium soap-popupbox"
                                 data-target="#travelo-login" id="login">
-                            LOGIN
+                            LOGIN/SIGNUP
                         </button>
                     </div>
                 </div>
@@ -3003,7 +3056,7 @@ $.ajax({
                                 </li>
                                 <li>
                                     <a href="#online-checkin-tab" data-toggle="tab">
-                                        <i id="left-nav" class="flaticon-clipboard-with-pencil"></i>Rego
+                                        <i id="left-nav" class="flaticon-clipboard-with-pencil PT10"></i>Rego
                                     </a>
                                 </li>
 
@@ -3013,11 +3066,11 @@ $.ajax({
                                 <ul id="mobile-search-tabs" class="search-tabs clearfix">
                                     <li class="active"><a href="#hotels-tab">Vehicles</a></li>
                                     <li><a href="#flights-tab">Browse</a></li>
-                                    <li><a href="#flight-and-hotel-tab">Finance</a></li>
-                                    <li><a href="#cars-tab">Insurance</a></li>
-                                    <li><a href="#cruises-tab">Serv & Maint</a></li>
+                                    <li><a href="#flight-and-hotel-tab" onclick="showDiv2()">Finance</a></li>
+                                    <li><a href="#cars-tab" onclick="showDiv1()">Insurance</a></li>
+                                    <li><a href="#cruises-tab" onclick="showDiv3()">Serv & Maint</a></li>
                                     <li><a href="#checkVehicle12456">Fuel</a></li>
-                                    <li><a href="#flight-status-tab">Transport</a></li>
+                                    <li><a href="#flight-status-tab" onclick="showDiv4()">Transport</a></li>
                                     <li><a href="#online-checkin-tab">Rego</a></li>
 
 
@@ -3099,12 +3152,12 @@ $.ajax({
                                                         <div class="col-sm-5 col-md-6">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" id="newCarEbid" name="newCarEbid" class="jpCheckbox" onclick="allSelected5()"><span class="skin-color">New</span></a>.
+                                                                    <input type="checkbox" id="newCarEbid" name="newCarEbid" class="jpCheckbox" onclick="allSelected5()"><span class="skin-color">New&nbsp;&nbsp;</span>
                                                                 </label>
                                                             </div>
-                                                            <div class="checkbox ML10">
+                                                            <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" id="usedCarEbid" name="usedCarEbid" class="jpCheckbox" onclick="allSelected6()"><span class="skin-color">Used</span></a>.
+                                                                    <input type="checkbox" id="usedCarEbid" name="usedCarEbid" class="jpCheckbox" onclick="allSelected6()"><span class="skin-color">Used</span>
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -3181,7 +3234,7 @@ $.ajax({
 
 
                                                     <div class="clearfix"></div>
-                                                    <br />
+
 
 
 
@@ -3201,12 +3254,14 @@ $.ajax({
                                                     <div class="col-sm-6 col-md-5">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" checked><span class="skin-color">Finance .</span>
+                                                            <input type="checkbox" checked id="carEbidFinan" name="carEbidFinan" class="jpCheckbox" onclick="allSelected896()"><span class="skin-color">Finance .</span></a>.
+                                                                <!-- <input type="checkbox" checked><span class="skin-color"></span> -->
                                                             </label>
                                                         </div>
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" checked><span class="skin-color">Insurance .</span>
+                                                            <input type="checkbox" checked id="carEbidInsur" name="carEbidInsur" class="jpCheckbox" onclick="allSelected996()"><span class="skin-color">Insurance .</span></a>.
+                                                                <!-- <input type="checkbox" checked><span class="skin-color"></span> -->
                                                             </label>
                                                         </div>
                                                     </div>
@@ -3263,7 +3318,7 @@ $.ajax({
                                                     </div>
                                                     <div class="clearfix"></div>
                                                     <div class="col-md-6 col-sm-6 search-col-padding">
-                                                        <button type="submit" class="button full-width"  style="background-color:#ff461b !important">Build</button>
+                                                        <button type="submit" class="button full-width submit-bgcolor">Build</button>
                                                         <!-- <button type="submit" class="search-button btn transition-effect">Build</button>  ng-disabled="ebidfrm.$invalid" -->
                                                     </div>
                                                     <div class="clearfix"></div>
@@ -3292,131 +3347,131 @@ $.ajax({
                                                         <a title="" href="#" data-toggle="tooltip" data-original-title="google"><i class="soap-icon-googleplus"></i></a>
                                                     </div>
                                                     <div class="clearfix"></div>-->
-                                                    <!-- <form class="form-inline signup">
+                                                <!-- <form class="form-inline signup">
 
-            <div class="col-md-12 product-search-title">eBidding
-                for bike</div>
-            <div class="col-md-12">&nbsp</div>
-            <div class="clearfix"></div>
-            <div class="clearfix"></div>
-            <div class="clearfix"></div>
-            <div class="clearfix"></div>
+                                                    <div class="col-md-12 product-search-title">eBidding
+                                                        for bike</div>
+                                                    <div class="col-md-12">&nbsp</div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="clearfix"></div>
 
-            <div class="col-sm-5 col-md-4">
-                    <div class="checkbox">
-                        <label> <input type="checkbox"><span
-                            class="skin-color">New</span></a>.
-                        </label>
-                    </div>
+                                                    <div class="col-sm-5 col-md-4">
+                                                            <div class="checkbox">
+                                                                <label> <input type="checkbox"><span
+                                                                    class="skin-color">New</span></a>.
+                                                                </label>
+                                                            </div>
 
 
-                    <div class="checkbox">
-                        <label> <input type="checkbox"><span
-                            class="skin-color">Used</span></a>.
-                        </label>
-                    </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-sm-5 col-md-4">
-                <label>Year</label>
-                <div class="selector">
-                    <select id="bike-years" name="bike-years"
-                        class="full-width">
+                                                            <div class="checkbox">
+                                                                <label> <input type="checkbox"><span
+                                                                    class="skin-color">Used</span></a>.
+                                                                </label>
+                                                            </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-sm-5 col-md-4">
+                                                        <label>Year</label>
+                                                        <div class="selector">
+                                                            <select id="bike-years" name="bike-years"
+                                                                class="full-width">
 
-                    </select>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-sm-5 col-md-4">
-                <label>Make</label>
-                <div class="selector">
-                    <select id="bike-makes" name="bike-makes"
-                        class="full-width">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-sm-5 col-md-4">
+                                                        <label>Make</label>
+                                                        <div class="selector">
+                                                            <select id="bike-makes" name="bike-makes"
+                                                                class="full-width">
 
-                    </select>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-sm-5 col-md-4">
-                <label>Model</label>
-                <div class="selector">
-                    <select id="bike-models" name="bike-models"
-                        class="full-width">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-sm-5 col-md-4">
+                                                        <label>Model</label>
+                                                        <div class="selector">
+                                                            <select id="bike-models" name="bike-models"
+                                                                class="full-width">
 
-                    </select>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-sm-5 col-md-4">
-                <label>Variant</label>
-                <div class="selector">
-                    <select id="bike-model-trims" name="bike-model-trims"
-                        class="full-width">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-sm-5 col-md-4">
+                                                        <label>Variant</label>
+                                                        <div class="selector">
+                                                            <select id="bike-model-trims" name="bike-model-trims"
+                                                                class="full-width">
 
-                    </select>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="clearfix"></div>
-            <div class="clearfix"></div>
-            <div class="clearfix"></div>
-            <div class="col-sm-5 col-md-4">
-                        <div class="checkbox">
-                            <label> <input type="checkbox"><span
-                                class="skin-color">Finance</span>
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label> <input type="checkbox"><span
-                                class="skin-color">Insurance</span>
-                            </label>
-                        </div>
-            </div>
-            <div class="clearfix"></div>
-            <div id="status"></div>
-            <br /> <br />
-            <div class="social col-md-12 col-sm-12">
-                <a href="#"><i class="fa fa-facebook"
-                    onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
-                    class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
-                    class="fa fa-google-plus" onclick="onSignInG()"
-                    aria-hidden="true"></i></a> &nbsp<a href="#"><i
-                    class="fa fa-linkedin" onclick="onLinkedInLoad()"
-                    aria-hidden="true"></i></a>
-            </div>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-sm-5 col-md-4">
+                                                                <div class="checkbox">
+                                                                    <label> <input type="checkbox"><span
+                                                                        class="skin-color">Finance</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label> <input type="checkbox"><span
+                                                                        class="skin-color">Insurance</span>
+                                                                    </label>
+                                                                </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div id="status"></div>
+                                                    <br /> <br />
+                                                    <div class="social col-md-12 col-sm-12">
+                                                        <a href="#"><i class="fa fa-facebook"
+                                                            onclick="login()" aria-hidden="true"></i></a> &nbsp <a href="#"><i
+                                                            class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp <a href="#"><i
+                                                            class="fa fa-google-plus" onclick="onSignInG()"
+                                                            aria-hidden="true"></i></a> &nbsp<a href="#"><i
+                                                            class="fa fa-linkedin" onclick="onLinkedInLoad()"
+                                                            aria-hidden="true"></i></a>
+                                                    </div>
 
-            <br /> <br />
-            <div>
+                                                    <br /> <br />
+                                                    <div>
 
-                <div class="form-group col-md-6 col-sm-6">
-                    <input type="email" class="input-text full-width"
-                        id="exampleInputEmail1"
-                        placeholder="Email / Mobile Number">
-                </div>
-                <button type="submit" class="btn btn-theme">Get notified!</button>
-            </div>
-            <div class="clearfix"></div>
-            <div class="clearfix"></div>
-            <div class="clearfix"></div>
-            <div class="row">
-                <div class="col-sm-5 col-md-6">
-                    <div class="checkbox">
-                        <label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
-                                    Conditions</span></a>.
-                        </label>
-                    </div>
-                </div>
-                <div class="col-sm-7 col-md-6"></div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-md-12 search-col-padding">
-                <button ng-click="go()" class="button">build</button>
-                <button type="submit" class="search-button btn transition-effect">Build</button>
-            </div>
-            <div class="clearfix"></div>
-        </form> -->
+                                                        <div class="form-group col-md-6 col-sm-6">
+                                                            <input type="email" class="input-text full-width"
+                                                                id="exampleInputEmail1"
+                                                                placeholder="Email / Mobile Number">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-theme">Get notified!</button>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="row">
+                                                        <div class="col-sm-5 col-md-6">
+                                                            <div class="checkbox">
+                                                                <label> <input type="checkbox"><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
+                                                                            Conditions</span></a>.
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-7 col-md-6"></div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-12 search-col-padding">
+                                                        <button ng-click="go()" class="button">build</button>
+                                                        <button type="submit" class="search-button btn transition-effect">Build</button>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </form> -->
 
-                                                </div>
+                                            </div>
                                             <!-- END: HOTEL SEARCH -->
                                             <!-- START: BEGIN HOLIDAY -->
                                             <div role="tabpanel" class="tab-pane" id="holiday">
@@ -3867,8 +3922,7 @@ $.ajax({
                                             <div role="tabpanel" class="tab-pane active" id="flight1">
                                                 <form class="form-inline signup" role="form">
                                                     <div class="col-md-12 product-search-title">
-                                                        Browse
-                                                        for car
+                                                        Browse for car
                                                     </div>
                                                     <div class="col-md-12">&nbsp</div>
                                                     <div class="clearfix"></div>
@@ -3888,7 +3942,7 @@ $.ajax({
                                                         </div>
                                                     </div>
                                                     <div class="clearfix"></div>
-                                                    <div class="col-sm-5 col-md-4">
+                                                    <div class="col-sm-5 col-md-4 PT10">
                                                         <label>Post code</label>
                                                         <div class="selector">
                                                             <select class="full-width" id="boat-location"
@@ -3904,14 +3958,14 @@ $.ajax({
                                                     </div>
                                                     <div class="clearfix"></div>
 
-                                                    <div class="col-sm-5 col-md-4">
+                                                    <div class="col-sm-5 col-md-4 PT10">
                                                         <label>Make</label>
                                                         <div class="selector">
                                                             <select id="car-makes" name="car-makes"
                                                                     class="full-width"></select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-5 col-md-4">
+                                                    <div class="col-sm-5 col-md-4 PT10">
                                                         <label>Model</label>
                                                         <div class="selector">
                                                             <select id="car-models" name="car-models"
@@ -3919,7 +3973,7 @@ $.ajax({
                                                         </div>
                                                     </div>
                                                     <div class="clearfix"></div>
-                                                    <div class="col-sm-5 col-md-4">
+                                                    <div class="col-sm-5 col-md-4 PT10">
                                                         <label>Budget Wise</label>
                                                         <div class="selector">
                                                             <select class="full-width" id="budgetWise"
@@ -3934,7 +3988,7 @@ $.ajax({
                                                         </div>
                                                     </div>
                                                     <div class="clearfix"></div>
-                                                    <div class="col-sm-5 col-md-4">
+                                                    <div class="col-sm-5 col-md-4 PT10">
                                                         <label>Car Body</label>
                                                         <div class="selector">
                                                             <select class="full-width" id="budgetWise"
@@ -3949,7 +4003,7 @@ $.ajax({
                                                         </div>
                                                     </div>
                                                     <div class="clearfix"></div>
-                                                    <div class="col-sm-5 col-md-4">
+                                                    <div class="col-sm-5 col-md-4 PT10">
                                                         <label>No of Passengers</label>
                                                         <div class="selector">
                                                             <select class="full-width" id="budgetWise"
@@ -3964,7 +4018,7 @@ $.ajax({
                                                         </div>
                                                     </div>
                                                     <div class="clearfix"></div>
-                                                    <div class="col-sm-5 col-md-4">
+                                                    <div class="col-sm-5 col-md-4 PT10">
                                                         <label>Ancap Safe Rate</label>
                                                         <div class="selector">
                                                             <select class="full-width" id="budgetWise"
@@ -3978,7 +4032,7 @@ $.ajax({
                                                         </div>
                                                     </div>
                                                     <div class="clearfix"></div>
-                                                    <div class="col-sm-5 col-md-4">
+                                                    <div class="col-sm-5 col-md-4 PT10">
                                                         <label>Transmission</label>
                                                         <div class="selector">
                                                             <select class="full-width" id="budgetWise"
@@ -3989,7 +4043,7 @@ $.ajax({
                                                         </div>
                                                     </div>
                                                     <div class="clearfix"></div>
-                                                    <div class="col-sm-5 col-md-4">
+                                                    <div class="col-sm-5 col-md-4 PT10">
                                                         <label>Usage</label>
                                                         <div class="selector">
                                                             <select class="full-width" id="budgetWise"
@@ -4002,7 +4056,7 @@ $.ajax({
                                                         </div>
                                                     </div>
                                                     <div class="clearfix"></div>
-                                                    <div class="col-sm-5 col-md-4">
+                                                    <div class="col-sm-5 col-md-4 PT10">
                                                         <label>Drive Type</label>
                                                         <div class="selector">
                                                             <select class="full-width" id="budgetWise"
@@ -4013,7 +4067,7 @@ $.ajax({
                                                         </div>
                                                     </div>
                                                     <div class="clearfix"></div>
-                                                    <div class="col-sm-5 col-md-4">
+                                                    <div class="col-sm-5 col-md-4 PT10">
                                                         <label>Fuel Type</label>
                                                         <div class="selector">
                                                             <select class="full-width" id="budgetWise"
@@ -4056,7 +4110,7 @@ $.ajax({
                                                         <!-- <button type="submit" class="btn btn-theme">Get notified!</button> -->
                                                     </div>
                                                     <div class="col-md-12 search-col-padding">
-                                                        <button ng-click="go()" class="button">
+                                                        <button ng-click="go()" class="button submit-bgcolor">
                                                             Browse My
                                                             Car
                                                         </button>
@@ -5156,7 +5210,7 @@ $.ajax({
                                                             &nbsp;
                                                         </div>
                                                         <div class="col-sm-5 col-md-6">
-                                                            <button class="button">Submit for Loan Quotation</button>
+                                                            <button class="button submit-bgcolor">Submit for Loan Quotation</button>
                                                         </div>
                                                     </div><br />
                                                 </form>
@@ -5902,8 +5956,8 @@ $.ajax({
                                                     <div class="row">
                                                         <div class="col-sm-12 col-md-12">
 
-                                                            <label style="background-color:#ff461b;">
-                                                                <span id="carDetailsCollapse">
+                                                            <label class="accrdion-bgcolor">
+                                                                <span id="carDetailsCollapse" class="h3-color">
                                                                     <span class="glyphicon glyphicon-plus" id="carDetailGlyphi"></span>
                                                                     Car Details
                                                                 </span>
@@ -6147,8 +6201,8 @@ $.ajax({
 
                                                     <div class="row">
                                                         <div class="col-sm-12 col-md-12">
-                                                            <label style="background-color:#ff461b;">
-                                                                <span id="coverageCollapse">
+                                                            <label class="accrdion-bgcolor">
+                                                                <span id="coverageCollapse" class="h3-color">
                                                                     <span class="glyphicon glyphicon-plus" id="coverageGlyphi"></span>
                                                                     Coverage Details
                                                                 </span>
@@ -6340,8 +6394,8 @@ $.ajax({
                                                     -->
                                                     <div class="row">
                                                         <div class="col-sm-12 col-md-12">
-                                                            <label style="background-color:#ff461b;">
-                                                                <span id="driverDetailsCollapse">
+                                                            <label class="accrdion-bgcolor">
+                                                                <span id="driverDetailsCollapse" class="h3-color">
                                                                     <span class="glyphicon glyphicon-plus" id="driverDetailGlyphi"></span>
                                                                     Driver Details
                                                                 </span>
@@ -6636,7 +6690,7 @@ $.ajax({
                                                     </div><br />
 
                                                     <div class="col-md-12 search-col-padding">
-                                                        <button class="button">Select your Insurance coverage</button>
+                                                        <button class="button submit-bgcolor">Select your Insurance coverage</button>
                                                         <!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
                                                     </div>
                                                     <div class="clearfix"></div>
@@ -8183,7 +8237,7 @@ $.ajax({
                                                             &nbsp;
                                                         </div>
                                                         <div class="col-sm-5 col-md-6">
-                                                            <button id="uploadPhotoServbutton" class="button">
+                                                            <button id="uploadPhotoServbutton" class="button submit-bgcolor">
                                                                 Submit for Request
                                                                 Quotation
                                                             </button>
@@ -9111,11 +9165,14 @@ $.ajax({
 
                                                     <div class="row">
                                                         <div class="col-sm-12 col-md-12">
-                                                            <button type="button" id="vehDetailsCollapse">
-                                                                <span class="glyphicon glyphicon-plus" id="vehDetailGlyphi" style="vertical-align: middle;"></span>
-                                                                <!-- <i class="soap-icon-plus" id="carDetailGlyphi"></i> -->
-                                                                Add Vehicle
-                                                            </button>
+                                                            <label class="accrdion-bgcolor">
+                                                                <span id="vehDetailsCollapse" class="h3-color">
+                                                                    <span class="glyphicon glyphicon-plus" id="vehDetailGlyphi" style="vertical-align: middle;"></span>
+                                                                    <!-- <i class="soap-icon-plus" id="carDetailGlyphi"></i> -->
+                                                                    Add Vehicle
+                                                                </span>
+                                                            </label>
+
                                                             <!-- <button type="button" class="btn btn-info">Simple collapsible</button> -->
                                                             <div id="vehDetails">
                                                                 <div class="row">
@@ -9217,8 +9274,8 @@ $.ajax({
                                                                     <div class="col-sm-9 col-md-9">
                                                                         <div id="my-container">
                                                                             <center>
-                                                                                <button type="button" onclick="javascript:appendRow922()" class="append_row">Add vehicle</button>
-                                                                                <button type="button" onclick="javascript:deleteRows9()" class="delete">Delete Vehicle</button><br />
+                                                                                <button type="button" onclick="javascript:appendRow922()" class="append_row submit-bgcolor">Add vehicle</button>
+                                                                                <button type="button" onclick="javascript:deleteRows9()" class="delete submit-bgcolor">Delete Vehicle</button><br />
                                                                                 <table id="my-table922" align="center" cellspacing="0" cellpadding="0" border="0">
                                                                                     <tr><th>Year</th><th>Make</th><th>Model</th><th>Variant</th><th>Autoscoop Trim</th></tr>
                                                                                 </table>
@@ -9437,7 +9494,7 @@ $.ajax({
                                                             &nbsp;
                                                         </div>
                                                         <div class="col-sm-5 col-md-6">
-                                                            <button id="uploadPhotoTransbutton" class="button">Submit Request for Quotation</button>
+                                                            <button id="uploadPhotoTransbutton" class="button submit-bgcolor">Submit Request for Quotation</button>
                                                         </div>
                                                     </div><br />
 
@@ -9958,7 +10015,7 @@ $.ajax({
                                             We're bringing you a new level of
                                             comfort.
                                         </p>
-                                        <i class="soap-icon-status"></i>
+                                        <i class="flaticon-clipboard-with-pencil"></i>
                                     </div>
 
                                     <div role="tabpanel"
@@ -10135,7 +10192,7 @@ $.ajax({
                                                             &nbsp;
                                                         </div>
                                                         <div class="col-sm-4 col-md-4">
-                                                            <button class="button .btn-block">Take me There!</button>
+                                                            <button class="button submit-bgcolor">Take me There!</button>
                                                         </div>
                                                         <div class="col-sm-4 col-md-4">
                                                             &nbsp;
@@ -11011,715 +11068,712 @@ $.ajax({
     </script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
     <!-- <script src="//connect.facebook.net/en_US/all.js&appId=238604546585672" type="text/javascript"></script> -->
-      <script type="text/javascript">
-	 
-	 function fbinitilize()
-	 {
-       <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
+    <script type="text/javascript">
+
+        function fbinitilize() {
+       <!--Facebook Login logic prod 249863545451459 test 238604546585672 -- >
         var appId = '249863545451459';
-      //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-        var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
-        var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
-        AWS.config.region = 'us-east-1';
-        var bucket = new AWS.S3({
-            params: {
-                Bucket: bucketName
-            }
-        });
-        var fileChooser = document.getElementById('uploadPhotoServ1');
-        var fileChooserLogExp = document.getElementById('uploadPhotoServ2');
-        var fileChooserlogservmaint = document.getElementById('uploadPhotoServ3');
-        var button = document.getElementById('uploadPhotoServbutton');
-        var fileChooserupdateset = document.getElementById('uploadPhotoServ4');
-        
-        /* button.addEventListener('click', function () {
-
-			//alert("Preparing to Upload Service & Maintenance photos..");
-            var file = fileChooser.files[0];
-            var file2 = fileChooserLogExp.files[0];
-            var file3 = fileChooserlogservmaint.files[0];
-            var file4 = fileChooserupdateset.files[0];
-            fbUserId = $.jStorage.get("fbKey");
-            if (file) {
-                //Object key will be facebook-USERID#/FILE_NAME
-                var objKey = 'facebook-' + fbUserId + '/' + file.name;
-                var params = {
-                    Key: objKey,
-                    ContentType: file.type,
-                    Body: file,
-                    ACL: 'authenticated-read'
-                };
-                bucket.putObject(params, function (err, data) {
-                    if (err) {
-                        alert("Sorry we are not able to upload photo "+file.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
-                    } else {
-                    	//alert("Successfully upload serv and maint image1 to S3");
-                    	alert("Successfully uploaded photo "+file.name+" to database");
-                    }
-                });
-            } else {
-            	alert("Nothing to upload for serv and maint image1");
-            }
-            
-            // for service maint 2 start
-            if (file2) {
-
-            	 var objKey = 'facebook-' + fbUserId + '/' + file2.name;
-                var params = {
-                    Key: objKey,
-                    ContentType: file2.type,
-                    Body: file2,
-                    ACL: 'authenticated-read'
-                };
-                bucket.putObject(params, function (err, data) {
-                    if (err) {
-                  //alert("not able to upload serv and maint image2"+err);
-                  alert("Sorry we are not able to upload photo "+file2.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
-                    } else {
-                    	//alert("Successfully upload serv and maint image2 to S3");
-                    	alert("Successfully uploaded photo "+file2.name+" to database");
-                    }
-                });
-
-
-            } else {
-            	alert("We found Nothing to upload for serv and maint image2");
-              }
-            // end
-            
-            // for serv maint 3
-            if (file3) {
-            	       var objKey = 'facebook-' + fbUserId + '/' + file3.name;
-                var params = {
-                    Key: objKey,
-                    ContentType: file3.type,
-                    Body: file3,
-                    ACL: 'authenticated-read'
-                };
-                bucket.putObject(params, function (err, data) {
-                    if (err) {
-                        //alert("not able to upload serv and maint image3"+err);
-                        alert("Sorry we are not able to upload photo "+file3.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
-                    } else {
-                    	//alert("Successfully upload serv and maint image3 to S3");
-                    	alert("Successfully uploaded photo "+file3.name+" to database");
-                    }
-                });
-            } else {
-            	alert("We found Nothing to upload for serv and maint image3");
-
-
-            }
-            // end 
-            if (file4) {
-			  var objKey = 'facebook-' + fbUserId + '/' + file4.name;
-                var params = {
-                    Key: objKey,
-                    ContentType: file4.type,
-                    Body: file4,
-                    ACL: 'authenticated-read'
-                };
-                bucket.putObject(params, function (err, data) {
-                    if (err) {
-			 //alert("not able to upload serv and maint image4"+err);
-			 alert("Sorry we are not able to upload photo "+file4.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
-                    } else {
-                    	 //alert("Successfully upload serv and maint image4 to s3");
-                    	 alert("Successfully uploaded photo "+file4.name+" to database");
-                    }
-                });
-
-            } else {
-            	alert("We found Nothing to upload for serv and maint image4");
-
-            }
-            // end
-
-        }, false); */
-
-
-        /*!
-
-
-         * Login to your application using Facebook.
-
-
-         * Uses the Facebook SDK for JavaScript available here:
-
-
-         * https://developers.facebook.com/docs/javascript/gettingstarted/
-
-
-         */
-         
-		//alert("Setting up photo upload");
-		 FB.getLoginStatus(function(response) {
-         	alert("You are ready to upload photos..");
-				if (response.status === 'connected') {
-					//alert("inside connected");
-					bucket.config.credentials = new AWS.WebIdentityCredentials({
-
-
-	                    ProviderId: 'graph.facebook.com',
-
-
-	                    RoleArn: roleArn,
-
-
-	                    WebIdentityToken: response.authResponse.accessToken
-
-
-	                });
-
-
-	                //fbUserId = response.authResponse.userID;
-
-
-	                button.style.display = 'block';
-				}
-			},{
-				scope : 'email'
-			}); 
-        window.fbAsyncInit = function () {
-            FB.init({
-
-
-                appId: appId
-
-
+            //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+            var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+            var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+            AWS.config.region = 'us-east-1';
+            var bucket = new AWS.S3({
+                params: {
+                    Bucket: bucketName
+                }
             });
-            
-            
-            FB.getLoginStatus(function(response) {
-            	//alert("ruwususois");
-				if (response.status === 'connected') {
-					//alert("inside connected");
-					bucket.config.credentials = new AWS.WebIdentityCredentials({
+            var fileChooser = document.getElementById('uploadPhotoServ1');
+            var fileChooserLogExp = document.getElementById('uploadPhotoServ2');
+            var fileChooserlogservmaint = document.getElementById('uploadPhotoServ3');
+            var button = document.getElementById('uploadPhotoServbutton');
+            var fileChooserupdateset = document.getElementById('uploadPhotoServ4');
+
+            /* button.addEventListener('click', function () {
+
+                //alert("Preparing to Upload Service & Maintenance photos..");
+                var file = fileChooser.files[0];
+                var file2 = fileChooserLogExp.files[0];
+                var file3 = fileChooserlogservmaint.files[0];
+                var file4 = fileChooserupdateset.files[0];
+                fbUserId = $.jStorage.get("fbKey");
+                if (file) {
+                    //Object key will be facebook-USERID#/FILE_NAME
+                    var objKey = 'facebook-' + fbUserId + '/' + file.name;
+                    var params = {
+                        Key: objKey,
+                        ContentType: file.type,
+                        Body: file,
+                        ACL: 'authenticated-read'
+                    };
+                    bucket.putObject(params, function (err, data) {
+                        if (err) {
+                            alert("Sorry we are not able to upload photo "+file.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                        } else {
+                            //alert("Successfully upload serv and maint image1 to S3");
+                            alert("Successfully uploaded photo "+file.name+" to database");
+                        }
+                    });
+                } else {
+                    alert("Nothing to upload for serv and maint image1");
+                }
+
+                // for service maint 2 start
+                if (file2) {
+
+                     var objKey = 'facebook-' + fbUserId + '/' + file2.name;
+                    var params = {
+                        Key: objKey,
+                        ContentType: file2.type,
+                        Body: file2,
+                        ACL: 'authenticated-read'
+                    };
+                    bucket.putObject(params, function (err, data) {
+                        if (err) {
+                      //alert("not able to upload serv and maint image2"+err);
+                      alert("Sorry we are not able to upload photo "+file2.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                        } else {
+                            //alert("Successfully upload serv and maint image2 to S3");
+                            alert("Successfully uploaded photo "+file2.name+" to database");
+                        }
+                    });
 
 
-	                    ProviderId: 'graph.facebook.com',
+                } else {
+                    alert("We found Nothing to upload for serv and maint image2");
+                  }
+                // end
+
+                // for serv maint 3
+                if (file3) {
+                           var objKey = 'facebook-' + fbUserId + '/' + file3.name;
+                    var params = {
+                        Key: objKey,
+                        ContentType: file3.type,
+                        Body: file3,
+                        ACL: 'authenticated-read'
+                    };
+                    bucket.putObject(params, function (err, data) {
+                        if (err) {
+                            //alert("not able to upload serv and maint image3"+err);
+                            alert("Sorry we are not able to upload photo "+file3.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                        } else {
+                            //alert("Successfully upload serv and maint image3 to S3");
+                            alert("Successfully uploaded photo "+file3.name+" to database");
+                        }
+                    });
+                } else {
+                    alert("We found Nothing to upload for serv and maint image3");
 
 
-	                    RoleArn: roleArn,
+                }
+                // end
+                if (file4) {
+                  var objKey = 'facebook-' + fbUserId + '/' + file4.name;
+                    var params = {
+                        Key: objKey,
+                        ContentType: file4.type,
+                        Body: file4,
+                        ACL: 'authenticated-read'
+                    };
+                    bucket.putObject(params, function (err, data) {
+                        if (err) {
+                 //alert("not able to upload serv and maint image4"+err);
+                 alert("Sorry we are not able to upload photo "+file4.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                        } else {
+                             //alert("Successfully upload serv and maint image4 to s3");
+                             alert("Successfully uploaded photo "+file4.name+" to database");
+                        }
+                    });
+
+                } else {
+                    alert("We found Nothing to upload for serv and maint image4");
+
+                }
+                // end
+
+            }, false); */
 
 
-	                    WebIdentityToken: response.authResponse.accessToken
+            /*!
 
 
-	                });
+             * Login to your application using Facebook.
 
 
-	                //fbUserId = response.authResponse.userID;
+             * Uses the Facebook SDK for JavaScript available here:
 
 
-	                button.style.display = 'block';
-				}
-			},{
-				scope : 'email'
-			}); 
+             * https://developers.facebook.com/docs/javascript/gettingstarted/
 
 
-           
+             */
+
+            //alert("Setting up photo upload");
+            FB.getLoginStatus(function (response) {
+                alert("You are ready to upload photos..");
+                if (response.status === 'connected') {
+                    //alert("inside connected");
+                    bucket.config.credentials = new AWS.WebIdentityCredentials({
 
 
-        };
-
-		//alert("fb sta lod");
-         // Load the Facebook SDK asynchronously
+                        ProviderId: 'graph.facebook.com',
 
 
-        (function (d, s, id) {
+                        RoleArn: roleArn,
 
 
-            var js, fjs = d.getElementsByTagName(s)[0];
+                        WebIdentityToken: response.authResponse.accessToken
 
 
-            if (d.getElementById(id)) {
+                    });
 
 
-                return;
+                    //fbUserId = response.authResponse.userID;
 
 
-            }
+                    button.style.display = 'block';
+                }
+            }, {
+                    scope: 'email'
+                });
+            window.fbAsyncInit = function () {
+                FB.init({
 
 
-            js = d.createElement(s);
+                    appId: appId
 
 
-            js.id = id;
+                });
 
 
-            //js.src = "//connect.facebook.net/en_US/all.js";
-
-js.src = "http://connect.facebook.net/en_US/all.js";
-            fjs.parentNode.insertBefore(js, fjs);
-
-
-        }(document, 'script', 'facebook-jssdk'));
+                FB.getLoginStatus(function (response) {
+                    //alert("ruwususois");
+                    if (response.status === 'connected') {
+                        //alert("inside connected");
+                        bucket.config.credentials = new AWS.WebIdentityCredentials({
 
 
-         
-         
-         
-         }
+                            ProviderId: 'graph.facebook.com',
+
+
+                            RoleArn: roleArn,
+
+
+                            WebIdentityToken: response.authResponse.accessToken
+
+
+                        });
+
+
+                        //fbUserId = response.authResponse.userID;
+
+
+                        button.style.display = 'block';
+                    }
+                }, {
+                        scope: 'email'
+                    });
+
+
+
+
+
+            };
+
+            //alert("fb sta lod");
+            // Load the Facebook SDK asynchronously
+
+
+            (function (d, s, id) {
+
+
+                var js, fjs = d.getElementsByTagName(s)[0];
+
+
+                if (d.getElementById(id)) {
+
+
+                    return;
+
+
+                }
+
+
+                js = d.createElement(s);
+
+
+                js.id = id;
+
+
+                //js.src = "//connect.facebook.net/en_US/all.js";
+
+                js.src = "http://connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+
+
+            }(document, 'script', 'facebook-jssdk'));
+
+
+
+
+
+        }
     </script>
-    
-	 <script type="text/javascript">
-	 
-	 function fbloadphoto()
-	 {
-       <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
+
+    <script type="text/javascript">
+
+        function fbloadphoto() {
+       <!--Facebook Login logic prod 249863545451459 test 238604546585672 -- >
         var appId = '249863545451459';
-      //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-        var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
-        var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
-        AWS.config.region = 'us-east-1';
-        var bucket = new AWS.S3({
-            params: {
-                Bucket: bucketName
-            }
-        });
-        var fileChooser = document.getElementById('uploadPhotoServ1');
-        var fileChooserLogExp = document.getElementById('uploadPhotoServ2');
-        var fileChooserlogservmaint = document.getElementById('uploadPhotoServ3');
-        var button = document.getElementById('uploadPhotoServbutton');
-        var fileChooserupdateset = document.getElementById('uploadPhotoServ4');
-        
-        button.addEventListener('click', function () {
-
-			//alert("Preparing to Upload Service & Maintenance photos..");
-            var file = fileChooser.files[0];
-            var file2 = fileChooserLogExp.files[0];
-            var file3 = fileChooserlogservmaint.files[0];
-            var file4 = fileChooserupdateset.files[0];
-            fbUserId = $.jStorage.get("fbKey");
-            if (file) {
-                //Object key will be facebook-USERID#/FILE_NAME
-                var objKey = 'facebook-' + fbUserId + '/' + file.name;
-                var params = {
-                    Key: objKey,
-                    ContentType: file.type,
-                    Body: file,
-                    ACL: 'authenticated-read'
-                };
-                bucket.putObject(params, function (err, data) {
-                	alert("Successfully started to Upload the photos"+file.name+" Please don't refresh or switch from the homepage.. This will take some time..");
-                    if (err) {
-                        alert("Sorry we are not able to upload photo "+file.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
-                    } else {
-                    	//alert("Successfully upload serv and maint image1 to S3");
-                    	alert("Successfully uploaded photo "+file.name+" to database");
-                    }
-                });
-            } else {
-            	alert("We found Nothing to upload for serv and maint image1");
-            }
-            
-            // for service maint 2 start
-            if (file2) {
-
-            	 var objKey = 'facebook-' + fbUserId + '/' + file2.name;
-                var params = {
-                    Key: objKey,
-                    ContentType: file2.type,
-                    Body: file2,
-                    ACL: 'authenticated-read'
-                };
-                bucket.putObject(params, function (err, data) {
-                	alert("Successfully started to Upload the photos"+file2.name+" Please don't refresh or switch from the homepage.. This will take some time..");
-                    if (err) {
-                  //alert("not able to upload serv and maint image2"+err);
-                  alert("Sorry we are not able to upload photo "+file2.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
-                    } else {
-                    	//alert("Successfully upload serv and maint image2 to S3");
-                    	alert("Successfully uploaded photo "+file2.name+" to database");
-                    }
-                });
-
-
-            } else {
-            	alert("We found Nothing to upload for serv and maint image2");
-              }
-            // end
-            
-            // for serv maint 3
-            if (file3) {
-            	       var objKey = 'facebook-' + fbUserId + '/' + file3.name;
-                var params = {
-                    Key: objKey,
-                    ContentType: file3.type,
-                    Body: file3,
-                    ACL: 'authenticated-read'
-                };
-                bucket.putObject(params, function (err, data) {
-                	alert("Successfully started to Upload the photos"+file3.name+" Please don't refresh or switch from the homepage.. This will take some time..");
-                    if (err) {
-                        //alert("not able to upload serv and maint image3"+err);
-                        alert("Sorry we are not able to upload photo "+file3.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
-                    } else {
-                    	//alert("Successfully upload serv and maint image3 to S3");
-                    	alert("Successfully uploaded photo "+file3.name+" to database");
-                    }
-                });
-            } else {
-            	alert("We found Nothing to upload for serv and maint image3");
-
-
-            }
-            // end 
-            if (file4) {
-			  var objKey = 'facebook-' + fbUserId + '/' + file4.name;
-                var params = {
-                    Key: objKey,
-                    ContentType: file4.type,
-                    Body: file4,
-                    ACL: 'authenticated-read'
-                };
-                bucket.putObject(params, function (err, data) {
-                	alert("Successfully started to Upload the photos"+file4.name+" Please don't refresh or switch from the homepage.. This will take some time..");
-                    if (err) {
-			 //alert("not able to upload serv and maint image4"+err);
-			 alert("Sorry we are not able to upload photo "+file4.name+"for service and maintenance.. It failed with following error "+err+" However please send the photo to autoscoop support team which will upload and link it to your account thanks");
-                    } else {
-                    	 //alert("Successfully upload serv and maint image4 to s3");
-                    	 alert("Successfully uploaded photo "+file4.name+" to database");
-                    }
-                });
-
-            } else {
-            	alert("We found Nothing to upload for serv and maint image4");
-
-            }
-            // end
-
-        }, false);
-
-
-        /*!
-
-
-         * Login to your application using Facebook.
-
-
-         * Uses the Facebook SDK for JavaScript available here:
-
-
-         * https://developers.facebook.com/docs/javascript/gettingstarted/
-
-
-         */
-         
-		//alert("Setting up photo upload");
-		 FB.getLoginStatus(function(response) {
-			 alert("Please select photos to upload..");
-         	
-				if (response.status === 'connected') {
-					//alert("inside connected");
-					bucket.config.credentials = new AWS.WebIdentityCredentials({
-
-
-	                    ProviderId: 'graph.facebook.com',
-
-
-	                    RoleArn: roleArn,
-
-
-	                    WebIdentityToken: response.authResponse.accessToken
-
-
-	                });
-
-
-	                //fbUserId = response.authResponse.userID;
-
-
-	                button.style.display = 'block';
-				}
-			},{
-				scope : 'email'
-			}); 
-        window.fbAsyncInit = function () {
-            FB.init({
-
-
-                appId: appId
-
-
+            //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+            var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+            var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+            AWS.config.region = 'us-east-1';
+            var bucket = new AWS.S3({
+                params: {
+                    Bucket: bucketName
+                }
             });
-            
-            
-            FB.getLoginStatus(function(response) {
-            	//alert("ruwususois");
-				if (response.status === 'connected') {
-					//alert("inside connected");
-					bucket.config.credentials = new AWS.WebIdentityCredentials({
+            var fileChooser = document.getElementById('uploadPhotoServ1');
+            var fileChooserLogExp = document.getElementById('uploadPhotoServ2');
+            var fileChooserlogservmaint = document.getElementById('uploadPhotoServ3');
+            var button = document.getElementById('uploadPhotoServbutton');
+            var fileChooserupdateset = document.getElementById('uploadPhotoServ4');
+
+            button.addEventListener('click', function () {
+
+                //alert("Preparing to Upload Service & Maintenance photos..");
+                var file = fileChooser.files[0];
+                var file2 = fileChooserLogExp.files[0];
+                var file3 = fileChooserlogservmaint.files[0];
+                var file4 = fileChooserupdateset.files[0];
+                fbUserId = $.jStorage.get("fbKey");
+                if (file) {
+                    //Object key will be facebook-USERID#/FILE_NAME
+                    var objKey = 'facebook-' + fbUserId + '/' + file.name;
+                    var params = {
+                        Key: objKey,
+                        ContentType: file.type,
+                        Body: file,
+                        ACL: 'authenticated-read'
+                    };
+                    bucket.putObject(params, function (err, data) {
+                        alert("Successfully started to Upload the photos" + file.name + " Please don't refresh or switch from the homepage.. This will take some time..");
+                        if (err) {
+                            alert("Sorry we are not able to upload photo " + file.name + "for service and maintenance.. It failed with following error " + err + " However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                        } else {
+                            //alert("Successfully upload serv and maint image1 to S3");
+                            alert("Successfully uploaded photo " + file.name + " to database");
+                        }
+                    });
+                } else {
+                    alert("We found Nothing to upload for serv and maint image1");
+                }
+
+                // for service maint 2 start
+                if (file2) {
+
+                    var objKey = 'facebook-' + fbUserId + '/' + file2.name;
+                    var params = {
+                        Key: objKey,
+                        ContentType: file2.type,
+                        Body: file2,
+                        ACL: 'authenticated-read'
+                    };
+                    bucket.putObject(params, function (err, data) {
+                        alert("Successfully started to Upload the photos" + file2.name + " Please don't refresh or switch from the homepage.. This will take some time..");
+                        if (err) {
+                            //alert("not able to upload serv and maint image2"+err);
+                            alert("Sorry we are not able to upload photo " + file2.name + "for service and maintenance.. It failed with following error " + err + " However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                        } else {
+                            //alert("Successfully upload serv and maint image2 to S3");
+                            alert("Successfully uploaded photo " + file2.name + " to database");
+                        }
+                    });
 
 
-	                    ProviderId: 'graph.facebook.com',
+                } else {
+                    alert("We found Nothing to upload for serv and maint image2");
+                }
+                // end
+
+                // for serv maint 3
+                if (file3) {
+                    var objKey = 'facebook-' + fbUserId + '/' + file3.name;
+                    var params = {
+                        Key: objKey,
+                        ContentType: file3.type,
+                        Body: file3,
+                        ACL: 'authenticated-read'
+                    };
+                    bucket.putObject(params, function (err, data) {
+                        alert("Successfully started to Upload the photos" + file3.name + " Please don't refresh or switch from the homepage.. This will take some time..");
+                        if (err) {
+                            //alert("not able to upload serv and maint image3"+err);
+                            alert("Sorry we are not able to upload photo " + file3.name + "for service and maintenance.. It failed with following error " + err + " However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                        } else {
+                            //alert("Successfully upload serv and maint image3 to S3");
+                            alert("Successfully uploaded photo " + file3.name + " to database");
+                        }
+                    });
+                } else {
+                    alert("We found Nothing to upload for serv and maint image3");
 
 
-	                    RoleArn: roleArn,
+                }
+                // end
+                if (file4) {
+                    var objKey = 'facebook-' + fbUserId + '/' + file4.name;
+                    var params = {
+                        Key: objKey,
+                        ContentType: file4.type,
+                        Body: file4,
+                        ACL: 'authenticated-read'
+                    };
+                    bucket.putObject(params, function (err, data) {
+                        alert("Successfully started to Upload the photos" + file4.name + " Please don't refresh or switch from the homepage.. This will take some time..");
+                        if (err) {
+                            //alert("not able to upload serv and maint image4"+err);
+                            alert("Sorry we are not able to upload photo " + file4.name + "for service and maintenance.. It failed with following error " + err + " However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                        } else {
+                            //alert("Successfully upload serv and maint image4 to s3");
+                            alert("Successfully uploaded photo " + file4.name + " to database");
+                        }
+                    });
+
+                } else {
+                    alert("We found Nothing to upload for serv and maint image4");
+
+                }
+                // end
+
+            }, false);
 
 
-	                    WebIdentityToken: response.authResponse.accessToken
+            /*!
 
 
-	                });
+             * Login to your application using Facebook.
 
 
-	                //fbUserId = response.authResponse.userID;
+             * Uses the Facebook SDK for JavaScript available here:
 
 
-	                button.style.display = 'block';
-				}
-			},{
-				scope : 'email'
-			}); 
+             * https://developers.facebook.com/docs/javascript/gettingstarted/
 
 
-           
+             */
+
+            //alert("Setting up photo upload");
+            FB.getLoginStatus(function (response) {
+                alert("Please select photos to upload..");
+
+                if (response.status === 'connected') {
+                    //alert("inside connected");
+                    bucket.config.credentials = new AWS.WebIdentityCredentials({
 
 
-        };
-
-		//alert("fb sta lod");
-         // Load the Facebook SDK asynchronously
+                        ProviderId: 'graph.facebook.com',
 
 
-        (function (d, s, id) {
+                        RoleArn: roleArn,
 
 
-            var js, fjs = d.getElementsByTagName(s)[0];
+                        WebIdentityToken: response.authResponse.accessToken
 
 
-            if (d.getElementById(id)) {
+                    });
 
 
-                return;
+                    //fbUserId = response.authResponse.userID;
 
 
-            }
+                    button.style.display = 'block';
+                }
+            }, {
+                    scope: 'email'
+                });
+            window.fbAsyncInit = function () {
+                FB.init({
 
 
-            js = d.createElement(s);
+                    appId: appId
 
 
-            js.id = id;
+                });
 
 
-            //js.src = "//connect.facebook.net/en_US/all.js";
-
-js.src = "http://connect.facebook.net/en_US/all.js";
-            fjs.parentNode.insertBefore(js, fjs);
-
-
-        }(document, 'script', 'facebook-jssdk'));
+                FB.getLoginStatus(function (response) {
+                    //alert("ruwususois");
+                    if (response.status === 'connected') {
+                        //alert("inside connected");
+                        bucket.config.credentials = new AWS.WebIdentityCredentials({
 
 
-         
-         
-         
-         }
+                            ProviderId: 'graph.facebook.com',
+
+
+                            RoleArn: roleArn,
+
+
+                            WebIdentityToken: response.authResponse.accessToken
+
+
+                        });
+
+
+                        //fbUserId = response.authResponse.userID;
+
+
+                        button.style.display = 'block';
+                    }
+                }, {
+                        scope: 'email'
+                    });
+
+
+
+
+
+            };
+
+            //alert("fb sta lod");
+            // Load the Facebook SDK asynchronously
+
+
+            (function (d, s, id) {
+
+
+                var js, fjs = d.getElementsByTagName(s)[0];
+
+
+                if (d.getElementById(id)) {
+
+
+                    return;
+
+
+                }
+
+
+                js = d.createElement(s);
+
+
+                js.id = id;
+
+
+                //js.src = "//connect.facebook.net/en_US/all.js";
+
+                js.src = "http://connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+
+
+            }(document, 'script', 'facebook-jssdk'));
+
+
+
+
+
+        }
     </script>
-     <script type="text/javascript">
-	 function fbtranspServ()
-	 {
-       <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
+    <script type="text/javascript">
+        function fbtranspServ() {
+       <!--Facebook Login logic prod 249863545451459 test 238604546585672 -- >
             var appId = '249863545451459';
-      //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-        var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
-        var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
-        AWS.config.region = 'us-east-1';
-        var bucket = new AWS.S3({
-            params: {
-                Bucket: bucketName
-            }
-        });
-        // start of transp
-        var fileChoosertransp1 = document.getElementById('uploadPhotoTrans1');
-        var fileChoosertransp2 = document.getElementById('uploadPhotoTrans2');
-        var buttontranp = document.getElementById('uploadPhotoTransbutton');
-        // end of transp
-       var results = document.getElementById('results');
-        // start of transp
-         buttontranp.addEventListener('click', function () {
-			alert("Preparing to upload Transport images...");
-            var file = fileChoosertransp1.files[0];
-            var file2 = fileChoosertransp2.files[0];
-            fbUserId = $.jStorage.get("fbKey");
-            if (file) {
-            	//alert("came here on click of save for serv and maint1");
-                //Object key will be facebook-USERID#/FILE_NAME
-                var objKey = 'facebook-' + fbUserId + '/' + file.name;
-                var params = {
-                    Key: objKey,
-                    ContentType: file.type,
-                    Body: file,
-                    ACL: 'authenticated-read'
-                };
-                bucket.putObject(params, function (err, data) {
-                	alert("Successfully started to Upload the photos"+file.name+" Please don't refresh or switch from the homepage.. This will take some time..");
-                    if (err) {
-                    	//alert("not able to upload transport image"+err);
-                    	alert("Sorry we are not able to upload photo "+file.name+"for transport service.. It failed with following error "+err+"However please send the photo to autoscoop support team which will upload and link it to your account thanks");
-                    } else {
-
-                    	//alert("Successfully uploaded for transpo image1 to S3");
-                    	alert("Successfully uploaded photo "+file.name+" to database");
-                      
-                    }
-                });
-
-
-            } else {
-
-            	alert("We found Nothing to upload for transport server photo1");
-    
-            }
-            if (file2) {
-                var objKey = 'facebook-' + fbUserId + '/' + file2.name;
-                var params = {
-                    Key: objKey,
-                    ContentType: file2.type,
-                    Body: file2,
-                    ACL: 'authenticated-read'
-                };
-                bucket.putObject(params, function (err, data) {
-                	alert("Successfully started to Upload the photos"+file2.name+" Please don't refresh or switch from the homepage.. This will take some time..");
-                    if (err) {
-                        //alert("not able to upload transport image 2"+err);
-                        alert("Sorry we are not able to upload photo "+file2.name+"for transport service.. It failed with following error"+err+"However please send the photo to autoscoop support team which will upload and link it to your account thanks");
-                    } else {
-                    	//alert("Successfully uploaded transpo image2 to s3");
-                    	alert("Successfully uploaded photo "+file2.name+" to database");
-
-                    }
-                });
-            } else {
-
-            	alert("We found Nothing to upload for transport server photo2");
-            }
-        }, false);
-
-        /*!
-
-
-         * Login to your application using Facebook.
-
-
-         * Uses the Facebook SDK for JavaScript available here:
-
-
-         * https://developers.facebook.com/docs/javascript/gettingstarted/
-
-
-         */
-         
-		//alert("Setting up photo upload");
-		 FB.getLoginStatus(function(response) {
-			 alert("Please select photos to upload..");
-				if (response.status === 'connected') {
-					//alert("inside connected");
-					bucket.config.credentials = new AWS.WebIdentityCredentials({
-
-
-	                    ProviderId: 'graph.facebook.com',
-
-
-	                    RoleArn: roleArn,
-
-
-	                    WebIdentityToken: response.authResponse.accessToken
-
-
-	                });
-
-
-	                //fbUserId = response.authResponse.userID;
-
-
-	                button.style.display = 'block';
-				}
-			},{
-				scope : 'email'
-			}); 
-        window.fbAsyncInit = function () {
-            FB.init({
-
-
-                appId: appId
-
-
+            //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+            var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+            var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+            AWS.config.region = 'us-east-1';
+            var bucket = new AWS.S3({
+                params: {
+                    Bucket: bucketName
+                }
             });
-            
-            
-            FB.getLoginStatus(function(response) {
-            	//alert("ruwususois");
-				if (response.status === 'connected') {
-					//alert("inside connected");
-					bucket.config.credentials = new AWS.WebIdentityCredentials({
+            // start of transp
+            var fileChoosertransp1 = document.getElementById('uploadPhotoTrans1');
+            var fileChoosertransp2 = document.getElementById('uploadPhotoTrans2');
+            var buttontranp = document.getElementById('uploadPhotoTransbutton');
+            // end of transp
+            var results = document.getElementById('results');
+            // start of transp
+            buttontranp.addEventListener('click', function () {
+                alert("Preparing to upload Transport images...");
+                var file = fileChoosertransp1.files[0];
+                var file2 = fileChoosertransp2.files[0];
+                fbUserId = $.jStorage.get("fbKey");
+                if (file) {
+                    //alert("came here on click of save for serv and maint1");
+                    //Object key will be facebook-USERID#/FILE_NAME
+                    var objKey = 'facebook-' + fbUserId + '/' + file.name;
+                    var params = {
+                        Key: objKey,
+                        ContentType: file.type,
+                        Body: file,
+                        ACL: 'authenticated-read'
+                    };
+                    bucket.putObject(params, function (err, data) {
+                        alert("Successfully started to Upload the photos" + file.name + " Please don't refresh or switch from the homepage.. This will take some time..");
+                        if (err) {
+                            //alert("not able to upload transport image"+err);
+                            alert("Sorry we are not able to upload photo " + file.name + "for transport service.. It failed with following error " + err + "However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                        } else {
+
+                            //alert("Successfully uploaded for transpo image1 to S3");
+                            alert("Successfully uploaded photo " + file.name + " to database");
+
+                        }
+                    });
 
 
-	                    ProviderId: 'graph.facebook.com',
+                } else {
+
+                    alert("We found Nothing to upload for transport server photo1");
+
+                }
+                if (file2) {
+                    var objKey = 'facebook-' + fbUserId + '/' + file2.name;
+                    var params = {
+                        Key: objKey,
+                        ContentType: file2.type,
+                        Body: file2,
+                        ACL: 'authenticated-read'
+                    };
+                    bucket.putObject(params, function (err, data) {
+                        alert("Successfully started to Upload the photos" + file2.name + " Please don't refresh or switch from the homepage.. This will take some time..");
+                        if (err) {
+                            //alert("not able to upload transport image 2"+err);
+                            alert("Sorry we are not able to upload photo " + file2.name + "for transport service.. It failed with following error" + err + "However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                        } else {
+                            //alert("Successfully uploaded transpo image2 to s3");
+                            alert("Successfully uploaded photo " + file2.name + " to database");
+
+                        }
+                    });
+                } else {
+
+                    alert("We found Nothing to upload for transport server photo2");
+                }
+            }, false);
+
+            /*!
 
 
-	                    RoleArn: roleArn,
+             * Login to your application using Facebook.
 
 
-	                    WebIdentityToken: response.authResponse.accessToken
+             * Uses the Facebook SDK for JavaScript available here:
 
 
-	                });
+             * https://developers.facebook.com/docs/javascript/gettingstarted/
 
 
-	                //fbUserId = response.authResponse.userID;
+             */
+
+            //alert("Setting up photo upload");
+            FB.getLoginStatus(function (response) {
+                alert("Please select photos to upload..");
+                if (response.status === 'connected') {
+                    //alert("inside connected");
+                    bucket.config.credentials = new AWS.WebIdentityCredentials({
 
 
-	                button.style.display = 'block';
-				}
-			},{
-				scope : 'email'
-			}); 
-        };
-
-		//alert("fb sta lod");
-         // Load the Facebook SDK asynchronously
+                        ProviderId: 'graph.facebook.com',
 
 
-        (function (d, s, id) {
+                        RoleArn: roleArn,
 
 
-            var js, fjs = d.getElementsByTagName(s)[0];
+                        WebIdentityToken: response.authResponse.accessToken
 
 
-            if (d.getElementById(id)) {
+                    });
 
 
-                return;
+                    //fbUserId = response.authResponse.userID;
 
 
-            }
+                    button.style.display = 'block';
+                }
+            }, {
+                    scope: 'email'
+                });
+            window.fbAsyncInit = function () {
+                FB.init({
 
 
-            js = d.createElement(s);
+                    appId: appId
 
 
-            js.id = id;
+                });
 
 
-            //js.src = "//connect.facebook.net/en_US/all.js";
-
-js.src = "http://connect.facebook.net/en_US/all.js";
-            fjs.parentNode.insertBefore(js, fjs);
-
-
-        }(document, 'script', 'facebook-jssdk'));
+                FB.getLoginStatus(function (response) {
+                    //alert("ruwususois");
+                    if (response.status === 'connected') {
+                        //alert("inside connected");
+                        bucket.config.credentials = new AWS.WebIdentityCredentials({
 
 
-         
-         
-         
-         }
+                            ProviderId: 'graph.facebook.com',
+
+
+                            RoleArn: roleArn,
+
+
+                            WebIdentityToken: response.authResponse.accessToken
+
+
+                        });
+
+
+                        //fbUserId = response.authResponse.userID;
+
+
+                        button.style.display = 'block';
+                    }
+                }, {
+                        scope: 'email'
+                    });
+            };
+
+            //alert("fb sta lod");
+            // Load the Facebook SDK asynchronously
+
+
+            (function (d, s, id) {
+
+
+                var js, fjs = d.getElementsByTagName(s)[0];
+
+
+                if (d.getElementById(id)) {
+
+
+                    return;
+
+
+                }
+
+
+                js = d.createElement(s);
+
+
+                js.id = id;
+
+
+                //js.src = "//connect.facebook.net/en_US/all.js";
+
+                js.src = "http://connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+
+
+            }(document, 'script', 'facebook-jssdk'));
+
+
+
+
+
+        }
     </script>
     <script type="text/javascript">
         tjq(".flexslider").flexslider({

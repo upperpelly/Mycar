@@ -76,9 +76,10 @@ public class UserEBidServiceImpl implements UserEBidService {
 			userVehicleLeads.add(search);
 			user.setSearch(userVehicleLeads);
 		}
-
+		SearchFinance searchFinance=null;
+		if(userEBidVO.isFinance()){
 		// Create User Finance Lead
-		SearchFinance searchFinance = domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
+		searchFinance = domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
 		if (user.getSearchFinance() != null) {
 			user.getSearchFinance().add(searchFinance);
 		} else {
@@ -86,9 +87,11 @@ public class UserEBidServiceImpl implements UserEBidService {
 			userFinanceLeads.add(searchFinance);
 			user.setSearchFinance(userFinanceLeads);
 		}
-
+		}
+		SearchInsurance searchInsurance =null;
+		if(userEBidVO.isInsurance()){
 		// Create User Insurance Lead
-		SearchInsurance searchInsurance = domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
+		searchInsurance = domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
 		if (user.getSearchInsurance() != null) {
 			user.getSearchInsurance().add(searchInsurance);
 		} else {
@@ -96,7 +99,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 			userInsuranceLeads.add(searchInsurance);
 			user.setSearchInsurance(userInsuranceLeads);
 		}
-
+		}
 		userRepository.flush();
 
 		// Get Inventory matching the User EBid for Car
@@ -129,6 +132,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 					dealer.setDealSearch(dealerVehicleLeads);
 				}
 			}
+			if(userEBidVO.isFinance()){
 			// Create Dealer Finance Lead if he provides finance
 			if (dealer.isFinancer()) {
 				dealerSearchFinance = domainModelUtil.toDealerSearchFinance(userEBidVO.getFinanceLead());
@@ -141,6 +145,8 @@ public class UserEBidServiceImpl implements UserEBidService {
 					dealer.setDealSearchFinance(dealerFinanceLeads);
 				}
 			}
+			}
+			if(userEBidVO.isFinance()){
 			// Create Dealer Insurance Lead if he provides insurance
 			if (dealer.isInsurer()) {
 				dealerSearchInsurance = domainModelUtil.toDealerSearchInsurance(userEBidVO.getInsuranceLead());
@@ -153,17 +159,17 @@ public class UserEBidServiceImpl implements UserEBidService {
 					dealer.setDealSearchInsurance(dealerInsuranceLeads);
 				}
 			}
-
+			}
 			inventoryRepository.flush();
 			System.out.println("isDealer"+dealer.isDealer());
 			if (dealer.isDealer()) {
 				System.out.println("create quotation when"+dealer.isDealer());
 				createVehicleQuotation(user, dealer, search, dealerSearch, inventory);
 			}
-			if (dealer.isFinancer()) {
+			if (dealer.isFinancer() && searchFinance != null && userEBidVO.isFinance()) {
 				createFinanceQuotation(user, dealer, searchFinance, dealerSearchFinance, inventory);
 			}
-			if (dealer.isInsurer()) {
+			if (dealer.isInsurer() && searchInsurance != null && userEBidVO.isInsurance()) {
 				createInsuranceQuotation(user, dealer, searchInsurance, dealerSearchInsurance, inventory);
 			}
 
