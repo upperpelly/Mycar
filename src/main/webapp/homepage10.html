@@ -1504,7 +1504,32 @@ $.ajax({
             .controller(
             'myController1',
             function ($scope, $http) {
+                debugger;
+                var yrs = [];
+                $scope.years=[];
+                $http({
+                    method: 'GET',
+                    url: 'http://autoscoop.com.au/api/tempCarModelYears'
 
+                }).success(function (data) {
+                    $scope.years = data;
+                    yrs = data;
+                });
+                $scope.isNewChanged = function(){
+                    if($scope.isNew && !$scope.isUsed){
+                        $scope.years = [];
+                        $scope.years = ['2017'];
+                    }
+                    else{
+                        $scope.years = [];
+                        for (var i = 0; i < yrs.length; i++){
+                            $scope.years.push(yrs[i]);
+                        }
+                    }
+                }
+
+                $scope.isNew = false;
+                $scope.isUsed = false;
                 //Login start
 
                 $scope.submitForm12 = function () {
@@ -3185,12 +3210,16 @@ $.ajax({
 
                                                     <div class="row">
                                                         <div class="col-sm-5 col-md-6">
-                                                        	<div class="radio">
-	                                                         <input type="radio" id="newUsedCarEbid" name="newUsedCarEbid" checked><span class="skin-color">New</span>
-	                                                       	</div>  
-	                                                       	<div class="radio">
-	                                                       		<input type="radio" id="newUsedCarEbid" name="newUsedCarEbid"><span class="skin-color">Used</span>
-	                                                       	</div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" id="newCarEbid" name="newCarEbid" ng-model="isNew" ng-change="isNewChanged()" class="jpCheckbox" onclick="allSelected5()"><span class="skin-color">New&nbsp;&nbsp;</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" id="usedCarEbid" name="usedCarEbid" ng-model="isUsed" ng-change="isNewChanged()" class="jpCheckbox" onclick="allSelected6()"><span class="skin-color">Used</span>
+                                                                </label>
+                                                            </div>
                                                         </div>
                                                         <div class="col-sm-7 col-md-6"></div>
                                                     </div>
@@ -3212,8 +3241,12 @@ $.ajax({
                                                     <div class="row">
                                                         <div class="col-sm-5 col-md-6">
                                                             <div class="selector">
-                                                                <select id="car-years" name="caryears" ng-model="caryears"
-                                                                        class="full-width" required></select>
+                                                                <select name="caryears" ng-model="caryears"
+                                                                        class="full-width">
+                                                                    <option value="" disabled selected>Select</option>
+                                                                    <option ng-repeat="yr in years" ng-value="yr">{{yr}}</option>
+
+                                                                </select>
                                                             </div>
                                                             <span style="color:red" ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
                                                         </div>
@@ -4973,7 +5006,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <div class="selector">
                                                                 <select id="car-years-fin" name="caryearsfin" ng-model="caryearsfin"
-                                                                        class="full-width" required onclick="showDiv2()">
+                                                                        class="full-width" required >
                                                                     <option value="" selected disabled>Year</option>
                                                                 </select>
                                                             </div>
