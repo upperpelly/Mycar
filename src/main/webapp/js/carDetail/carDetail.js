@@ -41,7 +41,7 @@ if(!value1){
 }
 //alert(value1.priceMin+"&priceMax="+value1.priceMax+"I can user");
 //alert(JSON.stringify(value1));
-console.log(JSON.stringify(value1));
+//console.log(JSON.stringify(value1));
 function signingout(){
 	
 	 $.jStorage.deleteKey("key");

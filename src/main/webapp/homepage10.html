@@ -832,8 +832,12 @@
             //OR,
             //$('input:checkbox.jpCheckbox').attr('checked','checked');
         }
+        function myDecision(data) {
+        	$.jStorage.set('newusekey', data);
+            $.jStorage.setTTL('mynewkey', 30000); 
+        }
 
-        var isChecked5 = false;
+        /* var isChecked5 = false;
 
         function allSelected5() {
             //alert("inside check box");
@@ -854,9 +858,9 @@
 
             //OR,
             //$('input:checkbox.jpCheckbox').attr('checked','checked');
-        }
+        } */
 
-        var isChecked6 = false;
+       /*  var isChecked6 = false;
 
         function allSelected6() {
             //alert("inside check box");
@@ -875,13 +879,25 @@
 
             //OR,
             //$('input:checkbox.jpCheckbox').attr('checked','checked');
-        }
+        } */
         var isChecked896 = true;
 
         function allSelected896() {
             //alert("inside check box");
             // this line is for toggle the check
             //isChecked = !isChecked;
+            var flag= document.getElementById("carEbidFinan").checked;
+            var data="";
+            if(flag){ 
+            	data="FChecked";
+            }
+            else
+           	{
+            	data="FNC";
+           	}
+
+        	$.jStorage.set('finCheckKey', data);
+            $.jStorage.setTTL('mynewkey', 30000);
             if (isChecked896) {
                 document.getElementById("carEbidFinan").value = false;
                 isChecked896 = !isChecked896;
@@ -903,6 +919,18 @@
             //alert("inside check box");
             // this line is for toggle the check
             //isChecked = !isChecked;
+        	var flag= document.getElementById("carEbidInsur").checked;
+        	var data="";
+            if(flag){
+            	
+            	data="IChecked";
+            }
+            else
+           	{
+            	data="INC";
+           	}
+            $.jStorage.set('insCheckKey', data);
+            $.jStorage.setTTL('myinsnewkey', 30000);
             if (isChecked996) {
                 document.getElementById("carEbidInsur").value = false;
                 isChecked996 = !isChecked996;
@@ -1174,7 +1202,7 @@
 <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '249863545451459',
+				appId : '238604546585672',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -2288,14 +2316,19 @@ $.ajax({
 
 
                 $scope.submitForm = function (isValid) {
-                    var newCarEbid = false;
+                   /*  var newCarEbid = false;
                     //alert(document.getElementById("newCarEbid").value);
                     newCarEbid = document.getElementById("newCarEbid").value;
                     if (newCarEbid == "on") newCarEbid = false;
                     var usedCarEbid = false;
                     usedCarEbid = document.getElementById("usedCarEbid").value;
-                    if (usedCarEbid == "on") usedCarEbid = false;
-                    
+                    if (usedCarEbid == "on") usedCarEbid = false; */
+                    var usedCarEbid;
+                    var newCarEbid= document.getElementById("newUsedCarEbid").checked;
+                    if(!newCarEbid){
+                    	usedCarEbid = false;
+                    	alert("used is checked");
+                    }
                     var carEbidFinan = false;
                     //alert(document.getElementById("newCarEbid").value);
                     carEbidFinan = document.getElementById("carEbidFinan").value;
@@ -3150,16 +3183,12 @@ $.ajax({
 
                                                     <div class="row">
                                                         <div class="col-sm-5 col-md-6">
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" id="newCarEbid" name="newCarEbid" class="jpCheckbox" onclick="allSelected5()"><span class="skin-color">New&nbsp;&nbsp;</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" id="usedCarEbid" name="usedCarEbid" class="jpCheckbox" onclick="allSelected6()"><span class="skin-color">Used</span>
-                                                                </label>
-                                                            </div>
+                                                        	<div class="radio">
+	                                                         <input type="radio" id="newUsedCarEbid" name="newUsedCarEbid" checked><span class="skin-color">New</span>
+	                                                       	</div>  
+	                                                       	<div class="radio">
+	                                                       		<input type="radio" id="newUsedCarEbid" name="newUsedCarEbid"><span class="skin-color">Used</span>
+	                                                       	</div>
                                                         </div>
                                                         <div class="col-sm-7 col-md-6"></div>
                                                     </div>

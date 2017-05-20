@@ -56,7 +56,40 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script src="js/jstorage.js"></script>
 <script>
+//start for insurance
+function appendRow944() {
+    //alert("append invoke");
+    var tbl = document.getElementById('my-table944'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+        createCellRelatedModels944(row.insertCell(i), tbl.rows.length - 1, i, 'form-group row');
+    }
+}
+function createCellRelatedModels944(cell, row, text, style) {
+    //alert("came here1214"+$('#car-years').val());
+    var div = document.createElement('div'); // create DIV element
+    //txt = document.createTextNode(text); // create text node
 
+    var newInput = document.createElement("INPUT");
+    newInput.id = "relatedModels944" + row + text;
+    newInput.name = "relatedModels944" + row + text;
+    newInput.type = "text";
+    //newInput.class = "input-text full-width";
+    newInput.setAttribute('class', 'input-text full-width');
+    //alert($('#car-years-trans').val());
+    //alert(text);
+    switch (text) {
+        case 3: newInput.type = "date"; break;
+    }
+    //div.appendChild('&nbsp;');
+    div.appendChild(newInput);                    // append text node to the DIV
+    //div.setAttribute('class', style);        // set DIV class attribute
+    //div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+// end of insurance
 </script>
 
 <script>
@@ -237,6 +270,8 @@ body.loading .modal {
       <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
       <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
     <![endif]-->
+    
+    
 </head>
 <body ng-app="mainApp1" >
     
@@ -1352,9 +1387,83 @@ We suggest that you contact the host to confirm availability and rates before su
                                             <div class="col-sm-3 col-md-3">
                                                 &nbsp;
                                             </div>
-                                        </div> <hr />
+                                        </div>
+                                        <div class="row addFinIns">
+			                                 <ul class="pull-right">
+			                                     <li style="display: inline;"><input type="checkbox" id="aFinCheck" name="aFinCheck"><span class="skin-color" style="color:#bd191e">Add Finance</span></li>
+			                                     <li style="display: inline;"><input type="checkbox" id="aInsCheck" name="aInsCheck"><span class="skin-color" style="color:#bd191e">Add Insurance</span></li>
+			                                     <li style="display: inline;"><input type="checkbox" id="aNoCheck" name="aNoCheck"><span class="skin-color" style="color:#bd191e">I will do it Later..</span></li>
+			
+			                                 </ul>
+		                                </div>
                                         
-                                      <div class="toggle-container box">
+									    <script>
+									    
+											    var finKey=$.jStorage.get("finCheckKey");
+											    if(!finKey){
+											    	var key1="FNC";
+											        $.jStorage.set("finCheckKey",key1);
+											    }
+											    var insKey=$.jStorage.get("insCheckKey");
+											    if(!insKey){
+											        // if not - load the data from the server
+											    //alert("can inside");
+											        /*value = ()*/
+											        // and save it
+											    	var key2="INC";
+											        $.jStorage.set("insCheckKey",key2);
+											    }
+											    alert(insKey);
+											    alert(finKey);
+											   
+											    
+												if(finKey == "FChecked" && insKey== "IChecked"){
+													$(".addFinIns").hide();
+											    }
+											    
+											    
+											    
+											    $("#aFinCheck").click(function(){
+											    	//alert("Fin");
+											    	if($('#aFinCheck').attr('checked')) {
+											    		$(".finToggle").show();
+														}
+											    	else{
+											    		$(".finToggle").hide();
+											    	}
+											    	
+											    });/* 
+											    $("#aFinCheck").on("click", function(){
+											        //alert("The paragraph was clicked.");
+											    }); */
+											    $("#aInsCheck").click(function(){
+											    	//alert("Finssss");
+											    	if($('#aInsCheck').attr('checked')) {
+											    		$(".insToggle").show();
+														}
+											    	else{
+											    		$(".insToggle").hide();
+											    	}
+											    });
+											    $("#aNoCheck").click(function(){
+											    	//alert("No che");
+											    	if($('#aFinCheck').attr('checked')) {
+											    		$(".finToggle").show();
+														}
+											    	else{
+											    		$(".finToggle").hide();
+											    	}
+											    	if($('#aInsCheck').attr('checked')) {
+											    		$(".insToggle").show();
+														}
+											    	else{
+											    		$(".insToggle").hide();
+											    	}
+											    });
+									    </script>
+                                         <hr />
+                                        
+                                      <div class="toggle-container box finToggle">
                                                     <div class="panel style1">
                                                         <h4 class="panel-title">
                                                             <a href="#tgg4" data-toggle="collapse">Finance Requirement</a>
@@ -1362,8 +1471,6 @@ We suggest that you contact the host to confirm availability and rates before su
                                                         <div class="panel-collapse collapse" id="tgg4">
                                                             <div class="panel-content">
                                                                 <div class="card-information">
-                                                                    <h2>Enter Finance Requirement</h2>
-                                                                    <br/>
 								                                    <div class="row">
 																		<div class="col-sm-3 col-md-3">
 																			<label>How Much Loan your looking ?</label>
@@ -1402,8 +1509,10 @@ We suggest that you contact the host to confirm availability and rates before su
 																		<div class="col-sm-3 col-md-3">
 																			<div class="selector">
 								                                                <select class="full-width" id="incomeType" ng-model="incomeType" name="incomeType" required>
-								                                                    <option>Salary</option>
-								                                                    <option>From Business</option>
+								                                                    <option value="" selected disabled>Income Type</option>
+				                                                                    <option>Salaried</option>
+				                                                                    <option>Self Employed</option>
+				                                                                    <option>Business</option>
 								                                                </select>
 								                                            </div>
 								                                            <span style="color:red" ng-show="frm.incomeType.$error.required && (!frm.incomeType.$pristine || frm.$submitted)"><b>Income Type is Required</b></span>
@@ -1444,9 +1553,6 @@ We suggest that you contact the host to confirm availability and rates before su
                                                     </div>
 
                                        </div> <hr />
-                                       
-                                        
-                                        
 									<!-- 
 									<div data-role="rangeslider">
 								        <label for="price-min">Price:</label>
@@ -1455,488 +1561,341 @@ We suggest that you contact the host to confirm availability and rates before su
 								        <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000" data-show-value="true">
 								    </div>
                                      -->
-                                    
-                                    <!-- <div class="form-group row">
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Post</label>
-                                            <input type="text" id="postCode" name="postCode" ng-model="postCode" ng-minlength="4" ng-pattern="/^[0-9]*$/" ng-maxlength="4" class="input-text full-width" required>
-                                            <span style="color:red" ng-show="frm.postCode.$error.pattern && (!frm.postCode.$pristine || frm.$submitted)"><b>POST must be Numeric</b></span>
-                                            <span  style="color:red" ng-show="frm.postCode.$error.required && (!frm.postCode.$pristine || frm.$submitted)"><b>POST is Required</b></span> 
-                                           <span style="color:red" ng-show="frm.postCode.$error.minlength && (!frm.postCode.$pristine || frm.$submitted) && !frm.postCode.$error.pattern"><b>POST must be of 4 digits</b></span>
-                                           <span style="color:red" ng-show="frm.postCode.$error.maxlength && (!frm.postCode.$pristine || frm.$submitted) && !frm.postCode.$error.pattern"><b>POST must be of 4 digits only.</b></span>
-                                           
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Colour</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="carColor" name="carColor"  ng-model="carColor" required>
-                                                    <option>Please choose a color</option>
-                                                    <option>Red</option>
-                                                    <option>Blue</option>
-                                                    <option>Green</option>
-                                                    <option>Grey</option>
-                                                    <option>Silver</option>
-                                                    <option>Black</option>
-                                                    <option>White</option>
-                                                </select>
-                                                
-                                            </div>
-                                            <span style="color:red" ng-show="frm.carColor.$error.required && (!frm.carColor.$pristine || frm.$submitted)"><b>Car color is Required</b></span>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Transmission</label>
-                                            <div class="selector">
-                                                <select class="full-width"id="transmission" name="transmission" >
-                                                    <option>Automatic</option>
-                                                    <option>Manual</option>
-                                                    
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
-                                    </div> -->
-                                    <!-- <div class="form-group row">
-                                       <div class="col-sm-5 col-md-4">
-                                            <label>Drive Type</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="driveType" name="driveType">
-                                                    <option>Two Wheel</option>
-                                                    <option>Four Wheel</option>
-                                                    
-                                                </select>
-                                            </div>
-                                        </div> 
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Fuel Type</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="fuelType" name="fuelType">
-                                                    <option>Diesel</option>
-                                                    <option>Petrol</option>
-                                                    <option>Electric</option>
-                                                    <option>Gas</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Seats</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="seats" name="seats">
-                                                    <option>2</option>
-                                                    <option>5</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Vehicle Purpose</label>
-                                            <div class="selector">
-                                                <select class="full-width"  id="vehiclePurpose" name="vehiclePurpose">
-                                                    <option>Business</option>
-                                                    <option>Private</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
-                                        
-                                    </div> -->
-                                    <!-- <div class="clearfix"></div>
-                                    <div class="form-group row">
-                                    <div class="col-sm-5 col-md-4">
-                                            <label>Extra External Fitting 1</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="extraExternal1" name="extraExternal1">
-                                                    <option>Bull Bar</option>
-                                                    <option>Nudge Bar</option>
-                                                    <option>Roof Back</option>
-                                                    <option>Bonnect Protection</option>
-                                                    <option>Side Step</option>
-                                                    <option>Snokel Set</option>
-                                                    <option>Two bar</option>
-                                                    
-                                                </select>
-                                            </div>
-                                        </div>
-                                        </div>
-                                     -->
-                             <!-- <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tgg1" data-toggle="collapse">Additional Extra External Fittings</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tgg1">
-                                        <div class="panel-content">
-                                       <div class="form-group row">
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Extra External Fitting 2</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="extraExternal2" name="extraExternal2">
-                                                    <option>Bull Bar</option>
-                                                    <option>Nudge Bar</option>
-                                                    <option>Roof Back</option>
-                                                    <option>Bonnect Protection</option>
-                                                    <option>Side Step</option>
-                                                    <option>Snokel Set</option>
-                                                    
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Extra External Fitting 3</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="extraExternal3" name="extraExternal3">
-                                                    <option>Bull Bar</option>
-                                                    <option>Nudge Bar</option>
-                                                    <option>Roof Back</option>
-                                                    <option>Bonnect Protection</option>
-                                                    <option>Side Step</option>
-                                                    <option>Snokel Set</option>
-                                                    
-                                                    
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Extra External Fitting 4</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="extraExternal4" name="extraExternal4">
-                                                    <option>Bull Bar</option>
-                                                    <option>Nudge Bar</option>
-                                                    <option>Roof Back</option>
-                                                    <option>Bonnect Protection</option>
-                                                    <option>Side Step</option>
-                                                    <option>Snokel Set</option>
-                                                    
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Extra External Fitting 5</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="extraExternal5" name="extraExternal5">
-                                                    <option>Bull Bar</option>
-                                                    <option>Nudge Bar</option>
-                                                    <option>Roof Back</option>
-                                                    <option>Bonnect Protection</option>
-                                                    <option>Side Step</option>
-                                                    <option>Snokel Set</option>
-                                                    
-                                                    
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                        </div>end content
-                                    </div>
-                                </div>
-                                 
-                            </div> -->
-                                <!--  <div class="form-group row">
-                                       <div class="col-sm-5 col-md-4">
-                                            <label>Extra Internal Fitting 1</label>
-                                            <div class="selector">
-                                                <select class="full-width"  id="extraInternal1" name="extraInternal1">
-                                                    <option>leather Seats</option>
-                                                    <option>Audio System</option>
-                                                    <option>Car Play</option>
-                                                    <option>Satellite Navigation</option>
-                                                    <option>Car Mats</option>
-                                                    <option>Alarm with Remote</option>
-                                                    <option>Custom Speakers</option>
-                                                    <option>Heated Front Seats</option>
-                                                    <option>Heated Rear Seats</option>
-                                                    <option>lane Change Warning</option>
-                                                    <option>Paint Non Matilic</option>
-                                                    <option>Paint Matilic</option>
-                                                    <option>Air Condition</option>
-                                                    <option>Air Condition rear</option>
-                                                    <option>Blind Spot Warrning</option>
-                                                    <option>lumbar Support Seats</option>
-                                                    <option>Sunroof</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
-                                        
-                                    </div>     -->
-                                 <!--  <div class="toggle-container box">
-                                <div class="panel style1">
-                                    <h4 class="panel-title">
-                                        <a href="#tgg2" data-toggle="collapse">Additional Extra Internal Fittings</a>
-                                    </h4>
-                                    <div class="panel-collapse collapse" id="tgg2">
-                                        <div class="panel-content">
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Extra Internal Fitting 2</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="extraInternal2" name="extraInternal2">
-                                                    <option>leather Seats</option>
-                                                    <option>Audio System</option>
-                                                    <option>Car Play</option>
-                                                    <option>Satellite Navigation</option>
-                                                    <option>Car Mats</option>
-                                                    <option>Alarm with Remote</option>
-                                                    <option>Custom Speakers</option>
-                                                    <option>Heated Front Seats</option>
-                                                    <option>Heated Rear Seats</option>
-                                                    <option>lane Change Warning</option>
-                                                    <option>Paint Non Matilic</option>
-                                                    <option>Paint Matilic</option>
-                                                    <option>Air Condition</option>
-                                                    <option>Air Condition rear</option>
-                                                    <option>Blind Spot Warrning</option>
-                                                    <option>lumbar Support Seats</option>
-                                                    <option>Sunroof</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Extra Internal Fitting 3</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="extraInternal3" name="extraInternal3">
-                                                    <option>leather Seats</option>
-                                                    <option>Audio System</option>
-                                                    <option>Car Play</option>
-                                                    <option>Satellite Navigation</option>
-                                                    <option>Car Mats</option>
-                                                    <option>Alarm with Remote</option>
-                                                    <option>Custom Speakers</option>
-                                                    <option>Heated Front Seats</option>
-                                                    <option>Heated Rear Seats</option>
-                                                    <option>lane Change Warning</option>
-                                                    <option>Paint Non Matilic</option>
-                                                    <option>Paint Matilic</option>
-                                                    <option>Air Condition</option>
-                                                    <option>Air Condition rear</option>
-                                                    <option>Blind Spot Warrning</option>
-                                                    <option>lumbar Support Seats</option>
-                                                    <option>Sunroof</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Extra Internal Fitting 4</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="extraInternal4" name="extraInternal4">
-                                                    <option>leather Seats</option>
-                                                    <option>Audio System</option>
-                                                    <option>Car Play</option>
-                                                    <option>Satellite Navigation</option>
-                                                    <option>Car Mats</option>
-                                                    <option>Alarm with Remote</option>
-                                                    <option>Custom Speakers</option>
-                                                    <option>Heated Front Seats</option>
-                                                    <option>Heated Rear Seats</option>
-                                                    <option>lane Change Warning</option>
-                                                    <option>Paint Non Matilic</option>
-                                                    <option>Paint Matilic</option>
-                                                    <option>Air Condition</option>
-                                                    <option>Air Condition rear</option>
-                                                    <option>Blind Spot Warrning</option>
-                                                    <option>lumbar Support Seats</option>
-                                                    <option>Sunroof</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Extra Internal Fitting 5</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="extraInternal5" name="extraInternal5">
-                                                    <option>leather Seats</option>
-                                                    <option>Audio System</option>
-                                                    <option>Car Play</option>
-                                                    <option>Satellite Navigation</option>
-                                                    <option>Car Mats</option>
-                                                    <option>Alarm with Remote</option>
-                                                    <option>Custom Speakers</option>
-                                                    <option>Heated Front Seats</option>
-                                                    <option>Heated Rear Seats</option>
-                                                    <option>lane Change Warning</option>
-                                                    <option>Paint Non Matilic</option>
-                                                    <option>Paint Matilic</option>
-                                                    <option>Air Condition</option>
-                                                    <option>Air Condition rear</option>
-                                                    <option>Blind Spot Warrning</option>
-                                                    <option>lumbar Support Seats</option>
-                                                    <option>Sunroof</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        </div>end content
-                                    </div>
-                                </div>
-                                 
-                            </div>   -->
-                                    
-                              <!-- <div class="clearfix"></div>     
-                                    <div class="form-group row">
-                                         
-                                        <div class="col-sm-80 col-md-90">
-                                            <label>Free text</label>
-                                            <input type="text" class="input-text full-width" placeholder="free text" placeholder=""  id="freetext" name="freetext"/>
-                                        </div>
-                                        
-                                    </div> -->
-                                   
                                 </div><!-- Personalinfo end -->
                                 
-                                <div class="toggle-container box">
+                                
+                                <div class="toggle-container box insToggle">
                                 <div class="panel style1">
                                     <h4 class="panel-title">
                                         <a href="#tgg5" data-toggle="collapse">Insurance Requirements</a>
                                     </h4>
                                     <div class="panel-collapse collapse" id="tgg5">
                                         <div class="panel-content">
-                                        <h2>Enter Insurance Details</h2>
-                                <div class="form-group row">
-                                    <div class="col-sm-5 col-md-4">
-                                        <label>Insurance Type</label>
-                                        <div class="selector">
-                                                <select class="full-width" ng-model="insuranceType" id="insuranceType" name="insuranceType" required>
-                                                    <option>Comprahensive</option>
-                                                    <option>Third Party</option>
-                                                </select>
-                                        </div>
-                                        <span style="color:red" ng-show="frm.insuranceType.$error.required && (!frm.insuranceType.$pristine || frm.$submitted)"><b>Insurance Type is Required</b></span>
-                                    </div>
-                                    <div class="col-sm-5 col-md-4">
-                                            <label>REGO No</label>
-                                            <input type="text" class="input-text full-width"  placeholder="REGO No"  id="reg-no" name="reg-no"/>
-                                        </div>
-                                         <div class="col-sm-5 col-md-4">
-                                            <label>REGO State</label>
-                                            <div class="selector">
-                                                <select class="full-width" id="regoState"  ng-model="regoState" name="regoState" required>
-                                                    <option>ACT</option>
-                                                    <option>NT</option>
-                                                    <option>QLD</option>
-                                                    <option>VIC</option>
-                                                    <option>NSW</option>
-                                                    <option>TAS</option>
-                                                    <option>SA</option>
-                                                    <option>WA</option>
-                                                </select>
-                                            </div>
-                                            <span style="color:red" ng-show="frm.regoState.$error.required && (!frm.regoState.$pristine || frm.$submitted)"><b>REGO State is Required</b></span>
-                                        </div>
-                                    <div class="col-sm-5 col-md-4">
-                                        <label>Driving License Type</label>
-                                        <div class="selector">
-                                                <select class="full-width" id="drivingLicenseType" ng-model="drivingLicenseType" name="drivingLicenseType" required>
-                                                    <option>L - learner</option>
-                                                    <option>P - Probationary</option>
-                                                    <option>F - Full Licence</option>
-                                                </select>
-                                            </div>
-                                        <span style="color:red" ng-show="frm.drivingLicenseType.$error.required && (!frm.drivingLicenseType.$pristine || frm.$submitted)"><b>Driving LicenseType is Required</b></span>
-                                    </div>
-                                
-                                <div class="col-sm-5 col-md-4">
-                                        <label>Driving License Number</label>
-                                        <div class="selector">
-                                        <input type="text" class="input-text full-width" placeholder="Driving License Number" id="drivingLicenseNumber" ng-model="drivingLicenseNumber" name="drivingLicenseNumber" required>
-                                               <!--  <select class="full-width" id="drivingLicenseNumber" ng-model="drivingLicenseNumber" name="drivingLicenseNumber" required>
-                                                    <option>Comprahensive</option>
-                                                    <option>Third Party</option>
-                                                </select> -->
-                                            </div>
-                                         <span style="color:red" ng-show="frm.drivingLicenseNumber.$error.required && (!frm.drivingLicenseNumber.$pristine || frm.$submitted)"><b>Driving License Number is Required</b></span>
-                                    </div>
-                             </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-5 col-md-4">
-                                            <label>Market Value</label>
-                                            <input type="text" class="input-text full-width" placeholder="Market Value"  id="marketValue" name="marketValue"/>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Agreed Value</label>
-                                            <input type="text" class="input-text full-width" placeholder="Agreed Value" ng-pattern="/^[0-9]*$/"  ng-model="agreedValue" id="agreedValue" name="agreedValue" required/>
-                                            <span style="color:red" ng-show="frm.agreedValue.$error.pattern && (!frm.agreedValue.$pristine || frm.$submitted)"><b>Agreed Value must be Numeric</b></span>
-                                            <span style="color:red"  ng-show="frm.agreedValue.$error.required && (!frm.agreedValue.$pristine || frm.$submitted) && !frm.agreedValue.$error.pattern"><b>Agreed value is Required</b></span>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Other Issues (If any)</label>
-                                            <input type="text" class="input-text full-width" value="" placeholder=""  id="OtherIssue" name="OtherIssue"/>
-                                        </div>
-                                        <div class="col-sm-5 col-md-4">
-                                            <label>Preferred Excess Amount</label>
-                                            <input type="text" class="input-text full-width" placeholder="" ng-pattern="/^[0-9]*$/" ng-model="insuranceExcessAmount" id="insuranceExcessAmount" name="insuranceExcessAmount" required/>
-                                            <span style="color:red" ng-show="frm.insuranceExcessAmount.$error.pattern && (!frm.insuranceExcessAmount.$pristine || frm.$submitted)"><b>Preferred Excess Amount must be Numeric</b></span>
-                                            <span style="color:red"  ng-show="frm.insuranceExcessAmount.$error.required && (!frm.insuranceExcessAmount.$pristine || frm.$submitted) && !frm.insuranceExcessAmount.$error.pattern"><b>Preferred Excess Amount is Required</b></span>
-                                        </div>
-                                    <div class="col-sm-5 col-md-4">
-                                        <label>Driving License Issuing State</label>
-                                        <div class="selector">
-                                                <select class="full-width" id="drivingLicenseIssuingState" ng-model="drivingLicenseIssuingState" name="drivingLicenseIssuingState" required>
-                                                    <option>ACT</option>
-                                                    <option>VIC</option>
-                                                    <option>NSW</option>
-                                                    <option>NT</option>
-                                                    <option>TAS</option>
-                                                    <option>SA</option>
-                                                     <option>WA</option>
-                                                </select>
-                                            </div>
-                                           <span style="color:red" ng-show="frm.drivingLicenseIssuingState.$error.required && (!frm.drivingLicenseIssuingState.$pristine || frm.$submitted)"><b>Driving License issuing state is Required</b></span>
-                                    </div>
-                                    <div class="col-sm-5 col-md-4">
-                                        <label>Number of AtFaults Claims</label>
-                                        <input type="text" class="input-text full-width" ng-pattern="/^[0-9]*$/" ng-minlength="1" ng-maxlength="3" value="" placeholder="" ng-model="noOfAtFaultsClaims" id="noOfAtFaultsClaims" name="noOfAtFaultsClaims" required/>
-                                        <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.pattern && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted)"><b>Atfault must be Numeric</b></span>
-                                            <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.required && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted)"><b>Atfault is Required</b></span> 
-                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.minlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault must be upto 3 digits</b></span>
-                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.maxlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault can be atmost of 3 digits only.</b></span>
-                                    </div>
-                                  <div class="col-sm-5 col-md-4">
-                                        <label>Indicative Excess Amount</label>
-                                        <input type="text" class="input-text full-width" value="" placeholder="" id="indicativeExcessAmount" name="indicativeExcessAmount"/>
-                                    </div>  
-                                    
-				 </div>
-                                
-                                <div class="form-group row">
-                                
-                                 <div class="col-xs-6">
-                                                        <div class="datepicker-wrap">
-                                                            <input id="startdate" type="text" name="dateofbirth" ng-model="dateofbirth" class="input-text full-width" placeholder="Date of Birth" required />
+                                        <div class="row">
+                                           <div class="col-sm-4 col-md-4">
+                                               <label>Type of Coverage</label>
+                                           </div>
+                                           <div class="col-sm-4 col-md-4">
+                                               <div class="selector">
+                                               <select class="full-width" ng-model="insuranceType" id="insuranceType" name="insuranceType" required>
+                                                       <option value="" selected disabled>Insurance Type</option>
+                                                       <option>Compulsary Third Party ( CTP )</option>
+                                                       <option>Third Party Property</option>
+                                                       <option>Third Party, Fire and Theft</option>
+                                                       <option>Comprehensive</option>
+                                                   </select>
+                                               </div>
+                                               <span style="color:red" ng-show="frm.insuranceType.$error.required && (!frm.insuranceType.$pristine || frm.$submitted)"><b>Insurance Type is Required</b></span>
+                                           </div>
+                                       </div><br />
+                                       
+                                       <div class="row">
+                                           <div class="col-sm-4 col-md-4">
+                                               <label>Agreed Value of the Car</label>
+                                           </div>
+                                           <div class="col-sm-4 col-md-4">
+                                               <input type="text" class="input-text full-width" placeholder="Agreed Value" ng-pattern="/^[0-9]*$/"  ng-model="agreedValue" id="agreedValue" name="agreedValue" required/>
+	                                            <span style="color:red" ng-show="frm.agreedValue.$error.pattern && (!frm.agreedValue.$pristine || frm.$submitted)"><b>Agreed Value must be Numeric</b></span>
+	                                            <span style="color:red"  ng-show="frm.agreedValue.$error.required && (!frm.agreedValue.$pristine || frm.$submitted) && !frm.agreedValue.$error.pattern"><b>Agreed value is Required</b></span>
+                                           </div>
+                                           <div class="col-sm-4 col-md-4">
+                                               <input type="text"  id="marketValue" name="marketValue" ng-model="marketValue" ng-pattern="/^[0-9]*$/"  class="input-text full-width" value="" placeholder="Market Value" required />
+                                               <span style="color:red" ng-show="frm.marketValue.$error.pattern && (!frm.marketValue.$pristine || frm.$submitted)"><b>Market Value must be Numeric</b></span>
+                                               <span style="color:red" ng-show="frm.marketValue.$error.required && (!frm.marketValue.$pristine || frm.$submitted) && !frm.marketValue.$error.pattern"><b>Market Value is Required</b></span>
+                                           </div>
+                                       </div><br />
+                                       <div class="row">
+                                           <div class="col-sm-4 col-md-4">
+                                               <label>What is your Preferred Excess?</label>
+                                           </div>
+                                           <div class="col-sm-4 col-md-4">
+                                              <input type="text" class="input-text full-width" placeholder="Preferred Excess Amount" ng-pattern="/^[0-9]*$/" ng-model="insuranceExcessAmount" id="insuranceExcessAmount" name="insuranceExcessAmount" required/>
+	                                            <span style="color:red" ng-show="frm.insuranceExcessAmount.$error.pattern && (!frm.insuranceExcessAmount.$pristine || frm.$submitted)"><b>Preferred Excess Amount must be Numeric</b></span>
+	                                            <span style="color:red"  ng-show="frm.insuranceExcessAmount.$error.required && (!frm.insuranceExcessAmount.$pristine || frm.$submitted) && !frm.insuranceExcessAmount.$error.pattern"><b>Preferred Excess Amount is Required</b></span>
+                                           </div>
+                                           <div class="col-sm-4 col-md-4">
+                                               &nbsp;
+                                           </div>
+                                       </div><br />
+
+
+                                       <div class="row">
+                                           <div class="col-sm-4 col-md-4">
+                                               <label>Who is your Current Insurer?</label>
+                                           </div>
+                                           <div class="col-sm-4 col-md-4">
+                                               <div class="selector">
+                                                   <select class="full-width" id="abcinsprov" ng-model="abcinsprov"
+                                                           name="abcinsprov" required>
+                                                       <option value="" seleceted disabled>Current Insurer (if Any)</option>
+                                                       <option>AAMI</option>
+                                                       <option>AMP Limited</option>
+                                                       <option>AXA</option>
+                                                       <option>Bingle</option>
+                                                       <option>Budget Direct</option>
+                                                       <option>CGU Insurance</option>
+                                                       <option>Colonial Mutual</option>
+                                                   </select>
+                                               </div>
+                                               <span style="color:red" ng-show="frm.abcinsprov.$error.required && (!frm.abcinsprov.$pristine || frm.$submitted)"><b>Current Insurance Provider is Required</b></span>
+                                           </div>
+                                           <div class="col-sm-4 col-md-4">
+                                               &nbsp;
+                                           </div>
+                                       </div><br />
+                                       
+                                       
+                                 <div class="toggle-container box">
+                                        <div class="panel style1">                                                         
+                                           <div class="row">
+												<div class="col-sm-6 col-md-6">
+													<h4 class="panel-title"><a href="#tgg12" data-toggle="collapse">Add Extra Requirements </a></h4>
+												</div>
+											</div>
+                                            <div class="panel-collapse collapse" id="tgg12">
+                                                <div class="panel-content">
+                                                    <div class="row">
+                                                        <div class="col-sm-4 col-md-4">
+                                                            <label class="txt-bold">External Extras</label>
+                                                            <ul>
+                                                                <li><div class="checkbox"><input type="checkbox" id="nudgeBar" name="nudgeBar"><span class="skin-color">Nudge Bar</span></div></li>
+                                                                <li><div class="checkbox"><input type="checkbox" id="bullBar" name="bullBar"><span class="skin-color">Bull Bar</span></div></li>
+                                                                <li><div class="checkbox"><input type="checkbox" id="snokelBar" name="snokelBar"><span class="skin-color">Snokel</span></div></li>
+
+                                                            </ul>
                                                         </div>
-                                                         <span style="color:red" ng-show="frm.dateofbirth.$error.required && (!frm.dateofbirth.$pristine || frm.$submitted)"><b>DOB is Required</b></span>
-                                                    </div>
-                                
-                                <div class="col-xs-6">
-                                                        <div class="datepicker-wrap">
-                                                            <input id="startdate1" type="text" name="date_of_birth" class="input-text full-width" placeholder="Age of Additional Driver" />
+                                                        <div class="col-sm-4 col-md-4">
+                                                            <label class="txt-bold">Internal Extras</label>
+                                                            <div class="selector">
+                                                                <ul>
+                                                                    <li><div class="checkbox"><input type="checkbox" id="leatherSeats" name="leatherSeats"><span class="skin-color">Leather Seats</span></div></li>
+                                                                    <li><div class="checkbox"><input type="checkbox" id="dualAC" name="dualAC"><span class="skin-color">Dual AC</span></div></li>
+                                                                    <li><div class="checkbox"><input type="checkbox" id="cruzeControl" name="cruzeControl"><span class="skin-color">Cruze Control</span></div></li>
+                                                                    <li><div class="checkbox"><input type="checkbox" id="heatedSeats" name="heatedSeats"><span class="skin-color">Heated Seats</span></div></li>
+                                                                    <li><div class="checkbox"><input type="checkbox" id="luggage" name="luggage"><span class="skin-color">Luggage Compartment</span></div></li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                
-                                
-                                
-                                    
-                                    
-                                </div>
+                                                </div>
+												</div>
+											</div>
+								</div>	   <!-- end toggle content -->  
+								 <div class="toggle-container box">
+                                        <div class="panel style1">                                                         
+                                           <div class="row">
+												<div class="col-sm-6 col-md-6">
+													<h4 class="panel-title"><a href="#tgg13" data-toggle="collapse">Driver Information</a></h4>
+												</div>
+											</div>
+                                            <div class="panel-collapse collapse" id="tgg13">
+                                                <div class="panel-content">
+                                                    <div class="row">
+                                                                    <div class="col-sm-3 col-md-3">
+                                                                        <label>Driving Licence Details</label>
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-md-4">
+                                                                        <div class="selector">
+										                                                <select class="full-width" id="drivingLicenseType" ng-model="drivingLicenseType" name="drivingLicenseType" required>
+										                                                    <option value="" selected disabled>Driving Licence Type</option>
+										                                                    <option>L - learner</option>
+										                                                    <option>P - Probationary</option>
+										                                                    <option>F - Full Licence</option>
+										                                                </select>
+										                                            </div>
+										                                        <span style="color:red" ng-show="frm.drivingLicenseType.$error.required && (!frm.drivingLicenseType.$pristine || frm.$submitted)"><b>Driving LicenseType is Required</b></span>
+                                                                   		 </div>
+                                                                    <div class="col-sm-5 col-md-5">
+	                                                                      	<input type="text" class="input-text full-width" placeholder="Driving License Number" id="drivingLicenseNumber" ng-model="drivingLicenseNumber" name="drivingLicenseNumber" required>
+	                                                                      	<span style="color:red" ng-show="frm.drivingLicenseNumber.$error.required && (!frm.drivingLicenseNumber.$pristine || frm.$submitted)"><b>Driving License Number is Required</b></span>
+                                                                    </div>
+                                                                   
+                                                    </div><br />
+                                                    <div class="row">
+                                                    	<div class="col-sm-3 col-md-3">
+                                                                
+                                                         </div>
+                                                    	<div class="col-sm-4 col-md-4">
+                                                              <input type="text" onfocus="(this.type='date')" name="abcinsLicIssueDt" id="abcinsLicIssueDt" class="input-text full-width" placeholder="Driving Licence issue Date" />
+                                                        </div>
+                                                    </div><br />
+                                                    <div class="row">
+                                                                    <div class="col-sm-3 col-md-3">
+                                                                        <label>Driver's CLaim History</label>
+                                                                    </div>
+                                                                    <div class="col-sm-3 col-md-3">
+                                                                        <input type="text" class="input-text full-width" ng-pattern="/^[0-9]*$/" ng-minlength="1" ng-maxlength="3" value="" placeholder="" ng-model="noOfAtFaultsClaims" id="noOfAtFaultsClaims" name="noOfAtFaultsClaims" required/>
+								                                        <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.pattern && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted)"><b>Atfault must be Numeric</b></span>
+								                                            <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.required && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted)"><b>Atfault is Required</b></span> 
+								                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.minlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault must be upto 3 digits</b></span>
+								                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.maxlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault can be atmost of 3 digits only.</b></span>
+                                                                    </div>
+                                                                    <div class="col-sm-5 col-md-5">
+                                                                      	<input type="text" onfocus="(this.type='date')" name="abcinsLastfaultDt" id="abcinsLastfaultDt" ng-model="abcinsLastfaultDt" class="input-text full-width" placeholder="Last Fault claim Date" />
+                                                                    </div>
+                                                    </div><br />
+                                                     <div class="row">
+                                                        <div class="col-sm-3 col-md-3">
+                                                            <label>Licence got suspended any time</label>
+                                                        </div>
+                                                        <div class="col-sm-4 col-md-4">
+                                                            <div class="selector">
+                                                                <select class="full-width" id="abcinsLICSusp" ng-model="abcinsLICSusp"
+                                                                        name="abcinsLICSusp">
+                                                                    <option value="" selected disabled>Licence Suspended</option>
+                                                                    <option value="true">Yes</option>
+                                                                    <option value="false">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-1 col-md-1">
+                                                            <label>If Yes</label>
+                                                        </div>
+                                                        <div class="col-sm-4 col-md-4">
+                                                            <div class="selector">
+                                                                <select class="full-width" id="abcinsReasonSusp" ng-model="abcinsReasonSusp"
+                                                                        name="abcinsReasonSusp">
+                                                                    <option value="" selected disabled>Reason for Suspension</option>
+                                                                    <option>Drink & Drive</option>
+                                                                    <option>Overspeeding</option>
+                                                                    <option>Accident</option>
+                                                                    <option>Possesion of Drugs</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div><br />
+                                                    <div class="row">
+	                                                       <div class="col-sm-3 col-md-3">
+	                                                           <label>No of Additional Drivers</label>
+	                                                       </div>
+	                                                       <div class="col-sm-5 col-md-5">
+	                                                           <div class="selector">
+	                                                               <select class="full-width" id="abcinsDriversCt" ng-model="abcinsDriversCt"
+	                                                                       name="insDriversCt">
+	                                                                   <option value="" selected disabled>No of Additional Drivers</option>
+	                                                                   <option value="1">Yes</option>
+	                                                                   <option value="0">No</option>
+	                                                               </select>
+	                                                           </div>
+	                                                       </div>
+	                                                   </div><br />
+
+	                                                <div class="row">
+	                                                    <div class="col-sm-12 col-md-12">
+	                                                        <button type="button" onclick="javascript:appendRow944()" class="append_row">Add Driver</button>
+	                                                    </div>
+	                                                </div><br />
+	                                                 <div class="row">
+                                                        <div class="col-sm-12 col-md-12">
+                                                            <table id="my-table944">
+                                                                <tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+												</div>
+											</div>
+								</div>	   <!-- end toggle content -->      
+                               
+                               <div class="toggle-container box">
+                                        <div class="panel style1">                                                         
+                                           <div class="row">
+												<div class="col-sm-6 col-md-6">
+													<h4 class="panel-title"><a href="#tgg14" data-toggle="collapse">Usage of Car</a></h4>
+												</div>
+											</div>
+                                            <div class="panel-collapse collapse" id="tgg14">
+                                                <div class="panel-content">
+                                                    <div class="row">
+                                                       <div class="col-sm-3 col-md-3">
+                                                           <label>Average No of KMs/Year </label>
+                                                       </div>
+                                                       <div class="col-sm-3 col-md-3">
+                                                           <input type="text"
+                                                                  id="abcinsAvgNoOfKms" name="abcinsAvgNoOfKms" ng-model="abcinsAvgNoOfKms"
+                                                                  class="input-text full-width" value="" placeholder="999999" ng-pattern="/^[0-9]*$/" required />
+                                                           <span style="color:red" ng-show="frm.abcinsAvgNoOfKms.$error.pattern && (!frm.abcinsAvgNoOfKms.$pristine || frm.$submitted)"><b>Avg No of Kms must be Numeric</b></span>
+                                                           <span style="color:red" ng-show="frm.abcinsAvgNoOfKms.$error.required && (!frm.abcinsAvgNoOfKms.$pristine || frm.$submitted) && !ebidinsfrm.insAvgNoOfKms.$error.pattern"><b>Avg No of Kms is Required</b></span>
+                                                       </div>
+                                                   </div><br />
+                                                   <div class="row">
+                                                      <div class="col-sm-3 col-md-3">
+                                                          <label>Car Parked at Address</label>
+                                                      </div>
+                                                      <div class="col-sm-4 col-md-4">
+                                                          <div class="selector">
+                                                              <select class="full-width" id="abcinscarParked" ng-model="abcinscarParked"
+                                                                      name="abcinscarParked">
+                                                                  <option value="" selected disabled>Where Car Parked ? </option>
+                                                                  <option>ACT</option>
+                                                                  <option>NT</option>
+                                                                  <option>QLD</option>
+                                                                  <option>VIC</option>
+                                                                  <option>NSW</option>
+                                                                  <option>TAS</option>
+                                                                  <option>SA</option>
+                                                                  <option>WA</option>
+                                                              </select>
+                                                          </div>
+                                                      </div>
+                                                  </div><br />
+                                                   <div class="row">
+                                                     <div class="col-sm-3 col-md-3">
+                                                         <label>Car is Used for</label>
+                                                     </div>
+                                                     <div class="col-sm-4 col-md-4">
+                                                         <div class="selector">
+                                                             <select class="full-width" id="abcinsCarUsage" ng-model="abcinsCarUsage"
+                                                                     name="abcinsCarUsage">
+                                                                 <option value="" selected disabled>Car used for ? </option>
+                                                                 <option>Private</option>
+                                                                 <option>Business</option>
+                                                                 <option>Commercial</option>
+                                                             </select>
+                                                         </div>
+                                                     </div>
+                                                     <div class="col-sm-5 col-md-5">
+                                                         <div class="selector">
+                                                             <select class="full-width" id="abcinsifBusiness" ng-model="abcinsifBusiness"
+                                                                     name="abcinsifBusiness">
+                                                                 <option value="" selected disabled>What type of Business (if Business) ? </option>
+                                                                 <option>Client Visit</option>
+                                                                 <option>Transport Customer</option>
+                                                                 <option>Used for Ride Sharing</option>
+                                                             </select>
+                                                         </div>
+                                                     </div>
+                                                 </div><br />
+                                                </div>
+												</div>
+											</div>
+								</div>	   <!-- end toggle content -->  
                                
                                         </div><!-- end content -->
                                     </div>
                                 </div>
                                  
                             </div>
+                                <script>
+		                                if(insKey== "IChecked"){
+		                                	$(".insToggle").show();
+									    }
+									    else{
+									    	$(".insToggle").hide();
+									    }
+									    if(finKey == "FChecked"){
+									    	$(".finToggle").show();
+									    }
+									    else{
+									    	 $(".finToggle").hide();
+									    }
                                 
-                                
-                                     
-                                        
-                                <hr>
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="checkboxTerms" ng-model="checkboxTerms.value" required> By continuing, you agree to the <a href="#"><span class="skin-color">Terms and Conditions</span></a>.
-                                        </label>
-                                        <pre>{{checkboxTerms.value}}</pre>
-                                    </div>
-                                    <span style="color:red" ng-show="frm.checkboxTerms.$error.required && (!frm.checkboxTerms.$pristine || frm.$submitted)"><b>Must be checked</b></span> 
-                                </div>
+								</script>
+                                 <div class="row">
+                                     <div class="col-sm-12 col-md-12">
+                                         By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
+                                     </div>
+                               </div><br />
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
                                         <button type="submit" class="full-width btn-large">CONFIRM BOOKING</button>
