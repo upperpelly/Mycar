@@ -19,4 +19,5 @@ public interface CountyRegPostSubService {
 	boolean existsPostcodeForState(String state, int postcode);
 
 	boolean existsPostcodeForRegion(String region, int postcode);
+	String getRegionForGivenPostCode(int postCode);
 }

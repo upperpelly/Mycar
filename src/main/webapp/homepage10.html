@@ -837,7 +837,7 @@
             $.jStorage.setTTL('mynewkey', 30000); 
         }
 
-        /* var isChecked5 = false;
+       /* var isChecked5 = false;
 
         function allSelected5() {
             //alert("inside check box");
@@ -995,8 +995,8 @@
                 e.preventDefault();
                 $(this).tab('show');
             });
-
-
+			
+            
 
             $body = $("body");
 
@@ -1186,6 +1186,8 @@
         }
     </script>
     <script>
+    
+    
         window.onload = function () {
             /* alert("pageName 11  now "); */
 
@@ -4971,7 +4973,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <div class="selector">
                                                                 <select id="car-years-fin" name="caryearsfin" ng-model="caryearsfin"
-                                                                        class="full-width" required>
+                                                                        class="full-width" required onclick="showDiv2()">
                                                                     <option value="" selected disabled>Year</option>
                                                                 </select>
                                                             </div>
@@ -11089,6 +11091,7 @@ $.ajax({
             setTimeout(function () {
                 tjq(".notification-area").append('<div class="info-box block"><span class="close"></span><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ab quis a dolorem, placeat eos doloribus esse repellendus quasi libero illum dolore. Esse minima voluptas magni impedit, iusto, obcaecati dignissimos.</p></div>');
             }, 10000);
+           
         });
         tjq('a[href="#profile"]').on('shown.bs.tab', function (e) {
             tjq(".view-profile").show();

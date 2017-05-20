@@ -115,10 +115,10 @@ $(document).ready(function(){
      //alert("before call12");
      //window.fbAsyncInit();
      //alert("before call12");
-      var appId = '249863545451459';
+      var appId = '238604546585672';
 
     //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
 
 
       var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
@@ -1249,7 +1249,7 @@ function registerEditDealerVehicleQuotationModal(){
 	            </div>\
 	            <div class="modal-footer">\
 	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
-	                <button type="button" class="btn btn-primary submit-editDealerVehicleQuotationModal" data-dismiss="modal">Save changes</button>\
+		<button type="button" class="btn btn-primary submit-editDealerVehicleQuotationModal" data-dismiss="modal">Save changes</button>\
 	            </div>\
 	            </form>\
 				<p><center>&copy; 2017 Autoscoop</center></p>\
@@ -1270,7 +1270,18 @@ function registerEditDealerVehicleQuotationModal(){
 		var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
 		if(data.moveToUser)
 		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
-		
+		var shortList = '<input type="checkbox" name="shortList" />';
+		var makeOffer = '<input type="checkbox" name="makeOffer" />';
+		var makeDeposit = '<input type="checkbox" name="makeDeposit" />';
+		var chat = '<input type="checkbox" name="chat" />';
+		var rejectIt = '<input type="checkbox" name="rejectIt" />';
+		var postCode = '<input type="text" name="postCode" />'; 
+		var mr = '<input type="text" name="mr" />'; 
+		var lastName = '<input type="text" name="lastName" />'; 
+		var firstName = '<input type="text" name="firstName" />'; 
+		var address = '<input type="text" name="address" />'; 
+		var mobileNo = '<input type="text" name="mobileNo" />'; 
+		var preferredDate = '<input type="date" name="preferredDate" />';
 		
 		var editDealerVehicleQuotationForm = '<form id="edit-dealer-vehicle-quotation-content-form"><table>\
 			<tr><td>Quotation ID</td><td>' + data.quotId + '</td></tr>\
@@ -1293,6 +1304,16 @@ function registerEditDealerVehicleQuotationModal(){
 			<tr><td>Fuel Type</td><td>' + data.fuelType + '</td><td>No Of Seats</td><td>' + data.noOfSeats + '</td></tr>\
 			<tr><td>No Of Doors</td><td>' + data.noOfDoors + '</td><td>Dealer Preferred Location</td><td>' + data.delPrefLocation + '</td></tr>\
 			<tr><td>Offer Price 2</td><td>' + data.offerPrice2 + '</td><td>Offer Price 3</td><td>' + data.offerPrice3 + '</td></tr>\
+			</table><table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Request Test Drive</div></div>\
+			<tr><td>Post Code</td><td>' +postCode + '</td></tr>\
+			<tr><td>Mr </td><td>' + mr + '</td><td>First Name </td><td>' +lastName  + '</td><td>Last Name </td><td>' +firstName + '</td></tr>\
+			<tr><td>Address </td><td>' +address  + '</td><td>Mobile No:</td><td>' +mobileNo  + '</td></tr>\
+			<tr><td>Preferred Date </td><td>' +preferredDate + '</td></tr></table>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">What can be done to Quotation?</div></div>\
+			<tr><td>Short List </td><td>' + shortList + '</td><td>Make an Offer </td><td>' +makeOffer  + '</td><td>Make a deposit </td><td>' +makeDeposit + '</td></tr>\
+			<tr><td>Chat </td><td>' +chat  + '</td><td>Reject it </td><td>' +rejectIt  + '</td></tr>\
 			</table></form>';
 		editDealerVehicleQuotationForm = editDealerVehicleQuotationForm.replace(/>null</g, ">--NA--<");
 		editDealerVehicleQuotationForm = editDealerVehicleQuotationForm.replace(/>undefined</g, ">--NA--<");
@@ -1301,17 +1322,17 @@ function registerEditDealerVehicleQuotationModal(){
 	
 	$('button.submit-editDealerVehicleQuotationModal').on('click', function(e) {
 		
-		var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
+		var jsonInput = $("#edit-dealer-vehicle-Quotation-content-form").convertFormDataToJSON();
 		
 		
 		$.ajax({  
 			type: "POST",  
-			url: "api/vehicleQuotation?_method=PUT",
+			url: "api/vehicleSearchQuotation?_method=PUT",
 			data: jsonInput,
 			contentType:'application/json',
 			success: function(result){
 				$("#anchor-editDealerVehicleQuotationModal-" + result.quotId).data('details', result);
-				alert("Successfully upated and moved to user");
+				alert("Successfully upated the Quotations");
 				
 			}
 		});
@@ -1365,6 +1386,7 @@ function registerEditDealerVehicleSearchModal(){
 	            </div>\
 	            <div class="modal-footer">\
 	                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>\
+		<button type="button" class="btn btn-primary submit-editDealerVehicleSearchModal" data-dismiss="modal">Save changes</button>\
 		<p><center>&copy; 2017 Autoscoop</center></p>\
 			</div>\
 	            </form>\
@@ -1382,7 +1404,21 @@ function registerEditDealerVehicleSearchModal(){
 		//var json = JSON.stringify(data);
 		
 		var quotIdHiddenField = '<input type="hidden" name="carSearchId" value="' + data.carSearchId + '" />';
-		var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
+		var moveToUser = '<input type="checkbox" name="moveToUser" />';
+		var shortList = '<input type="checkbox" name="shortList" />';
+		var makeOffer = '<input type="checkbox" name="makeOffer" />';
+		var makeDeposit = '<input type="checkbox" name="makeDeposit" />';
+		var chat = '<input type="checkbox" name="chat" />';
+		var rejectIt = '<input type="checkbox" name="rejectIt" />';
+		var postCode = '<input type="text" name="postCode" />'; 
+		var mr = '<input type="text" name="mr" />'; 
+		var lastName = '<input type="text" name="lastName" />'; 
+		var firstName = '<input type="text" name="firstName" />'; 
+		var address = '<input type="text" name="address" />'; 
+		var mobileNo = '<input type="text" name="mobileNo" />'; 
+		var preferredDate = '<input type="date" name="preferredDate" />';
+		
+		
 		if(data.newer)
 		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
 		var moveToUser1 = '<input type="checkbox" name="moveToUser1" />'; 
@@ -1428,12 +1464,40 @@ function registerEditDealerVehicleSearchModal(){
 			<tr><td>Extra Internal 3</td><td>' + data.ExtraIntern3 + '</td></tr>\
 			<tr><td>Extra Internal 4</td><td>' + data.ExtraIntern4 + '</td></tr>\
 			<tr><td>Extra Internal 5</td><td>' + data.ExtraIntern5 + '</td></tr>\
-			</table></form>';
+			</table><table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Request Test Drive</div></div>\
+			<tr><td>Post Code</td><td>' +postCode + '</td></tr>\
+			<tr><td>Mr </td><td>' + mr + '</td><td>First Name </td><td>' +lastName  + '</td><td>Last Name </td><td>' +firstName + '</td></tr>\
+			<tr><td>Address </td><td>' +address  + '</td><td>Mobile No:</td><td>' +mobileNo  + '</td></tr>\
+			<tr><td>Preferred Date </td><td>' +preferredDate + '</td></tr></table>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">What can be done to Quotation?</div></div>\
+			<tr><td>Short List </td><td>' + shortList + '</td><td>Make an Offer </td><td>' +makeOffer  + '</td><td>Make a deposit </td><td>' +makeDeposit + '</td></tr>\
+			<tr><td>Chat </td><td>' +chat  + '</td><td>Reject it </td><td>' +rejectIt  + '</td></tr>\
+			</table>\</form>';
 		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>null</g, ">--NA--<");
 		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>undefined</g, ">--NA--<");
 		$(".edit-dealer-vehicle-search-content").html(editDealerVehicleSearchForm);
 	});
-	
+	$('button.submit-editDealerVehicleSearchModal').on('click', function(e) {
+		
+		var jsonInput = $("#edit-dealer-vehicle-Search-content-form").convertFormDataToJSON();
+		
+		
+		$.ajax({  
+			type: "POST",  
+			url: "api/vehicleSearchQuotation?_method=PUT",
+			data: jsonInput,
+			contentType:'application/json',
+			success: function(result){
+				$("#anchor-editDealerVehicleSearchModal-" + result.quotId).data('details', result);
+				alert("Successfully upated the Quotations");
+				
+			}
+		});
+
+		
+	});
 		
 	$.fn.convertFormDataToJSON = function(){
 		var checkboxes = [];
@@ -1505,9 +1569,9 @@ function registerEditDealerVehicletranspModal(){
 		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
 
 		// start
-		var appId = '249863545451459';
+		var appId = '238604546585672';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -1745,9 +1809,9 @@ function registerEditDealerVehicleservmaintModal(){
 		var moveToUser1 = '<input type="checkbox" name="moveToUser1" />'; 
 		if(data.used)
 		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';  // come here*/
-		var appId = '249863545451459';
+		var appId = '238604546585672';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -2248,9 +2312,9 @@ function registerEditDealerVehicleDetailModal(){
 		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
 		
 		// start
-		var appId = '249863545451459';
+		var appId = '238604546585672';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -2908,9 +2972,9 @@ alert("came inside log expenses");
 										  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
 
 										// start
-										var appId = '249863545451459';
+										var appId = '238604546585672';
 									    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-									      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+									      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
 									      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 									      AWS.config.region = 'us-east-1';
 									      var bucket = new AWS.S3({
@@ -3097,9 +3161,9 @@ alert("came inside log servmaint");
 										if(data.used)
 										  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
 										// start
-										var appId = '249863545451459';
+										var appId = '238604546585672';
 									    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-									      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+									      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
 									      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 									      AWS.config.region = 'us-east-1';
 									      var bucket = new AWS.S3({

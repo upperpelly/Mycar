@@ -425,7 +425,21 @@ public class DomainModelUtil {
 		return myVehicleVO;
 	}
 	
+	// User Car/Search Details lead
+		public SearchVO toBatchSearchVO(final Search search) {
 
+			SearchVO searchVO = new SearchVO();
+			try {
+				BeanUtils.copyProperties(searchVO, search);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return searchVO;
+		}
 
 
 	// User Car/Search Details lead
@@ -513,8 +527,9 @@ public class DomainModelUtil {
 
 	// User Finance Lead
 	public SearchFinance toSearchFinance(final SearchFinanceVO searchFinanceVO) {
-
-		SearchFinance searchFinance = new SearchFinance();
+		SearchFinance searchFinance = null;
+		if(searchFinanceVO != null){
+		searchFinance = new SearchFinance();
 		try {
 			BeanUtils.copyProperties(searchFinance, searchFinanceVO);
 		} catch (IllegalAccessException e) {
@@ -523,6 +538,8 @@ public class DomainModelUtil {
 		} catch (InvocationTargetException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
 		}
 		return searchFinance;
 	}
@@ -545,8 +562,9 @@ public class DomainModelUtil {
 
 	// User Insurance Lead
 	public SearchInsurance toSearchInsurance(final SearchInsuranceVO searchInsuranceVO) {
-
-		SearchInsurance searchInsurance = new SearchInsurance();
+		SearchInsurance searchInsurance = null;
+		if(searchInsuranceVO != null){
+		searchInsurance = new SearchInsurance();
 		try {
 			BeanUtils.copyProperties(searchInsurance, searchInsuranceVO);
 		} catch (IllegalAccessException e) {
@@ -555,6 +573,8 @@ public class DomainModelUtil {
 		} catch (InvocationTargetException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
 		}
 		return searchInsurance;
 	}
