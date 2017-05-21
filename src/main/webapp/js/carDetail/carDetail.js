@@ -41,7 +41,7 @@ if(!value1){
 }
 //alert(value1.priceMin+"&priceMax="+value1.priceMax+"I can user");
 //alert(JSON.stringify(value1));
-//console.log(JSON.stringify(value1));
+console.log(JSON.stringify(value1));
 function signingout(){
 	
 	 $.jStorage.deleteKey("key");
@@ -176,8 +176,8 @@ var modelYear=null;
  														//alert("submit form");
  														//alert(isValid);
 														//alert("inside cdddd"+$('#startdate').data('datepicker').viewDate);
-														var dateInFormat= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");
-														var dateInFormat1= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");
+														/*var dateInFormat= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");
+														var dateInFormat1= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");*/
 														//alert("inside cdddd"+dateInFormat);
 														//alert("inside cdddd"+dateInFormat1);
 													if(isValid)
@@ -196,24 +196,24 @@ var modelYear=null;
 																	"modelName": value1.modelName,															      
 																	"modelTrim": value1.autoTrim,
 																	"sModel": value1.autoTrim,
-																			"carColor" : $('#carColor').val(),
-																			 "postCode":$('#postCode').val(),
-																			"make":$('#seats').val(),
-																			"bodyType":$('#driveType').val(),
-																			"state":$('#fuelType').val(),
-																			"region":$('#freetext').val(),
-																			"ausCapTer":$('#vehiclePurpose').val(),
-																			"region":$('#transmission').val(),
-																			"sMake":$('#extraExternal1').val(),
-																			"extraExter2":$('#extraExternal2').val(),
-																			"extraExter3":$('#extraExternal3').val(),	
-																			"extraExter4":$('#extraExternal4').val(),	
-																			"extraExter5":$('#extraExternal5').val(),	
-																			"extraIntern1":$('#extraInternal1').val(),	
-																			"extraIntern2":$('#extraInternal2').val(),	
-																			"extraIntern3":$('#extraInternal3').val(),	
-																			"extraIntern4":$('#extraInternal4').val(),	
-																			"extraIntern5":$('#extraInternal5').val()
+																	"carColor" : $('#carColor').val(),
+																	 "postCode":$('#postCode').val(),
+																	/*"make":$('#seats').val(),
+																	"bodyType":$('#driveType').val(),
+																	"state":$('#fuelType').val(),
+																	"region":$('#freetext').val(),
+																	"ausCapTer":$('#vehiclePurpose').val(),
+																	"region":$('#transmission').val(),
+																	"sMake":$('#extraExternal1').val(),
+																	"extraExter2":$('#extraExternal2').val(),
+																	"extraExter3":$('#extraExternal3').val(),	
+																	"extraExter4":$('#extraExternal4').val(),	
+																	"extraExter5":$('#extraExternal5').val(),	
+																	"extraIntern1":$('#extraInternal1').val(),	
+																	"extraIntern2":$('#extraInternal2').val(),	
+																	"extraIntern3":$('#extraInternal3').val(),	
+																	"extraIntern4":$('#extraInternal4').val(),	
+																	"extraIntern5":$('#extraInternal5').val()*/
 																},
 																"financeLead":{
 																	"newer":value1.newCarEbid,
@@ -222,20 +222,26 @@ var modelYear=null;
 																	"modelDisplay": value1.modelDisplay,
 																	"modelName": value1.modelName,															      
 																	"modelTrim": modelTrim,
-																	"postCode":$('#postCode').val(),
-																	"incomeType":$('#incomeType').val(),
-																	"yearEmploymentBusiness":$('#yearEmployement').val(),
-																	"incomeBeforeSuperTax":$('#incomebefore').val(),
-																	"incomeAfterSuperTax":$('#incomeAfter').val(),
-																	"ifBusinessProvideABN":$('#ifBusPABN').val(),
-																	"creditRating":$('#creditRating').val(),
-																	"vehValue":$('#vehValue').val(),
-																	"balloonPay":$('#balloonPay').val(),
-																	"annualIncome":$('#annualIncome').val(),
-																	"loanAmount":$('#loanAmount').val(),
-																	 "loanPeriod":$('#loanPeriod').val(),
-																	 "dateOfBirth":null,
-																	 "noOfDependence":$('#noDependencies').val()
+																	"postCode":$scope.postCode,
+																	"incomeType":$scope.incomeType,
+																	"yearEmploymentBusiness":$scope.yearEmployement,
+																	"incomeBeforeSuperTax": "",
+								                                    "incomeAfterSuperTax": "",
+								                                    "ifBusinessProvideABN":$scope.ifBusPABN,
+								                                    "creditRating": $scope.creditRating,
+								                                    "vehValue": 0.0,
+								                                    "balloonPay": "",
+																	"annualIncome":$scope.annualIncome,
+																	"loanAmount":$scope.loanAmount,
+																	 "loanPeriod":$scope.loanPeriod,
+																	 "dateOfBirth":$scope.abcDriverDOB,
+																	 "rego": "",
+								                                    "regoState": "",
+								                                    "streetNo": "",
+								                                    "streetName": $scope.abcAddress,//Full Address is passed
+								                                    "mr": $scope.abcTitlePerson,
+								                                    "firstName": $scope.abcFnameperson,
+								                                    "lastName": $scope.abcLnameperson
 																},
 																"insuranceLead":{
 																	"newer":value1.newCarEbid,
@@ -244,21 +250,47 @@ var modelYear=null;
 																	"modelDisplay": value1.modelDisplay,
 																	"modelName": value1.modelName,															      
 																	"modelTrim": modelTrim,
-																	"postCode":$('#postCode').val(),
-																	"insuranceType":$('#insuranceType').val(),
-																	"regNo":$('#reg-no').val(),
-																	"regoState":$('#regoState').val(),
-																	"marketValue":$('#marketValue').val(),
-																	"agreedValue":$('#agreedValue').val(),
-																	"otherIssues":$('#OtherIssue').val(),
-																	"prefExcessAmount":$('#insuranceExcessAmount').val(),
-																	"drivingLicenceType":$('#drivingLicenseType').val(),
-																	"drivingLicenceNumber":$('drivingLicenseNumber').val(),
-																	"drivingLicenceIssuingState":$('drivingLicenseIssuingState').val(),
-																	"noOfAtFaultClaims":$('noOfAtFaultsClaims').val(),
-																	"dateOfBirth":dateInFormat,
-																	"indicativeExcessAmount":$('indicativeExcessAmount').val(),
-																	"ageOfAdditionalDriver":dateInFormat1
+																	"postCode":$scope.postCode,
+																	"insuranceType":$scope.insuranceType,
+																	"regNo":"",
+																	"regoState":"",
+																	"marketValue":$scope.marketValue,
+																	"agreedValue":$scope.agreedValue,
+																	"otherIssues":"",
+																	"prefExcessAmount":$scope.insuranceExcessAmount,
+																	"drivingLicenceType":$scope.drivingLicenseType,
+																	"drivingLicenceNumber":$scope.drivingLicenseNumber,
+																	"drivingLicenceIssuingState":"",
+																	"noOfAtFaultClaims":$scope.noOfAtFaultsClaims,
+																	"dateOfBirth":$scope.abcDriverDOB,
+																	"curInsProv": $scope.abcinsprov,
+																	"indicativeExcessAmount":0,
+																	"ageOfAdditionalDriver":null,
+																	"streetNO": "",
+																	"carParkedAt": $scope.abcinscarParked,
+								                                    "streetName": $scope.abcAddress,//Full Address is passed
+								                                    "carUsedfor": $scope.abcinsCarUsage,
+								                                    "typeOfBusiness": $scope.abcinsifBusiness,
+								                                    "driverFirstName": $scope.abcFnameperson,
+								                                    "driverLastName": $scope.abcLnameperson,
+								                                    "driverMobileNo": $scope.abcMobile,
+								                                    "driverEmailId": "",
+								                                    "licenseIssueDate": $scope.abcinsLicIssueDt,
+								                                    "lastAtFaultClaimDate": $scope.abcinsLastfaultDt,
+								                                    "reasonForSuspension": $scope.abcinsReasonSusp,/*
+								                                    "AnyDriver": $scope.extExt2,//ext start
+								                                    "FreeWindScreen": $scope.extExt1,
+								                                    "RentalCar": $scope.extExt4,
+								                                    "NewCarRepl": $scope.extExt5,
+								                                    "Snokel": $scope.extExt3,// Road side //ext end
+								                                    "intsnokel": $scope.intExt3,//int start
+								                                    "intBullBar": $scope.intExt2,
+								                                    "intNudgeBar": $scope.intExt4,
+								                                    "BullBar": $scope.intExt5,
+								                                    "HireCar": $scope.intExt1,//int end
+*/								                                    "avgNoOfKmYr": $scope.abcinsAvgNoOfKms,
+								                                    "noOfDrivers": $scope.abcinsDriversCt,
+								                                    "licenseGotSuspened": $scope.abcinsLICSusp
 																}
 															}
 
@@ -277,6 +309,7 @@ var modelYear=null;
 																		}).success(function(data) {
 																			$body.removeClass("loading");
 																			alert("Successfully Stored.. ");
+																			alert(data);
 																			var url="dashboard1.html";
 																			/*var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId+"&firstName="+firstName;*/
 																							alert("Thank You. Your Seach ID is " + data.searchId);

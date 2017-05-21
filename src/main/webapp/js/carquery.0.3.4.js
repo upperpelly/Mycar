@@ -980,6 +980,7 @@ CarQuery.prototype = {
         }*/
         this.model_select_id="carColor";	
        $("#carColor").html(options);
+       $("#carColor2").html(options);
     },
     populateTrimSelect: function(data)
     {
@@ -1903,7 +1904,7 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
 	   
        //alert(options);
        $("#carColor").html(options);
-	   
+       $("#carColor2").html(options);
      /*out += '<tr><td>Engine Displacement (cc):</td><td>'+data.model_engine_cc+'</td></tr>';
      out += '<tr><td>Engine Displacement (l):</td><td>'+data.model_engine_l+'</td></tr>';
      out += '<tr><td>Engine Displacement (cubic inches):</td><td>'+data.model_engine_ci+'</td></tr>';
@@ -2045,6 +2046,7 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
 	   
        //alert(options);
        $("#carColor").html(options);
+       $("#carColor2").html(options);
 	   
      /*out += '<tr><td>Engine Displacement (cc):</td><td>'+data.model_engine_cc+'</td></tr>';
      out += '<tr><td>Engine Displacement (l):</td><td>'+data.model_engine_l+'</td></tr>';

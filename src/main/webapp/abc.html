@@ -1273,11 +1273,15 @@ We suggest that you contact the host to confirm availability and rates before su
                                         <div class="col-sm-3 col-md-3">
                                             <label>Address</label>
                                         </div>
-                                        <div class="col-sm-6 col-md-6">
-                                            <input type="text" name="abcAddress" id="abcAddress" ng-model="abcAddress" class="input-text full-width" placeholder="PostCode, Unit/StreetNo ,Street Name,Suburb,State" />
-                                        </div>
                                         <div class="col-sm-3 col-md-3">
-                                            &nbsp;
+                                        	<input type="text" id="postCode" placeholder="PostCode" name="postCode" ng-model="postCode" ng-minlength="4" ng-pattern="/^[0-9]*$/" ng-maxlength="4" class="input-text full-width" required>
+                                            <span style="color:red" ng-show="frm.postCode.$error.pattern && (!frm.postCode.$pristine || frm.$submitted)"><b>POST must be Numeric</b></span>
+                                            <span  style="color:red" ng-show="frm.postCode.$error.required && (!frm.postCode.$pristine || frm.$submitted)"><b>POST is Required</b></span> 
+                                           <span style="color:red" ng-show="frm.postCode.$error.minlength && (!frm.postCode.$pristine || frm.$submitted) && !frm.postCode.$error.pattern"><b>POST must be of 4 digits</b></span>
+                                           <span style="color:red" ng-show="frm.postCode.$error.maxlength && (!frm.postCode.$pristine || frm.$submitted) && !frm.postCode.$error.pattern"><b>POST must be of 4 digits only.</b></span>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <input type="text" name="abcAddress" id="abcAddress" ng-model="abcAddress" class="input-text full-width" placeholder="Unit/StreetNo ,Street Name,Suburb,State" />
                                         </div>
                                     </div><br />
                                     <div class="row">
@@ -1389,7 +1393,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                             </div>
                                         </div>
                                         <div class="row addFinIns">
-			                                 <ul class="pull-right">
+			                               	<ul class="pull-right">
 			                                     <li style="display: inline;"><input type="checkbox" id="aFinCheck" name="aFinCheck"><span class="skin-color" style="color:#bd191e">Add Finance</span></li>
 			                                     <li style="display: inline;"><input type="checkbox" id="aInsCheck" name="aInsCheck"><span class="skin-color" style="color:#bd191e">Add Insurance</span></li>
 			                                     <li style="display: inline;"><input type="checkbox" id="aNoCheck" name="aNoCheck"><span class="skin-color" style="color:#bd191e">I will do it Later..</span></li>
@@ -1523,7 +1527,7 @@ We suggest that you contact the host to confirm availability and rates before su
 									                                            <span style="color:red"  ng-show="frm.annualIncome.$error.required && (!frm.annualIncome.$pristine || frm.$submitted) && !frm.annualIncome.$error.pattern"><b>Annual Income is Required</b></span>
 																		</div>
 																		<div class="col-sm-3 col-md-3">
-																			<input type="text" class="input-text full-width" value="" placeholder="Emp/Business Years"  id="yearEmployement" name="yearEmployement"/>
+																			<input type="text" class="input-text full-width" value="" placeholder="Emp/Business Years" ng-model="yearEmployement" id="yearEmployement" name="yearEmployement"/>
 																		</div>
 																	</div><br/>
                                                                     <div class="row">
@@ -1543,7 +1547,7 @@ We suggest that you contact the host to confirm availability and rates before su
 								                                            <span style="color:red" ng-show="frm.creditRating.$error.required && (!frm.creditRating.$pristine || frm.$submitted)"><b>Credit Rating is Required</b></span>
                                                                         </div>
                                                                         <div class="col-sm-3 col-md-4">
-                                                                            <input type="text" class="input-text full-width" value="" placeholder="if Business Provide ABN" id="ifBusPABN" name="ifBusPABN"/>
+                                                                            <input type="text" class="input-text full-width" value="" placeholder="if Business Provide ABN" ng-model="ifBusPABN" id="ifBusPABN" name="ifBusPABN"/>
                                                                         </div>
 
                                                                     </div><br/>
@@ -1691,7 +1695,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                             <div class="panel-collapse collapse" id="tgg13">
                                                 <div class="panel-content">
                                                     <div class="row">
-                                                                    <div class="col-sm-3 col-md-3">
+                                                                    <div class="col-sm-4 col-md-4">
                                                                         <label>Driving Licence Details</label>
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
@@ -1705,14 +1709,14 @@ We suggest that you contact the host to confirm availability and rates before su
 										                                            </div>
 										                                        <span style="color:red" ng-show="frm.drivingLicenseType.$error.required && (!frm.drivingLicenseType.$pristine || frm.$submitted)"><b>Driving LicenseType is Required</b></span>
                                                                    		 </div>
-                                                                    <div class="col-sm-5 col-md-5">
+                                                                    <div class="col-sm-4 col-md-4">
 	                                                                      	<input type="text" class="input-text full-width" placeholder="Driving License Number" id="drivingLicenseNumber" ng-model="drivingLicenseNumber" name="drivingLicenseNumber" required>
 	                                                                      	<span style="color:red" ng-show="frm.drivingLicenseNumber.$error.required && (!frm.drivingLicenseNumber.$pristine || frm.$submitted)"><b>Driving License Number is Required</b></span>
                                                                     </div>
                                                                    
                                                     </div><br />
                                                     <div class="row">
-                                                    	<div class="col-sm-3 col-md-3">
+                                                    	<div class="col-sm-4 col-md-4">
                                                                 
                                                          </div>
                                                     	<div class="col-sm-4 col-md-4">
@@ -1720,17 +1724,17 @@ We suggest that you contact the host to confirm availability and rates before su
                                                         </div>
                                                     </div><br />
                                                     <div class="row">
-                                                                    <div class="col-sm-3 col-md-3">
+                                                                    <div class="col-sm-4 col-md-4">
                                                                         <label>Driver's CLaim History</label>
                                                                     </div>
-                                                                    <div class="col-sm-3 col-md-3">
-                                                                        <input type="text" class="input-text full-width" ng-pattern="/^[0-9]*$/" ng-minlength="1" ng-maxlength="3" value="" placeholder="" ng-model="noOfAtFaultsClaims" id="noOfAtFaultsClaims" name="noOfAtFaultsClaims" required/>
+                                                                    <div class="col-sm-4 col-md-4">
+                                                                        <input type="text" class="input-text full-width" ng-pattern="/^[0-9]*$/" ng-minlength="1" ng-maxlength="3" value="" placeholder="No of Atfault Claims" ng-model="noOfAtFaultsClaims" id="noOfAtFaultsClaims" name="noOfAtFaultsClaims" required/>
 								                                        <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.pattern && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted)"><b>Atfault must be Numeric</b></span>
 								                                            <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.required && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted)"><b>Atfault is Required</b></span> 
 								                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.minlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault must be upto 3 digits</b></span>
 								                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.maxlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault can be atmost of 3 digits only.</b></span>
                                                                     </div>
-                                                                    <div class="col-sm-5 col-md-5">
+                                                                    <div class="col-sm-4 col-md-4">
                                                                       	<input type="text" onfocus="(this.type='date')" name="abcinsLastfaultDt" id="abcinsLastfaultDt" ng-model="abcinsLastfaultDt" class="input-text full-width" placeholder="Last Fault claim Date" />
                                                                     </div>
                                                     </div><br />
@@ -1765,10 +1769,10 @@ We suggest that you contact the host to confirm availability and rates before su
                                                         </div>
                                                     </div><br />
                                                     <div class="row">
-	                                                       <div class="col-sm-3 col-md-3">
+	                                                       <div class="col-sm-4 col-md-4">
 	                                                           <label>No of Additional Drivers</label>
 	                                                       </div>
-	                                                       <div class="col-sm-5 col-md-5">
+	                                                       <div class="col-sm-4 col-md-4">
 	                                                           <div class="selector">
 	                                                               <select class="full-width" id="abcinsDriversCt" ng-model="abcinsDriversCt"
 	                                                                       name="insDriversCt">
@@ -1807,10 +1811,10 @@ We suggest that you contact the host to confirm availability and rates before su
                                             <div class="panel-collapse collapse" id="tgg14">
                                                 <div class="panel-content">
                                                     <div class="row">
-                                                       <div class="col-sm-3 col-md-3">
+                                                       <div class="col-sm-4 col-md-4">
                                                            <label>Average No of KMs/Year </label>
                                                        </div>
-                                                       <div class="col-sm-3 col-md-3">
+                                                       <div class="col-sm-4 col-md-4">
                                                            <input type="text"
                                                                   id="abcinsAvgNoOfKms" name="abcinsAvgNoOfKms" ng-model="abcinsAvgNoOfKms"
                                                                   class="input-text full-width" value="" placeholder="999999" ng-pattern="/^[0-9]*$/" required />
@@ -1819,7 +1823,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                        </div>
                                                    </div><br />
                                                    <div class="row">
-                                                      <div class="col-sm-3 col-md-3">
+                                                      <div class="col-sm-4 col-md-4">
                                                           <label>Car Parked at Address</label>
                                                       </div>
                                                       <div class="col-sm-4 col-md-4">
@@ -1840,7 +1844,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                       </div>
                                                   </div><br />
                                                    <div class="row">
-                                                     <div class="col-sm-3 col-md-3">
+                                                     <div class="col-sm-4 col-md-4">
                                                          <label>Car is Used for</label>
                                                      </div>
                                                      <div class="col-sm-4 col-md-4">
@@ -1854,7 +1858,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                              </select>
                                                          </div>
                                                      </div>
-                                                     <div class="col-sm-5 col-md-5">
+                                                     <div class="col-sm-4 col-md-4">
                                                          <div class="selector">
                                                              <select class="full-width" id="abcinsifBusiness" ng-model="abcinsifBusiness"
                                                                      name="abcinsifBusiness">
