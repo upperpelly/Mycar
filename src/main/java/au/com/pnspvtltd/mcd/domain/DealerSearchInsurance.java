@@ -318,7 +318,9 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public String getAutoscoopTrim() {
 		return autoscoopTrim;
 	}
-	
+	public void setAutoscoopTrim(String autoscoopTrim) {
+		this.autoscoopTrim = autoscoopTrim;
+	}
 	
 	@Column(name = "CARPARKEDAT")
 	public String getCarParkedAt() {
@@ -412,7 +414,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public String getReasonForSuspension() {
 		return reasonForSuspension;
 	}
-	@Column(name = "AUTOSCOOPTRIM")
+	
 	public void setReasonForSuspension(String reasonForSuspension) {
 		this.reasonForSuspension = reasonForSuspension;
 	}
