@@ -170,7 +170,7 @@ a {
     }
 
 p {
-    font-size: 1.0833em;
+    font-size: 14px;
     line-height: 1.6666;
     margin-bottom: 15px;
 }
@@ -278,7 +278,6 @@ h6.fourty-space {
 ol, ul {
     list-style: none;
     margin: 0;
-    font-size: 14px;
 }
 
 /* 4) Contents */
@@ -3435,7 +3434,7 @@ ul.check-circle li:before {
                 width: 24px;
                 height: 24px;
                 text-align: center;
-                color: #01b7f2;
+                color: #9e9e9e;
                 background: #f5f5f5;
                 -webkit-border-radius: 50% 50% 50% 50%;
                 -moz-border-radius: 50% 50% 50% 50%;
@@ -3569,7 +3568,7 @@ ul.check-circle li:before {
     padding-right: 0px !important;
 }
 
-#udashboard.tab-pane [class^="col-"], #udashboard.tab-pane [class*=" col-"] {
+#udashboard.tab-pan [class^="col-"], .tab-pan [class*=" col-"] {
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
@@ -3880,7 +3879,6 @@ ul.check-circle li:before {
     .tab-container.full-width-style.arrow-left .tab-content .tab-pane {
         padding: 30px;
     }
-
     .tab-container.full-width-style.arrow-left .tab-content .tab-pan {
         padding: 30px;
     }
@@ -10621,11 +10619,11 @@ ul.search-tabs {
 }
 
 .booking-form label {
-    font-size: 14px;
+    font-size: 0.9167em;
 }
 
 .booking-form .checkbox label {
-    font-size: 14px;
+    font-size: 1.0833em;
 }
 
 .booking-form .form-group {
@@ -12727,7 +12725,7 @@ button.ui-button::-moz-focus-inner {
     }
 
         #footer .bottom .logo {
-            /*  margin: 18px 0 0; */
+            margin: 18px 0 0;
         }
 
         #footer .bottom .copyright {

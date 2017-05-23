@@ -299,6 +299,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 <li><a href="dashboard1.html#travel-stories" class="location-reload">Offered Makes</a></li>
                                 <li class=""><a data-toggle="tab" href="#dealerAreaOfOper"><i id="usrleftnav" class="flaticon-private-garage"></i>Area Of Operation</a></li>
                                 <li class=""><a data-toggle="tab" href="#dealerEbidR"><i id="usrleftnav" class="flaticon-auction"></i>Ebid-R</a></li>
+                                <li class=""><a data-toggle="tab" href="#dealerOperat"><i id="usrleftnav" class="flaticon-auction"></i>Dealer Operation</a></li>
                                 <li><a href="dashboard1.html#settings" class="location-reload">Vehicle Leads</a></li>
                                 <li><a href="dashboard1.html#wishlist" class="location-reload">Finance Leads</a></li>
                                 <li><a href="dashboard1.html#booking" class="location-reload">Serv && Maint Leads</a></li>
@@ -596,6 +597,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             <li class=""><a data-toggle="tab" href="#dealerAreaOfOper"><i id="usrleftnav" class="flaticon-private-garage"></i>Area Of Operation</a></li>
                             <li class=""><a data-toggle="tab" href="#inventory-store"><i class="soap-icon-pets circle"></i>Inventory Repository</a></li>
                             <li class=""><a data-toggle="tab" href="#dealerEbidR"><i id="usrleftnav" class="flaticon-auction"></i>Ebid-R</a></li>
+                            <li class=""><a data-toggle="tab" href="#dealerOperat"><i id="usrleftnav" class="flaticon-auction"></i>Dealer Operation</a></li>
                             <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-status circle"></i>Vehicle Leads</a></li>
                             <li class=""><a data-toggle="tab" href="#VehicleQuotation12"><i class="soap-icon-status circle"></i>Vehicle Quotations</a></li>
 
@@ -2014,44 +2016,44 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 <div id="dealerEbidR" class="tab-pane fade">
                               <!--  Start -->
                               <div id="tab">
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDAll" checked /><span class="color-dark">All</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDCars" class="ML10" /><span class="color-dark">Cars</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDSerMai" class="ML10" /><span class="color-dark">Service & Maintenance</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDInsu" class="ML10" /><span class="color-dark">Insurance</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDTrans" class="ML10" /><span class="color-dark">Transport</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDFinance" class="ML10" /><span class="color-dark">Finance</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDFuelCard" class="ML10" /><span class="color-dark">Fuel Card</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eDealEbidAll" checked /><span class="color-dark">All</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eDealBIDCars" class="ML10" /><span class="color-dark">Cars</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eDealBIDSerMai" class="ML10" /><span class="color-dark">Service & Maintenance</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eDealBIDInsu" class="ML10" /><span class="color-dark">Insurance</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eDealBIDTrans" class="ML10" /><span class="color-dark">Transport</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eDealBIDFin" class="ML10" /><span class="color-dark">Finance</span>
+                                    
                                 </div>
 
 							<div class="tab-content">
-							       <div class="tab-pane fade active in" id="eBIDAll">All</div>
-							       <div class="tab-pane fade" id="eBIDCars">
+							       <div class="tab-pane fade active in" id="eDealEbidAll">All</div>
+							       <div class="tab-pane fade" id="#eDealBIDCars">
 							       Car Content
 							       		<h4>Vehicle EBID Request</h4>
                                          <table id="deal-car-model-data">
                                         </table>
 							       </div>
-							       <div class="tab-pane fade" id="eBIDInsu">Insurance Content
+							       <div class="tab-pane fade" id="#eDealBIDInsu">Insurance Content
 							       		<h4>List of Insurance leads</h4>
                               			<table id="deal-car-model-data2">   </table>
 							       </div>
-							       <div class="tab-pane fade" id="eBIDSerMai">Service & maintenance Content
+							       <div class="tab-pane fade" id="#eDealBIDSerMai">Service & maintenance Content
 									       <h4>Service & Maintenance leads</h4>
 									       <!-- <table id="deal-dataservmaint">
 
 		                                        </table> -->
 							       </div>
-							       <div class="tab-pane fade" id="eBIDTrans">Transport Content
+							       <div class="tab-pane fade" id="#eDealBIDTrans">Transport Content
 							       <h4>Transport Service leads</h4>
 									      <!--  <table id="deal-datatranspserv">
 
 		                                        </table></div> -->
 
-							       <div class="tab-pane fade" id="eBIDFinance">Finance Content
+							       <div class="tab-pane fade" id="eDealBIDFin">Finance Content
 							       		<h4>List of Finance leads</h4>
                               			<table id="deal-data1"></table>
 							       </div>
-							       <div class="tab-pane fade" id="eBIDFuelCard">Fuel Card Content</div>
+							       
 							</div>
 
 
@@ -2059,7 +2061,55 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
                              
                             </div>
+                            </div>
 <!-- End of Area of Operaton -->
+
+
+<!-- Start of Dealer Operation  -->
+<div id="dealerOperat" class="tab-pane fade">
+                              <!--  Start -->
+                              <div id="tab">
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#dealOperatAll" checked /><span class="color-dark">All</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#dealOperat" class="ML10" /><span class="color-dark">Dealer</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#dealOperatFin" class="ML10" /><span class="color-dark">Dealer Finance</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#dealOperatIns" class="ML10" /><span class="color-dark">Dealer Insurance</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#dealOperatServMaint" class="ML10" /><span class="color-dark">Dealer Service && Maintenance</span>
+                                    
+                                </div>
+
+							<div class="tab-content">
+							       <div class="tab-pane fade active in" id="dealOperatAll">All</div>
+							       <div class="tab-pane fade" id="dealOperatAll">
+							       Car Content
+							       		<h4>Vehicle Dealer Operation</h4>
+                                         <table id="deal-operation">
+                                        </table>
+							       </div>
+							       <div class="tab-pane fade" id="dealOperatFin">Finance Content
+							       		<h4>Dealer Finance operations</h4>
+                              			<table id="deal-operation-fin">   </table>
+							       </div>
+							       <div class="tab-pane fade" id="dealOperatIns">Insurance Content
+									       <h4>Dealer Insurance operations</h4>
+									      <table id="deal-operation-ins">
+
+		                                        </table>
+							       </div>
+							       <div class="tab-pane fade" id="dealOperatServMaint">Service && Maintenance Content
+							       <h4>Service && Maintenance operation</h4>
+									      <table id="deal-operation-serv-maint">
+
+		                                        </table></div>
+
+							       
+							</div>
+
+
+
+
+                             
+                            </div>
+<!-- End of Dealer of Operaton -->
                             <div id="travel-stories" class="tab-pane fade">
                               <!--  Start -->
  <div class="tab-pane fade in active" id="family2-inv">
@@ -2068,107 +2118,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
                                         </table>
                                     </div>
-                        <!--       <div class="tab-container full-width-style arrow-left dashboard">
-                        <ul class="tabs">
-                            <li class="active"><a data-toggle="tab" href="#dashboard1"><i class="soap-icon-car circle"></i>Vehicle</a></li>
-                            <li class=""><a data-toggle="tab" href="#profile1"><i class="soap-icon-savings circle"></i>Finance</a></li>
-                            <li class=""><a data-toggle="tab" href="#travel-stories1"><i class="soap-icon-insurance circle"></i>Insurance</a></li>
-                            <li class=""><a data-toggle="tab" href="#settings1"><i class="soap-icon-doorman circle"></i>Service & Maintenance</a></li>
-                            <li class=""><a data-toggle="tab" href="#wishlist1"><i class="soap-icon-baggage-5 circle"></i>Transport</a></li>
-                            <li class=""><a data-toggle="tab" href="#booking1"><i class="soap-icon-status circle"></i>Rego</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div id="dashboard1" class="tab-pane fade in active">
-
-                                <p>EBid - R Vehicle area!</p>
-                                <div class="col-md-18">
-
-                            <img src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;">
-                            <div class="tab-container trans-style box">
-                                <ul class="tabs full-width">
-                                   <li class="active"><a href="#family2" data-toggle="tab"><i class="fa fa-cab"></i>My Cars</a></li>
-                                    <li><a href="#honeymoon2" data-toggle="tab"><i class="fa fa-motorcycle"></i>My Bikes</a></li>
-                                    <li><a href="#weekends2" data-toggle="tab"><i class="fa fa-ship"></i>My Boats</a></li>
-                                    <li><a href="#friends2" data-toggle="tab"><i class="fa fa-truck"></i>My Caravans</a></li>
-                                    <li><a href="#friends24" data-toggle="tab"><i class="fa fa-bicycle"></i>My Bicycles</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade" id="family2">
-                                        <h4>My Car</h4>
-                                    </div>
-                                    <div class="tab-pane fade in active" id="honeymoon2">
-                                        <h4>My Bike</h4>
-
-                                    </div>
-                                    <div class="tab-pane fade" id="weekends2">
-                                        <h4>My Boats</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="friends2">
-                                        <h4>My Caravans</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="friends24">
-                                        <h4>My Bicycles</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                <br />
-
-
-                            </div>
-                            <div id="profile1" class="tab-pane fade">
-                            <p>EBid - R Finance area!</p>
-                                <br />
-
-                            </div>
-                            <div id="travel-stories1" class="tab-pane fade">
-                              <h2>EBid - R Insurance area!</h2>
-                            </div>
-                             <div id="settings1" class="tab-pane fade">
-                                <h2>EBid - R Service & Maintenance area!</h2>
-                                 <div class="col-md-18">
-
-                            <img src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;">
-                            <div class="tab-container trans-style box">
-                                <ul class="tabs full-width">
-                                   <li class="active"><a href="#family3" data-toggle="tab"><i class="fa fa-cab"></i>My Cars</a></li>
-                                    <li><a href="#honeymoon3" data-toggle="tab"><i class="fa fa-motorcycle"></i>My Bikes</a></li>
-                                    <li><a href="#weekends3" data-toggle="tab"><i class="fa fa-ship"></i>My Boats</a></li>
-                                    <li><a href="#friends3" data-toggle="tab"><i class="fa fa-truck"></i>My Caravans</a></li>
-                                    <li><a href="#friends25" data-toggle="tab"><i class="fa fa-bicycle"></i>My Bicycles</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade" id="family3">
-                                        <h4>My Car</h4>
-                                    </div>
-                                    <div class="tab-pane fade in active" id="honeymoon3">
-                                        <h4>My Bike</h4>
-
-                                    </div>
-                                    <div class="tab-pane fade" id="weekends3">
-                                        <h4>My Boats</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="friends3">
-                                        <h4>My Caravans</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="friends25">
-                                        <h4>My Bicycles</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            </div>
-                            <div id="wishlist1" class="tab-pane fade">
-                                <h2>EBid - R Transport area!</h2>
-
-                            </div>
-
-
-
-                        </div>
-                    </div> -->
-                              <!--  end -->
-                            </div>
+                        
+                            
 
 <!--Start   -->
 <div id="inventory-store" class="tab-pane fade">

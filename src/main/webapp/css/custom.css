@@ -1,50 +1,87 @@
-.bgColor{
-background-color:rgba(0,112,210,0.97);
+.bgColor {
+    background-color: rgba(0,112,210,0.97);
 }
 
-.imgHt{
-height:60px;
+.imgHt {
+    height: 60px;
 }
-.PT10
-{
-padding-top:10px;
+
+.PT10 {
+    padding-top: 10px;
 }
-.PT25
-{
-padding-top:25px;
+
+.PB20 {
+    padding-bottom: 20px;
 }
-.PL10
-{
-padding-left:10px;
+
+.PL10 {
+    padding-left: 10px;
 }
-.ML10
-{
-margin-left:10px !important;
+
+.ML10 {
+    margin-left: 10px !important;
 }
-.MR5
-{
-margin-right:5px;
+
+.MR5 {
+    margin-right: 5px;
 }
-.h3-color{
-    color:#fff !important;
+
+.h3-color {
+    color: #fff !important;
 }
-.wlcm-msg{
-    color:rgba(0,112,210,0.97);
+
+.wlcm-msg {
+    color: rgba(0,112,210,0.97);
 }
-.txt-center{
+
+.txt-center {
     text-align: center;
 }
-.txt-bold{
+
+.txt-bold {
     font-weight: bold;
     font-size: 14px;
 }
-.color-dark{
-    color:#000000;
-    font-size:14px;
+
+.color-dark {
+    color: #000000;
+    font-size: 14px;
 }
+
 .submit-bgcolor {
     background-color: #33475C !important;
 }
+
 .accrdion-bgcolor {
     background-color: #33475C !important;
+}
+
+.icon-ht {
+    height: 130px;
+}
+
+#abtfooter {
+    background: #07253F;
+    color: #BEC4C8;
+}
+
+    #abtfooter p {
+        font-size: 14px;
+        line-height: 1.4 !important;
+        margin-bottom: 0 !important;
+        padding-bottom:10px;
+    }
+
+.footer-header {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    padding-bottom:10px;
+}
+
+.footer-hlgt {
+    color: #fff !important;
+}
+#abtfooter b {
+    color:#fff;
 }

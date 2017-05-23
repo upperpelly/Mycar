@@ -6383,22 +6383,22 @@ h5 {
 	content: "";
 	width: 50%;
 	height: 2px;
-	background: #f9676b;
+	background: #DAC72E;
 	position: absolute;
-	right: -20%;
-	top: 20%
+	right: -25%;
+	top: 25%
 }
 .work-step .second-step:after {
-	content: "";
+	/*content: "";*/
 	width: 50%;
 	height: 2px;
 	background: #f9676b;
 	position: absolute;
-	right: -20%;
-	top: 20%
+	right: -25%;
+	top: 15%
 }
 .work-step .second-step:before {
-	content: "";
+	/*content: "";*/
 	width: 50%;
 	height: 2px;
 	background: #f9676b;
@@ -6410,10 +6410,10 @@ h5 {
 	content: "";
 	width: 50%;
 	height: 2px;
-	background: #f9676b;
+	background: #DAC72E;
 	position: absolute;
-	left: -20%;
-	top: 20%
+	left: -25%;
+	top: 25%
 }
 .work-step i {
     border-radius: 50%;

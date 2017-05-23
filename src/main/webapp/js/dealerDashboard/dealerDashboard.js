@@ -215,6 +215,87 @@ function dealerBoardCallSearch(model_data_id, userid)
    	    }
    	    
    	    forFinance("deal-data1",out5);
+   	   // Dealer Operation Start
+   	 out5DD = "";
+	    var dealDt = result.vehicleDealerDetails;
+	    if(dealDt)
+	    {
+	    	dealDt = result.vehicleDealerDetails.length;
+  	   //document.getElementById('finMax').innerHTML=finMax;
+  	 out5DD += '<tr><th>'+"Car Dealer ID"+'</th><th>'+"Vehicle Type"+'</th><th>'+"New"+'</th><th>'+"Used"+'</th><th>'+"Both"+'</th></tr>';
+ 	   for(i=0;i<result.vehicleDealerDetails.length;i++)
+			{
+ 		  out5DD= out5DD+'<tr>'+'<td>'+result.vehicleDealerDetails[i].vehicleDealerDetailId+'</td><td>'+result.vehicleDealerDetails[i].vehicleType+'</td><td>'+result.vehicleDealerDetails[i].newCar+'</td><td>'+result.vehicleDealerDetails[i].usedCar+'</td><td>'+result.vehicleDealerDetails[i].both+'</td><td></tr>';
+			}
+	    	
+	    }
+	    else
+	    {
+	    	out5DD='<h2>No records for Dealer Search Finance</h2>';
+	    }
+	    
+	    forFinance("deal-operation",out5DD);
+	    out5DF = "";
+   	    var dealFn = result.vehicleDealerFinanceDetails;
+   	    if(dealDt)
+   	    {
+   	    	dealDt = result.vehicleDealerFinanceDetails.length;
+     	   //document.getElementById('finMax').innerHTML=finMax;
+     	  out5DF += '<tr><th>'+"Car Finance ID"+'</th><th>'+"Vehicle Type"+'</th><th>'+"New"+'</th><th>'+"Used"+'</th><th>'+"Both"+'</th></tr>';
+    	   for(i=0;i<result.vehicleDealerFinanceDetails.length;i++)
+   			{
+    		   out5DF= out5DF+'<tr>'+'<td>'+result.vehicleDealerFinanceDetails[i].vehicleDealerFinanceDetailId+'</td><td>'+result.vehicleDealerFinanceDetails[i].vehicleType+'</td><td>'+result.vehicleDealerFinanceDetails[i].newCar+'</td><td>'+result.vehicleDealerFinanceDetails[i].usedCar+'</td><td>'+result.vehicleDealerFinanceDetails[i].both+'</td><td></tr>';
+   			}
+   	    	
+   	    }
+   	    else
+   	    {
+   	    	out5DF='<h2>No records for Dealer Search Finance</h2>';
+   	    }
+   	    
+   	    forFinance("deal-operation-fin",out5DF);
+   	 out5DIn = "";
+	    var dealIns = result.vehicleDealerInsuranceDetails;
+	    if(dealIns)
+	    {
+	    	dealIns = result.vehicleDealerInsuranceDetails.length;
+  	   //document.getElementById('finMax').innerHTML=finMax;
+  	 out5DIn += '<tr><th>'+"Car Finance ID"+'</th><th>'+"Vehicle Type"+'</th><th>'+"New"+'</th><th>'+"Used"+'</th><th>'+"Both"+'</th></tr>';
+ 	   for(i=0;i<result.vehicleDealerInsuranceDetails.length;i++)
+			{
+ 		  out5DIn= out5DIn+'<tr>'+'<td>'+result.vehicleDealerInsuranceDetails[i].vehicleDealerInsuranceDetailId+'</td><td>'+result.vehicleDealerInsuranceDetails[i].vehicleType+'</td><td>'+result.vehicleDealerInsuranceDetails[i].newCar+'</td><td>'+result.vehicleDealerInsuranceDetails[i].usedCar+'</td><td>'+result.vehicleDealerInsuranceDetails[i].both+'</td><td></tr>';
+			}
+	    	
+	    }
+	    else
+	    {
+	    	out5DIn='<h2>No records for Dealer Search Finance</h2>';
+	    }
+	    
+	    forFinance("deal-operation-ins",out5DIn);
+	    
+	    out5DServMaint = "";
+	    var dealServMaint = result.vehicleDealerServMaintDetails;
+	    if(dealServMaint)
+	    {
+	    	dealServMaint = result.vehicleDealerServMaintDetails.length;
+  	   //document.getElementById('finMax').innerHTML=finMax;
+	    	out5DServMaint += '<tr><th>'+"Car Finance ID"+'</th><th>'+"Vehicle Type"+'</th><th>'+"New"+'</th><th>'+"Used"+'</th><th>'+"Both"+'</th></tr>';
+ 	   for(i=0;i<result.vehicleDealerServMaintDetails.length;i++)
+			{
+ 		  out5DServMaint= out5DServMaint+'<tr>'+'<td>'+result.vehicleDealerServMaintDetails[i].vehicleDealerServMaintDetailId+'</td><td>'+result.vehicleDealerServMaintDetails[i].vehicleType+'</td><td>'+result.vehicleDealerServMaintDetails[i].newCar+'</td><td>'+result.vehicleDealerServMaintDetails[i].usedCar+'</td><td>'+result.vehicleDealerServMaintDetails[i].both+'</td><td></tr>';
+			}
+	    	
+	    }
+	    else
+	    {
+	    	out5DServMaint='<h2>No records for Dealer Search Finance</h2>';
+	    }
+	    
+	    forFinance("deal-operation-serv-maint",out5DServMaint);
+   	    // Dealer Operaton end
+   	    
+   	    
    	  	out6 ="";
 	    var finQRecd = result.financeQuotation;
 	    if(finQRecd)
