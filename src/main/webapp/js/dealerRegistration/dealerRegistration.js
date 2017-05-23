@@ -2,7 +2,7 @@ var isChecked = false;
 
         function allSelected() 
         {
-           alert("inside check box");
+           //alert("inside check box");
         	// this line is for toggle the check
             //isChecked = !isChecked;
         	if(!isChecked){
@@ -46,7 +46,7 @@ var isChecked = false;
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
             	createCellUserRating(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
-            alert("ca"+$('#userRating10').val());
+            //alert("ca"+$('#userRating10').val());
         }// append row to the HTML table
         function appendRow14() {
             var tbl = document.getElementById('my-table14'), // table reference
@@ -96,7 +96,7 @@ var isChecked = false;
         }
      // append row to the HTML table
         function appendRow9() {
-        	alert("append invoke");
+        	//alert("append invoke");
             var tbl = document.getElementById('my-table9'), // table reference
                 row = tbl.insertRow(tbl.rows.length),      // append table row
                 i;
@@ -194,7 +194,7 @@ var isChecked = false;
             for (i = 0; i < tbl.rows[0].cells.length; i++) {
             	createCellOptionalFeaturesAddons(row.insertCell(i), tbl.rows.length-1, i, 'row');
             }
-            alert("ca"+$('#createCellOptionalFeaturesAddons2').val());
+            //alert("ca"+$('#createCellOptionalFeaturesAddons2').val());
         }
         // create DIV element and append to the table cell
         function createCellOptionalFeaturesAddons(cell, row, text, style) {
@@ -2234,8 +2234,8 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								                var tbl = document.getElementById('my-table'), // table reference
 									               row = tbl.rows.length;      // append table row
 									                var i;
-									                alert("row length for Optional Addon Features"+tbl.rows.length);
-									                alert("col lenght for Optional Addon Features"+tbl.rows[0].cells.length);
+									                //alert("row length for Optional Addon Features"+tbl.rows.length);
+									                //alert("col lenght for Optional Addon Features"+tbl.rows[0].cells.length);
 					                for (j = 1; j < tbl.rows.length; j++) {
 					                		jsonInputToAPI.carModel2[j-1].tempCarModelOptFeatId=null;   	
 								            for (i = 1; i < tbl.rows[j].cells.length; i++) {
@@ -2269,10 +2269,10 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 					                var tbl1 = document.getElementById('my-table1'), // table reference
 						               row = tbl1.rows.length;      // append table row
 						                var i;
-						                alert("row length for avaliable colours"+tbl1.rows.length);
-						                alert("col lenght for available colours"+tbl1.rows[0].cells.length);         
-								                alert("Json print d e tempCarModelColourId");
-									               alert(JSON.stringify(jsonInputToAPI.carModel3[0].tempCarModelColourId));
+						               // alert("row length for avaliable colours"+tbl1.rows.length);
+						                //alert("col lenght for available colours"+tbl1.rows[0].cells.length);         
+								                //alert("Json print d e tempCarModelColourId");
+									               //alert(JSON.stringify(jsonInputToAPI.carModel3[0].tempCarModelColourId));
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl1.rows.length; j++) {
 						                	//alert("changes now");
@@ -2296,20 +2296,20 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel3[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel3[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print");
-									                alert(JSON.stringify(jsonInputToAPI.carModel3));
+									               /* alert("Json print");
+									                alert(JSON.stringify(jsonInputToAPI.carModel3));*/
 					                
 					                
 					                // table 2
 					                var tbl2 = document.getElementById('my-table2'), // table reference
 						               row = tbl2.rows.length;      // append table row
 						                var i;
-						                alert("row length Full spec Engine"+tbl2.rows.length);
+						               /* alert("row length Full spec Engine"+tbl2.rows.length);
 						                alert("col lenght Full spec Engine"+tbl2.rows[0].cells.length);         
 								                alert("Json print d e Full spec Engine");
 									               alert(JSON.stringify(jsonInputToAPI.carModel4[0].tempCarModelUserRatingId));
 									            // insert table cells to the new row
-						                for (j = 1; j < tbl2.rows.length; j++) {
+*/						                for (j = 1; j < tbl2.rows.length; j++) {
 						                	
 						                	i=0;
 						                		jsonInputToAPI.carModel4[j-1].tempCarModelFullSpecId=null;
@@ -2331,17 +2331,17 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel4[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel4[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print for Engine");
-									                alert(JSON.stringify(jsonInputToAPI.carModel4));
+									                /*alert("Json print for Engine");
+									                alert(JSON.stringify(jsonInputToAPI.carModel4));*/
 					                
 					                
 					                // table 3
 					                var tbl3 = document.getElementById('my-table3'), // table reference
 						               row = tbl3.rows.length;      // append table row
 						                var i;
-						                alert("row length for Full Spec Dimensions"+tbl3.rows.length);
+						               /* alert("row length for Full Spec Dimensions"+tbl3.rows.length);
 						                alert("col lenght for full Spec Dimensions"+tbl3.rows[0].cells.length);         
-								                alert("Json print d e Full spec Dimensions");
+								                alert("Json print d e Full spec Dimensions");*/
 									              // alert(JSON.stringify(jsonInputToAPI.carModel5[0].tempCarModelUserRatingId));
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl3.rows.length; j++) {
@@ -2376,9 +2376,9 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 					                var tbl4 = document.getElementById('my-table4'), // table reference
 						               row = tbl4.rows.length;      // append table row
 						                var i;
-						                alert("row length for Full spec Fuel"+tbl4.rows.length);
+						               /* alert("row length for Full spec Fuel"+tbl4.rows.length);
 						                alert("col lenght for Full spec Fuel"+tbl4.rows[0].cells.length);         
-								                alert("Json print d e for Full spec Fuel");
+								                alert("Json print d e for Full spec Fuel");*/
 									               //alert(JSON.stringify(jsonInputToAPI.carModel6[0].tempCarModelUserRatingId));
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl4.rows.length; j++) {
@@ -2402,17 +2402,17 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel6[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel6[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print");
+									              /*  alert("Json print");
 									                alert(JSON.stringify(jsonInputToAPI.carModel6));
-					                
+					                */
 					                // table 5
 					                
 					                var tbl5 = document.getElementById('my-table5'), // table reference
 						               row = tbl5.rows.length;      // append table row
 						                var i;
-						                alert("row length for full spec wheels"+tbl5.rows.length);
+						               /* alert("row length for full spec wheels"+tbl5.rows.length);
 						                alert("col lenght for full spec wheels"+tbl5.rows[0].cells.length);         
-								                alert("Json print d e for full spec wheels");
+								                alert("Json print d e for full spec wheels");*/
 									               //alert(JSON.stringify(jsonInputToAPI.carModel19[0].tempCarModelFullSpecWheelId));
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl5.rows.length; j++) {
@@ -2437,8 +2437,8 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel19[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel19[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print for full spec wheels");
-									                alert(JSON.stringify(jsonInputToAPI.carModel19));
+									             /*   alert("Json print for full spec wheels");
+									                alert(JSON.stringify(jsonInputToAPI.carModel19));*/
 					                
 					                
 					               
@@ -2447,10 +2447,10 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 					                var tbl6 = document.getElementById('my-table6'), // table reference
 						               row = tbl6.rows.length;      // append table row
 						                var i;
-						                alert("row length for Warranty "+tbl6.rows.length);
+						               /* alert("row length for Warranty "+tbl6.rows.length);
 						                alert("col lenght for Warranty"+tbl6.rows[0].cells.length);         
 								                alert("Json print d e Warranty");
-									               alert(JSON.stringify(jsonInputToAPI.carModel7[0].tempCarModelFullSpecWarrantyId));
+									               alert(JSON.stringify(jsonInputToAPI.carModel7[0].tempCarModelFullSpecWarrantyId));*/
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl6.rows.length; j++) {
 						                	
@@ -2474,17 +2474,17 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel7[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel7[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print for Warranty");
-									                alert(JSON.stringify(jsonInputToAPI.carModel7));
+									               /* alert("Json print for Warranty");
+									                alert(JSON.stringify(jsonInputToAPI.carModel7));*/
 					                
 					                
 				// table 7
 					                var tbl7 = document.getElementById('my-table7'), // table reference
 						               row = tbl7.rows.length;      // append table row
 						                var i;
-						                alert("row length Full spec Standard Equip"+tbl7.rows.length);
+						               /* alert("row length Full spec Standard Equip"+tbl7.rows.length);
 						                alert("col lenght Full spec Standard Equip"+tbl7.rows[0].cells.length);         
-								                alert("Json print d e Full spec Standard Equip");
+								                alert("Json print d e Full spec Standard Equip");*/
 									               //alert(JSON.stringify(jsonInputToAPI.carModel9[0].tempCarModelUserRatingId));
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl7.rows.length; j++) {
@@ -2509,20 +2509,20 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel8[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel8[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print Full spec Standard Equip");
-									                alert(JSON.stringify(jsonInputToAPI.carModel8));
+									              /*  alert("Json print Full spec Standard Equip");
+									                alert(JSON.stringify(jsonInputToAPI.carModel8));*/
 					                
 					                
 					                // tabl 8
 					                var tbl8 = document.getElementById('my-table8'), // table reference
 						               row = tbl8.rows.length;      // append table row
 						                var i;
-						                alert("row length optionalEquipmentAddOns"+tbl8.rows.length);
+						              /*  alert("row length optionalEquipmentAddOns"+tbl8.rows.length);
 						                alert("col lenght optionalEquipmentAddOns"+tbl8.rows[0].cells.length);         
 								                alert("Json print d e optionalEquipmentAddOns");
 									               alert(JSON.stringify(jsonInputToAPI.carModel9[0].tempCarModelOptEqpAddOnId));
 									            // insert table cells to the new row
-						                for (j = 1; j < tbl8.rows.length; j++) {
+*/						                for (j = 1; j < tbl8.rows.length; j++) {
 						              
 						                	i=0;
 						                		jsonInputToAPI.carModel9[j-1].tempCarModelOptEqpAddOnId=null;
@@ -2542,18 +2542,18 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel9[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel9[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print optionalEquipmentAddOns");
-									                alert(JSON.stringify(jsonInputToAPI.carModel9));
+									              /*  alert("Json print optionalEquipmentAddOns");
+									                alert(JSON.stringify(jsonInputToAPI.carModel9));*/
 					                
 					                
 					                // table 9
 					                var tbl9 = document.getElementById('my-table9'), // table reference
 						               row = tbl9.rows.length;      // append table row
 						                var i;
-						                alert("row length relatedModels"+tbl9.rows.length);
+						                /*alert("row length relatedModels"+tbl9.rows.length);
 						                alert("col lenght relatedModels"+tbl9.rows[0].cells.length);         
 								                alert("Json print d e relatedModels");
-									        
+									        */
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl9.rows.length; j++) {
 						                	i=0;
@@ -2577,8 +2577,8 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel10[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel10[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print relatedModels");
-									                alert(JSON.stringify(jsonInputToAPI.carModel11));
+									                /*alert("Json print relatedModels");
+									                alert(JSON.stringify(jsonInputToAPI.carModel11));*/
 					                
 					                // table 10
 					                
@@ -2586,9 +2586,9 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 					                var tbl10 = document.getElementById('my-table10'), // table reference
 						               row = tbl10.rows.length;      // append table row
 						                var i;
-						                alert("row length photo"+tbl10.rows.length);
+						               /* alert("row length photo"+tbl10.rows.length);
 						                alert("col lenght photo"+tbl10.rows[0].cells.length);         
-								                alert("Json print d e photo");
+								                alert("Json print d e photo");*/
 									               //alert(JSON.stringify(jsonInputToAPI.carModel11[0].tempCarModelPhotosId));
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl10.rows.length; j++) {
@@ -2611,15 +2611,15 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel11[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel11[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print photo");
-									                alert(JSON.stringify(jsonInputToAPI.carModel11));
+									               /* alert("Json print photo");
+									                alert(JSON.stringify(jsonInputToAPI.carModel11));*/
 									                
 									             var tbl11 = document.getElementById('my-table11'), // table reference
 										               row = tbl11.rows.length;      // append table row
 										                var i;
-										                alert("row length vehicleReviews"+tbl11.rows.length);
+										                /*alert("row length vehicleReviews"+tbl11.rows.length);
 										                alert("col lenght vehicleReviews"+tbl11.rows[0].cells.length);         
-												                alert("Json print d e vehicleReviews");
+												                alert("Json print d e vehicleReviews");*/
 													               //alert(JSON.stringify(jsonInputToAPI.carModel12[0].tempCarModelPhotosId));
 													            // insert table cells to the new row
 										                for (j = 1; j < tbl11.rows.length; j++) {
@@ -2642,17 +2642,17 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 												            	jsonInputToAPI.carModel12[j-1]["flex11"]=null;
 												            	jsonInputToAPI.carModel12[j-1]["flex12"]=null;
 													    }  
-													                alert("Json printvehicleReviews");
-													                alert(JSON.stringify(jsonInputToAPI.carModel12));
+													               /* alert("Json printvehicleReviews");
+													                alert(JSON.stringify(jsonInputToAPI.carModel12));*/
 					                // till now here
 					                // table 11
 					                var tbl12= document.getElementById('my-table12'), // table reference
 						               row = tbl12.rows.length;      // append table row
-						                var i;
+						                var i;/*
 						                alert("row length videos"+tbl12.rows.length);
 						                alert("col lenght videos"+tbl12.rows[0].cells.length);         
 								                alert("Json print d e videos");
-									               alert(JSON.stringify(jsonInputToAPI.carModel13[0].tempCarModelVideosId));
+									               alert(JSON.stringify(jsonInputToAPI.carModel13[0].tempCarModelVideosId));*/
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl12.rows.length; j++) {
 						                	
@@ -2674,19 +2674,19 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel13[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel13[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print videos");
+									                /*alert("Json print videos");
 									                alert(JSON.stringify(jsonInputToAPI.carModel13));
-					                
+					                */
 					                
 					                
 					                // table 12
 					                var tbl13 = document.getElementById('my-table13'), // table reference
 						               row = tbl13.rows.length;      // append table row
 						                var i;
-						                alert("row length fittingExternal"+tbl13.rows.length);
+						                /*alert("row length fittingExternal"+tbl13.rows.length);
 						                alert("col lenght fittingExternal"+tbl13.rows[0].cells.length);         
 								                alert("Json print d e fittingExternal");
-									               alert(JSON.stringify(jsonInputToAPI.carModel14[0].tempCarModelExtFittingId));
+									               alert(JSON.stringify(jsonInputToAPI.carModel14[0].tempCarModelExtFittingId));*/
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl13.rows.length; j++) {
 						                	i=0;
@@ -2709,8 +2709,8 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel14[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel14[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print  fittingExternal");
-									                alert(JSON.stringify(jsonInputToAPI.carModel14));
+									                /*alert("Json print  fittingExternal");
+									                alert(JSON.stringify(jsonInputToAPI.carModel14));*/
 					                
 					                
 					                // table 13
@@ -2718,10 +2718,10 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 					                var tbl14 = document.getElementById('my-table14'), // table reference
 						               row = tbl14.rows.length;      // append table row
 						                var i;
-						                alert("row length fittingInternal"+tbl14.rows.length);
+						               /* alert("row length fittingInternal"+tbl14.rows.length);
 						                alert("col lenght fittingInternal"+tbl14.rows[0].cells.length);         
 								                alert("Json print d e fittingInternal");
-									               alert(JSON.stringify(jsonInputToAPI.carModel15[0].tempCarModelIntFittingId));
+									               alert(JSON.stringify(jsonInputToAPI.carModel15[0].tempCarModelIntFittingId));*/
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl14.rows.length; j++) {
 						                	i=0;
@@ -2744,8 +2744,8 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel15[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel15[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print fittingInternal");
-									                alert(JSON.stringify(jsonInputToAPI.carModel15));
+									               /* alert("Json print fittingInternal");
+									                alert(JSON.stringify(jsonInputToAPI.carModel15));*/
 					                
 					                
 					                
@@ -2755,10 +2755,10 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 					                var tbl15 = document.getElementById('my-table15'), // table reference
 						               row = tbl15.rows.length;      // append table row
 						                var i;
-						                alert("row length"+tbl15.rows.length);
+						               /* alert("row length"+tbl15.rows.length);
 						                alert("col lenght"+tbl15.rows[0].cells.length);         
 								                alert("Json print d e userRating");
-									               alert(JSON.stringify(jsonInputToAPI.carModel16[0].tempCarModelUserRatingId));
+									               alert(JSON.stringify(jsonInputToAPI.carModel16[0].tempCarModelUserRatingId));*/
 									            // insert table cells to the new row
 						                for (j = 1; j < tbl15.rows.length; j++) {
 						                	alert("changes now");
@@ -2785,17 +2785,17 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 								            	jsonInputToAPI.carModel16[j-1]["flex11"]=null;
 								            	jsonInputToAPI.carModel16[j-1]["flex12"]=null;
 									    }  
-									                alert("Json print");
-									                alert(JSON.stringify(jsonInputToAPI.carModel16));
+									               /* alert("Json print");
+									                alert(JSON.stringify(jsonInputToAPI.carModel16));*/
 													
 									             // table 14 
 									                var tbl16 = document.getElementById('my-table16'), // table reference
 										               row = tbl16.rows.length;      // append table row
 										                var i;
-										                alert("row length expertingRating"+tbl16.rows.length);
+										                /*alert("row length expertingRating"+tbl16.rows.length);
 										                alert("col lenght expertingRating"+tbl16.rows[0].cells.length);         
 												                alert("Json print d e expertingRating");
-													               alert(JSON.stringify(jsonInputToAPI.carModel17[0].tempCarModelExpRatingId));
+													               alert(JSON.stringify(jsonInputToAPI.carModel17[0].tempCarModelExpRatingId));*/
 													            // insert table cells to the new row
 										                for (j = 1; j < tbl16.rows.length; j++) {
 										                	
@@ -2817,17 +2817,17 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 												            	jsonInputToAPI.carModel17[j-1]["flex11"]=null;
 												            	jsonInputToAPI.carModel17[j-1]["flex12"]=null;
 													    }  
-													                alert("Json print expertingRating");
-													                alert(JSON.stringify(jsonInputToAPI.carModel17));
+													                /*alert("Json print expertingRating");
+													                alert(JSON.stringify(jsonInputToAPI.carModel17));*/
 									                
 													                 var tbl17 = document.getElementById('my-table17'), // table reference
 														               row = tbl17.rows.length;      // append table row
 														                var i;
-														                alert("row length country"+tbl17.rows.length);
-														                alert("col lenght country"+tbl17.rows[0].cells.length);         
-																                alert("Json print d e country");
-																	               alert(JSON.stringify(jsonInputToAPI.carModel18[0].tempCarModelCountryId));
-																	            // insert table cells to the new row
+/*//														                alert("row length country"+tbl17.rows.length);
+//														                alert("col lenght country"+tbl17.rows[0].cells.length);         
+//																                alert("Json print d e country");
+//																	               alert(JSON.stringify(jsonInputToAPI.carModel18[0].tempCarModelCountryId));
+*/																	            // insert table cells to the new row
 														                for (j = 1; j < tbl17.rows.length; j++) {
 														                	
 														                	i=0;
@@ -2848,8 +2848,8 @@ mainAppMrp.controller('mrpController1',function($scope, $http) {
 																            	jsonInputToAPI.carModel18[j-1]["flex11"]=null;
 																            	jsonInputToAPI.carModel18[j-1]["flex12"]=null;
 																	    }  
-																	                alert("Json print country");
-																	                alert(JSON.stringify(jsonInputToAPI.carModel18));
+																	                /*alert("Json print country");
+																	                alert(JSON.stringify(jsonInputToAPI.carModel18));*/
 													            
 								             /*   
 								                "carModel2": [

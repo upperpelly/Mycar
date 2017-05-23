@@ -59,7 +59,7 @@
 <script src="js/carquery.0.3.4.js"type="text/javascript" ></script>
 <script>
 $(document).ready(function() {
-
+	
 /* $.ajax({
   url: "http://www.carqueryapi.com/api/0.3/?cmd=getStats",
   success: function(data){
@@ -240,6 +240,10 @@ body.loading .modale {
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
 <script src="js/angular-ui-router.js"></script>
 <script src="js/angular.js"></script>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/jstorage.js"></script>
 <script src="js/myApp.js"></script>
     <script>function showDiv() {
     	   document.getElementById('welcomeDiv').style.display = "block";
@@ -273,7 +277,10 @@ body.loading .modale {
                 <div class="container">
                    <script type="text/javascript">// <![CDATA[
 $(document).ready( function() {
-
+	$('input[name="collapseeBIDGroup"]').click(function() {
+		/* alert("biscuit"); */
+		$(this).tab('show');
+	});
 	var carquery = new CarQuery();
 	carquery.init();
 carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
@@ -300,9 +307,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 <li class=""><a data-toggle="tab" href="#dealerAreaOfOper"><i id="usrleftnav" class="flaticon-private-garage"></i>Area Of Operation</a></li>
                                 <li class=""><a data-toggle="tab" href="#dealerEbidR"><i id="usrleftnav" class="flaticon-auction"></i>Ebid-R</a></li>
                                 <li class=""><a data-toggle="tab" href="#dealerOperat"><i id="usrleftnav" class="flaticon-auction"></i>Dealer Operation</a></li>
-                                <li><a href="dashboard1.html#settings" class="location-reload">Vehicle Leads</a></li>
+                                <!-- <li><a href="dashboard1.html#settings" class="location-reload">Vehicle Leads</a></li>
                                 <li><a href="dashboard1.html#wishlist" class="location-reload">Finance Leads</a></li>
-                                <li><a href="dashboard1.html#booking" class="location-reload">Serv && Maint Leads</a></li>
+                                <li><a href="dashboard1.html#booking" class="location-reload">Serv && Maint Leads</a></li> -->
                                 <li><a href="dashboard1.html#rego" class="location-reload">Spare Part Leads</a></li>
                               <li><a href="dashboard1.html#rego" class="location-reload">Vehicle Inventory Management</a></li>
                                 <li><a href="#">signout</a></li>
@@ -598,12 +605,11 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             <li class=""><a data-toggle="tab" href="#inventory-store"><i class="soap-icon-pets circle"></i>Inventory Repository</a></li>
                             <li class=""><a data-toggle="tab" href="#dealerEbidR"><i id="usrleftnav" class="flaticon-auction"></i>Ebid-R</a></li>
                             <li class=""><a data-toggle="tab" href="#dealerOperat"><i id="usrleftnav" class="flaticon-auction"></i>Dealer Operation</a></li>
-                            <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-status circle"></i>Vehicle Leads</a></li>
+                           <!--  <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-status circle"></i>Vehicle Leads</a></li> -->
                             <li class=""><a data-toggle="tab" href="#VehicleQuotation12"><i class="soap-icon-status circle"></i>Vehicle Quotations</a></li>
-
-                            <li class=""><a data-toggle="tab" href="#wishlist"><i class="soap-icon-wishlist circle"></i>Fincance Leads</a></li>
+                            <!-- <li class=""><a data-toggle="tab" href="#wishlist"><i class="soap-icon-wishlist circle"></i>Fincance Leads</a></li>
                             <li class=""><a data-toggle="tab" href="#booking"><i class="soap-icon-businessbag circle"></i>Serv && Maint Leads</a></li>
-                            <li class=""><a data-toggle="tab" href="#rego"><i class="soap-icon-businessbag circle"></i>Spare Parts Leads</a></li>
+                             --><li class=""><a data-toggle="tab" href="#rego"><i class="soap-icon-businessbag circle"></i>Spare Parts Leads</a></li>
                           <li class=""><a data-toggle="tab" href="#cruise-features"><i class="soap-icon-businessbag circle"></i>Vehicle Inventory Management</a></li>
                         </ul>
                         <div class="tab-content">
@@ -1185,7 +1191,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </h4>
                                     <div class="panel-collapse collapse" id="tgg3">
                                        <div class="panel-content">
-                                            <div class="col-md-18">
+                                            <div class="col-sm-12 col-md-12">
 
                             <img src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;">
                             <div class="tab-container trans-style box">
@@ -1227,305 +1233,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
 
-                            <div id="booking" class="tab-pane fade">
-                                <h2>Trips You have Booked!</h2>
-                                <div class="filter-section gray-area clearfix">
-                                    <form>
-                                        <label class="radio radio-inline">
-                                            <input type="radio" name="filter" checked="checked" />
-                                            All Types
-                                        </label>
-                                        <label class="radio radio-inline">
-                                            <input type="radio" name="filter" />
-                                            Hotels
-                                        </label>
-                                        <label class="radio radio-inline">
-                                            <input type="radio" name="filter" />
-                                            Flights
-                                        </label>
-                                        <label class="radio radio-inline">
-                                            <input type="radio" name="filter" />
-                                            Cars
-                                        </label>
-                                        <label class="radio radio-inline">
-                                            <input type="radio" name="filter" />
-                                            Cruises
-                                        </label>
-                                        <div class="pull-right col-md-6 action">
-                                            <h5 class="pull-left no-margin col-md-4">Sort results by:</h5>
-                                            <button class="btn-small white gray-color">UPCOMING</button>
-                                            <button class="btn-small white gray-color">CANCELLED</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="booking-history">
-                                    <div class="booking-info clearfix">
-                                        <div class="date">
-                                            <label class="month">NOV</label>
-                                            <label class="date">23</label>
-                                            <label class="day">SAT</label>
-                                        </div>
-                                        <h4 class="box-title"><i class="icon soap-icon-plane-right takeoff-effect yellow-color circle"></i>Indianapolis to Paris<small>you are flying</small></h4>
-                                        <dl class="info">
-                                            <dt>TRIP ID</dt>
-                                            <dd>5754-8dk8-8ee</dd>
-                                            <dt>booked on</dt>
-                                            <dd>saturday, nov 23, 2013</dd>
-                                        </dl>
-                                        <button class="btn-mini status">UPCOMMING</button>
-                                    </div>
-                                    <div class="booking-info clearfix">
-                                        <div class="date">
-                                            <label class="month">NOV</label>
-                                            <label class="date">30</label>
-                                            <label class="day">SAT</label>
-                                        </div>
-                                        <h4 class="box-title"><i class="icon soap-icon-plane-right takeoff-effect yellow-color circle"></i>England to Rome<small>you are flying</small></h4>
-                                        <dl class="info">
-                                            <dt>TRIP ID</dt>
-                                            <dd>5754-8dk8-8ee</dd>
-                                            <dt>booked on</dt>
-                                            <dd>saturday, nov 30, 2013</dd>
-                                        </dl>
-                                        <button class="btn-mini status">UPCOMMING</button>
-                                    </div>
-                                    <div class="booking-info clearfix">
-                                        <div class="date">
-                                            <label class="month">DEC</label>
-                                            <label class="date">11</label>
-                                            <label class="day">MON</label>
-                                        </div>
-                                        <h4 class="box-title"><i class="icon soap-icon-hotel blue-color circle"></i>Hilton Hotel &amp; Resorts<small>2 adults staying</small></h4>
-                                        <dl class="info">
-                                            <dt>TRIP ID</dt>
-                                            <dd>5754-8dk8-8ee</dd>
-                                            <dt>booked on</dt>
-                                            <dd>monday, dec 11, 2013</dd>
-                                        </dl>
-                                        <button class="btn-mini status">UPCOMMING</button>
-                                    </div>
-                                    <div class="booking-info clearfix">
-                                        <div class="date">
-                                            <label class="month">DEC</label>
-                                            <label class="date">18</label>
-                                            <label class="day">THU</label>
-                                        </div>
-                                        <h4 class="box-title"><i class="icon soap-icon-car red-color circle"></i>Economy Car<small>you are driving</small></h4>
-                                        <dl class="info">
-                                            <dt>TRIP ID</dt>
-                                            <dd>5754-8dk8-8ee</dd>
-                                            <dt>booked on</dt>
-                                            <dd>thursday, dec 18, 2013</dd>
-                                        </dl>
-                                        <button class="btn-mini status">UPCOMMING</button>
-                                    </div>
-                                    <div class="booking-info clearfix">
-                                        <div class="date">
-                                            <label class="month">DEC</label>
-                                            <label class="date">22</label>
-                                            <label class="day">SUN</label>
-                                        </div>
-                                        <h4 class="box-title"><i class="icon soap-icon-cruise green-color circle"></i>Baja Mexico<small>3 adults going on cruise</small></h4>
-                                        <dl class="info">
-                                            <dt>TRIP ID</dt>
-                                            <dd>5754-8dk8-8ee</dd>
-                                            <dt>booked on</dt>
-                                            <dd>sunday, dec 22, 2013</dd>
-                                        </dl>
-                                        <button class="btn-mini status">UPCOMMING</button>
-                                    </div>
-                                    <div class="booking-info clearfix cancelled">
-                                        <div class="date">
-                                            <label class="month">NOV</label>
-                                            <label class="date">30</label>
-                                            <label class="day">SAT</label>
-                                        </div>
-                                        <h4 class="box-title"><i class="icon soap-icon-plane-right takeoff-effect circle"></i>England to Rome<small>you are flying</small></h4>
-                                        <dl class="info">
-                                            <dt>TRIP ID</dt>
-                                            <dd>5754-8dk8-8ee</dd>
-                                            <dt>booked on</dt>
-                                            <dd>saturday, nov 30, 2013</dd>
-                                        </dl>
-                                        <button class="btn-mini status">CANCELLED</button>
-                                    </div>
-                                    <div class="booking-info clearfix cancelled">
-                                        <div class="date">
-                                            <label class="month">DEC</label>
-                                            <label class="date">18</label>
-                                            <label class="day">THU</label>
-                                        </div>
-                                        <h4 class="box-title"><i class="icon soap-icon-car circle"></i>Economy Car<small>you are driving</small></h4>
-                                        <dl class="info">
-                                            <dt>TRIP ID</dt>
-                                            <dd>5754-8dk8-8ee</dd>
-                                            <dt>booked on</dt>
-                                            <dd>thursday, dec 18, 2013</dd>
-                                        </dl>
-                                        <button class="btn-mini status">CANCELLED</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div id="wishlist" class="tab-pane fade">
-                                <h2>Your Wish List</h2>
-                                <div class="row image-box listing-style2 add-clearfix">
-                                    <div class="col-sm-6 col-md-4">
-                                        <article class="box">
-                                            <figure>
-                                                <a class="hover-effect" title="" href="#"><img width="300" height="160" alt="" src="http://placehold.it/300x160"></a>
-                                            </figure>
-                                            <div class="details">
-                                                <a class="pull-right button uppercase" href="" title="View all">select</a>
-                                                <h4 class="box-title">Savona to Italy</h4>
-                                                <label class="price-wrapper">
-                                                    <span class="price-per-unit">$170</span>avg/night
-                                                </label>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4">
-                                        <article class="box">
-                                            <figure>
-                                                <a class="hover-effect" title="" href="#"><img width="300" height="160" alt="" src="http://placehold.it/300x160"></a>
-                                            </figure>
-                                            <div class="details">
-                                                <a class="pull-right button uppercase" href="" title="View all">select</a>
-                                                <h4 class="box-title">Hotel Hilton</h4>
-                                                <label class="price-wrapper">
-                                                    <span class="price-per-unit">$620</span>avg/night
-                                                </label>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4">
-                                        <article class="box">
-                                            <figure>
-                                                <a class="hover-effect" title="" href="#"><img width="300" height="160" alt="" src="http://placehold.it/300x160"></a>
-                                            </figure>
-                                            <div class="details">
-                                                <a class="pull-right button uppercase" href="" title="View all">select</a>
-                                                <h4 class="box-title">Forte Do Vale</h4>
-                                                <label class="price-wrapper">
-                                                    <span class="price-per-unit">$120</span>avg/night
-                                                </label>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4">
-                                        <article class="box">
-                                            <figure>
-                                                <a class="hover-effect" title="" href="#"><img width="300" height="160" alt="" src="http://placehold.it/300x160"></a>
-                                            </figure>
-                                            <div class="details">
-                                                <a class="pull-right button uppercase" href="" title="View all">select</a>
-                                                <h4 class="box-title">Roosevelt Hotel</h4>
-                                                <label class="price-wrapper">
-                                                    <span class="price-per-unit">$170</span>avg/night
-                                                </label>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4">
-                                        <article class="box">
-                                            <figure>
-                                                <a class="hover-effect" title="" href="#"><img width="300" height="160" alt="" src="http://placehold.it/300x160"></a>
-                                            </figure>
-                                            <div class="details">
-                                                <a class="pull-right button uppercase" href="" title="View all">select</a>
-                                                <h4 class="box-title">Miami to Florida</h4>
-                                                <label class="price-wrapper">
-                                                    <span class="price-per-unit">$620</span>avg/night
-                                                </label>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4">
-                                        <article class="box">
-                                            <figure>
-                                                <a class="hover-effect" title="" href="#"><img width="300" height="160" alt="" src="http://placehold.it/300x160"></a>
-                                            </figure>
-                                            <div class="details">
-                                                <a class="pull-right button uppercase" href="" title="View all">select</a>
-                                                <h4 class="box-title">Forte Do Vale</h4>
-                                                <label class="price-wrapper">
-                                                    <span class="price-per-unit">$120</span>avg/night
-                                                </label>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4">
-                                        <article class="box">
-                                            <figure>
-                                                <a class="hover-effect" title="" href="#"><img width="300" height="160" alt="" src="http://placehold.it/300x160"></a>
-                                            </figure>
-                                            <div class="details">
-                                                <a class="pull-right button uppercase" href="" title="View all">select</a>
-                                                <h4 class="box-title">New York to Paris</h4>
-                                                <label class="price-wrapper">
-                                                    <span class="price-per-unit">$170</span>avg/night
-                                                </label>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4">
-                                        <article class="box">
-                                            <figure>
-                                                <a class="hover-effect" title="" href="#"><img width="300" height="160" alt="" src="http://placehold.it/300x160"></a>
-                                            </figure>
-                                            <div class="details">
-                                                <a class="pull-right button uppercase" href="" title="View all">select</a>
-                                                <h4 class="box-title">Hotel Hilton</h4>
-                                                <label class="price-wrapper">
-                                                    <span class="price-per-unit">$620</span>avg/night
-                                                </label>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4">
-                                        <article class="box">
-                                            <figure>
-                                                <a class="hover-effect" title="" href="#"><img width="300" height="160" alt="" src="http://placehold.it/300x160"></a>
-                                            </figure>
-                                            <div class="details">
-                                                <a class="pull-right button uppercase" href="" title="View all">select</a>
-                                                <h4 class="box-title">Forte Do Vale</h4>
-                                                <label class="price-wrapper">
-                                                    <span class="price-per-unit">$120</span>avg/night
-                                                </label>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4">
-                                        <article class="box">
-                                            <figure>
-                                                <a class="hover-effect" title="" href="#"><img width="300" height="160" alt="" src="http://placehold.it/300x160"></a>
-                                            </figure>
-                                            <div class="details">
-                                                <a class="pull-right button uppercase" href="" title="View all">select</a>
-                                                <h4 class="box-title">Roosevelt Hotel</h4>
-                                                <label class="price-wrapper">
-                                                    <span class="price-per-unit">$170</span>avg/night
-                                                </label>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4">
-                                        <article class="box">
-                                            <figure>
-                                                <a class="hover-effect" title="" href="#"><img width="300" height="160" alt="" src="http://placehold.it/300x160"></a>
-                                            </figure>
-                                            <div class="details">
-                                                <a class="pull-right button uppercase" href="" title="View all">select</a>
-                                                <h4 class="box-title">England to Asia</h4>
-                                                <label class="price-wrapper">
-                                                    <span class="price-per-unit">$620</span>avg/night
-                                                </label>
-                                            </div>
-                                        </article>
-                                    </div>
-                                </div>
-                            </div>
+                           
                              <div id="rego" class="tab-pane fade">
                              <h2>Registration area</h2>
                              </div>
@@ -1548,24 +1256,25 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     <div class="tab-pane fade in active" id="family2">
                         <!--Start -->
 
-                        <b>JS-XLSX Live Demo</b><br />
-	Output Format:
-	<select name="format">
-	<option value="json" selected> CSV</option>
-	<option value="json"> JSON</option>
-	<option value="json"> FORMULAE</option>
-	</select><br />
-
-	<div id="drop">Drop a spreadsheet file here to see sheet data</div>
-	<p><input type="file" name="xlfile" id="xlf" /> ... or click here to select a file</p>
-	<textarea id="b64data">... or paste a base64-encoding here</textarea>
-	<input type="button" id="dotext" value="Click here to process the base64 text" onclick="b64it();"/><br />
-	Advanced Demo Options: <br />
-	Use Web Workers: (when available) <input type="checkbox" name="useworker" checked><br />
-	Use Transferrables: (when available) <input type="checkbox" name="xferable" checked><br />
-	Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" checked><br />
-	<pre id="out"></pre>
-<br />
+                       					 <b>JS-XLSX Live Demo</b><br />
+										Output Format:
+										<select name="format">
+												<option value="json" selected> CSV</option>
+												<option value="json"> JSON</option>
+												<option value="json"> FORMULAE</option>
+										</select>
+										<br />
+									
+										<div id="drop">Drop a spreadsheet file here to see sheet data</div>
+										<p><input type="file" name="xlfile" id="xlf" /> ... or click here to select a file</p>
+										<textarea id="b64data">... or paste a base64-encoding here</textarea>
+										<input type="button" id="dotext" value="Click here to process the base64 text" onclick="b64it();"/><br />
+										Advanced Demo Options: <br />
+										Use Web Workers: (when available) <input type="checkbox" name="useworker" checked><br />
+										Use Transferrables: (when available) <input type="checkbox" name="xferable" checked><br />
+										Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" checked><br />
+										<pre id="out"></pre>
+									<br />
 
                         <!-- end-->
                         <div class="col-sm-5 col-md-4">
@@ -2004,16 +1713,11 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							      
 							      
 							</div>
-
-
-
-
-                              <!-- ***********************************888 -->
-                             
                             </div>
 <!-- End of Area of Operaton -->
-<!-- Start of Ebid-R  -->
-<div id="dealerEbidR" class="tab-pane fade">
+
+				<!-- Start of Ebid-R  -->
+				<div id="dealerEbidR" class="tab-pane fade">
                               <!--  Start -->
                               <div id="tab">
                                     <input type="radio" name="collapseeBIDGroup" data-target="#eDealEbidAll" checked /><span class="color-dark">All</span>
@@ -2025,193 +1729,180 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     
                                 </div>
 
-							<div class="tab-content">
-							       <div class="tab-pane fade active in" id="eDealEbidAll">All</div>
-							       <div class="tab-pane fade" id="#eDealBIDCars">
-							       Car Content
-							       		<h4>Vehicle EBID Request</h4>
-                                         <table id="deal-car-model-data">
-                                        </table>
-							       </div>
-							       <div class="tab-pane fade" id="#eDealBIDInsu">Insurance Content
-							       		<h4>List of Insurance leads</h4>
-                              			<table id="deal-car-model-data2">   </table>
-							       </div>
-							       <div class="tab-pane fade" id="#eDealBIDSerMai">Service & maintenance Content
-									       <h4>Service & Maintenance leads</h4>
-									       <!-- <table id="deal-dataservmaint">
-
-		                                        </table> -->
-							       </div>
-							       <div class="tab-pane fade" id="#eDealBIDTrans">Transport Content
-							       <h4>Transport Service leads</h4>
-									      <!--  <table id="deal-datatranspserv">
-
-		                                        </table></div> -->
-
-							       <div class="tab-pane fade" id="eDealBIDFin">Finance Content
-							       		<h4>List of Finance leads</h4>
-                              			<table id="deal-data1"></table>
-							       </div>
-							       
-							</div>
-
-
-
-
-                             
-                            </div>
+								<div class="tab-content">
+								       <div class="tab-pane fade active in" id="eDealEbidAll">All</div>
+								       <div class="tab-pane fade" id="eDealBIDCars">
+								       Car Content
+								       		<h4>Vehicle EBID Request</h4>
+	                                         <table id="deal-car-model-data">
+	                                        </table>
+								       </div>
+								       <div class="tab-pane fade" id="eDealBIDInsu">Insurance Content
+								       		<h4>List of Insurance leads</h4>
+	                              			<table id="deal-car-model-data2">   </table>
+								       </div>
+								       <div class="tab-pane fade" id="eDealBIDSerMai">Service & maintenance Content
+										       <h4>Service & Maintenance leads</h4>
+										       <!-- <table id="deal-dataservmaint">
+	
+			                                        </table> -->
+								       </div>
+								       <div class="tab-pane fade" id="eDealBIDTrans">Transport Content
+								       <h4>Transport Service leads</h4>
+										      <!--  <table id="deal-datatranspserv">
+	
+			                                        </table></div> -->
+										</div>
+										
+								       <div class="tab-pane fade" id="eDealBIDFin">Finance Content
+								       		<h4>List of Finance leads</h4>
+	                              			<table id="deal-data1"></table>
+								       </div>
+                          		 </div>
+                            
                             </div>
 <!-- End of Area of Operaton -->
 
 
-<!-- Start of Dealer Operation  -->
-<div id="dealerOperat" class="tab-pane fade">
+						<!-- Start of Dealer Operation  -->
+						<div id="dealerOperat" class="tab-pane fade">
                               <!--  Start -->
                               <div id="tab">
                                     <input type="radio" name="collapseeBIDGroup" data-target="#dealOperatAll" checked /><span class="color-dark">All</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#dealOperat" class="ML10" /><span class="color-dark">Dealer</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#dealOperatAll1" class="ML10" /><span class="color-dark">Dealer</span>
                                     <input type="radio" name="collapseeBIDGroup" data-target="#dealOperatFin" class="ML10" /><span class="color-dark">Dealer Finance</span>
                                     <input type="radio" name="collapseeBIDGroup" data-target="#dealOperatIns" class="ML10" /><span class="color-dark">Dealer Insurance</span>
                                     <input type="radio" name="collapseeBIDGroup" data-target="#dealOperatServMaint" class="ML10" /><span class="color-dark">Dealer Service && Maintenance</span>
                                     
                                 </div>
 
-							<div class="tab-content">
-							       <div class="tab-pane fade active in" id="dealOperatAll">All</div>
-							       <div class="tab-pane fade" id="dealOperatAll">
-							       Car Content
-							       		<h4>Vehicle Dealer Operation</h4>
-                                         <table id="deal-operation">
-                                        </table>
-							       </div>
-							       <div class="tab-pane fade" id="dealOperatFin">Finance Content
-							       		<h4>Dealer Finance operations</h4>
-                              			<table id="deal-operation-fin">   </table>
-							       </div>
-							       <div class="tab-pane fade" id="dealOperatIns">Insurance Content
-									       <h4>Dealer Insurance operations</h4>
-									      <table id="deal-operation-ins">
-
-		                                        </table>
-							       </div>
-							       <div class="tab-pane fade" id="dealOperatServMaint">Service && Maintenance Content
-							       <h4>Service && Maintenance operation</h4>
-									      <table id="deal-operation-serv-maint">
-
-		                                        </table></div>
-
-							       
-							</div>
-
-
-
-
-                             
+									<div class="tab-content">
+										       <div class="tab-pane fade active in" id="dealOperatAll">All</div>
+										       <div class="tab-pane fade" id="dealOperatAll1">
+										       Car Content
+										       		<h4>Vehicle Dealer Operation</h4>
+			                                         <table id="deal-operation">
+			                                        </table>
+										       </div>
+										       <div class="tab-pane fade" id="dealOperatFin">Finance Content
+										       		<h4>Dealer Finance operations</h4>
+			                              			<table id="deal-operation-fin">   </table>
+										       </div>
+										       <div class="tab-pane fade" id="dealOperatIns">Insurance Content
+												       <h4>Dealer Insurance operations</h4>
+												      <table id="deal-operation-ins">
+			
+					                                        </table>
+										       </div>
+										       <div class="tab-pane fade" id="dealOperatServMaint">Service && Maintenance Content
+										       		<h4>Service && Maintenance operation</h4>
+												      <table id="deal-operation-serv-maint">
+					                                  </table>
+					                           </div>
+									</div>
                             </div>
-<!-- End of Dealer of Operaton -->
+					<!-- End of Dealer of Operaton -->
                             <div id="travel-stories" class="tab-pane fade">
                               <!--  Start -->
- <div class="tab-pane fade in active" id="family2-inv">
-                                        <h4>Dealer Offered Makes</h4>
-                                         <table id="dealer-make-list">
+                                <h4>Dealer Offered Makes</h4>
+                                 <table id="dealer-make-list">
 
-                                        </table>
-                                    </div>
+                                </table>
+                            </div>
                         
                             
 
 <!--Start   -->
-<div id="inventory-store" class="tab-pane fade">
-                                <div class="col-md-18">
-
-                            <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
-                            <img src="images/EBidRbg3.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;">
-                            <div class="tab-container trans-style box">
-                                <ul class="tabs full-width">
-                                   <li class="active"><a href="#family2-inv" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
-                                    <li><a href="#honeymoon2-inv" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
-                                    <li><a href="#weekends2-inv" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
-                                    <li><a href="#friends2-inv" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li>
-                                    <li><a href="#friends24-inv" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="family2-inv">
-                                        <h4>Inventory List</h4>
-                                         <table id="inventory-list">
-
-                                        </table>
-                                    </div>
-                                    <div class="tab-pane fade" id="honeymoon2-inv">
-                                        <h4>Bike</h4>
-
-                                    </div>
-                                    <div class="tab-pane fade" id="weekends2-inv">
-                                        <h4>Boats</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="friends2-inv">
-                                        <h4>Caravans</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="friends24-inv">
-                                        <h4>Bicycles</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                <br />
-
+							<div id="inventory-store" class="tab-pane fade">
+			                         <div class="col-sm-12 col-md-12">
+			
+			                            <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
+			                            <!-- <img src="images/EBidRbg3.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;"> -->
+			                            <div class="tab-container trans-style box">
+			                                <ul class="tabs full-width">
+			                                   <li class="active"><a href="#family2-inv" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
+			                                    <li><a href="#honeymoon2-inv" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
+			                                    <li><a href="#weekends2-inv" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
+			                                    <li><a href="#friends2-inv" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li>
+			                                    <li><a href="#friends24-inv" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
+			                                </ul>
+			                                <div class="tab-content">
+			                                    <div class="tab-pane fade in active" id="family2-inv">
+			                                        <h4>Inventory List</h4>
+			                                         <table id="inventory-list">
+			
+			                                        </table>
+			                                    </div>
+			                                    <div class="tab-pane fade" id="honeymoon2-inv">
+			                                        <h4>Bike</h4>
+			
+			                                    </div>
+			                                    <div class="tab-pane fade" id="weekends2-inv">
+			                                        <h4>Boats</h4>
+			                                    </div>
+			                                    <div class="tab-pane fade" id="friends2-inv">
+			                                        <h4>Caravans</h4>
+			                                    </div>
+			                                    <div class="tab-pane fade" id="friends24-inv">
+			                                        <h4>Bicycles</h4>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                                <br />
+			
 
                             </div>
 
 <!-- end -->
                           <!-- Start of Vehicle Quotation -->
                           <div id="VehicleQuotation12" class="tab-pane fade">
-
-                           <div class="col-md-18">
-
-                            <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
-                            <img src="images/EBidRbg3.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;">
-                            <div class="tab-container trans-style box">
-                                <ul class="tabs full-width">
-                                   <li class="active"><a href="#family2-qd" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
-                                    <li><a href="#honeymoon2-qd" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
-                                    <li><a href="#weekends2-qd" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
-                                    <li><a href="#friends2-qd" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li
-                                    <li><a href="#friends24-qd" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="family2-qd">
-                                        <h4>Car Quotations</h4>
-                                         <table id="quotation1">
-
-                                        </table>
-                                    </div>
-                                    <div class="tab-pane fade" id="honeymoon2-qd">
-                                        <h4>Bike</h4>
-
-                                    </div>
-                                    <div class="tab-pane fade" id="weekends2-qd">
-                                        <h4>Boats</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="friends2-qd">
-                                        <h4>Caravans</h4>
-                                    </div>
-                                    <div class="tab-pane fade" id="friends24-qd">
-                                        <h4>Bicycles</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+				
+				                           <div class="col-sm-12 col-md-12">
+				
+				                            <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
+				                           <!--  <img src="images/EBidRbg3.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;"> -->
+				                            <div class="tab-container trans-style box">
+				                                <ul class="tabs full-width">
+				                                   <li class="active"><a href="#family2-qd" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
+				                                    <li><a href="#honeymoon2-qd" data-toggle="tab"><i class="fa fa-motorcycle"></i>Bikes</a></li>
+				                                    <li><a href="#weekends2-qd" data-toggle="tab"><i class="fa fa-ship"></i>Boats</a></li>
+				                                    <li><a href="#friends2-qd" data-toggle="tab"><i class="fa fa-truck"></i>Caravans</a></li
+				                                    <li><a href="#friends24-qd" data-toggle="tab"><i class="fa fa-bicycle"></i>Bicycles</a></li>
+				                                </ul>
+				                                <div class="tab-content">
+				                                    <div class="tab-pane fade in active" id="family2-qd">
+				                                        <h4>Car Quotations</h4>
+				                                         <table id="quotation1">
+				
+				                                        </table>
+				                                    </div>
+				                                    <div class="tab-pane fade" id="honeymoon2-qd">
+				                                        <h4>Bike</h4>
+				
+				                                    </div>
+				                                    <div class="tab-pane fade" id="weekends2-qd">
+				                                        <h4>Boats</h4>
+				                                    </div>
+				                                    <div class="tab-pane fade" id="friends2-qd">
+				                                        <h4>Caravans</h4>
+				                                    </div>
+				                                    <div class="tab-pane fade" id="friends24-qd">
+				                                        <h4>Bicycles</h4>
+				                                    </div>
+				                                </div>
+				                            </div>
+				                        </div>
 
                             </div>
                           <!-- end -->
 
                             <div id="settings" class="tab-pane fade">
 
-                           <div class="col-md-18">
+                           <div class="col-sm-12 col-md-12">
 
                             <!-- <img src="images/EBidRbg3.jpg" src="http://placehold.it/570x200" alt="" width="570" height="200" style="width: 100%; height: auto;"> -->
-                            <img src="images/EBidRbg3.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;">
+                            <!-- <img src="images/EBidRbg3.jpg" alt="" width="570" height="50" style="width: 100%; height: auto;"> -->
                             <div class="tab-container trans-style box">
                                 <ul class="tabs full-width">
                                    <li class="active"><a href="#family2-ld" data-toggle="tab"><i class="fa fa-cab"></i>Cars</a></li>
@@ -2245,7 +1936,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                         </div>
 
                             </div>
-                        </div>
+                        <!-- </div>Travelo story end  -->
                     </div>
                 </div>
             </div>
@@ -2402,7 +2093,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 	/*jshint browser:true */
 	/*global XLSX */
 	var X = XLSX;
-	alert();
+	/* alert(); */
 	var XW = {
 	/* worker message */
 	msg: 'xlsx',
@@ -2498,7 +2189,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 	}
 
 	function to_json(workbook) {
-		alert("came here");
+		/* alert("came here"); */
 		var result = {};
 	workbook.SheetNames.forEach(function(sheetName) {
 	var roa = X.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
@@ -2548,14 +2239,14 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 	switch(get_radio_value("format")) {
 	case "json":
 	output = JSON.stringify(to_json(wb), 2, 2);
-	alert("came here before print");
+	/* alert("came here before print"); */
 var valueJson = to_json(wb);
 var key = "InventoryVO";
 //delete valueJson[key];
 console.log(JSON.stringify(valueJson));
 var url= "api/dealer/addInventoryList";
 
-alert(url);
+/* alert(url); */
 
 $.ajax({
 	    type: "POST",
@@ -2653,7 +2344,7 @@ $.ajax({
 	var arr = fixdata(data);
 	wb = X.read(btoa(arr), {type: 'base64'});
 	}
-	alert("came here");
+	/* alert("came here"); */
 	process_wb(wb);
 	}
 	};

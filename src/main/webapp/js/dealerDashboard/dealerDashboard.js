@@ -87,7 +87,7 @@ function dealerBoardCallSearch(model_data_id, userid)
       //$("#"+this.model_data_id).html("Loading Model Data...");
     var sender = this;
    // var url = "http://www.autoscoop.com.au/api/dealer/"+userid;
-    alert("Dealer id"+userid);
+    //alert("Dealer id"+userid);
     var url = "api/dealer/"+userid;
     //var url = "http://localhost:8080/MyCarDomain/api/dealer/28";
 //alert("user id"+url);
@@ -102,8 +102,8 @@ function dealerBoardCallSearch(model_data_id, userid)
    	 //async: false,
    	 /*url: "http://localhost:8080/MyCarDomain/api/user/1",*/
    	       success: function(result){
-        	   alert("Succcess");
-        	  alert(JSON.stringify(result));
+        	   /*alert("Succcess");
+        	  alert(JSON.stringify(result));*/
         	   out="";
         	
         	  var invC = result.inventory;
@@ -314,7 +314,7 @@ function dealerBoardCallSearch(model_data_id, userid)
 	    }
 	    
 	    forFinance("data1",out6);
-	    alert("came here");
+	    //alert("came here");
 	    out7 ="";
 	    var makeListDeal = result.vehicleDealerMakeList;
 	    if(makeListDeal)
@@ -866,8 +866,8 @@ mainApp1.controller('myController12',function($scope,$http) {
 													//alert("Before Call"+$('#accidentHistory').val());
 													//var wsURL = 'http://localhost:8080/MyCarDomain/api/dealer/addInventory';
 													//var wsURL = 'http://www.autoscoop.com.au/api/dealer/addInventory';
-								alert(JSON.stringify(jsonInputToAPI));
-								console.log(JSON.stringify(jsonInputToAPI));
+								/*alert(JSON.stringify(jsonInputToAPI));
+								console.log(JSON.stringify(jsonInputToAPI));*/
 													var wsURL = 'api/dealer/addInventory';
 														    $http({
 																		method : 'POST',

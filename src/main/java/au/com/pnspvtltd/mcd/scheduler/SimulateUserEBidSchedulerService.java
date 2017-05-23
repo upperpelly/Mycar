@@ -58,7 +58,7 @@ public class SimulateUserEBidSchedulerService {
 	private DomainModelUtil domainModelUtil;
 
 	//@Scheduled(fixedDelay=10800000)
-	@Scheduled(fixedDelay=1000)
+	@Scheduled(fixedDelay=50000)
 	@Transactional
 	public void simulateUserEBid(){
 		
