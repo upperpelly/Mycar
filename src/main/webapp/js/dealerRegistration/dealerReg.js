@@ -1564,9 +1564,9 @@ mainApp1.controller(
             var tbl9 = document.getElementById('my-table9'), // table reference
                row = tbl9.rows.length;      // append table row
                 var i;
-                alert("row length relatedModels"+tbl9.rows.length);
-                alert("col lenght relatedModels"+tbl9.rows[0].cells.length);         
-		                alert("Json print d e relatedModels");
+                //alert("row length relatedModels"+tbl9.rows.length);
+                //alert("col lenght relatedModels"+tbl9.rows[0].cells.length);         
+		                //alert("Json print d e relatedModels");
 			        
 			            // insert table cells to the new row
                 for (j = 1; j < tbl9.rows.length; j++) {
@@ -1578,7 +1578,7 @@ mainApp1.controller(
                 		jsonInputToAPI.vehicleDealerPostCode[j-1].state=$('#relatedModels'+j+'1').val(); 
                 		jsonInputToAPI.vehicleDealerPostCode[j-1].region=$('#relatedModels'+j+'2').val(); 
                 		jsonInputToAPI.vehicleDealerPostCode[j-1].postCode=$('#relatedModels'+j+'3').val(); 
-                		jsonInputToAPI.vehicleDealerPostCode[j-1].offered="yes"; 
+                		jsonInputToAPI.vehicleDealerPostCode[j-1].offered="true"; 
 			         
                 		jsonInputToAPI.vehicleDealerPostCode[j-1]["flex1"]="flex1";
 		            	jsonInputToAPI.vehicleDealerPostCode[j-1]["flex2"]="flex1";
@@ -1595,16 +1595,16 @@ mainApp1.controller(
 		            	jsonInputToAPI.vehicleDealerPostCode[j-1]["flex13"]=false;
 		            	jsonInputToAPI.vehicleDealerPostCode[j-1]["flex14"]=false;
 			    }  
-			                alert("Json print relatedModels");
-			                alert(JSON.stringify(jsonInputToAPI.vehicleDealerPostCode));
+			                //alert("Json print relatedModels");
+			                //alert(JSON.stringify(jsonInputToAPI.vehicleDealerPostCode));
             
 			             // table 91
 			                var tbl91 = document.getElementById('my-table91'), // table reference
 			                   row = tbl91.rows.length;      // append table row
 			                    var i;
-			                    alert("row length relatedModels91"+tbl91.rows.length);
-			                    alert("col lenght relatedModels91"+tbl91.rows[0].cells.length);         
-			    		                alert("Json print d e relatedModels");
+			                    //alert("row length relatedModels91"+tbl91.rows.length);
+			                    //alert("col lenght relatedModels91"+tbl91.rows[0].cells.length);         
+			    		                //alert("Json print d e relatedModels");
 			    			        
 			    			            // insert table cells to the new row
 			                    for (j = 1; j < tbl91.rows.length; j++) {
@@ -1615,7 +1615,7 @@ mainApp1.controller(
 			                    		
 			                    		jsonInputToAPI.vehicleDealerRegion[j-1].state=$('#relatedModels91'+j+'1').val(); 
 			                    		jsonInputToAPI.vehicleDealerRegion[j-1].region=$('#relatedModels91'+j+'2').val(); 
-			                    		jsonInputToAPI.vehicleDealerRegion[j-1].offered="yes"; 
+			                    		jsonInputToAPI.vehicleDealerRegion[j-1].offered="true"; 
 			    			         
 			                    		jsonInputToAPI.vehicleDealerRegion[j-1]["flex1"]="flex1";
 			    		            	jsonInputToAPI.vehicleDealerRegion[j-1]["flex2"]="flex1";
@@ -1632,26 +1632,26 @@ mainApp1.controller(
 			    		            	jsonInputToAPI.vehicleDealerRegion[j-1]["flex13"]=false;
 			    		            	jsonInputToAPI.vehicleDealerRegion[j-1]["flex14"]=false;
 			    			    }  
-			    			                alert("Json print relatedModels");
-			    			                alert(JSON.stringify(jsonInputToAPI.vehicleDealerRegion));
+			    			                //alert("Json print relatedModels");
+			    			                //alert(JSON.stringify(jsonInputToAPI.vehicleDealerRegion));
 			    			                
 			    			                
 			    			                // table 91
 			    			                var tbl922 = document.getElementById('my-table922'), // table reference
 			    			                   row = tbl922.rows.length;      // append table row
 			    			                    var i;
-			    			                    alert("row length relatedModels91"+tbl922.rows.length);
-			    			                    alert("col lenght relatedModels91"+tbl922.rows[0].cells.length);         
-			    			    		                alert("Json print d e relatedModels");
+			    			                    //alert("row length relatedModels91"+tbl922.rows.length);
+			    			                    //alert("col lenght relatedModels91"+tbl922.rows[0].cells.length);         
+			    			    		                //alert("Json print d e relatedModels");
 			    			    			        
 			    			    			            // insert table cells to the new row
 			    			                    for (j = 1; j < tbl922.rows.length; j++) {
 			    			                    	i=0;
 			    			                    		jsonInputToAPI.vehicleDealerMakeList[j-1].vehicleDealMakeListId=null;
 			    			                    		
-			    			                    		jsonInputToAPI.vehicleDealerMakeList[j-1].Make=$('#relatedModels91'+j+'0').val();
+			    			                    		jsonInputToAPI.vehicleDealerMakeList[j-1].make=$('#relatedModels91'+j+'0').val();
 			    			                    		
-			    			                    		jsonInputToAPI.vehicleDealerMakeList[j-1].offered="yes"; 
+			    			                    		jsonInputToAPI.vehicleDealerMakeList[j-1].offered="true"; 
 			    			    			         
 			    			                    		jsonInputToAPI.vehicleDealerMakeList[j-1]["flex1"]="flex1";
 			    			    		            	jsonInputToAPI.vehicleDealerMakeList[j-1]["flex2"]="flex1";
@@ -1668,8 +1668,8 @@ mainApp1.controller(
 			    			    		            	jsonInputToAPI.vehicleDealerMakeList[j-1]["flex13"]=false;
 			    			    		            	jsonInputToAPI.vehicleDealerMakeList[j-1]["flex14"]=false;
 			    			    			    }  
-			    			    			                alert("Json print relatedModels");
-			    			    			                alert(JSON.stringify(jsonInputToAPI.vehicleDealerMakeList));
+			    			    			                //alert("Json print relatedModels");
+			    			    			                //alert(JSON.stringify(jsonInputToAPI.vehicleDealerMakeList));
 			                
 							             
 							            

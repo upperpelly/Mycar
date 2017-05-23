@@ -61,7 +61,7 @@ public class DealerServiceImpl implements DealerService {
 		Dealer dealer = dealerRepository.findOne(id);
 		DealerVO dealerVO = null;
 		if(dealer != null){
-			dealerVO = domainModelUtil.fromDealer(dealer, true);
+			dealerVO = domainModelUtil.fromDealer(dealer, false);
 			
 			List<VehicleQuotation> vehicleQuotations = vehicleQuotationRepository.findByDealerId(id);
 			List<VehicleQuotationVO> vehicleQuotationVOs = new ArrayList<>();

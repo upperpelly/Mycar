@@ -187,6 +187,8 @@ public class SimulateUserEBidSchedulerService {
 					
 
 				}
+				// completed
+				search.setLeadInitiatedBy(LeadInitiatedBy.SCHEDULER);
 		}
 	}
 		
@@ -196,10 +198,10 @@ public class SimulateUserEBidSchedulerService {
 	
 	public boolean checkForAlreadyCreatedDealerLead(Dealer dealer, Long userId){
 		List<DealerSearch> dealerSearchs =dealer.getDealSearch();
-		boolean eligibled = false;
+		boolean eligibled = true;
 		for (DealerSearch dealerSearch : dealerSearchs) {
 			if(dealerSearch.getUserId() == userId){
-				eligibled=true;
+				eligibled=false;
 			}
 		}
 		return eligibled;

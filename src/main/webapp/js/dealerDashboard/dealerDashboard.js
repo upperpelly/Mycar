@@ -53,7 +53,7 @@ var FullURL= window.location.search.substring(1);
 	
 	var dealerId = parseURLParameter('dealerId');*/
 	
-	dealerId="28";
+	dealerId="35";
 	
 	
 	
@@ -87,6 +87,7 @@ function dealerBoardCallSearch(model_data_id, userid)
       //$("#"+this.model_data_id).html("Loading Model Data...");
     var sender = this;
    // var url = "http://www.autoscoop.com.au/api/dealer/"+userid;
+    alert("Dealer id"+userid);
     var url = "api/dealer/"+userid;
     //var url = "http://localhost:8080/MyCarDomain/api/dealer/28";
 //alert("user id"+url);
@@ -102,7 +103,7 @@ function dealerBoardCallSearch(model_data_id, userid)
    	 /*url: "http://localhost:8080/MyCarDomain/api/user/1",*/
    	       success: function(result){
         	   alert("Succcess");
-        	   //alert(JSON.stringify(result));
+        	  alert(JSON.stringify(result));
         	   out="";
         	
         	  var invC = result.inventory;
@@ -169,8 +170,32 @@ function dealerBoardCallSearch(model_data_id, userid)
        	    	{
        	    		out1='<h2>No records for Dealer Search</h2>';
        	    	}
+       	  //data1
+       	  forFinance("deal-car-model-data",out1);
        	  
-       	  forFinance("data1",out1);
+       	out124="";
+    	   /*alert(Object.keys( result.search ).length);*/
+    	   /*var json = JSON.parse(result1);*/
+    	   /*var json = $.parseJSON(result1);*/
+    	    var vehInsuran = result.dealSearchInsurance;
+    	    if(vehInsuran)
+    	    	{
+    	    	vehInsuran = result.dealSearchInsurance.length;;
+	            	document.getElementById('vehInsuran').innerHTML=vehInsuran;
+	            	out124 += '<tr><th>'+"Car Ins ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Variant"+'</th><th>'+"Operation"+'</th></tr>';
+	           	    for(i=0;i<result.dealSearch.length;i++)
+	          		{
+	           	    	out124= out124+'<tr>'+'<td>'+result.dealSearchInsurance[i].dealerSearchInsuranceId+'</td><td>'+result.dealSearchInsurance[i].modelYear+'</td><td>'+result.dealSearchInsurance[i].modelDisplay+'</td><td>'+result.dealSearchInsurance[i].modelName+'</td><td>'+result.dealSearchInsurance[i].modelTrim+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchLeadsModal-' + result.dealSearchInsurance[i].dealerSearchInsuranceId + '" data-details=\'' + JSON.stringify(result.dealSearchInsurance[i]) + '\' class="anchor-editDealerVehicleSearchLeadsModal" data-toggle="modal" data-target="#editDealerVehicleSearchLeadsModal">View</a></td></tr>';
+	          		}
+    	    	
+    	    	}
+    	    else
+    	    	{
+    	    	out124='<h2>No records for Dealer Search</h2>';
+    	    	}
+    	  //data1
+    	  forFinance("deal-car-model-data2",out124);
+       
         out5 = "";
    	    var finMax = result.dealSearchFinance;
    	    if(finMax)
@@ -189,7 +214,7 @@ function dealerBoardCallSearch(model_data_id, userid)
    	    	out5='<h2>No records for Dealer Search Finance</h2>';
    	    }
    	    
-   	    forFinance("data12",out5);
+   	    forFinance("deal-data1",out5);
    	  	out6 ="";
 	    var finQRecd = result.financeQuotation;
 	    if(finQRecd)
@@ -208,6 +233,83 @@ function dealerBoardCallSearch(model_data_id, userid)
 	    }
 	    
 	    forFinance("data1",out6);
+	    alert("came here");
+	    out7 ="";
+	    var makeListDeal = result.vehicleDealerMakeList;
+	    if(makeListDeal)
+	    {
+	    	makeListDeal = result.vehicleDealerMakeList.length;
+	 	    //document.getElementById('finQRecd').innerHTML=finQRecd;
+	 	    out7 += '<tr><th>'+"Car Make ID"+'</th><th>'+"Make"+'</th><th>'+"Offered"+'</th></tr>';
+	 	    for(i=0;i<result.vehicleDealerMakeList.length;i++)
+	 		{
+	 		   out7= out7+'<tr>'+'<td>'+result.vehicleDealerMakeList[i].vehicleDealMakeListId+'</td><td>'+result.vehicleDealerMakeList[i].make+'</td><td>'+result.vehicleDealerMakeList[i].offered+'</td><td></tr>';
+	 		}
+	    }
+	    else
+	    {
+	    	out7='<h2>No records for Dealer Make List</h2>';
+	    }
+	    
+	    forFinance("dealer-make-list",out7);
+	    
+	    out8 ="";
+	    var dealAreaOfOperState = result.vehicleDealerAreaOfOperState;
+	    if(dealAreaOfOperState)
+	    {
+	    	dealAreaOfOperState = result.vehicleDealerAreaOfOperState.length;
+	 	    //document.getElementById('finQRecd').innerHTML=finQRecd;
+	 	    out8 += '<tr><th>'+"Area Of Operation ID"+'</th><th>'+"Country"+'</th><th>'+"State"+'</th><th>'+"Offered"+'</th></tr>';
+	 	    for(i=0;i<result.vehicleDealerAreaOfOperState.length;i++)
+	 		{
+	 		   out8= out8+'<tr>'+'<td>'+result.vehicleDealerAreaOfOperState[i].vehicleDealAreaOfOperStateId+'</td><td>'+result.vehicleDealerAreaOfOperState[i].country+'</td><td>'+result.vehicleDealerAreaOfOperState[i].state+'</td><td>'+result.vehicleDealerAreaOfOperState[i].offered+'</td><td></tr>';
+	 		}
+	    }
+	    else
+	    {
+	    	out8='<h2>No records for Area of Operation State</h2>';
+	    }
+	    
+	    forFinance("areaOfOpertionState-list",out8);
+	    
+	    out9 ="";
+	    var dealAreaOfOperRegion = result.vehicleDealerRegion;
+	    if(dealAreaOfOperRegion)
+	    {
+	    	dealAreaOfOperRegion = result.vehicleDealerRegion.length;
+	 	    //document.getElementById('finQRecd').innerHTML=finQRecd;
+	 	    out9 += '<tr><th>'+"Area Of Operation ID"+'</th><th>'+"Country"+'</th><th>'+"State"+'</th><th>'+"Offered"+'</th></tr>';
+	 	    for(i=0;i<result.vehicleDealerRegion.length;i++)
+	 		{
+	 		   out9= out9+'<tr>'+'<td>'+result.vehicleDealerRegion[i].vehicleDealAreaOfOperRegionId+'</td><td>'+result.vehicleDealerRegion[i].country+'</td><td>'+result.vehicleDealerRegion[i].state+'</td><td>'+result.vehicleDealerRegion[i].region+'</td><td>'+result.vehicleDealerRegion[i].offered+'</td><td></tr>';
+	 		}
+	    }
+	    else
+	    {
+	    	out9='<h2>No records for Area of Operation Region</h2>';
+	    }
+	    
+	    forFinance("areaOfOpertionRegion-list",out9);
+	    
+	    out10 ="";
+	    var dealAreaOfOperPostCode = result.vehicleDealerPostCode;
+	    if(dealAreaOfOperPostCode)
+	    {
+	    	dealAreaOfOperPostCode = result.vehicleDealerPostCode.length;
+	 	    //document.getElementById('finQRecd').innerHTML=finQRecd;
+	 	    out10 += '<tr><th>'+"Area Of Operation ID"+'</th><th>'+"Country"+'</th><th>'+"State"+'</th><th>'+"Offered"+'</th></tr>';
+	 	    for(i=0;i<result.vehicleDealerPostCode.length;i++)
+	 		{
+	 		   out10= out10+'<tr>'+'<td>'+result.vehicleDealerPostCode[i].vehicleDealAreaOfOperPostId+'</td><td>'+result.vehicleDealerPostCode[i].country+'</td><td>'+result.vehicleDealerPostCode[i].state+'</td><td>'+result.vehicleDealerPostCode[i].region+'</td><td>'+result.vehicleDealerPostCode[i].postCode+'</td><td>'+result.vehicleDealerPostCode[i].offered+'</td><td></tr>';
+	 		}
+	    }
+	    else
+	    {
+	    	out10='<h2>No records for Area of Operation Region</h2>';
+	    }
+	    
+	    forFinance("areaOfOpertionPostCode-list",out10);
+	    
        	registerEditDealerVehicleQuotationModal();
        	registereditDealerVehicleSearchLeadsModal();
        	registereditDealerIvemtoryModal();
@@ -606,7 +708,7 @@ mainApp1.controller('myController12',function($scope,$http) {
 								//var classified = document.getElementById("postClassified").value;
 								//alert("Came here c"+autobid);			
 								var jsonInputToAPI = {
-																	"refId":29,
+																	"refId":35,
 																	"modelYear": $('#car-years').val(),
 																	"modelDisplay": $('#car-makes').val(),
 																	"modelName": $('#car-models').val(),															      

@@ -296,7 +296,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             <ul class="menu mini uppercase">
                                 <li><a href="dashboard1.html#dashboard" class="location-reload">Overview</a></li>
                                 <li><a href="dashboard1.html#profile" class="location-reload">Profile</a></li>
-                                <li><a href="dashboard1.html#travel-stories" class="location-reload">Messages</a></li>
+                                <li><a href="dashboard1.html#travel-stories" class="location-reload">Offered Makes</a></li>
+                                <li class=""><a data-toggle="tab" href="#dealerAreaOfOper"><i id="usrleftnav" class="flaticon-private-garage"></i>Area Of Operation</a></li>
+                                <li class=""><a data-toggle="tab" href="#dealerEbidR"><i id="usrleftnav" class="flaticon-auction"></i>Ebid-R</a></li>
                                 <li><a href="dashboard1.html#settings" class="location-reload">Vehicle Leads</a></li>
                                 <li><a href="dashboard1.html#wishlist" class="location-reload">Finance Leads</a></li>
                                 <li><a href="dashboard1.html#booking" class="location-reload">Serv && Maint Leads</a></li>
@@ -590,8 +592,10 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                         <ul class="tabs">
                             <li class="active"><a data-toggle="tab" href="#dashboard"><i class="soap-icon-anchor circle"></i>Overview</a></li>
                             <li class=""><a data-toggle="tab" href="#profile"><i class="soap-icon-user circle"></i>Profile</a></li>
-                            <li class=""><a data-toggle="tab" href="#travel-stories"><i class="soap-icon-pets circle"></i>Messages</a></li>
+                            <li class=""><a data-toggle="tab" href="#travel-stories"><i class="soap-icon-pets circle"></i>Offered Makes</a></li>
+                            <li class=""><a data-toggle="tab" href="#dealerAreaOfOper"><i id="usrleftnav" class="flaticon-private-garage"></i>Area Of Operation</a></li>
                             <li class=""><a data-toggle="tab" href="#inventory-store"><i class="soap-icon-pets circle"></i>Inventory Repository</a></li>
+                            <li class=""><a data-toggle="tab" href="#dealerEbidR"><i id="usrleftnav" class="flaticon-auction"></i>Ebid-R</a></li>
                             <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-status circle"></i>Vehicle Leads</a></li>
                             <li class=""><a data-toggle="tab" href="#VehicleQuotation12"><i class="soap-icon-status circle"></i>Vehicle Quotations</a></li>
 
@@ -665,6 +669,29 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 <div class="description">
                                                     <i class="icon soap-icon-longarrow-right"></i>
                                                     <span>View Finance Leads</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
+                                    <div class="col-sm-5 col-md-2">
+                                        <a href="dashboard1.html#settings">
+                                            <div class="fact yellow">
+                                                <div class="numbers counters-box">
+                                                    <dl>
+                                                    <dd>Insurance Leads Received</dd>
+                                                    <span id="vehInsuran"></span>
+                                                        <!-- <dt class="display-counter" data-value="8">0</dt> -->
+                                                       <dd>Quotation Sent</dd>
+                                                       <span id="finQRecd"></span>
+                                                        <!-- <dt class="display-counter" data-value="6">0</dt> -->
+
+                                                    </dl>
+                                                    <i class="icon soap-icon-savings"></i>
+                                                </div>
+                                                <div class="description">
+                                                    <i class="icon soap-icon-longarrow-right"></i>
+                                                    <span>View Insurance Leads</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -1943,12 +1970,105 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                     </div>
                           <!-- en d of vehciicle Inventory-->
 
+<!-- Start of Area of Operation  -->
+<div id="dealerAreaOfOper" class="tab-pane fade">
+                              <!--  Start -->
+                              <div id="tab">
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDAll" checked /><span class="color-dark">All</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDCars" class="ML10" /><span class="color-dark">Operated State</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDSerMai" class="ML10" /><span class="color-dark">Operated Region</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDInsu" class="ML10" /><span class="color-dark">Operated Post Code</span>
+                                   </div>
+
+							<div class="tab-content">
+							       <div class="tab-pane fade active in" id="eBIDAll">All</div>
+							       <div class="tab-pane fade" id="eBIDCars">
+							       		<h4>Dealer Operated State</h4>
+                                         <table id="areaOfOpertionState-list">
+                                        </table>
+							       </div>
+							       <div class="tab-pane fade" id="eBIDInsu">Dealer Region Content
+							       		<h4>Dealer Operated Region</h4>
+                              			<table id="areaOfOpertionRegion-list">   </table>
+							       </div>
+							       <div class="tab-pane fade" id="eBIDSerMai">Dealer Post Code Content
+									       <h4>Dealer Operated Post Code</h4>
+									       <table id="areaOfOpertionPostCode-list">
+
+		                                        </table>
+							       </div>
+							       
+
+							      
+							      
+							</div>
 
 
+
+
+                              <!-- ***********************************888 -->
+                             
+                            </div>
+<!-- End of Area of Operaton -->
+<!-- Start of Ebid-R  -->
+<div id="dealerEbidR" class="tab-pane fade">
+                              <!--  Start -->
+                              <div id="tab">
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDAll" checked /><span class="color-dark">All</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDCars" class="ML10" /><span class="color-dark">Cars</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDSerMai" class="ML10" /><span class="color-dark">Service & Maintenance</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDInsu" class="ML10" /><span class="color-dark">Insurance</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDTrans" class="ML10" /><span class="color-dark">Transport</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDFinance" class="ML10" /><span class="color-dark">Finance</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDFuelCard" class="ML10" /><span class="color-dark">Fuel Card</span>
+                                </div>
+
+							<div class="tab-content">
+							       <div class="tab-pane fade active in" id="eBIDAll">All</div>
+							       <div class="tab-pane fade" id="eBIDCars">
+							       Car Content
+							       		<h4>Vehicle EBID Request</h4>
+                                         <table id="deal-car-model-data">
+                                        </table>
+							       </div>
+							       <div class="tab-pane fade" id="eBIDInsu">Insurance Content
+							       		<h4>List of Insurance leads</h4>
+                              			<table id="deal-car-model-data2">   </table>
+							       </div>
+							       <div class="tab-pane fade" id="eBIDSerMai">Service & maintenance Content
+									       <h4>Service & Maintenance leads</h4>
+									       <!-- <table id="deal-dataservmaint">
+
+		                                        </table> -->
+							       </div>
+							       <div class="tab-pane fade" id="eBIDTrans">Transport Content
+							       <h4>Transport Service leads</h4>
+									      <!--  <table id="deal-datatranspserv">
+
+		                                        </table></div> -->
+
+							       <div class="tab-pane fade" id="eBIDFinance">Finance Content
+							       		<h4>List of Finance leads</h4>
+                              			<table id="deal-data1"></table>
+							       </div>
+							       <div class="tab-pane fade" id="eBIDFuelCard">Fuel Card Content</div>
+							</div>
+
+
+
+
+                             
+                            </div>
+<!-- End of Area of Operaton -->
                             <div id="travel-stories" class="tab-pane fade">
                               <!--  Start -->
+ <div class="tab-pane fade in active" id="family2-inv">
+                                        <h4>Dealer Offered Makes</h4>
+                                         <table id="dealer-make-list">
 
-                              <div class="tab-container full-width-style arrow-left dashboard">
+                                        </table>
+                                    </div>
+                        <!--       <div class="tab-container full-width-style arrow-left dashboard">
                         <ul class="tabs">
                             <li class="active"><a data-toggle="tab" href="#dashboard1"><i class="soap-icon-car circle"></i>Vehicle</a></li>
                             <li class=""><a data-toggle="tab" href="#profile1"><i class="soap-icon-savings circle"></i>Finance</a></li>
@@ -2046,7 +2166,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
                         </div>
-                    </div>
+                    </div> -->
                               <!--  end -->
                             </div>
 
