@@ -17,6 +17,7 @@ import au.com.pnspvtltd.mcd.domain.ComingSoonUser;
 import au.com.pnspvtltd.mcd.domain.CountryTemplate;
 import au.com.pnspvtltd.mcd.domain.CurrentOffers;
 import au.com.pnspvtltd.mcd.domain.Dealer;
+import au.com.pnspvtltd.mcd.domain.DealerQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
@@ -62,6 +63,7 @@ import au.com.pnspvtltd.mcd.domain.TempCarModelVideos;
 import au.com.pnspvtltd.mcd.domain.TranspServiceQuotation;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
+import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.UserReviewTemplate;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperPostCode;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
@@ -78,6 +80,7 @@ import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
 import au.com.pnspvtltd.mcd.web.model.CountryTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
+import au.com.pnspvtltd.mcd.web.model.DealerQuotationHistoryVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchServMaintVO;
@@ -124,6 +127,7 @@ import au.com.pnspvtltd.mcd.web.model.TempCarModelVehReviewVO;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelVideosVO;
 import au.com.pnspvtltd.mcd.web.model.TranspServiceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
+import au.com.pnspvtltd.mcd.web.model.UserQuotationHistoryVO;
 import au.com.pnspvtltd.mcd.web.model.UserReviewTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperPostCodeVO;
@@ -1642,6 +1646,55 @@ public class DomainModelUtil {
 		return vehicleQuotationVO;
 	}
 
+	
+	
+	public VehicleQuotationVO fromVehicleQuotation(final VehicleQuotation vehicleQuotation, boolean isMinified) {
+
+		if (vehicleQuotation == null) {
+			return null;
+		}
+
+		VehicleQuotationVO userVO = new VehicleQuotationVO();
+		try {
+
+			org.springframework.beans.BeanUtils.copyProperties(vehicleQuotation, userVO, new String[] { "userQuotationHistory", "dealerQuotationHistory"
+					 });
+
+			if (!isMinified) {
+				List<UserQuotationHistoryVO> searchVOs = new ArrayList<>();
+				for (UserQuotationHistory search : vehicleQuotation.getUserQuotationHistory()) {
+					UserQuotationHistoryVO searchVO = new UserQuotationHistoryVO();
+					BeanUtils.copyProperties(searchVO, search);
+					searchVOs.add(searchVO);
+				}
+				userVO.setUserQuotationHistoryVO(searchVOs);
+
+				List<DealerQuotationHistoryVO> search1VOs = new ArrayList<>();
+				for (DealerQuotationHistory search1 : vehicleQuotation.getDealerQuotationHistory()) {
+					DealerQuotationHistoryVO search1VO = new DealerQuotationHistoryVO();
+					BeanUtils.copyProperties(search1VO, search1);
+					search1VOs.add(search1VO);
+				}
+				userVO.setDealerQuotationHistoryVO(search1VOs);
+				
+				
+
+			}
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userVO;
+	}
+	
+	
+	
+	
+	
 	public InsuranceQuotationVO fromInsuranceQuotation(final InsuranceQuotation insuranceQuotation) {
 		InsuranceQuotationVO insuranceQuotationVO = new InsuranceQuotationVO();
 		try {

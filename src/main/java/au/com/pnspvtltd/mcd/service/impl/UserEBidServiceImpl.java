@@ -149,12 +149,13 @@ public class UserEBidServiceImpl implements UserEBidService {
 					dealerVehicleLeads.add(dealerSearch);
 					dealer.setDealSearch(dealerVehicleLeads);
 				}
+				inventoryRepository.flush();
 				// Create Quotation for Dealer matching Region and postCode
 				System.out.println("create quotation when region and postcode is matching"+dealer.isDealer());
 				createVehicleQuotation(user, dealer, search, dealerSearch, inventory);
 			}
 			
-			inventoryRepository.flush();
+			
 			
 			
 			
@@ -315,11 +316,11 @@ public class UserEBidServiceImpl implements UserEBidService {
 	
 	public boolean checkDealerRegion(Dealer dealer, int postCode){
 		// to do
-		String region =countyRegPostSubRepository.getRegionForGivenPostCode(postCode);
+		List<String> region =countyRegPostSubRepository.getRegionForGivenPostCode(postCode);
 		List<VehicleDealerAreaOfOperRegion> dealerRegions =dealer.getVehicleDealerRegion();
 		boolean eligibled = false;
 		for (VehicleDealerAreaOfOperRegion dealerRegion : dealerRegions) {
-			if(dealerRegion.getRegion() == region){
+			if(region.contains(dealerRegion.getRegion())){
 				eligibled=true;
 			}
 		}

@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
 			List<VehicleQuotation> vehicleQuotations = vehicleQuotationRepository.getQuotationsForUser(id);
 			List<VehicleQuotationVO> vehicleQuotationVOs = new ArrayList<>();
 			for (VehicleQuotation vehicleQuotation : vehicleQuotations) {
-				vehicleQuotationVOs.add(domainModelUtil.fromVehicleQuotation(vehicleQuotation));
+				vehicleQuotationVOs.add(domainModelUtil.fromVehicleQuotation(vehicleQuotation, false));
 			}
 			userVO.setVehicleQuotation(vehicleQuotationVOs);
 

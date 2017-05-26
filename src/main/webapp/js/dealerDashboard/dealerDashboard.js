@@ -162,7 +162,7 @@ function dealerBoardCallSearch(model_data_id, userid)
 	           	    out1 += '<tr><th>'+"Car Lead ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Variant"+'</th><th>'+"Operation"+'</th></tr>';
 	           	    for(i=0;i<result.dealSearch.length;i++)
 	          		{
-	           		   out1= out1+'<tr>'+'<td>'+result.dealSearch[i].dealSearchId+'</td><td>'+result.dealSearch[i].modelYear+'</td><td>'+result.dealSearch[i].modelDisplay+'</td><td>'+result.dealSearch[i].modelName+'</td><td>'+result.dealSearch[i].modelTrim+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchLeadsModal-' + result.dealSearch[i].dealSearchId + '" data-details=\'' + JSON.stringify(result.dealSearch[i]) + '\' class="anchor-editDealerVehicleSearchLeadsModal" data-toggle="modal" data-target="#editDealerVehicleSearchLeadsModal">View</a></td></tr>';
+	           		   out1= out1+'<tr>'+'<td>'+result.dealSearch[i].dealerSearchId+'</td><td>'+result.dealSearch[i].modelYear+'</td><td>'+result.dealSearch[i].modelDisplay+'</td><td>'+result.dealSearch[i].modelName+'</td><td>'+result.dealSearch[i].modelTrim+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchLeadsModal-' + result.dealSearch[i].dealerSearchId + '" data-details=\'' + JSON.stringify(result.dealSearch[i]) + '\' class="anchor-editDealerVehicleSearchLeadsModal" data-toggle="modal" data-target="#editDealerVehicleSearchLeadsModal">View</a></td></tr>';
 	          		}
        	    	
        	    	}
@@ -177,17 +177,18 @@ function dealerBoardCallSearch(model_data_id, userid)
     	   /*alert(Object.keys( result.search ).length);*/
     	   /*var json = JSON.parse(result1);*/
     	   /*var json = $.parseJSON(result1);*/
+       	//alert("before");
     	    var vehInsuran = result.dealSearchInsurance;
     	    if(vehInsuran)
     	    	{
     	    	vehInsuran = result.dealSearchInsurance.length;;
 	            	document.getElementById('vehInsuran').innerHTML=vehInsuran;
 	            	out124 += '<tr><th>'+"Car Ins ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Variant"+'</th><th>'+"Operation"+'</th></tr>';
-	           	    for(i=0;i<result.dealSearch.length;i++)
-	          		{
+	           	    for(i=0;i<result.dealSearchInsurance.length;i++)
+	          		{//alert(result.dealSearchInsurance[i].dealerSearchInsuranceId);
 	           	    	out124= out124+'<tr>'+'<td>'+result.dealSearchInsurance[i].dealerSearchInsuranceId+'</td><td>'+result.dealSearchInsurance[i].modelYear+'</td><td>'+result.dealSearchInsurance[i].modelDisplay+'</td><td>'+result.dealSearchInsurance[i].modelName+'</td><td>'+result.dealSearchInsurance[i].modelTrim+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchLeadsModal-' + result.dealSearchInsurance[i].dealerSearchInsuranceId + '" data-details=\'' + JSON.stringify(result.dealSearchInsurance[i]) + '\' class="anchor-editDealerVehicleSearchLeadsModal" data-toggle="modal" data-target="#editDealerVehicleSearchLeadsModal">View</a></td></tr>';
 	          		}
-    	    	
+	           	 console.log(out124);
     	    	}
     	    else
     	    	{

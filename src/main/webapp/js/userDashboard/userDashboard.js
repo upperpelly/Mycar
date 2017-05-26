@@ -115,10 +115,10 @@ $(document).ready(function(){
      //alert("before call12");
      //window.fbAsyncInit();
      //alert("before call12");
-      var appId = '238604546585672';
+      var appId = '249863545451459';
 
     //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 
 
       var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
@@ -1261,68 +1261,137 @@ function registerEditDealerVehicleQuotationModal(){
 	
 		
 	$('a.anchor-editDealerVehicleQuotationModal').on('click', function(event) {
-		
-		
-		var data = $(event.target).data('details');
-		//var json = JSON.stringify(data);
-		
-		var quotIdHiddenField = '<input type="hidden" name="quotId" value="' + data.quotId + '" />';
-		var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
-		if(data.moveToUser)
-		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
-		var shortList = '<input type="checkbox" name="shortList" />';
-		var makeOffer = '<input type="checkbox" name="makeOffer" />';
-		var makeDeposit = '<input type="checkbox" name="makeDeposit" />';
-		var chat = '<input type="checkbox" name="chat" />';
-		var rejectIt = '<input type="checkbox" name="rejectIt" />';
-		var postCode = '<input type="text" name="postCode" />'; 
-		var mr = '<input type="text" name="mr" />'; 
-		var lastName = '<input type="text" name="lastName" />'; 
-		var firstName = '<input type="text" name="firstName" />'; 
-		var address = '<input type="text" name="address" />'; 
-		var mobileNo = '<input type="text" name="mobileNo" />'; 
-		var preferredDate = '<input type="date" name="preferredDate" />';
-		
-		var editDealerVehicleQuotationForm = '<form id="edit-dealer-vehicle-quotation-content-form"><table>\
-			<tr><td>Quotation ID</td><td>' + data.quotId + '</td></tr>\
-			<tr><td>' + quotIdHiddenField + '</td></tr>\
-			<tr><td>User ID</td><td>' + data.userId + '</td></tr>\
-			<tr><td>Model Year</td><td>' + data.modelYear + '</td></tr>\
-			<tr><td>Model Name</td><td>' + data.modelName + '</td></tr>\
-			<tr><td>Model Display</td><td>' + data.modelDisplay + '</td></tr>\
-			<tr><td>Auto Bid</td><td>' + data.autoBid + '</td></tr>\
-			<tr><td>Dealer Id</td><td>' + data.dealerId + '</td><td>Dealer Search Id</td><td>' + data.dealSearchId + '</td></tr>\
-			<tr><td>Car Search Id</td><td>' + data.carSearchId + '</td><td>Ref Id</td><td>' + data.refId + '</td></tr>\
-			<tr><td>Dealer Name</td><td>' + data.dealerName + '</td><td>Dealer ABN</td><td>' + data.dealerABN + '</td></tr>\
-			<tr><td>Quot Header FreeText</td><td>' + data.quotHeaderFreeText + '</td><td>VIN Number</td><td>' + data.vinNumber + '</td></tr>\
-			<tr><td>Rego No</td><td>' + data.regoNo + '</td><td>Rego End Date</td><td>' + data.regoEndDate + '</td></tr>\
-			<tr><td>Rego State</td><td>' + data.regoStat + '</td><td>Dealer Stock No</td><td>' + data.dealerStockNo + '</td></tr>\
-			<tr><td>No Of Kms</td><td>' + data.noOfKms + '</td><td>Drive Away Price</td><td>' + data.driveAwayPrice + '</td></tr>\
-			<tr><td>Negotiable</td><td>' + data.negotiable + '</td><td>Offer Valid Date</td><td>' + data.offerValidDate + '</td></tr>\
-			<tr><td>First Come Serve</td><td>' + data.firstCumServe + '</td><td>Color</td><td>' + data.color + '</td></tr>\
-			<tr><td>Transmission</td><td>' + data.transmission + '</td><td>Drive Type</td><td>' + data.driveType + '</td></tr>\
-			<tr><td>Fuel Type</td><td>' + data.fuelType + '</td><td>No Of Seats</td><td>' + data.noOfSeats + '</td></tr>\
-			<tr><td>No Of Doors</td><td>' + data.noOfDoors + '</td><td>Dealer Preferred Location</td><td>' + data.delPrefLocation + '</td></tr>\
-			<tr><td>Offer Price 2</td><td>' + data.offerPrice2 + '</td><td>Offer Price 3</td><td>' + data.offerPrice3 + '</td></tr>\
-			</table><table>\
-			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Request Test Drive</div></div>\
-			<tr><td>Post Code</td><td>' +postCode + '</td></tr>\
-			<tr><td>Mr </td><td>' + mr + '</td><td>First Name </td><td>' +lastName  + '</td><td>Last Name </td><td>' +firstName + '</td></tr>\
-			<tr><td>Address </td><td>' +address  + '</td><td>Mobile No:</td><td>' +mobileNo  + '</td></tr>\
-			<tr><td>Preferred Date </td><td>' +preferredDate + '</td></tr></table>\
-			<table>\
-			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">What can be done to Quotation?</div></div>\
-			<tr><td>Short List </td><td>' + shortList + '</td><td>Make an Offer </td><td>' +makeOffer  + '</td><td>Make a deposit </td><td>' +makeDeposit + '</td></tr>\
-			<tr><td>Chat </td><td>' +chat  + '</td><td>Reject it </td><td>' +rejectIt  + '</td></tr>\
-			</table></form>';
-		editDealerVehicleQuotationForm = editDealerVehicleQuotationForm.replace(/>null</g, ">--NA--<");
-		editDealerVehicleQuotationForm = editDealerVehicleQuotationForm.replace(/>undefined</g, ">--NA--<");
-		$(".edit-dealer-vehicle-quotation-content").html(editDealerVehicleQuotationForm);
-	});
+
+
+		  var data = $(event.target).data('details');
+		  //var json = JSON.stringify(data);
+
+		  var quotIdHiddenField = '<input type="hidden" name="quotId" value="' + data.quotId + '" />';
+		  var moveToUser = '<input type="checkbox" name="moveToUser" />';
+		  if(data.moveToUser)
+		    moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+		  var shortList = '<input type="checkbox" name="shortList" />';
+		  var makeOffer = '<input type="checkbox" name="makeOffer" />';
+		  var makeDeposit = '<input type="checkbox" name="makeDeposit" />';
+		  var chat = '<input type="checkbox" name="chat" />';
+		  var rejectIt = '<input type="checkbox" name="rejectIt" />';
+		  var postCode = '<input type="text" name="postCode" />';
+		  var title = '<input type="text" name="title" />';
+		  var lname = '<input type="text" name="lname" />';
+		  var fname = '<input type="text" name="fname" />';
+		  var address = '<input type="text" name="address" />';
+		  var mobileNum = '<input type="text" name="mobileNum" />';
+		  var prefDate = '<input type="date" name="prefDate" />';
+		  
+		  // logic to retrieve
+		  out5DD = "";
+		    var dealDt = data.userQuotationHistory;
+		    if(dealDt)
+		    {
+		    	dealDt = data.userQuotationHistory.length;
+	  	   //document.getElementById('finMax').innerHTML=finMax;
+	  	 out5DD += '<tr><th>'+"Car History ID"+'</th><th>'+"Comment"+'</th><th>'+"Creation Date"+'</th></tr>';
+	 	   for(i=0;i<data.userQuotationHistory.length;i++)
+				{
+	 		  out5DD= out5DD+'<tr>'+'<td>'+data.userQuotationHistory[i].userQuotationHistoryId+'</td><td>'+data.userQuotationHistory[i].comment+'</td><td>'+data.userQuotationHistory[i].creationDate+'</td><td></tr>';
+				}
+		    	
+		    }
+		    else
+		    {
+		    	out5DD='<h2>No records for Dealer Search Finance</h2>';
+		    }
+		    
+		    //forFinance("deal-operation",out5DD);
+		    alert("userHistory"+out5DD);
+		    
+		    out5DD1 = "";
+		    var dealDt1 = data.dealerQuotationHistory;
+		    if(dealDt1)
+		    {
+		    	dealDt1 = data.dealerQuotationHistory.length;
+	  	   //document.getElementById('finMax').innerHTML=finMax;
+	  	 out5DD1 += '<tr><th>'+"Car History ID"+'</th><th>'+"Comment"+'</th><th>'+"Creation Date"+'</th></tr>';
+	 	   for(i=0;i<data.dealerQuotationHistory.length;i++)
+				{
+	 		  out5DD1= out5DD1+'<tr>'+'<td>'+data.dealerQuotationHistory[i].dealQuotationHistoryId+'</td><td>'+data.dealerQuotationHistory[i].comment+'</td><td>'+data.dealerQuotationHistory[i].creationDate+'</td><td></tr>';
+				}
+		    	
+		    }
+		    else
+		    {
+		    	out5DD1='<h2>No records for Dealer Search Finance</h2>';
+		    }
+		    
+		    //forFinance("deal-operation",out5DD);
+		    alert("userHistory"+out5DD1);
+		  // logic to retrieve
+		  
+		  //alert("data.oi"+data.postCode);
+		  if(data.postCode != null)
+		   postCode =data.postCode;
+		  if(data.title != null)
+		   title=data.title;
+		  if(data.lname != null)
+		   lname=data.lname;
+		  if(data.fname != null)
+		   fname=data.fname;
+		  if(data.address != null)
+		   address= data.address;
+		  if(data.mobileNum != null)
+		   mobileNum=data.mobileNum ;
+		  if(data.prefDate != null)
+		   prefDate=data.prefDate;
+		  if(data.shortList)
+		   shortList = '<input type="checkbox" name="shortList" checked="checked" />';
+		  if(data.makeOffer)
+		    makeOffer = '<input type="checkbox" name="makeOffer" checked="checked"/>';
+		  if(data.makeDeposit)
+		   makeDeposit='<input type="checkbox" name="makeDeposit" checked="checked"/>';
+		  if(data.chat)
+		   chat='<input type="checkbox" name="chat" checked="checked"/>';
+		  if(data.rejectIt)
+		   rejectIt= '<input type="checkbox" name="rejectIt" checked="checked" />';
+		  var editDealerVehicleQuotationForm = '<form id="edit-dealer-vehicle-quotation-content-form"><table>\
+		   <tr><td>Quotation ID</td><td>' + data.quotId + '</td></tr>\
+		   <tr><td>' + quotIdHiddenField + '</td></tr>\
+		   <tr><td>User ID</td><td>' + data.userId + '</td></tr>\
+		   <tr><td>Model Year</td><td>' + data.modelYear + '</td></tr>\
+		   <tr><td>Model Name</td><td>' + data.modelName + '</td></tr>\
+		   <tr><td>Model Display</td><td>' + data.modelDisplay + '</td></tr>\
+		   <tr><td>Auto Bid</td><td>' + data.autoBid + '</td></tr>\
+		   <tr><td>Dealer Id</td><td>' + data.dealerId + '</td><td>Dealer Search Id</td><td>' + data.dealSearchId + '</td></tr>\
+		   <tr><td>Car Search Id</td><td>' + data.carSearchId + '</td><td>Ref Id</td><td>' + data.refId + '</td></tr>\
+		   <tr><td>Dealer Name</td><td>' + data.dealerName + '</td><td>Dealer ABN</td><td>' + data.dealerABN + '</td></tr>\
+		   <tr><td>Quot Header FreeText</td><td>' + data.quotHeaderFreeText + '</td><td>VIN Number</td><td>' + data.vinNumber + '</td></tr>\
+		   <tr><td>Rego No</td><td>' + data.regoNo + '</td><td>Rego End Date</td><td>' + data.regoEndDate + '</td></tr>\
+		   <tr><td>Rego State</td><td>' + data.regoStat + '</td><td>Dealer Stock No</td><td>' + data.dealerStockNo + '</td></tr>\
+		   <tr><td>No Of Kms</td><td>' + data.noOfKms + '</td><td>Drive Away Price</td><td>' + data.driveAwayPrice + '</td></tr>\
+		   <tr><td>Negotiable</td><td>' + data.negotiable + '</td><td>Offer Valid Date</td><td>' + data.offerValidDate + '</td></tr>\
+		   <tr><td>First Come Serve</td><td>' + data.firstCumServe + '</td><td>Color</td><td>' + data.color + '</td></tr>\
+		   <tr><td>Transmission</td><td>' + data.transmission + '</td><td>Drive Type</td><td>' + data.driveType + '</td></tr>\
+		   <tr><td>Fuel Type</td><td>' + data.fuelType + '</td><td>No Of Seats</td><td>' + data.noOfSeats + '</td></tr>\
+		   <tr><td>No Of Doors</td><td>' + data.noOfDoors + '</td><td>Dealer Preferred Location</td><td>' + data.delPrefLocation + '</td></tr>\
+		   <tr><td>Offer Price 2</td><td>' + data.offerPrice2 + '</td><td>Offer Price 3</td><td>' + data.offerPrice3 + '</td></tr>\
+		   </table><table>\
+		   <div class="row"><div class="col-sm-12 col-md-12 product-search-title">Request Test Drive</div></div>\
+		   <tr><td>Post Code</td><td>' +postCode + '</td></tr>\
+		   <tr><td>Mr </td><td>' + title + '</td><td>First Name </td><td>' +fname  + '</td><td>Last Name </td><td>' +lname + '</td></tr>\
+		   <tr><td>Address </td><td>' +address  + '</td><td>Mobile No:</td><td>' +mobileNum  + '</td></tr>\
+		   <tr><td>Preferred Date </td><td>' +prefDate + '</td></tr></table>\
+		   <table>\
+		   <div class="row"><div class="col-sm-12 col-md-12 product-search-title">What can be done to Quotation?</div></div>\
+		   <tr><td>Short List </td><td>' + shortList + '</td><td>Make an Offer </td><td>' +makeOffer  + '</td><td>Make a deposit </td><td>' +makeDeposit + '</td></tr>\
+		   <tr><td>Chat </td><td>' +chat  + '</td><td>Reject it </td><td>' +rejectIt  + '</td></tr>\
+		   </table></form>';
+		  editDealerVehicleQuotationForm = editDealerVehicleQuotationForm.replace(/>null</g, ">--NA--<");
+		  editDealerVehicleQuotationForm = editDealerVehicleQuotationForm.replace(/>undefined</g, ">--NA--<");
+		  $(".edit-dealer-vehicle-quotation-content").html(editDealerVehicleQuotationForm);
+		 });
 	
 	$('button.submit-editDealerVehicleQuotationModal').on('click', function(e) {
 		
-		var jsonInput = $("#edit-dealer-vehicle-Quotation-content-form").convertFormDataToJSON();
+		var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
 		
 		
 		$.ajax({  
@@ -1464,17 +1533,7 @@ function registerEditDealerVehicleSearchModal(){
 			<tr><td>Extra Internal 3</td><td>' + data.ExtraIntern3 + '</td></tr>\
 			<tr><td>Extra Internal 4</td><td>' + data.ExtraIntern4 + '</td></tr>\
 			<tr><td>Extra Internal 5</td><td>' + data.ExtraIntern5 + '</td></tr>\
-			</table><table>\
-			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Request Test Drive</div></div>\
-			<tr><td>Post Code</td><td>' +postCode + '</td></tr>\
-			<tr><td>Mr </td><td>' + mr + '</td><td>First Name </td><td>' +lastName  + '</td><td>Last Name </td><td>' +firstName + '</td></tr>\
-			<tr><td>Address </td><td>' +address  + '</td><td>Mobile No:</td><td>' +mobileNo  + '</td></tr>\
-			<tr><td>Preferred Date </td><td>' +preferredDate + '</td></tr></table>\
-			<table>\
-			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">What can be done to Quotation?</div></div>\
-			<tr><td>Short List </td><td>' + shortList + '</td><td>Make an Offer </td><td>' +makeOffer  + '</td><td>Make a deposit </td><td>' +makeDeposit + '</td></tr>\
-			<tr><td>Chat </td><td>' +chat  + '</td><td>Reject it </td><td>' +rejectIt  + '</td></tr>\
-			</table>\</form>';
+			</table></form>';
 		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>null</g, ">--NA--<");
 		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>undefined</g, ">--NA--<");
 		$(".edit-dealer-vehicle-search-content").html(editDealerVehicleSearchForm);
@@ -1569,9 +1628,9 @@ function registerEditDealerVehicletranspModal(){
 		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
 
 		// start
-		var appId = '238604546585672';
+		var appId = '249863545451459';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -1809,9 +1868,9 @@ function registerEditDealerVehicleservmaintModal(){
 		var moveToUser1 = '<input type="checkbox" name="moveToUser1" />'; 
 		if(data.used)
 		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';  // come here*/
-		var appId = '238604546585672';
+		var appId = '249863545451459';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -2312,9 +2371,9 @@ function registerEditDealerVehicleDetailModal(){
 		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
 		
 		// start
-		var appId = '238604546585672';
+		var appId = '249863545451459';
 	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-	      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 	      AWS.config.region = 'us-east-1';
 	      var bucket = new AWS.S3({
@@ -2972,9 +3031,9 @@ alert("came inside log expenses");
 										  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
 
 										// start
-										var appId = '238604546585672';
+										var appId = '249863545451459';
 									    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-									      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+									      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 									      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 									      AWS.config.region = 'us-east-1';
 									      var bucket = new AWS.S3({
@@ -3161,9 +3220,9 @@ alert("came inside log servmaint");
 										if(data.used)
 										  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';*/
 										// start
-										var appId = '238604546585672';
+										var appId = '249863545451459';
 									    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-									      var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+									      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
 									      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
 									      AWS.config.region = 'us-east-1';
 									      var bucket = new AWS.S3({

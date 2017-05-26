@@ -41,8 +41,8 @@ public interface CountyRegPostSubRepository extends JpaRepository<CountyRegPostS
 	@Query("select CASE WHEN COUNT(countyRegPostSub) > 0 THEN true ELSE false END from CountyRegPostSub countyRegPostSub WHERE countyRegPostSub.region=?1 AND countyRegPostSub.postCode=?2")
 	public boolean existsPostcodeForRegion(String region,int postcode);
 	
-	@Query("select countyRegPostSub.region from CountyRegPostSub countyRegPostSub WHERE countyRegPostSub.postCode=?1")
-	public String getRegionForGivenPostCode(int postCode);
+	@Query("select distinct countyRegPostSub.region from CountyRegPostSub countyRegPostSub WHERE countyRegPostSub.postCode=?1")
+	public List<String> getRegionForGivenPostCode(int postCode);
 	
 	//public List<CountyRegPostSub> findByPostCode	
 	

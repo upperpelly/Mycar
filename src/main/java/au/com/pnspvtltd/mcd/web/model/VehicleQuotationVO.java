@@ -1,6 +1,15 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import au.com.pnspvtltd.mcd.domain.DealerQuotationHistory;
+import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 
 public class VehicleQuotationVO {
 
@@ -22,8 +31,145 @@ public class VehicleQuotationVO {
 	private String modelDisplay;
 	private String modelName;
 
+	// Start of Quotation action
+	private String postCode;
+	private String title;
+	private String fname;
+	private String lname;
+	private String address;
+	private String mobileNum;
+	private Date prefDate;
+	private boolean makeOffer;
+	private boolean makeDeposit;
+	private boolean chat;
+	private boolean rejectIt;
+	private boolean shortList;
+	
+	List<UserQuotationHistoryVO> userQuotationHistoryVO;
+	
+	public List<UserQuotationHistoryVO> getUserQuotationHistoryVO() {
+		return userQuotationHistoryVO;
+	}
+
+
+	public void setUserQuotationHistoryVO(
+			List<UserQuotationHistoryVO> userQuotationHistoryVO) {
+		this.userQuotationHistoryVO = userQuotationHistoryVO;
+	}
+	
+List<DealerQuotationHistoryVO> dealerQuotationHistoryVO;
+	
+	
+	public List<DealerQuotationHistoryVO> getDealerQuotationHistoryVO() {
+		return dealerQuotationHistoryVO;
+	}
+
+
+	public void setDealerQuotationHistoryVO(
+			List<DealerQuotationHistoryVO> dealerQuotationHistoryVO) {
+		this.dealerQuotationHistoryVO = dealerQuotationHistoryVO;
+	}
+	// end of Quotation action
+	
+	
 	public boolean isAutoBid() {
 		return autoBid;
+	}
+
+	public String getPostCode() {
+		return postCode;
+	}
+
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getMobileNum() {
+		return mobileNum;
+	}
+
+	public void setMobileNum(String mobileNum) {
+		this.mobileNum = mobileNum;
+	}
+
+	public Date getPrefDate() {
+		return prefDate;
+	}
+
+	public void setPrefDate(Date prefDate) {
+		this.prefDate = prefDate;
+	}
+
+	public boolean isMakeOffer() {
+		return makeOffer;
+	}
+
+	public void setMakeOffer(boolean makeOffer) {
+		this.makeOffer = makeOffer;
+	}
+
+	public boolean isMakeDeposit() {
+		return makeDeposit;
+	}
+
+	public void setMakeDeposit(boolean makeDeposit) {
+		this.makeDeposit = makeDeposit;
+	}
+
+	public boolean isChat() {
+		return chat;
+	}
+
+	public void setChat(boolean chat) {
+		this.chat = chat;
+	}
+
+	public boolean isRejectIt() {
+		return rejectIt;
+	}
+
+	public void setRejectIt(boolean rejectIt) {
+		this.rejectIt = rejectIt;
+	}
+
+	public boolean isShortList() {
+		return shortList;
+	}
+
+	public void setShortList(boolean shortList) {
+		this.shortList = shortList;
 	}
 
 	public void setAutoBid(boolean autoBid) {

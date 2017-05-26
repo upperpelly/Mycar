@@ -236,11 +236,11 @@ public class SimulateUserEBidSchedulerService {
 	
 	public boolean checkDealerRegion(Dealer dealer, int postCode){
 		// to do
-		String region =countyRegPostSubRepository.getRegionForGivenPostCode(postCode);
+		List<String> region =countyRegPostSubRepository.getRegionForGivenPostCode(postCode);
 		List<VehicleDealerAreaOfOperRegion> dealerRegions =dealer.getVehicleDealerRegion();
 		boolean eligibled = false;
 		for (VehicleDealerAreaOfOperRegion dealerRegion : dealerRegions) {
-			if(dealerRegion.getRegion() == region){
+			if(region.contains(dealerRegion.getRegion())){
 				eligibled=true;
 			}
 		}

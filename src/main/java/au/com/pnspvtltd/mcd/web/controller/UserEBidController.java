@@ -23,6 +23,7 @@ import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
+import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 
 @RestController
 
@@ -35,6 +36,8 @@ public class UserEBidController {
 	
 	@Autowired
 	UserEBidService userEBidService;
+	@Autowired
+	VehicleQuotationRepository vehicleQuotationRepository;
 
 	@PostMapping("eBid/car")
 	public String eBidForCar(@RequestBody UserEBidVO userEBidVO) {
@@ -86,5 +89,33 @@ public class UserEBidController {
 			//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
 		}
 		return user;
+	}
+	
+	@PutMapping("vehicleSearchQuotation")
+	@Transactional
+	public VehicleQuotationVO vehicleSearchQuotation(@RequestBody VehicleQuotationVO vehicleQuotationVO,
+			HttpServletResponse response) {
+		  //TODO: create a service for VehicleQutotation to update quotation details
+		LOGGER.debug("Received request to update vehicle {}", vehicleQuotationVO.getQuotId());
+				if(vehicleQuotationVO != null){
+					VehicleQuotation vehicleQuotation = vehicleQuotationRepository.findOne(vehicleQuotationVO.getQuotId());
+					
+					
+					vehicleQuotation.setPostCode(vehicleQuotationVO.getPostCode());
+					vehicleQuotation.setTitle(vehicleQuotationVO.getTitle());
+					vehicleQuotation.setFname(vehicleQuotationVO.getFname());
+					vehicleQuotation.setLname(vehicleQuotationVO.getLname());
+					vehicleQuotation.setAddress(vehicleQuotationVO.getAddress());
+					vehicleQuotation.setMobileNum(vehicleQuotationVO.getMobileNum());
+					vehicleQuotation.setPrefDate(vehicleQuotationVO.getPrefDate());
+					vehicleQuotation.setMakeOffer(vehicleQuotationVO.isMakeOffer());
+					vehicleQuotation.setMakeDeposit(vehicleQuotationVO.isMakeDeposit());
+					vehicleQuotation.setChat(vehicleQuotationVO.isChat());
+					vehicleQuotation.setRejectIt(vehicleQuotationVO.isRejectIt());
+					vehicleQuotation.setShortList(vehicleQuotationVO.isShortList());
+					
+					//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+				}
+				return vehicleQuotationVO;
 	}
 }
