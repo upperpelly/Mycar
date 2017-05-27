@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import au.com.pnspvtltd.mcd.domain.Dealer;
+import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
@@ -235,6 +236,12 @@ public class DealerServiceImpl implements DealerService {
 			financeQuotationVOs.add(domainModelUtil.fromFinanceQuotation(financeQuotation));
 		}
 		return financeQuotationVOs;
+	}
+
+	@Override
+	public String whenDealerEBidForCar(DealerEBidVO dealerEBidVO) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

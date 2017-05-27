@@ -1224,9 +1224,9 @@ We suggest that you contact the host to confirm availability and rates before su
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="cruise-description">
                                  <div id="main" class="col-sms-8 col-sm-9 col-md-11">
-                        <div class="booking-section travelo-box" ng-controller="myController1"  ng-submit="submitSearchForm(frm.$valid)">
+                        <div class="booking-section travelo-box" ng-controller="myController1">
                             
-                            <form class="booking-form" name="frm" novalidate >
+                            <form class="booking-form" name="frm" novalidate ng-submit="submitSearchForm(frm.$valid)" >
                                 <div class="person-information">
 		                            <h2>My Details</h2>
 		                            <div class="row">
@@ -1344,7 +1344,7 @@ We suggest that you contact the host to confirm availability and rates before su
 																</div>
 																<div class="col-sm-6 col-md-6">
 																	<h4 class="panel-title">
-                                                                        <a href="#tgg1" data-toggle="collapse">Additional Extra External Fittings</a>
+                                                                        <a href="#tgg1" data-toggle="collapse">After Market Extras</a>
                                                                     </h4>
 																</div>
 															</div>
@@ -1352,28 +1352,101 @@ We suggest that you contact the host to confirm availability and rates before su
                                                                 <div class="panel-content">
                                                                     <div class="row">
                                                                         <div class="col-sm-4 col-md-4">
-
+																				<ul style="float:left;vertical-align:top;">
+				                                                                        <li>
+				                                                                            <label>
+				                                                                                <input type="checkbox" id="extraExternal1" name="extraExternal1" ng-model="extraExternal1"><span class="skin-color">Bull Bar</span></a>
+				                                                                            </label>
+				                                                                        </li>
+				                                                                        <li>
+				                                                                            <label>
+				                                                                                <input type="checkbox" id="extraExternal2" name="extraExternal2" ng-model="extraExternal2"><span class="skin-color">Nudge Bar</span></a>
+				                                                                            </label>
+				                                                                        </li>
+				                                                                        <li>
+				                                                                            <label>
+				                                                                                <input type="checkbox" id="extraExternal3" name="extraExternal3" ng-model="extraExternal3"><span class="skin-color">Side Step</span></a>
+				                                                                            </label>
+				                                                                        </li>
+				                                                                        <li>
+				                                                                            <label>
+				                                                                                <input type="checkbox" id="extraExternal4" name="extraExternal4" ng-model="extraExternal4"><span class="skin-color">Snorkel</span></a>
+				                                                                            </label>
+				                                                                        </li>
+				                                                                        <li>
+				                                                                            <label>
+				                                                                                <input type="checkbox" id="extraExternal5" name="extraExternal5" ng-model="extraExternal5"><span class="skin-color">Tow Bar</span></a>
+				                                                                            </label>
+				                                                                        </li>
+				                                                                        <li>
+				                                                                            <label>
+				                                                                                <input type="checkbox" id="extraExternal6" name="extraExternal6" ng-model="extraExternal6"><span class="skin-color">Floor Mats</span></a>
+				                                                                            </label>
+				                                                                        </li>
+                                                                  				  </ul>
                                                                         </div>
                                                                         <div class="col-sm-4 col-md-4">
-                                                                            <label class="txt-bold">External Extras</label>
-                                                                            <ul>
-                                                                                <li><div class="checkbox"><input type="checkbox" id="nudgeBar" name="nudgeBar"><span class="skin-color">Nudge Bar</span></div></li>
-                                                                                <li><div class="checkbox"><input type="checkbox" id="bullBar" name="bullBar"><span class="skin-color">Bull Bar</span></div></li>
-                                                                                <li><div class="checkbox"><input type="checkbox" id="snokelBar" name="snokelBar"><span class="skin-color">Snokel</span></div></li>
-
-                                                                            </ul>
+                                                                            <ul style="float:relative;padding-left:5px;vertical-align:top;">
+                                                                            	<li>
+		                                                                            <label>
+		                                                                                <input type="checkbox" id="extraInternal1" name="extraInternal1" ng-model="extraInternal1"><span class="skin-color">Tinted Glass</span></a>
+		                                                                            </label>
+		                                                                        </li>
+		                                                                        <li>
+		                                                                            <label>
+		                                                                                <input type="checkbox" id="extraInternal2" name="extraInternal2" ng-model="extraInternal2"><span class="skin-color">Luggage & Cargo Accessories </span></a>
+		                                                                            </label>
+		                                                                        </li>
+		                                                                        <li>
+		                                                                            <label>
+		                                                                                <input type="checkbox" id="extraInternal3" name="extraInternal3" ng-model="extraInternal3"><span class="skin-color">Applicable Roof Racks</span></a>
+		                                                                            </label>
+		                                                                        </li>
+		                                                                        <li>
+		                                                                            <label>
+		                                                                                <input type="checkbox" id="extraInternal4" name="extraInternal4" ng-model="extraInternal4"><span class="skin-color">Tow Accessories</span></a>
+		                                                                            </label>
+		                                                                        </li>
+		                                                                         <li>
+		                                                                            <label>
+		                                                                                <input type="checkbox" id="extraInternal5" name="extraInternal5" ng-model="extraInternal5"><span class="skin-color">Applicable Roof Racks</span></a>
+		                                                                            </label>
+		                                                                        </li>
+		                                                                         <li>
+		                                                                            <label>
+		                                                                                <input type="checkbox" id="extraInternal6" name="extraInternal6" ng-model="extraInternal6"><span class="skin-color">Seat Cover</span></a>
+		                                                                            </label>
+		                                                                        </li>
+		                                                                    </ul>
                                                                         </div>
                                                                         <div class="col-sm-4 col-md-4">
-                                                                            <label class="txt-bold">Internal Extras</label>
-                                                                            <div class="selector">
-                                                                                <ul>
-                                                                                    <li><div class="checkbox"><input type="checkbox" id="leatherSeats" name="leatherSeats"><span class="skin-color">Leather Seats</span></div></li>
-                                                                                    <li><div class="checkbox"><input type="checkbox" id="dualAC" name="dualAC"><span class="skin-color">Dual AC</span></div></li>
-                                                                                    <li><div class="checkbox"><input type="checkbox" id="cruzeControl" name="cruzeControl"><span class="skin-color">Cruze Control</span></div></li>
-                                                                                    <li><div class="checkbox"><input type="checkbox" id="heatedSeats" name="heatedSeats"><span class="skin-color">Heated Seats</span></div></li>
-                                                                                    <li><div class="checkbox"><input type="checkbox" id="luggage" name="luggage"><span class="skin-color">Luggage Compartment</span></div></li>
-                                                                                </ul>
-                                                                            </div>
+                                                                            <ul style="float:relative;padding-left:5px;vertical-align:top;">
+                                                                            	<li>
+		                                                                            <label>
+		                                                                                <input type="checkbox" id="extraInternal7" name="extraInternal7" ng-model="extraInternal7"><span class="skin-color">Bonnet Protection</span></a>
+		                                                                            </label>
+		                                                                        </li>
+		                                                                        <li>
+		                                                                            <label>
+		                                                                                <input type="checkbox" id="extraInternal8" name="extraInternal8" ng-model="extraInternal8"><span class="skin-color">Head Lamp Protection</span></a>
+		                                                                            </label>
+		                                                                        </li>
+		                                                                        <li>
+		                                                                            <label>
+		                                                                                <input type="checkbox" id="extraInternal9" name="extraInternal9" ng-model="extraInternal9"><span class="skin-color">Weather Shield</span></a>
+		                                                                            </label>
+		                                                                        </li>
+		                                                                        <li>
+		                                                                            <label>
+		                                                                                <input type="checkbox" id="extraInternal10" name="extraInternal10" ng-model="extraInternal10"><span class="skin-color">Safety Kid</span></a>
+		                                                                            </label>
+		                                                                        </li>
+		                                                                         <li>
+		                                                                            <label>
+		                                                                                <input type="checkbox" id="extraInternal11" name="extraInternal11" ng-model="extraInternal11"><span class="skin-color">Medical / first-aid Kit</span></a>
+		                                                                            </label>
+		                                                                        </li>
+		                                                                    </ul>
                                                                         </div>
                                                                     </div>
                                                                 </div><!-- end content -->
@@ -1404,6 +1477,8 @@ We suggest that you contact the host to confirm availability and rates before su
 									    <script>
 									    
 											    var finKey=$.jStorage.get("finCheckKey");
+											    alert(insKey);
+											    alert(finKey);
 											    if(!finKey){
 											    	var key1="FNC";
 											        $.jStorage.set("finCheckKey",key1);
@@ -1479,10 +1554,9 @@ We suggest that you contact the host to confirm availability and rates before su
 																		<div class="col-sm-3 col-md-3">
 																			<label>How Much Loan your looking ?</label>
 																		</div>
-																		<div class="col-sm-3 col-md-3">
+																		<div class="col-sm-3 col-md-3 pull-left input-group">
 																			<input type="text" class="input-text full-width" placeholder="Loan Amount"  id="loanAmount"  ng-model="loanAmount" ng-pattern="/^[0-9]*$/" name="loanAmount" required>
-								                                            <span style="color:red" ng-show="frm.loanAmount.$error.pattern && (!frm.loanAmount.$pristine || frm.$submitted)"><b>Loan Amount must be Numeric</b></span>
-								                                            <span style="color:red"  ng-show="frm.loanAmount.$error.required && (!frm.loanAmount.$pristine || frm.$submitted) && !frm.loanAmount.$error.pattern"><b>Loan Amount is Required</b></span>
+								                                            <span class="input-group-addon">$</span>
 																		</div>
 																		<div class="col-sm-3 col-md-3">
 																			 <div class="selector">
@@ -1502,8 +1576,9 @@ We suggest that you contact the host to confirm availability and rates before su
 								                                            </div>
 								                                            <span style="color:red" ng-show="frm.loanPeriod.$error.required && (!frm.loanPeriod.$pristine || frm.$submitted)"><b>Loan Period is Required</b></span>
 																		</div>
-																		<div class="col-sm-3 col-md-3">
-																			&nbsp;
+																		<div class="col-sm-3 col-md-3 pull-left">
+																			 <span style="color:red" ng-show="frm.loanAmount.$error.pattern && (!frm.loanAmount.$pristine || frm.$submitted)"><b>Loan Amount must be Numeric</b></span>
+								                                            <span style="color:red"  ng-show="frm.loanAmount.$error.required && (!frm.loanAmount.$pristine || frm.$submitted) && !frm.loanAmount.$error.pattern"><b>Loan Amount is Required</b></span>
 																		</div>
 																	</div><br/>	
 																	<div class="row">
@@ -1521,12 +1596,13 @@ We suggest that you contact the host to confirm availability and rates before su
 								                                            </div>
 								                                            <span style="color:red" ng-show="frm.incomeType.$error.required && (!frm.incomeType.$pristine || frm.$submitted)"><b>Income Type is Required</b></span>
 																		</div>
-																		<div class="col-sm-3 col-md-3">
+																		<div class="col-sm-3 col-md-3 pull-left input-group">
 																			 <input type="text" class="input-text full-width" value="" placeholder="Annual Income"  ng-model="annualIncome" id="annualIncome" name="annualIncome" ng-pattern="/^[0-9]*$/" required/>
-									                                            <span style="color:red" ng-show="frm.annualIncome.$error.pattern && (!frm.annualIncome.$pristine || frm.$submitted)"><b>Annual Income must be Numeric</b></span>
-									                                            <span style="color:red"  ng-show="frm.annualIncome.$error.required && (!frm.annualIncome.$pristine || frm.$submitted) && !frm.annualIncome.$error.pattern"><b>Annual Income is Required</b></span>
+								                                            <span class="input-group-addon">$</span>
 																		</div>
 																		<div class="col-sm-3 col-md-3">
+																			 <span style="color:red" ng-show="frm.annualIncome.$error.pattern && (!frm.annualIncome.$pristine || frm.$submitted)"><b>Annual Income must be Numeric</b></span>
+								                                            <span style="color:red"  ng-show="frm.annualIncome.$error.required && (!frm.annualIncome.$pristine || frm.$submitted) && !frm.annualIncome.$error.pattern"><b>Annual Income is Required</b></span>
 																			<input type="text" class="input-text full-width" value="" placeholder="Emp/Business Years" ng-model="yearEmployement" id="yearEmployement" name="yearEmployement"/>
 																		</div>
 																	</div><br/>
@@ -1597,28 +1673,40 @@ We suggest that you contact the host to confirm availability and rates before su
                                            <div class="col-sm-4 col-md-4">
                                                <label>Agreed Value of the Car</label>
                                            </div>
-                                           <div class="col-sm-4 col-md-4">
+                                           <div class="col-sm-4 col-md-4 input-group pull-left">
                                                <input type="text" class="input-text full-width" placeholder="Agreed Value" ng-pattern="/^[0-9]*$/"  ng-model="agreedValue" id="agreedValue" name="agreedValue" required/>
-	                                            <span style="color:red" ng-show="frm.agreedValue.$error.pattern && (!frm.agreedValue.$pristine || frm.$submitted)"><b>Agreed Value must be Numeric</b></span>
-	                                            <span style="color:red"  ng-show="frm.agreedValue.$error.required && (!frm.agreedValue.$pristine || frm.$submitted) && !frm.agreedValue.$error.pattern"><b>Agreed value is Required</b></span>
+	                                           <span class="input-group-addon">$</span>
                                            </div>
                                            <div class="col-sm-4 col-md-4">
+                                              	 <span style="color:red" ng-show="frm.agreedValue.$error.pattern && (!frm.agreedValue.$pristine || frm.$submitted)"><b>Agreed Value must be Numeric</b></span>
+	                                            <span style="color:red"  ng-show="frm.agreedValue.$error.required && (!frm.agreedValue.$pristine || frm.$submitted) && !frm.agreedValue.$error.pattern"><b>Agreed value is Required</b></span>
+                                           </div>
+                                       </div><br />
+                                       <div class="row">
+                                           <div class="col-sm-4 col-md-4"></div>
+                                           <div class="col-sm-4 col-md-4 input-group pull-left">
                                                <input type="text"  id="marketValue" name="marketValue" ng-model="marketValue" ng-pattern="/^[0-9]*$/"  class="input-text full-width" value="" placeholder="Market Value" required />
-                                               <span style="color:red" ng-show="frm.marketValue.$error.pattern && (!frm.marketValue.$pristine || frm.$submitted)"><b>Market Value must be Numeric</b></span>
+	                                           <span class="input-group-addon">$</span>
+                                           </div>
+                                           <div class="col-sm-4 col-md-4">
+                                              	 <span style="color:red" ng-show="frm.marketValue.$error.pattern && (!frm.marketValue.$pristine || frm.$submitted)"><b>Market Value must be Numeric</b></span>
                                                <span style="color:red" ng-show="frm.marketValue.$error.required && (!frm.marketValue.$pristine || frm.$submitted) && !frm.marketValue.$error.pattern"><b>Market Value is Required</b></span>
                                            </div>
                                        </div><br />
+                                       
+                                        
+                                              
                                        <div class="row">
                                            <div class="col-sm-4 col-md-4">
                                                <label>What is your Preferred Excess?</label>
                                            </div>
-                                           <div class="col-sm-4 col-md-4">
+                                           <div class="col-sm-4 col-md-4 input-group pull-left">
                                               <input type="text" class="input-text full-width" placeholder="Preferred Excess Amount" ng-pattern="/^[0-9]*$/" ng-model="insuranceExcessAmount" id="insuranceExcessAmount" name="insuranceExcessAmount" required/>
-	                                            <span style="color:red" ng-show="frm.insuranceExcessAmount.$error.pattern && (!frm.insuranceExcessAmount.$pristine || frm.$submitted)"><b>Preferred Excess Amount must be Numeric</b></span>
-	                                            <span style="color:red"  ng-show="frm.insuranceExcessAmount.$error.required && (!frm.insuranceExcessAmount.$pristine || frm.$submitted) && !frm.insuranceExcessAmount.$error.pattern"><b>Preferred Excess Amount is Required</b></span>
+                                              <span class="input-group-addon">$</span>
                                            </div>
                                            <div class="col-sm-4 col-md-4">
-                                               &nbsp;
+                                                <span style="color:red" ng-show="frm.insuranceExcessAmount.$error.pattern && (!frm.insuranceExcessAmount.$pristine || frm.$submitted)"><b>Preferred Excess Amount must be Numeric</b></span>
+	                                            <span style="color:red"  ng-show="frm.insuranceExcessAmount.$error.required && (!frm.insuranceExcessAmount.$pristine || frm.$submitted) && !frm.insuranceExcessAmount.$error.pattern"><b>Preferred Excess Amount is Required</b></span>
                                            </div>
                                        </div><br />
 
@@ -1659,17 +1747,56 @@ We suggest that you contact the host to confirm availability and rates before su
                                             <div class="panel-collapse collapse" id="tgg12">
                                                 <div class="panel-content">
                                                     <div class="row">
+                                                    	<div class="col-sm-2 col-md-2"></div>
                                                         <div class="col-sm-4 col-md-4">
-                                                            <label class="txt-bold">External Extras</label>
-                                                            <ul>
+                                                            <!-- <label class="txt-bold">External Extras</label> -->
+                                                            <!-- <ul>
                                                                 <li><div class="checkbox"><input type="checkbox" id="nudgeBar" name="nudgeBar"><span class="skin-color">Nudge Bar</span></div></li>
                                                                 <li><div class="checkbox"><input type="checkbox" id="bullBar" name="bullBar"><span class="skin-color">Bull Bar</span></div></li>
                                                                 <li><div class="checkbox"><input type="checkbox" id="snokelBar" name="snokelBar"><span class="skin-color">Snokel</span></div></li>
 
-                                                            </ul>
+                                                            </ul> -->
+                                                            <ul style="float:left;vertical-align:top;">
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="extExt1" name="extExt1" ng-model="extExt1"><span class="skin-color">Hire Car after Accident(if any)</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="extExt2" name="extExt2" ng-model="extExt2"><span class="skin-color">Excess Free wind Screen</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="extExt3" name="extExt3" ng-model="extExt3"><span class="skin-color">Excess Free Window Screen</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="extExt4" name="extExt4" ng-model="extExt4"><span class="skin-color">New Car Replace</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="extExt5" name="extExt5" ng-model="extExt5"><span class="skin-color">Road Side Assistance</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="intExt1" name="intExt1" ng-model="intExt1"><span class="skin-color">Life time Warranty repairs</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                         <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="intExt8" name="intExt8" ng-model="intExt8"><span class="skin-color">Emergency accommodation and Transport</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                    </ul>
                                                         </div>
+                                                        <div class="col-sm-2 col-md-2"></div>
                                                         <div class="col-sm-4 col-md-4">
-                                                            <label class="txt-bold">Internal Extras</label>
+                                                           <!--  <label class="txt-bold">Internal Extras</label>
                                                             <div class="selector">
                                                                 <ul>
                                                                     <li><div class="checkbox"><input type="checkbox" id="leatherSeats" name="leatherSeats"><span class="skin-color">Leather Seats</span></div></li>
@@ -1678,7 +1805,40 @@ We suggest that you contact the host to confirm availability and rates before su
                                                                     <li><div class="checkbox"><input type="checkbox" id="heatedSeats" name="heatedSeats"><span class="skin-color">Heated Seats</span></div></li>
                                                                     <li><div class="checkbox"><input type="checkbox" id="luggage" name="luggage"><span class="skin-color">Luggage Compartment</span></div></li>
                                                                 </ul>
-                                                            </div>
+                                                            </div> -->
+                                                            <ul style="float:relative;padding-left:5px;vertical-align:top;">
+                                                                        
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="intExt2" name="intExt2" ng-model="intExt2"><span class="skin-color">No Claim Bonus Protection</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="intExt3" name="intExt3" ng-model="intExt3"><span class="skin-color">Allow Under 25 Driver</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="intExt4" name="intExt4" ng-model="intExt4"><span class="skin-color">Cover Theft & Fire</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="intExt5" name="intExt5" ng-model="intExt5"><span class="skin-color">Cover Towing Cost</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                         <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="intExt6" name="intExt6" ng-model="intExt6"><span class="skin-color">Essential Temporary Repairs</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                         <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="intExt7" name="intExt7" ng-model="intExt7"><span class="skin-color">Accidental Damage</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                    </ul>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1752,13 +1912,13 @@ We suggest that you contact the host to confirm availability and rates before su
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-1 col-md-1">
+                                                        <div class="col-sm-1 col-md-1" ng-show="abcinsLICSusp == 'true'">
                                                             <label>If Yes</label>
                                                         </div>
-                                                        <div class="col-sm-4 col-md-4">
+                                                        <div class="col-sm-4 col-md-4" ng-show="abcinsLICSusp == 'true'">
                                                             <div class="selector">
                                                                 <select class="full-width" id="abcinsReasonSusp" ng-model="abcinsReasonSusp"
-                                                                        name="abcinsReasonSusp">
+                                                                        name="abcinsReasonSusp" ng-required="abcinsLICSusp == 'true'">
                                                                     <option value="" selected disabled>Reason for Suspension</option>
                                                                     <option>Drink & Drive</option>
                                                                     <option>Overspeeding</option>
@@ -1766,6 +1926,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                                     <option>Possesion of Drugs</option>
                                                                 </select>
                                                             </div>
+                                                            <span style="color:red" ng-show="frm.abcinsReasonSusp.$error.required && (!frm.abcinsReasonSusp.$pristine || frm.$submitted)"><b>Please specify the Reason...</b></span>
                                                         </div>
                                                     </div><br />
                                                     <div class="row">
@@ -1784,12 +1945,12 @@ We suggest that you contact the host to confirm availability and rates before su
 	                                                       </div>
 	                                                   </div><br />
 
-	                                                <div class="row">
+	                                                <div class="row" ng-show="abcinsDriversCt == 1">
 	                                                    <div class="col-sm-12 col-md-12">
 	                                                        <button type="button" onclick="javascript:appendRow944()" class="append_row">Add Driver</button>
 	                                                    </div>
 	                                                </div><br />
-	                                                 <div class="row">
+	                                                 <div class="row" ng-show="abcinsDriversCt == 1">
                                                         <div class="col-sm-12 col-md-12">
                                                             <table id="my-table944">
                                                                 <tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
@@ -1831,14 +1992,13 @@ We suggest that you contact the host to confirm availability and rates before su
                                                               <select class="full-width" id="abcinscarParked" ng-model="abcinscarParked"
                                                                       name="abcinscarParked">
                                                                   <option value="" selected disabled>Where Car Parked ? </option>
-                                                                  <option>ACT</option>
-                                                                  <option>NT</option>
-                                                                  <option>QLD</option>
-                                                                  <option>VIC</option>
-                                                                  <option>NSW</option>
-                                                                  <option>TAS</option>
-                                                                  <option>SA</option>
-                                                                  <option>WA</option>
+                                                                  <option>Under a Carport</option>
+                                                                  <option>Private & locked Garage</option>
+                                                                  <option>Public Garage</option>
+                                                                  <option>Garage Shared and Access Controlled</option>
+                                                                  <option>Outside - Behind locked Gate</option>
+                                                                  <option>Outside - Road Side</option>
+                                                                  <option>Outside - other</option>
                                                               </select>
                                                           </div>
                                                       </div>
@@ -1858,16 +2018,24 @@ We suggest that you contact the host to confirm availability and rates before su
                                                              </select>
                                                          </div>
                                                      </div>
-                                                     <div class="col-sm-4 col-md-4">
+                                                     <div class="col-sm-4 col-md-4" ng-show="abcinsCarUsage == 'Business'">
                                                          <div class="selector">
                                                              <select class="full-width" id="abcinsifBusiness" ng-model="abcinsifBusiness"
-                                                                     name="abcinsifBusiness">
+                                                                     name="abcinsifBusiness" ng-required="abcinsCarUsage == 'Business'">
                                                                  <option value="" selected disabled>What type of Business (if Business) ? </option>
-                                                                 <option>Client Visit</option>
-                                                                 <option>Transport Customer</option>
-                                                                 <option>Used for Ride Sharing</option>
+                                                                 <option>On Road Sales professional</option>
+                                                                 <option>Mobile Tradie</option>
+                                                                 <option>Driving Instructor</option>
+                                                                 <option>Car Hire</option>
+                                                                 <option>Car Sharing</option>
+                                                                 <option>Driving in Sports Events</option>
+                                                                 <option>Taxi Services</option>
+                                                                 <option>Courier / Delivery Services Driver</option>
+                                                                 <option>Removalist</option>
+                                                                 <option>Client Visits</option>
                                                              </select>
                                                          </div>
+                                                         <span style="color:red" ng-show="frm.abcinsifBusiness.$error.required && (!frm.abcinsifBusiness.$pristine || frm.$submitted)"><b>Please specify the Business..</b></span>
                                                      </div>
                                                  </div><br />
                                                 </div>
@@ -1897,7 +2065,7 @@ We suggest that you contact the host to confirm availability and rates before su
 								</script>
                                  <div class="row">
                                      <div class="col-sm-12 col-md-12">
-                                         By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
+                                         By clicking CONFIRM BOOKING or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
                                      </div>
                                </div><br />
                                 <div class="form-group row">

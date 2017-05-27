@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
@@ -26,6 +27,7 @@ import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 @RestController
@@ -44,6 +46,12 @@ public class DealerController {
 			response.setStatus(HttpStatus.NO_CONTENT.value());
 		}
 		return dealer;
+	}
+	
+	
+	@PostMapping("eBid/dealercar")
+	public String eBidForCar(@RequestBody DealerEBidVO dealerEBidVO) {
+		return dealerService.whenDealerEBidForCar(dealerEBidVO);
 	}
 	
 	@PostMapping("dealer")

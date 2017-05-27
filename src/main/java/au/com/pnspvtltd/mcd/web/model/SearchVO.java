@@ -80,14 +80,75 @@ public class SearchVO {
 	private String extraExter2;
 	private String extraExter3;	
 	private String extraExter4;	
-	private String extraExter5;	
+	private String extraExter5;
+	private String extraExter6;
+	public String getExtraExter6() {
+		return extraExter6;
+	}
+
+	public void setExtraExter6(String extraExter6) {
+		this.extraExter6 = extraExter6;
+	}
+
+	public String getExtraIntern6() {
+		return extraIntern6;
+	}
+
+	public void setExtraIntern6(String extraIntern6) {
+		this.extraIntern6 = extraIntern6;
+	}
+
+	public String getExtraIntern7() {
+		return extraIntern7;
+	}
+
+	public void setExtraIntern7(String extraIntern7) {
+		this.extraIntern7 = extraIntern7;
+	}
+
+	public String getExtraIntern8() {
+		return extraIntern8;
+	}
+
+	public void setExtraIntern8(String extraIntern8) {
+		this.extraIntern8 = extraIntern8;
+	}
+
+	public String getExtraIntern9() {
+		return extraIntern9;
+	}
+
+	public void setExtraIntern9(String extraIntern9) {
+		this.extraIntern9 = extraIntern9;
+	}
+
+	public String getExtraIntern10() {
+		return extraIntern10;
+	}
+
+	public void setExtraIntern10(String extraIntern10) {
+		this.extraIntern10 = extraIntern10;
+	}
+
+	public String getExtraIntern11() {
+		return extraIntern11;
+	}
+
+	public void setExtraIntern11(String extraIntern11) {
+		this.extraIntern11 = extraIntern11;
+	}
+
 	private String extraIntern1;	
 	private String extraIntern2;	
 	private String extraIntern3;	
 	private String extraIntern4;	
 	private String extraIntern5;
-
-	
+	private String extraIntern6;	
+	private String extraIntern7;	
+	private String extraIntern8;	
+	private String extraIntern9;	
+	private String extraIntern10;
+	private String extraIntern11;
 	
 	public Long getCarSearchId() {
 		return this.carSearchId;

@@ -2011,16 +2011,19 @@ $.ajax({
                                     "licenseIssueDate": $scope.insLicIssueDt,
                                     "lastAtFaultClaimDate": $scope.insLastfaultDt,
                                     "reasonForSuspension": $scope.insReasonSusp,
-                                    "AnyDriver": $scope.extExt2,//ext start
-                                    "FreeWindScreen": $scope.extExt1,
-                                    "RentalCar": $scope.extExt4,
-                                    "NewCarRepl": $scope.extExt5,
-                                    "Snokel": $scope.extExt3,// Road side //ext end
-                                    "intsnokel": $scope.intExt3,//int start
-                                    "intBullBar": $scope.intExt2,
-                                    "intNudgeBar": $scope.intExt4,
-                                    "BullBar": $scope.intExt5,
-                                    "HireCar": $scope.intExt1,//int end
+                                    "AnyDriver": $scope.intExt3,//Allow Under 25 Driver 
+                                    "FreeWindScreen": $scope.extExt2,//Excess Free wind Screen
+                                    "RentalCar": $scope.extExt3,//Excess Free Window Screen
+                                    "NewCarRepl": $scope.extExt4,// New Car Replace 
+                                    "Roadsideasst":$scope.extExt5,//Road Side Assistance
+                                    "LifetimeWarrep":$scope.intExt1,//Life time Warranty repairs
+                                    "intsnokel": $scope.intExt2,//No Claim Bonus Protection
+                                    "intBullBar": $scope.intExt4,//Cover Theft & Fire
+                                    "intNudgeBar": $scope.intExt5,//Cover Towing Cost
+                                    "HireCar": $scope.extExt1,//Hire Car after Accident(if any)
+                                    "extsnokel":$scope.intExt6, //Essential Temporary Repairs
+                                    "extBullBar":$scope.intExt7, //Accidental Damage
+                                    "extNudgeBar":$scope.intExt8,//Emergency accommodation and Transport
                                     "avgNoOfKmYr": $scope.insAvgNoOfKms,
                                     "noOfDrivers": $scope.insDriversCt,
                                     "licenseGotSuspened": $scope.insLICSusp
@@ -2630,7 +2633,7 @@ $.ajax({
 
                 <div class="topnav" style="float:right">
                     <ul class="quick-menu pull-left">
-                        <li><button onClick="redirect()">ACCOUNT</button></li>
+                        <li><button onClick="redirect()"><i class="fa fa-user" aria-hidden="true"></i>ACCOUNT</button></li>
                     </ul>
                     <ul class="quick-menu pull-right" id="welcomeDiv" style="display:none">
                         <li class="ribbon">
@@ -5060,15 +5063,16 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <label>How much Loan your Looking?</label>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-4 col-md-4 pull-left input-group">
                                                             <input type="text"
                                                                    id="finLoanAmount" name="finLoanAmount" ng-model="finLoanAmount"
                                                                    class="input-text full-width" value="" placeholder="Loan Amount" ng-pattern="/^[0-9]*$/" required />
+															<span class="input-group-addon">$</span>                                                                   
                                                             <!-- <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Amount is Required</b></span> -->
                                                             <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.pattern && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted)"><b>Loan Amount must be Numeric</b></span>
                                                             <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finLoanAmount.$error.pattern"><b>Loan Amount is Required</b></span>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-4 col-md-4">
                                                             <div class="selector">
                                                                 <select class="full-width" id="finLoanPeriod" ng-model="finLoanPeriod"
                                                                         name="finLoanPeriod" required>
@@ -5134,7 +5138,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <label>Your Income Details</label>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-4 col-md-4">
                                                             <div class="selector">
                                                                 <select class="full-width" id="finIncomeType" ng-model="finIncomeType"
                                                                         name="finIncomeType" required>
@@ -5146,22 +5150,39 @@ $.ajax({
                                                             </div>
                                                             <span style="color:red" ng-show="ebidfinfrm.finIncomeType.$error.required && (!ebidfinfrm.finIncomeType.$pristine || ebidfinfrm.$submitted)"><b>Finance Income Type is Required</b></span>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-4 col-md-4 pull-left input-group">
                                                             <input type="text"
                                                                    id="finAnnualIncome" name="finAnnualIncome" ng-model="finAnnualIncome" ng-pattern="/^[0-9]*$/"
                                                                    class="input-text full-width" value="" placeholder="Annual Income" required />
+                                                            <span class="input-group-addon">$</span>
                                                             <!-- <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.required && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted)"><b>Finance Annual Income is Required</b></span> -->
                                                             <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.pattern && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted)"><b>Annual Income must be Numeric</b></span>
                                                             <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.required && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>Finance Annual Income is Required</b></span>
                                                         </div>
+                                                        <!-- <div class="col-sm-3 col-md-3">
+                                                            <input type="text"
+                                                                   id="finNoofYears" name="finNoofYears" ng-model="finNoofYears" ng-pattern="/^[0-9]*$/"
+                                                                   class="input-text full-width" value="" placeholder="No of years" required />
+                                                            <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.pattern && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted)"><b>No of years must be Numeric</b></span>
+                                                            <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.required && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>No of years is Required</b></span>
+                                                        </div> -->
+                                                    </div><br />
+                                                    
+                                                    <div class="row">
                                                         <div class="col-sm-3 col-md-3">
+                                                            
+                                                        </div>
+                                                    	    <div class="col-sm-4 col-md-4">
                                                             <input type="text"
                                                                    id="finNoofYears" name="finNoofYears" ng-model="finNoofYears" ng-pattern="/^[0-9]*$/"
                                                                    class="input-text full-width" value="" placeholder="No of years" required />
                                                             <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.pattern && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted)"><b>No of years must be Numeric</b></span>
                                                             <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.required && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>No of years is Required</b></span>
                                                         </div>
+                                                    
                                                     </div><br />
+                                                    
+                                                    
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3">
                                                             <label>My Credit Rating</label>
@@ -6127,10 +6148,10 @@ $.ajax({
                                                                         </div>
                                                                         <span style="color:red" ng-show="ebidinsfrm.insfinance.$error.required && (!ebidinsfrm.insfinance.$pristine || ebidinsfrm.$submitted)"><b>Finance yes / no is Required</b></span>
                                                                     </div>
-                                                                    <div class="col-sm-4 col-md-4">
+                                                                    <div class="col-sm-4 col-md-4" ng-show="insfinance == 'true'">
                                                                         <div class="selector">
                                                                             <select class="full-width" id="ins-fin-prov" ng-model="insfinprov"
-                                                                                    name="insfinprov" required>
+                                                                                    name="insfinprov" ng-required="insfinance == 'true'">
                                                                                 <option value="" selected disabled>Finance Provider (if yes)</option>
                                                                                 <option>AAMI</option>
                                                                                 <option>AMP Limited</option>
@@ -6165,14 +6186,13 @@ $.ajax({
                                                                             <select class="full-width" id="inscarParked" ng-model="inscarParked"
                                                                                     name="inscarParked">
                                                                                 <option value="" selected disabled>Where Car Parked ? </option>
-                                                                                <option>ACT</option>
-                                                                                <option>NT</option>
-                                                                                <option>QLD</option>
-                                                                                <option>VIC</option>
-                                                                                <option>NSW</option>
-                                                                                <option>TAS</option>
-                                                                                <option>SA</option>
-                                                                                <option>WA</option>
+                                                                                <option>Under a Carport</option>
+                                                                                <option>Private & locked Garage</option>
+                                                                                <option>Public Garage</option>
+                                                                                <option>Garage Shared and Access Controlled</option>
+                                                                                <option>Outside - Behind locked Gate</option>
+                                                                                <option>Outside - Road Side</option>
+                                                                                <option>Outside - other</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
@@ -6209,15 +6229,23 @@ $.ajax({
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
-                                                                        <div class="selector">
+                                                                        <div class="selector" ng-show="insCarUsage == 'Business'">
                                                                             <select class="full-width" id="insifBusiness" ng-model="insifBusiness"
-                                                                                    name="insifBusiness">
+                                                                                    name="insifBusiness" ng-required="insCarUsage == 'Business'">
                                                                                 <option value="" selected disabled>What type of Business (if Business) ? </option>
-                                                                                <option>Client Visit</option>
-                                                                                <option>Transport Customer</option>
-                                                                                <option>Used for Ride Sharing</option>
+                                                                                <option>On Road Sales professional</option>
+                                                                                <option>Mobile Tradie</option>
+                                                                                <option>Driving Instructor</option>
+                                                                                <option>Car Hire</option>
+                                                                                <option>Car Sharing</option>
+                                                                                <option>Driving in Sports Events</option>
+                                                                                <option>Taxi Services</option>
+                                                                                <option>Courier / Delivery Services Driver</option>
+                                                                                <option>Removalist</option>
+                                                                                <option>Client Visits</option>
                                                                             </select>
                                                                         </div>
+                                                                        <span style="color:red" ng-show="ebidinsfrm.insifBusiness.$error.required && (!ebidinsfrm.insifBusiness.$pristine || ebidinsfrm.$submitted)"><b>Please specify the Business...</b></span>
                                                                     </div>
                                                                 </div><br />
 
@@ -6271,22 +6299,44 @@ $.ajax({
                                                                     <div class="col-sm-4 col-md-4">
                                                                         <label>Agreed Value of the Car</label>
                                                                     </div>
-                                                                    <div class="col-sm-4 col-md-4">
+                                                                    <!-- <div class="input-group">
+																	    <input type="text" class="form-control" placeholder="Price"/>
+																	    <span class="input-group-addon">AUD</span>
+																	</div> -->
+                                                                    <div class="col-sm-4 col-md-4 input-group pull-left">
                                                                         <input type="text"
                                                                                id="agree" name="agree" ng-model="agree" ng-pattern="/^[0-9]*$/"
                                                                                class="input-text full-width" value="" placeholder="Agreed Value" required />
                                                                         <!-- <span style="color:red" ng-show="ebidinsfrm.agree.$error.required && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
-
-                                                                        <span style="color:red" ng-show="ebidinsfrm.agree.$error.pattern && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted)"><b>Agreed Value must be Numeric</b></span>
-                                                                        <span style="color:red" ng-show="ebidinsfrm.agree.$error.required && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.agree.$error.pattern"><b>Agreed Value is Required</b></span>
+																		<span class="input-group-addon">$</span>
                                                                     </div>
-                                                                    <div class="col-sm-4 col-md-4">
+                                                                    <div class="col-sm-3 col-md-3">
+                                                                    	<span style="color:red" ng-show="ebidinsfrm.agree.$error.pattern && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted)"><b>Agreed Value must be Numeric</b></span>
+                                                                        <span style="color:red" ng-show="ebidinsfrm.agree.$error.required && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.agree.$error.pattern"><b>Agreed Value is Required</b></span>
+                                                                    </div><!-- 
+                                                                    <div class="col-sm-4 col-md-4 input-group">
                                                                         <input type="text"
                                                                                id="market" name="market" ng-model="market" ng-pattern="/^[0-9]*$/"
                                                                                class="input-text full-width" value="" placeholder="Market Value" required />
-                                                                        <span style="color:red" ng-show="ebidinsfrm.market.$error.pattern && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted)"><b>Market Value must be Numeric</b></span>
+    			                                                        <span class="input-group-addon">AUD</span>
+    			                                                        <span style="color:red" ng-show="ebidinsfrm.market.$error.pattern && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted)"><b>Market Value must be Numeric</b></span>
                                                                         <span style="color:red" ng-show="ebidinsfrm.market.$error.required && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.market.$error.pattern"><b>Market Value is Required</b></span>
+                                                                        <span style="color:red" ng-show="ebidinsfrm.market.$error.required && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span>
+                                                                    </div> -->
+                                                                </div><br />
+                                                                <div class="row">
+                                                                    <div class="col-sm-4 col-md-4">
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-md-4 input-group pull-left">
+                                                                        <input type="text"
+                                                                               id="market" name="market" ng-model="market" ng-pattern="/^[0-9]*$/"
+                                                                               class="input-text full-width" value="" placeholder="Market Value" required />
+    			                                                        <span class="input-group-addon">$</span>
                                                                         <!-- <span style="color:red" ng-show="ebidinsfrm.market.$error.required && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-md-4">
+                                                                    	 <span style="color:red" ng-show="ebidinsfrm.market.$error.pattern && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted)"><b>Market Value must be Numeric</b></span>
+                                                                        <span style="color:red" ng-show="ebidinsfrm.market.$error.required && (!ebidinsfrm.market.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.market.$error.pattern"><b>Market Value is Required</b></span>
                                                                     </div>
                                                                 </div><br />
 
@@ -6295,16 +6345,15 @@ $.ajax({
                                                                     <div class="col-sm-4 col-md-4">
                                                                         <label>Preferred Excess Amount</label>
                                                                     </div>
-                                                                    <div class="col-sm-4 col-md-4">
+                                                                    <div class="col-sm-4 col-md-4 pull-left input-group">
                                                                         <input type="text"
                                                                                class="input-text full-width" value="" placeholder="Amount" ng-pattern="/^[0-9]*$/"
                                                                                id="excessAmount" name="excessAmount" ng-model="excessAmount" required />
-                                                                        <!-- <span style="color:red" ng-show="ebidinsfrm.excessAmount.$error.required && (!ebidinsfrm.excessAmount.$pristine || ebidinsfrm.$submitted)"><b>Preferred Excess amount is Required</b></span> -->
-                                                                        <span style="color:red" ng-show="ebidinsfrm.excessAmount.$error.pattern && (!ebidinsfrm.excessAmount.$pristine || ebidinsfrm.$submitted)"><b>Preferred Excess amount must be Numeric</b></span>
-                                                                        <span style="color:red" ng-show="ebidinsfrm.excessAmount.$error.required && (!ebidinsfrm.excessAmount.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.excessAmount.$error.pattern"><b>Preferred Excess amount is Required</b></span>
+                                                                      	<span class="input-group-addon">$</span>
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
-                                                                        &nbsp;
+                                                                         <span style="color:red" ng-show="ebidinsfrm.excessAmount.$error.pattern && (!ebidinsfrm.excessAmount.$pristine || ebidinsfrm.$submitted)"><b>Preferred Excess amount must be Numeric</b></span>
+                                                                        <span style="color:red" ng-show="ebidinsfrm.excessAmount.$error.required && (!ebidinsfrm.excessAmount.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.excessAmount.$error.pattern"><b>Preferred Excess amount is Required</b></span>
                                                                     </div>
                                                                 </div><br />
 
@@ -6340,61 +6389,75 @@ $.ajax({
                                                                         Add Extra Requirements
                                                                     </span>
                                                                 </label>
-                                                                <div id="extraDetails">
+                                                                <div id="extraDetails" style="padding:15px">
                                                                     <ul style="float:left;vertical-align:top;">
-                                                                        <li><label>External Extras</label></li>
                                                                         <li>
                                                                             <label>
-                                                                                <input type="checkbox" id="extExt1" name="extExt1" ng-model="extExt1"><span class="skin-color">Free Wind Screen</span></a>
+                                                                                <input type="checkbox" id="extExt1" name="extExt1" ng-model="extExt1"><span class="skin-color">Hire Car after Accident(if any)</span></a>
                                                                             </label>
                                                                         </li>
                                                                         <li>
                                                                             <label>
-                                                                                <input type="checkbox" id="extExt2" name="extExt2" ng-model="extExt2"><span class="skin-color">Any Driver</span></a>
+                                                                                <input type="checkbox" id="extExt2" name="extExt2" ng-model="extExt2"><span class="skin-color">Excess Free wind Screen</span></a>
                                                                             </label>
                                                                         </li>
                                                                         <li>
                                                                             <label>
-                                                                                <input type="checkbox" id="extExt3" name="extExt3" ng-model="extExt3"><span class="skin-color">Road side assistance</span></a>
+                                                                                <input type="checkbox" id="extExt3" name="extExt3" ng-model="extExt3"><span class="skin-color">Excess Free Window Screen</span></a>
                                                                             </label>
                                                                         </li>
                                                                         <li>
                                                                             <label>
-                                                                                <input type="checkbox" id="extExt4" name="extExt4" ng-model="extExt4"><span class="skin-color">Rental Car</span></a>
+                                                                                <input type="checkbox" id="extExt4" name="extExt4" ng-model="extExt4"><span class="skin-color">New Car Replace</span></a>
                                                                             </label>
                                                                         </li>
                                                                         <li>
                                                                             <label>
-                                                                                <input type="checkbox" id="extExt5" name="extExt5" ng-model="extExt5"><span class="skin-color">New Car Replacement</span></a>
+                                                                                <input type="checkbox" id="extExt5" name="extExt5" ng-model="extExt5"><span class="skin-color">Road Side Assistance</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="intExt1" name="intExt1" ng-model="intExt1"><span class="skin-color">Life time Warranty repairs</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                         <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="intExt8" name="intExt8" ng-model="intExt8"><span class="skin-color">Emergency accommodation and Transport</span></a>
                                                                             </label>
                                                                         </li>
                                                                     </ul>
 
-                                                                    <ul style="float:relative;vertical-align:top;">
-                                                                        <li><label>Internal Extras</label></li>
+                                                                    <ul style="float:relative;padding-left:5px;vertical-align:top;">
+                                                                        
                                                                         <li>
                                                                             <label>
-                                                                                <input type="checkbox" id="intExt1" name="intExt1" ng-model="intExt1"><span class="skin-color">Free Wind Screen</span></a>
+                                                                                <input type="checkbox" id="intExt2" name="intExt2" ng-model="intExt2"><span class="skin-color">No Claim Bonus Protection</span></a>
                                                                             </label>
                                                                         </li>
                                                                         <li>
                                                                             <label>
-                                                                                <input type="checkbox" id="intExt2" name="intExt2" ng-model="intExt2"><span class="skin-color">Bull Bar</span></a>
+                                                                                <input type="checkbox" id="intExt3" name="intExt3" ng-model="intExt3"><span class="skin-color">Allow Under 25 Driver</span></a>
                                                                             </label>
                                                                         </li>
                                                                         <li>
                                                                             <label>
-                                                                                <input type="checkbox" id="intExt3" name="intExt3" ng-model="intExt3"><span class="skin-color">Snokel</span></a>
+                                                                                <input type="checkbox" id="intExt4" name="intExt4" ng-model="intExt4"><span class="skin-color">Cover Theft & Fire</span></a>
                                                                             </label>
                                                                         </li>
                                                                         <li>
                                                                             <label>
-                                                                                <input type="checkbox" id="intExt4" name="intExt4" ng-model="intExt4"><span class="skin-color">Nudge Bar</span></a>
+                                                                                <input type="checkbox" id="intExt5" name="intExt5" ng-model="intExt5"><span class="skin-color">Cover Towing Cost</span></a>
                                                                             </label>
                                                                         </li>
-                                                                        <li>
+                                                                         <li>
                                                                             <label>
-                                                                                <input type="checkbox" id="intExt5" name="intExt5" ng-model="intExt5"><span class="skin-color">Bull Bar</span></a>
+                                                                                <input type="checkbox" id="intExt6" name="intExt6" ng-model="intExt6"><span class="skin-color">Essential Temporary Repairs</span></a>
+                                                                            </label>
+                                                                        </li>
+                                                                         <li>
+                                                                            <label>
+                                                                                <input type="checkbox" id="intExt7" name="intExt7" ng-model="intExt7"><span class="skin-color">Accidental Damage</span></a>
                                                                             </label>
                                                                         </li>
                                                                     </ul>
@@ -6581,13 +6644,13 @@ $.ajax({
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-1 col-md-1">
+                                                                    <div class="col-sm-1 col-md-1" ng-show="insLICSusp == 'true'">
                                                                         <label>If Yes</label>
                                                                     </div>
-                                                                    <div class="col-sm-4 col-md-4">
+                                                                    <div class="col-sm-4 col-md-4" ng-show="insLICSusp == 'true'">
                                                                         <div class="selector">
                                                                             <select class="full-width" id="insReasonSusp" ng-model="insReasonSusp"
-                                                                                    name="insReasonSusp">
+                                                                                    name="insReasonSusp" ng-required="insLICSusp == 'true'">
                                                                                 <option value="" selected disabled>Reason for Suspension</option>
                                                                                 <option>Drink & Drive</option>
                                                                                 <option>Overspeeding</option>
@@ -6595,6 +6658,7 @@ $.ajax({
                                                                                 <option>Possesion of Drugs</option>
                                                                             </select>
                                                                         </div>
+                                                                        <span style="color:red" ng-show="ebidinsfrm.insReasonSusp.$error.required && (!ebidinsfrm.insReasonSusp.$pristine || ebidinsfrm.$submitted)"><b>Please specify the Reason...</b></span>
                                                                     </div>
                                                                 </div><br />
 
@@ -6603,7 +6667,7 @@ $.ajax({
                                                                     <div class="col-sm-3 col-md-3">
                                                                         <label>No of Additional Drivers</label>
                                                                     </div>
-                                                                    <div class="col-sm-3 col-md-3">
+                                                                    <div class="col-sm-4 col-md-4">
                                                                         <div class="selector">
                                                                             <select class="full-width" id="insDriversCt" ng-model="insDriversCt"
                                                                                     name="insDriversCt">
@@ -6613,23 +6677,21 @@ $.ajax({
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-3 col-md-3">
+                                                                    <!-- <div class="col-sm-3 col-md-3">
                                                                         &nbsp;
                                                                     </div>
                                                                     <div class="col-sm-3 col-md-3">
                                                                         &nbsp;
-                                                                    </div>
-
-
+                                                                    </div> -->
                                                                 </div><br />
 
-                                                                <div class="row">
+                                                                <div class="row" ng-show="insDriversCt == 1">
                                                                     <div class="col-sm-12 col-md-12">
                                                                         <button type="button" onclick="javascript:appendRow944()" class="append_row">Add User</button>
                                                                     </div>
                                                                 </div><br />
 
-                                                                <div class="row">
+                                                                <div class="row" ng-show="insDriversCt == 1">
                                                                     <div class="col-sm-12 col-md-12">
                                                                         <table id="my-table944">
                                                                             <tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>

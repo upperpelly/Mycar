@@ -2,6 +2,7 @@ package au.com.pnspvtltd.mcd.service;
 
 import java.util.List;
 
+import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
@@ -40,4 +41,6 @@ public interface DealerService {
 	List<InsuranceQuotationVO> getDealerInsuranceQuotation(Long dealerId);
 	
 	List<FinanceQuotationVO> getDealerFinanceQuotation(Long dealerId);
+
+	String whenDealerEBidForCar(DealerEBidVO dealerEBidVO);
 }

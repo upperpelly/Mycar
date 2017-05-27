@@ -57,6 +57,185 @@ public class SearchInsuranceVO {
 	private boolean licenseGotSuspened;
 	
 	
+	
+	// Insurance extra requirements
+	private boolean extNudgeBar;//Emergency accommodation and Transport
+	private boolean extBullBar; //Accidental Damage
+	private boolean extsnokel; //Essential Temporary Repairs
+	private boolean intNudgeBar; //Cover Towing Cost
+	private boolean intBullBar; //Cover Theft & Fire
+	private boolean intsnokel;//No Claim Bonus Protection
+	private boolean AnyDriver;//Allow Under 25 Driver
+	private boolean FreeWindScreen;//Excess Free wind Screen
+	private boolean Roadsideasst;//Road Side Assistance
+	private boolean RentalCar; //Excess Free Window Screen
+	private boolean NewCarRepl;//New Car Replace
+	private boolean LifetimeWarrep;//Life time Warranty repairs
+	private boolean HireCar;//Hire Car after Accident(if any)
+	private boolean BullBar;
+	private boolean Snokel;
+	private boolean NudgeBar; 
+	
+public boolean isExtNudgeBar() {
+		return extNudgeBar;
+	}
+
+
+	public void setExtNudgeBar(boolean extNudgeBar) {
+		this.extNudgeBar = extNudgeBar;
+	}
+
+
+	public boolean isExtBullBar() {
+		return extBullBar;
+	}
+
+
+	public void setExtBullBar(boolean extBullBar) {
+		this.extBullBar = extBullBar;
+	}
+
+
+	public boolean isExtsnokel() {
+		return extsnokel;
+	}
+
+
+	public void setExtsnokel(boolean extsnokel) {
+		this.extsnokel = extsnokel;
+	}
+
+
+	public boolean isIntNudgeBar() {
+		return intNudgeBar;
+	}
+
+
+	public void setIntNudgeBar(boolean intNudgeBar) {
+		this.intNudgeBar = intNudgeBar;
+	}
+
+
+	public boolean isIntBullBar() {
+		return intBullBar;
+	}
+
+
+	public void setIntBullBar(boolean intBullBar) {
+		this.intBullBar = intBullBar;
+	}
+
+
+	public boolean isIntsnokel() {
+		return intsnokel;
+	}
+
+
+	public void setIntsnokel(boolean intsnokel) {
+		this.intsnokel = intsnokel;
+	}
+
+
+	public boolean isAnyDriver() {
+		return AnyDriver;
+	}
+
+
+	public void setAnyDriver(boolean anyDriver) {
+		AnyDriver = anyDriver;
+	}
+
+
+	public boolean isFreeWindScreen() {
+		return FreeWindScreen;
+	}
+
+
+	public void setFreeWindScreen(boolean freeWindScreen) {
+		FreeWindScreen = freeWindScreen;
+	}
+
+
+	public boolean isRoadsideasst() {
+		return Roadsideasst;
+	}
+
+
+	public void setRoadsideasst(boolean roadsideasst) {
+		Roadsideasst = roadsideasst;
+	}
+
+
+	public boolean isRentalCar() {
+		return RentalCar;
+	}
+
+
+	public void setRentalCar(boolean rentalCar) {
+		RentalCar = rentalCar;
+	}
+
+
+	public boolean isNewCarRepl() {
+		return NewCarRepl;
+	}
+
+
+	public void setNewCarRepl(boolean newCarRepl) {
+		NewCarRepl = newCarRepl;
+	}
+
+
+	public boolean isLifetimeWarrep() {
+		return LifetimeWarrep;
+	}
+
+
+	public void setLifetimeWarrep(boolean lifetimeWarrep) {
+		LifetimeWarrep = lifetimeWarrep;
+	}
+
+
+	public boolean isHireCar() {
+		return HireCar;
+	}
+
+
+	public void setHireCar(boolean hireCar) {
+		HireCar = hireCar;
+	}
+
+
+	public boolean isBullBar() {
+		return BullBar;
+	}
+
+
+	public void setBullBar(boolean bullBar) {
+		BullBar = bullBar;
+	}
+
+
+	public boolean isSnokel() {
+		return Snokel;
+	}
+
+
+	public void setSnokel(boolean snokel) {
+		Snokel = snokel;
+	}
+
+
+	public boolean isNudgeBar() {
+		return NudgeBar;
+	}
+
+
+	public void setNudgeBar(boolean nudgeBar) {
+		NudgeBar = nudgeBar;
+	}
+
+
 public String getCarParkedAt() {
 		return carParkedAt;
 	}

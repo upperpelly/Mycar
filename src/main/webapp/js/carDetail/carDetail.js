@@ -189,31 +189,25 @@ var modelYear=null;
 																"finance":value1.carEbidFinan,
 																"insurance":value1.carEbidInsur,
 																"searchLead":{
-																	"newer":value1.newCarEbid,
-																	"used":value1.usedCarEbid,
-																	"modelYear":value1.modelYear,
-																	"modelDisplay": value1.modelDisplay,
-																	"modelName": value1.modelName,															      
-																	"modelTrim": value1.autoTrim,
-																	"sModel": value1.autoTrim,
-																	"carColor" : $('#carColor').val(),
-																	 "postCode":$('#postCode').val(),
-																	/*"make":$('#seats').val(),
-																	"bodyType":$('#driveType').val(),
-																	"state":$('#fuelType').val(),
-																	"region":$('#freetext').val(),
-																	"ausCapTer":$('#vehiclePurpose').val(),
-																	"region":$('#transmission').val(),
-																	"sMake":$('#extraExternal1').val(),
-																	"extraExter2":$('#extraExternal2').val(),
-																	"extraExter3":$('#extraExternal3').val(),	
-																	"extraExter4":$('#extraExternal4').val(),	
-																	"extraExter5":$('#extraExternal5').val(),	
-																	"extraIntern1":$('#extraInternal1').val(),	
-																	"extraIntern2":$('#extraInternal2').val(),	
-																	"extraIntern3":$('#extraInternal3').val(),	
-																	"extraIntern4":$('#extraInternal4').val(),	
-																	"extraIntern5":$('#extraInternal5').val()*/
+																"newer":value1.newCarEbid,
+																"used":value1.usedCarEbid,
+																"modelYear":value1.modelYear,
+																"modelDisplay": value1.modelDisplay,
+																"modelName": value1.modelName,															      
+																"modelTrim": value1.autoTrim,
+																"sModel": value1.autoTrim,
+																"carColor" : $('#carColor').val(),
+																 "postCode":$('#postCode').val(),
+																"sMake":$('#extraExternal1').val(),
+																"extraExter2":$('#extraExternal2').val(),
+																"extraExter3":$('#extraExternal3').val(),	
+																"extraExter4":$('#extraExternal4').val(),	
+																"extraExter5":$('#extraExternal5').val(),	
+																"extraIntern1":$('#extraInternal1').val(),	
+																"extraIntern2":$('#extraInternal2').val(),	
+																"extraIntern3":$('#extraInternal3').val(),	
+																"extraIntern4":$('#extraInternal4').val(),	
+																"extraIntern5":$('#extraInternal5').val(),
 																},
 																"financeLead":{
 																	"newer":value1.newCarEbid,
@@ -277,18 +271,21 @@ var modelYear=null;
 								                                    "driverEmailId": "",
 								                                    "licenseIssueDate": $scope.abcinsLicIssueDt,
 								                                    "lastAtFaultClaimDate": $scope.abcinsLastfaultDt,
-								                                    "reasonForSuspension": $scope.abcinsReasonSusp,/*
-								                                    "AnyDriver": $scope.extExt2,//ext start
-								                                    "FreeWindScreen": $scope.extExt1,
-								                                    "RentalCar": $scope.extExt4,
-								                                    "NewCarRepl": $scope.extExt5,
-								                                    "Snokel": $scope.extExt3,// Road side //ext end
-								                                    "intsnokel": $scope.intExt3,//int start
-								                                    "intBullBar": $scope.intExt2,
-								                                    "intNudgeBar": $scope.intExt4,
-								                                    "BullBar": $scope.intExt5,
-								                                    "HireCar": $scope.intExt1,//int end
-*/								                                    "avgNoOfKmYr": $scope.abcinsAvgNoOfKms,
+								                                    "reasonForSuspension": $scope.abcinsReasonSusp,
+								                                     "AnyDriver": $scope.intExt3,//Allow Under 25 Driver 
+								                                    "FreeWindScreen": $scope.extExt2,//Excess Free wind Screen
+								                                    "RentalCar": $scope.extExt3,//Excess Free Window Screen
+								                                    "NewCarRepl": $scope.extExt4,// New Car Replace 
+								                                    "Roadsideasst":$scope.extExt5,//Road Side Assistance
+								                                    "LifetimeWarrep":$scope.intExt1,//Life time Warranty repairs
+								                                    "intsnokel": $scope.intExt2,//No Claim Bonus Protection
+								                                    "intBullBar": $scope.intExt4,//Cover Theft & Fire
+								                                    "intNudgeBar": $scope.intExt5,//Cover Towing Cost
+								                                    "HireCar": $scope.extExt1,//Hire Car after Accident(if any)
+								                                    "extsnokel":$scope.intExt6, //Essential Temporary Repairs
+								                                    "extBullBar":$scope.intExt7, //Accidental Damage
+								                                    "extNudgeBar":$scope.intExt8,//Emergency accommodation and Transport
+								                                    "avgNoOfKmYr": $scope.abcinsAvgNoOfKms,
 								                                    "noOfDrivers": $scope.abcinsDriversCt,
 								                                    "licenseGotSuspened": $scope.abcinsLICSusp
 																}
