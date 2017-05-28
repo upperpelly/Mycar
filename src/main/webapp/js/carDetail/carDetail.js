@@ -168,10 +168,28 @@ var modelYear=null;
 
 	var mainApp1 = angular.module("mainApp1", []);
 	mainApp1.controller('myController1',function($scope,$http) {
-		//alert("inside c"+$('#dateofbirth').val());
-		//alert($scope.dateofbirth);
-		
-		
+		alert("mycontroller");
+		$scope.insFlag=false;
+		$scope.finFlag=false;
+		var finKey=$.jStorage.get("finCheckKey");
+		if(!finKey){
+			var key1="FNC";
+		    $.jStorage.set("finCheckKey",key1);
+		}
+		var insKey=$.jStorage.get("insCheckKey");
+		if(!insKey){
+			var key2="INC";
+		    $.jStorage.set("insCheckKey",key2);
+		}
+		if(finKey == "FChecked" && insKey== "IChecked"){
+			$(".addFinIns").hide();
+		}
+		 if(insKey== "IChecked"){
+			 $scope.insFlag=true;
+	    }
+	    if(finKey == "FChecked"){
+	    	$scope.finFlag=true;
+	    }
 		$scope.submitSearchForm = function (isValid) {													
  														//alert("submit form");
  														//alert(isValid);

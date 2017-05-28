@@ -28,8 +28,8 @@
     <link rel="stylesheet" type="text/css" href="components/jquery.bxslider/jquery.bxslider.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="components/flexslider/flexslider.css" media="screen" />
     <script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
-<script type="text/javascript" src="js/cufon-yui.js"></script>
-<script type="text/javascript" src="js/cufon-replace.js"></script>  
+<!-- <script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script> -->  
 <script type="text/javascript" src="js/Cabin_400.font.js"></script>
 <script type="text/javascript" src="js/tabs.js"></script> 
 <script type="text/javascript" src="js/jquery.jqtransform.js" ></script>
@@ -41,8 +41,8 @@
 <link rel="stylesheet" href="css12/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
-<script type="text/javascript" src="js/cufon-yui.js"></script>
-<script type="text/javascript" src="js/cufon-replace.js"></script>  
+<!-- <script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>   -->
 <script type="text/javascript" src="js/Cabin_400.font.js"></script>
 <script type="text/javascript" src="js/tabs.js"></script> 
 <script type="text/javascript" src="js/jquery.jqtransform.js" ></script>
@@ -205,6 +205,9 @@ img.emoji {
 	background: none !important;
 	padding: 0 !important;
 }
+.selector select {
+	opacity: 1 !important;
+}
 </style>
 <script type='text/javascript' src='http://www.carqueryapi.com/wp-includes/js/jquery/jquery.js'></script>
 <script type='text/javascript' src='http://www.carqueryapi.com/wp-includes/js/jquery/jquery-migrate.min.js'></script>
@@ -272,6 +275,65 @@ body.loading .modal {
     <![endif]-->
     
     
+	   <!--  <script>
+	    $(document).ready(function(){
+	    		var scope = angular.element("#myController1").scope();
+	    		alert("biscuit");
+			    var finKey=$.jStorage.get("finCheckKey");
+			    alert(insKey);
+			    alert(finKey);
+			    if(!finKey){
+			    	var key1="FNC";
+			        $.jStorage.set("finCheckKey",key1);
+			    }
+			    var insKey=$.jStorage.get("insCheckKey");
+			    if(!insKey){
+			        // if not - load the data from the server
+			    //alert("can inside");
+			        /*value = ()*/
+			        // and save it
+			    	var key2="INC";
+			        $.jStorage.set("insCheckKey",key2);
+			    }
+			    alert(insKey);
+			    alert(finKey);
+				if(finKey == "FChecked" && insKey== "IChecked"){
+					$(".addFinIns").hide();
+			    }
+				if(insKey== "IChecked"){
+					alert("checked I;");
+					//$('#aInsCheck').attr('checked', true);
+					//$('#aInsCheck').prop('checked', true);
+					//$('#aInsCheck').attr('checked', true);
+					$('#aInsCheck').click();
+				}
+				if(finKey == "FChecked"){
+					alert("checked F;");
+					//$('#aFinCheck').attr('checked', true);
+					//$('#aFinCheck').prop('checked', true);
+					//$('#aFinCheck').attr('checked', true);
+					$('#aFinCheck').click();
+				
+				}
+				 if(insKey== "IChecked"){
+                 	//$(".insToggle").show();
+                 	$('#aInsCheck').click();
+				    }
+				    else{
+				    	$('#aInsCheck').click();
+				    	//$(".insToggle").hide();
+				    }
+				    if(finKey == "FChecked"){
+				    	//$(".finToggle").show();
+				    	$('#aFinCheck').click();
+				    	//$($0).scope().isFoo = true;
+				    }
+				    else{
+				    	$('#aFinCheck').click();
+				    	//$(".finToggle").hide();
+				  		} 
+	    }
+	    </script> -->
 </head>
 <body ng-app="mainApp1" >
     
@@ -1224,7 +1286,7 @@ We suggest that you contact the host to confirm availability and rates before su
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="cruise-description">
                                  <div id="main" class="col-sms-8 col-sm-9 col-md-11">
-                        <div class="booking-section travelo-box" ng-controller="myController1">
+                        <div class="booking-section travelo-box" ng-controller="myController1" id="myController1">
                             
                             <form class="booking-form" name="frm" novalidate ng-submit="submitSearchForm(frm.$valid)" >
                                 <div class="person-information">
@@ -1329,11 +1391,11 @@ We suggest that you contact the host to confirm availability and rates before su
 										<div class="col-sm-3 col-md-3">
 											<label>Price Range</label>
 										</div>
-										<div class="col-sm-6 col-md-6">
-											 <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000" data-show-value="true">
+										<div class="col-sm-3 col-md-3">
+											 <input type="text" name="pricemin" id="pricemin" ng-model="pricemin" class="input-text full-width" placeholder="Price Min">
 										</div>
 										<div class="col-sm-3 col-md-3">
-											<label>&nbsp;</label>
+											<input type="text" name="pricemax" id="pricemax" ng-model="pricemax" class="input-text full-width" placeholder="Price Max">
 										</div>
 									</div>
 									 <div class="toggle-container box">
@@ -1467,82 +1529,14 @@ We suggest that you contact the host to confirm availability and rates before su
                                         </div>
                                         <div class="row addFinIns">
 			                               	<ul class="pull-right">
-			                                     <li style="display: inline;"><input type="checkbox" id="aFinCheck" name="aFinCheck"><span class="skin-color" style="color:#bd191e">Add Finance</span></li>
-			                                     <li style="display: inline;"><input type="checkbox" id="aInsCheck" name="aInsCheck"><span class="skin-color" style="color:#bd191e">Add Insurance</span></li>
-			                                     <li style="display: inline;"><input type="checkbox" id="aNoCheck" name="aNoCheck"><span class="skin-color" style="color:#bd191e">I will do it Later..</span></li>
-			
-			                                 </ul>
+			                                     <li style="display: inline;"><input type="checkbox" id="aFinCheck" ng-model="aFinCheck" name="aFinCheck"><span class="skin-color" style="color:#bd191e">Add Finance</span></li>
+			                                     <li style="display: inline;"><input type="checkbox" id="aInsCheck" ng-model="aInsCheck" name="aInsCheck"><span class="skin-color" style="color:#bd191e">Add Insurance</span></li>
+			                                     <li style="display: inline;"><input type="checkbox" id="aNoCheck" name="aNoCheck" ng-model="aNoCheck" ng-disabled="aFinCheck && aInsCheck"><span class="skin-color" style="color:#bd191e">I will do it Later..</span></li>
+			                                 </ul>		                                                                        
 		                                </div>
-                                        
-									    <script>
-									    
-											    var finKey=$.jStorage.get("finCheckKey");
-											    alert(insKey);
-											    alert(finKey);
-											    if(!finKey){
-											    	var key1="FNC";
-											        $.jStorage.set("finCheckKey",key1);
-											    }
-											    var insKey=$.jStorage.get("insCheckKey");
-											    if(!insKey){
-											        // if not - load the data from the server
-											    //alert("can inside");
-											        /*value = ()*/
-											        // and save it
-											    	var key2="INC";
-											        $.jStorage.set("insCheckKey",key2);
-											    }
-											    alert(insKey);
-											    alert(finKey);
-											   
-											    
-												if(finKey == "FChecked" && insKey== "IChecked"){
-													$(".addFinIns").hide();
-											    }
-											    
-											    
-											    
-											    $("#aFinCheck").click(function(){
-											    	//alert("Fin");
-											    	if($('#aFinCheck').attr('checked')) {
-											    		$(".finToggle").show();
-														}
-											    	else{
-											    		$(".finToggle").hide();
-											    	}
-											    	
-											    });/* 
-											    $("#aFinCheck").on("click", function(){
-											        //alert("The paragraph was clicked.");
-											    }); */
-											    $("#aInsCheck").click(function(){
-											    	//alert("Finssss");
-											    	if($('#aInsCheck').attr('checked')) {
-											    		$(".insToggle").show();
-														}
-											    	else{
-											    		$(".insToggle").hide();
-											    	}
-											    });
-											    $("#aNoCheck").click(function(){
-											    	//alert("No che");
-											    	if($('#aFinCheck').attr('checked')) {
-											    		$(".finToggle").show();
-														}
-											    	else{
-											    		$(".finToggle").hide();
-											    	}
-											    	if($('#aInsCheck').attr('checked')) {
-											    		$(".insToggle").show();
-														}
-											    	else{
-											    		$(".insToggle").hide();
-											    	}
-											    });
-									    </script>
                                          <hr />
                                         
-                                      <div class="toggle-container box finToggle">
+                                      <div class="toggle-container box finToggle" ng-if="aFinCheck || finFlag">
                                                     <div class="panel style1">
                                                         <h4 class="panel-title">
                                                             <a href="#tgg4" data-toggle="collapse">Finance Requirement</a>
@@ -1633,18 +1627,10 @@ We suggest that you contact the host to confirm availability and rates before su
                                                     </div>
 
                                        </div> <hr />
-									<!-- 
-									<div data-role="rangeslider">
-								        <label for="price-min">Price:</label>
-								        <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000" data-show-value="true">
-								        <label for="price-max">Pricemax:</label>
-								        <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000" data-show-value="true">
-								    </div>
-                                     -->
                                 </div><!-- Personalinfo end -->
                                 
                                 
-                                <div class="toggle-container box insToggle">
+                                <div class="toggle-container box insToggle" ng-if="aInsCheck || insFlag">
                                 <div class="panel style1">
                                     <h4 class="panel-title">
                                         <a href="#tgg5" data-toggle="collapse">Insurance Requirements</a>
@@ -2048,21 +2034,6 @@ We suggest that you contact the host to confirm availability and rates before su
                                 </div>
                                  
                             </div>
-                                <script>
-		                                if(insKey== "IChecked"){
-		                                	$(".insToggle").show();
-									    }
-									    else{
-									    	$(".insToggle").hide();
-									    }
-									    if(finKey == "FChecked"){
-									    	$(".finToggle").show();
-									    }
-									    else{
-									    	 $(".finToggle").hide();
-									    }
-                                
-								</script>
                                  <div class="row">
                                      <div class="col-sm-12 col-md-12">
                                          By clicking CONFIRM BOOKING or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
@@ -2518,7 +2489,7 @@ We suggest that you contact the host to confirm availability and rates before su
                             </div>
                         
                         </div>
-                    </div>
+                    </div><!-- 
                     <div class="sidebar col-md-3">
                         <article class="detailed-logo">
                             <figure>
@@ -2568,7 +2539,7 @@ We suggest that you contact the host to confirm availability and rates before su
                             </ul>
                         </div>
                         
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -2843,5 +2814,58 @@ We suggest that you contact the host to confirm availability and rates before su
     </script>
    <!-- Loading -->
 <div class="modal"><!-- Place at bottom of page --></div>
+<!-- <script>
+	//var scope = angular.element("#myController1").scope();
+	//alert("biscuit");
+	var finKey=$.jStorage.get("finCheckKey");
+	/* alert(insKey);
+	alert(finKey); */
+	if(!finKey){
+		var key1="FNC";
+	    $.jStorage.set("finCheckKey",key1);
+	}
+	var insKey=$.jStorage.get("insCheckKey");
+	if(!insKey){
+	    // if not - load the data from the server
+	//alert("can inside");
+	    /*value = ()*/
+	    // and save it
+		var key2="INC";
+	    $.jStorage.set("insCheckKey",key2);
+	}
+	if(finKey == "FChecked" && insKey== "IChecked"){
+		$(".addFinIns").hide();
+	}
+	/* if(insKey== "IChecked"){
+		alert("checked I;");
+		//$('#aInsCheck').attr('checked', true);
+		//$('#aInsCheck').prop('checked', true);
+		//$('#aInsCheck').attr('checked', true);
+		$('#aInsCheck').click();
+	} *//* 
+	if(finKey == "FChecked"){
+		alert("checked F;");
+		//$('#aFinCheck').attr('checked', true);
+		//$('#aFinCheck').prop('checked', true);
+		//$('#aFinCheck').attr('checked', true);
+		//$('#aFinCheck').click();
+	
+	} */
+	 if(insKey== "IChecked"){
+		 //$('#aInsCheck').click();
+		 //document.getElementById("aInsCheck").click();
+		 angular.element(document.getElementById('myController1')).scope().insFlag=true;
+		 //$(".insToggle").show();
+	 	
+	    }
+	    if(finKey == "FChecked"){
+	    	//$('#aFinCheck').click();
+	    	//document.getElementById("aFinCheck").click();
+	    	angular.element(document.getElementById('myController1')).scope().finFlag=true;
+	    	//$(".finToggle").show();
+	    	
+	    	//$($0).scope().isFoo = true;
+	    }
+</script> -->
 </body>
 </html>
