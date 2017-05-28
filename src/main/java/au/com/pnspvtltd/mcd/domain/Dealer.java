@@ -54,6 +54,7 @@ public class Dealer implements Serializable {
 	List<VehicleDealerAreaOfOperState> vehicleDealerAreaOfOperState;
 	List<VehicleDealerAreaOfOperRegion> vehicleDealerRegion;
 	List<VehicleDealerAreaOfOperPostCode> vehicleDealerPostCode;
+	List<FinanceEntity> financeEntity;
 	
 	// start
 	
@@ -65,6 +66,16 @@ public class Dealer implements Serializable {
 	private boolean isAreaOfOperartinStates;
 	private boolean isAreaOfOperartinPostcodes;
 	private boolean isAllMakes;
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public List<FinanceEntity> getFinanceEntity() {
+		return financeEntity;
+	}
+
+	public void setFinanceEntity(
+			List<FinanceEntity> financeEntity) {
+		this.financeEntity = financeEntity;
+	}
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<VehicleDealerDetails> getVehicleDealerDetails() {

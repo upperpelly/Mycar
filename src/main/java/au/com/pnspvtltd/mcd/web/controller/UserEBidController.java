@@ -1,5 +1,10 @@
 package au.com.pnspvtltd.mcd.web.controller;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.sql.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -11,7 +16,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.User;
+import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
@@ -113,7 +120,23 @@ public class UserEBidController {
 					vehicleQuotation.setChat(vehicleQuotationVO.isChat());
 					vehicleQuotation.setRejectIt(vehicleQuotationVO.isRejectIt());
 					vehicleQuotation.setShortList(vehicleQuotationVO.isShortList());
-					
+					if(vehicleQuotationVO.getComment() != null){
+						UserQuotationHistory userQuotationHistory = new UserQuotationHistory();
+						userQuotationHistory.setComment(vehicleQuotationVO.getComment());
+						Calendar calendar = Calendar.getInstance();
+					    java.sql.Date ourJavaTimestampObject = new java.sql.Date(calendar.getTime().getTime());
+					    
+						userQuotationHistory.setCreationDate(ourJavaTimestampObject);
+						if (vehicleQuotation.getUserQuotationHistory() != null) {
+							vehicleQuotation.getUserQuotationHistory().add(userQuotationHistory);
+						} else {
+							List<UserQuotationHistory> userQuotationHistorys = new ArrayList<>();
+							userQuotationHistorys.add(userQuotationHistory);
+							vehicleQuotation.setUserQuotationHistory(userQuotationHistorys);
+						}
+						vehicleQuotationRepository.flush();
+					}
+						
 					//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
 				}
 				return vehicleQuotationVO;

@@ -23,6 +23,7 @@ import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchServMaint;
 import au.com.pnspvtltd.mcd.domain.DealerSearchTransp;
+import au.com.pnspvtltd.mcd.domain.FinanceEntity;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
@@ -87,6 +88,8 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
+import au.com.pnspvtltd.mcd.web.model.FinanceEntityVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
@@ -337,6 +340,29 @@ public class DomainModelUtil {
 			for(;it.hasNext();){
 			InventoryVO local = it.next();	
 			Inventory inventory = new Inventory();
+			try {
+				BeanUtils.copyProperties(inventory, local);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			inventoryList.add(inventory);
+			}
+		return inventoryList;
+	}
+	
+public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO inventoryListVO) {
+		
+		List<FinanceEntityVO> inventoryVOList;
+		inventoryVOList = inventoryListVO.getInventoryVO();
+		List<FinanceEntity> inventoryList = new ArrayList<FinanceEntity>();
+		Iterator<FinanceEntityVO> it = inventoryVOList.iterator();
+			for(;it.hasNext();){
+				FinanceEntityVO local = it.next();	
+				FinanceEntity inventory = new FinanceEntity();
 			try {
 				BeanUtils.copyProperties(inventory, local);
 			} catch (IllegalAccessException e) {

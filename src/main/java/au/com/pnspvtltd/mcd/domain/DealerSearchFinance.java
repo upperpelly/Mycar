@@ -15,7 +15,9 @@ import javax.persistence.Table;
 public class DealerSearchFinance implements Serializable {
 
 	
-	private boolean isNew;
+	/*private boolean isNew;*/
+	private boolean isNewer;
+	private boolean isUsed;
 	private Long dealerSearchFinanceId;
 	private String postCode;
 	
@@ -24,6 +26,7 @@ public class DealerSearchFinance implements Serializable {
 	private String make;
 	private String model;
 	private String variant;
+	private String autoscoopTrim;
 	private double vehValue;
 	private double balloonPay;
 	private double loanAmount;
@@ -33,6 +36,136 @@ public class DealerSearchFinance implements Serializable {
 	private String creditRating;
 	private Date dateOfBirth;
 	private Long userId;
+	
+	
+	
+	private int yearEmploymentBusiness;
+	private String incomeBeforeSuperTax;
+	private String incomeAfterSuperTax;
+	private String ifBusinessProvideABN;
+	private String rego;
+	private String regoState;
+	private String streetNo;
+	private String streetName;
+	private String mr;
+	private String firstName;
+	private String lastName;
+	@Column(name = "REGO")
+	public String getRego() {
+		return rego;
+	}
+
+	public void setRego(String rego) {
+		this.rego = rego;
+	}
+	@Column(name = "REGOSTATE")
+	public String getRegoState() {
+		return regoState;
+	}
+
+	public void setRegoState(String regoState) {
+		this.regoState = regoState;
+	}
+	@Column(name = "STREETNO")
+	public String getStreetNo() {
+		return streetNo;
+	}
+
+	public void setStreetNo(String streetNo) {
+		this.streetNo = streetNo;
+	}
+	@Column(name = "STREETNAME")
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+	@Column(name = "MR")
+	public String getMr() {
+		return mr;
+	}
+
+	public void setMr(String mr) {
+		this.mr = mr;
+	}
+	@Column(name = "FIRSTNAME")
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	@Column(name = "LASTNAME")
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	@Column(name = "AUTOSCOOPTRIM")
+	public String getAutoscoopTrim() {
+		return autoscoopTrim;
+	}
+
+	public void setAutoscoopTrim(String autoscoopTrim) {
+		this.autoscoopTrim = autoscoopTrim;
+	}
+
+	@Column(name = "ISNEWER")
+	public boolean isNewer() {
+		return isNewer;
+	}
+
+	public void setNewer(boolean isNewer) {
+		this.isNewer = isNewer;
+	}
+	
+	public int getYearEmploymentBusiness() {
+		return yearEmploymentBusiness;
+	}
+
+	public void setYearEmploymentBusiness(int yearEmploymentBusiness) {
+		this.yearEmploymentBusiness = yearEmploymentBusiness;
+	}
+
+	public String getIncomeBeforeSuperTax() {
+		return incomeBeforeSuperTax;
+	}
+
+	public void setIncomeBeforeSuperTax(String incomeBeforeSuperTax) {
+		this.incomeBeforeSuperTax = incomeBeforeSuperTax;
+	}
+
+	public String getIncomeAfterSuperTax() {
+		return incomeAfterSuperTax;
+	}
+
+	public void setIncomeAfterSuperTax(String incomeAfterSuperTax) {
+		this.incomeAfterSuperTax = incomeAfterSuperTax;
+	}
+
+	public String getIfBusinessProvideABN() {
+		return ifBusinessProvideABN;
+	}
+
+	public void setIfBusinessProvideABN(String ifBusinessProvideABN) {
+		this.ifBusinessProvideABN = ifBusinessProvideABN;
+	}
+	@Column(name = "ISUSED")
+	public boolean isUsed() {
+		return isUsed;
+	}
+
+	public void setUsed(boolean isUsed) {
+		this.isUsed = isUsed;
+	}
+	
+	
 	@Column(name = "USERID")
 	public Long getUserId() {
 		return userId;
@@ -42,14 +175,14 @@ public class DealerSearchFinance implements Serializable {
 		this.userId = userId;
 	}
 
-	@Column(name = "ISNEW")
+	/*@Column(name = "ISNEW")
 	public boolean isNew() {
 		return isNew;
 	}
 
 	public void setNew(boolean isNew) {
 		this.isNew = isNew;
-	}
+	}*/
 	@Column(name = "DATEOFBIRTH")
 	public Date getDateOfBirth() {
 		return dateOfBirth;

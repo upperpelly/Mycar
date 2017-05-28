@@ -91,6 +91,302 @@ public class FinanceQuotation implements Serializable {
 	private String adhoc3;
 	private String adhoc4;
 
+	// Start from DealerFinance Lead 
+	private boolean isNewer;
+	private boolean isUsed;
+	private String postCode;
+	private String autoscoopTrim;
+	private double vehValue;
+	private double balloonPay;
+	private double loanAmount;
+	private int loanPeriod;
+	private double annualIncome;
+	private String incomeType;
+	private String creditRating;
+	private Date dateOfBirth;
+	private int yearEmploymentBusiness;
+	private String incomeBeforeSuperTax;
+	private String incomeAfterSuperTax;
+	private String ifBusinessProvideABN;
+	private String rego;
+	private String regoState;
+	private String streetNo;
+	private String streetName;
+	private String mr;
+	private String firstName;
+	private String lastName;
+	
+	
+	// product Info
+	
+	private Date offerExpiryDate; // quotation Expiry Date
+	private String productID;
+	private Date productStartDate;
+	private Date productEndDate;
+	private double minAmtLoan; // doubt
+	private double maxAmtLoan;
+	private double normalCompRateInitApp;
+	private String productHighlight1; // doubt
+	private String productHighlight2;
+	private String productHighlight3;
+	private String productHighlight4;
+	private String productHighlight5;
+	
+	
+// Charges Info
+	private double bankCharges;
+	private boolean addPayAllowed;
+	private boolean foreClosureAllowed;
+	private double earlyRepayFees;
+	private double charge1;	
+	private double charge2;
+	private double charge3;
+	private double charge4;
+	private double charge5;
+	
+	// Offer Conditions
+	private String restAgeCarManfYear;
+	private String verifCert;
+	private String paymentCond;
+	private String paymentFreq;
+	private boolean canFinPurchthrPrvSeller;
+	private boolean creditCheckReq;
+	private boolean addCond1;	
+	private boolean addCond2;
+	private boolean addCond3;
+	private boolean addCond4;
+	
+	// Document Required
+	
+	private String PointIDproof;
+	private String payslip;
+	private String bankStatement;
+	private String employmentLetter;
+	private String taxFiling;
+	private String docReq1;
+	private String docReq2;
+	private String docReq3;
+	private String docReq4;
+	private String docReq5;
+	private String docReq6;
+	private String docReq7;
+	
+	// Attached document
+	private String productDisclosureStatement;
+	private String pdsDocumentAttach;
+
+	//Company/Broker Information
+	private String financeProvider;
+	private String financeProviderType;
+	private String abnNo;
+	private String australianCreditLicenceNo;
+	private String australianFinancialSerLic;
+	private String financeSerAuthRepLicNo;
+	private String contactNumber;
+	private String registeredAddress;
+	private String contactPerson;
+	private String contactPersonPhone;
+	private String contactPersonEmail;
+
+	
+	// Text field
+	private String textField;
+	
+	
+	@Column(name = "DATEOFBIRTH")
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+	
+	@Column(name = "POSTCODE")
+	public String getPostCode() {
+		return postCode;
+	}
+
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+	
+	@Column(name = "VEHVALUE")
+	public double getVehValue() {
+		return vehValue;
+	}
+
+	public void setVehValue(double vehValue) {
+		this.vehValue = vehValue;
+	}
+	@Column(name = "BALLOONPAY")
+	public double getBalloonPay() {
+		return balloonPay;
+	}
+
+	public void setBalloonPay(double balloonPay) {
+		this.balloonPay = balloonPay;
+	}
+	@Column(name = "LOANAMOUNT")
+	public double getLoanAmount() {
+		return loanAmount;
+	}
+
+	public void setLoanAmount(double loanAmount) {
+		this.loanAmount = loanAmount;
+	}
+	@Column(name = "LOANPERIOD")
+	public int getLoanPeriod() {
+		return loanPeriod;
+	}
+
+	public void setLoanPeriod(int loanPeriod) {
+		this.loanPeriod = loanPeriod;
+	}
+	@Column(name = "ANNUALINCOME")
+	public double getAnnualIncome() {
+		return annualIncome;
+	}
+
+	public void setAnnualIncome(double annualIncome) {
+		this.annualIncome = annualIncome;
+	}
+	@Column(name = "INCOMETYPE")
+	public String getIncomeType() {
+		return incomeType;
+	}
+
+	public void setIncomeType(String incomeType) {
+		this.incomeType = incomeType;
+	}
+	@Column(name = "CREDITRATING")
+	public String getCreditRating() {
+		return creditRating;
+	}
+
+	public void setCreditRating(String creditRating) {
+		this.creditRating = creditRating;
+	}
+	@Column(name = "REGO")
+	public String getRego() {
+		return rego;
+	}
+
+	public void setRego(String rego) {
+		this.rego = rego;
+	}
+	@Column(name = "REGOSTATE")
+	public String getRegoState() {
+		return regoState;
+	}
+
+	public void setRegoState(String regoState) {
+		this.regoState = regoState;
+	}
+	@Column(name = "STREETNO")
+	public String getStreetNo() {
+		return streetNo;
+	}
+
+	public void setStreetNo(String streetNo) {
+		this.streetNo = streetNo;
+	}
+	@Column(name = "STREETNAME")
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+	@Column(name = "MR")
+	public String getMr() {
+		return mr;
+	}
+
+	public void setMr(String mr) {
+		this.mr = mr;
+	}
+	@Column(name = "FIRSTNAME")
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	@Column(name = "LASTNAME")
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	@Column(name = "AUTOSCOOPTRIM")
+	public String getAutoscoopTrim() {
+		return autoscoopTrim;
+	}
+
+	public void setAutoscoopTrim(String autoscoopTrim) {
+		this.autoscoopTrim = autoscoopTrim;
+	}
+
+	@Column(name = "ISNEWER")
+	public boolean isNewer() {
+		return isNewer;
+	}
+
+	public void setNewer(boolean isNewer) {
+		this.isNewer = isNewer;
+	}
+	
+	public int getYearEmploymentBusiness() {
+		return yearEmploymentBusiness;
+	}
+
+	public void setYearEmploymentBusiness(int yearEmploymentBusiness) {
+		this.yearEmploymentBusiness = yearEmploymentBusiness;
+	}
+
+	public String getIncomeBeforeSuperTax() {
+		return incomeBeforeSuperTax;
+	}
+
+	public void setIncomeBeforeSuperTax(String incomeBeforeSuperTax) {
+		this.incomeBeforeSuperTax = incomeBeforeSuperTax;
+	}
+
+	public String getIncomeAfterSuperTax() {
+		return incomeAfterSuperTax;
+	}
+
+	public void setIncomeAfterSuperTax(String incomeAfterSuperTax) {
+		this.incomeAfterSuperTax = incomeAfterSuperTax;
+	}
+
+	public String getIfBusinessProvideABN() {
+		return ifBusinessProvideABN;
+	}
+
+	public void setIfBusinessProvideABN(String ifBusinessProvideABN) {
+		this.ifBusinessProvideABN = ifBusinessProvideABN;
+	}
+	@Column(name = "ISUSED")
+	public boolean isUsed() {
+		return isUsed;
+	}
+
+	public void setUsed(boolean isUsed) {
+		this.isUsed = isUsed;
+	}
+	// End from DealerFinance Lead
+	
+	
+	
+	
+	
 	public Long getDealSearchId() {
 		return dealSearchId;
 	}

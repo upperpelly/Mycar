@@ -38,6 +38,7 @@ public class VehicleQuotationVO {
 	private String lname;
 	private String address;
 	private String mobileNum;
+	private String comment;
 	private Date prefDate;
 	private boolean makeOffer;
 	private boolean makeDeposit;
@@ -75,6 +76,16 @@ List<DealerQuotationHistoryVO> dealerQuotationHistoryVO;
 	public boolean isAutoBid() {
 		return autoBid;
 	}
+
+	public String getComment() {
+		return comment;
+	}
+
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 
 	public String getPostCode() {
 		return postCode;

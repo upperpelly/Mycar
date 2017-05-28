@@ -370,7 +370,7 @@ function dashBoardCallSearch(model_data_id, userid)
    	    	   
    	    	   
    	    	   
-   	    	   
+   	    	 alert("data");
         	   out="";
         	   
         	   var finMax = result.search.length;
@@ -458,7 +458,7 @@ function dashBoardCallSearch(model_data_id, userid)
         	   
         		   for(i=result.vehicleQuotation.length-1;i>=0;i--)
        		{
-       		
+        			   alert("data"+JSON.stringify(result.vehicleQuotation[i]));
        		out3= out3+'<tr>'+'<td>'+result.vehicleQuotation[i].quotId+'</td>'+'<td>'+result.vehicleQuotation[i].dealerName+'</td>'+'<td>'+result.vehicleQuotation[i].dealerStockNo+'</td>'+'<td>'+result.vehicleQuotation[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleQuotationModal-' + result.vehicleQuotation[i].quotId + '" data-details=\'' + JSON.stringify(result.vehicleQuotation[i]) + '\' class="anchor-editDealerVehicleQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleQuotationModal">Edit</a></td></tr>';
        		
        		
@@ -1265,7 +1265,7 @@ function registerEditDealerVehicleQuotationModal(){
 
 		  var data = $(event.target).data('details');
 		  //var json = JSON.stringify(data);
-
+//alert("datainside"+JSON.stringify(data));
 		  var quotIdHiddenField = '<input type="hidden" name="quotId" value="' + data.quotId + '" />';
 		  var moveToUser = '<input type="checkbox" name="moveToUser" />';
 		  if(data.moveToUser)
@@ -1282,18 +1282,19 @@ function registerEditDealerVehicleQuotationModal(){
 		  var address = '<input type="text" name="address" />';
 		  var mobileNum = '<input type="text" name="mobileNum" />';
 		  var prefDate = '<input type="date" name="prefDate" />';
+		  var comment = '<input type="text" name="comment" />';
 		  
 		  // logic to retrieve
 		  out5DD = "";
-		    var dealDt = data.userQuotationHistory;
+		    var dealDt = data.userQuotationHistoryVO;
 		    if(dealDt)
 		    {
-		    	dealDt = data.userQuotationHistory.length;
+		    	dealDt = data.userQuotationHistoryVO.length;
 	  	   //document.getElementById('finMax').innerHTML=finMax;
 	  	 out5DD += '<tr><th>'+"Car History ID"+'</th><th>'+"Comment"+'</th><th>'+"Creation Date"+'</th></tr>';
-	 	   for(i=0;i<data.userQuotationHistory.length;i++)
+	 	   for(i=0;i<data.userQuotationHistoryVO.length;i++)
 				{
-	 		  out5DD= out5DD+'<tr>'+'<td>'+data.userQuotationHistory[i].userQuotationHistoryId+'</td><td>'+data.userQuotationHistory[i].comment+'</td><td>'+data.userQuotationHistory[i].creationDate+'</td><td></tr>';
+	 		  out5DD= out5DD+'<tr>'+'<td>'+data.userQuotationHistoryVO[i].userQuotationHistoryId+'</td><td>'+data.userQuotationHistoryVO[i].comment+'</td><td>'+data.userQuotationHistoryVO[i].creationDate+'</td><td></tr>';
 				}
 		    	
 		    }
@@ -1306,15 +1307,15 @@ function registerEditDealerVehicleQuotationModal(){
 		    alert("userHistory"+out5DD);
 		    
 		    out5DD1 = "";
-		    var dealDt1 = data.dealerQuotationHistory;
+		    var dealDt1 = data.dealerQuotationHistoryVO;
 		    if(dealDt1)
 		    {
-		    	dealDt1 = data.dealerQuotationHistory.length;
+		    	dealDt1 = data.dealerQuotationHistoryVO.length;
 	  	   //document.getElementById('finMax').innerHTML=finMax;
 	  	 out5DD1 += '<tr><th>'+"Car History ID"+'</th><th>'+"Comment"+'</th><th>'+"Creation Date"+'</th></tr>';
-	 	   for(i=0;i<data.dealerQuotationHistory.length;i++)
+	 	   for(i=0;i<data.dealerQuotationHistoryVO.length;i++)
 				{
-	 		  out5DD1= out5DD1+'<tr>'+'<td>'+data.dealerQuotationHistory[i].dealQuotationHistoryId+'</td><td>'+data.dealerQuotationHistory[i].comment+'</td><td>'+data.dealerQuotationHistory[i].creationDate+'</td><td></tr>';
+	 		  out5DD1= out5DD1+'<tr>'+'<td>'+data.dealerQuotationHistoryVO[i].dealQuotationHistoryId+'</td><td>'+data.dealerQuotationHistoryVO[i].comment+'</td><td>'+data.dealerQuotationHistoryVO[i].creationDate+'</td><td></tr>';
 				}
 		    	
 		    }
@@ -1383,7 +1384,19 @@ function registerEditDealerVehicleQuotationModal(){
 		   <div class="row"><div class="col-sm-12 col-md-12 product-search-title">What can be done to Quotation?</div></div>\
 		   <tr><td>Short List </td><td>' + shortList + '</td><td>Make an Offer </td><td>' +makeOffer  + '</td><td>Make a deposit </td><td>' +makeDeposit + '</td></tr>\
 		   <tr><td>Chat </td><td>' +chat  + '</td><td>Reject it </td><td>' +rejectIt  + '</td></tr>\
-		   </table></form>';
+		   </table><br /><br /><br />\
+		   <table>\
+		   <div class="row"><div class="col-sm-12 col-md-12 product-search-title">User Chat History</div></div>\
+		   <tr><td>History</td><td>' +out5DD + '</td></tr></table>\
+		   <table>\
+		   <div class="row"><div class="col-sm-12 col-md-12 product-search-title">Dealer Chat History</div></div>\
+		   <tr><td>History</td><td>' +out5DD1 + '</td></tr></table>\
+		   <table>\
+		   <div class="row"><div class="col-sm-12 col-md-12 product-search-title">Write a comment</div></div>\
+		   <tr><td>Comment</td><td>' +comment + '</td></tr>\
+		   </table>\
+		   <table>\
+		   </form>';
 		  editDealerVehicleQuotationForm = editDealerVehicleQuotationForm.replace(/>null</g, ">--NA--<");
 		  editDealerVehicleQuotationForm = editDealerVehicleQuotationForm.replace(/>undefined</g, ">--NA--<");
 		  $(".edit-dealer-vehicle-quotation-content").html(editDealerVehicleQuotationForm);
