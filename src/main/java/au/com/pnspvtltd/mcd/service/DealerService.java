@@ -7,6 +7,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
@@ -27,6 +28,7 @@ public interface DealerService {
 	
 	String addInventory(InventoryVO inventoryVO);
 	String addInventoryList(InventoryListVO inventoryVO);
+	String addFinanceEntityList(FinanceEntityListVO inventoryVO);
 	
 	List<InventoryVO> getInventory(Long dealerId);
 	

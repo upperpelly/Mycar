@@ -17,6 +17,7 @@ import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
+import au.com.pnspvtltd.mcd.domain.FinanceEntity;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
@@ -32,6 +33,8 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
+import au.com.pnspvtltd.mcd.web.model.FinanceEntityVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
@@ -166,7 +169,23 @@ public class DealerServiceImpl implements DealerService {
 		return "{\"dealerId\":" + "" + ",\"inventoryId\":" + "" + "}";
 	}
 	
-	
+	@Override
+	@Transactional
+	public String addFinanceEntityList(FinanceEntityListVO financeEntityListVO) {
+		List<FinanceEntity> inventory = domainModelUtil.toFinanceEntityList(financeEntityListVO);
+		Iterator<FinanceEntity> it = inventory.iterator();
+		List<FinanceEntityVO> listVO = financeEntityListVO.getInventoryVO();
+		Iterator<FinanceEntityVO> it2 = listVO.iterator();
+		while(it.hasNext() && it2.hasNext()){
+			FinanceEntity localInven = it.next();
+			FinanceEntityVO localInvenVO = it2.next();
+		Dealer dealer = dealerRepository.findOne(localInvenVO.getRefId());
+		
+		dealer.getFinanceEntity().add(localInven);
+		dealerRepository.flush();
+		}
+		return "{\"dealerId\":" + "" + ",\"financeEntityId\":" + "" + "}";
+	}
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -243,5 +262,4 @@ public class DealerServiceImpl implements DealerService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
