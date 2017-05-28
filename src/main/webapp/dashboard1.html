@@ -216,7 +216,7 @@ th, td {
 }
 
         tr:nth-child(even) {
-            background-color: #f2f2f2
+            background-color: #f2f2f2;
         }
 
         tr:hover {
@@ -2153,13 +2153,23 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                           <div id="settings" class="tab-pane fade">
                           <!--  Start radio button inline-->
                            <div id="tab">
-									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTAll" checked/>All
-									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTCars" />Car's Only
-									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTSerMai"/>S&M Only
-									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTInsu"/>Insurance Only
-									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTTrans"/>Transport Only
-									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTFinance"/>Finance Only
-									<input  type="radio" name="collapseeBIDGroup" data-target="#eQUOTFuelCard"/>Fuel Card Only
+									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTAll" checked/><span class="color-dark">All</span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOTCars" /><span class="color-dark">
+                                        Car's Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOTSerMai" /><span class="color-dark">
+                                        S&M Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOTInsu" /><span class="color-dark">
+                                        Insurance Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOTTrans" /><span class="color-dark">
+                                        Transport Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOTFinance" /><span class="color-dark">
+                                        Finance Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOTFuelCard" /><span class="color-dark">Fuel Card Only</span>
 							</div>
 
 							<div class="tab-content">

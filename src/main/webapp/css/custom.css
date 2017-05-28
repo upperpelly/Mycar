@@ -46,6 +46,7 @@
 .color-dark {
     color: #000000;
     font-size: 14px;
+    padding-left: 1px;
 }
 
 .submit-bgcolor {
@@ -84,4 +85,7 @@
 }
 #abtfooter b {
     color:#fff;
+}
+#mobile-search-tabs a{
+    color:#01b7f2;
 }
