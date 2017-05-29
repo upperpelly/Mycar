@@ -883,13 +883,14 @@
         var isChecked896 = true;
 
         function allSelected896() {
-            //alert("inside check box");
+           //alert("inside check box");
             // this line is for toggle the check
             //isChecked = !isChecked;
             var flag= document.getElementById("carEbidFinan").checked;
             var data="";
             if(flag){ 
             	data="FChecked";
+            	
             }
             else
            	{
@@ -1206,7 +1207,7 @@
 <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '238604546585672',
+				appId : '249863545451459',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -2338,7 +2339,7 @@ $.ajax({
                     	alert("used is checked");
                     }
                     var carEbidFinan = false;
-                    //alert(document.getElementById("newCarEbid").value);
+                    //alert(document.getElementById("carEbidFinan").value);
                     carEbidFinan = document.getElementById("carEbidFinan").value;
                     if (carEbidFinan == "on") carEbidFinan = true;
                     var carEbidInsur = false;

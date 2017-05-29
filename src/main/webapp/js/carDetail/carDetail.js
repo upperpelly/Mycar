@@ -168,7 +168,7 @@ var modelYear=null;
 
 	var mainApp1 = angular.module("mainApp1", []);
 	mainApp1.controller('myController1',function($scope,$http) {
-		alert("mycontroller");
+		//alert("mycontroller");
 		$scope.insFlag=false;
 		$scope.finFlag=false;
 		var finKey=$.jStorage.get("finCheckKey");
@@ -191,7 +191,9 @@ var modelYear=null;
 	    	$scope.finFlag=true;
 	    }
 		$scope.submitSearchForm = function (isValid) {													
- 														//alert("submit form");
+ 														//alert("before submit form finance"+$scope.finFlag);
+ 														//alert("before submit form insurance"+$scope.insFlag);
+ 														//alert(document.getElementById("extraExternal6").checked);
  														//alert(isValid);
 														//alert("inside cdddd"+$('#startdate').data('datepicker').viewDate);
 														/*var dateInFormat= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");
@@ -204,8 +206,8 @@ var modelYear=null;
 														var jsonInputToAPI = 
 														{
 																"userId":userId,
-																"finance":value1.carEbidFinan,
-																"insurance":value1.carEbidInsur,
+																"finance":$scope.finFlag,
+																"insurance": $scope.insFlag,
 																"searchLead":{
 																"newer":value1.newCarEbid,
 																"used":value1.usedCarEbid,
@@ -226,6 +228,7 @@ var modelYear=null;
 																"extraIntern3":$('#extraInternal3').val(),	
 																"extraIntern4":$('#extraInternal4').val(),	
 																"extraIntern5":$('#extraInternal5').val(),
+																"extraExter6":$('#extraExternal6').val(),
 																},
 																"financeLead":{
 																	"newer":value1.newCarEbid,
@@ -324,7 +327,7 @@ var modelYear=null;
 																		}).success(function(data) {
 																			$body.removeClass("loading");
 																			alert("Successfully Stored.. ");
-																			alert(data);
+																			//alert(data);
 																			var url="dashboard1.html";
 																			/*var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId+"&firstName="+firstName;*/
 																							alert("Thank You. Your Seach ID is " + data.searchId);

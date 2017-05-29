@@ -370,7 +370,7 @@ function dashBoardCallSearch(model_data_id, userid)
    	    	   
    	    	   
    	    	   
-   	    	 alert("data");
+   	    	 //alert("data");
         	   out="";
         	   
         	   var finMax = result.search.length;
@@ -458,7 +458,7 @@ function dashBoardCallSearch(model_data_id, userid)
         	   
         		   for(i=result.vehicleQuotation.length-1;i>=0;i--)
        		{
-        			   alert("data"+JSON.stringify(result.vehicleQuotation[i]));
+        			   //alert("data"+JSON.stringify(result.vehicleQuotation[i]));
        		out3= out3+'<tr>'+'<td>'+result.vehicleQuotation[i].quotId+'</td>'+'<td>'+result.vehicleQuotation[i].dealerName+'</td>'+'<td>'+result.vehicleQuotation[i].dealerStockNo+'</td>'+'<td>'+result.vehicleQuotation[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleQuotationModal-' + result.vehicleQuotation[i].quotId + '" data-details=\'' + JSON.stringify(result.vehicleQuotation[i]) + '\' class="anchor-editDealerVehicleQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleQuotationModal">Edit</a></td></tr>';
        		
        		
@@ -1304,7 +1304,7 @@ function registerEditDealerVehicleQuotationModal(){
 		    }
 		    
 		    //forFinance("deal-operation",out5DD);
-		    alert("userHistory"+out5DD);
+		    //alert("userHistory"+out5DD);
 		    
 		    out5DD1 = "";
 		    var dealDt1 = data.dealerQuotationHistoryVO;
@@ -1325,7 +1325,7 @@ function registerEditDealerVehicleQuotationModal(){
 		    }
 		    
 		    //forFinance("deal-operation",out5DD);
-		    alert("userHistory"+out5DD1);
+		    //alert("userHistory"+out5DD1);
 		  // logic to retrieve
 		  
 		  //alert("data.oi"+data.postCode);

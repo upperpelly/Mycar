@@ -90,7 +90,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 		SearchFinance searchFinance=null;
 		searchFinance = domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
 		// Create User Finance Lead when isfinance and searchFinance != null
-		if(userEBidVO.isFinance() || searchFinance != null){
+		if(userEBidVO.isFinance() && searchFinance != null){
 		
 		/*searchFinance = domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());*/
 		if (user.getSearchFinance() != null) {
@@ -104,7 +104,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 		SearchInsurance searchInsurance =null;
 		searchInsurance = domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
 		// Create User Insurance Lead when isinsurer and searchInsurance != null
-		if(userEBidVO.isInsurance() || searchInsurance!=null){
+		if(userEBidVO.isInsurance() && searchInsurance!=null){
 		
 		/*searchInsurance = domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());*/
 		if (user.getSearchInsurance() != null) {
@@ -239,7 +239,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 		for (Dealer dealer : financeDealers) {
 		DealerSearchFinance dealerSearchFinance = null;
 		
-		if(userEBidVO.isFinance() || searchFinance !=null){
+		if(userEBidVO.isFinance() && searchFinance !=null){
 					// Create Dealer Finance Lead if he provides finance
 					
 						dealerSearchFinance = domainModelUtil.toDealerSearchFinance(userEBidVO.getFinanceLead());
@@ -271,7 +271,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 				for (Dealer dealer : insuranceDealers) {
 				DealerSearchInsurance dealerSearchInsurance = null;
 
-							if(userEBidVO.isInsurance() || searchInsurance!=null){
+							if(userEBidVO.isInsurance() && searchInsurance!=null){
 							// Create Dealer Insurance Lead if he provides insurance
 							if (dealer.isInsurer()) {
 								dealerSearchInsurance = domainModelUtil.toDealerSearchInsurance(userEBidVO.getInsuranceLead());
