@@ -40,7 +40,8 @@ if(!value1){
     $.jStorage.set("carKey",value1);
 }
 //alert(value1.priceMin+"&priceMax="+value1.priceMax+"I can user");
-//alert(JSON.stringify(value1));
+alert("value1");
+alert(JSON.stringify(value1));
 console.log(JSON.stringify(value1));
 function signingout(){
 	
@@ -233,10 +234,10 @@ var modelYear=null;
 																"financeLead":{
 																	"newer":value1.newCarEbid,
 																	"used":value1.usedCarEbid,
-																	"modelYear":value1.modelYear,
-																	"modelDisplay": value1.modelDisplay,
-																	"modelName": value1.modelName,															      
-																	"modelTrim": modelTrim,
+																	"year":value1.modelYear,
+																	"make": value1.modelDisplay,
+																	"model": value1.modelName,															      
+																	"autoscoopTrim": modelTrim,
 																	"postCode":$scope.postCode,
 																	"incomeType":$scope.incomeType,
 																	"yearEmploymentBusiness":$scope.yearEmployement,
@@ -261,10 +262,10 @@ var modelYear=null;
 																"insuranceLead":{
 																	"newer":value1.newCarEbid,
 																	"used":value1.usedCarEbid,
-																	"modelYear":value1.modelYear,
-																	"modelDisplay": value1.modelDisplay,
-																	"modelName": value1.modelName,															      
-																	"modelTrim": modelTrim,
+																	"year":value1.modelYear,
+																	"make": value1.modelDisplay,
+																	"model": value1.modelName,															      
+																	"autoscoopTrim": modelTrim,
 																	"postCode":$scope.postCode,
 																	"insuranceType":$scope.insuranceType,
 																	"regNo":"",
@@ -314,7 +315,8 @@ var modelYear=null;
 
 														$body = $("body");
 														$body.addClass("loading");
-													   
+														alert(JSON.stringify(jsonInputToAPI));
+														console.log(JSON.stringify(jsonInputToAPI));
 														//alert("Before Call");
 														var wsURL = 'api/eBid/car';
 														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/car';
@@ -331,7 +333,7 @@ var modelYear=null;
 																			var url="dashboard1.html";
 																			/*var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId+"&firstName="+firstName;*/
 																							alert("Thank You. Your Seach ID is " + data.searchId);
-																							window.location=url;								
+																							//window.location=url;								
 																						}); 
 														}
 													else

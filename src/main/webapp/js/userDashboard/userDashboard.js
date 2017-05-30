@@ -103,6 +103,10 @@ $(document).ready(function(){
 	    <dt>ZIP code:</dt><dd>' +value.postCode+ '</dd>\
 	    <dt>Country:</dt><dd>Australia</dd>\
 		</dl>';
+	
+	
+	userDetails = userDetails.replace(/>null</g, ">--NA--<");
+	userDetails = userDetails.replace(/>undefined</g, ">--NA--<");
 	/*alert("onload");
 		alert(userDetails);
 		console.log(userDetails); <dt>Date of birth:</dt><dd>15 August 1985</dd>\
@@ -2936,6 +2940,14 @@ mainApp1.controller('myController13',function($scope, $http) {
 					//alert("in user con");function vehicleRetrievalforLogBook(){
 	//alert("in angular");
 	$body = $("body");
+	$('#UserPhoneNo').val(value.abnNumber);
+	$('#UserFirstName').val(value.firstName);
+	$('#UserLastName').val(value.lastName);
+	$('#UserStreetNo').val(value.streetNumber);
+	$('#UserStreetName').val(value.streetName);
+	$('#UserpostCode').val(value.postCode);
+	$('#UserRegion').val(value.drivingLicense);
+	$('#UserState').val(value.state);
 	$scope.vehicleRetrievalforLogBook = function() {				
 						//alert("inside ne method");
 						var wsURL = 'api/Myvehicle/'+myVehicleIDuse;
@@ -3642,12 +3654,12 @@ mainApp1.controller('myController13',function($scope, $http) {
 													
 													$scope.submitSearchFormupdateset = function() {
 														updateSettingloadImage();
+														//alert("vachindi");
 														//alert("inside updatset");
 														/*alert("inside Sesdarv Maint");
 														alert(myVehicleIDuse);*/
 														/*var vehicleTypeServMaint= stringToDate($('#vehicleTypeServMaint').val(),"dd/MM/yyyy","/");
 														var nextServiceMaintenanceDate= stringToDate($('#nextServiceMaintenanceDate').val(),"dd/MM/yyyy","/");*/
-														
 														var fileChooserlogupdateset = document.getElementById('file-chooser-updateset');
 														var filefileChooserupdateset = fileChooserlogupdateset.files[0];
 														var objKeyupdateset = 'facebook-' + fbUserId + '/' + filefileChooserupdateset.name;
