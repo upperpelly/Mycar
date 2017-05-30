@@ -3604,13 +3604,13 @@ js.src = "http://connect.facebook.net/en_US/all.js";
                     	//alert("Not saved update photo"+err);
                         /* results.innerHTML = 'ERROR: ' + err; */
                     	alert("Sorry we are not able to upload photo "+file.name+"for update profile.. It failed with following error"+err+"However please send the photo to autoscoop support team which will upload and link it to your account thanks");
-
+                    	refr();
                     } else {
 
                     	//alert("Successfully saved image to S3..");
                     	alert("Successfully uploaded photo "+file.name+" to database");
                         //alert(listObjs());
-
+                    	refr();
 
                     }
 

@@ -12,6 +12,11 @@ function setting(data){
          // alert("came here");
 
 }
+function refr(){
+var url="dashboard1.html";
+
+window.location=url;
+}
 function alreadyLogged(){
 	var value = $.jStorage.get("key");
 	//alert("Checking logged or not");
@@ -3702,10 +3707,10 @@ mainApp1.controller('myController13',function($scope, $http) {
 									                		success: function(result){
 									                			$body.removeClass("loading");
 									                			setting(result);
-									                			alert("Successfully upated photo to user12");
+									                			alert("Successfully upated profile.. Plz wait for the image to be uploaded..");
 									                			var url="dashboard1.html";
 																
-																window.location=url;
+																//window.location=url;
 									                			
 									                			
 									                		}
