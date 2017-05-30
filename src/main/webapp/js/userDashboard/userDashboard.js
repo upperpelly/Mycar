@@ -3004,7 +3004,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 								// start of logexpenses
 								function registerEditDealerVehicleexpnsModal(){       
 
-alert("came inside log expenses");
+//alert("came inside log expenses");
 									//Add a Bootstrap Modal DIV to vehicle expns Details
 									var editDealerVehicleexpnsModal = '<div class="modal fade" id="editDealerVehicleexpnsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
 									    <div class="modal-dialog">\
@@ -3194,7 +3194,7 @@ alert("came inside log expenses");
 								// start of logsermaint
 								function registerEditDealerVehicleservmtModal(){       
 
-alert("came inside log servmaint");
+//alert("came inside log servmaint");
 									//Add a Bootstrap Modal DIV to vehicle expns Details
 									var editDealerVehicleservmtModal = '<div class="modal fade" id="editDealerVehicleservmtModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
 									    <div class="modal-dialog">\
@@ -3646,7 +3646,7 @@ alert("came inside log servmaint");
 														var fileChooserlogupdateset = document.getElementById('file-chooser-updateset');
 														var filefileChooserupdateset = fileChooserlogupdateset.files[0];
 														var objKeyupdateset = 'facebook-' + fbUserId + '/' + filefileChooserupdateset.name;
-														alert(objKeyupdateset);
+														//alert(objKeyupdateset);
 														var jsonInputToAPI = {"userId":value.userId,"photo":objKeyupdateset, "phoneNumber":$('#UserPhoneNo').val(), "firstName":$('#UserFirstName').val(),"lastName":$('#UserLastName').val(),"streetNumber":$('#UserStreetNo').val(),"streetName":$('#UserStreetName').val(),"postCode":$('#UserpostCode').val(),"region":$('#UserRegion').val(),"state":$('#UserState').val(),"desc":$('#UserDesc').val()}
 														
 														/*var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
