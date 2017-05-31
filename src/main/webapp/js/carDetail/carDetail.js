@@ -40,8 +40,8 @@ if(!value1){
     $.jStorage.set("carKey",value1);
 }
 //alert(value1.priceMin+"&priceMax="+value1.priceMax+"I can user");
-alert("value1");
-alert(JSON.stringify(value1));
+//alert("value1");
+//alert(JSON.stringify(value1));
 console.log(JSON.stringify(value1));
 function signingout(){
 	
@@ -315,7 +315,7 @@ var modelYear=null;
 
 														$body = $("body");
 														$body.addClass("loading");
-														alert(JSON.stringify(jsonInputToAPI));
+														//alert(JSON.stringify(jsonInputToAPI));
 														console.log(JSON.stringify(jsonInputToAPI));
 														//alert("Before Call");
 														var wsURL = 'api/eBid/car';

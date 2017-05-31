@@ -1207,7 +1207,7 @@
 <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '238604546585672',
+				appId : '249863545451459',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -1756,8 +1756,8 @@ $.ajax({
 
                             }).success(function (data) {
                                 $body.removeClass("loading");
-                                alert("successfully stored");
-                                alert("Plz wait for the images to upload.. don't refresh..");
+                                alert("Successfully Stored transport Request However, Plz wait for the images to upload.. don't refresh or switch from homepage..  the upload of images will start soon..");
+                                //alert("");
                                 var url = "dashboard1.html";
 
                                 //window.location = url;
@@ -1926,8 +1926,9 @@ $.ajax({
 
                             }).success(function (data) {
                                 $body.removeClass("loading");
-                                alert("successfully stored");
-                                alert("Plz wait for the images to upload.. Don't Refresh");
+                                alert("Successfully Stored Service && Maintenance Request However, Plz wait for the images to upload.. don't refresh or switch from homepage.. the upload of images will start soon..");
+                                //alert("successfully stored");
+                                //alert("Plz wait for the images to upload.. Don't Refresh");
                                 var url = "dashboard1.html";
 
                                 //window.location = url;
@@ -11494,6 +11495,13 @@ $.ajax({
                         } else {
                             //alert("Successfully upload serv and maint image1 to S3");
                             alert("Successfully uploaded photo " + file.name + " to database");
+                            if(!file2 && !file3 && !file4){
+                            	  // start redirect from Serv && Maint
+                                alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
+                                 var url = "dashboard1.html";
+                				window.location = url;
+                				// end of redirect from Serv && Maint 
+                            }
                         }
                     });
                 } else {
@@ -11518,6 +11526,13 @@ $.ajax({
                         } else {
                             //alert("Successfully upload serv and maint image2 to S3");
                             alert("Successfully uploaded photo " + file2.name + " to database");
+                            if(!file3 && !file4){
+                          	  // start redirect from Serv && Maint
+                              alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
+                               var url = "dashboard1.html";
+              				window.location = url;
+              				// end of redirect from Serv && Maint 
+                          }
                         }
                     });
 
@@ -11544,6 +11559,13 @@ $.ajax({
                         } else {
                             //alert("Successfully upload serv and maint image3 to S3");
                             alert("Successfully uploaded photo " + file3.name + " to database");
+                            if(!file4){
+                          	  // start redirect from Serv && Maint
+                              alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
+                               var url = "dashboard1.html";
+              				window.location = url;
+              				// end of redirect from Serv && Maint 
+                          }
                         }
                     });
                 } else {
@@ -11567,7 +11589,12 @@ $.ajax({
                             alert("Sorry we are not able to upload photo " + file4.name + "for service and maintenance.. It failed with following error " + err + " However please send the photo to autoscoop support team which will upload and link it to your account thanks");
                         } else {
                             //alert("Successfully upload serv and maint image4 to s3");
-                            alert("Successfully uploaded photo " + file4.name + " to database");
+                            //alert("Successfully uploaded photo " + file4.name + " to database");
+                            // start redirect from Serv && Maint
+                            alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
+                             var url = "dashboard1.html";
+            				window.location = url;
+            				// end of redirect from Serv && Maint 
                         }
                     });
 
@@ -11576,6 +11603,8 @@ $.ajax({
 
                 }
                 // end
+                
+              
 
             }, false);
 
@@ -11750,6 +11779,13 @@ $.ajax({
 
                             //alert("Successfully uploaded for transpo image1 to S3");
                             alert("Successfully uploaded photo " + file.name + " to database");
+                            if(!file2){
+                          	  // start redirect from trans
+                              alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
+                               var url = "dashboard1.html";
+              				window.location = url;
+              				// end of redirect from trans 
+                          }
 
                         }
                     });
@@ -11775,7 +11811,12 @@ $.ajax({
                             alert("Sorry we are not able to upload photo " + file2.name + "for transport service.. It failed with following error" + err + "However please send the photo to autoscoop support team which will upload and link it to your account thanks");
                         } else {
                             //alert("Successfully uploaded transpo image2 to s3");
-                            alert("Successfully uploaded photo " + file2.name + " to database");
+                            //alert("Successfully uploaded photo " + file2.name + " to database");
+                            // start redirect from trans
+                            alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
+                             var url = "dashboard1.html";
+            				window.location = url;
+            				// end of redirect from trans 
 
                         }
                     });
@@ -11783,6 +11824,7 @@ $.ajax({
 
                     alert("We found Nothing to upload for transport server photo2");
                 }
+               
             }, false);
 
             /*!

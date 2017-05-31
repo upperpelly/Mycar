@@ -2976,7 +2976,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 									outLogT += '<tr><th>'+"Trip Type"+'</th><th>'+"TripStart Addr"+'</th><th>'+"TripEnd Addr"+'</th><th>'+"Trip Date"+'</th><th>'+"OdoMeter Start"+'</th><th>'+"OdoMeter End"+'</th><th>'+"No of Kms"+'</th><th>'+"Purpose of Trip"+'</th><th>'+"Driver Name"+'</th><th>'+"Trip Log Date"+'</th><th>'+'View/Update'+'</th></tr>';
 					           	    for(i=0;i<logTlen;i++)
 					          		 {
-					           	    	outLogT= outLogT+'<tr>'+'<td>'+result.myVehicleLogBook[i].tripType+'</td>'+'<td>'+result.myVehicleLogBook[i].fromLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].toLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].date+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterStartOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterEndOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].routeKm+'</td>'+'<td>'+result.myVehicleLogBook[i].tripDescription+'</td>'+'<td>'+result.myVehicleLogBook[i].flex1+'</td></tr>';
+					           	    	outLogT= outLogT+'<tr>'+'<td>'+result.myVehicleLogBook[i].tripType+'</td>'+'<td>'+result.myVehicleLogBook[i].fromLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].toLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].date+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterStartOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterEndOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].routeKm+'</td>'+'<td>'+result.myVehicleLogBook[i].tripDescription+'</td>'+'<td>'+result.myVehicleLogBook[i].flex1+'</td>'+'<td><a href="#" id="anchor-editDealerVehiclelogbkModal-' + result.myVehicleLogBook[i].myVehicleLogBookId + '" data-details=\'' + JSON.stringify(result.myVehicleLogBook[i]) + '\' class="anchor-editDealerVehiclelogbkModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehiclelogbkModal">View</a></td></tr>';;
 					          		 }
 					           	 outLogT = outLogT.replace(/>null</g, ">--NA--<");
 					           	outLogT = outLogT.replace(/>undefined</g, ">--NA--<");
@@ -2986,8 +2986,115 @@ mainApp1.controller('myController13',function($scope, $http) {
 									outLogT='<h2>No records for Log Trips</h2>';
 									}
 								$('#logTripTable').html(outLogT);
-								
-								
+								registerEditDealerVehiclelogbkModal();
+								// start of LogBook 
+								function registerEditDealerVehiclelogbkModal(){       
+
+//alert("came inside log expenses");
+									//Add a Bootstrap Modal DIV to vehicle logbk Details
+									var editDealerVehiclelogbkModal = '<div class="modal fade" id="editDealerVehiclelogbkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+									    <div class="modal-dialog">\
+									        <div class="modal-content">\
+									            <div class="modal-header">\
+									                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+									                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+									            </div>\
+												<h4 class="modal-title" id="myModalLabel"><center>View Log Expenses Details</center></h4>\
+										        <form id="edit-dealer-vehicle-logbk-content-form">\
+												<div class="modal-body edit-dealer-vehicle-logbk-content">\
+									            </div>\
+									            <div class="modal-footer">\
+									                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+												</div>\
+									            </form>\
+									        	<p><center>&copy; 2017 Autoscoop</center></p>\
+									        </div>\
+									    </div>\
+									</div>';
+
+									$(document.body).append(editDealerVehiclelogbkModal);
+									
+										
+									$('a.anchor-editDealerVehiclelogbkModal').on('click', function(event) {
+										
+										
+										var data = $(event.target).data('details');
+										//var json = JSON.stringify(data);
+										
+										var quotIdHiddenField = '<input type="hidden" name="myVehicleLogBookId" value="' + data.myVehicleLogBookId + '" />';
+										
+										
+								             
+								          var editDealerVehiclelogbkForm = '<form id="edit-dealer-vehicle-logbk-content-form"><table>\
+								        	 	<tr><td>Log Book ID</td><td>' + data.myVehicleLogBookId + '</td></tr>\
+												</table>\
+												<table>\
+												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Book Details</div></div>\
+												<tr><td>Trip Type</td><td>' + data.tripType + '</td></tr>\
+												<tr><td>From Location </td><td>' + data.fromLocation + '</td></tr>\
+												<tr><td>To Location </td><td>' + data.toLocation + '</td></tr>\
+												<tr><td>Date </td><td>' + data.date + '</td></tr>\
+												<tr><td>ODO Meter StartOfTrip</td><td>' + data.odoMeterStartOfTrip + '</td></tr>\
+												<tr><td>ODO Meter EndOfTrip</td><td>' + data.odoMeterEndOfTrip + '</td></tr>\
+												<tr><td>Route KM</td><td>' + data.routeKm + '</td></tr>\
+												<tr><td>Trip Description</td><td>' + data.tripDescription + '</td></tr>\
+												<tr><td>Trip Description</td><td>' + data.flex1 + '</td></tr>\
+												</table>\
+												</form>';
+											editDealerVehiclelogbkForm = editDealerVehiclelogbkForm.replace(/>null</g, ">--NA--<");
+											editDealerVehiclelogbkForm = editDealerVehiclelogbkForm.replace(/>undefined</g, ">--NA--<");
+											$(".edit-dealer-vehicle-logbk-content").html(editDealerVehiclelogbkForm);
+									
+								          
+								         
+										
+										/*var editDealerVehicleexpnsForm = '<form id="edit-dealer-vehicle-expns-content-form"><table>\
+											<tr><td>Log Expense ID</td><td>' + data.myVehicleFuelExpensesId + '</td></tr>\
+											</table>\
+											<table>\
+											<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Expense Details</div></div>\
+											<tr><td>Expensive Type</td><td>' + data.recordType + '</td></tr>\
+											<tr><td>Expensive Category</td><td>' + data.business + '</td></tr>\
+											<tr><td>Expensive Date</td><td>' + data.date + '</td></tr>\
+											<tr><td>Expensive Description</td><td>' + data.others + '</td></tr>\
+											<tr><td>Amount</td><td>' + data.amount + '</td></tr>\
+											</table>\
+											</form>';
+										editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>null</g, ">--NA--<");
+										editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>undefined</g, ">--NA--<");
+										$(".edit-dealer-vehicle-expns-content").html(editDealerVehicleexpnsForm);*/
+									});
+									
+										
+									$.fn.convertFormDataToJSON = function(){
+										var checkboxes = [];
+										$(this).find('input:checkbox:checked').each(function(){
+											checkboxes.push($(this).attr("name"));
+										});
+										var o = {};
+									    var a = this.serializeArray();
+									    $.each(a, function() {
+									        if (o[this.name] != undefined) {
+									            if (!o[this.name].push) {
+									                o[this.name] = [o[this.name]];
+									            }
+									            if($.inArray(this.name, checkboxes) != -1)
+									              o[this.name].push('true' || '');
+									            else
+									            	o[this.name].push(this.value || '');
+									        } else {
+									        	if($.inArray(this.name, checkboxes) != -1)
+									        		o[this.name] = 'true' || '';
+										        else
+										           	o[this.name] = this.value || '';
+									        }
+									    });
+									    return JSON.stringify(o);
+									}
+
+									
+								}	
+								// end of LogBook
 								var LogE = result.myVehicleFuelExpenses;
 								outLogE="";
 								//alert(result.myVehicleFuelExpenses.length);
@@ -3782,7 +3889,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 																							
 																		}).success(function(data) {
 																			$scope.vehicleRetrievalforLogBook();
-																			alert("Service & Maintenance Successfully Stored..");
+																			alert("Successfully Stored Service & Maintenance request However, Plz wait for the images to upload.. don't refresh or switch from your dashboard..  the upload of images will start soon..");
+																			//alert("Service & Maintenance Successfully Stored..");
 																															
 																						});													
 														};
@@ -3835,7 +3943,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 																								
 																			}).success(function(data) {
 																				$scope.vehicleRetrievalforLogBook();
-																				alert("Fuel Expenses Successfully Stored..");
+																				alert("Successfully Stored Fuel Expenses request However, Plz wait for the images to upload.. don't refresh or switch from your dashboard..  the upload of images will start soon..");
+																				//alert("Fuel Expenses Successfully Stored..");
 																																
 																							});													
 															};
