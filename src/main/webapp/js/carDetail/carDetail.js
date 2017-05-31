@@ -333,7 +333,7 @@ var modelYear=null;
 																			var url="dashboard1.html";
 																			/*var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId+"&firstName="+firstName;*/
 																							alert("Thank You. Your Seach ID is " + data.searchId);
-																							//window.location=url;								
+																							window.location=url;								
 																						}); 
 														}
 													else

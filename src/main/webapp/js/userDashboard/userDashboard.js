@@ -329,8 +329,9 @@ function dashBoardPhotoUpdate()
 		data: jsonInputToAPI,
 		contentType:'application/json',
 		success: function(result){
-			
-			alert("Successfully updated ....");
+			// change here
+			//alert("Successfully updated ....");
+			alert("Successfully upated profile.. Plz wait for the image to be uploaded.. Don't refresh or switch your Dashboard..");
 			
 		}
 	});
@@ -3826,7 +3827,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 									                		success: function(result){
 									                			$body.removeClass("loading");
 									                			setting(result);
-									                			alert("Successfully upated profile.. Plz wait for the image to be uploaded..");
+									                			alert("Successfully upated profile.. Plz wait for the image to be uploaded.. Don't refresh or switch your Dashboard..");
 									                			var url="dashboard1.html";
 																
 																//window.location=url;
