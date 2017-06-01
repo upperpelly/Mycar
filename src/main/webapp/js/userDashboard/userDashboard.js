@@ -3028,19 +3028,19 @@ mainApp1.controller('myController13',function($scope, $http) {
 										
 								             
 								          var editDealerVehiclelogbkForm = '<form id="edit-dealer-vehicle-logbk-content-form"><table>\
-								        	 	<tr><td>Log Book ID</td><td>' + data.myVehicleLogBookId + '</td></tr>\
+								        	 	<tr><td>Log Book ID</td><td> <input type="hidden" name="myVehicleLogBookId" class="input-text full-width" value="' + data.myVehicleLogBookId + '"/></td></tr>\
 												</table>\
 												<table>\
 												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Book Details</div></div>\
-												<tr><td>Trip Type</td><td>' + data.tripType + '</td></tr>\
-												<tr><td>From Location </td><td>' + data.fromLocation + '</td></tr>\
-												<tr><td>To Location </td><td>' + data.toLocation + '</td></tr>\
-												<tr><td>Date </td><td>' + data.date + '</td></tr>\
-												<tr><td>ODO Meter StartOfTrip</td><td>' + data.odoMeterStartOfTrip + '</td></tr>\
-												<tr><td>ODO Meter EndOfTrip</td><td>' + data.odoMeterEndOfTrip + '</td></tr>\
-												<tr><td>Route KM</td><td>' + data.routeKm + '</td></tr>\
-												<tr><td>Trip Description</td><td>' + data.tripDescription + '</td></tr>\
-												<tr><td>Trip Description</td><td>' + data.flex1 + '</td></tr>\
+												<tr><td>Trip Type</td><td> <input type="text" name="tripType" class="input-text full-width" value="' + data.tripType + '"/></td></tr>\
+												<tr><td>From Location </td><td> <input type="text" name="fromLocation" class="input-text full-width" value="' + data.fromLocation + '"/></td></tr>\
+												<tr><td>To Location </td><td> <input type="text" name="toLocation" class="input-text full-width" value="' + data.toLocation + '"/></td></tr>\
+												<tr><td>Date </td><td> <input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
+												<tr><td>ODO Meter StartOfTrip</td><td> <input type="text" name="odoMeterStartOfTrip" class="input-text full-width" value="' + data.odoMeterStartOfTrip + '"/></td></tr>\
+												<tr><td>ODO Meter EndOfTrip</td><td> <input type="text" name="odoMeterEndOfTrip" class="input-text full-width" value="' + data.odoMeterEndOfTrip + '"/></td></tr>\
+												<tr><td>Route KM</td><td> <input type="text" name="routeKm" class="input-text full-width" value="' + data.routeKm + '"/></td></tr>\
+												<tr><td>Trip Description</td><td> <input type="text" name="tripDescription" class="input-text full-width" value="' + data.tripDescription + '"/></td></tr>\
+												<tr><td>Trip Description</td><td> <input type="text" name="flex1" class="input-text full-width" value="' + data.flex1 + '"/></td></tr>\
 												</table>\
 												</form>';
 											editDealerVehiclelogbkForm = editDealerVehiclelogbkForm.replace(/>null</g, ">--NA--<");
@@ -3079,7 +3079,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 											contentType:'application/json',
 											success: function(result){
 												$("#anchor-editDealerVehiclelogbkModal-" + result.myVehicleLogBookId).data('details', result);
-												alert("Successfully upated the Logbook");
+												alert("Successfully upated the Logbook..");
+												angular.element(document.getElementById('myController13')).scope().vehicleRetrievalforLogBook();
 												
 											}
 										});
@@ -3219,15 +3220,15 @@ mainApp1.controller('myController13',function($scope, $http) {
 								          url1=url;
 								          var editDealerVehicleexpnsForm = '<form id="edit-dealer-vehicle-expns-content-form"><table>\
 								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-												<tr><td>Log Expense ID</td><td>' + data.myVehicleFuelExpensesId + '</td></tr>\
+												<tr><td>Log Expense ID</td><td> <input type="hidden" name="myVehicleFuelExpensesId" class="input-text full-width" value="' + data.myVehicleFuelExpensesId + '"/></td></tr>\
 												</table>\
 												<table>\
 												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Expense Details</div></div>\
-												<tr><td>Expensive Type</td><td>' + data.recordType + '</td></tr>\
-												<tr><td>Expensive Category</td><td>' + data.business + '</td></tr>\
-												<tr><td>Expensive Date</td><td>' + data.date + '</td></tr>\
-												<tr><td>Expensive Description</td><td>' + data.others + '</td></tr>\
-												<tr><td>Amount</td><td>' + data.amount + '</td></tr>\
+												<tr><td>Expensive Type</td><td> <input type="text" name="recordType" class="input-text full-width" value="' + data.recordType + '"/></td></tr>\
+												<tr><td>Expensive Category</td><td> <input type="text" name="business" class="input-text full-width" value="' + data.business + '"/></td></tr>\
+												<tr><td>Expensive Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
+												<tr><td>Expensive Description</td><td> <input type="text" name="others" class="input-text full-width" value="' + data.others + '"/></td></tr>\
+												<tr><td>Amount</td><td> <input type="text" name="amount" class="input-text full-width" value="' + data.amount + '"/></td></tr>\
 												</table>\
 												</form>';
 											editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>null</g, ">--NA--<");
@@ -3241,15 +3242,15 @@ mainApp1.controller('myController13',function($scope, $http) {
 								          
 								          var editDealerVehicleexpnsForm = '<form id="edit-dealer-vehicle-expns-content-form"><table>\
 								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-												<tr><td>Log Expense ID</td><td>' + data.myVehicleFuelExpensesId + '</td></tr>\
+								        	  <tr><td>Log Expense ID</td><td> <input type="hidden" name="myVehicleFuelExpensesId" class="input-text full-width" value="' + data.myVehicleFuelExpensesId + '"/></td></tr>\
 												</table>\
 												<table>\
 												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Expense Details</div></div>\
-												<tr><td>Expensive Type</td><td>' + data.recordType + '</td></tr>\
-												<tr><td>Expensive Category</td><td>' + data.business + '</td></tr>\
-												<tr><td>Expensive Date</td><td>' + data.date + '</td></tr>\
-												<tr><td>Expensive Description</td><td>' + data.others + '</td></tr>\
-												<tr><td>Amount</td><td>' + data.amount + '</td></tr>\
+												<tr><td>Expensive Type</td><td> <input type="text" name="recordType" class="input-text full-width" value="' + data.recordType + '"/></td></tr>\
+												<tr><td>Expensive Category</td><td> <input type="text" name="business" class="input-text full-width" value="' + data.business + '"/></td></tr>\
+												<tr><td>Expensive Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
+												<tr><td>Expensive Description</td><td> <input type="text" name="others" class="input-text full-width" value="' + data.others + '"/></td></tr>\
+												<tr><td>Amount</td><td> <input type="text" name="amount" class="input-text full-width" value="' + data.amount + '"/></td></tr>\
 												</table>\
 												</form>';
 											editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>null</g, ">--NA--<");
@@ -3291,7 +3292,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 											success: function(result){
 												$("#anchor-editDealerVehicleexpnsModal-" + result.myVehicleFuelExpensesId).data('details', result);
 												alert("Successfully upated the fuel expenses");
-												
+												angular.element(document.getElementById('myController13')).scope().vehicleRetrievalforLogBook();
 											}
 										});
 
@@ -3429,19 +3430,19 @@ mainApp1.controller('myController13',function($scope, $http) {
 								          url1=url;
 								          var editDealerVehicleservmtForm = '<form id="edit-dealer-vehicle-servmt-content-form"><table>\
 								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-												<tr><td>Log Serv Maint ID</td><td>' + data.myVehicleServMaintId + '</td></tr>\
+												<tr><td>Log Serv Maint ID</td><td> <input type="hidden" name="myVehicleServMaintId" class="input-text full-width" value="' + data.myVehicleServMaintId + '"/></td></tr>\
 												</table>\
 												<table>\
 												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
-												<tr><td>Type of Service</td><td>' + data.typeOfServMaint + '</td></tr>\
-												<tr><td>Date of Service</td><td>' + data.date + '</td></tr>\
-												<tr><td>Odo Meter Reading at Service</td><td>' + data.odoMeterKm + '</td></tr>\
-												<tr><td>Mechanic Name/Company name</td><td>' + data.mechanicName + '</td></tr>\
-												<tr><td>Mechanic Address</td><td>' + data.mechanicAddress + '</td></tr>\
-												<tr><td>Contact Details</td><td>' + data.contactDetails + '</td></tr>\
-												<tr><td>Total Amount</td><td>' + data.totalAmount + '</td></tr>\
-												<tr><td>Next Service/Maintenance OdoMeter</td><td>' + data.nextOdoMeterKm + '</td></tr>\
-												<tr><td>Next Service / Maintenance Date</td><td>' + data.nextServDate + '</td></tr>\
+												<tr><td>Type of Service</td><td> <input type="text" name="typeOfServMaint" class="input-text full-width" value="' + data.typeOfServMaint + '"/></td></tr>\
+												<tr><td>Date of Service</td><td> <input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
+												<tr><td>Odo Meter Reading at Service</td><td> <input type="text" name="odoMeterKm" class="input-text full-width" value="' + data.odoMeterKm + '"/></td></tr>\
+												<tr><td>Mechanic Name/Company name</td><td><input type="text" name="mechanicName" class="input-text full-width" value="' + data.mechanicName + '"/></td></tr>\
+												<tr><td>Mechanic Address</td><td> <input type="text" name="mechanicAddress" class="input-text full-width" value="' + data.mechanicAddress + '"/></td></tr>\
+												<tr><td>Contact Details</td><td> <input type="text" name="contactDetails" class="input-text full-width" value="' + data.contactDetails + '"/></td></tr>\
+												<tr><td>Total Amount</td><td> <input type="text" name="totalAmount" class="input-text full-width" value="' + data.totalAmount + '"/></td></tr>\
+												<tr><td>Next Service/Maintenance OdoMeter</td><td> <input type="text" name="nextOdoMeterKm" class="input-text full-width" value="' + data.nextOdoMeterKm + '"/></td></tr>\
+												<tr><td>Next Service / Maintenance Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="nextServDate" class="input-text full-width" value="' + data.nextServDate + '"/></td></tr>\
 												</table>\
 												</form>';
 											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
@@ -3454,19 +3455,19 @@ mainApp1.controller('myController13',function($scope, $http) {
 								          url1=url;
 								          var editDealerVehicleservmtForm = '<form id="edit-dealer-vehicle-servmt-content-form"><table>\
 								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-												<tr><td>Log Serv Maint ID</td><td>' + data.myVehicleServMaintId + '</td></tr>\
+								        	  <tr><td>Log Serv Maint ID</td><td> <input type="hidden" name="myVehicleServMaintId" class="input-text full-width" value="' + data.myVehicleServMaintId + '"/></td></tr>\
 												</table>\
 												<table>\
 												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
-												<tr><td>Type of Service</td><td>' + data.typeOfServMaint + '</td></tr>\
-												<tr><td>Date of Service</td><td>' + data.date + '</td></tr>\
-												<tr><td>Odo Meter Reading at Service</td><td>' + data.odoMeterKm + '</td></tr>\
-												<tr><td>Mechanic Name/Company name</td><td>' + data.mechanicName + '</td></tr>\
-												<tr><td>Mechanic Address</td><td>' + data.mechanicAddress + '</td></tr>\
-												<tr><td>Contact Details</td><td>' + data.contactDetails + '</td></tr>\
-												<tr><td>Total Amount</td><td>' + data.totalAmount + '</td></tr>\
-												<tr><td>Next Service/Maintenance OdoMeter</td><td>' + data.nextOdoMeterKm + '</td></tr>\
-												<tr><td>Next Service / Maintenance Date</td><td>' + data.nextServDate + '</td></tr>\
+												<tr><td>Type of Service</td><td> <input type="text" name="typeOfServMaint" class="input-text full-width" value="' + data.typeOfServMaint + '"/></td></tr>\
+												<tr><td>Date of Service</td><td> <input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
+												<tr><td>Odo Meter Reading at Service</td><td> <input type="text" name="odoMeterKm" class="input-text full-width" value="' + data.odoMeterKm + '"/></td></tr>\
+												<tr><td>Mechanic Name/Company name</td><td><input type="text" name="mechanicName" class="input-text full-width" value="' + data.mechanicName + '"/></td></tr>\
+												<tr><td>Mechanic Address</td><td> <input type="text" name="mechanicAddress" class="input-text full-width" value="' + data.mechanicAddress + '"/></td></tr>\
+												<tr><td>Contact Details</td><td> <input type="text" name="contactDetails" class="input-text full-width" value="' + data.contactDetails + '"/></td></tr>\
+												<tr><td>Total Amount</td><td> <input type="text" name="totalAmount" class="input-text full-width" value="' + data.totalAmount + '"/></td></tr>\
+												<tr><td>Next Service/Maintenance OdoMeter</td><td> <input type="text" name="nextOdoMeterKm" class="input-text full-width" value="' + data.nextOdoMeterKm + '"/></td></tr>\
+												<tr><td>Next Service / Maintenance Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="nextServDate" class="input-text full-width" value="' + data.nextServDate + '"/></td></tr>\
 												</table>\
 												</form>';
 											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
@@ -3503,13 +3504,13 @@ mainApp1.controller('myController13',function($scope, $http) {
 										
 										$.ajax({  
 											type: "POST",  
-											url: "api/vehicleSearchQuotation?_method=PUT",
+											url: "api/myVehicleServMaintUpdate?_method=PUT",
 											data: jsonInput,
 											contentType:'application/json',
 											success: function(result){
 												$("#anchor-editDealerVehicleservmtModal-" + result.myVehicleServMaintId).data('details', result);
 												alert("Successfully upated the Logbook");
-												
+												angular.element(document.getElementById('myController13')).scope().vehicleRetrievalforLogBook();
 											}
 										});
 
