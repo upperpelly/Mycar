@@ -773,51 +773,120 @@ CarQuery.prototype = {
     populateYearSelect: function()
     {
      //Set a loading message while we retrieve the data
-
+    	
         var sender = this;
         //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelYears';
         this.base_url = 'api/tempCarModelYears';
         //alert(base_url);
         //alert(this.base_url);
+        
+        $(".newUsedCarEbid").on("click", function(){
+        	//alert("biscuit");
+        	this.base_url = 'api/tempCarModelYears';
+        	//alert(this.base_url);
+            $.getJSON(this.base_url, function(data) {
+
+    				     if(!sender.responseError(data))
+    				     {
+    				    	 var options = '<option value="">Please choose a Year</option>';
+    				         //console.log(data);
+    				         
+    				         //Set min and max year range
+    				         /*var minYear = data.Years.min_year;
+    				         var maxYear = data.Years.max_year;
+    				         alert(data[0]);
+    				         if(sender.year_select_min != null && minYear < sender.year_select_min )
+    				          minYear = sender.year_select_min;
+    				         if(sender.year_select_max != null && maxYear > sender.year_select_max )
+    				          maxYear = sender.year_select_max;*/
+    				         
+    				    	 var usedCarEbid=true;
+    				         var newCarEbid= document.getElementById("newUsedCarEbid").checked;
+    				         if(!newCarEbid){
+    				         	usedCarEbid = false;
+    				         	//alert("used is checked");
+    				         }
+    				         else{
+    				        	 data.length = 1;
+    				         }
+    				         /*alert(usedCarEbid);
+    				         alert(newCarEbid);
+    				         alert(data[0]);
+    				         alert(data.length);
+    				         alert(data);*/
+    				         var len= JSON.stringify(data);
+    				         //alert(len);
+    				         for (var i = 0; i < data.length; i++)
+    				         {
+    				            options += '<option value="' + data[i] + '">' + data[i] + '</option>';
+    				         }
+    				         //alert(options);
+    				      $("select#"+sender.year_select_id).html(options);
+    				
+    				      	$("select#"+sender.make_select_id).html("<option value='' disabled selected>Make</option>");
+    				      	$("select#"+sender.model_select_id).html("<option value='' disabled selected>Model</option>");
+    				
+    				
+    				  if(sender.settings.year != null)
+    				  {
+    				       $('select#'+sender.year_select_id).val(sender.settings.year);
+    				       sender.yearSelectChange();
+    				      }
+    				     }
+
+         });
+    	});
+        
+        
+        
+        
         $.getJSON(this.base_url, function(data) {
 
-     if(!sender.responseError(data))
-     {
-    	 var options = '<option value="">Please choose a Year</option>';
-         //console.log(data);
-         
-         //Set min and max year range
-         /*var minYear = data.Years.min_year;
-         var maxYear = data.Years.max_year;
-         alert(data[0]);
-         if(sender.year_select_min != null && minYear < sender.year_select_min )
-          minYear = sender.year_select_min;
-         if(sender.year_select_max != null && maxYear > sender.year_select_max )
-          maxYear = sender.year_select_max;*/
-         
-         
-         /*alert(data[0]);
-         alert(data.length);
-         alert(data);
-         var len= JSON.stringify(data);
-         alert(len);*/
-         for (var i = 0; i < data.length; i++)
-         {
-            options += '<option value="' + data[i] + '">' + data[i] + '</option>';
-         }
-         //alert(options);
-      $("select#"+sender.year_select_id).html(options);
-
-      $("select#"+sender.make_select_id).html("<option value='' disabled selected>Make</option>");
-  $("select#"+sender.model_select_id).html("<option value='' disabled selected>Model</option>");
-
-
-  if(sender.settings.year != null)
-  {
-       $('select#'+sender.year_select_id).val(sender.settings.year);
-       sender.yearSelectChange();
-      }
-     }
+				     if(!sender.responseError(data))
+				     {
+				    	 var options = '<option value="">Please choose a Year</option>';
+				         //console.log(data);
+				         
+				         //Set min and max year range
+				         /*var minYear = data.Years.min_year;
+				         var maxYear = data.Years.max_year;
+				         alert(data[0]);
+				         if(sender.year_select_min != null && minYear < sender.year_select_min )
+				          minYear = sender.year_select_min;
+				         if(sender.year_select_max != null && maxYear > sender.year_select_max )
+				          maxYear = sender.year_select_max;*/
+				         
+				    	 var usedCarEbid=true;
+				         var newCarEbid= document.getElementById("newUsedCarEbid").checked;
+				         if(!newCarEbid){
+				         	usedCarEbid = false;
+				         	//alert("used is checked");
+				         }
+				         else{
+				        	 data.length = 1;
+				         }
+				         /*alert(data[0]);
+				         alert(data.length);
+				         alert(data);
+				         var len= JSON.stringify(data);
+				         alert(len);*/
+				         for (var i = 0; i < data.length; i++)
+				         {
+				            options += '<option value="' + data[i] + '">' + data[i] + '</option>';
+				         }
+				         //alert(options);
+				      $("select#"+sender.year_select_id).html(options);
+				
+				      	$("select#"+sender.make_select_id).html("<option value='' disabled selected>Make</option>");
+				      	$("select#"+sender.model_select_id).html("<option value='' disabled selected>Model</option>");
+				
+				
+				  if(sender.settings.year != null)
+				  {
+				       $('select#'+sender.year_select_id).val(sender.settings.year);
+				       sender.yearSelectChange();
+				      }
+				     }
 
      });
     },
@@ -2859,13 +2928,13 @@ var insQCt=result.insuranceQuotation.length;
         this.saveSetting('year', this.cur_year);
 
          //if no year supplied, clear makes, models, return;
- if(this.cur_year == "")
- {
-  $("select#"+this.make_select_id).html(this.empty_option_html);
-  $("select#"+this.model_select_id).html(this.empty_option_html);
-  $("select#"+this.trim_select_id).html(this.empty_option_html);
-      return;
-     }
+		 if(this.cur_year == "")
+		 {
+		  $("select#"+this.make_select_id).html(this.empty_option_html);
+		  $("select#"+this.model_select_id).html(this.empty_option_html);
+		  $("select#"+this.trim_select_id).html(this.empty_option_html);
+		      return;
+		     }
 
       //Set a loading message while we retrieve the data
         $("select#"+this.make_select_id).html("<option value=''>Loading Makes...</option>");
