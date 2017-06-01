@@ -3006,6 +3006,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 									            </div>\
 									            <div class="modal-footer">\
 									                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+										<button type="button" class="btn btn-primary submit-editDealerVehiclelogbkModal" data-dismiss="modal">Save changes</button>\
 												</div>\
 									            </form>\
 									        	<p><center>&copy; 2017 Autoscoop</center></p>\
@@ -3066,6 +3067,25 @@ mainApp1.controller('myController13',function($scope, $http) {
 										$(".edit-dealer-vehicle-expns-content").html(editDealerVehicleexpnsForm);*/
 									});
 									
+									$('button.submit-editDealerVehiclelogbkModal').on('click', function(e) {
+										
+										var jsonInput = $("#edit-dealer-vehicle-logbk-content-form").convertFormDataToJSON();
+										
+										
+										$.ajax({  
+											type: "POST",  
+											url: "api/myvehicleLogBookUpdate?_method=PUT",
+											data: jsonInput,
+											contentType:'application/json',
+											success: function(result){
+												$("#anchor-editDealerVehiclelogbkModal-" + result.myVehicleLogBookId).data('details', result);
+												alert("Successfully upated the Logbook");
+												
+											}
+										});
+
+										
+									});
 										
 									$.fn.convertFormDataToJSON = function(){
 										var checkboxes = [];
@@ -3144,6 +3164,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 									            </div>\
 									            <div class="modal-footer">\
 									                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+										<button type="button" class="btn btn-primary submit-editDealerVehicleexpnsModal" data-dismiss="modal">Save changes</button>\
 												</div>\
 									            </form>\
 									        	<p><center>&copy; 2017 Autoscoop</center></p>\
@@ -3255,7 +3276,27 @@ mainApp1.controller('myController13',function($scope, $http) {
 										$(".edit-dealer-vehicle-expns-content").html(editDealerVehicleexpnsForm);*/
 									});
 									
+									
+									
+									$('button.submit-editDealerVehicleexpnsModal').on('click', function(e) {
 										
+										var jsonInput = $("#edit-dealer-vehicle-expns-content-form").convertFormDataToJSON();
+										
+										
+										$.ajax({  
+											type: "POST",  
+											url: "api/myvehicleLogExpensesUpdate?_method=PUT",
+											data: jsonInput,
+											contentType:'application/json',
+											success: function(result){
+												$("#anchor-editDealerVehicleexpnsModal-" + result.myVehicleFuelExpensesId).data('details', result);
+												alert("Successfully upated the fuel expenses");
+												
+											}
+										});
+
+										
+									});
 									$.fn.convertFormDataToJSON = function(){
 										var checkboxes = [];
 										$(this).find('input:checkbox:checked').each(function(){
@@ -3334,6 +3375,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 									            </div>\
 									            <div class="modal-footer">\
 									                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+										<button type="button" class="btn btn-primary submit-editDealerVehicleservmtModal" data-dismiss="modal">Save changes</button>\
 												</div>\
 									            </form>\
 									        	<p><center>&copy; 2017 Autoscoop</center></p>\
@@ -3387,18 +3429,19 @@ mainApp1.controller('myController13',function($scope, $http) {
 								          url1=url;
 								          var editDealerVehicleservmtForm = '<form id="edit-dealer-vehicle-servmt-content-form"><table>\
 								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-												<tr><td>Log Expense ID</td><td>' + data.myVehicleServMaintId + '</td></tr>\
+												<tr><td>Log Serv Maint ID</td><td>' + data.myVehicleServMaintId + '</td></tr>\
 												</table>\
 												<table>\
 												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
 												<tr><td>Type of Service</td><td>' + data.typeOfServMaint + '</td></tr>\
 												<tr><td>Date of Service</td><td>' + data.date + '</td></tr>\
-												<tr><td>Mileage / ODO Meter @Service</td><td>' + data.odoMeterKm + '</td></tr>\
-												<tr><td>Detail Work Performed</td><td>' + data.flex1 + '</td></tr>\
-												<tr><td>List of Service</td><td>' + data.flex2 + '</td></tr>\
-												<tr><td>Notes</td><td>' + data.flex3 + '</td></tr>\
-												<tr><td>Technician</td><td>' + data.mechanicName + '</td></tr>\
-												<tr><td>Service and Maintenance Company</td><td>' + data.companyName + '</td></tr>\
+												<tr><td>Odo Meter Reading at Service</td><td>' + data.odoMeterKm + '</td></tr>\
+												<tr><td>Mechanic Name/Company name</td><td>' + data.mechanicName + '</td></tr>\
+												<tr><td>Mechanic Address</td><td>' + data.mechanicAddress + '</td></tr>\
+												<tr><td>Contact Details</td><td>' + data.contactDetails + '</td></tr>\
+												<tr><td>Total Amount</td><td>' + data.totalAmount + '</td></tr>\
+												<tr><td>Next Service/Maintenance OdoMeter</td><td>' + data.nextOdoMeterKm + '</td></tr>\
+												<tr><td>Next Service / Maintenance Date</td><td>' + data.nextServDate + '</td></tr>\
 												</table>\
 												</form>';
 											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
@@ -3411,18 +3454,19 @@ mainApp1.controller('myController13',function($scope, $http) {
 								          url1=url;
 								          var editDealerVehicleservmtForm = '<form id="edit-dealer-vehicle-servmt-content-form"><table>\
 								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-												<tr><td>Log Expense ID</td><td>' + data.myVehicleServMaintId + '</td></tr>\
+												<tr><td>Log Serv Maint ID</td><td>' + data.myVehicleServMaintId + '</td></tr>\
 												</table>\
 												<table>\
 												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
 												<tr><td>Type of Service</td><td>' + data.typeOfServMaint + '</td></tr>\
 												<tr><td>Date of Service</td><td>' + data.date + '</td></tr>\
-												<tr><td>Mileage / ODO Meter @Service</td><td>' + data.odoMeterKm + '</td></tr>\
-												<tr><td>Detail Work Performed</td><td>' + data.flex1 + '</td></tr>\
-												<tr><td>List of Service</td><td>' + data.flex2 + '</td></tr>\
-												<tr><td>Notes</td><td>' + data.flex3 + '</td></tr>\
-												<tr><td>Technician</td><td>' + data.mechanicName + '</td></tr>\
-												<tr><td>Service and Maintenance Company</td><td>' + data.companyName + '</td></tr>\
+												<tr><td>Odo Meter Reading at Service</td><td>' + data.odoMeterKm + '</td></tr>\
+												<tr><td>Mechanic Name/Company name</td><td>' + data.mechanicName + '</td></tr>\
+												<tr><td>Mechanic Address</td><td>' + data.mechanicAddress + '</td></tr>\
+												<tr><td>Contact Details</td><td>' + data.contactDetails + '</td></tr>\
+												<tr><td>Total Amount</td><td>' + data.totalAmount + '</td></tr>\
+												<tr><td>Next Service/Maintenance OdoMeter</td><td>' + data.nextOdoMeterKm + '</td></tr>\
+												<tr><td>Next Service / Maintenance Date</td><td>' + data.nextServDate + '</td></tr>\
 												</table>\
 												</form>';
 											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
@@ -3452,7 +3496,25 @@ mainApp1.controller('myController13',function($scope, $http) {
 										editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>undefined</g, ">--NA--<");
 										$(".edit-dealer-vehicle-servmt-content").html(editDealerVehicleservmtForm);*/
 									});
-									
+									$('button.submit-editDealerVehicleservmtModal').on('click', function(e) {
+										
+										var jsonInput = $("#edit-dealer-vehicle-servmt-content-form").convertFormDataToJSON();
+										
+										
+										$.ajax({  
+											type: "POST",  
+											url: "api/vehicleSearchQuotation?_method=PUT",
+											data: jsonInput,
+											contentType:'application/json',
+											success: function(result){
+												$("#anchor-editDealerVehicleservmtModal-" + result.myVehicleServMaintId).data('details', result);
+												alert("Successfully upated the Logbook");
+												
+											}
+										});
+
+										
+									});
 										
 									$.fn.convertFormDataToJSON = function(){
 										var checkboxes = [];

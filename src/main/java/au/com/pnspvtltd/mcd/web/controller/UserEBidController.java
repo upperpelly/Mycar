@@ -17,10 +17,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
+import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
+import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
+import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidServMaintVO;
@@ -29,6 +35,10 @@ import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
+import au.com.pnspvtltd.mcd.repository.MyVehicleFuelExpensesRepository;
+import au.com.pnspvtltd.mcd.repository.MyVehicleLogBookRepository;
+import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
+import au.com.pnspvtltd.mcd.repository.MyVehicleServMaintRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 
@@ -45,6 +55,12 @@ public class UserEBidController {
 	UserEBidService userEBidService;
 	@Autowired
 	VehicleQuotationRepository vehicleQuotationRepository;
+	@Autowired
+	MyVehicleLogBookRepository myVehicleLogBookRepository;
+	@Autowired
+	MyVehicleFuelExpensesRepository myVehicleFuelExpensesRepository;
+	@Autowired
+	MyVehicleServMaintRepository myVehicleServMaintRepository;
 
 	@PostMapping("eBid/car")
 	public String eBidForCar(@RequestBody UserEBidVO userEBidVO) {
@@ -136,6 +152,86 @@ public class UserEBidController {
 						}
 						vehicleQuotationRepository.flush();
 					}
+						
+					//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+				}
+				return vehicleQuotationVO;
+	}
+	
+	
+	@PutMapping("myvehicleLogBookUpdate")
+	@Transactional
+	public MyVehicleLogBookVO vehicleLogBookUpdate(@RequestBody MyVehicleLogBookVO vehicleQuotationVO,
+			HttpServletResponse response) {
+		  //TODO: create a service for VehicleQutotation to update quotation details
+		LOGGER.debug("Received request to update my vehicle log book {}", vehicleQuotationVO.getMyVehicleLogBookId());
+				if(vehicleQuotationVO != null){
+					MyVehicleLogBook vehicleQuotation = myVehicleLogBookRepository.findOne(vehicleQuotationVO.getMyVehicleLogBookId());
+					
+					
+					vehicleQuotation.setTripType(vehicleQuotationVO.getTripType());
+					vehicleQuotation.setFromLocation(vehicleQuotationVO.getFromLocation());
+					vehicleQuotation.setToLocation(vehicleQuotationVO.getToLocation());
+					vehicleQuotation.setDate(vehicleQuotationVO.getDate());
+					vehicleQuotation.setOdoMeterStartOfTrip(vehicleQuotationVO.getOdoMeterStartOfTrip());
+					vehicleQuotation.setOdoMeterEndOfTrip(vehicleQuotationVO.getOdoMeterEndOfTrip());
+					vehicleQuotation.setRouteKm(vehicleQuotationVO.getRouteKm());
+					vehicleQuotation.setTripDescription(vehicleQuotationVO.getTripDescription());
+					vehicleQuotation.setFlex1(vehicleQuotationVO.getFlex1());
+					myVehicleLogBookRepository.flush();
+					
+						
+					//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+				}
+				return vehicleQuotationVO;
+	}
+	
+	@PutMapping("myvehicleLogExpensesUpdate")
+	@Transactional
+	public MyVehicleFuelExpensesVO vehicleLogExpensesUpdate(@RequestBody MyVehicleFuelExpensesVO vehicleQuotationVO,
+			HttpServletResponse response) {
+		  //TODO: create a service for VehicleQutotation to update quotation details
+		LOGGER.debug("Received request to update my vehicle Expenses {}", vehicleQuotationVO.getMyVehicleFuelExpensesId());
+				if(vehicleQuotationVO != null){
+					MyVehicleFuelExpenses vehicleQuotation = myVehicleFuelExpensesRepository.findOne(vehicleQuotationVO.getMyVehicleFuelExpensesId());
+					
+					
+					vehicleQuotation.setRecordType(vehicleQuotationVO.getRecordType());
+					vehicleQuotation.setBusiness(vehicleQuotationVO.getBusiness());
+					vehicleQuotation.setDate(vehicleQuotationVO.getDate());
+					vehicleQuotation.setOthers(vehicleQuotationVO.getOthers());
+					vehicleQuotation.setAmount(vehicleQuotationVO.getAmount());
+					myVehicleFuelExpensesRepository.flush();
+					
+						
+					//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+				}
+				return vehicleQuotationVO;
+	}
+	
+	@PutMapping("myVehicleServMaintUpdate")
+	@Transactional
+	public MyVehicleServMaintVO vehicleServMaintUpdate(@RequestBody MyVehicleServMaintVO vehicleQuotationVO,
+			HttpServletResponse response) {
+		  //TODO: create a service for VehicleQutotation to update quotation details
+		LOGGER.debug("Received request to update my vehicle Serv Maint {}", vehicleQuotationVO.getMyVehicleServMaintId());
+				if(vehicleQuotationVO != null){
+					MyVehicleServMaint vehicleQuotation = myVehicleServMaintRepository.findOne(vehicleQuotationVO.getMyVehicleServMaintId());
+					
+					
+					vehicleQuotation.setRecordType(vehicleQuotationVO.getRecordType());
+					vehicleQuotation.setTypeOfServMaint(vehicleQuotationVO.getTypeOfServMaint());
+					vehicleQuotation.setDate(vehicleQuotationVO.getDate());
+					vehicleQuotation.setOdoMeterKm(vehicleQuotationVO.getOdoMeterKm());
+					vehicleQuotation.setMechanicName(vehicleQuotationVO.getMechanicName());
+					vehicleQuotation.setMechanicAddress(vehicleQuotationVO.getMechanicAddress());
+					vehicleQuotation.setContactDetails(vehicleQuotationVO.getContactDetails());
+					vehicleQuotation.setTotalAmount(vehicleQuotationVO.getTotalAmount());
+					vehicleQuotation.setNextOdoMeterKm(vehicleQuotationVO.getNextOdoMeterKm());
+					vehicleQuotation.setNextServDate(vehicleQuotationVO.getNextServDate());
+					
+					myVehicleServMaintRepository.flush();
+					
 						
 					//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
 				}
