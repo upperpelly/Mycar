@@ -1049,6 +1049,16 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                     <input type="text" id="UserLastName" name="UserLastName"
 															class="input-text full-width" value="" placeholder="Last Name" >
                                                 </div>
+                                                <div class="selector">
+                                                <select class="full-width" id="abcTitlePerson" ng-model="abcTitlePerson"
+                                                        name="abcTitlePerson" required>
+                                                    <option value="" selected disabled>Gender</option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                    <option>Other</option>
+                                                    <option>Rather Not say</option>
+                                                </select>
+                                            </div>
                                             </div>
                                             <!-- <div class="row form-group">
                                                 <div class="col-sms-6 col-sm-6">
