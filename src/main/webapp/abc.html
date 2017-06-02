@@ -55,7 +55,12 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script src="js/jstorage.js"></script>
+ <script src="js/servicelevelcarquery.0.3.6.js" type="text/javascript"></script>
 <script>
+//alert("came here12");
+var servicelevel = new ServiceLevelCarQuery();
+servicelevel.initInsuranceProviders('abcinsprov');
+
 //start for insurance
 function appendRow944() {
     //alert("append invoke");
@@ -1072,7 +1077,7 @@ $(document).ready( function() {
         <!-- start bubble -->
         <div id="dashboard">
        	 <div class="row block col-container">
-                <div class="col-sm-4 col-md-2 col">
+                <div class="col-sm-4 col-md-1 col">
                     <a href="dashboard1.html#travel-stories">
                         <div class="fact blue">
                             <div class="numbers counters-box">
@@ -1089,7 +1094,7 @@ $(document).ready( function() {
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4 col-md-2 col">
+                <div class="col-sm-4 col-md-1 col">
                     <a href="dashboard1.html#settings">
                         <div class="fact yellow">
                             <div class="numbers counters-box">
@@ -1296,17 +1301,6 @@ We suggest that you contact the host to confirm availability and rates before su
                                             <label>Your Name</label>
                                         </div>
                                         <div class="col-sm-3 col-md-3">
-                                            <div class="selector">
-                                                <select class="full-width" id="abcTitlePerson" ng-model="abcTitlePerson"
-                                                        name="abcTitlePerson" required>
-                                                    <option value="" selected disabled>Title</option>
-                                                    <option>Mr</option>
-                                                    <option>Mrs</option>
-                                                    <option>Miss</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3 col-md-3">
                                             <input type="text"
                                                    id="abcFnameperson" name="abcFnameperson" ng-model="abcFnameperson"
                                                    class="input-text full-width" value="" placeholder="First Name" required />
@@ -1325,7 +1319,16 @@ We suggest that you contact the host to confirm availability and rates before su
                                             <input type="text" name="abcDriverDOB" id="abcDriverDOB" onfocus="(this.type='date')" ng-model="abcDriverDOB" class="input-text full-width" placeholder="DOB" />
                                         </div>
                                         <div class="col-sm-3 col-md-3">
-                                            &nbsp;
+                                            <div class="selector">
+                                                <select class="full-width" id="abcTitlePerson" ng-model="abcTitlePerson"
+                                                        name="abcTitlePerson" required>
+                                                    <option value="" selected disabled>Gender</option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                    <option>Other</option>
+                                                    <option>Rather Not say</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="col-sm-3 col-md-3">
                                             &nbsp;
@@ -1387,7 +1390,7 @@ We suggest that you contact the host to confirm availability and rates before su
 									</div><br />
 									
 									
-									<div class="row">
+									<!-- <div class="row">
 										<div class="col-sm-3 col-md-3">
 											<label>Price Range</label>
 										</div>
@@ -1397,7 +1400,7 @@ We suggest that you contact the host to confirm availability and rates before su
 										<div class="col-sm-3 col-md-3">
 											<input type="text" name="pricemax" id="pricemax" ng-model="pricemax" class="input-text full-width" placeholder="Price Max">
 										</div>
-									</div>
+									</div> -->
 									 <div class="toggle-container box">
                                                         <div class="panel style1">                                                         
                                                             <div class="row">
@@ -1555,7 +1558,7 @@ We suggest that you contact the host to confirm availability and rates before su
 																		<div class="col-sm-3 col-md-3">
 																			 <div class="selector">
 								                                                <select class="full-width" ng-model="loanPeriod" id="loanPeriod" name="loanPeriod" required> 
-								                                                    <option value="" selected disabled>Loan Period</option>
+								                                                    <option value="" selected disabled>Loan Period in Yrs</option>
 								                                                    <option>1</option>
 								                                                     <option>2</option>
 								                                                    <option>3</option>
@@ -1597,7 +1600,7 @@ We suggest that you contact the host to confirm availability and rates before su
 																		<div class="col-sm-3 col-md-3">
 																			 <span style="color:red" ng-show="frm.annualIncome.$error.pattern && (!frm.annualIncome.$pristine || frm.$submitted)"><b>Annual Income must be Numeric</b></span>
 								                                            <span style="color:red"  ng-show="frm.annualIncome.$error.required && (!frm.annualIncome.$pristine || frm.$submitted) && !frm.annualIncome.$error.pattern"><b>Annual Income is Required</b></span>
-																			<input type="text" class="input-text full-width" value="" placeholder="Emp/Business Years" ng-model="yearEmployement" id="yearEmployement" name="yearEmployement"/>
+																			<input type="text" class="input-text full-width" value="" placeholder="Years of Experience" ng-model="yearEmployement" id="yearEmployement" name="yearEmployement"/>
 																		</div>
 																	</div><br/>
                                                                     <div class="row">
@@ -1616,7 +1619,7 @@ We suggest that you contact the host to confirm availability and rates before su
 								                                            </div>
 								                                            <span style="color:red" ng-show="frm.creditRating.$error.required && (!frm.creditRating.$pristine || frm.$submitted)"><b>Credit Rating is Required</b></span>
                                                                         </div>
-                                                                        <div class="col-sm-3 col-md-4">
+                                                                        <div class="col-sm-3 col-md-4" ng-if="incomeType == 'Business'">
                                                                             <input type="text" class="input-text full-width" value="" placeholder="if Business Provide ABN" ng-model="ifBusPABN" id="ifBusPABN" name="ifBusPABN"/>
                                                                         </div>
 
@@ -1880,7 +1883,7 @@ We suggest that you contact the host to confirm availability and rates before su
 								                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.minlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault must be upto 3 digits</b></span>
 								                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.maxlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault can be atmost of 3 digits only.</b></span>
                                                                     </div>
-                                                                    <div class="col-sm-4 col-md-4">
+                                                                    <div class="col-sm-4 col-md-4" ng-if="noOfAtFaultsClaims != '0'">
                                                                       	<input type="text" onfocus="(this.type='date')" name="abcinsLastfaultDt" id="abcinsLastfaultDt" ng-model="abcinsLastfaultDt" class="input-text full-width" placeholder="Last Fault claim Date" />
                                                                     </div>
                                                     </div><br />
@@ -2644,15 +2647,15 @@ We suggest that you contact the host to confirm availability and rates before su
         </footer>
     </div>
     <div id="style-changer" class="style-changer dark">
-        <div class="style-changer-header">
+        <!-- <div class="style-changer-header">
             <a href="#" class="style-toggle open">
                 <i class="fa fa-gear"></i>
             </a>
             <h2 class="style-main-title">Customize Travelo</h2>
-        </div>
+        </div> -->
         <div class="style-chagner-main">
             <label for="header-style">header style</label>
-            <div class="selector">
+            <!-- <div class="selector">
                 <select class="full-width" name="header-style" id="header-style">
                     <option value="">Default Style</option>
                     <option value="style1">Style1</option>
@@ -2663,7 +2666,7 @@ We suggest that you contact the host to confirm availability and rates before su
                     <option value="style6">Style6</option>
                     <option value="style7">Style7</option>
                 </select>
-            </div>
+            </div> -->
             <!--<label for="inner-start-style">inner start style</label>
             <div class="selector">
                 <select class="full-width" name="inner-start-style" id="inner-start-style">

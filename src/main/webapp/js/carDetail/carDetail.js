@@ -71,7 +71,7 @@ var modelYear=null;
             }
     	var priceMin = value1.priceMin;
     	document.getElementById('minValue').innerHTML=priceMin;
-    	
+    	//alert("market value");
     	var priceMax = value1.priceMax;
     	document.getElementById('maxValue').innerHTML=priceMax;
     	
@@ -105,7 +105,11 @@ var modelYear=null;
     	trimValue = value1.trimValue;
     	firstName = value.firstName;
     	userId = value.userId;
-    	
+    	address=value.streetNumber+value.streetName;
+    	$('#abcFnameperson').val(value.firstName);
+    	$('#abcLnameperson').val(value.lastName);
+    	$('#abcAddress').val(address);
+    	$('#postCode').val(value.postCode);
     	/*alert("yr"+modelYear);
     	alert("model"+modelDisplay);
     	alert("Make"+modelName);
@@ -128,7 +132,11 @@ var modelYear=null;
       var carquery = new CarQuery();
       carquery.init();
      /*  alert("came here"+trimValue); */
-    	carquery.populateCarDataSpec('car-model-data',value1); 
+    	carquery.populateCarDataSpec('car-model-data',value1);
+    	//alert("value124"+JSON.stringify(value1.tempCarModelHeaderVO));
+    	//console.log(JSON.stringify(value1.tempCarModelHeaderVO));
+    	//alert("market value"+value1.tempCarModelHeaderVO.carModel1[0].priceWhenNew);
+    	$("#marketValue").val(value1.tempCarModelHeaderVO.carModel1[0].priceWhenNew);
     	/* carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims'); */
     	/* alert("pageName  22 now "+document.getElementById('minValue').innerHTML);
     	alert("pageName  12322 now "+document.getElementById('maxValue').innerHTML); */
