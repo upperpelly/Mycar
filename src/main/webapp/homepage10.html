@@ -5059,7 +5059,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <input type="text"
                                                                    id="finStreetName" name="finStreetName" ng-model="finStreetName"
-                                                                   class="input-text full-width" value="" placeholder="Street Name" required />
+                                                                   class="input-text full-width" value="" placeholder="Strt Nam,Sub,State" required />
                                                         </div>
                                                     </div><br />
 
@@ -5080,7 +5080,7 @@ $.ajax({
                                                             <div class="selector">
                                                                 <select class="full-width" id="finLoanPeriod" ng-model="finLoanPeriod"
                                                                         name="finLoanPeriod" required>
-                                                                    <option value="" selected disabled>Loan Period</option>
+                                                                    <option value="" selected disabled>Loan Period in Years</option>
                                                                     <option>1</option>
                                                                     <option>2</option>
                                                                     <option>3</option>
@@ -5101,17 +5101,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <label>Tell us about yourself</label>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
-                                                            <div class="selector">
-                                                                <select class="full-width" id="finTitlePerson" ng-model="finTitlePerson"
-                                                                        name="finTitlePerson" required>
-                                                                    <option value="" selected disabled>Title</option>
-                                                                    <option>Mr</option>
-                                                                    <option>Mrs</option>
-                                                                    <option>Miss</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
+                                                        
                                                         <div class="col-sm-3 col-md-3">
                                                             <input type="text"
                                                                    id="finFnameperson" name="finFnameperson" ng-model="finFnameperson"
@@ -5132,7 +5122,16 @@ $.ajax({
                                                             <span style="color:red" ng-show="ebidfinfrm.date_of_birth.$error.required && (!ebidfinfrm.date_of_birth.$pristine || ebidfinfrm.$submitted)"><b>Finance Date of Birth is Required</b></span>
                                                         </div>
                                                         <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
+                                                            <div class="selector">
+                                                                <select class="full-width" id="finTitlePerson" ng-model="finTitlePerson"
+                                                                        name="finTitlePerson" required>
+                                                                    <option value="" selected disabled>Gender</option>
+		                                                                    <option>Male</option>
+		                                                    <option>Female</option>
+		                                                    <option>Other</option>
+		                                                    <option>Rather Not say</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div><br />
 
@@ -5177,7 +5176,7 @@ $.ajax({
                                                     	    <div class="col-sm-4 col-md-4">
                                                             <input type="text"
                                                                    id="finNoofYears" name="finNoofYears" ng-model="finNoofYears" ng-pattern="/^[0-9]*$/"
-                                                                   class="input-text full-width" value="" placeholder="No of years" required />
+                                                                   class="input-text full-width" value="" placeholder="Years of experience" required />
                                                             <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.pattern && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted)"><b>No of years must be Numeric</b></span>
                                                             <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.required && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>No of years is Required</b></span>
                                                         </div>
@@ -5204,9 +5203,9 @@ $.ajax({
                                                             </div>
                                                             <span style="color:red" ng-show="ebidfinfrm.finCreditRating.$error.required && (!ebidfinfrm.finCreditRating.$pristine || ebidfinfrm.$submitted)"><b>Finance Credit Rating is Required</b></span>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
+                                                        <div class="col-sm-3 col-md-4" ng-if="finIncomeType == 'Business'">
+                                                                            <input type="text" class="input-text full-width" value="" placeholder="if Business Provide ABN" ng-model="ifBusPABN" id="ifBusPABN" name="ifBusPABN"/>
+                                                                        </div>
                                                         <div class="col-sm-3 col-md-3">
                                                             &nbsp;
                                                         </div>
@@ -6211,7 +6210,7 @@ $.ajax({
                                                                     <div class="col-sm-4 col-md-4">
                                                                         <input type="text"
                                                                                id="insStreetName" name="insStreetName" ng-model="insStreetName"
-                                                                               class="input-text full-width" value="" placeholder="Street Name" />
+                                                                               class="input-text full-width" value="" placeholder="Strt Nam,Sub,State" />
                                                                     </div>
                                                                 </div><br />
 
@@ -6546,8 +6545,17 @@ $.ajax({
                                                                         <input type="text" name="insDriverDOB" id="insDriverDOB" onfocus="(this.type='date')" class="input-text full-width" placeholder="DOB" />
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
-                                                                        &nbsp;
-                                                                    </div>
+                                                                    <div class="selector">
+                                                						<select class="full-width" id="abcTitlePerson" ng-model="abcTitlePerson"
+                                                       												 name="abcTitlePerson" required>
+                                                    					<option value="" selected disabled>Gender</option>
+                                                    						<option>Male</option>
+						                                                    <option>Female</option>
+						                                                    <option>Other</option>
+						                                                    <option>Rather Not say</option>
+						                                                </select>
+						                                            </div>
+						                                            </div>
                                                                 </div><br />
 
 
@@ -6614,10 +6622,10 @@ $.ajax({
                                                                         <label>Drivers Claim History</label>
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
-                                                                        <input type="text" name="ins-faults" id="insfaults" name="insfaults" class="input-text full-width" placeholder="No of at Fault claims" required />
+                                                                        <input type="text" id="insfaults" name="insfaults" ng-model="insfaults" class="input-text full-width" placeholder="No of at Fault claims" required />
                                                                         <span style="color:red" ng-show="ebidinsfrm.insfaults.$error.required && (!ebidinsfrm.insfaults.$pristine || ebidinsfrm.$submitted)"><b>faults is Required</b></span>
                                                                     </div>
-                                                                    <div class="col-sm-4 col-md-4">
+                                                                    <div class="col-sm-4 col-md-4" ng-if="insfaults != '0'">
                                                                         <input type="text" onfocus="(this.type='date')" name="insLastfaultDt" id="insLastfaultDt" ng-model="insLastfaultDt" class="input-text full-width" placeholder="Last Fault claim Date" />
                                                                     </div>
                                                                 </div><br />
@@ -8203,10 +8211,10 @@ $.ajax({
                                                             </div>
                                                             <span style="color:red" ng-show="ebidservfrm.coverInsServ.$error.required && (!ebidservfrm.coverInsServ.$pristine || ebidservfrm.$submitted)"><b>Covered Under Insurance is Required</b></span>
                                                         </div>
-                                                        <div class="col-sm-4 col-md-4">
+                                                        <div class="col-sm-4 col-md-4" ng-show="coverInsServ == 'true'">
                                                             <div class="selector">
                                                                 <select class="full-width" id="InsprovServ" ng-model="InsprovServ"
-                                                                        name="InsprovServ" required>
+                                                                        name="InsprovServ" ng-required="coverInsServ == 'true'">
                                                                     <option value="" selected disable>Insurance Provider</option>
                                                                     <option>AAMI</option>
                                                                     <option>AMP Limited</option>
@@ -9166,13 +9174,13 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <input type="text"
                                                                    id="transFStreetNo" name="transFStreetNo" ng-model="transFStreetNo"
-                                                                   class="input-text full-width" value="" placeholder="Street No" required />
+                                                                   class="input-text full-width" value="" placeholder="Unit/StreetNo" required />
                                                             <span style="color:red" ng-show="ebidtransfrm.transFStreetNo.$error.required && (!ebidtransfrm.transFStreetNo.$pristine || ebidtransfrm.$submitted)"><b> From Street No is Required</b></span>
                                                         </div>
                                                         <div class="col-sm-3 col-md-3">
                                                             <input type="text"
                                                                    id="transFStreetName" name="transFStreetName" ng-model="transFStreetName"
-                                                                   class="input-text full-width" value="" placeholder="Street Name" required />
+                                                                   class="input-text full-width" value="" placeholder="Strt Nam,Sub,State" required />
                                                             <span style="color:red" ng-show="ebidtransfrm.transFStreetName.$error.required && (!ebidtransfrm.transFStreetName.$pristine || ebidtransfrm.$submitted)"><b> From Street Name is Required</b></span>
                                                         </div>
                                                     </div><br />
@@ -9197,13 +9205,13 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <input type="text"
                                                                    id="transFStreetNo" name="transTStreetNo" ng-model="transTStreetNo"
-                                                                   class="input-text full-width" value="" placeholder="Street No" required />
+                                                                   class="input-text full-width" value="" placeholder="Unit/StreetNo" required />
                                                             <span style="color:red" ng-show="ebidtransfrm.transTStreetNo.$error.required && (!ebidtransfrm.transTStreetNo.$pristine || ebidtransfrm.$submitted)"><b> To Street No is Required</b></span>
                                                         </div>
                                                         <div class="col-sm-3 col-md-3">
                                                             <input type="text"
                                                                    id="transFStreetName" name="transTStreetName" ng-model="transTStreetName"
-                                                                   class="input-text full-width" value="" placeholder="Street Name" required />
+                                                                   class="input-text full-width" value="" placeholder="Strt Nam,Sub,State" required />
                                                             <span style="color:red" ng-show="ebidtransfrm.transTStreetName.$error.required && (!ebidtransfrm.transTStreetName.$pristine || ebidtransfrm.$submitted)"><b> To Street Name is Required</b></span>
                                                         </div>
                                                     </div><br />
