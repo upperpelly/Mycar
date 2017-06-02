@@ -74,7 +74,7 @@ public class CountyRegPostSubServiceImpl implements CountyRegPostSubService {
 	}
 
 	@Override
-	public String getRegionForGivenPostCode(int postCode) {
+	public List<String> getRegionForGivenPostCode(int postCode) {
 		// TODO Auto-generated method stub
 		return countyRegPostSubRepository.getRegionForGivenPostCode(postCode);
 	}

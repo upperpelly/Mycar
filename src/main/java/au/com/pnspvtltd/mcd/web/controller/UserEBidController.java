@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
+import au.com.pnspvtltd.mcd.domain.MyVehicle;
 import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
 import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
 import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
@@ -27,6 +28,7 @@ import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidServMaintVO;
@@ -61,6 +63,9 @@ public class UserEBidController {
 	MyVehicleFuelExpensesRepository myVehicleFuelExpensesRepository;
 	@Autowired
 	MyVehicleServMaintRepository myVehicleServMaintRepository;
+	
+	@Autowired
+	MyVehicleRepository myVehicleRepository;
 
 	@PostMapping("eBid/car")
 	public String eBidForCar(@RequestBody UserEBidVO userEBidVO) {
@@ -231,6 +236,60 @@ public class UserEBidController {
 					vehicleQuotation.setNextServDate(vehicleQuotationVO.getNextServDate());
 					
 					myVehicleServMaintRepository.flush();
+					
+						
+					//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+				}
+				return vehicleQuotationVO;
+	}
+	
+	@PutMapping("myVehicleGarageUpdate")
+	@Transactional
+	public MyVehicleVO myVehicleGarageUpdate(@RequestBody MyVehicleVO vehicleQuotationVO,
+			HttpServletResponse response) {
+		  //TODO: create a service for VehicleQutotation to update quotation details
+		LOGGER.debug("Received request to update my vehicle Garage Id {}", vehicleQuotationVO.getMyVehicleId());
+				if(vehicleQuotationVO != null){
+					MyVehicle vehicleQuotation = myVehicleRepository.findOne(vehicleQuotationVO.getMyVehicleId());
+					
+					
+					//vehicleQuotation.setPostalCode(vehicleQuotationVO.getPostalCode());
+					vehicleQuotation.setYear(vehicleQuotationVO.getYear());
+					vehicleQuotation.setMake(vehicleQuotationVO.getMake());
+					vehicleQuotation.setModel(vehicleQuotationVO.getModel());
+					vehicleQuotation.setVariant(vehicleQuotationVO.getVariant());
+					vehicleQuotation.setVin(vehicleQuotationVO.getVin());
+					vehicleQuotation.setRegNum(vehicleQuotationVO.getRegNum());
+					vehicleQuotation.setRegState(vehicleQuotationVO.getRegState());
+					vehicleQuotation.setRegExpDate(vehicleQuotationVO.getRegExpDate());
+					vehicleQuotation.setInsProv(vehicleQuotationVO.getInsProv());
+					
+					vehicleQuotation.setInsProvMan(vehicleQuotationVO.getInsProvMan());
+					vehicleQuotation.setInsPremPaid(vehicleQuotationVO.getInsPremPaid());
+					vehicleQuotation.setInsPremPaidFreq(vehicleQuotationVO.getInsPremPaidFreq());
+					vehicleQuotation.setInsExpiry(vehicleQuotationVO.getInsExpiry());
+					
+					vehicleQuotation.setOdoMeter(vehicleQuotationVO.getOdoMeter());
+					vehicleQuotation.setLastServiceDt(vehicleQuotationVO.getLastServiceDt());
+					vehicleQuotation.setNextServiceDt(vehicleQuotationVO.getNextServiceDt());
+					vehicleQuotation.setNextServKms(vehicleQuotationVO.getNextServKms());
+					
+					vehicleQuotation.setFinProvider(vehicleQuotationVO.getFinProvider());
+					vehicleQuotation.setLoanAmt1(vehicleQuotationVO.getLoanAmt1());
+					vehicleQuotation.setLoanTakenDt(vehicleQuotationVO.getLoanTakenDt());
+					vehicleQuotation.setLoanPaidFreq(vehicleQuotationVO.getLoanPaidFreq());
+					
+					vehicleQuotation.setLoanAmt2(vehicleQuotationVO.getLoanAmt2());
+					vehicleQuotation.setLoanPeriod(vehicleQuotationVO.getLoanPeriod());
+					vehicleQuotation.setLoanInterest(vehicleQuotationVO.getLoanInterest());
+					
+					vehicleQuotation.setInsRemind(vehicleQuotationVO.isInsRemind());
+					vehicleQuotation.setMaiRemind(vehicleQuotationVO.isMaiRemind());
+					vehicleQuotation.setFinRemind(vehicleQuotationVO.isFinRemind());
+					
+				
+					
+					myVehicleRepository.flush();
 					
 						
 					//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
