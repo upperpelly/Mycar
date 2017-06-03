@@ -478,6 +478,7 @@
             newInput.id = "relatedModels922" + row + text;
             newInput.name = "relatedModels922" + row + text;
             newInput.type = "text";
+            newInput.setAttribute('class', 'input-text full-width');
             //alert($('#car-years-trans').val());
             //alert(text);
             switch (text) {
@@ -950,6 +951,29 @@
     <script type="text/javascript">
         // <![CDATA[
         $(document).ready(function () {
+        	$(".add-row").on("click", function(){
+        	    var transregono12= $("#transregono12").val();
+        	    var transregost= $("#transregost").val();
+        	    var vehicleType= $("#vehicleType").val();
+        	    var transVIN= $("#transVIN").val();
+        	    var caryearstrans= $("#car-years-trans").val();
+        	    var carmakestrans= $("#car-makes-trans").val();
+        	    var carmodelstrans= $("#car-models-trans").val();
+        	    var carmodelautotrimstrans= $("#car-model-auto-trims-trans").val();
+        	    var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + vehicleType + "</td><td>" + transregono12 +"</td><td>" + transregost + "</td>" +"<td>" + transVIN + "</td>" +"<td>" + caryearstrans + "</td>" +"<td>" + carmakestrans + "</td>" +"<td>" + carmodelstrans + "</td><td>" + carmodelautotrimstrans+ "</td></tr>";
+        	    $("#my-table922").append(markup);
+        	  });
+
+        	  // Find and remove selected table rows
+        	  $(".delete-row").on("click", function(){
+        	    $("#my-table922").find('input[name="record"]').each(function() {
+        	      if ($(this).is(":checked")) {
+        	        $(this).parents("tr").remove();
+        	      }
+        	    });
+        	  });
+        	  
+        	  
         	allSelected896();
         	allSelected996();
             $("#coverageDetails").hide();
@@ -1027,7 +1051,14 @@
         .product-search-title {
             color: white;
         }
-
+		#my-table922{
+			border: 1px solid #cdcdcd;
+		}
+		#my-table922 th,
+		#my-table922 td{
+			padding: 10px;
+ 			 text-align: left;
+		}
         .search-box-wrapper.style1 .search-tab-content {
             background: transparent;
         }
@@ -1118,6 +1149,17 @@
         tr:hover {
             background-color: rgb(253, 183, 20);
         }
+        
+        
+        
+		#my-table922{
+			border: 1px solid #cdcdcd;
+		}
+		#my-table922 th,
+		#my-table922 td{
+			padding: 10px;
+ 			 text-align: left;
+		}
     </style>
     <!-- Meta Tags -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -1438,6 +1480,7 @@ $.ajax({
     <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="js/jstorage.js"></script>
+    <script src="js/tabletojson.js"></script>
 
 
     <!-- Fuelcard -->
@@ -1629,6 +1672,11 @@ $.ajax({
                     //alert("invoke in ins lead");
                     /*alert($scope.email);
                     alert(email); */
+                    //alert("came here");
+                    
+                    //table.remove(0);
+                    console.log(table);
+                    alert(JSON.stringify(table));
                     if (alreadyLogged()) {
                         if (isValid) {
                             userId = $.jStorage.get('key').userId;
@@ -1658,7 +1706,7 @@ $.ajax({
                                 "userId": userId,
                                 "searchTranspLead": {
                                     "searchTranspId": null,
-                                    "carModel": [{}, {}, {}, {}],
+                                    "carModel":{},
                                     "fromPostCodeAddr": $scope.transFpostCode,
                                     "toPostCodeAddr": $scope.transTpostCode,
                                     /* "transTypeReq": $scope.transVehicle, */
@@ -1684,18 +1732,29 @@ $.ajax({
                                     "uploadPhotos": $scope.uploadPhotoTrans1
                                 }
                             };
+                            var table1 = $("#my-table922");
 
-
+                            var table = table1.tableToJSON({
+                                ignoreColumns:[0], 
+                                headings: ['flex1', 'flex2', 'flex3','flex4','year','make','model','autoscooptrim','transpSearchMakeListId']
+                              });
+                            delete table[0];
+                            jsonInputToAPI.searchTranspLead.carModel = table;
+                            
+                            alert(JSON.stringify(jsonInputToAPI.searchTranspLead.carModel));
+                            alert(JSON.stringify(jsonInputToAPI));
+                            
+                            
                             // table 91
-                            var tbl922 = document.getElementById('my-table922'), // table reference
+                            /* var tbl922 = document.getElementById('my-table922'), // table reference
                                 row = tbl922.rows.length;      // append table row
-                            var i;
+                            var i; */
                             /*  alert("row length relatedModels91"+tbl922.rows.length);
                              alert("col lenght relatedModels91"+tbl922.rows[0].cells.length);
                                      alert("Json print d e relatedModels"); */
                             //alert($('#relatedModels922'+j+'0').val());
                             // insert table cells to the new row
-                            for (j = 1; j < tbl922.rows.length; j++) {
+                            /* for (j = 1; j < tbl922.rows.length; j++) {
                                 i = 0;
                                 jsonInputToAPI.searchTranspLead.carModel[j - 1].transpSearchMakeListId = null;
                                 //alert($('#relatedModels922'+j+'0').val());
@@ -1720,7 +1779,7 @@ $.ajax({
                                 jsonInputToAPI.searchTranspLead.carModel[j - 1]["flex12"] = null;
                                 jsonInputToAPI.searchTranspLead.carModel[j - 1]["flex13"] = false;
                                 jsonInputToAPI.searchTranspLead.carModel[j - 1]["flex14"] = false;
-                            }
+                            } */
                             //alert("Json print relatedModels");
                             //alert(JSON.stringify(jsonInputToAPI.searchTranspLead.carModel));
                             //alert(JSON.stringify(jsonInputToAPI.searchTranspLead));
@@ -2615,7 +2674,7 @@ $.ajax({
     <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
-
+	
 </head>
 <body class="load-full-screen" ng-app="mainApp1"
       ng-controller="myController1" id="myController1">
@@ -3172,9 +3231,9 @@ $.ajax({
                                         <div class="tab-content">
                                             <!-- BEGIN: FLIGHT SEARCH -->
                                             <div role="tabpanel" class="tab-pane active" id="flight">
-                                                <form class="form-inline signup" name="ebidfrm" ng-submit="submitForm(ebidfrm.$valid)" novalidate>
+                                                <form class="form-inline signup" name="ebidfrm" id="ebidfrm" ng-submit="submitForm(ebidfrm.$valid)" novalidate>
 
-                                                    <div class="col-md-12 product-search-title">eBidding for car</div>
+                                                    <!-- <div class="col-md-12 product-search-title">eBidding for car</div> -->
                                                     <div id="fb-root"></div>
                                                     <script>
                                                         (function (d, s, id) {
@@ -3184,7 +3243,14 @@ $.ajax({
                                                             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=249863545451459";
                                                             fjs.parentNode.insertBefore(js, fjs);
                                                         }(document, 'script', 'facebook-jssdk'));</script>
-                                                    <div class="fb-like" data-href="https://www.facebook.com/autoscoop.com.au/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                                    <div class="row">
+                                                    	<div class="col-sm-3 col-md-3"></div>
+                                                        <div class="col-sm-6 col-md-6">
+                                                        	<div class="fb-like" data-href="https://www.facebook.com/autoscoop.com.au/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                                        </div>
+                                                        <div class="col-sm-3 col-md-3"></div>
+                                                    </div>    
+                                                    <!-- <div class="fb-like" data-href="https://www.facebook.com/autoscoop.com.au/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div> -->
                                                     <div class="col-md-12">&nbsp</div>
                                                     <div class="clearfix"></div>
                                                     <div class="clearfix"></div>
@@ -3192,7 +3258,8 @@ $.ajax({
                                                     <div class="clearfix"></div>
 
                                                     <div class="row">
-                                                        <div class="col-sm-5 col-md-6">
+                                                    	<div class="col-sm-3 col-md-3"></div>
+                                                        <div class="col-sm-6 col-md-6">
                                                         	<!-- <label class="radio-inline"><input type="radio" id="newUsedCarEbid" name="newUsedCarEbid" checked>New</label>
 															<label class="radio-inline"><input type="radio" id="newUsedCarEbid" name="newUsedCarEbid"><span class="skin-color">Used</span></label> -->
                                                         	<div class="radio">
@@ -3202,7 +3269,7 @@ $.ajax({
 	                                                       		<input type="radio" id="usedCarEbid" class="newUsedCarEbid" name="newUsedCarEbid"><span class="skin-color">Used</span>
 	                                                       	</div> 
                                                         </div>
-                                                        <div class="col-sm-7 col-md-6"></div>
+                                                        <div class="col-sm-3 col-md-3"></div>
                                                     </div>
                                                     <!-- <div class="col-sm-5 col-md-4">
                                                             <div class="checkbox">
@@ -3220,41 +3287,44 @@ $.ajax({
                                                     <div class="clearfix"></div>
 
                                                     <div class="row">
-                                                        <div class="col-sm-5 col-md-6">
+                                                    	<div class="col-sm-3 col-md-3"></div>
+                                                        <div class="col-sm-6 col-md-6">
                                                             <div class="selector">
                                                                 <select id="car-years" name="caryears" ng-model="caryears"
                                                                         class="full-width" required></select>
                                                             </div>
                                                             <span style="color:red" ng-show="ebidfrm.caryears.$error.required && (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
                                                         </div>
-                                                        <div class="col-sm-7 col-md-6"></div>
+                                                        <div class="col-sm-3 col-md-3"></div>
                                                     </div>
                                                     <br />
                                                     <div class="clearfix"></div>
 
                                                     <div class="row">
-                                                        <div class="col-sm-5 col-md-6">
+                                                        <div class="col-sm-3 col-md-3"></div>
+                                                        <div class="col-sm-6 col-md-6">
                                                             <div class="selector">
                                                                 <select id="car-makes" name="carmakes" ng-model="carmakes"
                                                                         class="full-width" required></select>
                                                             </div>
                                                             <span style="color:red" ng-show="ebidfrm.carmakes.$error.required && (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car Make is Required</b></span>
                                                         </div>
-                                                        <div class="col-sm-7 col-md-6"></div>
+                                                        <div class="col-sm-3 col-md-3"></div>
                                                     </div>
 
                                                     <div class="clearfix"></div>
                                                     <br />
 
                                                     <div class="row">
-                                                        <div class="col-sm-5 col-md-6">
+                                                        <div class="col-sm-3 col-md-3"></div>
+                                                        <div class="col-sm-6 col-md-6">
                                                             <div class="selector">
                                                                 <select id="car-models" name="carmodels" ng-model="carmodels"
                                                                         class="full-width" required></select>
                                                             </div>
                                                             <span style="color:red" ng-show="ebidfrm.carmodels.$error.required && (!ebidfrm.carmodels.$pristine || ebidfrm.$submitted)"><b>Car year is Required</b></span>
                                                         </div>
-                                                        <div class="col-sm-7 col-md-6"></div>
+                                                        <div class="col-sm-3 col-md-3"></div>
                                                     </div>
 
                                                     <div class="clearfix"></div>
@@ -3280,51 +3350,60 @@ $.ajax({
 
 
                                                     <div class="row">
-                                                        <div class="col-sm-5 col-md-6">
+                                                        <div class="col-sm-3 col-md-3"></div>
+                                                        <div class="col-sm-6 col-md-6">
                                                             <div class="selector">
                                                                 <select id="car-model-auto-trims" name="carmodelAutotrims" ng-model="carmodelAutotrims"
                                                                         class="full-width" required></select>
                                                             </div>
                                                             <span style="color:red" ng-show="ebidfrm.carmodelAutotrims.$error.required && (!ebidfrm.carmodelAutotrims.$pristine || ebidfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
                                                         </div>
-                                                        <div class="col-sm-7 col-md-6"></div>
+                                                        <div class="col-sm-3 col-md-3"></div>
                                                     </div>
 
                                                     <div class="clearfix"></div>
                                                     <div class="col-md-12">&nbsp</div>
-                                                    <div class="col-sm-6 col-md-5">
-                                                        <div class="checkbox">
-                                                            <label>
-                                                            <input type="checkbox" checked id="carEbidFinan" name="carEbidFinan" class="jpCheckbox" onclick="allSelected896()"><span class="skin-color">Finance&nbsp;&nbsp;</span>
-                                                                <!-- <input type="checkbox" checked><span class="skin-color"></span> -->
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                            <input type="checkbox" checked id="carEbidInsur" name="carEbidInsur" class="jpCheckbox" onclick="allSelected996()"><span class="skin-color">Insurance&nbsp;&nbsp;</span>
-                                                                <!-- <input type="checkbox" checked><span class="skin-color"></span> -->
-                                                            </label>
-                                                        </div>
-                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-3"></div>
+	                                                    <div class="col-sm-6 col-md-6">
+	                                                        <div class="checkbox">
+	                                                            <label>
+	                                                            <input type="checkbox" checked id="carEbidFinan" name="carEbidFinan" class="jpCheckbox" onclick="allSelected896()"><span class="skin-color">Finance&nbsp;&nbsp;</span>
+	                                                                <!-- <input type="checkbox" checked><span class="skin-color"></span> -->
+	                                                            </label>
+	                                                        </div>
+	                                                        <div class="checkbox">
+	                                                            <label>
+	                                                            <input type="checkbox" checked id="carEbidInsur" name="carEbidInsur" class="jpCheckbox" onclick="allSelected996()"><span class="skin-color">Insurance&nbsp;&nbsp;</span>
+	                                                                <!-- <input type="checkbox" checked><span class="skin-color"></span> -->
+	                                                            </label>
+	                                                        </div>
+	                                                    </div>
+	                                                    <div class="col-sm-3 col-md-3"></div>
+	                                                </div>
                                                     <div class="clearfix"></div>
                                                     <div id="status"></div>
                                                     <!-- <button type="submit" hidden="hidden"
                                                         ng-click="submitForm1()"></button> -->
                                                     <br /> <br />
-                                                    <div class="social col-md-12 col-sm-12" data-toggle="tooltip" data-placement="top" title="Signup / Login section to proceed further..">
-                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook Accoount">
-                                                            <i class="fa fa-facebook"
-                                                               onclick="login()" aria-hidden="true"></i>
-                                                        </a> &nbsp <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter Accoount">
-                                                            <i class="fa fa-twitter" aria-hidden="true"></i>
-                                                        </a>&nbsp <a href="#" data-toggle="tooltip" data-placement="top" title="Google Accoount">
-                                                            <i class="fa fa-google-plus" onclick="onSignInG()"
-                                                               aria-hidden="true"></i>
-                                                        </a> &nbsp<a href="#" data-toggle="tooltip" data-placement="top" title="LinkedIn Accoount">
-                                                            <i class="fa fa-linkedin" onclick="onLinkedInLoad()"
-                                                               aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-3"></div>
+	                                                    <div class="social col-sm-6 col-md-6" data-toggle="tooltip" data-placement="top" title="Signup / Login section to proceed further..">
+	                                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook Accoount">
+	                                                            <i class="fa fa-facebook"
+	                                                               onclick="login()" aria-hidden="true"></i>
+	                                                        </a> &nbsp <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter Accoount">
+	                                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+	                                                        </a>&nbsp <a href="#" data-toggle="tooltip" data-placement="top" title="Google Accoount">
+	                                                            <i class="fa fa-google-plus" onclick="onSignInG()"
+	                                                               aria-hidden="true"></i>
+	                                                        </a> &nbsp<a href="#" data-toggle="tooltip" data-placement="top" title="LinkedIn Accoount">
+	                                                            <i class="fa fa-linkedin" onclick="onLinkedInLoad()"
+	                                                               aria-hidden="true"></i>
+	                                                        </a>
+	                                                    </div>
+	                                                    <div class="col-sm-3 col-md-3"></div>
+	                                                </div>
                                                     <!-- Show userid -->
 
                                                     <br /> <br />
@@ -3349,18 +3428,22 @@ $.ajax({
                                                     <div class="clearfix"></div>
                                                     <div class="clearfix"></div>
                                                     <!-- data-toggle="modal" data-target="#termsnconditionsModal" -->
-
-
+                                                    <div class="clearfix"></div>
                                                     <div class="row">
-                                                        <div class="col-sm-12 col-md-12">
-                                                            By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
+                                                        <div class="col-sm-3 col-md-3"></div>
+	                                                    <div class="col-md-6 col-sm-6 search-col-padding">
+	                                                        <button type="submit" class="button full-width submit-bgcolor">Build</button>
+	                                                        <!-- <button type="submit" class="search-button btn transition-effect">Build</button>  ng-disabled="ebidfrm.$invalid" -->
+	                                                    </div>
+	                                                    <div class="col-sm-3 col-md-3"></div>
+	                                                </div>
+	                                                <div class="row">
+                                                        <div class="col-sm-3 col-md-3"></div>
+                                                        <div class="col-sm-6 col-md-6">
+                                                            By proceeding further or using AutoScoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">AutoScoop Terms of Use</a>
                                                             <!-- <span style="color:red" ng-show="ebidfrm.eCarTerms.$error.required && (!ebidfrm.eCarTerms.$pristine || ebidfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span> -->
                                                         </div>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                    <div class="col-md-6 col-sm-6 search-col-padding">
-                                                        <button type="submit" class="button full-width submit-bgcolor">Build</button>
-                                                        <!-- <button type="submit" class="search-button btn transition-effect">Build</button>  ng-disabled="ebidfrm.$invalid" -->
+                                                        <div class="col-sm-3 col-md-3"></div>
                                                     </div>
                                                     <div class="clearfix"></div>
                                                 </form>
@@ -4915,9 +4998,11 @@ $.ajax({
                                                             <div class="selector">
                                                                 <select id="newCarFinance" name="newCarFinance" ng-model="newCarFinance" onclick="allSelected3()"
                                                                         class="full-width" required>
+                                                                    <option>New Car & Pre-Approval</option>
+                                                                    <option>Used Car & Pre-Approval</option>
                                                                     <option>New Car</option>
                                                                     <option>Used Car</option>
-                                                                    <option>Pre Approval</option>
+                                                                    <option>Pre-Approval</option>
                                                                 </select>
                                                             </div>
                                                             <span style="color:red" ng-show="ebidfinfrm.newCarFinance.$error.required && (!ebidfinfrm.newCarFinance.$pristine || ebidfinfrm.$submitted)"><b>Loan For ? is Required</b></span>
@@ -4950,7 +5035,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <input type="text"
                                                                    id="finRego" name="finRego" ng-model="finRego"
-                                                                   class="input-text full-width" value="" placeholder="Rego(If Used)" required />
+                                                                   class="input-text full-width" value="" placeholder="Rego(If Used)" ng-required="!caryearsfin || !carmakesfin || !carmodelsfin || !carmodelAutotrimsfin" />
                                                             <span style="color:red" ng-show="ebidfinfrm.finRego.$error.required && (!ebidfinfrm.finRego.$pristine || ebidfinfrm.$submitted)"><b>Rego No is Required</b></span>
                                                         </div>
                                                         <div class="col-sm-3 col-md-3">
@@ -4959,7 +5044,7 @@ $.ajax({
                                                             class="input-text full-width" value="" placeholder="Rego State" required/> -->
                                                             <div class="selector">
                                                                 <select class="full-width" id="finRegoState" ng-model="finRegoState"
-                                                                        name="finRegoState" required>
+                                                                        name="finRegoState" ng-required="!caryearsfin || !carmakesfin || !carmodelsfin || !carmodelAutotrimsfin">
                                                                     <option value="" selected disabled>Rego State</option>
                                                                     <option>ACT</option>
                                                                     <option>NT</option>
@@ -4983,7 +5068,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <div class="selector">
                                                                 <select id="car-years-fin" name="caryearsfin" ng-model="caryearsfin"
-                                                                        class="full-width" required >
+                                                                        class="full-width" ng-required="!finRego || !finRegoState">
                                                                     <option value="" selected disabled>Year</option>
                                                                 </select>
                                                             </div>
@@ -4992,7 +5077,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <div class="selector">
                                                                 <select id="car-makes-fin" name="carmakesfin" ng-model="carmakesfin"
-                                                                        class="full-width" required>
+                                                                        class="full-width" ng-required="!finRego || !finRegoState">
                                                                     <option value="" selected disabled>Make</option>
                                                                 </select>
                                                             </div>
@@ -5001,7 +5086,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <div class="selector">
                                                                 <select id="car-models-fin" name="carmodelsfin" ng-model="carmodelsfin"
-                                                                        class="full-width" required>
+                                                                        class="full-width" ng-required="!finRego || !finRegoState">
                                                                     <option value="" selected disabled>Model</option>
                                                                 </select>
                                                             </div>
@@ -5029,7 +5114,7 @@ $.ajax({
                                                         <div class="col-sm-9 col-md-9">
                                                             <div class="selector">
                                                                 <select id="car-model-auto-trims-fin" name="carmodelAutotrimsfin" ng-model="carmodelAutotrimsfin"
-                                                                        class="full-width" required>
+                                                                        class="full-width" ng-required="!finRego || !finRegoState">
                                                                     <option value="" selected disabled>Autoscoop Trim</option>
                                                                 </select>
                                                             </div>
@@ -5073,8 +5158,8 @@ $.ajax({
                                                                    class="input-text full-width" value="" placeholder="Loan Amount" ng-pattern="/^[0-9]*$/" required />
 															<span class="input-group-addon">$</span>                                                                   
                                                             <!-- <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Amount is Required</b></span> -->
-                                                            <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.pattern && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted)"><b>Loan Amount must be Numeric</b></span>
-                                                            <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finLoanAmount.$error.pattern"><b>Loan Amount is Required</b></span>
+                                                            <!-- <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.pattern && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted)"><b>Loan Amount must be Numeric</b></span>
+                                                            <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finLoanAmount.$error.pattern"><b>Loan Amount is Required</b></span> -->
                                                         </div>
                                                         <div class="col-sm-4 col-md-4">
                                                             <div class="selector">
@@ -5091,10 +5176,20 @@ $.ajax({
                                                                     <option>8</option>
                                                                 </select>
                                                             </div>
-                                                            <span style="color:red" ng-show="ebidfinfrm.finLoanPeriod.$error.required && (!ebidfinfrm.finLoanPeriod.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Period is Required</b></span>
+                                                            <!-- <span style="color:red" ng-show="ebidfinfrm.finLoanPeriod.$error.required && (!ebidfinfrm.finLoanPeriod.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Period is Required</b></span> -->
                                                         </div>
                                                         <div class="col-sm-3 col-md-3">
                                                             &nbsp;
+                                                        </div>
+                                                    </div><br />
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-3"></div>
+                                                        <div class="col-sm-4 col-md-4">
+                                                            <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.pattern && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted)"><b>Loan Amount must be Numeric</b></span>
+                                                            <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finLoanAmount.$error.pattern"><b>Loan Amount is Required</b></span>
+                                                        </div>
+                                                        <div class="col-sm-4 col-md-4">
+                                                            <span style="color:red" ng-show="ebidfinfrm.finLoanPeriod.$error.required && (!ebidfinfrm.finLoanPeriod.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Period is Required</b></span>
                                                         </div>
                                                     </div><br />
                                                     <div class="row">
@@ -5149,7 +5244,7 @@ $.ajax({
                                                                     <option>Business</option>
                                                                 </select>
                                                             </div>
-                                                            <span style="color:red" ng-show="ebidfinfrm.finIncomeType.$error.required && (!ebidfinfrm.finIncomeType.$pristine || ebidfinfrm.$submitted)"><b>Finance Income Type is Required</b></span>
+                                                            <!-- <span style="color:red" ng-show="ebidfinfrm.finIncomeType.$error.required && (!ebidfinfrm.finIncomeType.$pristine || ebidfinfrm.$submitted)"><b>Finance Income Type is Required</b></span> -->
                                                         </div>
                                                         <div class="col-sm-4 col-md-4 pull-left input-group">
                                                             <input type="text"
@@ -5157,8 +5252,8 @@ $.ajax({
                                                                    class="input-text full-width" value="" placeholder="Annual Income" required />
                                                             <span class="input-group-addon">$</span>
                                                             <!-- <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.required && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted)"><b>Finance Annual Income is Required</b></span> -->
-                                                            <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.pattern && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted)"><b>Annual Income must be Numeric</b></span>
-                                                            <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.required && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>Finance Annual Income is Required</b></span>
+                                                            <!-- <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.pattern && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted)"><b>Annual Income must be Numeric</b></span>
+                                                            <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.required && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>Finance Annual Income is Required</b></span> -->
                                                         </div>
                                                         <!-- <div class="col-sm-3 col-md-3">
                                                             <input type="text"
@@ -5167,6 +5262,19 @@ $.ajax({
                                                             <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.pattern && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted)"><b>No of years must be Numeric</b></span>
                                                             <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.required && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>No of years is Required</b></span>
                                                         </div> -->
+                                                    </div><br />
+                                                    
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-3">
+                                                        </div>
+                                                        <div class="col-sm-4 col-md-4">
+                                                            <span style="color:red" ng-show="ebidfinfrm.finIncomeType.$error.required && (!ebidfinfrm.finIncomeType.$pristine || ebidfinfrm.$submitted)"><b>Finance Income Type is Required</b></span>
+                                                        </div>
+                                                        <div class="col-sm-4 col-md-4 ">
+                                                            <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.pattern && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted)"><b>Annual Income must be Numeric</b></span>
+                                                            <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.required && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>Finance Annual Income is Required</b></span>
+                                                        </div>
                                                     </div><br />
                                                     
                                                     <div class="row">
@@ -5241,25 +5349,6 @@ $.ajax({
                                                         </div>
                                                     </div>
                                                     <br />
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                        <div class="col-sm-5 col-md-6">
-                                                            <!-- <div class="checkbox">
-                                                                <label> <input type="checkbox" id="fCarTerms" name="fCarTerms"  ng-model="fCarTerms" required /><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
-                                                                            Conditions</span></a>.
-                                                                </label>
-                                                                <span style="color:red" ng-show="ebidfinfrm.fCarTerms.$error.required && (!ebidfinfrm.fCarTerms.$pristine || ebidfinfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
-                                                            </div> -->
-                                                            By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
-                                                        </div>
-                                                        <!--
-                                                        <div class="col-sm-12 col-md-12">
-                                                                By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
-                                                        </div> -->
-                                                    </div><br />
-                                                    <br />
                                                     <div class="clearfix"></div>
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3">
@@ -5267,6 +5356,15 @@ $.ajax({
                                                         </div>
                                                         <div class="col-sm-5 col-md-6">
                                                             <button class="button submit-bgcolor">Submit for Loan Quotation</button>
+                                                        </div>
+                                                    </div><br />
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-3">
+                                                            &nbsp;
+                                                        </div>
+                                                        <div class="col-sm-5 col-md-6">
+                                                            By proceeding further or using AutoScoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">AutoScoop Terms of Use</a>
                                                         </div>
                                                     </div><br />
                                                 </form>
@@ -6029,13 +6127,13 @@ $.ajax({
                                                                     <div class="col-sm-3 col-md-3">
                                                                         <input type="text"
                                                                                class="input-text full-width" value="" ng-model="regono12"
-                                                                               placeholder="Rego No" id="regono12" name="regono12" required />
+                                                                               placeholder="Rego No" id="regono12" name="regono12" ng-required="!caryearsins || !carmakesins || !carmodelsins || !carmodelAutotrimsins" />
                                                                         <span style="color:red" ng-show="ebidinsfrm.regono12.$error.required && (!ebidinsfrm.regono12.$pristine || ebidinsfrm.$submitted)"><b>Rego Number is Required</b></span>
                                                                     </div>
                                                                     <div class="col-sm-3 col-md-3">
                                                                         <div class="selector">
                                                                             <select class="full-width" id="ins-regost" ng-model="insregost"
-                                                                                    name="insregost" required>
+                                                                                    name="insregost" ng-required="!caryearsins || !carmakesins || !carmodelsins || !carmodelAutotrimsins">
                                                                                 <option value="" selected disabled>Rego State</option>
                                                                                 <option>ACT</option>
                                                                                 <option>NT</option>
@@ -6060,7 +6158,7 @@ $.ajax({
                                                                     <div class="col-sm-3 col-md-3">
                                                                         <div class="selector">
                                                                             <select id="car-years-ins" name="caryearsins" ng-model="caryearsins"
-                                                                                    class="full-width" required>
+                                                                                    class="full-width" ng-required="!regono12 || !insregost">
                                                                                 <option value="" selected disabled>Year</option>
                                                                             </select>
                                                                         </div>
@@ -6069,7 +6167,7 @@ $.ajax({
                                                                     <div class="col-sm-3 col-md-3">
                                                                         <div class="selector">
                                                                             <select id="car-makes-ins" name="carmakesins" ng-model="carmakesins"
-                                                                                    class="full-width" required>
+                                                                                    class="full-width" ng-required="!regono12 || !insregost">
                                                                                 <option value="" selected disabled>Make</option>
                                                                             </select>
                                                                         </div>
@@ -6078,11 +6176,11 @@ $.ajax({
                                                                     <div class="col-sm-3 col-md-3">
                                                                         <div class="selector">
                                                                             <select id="car-models-ins" name="carmodelsins" ng-model="carmodelsins"
-                                                                                    class="full-width" required>
+                                                                                    class="full-width" ng-required="!regono12 || !insregost">
                                                                                 <option value="" selected disabled>Model</option>
                                                                             </select>
                                                                         </div>
-                                                                        <span style="color:red" ng-show="ebidinsfrm.carmodelsfin.$error.required && (!ebidinsfrm.carmodelsins.$pristine || ebidinsfrm.$submitted)"><b>Car model is Required</b></span>
+                                                                        <span style="color:red" ng-show="ebidinsfrm.carmodelsins.$error.required && (!ebidinsfrm.carmodelsins.$pristine || ebidinsfrm.$submitted)"><b>Car model is Required</b></span>
                                                                     </div>
                                                                 </div><br />
 
@@ -6107,7 +6205,7 @@ $.ajax({
                                                                     <div class="col-sm-9 col-md-9">
                                                                         <div class="selector">
                                                                             <select id="car-model-auto-trims-ins" name="carmodelAutotrimsins" ng-model="carmodelAutotrimsins"
-                                                                                    class="full-width" required>
+                                                                                    class="full-width" ng-required="!regono12 || !insregost">
                                                                                 <option value="" selected disabled>Autoscoop Trim</option>
                                                                             </select>
                                                                         </div>
@@ -6555,7 +6653,7 @@ $.ajax({
 						                                                    <option>Rather Not say</option>
 						                                                </select>
 						                                            </div>
-						                                            </div>
+                                                                    </div>
                                                                 </div><br />
 
 
@@ -6772,6 +6870,12 @@ $.ajax({
 
                                                     <br /><br />
                                                     <div class="clearfix"></div>
+
+                                                    <div class="col-md-12 search-col-padding">
+                                                        <button class="button submit-bgcolor">Select your Insurance coverage</button>
+                                                        <!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
+                                                    </div>
+                                                    
                                                     <div class="row">
                                                         <div class="col-sm-5 col-md-6">
                                                             <!-- <div class="checkbox">
@@ -6781,16 +6885,11 @@ $.ajax({
                                                                 <span style="color:red" ng-show="ebidinsfrm.iCarTerms.$error.required && (!ebidinsfrm.iCarTerms.$pristine || ebidinsfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
                                                             </div> -->
                                                             <div class="col-sm-12 col-md-12">
-                                                                By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
+                                                                By proceeding further or using AutoScoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">AutoScoop Terms of Use</a>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-7 col-md-6"></div>
                                                     </div><br />
-
-                                                    <div class="col-md-12 search-col-padding">
-                                                        <button class="button submit-bgcolor">Select your Insurance coverage</button>
-                                                        <!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
-                                                    </div>
                                                     <div class="clearfix"></div>
                                                 </form>
                                             </div>
@@ -8085,13 +8184,13 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <input type="text"
                                                                    id="serv-regono" name="servregono" ng-model="servregono"
-                                                                   class="input-text full-width" value="" placeholder="Rego NO" required />
+                                                                   class="input-text full-width" value="" placeholder="Rego NO" ng-required="!caryearsserv || !carmakesserv || !carmodelsserv || !carmodelAutotrimsserv" />
                                                             <span style="color:red" ng-show="ebidservfrm.servregono.$error.required && (!ebidservfrm.servregono.$pristine || ebidservfrm.$submitted)"><b> Rego No value is Required</b></span>
                                                         </div>
                                                         <div class="col-sm-3 col-md-3">
                                                             <div class="selector">
                                                                 <select class="full-width" id="regoStateServ" ng-model="regoStateServ"
-                                                                        name="regoStateServ" required>
+                                                                        name="regoStateServ" ng-required="!caryearsserv || !carmakesserv || !carmodelsserv || !carmodelAutotrimsserv">
                                                                     <option value="" selected disabled>Rego State</option>
                                                                     <option>ACT</option>
                                                                     <option>NT</option>
@@ -8115,7 +8214,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <div class="selector">
                                                                 <select id="car-years-serv" name="caryearsserv" ng-model="caryearsserv"
-                                                                        class="full-width" required>
+                                                                        class="full-width" ng-required="!servregono || !regoStateServ">
                                                                     <option value="" selected disabled>Year</option>
                                                                 </select>
                                                             </div>
@@ -8124,7 +8223,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <div class="selector">
                                                                 <select id="car-makes-serv" name="carmakesserv" ng-model="carmakesserv"
-                                                                        class="full-width" required>
+                                                                        class="full-width" ng-required="!servregono || !regoStateServ">
                                                                     <option value="" selected disabled>Make</option>
                                                                 </select>
                                                             </div>
@@ -8133,7 +8232,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <div class="selector">
                                                                 <select id="car-models-serv" name="carmodelsserv" ng-model="carmodelsserv"
-                                                                        class="full-width" required>
+                                                                        class="full-width" ng-required="!servregono || !regoStateServ">
                                                                     <option value="" selected disabled>Model</option>
                                                                 </select>
                                                             </div>
@@ -8142,9 +8241,20 @@ $.ajax({
                                                     </div><br />
 
                                                     <div class="clearfix"></div>
-                                                    <div class="clearfix"></div>
-
-                                                    <div class="clearfix"></div>
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-3">
+                                                            &nbsp;
+                                                        </div>
+                                                        <div class="col-sm-9 col-md-9">
+                                                            <div class="selector">
+                                                                <select id="car-model-auto-trims-serv" name="carmodelAutotrimsserv" ng-model="carmodelAutotrimsserv"
+                                                                        class="full-width" ng-required="!servregono || !regoStateServ">
+                                                                    <option value="" selected disabled>Autoscoop Trim</option>
+                                                                </select>
+                                                            </div>
+                                                            <span style="color:red" ng-show="ebidservfrm.carmodelAutotrimsserv.$error.required && (!ebidservfrm.carmodelAutotrimsserv.$pristine || ebidservfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+                                                        </div>
+                                                    </div><br />
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3">
                                                             &nbsp;
@@ -8158,7 +8268,7 @@ $.ajax({
                                                             </div>
                                                             <span style="color:red" ng-show="ebidservfrm.carmodeltrimsserv.$error.required && (!ebidservfrm.carmodeltrimsserv.$pristine || ebidservfrm.$submitted)"><b>Car Variant is Required</b></span>
                                                         </div> -->
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-4 col-md-4">
                                                             <div class="selector">
                                                                 <select class="full-width" id="fuelTypeServ" ng-model="fuelTypeServ"
                                                                         name="fuelTypeServ" required>
@@ -8171,21 +8281,6 @@ $.ajax({
                                                                 </select>
                                                             </div>
                                                             <span style="color:red" ng-show="ebidservfrm.fuelTypeServ.$error.required && (!ebidservfrm.fuelTypeServ.$pristine || ebidservfrm.$submitted)"><b>Fuel Type is Required</b></span>
-                                                        </div>
-                                                    </div><br />
-                                                    <div class="clearfix"></div>
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                        <div class="col-sm-9 col-md-9">
-                                                            <div class="selector">
-                                                                <select id="car-model-auto-trims-serv" name="carmodelAutotrimsserv" ng-model="carmodelAutotrimsserv"
-                                                                        class="full-width" required>
-                                                                    <option value="" selected disabled>Autoscoop Trim</option>
-                                                                </select>
-                                                            </div>
-                                                            <span style="color:red" ng-show="ebidservfrm.carmodelAutotrimsserv.$error.required && (!ebidservfrm.carmodelAutotrimsserv.$pristine || ebidservfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
                                                         </div>
                                                     </div><br />
                                                     <div class="clearfix"></div>
@@ -8321,24 +8416,23 @@ $.ajax({
                                                             &nbsp;
                                                         </div>
                                                         <div class="col-sm-5 col-md-6">
+                                                            <button id="uploadPhotoServbutton" class="button submit-bgcolor">Submit for Request Quotation</button>
+                                                        </div>
+                                                    </div><br />
+                                                    
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-3">
+                                                            &nbsp;
+                                                        </div>
+                                                        <div class="col-sm-5 col-md-6">
                                                             <!-- <div class="checkbox">
                                                                 <label> <input type="checkbox" id="sCarTerms" name="sCarTerms"  ng-model="sCarTerms" required><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
                                                                             Conditions</span></a>.
                                                                 </label>
                                                                 <span style="color:red" ng-show="ebidservfrm.sCarTerms.$error.required && (!ebidservfrm.sCarTerms.$pristine || ebidservfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
                                                             </div> -->
-                                                            By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
-                                                        </div>
-                                                    </div><br />
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                        <div class="col-sm-5 col-md-6">
-                                                            <button id="uploadPhotoServbutton" class="button submit-bgcolor">
-                                                                Submit for Request
-                                                                Quotation
-                                                            </button>
+                                                            By proceeding further or using AutoScoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">AutoScoop Terms of Use</a>
                                                         </div>
                                                     </div><br />
                                                 </form>
@@ -9222,9 +9316,9 @@ $.ajax({
                                                             <label>When do you want this to be picked up & delivered?</label>
                                                         </div>
                                                         <div class="col-sm-4 col-md-4">
-                                                            <input type="date"
+                                                            <input type="text" onfocus="(this.type='date')" 
                                                                    id="transPickup" name="transPickup" ng-model="transPickup"
-                                                                   class="input-text full-width" value="" placeholder="Post Code" required />
+                                                                   class="input-text full-width"  placeholder="Pickup Date" required />
                                                             <span style="color:red" ng-show="ebidtransfrm.transPickup.$error.required && (!ebidtransfrm.transPickup.$pristine || ebidtransfrm.$submitted)"><b> Pick up Date is Required</b></span>
                                                         </div>
                                                         <div class="col-sm-4 col-md-4">
@@ -9281,7 +9375,7 @@ $.ajax({
                                                                         <input type="text"
                                                                                class="input-text full-width" value="" ng-model="transregono12"
                                                                                placeholder="Rego No" id="transregono12" name="transregono12" required />
-                                                                        <span style="color:red" ng-show="ebidinsfrm.transregono12.$error.required && (!ebidinsfrm.transregono12.$pristine || ebidinsfrm.$submitted)"><b>Rego Number is Required</b></span>
+                                                                        <span style="color:red" ng-show="ebidtransfrm.transregono12.$error.required && (!ebidtransfrm.transregono12.$pristine || ebidtransfrm.$submitted)"><b>Rego Number is Required</b></span>
                                                                     </div>
                                                                     <div class="col-sm-3 col-md-3">
                                                                         <div class="selector">
@@ -9298,15 +9392,38 @@ $.ajax({
                                                                                 <option>WA</option>
                                                                             </select>
                                                                         </div>
-                                                                        <span style="color:red" ng-show="ebidinsfrm.transregost.$error.required && (!ebidinsfrm.transregost.$pristine || ebidinsfrm.$submitted)"><b>Rego State is Required</b></span>
+                                                                        <span style="color:red" ng-show="ebidtransfrm.transregost.$error.required && (!ebidtransfrm.transregost.$pristine || ebidtransfrm.$submitted)"><b>Rego State is Required</b></span>
                                                                     </div>
                                                                     <div class="col-sm-3 col-md-3">&nbsp;</div>
                                                                 </div><br />
 
-
+																<div class="row">
+																		<div class="col-sm-3 col-md-3">
+																			<label>Vehicle Details</label>
+																		</div>
+																		<div class="col-sm-3 col-md-3">
+																			<div class="selector">
+								                                                <select class="full-width" id="vehicleType" name="vehicleType" ng-model="vehicleType" required>
+								                                                    <option value="" selected disabled>Vehicle Type</option>
+								                                                    <option>My Car</option>
+								                                                    <option>My Bike</option>
+								                                                    <option>My Boat</option>
+								                                                    <option>My Caravans</option>
+								                                                    <option>My Bicycles</option>
+								                                                </select>
+								                                            </div>
+								                                            <span style="color:red" ng-show="ebidtransfrm.vehicleType.$error.required && (!ebidtransfrm.vehicleType.$pristine || ebidtransfrm.$submitted)"><b>Vehicle Type is Required</b></span>
+																		</div>
+																		<div class="col-sm-3 col-md-3">
+																			<input type="text" id="transVIN" name="transVIN" ng-model="transVIN" placeholder="VIN / HIN Number" class="input-text full-width" required/>
+                                                     				       <span style="color:red" ng-show="ebidtransfrm.transVIN.$error.required && (!ebidtransfrm.transVIN.$pristine || ebidtransfrm.$submitted)"><b> VIN/HIN number is Required</b></span>
+																		</div>
+																		<div class="col-sm-3 col-md-3">
+																			&nbsp;
+																		</div>
+																</div><br />
                                                                 <div class="row">
                                                                     <div class="col-sm-3 col-md-3">
-                                                                        <label>Vehicle Details</label>
                                                                     </div>
                                                                     <div class="col-sm-3 col-md-3">
                                                                         <div class="selector">
@@ -9372,14 +9489,21 @@ $.ajax({
                                                                     <div class="col-sm-9 col-md-9">
                                                                         <div id="my-container">
                                                                             <center>
-                                                                                <button type="button" onclick="javascript:appendRow922()" class="append_row submit-bgcolor">Add vehicle</button>
-                                                                                <button type="button" onclick="javascript:deleteRows9()" class="delete submit-bgcolor">Delete Vehicle</button><br />
-                                                                                <table id="my-table922" align="center" cellspacing="0" cellpadding="0" border="0">
-                                                                                    <tr><th>Year</th><th>Make</th><th>Model</th><th>Variant</th><th>Autoscoop Trim</th></tr>
-                                                                                </table>
-                                                                                <p>
+                                                                                <button type="button"  class="add-row submit-bgcolor">Add vehicle</button>
+                                                                                <button type="button" class="delete-row submit-bgcolor">Delete Vehicle</button><br />
+                                                                                <!-- onclick="javascript:appendRow922()"  onclick="javascript:deleteRows9()" <table id="my-table922" align="center" cellspacing="0" cellpadding="0" border="0">
+                                                                                    <tr><th>Year</th><th>Make</th><th>Model</th><th>Autoscoop Trim</th></tr>
+                                                                                </table> -->
                                                                             </center>
                                                                         </div>
+                                                                    </div>
+                                                                </div><br />
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-sm-12 col-md-12">
+                                                                        <table id="my-table922" align="center" cellspacing="0" cellpadding="0" border="0">
+                                                                        	<tr><th>Select</th><th>Vehicle Type</th><th>Rego No</th><th>Rego State</th><th>VIN/HIN No</th><th>Year</th><th>Make</th><th>Model</th><th>AutoScoop Trim</th></tr>
+                                                                        </table>
                                                                     </div>
                                                                 </div><br />
                                                                 <hr>
@@ -9578,21 +9702,22 @@ $.ajax({
                                                             &nbsp;
                                                         </div>
                                                         <div class="col-sm-5 col-md-6">
+                                                            <button id="uploadPhotoTransbutton" class="button submit-bgcolor">Submit Request for Quotation</button>
+                                                        </div>
+                                                    </div><br />
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-sm-3 col-md-3">
+                                                            &nbsp;
+                                                        </div>
+                                                        <div class="col-sm-5 col-md-6">
                                                             <!-- <div class="checkbox">
                                                                 <label> <input type="checkbox" id="tCarTerms" name="tCarTerms"  ng-model="tCarTerms" required ><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
                                                                             Conditions</span></a>.
                                                                 </label>
                                                                 <span style="color:red" ng-show="ebidtransfrm.tCarTerms.$error.required && (!ebidtransfrm.tCarTerms.$pristine || ebidtransfrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
                                                             </div> -->
-                                                            By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
-                                                        </div>
-                                                    </div><br />
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                        <div class="col-sm-5 col-md-6">
-                                                            <button id="uploadPhotoTransbutton" class="button submit-bgcolor">Submit Request for Quotation</button>
+                                                            By proceeding further or using AutoScoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">AutoScoop Terms of Use</a>
                                                         </div>
                                                     </div><br />
 
@@ -10174,6 +10299,7 @@ $.ajax({
                                                                 <select class="full-width" id="car-reg-state"
                                                                         name="carregstate" ng-model="carregstate"
                                                                         required>
+                                                                    <option value="" disabled selected>State</option>
                                                                     <option>ACT</option>
                                                                     <option>VIC</option>
                                                                     <option>NSW</option>
@@ -10200,6 +10326,7 @@ $.ajax({
                                                                 <select class="full-width" id="car-reg-vehType"
                                                                         name="carregvehType" ng-model="carregvehType"
                                                                         required>
+                                                                    <option value="" disabled selected>Service Type</option>    
                                                                     <option>Vehicle Renewal</option>
                                                                     <option>Address Change</option>
                                                                     <option>Check Registration</option>
@@ -10209,7 +10336,7 @@ $.ajax({
                                                                     <option>Vehicle Inspection</option>
                                                                 </select>
                                                             </div>
-                                                            <span style="color:red" ng-show="ebidregostatefrm.carregvehType.$error.required && (!ebidregostatefrm.carregvehType.$pristine || ebidregostatefrm.$submitted)"><b>Vehicle Type is Required</b></span>
+                                                            <span style="color:red" ng-show="ebidregostatefrm.carregvehType.$error.required && (!ebidregostatefrm.carregvehType.$pristine || ebidregostatefrm.$submitted)"><b>Service Type is Required</b></span>
                                                         </div>
                                                         <div class="col-sm-4 col-md-4">
                                                             &nbsp;
@@ -10270,33 +10397,30 @@ $.ajax({
                                                     <br />
                                                     <div class="row">
                                                         <div class="col-sm-4 col-md-4">
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6">
+                                                            <button class="button submit-bgcolor">Take me There!</button>
+                                                        </div>
+                                                        <div class="col-sm-2 col-md-2">
+                                                        </div>
+                                                    </div>
+													<div class="row">
+                                                        <div class="col-sm-4 col-md-4">
                                                             &nbsp;
                                                         </div>
-                                                        <div class="col-sm-4 col-md-4">
+                                                        <div class="col-sm-6 col-md-6">
                                                             <!-- <div class="checkbox">
                                                                 <label> <input type="checkbox" id="rCarTerms" name="rCarTerms"  ng-model="rCarTerms" required ><a href="pages-autoscoop-policies.html" target="_blank"><span class="skin-color">Terms and
                                                                             Conditions</span></a>.
                                                                 </label>
                                                                 <span style="color:red" ng-show="ebidregostatefrm.rCarTerms.$error.required && (!ebidregostatefrm.rCarTerms.$pristine || ebidregostatefrm.$submitted)"><b>Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy</b></span>
                                                             </div> -->
-                                                            By clicking BUILD or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
+                                                            By proceeding further or using AutoScoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">AutoScoop Terms of Use</a>
+                                                        </div>
+                                                        
+                                                        <div class="col-sm-2 col-md-2">
                                                         </div>
                                                     </div><br />
-
-                                                    <br /> <br />
-
-                                                    <div class="row">
-                                                        <div class="col-sm-4 col-md-4">
-                                                            &nbsp;
-                                                        </div>
-                                                        <div class="col-sm-4 col-md-4">
-                                                            <button class="button submit-bgcolor">Take me There!</button>
-                                                        </div>
-                                                        <div class="col-sm-4 col-md-4">
-                                                            &nbsp;
-                                                        </div>
-                                                    </div>
-
                                                     <div class="clearfix"></div>
                                                 </form>
                                             </div>

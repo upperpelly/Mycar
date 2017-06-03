@@ -507,6 +507,7 @@ CarQuery.prototype = {
         //alert("came here");
     	
     	//Set the ids for the select elements
+    flagV = false;
      this.year_select_id =  year_select_id;
      this.make_select_id =  make_select_id;
      this.model_select_id = model_select_id;
@@ -517,7 +518,13 @@ CarQuery.prototype = {
      $("select#"+this.model_select_id).html("<option value='' disabled selected>Model</option>");
      //$("select#"+this.trim_select_id).html("<option value='' disabled selected>Variant</option>");
      $("select#"+this.autotrim_select_id).html("<option value='' disabled selected>Autoscoop Trim</option>");
-
+     
+     
+     if(this.year_select_id === "car-years"){
+    	 //alert("bisc");
+    	 flagV = true;
+     }
+     
      //Populate the car-years select element
      this.populateYearSelect();
 
@@ -777,6 +784,7 @@ CarQuery.prototype = {
         var sender = this;
         //this.base_url = 'http://localhost:8080/MyCarDomain/api/tempCarModelYears';
         this.base_url = 'api/tempCarModelYears';
+        //alert("sdafa"+flagV);
         //alert(base_url);
         //alert(this.base_url);
         
@@ -799,8 +807,19 @@ CarQuery.prototype = {
     				          minYear = sender.year_select_min;
     				         if(sender.year_select_max != null && maxYear > sender.year_select_max )
     				          maxYear = sender.year_select_max;*/
-    				         
-    				    	 var usedCarEbid=true;
+    				         /*if(flagV){
+    				        	 alert("raise");
+        				    	 var usedCarEbid=true;
+        				         var newCarEbid= document.getElementById("newUsedCarEbid").checked;
+        				         if(!newCarEbid){
+        				         	usedCarEbid = false;
+        				         	//alert("used is checked");
+        				         }
+        				         else{
+        				        	 data.length = 1;
+        				         }
+    				         }*/
+    				         var usedCarEbid=true;
     				         var newCarEbid= document.getElementById("newUsedCarEbid").checked;
     				         if(!newCarEbid){
     				         	usedCarEbid = false;
@@ -846,7 +865,18 @@ CarQuery.prototype = {
 				     {
 				    	 var options = '<option value="">Please choose a Year</option>';
 				         //console.log(data);
-				         
+				    	 if(flagV){
+				        	 //alert("raise");
+    				    	 var usedCarEbid=true;
+    				         var newCarEbid= document.getElementById("newUsedCarEbid").checked;
+    				         if(!newCarEbid){
+    				         	usedCarEbid = false;
+    				         	//alert("used is checked");
+    				         }
+    				         else{
+    				        	 data.length = 1;
+    				         }
+				         }
 				         //Set min and max year range
 				         /*var minYear = data.Years.min_year;
 				         var maxYear = data.Years.max_year;
@@ -854,7 +884,7 @@ CarQuery.prototype = {
 				         if(sender.year_select_min != null && minYear < sender.year_select_min )
 				          minYear = sender.year_select_min;
 				         if(sender.year_select_max != null && maxYear > sender.year_select_max )
-				          maxYear = sender.year_select_max;*/
+				          maxYear = sender.year_select_max;*//*
 				         
 				    	 var usedCarEbid=true;
 				         var newCarEbid= document.getElementById("newUsedCarEbid").checked;
@@ -864,7 +894,7 @@ CarQuery.prototype = {
 				         }
 				         else{
 				        	 data.length = 1;
-				         }
+				         }*/
 				         /*alert(data[0]);
 				         alert(data.length);
 				         alert(data);
