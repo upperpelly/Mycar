@@ -1676,8 +1676,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                       <div id="VehicleQuotation12" class="tab-pane fade">
 
                                 <div id="tab">
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteAll" checked /><span class="color-dark">All</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteCars" class="ML10" /><span class="color-dark">Cars</span>
+                                    <!-- <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteAll" checked /><span class="color-dark">All</span> -->
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteCars" ng-model= "carEbidreq121214" ng-checked="true" checked class="ML10" /><span class="color-dark">Cars</span>
                                     <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteBikes" class="ML10" /><span class="color-dark">Bikes</span>
                                     <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteBoats" class="ML10" /><span class="color-dark">Boats</span>
                                     <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteCaravans" class="ML10" /><span class="color-dark">Caravans</span>
@@ -1685,8 +1685,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 </div>
 
 							<div class="tab-content">
-							        <div class="tab-pane fade active in" id="vehicleQuoteAll">All vehicle Content</div>
-							        <div class="tab-pane fade" id="vehicleQuoteCars">
+							        <!-- <div class="tab-pane fade active in" id="vehicleQuoteAll">All vehicle Content</div> -->
+							        <div class="tab-pane fade active in" id="vehicleQuoteCars">
 							        	<h4>Car Details</h4>
 							        	<!-- Vehiscle Start -->
 							        	<div class="row">
@@ -2006,8 +2006,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             <div id="travel-stories" class="tab-pane fade">
                               <!--  Start -->
                               <div id="tab">
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDAll" checked /><span class="color-dark">All</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDCars" class="ML10" /><span class="color-dark">Cars</span>
+                                    <!-- <input type="radio" name="collapseeBIDGroup" data-target="#eBIDAll" checked /><span class="color-dark">All</span> -->
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDCars" ng-model= "scarEbidreq8818" ng-checked="true" class="ML10" /><span class="color-dark">Cars</span>
                                     <input type="radio" name="collapseeBIDGroup" data-target="#eBIDSerMai" class="ML10" /><span class="color-dark">Service & Maintenance</span>
                                     <input type="radio" name="collapseeBIDGroup" data-target="#eBIDInsu" class="ML10" /><span class="color-dark">Insurance</span>
                                     <input type="radio" name="collapseeBIDGroup" data-target="#eBIDTrans" class="ML10" /><span class="color-dark">Transport</span>
@@ -2016,8 +2016,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 </div>
 
 							<div class="tab-content">
-							       <div class="tab-pane fade active in" id="eBIDAll">All</div>
-							       <div class="tab-pane fade" id="eBIDCars">
+							       <!-- <div class="tab-pane fade active in" id="eBIDAll">All</div> -->
+							       <div class="tab-pane fade active in" id="eBIDCars">
 							       Car Content
 							       		<h4>Vehicle EBID Request</h4>
                                          <table id="car-model-data">
@@ -2163,8 +2163,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                           <div id="settings" class="tab-pane fade">
                           <!--  Start radio button inline-->
                            <div id="tab">
-									<input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTAll" checked/><span class="color-dark">All</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOTCars" /><span class="color-dark">
+									<!-- <input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTAll" checked/><span class="color-dark">All</span> -->
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOTCars" ng-model= "scarEbidreq8818" checked class="ML10"/><span class="color-dark">
                                         Car's Only
                                     </span>
                                     <input type="radio" name="collapseeBIDGroup" data-target="#eQUOTSerMai" /><span class="color-dark">
@@ -2183,8 +2183,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							</div>
 
 							<div class="tab-content">
-							       <div class="tab-pane fade active in" id="eQUOTAll">All</div>
-							       <div class="tab-pane fade" id="eQUOTCars">
+							       <!-- <div class="tab-pane fade active in" id="eQUOTAll">All</div> -->
+							       <div class="tab-pane fade active in" id="eQUOTCars">
 							       Car Content
 							       		<h4>List of Car Quotations</h4>
                                          <table id="quo-model-data">

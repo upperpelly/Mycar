@@ -2984,6 +2984,9 @@ var mainApp1 = angular.module("mainApp13", []);
 mainApp1.controller('myController13',function($scope, $http) {
 					//alert("in user con");function vehicleRetrievalforLogBook(){
 	//alert("in angular");
+	$scope.carEbidreq121214=true;
+	$scope.scarEbidreq8818=true;
+	$scope.qcarEbidreq99=true;
 	$body = $("body");
 	$('#UserPhoneNo').val(value.abnNumber);
 	$('#UserFirstName').val(value.firstName);
