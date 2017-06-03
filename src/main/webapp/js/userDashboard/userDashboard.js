@@ -1519,43 +1519,37 @@ function registerEditDealerVehicleSearchModal(){
 		
 		//alert(JSON.stringify(data));
 		var editDealerVehicleSearchForm = '<form id="edit-dealer-vehicle-search-content-form"><table>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Details</div></div>\
 			<tr><td>Search ID</td><td>' + data.carSearchId + '</td></tr>\
 			<tr><td>' + quotIdHiddenField + '</td></tr>\
 			<tr><td>New</td><td>' + moveToUser + '</td></tr>\
 			<tr><td>Used</td><td>' + moveToUser1 + '</td></tr>\
-			<tr><td>Model Year</td><td>' + data.modelYear + '</td></tr>\
-			<tr><td>Model Name</td><td>' + data.modelName + '</td></tr>\
-			<tr><td>Model Display</td><td>' + data.modelDisplay + '</td></tr>\
-			<tr><td>Model Trim</td><td>' + data.modelTrim + '</td></tr>\
+			<tr><td>Year</td><td>' + data.modelYear + '</td></tr>\
+			<tr><td>Make</td><td>' + data.modelDisplay + '</td></tr>\
+			<tr><td>Model</td><td>' + data.modelName + '</td></tr>\
+			<tr><td>AutoScoop Trim</td><td>' + data.modelTrim + '</td></tr>\
 			<tr><td>Finance</td><td>' + data.finance + '</td></tr>\
 			<tr><td>Insurance</td><td>' + data.insurance + '</td></tr>\
-			<tr><td>Dealer</td><td>' + data.dealer + '</td></tr>\
-			<tr><td>Make</td><td>' + data.make + '</td></tr>\
-			<tr><td>Body Type</td><td>' + data.bodyType + '</td></tr>\
-			<tr><td>Car Color</td><td>' + data.carColor + '</td></tr>\
-			<tr><td>State</td><td>' + data.state + '</td></tr>\
-			<tr><td>Region</td><td>' + data.region + '</td></tr>\
 			<tr><td>PostCode</td><td>' + data.postCode + '</td></tr>\
-			<tr><td>Finance Amount Min</td><td>' + data.finAmountMin + '</td></tr>\
-			<tr><td>Finance Amount Max</td><td>' + data.finAmountMax + '</td></tr>\
-			<tr><td>Support 24/7</td><td>' + data.support247 + '</td></tr>\
-			<tr><td>Road Side Assistance</td><td>' + data.roadSideAssistance + '</td></tr>\
-			<tr><td>Guarantee Replacement</td><td>' + data.guaranteeReplacement + '</td></tr>\
-			<tr><td>Hiring Car</td><td>' + data.hiringCar + '</td></tr>\
-			<tr><td>Comprehensive Cover</td><td>' + data.comprehensiveCover + '</td></tr>\
-			<tr><td>ThirdParty Cover</td><td>' + data.thirdPartyCover + '</td></tr>\
-			<tr><td>AusCapTer</td><td>' + data.ausCapTer + '</td></tr>\
-			<tr><td>SModel</td><td>' + data.sModel + '</td></tr>\
-			<tr><td>SMake</td><td>' + data.sMake + '</td></tr>\
-			<tr><td>Extra External 1</td><td>' + data.ExtraExter2 + '</td></tr>\
-			<tr><td>Extra External 2</td><td>' + data.ExtraExter3 + '</td></tr>\
-			<tr><td>Extra External 3</td><td>' + data.ExtraExter4 + '</td></tr>\
-			<tr><td>Extra External 4</td><td>' + data.ExtraExter5 + '</td></tr>\
-			<tr><td>Extra Internal 1</td><td>' + data.ExtraIntern1 + '</td></tr>\
-			<tr><td>Extra Internal 2</td><td>' + data.ExtraIntern2 + '</td></tr>\
-			<tr><td>Extra Internal 3</td><td>' + data.ExtraIntern3 + '</td></tr>\
-			<tr><td>Extra Internal 4</td><td>' + data.ExtraIntern4 + '</td></tr>\
-			<tr><td>Extra Internal 5</td><td>' + data.ExtraIntern5 + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Pick your Fav Color</div></div>\
+			<tr><td>Car Color 1</td><td>' + data.carColor + '</td></tr>\
+			<tr><td>Car Color 2</td><td>' + data.sModel + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">You can add your preferred extras</div></div>\
+			<tr><td></td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">You can tell More about your requirements</div></div>\
+			<tr><td>' + data.state + '</td></tr>\
+			</table>\
+			<br/>\
 			</table></form>';
 		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>null</g, ">--NA--<");
 		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>undefined</g, ">--NA--<");

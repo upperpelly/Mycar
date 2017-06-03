@@ -2259,11 +2259,11 @@ alert(this.cur_make);*/
      if(!sender.responseError(data))
      {
       var out = sender.carDataHTML(data[0]);
-country = data[0].make_country;
-modelYear= data[0].model_year;
-modelDisplay=data[0].make_display;
-modelName=data[0].model_name;
-modelTrim=data[0].model_trim;
+		country = data[0].make_country;
+		modelYear= data[0].model_year;
+		modelDisplay=data[0].make_display;
+		modelName=data[0].model_name;
+		modelTrim=data[0].model_trim;
          $("#"+sender.model_data_id).html(out);
         }
         });

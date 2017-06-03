@@ -106,10 +106,10 @@ var modelYear=null;
     	firstName = value.firstName;
     	userId = value.userId;
     	address=value.streetNumber+value.streetName;
-    	$('#abcFnameperson').val(value.firstName);
+    	/*$('#abcFnameperson').val(value.firstName);
     	$('#abcLnameperson').val(value.lastName);
     	$('#abcAddress').val(address);
-    	$('#postCode').val(value.postCode);
+    	$('#postCode').val(value.postCode);*/
     	/*alert("yr"+modelYear);
     	alert("model"+modelDisplay);
     	alert("Make"+modelName);
@@ -136,7 +136,7 @@ var modelYear=null;
     	//alert("value124"+JSON.stringify(value1.tempCarModelHeaderVO));
     	//console.log(JSON.stringify(value1.tempCarModelHeaderVO));
     	//alert("market value"+value1.tempCarModelHeaderVO.carModel1[0].priceWhenNew);
-    	$("#marketValue").val(value1.tempCarModelHeaderVO.carModel1[0].priceWhenNew);
+    	//$("#marketValue").val(value1.tempCarModelHeaderVO.carModel1[0].priceWhenNew);
     	/* carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims'); */
     	/* alert("pageName  22 now "+document.getElementById('minValue').innerHTML);
     	alert("pageName  12322 now "+document.getElementById('maxValue').innerHTML); */
@@ -178,6 +178,22 @@ var modelYear=null;
 	var mainApp1 = angular.module("mainApp1", []);
 	mainApp1.controller('myController1',function($scope,$http) {
 		//alert("mycontroller");
+		
+		var value = $.jStorage.get("key");
+		if(!value){
+		    // if not - load the data from the server
+		//alert("can inside");
+		    /*value = ()*/
+		    // and save it
+		    $.jStorage.set("key",value);
+		}
+    	address=value.streetNumber+value.streetName;
+    	$scope.abcFnameperson=value.firstName;
+    	$scope.abcLnameperson=value.lastName;
+    	$scope.abcAddress=address;
+    	$scope.postCode=value.postCode;
+    	$scope.marketValue = value1.tempCarModelHeaderVO.carModel1[0].priceWhenNew;
+    	//alert("biscuit");
 		$scope.insFlag=false;
 		$scope.finFlag=false;
 		var finKey=$.jStorage.get("finCheckKey");
@@ -208,7 +224,7 @@ var modelYear=null;
 														/*var dateInFormat= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");
 														var dateInFormat1= stringToDate($('#startdate').val(),"dd/MM/yyyy","/");*/
 														//alert("inside cdddd"+dateInFormat);
-														//alert("inside cdddd"+dateInFormat1);
+														//alert("inside cdddd"+dateInFormat1)
 													if(isValid)
 														{
 														
@@ -224,10 +240,11 @@ var modelYear=null;
 																"modelDisplay": value1.modelDisplay,
 																"modelName": value1.modelName,															      
 																"modelTrim": value1.autoTrim,
-																"sModel": value1.autoTrim,
-																"carColor" : $('#carColor').val(),
+																"sModel": $('#carColor2').val(),//2nd specification color
+																"carColor" : $('#carColor').val(),//1st specified color
 																 "postCode":$('#postCode').val(),
 																"sMake":$('#extraExternal1').val(),
+																"state":$('#moreNotes').val(),
 																"extraExter2":$('#extraExternal2').val(),
 																"extraExter3":$('#extraExternal3').val(),	
 																"extraExter4":$('#extraExternal4').val(),	
@@ -276,6 +293,7 @@ var modelYear=null;
 																	"autoscoopTrim": modelTrim,
 																	"postCode":$scope.postCode,
 																	"insuranceType":$scope.insuranceType,
+																	"searchInsAdditionalDriv": [],
 																	"regNo":"",
 																	"regoState":"",
 																	"marketValue":$scope.marketValue,
@@ -324,7 +342,18 @@ var modelYear=null;
 														$body = $("body");
 														$body.addClass("loading");
 														//alert(JSON.stringify(jsonInputToAPI));
-														console.log(JSON.stringify(jsonInputToAPI));
+														var table1 = $("#my-table944");
+											            var table = table1.tableToJSON({
+											                ignoreColumns:[0], 
+											                headings: ['firstName', 'lastName', 'drivingLicenseType','dateOfBirth']
+											              });
+											            //delete table[0];
+											            
+											            table.splice(0,1);
+											            
+											            jsonInputToAPI.insuranceLead.searchInsAdditionalDriv = table ;
+											            alert(JSON.stringify(jsonInputToAPI));
+											            console.log(JSON.stringify(jsonInputToAPI));
 														//alert("Before Call");
 														var wsURL = 'api/eBid/car';
 														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/car';

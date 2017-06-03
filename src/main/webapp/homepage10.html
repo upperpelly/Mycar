@@ -959,8 +959,8 @@
         	    var caryearstrans= $("#car-years-trans").val();
         	    var carmakestrans= $("#car-makes-trans").val();
         	    var carmodelstrans= $("#car-models-trans").val();
-        	    var carmodelautotrimstrans= $("#car-model-auto-trims-trans").val();
-        	    var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + vehicleType + "</td><td>" + transregono12 +"</td><td>" + transregost + "</td>" +"<td>" + transVIN + "</td>" +"<td>" + caryearstrans + "</td>" +"<td>" + carmakestrans + "</td>" +"<td>" + carmodelstrans + "</td><td>" + carmodelautotrimstrans+ "</td></tr>";
+        	    //var carmodelautotrimstrans= $("#car-model-auto-trims-trans").val();
+        	    var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + vehicleType + "</td><td>" + transregono12 +"</td><td>" + transregost + "</td>" +"<td>" + transVIN + "</td>" +"<td>" + caryearstrans + "</td>" +"<td>" + carmakestrans + "</td>" +"<td>" + carmodelstrans + "</td></tr>";
         	    $("#my-table922").append(markup);
         	  });
 
@@ -1702,7 +1702,8 @@ $.ajax({
 							/* var InsuReq=false;
 							if($('#transInsuReq').val() == "Yes")  InsuReq=true; */
                             //{"transpSearchMakeListId":null,"make":"Make","model":"modal","variant":"variant","autoscoopTrim":"autoscoopTrim","flex1":"  flex1","flex2":"  flex2","flex3":"  flex3","flex4":"  flex4","flex5":0,"flex6":0,"flex7":0,"flex8":0,"flex9":0,"flex10":0,"flex11":null,"flex12":null,"flex13":false,"flex14":false}
-                            var jsonInputToAPI = {
+							//fromPostCodeAddr
+							var jsonInputToAPI = {
                                 "userId": userId,
                                 "searchTranspLead": {
                                     "searchTranspId": null,
@@ -1719,9 +1720,9 @@ $.ajax({
                                     "freeText": $scope.transAddNotes,
                                     "transpInsReq": true,
                                     "fromStreetNo": $scope.transFStreetNo,
-                                    "toStreetName": $scope.transTStreetName,
+                                    /* "toStreetName": $scope.transTStreetName, */
                                     "toStreetNo": $scope.transTStreetNo,
-                                    "fromStreetName": $scope.transFStreetName,
+                                    /* "fromStreetName": $scope.transFStreetName, */
                                     "flexWithDateDefault": $scope.transPickConfirm,
                                     /* "howMay": $scope.transHow, */
                                     "kindOfTransport": $scope.transKind,
@@ -1733,16 +1734,17 @@ $.ajax({
                                 }
                             };
                             var table1 = $("#my-table922");
-
+							//Year as Variant
                             var table = table1.tableToJSON({
                                 ignoreColumns:[0], 
-                                headings: ['flex1', 'flex2', 'flex3','flex4','year','make','model','autoscooptrim','transpSearchMakeListId']
+                                headings: ['flex1', 'flex2', 'flex3','flex4','variant','make','model','transpSearchMakeListId']
                               });
-                            delete table[0];
+                            //delete table[0];
+                            table.splice(0,1);
                             jsonInputToAPI.searchTranspLead.carModel = table;
                             
-                            alert(JSON.stringify(jsonInputToAPI.searchTranspLead.carModel));
-                            alert(JSON.stringify(jsonInputToAPI));
+                            /* alert(JSON.stringify(jsonInputToAPI.searchTranspLead.carModel));
+                            alert(JSON.stringify(jsonInputToAPI)); */
                             
                             
                             // table 91
@@ -2012,6 +2014,12 @@ $.ajax({
                     //alert("invoke in ins lead");
                     /*alert($scope.email);
                     alert(email); */
+                    
+                    
+                    
+                    //jsonInputToAPI.searchTranspLead.carModel = table;
+                    
+                    alert(JSON.stringify(table));
                     if (alreadyLogged()) {
 
                         if (isValid) {
@@ -2032,13 +2040,13 @@ $.ajax({
                             } else {
                                 $scope.usedCarInsuran = true;
                             }
-
+							//{ "flex5": 0, "flex6": 0, "flex7": 0, "flex8": 0, "flex9": 0, "flex10": 0, "lastName": "ss", "firstName": "ss", "drivingLicenseType": "ss", "dateOfBirth": null, "isflex13": 0, "isflex14": 0, "flex11": null, "flex12": null, "flex1": "ss", "flex2": "ss", "flex3": "ss", "flex4": "ss" }
                             var jsonInputToAPI = {
                                 "userId": userId,
                                 "insuranceLead": {
                                     "newer": $scope.newCarInsuran,
                                     "used": $scope.usedCarInsuran,
-                                    "searchInsAdditionalDriv": [{ "flex5": 0, "flex6": 0, "flex7": 0, "flex8": 0, "flex9": 0, "flex10": 0, "lastName": "ss", "firstName": "ss", "drivingLicenseType": "ss", "dateOfBirth": null, "isflex13": 0, "isflex14": 0, "flex11": null, "flex12": null, "flex1": "ss", "flex2": "ss", "flex3": "ss", "flex4": "ss" }],
+                                    "searchInsAdditionalDriv": [],
                                     "searchInsuranceId": null,
                                     "postCode": $scope.postcode11,
                                     "insuranceType": $scope.insuranceType,
@@ -2092,19 +2100,32 @@ $.ajax({
                                     "licenseGotSuspened": $scope.insLICSusp
                                 }
                             };
-
-
+							
+                            
+                            
+                            
+                            var table1 = $("#my-table944");
+                            var table = table1.tableToJSON({
+                                ignoreColumns:[0], 
+                                headings: ['firstName', 'lastName', 'drivingLicenseType','dateOfBirth']
+                              });
+                            //delete table[0];
+                            
+                            table.splice(0,1);
+                            
+                            jsonInputToAPI.insuranceLead.searchInsAdditionalDriv = table ;
+                            
 
                             // table 91
-                            var tbl944 = document.getElementById('my-table944'), // table reference
+                            /* var tbl944 = document.getElementById('my-table944'), // table reference
                                 row = tbl944.rows.length;      // append table row
-                            var i;
+                            var i; */
                             /*  alert("row length relatedModels91"+tbl922.rows.length);
                              alert("col lenght relatedModels91"+tbl922.rows[0].cells.length);
                                      alert("Json print d e relatedModels"); */
                             //alert($('#relatedModels922'+j+'0').val());
                             // insert table cells to the new row
-                            for (j = 1; j < tbl944.rows.length; j++) {
+                            /* for (j = 1; j < tbl944.rows.length; j++) {
                                 i = 0;
 
                                 jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j - 1].firstName = $('#relatedModels944' + j + '0').val();
@@ -2127,7 +2148,7 @@ $.ajax({
                                 jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j - 1]["flex12"] = null;
                                 jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j - 1]["flex13"] = false;
                                 jsonInputToAPI.insuranceLead.searchInsAdditionalDriv[j - 1]["flex14"] = false;
-                            }
+                            } */
                             //alert("Json print relatedModels");
                             //alert(JSON.stringify(jsonInputToAPI.insuranceLead.searchInsAdditionalDriv));
                             //alert(JSON.stringify(jsonInputToAPI.insuranceLead));
@@ -2252,7 +2273,7 @@ $.ajax({
                             var usedCarFinance = false;
                             //usedCarFinance = document.getElementById("usedCarFinance").value;
                             if (usedCarFinance == "on") usedCarFinance = false;
-                            var dateInFormatFinDOB = stringToDate($('#date_of_birth').val(), "dd/MM/yyyy", "/");
+                            //var dateInFormatFinDOB = stringToDate($('#date_of_birth').val(), "dd/MM/yyyy", "/");
                             $scope.usedCarFinance = false;
                             $scope.newCarFinance = false;
                             if ($scope.newCarFinance) {
@@ -2285,11 +2306,11 @@ $.ajax({
                                     "annualIncome": $scope.finAnnualIncome,
                                     "loanAmount": $scope.finLoanAmount,
                                     "loanPeriod": $scope.finLoanPeriod,
-                                    "dateOfBirth": dateInFormatFinDOB,
+                                    "dateOfBirth": $scope.finDOB,
                                     "rego": $scope.finRego,
                                     "regoState": $scope.finRegoState,
                                     "streetNo": $scope.finStreetNo,
-                                    "streetName": $scope.finStreetName,
+                                    /* "streetName": $scope.finStreetName, */
                                     "mr": $scope.finTitlePerson,
                                     "firstName": $scope.finFnameperson,
                                     "lastName": $scope.finLnameperson
@@ -2674,6 +2695,64 @@ $.ajax({
     <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+	<script>
+		$(document).ready(function(){
+		      var i=1;
+		     $("#add_row").click(function(){
+		    	 var fname= $("#fname0").val();
+        	    var lname= $("#lname0").val();
+        	    var dob0= $("#dob0").val();
+        	    var inslictype0= $("#inslictype0").val();
+        	    //var markup = "<tr><td><i class=\"soap-icon-close delete_row\" style=\"font-size:60px;color:red;\"></i></td><td>" + fname + "</td><td>" + lname +"</td><td>" + inslictype0 + "</td>" +"<td>" + dob0 + "</td></tr>";
+        	    var markup1 = "<tr class=\"text-center\"><td><input type='checkbox' name='record'></td><td>" + fname + "</td><td>" + lname +"</td><td>" + inslictype0 + "</td>" +"<td>" + dob0 + "</td></tr>";
+        	    
+		      //$('#addr'+i).html("<td>"+ (i+1) +"</td><td><input type='text' name='fname'  placeholder='First Name' class='input-text full-width'/></td><td><input type='text' name='lname0' placeholder='Last Name' class='input-text full-width'/></td><td><div class='selector'><select class='full-width' name='inslictype0' style='opacity:1'><option value='' selected disabled>Driving Licence Type</option><option>L-Learner</option><option>P-probation</option><option>Full Licence</option><option>OverSeas</option></select></div></td><td><input type='text' name='dob0' onfocus=\"(this.type='date')\" placeholder='DOB' class='input-text full-width'/></td>");
+		      //<a id='delete_row' class="pull-right btn btn-danger"><i class="soap-icon-close">Delete Row</i></a>
+		      //<a class='delete_row  btn btn-danger'><i class=\"soap-icon-close delete_row\" style=\"font-size:30px;color:red;\"></i></a>
+		      $('#my-table944').append(markup1);
+		      i++;
+		      //<td><input name='name"+i+"' type='text' placeholder='Name' class='form-control input-md'  /> </td><td><input  name='mail"+i+"' type='text' placeholder='Mail'  class='form-control input-md'></td><td><input  name='mobile"+i+"' type='text' placeholder='Mobile'  class='form-control input-md'></td>
+		  });
+		     
+		     
+		     $(".delete_row").on("click", function(){
+	        	    $("#my-table944").find('input[name="record"]').each(function() {
+	        	      if ($(this).is(":checked")) {
+	        	        $(this).parents("tr").remove();
+	        	      }
+	        	    });
+	        	  });
+		     
+		     
+		     
+		     
+		    /*  $(".add-row").on("click", function(){
+	        	    var transregono12= $("#transregono12").val();
+	        	    var transregost= $("#transregost").val();
+	        	    var vehicleType= $("#vehicleType").val();
+	        	    var transVIN= $("#transVIN").val();
+	        	    var caryearstrans= $("#car-years-trans").val();
+	        	    var carmakestrans= $("#car-makes-trans").val();
+	        	    var carmodelstrans= $("#car-models-trans").val();
+	        	    var carmodelautotrimstrans= $("#car-model-auto-trims-trans").val();
+	        	    var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + vehicleType + "</td><td>" + transregono12 +"</td><td>" + transregost + "</td>" +"<td>" + transVIN + "</td>" +"<td>" + caryearstrans + "</td>" +"<td>" + carmakestrans + "</td>" +"<td>" + carmodelstrans + "</td><td>" + carmodelautotrimstrans+ "</td></tr>";
+	        	    $("#my-table922").append(markup);
+	        	  });
+
+	        	  // Find and remove selected table rows
+	        	  $(".delete-row").on("click", function(){
+	        	    $("#my-table922").find('input[name="record"]').each(function() {
+	        	      if ($(this).is(":checked")) {
+	        	        $(this).parents("tr").remove();
+	        	      }
+	        	    });
+	        	  }); */
+	
+		});	
+	
+		
+	</script>
+	
 	
 </head>
 <body class="load-full-screen" ng-app="mainApp1"
@@ -5136,16 +5215,17 @@ $.ajax({
                                                             <span style="color:red" ng-show="ebidfinfrm.finVehicleValue1.$error.minlength && (!ebidfinfrm.finVehicleValue1.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finVehicleValue1.$error.pattern"><b>POST must be of 4 digits</b></span>
                                                             <span style="color:red" ng-show="ebidfinfrm.finVehicleValue1.$error.maxlength && (!ebidfinfrm.finVehicleValue1.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finVehicleValue1.$error.pattern"><b>POST must be of 4 digits only.</b></span>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-6 col-md-6">
                                                             <input type="text"
                                                                    id="finStreetNo" name="finStreetNo" ng-model="finStreetNo"
-                                                                   class="input-text full-width" value="" placeholder="Unit/Street No" required />
+                                                                   class="input-text full-width" value="" placeholder="Unit/StreetNo ,Street Name,Suburb,State" required />
+                                                            <span style="color:red" ng-show="ebidfinfrm.finStreetNo.$error.required && (!ebidfinfrm.finStreetNo.$pristine || ebidfinfrm.$submitted)"><b>Unit/StreetNo ,Street Name,Suburb,State is Required</b></span>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <!-- <div class="col-sm-3 col-md-3">
                                                             <input type="text"
                                                                    id="finStreetName" name="finStreetName" ng-model="finStreetName"
                                                                    class="input-text full-width" value="" placeholder="Strt Nam,Sub,State" required />
-                                                        </div>
+                                                        </div> -->
                                                     </div><br />
 
                                                     <div class="row">
@@ -5174,6 +5254,8 @@ $.ajax({
                                                                     <option>6</option>
                                                                     <option>7</option>
                                                                     <option>8</option>
+                                                                    <option>9</option>
+                                                                    <option>10</option>
                                                                 </select>
                                                             </div>
                                                             <!-- <span style="color:red" ng-show="ebidfinfrm.finLoanPeriod.$error.required && (!ebidfinfrm.finLoanPeriod.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Period is Required</b></span> -->
@@ -5181,7 +5263,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             &nbsp;
                                                         </div>
-                                                    </div><br />
+                                                    </div>
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3"></div>
                                                         <div class="col-sm-4 col-md-4">
@@ -5189,23 +5271,25 @@ $.ajax({
                                                             <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finLoanAmount.$error.pattern"><b>Loan Amount is Required</b></span>
                                                         </div>
                                                         <div class="col-sm-4 col-md-4">
-                                                            <span style="color:red" ng-show="ebidfinfrm.finLoanPeriod.$error.required && (!ebidfinfrm.finLoanPeriod.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Period is Required</b></span>
+                                                            <span style="color:red" ng-show="ebidfinfrm.finLoanPeriod.$error.required && (!ebidfinfrm.finLoanPeriod.$pristine || ebidfinfrm.$submitted)"><b>Loan Period is Required</b></span>
                                                         </div>
-                                                    </div><br />
+                                                    </div>
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3">
                                                             <label>Tell us about yourself</label>
                                                         </div>
                                                         
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-4 col-md-4">
                                                             <input type="text"
                                                                    id="finFnameperson" name="finFnameperson" ng-model="finFnameperson"
                                                                    class="input-text full-width" value="" placeholder="First Name" required />
+                                                            <span style="color:red" ng-show="ebidfinfrm.finFnameperson.$error.required && (!ebidfinfrm.finFnameperson.$pristine || ebidfinfrm.$submitted)"><b>First Name is Required</b></span>       
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-4 col-md-4">
                                                             <input type="text"
                                                                    id="finLnameperson" name="finLnameperson" ng-model="finLnameperson"
                                                                    class="input-text full-width" value="" placeholder="Last Name" required />
+                                                            <span style="color:red" ng-show="ebidfinfrm.finLnameperson.$error.required && (!ebidfinfrm.finLnameperson.$pristine || ebidfinfrm.$submitted)"><b>Last Name is Required</b></span>
                                                         </div>
                                                     </div><br />
                                                     <div class="row">
@@ -5213,20 +5297,21 @@ $.ajax({
                                                             &nbsp;
                                                         </div>
                                                         <div class="col-sm-4 col-md-4">
-                                                            <input type="text" onfocus="(this.type='date')" id="date_of_birth" name="date_of_birth" class="input-text full-width" placeholder="Date of Birth" required />
-                                                            <span style="color:red" ng-show="ebidfinfrm.date_of_birth.$error.required && (!ebidfinfrm.date_of_birth.$pristine || ebidfinfrm.$submitted)"><b>Finance Date of Birth is Required</b></span>
+                                                            <input type="text" onfocus="(this.type='date')" ng-model="finDOB" id="finDOB" name="finDOB" class="input-text full-width" placeholder="Date of Birth" required />
+                                                            <span style="color:red" ng-show="ebidfinfrm.finDOB.$error.required && (!ebidfinfrm.finDOB.$pristine || ebidfinfrm.$submitted)"><b>Date of Birth is Required</b></span>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-4 col-md-4">
                                                             <div class="selector">
                                                                 <select class="full-width" id="finTitlePerson" ng-model="finTitlePerson"
                                                                         name="finTitlePerson" required>
                                                                     <option value="" selected disabled>Gender</option>
-		                                                                    <option>Male</option>
-		                                                    <option>Female</option>
-		                                                    <option>Other</option>
-		                                                    <option>Rather Not say</option>
+		                                                            <option>Male</option>
+				                                                    <option>Female</option>
+				                                                    <option>Other</option>
+				                                                    <option>Rather Not say</option>
                                                                 </select>
                                                             </div>
+                                                            <span style="color:red" ng-show="ebidfinfrm.finTitlePerson.$error.required && (!ebidfinfrm.finTitlePerson.$pristine || ebidfinfrm.$submitted)"><b>Gender is Required</b></span>
                                                         </div>
                                                     </div><br />
 
@@ -5262,7 +5347,7 @@ $.ajax({
                                                             <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.pattern && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted)"><b>No of years must be Numeric</b></span>
                                                             <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.required && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>No of years is Required</b></span>
                                                         </div> -->
-                                                    </div><br />
+                                                    </div>
                                                     
                                                     
                                                     <div class="row">
@@ -5275,7 +5360,7 @@ $.ajax({
                                                             <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.pattern && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted)"><b>Annual Income must be Numeric</b></span>
                                                             <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.required && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>Finance Annual Income is Required</b></span>
                                                         </div>
-                                                    </div><br />
+                                                    </div><br/>
                                                     
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3">
@@ -6784,20 +6869,89 @@ $.ajax({
                                                                         &nbsp;
                                                                     </div> -->
                                                                 </div><br />
-
+                                                                
                                                                 <div class="row" ng-show="insDriversCt == 1">
+			                                                       <div class="col-sm-12 col-md-12">
+			                                                    		<label>Please specify the Driver Details</label>
+			                                                    	</div>
+			                                                    </div><br/>
+																<div class="row" ng-show="insDriversCt == 1">
+                                                                    <div class="col-sm-3 col-md-3">
+			                                                       		<input type="text" name='fname0' id="fname0" placeholder='First Name' class="input-text full-width"/>
+			                                                       </div>
+			                                                       <div class="col-sm-3 col-md-3">
+			                                                       		<input type="text" name='lname0' id='lname0' placeholder='Last Name' class="input-text full-width"/>
+			                                                       </div>	
+			                                                       <div class="col-sm-3 col-md-3">
+			                                                       		<div class="selector">
+				                                                                    <select class="full-width" name="inslictype0" id="inslictype0" required>
+				                                                                        <option value="" selected disabled>Driving Licence Type</option>
+				                                                                        <option>L-Learner</option>
+				                                                                        <option>P-probation</option>
+				                                                                        <option>Full Licence</option>
+				                                                                        <option>OverSeas</option>
+				                                                                    </select>
+				                                                         </div>
+			                                                       </div>	
+			                                                       <div class="col-sm-3 col-md-3">
+			                                                       		<input type="text" name='dob0' id='dob0' onfocus="(this.type='date')" placeholder='DOB' class="input-text full-width"/>
+			                                                       </div>
+                                                                </div><br/>
+																<div class="row" ng-show="insDriversCt == 1">
                                                                     <div class="col-sm-12 col-md-12">
-                                                                        <button type="button" onclick="javascript:appendRow944()" class="append_row">Add User</button>
+                                                                        <!-- <button type="button" class="append_row">Add User</button> -->
+                                                                        <a id="add_row" data-toggle="tooltip" data-placement="right" title="Click to Add Driver" class="btn btn-success pull-left"><i class="soap-icon-plus"></i></a><a class="delete_row pull-right btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete Selected Driver s"><i class="soap-icon-close"></i></a>
                                                                     </div>
                                                                 </div><br />
+																
 
                                                                 <div class="row" ng-show="insDriversCt == 1">
                                                                     <div class="col-sm-12 col-md-12">
-                                                                        <table id="my-table944">
+                                                                        <!-- <table id="my-table944">
                                                                             <tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
                                                                         </table>
+                                                                         -->
+                                                                        <table class="table table-bordered table-hover" id="my-table944">
+																			<tr >
+																				<th class="text-center">#</th>
+																				<th class="text-center">First Name</th>
+																				<th class="text-center">Last Name</th>
+																				<th class="text-center">Driver License Type</th>
+																				<th class="text-center">Date Of Birth</th>
+																			</tr>
+																	</table>
                                                                     </div>
                                                                 </div>
+                                                                
+                                                                
+                                                                
+                                                                <!-- <tr id='addr0'>
+																				<td>1</td>
+																				<td><input type="text" name='fname0' id="fname0" placeholder='First Name' class="input-text full-width"/></td>
+																				<td><input type="text" name='lname0' placeholder='Last Name' class="input-text full-width"/></td>
+																				<td>
+																					<div class="selector">
+				                                                                            <select class="full-width" name="inslictype0" required>
+				                                                                                <option value="" selected disabled>Driving Licence Type</option>
+				                                                                                <option>L-Learner</option>
+				                                                                                <option>P-probation</option>
+				                                                                                <option>Full Licence</option>
+				                                                                                <option>OverSeas</option>
+				
+				                                                                            </select>
+				                                                                    </div>
+			                                                                    </td>
+																				<td><input type="text" name='dob0' onfocus="(this.type='date')" placeholder='DOB' class="input-text full-width"/></td>
+																			</tr>
+														                    <tr id='addr1'></tr> -->
+                                                                
+                                                                <!--onclick="javascript:appendRow944()"   -->
+                                                               <!--  <div class="row" ng-show="insDriversCt == 1">
+                                                                    <div class="col-sm-12 col-md-12">
+                                                                        <button type="button" class="append_row">Add User</button>
+                                                                        <a id="add_row" class="btn btn-success pull-left"><i class="soap-icon-plus">Add More</i></a><a id='delete_row' class="pull-right btn btn-danger"><i class="soap-icon-close">Delete Row</i></a>
+                                                                    </div>
+                                                                </div><br /> -->
                                                                 <hr>
                                                             </div>
                                                         </div>
@@ -9257,7 +9411,7 @@ $.ajax({
                                                         </div>
                                                         <div class="col-sm-3 col-md-3">
                                                             <input type="text"
-                                                                   id="transFpostCode" name="transFpostCode" ng-model="transFtransFpostCode" ng-minlength="4" ng-pattern="/^[0-9]*$/" ng-maxlength="4"
+                                                                   id="transFpostCode" name="transFpostCode" ng-model="transFpostCode" ng-minlength="4" ng-pattern="/^[0-9]*$/" ng-maxlength="4"
                                                                    class="input-text full-width" value="" placeholder="Post Code" required />
                                                             <!-- <span style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.required && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted)"><b> Post Code value is Required</b></span> -->
                                                             <span style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.pattern && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted)"><b>From POST must be Numeric</b></span>
@@ -9265,18 +9419,18 @@ $.ajax({
                                                             <span style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.minlength && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted) && !ebidtransfrm.transFpostCode.$error.pattern"><b>From POST must be of 4 digits</b></span>
                                                             <span style="color:red" ng-show="ebidtransfrm.transFpostCode.$error.maxlength && (!ebidtransfrm.transFpostCode.$pristine || ebidtransfrm.$submitted) && !ebidtransfrm.transFpostCode.$error.pattern"><b>From POST must be of 4 digits only.</b></span>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-6 col-md-6">
                                                             <input type="text"
                                                                    id="transFStreetNo" name="transFStreetNo" ng-model="transFStreetNo"
-                                                                   class="input-text full-width" value="" placeholder="Unit/StreetNo" required />
-                                                            <span style="color:red" ng-show="ebidtransfrm.transFStreetNo.$error.required && (!ebidtransfrm.transFStreetNo.$pristine || ebidtransfrm.$submitted)"><b> From Street No is Required</b></span>
+                                                                   class="input-text full-width" value="" placeholder="Unit/StreetNo ,Street Name,Suburb,State" required />
+                                                            <span style="color:red" ng-show="ebidtransfrm.transFStreetNo.$error.required && (!ebidtransfrm.transFStreetNo.$pristine || ebidtransfrm.$submitted)"><b>Unit/StreetNo ,Street Name,Suburb,State is Required</b></span>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                       <!--  <div class="col-sm-3 col-md-3">
                                                             <input type="text"
                                                                    id="transFStreetName" name="transFStreetName" ng-model="transFStreetName"
                                                                    class="input-text full-width" value="" placeholder="Strt Nam,Sub,State" required />
                                                             <span style="color:red" ng-show="ebidtransfrm.transFStreetName.$error.required && (!ebidtransfrm.transFStreetName.$pristine || ebidtransfrm.$submitted)"><b> From Street Name is Required</b></span>
-                                                        </div>
+                                                        </div> -->
                                                     </div><br />
 
 
@@ -9296,18 +9450,18 @@ $.ajax({
                                                             <span style="color:red" ng-show="ebidtransfrm.transTpostCode.$error.minlength && (!ebidtransfrm.transTpostCode.$pristine || ebidtransfrm.$submitted) && !ebidtransfrm.transTpostCode.$error.pattern"><b>POST must be of 4 digits</b></span>
                                                             <span style="color:red" ng-show="ebidtransfrm.transTpostCode.$error.maxlength && (!ebidtransfrm.transTpostCode.$pristine || ebidtransfrm.$submitted) && !ebidtransfrm.transTpostCode.$error.pattern"><b>POST must be of 4 digits only.</b></span>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-6 col-md-6">
                                                             <input type="text"
                                                                    id="transFStreetNo" name="transTStreetNo" ng-model="transTStreetNo"
-                                                                   class="input-text full-width" value="" placeholder="Unit/StreetNo" required />
-                                                            <span style="color:red" ng-show="ebidtransfrm.transTStreetNo.$error.required && (!ebidtransfrm.transTStreetNo.$pristine || ebidtransfrm.$submitted)"><b> To Street No is Required</b></span>
+                                                                   class="input-text full-width" value="" placeholder="Unit/StreetNo ,Street Name,Suburb,State" required />
+                                                            <span style="color:red" ng-show="ebidtransfrm.transTStreetNo.$error.required && (!ebidtransfrm.transTStreetNo.$pristine || ebidtransfrm.$submitted)"><b>Unit/StreetNo ,Street Name,Suburb,State is Required</b></span>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <!-- <div class="col-sm-3 col-md-3">
                                                             <input type="text"
                                                                    id="transFStreetName" name="transTStreetName" ng-model="transTStreetName"
                                                                    class="input-text full-width" value="" placeholder="Strt Nam,Sub,State" required />
                                                             <span style="color:red" ng-show="ebidtransfrm.transTStreetName.$error.required && (!ebidtransfrm.transTStreetName.$pristine || ebidtransfrm.$submitted)"><b> To Street Name is Required</b></span>
-                                                        </div>
+                                                        </div> -->
                                                     </div><br />
 
 
@@ -9335,7 +9489,7 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <label>What kind of transport you need?</label>
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-4 col-md-4">
                                                             <div class="selector">
                                                                 <select class="full-width" id="transKind" ng-model="transKind" name="transKind"
                                                                         class="input-text full-width" required>
@@ -9345,9 +9499,7 @@ $.ajax({
                                                                     <option>Open</option>
                                                                 </select>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
+                                                            <span style="color:red" ng-show="ebidtransfrm.transKind.$error.required && (!ebidtransfrm.transKind.$pristine || ebidtransfrm.$submitted)"><b>TransPort type is Required</b></span>
                                                         </div>
                                                         <div class="col-sm-3 col-md-3">
                                                             &nbsp;
@@ -9450,7 +9602,7 @@ $.ajax({
                                                                                 <option value="" selected disabled>Model</option>
                                                                             </select>
                                                                         </div>
-                                                                        <span style="color:red" ng-show="ebidtransfrm.carmodelsserv.$error.required && (!ebidtransfrm.carmodelstrans.$pristine || ebidtransfrm.$submitted)"><b>Car model is Required</b></span>
+                                                                        <span style="color:red" ng-show="ebidtransfrm.carmodelstrans.$error.required && (!ebidtransfrm.carmodelstrans.$pristine || ebidtransfrm.$submitted)"><b>Car model is Required</b></span>
                                                                     </div>
                                                                 </div><br />
 
@@ -9477,7 +9629,7 @@ $.ajax({
                                                                             <select id="car-model-auto-trims-trans" name="carmodelAutotrimstrans" ng-model="carmodelAutotrimstrans"
                                                                                     class="full-width" required></select>
                                                                         </div>
-                                                                        <span style="color:red" ng-show="ebidfinfrm.carmodelAutotrimsfin.$error.required && (!ebidfinfrm.carmodelAutotrimsfin.$pristine || ebidfinfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+                                                                        <span style="color:red" ng-show="ebidtransfrm.carmodelAutotrimstrans.$error.required && (!ebidtransfrm.carmodelAutotrimstrans.$pristine || ebidtransfrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
                                                                     </div>
                                                                 </div><br />
 
@@ -9502,7 +9654,7 @@ $.ajax({
                                                                 <div class="row">
                                                                     <div class="col-sm-12 col-md-12">
                                                                         <table id="my-table922" align="center" cellspacing="0" cellpadding="0" border="0">
-                                                                        	<tr><th>Select</th><th>Vehicle Type</th><th>Rego No</th><th>Rego State</th><th>VIN/HIN No</th><th>Year</th><th>Make</th><th>Model</th><th>AutoScoop Trim</th></tr>
+                                                                        	<tr><th>Select</th><th>Vehicle Type</th><th>Rego No</th><th>Rego State</th><th>VIN/HIN No</th><th>Year</th><th>Make</th><th>Model</th></tr>
                                                                         </table>
                                                                     </div>
                                                                 </div><br />

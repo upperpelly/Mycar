@@ -170,6 +170,7 @@ tr:hover{background-color:rgb(253, 183, 20);}
 <script src="js/angular-resource.js"></script>
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
 <script src="js/carDetail/carDetail.js"></script>
+<script src="js/tabletojson.js"></script>
 <script>
     </script>
    <!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[84,140] -->
@@ -339,6 +340,56 @@ body.loading .modal {
 				  		} 
 	    }
 	    </script> -->
+	    
+	    
+	    <script>
+		$(document).ready(function(){
+			
+			
+			/* var value = $.jStorage.get("key");
+			if(!value){
+			    // if not - load the data from the server
+			//alert("can inside");
+			    /*value = ()*/
+			    // and save it
+			 /*    $.jStorage.set("key",value);
+			}
+	    	address=value.streetNumber+value.streetName;
+	    	$('#abcFnameperson').val(value.firstName);
+	    	$('#abcLnameperson').val(value.lastName);
+	    	$('#abcAddress').val(address);
+	    	$('#postCode').val(value.postCode);
+	    	alert("biscuit1"); */
+		      //var i=1;
+		     $("#add_row").click(function(){
+		    	 var fname= $("#fname0").val();
+        	    var lname= $("#lname0").val();
+        	    var dob0= $("#dob0").val();
+        	    var inslictype0= $("#inslictype0").val();
+        	    //var markup = "<tr><td><i class=\"soap-icon-close delete_row\" style=\"font-size:60px;color:red;\"></i></td><td>" + fname + "</td><td>" + lname +"</td><td>" + inslictype0 + "</td>" +"<td>" + dob0 + "</td></tr>";
+        	    var markup1 = "<tr class=\"text-center\"><td><input type='checkbox' name='record'></td><td>" + fname + "</td><td>" + lname +"</td><td>" + inslictype0 + "</td>" +"<td>" + dob0 + "</td></tr>";
+        	    
+		      //$('#addr'+i).html("<td>"+ (i+1) +"</td><td><input type='text' name='fname'  placeholder='First Name' class='input-text full-width'/></td><td><input type='text' name='lname0' placeholder='Last Name' class='input-text full-width'/></td><td><div class='selector'><select class='full-width' name='inslictype0' style='opacity:1'><option value='' selected disabled>Driving Licence Type</option><option>L-Learner</option><option>P-probation</option><option>Full Licence</option><option>OverSeas</option></select></div></td><td><input type='text' name='dob0' onfocus=\"(this.type='date')\" placeholder='DOB' class='input-text full-width'/></td>");
+		      //<a id='delete_row' class="pull-right btn btn-danger"><i class="soap-icon-close">Delete Row</i></a>
+		      //<a class='delete_row  btn btn-danger'><i class=\"soap-icon-close delete_row\" style=\"font-size:30px;color:red;\"></i></a>
+		      $('#my-table944').append(markup1);
+		      i++;
+		      //<td><input name='name"+i+"' type='text' placeholder='Name' class='form-control input-md'  /> </td><td><input  name='mail"+i+"' type='text' placeholder='Mail'  class='form-control input-md'></td><td><input  name='mobile"+i+"' type='text' placeholder='Mobile'  class='form-control input-md'></td>
+		  });
+		     
+		     
+		     $(".delete_row").on("click", function(){
+	        	    $("#my-table944").find('input[name="record"]').each(function() {
+	        	      if ($(this).is(":checked")) {
+	        	        $(this).parents("tr").remove();
+	        	      }
+	        	    });
+	        	  });
+	
+		});	
+	
+		
+	</script>
 </head>
 <body ng-app="mainApp1" >
     
@@ -1571,13 +1622,21 @@ We suggest that you contact the host to confirm availability and rates before su
 								                                                    <option>10</option>
 								                                                </select>
 								                                            </div>
-								                                            <span style="color:red" ng-show="frm.loanPeriod.$error.required && (!frm.loanPeriod.$pristine || frm.$submitted)"><b>Loan Period is Required</b></span>
 																		</div>
-																		<div class="col-sm-3 col-md-3 pull-left">
+																	</div>																	
+																	
+																	<div class="row">
+																		<div class="col-sm-3 col-md-3">
+																		</div>
+																		<div class="col-sm-3 col-md-3 pull-left input-group">
 																			 <span style="color:red" ng-show="frm.loanAmount.$error.pattern && (!frm.loanAmount.$pristine || frm.$submitted)"><b>Loan Amount must be Numeric</b></span>
 								                                            <span style="color:red"  ng-show="frm.loanAmount.$error.required && (!frm.loanAmount.$pristine || frm.$submitted) && !frm.loanAmount.$error.pattern"><b>Loan Amount is Required</b></span>
 																		</div>
-																	</div><br/>	
+																		<div class="col-sm-3 col-md-3">
+								                                            <span style="color:red" ng-show="frm.loanPeriod.$error.required && (!frm.loanPeriod.$pristine || frm.$submitted)"><b>Loan Period is Required</b></span>
+																		</div>
+																	</div>
+																	
 																	<div class="row">
 																		<div class="col-sm-3 col-md-3">
 																			<label>Your Income Details</label>
@@ -1591,18 +1650,26 @@ We suggest that you contact the host to confirm availability and rates before su
 				                                                                    <option>Business</option>
 								                                                </select>
 								                                            </div>
-								                                            <span style="color:red" ng-show="frm.incomeType.$error.required && (!frm.incomeType.$pristine || frm.$submitted)"><b>Income Type is Required</b></span>
 																		</div>
 																		<div class="col-sm-3 col-md-3 pull-left input-group">
 																			 <input type="text" class="input-text full-width" value="" placeholder="Annual Income"  ng-model="annualIncome" id="annualIncome" name="annualIncome" ng-pattern="/^[0-9]*$/" required/>
 								                                            <span class="input-group-addon">$</span>
 																		</div>
 																		<div class="col-sm-3 col-md-3">
-																			 <span style="color:red" ng-show="frm.annualIncome.$error.pattern && (!frm.annualIncome.$pristine || frm.$submitted)"><b>Annual Income must be Numeric</b></span>
-								                                            <span style="color:red"  ng-show="frm.annualIncome.$error.required && (!frm.annualIncome.$pristine || frm.$submitted) && !frm.annualIncome.$error.pattern"><b>Annual Income is Required</b></span>
 																			<input type="text" class="input-text full-width" value="" placeholder="Years of Experience" ng-model="yearEmployement" id="yearEmployement" name="yearEmployement"/>
 																		</div>
-																	</div><br/>
+																	</div>
+																	<div class="row">
+																		<div class="col-sm-3 col-md-3">
+																		</div>
+																		<div class="col-sm-3 col-md-3">
+								                                            <span style="color:red" ng-show="frm.incomeType.$error.required && (!frm.incomeType.$pristine || frm.$submitted)"><b>Income Type is Required</b></span>
+																		</div>
+																		<div class="col-sm-3 col-md-3 pull-left input-group">
+																			  <span style="color:red" ng-show="frm.annualIncome.$error.pattern && (!frm.annualIncome.$pristine || frm.$submitted)"><b>Annual Income must be Numeric</b></span>
+								                                            <span style="color:red"  ng-show="frm.annualIncome.$error.required && (!frm.annualIncome.$pristine || frm.$submitted) && !frm.annualIncome.$error.pattern"><b>Annual Income is Required</b></span>
+																		</div>
+																	</div>
                                                                     <div class="row">
                                                                         <div class="col-sm-3 col-md-3">
                                                                             <label>What is your Credit Rating ?</label>
@@ -1865,7 +1932,7 @@ We suggest that you contact the host to confirm availability and rates before su
 	                                                                      	<span style="color:red" ng-show="frm.drivingLicenseNumber.$error.required && (!frm.drivingLicenseNumber.$pristine || frm.$submitted)"><b>Driving License Number is Required</b></span>
                                                                     </div>
                                                                    
-                                                    </div><br />
+                                                    </div>
                                                     <div class="row">
                                                     	<div class="col-sm-4 col-md-4">
                                                                 
@@ -1873,7 +1940,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                     	<div class="col-sm-4 col-md-4">
                                                               <input type="text" onfocus="(this.type='date')" name="abcinsLicIssueDt" id="abcinsLicIssueDt" class="input-text full-width" placeholder="Driving Licence issue Date" />
                                                         </div>
-                                                    </div><br />
+                                                    </div>
                                                     <div class="row">
                                                                     <div class="col-sm-4 col-md-4">
                                                                         <label>Driver's CLaim History</label>
@@ -1888,7 +1955,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                                     <div class="col-sm-4 col-md-4" ng-if="noOfAtFaultsClaims != '0'">
                                                                       	<input type="text" onfocus="(this.type='date')" name="abcinsLastfaultDt" id="abcinsLastfaultDt" ng-model="abcinsLastfaultDt" class="input-text full-width" placeholder="Last Fault claim Date" />
                                                                     </div>
-                                                    </div><br />
+                                                    </div>
                                                      <div class="row">
                                                         <div class="col-sm-3 col-md-3">
                                                             <label>Licence got suspended any time</label>
@@ -1927,7 +1994,7 @@ We suggest that you contact the host to confirm availability and rates before su
 	                                                       <div class="col-sm-4 col-md-4">
 	                                                           <div class="selector">
 	                                                               <select class="full-width" id="abcinsDriversCt" ng-model="abcinsDriversCt"
-	                                                                       name="insDriversCt">
+	                                                                       name="abcinsDriversCt">
 	                                                                   <option value="" selected disabled>No of Additional Drivers</option>
 	                                                                   <option value="1">Yes</option>
 	                                                                   <option value="0">No</option>
@@ -1936,7 +2003,7 @@ We suggest that you contact the host to confirm availability and rates before su
 	                                                       </div>
 	                                                   </div><br />
 
-	                                                <div class="row" ng-show="abcinsDriversCt == 1">
+	                                                <!-- <div class="row" ng-show="abcinsDriversCt == 1">
 	                                                    <div class="col-sm-12 col-md-12">
 	                                                        <button type="button" onclick="javascript:appendRow944()" class="append_row">Add Driver</button>
 	                                                    </div>
@@ -1947,7 +2014,62 @@ We suggest that you contact the host to confirm availability and rates before su
                                                                 <tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
                                                             </table>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
+                                                    
+                                                    <div class="row" ng-show="abcinsDriversCt == 1">
+                                                       <div class="col-sm-12 col-md-12">
+                                                    		<label>Please specify the Driver Details</label>
+                                                    	</div>
+                                                    </div><br/>
+                                                    
+                                                    <div class="row" ng-show="abcinsDriversCt == 1">
+                                                       <div class="col-sm-3 col-md-3">
+                                                       		<input type="text" name='fname0' id="fname0" placeholder='First Name' class="input-text full-width"/>
+                                                       </div>
+                                                       <div class="col-sm-3 col-md-3">
+                                                       		<input type="text" name='lname0' id='lname0' placeholder='Last Name' class="input-text full-width"/>
+                                                       </div>	
+                                                       <div class="col-sm-3 col-md-3">
+                                                       		<div class="selector">
+	                                                                    <select class="full-width" name="inslictype0" id="inslictype0" required>
+	                                                                        <option value="" selected disabled>Driving Licence Type</option>
+	                                                                        <option>L-Learner</option>
+	                                                                        <option>P-probation</option>
+	                                                                        <option>Full Licence</option>
+	                                                                        <option>OverSeas</option>
+	                                                                    </select>
+	                                                         </div>
+                                                       </div>	
+                                                       <div class="col-sm-3 col-md-3">
+                                                       		<input type="text" name='dob0' id='dob0' onfocus="(this.type='date')" placeholder='DOB' class="input-text full-width"/>
+                                                       </div>
+                                                   </div><br/>
+												<div class="row" ng-show="abcinsDriversCt == 1">
+                                                     <div class="col-sm-12 col-md-12">
+                                                         <!-- <button type="button" class="append_row">Add User</button> -->
+                                                         <a id="add_row" data-toggle="tooltip" data-placement="top" title="Click to Add Driver" class="btn btn-success pull-left"><i class="soap-icon-plus"></i></a>
+                                                         <a class="delete_row pull-right btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete Selected Driver s" ><i class="soap-icon-close"></i></a>
+                                                     </div>
+                                                 </div><br />
+																
+
+                                               <div class="row" ng-show="abcinsDriversCt == 1">
+                                                   <div class="col-sm-12 col-md-12">
+                                                       <!-- <table id="my-table944">
+                                                           <tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
+                                                       </table>
+                                                        -->
+                                                       <table class="table table-bordered table-hover" id="my-table944">
+																<tr >
+																	<th class="text-center">#</th>
+																	<th class="text-center">First Name</th>
+																	<th class="text-center">Last Name</th>
+																	<th class="text-center">Driver License Type</th>
+																	<th class="text-center">Date Of Birth</th>
+																</tr>
+														</table>
+                                                   </div>
+                                               </div>
                                                 </div>
 												</div>
 											</div>
@@ -2039,16 +2161,17 @@ We suggest that you contact the host to confirm availability and rates before su
                                 </div>
                                  
                             </div>
-                                 <div class="row">
-                                     <div class="col-sm-12 col-md-12">
-                                         By clicking CONFIRM BOOKING or otherwise using Autoscoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">Autoscoop Terms of Use</a>
-                                     </div>
-                               </div><br />
+                                 
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
                                         <button type="submit" class="full-width btn-large">CONFIRM BOOKING</button>
                                     </div>
                                 </div>
+                                <div class="row">
+                                     <div class="col-sm-12 col-md-12">
+                                         By proceeding further or using AutoScoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">AutoScoop Terms of Use</a>
+                                     </div>
+                               </div><br />
                             </form>
                         </div>
                     </div>   			
