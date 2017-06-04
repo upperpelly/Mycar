@@ -1039,7 +1039,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                     </div> -->
                                 </div>
                                 <div class="edit-profile">
-                                    <form class="edit-profile-form">
+                                    <form class="edit-profile-form" name="editprofilefrm" ng-submit="submitSearchFormupdateset(editprofilefrm.$valid)">
                                         <h2>Personal Details</h2>
 
                                         <div class="col-sm-9 no-padding no-float">
@@ -1047,15 +1047,18 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 <div class="col-sms-6 col-sm-6">
                                                     <label>First Name</label>
                                                     <input type="text" id="UserFirstName" name="UserFirstName"
-															class="input-text full-width" value="" placeholder="First Name" >
+															class="input-text full-width" placeholder="First Name" >
+															<!-- <span style="color:red" ng-show="editprofilefrm.UserFirstName.$error.required && (!editprofilefrm.UserFirstName.$pristine || editprofilefrm.$submitted)"><b>First Name is Required</b></span> -->
                                                 </div>
+                                                
                                                 <div class="col-sms-6 col-sm-6">
                                                     <label>Last Name</label>
                                                     <input type="text" id="UserLastName" name="UserLastName"
-															class="input-text full-width" value="" placeholder="Last Name" >
+															class="input-text full-width" placeholder="Last Name" ng-model="UserLastName" required>
+															<span style="color:red" ng-show="editprofilefrm.UserLastName.$error.required && (!editprofilefrm.UserLastName.$pristine || editprofilefrm.$submitted)"><b>Last Name is Required</b></span>
                                                 </div>
-                                                <div class="selector">
-                                                <select class="full-width" id="abcTitlePerson" ng-model="abcTitlePerson"
+                                               <!--  <div class="selector">
+                                                <select id="abcTitlePerson" ng-model="abcTitlePerson"
                                                         name="abcTitlePerson" required>
                                                     <option value="" selected disabled>Gender</option>
                                                     <option>Male</option>
@@ -1063,7 +1066,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                     <option>Other</option>
                                                     <option>Rather Not say</option>
                                                 </select>
-                                            </div>
+                                            </div> -->
                                             </div>
                                             <!-- <div class="row form-group">
                                                 <div class="col-sms-6 col-sm-6">
@@ -1080,13 +1083,29 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                 <div class="col-sms-6 col-sm-6">
                                                     <label>Phone Number</label>
                                                     <input type="text" id="UserPhoneNo" name="UserPhoneNo"
-															class="input-text full-width" value="" placeholder="Phone Numberr" >
+															class="input-text full-width" placeholder="Phone Numberr" ng-model="UserPhoneNo" required>
+															<span style="color:red" ng-show="editprofilefrm.UserPhoneNo.$error.required && (!editprofilefrm.UserPhoneNo.$pristine || editprofilefrm.$submitted)"><b>Phone Number is Required</b></span>
                                                 </div>
                                                 <div class="col-sm-3 col-md-3">
                                              <label>Date of Birth</label>
-				                                       		<input type="text" onfocus="(this.type='date')" name="UserDOBDate" id = "UserDOBDate" class="input-text full-width" placeholder="Date Of Birth"/>
-
+				                                       		<input type="text" onfocus="(this.type='date')" name="UserDOBDate" id = "UserDOBDate" class="input-text full-width" ng-model="UserDOBDate" placeholder="Date Of Birth" required/>
+<span style="color:red" ng-show="editprofilefrm.UserDOBDate.$error.required && (!editprofilefrm.UserDOBDate.$pristine || editprofilefrm.$submitted)"><b>Date of Birth is Required</b></span>
 														</div>
+														<div class="col-sm-6 col-md-6">
+														<label>Gender</label>
+																				<div class="selector">
+																					<select class="full-width" id="abcTitlePerson"
+																						name="abcTitlePerson" required>
+																						<option value="" selected disabled>Gender</option>
+																						 <option>Male</option>
+                                                    <option>Female</option>
+                                                    <option>Other</option>
+                                                    <option>Rather Not say</option>
+																					</select>
+																				<span style="color:red" ng-show="editprofilefrm.abcTitlePerson.$error.required && (!editprofilefrm.abcTitlePerson.$pristine || editprofilefrm.$submitted)"><b>Gender is Required</b></span>	
+																				</div>
+
+																			</div>
                                             </div>
 
 
@@ -1213,8 +1232,8 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
                                             <div class="from-group">
 
-                                                 <button type="button" id="upload-button-updatesetting" class="full-width btn-large"
-																					ng-click="submitSearchFormupdateset()">UPDATE SETTINGS</button>
+                                                 <button id="upload-button-updatesetting" class="full-width btn-large"
+																					>UPDATE SETTINGS</button>
                                             </div>
 
 
@@ -1228,7 +1247,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
                             <!-- <div id="booking" class="tab-pane fade">
-                                <h2>Trips You have Booked!</h2>
+                                <h2>Trips You have Booked!</h2> ng-click="submitSearchFormupdateset()"
                                 <div class="filter-section gray-area clearfix">
                                     <form>
                                         <label class="radio radio-inline">
@@ -1714,17 +1733,17 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 															<div class="selector">
 				                                                <select class="full-width" id="vehicleType" name="vehicleType" ng-model="vehicleType" required>
 				                                                    <option selected>My Car</option>
-				                                                    <option>My Bike</option>
+				                                                    <!-- <option >My Bike </option>
 				                                                    <option>My Boat</option>
 				                                                    <option>My Caravans</option>
-				                                                    <option>My Bicycles</option>
+				                                                    <option>My Bicycles</option> -->
 				                                                </select>
 				                                            </div>
 				                                            <span style="color:red" ng-show="vehFrm.vehicleType.$error.required && (!vehFrm.vehicleType.$pristine || vehFrm.$submitted)"><b>Vehicle Type is Required</b></span>
 														</div>
-														<div class="col-sm-3 col-md-3">
-															&nbsp;
-														</div>
+														
+	                                                         <input type="radio" id="newUsedCarEbid" class="newUsedCarEbid" name="newUsedCarEbid" unchecked hidden><span class="skin-color"></span>
+	                                                       	 
 														<div class="col-sm-3 col-md-3">
 															&nbsp;
 														</div>
@@ -1738,31 +1757,53 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 															<label>Select Vehicle</label>
 														</div>
 														<div class="col-sm-3 col-md-3">
+                                                            <div class="selector">
+                                                                <select id="car-years" name="caryears" ng-model="caryears"
+                                                                        class="full-width" required></select>
+                                                            </div>
+                                                            <span style="color:red" ng-show="vehFrm.caryears.$error.required && (!vehFrm.caryears.$pristine || vehFrm.$submitted)"><b>Car year is Required</b></span>
+                                                        </div>
+                                                        <div class="col-sm-3 col-md-3">
+                                                            <div class="selector">
+                                                                <select id="car-makes" name="carmakes" ng-model="carmakes"
+                                                                        class="full-width" required></select>
+                                                            </div>
+                                                            <span style="color:red" ng-show="vehFrm.carmakes.$error.required && (!vehFrm.carmakes.$pristine || vehFrm.$submitted)"><b>Car Make is Required</b></span>
+                                                        </div>
+                                                        <div class="col-sm-3 col-md-3">
+                                                            <div class="selector">
+                                                                <select id="car-models" name="carmodels" ng-model="carmodels"
+                                                                        class="full-width" required></select>
+                                                            </div>
+                                                            <span style="color:red" ng-show="vehFrm.carmodels.$error.required && (!vehFrm.carmodels.$pristine || vehFrm.$submitted)"><b>Car year is Required</b></span>
+                                                        </div>
+                                                        
+														<!-- <div class="col-sm-3 col-md-3">
 															<div class="selector">
-																			<select id="car-years" name="car-years" ng-model="caryears" required class="full-width">
+																			<select id="car-years" name="car-years" ng-model="caryears" class="full-width" required >
 																					<option value="" selected disabled>Year</option>
 																			</select>
 															</div>
 															<span style="color:red" ng-show="vehFrm.caryears.$error.required && (!vehFrm.caryears.$pristine || vehFrm.$submitted)"><b>Year is Required</b></span>
-														</div>
-														<div class="col-sm-3 col-md-3">
+														</div> -->
+														<!-- <div class="col-sm-3 col-md-3">
 															<div class="selector">
-																			<select id="car-makes" name="car-makes" ng-model="carmakes" required
-																				class="full-width">
+																			<select id="car-makes" name="car-makes" ng-model="carmakes" 
+																				class="full-width" required>
 																					<option value="" selected disabled>Make</option>
 																			</select>
 															</div>
 															<span style="color:red" ng-show="vehFrm.carmakes.$error.required && (!vehFrm.carmakes.$pristine || vehFrm.$submitted)"><b>Make is Required</b></span>
-														</div>
-														<div class="col-sm-3 col-md-3">
+														</div> -->
+														<!-- <div class="col-sm-3 col-md-3">
 															<div class="selector">
-																			<select id="car-models" name="car-models" ng-model="carmodels" required
-																				class="full-width">
+																			<select id="car-models" name="car-models" ng-model="carmodels" 
+																				class="full-width" required>
 																					<option value="" selected disabled>Model</option>
 																			</select>
 															</div>
 															<span style="color:red" ng-show="vehFrm.carmodels.$error.required && (!vehFrm.carmodels.$pristine || vehFrm.$submitted)"><b>Model is Required</b></span>
-														</div>
+														</div> -->
 												</div>
 
 
@@ -1771,14 +1812,21 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 															&nbsp;
 														</div>
 														<div class="col-sm-3 col-md-3">
+                                                            <div class="selector">
+                                                                <select id="car-model-trims" name="car-model-trims" ng-model="carmodeltrims"
+                                                                        class="full-width" required></select>
+                                                            </div>
+                                                            <span style="color:red" ng-show="vehFrm.carmodeltrims.$error.required && (!vehFrm.carmodeltrims.$pristine || vehFrm.$submitted)"><b>Autoscoop Trim is Required</b></span>
+                                                        </div>
+														<!-- <div class="col-sm-3 col-md-3">
 															<div class="selector">
-																			<select id="car-model-trims" name="car-model-trims" ng-model="carmodeltrims" required
-																				class="full-width">
+																			<select id="car-model-trims" name="car-model-trims" ng-model="carmodeltrims" 
+																				class="full-width" required>
 																						<option value="" selected disabled>Variant</option>
 																			</select>
 															</div>
 															<span style="color:red" ng-show="vehFrm.carmodeltrims.$error.required && (!vehFrm.carmodeltrims.$pristine || vehFrm.$submitted)"><b>Trim is Required</b></span>
-														</div>
+														</div> -->
 														<div class="col-sm-3 col-md-3">
 															&nbsp;
 														</div>
@@ -1818,7 +1866,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 														</div>
 														<div class="col-sm-3 col-md-3">
 				                                       		<input type="text" onfocus="(this.type='date')" name="RegExpDate" id = "RegExpDate" class="input-text full-width" placeholder="Rego End Date" ng-model="RegExpDate" required/>
-				                                       		<span style="color:red" ng-show="vehFrm.RegExpDate.$error.required && (!vehFrm.RegExpDate.$pristine || vehFrm.$submitted)"><b>Rego End date is Required</b></span>
+				                                       		<span style="color:red" ng-show="vehFrm.RegExpDate.$error.required && (!vehFrm.RegExpDate.$pristine || vehFrm.$submitted)"><b>Rego Exp date is Required</b></span>
 														</div>
 												</div>
 
@@ -1833,7 +1881,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 												<div class="row">
 														<div class="col-sm-3 col-md-3">
 															 <div class="selector">
-				                                                <select class="full-width" id="insProv" name="insProv" ng-model="insProv" required>
+				                                                <select class="full-width" id="insProv" name="insProv" ng-model="insProv">
 				                                                	<option value="" selected disabled>Insurance Provider</option>
 				                                                    <option>INs</option>
 				                                                    <option>INs</option>
@@ -1843,19 +1891,20 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 				                                                    <option>Other</option>
 				                                                </select>
 				                                            </div>
-				                                            <span style="color:red" ng-show="vehFrm.insProv.$error.required && (!vehFrm.insProv.$pristine || vehFrm.$submitted)"><b>Insurance Provider is Required</b></span>
+				                                            <!-- <span style="color:red" ng-show="vehFrm.insProv.$error.required && (!vehFrm.insProv.$pristine || vehFrm.$submitted)"><b>Insurance Provider is Required</b></span> -->
 														</div>
 														<div class="col-sm-3 col-md-3">
-															<input type="text" onfocus="(this.type='date')" id="InsExpDate" name="InsExpDate" class="input-text full-width" placeholder="Insurance End Date" ng-model="InsExpDate" required />
-															<span style="color:red" ng-show="vehFrm.InsExpDate.$error.required && (!vehFrm.InsExpDate.$pristine || vehFrm.$submitted)"><b>Insurance Provider is Required</b></span>
+															<input type="text" onfocus="(this.type='date')" id="InsExpDate" name="InsExpDate" class="input-text full-width" placeholder="Insurance End Date" ng-model="InsExpDate" />
+															<!-- <span style="color:red" ng-show="vehFrm.InsExpDate.$error.required && (!vehFrm.InsExpDate.$pristine || vehFrm.$submitted)"><b>Insurance Provider is Required</b></span> -->
 														</div>
 														<div class="col-sm-3 col-md-3">
-															<input type="text" id="insPrePaid" name="insPrePaid" class="input-text full-width" value="" placeholder="Premimum Amount"  ng-model="insPrePaid" required />
-															<span style="color:red" ng-show="vehFrm.insPrePaid.$error.required && (!vehFrm.insPrePaid.$pristine || vehFrm.$submitted)"><b>Insurance Premium is Required</b></span>
+															<input type="text" id="insPrePaid" name="insPrePaid" class="input-text full-width" value="" placeholder="Premimum Amount"  ng-pattern="/^[0-9]*$/" ng-model="insPrePaid" /><span class="input-group-addon">$</span>
+															<!-- <span style="color:red" ng-show="vehFrm.insPrePaid.$error.required && (!vehFrm.insPrePaid.$pristine || vehFrm.$submitted)"><b>Insurance Premium is Required</b></span> -->
+																 <span style="color:red" ng-show="vehFrm.insPrePaid.$error.pattern && (!vehFrm.insPrePaid.$pristine || vehFrm.$submitted)"><b>Insurance Permium must be Numeric</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">
-				                                       		<input type="checkbox" id="insRemind" name="insRemind"  ng-model="insRemind" required />Reminder
-				                                       		<span style="color:red" ng-show="vehFrm.insRemind.$error.required && (!vehFrm.insRemind.$pristine || vehFrm.$submitted)"><b>Reminder must be checked</b></span>
+				                                       		<input type="checkbox" id="insRemind" name="insRemind"  ng-model="insRemind"/>Reminder
+				                                       		<!-- <span style="color:red" ng-show="vehFrm.insRemind.$error.required && (!vehFrm.insRemind.$pristine || vehFrm.$submitted)"><b>Reminder must be checked</b></span> -->
 														</div>
 												</div>
 
@@ -1869,22 +1918,24 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 			                            	<div class="row">
 													<div class="col-sm-3 col-md-3">
-														<input type="text" id="odoMeter" name="odoMeter" class="input-text full-width" value="" placeholder="Last Service @KMs"  ng-model="odoMeter" required />
-														<span style="color:red" ng-show="vehFrm.odoMeter.$error.required && (!vehFrm.odoMeter.$pristine || vehFrm.$submitted)"><b>Odometer reading is Required</b></span>
+														<input type="text" id="odoMeter" name="odoMeter" class="input-text full-width" value="" ng-pattern="/^[0-9]*$/" placeholder="Last Service @KMs"  ng-model="odoMeter" />
+														<!-- <span style="color:red" ng-show="vehFrm.odoMeter.$error.required && (!vehFrm.odoMeter.$pristine || vehFrm.$submitted)"><b>Odometer reading is Required</b></span> -->
+															 <span style="color:red" ng-show="vehFrm.odoMeter.$error.pattern && (!vehFrm.odoMeter.$pristine || vehFrm.$submitted)"><b>Odometer reading must be Numeric</b></span>
 													</div>
 													<div class="col-sm-3 col-md-3">
-														<input type="text"  onfocus="(this.type='date')" id="LastServDate" name="LastServDate" class="input-text full-width"   ng-model="LastServDate" required placeholder="Last Service & Maintenance Date" />
-														<span style="color:red" ng-show="vehFrm.LastServDate.$error.required && (!vehFrm.LastServDate.$pristine || vehFrm.$submitted)"><b>Odometer reading is Required</b></span>
+														<input type="text"  onfocus="(this.type='date')" id="LastServDate" name="LastServDate" class="input-text full-width"   ng-model="LastServDate" placeholder="Last Service & Maintenance Date" />
+														<!-- <span style="color:red" ng-show="vehFrm.LastServDate.$error.required && (!vehFrm.LastServDate.$pristine || vehFrm.$submitted)"><b>Odometer reading is Required</b></span> -->
 													</div>
 													<div class="col-sm-3 col-md-3">
-														<input type="text"  onfocus="(this.type='date')" id="NextServDate" name="NextServDate" class="input-text full-width" placeholder="Next Service & Maintenance Date"  ng-model="NextServDate" required  />
-														<span style="color:red" ng-show="vehFrm.NextServDate.$error.required && (!vehFrm.NextServDate.$pristine || vehFrm.$submitted)"><b>Odometer reading is Required</b></span>
+														<input type="text"  onfocus="(this.type='date')" id="NextServDate" name="NextServDate" class="input-text full-width" placeholder="Next Service & Maintenance Date"  ng-model="NextServDate"  />
+														<!-- <span style="color:red" ng-show="vehFrm.NextServDate.$error.required && (!vehFrm.NextServDate.$pristine || vehFrm.$submitted)"><b>Odometer reading is Required</b></span> -->
 													</div>
 													<div class="col-sm-3 col-md-3">
-														<input type="text" id="nextServMaiKms" name="nextServMaiKms" class="input-text full-width" value="" placeholder="Next service @ kms"   ng-model="nextServMaiKms" required />
-														<span style="color:red" ng-show="vehFrm.nextServMaiKms.$error.required && (!vehFrm.nextServMaiKms.$pristine || vehFrm.$submitted)"><b>Next service reading is Required</b></span>
-			                                       		<input type="checkbox" id="maiRemind" name="maiRemind"  ng-model="maiRemind" required  />Reminder
-			                                       		<span style="color:red" ng-show="vehFrm.maiRemind.$error.required && (!vehFrm.maiRemind.$pristine || vehFrm.$submitted)"><b>Maintenance Reminder must be checked</b></span>
+														<input type="text" id="nextServMaiKms" name="nextServMaiKms" class="input-text full-width" ng-pattern="/^[0-9]*$/" value="" placeholder="Next service @ kms"   ng-model="nextServMaiKms"/>
+														<!-- <span style="color:red" ng-show="vehFrm.nextServMaiKms.$error.required && (!vehFrm.nextServMaiKms.$pristine || vehFrm.$submitted)"><b>Next service reading is Required</b></span> -->
+			                                       			 <span style="color:red" ng-show="vehFrm.nextServMaiKms.$error.pattern && (!vehFrm.nextServMaiKms.$pristine || vehFrm.$submitted)"><b>Next Service Kms must be Numeric</b></span>
+			                                       		<input type="checkbox" id="maiRemind" name="maiRemind"  ng-model="maiRemind" />Reminder
+			                                       		<!-- <span style="color:red" ng-show="vehFrm.maiRemind.$error.required && (!vehFrm.maiRemind.$pristine || vehFrm.$submitted)"><b>Maintenance Reminder must be checked</b></span> -->
 													</div>
 											</div>
 
@@ -1899,7 +1950,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 			                            	<div class="row">
 													<div class="col-sm-3 col-md-3">
 														 <div class="selector">
-				                                                <select class="full-width" id="finProv" name="finProv" ng-model="finProv" required >
+				                                                <select class="full-width" id="finProv" name="finProv" ng-model="finProv">
 				                                                    <option value="" selected disabled>Finance Provider</option>
 				                                                    <option>Red</option>
 				                                                    <option>Blue</option>
@@ -1911,22 +1962,45 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 				                                                </select>
 				                                         </div>
-				                                         <span style="color:red" ng-show="vehFrm.finProv.$error.required && (!vehFrm.finProv.$pristine || vehFrm.$submitted)"><b>Finance Provider is Required</b></span>
+				                                         <!-- <span style="color:red" ng-show="vehFrm.finProv.$error.required && (!vehFrm.finProv.$pristine || vehFrm.$submitted)"><b>Finance Provider is Required</b></span> -->
 													</div>
 													<div class="col-sm-3 col-md-3">
-														<input type="text"  onfocus="(this.type='date')"" id="LoanTakenDate" name="LoanTakenDate" class="input-text full-width" placeholder="Loan Taken date" ng-model="LoanTakenDate" required/>
-														<span style="color:red" ng-show="vehFrm.LoanTakenDate.$error.required && (!vehFrm.LoanTakenDate.$pristine || vehFrm.$submitted)"><b>Loan Taken date is Required</b></span>
+														<input type="text"  onfocus="(this.type='date')"" id="LoanTakenDate" name="LoanTakenDate" class="input-text full-width" placeholder="Loan Taken date" ng-model="LoanTakenDate"/>
+														<!-- <span style="color:red" ng-show="vehFrm.LoanTakenDate.$error.required && (!vehFrm.LoanTakenDate.$pristine || vehFrm.$submitted)"><b>Loan Taken date is Required</b></span> -->
 													</div>
 													<div class="col-sm-3 col-md-3">
-														<input type="text" id="loanAmount" name="loanAmount" class="input-text full-width" value="" placeholder="Loan Amount" ng-model="loanAmount" required />
-														<span style="color:red" ng-show="vehFrm.loanAmount.$error.required && (!vehFrm.loanAmount.$pristine || vehFrm.$submitted)"><b>Loan Amount is Required</b></span>
+														<input type="text" id="loanAmount" name="loanAmount" class="input-text full-width" value="" placeholder="Loan Amount" ng-pattern="/^[0-9]*$/" ng-model="loanAmount" /><span class="input-group-addon">$</span>
+														<!-- <span style="color:red" ng-show="vehFrm.loanAmount.$error.required && (!vehFrm.loanAmount.$pristine || vehFrm.$submitted)"><b>Loan Amount is Required</b></span> -->
+															 <span style="color:red" ng-show="vehFrm.loanAmount.$error.pattern && (!vehFrm.loanAmount.$pristine || vehFrm.$submitted)"><b>Loan Amount must be Numeric</b></span>
 													</div>
-													<div class="col-sm-3 col-md-3">
+													
+													 <div class="col-sm-4 col-md-4">
+                                                            <div class="selector">
+                                                                <select class="full-width" id="laonPeriod" ng-model="laonPeriod"
+                                                                        name="laonPeriod" placeholder="Loan Period">
+                                                                    <option value="" selected disabled>Loan Period in Years</option>
+                                                                    <option>1</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                    <option>4</option>
+                                                                    <option>5</option>
+                                                                    <option>6</option>
+                                                                    <option>7</option>
+                                                                    <option>8</option>
+                                                                    <option>9</option>
+                                                                    <option>10</option>
+                                                                </select>
+                                                                <input type="checkbox" id="finRemind" name="finRemind" ng-model="finRemind" />Reminder
+                                                            </div>
+                                                            <!-- <span style="color:red" ng-show="ebidfinfrm.finLoanPeriod.$error.required && (!ebidfinfrm.finLoanPeriod.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Period is Required</b></span> -->
+                                                        </div>
+													
+													<!-- <div class="col-sm-3 col-md-3">
 														<input type="text" id="laonPeriod" name="laonPeriod" class="input-text full-width" value="" placeholder="Loan Period"  ng-model="laonPeriod" required/>
 														<span style="color:red" ng-show="vehFrm.laonPeriod.$error.required && (!vehFrm.laonPeriod.$pristine || vehFrm.$submitted)"><b>Loan Period is Required</b></span>
 			                                       		<input type="checkbox" id="finRemind" name="finRemind" ng-model="finRemind" required />Reminder
 			                                       		<span style="color:red" ng-show="vehFrm.finRemind.$error.required && (!vehFrm.finRemind.$pristine || vehFrm.$submitted)"><b>Reminder must be checked</b></span>
-													</div>
+													</div> -->
 											</div>
 
 

@@ -2985,6 +2985,9 @@ mainApp1.controller('myController13',function($scope, $http) {
 	$scope.scarEbidreq8818=true;
 	$scope.qcarEbidreq99=true;
 	$body = $("body");
+	$scope.UserFirstName=value.firstName;
+	$scope.UserLastName=value.lastName;
+	$scope.UserPhoneNo=value.abnNumber;
 	$('#UserPhoneNo').val(value.abnNumber);
 	$('#UserFirstName').val(value.firstName);
 	$('#UserLastName').val(value.lastName);
@@ -3878,7 +3881,9 @@ mainApp1.controller('myController13',function($scope, $http) {
 														    }
 													};
 													
-													$scope.submitSearchFormupdateset = function() {
+													$scope.submitSearchFormupdateset = function(isValid) {
+														alert("inside Update Settings"+isValid);
+														if (isValid) {
 														updateSettingloadImage();
 														//alert("vachindi");
 														//alert("inside updatset");
@@ -3888,7 +3893,9 @@ mainApp1.controller('myController13',function($scope, $http) {
 														var nextServiceMaintenanceDate= stringToDate($('#nextServiceMaintenanceDate').val(),"dd/MM/yyyy","/");*/
 														var fileChooserlogupdateset = document.getElementById('file-chooser-updateset');
 														var filefileChooserupdateset = fileChooserlogupdateset.files[0];
-														var objKeyupdateset = 'facebook-' + fbUserId + '/' + filefileChooserupdateset.name;
+														var objKeyupdateset ='noImage';;
+														if(filefileChooserupdateset){
+														objKeyupdateset = 'facebook-' + fbUserId + '/' + filefileChooserupdateset.name;}
 														//alert(objKeyupdateset);
 														var jsonInputToAPI = {"userId":value.userId,"photo":objKeyupdateset, "phoneNumber":$('#UserPhoneNo').val(), "firstName":$('#UserFirstName').val(),"lastName":$('#UserLastName').val(),"streetNumber":$('#UserStreetNo').val(),"streetName":$('#UserStreetName').val(),"postCode":$('#UserpostCode').val(),"region":$('#UserRegion').val(),"state":$('#UserState').val(),"desc":$('#UserDesc').val()}
 														
@@ -3953,6 +3960,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 									                			
 									                		}
 									                	});
+													}
 														};
 													
 													
