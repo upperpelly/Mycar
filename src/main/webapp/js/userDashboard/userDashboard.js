@@ -639,12 +639,12 @@ var insQCt=result.insuranceQuotation.length;
         	               	   
         	               	out8="";
           	           	  
-       	               	   out8 += '<tr><th>'+"Activity"+'</th><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>';
+       	               	   out8 += '<tr><th>'+"Activity"+'</th><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Rego No"+'</th><th>'+"Rego Exp"+'</th><th>'+"Vin"+'</th></tr>';
        	               	   for(i=0;i<result.myVehicle.length;i++)
        	              		{
        	              		
        	              		
-       	               		out8= out8+'<td><a href="#" id="anchor-editDealerVehicleDetailLogBookModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailLogBookModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailLogBookModal">LogBook</a></td><td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'</tr>';
+       	               		out8= out8+'<td><a href="#" id="anchor-editDealerVehicleDetailLogBookModal-' + result.myVehicle[i].myVehicleId + '" data-details=\'' + JSON.stringify(result.myVehicle[i]) + '\' class="anchor-editDealerVehicleDetailLogBookModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailLogBookModal">LogBook</a></td><td>'+result.myVehicle[i].myVehicleId+'</td>'+'<td>'+result.myVehicle[i].year+'</td>'+'<td>'+result.myVehicle[i].make+'</td>'+'<td>'+result.myVehicle[i].model+'</td>'+'<td>'+result.myVehicle[i].regNum+'</td>'+'<td>'+result.myVehicle[i].regExpDate+'</td>'+'<td>'+result.myVehicle[i].vin+'</td>'+'</tr>';
        	              		
        	              		}
        	               	out8 = out8.replace(/>null</g, ">--NA--<");
@@ -2862,13 +2862,16 @@ function registerEditDealerVehicleDetailLogBookModal(){
 		
 		//document.getElementById("fuelCard41").style.display = "block";
 		var editDealerVehicleDetailLogBookForm = '<table>\
-			<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Variant"+'</th></tr>\
+			<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"RegoNum"+'</th><th>'+"RegoExpDt"+'</th><th>'+"VIN"+'</th></tr>\
 			<tr><td>' + data.myVehicleId + '</td>\
 			<td>' + data.year + '</td>\
 			<td>' + data.make + '</td>\
 			<td>' + data.model + '</td>\
-			<td>' + data.variant + '</td></tr>\
+			<td>' + data.regNum + '</td>\
+			<td>' + data.regExpDate + '</td>\
+			<td>' + data.vin + '</td></tr>\
 			</table>';
+		/*<td>' + data.variant + '</td></tr>\*/
 		editDealerVehicleDetailLogBookForm = editDealerVehicleDetailLogBookForm.replace(/>null</g, ">--NA--<");
 		editDealerVehicleDetailLogBookForm = editDealerVehicleDetailLogBookForm.replace(/>undefined</g, ">--NA--<");
 		//$("#fuelCard41").append(editDealerVehicleDetailLogBookModal);
@@ -3015,10 +3018,11 @@ mainApp1.controller('myController13',function($scope, $http) {
 										<td>' + data.variant + '</td></tr>\
 										</table>';*/
 									logTlen = result.myVehicleLogBook.length;
-									outLogT += '<tr><th>'+"Trip Type"+'</th><th>'+"TripStart Addr"+'</th><th>'+"TripEnd Addr"+'</th><th>'+"Trip Date"+'</th><th>'+"OdoMeter Start"+'</th><th>'+"OdoMeter End"+'</th><th>'+"No of Kms"+'</th><th>'+"Purpose of Trip"+'</th><th>'+"Driver Name"+'</th><th>'+"Trip Log Date"+'</th><th>'+'View/Update'+'</th></tr>';
+									outLogT += '<tr><th>'+"Trip Type"+'</th><th>'+"Trip Desc"+'</th><th>'+"TripStart Date"+'</th><th>'+"Start Post"+'</th><th>'+"Start address"+'</th><th>'+"Start OdoMeter Reading"+'</th><th>'+"Trip End Date"+'</th><th>'+"End Post"+'</th><th>'+"End Address"+'</th><th>'+"End ODOmeter Reading"+'</th><th>'+'View/Update'+'</th></tr>';
 					           	    for(i=0;i<logTlen;i++)
 					          		 {
-					           	    	outLogT= outLogT+'<tr>'+'<td>'+result.myVehicleLogBook[i].tripType+'</td>'+'<td>'+result.myVehicleLogBook[i].fromLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].toLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].date+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterStartOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterEndOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].routeKm+'</td>'+'<td>'+result.myVehicleLogBook[i].tripDescription+'</td>'+'<td>'+result.myVehicleLogBook[i].flex1+'</td>'+'<td><a href="#" id="anchor-editDealerVehiclelogbkModal-' + result.myVehicleLogBook[i].myVehicleLogBookId + '" data-details=\'' + JSON.stringify(result.myVehicleLogBook[i]) + '\' class="anchor-editDealerVehiclelogbkModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehiclelogbkModal">View</a></td></tr>';;
+					           	    	outLogT= outLogT+'<tr>'+'<td>'+result.myVehicleLogBook[i].tripType+'</td>'+'<td>'+result.myVehicleLogBook[i].tripDescription+'</td>'+'<td>'+result.myVehicleLogBook[i].flex8+'</td>'+'<td>'+result.myVehicleLogBook[i].fromLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].flex1+'</td>'
+					           	    	+'<td>'+result.myVehicleLogBook[i].odoMeterStartOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].flex9+'</td>'+'<td>'+result.myVehicleLogBook[i].toLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].flex2+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterEndOfTrip+'</td>'+'<td><a href="#" id="anchor-editDealerVehiclelogbkModal-' + result.myVehicleLogBook[i].myVehicleLogBookId + '" data-details=\'' + JSON.stringify(result.myVehicleLogBook[i]) + '\' class="anchor-editDealerVehiclelogbkModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehiclelogbkModal">View</a></td></tr>';;
 					          		 }
 					           	 outLogT = outLogT.replace(/>null</g, ">--NA--<");
 					           	outLogT = outLogT.replace(/>undefined</g, ">--NA--<");
@@ -3074,14 +3078,18 @@ mainApp1.controller('myController13',function($scope, $http) {
 												<table>\
 												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Book Details</div></div>\
 												<tr><td>Trip Type</td><td> <input type="text" name="tripType" class="input-text full-width" value="' + data.tripType + '"/></td></tr>\
-												<tr><td>From Location </td><td> <input type="text" name="fromLocation" class="input-text full-width" value="' + data.fromLocation + '"/></td></tr>\
-												<tr><td>To Location </td><td> <input type="text" name="toLocation" class="input-text full-width" value="' + data.toLocation + '"/></td></tr>\
-												<tr><td>Date </td><td> <input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
-												<tr><td>ODO Meter StartOfTrip</td><td> <input type="text" name="odoMeterStartOfTrip" class="input-text full-width" value="' + data.odoMeterStartOfTrip + '"/></td></tr>\
-												<tr><td>ODO Meter EndOfTrip</td><td> <input type="text" name="odoMeterEndOfTrip" class="input-text full-width" value="' + data.odoMeterEndOfTrip + '"/></td></tr>\
-												<tr><td>Route KM</td><td> <input type="text" name="routeKm" class="input-text full-width" value="' + data.routeKm + '"/></td></tr>\
-												<tr><td>Trip Description</td><td> <input type="text" name="tripDescription" class="input-text full-width" value="' + data.tripDescription + '"/></td></tr>\
-												<tr><td>Trip Description</td><td> <input type="text" name="flex1" class="input-text full-width" value="' + data.flex1 + '"/></td></tr>\
+												<tr><td>Trip Desc </td><td> <input type="text" name="tripDescription" class="input-text full-width" value="' + data.tripDescription + '"/></td></tr>\
+												<tr><td>TripStart Date </td><td> <input type="text" onfocus="(this.type=\'date\')" name="flex8" class="input-text full-width" value="' + data.flex8 + '"/></td></tr>\
+												<tr><td>Start Post </td><td> <input type="text" name="fromLocation" class="input-text full-width" value="' + data.fromLocation + '"/></td></tr>\
+												<tr><td>Start address</td><td> <input type="text" name="flex1" class="input-text full-width" value="' + data.flex1 + '"/></td></tr>\
+												<tr><td>Start OdoMeter Reading</td><td> <input type="text" name="odoMeterStartOfTrip" class="input-text full-width" value="' + data.odoMeterStartOfTrip + '"/></td></tr>\
+												<tr><td>Trip End Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="flex9" class="input-text full-width" value="' + data.flex9 + '"/></td></tr>\
+												<tr><td>End Post</td><td> <input type="text" name="toLocation" class="input-text full-width" value="' + data.toLocation + '"/></td></tr>\
+												<tr><td>End Address</td><td> <input type="text" name="flex2" class="input-text full-width" value="' + data.flex2 + '"/></td></tr>\
+												<tr><td>End ODOmeter Reading</td><td> <input type="text" name="odoMeterEndOfTrip" class="input-text full-width" value="' + data.odoMeterEndOfTrip + '"/></td></tr>\
+												<tr><td>Trip Notes</td><td> <input type="text" name="flex4" class="input-text full-width" value="' + data.flex4 + '"/></td></tr>\
+												<tr><td>Trip Kms</td><td> <input type="text" name="routeKm" class="input-text full-width" value="' + data.routeKm + '"/></td></tr>\
+												<tr><td>Driver License</td><td> <input type="text" name="flex3" class="input-text full-width" value="' + data.flex3 + '"/></td></tr>\
 												</table>\
 												</form>';
 											editDealerVehiclelogbkForm = editDealerVehiclelogbkForm.replace(/>null</g, ">--NA--<");
@@ -3173,7 +3181,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 										</table>';*/
 									logElen = result.myVehicleFuelExpenses.length;
 									
-									outLogE += '<tr><th>'+"Expensive Type"+'</th><th>'+"Expensive Category"+'</th><th>'+"Expensive Date"+'</th><th>'+"Expensive Description"+'</th><th>'+"Amount"+'</th><th>'+"Uploaded Photo"+'</th></tr>';
+									outLogE += '<tr><th>'+"Expensive Type"+'</th><th>'+"Expensive Category"+'</th><th>'+"Expensive Date"+'</th><th>'+"Expensive Description"+'</th><th>'+"Amount"+'</th><th>'+"Operation"+'</th></tr>';
 					           	    for(i=0;i<logElen;i++)
 					          		 {
 					           	    	outLogE= outLogE+'<tr>'+'<td>'+result.myVehicleFuelExpenses[i].recordType+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].business+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].date+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].others+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].amount+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleexpnsModal-' + result.myVehicleFuelExpenses[i].myVehicleFuelExpensesId + '" data-details=\'' + JSON.stringify(result.myVehicleFuelExpenses[i]) + '\' class="anchor-editDealerVehicleexpnsModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleexpnsModal">View</a></td></tr>';
@@ -3384,11 +3392,11 @@ mainApp1.controller('myController13',function($scope, $http) {
 										</table>';
 									*/
 									logSlen = result.myVehicleServMaint.length;
-									outLogS += '<tr><th>'+"Type of Service"+'</th><th>'+"Date of Service"+'</th><th>'+"Mileage/OdoMeter @Service"+'</th><th>'+"Detail Work Performed"+'</th><th>'+"List of Service"+'</th><th>'+"Notes"+'</th><th>'+"Technician"+'</th><th>'+"Service & maintenancec Company"+'</th><th>'+"Uploaded Maintenance record"+'</th></tr>'; 
+									outLogS += '<tr><th>'+"Type"+'</th><th>'+"Type of Service(L1)"+'</th><th>'+"Type of Service(L2)"+'</th><th>'+"Service@ Date"+'</th><th>'+"OdoMeter Reading Kms"+'</th><th>'+"Next S&M Date"+'</th><th>'+"Next S&M Date @ODO Meter Reading"+'</th><th>'+"Cost"+'</th><th>'+"Company Name"+'</th><th>'+"Operation"+'</th></tr>'; 
 										
 					           	    for(i=0;i<logSlen;i++)
 					          		 {
-					           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].flex1+'</td>'+'<td>'+result.myVehicleServMaint[i].flex2+'</td>'+'<td>'+result.myVehicleServMaint[i].flex3+'</td><td>'+result.myVehicleServMaint[i].mechanicName+'</td>'+'<td>'+result.myVehicleServMaint[i].companyName+'</td><td><a href="#" id="anchor-editDealerVehicleservmtModal-' + result.myVehicleServMaint[i].myVehicleServMaintId + '" data-details=\'' + JSON.stringify(result.myVehicleServMaint[i]) + '\' class="anchor-editDealerVehicleservmtModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmtModal">View</a></td></tr>';
+					           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].mechanicAddress+'</td>'+'<td>'+result.myVehicleServMaint[i].contactDetails+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].nextServDate+'</td><td>'+result.myVehicleServMaint[i].nextOdoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].totalAmount+'</td>'+result.myVehicleServMaint[i].mechanicName+'</td><td><a href="#" id="anchor-editDealerVehicleservmtModal-' + result.myVehicleServMaint[i].myVehicleServMaintId + '" data-details=\'' + JSON.stringify(result.myVehicleServMaint[i]) + '\' class="anchor-editDealerVehicleservmtModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmtModal">View</a></td></tr>';
 					          		 }
 					           	 outLogS = outLogS.replace(/>null</g, ">--NA--<");
 					           	outLogS = outLogS.replace(/>undefined</g, ">--NA--<");
@@ -3475,15 +3483,15 @@ mainApp1.controller('myController13',function($scope, $http) {
 												</table>\
 												<table>\
 												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
-												<tr><td>Type of Service</td><td> <input type="text" name="typeOfServMaint" class="input-text full-width" value="' + data.typeOfServMaint + '"/></td></tr>\
-												<tr><td>Date of Service</td><td> <input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
-												<tr><td>Odo Meter Reading at Service</td><td> <input type="text" name="odoMeterKm" class="input-text full-width" value="' + data.odoMeterKm + '"/></td></tr>\
-												<tr><td>Mechanic Name/Company name</td><td><input type="text" name="mechanicName" class="input-text full-width" value="' + data.mechanicName + '"/></td></tr>\
-												<tr><td>Mechanic Address</td><td> <input type="text" name="mechanicAddress" class="input-text full-width" value="' + data.mechanicAddress + '"/></td></tr>\
-												<tr><td>Contact Details</td><td> <input type="text" name="contactDetails" class="input-text full-width" value="' + data.contactDetails + '"/></td></tr>\
-												<tr><td>Total Amount</td><td> <input type="text" name="totalAmount" class="input-text full-width" value="' + data.totalAmount + '"/></td></tr>\
-												<tr><td>Next Service/Maintenance OdoMeter</td><td> <input type="text" name="nextOdoMeterKm" class="input-text full-width" value="' + data.nextOdoMeterKm + '"/></td></tr>\
-												<tr><td>Next Service / Maintenance Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="nextServDate" class="input-text full-width" value="' + data.nextServDate + '"/></td></tr>\
+												<tr><td>Type</td><td> <input type="text" name="typeOfServMaint" class="input-text full-width" value="' + data.typeOfServMaint + '"/></td></tr>\
+												<tr><td>Type of Service(L1)</td><td> <input type="text" name="mechanicAddress" class="input-text full-width" value="' + data.mechanicAddress + '"/></td></tr>\
+												<tr><td>Type of Service(L2)</td><td> <input type="text" name="contactDetails" class="input-text full-width" value="' + data.contactDetails + '"/></td></tr>\
+												<tr><td>Service@ Date</td><td><input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
+												<tr><td>OdoMeter Reading Kms</td><td> <input type="text" name="odoMeterKm" class="input-text full-width" value="' + data.odoMeterKm + '"/></td></tr>\
+												<tr><td>Next S&M Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="nextServDate" class="input-text full-width" value="' + data.nextServDate + '"/></td></tr>\
+												<tr><td>Next S&M Date @ODO Meter Reading</td><td> <input type="text" name="nextOdoMeterKm" class="input-text full-width" value="' + data.nextOdoMeterKm + '"/></td></tr>\
+												<tr><td>Cost</td><td> <input type="text" name="totalAmount" class="input-text full-width" value="' + data.totalAmount + '"/></td></tr>\
+												<tr><td>Mechanic / Company Name</td><td> <input type="text" name="mechanicName" class="input-text full-width" value="' + data.mechanicName + '"/></td></tr>\
 												</table>\
 												</form>';
 											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
@@ -3500,15 +3508,15 @@ mainApp1.controller('myController13',function($scope, $http) {
 												</table>\
 												<table>\
 												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
-												<tr><td>Type of Service</td><td> <input type="text" name="typeOfServMaint" class="input-text full-width" value="' + data.typeOfServMaint + '"/></td></tr>\
-												<tr><td>Date of Service</td><td> <input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
-												<tr><td>Odo Meter Reading at Service</td><td> <input type="text" name="odoMeterKm" class="input-text full-width" value="' + data.odoMeterKm + '"/></td></tr>\
-												<tr><td>Mechanic Name/Company name</td><td><input type="text" name="mechanicName" class="input-text full-width" value="' + data.mechanicName + '"/></td></tr>\
-												<tr><td>Mechanic Address</td><td> <input type="text" name="mechanicAddress" class="input-text full-width" value="' + data.mechanicAddress + '"/></td></tr>\
-												<tr><td>Contact Details</td><td> <input type="text" name="contactDetails" class="input-text full-width" value="' + data.contactDetails + '"/></td></tr>\
-												<tr><td>Total Amount</td><td> <input type="text" name="totalAmount" class="input-text full-width" value="' + data.totalAmount + '"/></td></tr>\
-												<tr><td>Next Service/Maintenance OdoMeter</td><td> <input type="text" name="nextOdoMeterKm" class="input-text full-width" value="' + data.nextOdoMeterKm + '"/></td></tr>\
-												<tr><td>Next Service / Maintenance Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="nextServDate" class="input-text full-width" value="' + data.nextServDate + '"/></td></tr>\
+												<tr><td>Type</td><td> <input type="text" name="typeOfServMaint" class="input-text full-width" value="' + data.typeOfServMaint + '"/></td></tr>\
+												<tr><td>Type of Service(L1)</td><td> <input type="text" name="mechanicAddress" class="input-text full-width" value="' + data.mechanicAddress + '"/></td></tr>\
+												<tr><td>Type of Service(L2)</td><td> <input type="text" name="contactDetails" class="input-text full-width" value="' + data.contactDetails + '"/></td></tr>\
+												<tr><td>Service@ Date</td><td><input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
+												<tr><td>OdoMeter Reading Kms</td><td> <input type="text" name="odoMeterKm" class="input-text full-width" value="' + data.odoMeterKm + '"/></td></tr>\
+												<tr><td>Next S&M Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="nextServDate" class="input-text full-width" value="' + data.nextServDate + '"/></td></tr>\
+												<tr><td>Next S&M Date @ODO Meter Reading</td><td> <input type="text" name="nextOdoMeterKm" class="input-text full-width" value="' + data.nextOdoMeterKm + '"/></td></tr>\
+												<tr><td>Cost</td><td> <input type="text" name="totalAmount" class="input-text full-width" value="' + data.totalAmount + '"/></td></tr>\
+												<tr><td>Mechanic / Company Name</td><td> <input type="text" name="mechanicName" class="input-text full-width" value="' + data.mechanicName + '"/></td></tr>\
 												</table>\
 												</form>';
 											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
@@ -3783,10 +3791,11 @@ mainApp1.controller('myController13',function($scope, $http) {
 
 																			
 											
-												$scope.submitSearchFormLogBook = function() {
+												$scope.submitSearchFormLogBook = function(isValid) {
+													//alert("inside Log Book"+isValid);
 													/*alert("inside Log Book");
 													alert(myVehicleIDuse);	*/											
-													
+													 if (isValid) {
 													//alert(data.myVehicleId);
 													var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 															"myVehicleLogBookVO":{
@@ -3794,21 +3803,25 @@ mainApp1.controller('myController13',function($scope, $http) {
 																"recordType": $('#vehicleTypeLogBook').val(),															      
 																"tripType":$('#tripType').val(),
 																		"tripDescription" :$('#tripDescription').val(),
-																		 "fromLocation":$('#lPostCode').val(),
-																		"toLocation":$('#tPostCode').val(),
-																		"flex1":$('#lAPostCode').val(),
-																		"flex2":$('#tAPostCode').val(),
-																		"odoMeterStartOfTrip":$('#odoMeterStartTripKmsMiles').val(),
-																		"odoMeterEndOfTrip":$('#odometerEndoftheTrip').val(),
-																		"routeKm":$('#routKmsMiles').val(),
+																		 "fromLocation":$('#transTpostCode').val(),
+																		"toLocation":$('#tAPostCode').val(),
+																		"flex1":$('#startStrtSt').val(),
+																		"flex2":$('#endStrtSt').val(),
+																		"odoMeterStartOfTrip":$('#odoRead').val(),
+																		"odoMeterEndOfTrip":$('#odoMtrEnd').val(),
+																		"routeKm":$('#tripKmsMiles').val(),
+																		"flex4":$('#tripNotes').val(),
+																		"flex3":$('#logbookDrivLic').val(),
 																		"flex5":0,
 																		"flex6":0,
+																		"flex8":$('#TripStartDate').val(),
+																		"flex9":$('#TripEndDate').val(),
 																		"flex7":0
 															}
 															}
-
+													
 													//console.log(JSON.stringify(jsonInputToAPI));
-													//alert("Before Call");
+													//alert("Before Call");"flex2":$('#logBookDriverName').val(),
 													//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 													//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
 													var wsURL = 'api/myvehicle/addMyVehicleLogBook';
@@ -3862,6 +3875,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 														      alert(headers);
 														      alert(config);*/
 														    });
+														    }
 													};
 													
 													$scope.submitSearchFormupdateset = function() {
@@ -3943,11 +3957,14 @@ mainApp1.controller('myController13',function($scope, $http) {
 													
 													
 													
-													$scope.submitSearchFormServMaint = function() {
+													$scope.submitSearchFormServMaint = function(isValid) {
+														alert("inside Sesdarv Maint"+isValid);
+														if (isValid) {
 														/*alert("inside Sesdarv Maint");
 														alert(myVehicleIDuse);*/
 														/*var vehicleTypeServMaint= stringToDate($('#vehicleTypeServMaint').val(),"dd/MM/yyyy","/");
 														var nextServiceMaintenanceDate= stringToDate($('#nextServiceMaintenanceDate').val(),"dd/MM/yyyy","/");*/
+														
 														logServMaintloadImage();
 														var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
 														var filefileChooserlogservmaint = fileChooserlogservmaint.files[0];
@@ -3962,8 +3979,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 																	"mechanicName":$('#mechanicNameCompanyName').val(),
 																	"companyName":"pqrs",
 																	"typeOfServMaint":$('#typeServiceMaintenance').val(),
-																	"mechanicAddress":$('#mechanicAddress').val(),
-																	"contactDetails":$('#contactDetails').val(),
+																	"mechanicAddress":$('#ServL1').val(),
+																	"contactDetails":$('#ServL2').val(),
 																	"odoMeterKm":$('#odoMeterKmsMilesServMaint').val(),
 																	"totalAmount":$('#totalAmount').val(),
 																	"nextOdoMeterKm":$('#NextServiceMaintenanceOdoMeterKmsmils').val(),
@@ -3997,13 +4014,16 @@ mainApp1.controller('myController13',function($scope, $http) {
 																			alert("Successfully Stored Service & Maintenance request However, Plz wait for the images to upload.. don't refresh or switch from your dashboard..  the upload of images will start soon..");
 																			//alert("Service & Maintenance Successfully Stored..");
 																															
-																						});													
+																						});
+													}
 														};
 														
 														
 														
 														
-														$scope.submitMyVehicleFuelExpenses = function() {
+														$scope.submitMyVehicleFuelExpenses = function(isValid) {
+															alert("inside Fuel Expe"+isValid);
+															if (isValid) {
 															//alert("inside Fuel Expe")
 															logExpensesloadImage();
 															var fileChooserLogExp = document.getElementById('file-chooser-lognewexp');
@@ -4014,14 +4034,14 @@ mainApp1.controller('myController13',function($scope, $http) {
 															var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 																	"myVehicleFuelExpensesVO":{
 																		"myVehicleFuelExpensesId":null,
-																		"date":$('#ExpDate').val(),
+																		"date":$('#ExpenseDate').val(),
 																		"Time":$.now(),
 																		"recordType":"Fuel Expense",
 																		"noOfLitres":2,
 																		"amount":$('#ExpAmt').val(),
-																		"business":$('#ExpType').val(),
+																		"business":$('#expenseType').val(),
 																		"private2":" ",
-																		"others":$('#ExpDesc').val(),
+																		"others":$('#ExpenseDesc').val(),
 																		"photoOfInvoice":objKeylogexp,
 																		"flex1":null,
 																		"flex2":null,
@@ -4051,7 +4071,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 																				alert("Successfully Stored Fuel Expenses request However, Plz wait for the images to upload.. don't refresh or switch from your dashboard..  the upload of images will start soon..");
 																				//alert("Fuel Expenses Successfully Stored..");
 																																
-																							});													
+																							});	
+														}
 															};
 
 

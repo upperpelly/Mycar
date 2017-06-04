@@ -307,6 +307,11 @@ $('.logBookBtn').click(function(){
     $('#LogNew').toggle(500);
 }); */
 
+var servicelevel = new ServiceLevelCarQuery();
+servicelevel.init();
+servicelevel.initYearMakeModelTrim('ServL1', 'ServL2');
+
+
 var carquery = new CarQuery();
 carquery.init();
 carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
@@ -2384,40 +2389,64 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 													    </div>
 
 														<div class="booking-section travelo-box" id="LogNew">
-														<form class="booking-form">
+														<form class="booking-form" name="lognewfrm" ng-submit="submitSearchFormLogBook(lognewfrm.$valid)" novalidate>
 												    	<div class="form-group row">
 															<div class="col-sm-6 col-md-6">
-																	<label>Trip Type</label>
+																	<label></label>
 																	<div class="selector">
-																		<select class="full-width" id="tripType" name="tripType">
+																		<select class="full-width" id="tripType" name="tripType"  ng-model="tripType" required>
+																			<option value="" selected disabled>Trip Type</option>
 																			<option>Private</option>
 																			<option>Business</option>
 																			<option>Other</option>
 																		</select>
 																	</div>
+																	<span style="color:red" ng-show="lognewfrm.tripType.$error.required && (!lognewfrm.tripType.$pristine || lognewfrm.$submitted)"><b>Trip Type is Required</b></span>
 															 </div>
+															 <div class="col-sm-6 col-md-6">
+																<input type="text" id="tripDescription" name="tripDescription" class="input-text full-width" ng-model="tripDescription" value="" placeholder="Trip Description" required/>
+															</div>
+															<span style="color:red" ng-show="lognewfrm.tripDescription.$error.required && (!lognewfrm.tripDescription.$pristine || lognewfrm.$submitted)"><b>Trip Description is Required</b></span>
 														</div>
 														<div class="form-group row">
-															<div class="col-sm-6 col-md-6">
-																<label>Trip Description</label>
-																<input type="text" id="tripDescription" name="tripDescription" class="input-text full-width" value="" placeholder="" />
+															<div class="col-sm-3 col-md-3">
+																 <input type="date" id="TripStartDate" name="TripStartDate" class="input-text full-width" ng-model="TripStartDate" value="" placeholder="Trip Start Date" required/>
+																 <span style="color:red" ng-show="lognewfrm.TripStartDate.$error.required && (!lognewfrm.TripStartDate.$pristine || lognewfrm.$submitted)"><b>Trip Start Date is Required</b></span>
 															</div>
-															<div class="col-sm-6 col-md-6">
-																<label>From Location Post Code</label>
-																<input type="text" id="lPostCode" name="lPostCode" class="input-text full-width" value="" placeholder="" />
+															<div class="col-sm-3 col-md-3">
+																<input type="text" id="transTpostCode" name="transTpostCode" ng-model="transTpostCode" ng-minlength="4" ng-pattern="/^[0-9]*$/" ng-maxlength="4" class="input-text full-width" value="" placeholder="Start Post Code" required/>
+															 
+															 <span style="color:red" ng-show="lognewfrm.transTpostCode.$error.pattern && (!lognewfrm.transTpostCode.$pristine || lognewfrm.$submitted)"><b>POST must be Numeric</b></span>
+                                                            <span style="color:red" ng-show="lognewfrm.transTpostCode.$error.required && (!lognewfrm.transTpostCode.$pristine || lognewfrm.$submitted)"><b>POST is Required</b></span>
+                                                            <span style="color:red" ng-show="lognewfrm.transTpostCode.$error.minlength && (!lognewfrm.transTpostCode.$pristine || lognewfrm.$submitted) && !lognewfrm.transTpostCode.$error.pattern"><b>POST must be of 4 digits</b></span>
+                                                            <span style="color:red" ng-show="lognewfrm.transTpostCode.$error.maxlength && (!lognewfrm.transTpostCode.$pristine || lognewfrm.$submitted) && !lognewfrm.transTpostCode.$error.pattern"><b>POST must be of 4 digits only.</b></span>
+															
+															
 															</div>
+															<div class="col-sm-3 col-md-3">
+																<input type="text" id="startStrtSt" name="startStrtSt" class="input-text full-width" value="" placeholder="St No, St Name, Suborb, State" />
+															</div>
+															<div class="col-sm-3 col-md-3">
+																<input type="text" id="odoRead" name="odoRead" ng-model="odoRead" class="input-text full-width" ng-pattern="/^[0-9]*$/" value="" placeholder="Start Odometer Reading" required/>
+																<span style="color:red" ng-show="lognewfrm.odoRead.$error.pattern && (!lognewfrm.odoRead.$pristine || lognewfrm.$submitted)"><b>Start ODO meter Reading must be Numeric</b></span>
+                                                            <span style="color:red" ng-show="lognewfrm.odoRead.$error.required && (!lognewfrm.odoRead.$pristine || lognewfrm.$submitted) && !lognewfrm.odoRead.$error.pattern"><b>Start ODO meter Reading is Required</b></span>
+                                                           
+															</div>
+															
 														</div>
-														<div class="form-group row">
+														<!-- <div class="form-group row">
+														<div class="col-sm-6 col-md-6">
+																<label>From Location Address</label>
+																<input type="text" id="lAPostCode" name="lAPostCode" class="input-text full-width" value="" placeholder="" />
+															</div>
 															<div class="col-sm-6 col-md-6">
 																<label>From Location Address</label>
 																<input type="text" id="lAPostCode" name="lAPostCode" class="input-text full-width" value="" placeholder="" />
 															</div>
 															<div class="col-sm-6 col-md-6">
-																<label>To Location Post Code</label>
+																<label>Start Odometer Reading</label>
 																<input type="text" id="tPostCode" name="tPostCode" class="input-text full-width" value="" placeholder="" />
 															</div>
-														</div>
-														<div class="form-group row">
 															<div class="col-sm-6 col-md-6">
 																<label>To Location Address</label>
 																<input type="text" id="tAPostCode" name="tAPostCode" class="input-text full-width" value="" placeholder="" />
@@ -2426,22 +2455,56 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 																<label>Odo Meter Start of the Trip Kms/Miles</label>
 																<input type="text" id="odoMeterStartTripKmsMiles" name="odoMeterStartTripKmsMiles" class="input-text full-width" value="" placeholder="" />
 															</div>
-														</div>
+														</div> -->
 														<div class="form-group row">
+														<div class="col-sm-3 col-md-3">
+																 <input type="date" id="TripEndDate" name="TripEndDate" class="input-text full-width" value="" placeholder="Trip End Date" />
+															</div>
+															<div class="col-sm-3 col-md-3">
+																<input type="text" id="tAPostCode" name="tAPostCode" ng-model="tAPostCode" ng-minlength="4" ng-pattern="/^[0-9]*$/" ng-maxlength="4" class="input-text full-width" value="" placeholder="End Post Code"/>
+															 
+															 <span style="color:red" ng-show="lognewfrm.tAPostCode.$error.pattern && (!lognewfrm.tAPostCode.$pristine || lognewfrm.$submitted)"><b>POST must be Numeric</b></span>
+                                                            <span style="color:red" ng-show="lognewfrm.tAPostCode.$error.minlength && (!lognewfrm.tAPostCode.$pristine || lognewfrm.$submitted) && !lognewfrm.tAPostCode.$error.pattern"><b>POST must be of 4 digits</b></span>
+                                                            <span style="color:red" ng-show="lognewfrm.tAPostCode.$error.maxlength && (!lognewfrm.tAPostCode.$pristine || lognewfrm.$submitted) && !lognewfrm.tAPostCode.$error.pattern"><b>POST must be of 4 digits only.</b></span>
+															
+															
+															</div>
+															<div class="col-sm-3 col-md-3">
+																<input type="text" id="endStrtSt" name="endStrtSt" class="input-text full-width" value="" placeholder="St No, St Name, Suborb, State" />
+															</div>
+															<div class="col-sm-3 col-md-3">
+																<input type="text" id="odoMtrEnd" name="odoMtrEnd" class="input-text full-width" value="" ng-model="odoMtrEnd" ng-pattern="/^[0-9]*$/" placeholder="End Odometer Reading" />
+															</div>
+															<span style="color:red" ng-show="lognewfrm.odoMtrEnd.$error.pattern && (!lognewfrm.odoMtrEnd.$pristine || lognewfrm.$submitted)"><b>End ODO meter Reading must be Numeric</b></span>
+                                                            
+															
+														</div>
+														<div class="row">
 															<div class="col-sm-6 col-md-6">
-																<label>Odometer End of the Trip</label>
-																<input type="text" id="odometerEndoftheTrip" name="odometerEndoftheTrip" class="input-text full-width" value="" placeholder="" />
+																<!-- <input type="text" id="tripNotes" name="tripNotes" class="input-text full-width" value="" placeholder="" /> -->
+																<textarea rows="4" cols="30" id="tripNotes" name="tripNotes" placeholder="Trip Notes"></textarea>
 															</div>
 															 <div class="col-sm-6 col-md-6">
-																<label>Rout Kms/Miles</label>
-																<input type="text" id="routKmsMiles" name="routKmsMiles" class="input-text full-width" value="" placeholder="" />
+																<input type="text" id="tripKmsMiles" name="tripKmsMiles" class="input-text full-width" ng-model="tripKmsMiles" ng-pattern="/^[0-9]*$/" value="" placeholder="Trip Kms/Miles" />
+															</div>
+															<span style="color:red" ng-show="lognewfrm.tripKmsMiles.$error.pattern && (!lognewfrm.tripKmsMiles.$pristine || lognewfrm.$submitted)"><b>Trip Km must be Numeric</b></span>
+														</div>
+														<div class="form-group row">
+															<div class="col-sm-3 col-md-3">
+																<input type="text" id="logBookDriverName" name="logBookDriverName" class="input-text full-width" value="" placeholder="Driver Name" />
+															</div>
+															<div class="col-sm-3 col-md-3">
+																<input type="text" id="logbookDrivLic" name="logbookDrivLic" class="input-text full-width" value="" placeholder="Driver License No" />
+															</div>
+															 <div class="col-sm-6 col-md-6">
+																<button class="full-width btn-large" id="LogSave" >Save</button>
 															</div>
 														</div>
-												        <div class="form-group row">
+												        <!-- <div class="form-group row">
 															<div class="col-sm-6 col-md-5">
-																<button type="button" class="full-width btn-large" id="LogSave" ng-click="submitSearchFormLogBook()">Save</button>
+																<button class="full-width btn-large" id="LogSave" >Save</button>
 															</div>
-												        </div>
+												        </div> -->
 														</form>
 														</div>
 														<table id="logTripTable">
@@ -2453,45 +2516,69 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 													    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
 													    </div>
 														<div class="booking-section travelo-box" id="LogNewExp">
-														<form class="booking-form">
+														<form class="booking-form" name="logexpensefrm" ng-submit="submitMyVehicleFuelExpenses(logexpensefrm.$valid)" novalidate>
 												    	<div class="form-group row">
-															<div class="col-sm-6 col-md-6">
-																	<label>Expenses Type</label>
+												    	<div class="col-sm-6 col-md-6">
+																	<label>Expense Type</label>
 																	<div class="selector">
-																		<select class="full-width" id="ExpType" name="ExpType">
-																			<option>Fuel</option>
-																			<option>Service & Maintenance</option>
-																			<option>Accessories & Spares</option>
-																			<option>Fine's</option>
-																			<option>Toll</option>
+																		<select class="full-width" id="expenseType" name="expenseType" ng-model="expenseType" required>
+																			<option>Private</option>
+																			<option>Business</option>
+																			<option>Other</option>
 																		</select>
 																	</div>
+																	<span style="color:red" ng-show="logexpensefrm.expenseType.$error.required && (!logexpensefrm.expenseType.$pristine || logexpensefrm.$submitted)"><b>Expense Type is Required</b></span>
+															 </div>
+															<div class="col-sm-6 col-md-6">
+																	<label>Category</label>
+																	<div class="selector">
+																		<select class="full-width" id="ExpTypeCat" name="ExpTypeCat" ng-model="ExpTypeCat" required>
+																			<option>Fuel</option>
+																			<option>Service & Maintenance</option>
+																			<option>Spares & Accessories</option>
+																			<option>Toll</option>
+																			<option>Fine's</option>
+																			<option>Tyre's</option>
+																			<option>Insurance</option>
+																			<option>Rego</option>
+																			<option>EMI</option>
+																			<option>Others</option>
+																		</select>
+																	</div>
+																	<span style="color:red" ng-show="logexpensefrm.ExpTypeCat.$error.required && (!logexpensefrm.ExpTypeCat.$pristine || logexpensefrm.$submitted)"><b>Category is Required</b></span>
 															 </div>
 														</div>
 														<div class="form-group row">
 															<div class="col-sm-6 col-md-6">
 																<label>Expenses Date</label>
-																 <input type="date" id="ExpDate" name="ExpDate" class="input-text full-width" value="" placeholder="" />
+																 <input type="date" id="ExpenseDate" name="ExpenseDate" class="input-text full-width" ng-model="ExpenseDate" value="" placeholder="" required/>
+																 <span style="color:red" ng-show="logexpensefrm.ExpenseDate.$error.required && (!logexpensefrm.ExpenseDate.$pristine || logexpensefrm.$submitted)"><b>Expenses Date is Required</b></span>
 															</div>
 															<div class="col-sm-6 col-md-6">
 																<label>Expenses Description</label>
-																<input type="text" id="ExpDesc" name="ExpDesc" class="input-text full-width" value="" placeholder="" />
+																<input type="text" id="ExpenseDesc" name="ExpenseDesc" class="input-text full-width" ng-model="ExpenseDesc" value="" placeholder="" value="" placeholder="" required/>
 															</div>
+															<span style="color:red" ng-show="logexpensefrm.ExpenseDesc.$error.required && (!logexpensefrm.ExpenseDesc.$pristine || logexpensefrm.$submitted)"><b>Expenses Description is Required</b></span>
 														</div>
 														<div class="form-group row">
 															<div class="col-sm-6 col-md-6">
-																<label>Expenditure Amount</label>
-																<input type="text" id="ExpAmt" name="ExpAmt" class="input-text full-width" value="" placeholder="" />
+																<label>Amount</label>
+																<input type="text" id="ExpAmt" name="ExpAmt" ng-model="ExpAmt" class="input-text full-width" value="" placeholder="" ng-pattern="/^[0-9]*$/" required/>
+															 
+															<span class="input-group-addon">$</span>
+															<span style="color:red" ng-show="logexpensefrm.ExpAmt.$error.required && (!logexpensefrm.ExpAmt.$pristine || logexpensefrm.$submitted)"><b>Amount is Required</b></span>
+														    <span style="color:red" ng-show="logexpensefrm.ExpAmt.$error.pattern && (!logexpensefrm.ExpAmt.$pristine || lognewfrm.$submitted)"><b>Amount is Numeric</b></span>
 															</div>
+															
 															<div class="col-sm-6 col-md-6">
-																<label>Photo of Bill</label>
+																<label>Upload Bills</label>
 																<input type="file" id="file-chooser-lognewexp" class="input-text full-width" value="" placeholder="" />
 																<!-- <button id="upload-button-lognewexp" type="button">Upload</button> -->
 															</div>
 														</div>
 														<div class="form-group row">
 															<div class="col-sm-6 col-md-5">
-																<button type="button" id="upload-button-lognewexp" class="full-width btn-large" id="LogExpSave" ng-click="submitMyVehicleFuelExpenses()">Save</button>
+																<button id="upload-button-lognewexp" class="full-width btn-large" id="LogExpSave" >Save</button>
 															</div>
 												        </div>
 														</form>
@@ -2503,86 +2590,140 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 														<div class="col-md-12"><button id="LogNewSerButton">Log New Service & Maintenance</button></div>
 													      <p>Your Service & maintenance goes here</p>
 															<div class="booking-section travelo-box" id="LogNewSer">
-									                          <form class="booking-form">
+									                          <form class="booking-form" name="logservmaintfrm" ng-submit="submitSearchFormServMaint(logservmaintfrm.$valid)" novalidate>
 																		<div class="form-group row">
-																			<div class="col-sm-6 col-md-6">
-																				<div class="selector">
+																			<div class="col-sm-4 col-md-4">
+																				<div class="selector" >
 																					<label>Type of Service</label>
 																					<select class="full-width"
 																						id="typeServiceMaintenance"
-																						name="typeServiceMaintenance">
+																						name="typeServiceMaintenance" ng-model="typeServiceMaintenance" required>
 																						<option>Private</option>
 																						<option>Business</option>
 																						<option>Other</option>
 																					</select>
 																				</div>
+																				<span style="color:red" ng-show="logservmaintfrm.typeServiceMaintenance.$error.required && (!logservmaintfrm.typeServiceMaintenance.$pristine || logservmaintfrm.$submitted)"><b>Type of service is Required</b></span>
 																			</div>
+																			<div class="col-sm-4 col-md-4">
+					                                                            <div class="selector">
+					                                                            <label>Type of Service(L1)</label>
+					                                                                <select class="full-width" id="ServL1" ng-model="ServL1"
+					                                                                        name="ServL1" required>
+					                                                                    <option value="" selected disabled>Service & Maintenance L1</option>
+					                                                                    <option>Packaged Car Services</option>
+					                                                                    <option>Log Book Servicing</option>
+					                                                                    <option>New Car Servicing</option>
+					                                                                    <option>Fleet Servecing</option>
+					                                                                    <option>Registraion & Inspection</option>
+					                                                                    <option>Wheel Alinement</option>
+					                                                                </select>
+					                                                            </div>
+					                                                            <span style="color:red" ng-show="logservmaintfrm.ServL1.$error.required && (!logservmaintfrm.ServL1.$pristine || logservmaintfrm.$submitted)"><b>Service Level 1 is Required</b></span>
+					                                                        </div>
+					                                                        <div class="col-sm-4 col-md-4">
+					                                                            <div class="selector">
+					                                                            <label>Type of Service(L2)</label>
+					                                                                <select class="full-width" id="ServL2" ng-model="ServL2"
+					                                                                        name="ServL2" required>
+					                                                                    <option value="" selected disabled>Service & Maintenance L2</option>
+					                                                                    <option>Packaged Car Services</option>
+					                                                                    <option>Log Book Servicing</option>
+					                                                                    <option>New Car Servicing</option>
+					                                                                    <option>Fleet Servecing</option>
+					                                                                    <option>Registraion & Inspection</option>
+					                                                                    <option>Wheel Alinement</option>
+					                                                                </select>
+					                                                            </div>
+					                                                            <span style="color:red" ng-show="logservmaintfrm.ServL2.$error.required && (!logservmaintfrm.ServL2.$pristine || logservmaintfrm.$submitted)"><b>Service Level 2 is Required</b></span>
+					                                                        </div>	
 																		</div>
 																		<div class="form-group row">
-																			<div class="col-sm-6 col-md-6">
-																				<label>Date of Service</label> <input type="date"
+																			<div class="col-sm-4 col-md-4">
+																				<label>Service @Date</label> <input type="date"
 																					id="vehicleTypeServMaint"
 																					name="vehicleTypeServMaint"
-																					class="input-text full-width" value=""
-																					placeholder="" />
+																					class="input-text full-width" ng-model="vehicleTypeServMaint" value=""
+																					placeholder="" required/>
+																					<span style="color:red" ng-show="logservmaintfrm.vehicleTypeServMaint.$error.required && (!logservmaintfrm.vehicleTypeServMaint.$pristine || logservmaintfrm.$submitted)"><b>Service Date is Required</b></span>
 																			</div>
-																			<div class="col-sm-6 col-md-6">
-																				<label>Odo Meter Reading at Service</label> <input
+																			<div class="col-sm-8 col-md-8">
+																				<label>Odo Meter Reading Kms</label> <input
 																					type="text" id="odoMeterKmsMilesServMaint"
 																					name="odoMeterKmsMilesServMaint"
-																					class="input-text full-width" value=""
-																					placeholder="" />
+																					class="input-text full-width" ng-model="odoMeterKmsMilesServMaint" ng-pattern="/^[0-9]*$/" value=""
+																					placeholder="" required/>
+																					<span style="color:red" ng-show="logservmaintfrm.odoMeterKmsMilesServMaint.$error.required && (!logservmaintfrm.odoMeterKmsMilesServMaint.$pristine || logservmaintfrm.$submitted)"><b>ODO meter is Required</b></span>
+																					<span style="color:red" ng-show="logservmaintfrm.odoMeterKmsMilesServMaint.$error.pattern && (!logservmaintfrm.odoMeterKmsMilesServMaint.$pristine || logservmaintfrm.$submitted)"><b>ODO meter must be Numeric</b></span>
 																			</div>
 																		</div>
 																		<div class="form-group row">
-																			<div class="col-sm-6 col-md-6">
+																			<div class="col-sm-4 col-md-4">
+																				<label>Next S&M @Date</label> <input
+																					type="date" id="nextServiceMaintenanceDate"
+																					name="nextServiceMaintenanceDate"
+																					class="input-text full-width" ng-model="nextServiceMaintenanceDate" value=""
+																					placeholder="" required/>
+																					<span style="color:red" ng-show="logservmaintfrm.nextServiceMaintenanceDate.$error.required && (!logservmaintfrm.nextServiceMaintenanceDate.$pristine || logservmaintfrm.$submitted)"><b>Next S&M Date is Required</b></span>
+																			</div>
+																			<div class="col-sm-8 col-md-8">
+																				<label>Next S&M @OdoMeter
+																					Kms</label> <input type="text"
+																					id="NextServiceMaintenanceOdoMeterKmsmils"
+																					name="NextServiceMaintenanceOdoMeterKmsmils"
+																					class="input-text full-width" ng-model="NextServiceMaintenanceOdoMeterKmsmils" ng-pattern="/^[0-9]*$/" value=""
+																					placeholder="" required/>
+																					<input type="checkbox" id="servmaintRemind" name="servmaintRemind"  ng-model="insRemind" />Add Reminder
+																					<span style="color:red" ng-show="logservmaintfrm.NextServiceMaintenanceOdoMeterKmsmils.$error.required && (!logservmaintfrm.NextServiceMaintenanceOdoMeterKmsmils.$pristine || logservmaintfrm.$submitted)"><b>Next S&M ODO meter is Required</b></span>
+																					<span style="color:red" ng-show="logservmaintfrm.NextServiceMaintenanceOdoMeterKmsmils.$error.pattern && (!logservmaintfrm.NextServiceMaintenanceOdoMeterKmsmils.$pristine || logservmaintfrm.$submitted)"><b>Next S&M ODO meter must be Numeric</b></span>
+																			</div>
+																			
+																		</div>
+																		
+																		
+																		
+																		<div class="form-group row">
+																			<div class="col-sm-4 col-md-4">
+																			</div>
+																			<div class="col-sm-8 col-md-8">
+																				<label>Cost</label> <input type="text"
+																					id="totalAmount" name="totalAmount"
+																					class="input-text full-width" ng-model="totalAmount" ng-pattern="/^[0-9]*$/" value=""
+																					placeholder="" required/>
+																					<span style="color:red" ng-show="logservmaintfrm.totalAmount.$error.pattern && (!logservmaintfrm.totalAmount.$pristine || logservmaintfrm.$submitted)"><b>Total Amount must be Numeric</b></span>
+																					<span style="color:red" ng-show="logservmaintfrm.totalAmount.$error.required && (!logservmaintfrm.totalAmount.$pristine || logservmaintfrm.$submitted)"><b>Total Amount is Required</b></span>
+																			</div>
+																			
+																		</div>
+																		
+																		<div class="form-group row">
+																			<div class="col-sm-12 col-md-12">
 																				<label>Mechanic Name/Company name</label> <input
 																					type="text" id="mechanicNameCompanyName"
 																					name="mechanicNameCompanyName"
 																					class="input-text full-width" value=""
 																					placeholder="" />
 																			</div>
-																			<div class="col-sm-6 col-md-6">
+																			<!-- <div class="col-sm-6 col-md-6">
 																				<label>Mechanic Address</label> <input type="text"
 																					id="mechanicAddress" name="mechanicAddress"
 																					class="input-text full-width" value=""
 																					placeholder="" />
-																			</div>
+																			</div> -->
 																		</div>
-																		<div class="form-group row">
+																		<!-- <div class="form-group row">
 																			<div class="col-sm-6 col-md-6">
 																				<label>Contact Details</label> <input type="text"
 																					id="contactDetails" name="contactDetails"
 																					class="input-text full-width" value=""
 																					placeholder="" />
 																			</div>
-																			<div class="col-sm-6 col-md-6">
-																				<label>Total Amount</label> <input type="text"
-																					id="totalAmount" name="totalAmount"
-																					class="input-text full-width" value=""
-																					placeholder="" />
-																			</div>
-																		</div>
+																			
+																		</div> -->
+																		
 																		<div class="form-group row">
-																			<div class="col-sm-6 col-md-6">
-																				<label>Next Service/Maintenance OdoMeter
-																					Kms/mils</label> <input type="text"
-																					id="NextServiceMaintenanceOdoMeterKmsmils"
-																					name="NextServiceMaintenanceOdoMeterKmsmils"
-																					class="input-text full-width" value=""
-																					placeholder="" />
-																			</div>
-																			<div class="col-sm-6 col-md-6">
-																				<label>Next Service / Maintenance Date</label> <input
-																					type="date" id="nextServiceMaintenanceDate"
-																					name="nextServiceMaintenanceDate"
-																					class="input-text full-width" value=""
-																					placeholder="" />
-																			</div>
-																		</div>
-																		<div class="form-group row">
-																			<div class="col-sm-6 col-md-6">
-																				<label>Photo of the Invoice</label> <input
+																			<div class="col-sm-12 col-md-12">
+																				<label>Upload Sheets / Receipts</label> <input
 																					type="file" id="file-chooser-logservmaint" name="photoInvoice"
 																					class="input-text full-width" value=""
 																					placeholder="" />
@@ -2591,9 +2732,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 																			</div>
 																		</div>
 																		<div class="form-group row">
-																			<div class="col-sm-6 col-md-5">
-																				<button type="button" id="upload-button-logservmaint" class="full-width btn-large"
-																					ng-click="submitSearchFormServMaint()">Save</button>
+																			<div class="col-sm-12 col-md-12">
+																				<button  id="upload-button-logservmaint" class="full-width btn-large"
+																					>Save</button>
 																			</div>
 																		</div>
 															</form>
@@ -3430,7 +3571,7 @@ js.src = "http://connect.facebook.net/en_US/all.js";
                     if (err) {
 
                     	//alert("Not saved service and maintenance1"+err);
-                    	alert("Sorry we are not able to upload photo "+file2.name+"for Log service and maintenance.. It failed with following error"+err+"However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                    	alert("Sorry we are not able to upload photo "+file.name+"for Log service and maintenance.. It failed with following error"+err+"However please send the photo to autoscoop support team which will upload and link it to your account thanks");
                         /* results.innerHTML = 'ERROR: ' + err; */
 
 
