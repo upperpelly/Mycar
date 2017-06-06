@@ -2014,12 +2014,15 @@ $.ajax({
                     //alert("invoke in ins lead");
                     /*alert($scope.email);
                     alert(email); */
-                    
+                    alert("postCode"+$scope.postcode1111);
+                    alert("postCode"+$scope.insDriverDOB);
+                    alert("postCode"+$scope.insLicIssueDt);
+                    alert("postCode"+$scope.insLastfaultDt);
                     
                     
                     //jsonInputToAPI.searchTranspLead.carModel = table;
                     
-                    alert(JSON.stringify(table));
+                    //alert(JSON.stringify(table));
                     if (alreadyLogged()) {
 
                         if (isValid) {
@@ -2048,7 +2051,7 @@ $.ajax({
                                     "used": $scope.usedCarInsuran,
                                     "searchInsAdditionalDriv": [],
                                     "searchInsuranceId": null,
-                                    "postCode": $scope.postcode11,
+                                    "postCode": $scope.postcode1111,
                                     "insuranceType": $scope.insuranceType,
                                     "regNo": $scope.regono12,
                                     "regoState": $scope.insregost,
@@ -6725,7 +6728,7 @@ $.ajax({
                                                                         <label>Date of Birth</label>
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
-                                                                        <input type="text" name="insDriverDOB" id="insDriverDOB" onfocus="(this.type='date')" class="input-text full-width" placeholder="DOB" />
+                                                                        <input type="text" name="insDriverDOB" id="insDriverDOB" ng-model="insDriverDOB" onfocus="(this.type='date')" class="input-text full-width" placeholder="DOB" />
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
                                                                     <div class="selector">
@@ -6738,6 +6741,7 @@ $.ajax({
 						                                                    <option>Rather Not say</option>
 						                                                </select>
 						                                            </div>
+						                                            <span style="color:red" ng-show="ebidinsfrm.abcTitlePerson.$error.required && (!ebidinsfrm.abcTitlePerson.$pristine || ebidinsfrm.$submitted)"><b>Gender is Required</b></span>
                                                                     </div>
                                                                 </div><br />
 
@@ -6774,7 +6778,7 @@ $.ajax({
                                                                         &nbsp;
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
-                                                                        <input type="text" onfocus="(this.type='date')" name="insLicIssueDt" id="insLicIssueDt" class="input-text full-width" placeholder="Driving Licence issue Date" />
+                                                                        <input type="text" onfocus="(this.type='date')" name="insLicIssueDt" ng-model="insLicIssueDt" id="insLicIssueDt" class="input-text full-width" placeholder="Driving Licence issue Date" />
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
                                                                         <div class="selector">

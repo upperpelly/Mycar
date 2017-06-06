@@ -2203,7 +2203,23 @@ function registerEditDealerVehicleInsuranceModal(){
 		
 		var data = $(event.target).data('details');
 		//var json = JSON.stringify(data);
-		
+		console.log(JSON.stringify(data));
+		outInsDrvAdd = "";
+	    var drvAddInfo = data.searchInsAdditionalDriv;
+	    //alert("came here");
+		if(drvAddInfo){
+			 outInsDrvAdd += '<tr><th>'+"Additional ID"+'</th><th>'+"First Name"+'</th><th>'+"Last Name"+'</th><th>'+"License Type"+'</th><th>'+'</th><th>'+"DateOfBirth"+'</th></tr>';
+			 for(i=0;i<data.searchInsAdditionalDriv.length;i++)
+				{
+				 outInsDrvAdd= outInsDrvAdd+'<tr>'+'<td>'+data.searchInsAdditionalDriv[i].searchInsAddDrivId+'</td><td>'+data.searchInsAdditionalDriv[i].firstName+'</td><td>'+data.searchInsAdditionalDriv[i].lastName+'</td><td>'+data.searchInsAdditionalDriv[i].drivingLicenseType+'</td><td>'+data.searchInsAdditionalDriv[i].dateOfBirth+'</td><td></tr>';
+				}
+			
+		}
+		else
+	    {
+	    	outInsDrvAdd='<h2>No records for Dealer Search Finance</h2>';
+	    }
+		//alert("inside"+outInsDrvAdd);
 		var quotIdHiddenField = '<input type="hidden" name="financeSearchId" value="' + data.searchInsuranceId + '" />';
 		var moveToUser = '<input type="checkbox" name="moveToUser" />'; 
 		if(data.newer)
@@ -2212,6 +2228,47 @@ function registerEditDealerVehicleInsuranceModal(){
 		if(data.used)
 		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
 
+		// start of Extra Requirements
+		var extExt1 = '<input type="checkbox" name="extExt1" />'; 
+		if(data.extExt1)
+			extExt1 = '<input type="checkbox" name="extExt1" checked="checked" />';
+		var intExt2 = '<input type="checkbox" name="intExt2" />'; 
+		if(data.intExt2)
+			intExt2 = '<input type="checkbox" name="intExt2" checked="checked" />';
+		var extExt2 = '<input type="checkbox" name="extExt2" />'; 
+		if(data.extExt2)
+			extExt2 = '<input type="checkbox" name="extExt2" checked="checked" />';
+		var intExt3 = '<input type="checkbox" name="intExt3" />'; 
+		if(data.intExt3)
+			intExt3 = '<input type="checkbox" name="intExt3" checked="checked" />';
+		var extExt3 = '<input type="checkbox" name="extExt3" />'; 
+		if(data.extExt3)
+			extExt3 = '<input type="checkbox" name="extExt3" checked="checked" />';
+		var intExt4 = '<input type="checkbox" name="intExt4" />'; 
+		if(data.intExt4)
+			intExt4 = '<input type="checkbox" name="intExt4" checked="checked" />';
+		var extExt4 = '<input type="checkbox" name="extExt4" />'; 
+		if(data.extExt4)
+			extExt4 = '<input type="checkbox" name="extExt4" checked="checked" />';
+		var intExt5 = '<input type="checkbox" name="intExt5" />'; 
+		if(data.intExt5)
+			intExt5 = '<input type="checkbox" name="intExt5" checked="checked" />';
+		var extExt5 = '<input type="checkbox" name="extExt5" />'; 
+		if(data.extExt5)
+			extExt5 = '<input type="checkbox" name="extExt5" checked="checked" />';
+		var intExt6 = '<input type="checkbox" name="intExt6" />'; 
+		if(data.intExt6)
+			intExt6 = '<input type="checkbox" name="intExt6" checked="checked" />';
+		var intExt1 = '<input type="checkbox" name="intExt1" />'; 
+		if(data.intExt1)
+			intExt1 = '<input type="checkbox" name="intExt1" checked="checked" />';
+		var intExt7 = '<input type="checkbox" name="intExt7" />'; 
+		if(data.intExt7)
+			intExt7 = '<input type="checkbox" name="intExt7" checked="checked" />';
+		var intExt8 = '<input type="checkbox" name="intExt8" />'; 
+		if(data.intExt8)
+			intExt8 = '<input type="checkbox" name="intExt8" checked="checked" />';
+		// end of Extra Requirements
 		
 		
 		var editDealerVehicleInsuranceForm = '<form id="edit-dealer-vehicle-insurance-content-form"><table>\
@@ -2271,19 +2328,13 @@ function registerEditDealerVehicleInsuranceModal(){
 			<h5 style="color:#bd191e;"><b>Add Extra Requirements</b></h5>\
 			<table>\
 			<h6 style="color:#bd191e;"><b>External Requirements</b></h6>\
-			<tr><td>External 1</td><td>' + data.FreeWindScreen + '</td></tr>\
-			<tr><td>External 2</td><td>' + data.AnyDriver + '</td></tr>\
-			<tr><td>External 3</td><td>' + data.Snokel + '</td></tr>\
-			<tr><td>External 4</td><td>' + data.RentalCar + '</td></tr>\
-			<tr><td>External 5</td><td>' + data.NewCarRepl + '</td></tr>\
-			</table>\
-			<table>\
-			<h6 style="color:#bd191e;"><b>Internal Requirements</b></h6>\
-			<tr><td>Internal 1</td><td>' + data.HireCar + '</td></tr>\
-			<tr><td>Internal 2</td><td>' + data.intBullBar + '</td></tr>\
-			<tr><td>Internal 3</td><td>' + data.intsnokel + '</td></tr>\
-			<tr><td>Internal 4</td><td>' + data.intNudgeBar + '</td></tr>\
-			<tr><td>Internal 5</td><td>' + data.BullBar + '</td></tr>\
+			<tr><td>Hire Car after Accident(ifany)</td><td>' + extExt1 +'</td><td>No Claim Bonus Protection</td><td>' + intExt2 + '</td></tr>\
+			<tr><td>Excess Free Wind Screen</td><td>' + extExt2 +'</td><td>Allow Under 25 Driver</td><td>' + intExt3 + '</td></tr>\
+			<tr><td>Excess Free Window Screen</td><td>' + extExt3 +'</td><td>Cover Theft & Fire</td><td>' + intExt4 + '</td></tr>\
+			<tr><td>New Car Replace</td><td>' + extExt4 +'</td><td>Cover Towing Cost</td><td>' + intExt5 + '</td></tr>\
+			<tr><td>Road Side Assitance</td><td>' + extExt5 +'</td><td>Essential Temporary Repairs</td><td>' + intExt6 + '</td></tr>\
+			<tr><td>Life time Warrantly repairs</td><td>' + intExt1 +'</td><td>Accidental Damage</td><td>' + intExt7 + '</td></tr>\
+			<tr><td>Emergency Accomdation and Transport</td><td>' + intExt8 + '</td></tr>\
 			</table>\
 			<br/>\
 			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Driver Details</div></div>\
@@ -2312,6 +2363,10 @@ function registerEditDealerVehicleInsuranceModal(){
 			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Additional Driver Details</div></div>\
 			<table>\
 			<tr><td>No Of Drivers more than 1 ?</td><td>' + data.noOfDrivers + '</td></tr>\
+			</table>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Additional Driver Information</div></div>\
+			<tr><td></td><td>' +outInsDrvAdd + '</td></tr>\
 			</table>\
 			</form>';
 		editDealerVehicleInsuranceForm = editDealerVehicleInsuranceForm.replace(/>null</g, ">--NA--<");
