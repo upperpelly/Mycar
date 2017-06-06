@@ -28,7 +28,7 @@ function alreadyLogged(){
 }
 if(!alreadyLogged())
 {
-		var url="homepage10.html";
+		var url="Hm_BetaV1.html";
 		window.location=url;
 }
 var value1 = $.jStorage.get("carKey");
@@ -48,7 +48,7 @@ function signingout(){
 	 $.jStorage.deleteKey("key");
 	 $.jStorage.deleteKey("carKey");
 	 alert("Successfully Logged Out");
-	 window.location="homepage10.html";
+	 window.location="Hm_BetaV1.html";
 }
 
 var modelYear=null;
@@ -148,8 +148,8 @@ var modelYear=null;
     function redirect() {
     	alert("Thank You. Your are redirected.. ");
     	//alert("userid"+userId);
-    	var url="dashboard1.html";
-    	//var url="dashboard1.html?userId="+userId+"&searchId="+searchId+"&firstName="+firstName;
+    	var url="Db_BetaV1.html";
+    	//var url="Db_BetaV1.html?userId="+userId+"&searchId="+searchId+"&firstName="+firstName;
     	
     	window.location=url;
     }
@@ -367,8 +367,8 @@ var modelYear=null;
 																			$body.removeClass("loading");
 																			alert("Successfully Stored.. ");
 																			//alert(data);
-																			var url="dashboard1.html";
-																			/*var url="dashboard1.html?userId="+data.userId+"&searchId="+ data.searchId+"&firstName="+firstName;*/
+																			var url="Db_BetaV1.html";
+																			/*var url="Db_BetaV1.html?userId="+data.userId+"&searchId="+ data.searchId+"&firstName="+firstName;*/
 																							alert("Thank You. Your Seach ID is " + data.searchId);
 																							window.location=url;								
 																						}); 

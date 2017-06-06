@@ -664,7 +664,7 @@ function signingout(){
 	 $.jStorage.deleteKey("key");
 	 $.jStorage.deleteKey("carKey");
 	 alert("Successfully Logged Out");
-	 window.location="homepage10.html";
+	 window.location="Hm_BetaV1.html";
 }
 var userId;
 var firstName;
@@ -1441,7 +1441,7 @@ function registerEditDealerVehicleDetailModal(){
 function redirect() {
 	alert("Thank You. Your Seach ID is ");
 
-	var url="homepage10.html?userId="+userId+"&firstName="+firstName;
+	var url="Hm_BetaV1.html?userId="+userId+"&firstName="+firstName;
 	
 	window.location=url;
 }

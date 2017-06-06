@@ -22,7 +22,7 @@
             $.jStorage.deleteKey("carKey");
             $.jStorage.deleteKey("fbKey");
             alert("Successfully Logged Out");
-            window.location = "homepage10.html";
+            window.location = "Hm_BetaV1.html";
         }
 
         function stringToDate(_date, _format, _delimiter) {
@@ -1249,7 +1249,7 @@
 <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '249863545451459',
+				appId : '238604546585672',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -1819,7 +1819,7 @@ $.ajax({
                                 $body.removeClass("loading");
                                 alert("Successfully Stored transport Request However, Plz wait for the images to upload.. don't refresh or switch from homepage..  the upload of images will start soon..");
                                 //alert("");
-                                var url = "dashboard1.html";
+                                var url = "Db_BetaV1.html";
 
                                 //window.location = url;
 
@@ -1990,7 +1990,7 @@ $.ajax({
                                 alert("Successfully Stored Service && Maintenance Request However, Plz wait for the images to upload.. don't refresh or switch from homepage.. the upload of images will start soon..");
                                 //alert("successfully stored");
                                 //alert("Plz wait for the images to upload.. Don't Refresh");
-                                var url = "dashboard1.html";
+                                var url = "Db_BetaV1.html";
 
                                 //window.location = url;
 
@@ -2239,7 +2239,7 @@ $.ajax({
                                 $body.removeClass("loading");
                                 alert("successfully stored");
                                 alert("Redirecting to Dashboard..");
-                                var url = "dashboard1.html";
+                                var url = "Db_BetaV1.html";
 
                                 window.location = url;
 
@@ -2363,7 +2363,7 @@ $.ajax({
                                 $body.removeClass("loading");
                                 alert("successfully stored");
                                 alert("Redirecting to Dashboard..");
-                                var url = "dashboard1.html";
+                                var url = "Db_BetaV1.html";
 
                                 window.location = url;
 
@@ -2463,11 +2463,11 @@ $.ajax({
                                     data.carEbidInsur = carEbidInsur;
                                     carDetailHtml(data);
 
-                                    /* var url="abc.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
+                                    /* var url="Cd_BetaV1.html?price="+data.priceMin+"&priceMax="+data.priceMax+"&finMin="+data.finMin+"&finMax="+data.finMax+"&insMin="+data.insMin+"&insMax="+data.insMax+"&avgSavMin="+data.avgSavMin+"&avgSavMax="+data.avgSavMax+"&noDealers="+data.noDealers+"&noStock="+data.noStock+
                                             "&modelYear="+modelYear+"&modelDisplay="+modelDisplay+"&modelName="+modelName+"&modeltrim="+strUser+"&trimValue="+trimValue+"&userId="+userId+"&firstName="+firstName; */
                                     /* alert(url); */
                                     $body.removeClass("loading");
-                                    var url = "abc.html";
+                                    var url = "Cd_BetaV1.html";
                                     window.location = url;
                                 }
 
@@ -2498,7 +2498,7 @@ $.ajax({
     <script>
         function redirect() {
             if (alreadyLogged()) {
-                var url = "dashboard1.html";
+                var url = "Db_BetaV1.html";
                 window.location = url;
             }
             else {
@@ -2509,7 +2509,7 @@ $.ajax({
         }
         function redirectWithLogbook() {
             if (alreadyLogged()) {
-                var url = "dashboard1.html";
+                var url = "Db_BetaV1.html";
                 var data1 = true;
                 $.jStorage.set('keyLogBook', data1);
                 $.jStorage.setTTL('mykeyLogBook', 30000);
@@ -2784,13 +2784,13 @@ $.ajax({
                         <li class="ribbon">
                             <a href="#"><span id="userId"></span></a>
                             <ul class="menu mini uppercase">
-                                <!--  <li><a href="dashboard1.html#dashboard" class="location-reload">Overview</a></li> -->
-                                <li><a href="dashboard1.html#profile" class="location-reload">Profile</a></li>
-                                <!-- <li><a href="dashboard1.html#travel-stories" class="location-reload">Ebid-R</a></li>
-                                <li><a href="dashboard1.html#settings" class="location-reload">Quotation</a></li>
-                                <li><a href="dashboard1.html#wishlist" class="location-reload">Wishlist</a></li>
-                                <li><a href="dashboard1.html#booking" class="location-reload">Booking</a></li>
-                                <li><a href="dashboard1.html#rego" class="location-reload">Rego</a></li> -->
+                                <!--  <li><a href="Db_BetaV1.html#dashboard" class="location-reload">Overview</a></li> -->
+                                <li><a href="Db_BetaV1.html#profile" class="location-reload">Profile</a></li>
+                                <!-- <li><a href="Db_BetaV1.html#travel-stories" class="location-reload">Ebid-R</a></li>
+                                <li><a href="Db_BetaV1.html#settings" class="location-reload">Quotation</a></li>
+                                <li><a href="Db_BetaV1.html#wishlist" class="location-reload">Wishlist</a></li>
+                                <li><a href="Db_BetaV1.html#booking" class="location-reload">Booking</a></li>
+                                <li><a href="Db_BetaV1.html#rego" class="location-reload">Rego</a></li> -->
                                 <li><a href="" onclick="signingout()">Signout</a></li>
                             </ul>
                         </li>
@@ -2829,43 +2829,43 @@ $.ajax({
                             <li id="eBidR" class="menu-item-has-children">
                                 <a href="#hotels-tab" data-toggle="tab">Vehicles</a>
                                 <!--<ul>
-                                    <li><a href="homepage10.html">Cars</a></li>
-                                    <li><a href="homepage10.html">Bikes</a></li>
-                                    <li><a href="homepage10.html">Boats</a></li>
-                                    <li><a href="homepage10.html">Caravan</a></li>
-                                    <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                                    <li><a href="Hm_BetaV1.html">Cars</a></li>
+                                    <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                                    <li><a href="Hm_BetaV1.html">Boats</a></li>
+                                    <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                                    <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
                                 </ul>-->
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="#flights-tab" data-toggle="tab">Browse</a>
                                 <!--<ul>
-                                    <li><a href="homepage10.html">Cars</a></li>
-                                    <li><a href="homepage10.html">Bikes</a></li>
-                                    <li><a href="homepage10.html">Boats</a></li>
-                                    <li><a href="homepage10.html">Caravan</a></li>
-                                    <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                                    <li><a href="Hm_BetaV1.html">Cars</a></li>
+                                    <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                                    <li><a href="Hm_BetaV1.html">Boats</a></li>
+                                    <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                                    <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                                 </ul>-->
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="#flight-and-hotel-tab" data-toggle="tab" onclick="showDiv2()">Finance</a>
                                 <!--<ul>
-                                    <li><a href="homepage10.html">Cars</a></li>
-                                    <li><a href="homepage10.html">Bikes</a></li>
-                                    <li><a href="homepage10.html">Boats</a></li>
-                                    <li><a href="homepage10.html">Caravan</a></li>
-                                    <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                                    <li><a href="Hm_BetaV1.html">Cars</a></li>
+                                    <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                                    <li><a href="Hm_BetaV1.html">Boats</a></li>
+                                    <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                                    <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                                 </ul>-->
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="#cars-tab" data-toggle="tab" onclick="showDiv1()">Insurance</a>
                                 <!--<ul>
-                                    <li><a href="homepage10.html">Cars</a></li>
-                                    <li><a href="homepage10.html">Bikes</a></li>
-                                    <li><a href="homepage10.html">Boats</a></li>
-                                    <li><a href="homepage10.html">Caravan</a></li>
-                                    <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                                    <li><a href="Hm_BetaV1.html">Cars</a></li>
+                                    <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                                    <li><a href="Hm_BetaV1.html">Boats</a></li>
+                                    <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                                    <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                                 </ul>-->
                             </li>
@@ -2875,22 +2875,22 @@ $.ajax({
                                     & Maintenance
                                 </a>
                                 <!--<ul>
-                                    <li><a href="homepage10.html">Cars</a></li>
-                                    <li><a href="homepage10.html">Bikes</a></li>
-                                    <li><a href="homepage10.html">Boats</a></li>
-                                    <li><a href="homepage10.html">Caravan</a></li>
-                                    <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                                    <li><a href="Hm_BetaV1.html">Cars</a></li>
+                                    <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                                    <li><a href="Hm_BetaV1.html">Boats</a></li>
+                                    <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                                    <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                                 </ul>-->
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="#flight-status-tab" data-toggle="tab" onclick="showDiv4()">Transport</a>
                                 <!--<ul>
-                                    <li><a href="homepage10.html">Cars</a></li>
-                                    <li><a href="homepage10.html">Bikes</a></li>
-                                    <li><a href="homepage10.html">Boats</a></li>
-                                    <li><a href="homepage10.html">Caravan</a></li>
-                                    <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                                    <li><a href="Hm_BetaV1.html">Cars</a></li>
+                                    <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                                    <li><a href="Hm_BetaV1.html">Boats</a></li>
+                                    <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                                    <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                                 </ul>-->
                             </li>
@@ -2900,9 +2900,9 @@ $.ajax({
                                 <!--<ul>
                                     <li><a href="#flight6" aria-controls="flight" role="tab" data-toggle="tab" aria-expanded="true">Cars</a></li>
                                     <li><a href="#hotel6" aria-controls="hotel" role="tab" data-toggle="tab" aria-expanded="false">Bikes</a></li>
-                                    <li><a href="homepage10.html">Boats</a></li>
-                                    <li><a href="homepage10.html">Caravan</a></li>
-                                    <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                                    <li><a href="Hm_BetaV1.html">Boats</a></li>
+                                    <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                                    <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                                 </ul>-->
                             </li>
@@ -2934,44 +2934,44 @@ $.ajax({
                     <li id="eBidR" class="menu-item-has-children">
                         <a href="#hotels-tab" data-toggle="tab">Vehicles</a>
                         <!--<ul>
-                            <li><a href="homepage10.html">Cars</a></li>
-                            <li><a href="homepage10.html">Bikes</a></li>
-                            <li><a href="homepage10.html">Boats</a></li>
-                            <li><a href="homepage10.html">Caravan</a></li>
-                            <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                            <li><a href="Hm_BetaV1.html">Cars</a></li>
+                            <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                            <li><a href="Hm_BetaV1.html">Boats</a></li>
+                            <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                            <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                         </ul>-->
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#flights-tab" data-toggle="tab">Browse</a>
                         <!--<ul>
-                            <li><a href="homepage10.html">Cars</a></li>
-                            <li><a href="homepage10.html">Bikes</a></li>
-                            <li><a href="homepage10.html">Boats</a></li>
-                            <li><a href="homepage10.html">Caravan</a></li>
-                            <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                            <li><a href="Hm_BetaV1.html">Cars</a></li>
+                            <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                            <li><a href="Hm_BetaV1.html">Boats</a></li>
+                            <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                            <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                         </ul>-->
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#flight-and-hotel-tab" data-toggle="tab" onclick="showDiv2()">Finance</a>
                         <!--<ul>
-                            <li><a href="homepage10.html">Cars</a></li>
-                            <li><a href="homepage10.html">Bikes</a></li>
-                            <li><a href="homepage10.html">Boats</a></li>
-                            <li><a href="homepage10.html">Caravan</a></li>
-                            <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                            <li><a href="Hm_BetaV1.html">Cars</a></li>
+                            <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                            <li><a href="Hm_BetaV1.html">Boats</a></li>
+                            <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                            <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                         </ul>-->
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#cars-tab" data-toggle="tab" onclick="showDiv1()">Insurance</a>
                         <!--<ul>
-                            <li><a href="homepage10.html">Cars</a></li>
-                            <li><a href="homepage10.html">Bikes</a></li>
-                            <li><a href="homepage10.html">Boats</a></li>
-                            <li><a href="homepage10.html">Caravan</a></li>
-                            <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                            <li><a href="Hm_BetaV1.html">Cars</a></li>
+                            <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                            <li><a href="Hm_BetaV1.html">Boats</a></li>
+                            <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                            <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                         </ul>-->
                     </li>
@@ -2981,22 +2981,22 @@ $.ajax({
                             & Maintenance
                         </a>
                         <!--<ul>
-                            <li><a href="homepage10.html">Cars</a></li>
-                            <li><a href="homepage10.html">Bikes</a></li>
-                            <li><a href="homepage10.html">Boats</a></li>
-                            <li><a href="homepage10.html">Caravan</a></li>
-                            <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                            <li><a href="Hm_BetaV1.html">Cars</a></li>
+                            <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                            <li><a href="Hm_BetaV1.html">Boats</a></li>
+                            <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                            <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                         </ul>-->
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#flight-status-tab" data-toggle="tab" onclick="showDiv4()">Transport</a>
                         <!--<ul>
-                            <li><a href="homepage10.html">Cars</a></li>
-                            <li><a href="homepage10.html">Bikes</a></li>
-                            <li><a href="homepage10.html">Boats</a></li>
-                            <li><a href="homepage10.html">Caravan</a></li>
-                            <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                            <li><a href="Hm_BetaV1.html">Cars</a></li>
+                            <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                            <li><a href="Hm_BetaV1.html">Boats</a></li>
+                            <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                            <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                         </ul>-->
                     </li>
@@ -3004,11 +3004,11 @@ $.ajax({
                     <li class="menu-item-has-children">
                         <a href="#online-checkin-tab" data-toggle="tab">Rego</a>
                         <!--<ul>
-                            <li><a href="homepage10.html">Cars</a></li>
-                            <li><a href="homepage10.html">Bikes</a></li>
-                            <li><a href="homepage10.html">Boats</a></li>
-                            <li><a href="homepage10.html">Caravan</a></li>
-                            <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                            <li><a href="Hm_BetaV1.html">Cars</a></li>
+                            <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                            <li><a href="Hm_BetaV1.html">Boats</a></li>
+                            <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                            <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                         </ul>-->
                     </li>
@@ -3018,11 +3018,11 @@ $.ajax({
                             Vehicle
                         </a>
                         <!--<ul>
-                            <li><a href="homepage10.html">Cars</a></li>
-                            <li><a href="homepage10.html">Bikes</a></li>
-                            <li><a href="homepage10.html">Boats</a></li>
-                            <li><a href="homepage10.html">Caravan</a></li>
-                            <li><a href="homepage10.html">Heavy Vehicle</a></li>
+                            <li><a href="Hm_BetaV1.html">Cars</a></li>
+                            <li><a href="Hm_BetaV1.html">Bikes</a></li>
+                            <li><a href="Hm_BetaV1.html">Boats</a></li>
+                            <li><a href="Hm_BetaV1.html">Caravan</a></li>
+                            <li><a href="Hm_BetaV1.html">Heavy Vehicle</a></li>
 
                         </ul>-->
                     </li>
@@ -3042,13 +3042,13 @@ $.ajax({
                         <li class="ribbon">
                             <a href="#"><span id="userId"></span></a>
                             <ul class="menu mini uppercase">
-                                <!-- <li><a href="dashboard1.html#dashboard" class="location-reload">Overview</a></li>
-                                <li><a href="dashboard1.html#profile" class="location-reload">Profile</a></li>
-                                <li><a href="dashboard1.html#travel-stories" class="location-reload">Ebid-R</a></li>
-                                <li><a href="dashboard1.html#settings" class="location-reload">Quotation</a></li>
-                                <li><a href="dashboard1.html#wishlist" class="location-reload">Wishlist</a></li>
-                                <li><a href="dashboard1.html#booking" class="location-reload">Booking</a></li>
-                                <li><a href="dashboard1.html#rego" class="location-reload">Rego</a></li> -->
+                                <!-- <li><a href="Db_BetaV1.html#dashboard" class="location-reload">Overview</a></li>
+                                <li><a href="Db_BetaV1.html#profile" class="location-reload">Profile</a></li>
+                                <li><a href="Db_BetaV1.html#travel-stories" class="location-reload">Ebid-R</a></li>
+                                <li><a href="Db_BetaV1.html#settings" class="location-reload">Quotation</a></li>
+                                <li><a href="Db_BetaV1.html#wishlist" class="location-reload">Wishlist</a></li>
+                                <li><a href="Db_BetaV1.html#booking" class="location-reload">Booking</a></li>
+                                <li><a href="Db_BetaV1.html#rego" class="location-reload">Rego</a></li> -->
                                 <li><a onclick="signingout()">Signout</a></li>
                             </ul>
                         </li>
@@ -11412,7 +11412,7 @@ $.ajax({
         <div class="bottom">
             <div class="container">
                 <div class="logo pull-left">
-                    <a href="homepage10.html" title="Autoscoop - home">
+                    <a href="Hm_BetaV1.html" title="Autoscoop - home">
                         <img class="imgHt" src="images/autoscooplogo.png" alt="Autoscoop HTML5 Template" />
                     </a>
                 </div>
@@ -11786,7 +11786,7 @@ $.ajax({
                             if(!file2 && !file3 && !file4){
                             	  // start redirect from Serv && Maint
                                 alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
-                                 var url = "dashboard1.html";
+                                 var url = "Db_BetaV1.html";
                 				window.location = url;
                 				// end of redirect from Serv && Maint 
                             }
@@ -11817,7 +11817,7 @@ $.ajax({
                             if(!file3 && !file4){
                           	  // start redirect from Serv && Maint
                               alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
-                               var url = "dashboard1.html";
+                               var url = "Db_BetaV1.html";
               				window.location = url;
               				// end of redirect from Serv && Maint 
                           }
@@ -11850,7 +11850,7 @@ $.ajax({
                             if(!file4){
                           	  // start redirect from Serv && Maint
                               alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
-                               var url = "dashboard1.html";
+                               var url = "Db_BetaV1.html";
               				window.location = url;
               				// end of redirect from Serv && Maint 
                           }
@@ -11880,7 +11880,7 @@ $.ajax({
                             //alert("Successfully uploaded photo " + file4.name + " to database");
                             // start redirect from Serv && Maint
                             alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
-                             var url = "dashboard1.html";
+                             var url = "Db_BetaV1.html";
             				window.location = url;
             				// end of redirect from Serv && Maint 
                         }
@@ -12070,7 +12070,7 @@ $.ajax({
                             if(!file2){
                           	  // start redirect from trans
                               alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
-                               var url = "dashboard1.html";
+                               var url = "Db_BetaV1.html";
               				window.location = url;
               				// end of redirect from trans 
                           }
@@ -12102,7 +12102,7 @@ $.ajax({
                             //alert("Successfully uploaded photo " + file2.name + " to database");
                             // start redirect from trans
                             alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
-                             var url = "dashboard1.html";
+                             var url = "Db_BetaV1.html";
             				window.location = url;
             				// end of redirect from trans 
 

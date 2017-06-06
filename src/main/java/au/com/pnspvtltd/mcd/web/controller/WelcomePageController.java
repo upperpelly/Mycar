@@ -8,6 +8,6 @@ public class WelcomePageController {
 
 	@RequestMapping("/")
 	public String showWelcomePage(){
-		return "forward:/travelo-travel-tour-booking-html5-template/html/homepage10.html";
+		return "forward:/travelo-travel-tour-booking-html5-template/html/Hm_BetaV1.html";
 	}
 }
