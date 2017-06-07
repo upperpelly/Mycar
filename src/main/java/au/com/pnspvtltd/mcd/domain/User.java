@@ -1,6 +1,7 @@
 package au.com.pnspvtltd.mcd.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -39,6 +40,15 @@ public class User implements Serializable {
 	private String issueState;
 	private boolean facebook;
 	private boolean payDeposit;
+	private Date dateOfBirth;
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 
 	List<Search> search;
 	List<SearchInsurance> searchInsurance;

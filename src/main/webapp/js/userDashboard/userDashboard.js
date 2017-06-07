@@ -2408,7 +2408,7 @@ function registerEditDealerVehicleDetailModal(){
 
 
 	//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
-	alert("Inside rey");
+	//alert("Inside rey");
 	var editDealerVehicleDetailModal = '<div class="modal fade" id="editDealerVehicleDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
 	    <div class="modal-dialog">\
 	        <div class="modal-content">\
@@ -3704,7 +3704,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 							
 						
 							if(isValid){
-								myvehicleloadImage();
+								
 								var fileChooserMyVeh = document.getElementById('file-chooser');
 								var fileMyVeh = fileChooserMyVeh.files[0];
 								var objKeyMyVeh='noImage';
@@ -3791,8 +3791,10 @@ mainApp1.controller('myController13',function($scope, $http) {
 																							
 																		}).success(function(data) {
 																			$body.removeClass("loading");	
-																			alert("Successfully Stored..");
-																							alert("Thank You. Your MyVehicle ID is " + data.myVehicleId +"and it is updating to dashboard");
+																			//alert("Successfully Stored..");
+																							//alert("Thank You. Your MyVehicle ID is " + data.myVehicleId +"and it is updating to dashboard");
+																							alert("Successfully Stored My Vehicle Request with ID"+ data.myVehicleId+"However, Plz wait for the images to upload.. don't refresh or switch from dashboard..  the upload of images will start soon..");
+																							myvehicleloadImage();
 																							vehicleDetailsLoad();	
 																							registerEditDealerVehicleDetailModal();
 																						});	
@@ -3812,7 +3814,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 
 
 								//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
-								alert("Inside rey");
+								//alert("Inside rey");
 								var editDealerVehicleDetailModal = '<div class="modal fade" id="editDealerVehicleDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
 								    <div class="modal-dialog">\
 								        <div class="modal-content">\
@@ -4233,9 +4235,11 @@ mainApp1.controller('myController13',function($scope, $http) {
 													};
 													
 													$scope.submitSearchFormupdateset = function(isValid) {
-														alert("inside Update Settings"+isValid);
+														//alert("inside Update Settings"+isValid);
 														if (isValid) {
-														updateSettingloadImage();
+														//updateSettingloadImage();
+														alert("Date"+$scope.abcDriverDOB);
+														alert("Date"+$('#abcDriverDOB').val());
 														//alert("vachindi");
 														//alert("inside updatset");
 														/*alert("inside Sesdarv Maint");
@@ -4248,7 +4252,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 														if(filefileChooserupdateset){
 														objKeyupdateset = 'facebook-' + fbUserId + '/' + filefileChooserupdateset.name;}
 														//alert(objKeyupdateset);
-														var jsonInputToAPI = {"userId":value.userId,"photo":objKeyupdateset, "phoneNumber":$('#UserPhoneNo').val(), "firstName":$('#UserFirstName').val(),"lastName":$('#UserLastName').val(),"streetNumber":$('#UserStreetNo').val(),"streetName":$('#UserStreetName').val(),"postCode":$('#UserpostCode').val(),"region":$('#UserRegion').val(),"state":$('#UserState').val(),"desc":$('#UserDesc').val()}
+														var jsonInputToAPI = {"userId":value.userId,"photo":objKeyupdateset, "dateOfBirth":$('#abcDriverDOB').val(),"phoneNumber":$('#UserPhoneNo').val(), "firstName":$('#UserFirstName').val(),"lastName":$('#UserLastName').val(),"streetNumber":$('#UserStreetNo').val(),"streetName":$('#UserStreetName').val(),"postCode":$('#UserpostCode').val(),"region":$('#UserRegion').val(),"state":$('#UserState').val(),"desc":$('#UserDesc').val()}
 														
 														/*var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 																"myVehicleServMaintVO":{
@@ -4304,6 +4308,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 									                			$body.removeClass("loading");
 									                			setting(result);
 									                			alert("Successfully upated profile.. Plz wait for the image to be uploaded.. Don't refresh or switch your Dashboard..");
+									                			updateSettingloadImage();
 									                			var url="Db_BetaV1.html";
 																
 																//window.location=url;
@@ -4317,14 +4322,14 @@ mainApp1.controller('myController13',function($scope, $http) {
 													
 													
 													$scope.submitSearchFormServMaint = function(isValid) {
-														alert("inside Sesdarv Maint"+isValid);
+														//alert("inside Sesdarv Maint"+isValid);
 														if (isValid) {
 														/*alert("inside Sesdarv Maint");
 														alert(myVehicleIDuse);*/
 														/*var vehicleTypeServMaint= stringToDate($('#vehicleTypeServMaint').val(),"dd/MM/yyyy","/");
 														var nextServiceMaintenanceDate= stringToDate($('#nextServiceMaintenanceDate').val(),"dd/MM/yyyy","/");*/
 														
-														logServMaintloadImage();
+														//logServMaintloadImage();
 														var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
 														var filefileChooserlogservmaint = fileChooserlogservmaint.files[0];
 														var objKeyfilefileChooserlogservmaint = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;
@@ -4362,16 +4367,18 @@ mainApp1.controller('myController13',function($scope, $http) {
 														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 														//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
 														var wsURL = 'api/myvehicle/addMyVehicleServMaint';
-														
+														$body.addClass("loading");
 															    $http({
 																			method : 'POST',
 																			url : wsURL,
 																			data: jsonInputToAPI
 																							
 																		}).success(function(data) {
+																			$body.removeClass("loading");
 																			$scope.vehicleRetrievalforLogBook();
 																			alert("Successfully Stored Service & Maintenance request However, Plz wait for the images to upload.. don't refresh or switch from your dashboard..  the upload of images will start soon..");
 																			//alert("Service & Maintenance Successfully Stored..");
+																			logServMaintloadImage();
 																															
 																						});
 													}
@@ -4384,7 +4391,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 															alert("inside Fuel Expe"+isValid);
 															if (isValid) {
 															//alert("inside Fuel Expe")
-															logExpensesloadImage();
+															//logExpensesloadImage();
 															var fileChooserLogExp = document.getElementById('file-chooser-lognewexp');
 						var filelogexp = fileChooserLogExp.files[0];
 						var objKeylogexp = 'facebook-' + fbUserId + '/' + filelogexp.name;
@@ -4419,16 +4426,18 @@ mainApp1.controller('myController13',function($scope, $http) {
 															//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 															//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
 															var wsURL = 'api/myvehicle/addMyVehicleFuelExpenses';
-															
+															 $body.addClass("loading");
 																    $http({
 																				method : 'POST',
 																				url : wsURL,
 																				data: jsonInputToAPI
 																								
 																			}).success(function(data) {
+																				 $body.removeClass("loading");
 																				$scope.vehicleRetrievalforLogBook();
 																				alert("Successfully Stored Fuel Expenses request However, Plz wait for the images to upload.. don't refresh or switch from your dashboard..  the upload of images will start soon..");
 																				//alert("Fuel Expenses Successfully Stored..");
+																				logExpensesloadImage();
 																																
 																							});	
 														}
