@@ -634,7 +634,7 @@ tjq(window).load(function() {
     if (enableChaser == 1 && tjq('#content').length > 0 && tjq('#main-menu ul.menu').length > 0) {
         var forchBottom;
         var chaser = tjq('#main-menu ul.menu').clone().hide().appendTo(document.body).wrap("<div class='chaser hidden-mobile' style='background-color: rgba(0,112,210,0.97);'><div class='container'></div></div>");
-        tjq('<h1 class="logo navbar-brand"></h1><a title="Autoscoop" href="index.html"><img style="height:40px" alt="" src="images/autoscooplogo1.png"></a>').insertBefore('.chaser .menu');
+        tjq('<h1 class="logo navbar-brand"></h1><a title="Autoscoop" href="Hm_BetaV1.html"><img style="height:65px" alt="" src="images/autoscooplogo1.png"></a>').insertBefore('.chaser .menu');
         var forch = tjq('#content').first();
         forchBottom = forch.offset().top + 2;
         tjq(window).on('scroll', function () {

@@ -4,7 +4,7 @@
 <!--[if gt IE 9]><!-->  <html> <!--<![endif]-->
 <head>
     <!-- Page Title -->
-    <title>Autoscoop</title>
+    <title>AutoScoop</title>
     
     <!-- Meta Tags -->
     <meta charset="utf-8">
@@ -443,12 +443,12 @@ $(document).ready( function() {
                 <div class="container">
                     <h1 class="logo navbar-brand">
                         <a href="Hm_BetaV1.html" title="Autoscoop - home">
-                            <img src="images/logo.png" alt="Autoscoop HTML5 Template" />
+                            <img src="images/logo.png" style="height:50px;" alt="Autoscoop HTML5 Template" />
                         </a>
                     </h1>
                     
                     <nav id="main-menu" role="navigation">
-                        <ul class="menu">
+                        <!-- <ul class="menu">
                             <li class="menu-item-has-children">
                                 <a href="Hm_BetaV1.html">eBidR</a>
                                 <ul>
@@ -528,12 +528,12 @@ $(document).ready( function() {
                                 </ul>
                             </li>
                             
-                        </ul>
+                        </ul> -->
                     </nav>
                 </div>
                 
                 <nav id="mobile-menu-01" class="mobile-menu collapse">
-                    <ul id="mobile-primary-menu" class="menu">
+                    <!-- <ul id="mobile-primary-menu" class="menu">
                         <li class="menu-item-has-children">
                             <a href="Hm_BetaV1.html">eBidR</a>
                             <ul>
@@ -613,7 +613,7 @@ $(document).ready( function() {
                         </li>
                         
                         
-                    </ul>
+                    </ul> -->
                     
                     <ul class="mobile-topnav container">
                         <li><a href="Db_BetaV1.html">MY ACCOUNT</a></li>
@@ -1128,15 +1128,24 @@ $(document).ready( function() {
         <!-- start bubble -->
         <div id="dashboard">
        	 <div class="row block ML10">
-                <div class="col-sm-4 col-md-1 col">
+                <div  id="reqBooked" class="col-sm-4 col-md-2 MR5">
                     <a href="Db_BetaV1.html#travel-stories">
-                        <div class="fact blue">
+                                            <div class="fact vio txt-center">
+                                                <span class="clearfix">&nbsp;</span>
+                                                <span>
+                                                    <i id="userdash" class="flaticon-odometer-for-kilometers-and-speed-control"></i>
+                                                </span>
+ <div class="txt-bold">Number of Dealers</div>
                             <div class="numbers counters-box">
-                                <dl>
-                                <dd>Number of Dealers</dd>
-                                <span id="noDealers"></span>
-                                </dl>
-                                <i class="icon soap-icon-pets"></i>
+                                <div>
+
+                                                        
+                                                        <span id="noDealers"></span>
+                                                       
+                                                    </div>
+				
+				
+				
                             </div>
                             <div class="description">
                                 <i class="icon soap-icon-longarrow-right"></i>
@@ -1145,15 +1154,22 @@ $(document).ready( function() {
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4 col-md-1 col">
+                <div id="reqBooked" class="col-sm-4 col-md-2 MR5">
                     <a href="Db_BetaV1.html#settings">
-                        <div class="fact yellow">
+                                            <div class="fact drkbrn txt-center">
+                                                <span class="clearfix">&nbsp;</span>
+                                                <span><i id="userdash" class="flaticon-money"></i></span>
+                                                <div class="txt-bold">Cars in Stock</div>
                             <div class="numbers counters-box">
-                                <dl>
-                                <dd>Cars in Stock</dd>
-                                <span id="noStock"></span>    
-                                </dl>
-                                <i class="icon soap-icon-savings"></i>
+                                <div>
+
+                                                       
+                                                        <span id="noStock"></span>
+                                                       
+                                                    </div>
+				
+				
+			
                             </div>
                             <div class="description">
                                 <i class="icon soap-icon-longarrow-right"></i>
@@ -1162,17 +1178,24 @@ $(document).ready( function() {
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4 col-md-2 col">
+                <div id="reqBooked" class="col-sm-4 col-md-2 MR5">
                     <a href="Db_BetaV1.html#settings">
-                        <div class="fact red">
-                            <div class="numbers counters-box">
-                                <dl>
-                                <dd>Avg Savings</dd>
-                              	<dd>Minimum</dd>
-                             	$<span id="avgSavMin"></span> 
-                              <dd>Maximum</dd>
-                               $<span id="avgSavMax"></span>
-                                </dl>
+                        <div class="fact pink txt-center">
+                                                <span class="clearfix">&nbsp;</span>
+                                                <span><i id="userdash" class="flaticon-security"></i></span>
+                                                <div class="txt-bold">Avg Savings</div>        
+						                    <div class="numbers counters-box">
+<div>
+
+                                                        <span>Minimum:</span>
+                                                        <span id="avgSavMin"></span>
+                                                        <!-- <dt class="display-counter" data-value="6">0</dt> -->
+                                                        <span>Maximum:</span>
+                                                        <span id="avgSavMax"></span>
+                                                        <!-- <dt class="display-counter" data-value="6">0</dt> -->
+
+                                                    </div>
+                                
                                 <i class="icon soap-icon-insurance"></i>
                             </div>
                             <div class="description">
@@ -1182,17 +1205,24 @@ $(document).ready( function() {
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4 col-md-2 col">
+                <div  id="reqBooked" class="col-sm-4 col-md-2 MR5">>
                     <a href="Db_BetaV1.html#settings">
-                        <div class="fact green">
+                                            <div class="fact pink txt-center">
+                                                <span class="clearfix">&nbsp;</span>
+                                                <span><i id="userdash" class="flaticon-security"></i></span>
+                                                <div class="txt-bold">Fin Interest Rt</div>
                             <div class="numbers counters-box">
-                                <dl>
-                                <dd>Finance Interest Rate</dd>
-	                             <dd>Minimum</dd>
-								 <span id="finMin"></span>% 
-	                              <dd>Maximum</dd>
-								  <span id="finMax"></span>%
-                                </dl>
+<div>
+
+                                                        <span>Minimum:</span>
+                                                        <span id="finMin"></span>
+                                                        <!-- <dt class="display-counter" data-value="15">0</dt> -->
+                                                        <span>Maximum:</span>
+                                                        <span id="finMax"></span>
+                                                        <!-- <dt class="display-counter" data-value="12">0</dt> -->
+
+                                                    </div>
+                                
                                 <i class="icon soap-icon-doorman"></i>
                             </div>
                             <div class="description">
@@ -1202,17 +1232,26 @@ $(document).ready( function() {
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4 col-md-2 col">
+                <div id="reqBooked" class="col-sm-4 col-md-2 MR5">
                     <a href="Db_BetaV1.html#settings">
-                        <div class="fact blue">
+                                            <div class="fact drkvlt txt-center">
+                                                <span class="clearfix">&nbsp;</span>
+                                                <span><i id="userdash" class="flaticon-money"></i></span>
+                                                <div class="txt-bold">Insurance Premium</div>
                             <div class="numbers counters-box">
-                                <dl>
-	                               <dd>Insurance Premium</dd>
-	                             <dd>Minimum</dd>
-								 <span id="insMin"></span>%
-	                              <dd>Maximum</dd>
-								  <span id="insMax"></span>%
-                                </dl>
+                                <div>
+
+                                                        <span>Minimum:</span>
+                                                        <span id="insMin"></span>
+                                                        <!-- <dt class="display-counter" data-value="8">0</dt> -->
+                                                        <span>Maximum:</span>
+                                                        <span id="insMax"></span>
+                                                        <!-- <dt class="display-counter" data-value="6">0</dt> -->
+
+                                                    </div>
+				
+				
+			
                                 <i class="icon soap-icon-baggage-5"></i>
                             </div>
                             <div class="description">
@@ -1222,17 +1261,26 @@ $(document).ready( function() {
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4 col-md-2 col">
+                <div id="reqBooked" class="col-sm-4 col-md-2 MR5">
                     <a href="Db_BetaV1.html#settings">
-                        <div class="fact yellow">
+                                            <div class="fact ltegrn txt-center">
+                                                <span class="clearfix">&nbsp;</span>
+                                                <span><i id="userdash" class="flaticon-money"></i></span>
+                                                <div class="txt-bold">Price Range</div>
                             <div class="numbers counters-box">
-                                <dl>
-	                                <dd>Price Range</dd>
-	                              <dd>Minimum</dd>
-								  $<span id="minValue"></span>
-	                              <dd>Maximum</dd>
-								  $<span id="maxValue"></span>
-                                </dl>
+                               <div>
+
+                                                        <span>Minimum:</span>
+                                                        <span id="minValue"></span>
+                                                        <!-- <dt class="display-counter" data-value="8">0</dt> -->
+                                                        <span>Maximum:</span>
+                                                        <span id="maxValue"></span>
+                                                        <!-- <dt class="display-counter" data-value="6">0</dt> -->
+
+                                                    </div> 
+				
+				
+				
                                 <i class="icon soap-icon-status"></i>
                             </div>
                             <div class="description">
@@ -2675,8 +2723,8 @@ We suggest that you contact the host to confirm availability and rates before su
         <footer id="footer">
             <div class="footer-wrapper">
                 <div class="container">
-                    <div class="row">
-                        <!-- <div class="col-sm-6 col-md-3">
+                    <!-- <div class="row">
+                        <div class="col-sm-6 col-md-3">
                             <h2>Discover</h2>
                             <ul class="discover triangle hover row">
                                 <li class="col-xs-6"><a href="#">Safety</a></li>
@@ -2692,14 +2740,14 @@ We suggest that you contact the host to confirm availability and rates before su
                                 <li class="col-xs-6"><a href="#">Site Map</a></li>
                                 <li class="col-xs-6"><a href="#">Policies</a></li>
                             </ul>
-                        </div> -->
-                        <!-- <div class="col-sm-6 col-md-3">
-                            <h2>Autoscoop News</h2>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <h2>Travel News</h2>
                             <ul class="travel-news">
                                 <li>
                                     <div class="thumb">
                                         <a href="#">
-                                            <img src="images/news01.png" alt="" width="63" height="63" />
+                                            <img src="http://placehold.it/63x63" alt="" width="63" height="63" />
                                         </a>
                                     </div>
                                     <div class="description">
@@ -2711,7 +2759,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                 <li>
                                     <div class="thumb">
                                         <a href="#">
-                                            <img src="images/news02.png" alt="" width="63" height="63" />
+                                            <img src="http://placehold.it/63x63" alt="" width="63" height="63" />
                                         </a>
                                     </div>
                                     <div class="description">
@@ -2721,8 +2769,8 @@ We suggest that you contact the host to confirm availability and rates before su
                                     </div>
                                 </li>
                             </ul>
-                        </div> -->
-                        <!-- <div class="col-sm-6 col-md-3">
+                        </div>
+                        <div class="col-sm-6 col-md-3">
                             <h2>Mailing List</h2>
                             <p>Sign up for our mailing list to get latest updates and offers.</p>
                             <br />
@@ -2731,15 +2779,15 @@ We suggest that you contact the host to confirm availability and rates before su
                             </div>
                             <br />
                             <span>We respect your privacy</span>
-                        </div> -->
-                        <!-- <div class="col-sm-6 col-md-3">
-                            <h2>About Travelo</h2>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <h2>About Autoscoop</h2>
                             <p>Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massaidp nequetiam lore elerisque.</p>
                             <br />
                             <address class="contact-details">
                                 <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
                                 <br />
-                                <a href="#" class="contact-email">help@travelo.com</a>
+                                <a href="#" class="contact-email">help@Autoscoop.com</a>
                             </address>
                             <ul class="social-icons clearfix">
                                 <li class="twitter"><a title="twitter" href="#" data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
@@ -2750,22 +2798,22 @@ We suggest that you contact the host to confirm availability and rates before su
                                 <li class="dribble"><a title="dribble" href="#" data-toggle="tooltip"><i class="soap-icon-dribble"></i></a></li>
                                 <li class="flickr"><a title="flickr" href="#" data-toggle="tooltip"><i class="soap-icon-flickr"></i></a></li>
                             </ul>
-                        </div> -->
-                    </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
             <div class="bottom gray-area">
                 <div class="container">
                     <div class="logo pull-left">
-                        <a href="index.html" title="Travelo - home">
-                            <img src="images/logo.png" alt="Travelo HTML5 Template" />
+                        <a href="Hm_BetaV1.html" title="Autoscoop - home">
+                            <img src="images/autoscooplogo.png" style="height:60px" alt="Autoscoop HTML5 Template" />
                         </a>
                     </div>
                     <div class="pull-right">
                         <a id="back-to-top" href="#" class="animated" data-animation-type="bounce"><i class="soap-icon-longarrow-up circle"></i></a>
                     </div>
                     <div class="copyright pull-right">
-                        <p>&copy; 2014 Travelo</p>
+                        <p>&copy; 2017 Autoscoop</p>
                     </div>
                 </div>
             </div>
