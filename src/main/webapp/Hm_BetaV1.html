@@ -1818,13 +1818,17 @@ $.ajax({
 
                             }).success(function (data) {
                                 $body.removeClass("loading");
-                                fbtranspServ();
                                 alert("Successfully Stored transport Request However, Plz wait for the images to upload.. don't refresh or switch from homepage..  the upload of images will start soon..");
-                                //alert("");
-                                var url = "Db_BetaV1.html";
+                                if (filetranp1 || filetranp2) {
+                                	alert("Plz wait for the images to upload.. don't refresh or switch from homepage.. the upload of images will start soon..");
+                                fbtranspServ();}
+                                else {
+                                	alert("No upload of images found. Redirecting to your dashboard..");
+                                	 var url = "Db_BetaV1.html";
 
-                                //window.location = url;
-
+                                     window.location = url;
+                                }
+                               
                             });
 
 
@@ -1991,10 +1995,18 @@ $.ajax({
                             }).success(function (data) {
                                 $body.removeClass("loading");
                                 alert("Successfully Stored Service && Maintenance Request However, Plz wait for the images to upload.. don't refresh or switch from homepage.. the upload of images will start soon..");
-                                fbloadphoto();
+                                if (fileServ1 || fileServ2 || fileServ3 || fileServ4) { 
+                                	alert("Plz wait for the images to upload.. don't refresh or switch from homepage.. the upload of images will start soon..");
+                                fbloadphoto();}
+                                else {
+                                	alert("No upload of images found. Redirecting to your dashboard..");
+                                	 var url = "Db_BetaV1.html";
+
+                                     window.location = url;
+                                }
                                 //alert("successfully stored");
                                 //alert("Plz wait for the images to upload.. Don't Refresh");
-                                var url = "Db_BetaV1.html";
+                               
 
                                 //window.location = url;
 

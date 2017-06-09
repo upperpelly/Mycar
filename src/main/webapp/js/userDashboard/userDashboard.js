@@ -3794,7 +3794,18 @@ mainApp1.controller('myController13',function($scope, $http) {
 																			//alert("Successfully Stored..");
 																							//alert("Thank You. Your MyVehicle ID is " + data.myVehicleId +"and it is updating to dashboard");
 																							alert("Successfully Stored My Vehicle Request with ID"+ data.myVehicleId+"However, Plz wait for the images to upload.. don't refresh or switch from dashboard..  the upload of images will start soon..");
-																							myvehicleloadImage();
+																							
+																                			alert("Before reset correct15689899");
+																                			document.getElementById("vehFrm").reset();
+																                			//$("#vehFrm")[0].reset();
+																                			//$('#editprofilefrm').trigger("reset");
+																                			if(fileMyVeh || fileMyVeh2 || fileMyVeh3 ){
+																                				alert("Plz wait for the images to upload.. don't refresh or switch from dashboard.. the upload of images will start soon..");
+																                				myvehicleloadImage();}
+																                			else {
+															                                	alert("No upload of images found..");
+															                                	
+															                                }																							
 																							vehicleDetailsLoad();	
 																							registerEditDealerVehicleDetailModal();
 																						});	
@@ -4215,6 +4226,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 														      $scope.vehicleRetrievalforLogBook();
 														      alert("Your Log is Successfully Stored..");
 														      
+														      alert("Before reset correct15689899");
+									                			document.getElementById("lognewfrm").reset();
 														      //alert("Thank You. Your MyVehicle ID is ");
 															
 														    }, function onError(response) {
@@ -4248,7 +4261,11 @@ mainApp1.controller('myController13',function($scope, $http) {
 														var nextServiceMaintenanceDate= stringToDate($('#nextServiceMaintenanceDate').val(),"dd/MM/yyyy","/");*/
 														var fileChooserlogupdateset = document.getElementById('file-chooser-updateset');
 														var filefileChooserupdateset = fileChooserlogupdateset.files[0];
-														var objKeyupdateset ='noImage';;
+														var objKeyupdateset ='noImage';
+														if(value.photo){
+															objKeyupdateset = value.photo;
+														}
+														
 														if(filefileChooserupdateset){
 														objKeyupdateset = 'facebook-' + fbUserId + '/' + filefileChooserupdateset.name;}
 														//alert(objKeyupdateset);
@@ -4308,10 +4325,13 @@ mainApp1.controller('myController13',function($scope, $http) {
 									                			$body.removeClass("loading");
 									                			setting(result);
 									                			alert("Successfully upated profile.. Plz wait for the image to be uploaded.. Don't refresh or switch your Dashboard..");
-									                			updateSettingloadImage();
-									                			var url="Db_BetaV1.html";
-																
-																//window.location=url;
+									                			if(filefileChooserupdateset){
+									                			updateSettingloadImage();}
+									                			else{
+									                				alert("No upload of image found..");
+									                				refr();
+									                			}
+									                			
 									                			
 									                			
 									                		}
@@ -4332,7 +4352,10 @@ mainApp1.controller('myController13',function($scope, $http) {
 														//logServMaintloadImage();
 														var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
 														var filefileChooserlogservmaint = fileChooserlogservmaint.files[0];
-														var objKeyfilefileChooserlogservmaint = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;
+														var objKeyfilefileChooserlogservmaint ='noImage';
+														if(filefileChooserlogservmaint){
+														objKeyfilefileChooserlogservmaint = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;}
+														
 														//alert(objKeyfilefileChooserlogservmaint);
 														var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 																"myVehicleServMaintVO":{
@@ -4378,8 +4401,17 @@ mainApp1.controller('myController13',function($scope, $http) {
 																			$scope.vehicleRetrievalforLogBook();
 																			alert("Successfully Stored Service & Maintenance request However, Plz wait for the images to upload.. don't refresh or switch from your dashboard..  the upload of images will start soon..");
 																			//alert("Service & Maintenance Successfully Stored..");
-																			logServMaintloadImage();
-																															
+																			alert("Before reset correct15689899");
+												                			document.getElementById("logservmaintfrm").reset();
+												                			
+												                			if(filefileChooserlogservmaint){
+												                				alert("Plz wait for the images to upload.. don't refresh or switch from dashboard.. the upload of images will start soon..");
+																			logServMaintloadImage();}
+												                			else {
+											                                	alert("No upload of images found..");
+											                                	
+											                                }
+																			
 																						});
 													}
 														};
@@ -4394,8 +4426,11 @@ mainApp1.controller('myController13',function($scope, $http) {
 															//logExpensesloadImage();
 															var fileChooserLogExp = document.getElementById('file-chooser-lognewexp');
 						var filelogexp = fileChooserLogExp.files[0];
-						var objKeylogexp = 'facebook-' + fbUserId + '/' + filelogexp.name;
+						var objKeylogexp ='noImage';
+						if(filelogexp){
+						objKeylogexp = 'facebook-' + fbUserId + '/' + filelogexp.name;}
 				//alert("Image of MyVehicle"+objKeylogexp);;
+						
 															//alert(myVehicleIDuse);
 															var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 																	"myVehicleFuelExpensesVO":{
@@ -4437,7 +4472,17 @@ mainApp1.controller('myController13',function($scope, $http) {
 																				$scope.vehicleRetrievalforLogBook();
 																				alert("Successfully Stored Fuel Expenses request However, Plz wait for the images to upload.. don't refresh or switch from your dashboard..  the upload of images will start soon..");
 																				//alert("Fuel Expenses Successfully Stored..");
-																				logExpensesloadImage();
+																				alert("Before reset correct15689899");
+													                			document.getElementById("logexpensefrm").reset();
+													                			
+																				if(filelogexp){
+																					alert("Plz wait for the images to upload.. don't refresh or switch from dashboard.. the upload of images will start soon..");
+																				logExpensesloadImage();}
+																				else {
+												                                	alert("No upload of images found..");
+												                                	
+												                                }
+																				
 																																
 																							});	
 														}
