@@ -1478,7 +1478,6 @@ function registerEditDealerVehicleSearchModal(){
 	            </div>\
 	            <div class="modal-footer">\
 	                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>\
-		<button type="button" class="btn btn-primary submit-editDealerVehicleSearchModal" data-dismiss="modal">Save changes</button>\
 		<p><center>&copy; 2017 Autoscoop</center></p>\
 			</div>\
 	            </form>\
@@ -1517,7 +1516,50 @@ function registerEditDealerVehicleSearchModal(){
 		if(data.used)
 		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
 		
-		//alert(JSON.stringify(data));
+		// start of Extra Requirements
+		var extExt1 = '<input type="checkbox" name="extExt1" />'; 
+		if(data.extExt1)
+			extExt1 = '<input type="checkbox" name="extExt1" checked="checked" />';
+		var intExt2 = '<input type="checkbox" name="intExt2" />'; 
+		if(data.intExt2)
+			intExt2 = '<input type="checkbox" name="intExt2" checked="checked" />';
+		var extExt2 = '<input type="checkbox" name="extExt2" />'; 
+		if(data.extExt2)
+			extExt2 = '<input type="checkbox" name="extExt2" checked="checked" />';
+		var intExt3 = '<input type="checkbox" name="intExt3" />'; 
+		if(data.intExt3)
+			intExt3 = '<input type="checkbox" name="intExt3" checked="checked" />';
+		var extExt3 = '<input type="checkbox" name="extExt3" />'; 
+		if(data.extExt3)
+			extExt3 = '<input type="checkbox" name="extExt3" checked="checked" />';
+		var intExt4 = '<input type="checkbox" name="intExt4" />'; 
+		if(data.intExt4)
+			intExt4 = '<input type="checkbox" name="intExt4" checked="checked" />';
+		var extExt4 = '<input type="checkbox" name="extExt4" />'; 
+		if(data.extExt4)
+			extExt4 = '<input type="checkbox" name="extExt4" checked="checked" />';
+		var intExt5 = '<input type="checkbox" name="intExt5" />'; 
+		if(data.intExt5)
+			intExt5 = '<input type="checkbox" name="intExt5" checked="checked" />';
+		var extExt5 = '<input type="checkbox" name="extExt5" />'; 
+		if(data.extExt5)
+			extExt5 = '<input type="checkbox" name="extExt5" checked="checked" />';
+		var intExt6 = '<input type="checkbox" name="intExt6" />'; 
+		if(data.intExt6)
+			intExt6 = '<input type="checkbox" name="intExt6" checked="checked" />';
+		var intExt1 = '<input type="checkbox" name="intExt1" />'; 
+		if(data.intExt1)
+			intExt1 = '<input type="checkbox" name="intExt1" checked="checked" />';
+		var intExt7 = '<input type="checkbox" name="intExt7" />'; 
+		if(data.intExt7)
+			intExt7 = '<input type="checkbox" name="intExt7" checked="checked" />';
+		var intExt8 = '<input type="checkbox" name="intExt8" />'; 
+		if(data.intExt8)
+			intExt8 = '<input type="checkbox" name="intExt8" checked="checked" />';
+		// end of Extra Requirements
+		
+		
+		//alert(JSON.stringify(data)); to work
 		var editDealerVehicleSearchForm = '<form id="edit-dealer-vehicle-search-content-form"><table>\
 			<table>\
 			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Details</div></div>\
@@ -1543,6 +1585,17 @@ function registerEditDealerVehicleSearchModal(){
 			<table>\
 			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">You can add your preferred extras</div></div>\
 			<tr><td></td></tr>\
+			<h5 style="color:#bd191e;"><b>Add Extra Requirements</b></h5>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>External Requirements</b></h6>\
+			<tr><td>Bull Bar</td><td>' + extExt1 +'</td><td>Tinted Glass</td><td>' + intExt2 +'</td><td>Bonnet Protection</td><td>' + intExt2 + '</td></tr>\
+			<tr><td>Nudge Bar</td><td>' + extExt2 +'</td><td>Luggage and Cargo Accessories</td><td>' + intExt3 +'</td><td>Head Lamp Protection</td><td>' + intExt2 + '</td></tr>\
+			<tr><td>Side Step</td><td>' + extExt3 +'</td><td>Applicable Roof Racks</td><td>' + intExt4 +'</td><td>Weather Sheild</td><td>' + intExt2 + '</td></tr>\
+			<tr><td>Snorkel</td><td>' + extExt4 +'</td><td>Tow Accessories</td><td>' + intExt5 +'</td><td>Safety Kid</td><td>' + intExt2 + '</td></tr>\
+			<tr><td>Tow Bar</td><td>' + extExt5 +'</td><td>Applicable Roof Racks</td><td>' + intExt6 +'</td><td>Medical/first-aid kid</td><td>' + intExt2 + '</td></tr>\
+			<tr><td>Floor Mats</td><td>' + intExt1 +'</td><td>Seat Cover</td><td>' + intExt7 + '</td></tr>\
+			</table>\
+			<br/>\
 			</table>\
 			<br/>\
 			<table>\
@@ -3795,16 +3848,19 @@ mainApp1.controller('myController13',function($scope, $http) {
 																							//alert("Thank You. Your MyVehicle ID is " + data.myVehicleId +"and it is updating to dashboard");
 																							alert("Successfully Stored My Vehicle Request with ID"+ data.myVehicleId+"However, Plz wait for the images to upload.. don't refresh or switch from dashboard..  the upload of images will start soon..");
 																							
-																                			alert("Before reset correct15689899");
-																                			document.getElementById("vehFrm").reset();
+																                			
 																                			//$("#vehFrm")[0].reset();
 																                			//$('#editprofilefrm').trigger("reset");
 																                			if(fileMyVeh || fileMyVeh2 || fileMyVeh3 ){
 																                				alert("Plz wait for the images to upload.. don't refresh or switch from dashboard.. the upload of images will start soon..");
-																                				myvehicleloadImage();}
+																                				myvehicleloadImage();
+																                				alert("Before reset correct15689899");
+																	                			document.getElementById("vehFrm").reset();
+																	                			}
 																                			else {
 															                                	alert("No upload of images found..");
-															                                	
+															                                	alert("Before reset correct15689899");
+																	                			document.getElementById("vehFrm").reset();
 															                                }																							
 																							vehicleDetailsLoad();	
 																							registerEditDealerVehicleDetailModal();
@@ -4262,8 +4318,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 														var fileChooserlogupdateset = document.getElementById('file-chooser-updateset');
 														var filefileChooserupdateset = fileChooserlogupdateset.files[0];
 														var objKeyupdateset ='noImage';
-														if(value.photo){
-															objKeyupdateset = value.photo;
+														if(value.issueState){
+															objKeyupdateset = value.issueState;
 														}
 														
 														if(filefileChooserupdateset){
@@ -4401,15 +4457,18 @@ mainApp1.controller('myController13',function($scope, $http) {
 																			$scope.vehicleRetrievalforLogBook();
 																			alert("Successfully Stored Service & Maintenance request However, Plz wait for the images to upload.. don't refresh or switch from your dashboard..  the upload of images will start soon..");
 																			//alert("Service & Maintenance Successfully Stored..");
-																			alert("Before reset correct15689899");
-												                			document.getElementById("logservmaintfrm").reset();
+																			
 												                			
 												                			if(filefileChooserlogservmaint){
 												                				alert("Plz wait for the images to upload.. don't refresh or switch from dashboard.. the upload of images will start soon..");
-																			logServMaintloadImage();}
+																			logServMaintloadImage();
+																			alert("Before reset correct15689899");
+												                			document.getElementById("logservmaintfrm").reset();
+												                			}
 												                			else {
 											                                	alert("No upload of images found..");
-											                                	
+											                                	alert("Before reset correct15689899");
+													                			document.getElementById("logservmaintfrm").reset();
 											                                }
 																			
 																						});
@@ -4472,14 +4531,19 @@ mainApp1.controller('myController13',function($scope, $http) {
 																				$scope.vehicleRetrievalforLogBook();
 																				alert("Successfully Stored Fuel Expenses request However, Plz wait for the images to upload.. don't refresh or switch from your dashboard..  the upload of images will start soon..");
 																				//alert("Fuel Expenses Successfully Stored..");
-																				alert("Before reset correct15689899");
-													                			document.getElementById("logexpensefrm").reset();
+																				
+													                			
 													                			
 																				if(filelogexp){
 																					alert("Plz wait for the images to upload.. don't refresh or switch from dashboard.. the upload of images will start soon..");
-																				logExpensesloadImage();}
+																				logExpensesloadImage();
+																				alert("Before reset correct15689899");
+																				document.getElementById("logexpensefrm").reset();
+																				}
 																				else {
 												                                	alert("No upload of images found..");
+												                                	alert("Before reset correct15689899");
+												                                	document.getElementById("logexpensefrm").reset();
 												                                	
 												                                }
 																				
