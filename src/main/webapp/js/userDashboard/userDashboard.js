@@ -1516,48 +1516,7 @@ function registerEditDealerVehicleSearchModal(){
 		if(data.used)
 		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
 		
-		// start of Extra Requirements
-		var extExt1 = '<input type="checkbox" name="extExt1" />'; 
-		if(data.extExt1)
-			extExt1 = '<input type="checkbox" name="extExt1" checked="checked" />';
-		var intExt2 = '<input type="checkbox" name="intExt2" />'; 
-		if(data.intExt2)
-			intExt2 = '<input type="checkbox" name="intExt2" checked="checked" />';
-		var extExt2 = '<input type="checkbox" name="extExt2" />'; 
-		if(data.extExt2)
-			extExt2 = '<input type="checkbox" name="extExt2" checked="checked" />';
-		var intExt3 = '<input type="checkbox" name="intExt3" />'; 
-		if(data.intExt3)
-			intExt3 = '<input type="checkbox" name="intExt3" checked="checked" />';
-		var extExt3 = '<input type="checkbox" name="extExt3" />'; 
-		if(data.extExt3)
-			extExt3 = '<input type="checkbox" name="extExt3" checked="checked" />';
-		var intExt4 = '<input type="checkbox" name="intExt4" />'; 
-		if(data.intExt4)
-			intExt4 = '<input type="checkbox" name="intExt4" checked="checked" />';
-		var extExt4 = '<input type="checkbox" name="extExt4" />'; 
-		if(data.extExt4)
-			extExt4 = '<input type="checkbox" name="extExt4" checked="checked" />';
-		var intExt5 = '<input type="checkbox" name="intExt5" />'; 
-		if(data.intExt5)
-			intExt5 = '<input type="checkbox" name="intExt5" checked="checked" />';
-		var extExt5 = '<input type="checkbox" name="extExt5" />'; 
-		if(data.extExt5)
-			extExt5 = '<input type="checkbox" name="extExt5" checked="checked" />';
-		var intExt6 = '<input type="checkbox" name="intExt6" />'; 
-		if(data.intExt6)
-			intExt6 = '<input type="checkbox" name="intExt6" checked="checked" />';
-		var intExt1 = '<input type="checkbox" name="intExt1" />'; 
-		if(data.intExt1)
-			intExt1 = '<input type="checkbox" name="intExt1" checked="checked" />';
-		var intExt7 = '<input type="checkbox" name="intExt7" />'; 
-		if(data.intExt7)
-			intExt7 = '<input type="checkbox" name="intExt7" checked="checked" />';
-		var intExt8 = '<input type="checkbox" name="intExt8" />'; 
-		if(data.intExt8)
-			intExt8 = '<input type="checkbox" name="intExt8" checked="checked" />';
-		// end of Extra Requirements
-		
+
 		
 		//alert(JSON.stringify(data)); to work
 		var editDealerVehicleSearchForm = '<form id="edit-dealer-vehicle-search-content-form"><table>\
@@ -1585,17 +1544,6 @@ function registerEditDealerVehicleSearchModal(){
 			<table>\
 			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">You can add your preferred extras</div></div>\
 			<tr><td></td></tr>\
-			<h5 style="color:#bd191e;"><b>Add Extra Requirements</b></h5>\
-			<table>\
-			<h6 style="color:#bd191e;"><b>External Requirements</b></h6>\
-			<tr><td>Bull Bar</td><td>' + extExt1 +'</td><td>Tinted Glass</td><td>' + intExt2 +'</td><td>Bonnet Protection</td><td>' + intExt2 + '</td></tr>\
-			<tr><td>Nudge Bar</td><td>' + extExt2 +'</td><td>Luggage and Cargo Accessories</td><td>' + intExt3 +'</td><td>Head Lamp Protection</td><td>' + intExt2 + '</td></tr>\
-			<tr><td>Side Step</td><td>' + extExt3 +'</td><td>Applicable Roof Racks</td><td>' + intExt4 +'</td><td>Weather Sheild</td><td>' + intExt2 + '</td></tr>\
-			<tr><td>Snorkel</td><td>' + extExt4 +'</td><td>Tow Accessories</td><td>' + intExt5 +'</td><td>Safety Kid</td><td>' + intExt2 + '</td></tr>\
-			<tr><td>Tow Bar</td><td>' + extExt5 +'</td><td>Applicable Roof Racks</td><td>' + intExt6 +'</td><td>Medical/first-aid kid</td><td>' + intExt2 + '</td></tr>\
-			<tr><td>Floor Mats</td><td>' + intExt1 +'</td><td>Seat Cover</td><td>' + intExt7 + '</td></tr>\
-			</table>\
-			<br/>\
 			</table>\
 			<br/>\
 			<table>\
@@ -3820,6 +3768,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 													"flex3":"flex1",
 														"flex4":"flex1",
 													"insRemind":$scope.insRemind,
+													"vehIdentRego":$scope.vehIdentRemind,
 													"maiRemind":$scope.maiRemind,
 													"finRemind":$scope.finRemind,
 													"flex5":12,	

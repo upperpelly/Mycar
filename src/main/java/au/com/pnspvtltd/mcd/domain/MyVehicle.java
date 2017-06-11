@@ -83,6 +83,124 @@ public class MyVehicle implements Serializable {
 	private boolean insRemind;
 	private boolean maiRemind;
 	private boolean finRemind;
+	private boolean vehIdentRego;
+	private boolean vehIdentRegoRemMon;
+	private boolean vehIdentRegoRemTwo;
+	private boolean vehIdentRegoOne;
+	private boolean vehInsRemMon;
+	private boolean vehInsRemTwo;
+	private boolean vehInsRemOne;
+	private boolean vehFinRemMon;
+	private boolean vehFinRemTwo;
+	private boolean vehFinRemOne;
+	private boolean vehServRemMon;
+	private boolean vehServRemTwo;
+	private boolean vehServRemOne;
+	
+	public boolean isVehServRemMon() {
+		return vehServRemMon;
+	}
+
+	public void setVehServRemMon(boolean vehServRemMon) {
+		this.vehServRemMon = vehServRemMon;
+	}
+	
+	public boolean isVehServRemTwo() {
+		return vehServRemTwo;
+	}
+
+	public void setVehServRemTwo(boolean vehServRemTwo) {
+		this.vehServRemTwo = vehServRemTwo;
+	}
+	
+	public boolean isVehServRemOne() {
+		return vehServRemOne;
+	}
+
+	public void setVehServRemOne(boolean vehServRemOne) {
+		this.vehServRemOne = vehServRemOne;
+	}
+
+	
+	public boolean isVehIdentRego() {
+		return vehIdentRego;
+	}
+
+	public void setVehIdentRego(boolean vehIdentRego) {
+		this.vehIdentRego = vehIdentRego;
+	}
+	
+	public boolean isVehIdentRegoRemMon() {
+		return vehIdentRegoRemMon;
+	}
+
+	public void setVehIdentRegoRemMon(boolean vehIdentRegoRemMon) {
+		this.vehIdentRegoRemMon = vehIdentRegoRemMon;
+	}
+	
+	public boolean isVehIdentRegoRemTwo() {
+		return vehIdentRegoRemTwo;
+	}
+
+	public void setVehIdentRegoRemTwo(boolean vehIdentRegoRemTwo) {
+		this.vehIdentRegoRemTwo = vehIdentRegoRemTwo;
+	}
+	
+	public boolean isVehIdentRegoOne() {
+		return vehIdentRegoOne;
+	}
+
+	public void setVehIdentRegoOne(boolean vehIdentRegoOne) {
+		this.vehIdentRegoOne = vehIdentRegoOne;
+	}
+	
+	public boolean isVehInsRemMon() {
+		return vehInsRemMon;
+	}
+
+	public void setVehInsRemMon(boolean vehInsRemMon) {
+		this.vehInsRemMon = vehInsRemMon;
+	}
+
+	public boolean isVehInsRemTwo() {
+		return vehInsRemTwo;
+	}
+
+	public void setVehInsRemTwo(boolean vehInsRemTwo) {
+		this.vehInsRemTwo = vehInsRemTwo;
+	}
+	
+	public boolean isVehInsRemOne() {
+		return vehInsRemOne;
+	}
+
+	public void setVehInsRemOne(boolean vehInsRemOne) {
+		this.vehInsRemOne = vehInsRemOne;
+	}
+	
+	public boolean isVehFinRemMon() {
+		return vehFinRemMon;
+	}
+
+	public void setVehFinRemMon(boolean vehFinRemMon) {
+		this.vehFinRemMon = vehFinRemMon;
+	}
+	
+	public boolean isVehFinRemTwo() {
+		return vehFinRemTwo;
+	}
+
+	public void setVehFinRemTwo(boolean vehFinRemTwo) {
+		this.vehFinRemTwo = vehFinRemTwo;
+	}
+	
+	public boolean isVehFinRemOne() {
+		return vehFinRemOne;
+	}
+
+	public void setVehFinRemOne(boolean vehFinRemOne) {
+		this.vehFinRemOne = vehFinRemOne;
+	}
 
 	@Column(name = "insRemind")
 	public boolean isInsRemind() {
