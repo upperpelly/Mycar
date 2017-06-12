@@ -9,13 +9,24 @@
 .PT10 {
     padding-top: 10px;
 }
-
+.PT2 {
+    padding-top: 2px;
+}
+.PT50 {
+    padding-top: 50px;
+}
+.PR5 {
+    padding-right: 5px;
+}
 .PB20 {
     padding-bottom: 20px;
 }
 
 .PL10 {
     padding-left: 10px;
+}
+.PL50 {
+    padding-left: 50px;
 }
 
 .ML10 {
@@ -88,4 +99,18 @@
 }
 #mobile-search-tabs a{
     color:#01b7f2;
+}
+.flt-left{
+    float:left !important;
+}
+.flt-right{
+    float:right !important;
+}
+#contactus {
+font-size:14px !important;
+color:#000;
+}
+.menu-bold{
+font-size:16px !important;
+font-weight:bolder !important;
 }

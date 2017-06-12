@@ -215,11 +215,11 @@ public class SimulateUserEBidSchedulerService {
 		//List of MyVehicles for each user
 		List<MyVehicle> searchs = user.getMyVehicle();
 		for (MyVehicle search : searchs) {
-		
+			if(search.getRegExpDate() != null){
 				// check if vehicle Identity Reminder set
 			if(search.isVehIdentRego()){
 				
-				LocalDate event = LocalDate.fromDateFields(search.getInsExpiry());
+				LocalDate event = LocalDate.fromDateFields(search.getRegExpDate());
 				LocalDate today = new LocalDate();
 				LocalDate weekToday = today.plusWeeks(1);
 				LocalDate fortnightToday = weekToday.plusWeeks(2);
@@ -292,11 +292,11 @@ public class SimulateUserEBidSchedulerService {
 					}
 				}
 				
-				
+			}	
 			}
 			// check if vehicle Insurance Reminder set
 				if(search.isInsRemind()){
-					
+					if(search.getInsExpiry() != null){
 					LocalDate event = LocalDate.fromDateFields(search.getInsExpiry());
 					LocalDate today = new LocalDate();
 					LocalDate weekToday = today.plusWeeks(1);
@@ -367,11 +367,11 @@ public class SimulateUserEBidSchedulerService {
 						}
 					}
 					
-					
+				}	
 				}
 				// check if Fin Reminder is set
 				if(search.isFinRemind()){
-					
+					if(search.getLoanTakenDt() != null){
 					LocalDate event = LocalDate.fromDateFields(search.getLoanTakenDt());
 					LocalDate today = new LocalDate();
 					LocalDate weekToday = today.plusWeeks(1);
@@ -441,10 +441,11 @@ public class SimulateUserEBidSchedulerService {
 						myVehicleRepository.flush();
 						}
 					}
-					
+				}	
 				}
 				// check if Serv maint Reminder is set
 				if(search.isMaiRemind()){
+					if(search.getNextServiceDt() != null){
 					LocalDate event = LocalDate.fromDateFields(search.getNextServiceDt());
 					LocalDate today = new LocalDate();
 					LocalDate weekToday = today.plusWeeks(1);
@@ -514,6 +515,7 @@ public class SimulateUserEBidSchedulerService {
 						myVehicleRepository.flush();
 						}
 					}
+				}
 				}
 				
 		}

@@ -2788,13 +2788,13 @@ $.ajax({
                     </a>
                 </h1>-->
                 <span style="float:left;">
-                    <img src="images/autoscooplogo.png" style="float:left;" alt="autoscoop" />
+                    <a href="Hm_BetaV1.html"><img src="images/autoscooplogo.png" style="float:left;" alt="autoscoop" /></a>
                 </span>
 
 
                 <div class="topnav" style="float:right">
                     <ul class="quick-menu pull-left">
-                        <li><button onClick="redirect()" class="btn btn-primary right"><i class="fa fa-user" aria-hidden="true"></i>ACCOUNT</button></li>
+                        <li><button onClick="redirect()" class="btn btn-primary right"><i class="fa fa-user PR5 PT2" aria-hidden="true"></i>ACCOUNT</button></li>
                     </ul>
                     <ul class="quick-menu pull-right" id="welcomeDiv" style="display:none">
                         <li class="ribbon">
@@ -2843,7 +2843,7 @@ $.ajax({
                     <nav id="main-menu" role="navigation">
                         <ul class="menu">
                             <li id="eBidR" class="menu-item-has-children">
-                                <a href="#hotels-tab" data-toggle="tab">Vehicles</a>
+                                <a class="menu-bold" href="#hotels-tab" data-toggle="tab">Vehicles</a>
                                 <ul>
                                     <li><a href="Hm_BetaV1.html">Browse</a></li>
                                     <!-- <li><a href="Hm_BetaV1.html">Bikes</a></li>
@@ -2864,7 +2864,7 @@ $.ajax({
                                 </ul>
                             </li> -->
                             <li class="menu-item-has-children">
-                                <a href="#flight-and-hotel-tab" data-toggle="tab" onclick="showDiv2()">Finance</a>
+                                <a class="menu-bold" href="#flight-and-hotel-tab" data-toggle="tab" onclick="showDiv2()">Finance</a>
                                 <!--<ul>
                                     <li><a href="Hm_BetaV1.html">Cars</a></li>
                                     <li><a href="Hm_BetaV1.html">Bikes</a></li>
@@ -2875,7 +2875,7 @@ $.ajax({
                                 </ul>-->
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="#cars-tab" data-toggle="tab" onclick="showDiv1()">Insurance</a>
+                                <a class="menu-bold" href="#cars-tab" data-toggle="tab" onclick="showDiv1()">Insurance</a>
                                 <!--<ul>
                                     <li><a href="Hm_BetaV1.html">Cars</a></li>
                                     <li><a href="Hm_BetaV1.html">Bikes</a></li>
@@ -2886,7 +2886,7 @@ $.ajax({
                                 </ul>-->
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="#cruises-tab" data-toggle="tab" onclick="showDiv3()">
+                                <a class="menu-bold" href="#cruises-tab" data-toggle="tab" onclick="showDiv3()">
                                     Service
                                     & Maintenance
                                 </a>
@@ -2900,7 +2900,7 @@ $.ajax({
                                 </ul>-->
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="#flight-status-tab" data-toggle="tab" onclick="showDiv4()">Transport</a>
+                                <a class="menu-bold" href="#flight-status-tab" data-toggle="tab" onclick="showDiv4()">Transport</a>
                                 <!--<ul>
                                     <li><a href="Hm_BetaV1.html">Cars</a></li>
                                     <li><a href="Hm_BetaV1.html">Bikes</a></li>
@@ -2912,7 +2912,7 @@ $.ajax({
                             </li>
 
                             <li class="menu-item-has-children">
-                                <a href="#online-checkin-tab" data-toggle="tab">Rego</a>
+                                <a class="menu-bold" href="#online-checkin-tab" data-toggle="tab">Rego</a>
                                 <!--<ul>
                                     <li><a href="#flight6" aria-controls="flight" role="tab" data-toggle="tab" aria-expanded="true">Cars</a></li>
                                     <li><a href="#hotel6" aria-controls="hotel" role="tab" data-toggle="tab" aria-expanded="false">Bikes</a></li>
@@ -3256,7 +3256,7 @@ $.ajax({
                                 </li>
                                 <li>
                                     <a href="#online-checkin-tab" data-toggle="tab">
-                                        <i id="left-nav" class="flaticon-clipboard-with-pencil PT10"></i>Rego
+                                        <i id="left-nav" class="flaticon-clipboard-with-pencil"></i>Rego
                                     </a>
                                 </li>
 
@@ -11431,22 +11431,40 @@ $.ajax({
 </div>
         </div>
     </footer>
-    <footer id="footer">
-        <div class="bottom">
+    <footer>
+        <div class="footer-wrapper">
             <div class="container">
-                <div class="logo pull-left">
-                    <a href="Hm_BetaV1.html" title="Autoscoop - home">
-                        <img class="imgHt" src="images/autoscooplogo.png" alt="Autoscoop HTML5 Template" />
+                <div class="row">
+
+                </div>
+            </div>
+        </div>
+        <div class="PT10">
+            <div class="container">
+                <div class="col-sm-6 col-md-3">
+                    <a href="index.html" title="AutoScoop - home">
+                        <img src="images/autoscooplogo.png" alt="AutoScoop" />
                     </a>
                 </div>
-                <div class="pull-right">
-                    <a id="back-to-top" href="#" class="animated"
-                       data-animation-type="bounce">
-                        <i class="soap-icon-longarrow-up circle"></i>
-                    </a>
+
+                <div class="col-sm-6 col-md-3">
+
                 </div>
-                <div class="copyright pull-right">
-                    <p>&copy; 2017 Autoscoop</p>
+                <div class="col-sm-6 col-md-3">
+                    <ul>
+                        <li><b id="contactus">Dealers and Service Providers:</b></li>
+                        <li><b id="contactus"><u>sales@autoscoop.com.au</u></b></li>
+                        <li><b id="contactus">Investors:</b></li>
+                        <li><b id="contactus"><u>contact@autoscoop.com.au</u></b></li>
+                    </ul>
+
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <ul>
+
+                        <li><a style="float: right; animation-duration: 1s; visibility: visible;" id="back-to-top" href="#" class="animated bounce" data-animation-type="bounce"><i class="soap-icon-longarrow-up circle"></i></a></li>
+                        <li><a style="float:right">© 2017 AutoScoop &nbsp;&nbsp;</a></li>
+                    </ul>
 
                 </div>
             </div>

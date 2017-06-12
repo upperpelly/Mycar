@@ -42,7 +42,7 @@ public class MyVehicleVO {
 	private String vin;
 	private String regNum;
 	private String regState;
-	private String regExpDate;
+	private Date regExpDate;
 	
 	//Ins Info
 	private String insProv;
@@ -108,6 +108,14 @@ public class MyVehicleVO {
 	private boolean vehServRemTwo;
 	private boolean vehServRemOne;
 	
+	public Date getRegExpDate() {
+		return regExpDate;
+	}
+
+	public void setRegExpDate(Date regExpDate) {
+		this.regExpDate = regExpDate;
+	}
+
 	public boolean isVehServRemMon() {
 		return vehServRemMon;
 	}
@@ -333,13 +341,13 @@ public class MyVehicleVO {
 		this.regState = regState;
 	}
 
-	public String getRegExpDate() {
+	/*public String getRegExpDate() {
 		return regExpDate;
 	}
 
 	public void setRegExpDate(String regExpDate) {
 		this.regExpDate = regExpDate;
-	}
+	}*/
 
 	public String getInsProv() {
 		return insProv;

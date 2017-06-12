@@ -3879,6 +3879,7 @@ ul.check-circle li:before {
     .tab-container.full-width-style.arrow-left .tab-content .tab-pane {
         padding: 30px;
     }
+
     .tab-container.full-width-style.arrow-left .tab-content .tab-pan {
         padding: 30px;
     }
@@ -7190,6 +7191,7 @@ ul.check-circle li:before {
         height: auto;
         position: relative;
         width: 100%;
+       background: rgba(0,112,210,0.97);
     }
 
     #header .logo {
@@ -7560,7 +7562,7 @@ ul.check-circle li:before {
         }
 
     #header.style6 {
-        padding-top: 10px;
+        /*padding-top: 10px;*/
         /* Main menu */
     }
 
@@ -7585,7 +7587,8 @@ ul.check-circle li:before {
             background: none;
             width: auto;
             height: auto;
-            margin: 0 0 22px 20px;
+            margin: 0 0 7px 20px;
+            padding-top: 10px;
         }
 
             #header.style6 .topnav ul.quick-menu > li > a {
@@ -10619,7 +10622,7 @@ ul.search-tabs {
 }
 
 .booking-form label {
-    font-size: 0.9167em;
+    font-size: 14px;
 }
 
 .booking-form .checkbox label {
@@ -11740,37 +11743,7 @@ ul.search-tabs {
 .dashboard #header .logo img {
     height: 22px;
 }
-
-#udashboard .fact {
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-    #udashboard .fact .numbers {
-        padding: 5px 5px;
-    }
-
-        #udashboard .fact .numbers dl {
-            float: right;
-            text-align: right;
-            margin: 0;
-        }
-
-        #udashboard .fact .numbers dt {
-            font-size: 2em;
-            font-weight: 400;
-            line-height: 1em;
-        }
-
-        #udashboard .fact .numbers dd {
-            font-size: 12px;
-        }
-
-        #udashboard .fact .numbers .icon {
-            font-size: 4em;
-        }
-
-    #udashboard .fact .description {
+.tile-bg-description {
         font-size: 12px;
         /*text-transform: uppercase;*/
         padding-left: 5px;
@@ -11779,109 +11752,113 @@ ul.search-tabs {
         line-height: 3em;
     }
 
-    #udashboard .fact.vio {
+    .tile-bg-vio {
         background: #496fbc;
+		color:#fff;
     }
+	.tile-bg-icon {
+        float: right;
+        font-size: 2em;
+    }
+
 
         #udashboard .fact.vio .description1 {
             background: #3C5B9A;
         }
 
-    #udashboard .fact.pink {
+    .tile-bg-pink {
         background: #d9679c;
+		color:#fff;
     }
 
         #udashboard .fact.pink .description1 {
             background: #B25580;
         }
 
-    #udashboard .fact.blu {
-        background: #45c6ba;
+    .tile-bg-blu {
+        background: #45c6ba;color:#fff;
     }
 
         #udashboard .fact.blu .description1 {
             background: #39A399;
         }
 
-    #udashboard .fact.drkbrn {
-        background: #d17447;
+    .tile-bg-drkbrn {
+        background: #d17447;color:#fff;
     }
 
         #udashboard .fact.drkbrn .description1 {
             background: #AC5F3B;
         }
 
-    #udashboard .fact.ltblk {
-        background: #505c8b;
+    .tile-bg-ltblk {
+        background: #505c8b;color:#fff;
     }
 
         #udashboard .fact.ltblk .description1 {
             background: #424C72;
         }
 
-    #udashboard .fact.ltgrn {
-        background: #42ceb2;
+    .tile-bg-ltgrn {
+        background: #42ceb2;color:#fff;
     }
 
         #udashboard .fact.ltgrn .description1 {
             background: #37A992;
         }
 
-    #udashboard .fact.ltbrn {
-        background: #de6d75;
+    .tile-bg-ltbrn {
+        background: #de6d75;color:#fff;
     }
 
         #udashboard .fact.ltbrn .description1 {
             background: #B65A60;
         }
 
-    #udashboard .fact.drkvlt {
-        background: #776fce;
+    .tile-bg-drkvlt {
+        background: #776fce;color:#fff;
     }
 
         #udashboard .fact.drkvlt .description1 {
             background: #625BA9;
         }
 
-    #udashboard .fact.ltegrn {
-        background: #B4DB77;
+    .tile-bg-ltegrn {
+        background: #B4DB77;color:#fff;
     }
 
         #udashboard .fact.ltegrn .description1 {
             background: #94B462;
         }
 
-    #udashboard .fact .description > .icon {
-        float: right;
-        font-size: 2em;
-    }
+    
 
-    #udashboard .fact.blue {
-        background: #01b7f2;
+    .tile-bg-blue {
+        background: #01b7f2;color:#fff;
     }
 
         #udashboard .fact.blue .description {
             background: #04afe7;
         }
 
-    #udashboard .fact.yellow {
-        background: #fdb714;
+    .tile-bg-yellow {
+        background: #fdb714;color:#fff;
     }
 
         #udashboard .fact.yellow .description {
             background: #f5b010;
         }
 
-    #udashboard .fact.red {
-        background: #e01a33;
+    .tile-bg-red {
+        background: #e01a33;color:#fff;
     }
 
         #udashboard .fact.red .description {
             background: #d51a32;
         }
 
-    #udashboard .fact.green {
-        background: #98ce44;
+    .tile-bg-green {
+        background: #98ce44;color:#fff;
     }
 
         #udashboard .fact.green .description {

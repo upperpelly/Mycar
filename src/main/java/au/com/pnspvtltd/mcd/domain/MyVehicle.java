@@ -31,7 +31,7 @@ public class MyVehicle implements Serializable {
 	private String vin;
 	private String regNum;
 	private String regState;
-	private String regExpDate;
+	private Date regExpDate;
 	
 	//Ins Info
 	private String insProv;
@@ -97,6 +97,15 @@ public class MyVehicle implements Serializable {
 	private boolean vehServRemTwo;
 	private boolean vehServRemOne;
 	
+	@Column(name = "regExpDate")
+	public Date getRegExpDate() {
+		return regExpDate;
+	}
+
+	public void setRegExpDate(Date regExpDate) {
+		this.regExpDate = regExpDate;
+	}
+
 	public boolean isVehServRemMon() {
 		return vehServRemMon;
 	}
@@ -291,14 +300,14 @@ public class MyVehicle implements Serializable {
 	public void setRegState(String regState) {
 		this.regState = regState;
 	}
-	@Column(name = "regExpDate")
-	public String getRegExpDate() {
+	
+	/*public String getRegExpDate() {
 		return regExpDate;
 	}
 
 	public void setRegExpDate(String regExpDate) {
 		this.regExpDate = regExpDate;
-	}
+	}*/
 	@Column(name = "insProv")
 	public String getInsProv() {
 		return insProv;
