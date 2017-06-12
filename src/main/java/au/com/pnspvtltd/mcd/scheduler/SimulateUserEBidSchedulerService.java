@@ -234,7 +234,7 @@ public class SimulateUserEBidSchedulerService {
 					insNotification.setCode("VehicleGarage");
 					insNotification.setTypeOfReq("Reminder for Registration Date");
 					insNotification.setMakeDescription("Your Registration Expriation Date is in this week"+search.getRegExpDate());
-					insNotification.setComment("Your Registration Registration Date is in this week"+search.getRegExpDate());
+					//insNotification.setComment("Your Registration Registration Date is in this week"+search.getRegExpDate());
 					if (user.getUserNotification() != null) {
 						user.getUserNotification().add(insNotification);
 					} else {
@@ -256,7 +256,7 @@ public class SimulateUserEBidSchedulerService {
 					insNotification.setCode("VehicleGarage");
 					insNotification.setTypeOfReq("Reminder for Registration");
 					insNotification.setMakeDescription("Your Registration Expriation Date is in next two weeks"+search.getRegExpDate());
-					insNotification.setComment("Your Registration Expriation Date is in next two weeks"+search.getRegExpDate());
+					//insNotification.setComment("Your Registration Expriation Date is in next two weeks"+search.getRegExpDate());
 					if (user.getUserNotification() != null) {
 						user.getUserNotification().add(insNotification);
 					} else {
@@ -278,7 +278,7 @@ public class SimulateUserEBidSchedulerService {
 					insNotification.setCode("VehicleGarage");
 					insNotification.setTypeOfReq("Reminder for Registration");
 					insNotification.setMakeDescription("Your Registration Expriation Date is in due for this month"+search.getRegExpDate());
-					insNotification.setComment("Your Registration Expriation Date is in due for this month"+search.getRegExpDate());
+					//insNotification.setComment("Your Registration Expriation Date is in due for this month"+search.getRegExpDate());
 					if (user.getUserNotification() != null) {
 						user.getUserNotification().add(insNotification);
 					} else {
@@ -311,7 +311,7 @@ public class SimulateUserEBidSchedulerService {
 						insNotification.setCode("VehicleGarage");
 						insNotification.setTypeOfReq("Reminder for Insurance");
 						insNotification.setMakeDescription("Your Insurance Expriation Date is in this week"+search.getInsExpiry());
-						insNotification.setComment("Your Insurance Expriation Date is in this week"+search.getInsExpiry());
+						//insNotification.setComment("Your Insurance Expriation Date is in this week"+search.getInsExpiry());
 						if (user.getUserNotification() != null) {
 							user.getUserNotification().add(insNotification);
 						} else {
@@ -353,7 +353,7 @@ public class SimulateUserEBidSchedulerService {
 						insNotification.setCode("VehicleGarage");
 						insNotification.setTypeOfReq("Reminder for Insurance");
 						insNotification.setMakeDescription("Your Insurance Expriation Date is in next two weeks"+search.getInsExpiry());
-						insNotification.setComment("Your Insurance Expriation Date is in next two weeks"+search.getInsExpiry());
+						//insNotification.setComment("Your Insurance Expriation Date is in next two weeks"+search.getInsExpiry());
 						if (user.getUserNotification() != null) {
 							user.getUserNotification().add(insNotification);
 						} else {
@@ -386,7 +386,7 @@ public class SimulateUserEBidSchedulerService {
 						insNotification.setCode("VehicleGarage");
 						insNotification.setTypeOfReq("Reminder for Loan Taken Date");
 						insNotification.setMakeDescription("Your Loan Taken Date is in this week"+search.getLoanTakenDt());
-						insNotification.setComment("Your Loan Taken Date is in this week"+search.getLoanTakenDt());
+						//insNotification.setComment("Your Loan Taken Date is in this week"+search.getLoanTakenDt());
 						if (user.getUserNotification() != null) {
 							user.getUserNotification().add(insNotification);
 						} else {
@@ -407,7 +407,7 @@ public class SimulateUserEBidSchedulerService {
 						insNotification.setCode("VehicleGarage");
 						insNotification.setTypeOfReq("Reminder for Insurance");
 						insNotification.setMakeDescription("Your Loan Taken Date is in next week"+search.getLoanTakenDt());
-						insNotification.setComment("Your Loan Taken Date is in next week"+search.getLoanTakenDt());
+						//insNotification.setComment("Your Loan Taken Date is in next week"+search.getLoanTakenDt());
 						if (user.getUserNotification() != null) {
 							user.getUserNotification().add(insNotification);
 						} else {
@@ -428,7 +428,7 @@ public class SimulateUserEBidSchedulerService {
 						insNotification.setCode("VehicleGarage");
 						insNotification.setTypeOfReq("Reminder for Insurance");
 						insNotification.setMakeDescription("Your Loan Taken Date is in next week"+search.getLoanTakenDt());
-						insNotification.setComment("Your Loan Taken Date is in next week"+search.getLoanTakenDt());
+						//insNotification.setComment("Your Loan Taken Date is in next week"+search.getLoanTakenDt());
 						if (user.getUserNotification() != null) {
 							user.getUserNotification().add(insNotification);
 						} else {
@@ -459,7 +459,7 @@ public class SimulateUserEBidSchedulerService {
 						insNotification.setCode("VehicleGarage");
 						insNotification.setTypeOfReq("Reminder for Loan Taken Date");
 						insNotification.setMakeDescription("Your Next Service Maintenance Date is in this week"+search.getNextServiceDt());
-						insNotification.setComment("Your Next Service Maintenance Date is in this week"+search.getNextServiceDt());
+						//insNotification.setComment("Your Next Service Maintenance Date is in this week"+search.getNextServiceDt());
 						if (user.getUserNotification() != null) {
 							user.getUserNotification().add(insNotification);
 						} else {
@@ -480,7 +480,7 @@ public class SimulateUserEBidSchedulerService {
 						insNotification.setCode("VehicleGarage");
 						insNotification.setTypeOfReq("Reminder for Insurance");
 						insNotification.setMakeDescription("YourNext Service Maintenance Date is in next week"+search.getNextServiceDt());
-						insNotification.setComment("Your Next Service Maintenance Date is in next week"+search.getNextServiceDt());
+						//insNotification.setComment("Your Next Service Maintenance Date is in next week"+search.getNextServiceDt());
 						if (user.getUserNotification() != null) {
 							user.getUserNotification().add(insNotification);
 						} else {
@@ -501,7 +501,7 @@ public class SimulateUserEBidSchedulerService {
 						insNotification.setCode("VehicleGarage");
 						insNotification.setTypeOfReq("Reminder for Insurance");
 						insNotification.setMakeDescription("YourNext Service Maintenance Date is in next week"+search.getNextServiceDt());
-						insNotification.setComment("Your Next Service Maintenance Date is in next week"+search.getNextServiceDt());
+						//insNotification.setComment("Your Next Service Maintenance Date is in next week"+search.getNextServiceDt());
 						if (user.getUserNotification() != null) {
 							user.getUserNotification().add(insNotification);
 						} else {
