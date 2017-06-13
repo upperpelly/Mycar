@@ -12,7 +12,7 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.countdown.min.js"></script>
     <script src="js/servicelevelcarquery.0.3.6.js" type="text/javascript"></script>
-    <!-- added end -->
+     <!-- added end -->
     <!-- <script src="js/jstorage.js"></script>
      -->
     <script type="text/javascript">
@@ -835,7 +835,7 @@
         }
         function myDecision(data) {
         	$.jStorage.set('newusekey', data);
-            $.jStorage.setTTL('mynewkey', 30000); 
+            $.jStorage.setTTL('mynewkey', 30000);
         }
 
        /* var isChecked5 = false;
@@ -889,9 +889,9 @@
             //isChecked = !isChecked;
             var flag= document.getElementById("carEbidFinan").checked;
             var data="";
-            if(flag){ 
+            if(flag){
             	data="FChecked";
-            	
+
             }
             else
            	{
@@ -914,7 +914,7 @@
             //OR,
             //$('input:checkbox.jpCheckbox').attr('checked','checked');
         }
-        
+
         var isChecked996 = true;
 
         function allSelected996() {
@@ -924,7 +924,7 @@
         	var flag= document.getElementById("carEbidInsur").checked;
         	var data="";
             if(flag){
-            	
+
             	data="IChecked";
             }
             else
@@ -948,6 +948,7 @@
             //$('input:checkbox.jpCheckbox').attr('checked','checked');
         }
     </script>
+     
     <script type="text/javascript">
         // <![CDATA[
         $(document).ready(function () {
@@ -972,8 +973,8 @@
         	      }
         	    });
         	  });
-        	  
-        	  
+
+
         	allSelected896();
         	allSelected996();
             $("#coverageDetails").hide();
@@ -1022,8 +1023,8 @@
                 e.preventDefault();
                 $(this).tab('show');
             });
-			
-            
+
+
 
             $body = $("body");
 
@@ -1038,6 +1039,7 @@
             carquery.init();
             //carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
             carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-auto-trims');
+
 
             //Set onclick function for the US filter checkbox and show data button
             $('#cq-sold-in-us').click(function () { carquery.setFilters({ sold_in_us: this.checked }); });
@@ -1149,9 +1151,9 @@
         tr:hover {
             background-color: rgb(253, 183, 20);
         }
-        
-        
-        
+
+
+
 		#my-table922{
 			border: 1px solid #cdcdcd;
 		}
@@ -1175,7 +1177,7 @@
 
     <script>
         function showDiv1() {
-            //alert("came here");
+             //alert("came here");
             var carquery = new CarQuery();
             carquery.init();
             //carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
@@ -1188,7 +1190,7 @@
     </script>
     <script>
         function showDiv3() {
-            //fbloadphoto();
+             //fbloadphoto();
             //fbdownloadImage();
             //alert("came here");
             var carquery = new CarQuery();
@@ -1216,11 +1218,11 @@
             //carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-trims-ins');
             //carquery.initYearMakeModelTrim('car-years-trans', 'car-makes-trans', 'car-models-trans', 'car-model-trims-trans','car-model-auto-trims-trans');
             carquery.initYearMakeModelTrim('car-years-trans', 'car-makes-trans', 'car-models-trans', 'car-model-auto-trims-trans');
-        }
+       }
     </script>
     <script>
         function showDiv2() {
-            //alert("came here");
+             //alert("came here");
             var carquery = new CarQuery();
             carquery.init();
             //  carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-trims-fin','car-model-auto-trims-fin' );
@@ -1228,11 +1230,11 @@
             carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-auto-trims-fin');
 
             //carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
-        }
+         }
     </script>
     <script>
-    
-    
+
+
         window.onload = function () {
             /* alert("pageName 11  now "); */
 
@@ -1673,13 +1675,13 @@ $.ajax({
                     /*alert($scope.email);
                     alert(email); */
                     //alert("came here");
-                    
+
                     //table.remove(0);
                     //console.log(table);
                     //alert(JSON.stringify(table));
                     if (alreadyLogged()) {
                         if (isValid) {
-                        	
+
                             userId = $.jStorage.get('key').userId;
                             fbUserId = $.jStorage.get("fbKey");
                             var fileChoosertranp1 = document.getElementById('uploadPhotoTrans1');
@@ -1737,17 +1739,17 @@ $.ajax({
                             var table1 = $("#my-table922");
 							//Year as Variant
                             var table = table1.tableToJSON({
-                                ignoreColumns:[0], 
+                                ignoreColumns:[0],
                                 headings: ['flex1', 'flex2', 'flex3','flex4','variant','make','model','transpSearchMakeListId']
                               });
                             //delete table[0];
                             table.splice(0,1);
                             jsonInputToAPI.searchTranspLead.carModel = table;
-                            
+
                             /* alert(JSON.stringify(jsonInputToAPI.searchTranspLead.carModel));
                             alert(JSON.stringify(jsonInputToAPI)); */
-                            
-                            
+
+
                             // table 91
                             /* var tbl922 = document.getElementById('my-table922'), // table reference
                                 row = tbl922.rows.length;      // append table row
@@ -1828,7 +1830,7 @@ $.ajax({
 
                                      window.location = url;
                                 }
-                               
+
                             });
 
 
@@ -1899,7 +1901,7 @@ $.ajax({
                     alert(email); */
                     if (alreadyLogged()) {
                         if (isValid) {
-                        	
+
                             userId = $.jStorage.get('key').userId;
                             fbUserId = $.jStorage.get("fbKey");
                             //alert("inside insurance user id"+fbUserId);
@@ -1995,7 +1997,7 @@ $.ajax({
                             }).success(function (data) {
                                 $body.removeClass("loading");
                                 alert("Successfully Stored Service && Maintenance Request However, Plz wait for the images to upload.. don't refresh or switch from homepage.. the upload of images will start soon..");
-                                if (fileServ1 || fileServ2 || fileServ3 || fileServ4) { 
+                                if (fileServ1 || fileServ2 || fileServ3 || fileServ4) {
                                 	alert("Plz wait for the images to upload.. don't refresh or switch from homepage.. the upload of images will start soon..");
                                 fbloadphoto();}
                                 else {
@@ -2006,7 +2008,7 @@ $.ajax({
                                 }
                                 //alert("successfully stored");
                                 //alert("Plz wait for the images to upload.. Don't Refresh");
-                               
+
 
                                 //window.location = url;
 
@@ -2034,10 +2036,10 @@ $.ajax({
                     alert("postCode"+$scope.insDriverDOB);
                     alert("postCode"+$scope.insLicIssueDt);
                     alert("postCode"+$scope.insLastfaultDt);
-                    
-                    
+
+
                     //jsonInputToAPI.searchTranspLead.carModel = table;
-                    
+
                     //alert(JSON.stringify(table));
                     if (alreadyLogged()) {
 
@@ -2101,10 +2103,10 @@ $.ajax({
                                     "licenseIssueDate": $scope.insLicIssueDt,
                                     "lastAtFaultClaimDate": $scope.insLastfaultDt,
                                     "reasonForSuspension": $scope.insReasonSusp,
-                                    "AnyDriver": $scope.intExt3,//Allow Under 25 Driver 
+                                    "AnyDriver": $scope.intExt3,//Allow Under 25 Driver
                                     "FreeWindScreen": $scope.extExt2,//Excess Free wind Screen
                                     "RentalCar": $scope.extExt3,//Excess Free Window Screen
-                                    "NewCarRepl": $scope.extExt4,// New Car Replace 
+                                    "NewCarRepl": $scope.extExt4,// New Car Replace
                                     "Roadsideasst":$scope.extExt5,//Road Side Assistance
                                     "LifetimeWarrep":$scope.intExt1,//Life time Warranty repairs
                                     "intsnokel": $scope.intExt2,//No Claim Bonus Protection
@@ -2119,21 +2121,21 @@ $.ajax({
                                     "licenseGotSuspened": $scope.insLICSusp
                                 }
                             };
-							
-                            
-                            
-                            
+
+
+
+
                             var table1 = $("#my-table944");
                             var table = table1.tableToJSON({
-                                ignoreColumns:[0], 
+                                ignoreColumns:[0],
                                 headings: ['firstName', 'lastName', 'drivingLicenseType','dateOfBirth']
                               });
                             //delete table[0];
-                            
+
                             table.splice(0,1);
-                            
+
                             jsonInputToAPI.insuranceLead.searchInsAdditionalDriv = table ;
-                            
+
 
                             // table 91
                             /* var tbl944 = document.getElementById('my-table944'), // table reference
@@ -2724,7 +2726,7 @@ $.ajax({
         	    var inslictype0= $("#inslictype0").val();
         	    //var markup = "<tr><td><i class=\"soap-icon-close delete_row\" style=\"font-size:60px;color:red;\"></i></td><td>" + fname + "</td><td>" + lname +"</td><td>" + inslictype0 + "</td>" +"<td>" + dob0 + "</td></tr>";
         	    var markup1 = "<tr class=\"text-center\"><td><input type='checkbox' name='record'></td><td>" + fname + "</td><td>" + lname +"</td><td>" + inslictype0 + "</td>" +"<td>" + dob0 + "</td></tr>";
-        	    
+
 		      //$('#addr'+i).html("<td>"+ (i+1) +"</td><td><input type='text' name='fname'  placeholder='First Name' class='input-text full-width'/></td><td><input type='text' name='lname0' placeholder='Last Name' class='input-text full-width'/></td><td><div class='selector'><select class='full-width' name='inslictype0' style='opacity:1'><option value='' selected disabled>Driving Licence Type</option><option>L-Learner</option><option>P-probation</option><option>Full Licence</option><option>OverSeas</option></select></div></td><td><input type='text' name='dob0' onfocus=\"(this.type='date')\" placeholder='DOB' class='input-text full-width'/></td>");
 		      //<a id='delete_row' class="pull-right btn btn-danger"><i class="soap-icon-close">Delete Row</i></a>
 		      //<a class='delete_row  btn btn-danger'><i class=\"soap-icon-close delete_row\" style=\"font-size:30px;color:red;\"></i></a>
@@ -2732,8 +2734,8 @@ $.ajax({
 		      i++;
 		      //<td><input name='name"+i+"' type='text' placeholder='Name' class='form-control input-md'  /> </td><td><input  name='mail"+i+"' type='text' placeholder='Mail'  class='form-control input-md'></td><td><input  name='mobile"+i+"' type='text' placeholder='Mobile'  class='form-control input-md'></td>
 		  });
-		     
-		     
+
+
 		     $(".delete_row").on("click", function(){
 	        	    $("#my-table944").find('input[name="record"]').each(function() {
 	        	      if ($(this).is(":checked")) {
@@ -2741,10 +2743,10 @@ $.ajax({
 	        	      }
 	        	    });
 	        	  });
-		     
-		     
-		     
-		     
+
+
+
+
 		    /*  $(".add-row").on("click", function(){
 	        	    var transregono12= $("#transregono12").val();
 	        	    var transregost= $("#transregost").val();
@@ -2766,13 +2768,13 @@ $.ajax({
 	        	      }
 	        	    });
 	        	  }); */
-	
-		});	
-	
-		
+
+		});
+
+
 	</script>
-	
-	
+
+
 </head>
 <body class="load-full-screen" ng-app="mainApp1"
       ng-controller="myController1" id="myController1">
@@ -3281,7 +3283,7 @@ $.ajax({
                                 <!-- Start of eBidR -->
                                 <div role="tabpanel" class="tab-pane active" id="hotels-tab">
                                     <div class="title-container">
-                                        <h5>Raise eBid-Request for your Vehicle</h5>
+                                        <h5>Give your Requirement for your Next Vehicle</h5>
                                         <p class="text-sm">For Your Vehicle | Finance | Insurance all in one GO!</p>
                                         <i class="flaticon-odometer-for-kilometers-and-speed-control PT10"></i>
                                     </div>
@@ -3347,7 +3349,7 @@ $.ajax({
                                                         	<div class="fb-like" data-href="https://www.facebook.com/autoscoop.com.au/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
                                                         </div>
                                                         <div class="col-sm-3 col-md-3"></div>
-                                                    </div>    
+                                                    </div>
                                                     <!-- <div class="fb-like" data-href="https://www.facebook.com/autoscoop.com.au/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div> -->
                                                     <div class="col-md-12">&nbsp</div>
                                                     <div class="clearfix"></div>
@@ -3362,10 +3364,10 @@ $.ajax({
 															<label class="radio-inline"><input type="radio" id="newUsedCarEbid" name="newUsedCarEbid"><span class="skin-color">Used</span></label> -->
                                                         	<div class="radio">
 	                                                         <input type="radio" id="newUsedCarEbid" class="newUsedCarEbid" name="newUsedCarEbid" checked><span class="skin-color">New</span>
-	                                                       	</div>  
+	                                                       	</div>
 	                                                       	<div class="radio">
 	                                                       		<input type="radio" id="usedCarEbid" class="newUsedCarEbid" name="newUsedCarEbid"><span class="skin-color">Used</span>
-	                                                       	</div> 
+	                                                       	</div>
                                                         </div>
                                                         <div class="col-sm-3 col-md-3"></div>
                                                     </div>
@@ -5030,7 +5032,7 @@ $.ajax({
                                 <!-- Start of flghts and hotel tab-->
                                 <div class="tab-pane fade" id="flight-and-hotel-tab">
                                     <div class="title-container">
-                                        <h5>Vehicle Finance</h5>
+                                        <h5>Give your Requirement for your next Vehicle Finance</h5>
                                         <p class="text-sm">Get Best Quote for Your Next Vehicle Loan  </p>
                                         <i class="flaticon-money PT10"></i>
                                     </div>
@@ -5080,8 +5082,7 @@ $.ajax({
                                                 <form class="form-inline signup" name="ebidfinfrm" ng-submit="postFinanceLead(ebidfinfrm.$valid)" novalidate>
 
                                                     <div class="col-md-12 product-search-title">
-                                                        Finance
-                                                        for car
+                                                      
                                                     </div>
                                                     <div class="col-md-12">&nbsp</div>
                                                     <div class="clearfix"></div>
@@ -5256,7 +5257,7 @@ $.ajax({
                                                             <input type="text"
                                                                    id="finLoanAmount" name="finLoanAmount" ng-model="finLoanAmount"
                                                                    class="input-text full-width" value="" placeholder="Loan Amount" ng-pattern="/^[0-9]*$/" required />
-															<span class="input-group-addon">$</span>                                                                   
+															<span class="input-group-addon">$</span>
                                                             <!-- <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Amount is Required</b></span> -->
                                                             <!-- <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.pattern && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted)"><b>Loan Amount must be Numeric</b></span>
                                                             <span style="color:red" ng-show="ebidfinfrm.finLoanAmount.$error.required && (!ebidfinfrm.finLoanAmount.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finLoanAmount.$error.pattern"><b>Loan Amount is Required</b></span> -->
@@ -5298,12 +5299,12 @@ $.ajax({
                                                         <div class="col-sm-3 col-md-3">
                                                             <label>Tell us about yourself</label>
                                                         </div>
-                                                        
+
                                                         <div class="col-sm-4 col-md-4">
                                                             <input type="text"
                                                                    id="finFnameperson" name="finFnameperson" ng-model="finFnameperson"
                                                                    class="input-text full-width" value="" placeholder="First Name" required />
-                                                            <span style="color:red" ng-show="ebidfinfrm.finFnameperson.$error.required && (!ebidfinfrm.finFnameperson.$pristine || ebidfinfrm.$submitted)"><b>First Name is Required</b></span>       
+                                                            <span style="color:red" ng-show="ebidfinfrm.finFnameperson.$error.required && (!ebidfinfrm.finFnameperson.$pristine || ebidfinfrm.$submitted)"><b>First Name is Required</b></span>
                                                         </div>
                                                         <div class="col-sm-4 col-md-4">
                                                             <input type="text"
@@ -5368,8 +5369,8 @@ $.ajax({
                                                             <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.required && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>No of years is Required</b></span>
                                                         </div> -->
                                                     </div>
-                                                    
-                                                    
+
+
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3">
                                                         </div>
@@ -5381,10 +5382,10 @@ $.ajax({
                                                             <span style="color:red" ng-show="ebidfinfrm.finAnnualIncome.$error.required && (!ebidfinfrm.finAnnualIncome.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>Finance Annual Income is Required</b></span>
                                                         </div>
                                                     </div><br/>
-                                                    
+
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3">
-                                                            
+
                                                         </div>
                                                     	    <div class="col-sm-4 col-md-4">
                                                             <input type="text"
@@ -5393,10 +5394,10 @@ $.ajax({
                                                             <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.pattern && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted)"><b>No of years must be Numeric</b></span>
                                                             <span style="color:red" ng-show="ebidfinfrm.finNoofYears.$error.required && (!ebidfinfrm.finNoofYears.$pristine || ebidfinfrm.$submitted) && !ebidfinfrm.finAnnualIncome.$error.pattern"><b>No of years is Required</b></span>
                                                         </div>
-                                                    
+
                                                     </div><br />
-                                                    
-                                                    
+
+
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3">
                                                             <label>My Credit Rating</label>
@@ -5463,7 +5464,7 @@ $.ajax({
                                                             <button class="button submit-bgcolor">Submit for Loan Quotation</button>
                                                         </div>
                                                     </div><br />
-                                                    
+
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3">
                                                             &nbsp;
@@ -6134,7 +6135,7 @@ $.ajax({
                                 <!-- Start of cars tab-->
                                 <div class="tab-pane fade" id="cars-tab">
                                     <div class="title-container">
-                                        <h5>Vehicle Insurance</h5>
+                                        <h5>Give your Requirement for your Next Vehicle Insurance</h5>
                                         <p class="text-sm">Get Best Quote for Your Next Vehicle Insurance</p>
                                         <i class="flaticon-security PT10"></i>
                                     </div>
@@ -6183,7 +6184,7 @@ $.ajax({
                                             <div role="tabpanel" class="tab-pane active" id="flight3">
                                                 <form class="form-inline signup" name="ebidinsfrm" ng-submit="postInsuranceLead(ebidinsfrm.$valid)" novalidate>
 
-                                                    <div class="col-md-12 product-search-title">Insurance for car</div>
+                                                    <div class="col-md-12 product-search-title"></div>
                                                     <div class="col-md-12">&nbsp</div>
                                                     <div class="clearfix"></div>
                                                     <div class="clearfix"></div>
@@ -6517,7 +6518,7 @@ $.ajax({
                                                                     <div class="col-sm-3 col-md-3">
                                                                     	<span style="color:red" ng-show="ebidinsfrm.agree.$error.pattern && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted)"><b>Agreed Value must be Numeric</b></span>
                                                                         <span style="color:red" ng-show="ebidinsfrm.agree.$error.required && (!ebidinsfrm.agree.$pristine || ebidinsfrm.$submitted) && !ebidinsfrm.agree.$error.pattern"><b>Agreed Value is Required</b></span>
-                                                                    </div><!-- 
+                                                                    </div><!--
                                                                     <div class="col-sm-4 col-md-4 input-group">
                                                                         <input type="text"
                                                                                id="market" name="market" ng-model="market" ng-pattern="/^[0-9]*$/"
@@ -6633,7 +6634,7 @@ $.ajax({
                                                                     </ul>
 
                                                                     <ul style="float:relative;padding-left:5px;vertical-align:top;">
-                                                                        
+
                                                                         <li>
                                                                             <label>
                                                                                 <input type="checkbox" id="intExt2" name="intExt2" ng-model="intExt2"><span class="skin-color">No Claim Bonus Protection</span></a>
@@ -6890,7 +6891,7 @@ $.ajax({
                                                                         &nbsp;
                                                                     </div> -->
                                                                 </div><br />
-                                                                
+
                                                                 <div class="row" ng-show="insDriversCt == 1">
 			                                                       <div class="col-sm-12 col-md-12">
 			                                                    		<label>Please specify the Driver Details</label>
@@ -6902,7 +6903,7 @@ $.ajax({
 			                                                       </div>
 			                                                       <div class="col-sm-3 col-md-3">
 			                                                       		<input type="text" name='lname0' id='lname0' placeholder='Last Name' class="input-text full-width"/>
-			                                                       </div>	
+			                                                       </div>
 			                                                       <div class="col-sm-3 col-md-3">
 			                                                       		<div class="selector">
 				                                                                    <select class="full-width" name="inslictype0" id="inslictype0" required>
@@ -6913,7 +6914,7 @@ $.ajax({
 				                                                                        <option>OverSeas</option>
 				                                                                    </select>
 				                                                         </div>
-			                                                       </div>	
+			                                                       </div>
 			                                                       <div class="col-sm-3 col-md-3">
 			                                                       		<input type="text" name='dob0' id='dob0' onfocus="(this.type='date')" placeholder='DOB' class="input-text full-width"/>
 			                                                       </div>
@@ -6924,7 +6925,7 @@ $.ajax({
                                                                         <a id="add_row" data-toggle="tooltip" data-placement="right" title="Click to Add Driver" class="btn btn-success pull-left"><i class="soap-icon-plus"></i></a><a class="delete_row pull-right btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete Selected Driver s"><i class="soap-icon-close"></i></a>
                                                                     </div>
                                                                 </div><br />
-																
+
 
                                                                 <div class="row" ng-show="insDriversCt == 1">
                                                                     <div class="col-sm-12 col-md-12">
@@ -6943,9 +6944,9 @@ $.ajax({
 																	</table>
                                                                     </div>
                                                                 </div>
-                                                                
-                                                                
-                                                                
+
+
+
                                                                 <!-- <tr id='addr0'>
 																				<td>1</td>
 																				<td><input type="text" name='fname0' id="fname0" placeholder='First Name' class="input-text full-width"/></td>
@@ -6958,14 +6959,14 @@ $.ajax({
 				                                                                                <option>P-probation</option>
 				                                                                                <option>Full Licence</option>
 				                                                                                <option>OverSeas</option>
-				
+
 				                                                                            </select>
 				                                                                    </div>
 			                                                                    </td>
 																				<td><input type="text" name='dob0' onfocus="(this.type='date')" placeholder='DOB' class="input-text full-width"/></td>
 																			</tr>
 														                    <tr id='addr1'></tr> -->
-                                                                
+
                                                                 <!--onclick="javascript:appendRow944()"   -->
                                                                <!--  <div class="row" ng-show="insDriversCt == 1">
                                                                     <div class="col-sm-12 col-md-12">
@@ -7050,7 +7051,7 @@ $.ajax({
                                                         <button class="button submit-bgcolor">Select your Insurance coverage</button>
                                                         <!-- <button type="submit" class="search-button btn transition-effect">Build</button> -->
                                                     </div>
-                                                    
+
                                                     <div class="row">
                                                         <div class="col-sm-5 col-md-6">
                                                             <!-- <div class="checkbox">
@@ -8147,7 +8148,7 @@ $.ajax({
                                 <!-- Start of cruise  tab-->
                                 <div class="tab-pane fade" id="cruises-tab">
                                     <div class="title-container">
-                                        <h5>Vehicle Service & Maintenance</h5>
+                                        <h5>Give your Requirement for your next Serv & Main</h5>
                                         <p class="text-sm">Get Best Quote from Selected Quality Mechanics</p>
                                         <i class="flaticon-mechanic PT10"></i>
                                     </div>
@@ -8196,8 +8197,7 @@ $.ajax({
                                             <div role="tabpanel" class="tab-pane active" id="flight4">
                                                 <form class="form-inline signup" name="ebidservfrm" ng-submit="postServMaintLead(ebidservfrm.$valid)" novalidate>
                                                     <div class="col-md-12 product-search-title">
-                                                        Service
-                                                        for car
+                                                       
                                                     </div>
 
 
@@ -8596,8 +8596,8 @@ $.ajax({
                                                             <button id="uploadPhotoServbutton" class="button submit-bgcolor">Submit for Request Quotation</button>
                                                         </div>
                                                     </div><br />
-                                                    
-                                                    
+
+
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3">
                                                             &nbsp;
@@ -9338,7 +9338,7 @@ $.ajax({
                                 <!-- Start of flight stt  tab-->
                                 <div class="tab-pane fade" id="flight-status-tab">
                                     <div class="title-container">
-                                        <h5>Want to Move your Vehicle</h5>
+                                        <h5>Give you’re Requirement to your next move</h5>
                                         <p class="text-sm">Get the Best Quote for Moving your Vehicle</p>
                                         <i class="flaticon-evacuator PT10"></i>
                                     </div>
@@ -9388,8 +9388,7 @@ $.ajax({
 
                                                 <form class="form-inline signup" name="ebidtransfrm" ng-submit="posttransLead(ebidtransfrm.$valid)" novalidate>
                                                     <div class="col-md-12 product-search-title">
-                                                        Transport
-                                                        for car
+                                                        
                                                     </div>
                                                     <div class="col-md-12">&nbsp</div>
                                                     <div class="clearfix"></div>
@@ -9493,7 +9492,7 @@ $.ajax({
                                                             <label>When do you want this to be picked up & delivered?</label>
                                                         </div>
                                                         <div class="col-sm-4 col-md-4">
-                                                            <input type="text" onfocus="(this.type='date')" 
+                                                            <input type="text" onfocus="(this.type='date')"
                                                                    id="transPickup" name="transPickup" ng-model="transPickup"
                                                                    class="input-text full-width"  placeholder="Pickup Date" required />
                                                             <span style="color:red" ng-show="ebidtransfrm.transPickup.$error.required && (!ebidtransfrm.transPickup.$pristine || ebidtransfrm.$submitted)"><b> Pick up Date is Required</b></span>
@@ -9673,7 +9672,7 @@ $.ajax({
                                                                         </div>
                                                                     </div>
                                                                 </div><br />
-                                                                
+
                                                                 <div class="row">
                                                                     <div class="col-sm-12 col-md-12">
                                                                         <table id="my-table922" align="center" cellspacing="0" cellpadding="0" border="0">
@@ -9873,18 +9872,18 @@ $.ajax({
                                                         </div>
                                                     </div>
                                                     <br />
-                                                    
+
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3">
                                                             &nbsp;
                                                         </div>
                                                         <div class="col-sm-5 col-md-6">
                                                             <button id="uploadPhotoTransbutton" class="button submit-bgcolor">Submit Request for Quotation</button>
-                                                        
+
                                                         </div>
-                                                        
+
                                                     </div><br />
-                                                    
+
                                                     <div class="row">
                                                         <div class="col-sm-3 col-md-3">
                                                             &nbsp;
@@ -10412,7 +10411,7 @@ $.ajax({
                                 <!-- Start o online-checkin-tab-->
                                 <div class="tab-pane fade" id="online-checkin-tab">
                                     <div class="title-container">
-                                        <h5>Registration of</h5>
+                                        <h5>Lets Help you to Take you!</h5>
                                         <p class="text-sm">
                                             We're bringing you a new level of
                                             comfort.
@@ -10505,7 +10504,7 @@ $.ajax({
                                                                 <select class="full-width" id="car-reg-vehType"
                                                                         name="carregvehType" ng-model="carregvehType"
                                                                         required>
-                                                                    <option value="" disabled selected>Service Type</option>    
+                                                                    <option value="" disabled selected>Service Type</option>
                                                                     <option>Vehicle Renewal</option>
                                                                     <option>Address Change</option>
                                                                     <option>Check Registration</option>
@@ -10596,7 +10595,7 @@ $.ajax({
                                                             </div> -->
                                                             By proceeding further or using AutoScoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">AutoScoop Terms of Use</a>
                                                         </div>
-                                                        
+
                                                         <div class="col-sm-2 col-md-2">
                                                         </div>
                                                     </div><br />
@@ -11343,7 +11342,7 @@ $.ajax({
                     <div class="col-md-3 col-sm-3 first-step text-center">
                         <!--<i class="fa fa-search"></i>-->
                         <img src="images/requestquote.png" class="icon-ht PB20"/>
-                       
+
                         <p>
                             Request EBid-R for all your vehicle requirement
                         </p>
@@ -11411,7 +11410,7 @@ $.ajax({
                 <p>
                     I thought to myself - 'there must be a better way, a way where I am in the driving seat - other people must be as frustrated as me'</p>
                 <p>
-                    With this thought in mind, <b>AutoScoop</b> was conceived. The idea was tested through an extensive survey and not surprising the results showed many people 
+                    With this thought in mind, <b>AutoScoop</b> was conceived. The idea was tested through an extensive survey and not surprising the results showed many people
                     are as frustrated as be. Invigorated I worked further on the vision and developed the idea further, drawing on an extensive network of likeminded
                      individuals to make the magic happen!</p>
                 <p> We have faith that with our dedication and hard work, we will be able to add true value to the life of the Australian and put each of us in the driving seat!</p>
@@ -11519,7 +11518,7 @@ $.ajax({
             setTimeout(function () {
                 tjq(".notification-area").append('<div class="info-box block"><span class="close"></span><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ab quis a dolorem, placeat eos doloribus esse repellendus quasi libero illum dolore. Esse minima voluptas magni impedit, iusto, obcaecati dignissimos.</p></div>');
             }, 10000);
-           
+
         });
         tjq('a[href="#profile"]').on('shown.bs.tab', function (e) {
             tjq(".view-profile").show();
@@ -11828,7 +11827,8 @@ $.ajax({
                     bucket.putObject(params, function (err, data) {
                         alert("Successfully started to Upload the photos" + file.name + " Please don't refresh or switch from the homepage.. This will take some time..");
                         if (err) {
-                            alert("Sorry we are not able to upload photo " + file.name + "for service and maintenance.. It failed with following error " + err + " However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                            alert("Sorry we are not able to upload your photo " + file.name + "for service and maintenance.. It failed with following error " + err + " It could be because of Idle time for more than 10 mins, so it will signout plz login again. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                        	signingout();
                         } else {
                             //alert("Successfully upload serv and maint image1 to S3");
                             alert("Successfully uploaded photo " + file.name + " to database");
@@ -11837,12 +11837,12 @@ $.ajax({
                                 alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
                                  var url = "Db_BetaV1.html";
                 				window.location = url;
-                				// end of redirect from Serv && Maint 
+                				// end of redirect from Serv && Maint
                             }
                         }
                     });
                 } else {
-                    alert("We found Nothing to upload for serv and maint image1");
+                    //alert("We found Nothing to upload for serv and maint image1");
                 }
 
                 // for service maint 2 start
@@ -11856,10 +11856,13 @@ $.ajax({
                         ACL: 'authenticated-read'
                     };
                     bucket.putObject(params, function (err, data) {
+                        if(!file){
                         alert("Successfully started to Upload the photos" + file2.name + " Please don't refresh or switch from the homepage.. This will take some time..");
+                        }
                         if (err) {
                             //alert("not able to upload serv and maint image2"+err);
-                            alert("Sorry we are not able to upload photo " + file2.name + "for service and maintenance.. It failed with following error " + err + " However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                            alert("Sorry we are not able to upload your photo " + file2.name + "for service and maintenance.. It failed with following error " + err + " It could be because of Idle time for more than 10 mins, so it will signout plz login again. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                        	signingout();
                         } else {
                             //alert("Successfully upload serv and maint image2 to S3");
                             alert("Successfully uploaded photo " + file2.name + " to database");
@@ -11868,14 +11871,14 @@ $.ajax({
                               alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
                                var url = "Db_BetaV1.html";
               				window.location = url;
-              				// end of redirect from Serv && Maint 
+              				// end of redirect from Serv && Maint
                           }
                         }
                     });
 
 
                 } else {
-                    alert("We found Nothing to upload for serv and maint image2");
+                    //alert("We found Nothing to upload for serv and maint image2");
                 }
                 // end
 
@@ -11889,10 +11892,13 @@ $.ajax({
                         ACL: 'authenticated-read'
                     };
                     bucket.putObject(params, function (err, data) {
+                    if(!file && !file2){
                         alert("Successfully started to Upload the photos" + file3.name + " Please don't refresh or switch from the homepage.. This will take some time..");
+                        }
                         if (err) {
                             //alert("not able to upload serv and maint image3"+err);
-                            alert("Sorry we are not able to upload photo " + file3.name + "for service and maintenance.. It failed with following error " + err + " However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                            alert("Sorry we are not able to upload your photo " + file3.name + "for service and maintenance.. It failed with following error " + err + " It could be because of Idle time for more than 10 mins, so it will signout plz login again. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                        	signingout();
                         } else {
                             //alert("Successfully upload serv and maint image3 to S3");
                             alert("Successfully uploaded photo " + file3.name + " to database");
@@ -11901,12 +11907,12 @@ $.ajax({
                               alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
                                var url = "Db_BetaV1.html";
               				window.location = url;
-              				// end of redirect from Serv && Maint 
+              				// end of redirect from Serv && Maint
                           }
                         }
                     });
                 } else {
-                    alert("We found Nothing to upload for serv and maint image3");
+                    //alert("We found Nothing to upload for serv and maint image3");
 
 
                 }
@@ -11920,10 +11926,13 @@ $.ajax({
                         ACL: 'authenticated-read'
                     };
                     bucket.putObject(params, function (err, data) {
+                    if(!file && !file2 && !file3){
                         alert("Successfully started to Upload the photos" + file4.name + " Please don't refresh or switch from the homepage.. This will take some time..");
+                        }
                         if (err) {
                             //alert("not able to upload serv and maint image4"+err);
-                            alert("Sorry we are not able to upload photo " + file4.name + "for service and maintenance.. It failed with following error " + err + " However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                            alert("Sorry we are not able to upload your photo " + file4.name + "for service and maintenance.. It failed with following error " + err + " It could be because of Idle time for more than 10 mins, so it will signout plz login again. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                        	signingout();
                         } else {
                             //alert("Successfully upload serv and maint image4 to s3");
                             //alert("Successfully uploaded photo " + file4.name + " to database");
@@ -11931,17 +11940,17 @@ $.ajax({
                             alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
                              var url = "Db_BetaV1.html";
             				window.location = url;
-            				// end of redirect from Serv && Maint 
+            				// end of redirect from Serv && Maint
                         }
                     });
 
                 } else {
-                    alert("We found Nothing to upload for serv and maint image4");
+                    //alert("We found Nothing to upload for serv and maint image4");
 
                 }
                 // end
-                
-              
+
+
 
             //}, false);
 
@@ -11961,7 +11970,7 @@ $.ajax({
              */
 
             //alert("Setting up photo upload");
-            
+
             window.fbAsyncInit = function () {
                 FB.init({
 
@@ -12059,7 +12068,7 @@ $.ajax({
                     Bucket: bucketName
                 }
             });
-            
+
             accessToken = $.jStorage.get("fbAToken");
    	     //alert(accessToken);
    				bucket.config.credentials = new AWS.WebIdentityCredentials({
@@ -12077,7 +12086,7 @@ $.ajax({
             // start of transp
             //buttontranp.addEventListener('click', function () {
                 //alert("Preparing to upload Transport images...");
-               
+
                 var file = fileChoosertransp1.files[0];
                 var file2 = fileChoosertransp2.files[0];
                 fbUserId = $.jStorage.get("fbKey");
@@ -12095,18 +12104,19 @@ $.ajax({
                         alert("Successfully started to Upload the photos" + file.name + " Please don't refresh or switch from the homepage.. This will take some time..");
                         if (err) {
                             //alert("not able to upload transport image"+err);
-                            alert("Sorry we are not able to upload photo " + file.name + "for transport service.. It failed with following error " + err + "However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                            alert("Sorry we are not able to upload your photo " + file.name + "for transport service.. It failed with following error " + err + "It could be because of Idle time for more than 10 mins, so it will signout plz login again. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                        	signingout();
                         } else {
 
                             //alert("Successfully uploaded for transpo image1 to S3");
                             alert("Successfully uploaded photo " + file.name + " to database");
                             if(!file2){
                           	  // start redirect from trans
-                          	  
+
                               alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
                                var url = "Db_BetaV1.html";
               				window.location = url;
-              				// end of redirect from trans 
+              				// end of redirect from trans
                           }
 
                         }
@@ -12115,7 +12125,7 @@ $.ajax({
 
                 } else {
 
-                    alert("We found Nothing to upload for transport server photo1");
+                    //alert("We found Nothing to upload for transport server photo1");
 
                 }
                 if (file2) {
@@ -12127,27 +12137,30 @@ $.ajax({
                         ACL: 'authenticated-read'
                     };
                     bucket.putObject(params, function (err, data) {
+                    if(!file){
                         alert("Successfully started to Upload the photos" + file2.name + " Please don't refresh or switch from the homepage.. This will take some time..");
+                        }
                         if (err) {
                             //alert("not able to upload transport image 2"+err);
-                            alert("Sorry we are not able to upload photo " + file2.name + "for transport service.. It failed with following error" + err + "However please send the photo to autoscoop support team which will upload and link it to your account thanks");
+                            alert("Sorry we are not able to upload your photo " + file2.name + "for transport service.. It failed with following error" + err + "It could be because of Idle time for more than 10 mins, so it will signout plz login again. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+							signingout();
                         } else {
                             //alert("Successfully uploaded transpo image2 to s3");
                             //alert("Successfully uploaded photo " + file2.name + " to database");
                             // start redirect from trans
-                           
+
                             alert("Successfully Uploaded all the photos.. Now redirecting to your dashboard..");
                              var url = "Db_BetaV1.html";
             				window.location = url;
-            				// end of redirect from trans 
+            				// end of redirect from trans
 
                         }
                     });
                 } else {
 
-                    alert("We found Nothing to upload for transport server photo2");
+                    //alert("We found Nothing to upload for transport server photo2");
                 }
-               
+
             //}, false);
 
             /*!
@@ -12166,7 +12179,7 @@ $.ajax({
 
             //alert("Setting up photo upload");
            /*  FB.getLoginStatus(function (response) {
-                alert("Please select photos to upload..");
+                //alert("Please select photos to upload..");
                 if (response.status === 'connected') {
                     //alert("inside connected");
                     bucket.config.credentials = new AWS.WebIdentityCredentials({
