@@ -11670,7 +11670,7 @@ $.ajax({
 
             //alert("Setting up photo upload");
             FB.getLoginStatus(function (response) {
-                alert("You are ready to upload photos..");
+                //alert("You are ready to upload photos..");
                 if (response.status === 'connected') {
                     //alert("inside connected");
                     bucket.config.credentials = new AWS.WebIdentityCredentials({

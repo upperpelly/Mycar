@@ -724,12 +724,12 @@ var insQCt=result.insuranceQuotation.length;
       	         	  forFinance("datatranspserv",out11);}
       	         	  
       	         	out12="";
-   	         	   
+      	         	out12 += '<tr><th>'+"Reminder Type"+'</th><th>'+"Vehicle Type"+'</th><th>'+"Rego No/VIN"+'</th><th>'+"Message"+'</th><th>'+"Due Date"+'</th></tr>';
    	         	   
    	         	   for(i=result.userNotification.length-1;i>=0;i--)
    	        		{
    	        		
-   	        		out12= out12+'<tr>'+'<td>'+result.userNotification[i].code+'</td>'+'<td>'+result.userNotification[i].typeOfReq+'</td>'+'<td>'+result.userNotification[i].makeDescription+'</td>'+'<td>'+result.userNotification[i].comment+'</td></tr>';
+   	        		out12= out12+'<tr>'+'<td>'+result.userNotification[i].code+'</td>'+'<td>'+result.userNotification[i].typeOfReq+'</td>'+'<td>'+result.userNotification[i].makeDescription+'</td>'+'<td>'+result.userNotification[i].flex11+'</td>'+'<td>'+result.userNotification[i].comment+'</td></tr>';
    	        		
    	        		
    	        		}
