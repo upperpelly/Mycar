@@ -146,7 +146,7 @@ var modelYear=null;
     
 
     function redirect() {
-    	alert("Thank You. Your are redirected.. ");
+    	//alert("Thank You. Your are redirected.. ");
     	//alert("userid"+userId);
     	var url="Db_BetaV1.html";
     	//var url="Db_BetaV1.html?userId="+userId+"&searchId="+searchId+"&firstName="+firstName;
@@ -352,8 +352,8 @@ var modelYear=null;
 											            table.splice(0,1);
 											            
 											            jsonInputToAPI.insuranceLead.searchInsAdditionalDriv = table ;
-											            alert(JSON.stringify(jsonInputToAPI));
-											            console.log(JSON.stringify(jsonInputToAPI));
+											            //alert(JSON.stringify(jsonInputToAPI));
+											            //console.log(JSON.stringify(jsonInputToAPI));
 														//alert("Before Call");
 														var wsURL = 'api/eBid/car';
 														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/car';
