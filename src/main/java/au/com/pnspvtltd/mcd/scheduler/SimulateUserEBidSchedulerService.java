@@ -239,6 +239,7 @@ public class SimulateUserEBidSchedulerService {
 					if(!search.isVehIdentRegoOne()){
 					insNotification.setCode("ReGo Due Date"); // reminder Type
 					insNotification.setTypeOfReq("My Car");// vehicle Type
+					insNotification.setMyVehicleId(search.getMyVehicleId()); // set MyVehicleId
 					insNotification.setMakeDescription(search.getRegNum() +"/"+search.getVin());//RegoNo/Vin Number
 					insNotification.setComment("ReGo due for "+"Car"+" with Registration No "+search.getRegNum()+" is on Date & Time "+search.getRegExpDate()+", which is in this week (i.e) No. of " +getDaysBetween(event,weekToday)+" days left");
 					insNotification.setFlex11(search.getRegExpDate());
@@ -262,6 +263,7 @@ public class SimulateUserEBidSchedulerService {
 					if(!search.isVehIdentRegoRemTwo()){
 					insNotification.setCode("ReGo Due Date"); // reminder Type
 					insNotification.setTypeOfReq("My Car");// vehicle Type
+					insNotification.setMyVehicleId(search.getMyVehicleId()); // set MyVehicleId
 					insNotification.setMakeDescription(search.getRegNum() +"/"+search.getVin());//RegoNo/Vin Number
 					insNotification.setComment("ReGo due for "+"Car"+" with Registration No "+search.getRegNum()+" is on Date & Time "+search.getRegExpDate()+", which is in next week (i.e) No. of " +getDaysBetween(event,weekToday)+" days left");
 					insNotification.setFlex11(search.getRegExpDate());
@@ -285,6 +287,7 @@ public class SimulateUserEBidSchedulerService {
 					if(!search.isVehIdentRegoRemMon()){
 						insNotification.setCode("ReGo Due Date"); // reminder Type
 						insNotification.setTypeOfReq("My Car");// vehicle Type
+						insNotification.setMyVehicleId(search.getMyVehicleId()); // set MyVehicleId
 						insNotification.setMakeDescription(search.getRegNum() +"/"+search.getVin());//RegoNo/Vin Number
 						insNotification.setComment("ReGo due for "+"Car"+" with Registration No "+search.getRegNum()+" is on Date & Time "+search.getRegExpDate()+", which is in next month (i.e) No. of " +getDaysBetween(event,weekToday)+" days left");
 						insNotification.setFlex11(search.getRegExpDate());
@@ -319,6 +322,7 @@ public class SimulateUserEBidSchedulerService {
 						if(!search.isVehInsRemOne()){
 							insNotification.setCode("Insurance Due Date"); // reminder Type
 							insNotification.setTypeOfReq("My Car");// vehicle Type
+							insNotification.setMyVehicleId(search.getMyVehicleId()); // set MyVehicleId
 							insNotification.setMakeDescription(search.getRegNum() +"/"+search.getVin());//RegoNo/Vin Number
 							insNotification.setComment("Insurance Due Date for "+"Car"+" with Registration No "+search.getRegNum()+" is on Date & Time "+search.getInsExpiry()+", which is in this week (i.e) No. of " +getDaysBetween(event,weekToday)+" days left");
 							insNotification.setFlex11(search.getInsExpiry());
@@ -342,6 +346,7 @@ public class SimulateUserEBidSchedulerService {
 						if(!search.isVehInsRemTwo()){
 							insNotification.setCode("Insurance Due Date"); // reminder Type
 							insNotification.setTypeOfReq("My Car");// vehicle Type
+							insNotification.setMyVehicleId(search.getMyVehicleId()); // set MyVehicleId
 							insNotification.setMakeDescription(search.getRegNum() +"/"+search.getVin());//RegoNo/Vin Number
 							insNotification.setComment("Insurance Due Date for "+"Car"+" with Registration No "+search.getRegNum()+" is on Date & Time "+search.getInsExpiry()+", which is in next two weeks (i.e) No. of " +getDaysBetween(event,weekToday)+" days left");
 							insNotification.setFlex11(search.getInsExpiry());
@@ -365,6 +370,7 @@ public class SimulateUserEBidSchedulerService {
 						if(!search.isVehInsRemMon()){
 							insNotification.setCode("Insurance Due Date"); // reminder Type
 							insNotification.setTypeOfReq("My Car");// vehicle Type
+							insNotification.setMyVehicleId(search.getMyVehicleId()); // set MyVehicleId
 							insNotification.setMakeDescription(search.getRegNum() +"/"+search.getVin());//RegoNo/Vin Number
 							insNotification.setComment("Insurance Due Date for "+"Car"+" with Registration No "+search.getRegNum()+" is on Date & Time "+search.getInsExpiry()+", which is in next month (i.e) No. of " +getDaysBetween(event,weekToday)+" days left");
 							insNotification.setFlex11(search.getInsExpiry());
@@ -400,6 +406,7 @@ public class SimulateUserEBidSchedulerService {
 						if(!search.isVehFinRemOne()){
 							insNotification.setCode("Finance EMI due date"); // reminder Type
 							insNotification.setTypeOfReq("My Car");// vehicle Type
+							insNotification.setMyVehicleId(search.getMyVehicleId()); // set MyVehicleId
 							insNotification.setMakeDescription(search.getRegNum() +"/"+search.getVin());//RegoNo/Vin Number
 							insNotification.setComment("Finance EMI for "+"Car"+" with Registration No "+search.getRegNum()+" is on Date & Time "+search.getLoanTakenDt()+", which is in this week (i.e) No. of " +getDaysBetween(event,weekToday)+" days left");
 							insNotification.setFlex11(search.getLoanTakenDt());
@@ -423,6 +430,7 @@ public class SimulateUserEBidSchedulerService {
 						if(!search.isVehFinRemTwo()){
 							insNotification.setCode("Finance EMI due date"); // reminder Type
 							insNotification.setTypeOfReq("My Car");// vehicle Type
+							insNotification.setMyVehicleId(search.getMyVehicleId()); // set MyVehicleId
 							insNotification.setMakeDescription(search.getRegNum() +"/"+search.getVin());//RegoNo/Vin Number
 							insNotification.setComment("Finance EMI for "+"Car"+" with Registration No "+search.getRegNum()+" is on Date & Time "+search.getLoanTakenDt()+", which is in next two weeks (i.e) No. of " +getDaysBetween(event,weekToday)+" days left");
 							insNotification.setFlex11(search.getLoanTakenDt());
@@ -445,6 +453,7 @@ public class SimulateUserEBidSchedulerService {
 						if(!search.isVehFinRemMon()){
 							insNotification.setCode("Finance EMI due date"); // reminder Type
 							insNotification.setTypeOfReq("My Car");// vehicle Type
+							insNotification.setMyVehicleId(search.getMyVehicleId()); // set MyVehicleId
 							insNotification.setMakeDescription(search.getRegNum() +"/"+search.getVin());//RegoNo/Vin Number
 							insNotification.setComment("Finance EMI for "+"Car"+" with Registration No "+search.getRegNum()+" is on Date & Time "+search.getLoanTakenDt()+", which is in this month (i.e) No. of " +getDaysBetween(event,weekToday)+" days left");
 							insNotification.setFlex11(search.getLoanTakenDt());
@@ -478,6 +487,7 @@ public class SimulateUserEBidSchedulerService {
 						if(!search.isVehServRemOne()){
 							insNotification.setCode("S&M Next due date"); // reminder Type
 							insNotification.setTypeOfReq("My Car");// vehicle Type
+							insNotification.setMyVehicleId(search.getMyVehicleId()); // set MyVehicleId
 							insNotification.setMakeDescription(search.getRegNum() +"/"+search.getVin());//RegoNo/Vin Number
 							insNotification.setComment("Service and Maintenance Next Date for "+"Car"+" with Registration No "+search.getRegNum()+" is on Date & Time "+search.getLoanTakenDt()+", which is in this week (i.e) No. of " +getDaysBetween(event,weekToday)+" days left");
 							insNotification.setFlex11(search.getLoanTakenDt());
@@ -500,6 +510,7 @@ public class SimulateUserEBidSchedulerService {
 						if(!search.isVehServRemTwo()){
 							insNotification.setCode("S&M Next due date"); // reminder Type
 							insNotification.setTypeOfReq("My Car");// vehicle Type
+							insNotification.setMyVehicleId(search.getMyVehicleId()); // set MyVehicleId
 							insNotification.setMakeDescription(search.getRegNum() +"/"+search.getVin());//RegoNo/Vin Number
 							insNotification.setComment("Service and Maintenance Next Date for "+"Car"+" with Registration No "+search.getRegNum()+" is on Date & Time "+search.getLoanTakenDt()+", which is in next two weeks (i.e) No. of " +getDaysBetween(event,weekToday)+" days left");
 							insNotification.setFlex11(search.getLoanTakenDt());
@@ -522,6 +533,7 @@ public class SimulateUserEBidSchedulerService {
 						if(!search.isVehServRemMon()){
 							insNotification.setCode("S&M Next due date"); // reminder Type
 							insNotification.setTypeOfReq("My Car");// vehicle Type
+							insNotification.setMyVehicleId(search.getMyVehicleId()); // set MyVehicleId
 							insNotification.setMakeDescription(search.getRegNum() +"/"+search.getVin());//RegoNo/Vin Number
 							insNotification.setComment("Service and Maintenance Next Date for "+"Car"+" with Registration No "+search.getRegNum()+" is on Date & Time "+search.getLoanTakenDt()+", which is in next month (i.e) No. of " +getDaysBetween(event,weekToday)+" days left");
 							insNotification.setFlex11(search.getLoanTakenDt());

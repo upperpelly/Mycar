@@ -14,7 +14,7 @@ public class UserNotificationVO {
 
 	
 	private Long userNotificationId;
-	
+	private Long myVehicleId;
 	
 	
 	private String code;
@@ -25,7 +25,29 @@ public class UserNotificationVO {
 	private Date startDate;
 	private Date endDate;
 	
+	private boolean status;
 	
+	
+	
+	
+	public Long getMyVehicleId() {
+		return myVehicleId;
+	}
+
+
+	public void setMyVehicleId(Long myVehicleId) {
+		this.myVehicleId = myVehicleId;
+	}
+
+
+	public boolean isStatus() {
+		return status;
+	}
+
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 	
 	
 	

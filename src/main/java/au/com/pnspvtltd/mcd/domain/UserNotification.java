@@ -37,7 +37,7 @@ import javax.persistence.Table;
 	
 	private Long userNotificationId;
 	
-	
+	private Long myVehicleId;
 	
 	private String code;
 	private String typeOfReq;
@@ -47,10 +47,30 @@ import javax.persistence.Table;
 	private Date startDate;
 	private Date endDate;
 	
+	private boolean status;
 	
 	
 	
-	
+	public Long getMyVehicleId() {
+		return myVehicleId;
+	}
+
+
+	public void setMyVehicleId(Long myVehicleId) {
+		this.myVehicleId = myVehicleId;
+	}
+
+
+	public boolean isStatus() {
+		return status;
+	}
+
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "USERNOTIFICATIONID") public Long getUserNotificationId() {
 		return userNotificationId;
 	}

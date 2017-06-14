@@ -61,14 +61,14 @@ var modelYear=null;
     searchId=null;
     window.onload= function()
     {
-    	/* alert("pageName 11  now "); */
-    	for(i=1; i<=11;i++){
+    	/* alert("pageName 11  now "); Commented on images */
+    	/*for(i=1; i<=11;i++){
             var stringValue= "<li><img src='https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/"+value1.tempCarModelHeaderVO.tempCarModelHeaderId+"ext"+i+".jpg"+"'";
             //alert(stringValue);
             $("#TempImage").append(stringValue+" alt=''/></li>");
             $("#TempImage2").append(stringValue+" alt=''/></li>");
             
-            }
+            }*/
     	var priceMin = value1.priceMin;
     	document.getElementById('minValue').innerHTML=priceMin;
     	//alert("market value");

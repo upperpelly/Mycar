@@ -22,6 +22,7 @@ import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
 import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
 import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
 import au.com.pnspvtltd.mcd.domain.User;
+import au.com.pnspvtltd.mcd.domain.UserNotification;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
@@ -35,12 +36,14 @@ import au.com.pnspvtltd.mcd.web.model.UserEBidServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidTransServVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
+import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.repository.MyVehicleFuelExpensesRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleLogBookRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleServMaintRepository;
+import au.com.pnspvtltd.mcd.repository.UserNotificationRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 
@@ -52,7 +55,8 @@ public class UserEBidController {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+	@Autowired
+	private UserNotificationRepository userNotificationRepository;
 	@Autowired
 	UserEBidService userEBidService;
 	@Autowired
@@ -294,6 +298,57 @@ public class UserEBidController {
 						
 					//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
 				}
+				return vehicleQuotationVO;
+	}
+	
+	@PutMapping("myVehicleNotifyeUpdate")
+	@Transactional
+	public UserNotificationVO myVehicleNotifyUpdate(@RequestBody UserNotificationVO vehicleQuotationVO,
+			HttpServletResponse response) {
+		  //TODO: create a service for VehicleQutotation to update quotation details
+		LOGGER.debug("Received request to update with Notification Id {}", vehicleQuotationVO.getUserNotificationId());
+		
+		//LOGGER.debug("Received request to update my vehicle with Notification Id {}", vehicleQuotationVO.getMyVehicleId());
+				if(vehicleQuotationVO != null){
+					UserNotification userNotification = userNotificationRepository.findOne(vehicleQuotationVO.getUserNotificationId());
+					if(vehicleQuotationVO.getMyVehicleId() != null){
+					MyVehicle vehicleQuotation = myVehicleRepository.findOne(vehicleQuotationVO.getMyVehicleId());
+					
+					if(vehicleQuotationVO.getCode().equalsIgnoreCase("ReGo Due Date")){
+					vehicleQuotation.setRegExpDate(vehicleQuotationVO.getFlex11());
+					vehicleQuotation.setVehIdentRegoRemMon(true);
+					vehicleQuotation.setVehIdentRegoRemTwo(true);
+					vehicleQuotation.setVehIdentRegoOne(true);
+					
+					}
+					if(vehicleQuotationVO.getCode().equalsIgnoreCase("Insurance Due Date")){
+						vehicleQuotation.setInsExpiry(vehicleQuotationVO.getFlex11());
+						vehicleQuotation.setVehInsRemMon(true);
+						vehicleQuotation.setVehInsRemTwo(true);
+						vehicleQuotation.setVehInsRemOne(true);
+						
+						}
+					if(vehicleQuotationVO.getCode().equalsIgnoreCase("Finance EMI due date")){
+						vehicleQuotation.setLoanTakenDt(vehicleQuotationVO.getFlex11());
+						vehicleQuotation.setVehFinRemMon(true);
+						vehicleQuotation.setVehFinRemTwo(true);
+						vehicleQuotation.setVehFinRemOne(true);
+						
+						}
+					if(vehicleQuotationVO.getCode().equalsIgnoreCase("S&M Next due date")){
+						vehicleQuotation.setNextServiceDt(vehicleQuotationVO.getFlex11());
+						vehicleQuotation.setVehServRemMon(true);
+						vehicleQuotation.setVehServRemTwo(true);
+						vehicleQuotation.setVehServRemOne(true);
+						}
+					
+					myVehicleRepository.flush();
+					}
+					userNotification.setStatus(true);
+					userNotificationRepository.flush();	
+					//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+				}
+				
 				return vehicleQuotationVO;
 	}
 }

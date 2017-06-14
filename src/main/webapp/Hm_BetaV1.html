@@ -2032,12 +2032,7 @@ $.ajax({
                     //alert("invoke in ins lead");
                     /*alert($scope.email);
                     alert(email); */
-                    alert("postCode"+$scope.postcode1111);
-                    alert("postCode"+$scope.insDriverDOB);
-                    alert("postCode"+$scope.insLicIssueDt);
-                    alert("postCode"+$scope.insLastfaultDt);
-
-
+                    
                     //jsonInputToAPI.searchTranspLead.carModel = table;
 
                     //alert(JSON.stringify(table));
@@ -6796,7 +6791,7 @@ $.ajax({
                                                                         &nbsp;
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
-                                                                        <input type="text" onfocus="(this.type='date')" name="insLicIssueDt" ng-model="insLicIssueDt" id="insLicIssueDt" class="input-text full-width" placeholder="Driving Licence issue Date" />
+                                                                        <input type="text" name="insLicIssueDt" id="insLicIssueDt" ng-model="insLicIssueDt" onfocus="(this.type='date')" class="input-text full-width" placeholder="Driving Licence issue Date" />
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
                                                                         <div class="selector">
@@ -6831,7 +6826,7 @@ $.ajax({
                                                                         <span style="color:red" ng-show="ebidinsfrm.insfaults.$error.required && (!ebidinsfrm.insfaults.$pristine || ebidinsfrm.$submitted)"><b>faults is Required</b></span>
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4" ng-if="insfaults != '0'">
-                                                                        <input type="text" onfocus="(this.type='date')" name="insLastfaultDt" id="insLastfaultDt" ng-model="insLastfaultDt" class="input-text full-width" placeholder="Last Fault claim Date" />
+                                                                        <input type="text" name="insLastfaultDt" id="insLastfaultDt" ng-model="insLastfaultDt" onfocus="(this.type='date')" class="input-text full-width" placeholder="Last Fault claim Date" />
                                                                     </div>
                                                                 </div><br />
 
@@ -11827,8 +11822,8 @@ $.ajax({
                     bucket.putObject(params, function (err, data) {
                         alert("Successfully started to Upload the photos" + file.name + " Please don't refresh or switch from the homepage.. This will take some time..");
                         if (err) {
-                            alert("Sorry we are not able to upload your photo " + file.name + "for service and maintenance.. It failed with following error " + err + " It could be because of Idle time for more than 10 mins, so it will signout plz login again. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
-                        	signingout();
+                            alert("Sorry we are not able to upload your photo " + file.name + "for service and maintenance.. It failed with following error " + err + " It could be because of Idle time for more than 10 mins, plz login again and try. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                        	//signingout();
                         } else {
                             //alert("Successfully upload serv and maint image1 to S3");
                             alert("Successfully uploaded photo " + file.name + " to database");
@@ -11861,8 +11856,8 @@ $.ajax({
                         }
                         if (err) {
                             //alert("not able to upload serv and maint image2"+err);
-                            alert("Sorry we are not able to upload your photo " + file2.name + "for service and maintenance.. It failed with following error " + err + " It could be because of Idle time for more than 10 mins, so it will signout plz login again. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
-                        	signingout();
+                            alert("Sorry we are not able to upload your photo " + file2.name + "for service and maintenance.. It failed with following error " + err + " It could be because of Idle time for more than 10 mins, plz login again and try. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                        	//signingout();
                         } else {
                             //alert("Successfully upload serv and maint image2 to S3");
                             alert("Successfully uploaded photo " + file2.name + " to database");
@@ -11897,8 +11892,8 @@ $.ajax({
                         }
                         if (err) {
                             //alert("not able to upload serv and maint image3"+err);
-                            alert("Sorry we are not able to upload your photo " + file3.name + "for service and maintenance.. It failed with following error " + err + " It could be because of Idle time for more than 10 mins, so it will signout plz login again. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
-                        	signingout();
+                            alert("Sorry we are not able to upload your photo " + file3.name + "for service and maintenance.. It failed with following error " + err + " It could be because of Idle time for more than 10 mins, plz login again and try. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                        	//signingout();
                         } else {
                             //alert("Successfully upload serv and maint image3 to S3");
                             alert("Successfully uploaded photo " + file3.name + " to database");
@@ -11931,8 +11926,8 @@ $.ajax({
                         }
                         if (err) {
                             //alert("not able to upload serv and maint image4"+err);
-                            alert("Sorry we are not able to upload your photo " + file4.name + "for service and maintenance.. It failed with following error " + err + " It could be because of Idle time for more than 10 mins, so it will signout plz login again. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
-                        	signingout();
+                            alert("Sorry we are not able to upload your photo " + file4.name + "for service and maintenance.. It failed with following error " + err + " It could be because of Idle time for more than 10 mins, plz login again and try. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                        	//signingout();
                         } else {
                             //alert("Successfully upload serv and maint image4 to s3");
                             //alert("Successfully uploaded photo " + file4.name + " to database");
@@ -12104,8 +12099,8 @@ $.ajax({
                         alert("Successfully started to Upload the photos" + file.name + " Please don't refresh or switch from the homepage.. This will take some time..");
                         if (err) {
                             //alert("not able to upload transport image"+err);
-                            alert("Sorry we are not able to upload your photo " + file.name + "for transport service.. It failed with following error " + err + "It could be because of Idle time for more than 10 mins, so it will signout plz login again. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
-                        	signingout();
+                            alert("Sorry we are not able to upload your photo " + file.name + "for transport service.. It failed with following error " + err + "It could be because of Idle time for more than 10 mins, plz login again and try. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                        	//signingout();
                         } else {
 
                             //alert("Successfully uploaded for transpo image1 to S3");
@@ -12142,8 +12137,8 @@ $.ajax({
                         }
                         if (err) {
                             //alert("not able to upload transport image 2"+err);
-                            alert("Sorry we are not able to upload your photo " + file2.name + "for transport service.. It failed with following error" + err + "It could be because of Idle time for more than 10 mins, so it will signout plz login again. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
-							signingout();
+                            alert("Sorry we are not able to upload your photo " + file2.name + "for transport service.. It failed with following error" + err + "It could be because of Idle time for more than 10 mins, plz login again and try. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+							//signingout();
                         } else {
                             //alert("Successfully uploaded transpo image2 to s3");
                             //alert("Successfully uploaded photo " + file2.name + " to database");
