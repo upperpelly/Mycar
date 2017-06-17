@@ -10,26 +10,36 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
+import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.MyVehicle;
 import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
 import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
 import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
+import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
+import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
+import au.com.pnspvtltd.mcd.web.model.SearchVO;
+import au.com.pnspvtltd.mcd.web.model.UserAdminSearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidServMaintVO;
@@ -38,6 +48,8 @@ import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
+import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
+import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.repository.MyVehicleFuelExpensesRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleLogBookRepository;
@@ -45,6 +57,7 @@ import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleServMaintRepository;
 import au.com.pnspvtltd.mcd.repository.UserNotificationRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
+import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 
 @RestController
@@ -55,6 +68,10 @@ public class UserEBidController {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private UserSearchLeadRepository userSearchLeadRepository;
+	
 	@Autowired
 	private UserNotificationRepository userNotificationRepository;
 	@Autowired
@@ -67,6 +84,8 @@ public class UserEBidController {
 	MyVehicleFuelExpensesRepository myVehicleFuelExpensesRepository;
 	@Autowired
 	MyVehicleServMaintRepository myVehicleServMaintRepository;
+	@Autowired
+	private DomainModelUtil domainModelUtil;
 	
 	@Autowired
 	MyVehicleRepository myVehicleRepository;
@@ -350,5 +369,161 @@ public class UserEBidController {
 				}
 				
 				return vehicleQuotationVO;
+	}
+	
+	@GetMapping(value = "adminuser", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserAdminSearchVO adminuser(@RequestParam("firstName") String firstName,
+			@RequestParam("lastName") String lastName, @RequestParam("email") String email,
+			@RequestParam("creationDate") Date creationDate) {
+		LOGGER.debug("Received request to get Dealer Search Finance with id {} ", firstName);
+		UserAdminSearchVO userAdminSearchVO12 = new UserAdminSearchVO();
+	if(!firstName.equalsIgnoreCase("undefined") && !lastName.equalsIgnoreCase("undefined") && !email.equalsIgnoreCase("undefined") && creationDate != null )	
+	{
+		List<UserVO> userVOs = new ArrayList<UserVO>();
+		
+		List<User> users = userRepository.getUserAllCriteria(email,firstName, lastName, creationDate);
+		for (User user : users) {
+			userVOs.add(domainModelUtil.fromUser(user, true));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	}//email, lastName, creationDate
+	else if(!lastName.equalsIgnoreCase("undefined") && !email.equalsIgnoreCase("undefined") && creationDate !=null )	
+	{
+		List<UserVO> userVOs = new ArrayList<UserVO>();
+		
+		List<User> users = userRepository.getUserEmaLasCr(email,lastName, creationDate);
+		for (User user : users) {
+			userVOs.add(domainModelUtil.fromUser(user, true));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	}//email, firstName, creationDate
+	else if(!firstName.equalsIgnoreCase("undefined") && !email.equalsIgnoreCase("undefined") && creationDate != null )	
+	{
+		List<UserVO> userVOs = new ArrayList<UserVO>();
+		
+		List<User> users = userRepository.getUserEmaFirsCr(email,firstName, creationDate);
+		for (User user : users) {
+			userVOs.add(domainModelUtil.fromUser(user, true));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	}//email, creation Date
+	else if(!email.equalsIgnoreCase("undefined") && creationDate != null )	
+	{
+		List<UserVO> userVOs = new ArrayList<UserVO>();
+		
+		List<User> users = userRepository.getUserEmaCr(email,creationDate);
+		for (User user : users) {
+			userVOs.add(domainModelUtil.fromUser(user, true));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	}// email, firstName, LastName
+	else if(!email.equalsIgnoreCase("undefined") && !firstName.equalsIgnoreCase("undefined") && !lastName.equalsIgnoreCase("undefined") )	
+	{
+		List<UserVO> userVOs = new ArrayList<UserVO>();
+		
+		List<User> users = userRepository.getUserEmaFirLas(email,firstName, lastName);
+		for (User user : users) {
+			userVOs.add(domainModelUtil.fromUser(user, true));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	}
+	// email
+		else if(!email.equalsIgnoreCase("undefined"))	
+		{
+			List<UserVO> userVOs = new ArrayList<UserVO>();
+			
+			List<User> users = userRepository.getUserEmail(email);
+			for (User user : users) {
+				userVOs.add(domainModelUtil.fromUser(user, true));
+			
+			}
+			userAdminSearchVO12.setUserVO(userVOs);
+		}
+	// creation Date
+			else if(creationDate != null)	
+			{
+				List<UserVO> userVOs = new ArrayList<UserVO>();
+				
+				List<User> users = userRepository.getUserCreationDate(creationDate);
+				for (User user : users) {
+					userVOs.add(domainModelUtil.fromUser(user, true));
+				
+				}
+				userAdminSearchVO12.setUserVO(userVOs);
+			}
+	// firstName
+				else if(!firstName.equalsIgnoreCase("undefined"))	
+				{
+					List<UserVO> userVOs = new ArrayList<UserVO>();
+					
+					List<User> users = userRepository.getUserFirstName(firstName);
+					for (User user : users) {
+						userVOs.add(domainModelUtil.fromUser(user, true));
+					
+					}
+					userAdminSearchVO12.setUserVO(userVOs);
+				}
+	// lastName
+				else if(!lastName.equalsIgnoreCase("undefined"))	
+				{
+					List<UserVO> userVOs = new ArrayList<UserVO>();
+					
+					List<User> users = userRepository.getUserLastName(lastName);
+					for (User user : users) {
+						userVOs.add(domainModelUtil.fromUser(user, true));
+					
+					}
+					userAdminSearchVO12.setUserVO(userVOs);
+				}
+		return userAdminSearchVO12;
+	}
+	
+	
+	@GetMapping(value = "getSearchInfor", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserSearchAdminVO getSearchInfor(@RequestParam("modelYear") String modelYear,
+			@RequestParam("modelDisplay") String modelDisplay, @RequestParam("modelName") String modelName, @RequestParam("modelTrim") String modelTrim,
+			@RequestParam("creationDate") Date creationDate) {
+		LOGGER.debug("Received request to get Dealer Search Finance with id {} ", modelYear);
+		UserSearchAdminVO userAdminSearchVO12 = new UserSearchAdminVO();
+	if(!modelYear.equalsIgnoreCase("undefined") && !modelDisplay.equalsIgnoreCase("undefined") && !modelName.equalsIgnoreCase("undefined")  && !modelTrim.equalsIgnoreCase("undefined") && creationDate != null )	
+	{
+		List<SearchVO> userVOs = new ArrayList<SearchVO>();
+		
+		List<Search> users = userSearchLeadRepository.getSearchAllCriteria(modelYear,modelDisplay, modelName, modelTrim, creationDate);
+		for (Search user : users) {
+			userVOs.add(domainModelUtil.toBatchSearchVO(user));
+		
+		}
+		userAdminSearchVO12.setSearchVO(userVOs);
+	}//email, lastName, creationDate
+	else if(!modelYear.equalsIgnoreCase("undefined") && !modelDisplay.equalsIgnoreCase("undefined") && creationDate !=null )	
+	{
+		List<SearchVO> userVOs = new ArrayList<SearchVO>();
+		
+		List<Search> users = userSearchLeadRepository.getSearchAYearDis(modelYear,modelDisplay, creationDate);
+		for (Search user : users) {
+			userVOs.add(domainModelUtil.toBatchSearchVO(user));
+		
+		}
+		userAdminSearchVO12.setSearchVO(userVOs);
+	}//email, firstName, creationDate
+	else if(creationDate !=null )	
+	{
+		List<SearchVO> userVOs = new ArrayList<SearchVO>();
+		
+		List<Search> users = userSearchLeadRepository.getSearchCreationDate(creationDate);
+		for (Search user : users) {
+			userVOs.add(domainModelUtil.toBatchSearchVO(user));
+		
+		}
+		userAdminSearchVO12.setSearchVO(userVOs);
+	}//email, firstName, creationDate
+	
+		return userAdminSearchVO12;
 	}
 }

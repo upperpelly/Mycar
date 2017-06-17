@@ -29,6 +29,16 @@ public class Search implements Serializable {
 	private boolean finance;
 	private boolean insurance;
 	private boolean dealer;
+	
+	private Date creationDate;
+	
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
 	// FLEX1
 	private String sModel;
 	@Column(name = "ISUSED")

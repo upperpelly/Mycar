@@ -47,6 +47,15 @@ public class SearchFinance implements Serializable {
 	private String mr;
 	private String firstName;
 	private String lastName;
+	private Date creationDate;
+	
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
 	@Column(name = "REGO")
 	public String getRego() {
 		return rego;

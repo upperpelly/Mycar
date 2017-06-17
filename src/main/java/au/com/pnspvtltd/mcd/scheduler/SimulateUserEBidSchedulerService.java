@@ -49,8 +49,7 @@ public class SimulateUserEBidSchedulerService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
-	@Autowired
-	private UserSearchLeadRepository userSearchLeadRepository;
+	
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired

@@ -1,5 +1,7 @@
 package au.com.pnspvtltd.mcd.web.model;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 
 public class SearchVO {
@@ -43,6 +45,15 @@ public class SearchVO {
 	private boolean thirdPartyCover;
 	private String ausCapTer;
 	
+	private Date creationDate;
+	
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
 	public boolean isNewer() {
 		return isNewer;
 	}

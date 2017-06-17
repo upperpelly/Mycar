@@ -518,7 +518,7 @@ img.full-width {
     }
 
     [class^="soap-icon"].circle, [class*=" soap-icon"].circle, .glyphicon.circle {
-        border: 1px solid;
+        border: 1px solid #000;
         width: 1.8em;
         height: 1.8em;
         line-height: 1.7333em;
@@ -528,6 +528,8 @@ img.full-width {
         border-radius: 50% 50% 50% 50%;
         display: inline-block;
         text-align: center;
+        background:#01b7f2;
+        color:#fff;
     }
 
     [class^="soap-icon"].takeoff-effect:before, [class*=" soap-icon"].takeoff-effect:before, .glyphicon.takeoff-effect:before {

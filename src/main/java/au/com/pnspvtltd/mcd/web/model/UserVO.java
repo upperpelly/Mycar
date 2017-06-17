@@ -1,5 +1,6 @@
 package au.com.pnspvtltd.mcd.web.model;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -44,7 +45,25 @@ public class UserVO {
 	List<CurrentOffersVO> currentOffers;
 	List<UserNotificationVO> userNotification;
 	
+	private Date creationDate;
 	
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	private Date dateOfBirth;
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 	
 	public List<ServiceMaintQuotationVO> getServMaintQuotation() {
 		return servMaintQuotation;

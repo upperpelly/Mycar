@@ -70,7 +70,11 @@ margin-left: 24px;
     content: "\f10e";
     margin-left: 0px !important;
 }
-
+#userdash.flaticon-currency-rates:before { content: "\f11f";  margin-left: 0px !important;}
+#userdash.flaticon-dollar-rates:before { content: "\f120";  margin-left: 0px !important;}
+#userdash.flaticon-people-2:before { content: "\f121"; margin-left: 0px !important; }
+#userdash.flaticon-people-1:before { content: "\f122";  margin-left: 0px !important;}
+#userdash.flaticon-people:before { content: "\f123";  margin-left: 0px !important;}
 #usrleftnav.flaticon-auction:before {
     content: "\f11a";
     margin-left: 0px !important;
@@ -234,3 +238,8 @@ margin-left: 24px;
 .flaticon-sedan-car-front:before {
     content: "\f11e";
 }
+.flaticon-currency-rates:before { content: "\f11f"; }
+.flaticon-dollar-rates:before { content: "\f120"; }
+.flaticon-people-2:before { content: "\f121"; }
+.flaticon-people-1:before { content: "\f122"; }
+.flaticon-people:before { content: "\f123"; }

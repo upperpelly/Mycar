@@ -40,6 +40,16 @@ public class User implements Serializable {
 	private String issueState;
 	private boolean facebook;
 	private boolean payDeposit;
+	private Date creationDate;
+	
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
 	private Date dateOfBirth;
 
 	public Date getDateOfBirth() {

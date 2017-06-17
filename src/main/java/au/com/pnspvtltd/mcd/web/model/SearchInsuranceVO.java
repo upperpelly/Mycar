@@ -74,7 +74,17 @@ public class SearchInsuranceVO {
 	private boolean HireCar;//Hire Car after Accident(if any)
 	private boolean BullBar;
 	private boolean Snokel;
-	private boolean NudgeBar; 
+	private boolean NudgeBar;
+	
+	private Date creationDate;
+	
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
 	
 public boolean isExtNudgeBar() {
 		return extNudgeBar;

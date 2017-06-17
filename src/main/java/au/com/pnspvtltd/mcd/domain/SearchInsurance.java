@@ -87,7 +87,15 @@ public class SearchInsurance implements Serializable {
 	private boolean Snokel;
 	private boolean NudgeBar; 
 	
+	private Date creationDate;
 	
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
 	
 public boolean isExtNudgeBar() {
 		return extNudgeBar;

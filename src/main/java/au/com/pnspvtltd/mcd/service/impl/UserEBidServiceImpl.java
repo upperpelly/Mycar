@@ -1,6 +1,7 @@
 package au.com.pnspvtltd.mcd.service.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -79,6 +80,10 @@ public class UserEBidServiceImpl implements UserEBidService {
 		// Create User Search Lead (Vehicle Lead)
 		Search search = domainModelUtil.toSearch(userEBidVO.getSearchLead());
 		search.setLeadInitiatedBy(LeadInitiatedBy.USER);
+		// (2) create a java sql date object we want to insert
+	    Calendar calendar = Calendar.getInstance();
+	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+	    search.setCreationDate(ourJavaDateObject);
 		if (user.getSearch() != null) {
 			user.getSearch().add(search);
 		} else {
@@ -89,6 +94,10 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 		SearchFinance searchFinance = null;
 		searchFinance = domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
+		// (2) create a java sql date object we want to insert
+	    Calendar calendar12 = Calendar.getInstance();
+	    java.sql.Date ourJavaDateObject1 = new java.sql.Date(calendar12.getTime().getTime());
+	    searchFinance.setCreationDate(ourJavaDateObject1);
 		// Create User Finance Lead when isfinance and searchFinance != null
 		if (userEBidVO.isFinance() && searchFinance != null) {
 
@@ -106,6 +115,9 @@ public class UserEBidServiceImpl implements UserEBidService {
 		}
 		SearchInsurance searchInsurance = null;
 		searchInsurance = domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
+		Calendar calendar14 = Calendar.getInstance();
+	    java.sql.Date ourJavaDateObject12 = new java.sql.Date(calendar14.getTime().getTime());
+	    searchInsurance.setCreationDate(ourJavaDateObject12);
 		// Create User Insurance Lead when isinsurer and searchInsurance != null
 		if (userEBidVO.isInsurance() && searchInsurance != null) {
 

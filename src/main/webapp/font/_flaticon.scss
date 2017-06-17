@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 07/05/2017 19:22
+    Creation date: 14/06/2017 20:07
     */
 
     @font-face {
@@ -67,6 +67,11 @@
 .flaticon-transport:before { content: "\f11c"; }
 .flaticon-car:before { content: "\f11d"; }
 .flaticon-sedan-car-front:before { content: "\f11e"; }
+.flaticon-currency-rates:before { content: "\f11f"; }
+.flaticon-dollar-rates:before { content: "\f120"; }
+.flaticon-people-2:before { content: "\f121"; }
+.flaticon-people-1:before { content: "\f122"; }
+.flaticon-people:before { content: "\f123"; }
     
     $font-Flaticon-statement: "\f100";
     $font-Flaticon-log-file-format-symbol: "\f101";
@@ -99,3 +104,8 @@
     $font-Flaticon-transport: "\f11c";
     $font-Flaticon-car: "\f11d";
     $font-Flaticon-sedan-car-front: "\f11e";
+    $font-Flaticon-currency-rates: "\f11f";
+    $font-Flaticon-dollar-rates: "\f120";
+    $font-Flaticon-people-2: "\f121";
+    $font-Flaticon-people-1: "\f122";
+    $font-Flaticon-people: "\f123";

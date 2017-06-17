@@ -1,7 +1,9 @@
 package au.com.pnspvtltd.mcd.service.impl;
 
 import java.lang.reflect.InvocationTargetException;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -119,6 +121,11 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public UserVO createUser(UserVO userVO) {
 		userVO.setUserId(null);
+		 // (2) create a java sql date object we want to insert
+	    Calendar calendar = Calendar.getInstance();
+	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+	    
+		userVO.setCreationDate(ourJavaDateObject);
 		return domainModelUtil.fromUser(userRepository.save(domainModelUtil.toUser(userVO)), true);
 	}
 
