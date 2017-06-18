@@ -286,4 +286,27 @@ public class DealerServiceImpl implements DealerService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Long> getDealerIDs() {
+		// TODO Auto-generated method stub
+		return dealerRepository.getDealerIDs();
+	}
+
+	@Override
+	public DealerVO getDealerForID(Long dealerID) {
+		// TODO Auto-generated method stub
+		DealerVO dealerVO = null;
+		Dealer dealer = dealerRepository.getDealerForID(dealerID);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromDealer(dealer, false);
+			/*try {
+				BeanUtils.copyProperties(dealerVO, dealer);
+			} catch (IllegalAccessException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
+		}	
+		return dealerVO;
+	}
 }

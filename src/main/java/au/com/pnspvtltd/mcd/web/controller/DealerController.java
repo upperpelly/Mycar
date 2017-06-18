@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
@@ -174,5 +176,21 @@ public class DealerController {
 			response.setStatus(HttpStatus.NO_CONTENT.value());
 		}
 		return updatedDealer;
+	}
+	
+	
+	@GetMapping(value = "dealerIDs", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<Long> getDealerIDs(){
+		
+		LOGGER.info("Received request to get All Dealer Ids");
+		return dealerService.getDealerIDs();
+		
+	}
+	
+	
+	@GetMapping(value = "dealerInfoforID", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public DealerVO getDealerForID(@RequestParam("dealerID") Long dealerID) {
+		LOGGER.info("Received request to get Dealer info for Dealer Id");
+		return dealerService.getDealerForID(dealerID);
 	}
 }

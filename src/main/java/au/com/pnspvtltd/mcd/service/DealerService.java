@@ -48,4 +48,8 @@ public interface DealerService {
 	List<FinanceQuotationVO> getDealerFinanceQuotation(Long dealerId);
 
 	String whenDealerEBidForCar(DealerEBidVO dealerEBidVO);
+	
+	List<Long> getDealerIDs();
+
+	DealerVO getDealerForID(Long dealerID);
 }

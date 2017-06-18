@@ -911,32 +911,51 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 														<br/>
 														<br/>
 														<ul class="nav nav-tabs">
-													    <li class="active"><a data-toggle="tab" href="#logTrip">Lead Creation</a></li>
-													    <li><a data-toggle="tab" href="#LogExp">Quotation Creation</a></li>
+													    <li class="active"><a data-toggle="tab" href="#LeadCreate">Lead Creation</a></li>
+													    <li><a data-toggle="tab" href="#QuoteCreate">Quotation Creation</a></li>
 													  </ul>
 													  <div class="tab-content">
-													    <div id="logTrip" class="tab-pane fade in active">
+													    <div id="LeadCreate" class="tab-pane fade in active">
 													    <div class="row">
-													    <div class="col-md-6"><button id="LeadNewButton">Create a Lead</button></div>
-													    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+														    <div class="col-md-6"><button id="LeadNewButton">Create a Lead</button></div>
+														    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
 													    </div>
 
 														<div class="booking-section travelo-box" id="LeadNew">
-														
+															<form class="booking-form" id="LeadNewfrm" name="LeadNewfrm" ng-submit="submitMyLeadNewfrm(LeadNewfrm.$valid)" novalidate>
+															    	<div class="row">
+																    	<div class="col-sm-6 col-md-6">
+																					<label>Dealer ID</label>
+																					<div class="selector">
+																						<select class="full-width" id="LeadDealerId" name="LeadDealerId" ng-model="LeadDealerId" required>
+																						</select>
+																					</div>
+																					<span style="color:red" ng-show="logexpensefrm.expenseType.$error.required && (!logexpensefrm.expenseType.$pristine || logexpensefrm.$submitted)"><b>Expense Type is Required</b></span>
+																		 </div>
+																	</div>
+															</form>
+														<!-- end form -->
 														</div>
 														<table id="LeadTable">
 														</table>
 													    </div>
-													    <div id="LogExp" class="tab-pane fade">
-													    <div class="row">
-													    <div class="col-md-6"><button id="QuoteNewButton">Create a Quote</button></div>
-													    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
-													    </div>
-														<div class="booking-section travelo-box" id="QuoteNew">
-														
-														</div>
-														<table id="QuoteTable">
-														</table>
+													    <div id="QuoteCreate" class="tab-pane fade">
+														    <div class="row">
+														    <div class="col-md-6"><button id="QuoteNewButton">Create a Quote</button></div>
+														    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+														    </div>
+															<div class="booking-section travelo-box" id="QuoteNew">
+																<form class="booking-form" id="QuoteNewfrm" name="QuoteNewfrm" ng-submit="submitMyQuoteNewfrm(QuoteNewfrm.$valid)" novalidate>
+															    	<div class="row">
+															    		<div class="selector">
+																			<select class="full-width" id="LeadDealerId" name="LeadDealerId" ng-model="LeadDealerId" required>
+																			</select>
+																		</div>
+																	</div>
+																</form>
+															</div>
+															<table id="QuoteTable">
+															</table>
 													    </div>
 													  </div>
 												</div>

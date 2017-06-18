@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.Inventory;
+import au.com.pnspvtltd.mcd.web.model.DealerVO;
 
 public interface DealerRepository extends JpaRepository<Dealer, Long>{
 	Dealer findByEmailIgnoreCase(String emailId);
@@ -18,5 +19,12 @@ public interface DealerRepository extends JpaRepository<Dealer, Long>{
 	
 	@Query("SELECT deal FROM Dealer deal")
 	public List<Dealer> getDealerForMake();
+	
+	@Query("SELECT deal.dealerId FROM Dealer deal")
+	public List<Long> getDealerIDs();
+	
+	@Query("SELECT deal FROM Dealer deal where deal.dealerId = ?1")
+	Dealer getDealerForID(Long dealerID);
+	
 
 }
