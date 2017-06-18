@@ -172,6 +172,8 @@ tr:hover{background-color:rgb(253, 183, 20);}
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
 <script src="js/carDetail/carDetail.js"></script>
 <script src="js/tabletojson.js"></script>
+<script src="js/jquery.simpleSocialShare.min.js"></script>
+<!-- Socila Share  -->
 <script>
     </script>
    <!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[84,140] -->
@@ -346,7 +348,7 @@ body.loading .modal {
 	    <script>
 		$(document).ready(function(){
 			
-			
+			$('.share-button').simpleSocialShare();
 			/* var value = $.jStorage.get("key");
 			if(!value){
 			    // if not - load the data from the server
@@ -1379,7 +1381,16 @@ We suggest that you contact the host to confirm availability and rates before su
                                 <div class="tab-pane fade in active" id="cruise-description">
                                  <div id="main" class="col-sms-8 col-sm-9 col-md-11">
                         <div class="booking-section travelo-box" ng-controller="myController1" id="myController1">
-                            
+                            <div class="row">
+                            	<div class="col-sm-12 col-md-12">
+                            		<a class="share-button btn btn-primary" data-share-url="http://www.autoscoop.com.au/" data-share-network="twitter" data-share-text="Share this awesome link on Twitter" data-share-title="Twitter Share" data-share-via="" data-share-tags="" data-share-media="" href="#">Share on Twitter<i class="fa fa-twitter"></i></a>
+									<a class="share-button btn btn-primary" data-share-url="http://www.autoscoop.com.au/" data-share-network="facebook" data-share-text="Share this awesome link on Facebook" data-share-title="Facebook Share" data-share-via="" data-share-tags="" data-share-media="" href="#">Share on Facebook<i class="fa fa-facebook"></i></a>
+									<a class="share-button btn btn-primary" data-share-url="http://www.autoscoop.com.au/" data-share-network="linkedin" data-share-text="Share this awesome link on LinkedIn" data-share-title="LinkedIn Share" data-share-via="" data-share-tags="" data-share-media="" href="#">Share on LinkedIn<i class="fa fa-linkedin"></i></a>
+									<a class="share-button btn btn-primary" data-share-url="http://www.autoscoop.com.au/" data-share-network="googleplus" data-share-text="Share this awesome link on Google+" data-share-title="Google+ Share" data-share-via="" data-share-tags="" data-share-media="" href="#">Share on Google+<i class="fa fa-google-plus"></i></a>
+									<a class="share-button btn btn-primary" data-share-url="http://www.autoscoop.com.au/" data-share-network="pinterest" data-share-text="Share this awesome link on Pinterest" data-share-title="Pinterest Share" data-share-via="" data-share-tags="" data-share-media="" href="#">Share on Pinterest<i class="fa fa-pinterest"></i></a>
+									<a class="share-button btn btn-primary" data-share-url="http://www.autoscoop.com.au/" data-share-network="reddit" data-share-text="Share this awesome link on Reddit" data-share-title="Reddit Share" data-share-via="" data-share-tags="" data-share-media="" href="#">Share on Reddit<i class="fa fa-reddit"></i></a>
+                      	     	</div>
+                            </div>
                             <form class="booking-form" name="frm" novalidate ng-submit="submitSearchForm(frm.$valid)" >
                                 <div class="person-information">
 		                            <h2>My Details</h2>

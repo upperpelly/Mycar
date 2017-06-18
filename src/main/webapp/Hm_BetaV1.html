@@ -1826,7 +1826,7 @@ $.ajax({
                                 fbtranspServ();}
                                 else {
                                 	alert("No upload of images found. Redirecting to your dashboard..");
-                                	 var url = "Db_BetaV1.html";
+                                	 var url = "Db_BetaV1.html#travel-stories4";
 
                                      window.location = url;
                                 }
@@ -2002,7 +2002,7 @@ $.ajax({
                                 fbloadphoto();}
                                 else {
                                 	alert("No upload of images found. Redirecting to your dashboard..");
-                                	 var url = "Db_BetaV1.html";
+                                	 var url = "Db_BetaV1.html#travel-stories3";
 
                                      window.location = url;
                                 }
@@ -2032,7 +2032,12 @@ $.ajax({
                     //alert("invoke in ins lead");
                     /*alert($scope.email);
                     alert(email); */
-                    
+                    alert("postCode"+$scope.postcode1111);
+                    alert("postCode"+$scope.insDriverDOB);
+                    alert("postCode"+$scope.insLicIssueDt);
+                    alert("postCode"+$scope.insLastfaultDt);
+
+
                     //jsonInputToAPI.searchTranspLead.carModel = table;
 
                     //alert(JSON.stringify(table));
@@ -2252,7 +2257,7 @@ $.ajax({
                                 $body.removeClass("loading");
                                 alert("successfully stored");
                                 alert("Redirecting to Dashboard..");
-                                var url = "Db_BetaV1.html";
+                                var url = "Db_BetaV1.html#travel-stories2";
 
                                 window.location = url;
 
@@ -2376,7 +2381,7 @@ $.ajax({
                                 $body.removeClass("loading");
                                 alert("successfully stored");
                                 alert("Redirecting to Dashboard..");
-                                var url = "Db_BetaV1.html";
+                                var url = "Db_BetaV1.html#travel-stories1";
 
                                 window.location = url;
 
@@ -2522,10 +2527,10 @@ $.ajax({
         }
         function redirectWithLogbook() {
             if (alreadyLogged()) {
-                var url = "Db_BetaV1.html";
-                var data1 = true;
-                $.jStorage.set('keyLogBook', data1);
-                $.jStorage.setTTL('mykeyLogBook', 30000);
+                var url = "Db_BetaV1.html#l2Profile1";
+                //var data1 = true;
+                /* $.jStorage.set('keyLogBook', data1);
+                $.jStorage.setTTL('mykeyLogBook', 30000); */
                 window.location = url;
             }
             else {
@@ -2790,40 +2795,44 @@ $.ajax({
 
 
                 <div class="topnav" style="float:right">
-                    <ul class="quick-menu pull-left">
-                        <li><button onClick="redirect()" class="btn btn-primary right"><i class="fa fa-user PR5 PT2" aria-hidden="true"></i>ACCOUNT</button></li>
-                    </ul>
-                    <ul class="quick-menu pull-right" id="welcomeDiv" style="display:none">
+                    <ul class="quick-menu pull-left hidden-mobile PL10">
+                        <li><button onClick="redirect()" class="btn btn-primary"><i class="soap-icon-grid"></i>DashBoard</button></li>
+                    </ul>&nbsp;&nbsp;
+                    <div id="homeLogbook" class="quick-menu pull-left hidden-mobile PL10">
+                        <button onClick="redirectWithLogbook()" class="btn btn-warning"><i class="soap-icon-shopping"></i>Log Book</button>
+                    </div>&nbsp;&nbsp;
+                    <ul class="quick-menu pull-left hidden-mobile PL10" id="welcomeDiv" style="display:none">
                         <li class="ribbon">
-                            <a href="#"><span id="userId"></span></a>
+                            <!-- <a href="#"><span id="userId"></span></a> -->
+                            <button class="btn btn-success"><i class="fa fa-user PR5 PT2" aria-hidden="true"></i><span id="userId"></span></button>
                             <ul class="menu mini uppercase">
-                                <!--  <li><a href="Db_BetaV1.html#dashboard" class="location-reload">Overview</a></li> -->
-                                <li><a href="Db_BetaV1.html#profile" class="location-reload">Profile</a></li>
-                                <!-- <li><a href="Db_BetaV1.html#travel-stories" class="location-reload">Ebid-R</a></li>
-                                <li><a href="Db_BetaV1.html#settings" class="location-reload">Quotation</a></li>
-                                <li><a href="Db_BetaV1.html#wishlist" class="location-reload">Wishlist</a></li>
-                                <li><a href="Db_BetaV1.html#booking" class="location-reload">Booking</a></li>
-                                <li><a href="Db_BetaV1.html#rego" class="location-reload">Rego</a></li> -->
-                                <li><a href="" onclick="signingout()">Signout</a></li>
+                                <li><a href="Db_BetaV1.html#profile" class="location-reload"><i class="soap-icon-card"></i>Profile</a></li>
+                                <li><a href="" onclick="signingout()"><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li>
                             </ul>
                         </li>
-                    </ul>
-                    <div id="homeLogbook" onClick="redirectWithLogbook()" class="pull-right hidden-mobile PL10">
+                    </ul>&nbsp;&nbsp;
+                    <!-- <div class="dropdown pull-right" id="welcomeDiv" style="display:none">
+					    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span id="userId"></span>
+					    <span class="caret"></span></button>
+					    <ul class="dropdown-menu">
+					      <li><a href="Db_BetaV1.html#profile" class="location-reload">Profile</a></li>
+                          <li><a href="" onclick="signingout()">Signout</a></li>
+					    </ul>
+					</div> -->
+                    <!-- <div id="homeLogbook" onClick="redirectWithLogbook()" class="pull-right hidden-mobile PL10">
                         <a href="#" class="button btn-medium blue-bg" style="padding: 0 15px;">
                             <i class="soap-icon-shopping"></i> LOG BOOK
                         </a>
-                    </div>
+                    </div> -->
+                     
 
-                    <div id="welcomeDiv1" class="pull-right hidden-mobile PL10">
+                    <div id="welcomeDiv1" class="quick-menu pull-left hidden-mobile PL10">
                         <!--<button class="btn-medium blue-bg soap-popupbox"
                                 data-target="#travelo-signup">
                             SIGNUP
                         </button>-->
-                        <button class="btn-medium soap-popupbox"
-                                data-target="#travelo-login" id="login">
-                            LOGIN/SIGNUP
-                        </button>
-                    </div>
+                        <button class="btn btn-success soap-popupbox" data-target="#travelo-login" id="login"><i class="fa fa-sign-in"></i>Login/SignUp</button>
+                    </div>&nbsp;&nbsp;
                 </div>
 
                 <!-- <div id="welcomeDiv" class="pull-right hidden-mobile">
@@ -3342,8 +3351,17 @@ $.ajax({
                                                     	<div class="col-sm-1 col-md-1" style="width: 12.499999995%"></div>
                                                         <div class="col-sm-6 col-md-6">
                                                         	<div class="fb-like" data-href="https://www.facebook.com/autoscoop.com.au/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                                        	<!-- <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+															<script type="IN/Share" data-url="https://www.facebook.com/autoscoop.com.au/" data-counter="top"></script>
+															<script type="IN/FollowCompany" data-id="17915106" data-counter="top"></script> -->
                                                         </div>
-                                                        <div class="col-sm-3 col-md-3"></div>
+                                                        <div class="col-sm-3 col-md-3">
+                                                        			
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div>
+		                                                    
                                                     </div>
                                                     <!-- <div class="fb-like" data-href="https://www.facebook.com/autoscoop.com.au/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div> -->
                                                     <div class="col-md-12">&nbsp</div>
@@ -11595,7 +11613,7 @@ $.ajax({
 
         function fbinitilize() {
        <!--Facebook Login logic prod 249863545451459 test 238604546585672 -- >
-        var appId = '249863545451459';
+        var appId = '238604546585672';
             //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
             var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
             var bucketName = 'elasticbeanstalk-us-east-1-675778862308';

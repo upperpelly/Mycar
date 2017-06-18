@@ -90,16 +90,6 @@ $('.LogBookButton').click(function(){
 $(document).ready(function() {
 
 
-$.ajax({
-  url: "http://www.carqueryapi.com/api/0.3/?cmd=getStats",
-  success: function(data){
-
-  $('#make_count').html(data.Stats.make_count);
-  $('#model_count').html(data.Stats.model_count);
-  $('#trim_count').html(data.Stats.trim_count);
-
-  }
-});
 
 });
 </script>
@@ -231,6 +221,19 @@ th, td {
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
 <script src="js/angular-ui-router.js"></script>
 <script src="js/angular.js"></script>
+<script>
+function printDiv(divName) {
+	
+	var orgCode = "AutoScoop";
+	var printWindow = window.open("about:blank","print","left=0,top=0,width=10,height=10");
+	var orgHtml = "<html><body>"+document.getElementById(divName).innerHTML+"</body></html>";
+	printWindow.document.write(orgHtml);
+	printWindow.print();
+	//printWindow.close();
+	setTimeout(function(){ printWindow.print();},500000);
+	setTimeout(function(){ printWindow.close();},5000);
+   }
+</script>
 <script src="js/myApp.js"></script>
     <!-- Updated Styles -->
     <link rel="stylesheet" href="css/updates.css">
@@ -270,6 +273,7 @@ $(document).ready( function() {
 		$(this).tab('show');
 	});
 	 $('#fuelCard41').hide();
+	 $('#fuelCard412').hide();
 		$('#LogNew').hide();
 		$('#CreateVehicleForm').hide();
 		$('#LogNewSer').hide();
@@ -291,12 +295,22 @@ $(document).ready( function() {
 		$('#LogNewExpButton').click(function(){
 		    $('#LogNewExp').toggle(500);
 		});
+		$('#QuoteNewButton').click(function(){
+		    $('#QuoteNew').toggle(500);
+		});
+		$('#LeadNewButton').click(function(){
+		    $('#LeadNew').toggle(500);
+		});
 	$('#BackToVehicles').click(function(){
         //alert('The paragraph was clicked.');
         $('#fuelCard41').hide();
         $('#fuelCard4').show();
     });
 
+	$("#BackToVehicles1").click(function(){
+        $('#fuelCard412').hide();
+        $('#car-model-data12').show();
+    }); 
 $('#logTab').hide();
 $('.logBookBtn').click(function(){
 	//alert("invoke");
@@ -888,6 +902,46 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 											<h4>List of Search Leads</h4>
                                          <table id="car-model-data12">
                                         </table>
+                                        
+                                         <div id="fuelCard412">
+		                                        <div id="selectedRecord">
+														<h4><center>Log Book Details for Vehicle</center></h4><a class="button btn-mini pull-right" id="BackToVehicles1">Back To Vehicles Log</a>
+														<div class="edit-dealer-vehicle-search-content">
+													            </div>
+														<br/>
+														<br/>
+														<ul class="nav nav-tabs">
+													    <li class="active"><a data-toggle="tab" href="#logTrip">Lead Creation</a></li>
+													    <li><a data-toggle="tab" href="#LogExp">Quotation Creation</a></li>
+													  </ul>
+													  <div class="tab-content">
+													    <div id="logTrip" class="tab-pane fade in active">
+													    <div class="row">
+													    <div class="col-md-6"><button id="LeadNewButton">Create a Lead</button></div>
+													    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+													    </div>
+
+														<div class="booking-section travelo-box" id="LeadNew">
+														
+														</div>
+														<table id="LeadTable">
+														</table>
+													    </div>
+													    <div id="LogExp" class="tab-pane fade">
+													    <div class="row">
+													    <div class="col-md-6"><button id="QuoteNewButton">Create a Quote</button></div>
+													    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+													    </div>
+														<div class="booking-section travelo-box" id="QuoteNew">
+														
+														</div>
+														<table id="QuoteTable">
+														</table>
+													    </div>
+													  </div>
+												</div>
+                                        </div>
+                                        <!-- Form -->
                                                     
                                                 </form></div>
 
@@ -1684,7 +1738,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 							        	<!-- Vehiscle Start -->
 							        	<div class="row">
 										    <div class="col-md-6"><button id="CreateVehicleFormButton" >Add new Vehicle</button></div>
-										    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+										    <div class="col-md-6 pull-right"><button id="printBtn" onclick="printDiv('vehicleQuoteCars');">Print</button></div>
 										</div>
 							        	<div class="booking-section travelo-box" id="CreateVehicleForm">
 

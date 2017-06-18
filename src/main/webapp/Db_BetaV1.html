@@ -89,6 +89,51 @@ $('.LogBookButton').click(function(){
 <script>
 $(document).ready(function() {
 
+	
+	//var valueLogBook = $.jStorage.get("keyLogBook");
+    /* alert("escus linsit");
+    alert(valueLogBook); */
+    /*Code for Traverse  */
+    alert(window.location.hash);
+    var url1 = window.location.hash;
+    if(url1 == "#l2Profile1")
+    	{
+    		 $('.tabs li:eq(3) a').tab('show');
+    	}
+    else if(url1 == "#profile"){
+    	$('.tabs li:eq(1) a').tab('show');
+    }
+    else if(url1 == "#travel-stories"){
+    	//alert("biscuit");
+    	$('.tabs li:eq(4) a').tab('show');
+    }
+    
+    if(url1 == "#travel-stories1"){
+		//alert("Finance Tab");
+		//$('#eBIDFinance').tab('show');
+		$('.tabs li:eq(4) a').tab('show');
+		//$('#eBIDInsu').tab('show');
+		$('#radioFin').tab('show').prop("checked", true);
+	}
+	else if(url1 == "#travel-stories2"){
+		$('.tabs li:eq(4) a').tab('show');
+		//$('#eBIDInsu').tab('show');
+		$('#radioInsu').tab('show').prop("checked", true);
+		//document.getElementById("radioInsu").click();
+		//alert("Insurance Tab");
+	}
+	else if(url1 == "#travel-stories3"){
+		$('.tabs li:eq(4) a').tab('show');
+		//$('#radioServ').click();
+		$('#radioServ').tab('show').prop("checked", true);
+		//alert("Serc Tab");
+	}
+	else if(url1 == "#travel-stories4"){
+		$('.tabs li:eq(4) a').tab('show');
+		//$('#eBIDTrans').tab('show');
+		$('#radioTrans').tab('show').prop("checked", true);
+		//alert("Trans Tab");
+	}
 
 $.ajax({
   url: "http://www.carqueryapi.com/api/0.3/?cmd=getStats",
@@ -646,15 +691,14 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                     <div class="tab-container full-width-style arrow-left dashboard">
                         <ul class="tabs">
                             <li class="active"><a data-toggle="tab" href="#dashboard"><i id="usrleftnav" class="soap-icon-anchor circle"></i>Overview</a></li>
-                            <li class=""><a data-toggle="tab" href="#profile"><i id="usrleftnav" class="soap-icon-user circle"></i>Profile</a></li>
-                            <!-- <li class=""><a data-toggle="tab" href="#cruise-description"><i class="soap-icon-status circle"></i>My Vehicle</a></li> -->
-                            <li class=""><a data-toggle="tab" href="#VehicleQuotation12"><i id="usrleftnav" class="flaticon-private-garage"></i>Vehicle Garage</a></li>
-                            <li class="" id="logBookTab"><a data-toggle="tab" href="#l2Profile1"><i id="usrleftnav" class="flaticon-log-file-format-symbol"></i>Log Book</a></li>
-                            <li class=""><a data-toggle="tab" href="#travel-stories"><i id="usrleftnav" class="flaticon-auction"></i>Ebid-R</a></li>
-                            <li class=""><a data-toggle="tab" href="#settings"><i id="usrleftnav" class="flaticon-statement"></i>Quotation</a></li>
+                            <li><a data-toggle="tab" href="#profile"><i id="usrleftnav" class="soap-icon-user circle"></i>Profile</a></li>
+                            <li><a data-toggle="tab" href="#VehicleQuotation12"><i id="usrleftnav" class="flaticon-private-garage"></i>Vehicle Garage</a></li>
+                            <li id="logBookTab"><a data-toggle="tab" href="#l2Profile1"><i id="usrleftnav" class="flaticon-log-file-format-symbol"></i>Log Book</a></li>
+                            <li><a data-toggle="tab" href="#travel-stories"><i id="usrleftnav" class="flaticon-auction"></i>Ebid-R</a></li>
+                            <li><a data-toggle="tab" href="#settings"><i id="usrleftnav" class="flaticon-statement"></i>Quotation</a></li>
                             <!-- <li class=""><a data-toggle="tab" href="#wishlist"><i class="soap-icon-wishlist circle"></i>Wishlist</a></li> -->
                             <!-- <li class=""><a data-toggle="tab" href="#booking"><i class="soap-icon-businessbag circle"></i>Booking</a></li> -->
-                            <li class=""><a data-toggle="tab" href="#rego"><i id="usrleftnav" class="flaticon-clipboard-with-pencil"></i>Rego</a></li>
+                            <li><a data-toggle="tab" href="#rego"><i id="usrleftnav" class="flaticon-clipboard-with-pencil"></i>Rego</a></li>
                         </ul>
                         <div class="tab-content">
                             <div id="dashboard" class="tab-pane fade in active">
@@ -2101,12 +2145,12 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                               <!--  Start -->
                               <div id="tab">
                                     <!-- <input type="radio" name="collapseeBIDGroup" data-target="#eBIDAll" checked /><span class="color-dark">All</span> -->
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDCars" ng-model= "scarEbidreq8818" ng-checked="true" class="ML10" /><span class="color-dark">Cars</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDSerMai" class="ML10" /><span class="color-dark">Service & Maintenance</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDInsu" class="ML10" /><span class="color-dark">Insurance</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDTrans" class="ML10" /><span class="color-dark">Transport</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDFinance" class="ML10" /><span class="color-dark">Finance</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#eBIDFuelCard" class="ML10" /><span class="color-dark">Fuel Card</span>
+                                    <input type="radio" id="radioCar" name="collapseeBIDGroup" data-target="#eBIDCars" ng-model= "scarEbidreq8818" ng-checked="true" class="ML10" /><span class="color-dark">Cars</span>
+                                    <input type="radio" id="radioServ"  name="collapseeBIDGroup" data-target="#eBIDSerMai" class="ML10" /><span class="color-dark">Service & Maintenance</span>
+                                    <input type="radio" id="radioInsu"  name="collapseeBIDGroup" data-target="#eBIDInsu" class="ML10" /><span class="color-dark">Insurance</span>
+                                    <input type="radio" id="radioTrans"  name="collapseeBIDGroup" data-target="#eBIDTrans" class="ML10" /><span class="color-dark">Transport</span>
+                                    <input type="radio" id="radioFin"  name="collapseeBIDGroup" data-target="#eBIDFinance" class="ML10" /><span class="color-dark">Finance</span>
+                                    <input type="radio" id="radioFuel"  name="collapseeBIDGroup" data-target="#eBIDFuelCard" class="ML10" /><span class="color-dark">Fuel Card</span>
                                 </div>
 
 							<div class="tab-content">

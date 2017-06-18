@@ -367,9 +367,9 @@ var modelYear=null;
 																			$body.removeClass("loading");
 																			alert("Successfully Stored.. ");
 																			//alert(data);
-																			var url="Db_BetaV1.html";
+																			var url="Db_BetaV1.html#travel-stories";
 																			/*var url="Db_BetaV1.html?userId="+data.userId+"&searchId="+ data.searchId+"&firstName="+firstName;*/
-																							alert("Thank You. Your Seach ID is " + data.searchId);
+																							alert("Thank You. Your Search ID is " + data.searchId);
 																							window.location=url;								
 																						}); 
 														}
