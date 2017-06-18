@@ -37,6 +37,15 @@ public interface UserSearchLeadRepository extends JpaRepository<Search, Long>{
 			" ORDER BY search.carSearchId")
 			public List<Search> getSearchAYearDis(String modelYear, String modelDisplay, Date creationDate);
 	
+	@Query("SELECT search FROM Search search WHERE search.modelYear=?1 AND search.modelDisplay=?2 AND search.modelName=?3" +
+			" ORDER BY search.carSearchId")
+			public List<Search> getSearchAllOtDate1(String modelYear, String modelDisplay, String modelName);
+	
+	
+	
+	@Query("SELECT search FROM Search search WHERE search.modelYear=?1 AND search.modelDisplay=?2 AND search.modelName=?3 AND search.modelTrim=?4" +
+			" ORDER BY search.carSearchId")
+			public List<Search> getSearchAllOtDate(String modelYear, String modelDisplay, String modelName, String modelTrim);
 	
 	@Query("SELECT search FROM Search search WHERE search.modelYear=?1 AND search.modelDisplay=?2 AND search.modelName=?3 AND search.modelTrim=?4 AND search.creationDate=?5" +
 			" ORDER BY search.carSearchId")

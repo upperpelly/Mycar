@@ -2487,8 +2487,11 @@ mainApp1.controller('myController13',function($scope, $http) {
 
 
                        
-             
+             if($scope.creationDate="undefined"){
+            	 var wsURL = 'api/adminuserOtDate?firstName='+ $scope.firstName + '&lastName=' +$scope.lastName + '&email=' + $scope.emailId;
+             } else{
                 var wsURL = 'api/adminuser?firstName='+ $scope.firstName + '&lastName=' +$scope.lastName + '&email=' + $scope.emailId + '&creationDate=' +$scope.creationDate;
+             }
                 //var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/insurance';
                 //var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
                 /* alert(jsonInputToAPI.comingSoonUserEmail);
@@ -2661,7 +2664,11 @@ mainApp1.controller('myController13',function($scope, $http) {
                 };
 
 
-                       
+                        if($scope.creationDate="undefined"){
+                        	var wsURL = 'api/getSearchInforOtDate?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims;
+                        } else{
+                        	var wsURL = 'api/getSearchInfor?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims + '&creationDate=' +$scope.creationDateLd;
+                        }    
              
                 var wsURL = 'api/getSearchInfor?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims + '&creationDate=' +$scope.creationDateLd;
                 //var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/insurance';

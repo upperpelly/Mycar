@@ -48,6 +48,7 @@ import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
+import au.com.pnspvtltd.mcd.web.model.UserSearchAdminOtDateVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
@@ -371,6 +372,118 @@ public class UserEBidController {
 				return vehicleQuotationVO;
 	}
 	
+	@GetMapping(value = "adminuserOtDate", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserAdminSearchVO adminuser(@RequestParam("firstName") String firstName,
+			@RequestParam("lastName") String lastName, @RequestParam("email") String email
+			) {
+		LOGGER.debug("Received request to get Dealer Search Finance with id {} ", firstName);
+		UserAdminSearchVO userAdminSearchVO12 = new UserAdminSearchVO();
+	if(!firstName.equalsIgnoreCase("undefined") && !lastName.equalsIgnoreCase("undefined") && !email.equalsIgnoreCase("undefined")  )	
+	{
+		List<UserVO> userVOs = new ArrayList<UserVO>();
+		
+		List<User> users = userRepository.getUserEmaFirLas(email,firstName, lastName);
+		for (User user : users) {
+			userVOs.add(domainModelUtil.fromUser(user, true));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	}//email, lastName, creationDate
+	else if(!lastName.equalsIgnoreCase("undefined") && !email.equalsIgnoreCase("undefined") )	
+	{
+		List<UserVO> userVOs = new ArrayList<UserVO>();
+		
+		List<User> users = userRepository.getUserEmaLas(email,lastName);
+		for (User user : users) {
+			userVOs.add(domainModelUtil.fromUser(user, true));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	}//email, firstName, creationDate
+	else if(!firstName.equalsIgnoreCase("undefined") && !email.equalsIgnoreCase("undefined") )	
+	{
+		List<UserVO> userVOs = new ArrayList<UserVO>();
+		
+		List<User> users = userRepository.getUserEmaFir(email,lastName);
+		for (User user : users) {
+			userVOs.add(domainModelUtil.fromUser(user, true));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	}//email, firstName, creationDate
+	else if(!email.equalsIgnoreCase("undefined") )	
+	{
+		List<UserVO> userVOs = new ArrayList<UserVO>();
+		
+		List<User> users = userRepository.getUserEmail(email);
+		for (User user : users) {
+			userVOs.add(domainModelUtil.fromUser(user, true));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	}//email, firstName, creationDate
+	else if(!lastName.equalsIgnoreCase("undefined") )	
+	{
+		List<UserVO> userVOs = new ArrayList<UserVO>();
+		
+		List<User> users = userRepository.getUserLastName(lastName);
+		for (User user : users) {
+			userVOs.add(domainModelUtil.fromUser(user, true));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	}//email, firstName, creationDate
+	else if(!email.equalsIgnoreCase("undefined") && !firstName.equalsIgnoreCase("undefined") && !lastName.equalsIgnoreCase("undefined") )	
+	{
+		List<UserVO> userVOs = new ArrayList<UserVO>();
+		
+		List<User> users = userRepository.getUserEmaFirLas(email,firstName, lastName);
+		for (User user : users) {
+			userVOs.add(domainModelUtil.fromUser(user, true));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	}
+	// email
+		else if(!email.equalsIgnoreCase("undefined"))	
+		{
+			List<UserVO> userVOs = new ArrayList<UserVO>();
+			
+			List<User> users = userRepository.getUserEmail(email);
+			for (User user : users) {
+				userVOs.add(domainModelUtil.fromUser(user, true));
+			
+			}
+			userAdminSearchVO12.setUserVO(userVOs);
+		}
+	
+	// firstName
+				else if(!firstName.equalsIgnoreCase("undefined"))	
+				{
+					List<UserVO> userVOs = new ArrayList<UserVO>();
+					
+					List<User> users = userRepository.getUserFirstName(firstName);
+					for (User user : users) {
+						userVOs.add(domainModelUtil.fromUser(user, true));
+					
+					}
+					userAdminSearchVO12.setUserVO(userVOs);
+				}
+	// lastName
+				else if(!lastName.equalsIgnoreCase("undefined"))	
+				{
+					List<UserVO> userVOs = new ArrayList<UserVO>();
+					
+					List<User> users = userRepository.getUserLastName(lastName);
+					for (User user : users) {
+						userVOs.add(domainModelUtil.fromUser(user, true));
+					
+					}
+					userAdminSearchVO12.setUserVO(userVOs);
+				}
+		return userAdminSearchVO12;
+	}
+	
 	@GetMapping(value = "adminuser", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public UserAdminSearchVO adminuser(@RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName, @RequestParam("email") String email,
@@ -483,6 +596,39 @@ public class UserEBidController {
 		return userAdminSearchVO12;
 	}
 	
+	
+	@GetMapping(value = "getSearchInforOtDate", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserSearchAdminOtDateVO getSearchInforOtDate(@RequestParam("modelYear") String modelYear,
+			@RequestParam("modelDisplay") String modelDisplay, @RequestParam("modelName") String modelName, @RequestParam("modelTrim") String modelTrim
+			) {
+		LOGGER.debug("Received request to get Dealer Search Finance with id {} ", modelYear);
+		UserSearchAdminOtDateVO userAdminSearchVO12 = new UserSearchAdminOtDateVO();
+	if(!modelYear.equalsIgnoreCase("undefined") && !modelDisplay.equalsIgnoreCase("undefined") && !modelName.equalsIgnoreCase("undefined")  && !modelTrim.equalsIgnoreCase("undefined") )	
+	{
+		List<SearchVO> userVOs = new ArrayList<SearchVO>();
+		
+		List<Search> users = userSearchLeadRepository.getSearchAllOtDate(modelYear,modelDisplay, modelName, modelTrim);
+		for (Search user : users) {
+			userVOs.add(domainModelUtil.toBatchSearchVO(user));
+		
+		}
+		userAdminSearchVO12.setSearchVO(userVOs);
+	}//email, lastName, creationDate
+	else if(!modelYear.equalsIgnoreCase("undefined") && !modelDisplay.equalsIgnoreCase("undefined")  && !modelName.equalsIgnoreCase("undefined"))	
+	{
+		List<SearchVO> userVOs = new ArrayList<SearchVO>();
+		
+		List<Search> users = userSearchLeadRepository.getSearchAllOtDate1(modelYear,modelDisplay,modelName);
+		for (Search user : users) {
+			userVOs.add(domainModelUtil.toBatchSearchVO(user));
+		
+		}
+		userAdminSearchVO12.setSearchVO(userVOs);
+	}//email, firstName, creationDate
+	
+	
+		return userAdminSearchVO12;
+	}
 	
 	@GetMapping(value = "getSearchInfor", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public UserSearchAdminVO getSearchInfor(@RequestParam("modelYear") String modelYear,
