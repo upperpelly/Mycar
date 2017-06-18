@@ -2485,13 +2485,11 @@ mainApp1.controller('myController13',function($scope, $http) {
                     "userVO":null
                 };
 
-
+                        var wsURL = 'api/adminuser?firstName='+ $scope.firstName + '&lastName=' +$scope.lastName + '&email=' + $scope.emailId + '&creationDate=' +$scope.creationDate;
                        
-             if($scope.creationDate="undefined"){
-            	 var wsURL = 'api/adminuserOtDate?firstName='+ $scope.firstName + '&lastName=' +$scope.lastName + '&email=' + $scope.emailId;
-             } else{
-                var wsURL = 'api/adminuser?firstName='+ $scope.firstName + '&lastName=' +$scope.lastName + '&email=' + $scope.emailId + '&creationDate=' +$scope.creationDate;
-             }
+             if($scope.creationDate ==="undefined"){
+            	 wsURL = 'api/adminuserOtDate?firstName='+ $scope.firstName + '&lastName=' +$scope.lastName + '&email=' + $scope.emailId;
+             } 
                 //var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/insurance';
                 //var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
                 /* alert(jsonInputToAPI.comingSoonUserEmail);
@@ -2663,14 +2661,14 @@ mainApp1.controller('myController13',function($scope, $http) {
                     "searchVO":null
                 };
 
-
-                        if($scope.creationDate="undefined"){
-                        	var wsURL = 'api/getSearchInforOtDate?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims;
-                        } else{
-                        	var wsURL = 'api/getSearchInfor?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims + '&creationDate=' +$scope.creationDateLd;
+                        var wsURL = 'api/getSearchInfor?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims + '&creationDate=' +$scope.creationDateLd;
+                        alert("value"+$scope.creationDateLd);
+                        if($scope.creationDateLd === "undefined"){
+                        	 alert("value"+$scope.creationDateLd);
+                        	wsURL = 'api/getSearchInforOtDate?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims;
                         }    
              
-                var wsURL = 'api/getSearchInfor?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims + '&creationDate=' +$scope.creationDateLd;
+                //var wsURL = 'api/getSearchInfor?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims + '&creationDate=' +$scope.creationDateLd;
                 //var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/insurance';
                 //var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
                 /* alert(jsonInputToAPI.comingSoonUserEmail);
@@ -4306,12 +4304,13 @@ mainApp1.controller('myController13',function($scope, $http) {
 														    }
 													};
 
-													$scope.submitSearchFormupdateset = function(isValid) {
+													submitSearchFormupdateset = function(isValid) {
 														//alert("inside Update Settings"+isValid);
 														if (isValid) {
 														//updateSettingloadImage();
 														alert("Date"+$scope.abcDriverDOB);
 														alert("Date"+$('#abcDriverDOB').val());
+														//alert("vachindi");
 														//alert("vachindi");
 														//alert("inside updatset");
 														/*alert("inside Sesdarv Maint");
@@ -4324,7 +4323,6 @@ mainApp1.controller('myController13',function($scope, $http) {
 														if(value.issueState){
 															objKeyupdateset = value.issueState;
 														}
-
 														if(filefileChooserupdateset){
 														objKeyupdateset = 'facebook-' + fbUserId + '/' + filefileChooserupdateset.name;}
 														//alert(objKeyupdateset);
@@ -4400,7 +4398,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 
 
 
-													$scope.submitSearchFormServMaint = function(isValid) {
+													$scope.submitMyQuoteNewfrm = function(isValid) {
 														//alert("inside Sesdarv Maint"+isValid);
 														if (isValid) {
 														/*alert("inside Sesdarv Maint");
@@ -4416,39 +4414,26 @@ mainApp1.controller('myController13',function($scope, $http) {
 														objKeyfilefileChooserlogservmaint = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;}
 
 														//alert(objKeyfilefileChooserlogservmaint);
-														var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
-																"myVehicleServMaintVO":{
-																	"myVehicleServMaintId":null,
-																	"date":$('#vehicleTypeServMaint').val(),
-																	"Time":null,
-																	"recordType":"Service&Maintenance",
-																	"mechanicName":$('#mechanicNameCompanyName').val(),
-																	"companyName":"pqrs",
-																	"typeOfServMaint":$('#typeServiceMaintenance').val(),
-																	"mechanicAddress":$('#ServL1').val(),
-																	"contactDetails":$('#ServL2').val(),
-																	"odoMeterKm":$('#odoMeterKmsMilesServMaint').val(),
-																	"totalAmount":$('#totalAmount').val(),
-																	"nextOdoMeterKm":$('#NextServiceMaintenanceOdoMeterKmsmils').val(),
-																	"nextServDate":$('#nextServiceMaintenanceDate').val(),
-																	"uploadPhoto":objKeyfilefileChooserlogservmaint,
-																	"flex1":null,
-																	"flex2":null,
-																	"flex3":null,
-																	"flex4":null,
-																	"flex5":0,
-																	"flex6":0,
-																	"flex7":0,
-																	"flex8":null,
-																	"flex9":null
-																}
+														var jsonInputToAPI = {
+																	"dealerId":null,
+																	"userId":null,
+																	"dealSearchId":null,
+																	"carSearchId":null,
+																	"refId":null,
+																	"dealerStockNo":null,
+																	"driveAwayPrice":null,
+																	"modelYear":null,
+																	"modelDisplay":null,
+																	"modelName":null,
+																	"modelTrim":null
 																}
 
-
+														
+														
 														//alert("Before Call");
 														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 														//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
-														var wsURL = 'api/myvehicle/addMyVehicleServMaint';
+														var wsURL = 'api/dealerQuotCreation';
 														$body.addClass("loading");
 															    $http({
 																			method : 'POST',
@@ -4458,7 +4443,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 																		}).success(function(data) {
 																			$body.removeClass("loading");
 																			$scope.vehicleRetrievalforLogBook();
-																			alert("Successfully Stored Service & Maintenance request However, Plz wait for the images to upload.. don't refresh or switch from your dashboard..  the upload of images will start soon..");
+																			alert("Successfully Stored Quotation However, Plz wait for the images to upload.. don't refresh or switch from your page..  the upload of images will start soon..");
 																			//alert("Service & Maintenance Successfully Stored..");
 
 
@@ -4466,12 +4451,12 @@ mainApp1.controller('myController13',function($scope, $http) {
 												                				alert("Plz wait for the images to upload.. don't refresh or switch from dashboard.. the upload of images will start soon..");
 																			logServMaintloadImage();
 																			//alert("Before reset correct15689899");
-												                			document.getElementById("logservmaintfrm").reset();
+												                			document.getElementById("QuoteNewfrm").reset();
 												                			}
 												                			else {
 											                                	alert("No upload of images found..");
 											                                	//alert("Before reset correct15689899");
-													                			document.getElementById("logservmaintfrm").reset();
+													                			document.getElementById("QuoteNewfrm").reset();
 											                                }
 
 																						});
