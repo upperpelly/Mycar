@@ -29,6 +29,7 @@ import au.com.pnspvtltd.mcd.repository.InventoryRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
@@ -39,6 +40,7 @@ import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 @Service
@@ -125,6 +127,28 @@ public class DealerServiceImpl implements DealerService {
 
 	}
 
+	@Override
+	@Transactional
+	public DealerVO dealerAdminLead(DealerSearchAdminVO dealerVO) {
+		Dealer dealer = dealerRepository.findOne(dealerVO.getDealerId());
+
+		DealerSearch dealerSearch = null;
+			dealerSearch = domainModelUtil.toDealerSearchAdmin(dealerVO);
+			
+			dealerSearch.setUserId(dealerVO.getUserId());
+			if (dealer.getDealSearch() != null) {
+				dealer.getDealSearch().add(dealerSearch);
+			} else {
+				List<DealerSearch> dealerVehicleLeads = new ArrayList<>();
+				dealerVehicleLeads.add(dealerSearch);
+				dealer.setDealSearch(dealerVehicleLeads);
+			}
+			dealerRepository.flush();
+			return domainModelUtil.toDealerAdmin(dealer);
+		
+
+	}
+	
 	@Override
 	@Transactional(readOnly = true)
 	public List<DealerVO> findAllDealers() {

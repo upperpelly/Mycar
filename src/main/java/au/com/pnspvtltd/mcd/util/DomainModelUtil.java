@@ -82,6 +82,7 @@ import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
 import au.com.pnspvtltd.mcd.web.model.CountryTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.DealerQuotationHistoryVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchServMaintVO;
@@ -848,6 +849,27 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		return searchVO;
 	}
 
+	public DealerSearch toDealerSearchAdmin(final DealerSearchAdminVO dealerSearch) {
+		DealerSearch searchVO = new DealerSearch();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public DealerVO toDealerAdmin(final Dealer dealerSearch) {
+		DealerVO searchVO = new DealerVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
 	public DealerSearchInsuranceVO fromDealerSearchInsurance(final DealerSearchInsurance dealerSearchInsurance) {
 		DealerSearchInsuranceVO dealerSearchInsuranceVO = new DealerSearchInsuranceVO();
 		try {

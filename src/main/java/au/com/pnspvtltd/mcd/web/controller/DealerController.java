@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.service.DealerService;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
@@ -161,5 +162,17 @@ public class DealerController {
 	public List<FinanceQuotationVO> getDealerFinanceQuotation(@PathVariable Long id) {
 		LOGGER.debug("Received request to get Dealer Finance Quotation with id {} ", id);
 		return dealerService.getDealerFinanceQuotation(id);
+	}
+	
+	@PutMapping("dealerLeadCreation")
+	public DealerVO dealerLeadCreation(@RequestBody DealerSearchAdminVO dealerVO, HttpServletResponse response) {
+		LOGGER.debug("Received request to update Dealer {}", dealerVO);
+		
+		DealerVO updatedDealer = dealerService.dealerAdminLead(dealerVO);
+		// Dealer does not exist
+		if (updatedDealer == null) {
+			response.setStatus(HttpStatus.NO_CONTENT.value());
+		}
+		return updatedDealer;
 	}
 }

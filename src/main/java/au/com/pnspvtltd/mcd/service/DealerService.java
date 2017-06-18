@@ -2,7 +2,9 @@ package au.com.pnspvtltd.mcd.service;
 
 import java.util.List;
 
+import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
@@ -22,6 +24,7 @@ public interface DealerService {
 
 	DealerVO updateDealer(DealerVO dealer);
 
+	DealerVO dealerAdminLead(DealerSearchAdminVO dealer);
 	List<DealerVO> findAllDealers();
 
 	DealerVO findDealerByEmail(String email);
