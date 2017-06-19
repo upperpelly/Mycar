@@ -129,7 +129,7 @@ public class DealerServiceImpl implements DealerService {
 
 	@Override
 	@Transactional
-	public DealerVO dealerAdminLead(DealerSearchAdminVO dealerVO) {
+	public DealerSearch dealerAdminLead(DealerSearchAdminVO dealerVO) {
 		Dealer dealer = dealerRepository.findOne(dealerVO.getDealerId());
 
 		DealerSearch dealerSearch = null;
@@ -144,7 +144,8 @@ public class DealerServiceImpl implements DealerService {
 				dealer.setDealSearch(dealerVehicleLeads);
 			}
 			dealerRepository.flush();
-			return domainModelUtil.toDealerAdmin(dealer);
+			return dealerSearch;
+			//return domainModelUtil.toDealerAdmin(dealer);
 		
 
 	}

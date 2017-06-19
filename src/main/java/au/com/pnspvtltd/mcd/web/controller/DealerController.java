@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
+import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
@@ -167,10 +168,10 @@ public class DealerController {
 	}
 	
 	@PutMapping("dealerLeadCreation")
-	public DealerVO dealerLeadCreation(@RequestBody DealerSearchAdminVO dealerVO, HttpServletResponse response) {
+	public DealerSearch dealerLeadCreation(@RequestBody DealerSearchAdminVO dealerVO, HttpServletResponse response) {
 		LOGGER.debug("Received request to update Dealer {}", dealerVO);
 		
-		DealerVO updatedDealer = dealerService.dealerAdminLead(dealerVO);
+		DealerSearch updatedDealer = dealerService.dealerAdminLead(dealerVO);
 		// Dealer does not exist
 		if (updatedDealer == null) {
 			response.setStatus(HttpStatus.NO_CONTENT.value());
