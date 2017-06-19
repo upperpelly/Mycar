@@ -137,6 +137,8 @@ public class UserEBidController {
 			user.setSubOrb(userMyVehicleVO.getDesc()); // desc
 			user.setAbnNumber(userMyVehicleVO.getPhoneNumber());   // phonenumber
 			user.setDrivingLicense(userMyVehicleVO.getRegion()); // region
+			user.setDateOfBirth(userMyVehicleVO.getDob()); // dob
+			user.setGender(userMyVehicleVO.getGender()); // dob
 			//user.setAreaName(userMyVehicleVO.); // phone number
 			//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
 		}

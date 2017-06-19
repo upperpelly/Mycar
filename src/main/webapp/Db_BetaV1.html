@@ -94,7 +94,7 @@ $(document).ready(function() {
     /* alert("escus linsit");
     alert(valueLogBook); */
     /*Code for Traverse  */
-    alert(window.location.hash);
+    //alert(window.location.hash);
     var url1 = window.location.hash;
     if(url1 == "#l2Profile1")
     	{
@@ -677,7 +677,9 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
         <div class="page-title-container">
             <div class="container">
                 <div class="page-title pull-left">
-                    <!-- <h2 class="entry-title">My Account</h2> -->
+                    <a href="Hm_BetaV1.html" title="Autoscoop - home" style="float:left;">
+                        <img src="images/autoscooplogo1.png" style="height:50px;" alt="Autoscoop HTML5 Template">
+                    </a>
                 </div>
                 <!--<ul class="breadcrumbs pull-right">
                     <li><a onClick="redirect()">Home</a></li>
@@ -1147,7 +1149,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 														<label>Gender</label>
 																				<div class="selector">
 																					<select class="full-width" id="abcTitlePerson"
-																						name="abcTitlePerson" required>
+																						name="abcTitlePerson" ng-model="abcTitlePerson" required>
 																						<option value="" selected disabled>Gender</option>
 																						 <option>Male</option>
                                                     <option>Female</option>
@@ -1751,27 +1753,28 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
                             </div>
                              <!-- Start of My Vehicle Entry -->
-                      <div id="VehicleQuotation12" class="tab-pane fade">
+                            <div id="VehicleQuotation12" class="tab-pane fade PR0">
 
-                                <div id="tab">
+                                <div id="tab" class="row">
                                     <!-- <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteAll" checked /><span class="color-dark">All</span> -->
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteCars" ng-model= "carEbidreq121214" ng-checked="true" checked class="ML10" /><span class="color-dark">Cars</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteBikes" class="ML10" /><span class="color-dark">Bikes</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteBoats" class="ML10" /><span class="color-dark">Boats</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteCaravans" class="ML10" /><span class="color-dark">Caravans</span>
-                                    <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteBicycles" class="ML10" /><span class="color-dark">Heavy Vehicles</span>
+                                    <div class="col-sm-2 col-md-2">  <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteCars" ng-model="carEbidreq121214" ng-checked="true" checked class="ML10" /><span class="color-dark">Cars</span></div>
+                                    <div class="col-sm-2 col-md-2">   <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteBikes" class="ML10" /><span class="color-dark">Bikes</span></div>
+                                    <div class="col-sm-2 col-md-2">   <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteBoats" class="ML10" /><span class="color-dark">Boats</span></div>
+                                    <div class="col-sm-2 col-md-2">   <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteCaravans" class="ML10" /><span class="color-dark">Caravans</span></div>
+                                    <div class="col-sm-2 col-md-2">   <input type="radio" name="collapseeBIDGroup" data-target="#vehicleQuoteBicycles" class="ML10" /><span class="color-dark">Heavy Vehicles</span></div>
+                                    <div class="col-sm-2 col-md-2"></div>
                                 </div>
 
 							<div class="tab-content">
 							        <!-- <div class="tab-pane fade active in" id="vehicleQuoteAll">All vehicle Content</div> -->
-							        <div class="tab-pane fade active in" id="vehicleQuoteCars">
-							        	<h4>Car Details</h4>
-							        	<!-- Vehiscle Start -->
-							        	<div class="row">
-										    <div class="col-md-6"><button id="CreateVehicleFormButton" >Add new Vehicle</button></div>
-										    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
-										</div>
-							        	<div class="booking-section travelo-box" id="CreateVehicleForm">
+                                    <div class="tab-pane fade active in" id="vehicleQuoteCars" style="padding:0px;">
+                                        <h4>Car Details</h4>
+                                        <!-- Vehiscle Start -->
+                                        <div class="row">
+                                            <div class="col-md-6 PT2"><button id="CreateVehicleFormButton">Add Vehicle</button></div>
+                                            <div class="col-md-6 PT2"><button id="printBtn" onclick="window.print();">Print</button></div>
+                                        </div>
+                                        <div class="booking-section travelo-box" id="CreateVehicleForm" style="padding:0px;">
 
 				                            <form class="booking-form" id="vehFrm" name="vehFrm" ng-submit="submitSearchForm(vehFrm.$valid)" novalidate>
 				                            	<div class="row">
@@ -2145,12 +2148,17 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                               <!--  Start -->
                               <div id="tab">
                                     <!-- <input type="radio" name="collapseeBIDGroup" data-target="#eBIDAll" checked /><span class="color-dark">All</span> -->
-                                    <input type="radio" id="radioCar" name="collapseeBIDGroup" data-target="#eBIDCars" ng-model= "scarEbidreq8818" ng-checked="true" class="ML10" /><span class="color-dark">Cars</span>
-                                    <input type="radio" id="radioServ"  name="collapseeBIDGroup" data-target="#eBIDSerMai" class="ML10" /><span class="color-dark">Service & Maintenance</span>
-                                    <input type="radio" id="radioInsu"  name="collapseeBIDGroup" data-target="#eBIDInsu" class="ML10" /><span class="color-dark">Insurance</span>
-                                    <input type="radio" id="radioTrans"  name="collapseeBIDGroup" data-target="#eBIDTrans" class="ML10" /><span class="color-dark">Transport</span>
-                                    <input type="radio" id="radioFin"  name="collapseeBIDGroup" data-target="#eBIDFinance" class="ML10" /><span class="color-dark">Finance</span>
-                                    <input type="radio" id="radioFuel"  name="collapseeBIDGroup" data-target="#eBIDFuelCard" class="ML10" /><span class="color-dark">Fuel Card</span>
+                                    <div class="col-sm-1 col-md-1"><input type="radio" id="radioCar" name="collapseeBIDGroup" data-target="#eBIDCars" ng-model= "scarEbidreq8818" ng-checked="true" class="ML10" /><span class="color-dark">Cars</span></div>
+                                    <div class="col-sm-3 col-md-3"><input type="radio" id="radioServ"  name="collapseeBIDGroup" data-target="#eBIDSerMai" class="ML10" /><span class="color-dark">Service & Maintenance</span>
+</div>
+                                    <div class="col-sm-2 col-md-2"><input type="radio" id="radioInsu"  name="collapseeBIDGroup" data-target="#eBIDInsu" class="ML10" /><span class="color-dark">Insurance</span>
+</div>
+                                    <div class="col-sm-2 col-md-2"><input type="radio" id="radioTrans"  name="collapseeBIDGroup" data-target="#eBIDTrans" class="ML10" /><span class="color-dark">Transport</span>
+</div>
+                                    <div class="col-sm-2 col-md-2"><input type="radio" id="radioFin"  name="collapseeBIDGroup" data-target="#eBIDFinance" class="ML10" /><span class="color-dark">Finance</span>
+</div>
+                                    <div class="col-sm-2 col-md-2"><input type="radio" id="radioFuel"  name="collapseeBIDGroup" data-target="#eBIDFuelCard" class="ML10" /><span class="color-dark">Fuel Card</span>
+</div>
                                 </div>
 
 							<div class="tab-content">
@@ -3019,18 +3027,25 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                         <div class="col-lg-4 col-md-4 col-sm-4 colxs-12">
                             <img src="images/autoscooplogo.png">
                             <p class="MT10">Copyright &copy; 2017</p>
+                            <p>
+                                Our Mission is to provide you with the stressfree way to buy, lease, sell and manage your vehicle through out its life and
+                                importantly getting you to driver seat and allowing to focus on more importants things in your Life i.e., Family, Friends and Australian way of life.
+                            </p>
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 colxs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-3 colxs-12 PT10">
                             <ul class="ContactUs">
                                 <li>Contact Us </li>
-                                <li>Investors: <a href="#"><u>contact@autoscoop.com.au</u></a></li>
-                                <li style="padding-top:15px !important;">Dealers/Service Providers: <a href="#"><u>sales@autoscoop.com.au</u></a></li>
-                                <li style="padding-top:15px !important;"><a class="MT40" href="#">Terms &amp; Conditions</a></li>
+                                <li>Sponsers & Investors: <a href="#"><u>contact@autoscoop.com.au</u></a></li>
+                                <li style="padding-top:15px !important;">Dealers & Service Providers: <a href="#"><!--<i class="fa-mail-forward" aria-hidden="true"></i>--><u>sales@autoscoop.com.au</u></a></li>
+                                <!--<li style="padding-top:15px !important;"><a class="MT40" href="#">Terms &amp; Conditions</a></li>-->
                             </ul>
                         </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-3 colxs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-3 colxs-12 PT10">
+                            <img src="images/breast-cancer2.png" style="height:120px; width:190px" />
+                            <img src="images/prostate-cancer.png" style="height:120px; width:190px" />
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 colxs-12 PT10">
                             <ul class="ContactUs">
                                 <li>Follow Us </li>
                                 <li><a href="#"><img src="../images/facebook.png" /><span class="PL10">Facebook</span></a></li>
@@ -3039,9 +3054,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                 <li><a href="#"><img src="../images/linkedin.png" /><span class="PL10">Linkedin</span></a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-1 colxs-12">
-                            <a style="float: right; animation-duration: 1s; visibility: visible;" id="back-to-top" href="#" class="animated bounce" data-animation-type="bounce"><i class="soap-icon-longarrow-up circle"></i></a>
-                        </div>
+
                     </div>
                 </div>
 

@@ -592,7 +592,7 @@ tjq(window).load(function() {
     // Mobile menu
     tjq(".mobile-menu ul.menu > li.menu-item-has-children").each(function(index) {
         var menuItemId = "mobile-menu-submenu-item-" + index;
-        tjq('<button class="dropdown-toggle collapsed" data-toggle="collapse" data-target="#' + menuItemId + '"></button>').insertAfter(tjq(this).children("a"));
+        //tjq('<button class="dropdown-toggle collapsed" data-toggle="collapse" data-target="#' + menuItemId + '"></button>').insertAfter(tjq(this).children("a"));
         /*tjq(this).children(".dropdown-toggle").click(function(e) {
             if (tjq(this).hasClass("collapsed")) {
                 tjq(this).parent().addClass("open");

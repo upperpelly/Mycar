@@ -94,6 +94,8 @@ $(document).ready(function(){
 	    <dt>first name:</dt><dd>' +value.firstName+ '</dd>\
 	    <dt>last name:</dt><dd>' +value.lastName+ '</dd>\
 	    <dt>phone number:</dt><dd>' +value.abnNumber+ '</dd>\
+	    <dt>Date of Birth:</dt><dd>' +value.dateOfBirth+ '</dd>\
+	    <dt>Gender:</dt><dd>' +value.gender+ '</dd>\
 	    <dt>Personal Description:</dt><dd>' +value.subOrb+'</dd>\
 	   <dt>Street number:</dt><dd>' +value.streetNumber+ '</dd>\
 	    <dt>Street Name:</dt><dd>' +value.streetName+ '</dd>\
@@ -185,9 +187,10 @@ $(document).ready(function(){
             	$("#profilePic").append(profilePic);
             }
             else{
-				alert("Your Idle time as exceeded more than 10 mins, so can you plz log in again");
+				//alert("Your Idle time as exceeded more than 10 mins, so can you plz log in again");
 				//signingout();
 				//alert("error"+err);
+            	
 				profilePic = '<img width="270" height="263" alt="" src="'+default1+'"'+'>';$("#profilePic").append(profilePic);
 				}
           });
@@ -3171,6 +3174,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 	$scope.UserFirstName=value.firstName;
 	$scope.UserLastName=value.lastName;
 	$scope.UserPhoneNo=value.abnNumber;
+	$scope.UserDOBDate=value.dateOfBirth;
+	$scope.abcTitlePerson=value.gender;
 	$('#UserPhoneNo').val(value.abnNumber);
 	$('#UserFirstName').val(value.firstName);
 	$('#UserLastName').val(value.lastName);
@@ -4673,9 +4678,10 @@ mainApp1.controller('myController13',function($scope, $http) {
 													$scope.submitSearchFormupdateset = function(isValid) {
 														//alert("inside Update Settings"+isValid);
 														if (isValid) {
+															alert("Date"+$('#abcTitlePerson').val());
 														//updateSettingloadImage();
-														alert("Date"+$scope.abcDriverDOB);
-														alert("Date"+$('#abcDriverDOB').val());
+														//alert("Date"+$scope.UserDOBDate);
+														//alert("Date"+$('#UserDOBDate').val());
 														//alert("vachindi");
 														//alert("inside updatset");
 														/*alert("inside Sesdarv Maint");
@@ -4692,7 +4698,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 														if(filefileChooserupdateset){
 														objKeyupdateset = 'facebook-' + fbUserId + '/' + filefileChooserupdateset.name;}
 														//alert(objKeyupdateset);
-														var jsonInputToAPI = {"userId":value.userId,"photo":objKeyupdateset, "dateOfBirth":$('#abcDriverDOB').val(),"phoneNumber":$('#UserPhoneNo').val(), "firstName":$('#UserFirstName').val(),"lastName":$('#UserLastName').val(),"streetNumber":$('#UserStreetNo').val(),"streetName":$('#UserStreetName').val(),"postCode":$('#UserpostCode').val(),"region":$('#UserRegion').val(),"state":$('#UserState').val(),"desc":$('#UserDesc').val()}
+														var jsonInputToAPI = {"userId":value.userId,"photo":objKeyupdateset, "dob":$('#UserDOBDate').val(),"gender":$('#abcTitlePerson').val(),"phoneNumber":$('#UserPhoneNo').val(), "firstName":$('#UserFirstName').val(),"lastName":$('#UserLastName').val(),"streetNumber":$('#UserStreetNo').val(),"streetName":$('#UserStreetName').val(),"postCode":$('#UserpostCode').val(),"region":$('#UserRegion').val(),"state":$('#UserState').val(),"desc":$('#UserDesc').val()}
 
 														/*var jsonInputToAPI = {"myVehicleId":myVehicleIDuse,
 																"myVehicleServMaintVO":{

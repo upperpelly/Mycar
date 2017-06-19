@@ -1,6 +1,6 @@
 package au.com.pnspvtltd.mcd.web.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class UserPhotoVO {
 
@@ -16,9 +16,18 @@ public class UserPhotoVO {
 	private String region;
 	private String state;
 	private String desc;
+	private String gender;
 	
 	
 	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}

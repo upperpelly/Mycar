@@ -44,7 +44,16 @@ public class UserVO {
 	List<TranspServiceQuotationVO> transpServQuotation;
 	List<CurrentOffersVO> currentOffers;
 	List<UserNotificationVO> userNotification;
+	private String gender;
 	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	private Date creationDate;
 	
 	public Date getCreationDate() {

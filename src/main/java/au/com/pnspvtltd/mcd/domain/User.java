@@ -40,8 +40,17 @@ public class User implements Serializable {
 	private String issueState;
 	private boolean facebook;
 	private boolean payDeposit;
+	private String gender;
 	private Date creationDate;
 	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
