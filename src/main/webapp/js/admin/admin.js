@@ -2458,6 +2458,7 @@ var mainApp1 = angular.module("mainApp13", []);
 mainApp1.controller('myController13',function($scope, $http) {
 					//alert("in user con");function vehicleRetrievalforLogBook(){
 	//alert("in angular");
+	$scope.vehicleData;
 	$scope.carEbidreq121214=true;
 	$scope.scarEbidreq8818=true;
 	$scope.qcarEbidreq99=true;
@@ -2473,6 +2474,78 @@ mainApp1.controller('myController13',function($scope, $http) {
 	$('#UserpostCode').val(value.postCode);
 	$('#UserRegion').val(value.drivingLicense);
 	$('#UserState').val(value.state);
+	
+	$body.addClass("loading");
+	$http({
+        method : 'GET',
+        url : 'api/dealerIDs'
+    }).then(function mySuccess(response) {
+    	 $body.removeClass("loading");
+    	 $scope.dealerIds = response.data;
+    }, function myError(response) {
+    	$scope.dealerIds = response.statusText;
+    });
+	
+	
+	$scope.submitMyLeadNewfrm = function() {
+		alert("Insisdsssssde");
+		alert(JSON.stringify($scope.vehicleData));
+		console.log(JSON.stringify($scope.vehicleData));
+		//jsonInput = JSON.stringify($scope.vehicleData);
+		jsonInput = $scope.vehicleData;
+		
+		jsonInput["dealerSearchId"]=null;
+			jsonInput["dealerId"]=$scope.LeadDealerId;
+		
+		
+		/*var jsonInput1 ={
+				 "dealerSearchId": null,
+				 "dealerId" : $scope.LeadDealerId,
+				 "lastName": "Smith",
+				 "phoneNumber": "123-456-7890"
+				}*/
+		
+		/*var concattedjson = jsonInput.concat(jsonInput1);
+		console.log(concattedjson);*//*
+		$scope.leadDealerName = response.data.dealername;
+		 $scope.leadDealerABN = response.data.abnnumber;
+		 $scope.leadDealerEmail = response.data.email;*/
+			console.log(JSON.stringify(jsonInput));
+		 
+		 
+		$body.addClass("loading");
+		$http({
+	        method : 'POST',
+	        url : 'api/dealerLeadCreation?_method=PUT',
+			data: jsonInput
+	    }).then(function mySuccess(response) {
+	    	 $body.removeClass("loading");
+	    	 alert("Saved");
+	    	 console.log(response.data);
+	    }, function myError(response) {
+	    	console.log(response.statusText);
+	    });
+		
+	}
+	$scope.dealerInfoForID = function() {
+		//alert("Hi Dude");
+		$body.addClass("loading");
+		$http({
+	        method : 'GET',
+	        url : 'api/dealerInfoforID?dealerID='+$scope.LeadDealerId
+	    }).then(function mySuccess(response) {
+	    	 $body.removeClass("loading");
+	    	 alert("Bis");
+	    	 alert(response.data.dealername);
+	    	 $scope.leadDealerName = response.data.dealername;
+    		 $scope.leadDealerABN = response.data.abnnumber;
+			 $scope.leadDealerEmail = response.data.email;
+	    	 console.log(response.data);
+	    }, function myError(response) {
+	    	console.log(response.statusText);
+	    });
+		
+	}
 	// Insurance lead post
     $scope.getUserInfor = function () {
         //alert("invoke in before call ins lead");
@@ -2566,7 +2639,6 @@ mainApp1.controller('myController13',function($scope, $http) {
 
     		var data = $(event.target).data('details');
     		//var json = JSON.stringify(data);
-
     		var quotIdHiddenField = '<input type="hidden" name="userId" value="' + data.userId + '" />';
     		
 
@@ -2700,6 +2772,7 @@ mainApp1.controller('myController13',function($scope, $http) {
              	   //alert(out);
              	   var LogSearch = data.searchVO;
 
+
              	   if(LogSearch && data.searchVO.length==0){
              	   outLogT="";
              	   outLogT='<h2>No records found</h2>';
@@ -2747,6 +2820,9 @@ mainApp1.controller('myController13',function($scope, $http) {
     		var data = $(event.target).data('details');
     		//var json = JSON.stringify(data);
 
+       		alert(data);
+       		console.log(data);
+       		$scope.vehicleData = data;
     		var quotIdHiddenField = '<input type="hidden" name="carSearchId" value="' + data.carSearchId + '" />';
     		var moveToUser = '<input type="checkbox" name="moveToUser" />';
     		var shortList = '<input type="checkbox" name="shortList" />';
@@ -4323,6 +4399,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 														if(value.issueState){
 															objKeyupdateset = value.issueState;
 														}
+
 														if(filefileChooserupdateset){
 														objKeyupdateset = 'facebook-' + fbUserId + '/' + filefileChooserupdateset.name;}
 														//alert(objKeyupdateset);

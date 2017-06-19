@@ -278,7 +278,8 @@ $(document).ready( function() {
 		$('#CreateVehicleForm').hide();
 		$('#LogNewSer').hide();
 		$('#LogNewExp').hide();
-
+		$('#LeadNew').hide();
+		$('#QuoteNew').hide();
 		$('#LogNewButton').click(function(){
 		    $('#LogNew').toggle(500);
 		});
@@ -783,169 +784,145 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
                                                             </div>
 
-				<div id="ebidRequest" class="tab-pane fade in active">
-                                <div>
-                                 <form class="form-inline signup" name="ebidsearchfrm" ng-submit="getEbidInfor()">
-
-                                                    <div class="col-md-12 product-search-title">
-                                                      
-                                                    </div>
-                                                    <div class="col-md-12">&nbsp</div>
-                                                    <div class="clearfix"></div>
-                                                    <div class="clearfix"></div>
-                                                    <div class="clearfix"></div>
-                                                    <div class="clearfix"></div>
-
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-3">
-                                                            <label>Search Criteria for Search Leads</label> 
-                                                        </div>
-                                                        <div class="col-sm-3 col-md-6">
-                                                            <div class="selector">
-                                                                <select id="car-years" name="caryears" ng-model="caryears"
-                                                                        class="full-width" ></select>
-                                                            </div>
-
-                                                            
-                                                        </div>
-                                                             
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                    </div><br />
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-3">
-                                                            
-                                                        </div>
-                                                        <div class="col-sm-3 col-md-6">
-                                                            <div class="selector">
-                                                                <select id="car-makes" name="carmakes" ng-model="carmakes"
-                                                                        class="full-width"></select>
-                                                            </div>
-                                                             </div>
-                                                             
-                                                             
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                    </div><br />
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-3">
-                                                            
-                                                        </div>
-                                                             <div class="col-sm-3 col-md-6">
-                                                             <div class="selector">
-                                                                <select id="car-models" name="carmodels" ng-model="carmodels"
-                                                                        class="full-width" ></select>
-                                                            </div>
-                                                             </div>
-                                                            
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                    </div><br />
-                                                     <div class="row">
-                                                        <div class="col-sm-3 col-md-3">
-                                                            
-                                                        </div>
-                                                             <div class="col-sm-3 col-md-6">
-                                                             <div class="selector">
-                                                                <select id="car-model-trims" name="car-model-trims" ng-model="carmodeltrims"
-                                                                        class="full-width" ></select>
-                                                            </div>
-                                                             </div>
-                                                            
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                    </div><br />
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-3">
-                                                            
-                                                        </div>
-                                                            <div class="col-sm-3 col-md-6">
-                                                             <div class="col-sm-4 col-md-6">
-                                                                        <input type="text" name="creationDateLd" id="creationDateLd" ng-model="creationDateLd" onfocus="(this.type='date')" class="input-text full-width" placeholder="Creation Date" />
-                                                                    </div>
-                                                                    </div>
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                    </div><br />
-                                                                                                        
-                                                    <br /> <br />
-                                                   
-                                                    <div class="clearfix"></div>
-                                                    <div class="row">
-                                                        <div class="col-sm-3 col-md-3">
-                                                            &nbsp;
-                                                        </div>
-                                                        <div class="col-sm-5 col-md-6">
-                                                            <button class="button submit-bgcolor">Search for the Ebid</button>
-                                                        </div>
-                                                    </div><br />
-											<h4>List of Search Leads</h4>
-                                         <table id="car-model-data12">
-                                        </table>
-                                        
-                                         <div id="fuelCard412">
-		                                        <div id="selectedRecord">
-														<h4><center>Log Book Details for Vehicle</center></h4><a class="button btn-mini pull-right" id="BackToVehicles1">Back To Vehicles Log</a>
-														<div class="edit-dealer-vehicle-search-content">
-													            </div>
-														<br/>
-														<br/>
-														<ul class="nav nav-tabs">
-													    <li class="active"><a data-toggle="tab" href="#LeadCreate">Lead Creation</a></li>
-													    <li><a data-toggle="tab" href="#QuoteCreate">Quotation Creation</a></li>
-													  </ul>
-													  <div class="tab-content">
-													    <div id="LeadCreate" class="tab-pane fade in active">
-													    <div class="row">
-														    <div class="col-md-6"><button id="LeadNewButton">Create a Lead</button></div>
-														    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
-													    </div>
-
-														<div class="booking-section travelo-box" id="LeadNew">
-															<form class="booking-form" id="LeadNewfrm" name="LeadNewfrm" ng-submit="submitMyLeadNewfrm(LeadNewfrm.$valid)" novalidate>
-															    	<div class="row">
-																    	<div class="col-sm-6 col-md-6">
-																					<label>Dealer ID</label>
-																					<div class="selector">
-																						<select class="full-width" id="LeadDealerId" name="LeadDealerId" ng-model="LeadDealerId" required>
-																						</select>
-																					</div>
-																					<span style="color:red" ng-show="logexpensefrm.expenseType.$error.required && (!logexpensefrm.expenseType.$pristine || logexpensefrm.$submitted)"><b>Expense Type is Required</b></span>
-																		 </div>
-																	</div>
-															</form>
-														<!-- end form -->
-														</div>
-														<table id="LeadTable">
-														</table>
-													    </div>
-													    <div id="QuoteCreate" class="tab-pane fade">
+								<div id="ebidRequest" class="tab-pane fade in active">
+				                       <form class="form-inline signup" name="ebidsearchfrm" ng-submit="getEbidInfor()">
+				                       			 <div class="col-md-12 product-search-title">
+                                                     	<label>Search Criteria for Search Leads</label> 
+                                                  </div>
+                                                  <div class="row">
+                                                      <div class="col-sm-3 col-md-3">
+                                                          
+                                                      </div>
+                                                      <div class="col-sm-3 col-md-6">
+                                                          <div class="selector">
+                                                              <select id="car-years" name="caryears" ng-model="caryears"
+                                                                      class="full-width" ></select>
+                                                          </div>
+                                                      </div>
+                                                  </div><br />
+                                                   <div class="row">
+                                                       <div class="col-sm-3 col-md-3">
+                                                           
+                                                       </div>
+                                                       <div class="col-sm-3 col-md-6">
+                                                           <div class="selector">
+                                                               <select id="car-makes" name="carmakes" ng-model="carmakes"
+                                                                       class="full-width"></select>
+                                                           </div>
+                                                       </div>
+                                                   </div><br />
+                                                   <div class="row">
+                                                       <div class="col-sm-3 col-md-3">
+                                                           
+                                                       </div>
+                                                       <div class="col-sm-3 col-md-6">
+	                                                       <div class="selector">
+	                                                          <select id="car-models" name="carmodels" ng-model="carmodels"
+	                                                                  class="full-width" ></select>
+	                                                      </div>
+                                                       </div>
+                                                   </div><br />
+                                                   <div class="row">
+                                                      <div class="col-sm-3 col-md-3">
+                                                          
+                                                      </div>
+                                                      <div class="col-sm-3 col-md-6">
+	                                                      <div class="selector">
+	                                                         <select id="car-model-trims" name="car-model-trims" ng-model="carmodeltrims"
+	                                                                 class="full-width" ></select>
+	                                                     </div>
+                                                      </div>
+                                                  </div><br />
+                                                  <div class="row">
+                                                      <div class="col-sm-3 col-md-3">
+                                                          
+                                                      </div>
+                                                      <div class="col-sm-3 col-md-6">
+                                                                 <input type="text" name="creationDateLd" id="creationDateLd" ng-model="creationDateLd" onfocus="(this.type='date')" class="input-text full-width" placeholder="Creation Date" />
+                                                    	</div>
+                                                  </div><br />
+                                                  <div class="row">
+                                                      <div class="col-sm-3 col-md-3">
+                                                          &nbsp;
+                                                      </div>
+                                                      <div class="col-sm-5 col-md-6">
+                                                          <button type="submit" class="button submit-bgcolor">Search for the Ebid</button>
+                                                      </div>
+                                                  </div><br />
+                                                  
+                                             </form>      
+												<h4>List of Search Leads</h4>
+	                                         <table id="car-model-data12">
+	                                        </table>
+	                                        
+	                                         <div id="fuelCard412">
+			                                        <div id="selectedRecord">
+															<h4><center>Lead / Quotation creation for a Vehicle</center></h4><a class="button btn-mini pull-right" id="BackToVehicles1">Back To Vehicles Log</a>
+															<div class="edit-dealer-vehicle-search-content">
+														            </div>
+															<br/>
+															<br/>
+															<ul class="nav nav-tabs">
+														    <li class="active"><a data-toggle="tab" href="#LeadCreate">Lead Creation</a></li>
+														    <li><a data-toggle="tab" href="#QuoteCreate">Quotation Creation</a></li>
+														  </ul>
+														  <div class="tab-content">
+														    <div id="LeadCreate" class="tab-pane fade in active">
 														    <div class="row">
-														    <div class="col-md-6"><button id="QuoteNewButton">Create a Quote</button></div>
-														    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+															    <div class="col-md-6"><button id="LeadNewButton">Create a Lead</button></div>
+															    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
 														    </div>
-															<div class="booking-section travelo-box" id="QuoteNew">
-																<form class="booking-form" id="QuoteNewfrm" name="QuoteNewfrm" ng-submit="submitMyQuoteNewfrm(QuoteNewfrm.$valid)" novalidate>
+	
+															<div class="booking-section travelo-box" id="LeadNew">
+																<form class="booking-form" id="LeadNewfrm" name="LeadNewfrm" ng-submit="submitMyLeadNewfrm()" novalidate>
+																    	<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																						<div class="selector">
+																							<select class="full-width" id="LeadDealerId" name="LeadDealerId" ng-model="LeadDealerId" ng-options="x for x in dealerIds" ng-change="dealerInfoForID()">
+																								<option value="" disabled selected>Select a Dealer ID</option>
+																							</select>
+																						</div>
+																			 </div>
+																		</div>
+																		<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																				<input type="text" id="leadDealerName" name="leadDealerName" ng-model="leadDealerName" class="input-text full-width" value="" placeholder="Dealer Name" readonly />
+																			 </div>
+																		</div>
+																		<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																				<input type="text" id="leadDealerABN" name="leadDealerABN" ng-model="leadDealerABN" class="input-text full-width" value="" placeholder="Dealer ABN Number" readonly />
+																			 </div>
+																		</div>
+																		<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																				<input type="text" id="leadDealerEmail" name="leadDealerEmail" ng-model="leadDealerEmail" class="input-text full-width" value="" placeholder="Dealer Email" readonly />
+																			 </div>
+																		</div>
+																		<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																				<textarea rows="4" cols="50" id="LongNotes" class="input-text full-width" ng-model="LongNotes" name="LongNotes" placeholder="Long Text"></textarea>
+																			 </div>
+																		</div>
+																		<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Send Lead</button>
+										                                    </div>
+										                                </div>
+																		
+																</form>
+															<!-- end form -->
+															</div>
+															<table id="LeadTable">
+															</table>
+														    </div>
+														    <div id="QuoteCreate" class="tab-pane fade">
+															    <div class="row">
+															    <div class="col-md-6"><button id="QuoteNewButton">Create a Quote</button></div>
+															    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+															    </div>
+																<div class="booking-section travelo-box" id="QuoteNew">
+																	<form class="booking-form" id="QuoteNewfrm" name="QuoteNewfrm" ng-submit="submitMyQuoteNewfrm(QuoteNewfrm.$valid)" novalidate>
 															    	<div class="row">
 															    		<div class="selector">
 																			<select class="full-width" id="LeadDealerId" name="LeadDealerId" ng-model="LeadDealerId" required>
@@ -968,21 +945,14 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 																		</div>
 																	
 																</form>
-															</div>
-															<table id="QuoteTable">
-															</table>
-													    </div>
-													  </div>
-												</div>
-                                        </div>
-                                        <!-- Form -->
-                                                    
-                                                </form></div>
-
-
-                               
-                                <hr>
-                                                           </div>
+																</div>
+																<table id="QuoteTable">
+																</table>
+														    </div>
+														  </div>
+													</div>
+	                                        </div> 
+				             <hr></div>
 
 
                           <div id="profile" class="tab-pane fade">
@@ -1272,7 +1242,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                             </div>
 
                                             <hr>
-                                           <table id="updateInfo-image">
+                                            <table id="updateInfo-image">
                                         </table>
                                             <h2>Upload Profile Photo</h2>
                                             <div class="row form-group">
