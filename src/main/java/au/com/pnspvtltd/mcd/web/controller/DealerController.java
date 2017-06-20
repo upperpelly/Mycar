@@ -1,5 +1,7 @@
 package au.com.pnspvtltd.mcd.web.controller;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -21,10 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
 import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
+import au.com.pnspvtltd.mcd.domain.Search;
+import au.com.pnspvtltd.mcd.repository.DealerSearchRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
+import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
@@ -32,7 +38,9 @@ import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
+import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 @RestController
@@ -42,6 +50,11 @@ public class DealerController {
 	
 	@Autowired
 	DealerService dealerService;
+	
+	@Autowired
+	DealerSearchRepository dealerSearchRepository;
+	@Autowired
+	DomainModelUtil domainModelUtil;
 	
 	@GetMapping(value = "dealer/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public DealerVO getDealer(@PathVariable Long id, HttpServletResponse response) {
@@ -193,5 +206,21 @@ public class DealerController {
 	public DealerVO getDealerForID(@RequestParam("dealerID") Long dealerID) {
 		LOGGER.info("Received request to get Dealer info for Dealer Id");
 		return dealerService.getDealerForID(dealerID);
+	}
+	
+	@GetMapping(value = "getDealSearchInfoId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public DealerSearchListAdminVO getSearchInfor(@RequestParam("carSearchId") Long carSearchId) {
+		LOGGER.debug("Received request to get Dealer car Search id {} ", carSearchId);
+		DealerSearchListAdminVO userAdminSearchVO12 = new DealerSearchListAdminVO();
+
+		List<DealerSearch> users = dealerSearchRepository.getDealerSearchForID(carSearchId);
+		List<DealerSearchVO> searchVOs = new ArrayList<DealerSearchVO>();
+		for (DealerSearch search : users) {
+		DealerSearchVO dealVO= domainModelUtil.toDealerSearchVO(search);
+		searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setDealerSearchVO(searchVOs);
+	
+		return userAdminSearchVO12;
 	}
 }

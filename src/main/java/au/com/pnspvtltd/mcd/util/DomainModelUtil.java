@@ -556,6 +556,24 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		return dealerSearch;
 	}
 
+	
+	// Dealer Vehicle Lead
+		public DealerSearchVO toDealerSearchVO(final DealerSearch searchVO) {
+
+			DealerSearchVO dealerSearch = new DealerSearchVO();
+			try {
+				BeanUtils.copyProperties(dealerSearch, searchVO);
+				
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return dealerSearch;
+		}
+	
 	// User Finance Lead
 	public SearchFinance toSearchFinance(final SearchFinanceVO searchFinanceVO) {
 		SearchFinance searchFinance = null;

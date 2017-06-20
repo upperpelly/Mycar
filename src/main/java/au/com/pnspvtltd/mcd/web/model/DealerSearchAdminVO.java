@@ -33,8 +33,16 @@ public class DealerSearchAdminVO {
 	private double indicativeExcessAmount;
 	private Date ageOfAdditionalDriver;
 	private Long userId;
-
+	private Long carSearchId;
 	
+
+	public Long getCarSearchId() {
+		return carSearchId;
+	}
+
+	public void setCarSearchId(Long carSearchId) {
+		this.carSearchId = carSearchId;
+	}
 
 	public Long getDealerId() {
 		return dealerId;
