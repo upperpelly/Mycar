@@ -23,6 +23,7 @@ import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchServMaint;
 import au.com.pnspvtltd.mcd.domain.DealerSearchTransp;
+import au.com.pnspvtltd.mcd.domain.ExternalDealer;
 import au.com.pnspvtltd.mcd.domain.FinanceEntity;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
@@ -89,6 +90,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.ExternalDealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
@@ -574,6 +576,24 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			return dealerSearch;
 		}
 	
+		// Dealer Vehicle Lead
+				public ExternalDealerVO toExternalDealerVO(final ExternalDealer searchVO) {
+
+					ExternalDealerVO dealerSearch = new ExternalDealerVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
+			
+		
 	// User Finance Lead
 	public SearchFinance toSearchFinance(final SearchFinanceVO searchFinanceVO) {
 		SearchFinance searchFinance = null;

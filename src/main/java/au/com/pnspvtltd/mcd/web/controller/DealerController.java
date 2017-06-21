@@ -23,8 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
+import au.com.pnspvtltd.mcd.domain.ExternalDealer;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.repository.DealerSearchRepository;
+import au.com.pnspvtltd.mcd.repository.ExternalDealerRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
@@ -33,6 +35,8 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.ExternalDealerSearchVO;
+import au.com.pnspvtltd.mcd.web.model.ExternalDealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
@@ -53,6 +57,10 @@ public class DealerController {
 	
 	@Autowired
 	DealerSearchRepository dealerSearchRepository;
+	
+	@Autowired
+	ExternalDealerRepository externalDealerRepository;
+	
 	@Autowired
 	DomainModelUtil domainModelUtil;
 	
@@ -223,4 +231,21 @@ public class DealerController {
 	
 		return userAdminSearchVO12;
 	}
+	
+	@GetMapping(value = "getExtDealSearch", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExternalDealerSearchVO getExtDealSearch(@RequestParam("category") String category, @RequestParam("postCode") int postCode) {
+		LOGGER.debug("Received request to get External Dealer Search id {} ");
+		ExternalDealerSearchVO userAdminSearchVO12 = new ExternalDealerSearchVO();
+
+		List<ExternalDealer> users = externalDealerRepository.getSearchCatPost(category,postCode);
+		List<ExternalDealerVO> searchVOs = new ArrayList<ExternalDealerVO>();
+		for (ExternalDealer search : users) {
+		ExternalDealerVO dealVO= domainModelUtil.toExternalDealerVO(search);
+		searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setExternalDealerVO(searchVOs);
+	
+		return userAdminSearchVO12;
+	}
+	
 }
