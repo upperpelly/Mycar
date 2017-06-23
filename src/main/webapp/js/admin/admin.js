@@ -2488,8 +2488,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 	
 	
 	$scope.submitMyLeadNewfrm = function() {
-		alert("Insisdsssssde");
-		alert(JSON.stringify($scope.vehicleData));
+		//alert("Insisdsssssde");
+		//alert(JSON.stringify($scope.vehicleData));
 		console.log(JSON.stringify($scope.vehicleData));
 		//jsonInput = JSON.stringify($scope.vehicleData);
 		jsonInput = $scope.vehicleData;
@@ -2855,6 +2855,38 @@ mainApp1.controller('myController13',function($scope, $http) {
     		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>null</g, ">--NA--<");
     		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>undefined</g, ">--NA--<");
     		$(".edit-dealer-vehicle-search-content").html(editDealerVehicleSearchForm);
+    		
+    		var wsURL = 'api/getDealSearchInfoId?carSearchId='+data.carSearchId ;
+  		  	$body.addClass("loading");
+    		$.ajax({
+				type: "GET",
+				url: wsURL,
+				success: function(data){
+					$body.removeClass("loading");
+	                  alert("successfully retrieved");
+	                  out="";
+	                  if(data.dealerSearchVO && data.dealerSearchVO.length!=0)
+	                	  {
+		                	  out += '<tr><th>'+"Operation"+'</th><th>'+"Car Ebid ID"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>';
+		   	           	   for(i=0;i<data.dealerSearchVO.length;i++)
+		   	          		{
+		   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+	
+		   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.dealerSearchVO[i].carSearchId+'</td>'+'<td>'+data.dealerSearchVO[i].modelYear+'<td>'+data.dealerSearchVO[i].modelDisplay+'</td>'+'</td>'+'<td>'+data.dealerSearchVO[i].modelName+'</td>'+'<td>'+data.dealerSearchVO[i].modelTrim+'</td></tr>';
+	
+		   	          		}
+	                	  }
+	           	 
+	                  else{
+	           		out='<h2>No records</h2>';
+	           	   }
+	           	
+	           	   out = out.replace(/>null</g, ">--NA--<");
+	           	   out = out.replace(/>undefined</g, ">--NA--<");
+	           	   $("#LeadTable").html(out);
+
+				}
+			});
     	});
     	/*$('button.submit-editDealerVehicleSearchModal').on('click', function(e) {
 
