@@ -37,6 +37,10 @@ public class VehicleQuotation implements Serializable {
 	private Long dealerId;
 	// user id
 	private Long userId;
+	// User Creation Date
+	private Date userCreationDate;
+	//Creation Date
+	private Date creationDate;
 	// dealer search lead id
 	private Long dealSearchId;
 	// user search lead id
@@ -63,7 +67,73 @@ public class VehicleQuotation implements Serializable {
 		private boolean chat;
 		private boolean rejectIt;
 		private boolean shortList;
+		private boolean status;
+		private boolean newer;
+		private boolean used;
 		
+		public boolean isNewer() {
+			return newer;
+		}
+
+
+		public void setNewer(boolean newer) {
+			this.newer = newer;
+		}
+
+
+		public boolean isUsed() {
+			return used;
+		}
+
+
+		public void setUsed(boolean used) {
+			this.used = used;
+		}
+
+
+		public Date getUserCreationDate() {
+			return userCreationDate;
+		}
+
+
+		public void setUserCreationDate(Date userCreationDate) {
+			this.userCreationDate = userCreationDate;
+		}
+
+
+		public Date getCreationDate() {
+			return creationDate;
+		}
+
+
+		public void setCreationDate(Date creationDate) {
+			this.creationDate = creationDate;
+		}
+
+
+		public boolean isStatus() {
+			return status;
+		}
+
+
+		public void setStatus(boolean status) {
+			this.status = status;
+		}
+
+		List<VehQuotExtras> vehQuotExtras;
+		
+		@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+		@JoinColumn(name = "searchInsuranceId")
+		
+		public List<VehQuotExtras> getVehQuotExtras() {
+			return vehQuotExtras;
+		}
+
+
+		public void setVehQuotExtras(
+				List<VehQuotExtras> vehQuotExtras) {
+			this.vehQuotExtras = vehQuotExtras;
+		}
 		
 		List<UserQuotationHistory> userQuotationHistory;
 		
