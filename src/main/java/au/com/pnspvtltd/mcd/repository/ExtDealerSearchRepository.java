@@ -14,7 +14,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerVO;
 public interface ExtDealerSearchRepository extends JpaRepository<ExtDealerSearch, Long>{
 	
 	@Query("SELECT deal FROM ExtDealerSearch deal where deal.carSearchId = ?1")
-	List<ExtDealerSearch> getDealerSearchForID(Long dealerID);
+	List<ExtDealerSearch> getDealerSearchForID(Long carSearchId);
 	
 
 }

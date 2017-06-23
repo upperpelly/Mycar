@@ -288,7 +288,7 @@ public class ExtDealerSearch implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "extdealersearchrepo")
+	@Column(name = "EXTDEALSEARCHID")
 	public Long getExtDealerSearchId() {
 		return this.extDealerSearchId;
 	}

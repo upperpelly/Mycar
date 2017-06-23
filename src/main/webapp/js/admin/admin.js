@@ -2486,6 +2486,48 @@ mainApp1.controller('myController13',function($scope, $http) {
     	$scope.dealerIds = response.statusText;
     });
 	
+	$scope.submitMyLeadNewExtfrm = function() {
+		alert("ibnvsscv");
+		$body.addClass("loading");
+		$http({
+	        method : 'GET',
+	        url : 'api/getExtDealSearch?category='+$scope.LeadCategory+ '&postCode=' +$scope.leadExtpost
+	    }).then(function mySuccess(response) {
+	    	 $body.removeClass("loading");
+	    	 alert("Retrieved");
+	    	 out="";
+	    	 data1 = response.data;
+	    	 console.log(data1);
+	    	 console.log(data1.externalDealerVO);
+	    	 alert(data1.externalDealerVO.length);
+	    	 alert(data1.externalDealerVO)
+             if(data1.externalDealerVO.length!=0)
+           	  {
+               	  out += '<tr><th>'+"Operation"+'</th><th>'+"Company Name"+'</th><th>'+"Phone No"+'</th>'+'<th>'+"Email"+'</th><th>'+"Website URL"+'</th></tr>';
+  	           	   for(i=0;i<data1.externalDealerVO.length;i++)
+  	          		{
+  	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+
+  	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data1.externalDealerVO[i].companyName+'</td>'+'<td>'+data1.externalDealerVO[i].phone+'<td>'+data1.externalDealerVO[i].email+'</td>'+'</td>'+'<td>'+data1.externalDealerVO[i].website+'</td></tr>';
+
+  	          		}
+           	  }
+      	 
+             else{
+      		out='<h2>No Dealers for the Combination</h2>';
+      	   }
+      	
+      	   out = out.replace(/>null</g, ">--NA--<");
+      	   out = out.replace(/>undefined</g, ">--NA--<");
+      	   $("#LeadExtTable").html(out);
+	    	 console.log(data);
+	    	 console.log(data.externalDealerVO);
+	    }, function myError(response) {
+	    	console.log(response.statusText);
+	    });
+		
+	}
+	
 	
 	$scope.submitMyLeadNewfrm = function() {
 		//alert("Insisdsssssde");
@@ -2884,6 +2926,43 @@ mainApp1.controller('myController13',function($scope, $http) {
 	           	   out = out.replace(/>null</g, ">--NA--<");
 	           	   out = out.replace(/>undefined</g, ">--NA--<");
 	           	   $("#LeadTable").html(out);
+
+				}
+			});
+    		
+    		
+    		
+    		//$scope.leadIDs = "";
+    		var wsURL = 'api/getExtDealSearchInfoId?carSearchId='+data.carSearchId ;
+  		  	$body.addClass("loading");
+    		$.ajax({
+				type: "GET",
+				url: wsURL,
+				success: function(data){
+					$body.removeClass("loading");
+	                  alert("successfully retrieved");
+	                  out="";
+	                  var options ;
+	                  if(data.extDealerSearchVO && data.extDealerSearchVO.length!=0)
+	                	  {
+		                	  out += '<tr><th>'+"Operation"+'</th><th>'+"Car Ebid ID"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>';
+		   	           	   for(i=0;i<data.extDealerSearchVO.length;i++)
+		   	          		{
+		   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+	
+		   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.extDealerSearchVO[i].carSearchId+'</td>'+'<td>'+data.extDealerSearchVO[i].modelYear+'<td>'+data.extDealerSearchVO[i].modelDisplay+'</td>'+'</td>'+'<td>'+data.extDealerSearchVO[i].modelName+'</td>'+'<td>'+data.extDealerSearchVO[i].modelTrim+'</td></tr>';
+		   	          		 options += '<option>' +data.extDealerSearchVO[i].extDealerSearchId+ '</option>';
+		   	          		}
+		   	           	   $("#LeadQuoteId").html(out);
+	                	  }
+	           	 
+	                  else{
+	           		out='<h2>No records</h2>';
+	           	   }
+	           	
+	           	   out = out.replace(/>null</g, ">--NA--<");
+	           	   out = out.replace(/>undefined</g, ">--NA--<");
+	           	   $("#LeadExtTable").html(out);
 
 				}
 			});

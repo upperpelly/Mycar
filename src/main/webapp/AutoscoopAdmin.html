@@ -238,6 +238,7 @@ $(document).ready( function() {
 		$('#LogNewSer').hide();
 		$('#LogNewExp').hide();
 		$('#LeadNew').hide();
+		$('#LeadNewExt').hide();
 		$('#QuoteNew').hide();
 		$('#LogNewButton').click(function(){
 		    $('#LogNew').toggle(500);
@@ -260,6 +261,9 @@ $(document).ready( function() {
 		});
 		$('#LeadNewButton').click(function(){
 		    $('#LeadNew').toggle(500);
+		});
+		$('#LeadNewExtButton').click(function(){
+		    $('#LeadNewExt').toggle(500);
 		});
 	$('#BackToVehicles').click(function(){
         //alert('The paragraph was clicked.');
@@ -824,14 +828,22 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 															<br/>
 															<br/>
 															<ul class="nav nav-tabs">
-														    <li class="active"><a data-toggle="tab" href="#LeadCreate">Lead Creation</a></li>
+															<li class="dropdown active">
+															    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lead Creation
+															    <span class="caret"></span></a>
+															    <ul class="dropdown-menu">
+															      <li><a data-toggle="tab" href="#LeadCreate">Internal Dealer</a></li>
+															      <li><a data-toggle="tab" href="#LeadCreateExt">External Dealer</a></li>
+															    </ul>
+															  </li>
+														    <!-- <li class="active"><a data-toggle="tab" href="#LeadCreate">Lead Creation</a></li> -->
 														    <li><a data-toggle="tab" href="#QuoteCreate">Quotation Creation</a></li>
 														  </ul>
 														  <div class="tab-content">
 														    <div id="LeadCreate" class="tab-pane fade in active">
 														    <div class="row">
 															    <div class="col-md-6"><button id="LeadNewButton">Create a Lead</button></div>
-															    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+															    <div class="col-md-6"><button id="printBtn" class="pull-right" onclick="window.print();">Print</button></div>
 														    </div>
 	
 															<div class="booking-section travelo-box" id="LeadNew">
@@ -874,25 +886,67 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 																</form>
 															<!-- end form -->
 															</div>
+															<div class="row table-responsive">
 															<table id="LeadTable">
+															</table></div>
+														    </div>
+														    
+														    <div id="LeadCreateExt" class="tab-pane fade">
+														    <div class="row">
+															    <div class="col-md-6"><button id="LeadNewExtButton">Create a Lead</button></div>
+															    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+														    </div>
+	
+															<div class="booking-section travelo-box" id="LeadNewExt">
+																<form class="booking-form" id="LeadNewExtfrm" name="LeadNewExtfrm" ng-submit="submitMyLeadNewExtfrm()" novalidate>
+																    	<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																						<div class="selector">
+																							<select class="full-width" id="LeadCategory" name="LeadCategory" ng-model="LeadCategory">
+																								<option value="" disabled selected>Category Type</option>
+																								<option>Motor Cars-Used</option>
+																								<option>Motor Cars-New</option>
+																							</select>
+																						</div>
+																			 </div>
+																		</div>
+																		<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																				<input type="text" id="leadExtpost" name="leadExtpost" ng-model="leadExtpost" class="input-text full-width" placeholder="PostCode" />
+																			 </div>
+																		</div>
+																		<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Retrieve Dealers</button>
+										                                    </div>
+										                                </div>
+																		
+																</form>
+															<!-- end form -->
+															</div>
+															<table id="LeadExtTable">
 															</table>
 														    </div>
+														    
+														    
+														    
 														    <div id="QuoteCreate" class="tab-pane fade">
 															    <div class="row">
 															    <div class="col-md-6"><button id="QuoteNewButton">Create a Quote</button></div>
-															    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+															    <!-- <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div> -->
 															    </div>
 																<div class="booking-section travelo-box" id="QuoteNew">
 																	<form class="booking-form" id="QuoteNewfrm" name="QuoteNewfrm" ng-submit="submitMyQuoteNewfrm(QuoteNewfrm.$valid)" novalidate>
 															    	<div class="row">
 															    		<div class="selector">
-																			<select class="full-width" id="LeadDealerId" name="LeadDealerId" ng-model="LeadDealerId" required>
+																			<select class="full-width" id="LeadQuoteId" name="LeadQuoteId" ng-model="LeadQuoteId">
+																				<option value="" disabled selected>Select a Lead</option>
 																			</select>
 																		</div>
 																	</div>
 																	
 																	<table id="logServMnt-image">
-                                        </table>
+                                							        </table>
 
 																		<div class="form-group row">
 																			<div class="col-sm-12 col-md-12">
