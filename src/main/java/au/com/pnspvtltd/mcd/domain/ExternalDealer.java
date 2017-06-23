@@ -66,6 +66,20 @@ import javax.persistence.Table;
 	private float longitude;
 	private float latitude;
 
+	List<ExtDealerSearch> extDealSearch;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "externalDealerId")
+	public List<ExtDealerSearch> getExtDealSearch() {
+		return extDealSearch;
+	}
+
+
+	public void setExtDealSearch(List<ExtDealerSearch> extDealSearch) {
+		this.extDealSearch = extDealSearch;
+	}
+
+
 	public String getCategory() {
 		return category;
 	}

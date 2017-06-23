@@ -23,6 +23,7 @@ import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchServMaint;
 import au.com.pnspvtltd.mcd.domain.DealerSearchTransp;
+import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
 import au.com.pnspvtltd.mcd.domain.ExternalDealer;
 import au.com.pnspvtltd.mcd.domain.FinanceEntity;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
@@ -90,6 +91,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityVO;
@@ -577,6 +579,23 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 	
 		// Dealer Vehicle Lead
+				public ExtDealerSearchVO toExtDealerSearchVO(final ExtDealerSearch searchVO) {
+
+					ExtDealerSearchVO dealerSearch = new ExtDealerSearchVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
+		
+		// Dealer Vehicle Lead
 				public ExternalDealerVO toExternalDealerVO(final ExternalDealer searchVO) {
 
 					ExternalDealerVO dealerSearch = new ExternalDealerVO();
@@ -889,6 +908,17 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 
 	public DealerSearch toDealerSearchAdmin(final DealerSearchAdminVO dealerSearch) {
 		DealerSearch searchVO = new DealerSearch();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public ExtDealerSearch toExtDealerSearchAdmin(final ExtDealerSearchVO dealerSearch) {
+		ExtDealerSearch searchVO = new ExtDealerSearch();
 		try {
 			BeanUtils.copyProperties(searchVO, dealerSearch);
 		} catch (IllegalAccessException | InvocationTargetException e) {

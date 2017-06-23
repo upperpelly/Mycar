@@ -23,9 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
+import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
 import au.com.pnspvtltd.mcd.domain.ExternalDealer;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.repository.DealerSearchRepository;
+import au.com.pnspvtltd.mcd.repository.ExtDealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
@@ -35,6 +37,9 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchLdAdminVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchListAdminVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
@@ -57,6 +62,9 @@ public class DealerController {
 	
 	@Autowired
 	DealerSearchRepository dealerSearchRepository;
+	
+	@Autowired
+	ExtDealerSearchRepository extDealerSearchRepository;
 	
 	@Autowired
 	ExternalDealerRepository externalDealerRepository;
@@ -200,6 +208,34 @@ public class DealerController {
 		return updatedDealer;
 	}
 	
+	@PutMapping("extDealerLeadCreation")
+	public String extDealerLeadCreation(@RequestBody ExtDealerSearchLdAdminVO extDealerVO, HttpServletResponse response) {
+		LOGGER.debug("Received request to update ext Dealer Lead {}", extDealerVO);
+		
+		String updatedDealer = dealerService.extDealerAdminLead(extDealerVO);
+		// Dealer does not exist
+		if (updatedDealer == null) {
+			response.setStatus(HttpStatus.NO_CONTENT.value());
+		}
+		return updatedDealer;
+	}
+	
+	
+	@GetMapping(value = "getExtDealSearchInfoId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExtDealerSearchListAdminVO getExtDealSearchInfoId(@RequestParam("carSearchId") Long carSearchId) {
+		LOGGER.debug("Received request to get Dealer car Search id {} ", carSearchId);
+		ExtDealerSearchListAdminVO userAdminSearchVO12 = new ExtDealerSearchListAdminVO();
+
+		List<ExtDealerSearch> users = extDealerSearchRepository.getDealerSearchForID(carSearchId);
+		List<ExtDealerSearchVO> searchVOs = new ArrayList<ExtDealerSearchVO>();
+		for (ExtDealerSearch search : users) {
+		ExtDealerSearchVO dealVO= domainModelUtil.toExtDealerSearchVO(search);
+		searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setExtDealerSearchVO(searchVOs);
+	
+		return userAdminSearchVO12;
+	}
 	
 	@GetMapping(value = "dealerIDs", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<Long> getDealerIDs(){
