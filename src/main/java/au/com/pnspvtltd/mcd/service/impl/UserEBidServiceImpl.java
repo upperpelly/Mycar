@@ -84,6 +84,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 	    Calendar calendar = Calendar.getInstance();
 	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 	    search.setCreationDate(ourJavaDateObject);
+	    search.setUserid(user.getUserId());
 		if (user.getSearch() != null) {
 			user.getSearch().add(search);
 		} else {

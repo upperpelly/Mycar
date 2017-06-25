@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "extdealersearchrepo")
+@Table(name = "extdealersearchrepo1")
 public class ExtDealerSearch implements Serializable {
 
 	private static final long serialVersionUID = 2795828321233759004L;
@@ -43,17 +43,27 @@ public class ExtDealerSearch implements Serializable {
 	private Date dateOfBirth;
 	private double indicativeExcessAmount;
 	private Date ageOfAdditionalDriver;
-	private Long userId;
+	private Long userid;
 	private Long carSearchId;
-	private Long extdealerId;
+	private Long dealerId;
+	private Date creationDate;
 	
-	
-	public Long getExtdealerId() {
-		return extdealerId;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setExtdealerId(Long extdealerId) {
-		this.extdealerId = extdealerId;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+	
+	
+
+	public Long getDealerId() {
+		return dealerId;
+	}
+
+	public void setDealerId(Long extdealerId) {
+		this.dealerId = extdealerId;
 	}
 	
 	
@@ -65,13 +75,13 @@ public class ExtDealerSearch implements Serializable {
 		this.carSearchId = carSearchId;
 	}
 
-	@Column(name = "USERID")
-	public Long getUserId() {
-		return userId;
+	@Column(name = "userid")
+	public Long getUserid() {
+		return userid;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setUserid(Long userId) {
+		this.userid = userId;
 	}
 
 	public String getExtraExter2() {

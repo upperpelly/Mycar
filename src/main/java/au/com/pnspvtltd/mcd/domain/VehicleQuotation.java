@@ -123,7 +123,7 @@ public class VehicleQuotation implements Serializable {
 		List<VehQuotExtras> vehQuotExtras;
 		
 		@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
-		@JoinColumn(name = "searchInsuranceId")
+		@JoinColumn(name = "quotId")
 		
 		public List<VehQuotExtras> getVehQuotExtras() {
 			return vehQuotExtras;

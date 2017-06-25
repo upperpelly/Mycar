@@ -31,17 +31,33 @@ public class ExtDealerSearchVO {
 	private Date dateOfBirth;
 	private double indicativeExcessAmount;
 	private Date ageOfAdditionalDriver;
-	private Long userId;
+	private Long userid;
 	private Long carSearchId;
-	private Long extdealerId;
+	private Long dealerId;
+	private Date creationDate;
 	
-	
-	public Long getExtdealerId() {
-		return extdealerId;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setExtdealerId(Long extdealerId) {
-		this.extdealerId = extdealerId;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+	
+	public Long getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Long userid) {
+		this.userid = userid;
+	}
+
+	public Long getDealerId() {
+		return dealerId;
+	}
+
+	public void setDealerId(Long extdealerId) {
+		this.dealerId = extdealerId;
 	}
 	public Long getCarSearchId() {
 		return carSearchId;
@@ -52,14 +68,7 @@ public class ExtDealerSearchVO {
 	}
 	
 
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
+	
 	public String getExtraExter2() {
 		return extraExter2;
 	}

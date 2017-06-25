@@ -594,6 +594,23 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					}
 					return dealerSearch;
 				}
+				
+				// Dealer Vehicle Lead
+				public VehicleQuotationVO toExtQtDealerSearchVO(final VehicleQuotation searchVO) {
+
+					VehicleQuotationVO dealerSearch = new VehicleQuotationVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
 		
 		// Dealer Vehicle Lead
 				public ExternalDealerVO toExternalDealerVO(final ExternalDealer searchVO) {

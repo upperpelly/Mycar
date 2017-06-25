@@ -185,7 +185,7 @@ $(document).ready(function(){
             	$("#profilePic").append(profilePic);
             }
             else{
-				alert("Your Idle time as exceeded more than 10 mins, so can you plz log in again");
+				//alert("Your Idle time as exceeded more than 10 mins, so can you plz log in again");
 				//signingout();
 				//alert("error"+err);
 				profilePic = '<img width="270" height="263" alt="" src="'+default1+'"'+'>';$("#profilePic").append(profilePic);
@@ -2487,30 +2487,35 @@ mainApp1.controller('myController13',function($scope, $http) {
     });
 	
 	$scope.submitMyLeadNewExtfrm = function() {
-		alert("ibnvsscv");
+		//alert("ibnvsscv");
 		$body.addClass("loading");
 		$http({
 	        method : 'GET',
 	        url : 'api/getExtDealSearch?category='+$scope.LeadCategory+ '&postCode=' +$scope.leadExtpost
 	    }).then(function mySuccess(response) {
 	    	 $body.removeClass("loading");
-	    	 alert("Retrieved");
+	    	 //alert("Retrieved");
 	    	 out="";
 	    	 data1 = response.data;
-	    	 console.log(data1);
-	    	 console.log(data1.externalDealerVO);
-	    	 alert(data1.externalDealerVO.length);
-	    	 alert(data1.externalDealerVO)
+	    	 //console.log(data1);
+	    	 //console.log(data1.externalDealerVO);
+	    	 //alert(data1.externalDealerVO.length);
+	    	 //alert(data1.externalDealerVO)
+	    	 // change here
+	    	 var options ;
              if(data1.externalDealerVO.length!=0)
            	  {
                	  out += '<tr><th>'+"Operation"+'</th><th>'+"Company Name"+'</th><th>'+"Phone No"+'</th>'+'<th>'+"Email"+'</th><th>'+"Website URL"+'</th></tr>';
-  	           	   for(i=0;i<data1.externalDealerVO.length;i++)
+               	 
+               	  for(i=0;i<data1.externalDealerVO.length;i++)
   	          		{
   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
 
   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data1.externalDealerVO[i].companyName+'</td>'+'<td>'+data1.externalDealerVO[i].phone+'<td>'+data1.externalDealerVO[i].email+'</td>'+'</td>'+'<td>'+data1.externalDealerVO[i].website+'</td></tr>';
-
+  	          	 //options += '<option>' +data1.externalDealerVO[i].externalDealerId+ '</option>';
+  	          	options += '<option value="' + data1.externalDealerVO[i].externalDealerId + '">' + data1.externalDealerVO[i].externalDealerId + '</option>';
   	          		}
+               	 $("#ExtDealerId").html(options);
            	  }
       	 
              else{
@@ -2519,9 +2524,9 @@ mainApp1.controller('myController13',function($scope, $http) {
       	
       	   out = out.replace(/>null</g, ">--NA--<");
       	   out = out.replace(/>undefined</g, ">--NA--<");
-      	   $("#LeadExtTable").html(out);
-	    	 console.log(data);
-	    	 console.log(data.externalDealerVO);
+      	   $("#LeadExtDealTable").html(out);
+	    	 //console.log(data);
+	    	 //console.log(data.externalDealerVO);
 	    }, function myError(response) {
 	    	console.log(response.statusText);
 	    });
@@ -2569,6 +2574,58 @@ mainApp1.controller('myController13',function($scope, $http) {
 	    });
 		
 	}
+	
+	$scope.submitMyLeadNewfrmext = function() {
+		//alert("Insisdsssssde");
+		//alert(JSON.stringify($scope.vehicleData));
+		console.log(JSON.stringify($scope.vehicleData));
+		//jsonInput = JSON.stringify($scope.vehicleData);
+		jsonInput = $scope.vehicleData;
+		
+		jsonInput["extDealerSearchId"]=null;
+		alert("Dealer id"+$scope.ExtDealerId);
+		$scope.ExtDealerId=128;
+			jsonInput["dealerId"]=$scope.ExtDealerId;
+		
+		
+		/*var jsonInput1 ={
+				 "dealerSearchId": null,
+				 "dealerId" : $scope.LeadDealerId,
+				 "lastName": "Smith",
+				 "phoneNumber": "123-456-7890"
+				}*/
+		
+		/*var concattedjson = jsonInput.concat(jsonInput1);
+		console.log(concattedjson);*//*
+		$scope.leadDealerName = response.data.dealername;
+		 $scope.leadDealerABN = response.data.abnnumber;
+		 $scope.leadDealerEmail = response.data.email;*/
+			//console.log(JSON.stringify(jsonInput));
+			var jsonStr = '{"extDealerSearchVO":[]}';
+
+			var obj = JSON.parse(jsonStr);
+			obj['extDealerSearchVO'].push(jsonInput);
+			jsonStr = JSON.stringify(obj);
+			jsonStr.replace(/\\/g, "");
+		 alert("before sss"+jsonStr);
+		 console.log(jsonStr);
+		 
+		$body.addClass("loading");
+		$http({
+	        method : 'POST',
+	        url : 'api/extDealerLeadCreation?_method=PUT',
+			data: jsonStr
+	    }).then(function mySuccess(response) {
+	    	 $body.removeClass("loading");
+	    	 alert("Successfully Saved External Dealer Lead");
+	    	 //console.log(response.data);
+	    }, function myError(response) {
+	    	alert("Error Successfully Saved External Dealer Lead");
+	    	//console.log(response.statusText);
+	    });
+		
+	}
+	
 	$scope.dealerInfoForID = function() {
 		//alert("Hi Dude");
 		$body.addClass("loading");
@@ -2577,8 +2634,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 	        url : 'api/dealerInfoforID?dealerID='+$scope.LeadDealerId
 	    }).then(function mySuccess(response) {
 	    	 $body.removeClass("loading");
-	    	 alert("Bis");
-	    	 alert(response.data.dealername);
+	    	 //alert("Bis");
+	    	 //alert(response.data.dealername);
 	    	 $scope.leadDealerName = response.data.dealername;
     		 $scope.leadDealerABN = response.data.abnnumber;
 			 $scope.leadDealerEmail = response.data.email;
@@ -2776,7 +2833,7 @@ mainApp1.controller('myController13',function($scope, $http) {
                 };
 
                         var wsURL = 'api/getSearchInfor?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims + '&creationDate=' +$scope.creationDateLd;
-                        alert("value"+$scope.creationDateLd);
+                        //alert("value"+$scope.creationDateLd);
                         if($scope.creationDateLd === "undefined"){
                         	 alert("value"+$scope.creationDateLd);
                         	wsURL = 'api/getSearchInforOtDate?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims;
@@ -2798,15 +2855,15 @@ mainApp1.controller('myController13',function($scope, $http) {
 
                 }).success(function (data) {
                     $body.removeClass("loading");
-                    alert("successfully retrieved");
+                    alert("successfully retrieved"+data.searchVO.length);
                     out="";
 
-             	  out += '<tr><th>'+"Operation"+'</th><th>'+"Car Ebid ID"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>';
+             	  out += '<tr><th>'+"Operation"+'</th><th>'+"Car Ebid ID"+'</th><th>'+"Post Code"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>';
              	   for(i=data.searchVO.length-1;i>=0;i--)
             		{
              		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
 
-            		 out= out+'<tr>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + data.searchVO[i].carSearchId + '" data-details=\'' + JSON.stringify(data.searchVO[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">Create Lead/Quotation</a></td>'+'<td>'+data.searchVO[i].carSearchId+'</td>'+'<td>'+data.searchVO[i].modelYear+'<td>'+data.searchVO[i].modelDisplay+'</td>'+'</td>'+'<td>'+data.searchVO[i].modelName+'</td>'+'<td>'+data.searchVO[i].modelTrim+'</td></tr>';
+            		 out= out+'<tr>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + data.searchVO[i].carSearchId + '" data-details=\'' + JSON.stringify(data.searchVO[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">Create Lead/Quotation</a></td>'+'<td>'+data.searchVO[i].carSearchId+'</td>'+'<td>'+data.searchVO[i].postCode+'<td>'+data.searchVO[i].modelYear+'<td>'+data.searchVO[i].modelDisplay+'</td>'+'</td>'+'<td>'+data.searchVO[i].modelName+'</td>'+'<td>'+data.searchVO[i].modelTrim+'</td></tr>';
 
             		}
              	   out = out.replace(/>null</g, ">--NA--<");
@@ -2862,8 +2919,8 @@ mainApp1.controller('myController13',function($scope, $http) {
     		var data = $(event.target).data('details');
     		//var json = JSON.stringify(data);
 
-       		alert(data);
-       		console.log(data);
+       		//alert(data);
+       		//console.log(data);
        		$scope.vehicleData = data;
     		var quotIdHiddenField = '<input type="hidden" name="carSearchId" value="' + data.carSearchId + '" />';
     		var moveToUser = '<input type="checkbox" name="moveToUser" />';
@@ -2891,8 +2948,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 
     		//alert(JSON.stringify(data)); to work
     		var editDealerVehicleSearchForm = '<table>\
-    			<tr><th>'+"Car Ebid ID"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>\
-    			<tr><td>' + data.carSearchId + '</td><td>' + data.modelYear + '</td><td>' + data.modelDisplay + '</td><td>' + data.modelName + '</td><td>' + data.modelTrim + '</td></tr>\
+    			<tr><th>'+"Car Ebid ID"+'</th><th>'+"Post Code"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>\
+    			<tr><td>' + data.carSearchId + '</td><td>' + data.postCode + '</td><td>' + data.modelYear + '</td><td>' + data.modelDisplay + '</td><td>' + data.modelName + '</td><td>' + data.modelTrim + '</td></tr>\
     			</table>';
     		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>null</g, ">--NA--<");
     		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>undefined</g, ">--NA--<");
@@ -2905,7 +2962,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 				url: wsURL,
 				success: function(data){
 					$body.removeClass("loading");
-	                  alert("successfully retrieved");
+	                  //alert("successfully retrieved");
 	                  out="";
 	                  if(data.dealerSearchVO && data.dealerSearchVO.length!=0)
 	                	  {
@@ -2940,20 +2997,20 @@ mainApp1.controller('myController13',function($scope, $http) {
 				url: wsURL,
 				success: function(data){
 					$body.removeClass("loading");
-	                  alert("successfully retrieved");
+	                  //alert("successfully retrieved"); read here
 	                  out="";
 	                  var options ;
 	                  if(data.extDealerSearchVO && data.extDealerSearchVO.length!=0)
 	                	  {
-		                	  out += '<tr><th>'+"Operation"+'</th><th>'+"Car Ebid ID"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>';
+		                	  out += '<tr><th>'+"Operation"+'</th><th>'+"Lead ID"+'</th><th>'+"Dealer Id"+'</th>'+'<th>'+"Car Ebid Id"+'</th><th>'+"User Id"+'</th><th>'+"Lead Creation Date"+'</th></tr>';
 		   	           	   for(i=0;i<data.extDealerSearchVO.length;i++)
 		   	          		{
 		   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
 	
-		   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.extDealerSearchVO[i].carSearchId+'</td>'+'<td>'+data.extDealerSearchVO[i].modelYear+'<td>'+data.extDealerSearchVO[i].modelDisplay+'</td>'+'</td>'+'<td>'+data.extDealerSearchVO[i].modelName+'</td>'+'<td>'+data.extDealerSearchVO[i].modelTrim+'</td></tr>';
+		   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.extDealerSearchVO[i].extDealerSearchId+'</td>'+'<td>'+data.extDealerSearchVO[i].dealerId+'<td>'+data.extDealerSearchVO[i].carSearchId+'</td>'+'</td>'+'<td>'+data.extDealerSearchVO[i].userid+'</td>'+'<td>'+data.extDealerSearchVO[i].creationDate+'</td></tr>';
 		   	          		 options += '<option>' +data.extDealerSearchVO[i].extDealerSearchId+ '</option>';
 		   	          		}
-		   	           	   $("#LeadQuoteId").html(out);
+		   	           	   $("#LeadQuoteId").html(options);
 	                	  }
 	           	 
 	                  else{
@@ -2966,7 +3023,45 @@ mainApp1.controller('myController13',function($scope, $http) {
 
 				}
 			});
+    		
+    		//$scope.leadIDs = "";
+    		var wsURL = 'api/getExtQtDealSearchInfoId?carSearchId='+data.carSearchId ;
+  		  	$body.addClass("loading");
+    		$.ajax({
+				type: "GET",
+				url: wsURL,
+				success: function(data){
+					$body.removeClass("loading");
+	                  //alert("successfully retrieved"); read here
+	                  out="";
+	                  //var options ;
+	                  if(data.vehicleQuotationVO && data.vehicleQuotationVO.length!=0)
+	                	  {
+		                	  out += '<tr><th>'+"Operation"+'</th><th>'+"Quotation ID"+'</th><th>'+"Dealer Id"+'</th>'+'<th>'+"Car Ebid Id"+'</th><th>'+"User Id"+'</th><th>'+"Quotation Creation Date"+'</th></tr>';
+		   	           	   for(i=0;i<data.vehicleQuotationVO.length;i++)
+		   	          		{
+		   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+	
+		   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.vehicleQuotationVO[i].quotId+'</td>'+'<td>'+data.vehicleQuotationVO[i].dealerId+'<td>'+data.vehicleQuotationVO[i].carSearchId+'</td>'+'</td>'+'<td>'+data.vehicleQuotationVO[i].userid+'</td>'+'<td>'+data.vehicleQuotationVO[i].creationDate+'</td></tr>';
+		   	          		 //options += '<option>' +data.vehicleQuotationVO[i].extDealerSearchId+ '</option>';
+		   	          		}
+		   	           	   //$("#LeadQuoteId").html(options);
+	                	  }
+	           	 
+	                  else{
+	           		out='<h2>No records</h2>';
+	           	   }
+	           	
+	           	   out = out.replace(/>null</g, ">--NA--<");
+	           	   out = out.replace(/>undefined</g, ">--NA--<");
+	           	   $("#QuoteTable").html(out);
+
+				}
+			});
+    		
     	});
+    	
+    	
     	/*$('button.submit-editDealerVehicleSearchModal').on('click', function(e) {
 
     		var jsonInput = $("#edit-dealer-vehicle-Search-content-form").convertFormDataToJSON();
@@ -4587,7 +4682,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 
 
 													$scope.submitMyQuoteNewfrm = function(isValid) {
-														//alert("inside Sesdarv Maint"+isValid);
+														alert("inside Sesdarv Maint"+isValid);
 														if (isValid) {
 														/*alert("inside Sesdarv Maint");
 														alert(myVehicleIDuse);*/
@@ -4600,8 +4695,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 														var objKeyfilefileChooserlogservmaint ='noImage';
 														if(filefileChooserlogservmaint){
 														objKeyfilefileChooserlogservmaint = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;}
-
 														//alert(objKeyfilefileChooserlogservmaint);
+														/*//alert(objKeyfilefileChooserlogservmaint);
 														var jsonInputToAPI = {
 																	"dealerId":null,
 																	"userId":null,
@@ -4614,19 +4709,62 @@ mainApp1.controller('myController13',function($scope, $http) {
 																	"modelDisplay":null,
 																	"modelName":null,
 																	"modelTrim":null
-																}
+																}*/
+														
+														jsonInput = $scope.vehicleData;
+														
+														jsonInput["quotId"]=null;
+														alert("dealer Search id"+$scope.LeadQuoteId);
+														$scope.ExtDealerId=128;
+														$scope.LeadQuoteId=4;
+														jsonInput["dealerId"]=$scope.ExtDealerId;
+														jsonInput["driveAwayPrice"]=$scope.finAnnualIncome;
+														jsonInput["offerPrice2"]=$scope.finAnnualIncome1;
+														jsonInput["offerPrice3"]=$scope.finAnnualIncome2;
+														jsonInput["regoEndDate"]=$scope.finDOB;
+														jsonInput["dealSearchId"]=$scope.LeadQuoteId;
+														jsonInput["address"]=objKeyfilefileChooserlogservmaint;
+														jsonInput["modelYear"]=$scope.caryearsfin;
+														        jsonInput["modelDisplay"]=$scope.carmakesfin;
+														                    jsonInput["modelName"]=$scope.carmodelsfin;
+														                              jsonInput["modelTrim"]=$scope.carmodelAutotrimsfin;
+														                              
+														                              jsonInput["fname"]=$scope.servAddNotes;
+														var table1 = $("#my-table944");
+							                            var table = table1.tableToJSON({
+							                                ignoreColumns:[0],
+							                                headings: ['extras1', 'extras2', '45']
+							                              });
+							                            //delete table[0];
+
+							                            table.splice(0,1);
+
+							                            jsonInput.VehQuotExtras = table ;
+														//alert("value"+jsonInput);
+														
+														
+														// Transfer the object to a JSON string
+														var jsonstr1 = JSON.stringify(jsonInput);
+
+														// HERE you do the transform
+														var new_jsonstr = jsonstr1.replace('"userid"', '"userId"');
+														var new_jsonstr1 = new_jsonstr.replace('"creationDate"', '"userCreationDate"');
+														// You probably want to parse the altered string later
+														var new_obj = JSON.parse(new_jsonstr1);
 
 														
+														alert("new"+JSON.stringify(new_obj));
 														
+														console.log(JSON.stringify(new_obj));
 														//alert("Before Call");
 														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 														//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
-														var wsURL = 'api/dealerQuotCreation';
+														var wsURL = 'api/dealerQuotCreation?_method=PUT';
 														$body.addClass("loading");
 															    $http({
 																			method : 'POST',
 																			url : wsURL,
-																			data: jsonInputToAPI
+																			data: JSON.stringify(new_obj)
 
 																		}).success(function(data) {
 																			$body.removeClass("loading");

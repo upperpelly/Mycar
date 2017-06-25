@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 
 import au.com.pnspvtltd.mcd.domain.DealerQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
+import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
 
 public class VehicleQuotationVO {
 
@@ -53,7 +54,17 @@ public class VehicleQuotationVO {
 	private boolean newer;
 	private boolean used;
 	
+	List<VehQuotExtras> vehQuotExtras;
 	
+	public List<VehQuotExtras> getVehQuotExtras() {
+		return vehQuotExtras;
+	}
+
+
+	public void setVehQuotExtras(
+			List<VehQuotExtras> vehQuotExtras) {
+		this.vehQuotExtras = vehQuotExtras;
+	}
 	public boolean isNewer() {
 		return newer;
 	}

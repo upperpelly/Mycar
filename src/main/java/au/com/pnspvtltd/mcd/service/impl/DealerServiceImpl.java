@@ -2,6 +2,7 @@ package au.com.pnspvtltd.mcd.service.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -163,11 +164,16 @@ public class DealerServiceImpl implements DealerService {
 		
 		List<ExtDealerSearchVO> extDealerSearchVOs = dealerVO.getExtDealerSearchVO();
 		for (ExtDealerSearchVO extDealerSearchVO : extDealerSearchVOs) {
-			ExternalDealer dealer = externalDealerRepository.findOne(extDealerSearchVO.getExtdealerId());
+			ExternalDealer dealer = externalDealerRepository.findOne(extDealerSearchVO.getDealerId());
 			ExtDealerSearch dealerSearch = null;
+			Calendar calendar = Calendar.getInstance();
+		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+			extDealerSearchVO.setDateOfBirth(ourJavaDateObject);
+			extDealerSearchVO.setAgeOfAdditionalDriver(ourJavaDateObject);
+			extDealerSearchVO.setsYearOfMake(ourJavaDateObject);
 			dealerSearch = domainModelUtil.toExtDealerSearchAdmin(extDealerSearchVO);
 			
-			dealerSearch.setUserId(extDealerSearchVO.getUserId());
+			dealerSearch.setUserid(extDealerSearchVO.getUserid());
 			if (dealer.getExtDealSearch() != null) {
 				dealer.getExtDealSearch().add(dealerSearch);
 			} else {

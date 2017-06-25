@@ -44,7 +44,16 @@ public class SearchVO {
 	private boolean comprehensiveCover;
 	private boolean thirdPartyCover;
 	private String ausCapTer;
+	private Long userid;
 	
+	
+	public Long getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Long userid) {
+		this.userid = userid;
+	}
 	private Date creationDate;
 	
 	public Date getCreationDate() {

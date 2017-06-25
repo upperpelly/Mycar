@@ -1,5 +1,6 @@
 package au.com.pnspvtltd.mcd.web.controller;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -9,16 +10,24 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
+import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchListAdminVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
+import au.com.pnspvtltd.mcd.web.model.ExtQtDealerSearchListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 @RestController
@@ -28,6 +37,8 @@ public class VehicleQuotationController {
 
 	@Autowired
 	VehicleQuotationRepository vehicleQuotationRepository;
+	@Autowired
+	DomainModelUtil domainModelUtil;
 	
 	@PutMapping("vehicleQuotation")
 	@Transactional
@@ -52,40 +63,57 @@ public class VehicleQuotationController {
 		vehicleQuotation.setOfferPrice2(dealerVO.getOfferPrice2());// set Save Price
 		vehicleQuotation.setOfferPrice3(dealerVO.getOfferPrice3());// Actual value of Offer
 		// Offer Details select Template Id from Car Templates via list
-		vehicleQuotation.setModelYear(vehicleQuotation.getModelYear());
-		vehicleQuotation.setModelDisplay(vehicleQuotation.getModelDisplay());
-		vehicleQuotation.setModelName(vehicleQuotation.getModelName());
-		vehicleQuotation.setModelTrim(vehicleQuotation.getModelTrim());
+		vehicleQuotation.setModelYear(dealerVO.getModelYear());
+		vehicleQuotation.setModelDisplay(dealerVO.getModelDisplay());
+		vehicleQuotation.setModelName(dealerVO.getModelName());
+		vehicleQuotation.setModelTrim(dealerVO.getModelTrim());
 		
 		// Addition of extras
-		vehicleQuotation.setVehQuotExtras(vehicleQuotation.getVehQuotExtras());
-		vehicleQuotation.setFname(vehicleQuotation.getFname()); // Terms and conditions
+		vehicleQuotation.setVehQuotExtras(dealerVO.getVehQuotExtras());
+		vehicleQuotation.setFname(dealerVO.getFname()); // Terms and conditions
 		
-		vehicleQuotation.setDealerId(vehicleQuotation.getDealerId()); // Dealer Lead Id
-		vehicleQuotation.setUserId(vehicleQuotation.getUserId());
-		vehicleQuotation.setUserCreationDate(vehicleQuotation.getUserCreationDate());
+		vehicleQuotation.setDealerId(dealerVO.getDealerId()); // Dealer Lead Id
+		vehicleQuotation.setUserId(dealerVO.getUserId());
+		vehicleQuotation.setUserCreationDate(dealerVO.getUserCreationDate());
 		Calendar calendar = Calendar.getInstance();
 	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 		vehicleQuotation.setCreationDate(ourJavaDateObject);
 		vehicleQuotation.setStatus(true);
-		vehicleQuotation.setDealSearchId(vehicleQuotation.getDealSearchId());
-		vehicleQuotation.setCarSearchId(vehicleQuotation.getCarSearchId()); // user Ebid Id
+		vehicleQuotation.setDealSearchId(dealerVO.getDealSearchId());
+		vehicleQuotation.setCarSearchId(dealerVO.getCarSearchId()); // user Ebid Id
 		
 		//vehicleQuotation.setRefId(vehicleQuotation.getRefId());
-		vehicleQuotation.setAutoBid(vehicleQuotation.isAutoBid());
+		vehicleQuotation.setAutoBid(dealerVO.isAutoBid());
 		
 		//vehicleQuotation.setDealerStockNo(vehicleQuotation.getDealerStockNo());
-		
+		Long l =(long) 0;
 		// Ebid Request
-		vehicleQuotation.setNewer(vehicleQuotation.isNewer());
-		vehicleQuotation.setUsed(vehicleQuotation.isUsed());
-		vehicleQuotation.setPostCode(vehicleQuotation.getPostCode());
-		vehicleQuotation.setColor(vehicleQuotation.getColor());// color 1
-		vehicleQuotation.setTransmission(vehicleQuotation.getTransmission()); // color2
-		vehicleQuotation.setDriveType(vehicleQuotation.getDriveType());// more about more requirement
-		
+		vehicleQuotation.setNewer(dealerVO.isNewer());
+		vehicleQuotation.setUsed(dealerVO.isUsed());
+		vehicleQuotation.setPostCode(dealerVO.getPostCode());
+		vehicleQuotation.setColor(dealerVO.getColor());// color 1
+		vehicleQuotation.setTransmission(dealerVO.getTransmission()); // color2
+		vehicleQuotation.setDriveType(dealerVO.getDriveType());// more about more requirement
+		vehicleQuotation.setRefId(l);
+		vehicleQuotation.setAddress(dealerVO.getAddress()); // set image
 		vehicleQuotationRepository.save(vehicleQuotation);
 		vehicleQuotationRepository.flush();
 		return vehicleQuotation;
+	}
+	
+	@GetMapping(value = "getExtQtDealSearchInfoId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExtQtDealerSearchListAdminVO getExtQtDealSearchInfoId(@RequestParam("carSearchId") Long carSearchId) {
+		LOGGER.debug("Received request to get Dealer car Search id {} ", carSearchId);
+		ExtQtDealerSearchListAdminVO userAdminSearchVO12 = new ExtQtDealerSearchListAdminVO();
+
+		List<VehicleQuotation> users = vehicleQuotationRepository.getDealerSearchForID(carSearchId);
+		List<VehicleQuotationVO> searchVOs = new ArrayList<VehicleQuotationVO>();
+		for (VehicleQuotation search : users) {
+			VehicleQuotationVO dealVO= domainModelUtil.toExtQtDealerSearchVO(search);
+		searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setVehicleQuotationVO(searchVOs);
+	
+		return userAdminSearchVO12;
 	}
 }

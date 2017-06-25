@@ -29,7 +29,16 @@ public class Search implements Serializable {
 	private boolean finance;
 	private boolean insurance;
 	private boolean dealer;
+	private Long userid;
 	
+	
+	public Long getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Long userid) {
+		this.userid = userid;
+	}
 	private Date creationDate;
 	
 	public Date getCreationDate() {
