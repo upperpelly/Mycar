@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.repository.ExtDealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
@@ -37,6 +38,8 @@ public class VehicleQuotationController {
 
 	@Autowired
 	VehicleQuotationRepository vehicleQuotationRepository;
+	@Autowired
+	ExtDealerSearchRepository extDealerSearchRepository;
 	@Autowired
 	DomainModelUtil domainModelUtil;
 	
@@ -80,6 +83,9 @@ public class VehicleQuotationController {
 		vehicleQuotation.setCreationDate(ourJavaDateObject);
 		vehicleQuotation.setStatus(true);
 		vehicleQuotation.setDealSearchId(dealerVO.getDealSearchId());
+		ExtDealerSearch extDealerSearch=extDealerSearchRepository.findOne(dealerVO.getDealSearchId());
+		extDealerSearch.setStatus(true);
+		extDealerSearchRepository.flush();
 		vehicleQuotation.setCarSearchId(dealerVO.getCarSearchId()); // user Ebid Id
 		
 		//vehicleQuotation.setRefId(vehicleQuotation.getRefId());

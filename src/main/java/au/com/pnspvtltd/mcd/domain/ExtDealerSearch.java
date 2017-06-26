@@ -47,7 +47,54 @@ public class ExtDealerSearch implements Serializable {
 	private Long carSearchId;
 	private Long dealerId;
 	private Date creationDate;
+	private boolean status;
+	private boolean newer;
+	private boolean used;
+	private String state;
 	
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String sState) {
+		this.state = sState;
+	}
+	
+	public boolean isNewer() {
+		return newer;
+	}
+
+	public void setNewer(boolean newer) {
+		this.newer = newer;
+	}
+
+	public boolean isUsed() {
+		return used;
+	}
+
+	public void setUsed(boolean used) {
+		this.used = used;
+	}
+
+	// User Creation Date
+	private Date userCreationDate;
+	
+	public Date getUserCreationDate() {
+		return userCreationDate;
+	}
+
+	public void setUserCreationDate(Date userCreationDate) {
+		this.userCreationDate = userCreationDate;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -357,7 +404,7 @@ public class ExtDealerSearch implements Serializable {
 	// hash tag
 	private String sBodyType;
 	// kolor
-	private String sCarColor;
+	private String carColor;
 	// victoria
 	private String sState;
 	// melbourne
@@ -420,12 +467,12 @@ public class ExtDealerSearch implements Serializable {
 	}
 
 	@Column(name = "CARCOLOR")
-	public String getsCarColor() {
-		return sCarColor;
+	public String getCarColor() {
+		return carColor;
 	}
 
-	public void setsCarColor(String sCarColor) {
-		this.sCarColor = sCarColor;
+	public void setCarColor(String sCarColor) {
+		this.carColor = sCarColor;
 	}
 
 	@Column(name = "SSTATE")
