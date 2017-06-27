@@ -1960,7 +1960,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 															<input type="text" onfocus="(this.type='date')" id="InsExpDate" name="InsExpDate" class="input-text full-width" placeholder="Insurance End Date" ng-model="InsExpDate" />
 															<!-- <span style="color:red" ng-show="vehFrm.InsExpDate.$error.required && (!vehFrm.InsExpDate.$pristine || vehFrm.$submitted)"><b>Insurance Provider is Required</b></span> -->
 														</div>
-														<div class="col-sm-3 col-md-3">
+														<div class="col-sm-3 col-md-3 pull-left input-group">
 															<input type="text" id="insPrePaid" name="insPrePaid" class="input-text full-width" value="" placeholder="Premimum Amount"  ng-pattern="/^[0-9]*$/" ng-model="insPrePaid" /><span class="input-group-addon">$</span>
 															<!-- <span style="color:red" ng-show="vehFrm.insPrePaid.$error.required && (!vehFrm.insPrePaid.$pristine || vehFrm.$submitted)"><b>Insurance Premium is Required</b></span> -->
 																 <span style="color:red" ng-show="vehFrm.insPrePaid.$error.pattern && (!vehFrm.insPrePaid.$pristine || vehFrm.$submitted)"><b>Insurance Permium must be Numeric</b></span>
@@ -2031,13 +2031,13 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 														<input type="text"  onfocus="(this.type='date')"" id="LoanTakenDate" name="LoanTakenDate" class="input-text full-width" placeholder="Loan Taken date" ng-model="LoanTakenDate"/>
 														<!-- <span style="color:red" ng-show="vehFrm.LoanTakenDate.$error.required && (!vehFrm.LoanTakenDate.$pristine || vehFrm.$submitted)"><b>Loan Taken date is Required</b></span> -->
 													</div>
-													<div class="col-sm-3 col-md-3">
+													<div class="col-sm-3 col-md-3 pull-left input-group">
 														<input type="text" id="loanAmount" name="loanAmount" class="input-text full-width" value="" placeholder="Loan Amount" ng-pattern="/^[0-9]*$/" ng-model="loanAmount" /><span class="input-group-addon">$</span>
 														<!-- <span style="color:red" ng-show="vehFrm.loanAmount.$error.required && (!vehFrm.loanAmount.$pristine || vehFrm.$submitted)"><b>Loan Amount is Required</b></span> -->
 															 <span style="color:red" ng-show="vehFrm.loanAmount.$error.pattern && (!vehFrm.loanAmount.$pristine || vehFrm.$submitted)"><b>Loan Amount must be Numeric</b></span>
 													</div>
 
-													 <div class="col-sm-4 col-md-4">
+													 <div class="col-sm-3 col-md-3">
                                                             <div class="selector">
                                                                 <select class="full-width" id="laonPeriod" ng-model="laonPeriod"
                                                                         name="laonPeriod" placeholder="Loan Period">
