@@ -138,16 +138,7 @@ $(document).ready(function() {
 		//alert("Trans Tab");
 	}
 
-$.ajax({
-  url: "http://www.carqueryapi.com/api/0.3/?cmd=getStats",
-  success: function(data){
 
-  $('#make_count').html(data.Stats.make_count);
-  $('#model_count').html(data.Stats.model_count);
-  $('#trim_count').html(data.Stats.trim_count);
-
-  }
-});
 
 });
 </script>

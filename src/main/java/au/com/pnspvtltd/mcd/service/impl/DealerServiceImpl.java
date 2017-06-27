@@ -171,6 +171,26 @@ public class DealerServiceImpl implements DealerService {
 			extDealerSearchVO.setDateOfBirth(ourJavaDateObject);
 			extDealerSearchVO.setAgeOfAdditionalDriver(ourJavaDateObject);
 			extDealerSearchVO.setsYearOfMake(ourJavaDateObject);
+			// start of External Dealer
+			extDealerSearchVO.setCategory(dealer.getCategory());
+			extDealerSearchVO.setCompanyName(dealer.getCompanyName());
+			extDealerSearchVO.setStreet(dealer.getStreet());
+			extDealerSearchVO.setSuburb(dealer.getSuburb());
+			extDealerSearchVO.setState(dealer.getState());
+			extDealerSearchVO.setPostCode(dealer.getPostCode());
+			extDealerSearchVO.setCountry(dealer.getCountry());
+			extDealerSearchVO.setPhone(dealer.getPhone());
+			extDealerSearchVO.setWebsite(dealer.getWebsite());
+			extDealerSearchVO.setMobile(dealer.getMobile());
+			extDealerSearchVO.setTollFree(dealer.getTollFree());
+			extDealerSearchVO.setFax(dealer.getFax());
+			extDealerSearchVO.setAfterHours(dealer.getAfterHours());
+			extDealerSearchVO.setPostalAddress(dealer.getPostalAddress());
+			extDealerSearchVO.setEmail(dealer.getEmail());
+			extDealerSearchVO.setLongitude(dealer.getLongitude());
+			extDealerSearchVO.setLatitude(dealer.getLatitude());
+			// end of External Dealer
+			
 			dealerSearch = domainModelUtil.toExtDealerSearchAdmin(extDealerSearchVO);
 			
 			dealerSearch.setUserid(extDealerSearchVO.getUserid());

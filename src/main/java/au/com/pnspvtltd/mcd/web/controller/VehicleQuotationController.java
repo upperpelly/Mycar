@@ -85,6 +85,29 @@ public class VehicleQuotationController {
 		vehicleQuotation.setDealSearchId(dealerVO.getDealSearchId());
 		ExtDealerSearch extDealerSearch=extDealerSearchRepository.findOne(dealerVO.getDealSearchId());
 		extDealerSearch.setStatus(true);
+		
+		// Dealer info Start
+		vehicleQuotation.setCategory(extDealerSearch.getCategory());
+		vehicleQuotation.setCompanyName(extDealerSearch.getCompanyName());;
+		vehicleQuotation.setStreet(extDealerSearch.getStreet());
+		vehicleQuotation.setSuburb(extDealerSearch.getSuburb());;
+		vehicleQuotation.setDealState(extDealerSearch.getDealState());;
+		vehicleQuotation.setDealPostCode(extDealerSearch.getPostCode());;
+		vehicleQuotation.setCountry(extDealerSearch.getCountry());;
+		vehicleQuotation.setPhone(extDealerSearch.getPhone());;
+		vehicleQuotation.setWebsite(extDealerSearch.getWebsite());;
+		vehicleQuotation.setMobile(extDealerSearch.getMobile());
+		vehicleQuotation.setTollFree(extDealerSearch.getTollFree());
+		vehicleQuotation.setFax(extDealerSearch.getFax());
+		vehicleQuotation.setAfterHours(extDealerSearch.getAfterHours());
+		vehicleQuotation.setPostalAddress(extDealerSearch.getPostalAddress());
+		vehicleQuotation.setEmail(extDealerSearch.getEmail());
+		vehicleQuotation.setLongitude(extDealerSearch.getLongitude());
+		vehicleQuotation.setLatitude(extDealerSearch.getLatitude());
+					// Dealer info end
+		
+		
+		
 		extDealerSearchRepository.flush();
 		vehicleQuotation.setCarSearchId(dealerVO.getCarSearchId()); // user Ebid Id
 		
