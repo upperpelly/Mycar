@@ -2503,19 +2503,20 @@ mainApp1.controller('myController13',function($scope, $http) {
 	    	 //alert(data1.externalDealerVO)
 	    	 // change here
 	    	 var options ;
+	    	 $(".ExtDealerId").empty();
              if(data1.externalDealerVO.length!=0)
            	  {
-               	  out += '<tr><th>'+"Operation"+'</th><th>'+"Company Name"+'</th><th>'+"Phone No"+'</th>'+'<th>'+"Email"+'</th><th>'+"Website URL"+'</th></tr>';
-               	 
+               	  out += '<tr><th>'+"Operation"+'</th><th>'+"Ext Dealer Id"+'</th><th>'+"Company Name"+'</th><th>'+"Phone No"+'</th>'+'<th>'+"Email"+'</th><th>'+"Website URL"+'</th></tr>';
+               	options += '<option value="" selected disabled>Select a Dealer ID</option>';
                	  for(i=0;i<data1.externalDealerVO.length;i++)
   	          		{
   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
 
-  	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data1.externalDealerVO[i].companyName+'</td>'+'<td>'+data1.externalDealerVO[i].phone+'<td>'+data1.externalDealerVO[i].email+'</td>'+'</td>'+'<td>'+data1.externalDealerVO[i].website+'</td></tr>';
+  	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data1.externalDealerVO[i].externalDealerId+'</td>'+'<td>'+data1.externalDealerVO[i].companyName+'</td>'+'<td>'+data1.externalDealerVO[i].phone+'<td>'+data1.externalDealerVO[i].email+'</td>'+'</td>'+'<td>'+data1.externalDealerVO[i].website+'</td></tr>';
   	          	 //options += '<option>' +data1.externalDealerVO[i].externalDealerId+ '</option>';
   	          	options += '<option value="' + data1.externalDealerVO[i].externalDealerId + '">' + data1.externalDealerVO[i].externalDealerId + '</option>';
   	          		}
-               	 $("#ExtDealerId").html(options);
+               	 $(".ExtDealerId").html(options);
            	  }
       	 
              else{
@@ -2584,7 +2585,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 		
 		jsonInput["extDealerSearchId"]=null;
 		//alert("Dealer id"+$scope.ExtDealerId);
-		$scope.ExtDealerId=128;
+		//$scope.ExtDealerId=128;
+		console.log($scope.ExtDealerId);
 			jsonInput["dealerId"]=$scope.ExtDealerId;
 		
 		
@@ -2859,12 +2861,12 @@ mainApp1.controller('myController13',function($scope, $http) {
                     alert("successfully retrieved"+data.searchVO.length);
                     out="";
 
-             	  out += '<tr><th>'+"Operation"+'</th><th>'+"Car Ebid ID"+'</th><th>'+"Post Code"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>';
+             	  out += '<tr><th>'+"Operation"+'</th><th>'+"Car Ebid ID"+'</th><th>'+"New"+'</th><th>'+"Used"+"Post Code"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>';
              	   for(i=data.searchVO.length-1;i>=0;i--)
             		{
              		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
 
-            		 out= out+'<tr>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + data.searchVO[i].carSearchId + '" data-details=\'' + JSON.stringify(data.searchVO[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">Create Lead/Quotation</a></td>'+'<td>'+data.searchVO[i].carSearchId+'</td>'+'<td>'+data.searchVO[i].postCode+'<td>'+data.searchVO[i].modelYear+'<td>'+data.searchVO[i].modelDisplay+'</td>'+'</td>'+'<td>'+data.searchVO[i].modelName+'</td>'+'<td>'+data.searchVO[i].modelTrim+'</td></tr>';
+            		 out= out+'<tr>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + data.searchVO[i].carSearchId + '" data-details=\'' + JSON.stringify(data.searchVO[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">Create Lead/Quotation</a></td>'+'<td>'+data.searchVO[i].carSearchId+'</td>'+'<td>'+data.searchVO[i].newer+'<td>'+'<td>'+data.searchVO[i].used+'<td>'+'<td>'+data.searchVO[i].postCode+'<td>'+data.searchVO[i].modelYear+'<td>'+data.searchVO[i].modelDisplay+'</td>'+'</td>'+'<td>'+data.searchVO[i].modelName+'</td>'+'<td>'+data.searchVO[i].modelTrim+'</td></tr>';
 
             		}
              	   out = out.replace(/>null</g, ">--NA--<");
@@ -3001,17 +3003,21 @@ mainApp1.controller('myController13',function($scope, $http) {
 	                  //alert("successfully retrieved"); read here
 	                  out="";
 	                  var options ;
+	                  $(".LeadQuoteId").empty();
 	                  if(data.extDealerSearchVO && data.extDealerSearchVO.length!=0)
 	                	  {
 		                	  out += '<tr><th>'+"Operation"+'</th><th>'+"Lead ID"+'</th><th>'+"Dealer Id"+'</th>'+'<th>'+"Car Ebid Id"+'</th><th>'+"User Id"+'</th><th>'+"Lead Creation Date"+'</th></tr>';
-		   	           	   for(i=0;i<data.extDealerSearchVO.length;i++)
+		                		options += '<option value="" selected disabled>Select a Lead ID</option>';
+		                	  for(i=0;i<data.extDealerSearchVO.length;i++)
 		   	          		{
 		   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
 	
 		   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.extDealerSearchVO[i].extDealerSearchId+'</td>'+'<td>'+data.extDealerSearchVO[i].dealerId+'<td>'+data.extDealerSearchVO[i].carSearchId+'</td>'+'</td>'+'<td>'+data.extDealerSearchVO[i].userid+'</td>'+'<td>'+data.extDealerSearchVO[i].ageOfAdditionalDriver+'<td><a href="#" id="anchor-editldaDealerVehicleSearchModal-' + data.extDealerSearchVO[i].extDealerSearchId + '" data-details=\'' + JSON.stringify(data.extDealerSearchVO[i]) + '\' class="anchor-editldaDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editldaDealerVehicleSearchModal">View</a></td></tr>';
-		   	          		 options += '<option>' +data.extDealerSearchVO[i].extDealerSearchId+ '</option>';
+		   	          		// options += '<option>' +data.extDealerSearchVO[i].extDealerSearchId+ '</option>';
+		   	          	options += '<option value="' + data.extDealerSearchVO[i].extDealerSearchId + '">' + data.extDealerSearchVO[i].extDealerSearchId + '</option>';
 		   	          		}
-		   	           	   $("#LeadQuoteId").html(options);
+		   	           	   //$("#LeadQuoteId").html(options);
+		   	            $(".LeadQuoteId").html(options);
 	                	  }
 	           	 
 	                  else{
@@ -5044,8 +5050,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 														
 														jsonInput["quotId"]=null;
 														//alert("dealer Search id"+$scope.LeadQuoteId);
-														$scope.ExtDealerId=128;
-														$scope.LeadQuoteId=14;
+														$scope.ExtDealerId=0;
+														//$scope.LeadQuoteId=14;
 														jsonInput["dealerId"]=$scope.ExtDealerId;
 														jsonInput["driveAwayPrice"]=$scope.finAnnualIncome;
 														jsonInput["offerPrice2"]=$scope.finAnnualIncome1;
