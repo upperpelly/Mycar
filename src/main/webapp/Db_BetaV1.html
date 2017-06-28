@@ -1776,7 +1776,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 				                            		</div>
 				                            	</div>
 				                               <div class="row">
-														<div class="col-sm-3 col-md-3">
+														<div class="col-sm-3 col-md-2">
 															<label>Vehicle Type</label>
 														</div>
 														<div class="col-sm-3 col-md-3">
@@ -1803,7 +1803,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
 												<div class="row">
-														<div class="col-sm-3 col-md-3">
+														<div class="col-sm-3 col-md-2">
 															<label>Select Vehicle</label>
 														</div>
 														<div class="col-sm-3 col-md-3">
@@ -1858,10 +1858,10 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
 												<div class="row">
-														<div class="col-sm-3 col-md-3">
+														<div class="col-sm-3 col-md-2">
 															&nbsp;
 														</div>
-														<div class="col-sm-3 col-md-3">
+														<div class="col-sm-3 col-md-6">
                                                             <div class="selector">
                                                                 <select id="car-model-trims" name="car-model-trims" ng-model="carmodeltrims"
                                                                         class="full-width" required></select>
@@ -1889,7 +1889,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 
 												<div class="row">
-														<div class="col-sm-3 col-md-3">
+														<div class="col-sm-3 col-md-2">
 															<label>Vehicle Identity</label>
 														</div>
 														<div class="col-sm-3 col-md-3">
@@ -1900,7 +1900,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 															<input type="text" id="regNo" name="regNo" ng-model="regNo" required  class="input-text full-width" value="" placeholder="Rego No" />
 															<span style="color:red" ng-show="vehFrm.regNo.$error.required && (!vehFrm.regNo.$pristine || vehFrm.$submitted)"><b>Rego No is Required</b></span>
 														</div>
-														<div class="col-sm-1 col-md-1">
+														<div class="col-sm-2 col-md-2">
 															<div class="selector">
 				                                                <select class="full-width" id="regState" name="regState" ng-model="regState" required>
 				                                                    <option value="" selected disabled>Rego State</option>
@@ -1917,11 +1917,12 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 														<div class="col-sm-3 col-md-3">
 				                                       		<input type="text" onfocus="(this.type='date')" name="RegExpDate" id = "RegExpDate" class="input-text full-width" placeholder="Rego End Date" ng-model="RegExpDate" required/>
 				                                       		<span style="color:red" ng-show="vehFrm.RegExpDate.$error.required && (!vehFrm.RegExpDate.$pristine || vehFrm.$submitted)"><b>Rego Exp date is Required</b></span>
-														</div>
-														<div class="col-sm-3 col-md-3">
 				                                       		<input type="checkbox" id="vehIdentRemind" name="vehIdentRemind"  ng-model="vehIdentRemind"/>Reminder
-				                                       		<!-- <span style="color:red" ng-show="vehFrm.insRemind.$error.required && (!vehFrm.insRemind.$pristine || vehFrm.$submitted)"><b>Reminder must be checked</b></span> -->
 														</div>
+														<!-- <div class="col-sm-3 col-md-3">
+				                                       		<input type="checkbox" id="vehIdentRemind" name="vehIdentRemind"  ng-model="vehIdentRemind"/>Reminder
+				                                       		<span style="color:red" ng-show="vehFrm.insRemind.$error.required && (!vehFrm.insRemind.$pristine || vehFrm.$submitted)"><b>Reminder must be checked</b></span>
+														</div> -->
 												</div>
 
 
