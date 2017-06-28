@@ -1605,8 +1605,8 @@ We suggest that you contact the host to confirm availability and rates before su
                                                         </ul>
 		                                </div>
                                          <hr />
-                                        
-                                      <div class="toggle-container box finToggle" ng-if="aFinCheck || finFlag">
+                                        <!--ng-if="aFinCheck || finFlag"  -->
+                                      <div class="toggle-container box finToggle" ng-show="aFinCheck || finFlag">
                                                     <div class="panel style1">
                                                         <h4 class="panel-title">
                                                             <a href="#tgg4" data-toggle="collapse">Finance Requirement</a>
@@ -1702,8 +1702,10 @@ We suggest that you contact the host to confirm availability and rates before su
 								                                            </div>
 								                                            <span style="color:red" ng-show="frm.creditRating.$error.required && (!frm.creditRating.$pristine || frm.$submitted)"><b>Credit Rating is Required</b></span>
                                                                         </div>
-                                                                        <div class="col-sm-3 col-md-4" ng-if="incomeType == 'Business'">
+                                                                        <!--ng-if="incomeType == 'Business'"  -->
+                                                                        <div class="col-sm-3 col-md-4" ng-show="incomeType == 'Business'">
                                                                             <input type="text" class="input-text full-width" value="" placeholder="if Business Provide ABN" ng-model="ifBusPABN" id="ifBusPABN" name="ifBusPABN"/>
+                                                                            <span style="color:red" ng-show="frm.ifBusPABN.$error.required && (!frm.ifBusPABN.$pristine || frm.$submitted)"><b>ABN is Required</b></span>
                                                                         </div>
 
                                                                     </div><br/>
@@ -1715,8 +1717,8 @@ We suggest that you contact the host to confirm availability and rates before su
                                        </div> <hr />
                                 </div><!-- Personalinfo end -->
                                 
-                                
-                                <div class="toggle-container box insToggle" ng-if="aInsCheck || insFlag">
+                                <!--ng-if="aInsCheck || insFlag"  -->
+                                <div class="toggle-container box insToggle" ng-show="aInsCheck || insFlag">
                                 <div class="panel style1">
                                     <h4 class="panel-title">
                                         <a href="#tgg5" data-toggle="collapse">Insurance Requirements</a>
@@ -1968,8 +1970,10 @@ We suggest that you contact the host to confirm availability and rates before su
 								                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.minlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault must be upto 3 digits</b></span>
 								                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.maxlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault can be atmost of 3 digits only.</b></span>
                                                                     </div>
-                                                                    <div class="col-sm-4 col-md-4" ng-if="noOfAtFaultsClaims != '0'">
+                                                                    <!--ng-if="noOfAtFaultsClaims != '0'"  -->
+                                                                    <div class="col-sm-4 col-md-4" ng-show="noOfAtFaultsClaims != '0'">
                                                                       	<input type="text" onfocus="(this.type='date')" name="abcinsLastfaultDt" id="abcinsLastfaultDt" ng-model="abcinsLastfaultDt" class="input-text full-width" placeholder="Last Fault claim Date" />
+                                                                      	<span style="color:red" ng-show="frm.abcinsLastfaultDt.$error.required && (!frm.abcinsLastfaultDt.$pristine || frm.$submitted)"><b>Last Fault claim Date is Required</b></span>
                                                                     </div>
                                                     </div>
                                                      <div class="row">

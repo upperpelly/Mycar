@@ -61,7 +61,7 @@
             window.location = "Hm_BetaV1.html";
         }
 
-        function stringToDate(_date, _format, _delimiter) {
+       /*  function stringToDate(_date, _format, _delimiter) {
             var formatLowerCase = _format.toLowerCase();
             var formatItems = formatLowerCase.split(_delimiter);
             var dateItems = _date.split(_delimiter);
@@ -298,9 +298,9 @@
             ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
             cell.appendChild(div);                   // append DIV to the table cell
         }
+ */
 
-
-        // create DIV element and append to the table cell
+        /* // create DIV element and append to the table cell
         function createCellAvailableColour(cell, row, text, style) {
             var div = document.createElement('div'); // create DIV element
             //txt = document.createTextNode(text); // create text node
@@ -315,9 +315,9 @@
             ////div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
             cell.appendChild(div);                   // append DIV to the table cell
         }
-
+ */
         // create DIV element and append to the table cell
-        function createCellFullSpecEngine(cell, row, text, style) {
+     /*    function createCellFullSpecEngine(cell, row, text, style) {
             var div = document.createElement('div'); // create DIV element
             //txt = document.createTextNode(text); // create text node
 
@@ -786,7 +786,7 @@
                     tbl.rows[i].deleteCell(j);
                 }
             }
-        }
+        } */
         var isChecked1 = false;
 
         function allSelected1() {
@@ -1078,9 +1078,9 @@
 
 
             //Set onclick function for the US filter checkbox and show data button
-            $('#cq-sold-in-us').click(function () { carquery.setFilters({ sold_in_us: this.checked }); });
+           /*  $('#cq-sold-in-us').click(function () { carquery.setFilters({ sold_in_us: this.checked }); });
             $('#cq-show-data').click(function () { carquery.populateCarData('car-model-data'); });
-            $('#cq-show-data1').click(function () { carquery.populateCarDataStore('car-model-data', 'price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); });
+            $('#cq-show-data1').click(function () { carquery.populateCarDataStore('car-model-data', 'price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); }); */
         });
 // ]]&gt;</script>
 
@@ -5525,11 +5525,14 @@ table {
 																ng-show="ebidfinfrm.finCreditRating.$error.required &amp;&amp; (!ebidfinfrm.finCreditRating.$pristine || ebidfinfrm.$submitted)"><b>Finance
 																	Credit Rating is Required</b></span>
 														</div>
+														<!--ng-if="finIncomeType == 'Business'"-->
 														<div class="col-sm-3 col-md-4"
-															ng-if="finIncomeType == 'Business'">
+															ng-show="finIncomeType == 'Business'">
 															<input type="text" class="input-text full-width" value=""
 																placeholder="if Business Provide ABN"
-																ng-model="ifBusPABN" id="ifBusPABN" name="ifBusPABN" />
+																ng-model="ifBusPABN" id="ifBusPABN" name="ifBusPABN" ng-required="finIncomeType == 'Business'" />
+															<span style="color: red"
+																ng-show="ebidfinfrm.ifBusPABN.$error.required &amp;&amp; (!ebidfinfrm.ifBusPABN.$pristine || ebidfinfrm.$submitted)"><b>ABN is Required</b></span>
 														</div>
 														<div class="col-sm-3 col-md-3">&nbsp;</div>
 													</div>
@@ -7018,12 +7021,16 @@ table {
 																			ng-show="ebidinsfrm.insfaults.$error.required &amp;&amp; (!ebidinsfrm.insfaults.$pristine || ebidinsfrm.$submitted)"><b>faults
 																				is Required</b></span>
 																	</div>
-																	<div class="col-sm-4 col-md-4" ng-if="insfaults != '0'">
+																	<!--ng-if="insfaults != '0'"  -->
+																	<div class="col-sm-4 col-md-4" ng-show="insfaults != '0'">
 																		<input type="text" name="insLastfaultDt"
 																			id="insLastfaultDt" ng-model="insLastfaultDt"
 																			onfocus="(this.type='date')"
 																			class="input-text full-width"
-																			placeholder="Last Fault claim Date" />
+																			placeholder="Last Fault claim Date" ng-required="insfaults != '0'"/>
+																		 <span
+																			style="color: red"
+																			ng-show="ebidinsfrm.insLastfaultDt.$error.required &amp;&amp; (!ebidinsfrm.insLastfaultDt.$pristine || ebidinsfrm.$submitted)"><b>Last Fault claim Date is Required</b></span>	
 																	</div>
 																</div>
 																<br />
