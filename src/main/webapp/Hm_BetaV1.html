@@ -8,8 +8,8 @@
 <title>AutoScoop</title>
 
 <!-- added frm index -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--bootstrap laod 1st time<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
@@ -1431,10 +1431,10 @@ tr:hover {
             IN.API.Raw("/people/~:(id,firstName,lastName,emailAddress)?format=json").result(onSuccess).error(onError);
         }
         function onSuccess(data) {
-            console.log(data);
-            console.log(data.firstName);
-            console.log(data.lastName);
-            console.log(data.emailAddress);
+            //console.log(data);
+            //console.log(data.firstName);
+            //console.log(data.lastName);
+            //console.log(data.emailAddress);
             email = data.emailAddress;
             //$('#exampleEmail').val(email);
             flex1 = data.firstName + " " + data.lastName;// username
@@ -1472,10 +1472,10 @@ function onSignInG()
 		  // Sign the user in, and then retrieve their ID.
 		  auth2.signIn().then(function() {
 			  var profile = auth2.currentUser.get().getBasicProfile();
-			  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-			  console.log('Name: ' + profile.getName());
-			  console.log('Image URL: ' + profile.getImageUrl());
-			  console.log('Email: ' + profile.getEmail());
+			  //console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+			  //console.log('Name: ' + profile.getName());
+			  //console.log('Image URL: ' + profile.getImageUrl());
+			  //console.log('Email: ' + profile.getEmail());
 			  email=profile.getEmail();
 			  flex1=profile.getName();// username
 			  flex2=profile.getId();// id
@@ -2483,7 +2483,7 @@ $.ajax({
                     var newCarEbid= document.getElementById("newUsedCarEbid").checked;
                     if(!newCarEbid){
                     	usedCarEbid = false;
-                    	alert("used is checked");
+                    	//alert("used is checked");
                     }
                     var carEbidFinan = false;
                     //alert(document.getElementById("carEbidFinan").value);
@@ -2651,8 +2651,8 @@ img.wp-smiley, img.emoji {
 <link href="assets/css/bootstrap-select.min.css" rel="stylesheet">
 <link href="assets/css/owl.carousel.css" rel="stylesheet">
 <link href="assets/css/owl-carousel-theme.css" rel="stylesheet">
-<link href="assets/css/bootstrap.min.css" rel="stylesheet"
-	media="screen">
+<!-- bootstrap load second time<link href="assets/css/bootstrap.min.css" rel="stylesheet"
+	media="screen">-->
 <link href="assets/css/flexslider.css" rel="stylesheet" media="screen">
 <link href="assets/css/style.css" rel="stylesheet" media="screen">
 <!-- LIGHT -->
@@ -11644,12 +11644,12 @@ table {
                     </a>
                 </figure>
             </div> -->
-	<div class="row PB10 PT10">
-		<div id="howitworks" class="container txt-font">
+	<div class="row PT10">
+		<div id="howitworks" class="container PB10 txt-font">
 			<span class="txt-bold h4-font">In addition you will be
 				efficiently manage and look after your vehicle by using our</span>
-			<div class="col-sm-6 col-md-6">
-				<ul>
+			<div class="row">
+				<ol>
 
 					<li>Vehicle Garage: Keep track of all your vehicle and its
 						requirements in a single place setting reminders to get notified
@@ -11664,26 +11664,91 @@ table {
 							<li>Getting required deals when it is required.</li>
 						</ul>
 					</li>
-				</ul>
+                    <li>
+                        Maintain your Vehicle Logbook assisting to maximize tax
+                        benefits
+                        <ul>
+                            <li>
+                                Log Trip - maintaining separate personal and Business
+                                records
+                            </li>
+                            <li>
+                                Log Expenses - record and upload the receipts for
+                                convenience
+                            </li>
+                            <li>
+                                Log Service & Maintenance no longer fear losing the
+                                vehicle log book
+                            </li>
+                        </ul>
+                    </li>
+				</ol>
 			</div>
-			<div class="col-sm-6 col-md-6">
-				<ul>
-					<li>Maintain your Vehicle Logbook assisting to maximize tax
-						benefits
-						<ul>
-							<li>Log Trip - maintaining separate personal and Business
-								records</li>
-							<li>Log Expenses - record and upload the receipts for
-								convenience</li>
-							<li>Log Service & Maintenance no longer fear losing the
-								vehicle log book</li>
-						</ul>
-					</li>
-
-				</ul>
-			</div>
+		
 		</div>
-		<div class="row bgColor MB30">
+        <footer class="row v-bg-teritary PT10" id="abtfooter">
+            <div class="container">
+                <div class="row M0">
+                    <p>
+                        <span class="footer-header">About us!</span>
+                    </p>
+                    <p>
+                        They say necessity is the mother of invention, but overlook its
+                        sibling, creation. <b>AutoScoop</b> was created as a direct result
+                        of my own experiences buying and subsequently maintaining a car.
+                        Experiences I believed have been shared by us all. Frustrating and
+                        tiring experiences where I was the 'hunter' seeking out a new car
+                        or an honest repair but ended up feeling like the 'prey'.
+                    </p>
+                    <p>
+                        What intensifies the unfavorable feelings is that for many
+                        of us, the car is the second largest financial investment of our
+                        lives. It's therefore something we traditionally invest at lot of
+                        time on. But do we never feel like we come out ahead?
+                    </p>
+                    <p>
+                        I thought to myself - 'there must be a better way, a way
+                        where I am in the driving seat - other people must be as
+                        frustrated as me'
+                    </p>
+                    <p>
+                        With this thought in mind, <b>AutoScoop</b> was conceived. The
+                        idea was tested through an extensive survey and not surprising the
+                        results showed many people are as frustrated as be. Invigorated I
+                        worked further on the vision and developed the idea further,
+                        drawing on an extensive network of likeminded individuals to make
+                        the magic happen!
+                    </p>
+                    <p>
+                        We have faith that with our dedication and hard work, we
+                        will be able to add true value to the life of the Australian and
+                        put each of us in the driving seat!
+                    </p>
+                    <p>
+                        After all buying a car is not only a financial commitment.
+                        It's a time and emotional commitment too.
+                    </p>
+                    <p>
+                        Have you ever felt internal pressure to buy because the
+                        thought of another hour spent trawling through websites or a
+                        weekend wasted walking through car lots was too overwhelming?
+                    </p>
+                    <p>
+                        Have you spent hours ringing around to get a maintenance
+                        quote but still dreaded that call from the service center stating
+                        that some other work needs to be done?
+                    </p>
+                    <p>
+                        By harnessing and taking advantage of the Digital age, <b>AutoScoop.com.au</b>
+                        will help take away the stress throughout the life of your
+                        vehicle. When buying a new vehicle wouldn't it great if people
+                        came to you? After all YOU are the customer.
+                    </p>
+
+                </div>
+            </div>
+        </footer>
+		<div class="row bgColor">
 			<div class="container text-center MB30">
 				<h1 class="TxtClrFFF FW300 MB10">Subscribe for the updates</h1>
 				<div class="subscription MT30 MB30">
@@ -11702,57 +11767,8 @@ table {
 				</div>
 			</div>
 		</div>
-		<footer class="row v-bg-teritary PT10" id="abtfooter">
-			<div class="container">
-				<div class="row M0">
-					<p>
-						<span class="footer-header">About us!</span>
-					</p>
-					<p>
-						They say necessity is the mother of invention, but overlook its
-						sibling, creation. <b>AutoScoop</b> was created as a direct result
-						of my own experiences buying and subsequently maintaining a car.
-						Experiences I believed have been shared by us all. Frustrating and
-						tiring experiences where I was the 'hunter' seeking out a new car
-						or an honest repair but ended up feeling like the 'prey'.
-					</p>
-					<p>What intensifies the unfavorable feelings is that for many
-						of us, the car is the second largest financial investment of our
-						lives. It's therefore something we traditionally invest at lot of
-						time on. But do we never feel like we come out ahead?</p>
-					<p>I thought to myself - 'there must be a better way, a way
-						where I am in the driving seat - other people must be as
-						frustrated as me'</p>
-					<p>
-						With this thought in mind, <b>AutoScoop</b> was conceived. The
-						idea was tested through an extensive survey and not surprising the
-						results showed many people are as frustrated as be. Invigorated I
-						worked further on the vision and developed the idea further,
-						drawing on an extensive network of likeminded individuals to make
-						the magic happen!
-					</p>
-					<p>We have faith that with our dedication and hard work, we
-						will be able to add true value to the life of the Australian and
-						put each of us in the driving seat!</p>
-					<p>After all buying a car is not only a financial commitment.
-						It's a time and emotional commitment too.</p>
-					<p>Have you ever felt internal pressure to buy because the
-						thought of another hour spent trawling through websites or a
-						weekend wasted walking through car lots was too overwhelming?</p>
-					<p>Have you spent hours ringing around to get a maintenance
-						quote but still dreaded that call from the service center stating
-						that some other work needs to be done?</p>
-					<p>
-						By harnessing and taking advantage of the Digital age, <b>AutoScoop.com.au</b>
-						will help take away the stress throughout the life of your
-						vehicle. When buying a new vehicle wouldn't it great if people
-						came to you? After all YOU are the customer.
-					</p>
-
-				</div>
-			</div>
-		</footer>
-		<footer>
+		
+		<footer class="txt-center">
 			<div class="PT10 PB10">
 				<div class="container">
 					<div class="row">
@@ -11779,23 +11795,25 @@ table {
 								<!--<li style="padding-top:15px !important;"><a class="MT40" href="#">Terms &amp; Conditions</a></li>-->
 							</ul>
 						</div>
-						<div class="col-lg-3 col-md-3 col-sm-3 colxs-12 PT10">
-							<img src="images/breast-cancer2.png"
-								style="height: 120px; width: 190px" /> <img
-								src="images/prostate-cancer.png"
-								style="height: 120px; width: 190px" />
+						<div class="col-lg-3 col-md-3 col-sm-3 colxs-12 PB50">
+                            <ul><li><img src="images/breast-cancer2.png"
+     style="height: 90px;width: 70px;" /> <img src="images/prostate-cancer.png"
+     style="height: 120px;width: 160px;" /></li>
+                                <li><div class="flt-left txt-font">Breast Cancer <br/>Awareness</div>
+                                <div class="flt-right txt-font PR35">Prostrate Cancer <br />Awareness</div></li>
+                            </ul>
+							
 						</div>
 						<div class="col-lg-2 col-md-2 col-sm-2 colxs-12 PT10">
-							<ul class="ContactUs">
+							<ul class="ContactUs" style="">
 								<li>Follow Us</li>
-								<li><a href="#"><img src="../images/facebook.png" /><span
-										class="PL10">Facebook</span></a></li>
-								<li><a href="#"><img src="../images/twitter.png" /><span
-										class="PL10">Twitter</span></a></li>
-								<li><a href="#"><img src="../images/google.png" /><span
-										class="PL10">Google Plus</span></a></li>
-								<li><a href="#"><img src="../images/linkedin.png" /><span
-										class="PL10">Linkedin</span></a></li>
+								<li><a class="share-button btn btn-info" title="Twitter" data-share-url="http://www.autoscoop.com.au/" data-share-network="twitter" data-share-text="Share this awesome link on Twitter" data-share-title="Twitter Share" data-share-via="" data-share-tags="" data-share-media="" href="#"><i class="fa fa-twitter"></i></a>
+<a class="share-button btn btn-primary" title="Facebook" data-share-url="http://www.autoscoop.com.au/" data-share-network="facebook" data-share-text="Share this awesome link on Facebook" data-share-title="Facebook Share" data-share-via="" data-share-tags="" data-share-media="" href="#"><i class="fa fa-facebook"></i></a>
+<a class="share-button btn btn-success" title="Linkedin" data-share-url="http://www.autoscoop.com.au/" data-share-network="linkedin" data-share-text="Share this awesome link on LinkedIn" data-share-title="LinkedIn Share" data-share-via="" data-share-tags="" data-share-media="" href="#"><i class="fa fa-linkedin"></i></a>
+<a class="share-button btn btn-danger" title="Google plus" data-share-url="http://www.autoscoop.com.au/" data-share-network="googleplus" data-share-text="Share this awesome link on Google+" data-share-title="Google+ Share" data-share-via="" data-share-tags="" data-share-media="" href="#"><i class="fa fa-google-plus"></i></a>
+<a class="share-button btn btn-warning MT5" title="Pinterest" data-share-url="http://www.autoscoop.com.au/" data-share-network="pinterest" data-share-text="Share this awesome link on Pinterest" data-share-title="Pinterest Share" data-share-via="" data-share-tags="" data-share-media="" href="#"><i class="fa fa-pinterest"></i></a>
+<a class="share-button btn btn-primary MT5" title="Reddit" data-share-url="http://www.autoscoop.com.au/" data-share-network="reddit" data-share-text="Share this awesome link on Reddit" data-share-title="Reddit Share" data-share-via="" data-share-tags="" data-share-media="" href="#"><i class="fa fa-reddit" aria-hidden="true"></i></a>
+</li>
 							</ul>
 						</div>
 

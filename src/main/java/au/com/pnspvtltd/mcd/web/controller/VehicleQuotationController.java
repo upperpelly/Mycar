@@ -112,7 +112,7 @@ public class VehicleQuotationController {
 		vehicleQuotation.setCarSearchId(dealerVO.getCarSearchId()); // user Ebid Id
 		
 		//vehicleQuotation.setRefId(vehicleQuotation.getRefId());
-		vehicleQuotation.setAutoBid(dealerVO.isAutoBid());
+		vehicleQuotation.setAutoBid(true);
 		
 		//vehicleQuotation.setDealerStockNo(vehicleQuotation.getDealerStockNo());
 		Long l =(long) 0;

@@ -24,6 +24,9 @@
 .PB20 {
     padding-bottom: 20px;
 }
+.PB2 {
+    padding-bottom: 2px;
+}
 
 .PL10 {
     padding-left: 10px;
@@ -41,6 +44,9 @@
 }
 .MT40 {
     margin-top:40px;
+}
+.MT5 {
+    margin-top: 5px;
 }
 .MR5 {
     margin-right: 5px;
@@ -170,4 +176,13 @@ font-weight:bolder !important;
 }
 .PR0{
     padding-right:0 !important;
+}
+.PR50 {
+    padding-right: 50px !important;
+}
+.PR35 {
+    padding-right: 35px !important;
+}
+.PB50 {
+    padding-bottom: 50px !important;
 }
