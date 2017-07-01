@@ -248,7 +248,7 @@
             carquery.init();
             //carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
             //Commented
-            carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-auto-trims');
+            //carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-auto-trims');
 
 
           
@@ -390,9 +390,9 @@ tr:hover {
             var carquery = new CarQuery();
             carquery.init();
             //carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-auto-trims-ins');
-            var servicelevel = new ServiceLevelCarQuery();
+           /*  var servicelevel = new ServiceLevelCarQuery();
             servicelevel.initFinanceProviders('ins-fin-prov');
-            servicelevel.initInsuranceProviders('curr-ins-prov');
+            servicelevel.initInsuranceProviders('curr-ins-prov'); */
         }
     </script>
 <script>
@@ -401,11 +401,11 @@ tr:hover {
             carquery.init();
             //carquery.initYearMakeModelTrim('car-years-serv', 'car-makes-serv', 'car-models-serv', 'car-model-auto-trims-serv');
 
-            var servicelevel = new ServiceLevelCarQuery();
-            servicelevel.init();
-            servicelevel.initYearMakeModelTrim('ServL1', 'ServL2');
-            servicelevel.initFinanceProviders('servFinProlist');
-            servicelevel.initInsuranceProviders('InsprovServ');
+            //var servicelevel = new ServiceLevelCarQuery();
+            //servicelevel.init();
+            //servicelevel.initYearMakeModelTrim('ServL1', 'ServL2');
+            //servicelevel.initFinanceProviders('servFinProlist');
+            //servicelevel.initInsuranceProviders('InsprovServ');
 
 
         }
@@ -1211,18 +1211,18 @@ table {
 														<div class="col-sm-1 col-md-1"
 															style="width: 12.499999995%"></div>
 														<div class="col-sm-6 col-md-6">
-															<div class="radio">
+															<div class="radio checked">
 																<input type="radio" id="newUsedCarEbid"
-																	class="newUsedCarEbid" ng-model="newCarSearch" name="newUsedCarEbid"><span
+																	 value="true"  ng-model="newUsedCarSearch" ng-click="newUsedChange()" name="newUsedCarEbid" checked><span
 																	class="skin-color">New</span>
-															</div>
+															</div><!--class="newUsedCarEbid"  -->
 															<div class="radio">
 																<input type="radio" id="usedCarEbid"
-																	class="newUsedCarEbid" ng-model="usedCarSearch" name="newUsedCarEbid"><span
+																	value="false" ng-model="newUsedCarSearch" ng-click="newUsedChange()" name="newUsedCarEbid"><span
 																	class="skin-color">Used</span>
 															</div>
 														</div>
-														<div class="col-sm-3 col-md-3"></div>
+														<div class="col-sm-3 col-md-3"><!-- <span>{{newUsedCarSearch}}</span> --></div>
 													</div>
 													<br />
 													<div class="clearfix"></div>
@@ -1232,7 +1232,7 @@ table {
 															style="width: 12.499999995%"></div>
 														<div class="col-sm-6 col-md-6">
 															<div class="selector">
-																<select id="car-years" name="caryears"
+																<select id="car-years" name="caryears" ng-options="x for x in VyearsCar" ng-change="VmakeForYear(caryears)"
 																	ng-model="caryears" class="full-width" required>
 																	<option value="" selected disabled>Which Year ?</option>
 																	</select>
@@ -1251,8 +1251,10 @@ table {
 															style="width: 12.499999995%"></div>
 														<div class="col-sm-6 col-md-6">
 															<div class="selector">
-																<select id="car-makes" name="carmakes"
-																	ng-model="carmakes" class="full-width" required></select>
+																<select id="car-makes" name="carmakes" ng-options="x for x in VMakesCarYear" ng-change="VmodelForYearMake(carmakes,caryears)"
+																	ng-model="carmakes" class="full-width" required>
+																	<option value="" selected disabled>Make</option>
+																	</select>
 															</div>
 															<span style="color: red"
 																ng-show="ebidfrm.carmakes.$error.required &amp;&amp; (!ebidfrm.carmakes.$pristine || ebidfrm.$submitted)"><b>Car
@@ -1269,8 +1271,10 @@ table {
 															style="width: 12.499999995%"></div>
 														<div class="col-sm-6 col-md-6">
 															<div class="selector">
-																<select id="car-models" name="carmodels"
-																	ng-model="carmodels" class="full-width" required></select>
+																<select id="car-models" name="carmodels" ng-options="x for x in VModelsCarYearMake" ng-change="VvarForYearMakeMod(carmodels,carmakes,caryears)"
+																	ng-model="carmodels" class="full-width" required>
+																	<option value="" selected disabled>Model</option>
+																	</select>
 															</div>
 															<span style="color: red"
 																ng-show="ebidfrm.carmodels.$error.required &amp;&amp; (!ebidfrm.carmodels.$pristine || ebidfrm.$submitted)"><b>Car
@@ -1294,8 +1298,10 @@ table {
 														<div class="col-sm-6 col-md-6">
 															<div class="selector">
 																<select id="car-model-auto-trims"
-																	name="carmodelAutotrims" ng-model="carmodelAutotrims"
-																	class="full-width" required></select>
+																	name="carmodelAutotrims" ng-model="carmodelAutotrims" ng-options="x for x in VVarsCarYearMakeMod"
+																	class="full-width" required>
+																	<option value="" selected disabled>AutoScoop Trim</option>
+																	</select>
 															</div>
 															<span style="color: red"
 																ng-show="ebidfrm.carmodelAutotrims.$error.required &amp;&amp; (!ebidfrm.carmodelAutotrims.$pristine || ebidfrm.$submitted)"><b>Autoscoop
@@ -2204,18 +2210,11 @@ table {
 																	<div class="col-sm-4 col-md-4"
 																		ng-show="insfinance == 'true'">
 																		<div class="selector">
-																			<select class="full-width" id="ins-fin-prov"
+																			<select class="full-width" id="ins-fin-prov" ng-options="x for x in FinanceProvs"
 																				ng-model="insfinprov" name="insfinprov"
 																				ng-required="insfinance == 'true'">
 																				<option value="" selected disabled>Finance
 																					Provider (if yes)</option>
-																				<option>AAMI</option>
-																				<option>AMP Limited</option>
-																				<option>AXA</option>
-																				<option>Bingle</option>
-																				<option>Budget Direct</option>
-																				<option>CGU Insurance</option>
-																				<option>Colonial Mutual</option>
 																			</select>
 																		</div>
 																		<span style="color: red"
@@ -2442,17 +2441,10 @@ table {
 																	</div>
 																	<div class="col-sm-4 col-md-4">
 																		<div class="selector">
-																			<select class="full-width" id="curr-ins-prov"
+																			<select class="full-width" id="curr-ins-prov" ng-options="x for x in InsuranceProvs"
 																				ng-model="currinsprov" name="currinsprov" required>
 																				<option value="" seleceted disabled>Current
 																					Insurer (if Any)</option>
-																				<option>AAMI</option>
-																				<option>AMP Limited</option>
-																				<option>AXA</option>
-																				<option>Bingle</option>
-																				<option>Budget Direct</option>
-																				<option>CGU Insurance</option>
-																				<option>Colonial Mutual</option>
 																			</select>
 																		</div>
 																		<span style="color: red"
@@ -3047,16 +3039,10 @@ table {
 														<div class="col-sm-3 col-md-3">&nbsp;</div>
 														<div class="col-sm-4 col-md-4">
 															<div class="selector">
-																<select class="full-width" id="ServL1" ng-model="ServL1"
+																<select class="full-width" id="ServL1" ng-model="ServL1" ng-options="x for x in ServiceLev1s" ng-change="populateServicelev2()"
 																	name="ServL1" required>
 																	<option value="" selected disabled>Service &
 																		Maintenance L1</option>
-																	<option>Packaged Car Services</option>
-																	<option>Log Book Servicing</option>
-																	<option>New Car Servicing</option>
-																	<option>Fleet Servecing</option>
-																	<option>Registraion & Inspection</option>
-																	<option>Wheel Alinement</option>
 																</select>
 															</div>
 															<span style="color: red"
@@ -3065,16 +3051,10 @@ table {
 														</div>
 														<div class="col-sm-4 col-md-4">
 															<div class="selector">
-																<select class="full-width" id="ServL2" ng-model="ServL2"
+																<select class="full-width" id="ServL2" ng-model="ServL2" ng-options="x for x in ServiceLev2s"
 																	name="ServL2" required>
 																	<option value="" selected disabled>Service &
 																		Maintenance L2</option>
-																	<option>Packaged Car Services</option>
-																	<option>Log Book Servicing</option>
-																	<option>New Car Servicing</option>
-																	<option>Fleet Servecing</option>
-																	<option>Registraion & Inspection</option>
-																	<option>Wheel Alinement</option>
 																</select>
 															</div>
 															<span style="color: red"
@@ -3252,18 +3232,11 @@ table {
 														<div class="col-sm-4 col-md-4"
 															ng-show="coverInsServ == 'true'">
 															<div class="selector">
-																<select class="full-width" id="InsprovServ"
+																<select class="full-width" id="InsprovServ"  ng-options="x for x in InsuranceProvs"
 																	ng-model="InsprovServ" name="InsprovServ"
 																	ng-required="coverInsServ == 'true'">
 																	<option value="" selected disable>Insurance
 																		Provider</option>
-																	<option>AAMI</option>
-																	<option>AMP Limited</option>
-																	<option>AXA</option>
-																	<option>Bingle</option>
-																	<option>Budget Direct</option>
-																	<option>CGU Insurance</option>
-																	<option>Colonial Mutual</option>
 																</select>
 															</div>
 															<span style="color: red"
@@ -3671,8 +3644,8 @@ table {
 																				Make is Required</b></span>
 																	</div>
 																	<div class="col-sm-3 col-md-3">
-																		<div class="selector">
-																			<select id="car-models-trans" name="carmodelstrans" ng-options="x for x in ModelsCarYearMake" ng-change="varForYearMakeMod(carmodelstrans,carmakestrans,caryearstrans)"
+																		<div class="selector"><!--ng-change="varForYearMakeMod(carmodelstrans,carmakestrans,caryearstrans)"  -->
+																			<select id="car-models-trans" name="carmodelstrans" ng-options="x for x in ModelsCarYearMake" 
 																				ng-model="carmodelstrans" class="full-width"
 																				required>
 																				<option value="" selected disabled>Model</option>
@@ -3684,24 +3657,40 @@ table {
 																	</div>
 																</div>
 																<br />
-																<div class="row">
+																<!-- <div class="row">
 																	<div class="col-sm-3 col-md-3">&nbsp;</div>
 																	<div class="col-sm-9 col-md-9">
 																		<div class="selector">
 																			<select id="car-model-auto-trims-trans"
 																				name="carmodelAutotrimstrans" ng-options="x for x in VarsCarYearMakeMod"
 																				ng-model="carmodelAutotrimstrans" class="full-width"
-																				required></select>
+																				required>
+																				
+																				<option value="" selected disabled>AutoScoop Trim</option>
+																				</select>
 																		</div>
 																		<span style="color: red"
 																			ng-show="ebidtransfrm.carmodelAutotrimstrans.$error.required &amp;&amp; (!ebidtransfrm.carmodelAutotrimstrans.$pristine || ebidtransfrm.$submitted)"><b>Autoscoop
 																				Trim is Required</b></span>
 																	</div>
 																</div>
-																<br />
-
+																<br /> -->
 
 																<div class="row">
+																	<div class="col-sm-12 col-md-12">
+																		<!-- <button type="button" class="append_row">Add User</button> -->
+																		<a data-toggle="tooltip"
+																			data-placement="right" title="Click to Add Vehicle"
+																			class="add-row btn btn-success pull-left"><i
+																			class="soap-icon-plus"></i></a><a
+																			class="delete-row pull-right btn btn-danger"
+																			data-toggle="tooltip" data-placement="top"
+																			title="Delete Selected Vehicle s"><i
+																			class="soap-icon-close"></i></a>
+																	</div>
+																</div>
+																
+																<!-- <div class="row">
 																	<div class="col-sm-3 col-md-3">&nbsp;</div>
 																	<div class="col-sm-9 col-md-9">
 																		<div id="my-container">
@@ -3716,7 +3705,7 @@ table {
 																		</div>
 																	</div>
 																</div>
-																<br />
+																<br /> -->
 
 																<div class="row">
 																	<div class="col-sm-12 col-md-12">
