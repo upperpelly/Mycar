@@ -91,6 +91,14 @@ public class UserEBidController {
 	@Autowired
 	MyVehicleRepository myVehicleRepository;
 
+	@GetMapping(value = "getSearchByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<SearchVO> getSearchByUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to CarSearc");
+		return userEBidService.getSearchByUserId(userid);
+		//return null;
+	}
+	
 	@PostMapping("eBid/car")
 	public String eBidForCar(@RequestBody UserEBidVO userEBidVO) {
 		return userEBidService.whenUserEBidForCar(userEBidVO);

@@ -164,17 +164,17 @@ public class DomainModelUtil {
 		UserVO userVO = new UserVO();
 		try {
 // search
-			org.springframework.beans.BeanUtils.copyProperties(user, userVO, new String[] { "searchInsurance",
+			org.springframework.beans.BeanUtils.copyProperties(user, userVO, new String[] {"search","searchInsurance",
 					"searchFinance", "searchServMaint", "searchTransp", "myVehicle", "userNotification"  });
 
 			if (!isMinified) {
-				/*List<SearchVO> searchVOs = new ArrayList<>();
+				List<SearchVO> searchVOs = new ArrayList<>();
 				for (Search search : user.getSearch()) {
 					SearchVO searchVO = new SearchVO();
 					BeanUtils.copyProperties(searchVO, search);
 					searchVOs.add(searchVO);
 				}
-				userVO.setSearch(searchVOs);*/
+				userVO.setSearch(searchVOs);
 
 				List<SearchInsuranceVO> searchInsuranceVOs = new ArrayList<>();
 				for (SearchInsurance searchInsurance : user.getSearchInsurance()) {

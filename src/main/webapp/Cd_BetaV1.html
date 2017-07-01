@@ -1619,12 +1619,12 @@ We suggest that you contact the host to confirm availability and rates before su
 																			<label>How Much Loan your looking ?</label>
 																		</div>
 																		<div class="col-sm-3 col-md-3 pull-left input-group">
-																			<input type="text" class="input-text full-width" placeholder="Loan Amount"  id="loanAmount"  ng-model="loanAmount" ng-pattern="/^[0-9]*$/" name="loanAmount" required>
+																			<input type="text" class="input-text full-width" placeholder="Loan Amount"  id="loanAmount"  ng-model="loanAmount" ng-pattern="/^[0-9]*$/" name="loanAmount"   ng-required="aFinCheck || finFlag">
 								                                            <span class="input-group-addon">$</span>
 																		</div>
 																		<div class="col-sm-3 col-md-3">
 																			 <div class="selector">
-								                                                <select class="full-width" ng-model="loanPeriod" id="loanPeriod" name="loanPeriod" required> 
+								                                                <select class="full-width" ng-model="loanPeriod" id="loanPeriod" name="loanPeriod" ng-required="aFinCheck || finFlag"> 
 								                                                    <option value="" selected disabled>Loan Period in Yrs</option>
 								                                                    <option>1</option>
 								                                                     <option>2</option>
@@ -1659,7 +1659,7 @@ We suggest that you contact the host to confirm availability and rates before su
 																		</div>
 																		<div class="col-sm-3 col-md-3">
 																			<div class="selector">
-								                                                <select class="full-width" id="incomeType" ng-model="incomeType" name="incomeType" required>
+								                                                <select class="full-width" id="incomeType" ng-model="incomeType" name="incomeType" ng-required="aFinCheck || finFlag">
 								                                                    <option value="" selected disabled>Income Type</option>
 				                                                                    <option>Salaried</option>
 				                                                                    <option>Self Employed</option>
@@ -1668,7 +1668,7 @@ We suggest that you contact the host to confirm availability and rates before su
 								                                            </div>
 																		</div>
 																		<div class="col-sm-3 col-md-3 pull-left input-group">
-																			 <input type="text" class="input-text full-width" value="" placeholder="Annual Income"  ng-model="annualIncome" id="annualIncome" name="annualIncome" ng-pattern="/^[0-9]*$/" required/>
+																			 <input type="text" class="input-text full-width" value="" placeholder="Annual Income"  ng-model="annualIncome" id="annualIncome" name="annualIncome" ng-pattern="/^[0-9]*$/" ng-required="aFinCheck || finFlag"/>
 								                                            <span class="input-group-addon">$</span>
 																		</div>
 																		<div class="col-sm-3 col-md-3">
@@ -1692,7 +1692,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                                         </div>
                                                                         <div class="col-sm-3 col-md-3">
                                                                             <div class="selector">
-								                                                <select class="full-width" id="creditRating" ng-model="creditRating" name="creditRating" required>
+								                                                <select class="full-width" id="creditRating" ng-model="creditRating" name="creditRating" ng-required="aFinCheck || finFlag">
 								                                                    <option value="" selected disabled>Credit Rating</option>
 								                                                    <option>Very Good</option>
 								                                                    <option>Good</option>
@@ -1731,7 +1731,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                            </div>
                                            <div class="col-sm-4 col-md-4">
                                                <div class="selector">
-                                               <select class="full-width" ng-model="insuranceType" id="insuranceType" name="insuranceType" required>
+                                               <select class="full-width" ng-model="insuranceType" id="insuranceType" name="insuranceType"  ng-required="aInsCheck || insFlag">
                                                        <option value="" selected disabled>Insurance Type</option>
                                                        <option>Compulsary Third Party ( CTP )</option>
                                                        <option>Third Party Property</option>
@@ -1748,7 +1748,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                <label>Agreed Value of the Car</label>
                                            </div>
                                            <div class="col-sm-4 col-md-4 input-group pull-left">
-                                               <input type="text" class="input-text full-width" placeholder="Agreed Value" ng-pattern="/^[0-9]*$/"  ng-model="agreedValue" id="agreedValue" name="agreedValue" required/>
+                                               <input type="text" class="input-text full-width" placeholder="Agreed Value" ng-pattern="/^[0-9]*$/"  ng-model="agreedValue" id="agreedValue" name="agreedValue" ng-required="aInsCheck || insFlag"/>
 	                                           <span class="input-group-addon">$</span>
                                            </div>
                                            <div class="col-sm-4 col-md-4">
@@ -1761,7 +1761,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                            <label>Market Value of the Car</label>
                                            </div>
                                            <div class="col-sm-4 col-md-4 input-group pull-left">
-                                               <input type="text"  id="marketValue" name="marketValue" ng-model="marketValue" ng-pattern="/^[0-9]*$/"  class="input-text full-width" value="" placeholder="Market Value" required />
+                                               <input type="text"  id="marketValue" name="marketValue" ng-model="marketValue" ng-pattern="/^[0-9]*$/"  class="input-text full-width" value="" placeholder="Market Value" ng-required="aInsCheck || insFlag" />
 	                                           <span class="input-group-addon">$</span>
                                            </div>
                                            <div class="col-sm-4 col-md-4">
@@ -1777,7 +1777,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                <label>What is your Preferred Excess?</label>
                                            </div>
                                            <div class="col-sm-4 col-md-4 input-group pull-left">
-                                              <input type="text" class="input-text full-width" placeholder="Preferred Excess Amount" ng-pattern="/^[0-9]*$/" ng-model="insuranceExcessAmount" id="insuranceExcessAmount" name="insuranceExcessAmount" required/>
+                                              <input type="text" class="input-text full-width" placeholder="Preferred Excess Amount" ng-pattern="/^[0-9]*$/" ng-model="insuranceExcessAmount" id="insuranceExcessAmount" name="insuranceExcessAmount" ng-required="aInsCheck || insFlag"/>
                                               <span class="input-group-addon">$</span>
                                            </div>
                                            <div class="col-sm-4 col-md-4">
@@ -1794,7 +1794,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                            <div class="col-sm-4 col-md-4">
                                                <div class="selector">
                                                    <select class="full-width" id="abcinsprov" ng-model="abcinsprov"
-                                                           name="abcinsprov" required>
+                                                           name="abcinsprov" ng-required="aInsCheck || insFlag">
                                                        <option value="" seleceted disabled>Current Insurer (if Any)</option>
                                                        <option>AAMI</option>
                                                        <option>AMP Limited</option>
@@ -1936,7 +1936,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
                                                                         <div class="selector">
-										                                                <select class="full-width" id="drivingLicenseType" ng-model="drivingLicenseType" name="drivingLicenseType" required>
+										                                                <select class="full-width" id="drivingLicenseType" ng-model="drivingLicenseType" name="drivingLicenseType" ng-required="aInsCheck || insFlag">
 										                                                    <option value="" selected disabled>Driving Licence Type</option>
 										                                                    <option>L - learner</option>
 										                                                    <option>P - Probationary</option>
@@ -1946,7 +1946,7 @@ We suggest that you contact the host to confirm availability and rates before su
 										                                        <span style="color:red" ng-show="frm.drivingLicenseType.$error.required && (!frm.drivingLicenseType.$pristine || frm.$submitted)"><b>Driving LicenseType is Required</b></span>
                                                                    		 </div>
                                                                     <div class="col-sm-4 col-md-4">
-	                                                                      	<input type="text" class="input-text full-width" placeholder="Driving License Number" id="drivingLicenseNumber" ng-model="drivingLicenseNumber" name="drivingLicenseNumber" required>
+	                                                                      	<input type="text" class="input-text full-width" placeholder="Driving License Number" id="drivingLicenseNumber" ng-model="drivingLicenseNumber" name="drivingLicenseNumber" ng-required="aInsCheck || insFlag">
 	                                                                      	<span style="color:red" ng-show="frm.drivingLicenseNumber.$error.required && (!frm.drivingLicenseNumber.$pristine || frm.$submitted)"><b>Driving License Number is Required</b></span>
                                                                     </div>
                                                                    
@@ -1964,7 +1964,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                                         <label>Driver's CLaim History</label>
                                                                     </div>
                                                                     <div class="col-sm-4 col-md-4">
-                                                                        <input type="text" class="input-text full-width" ng-pattern="/^[0-9]*$/" ng-minlength="1" ng-maxlength="3" value="" placeholder="No of Atfault Claims" ng-model="noOfAtFaultsClaims" id="noOfAtFaultsClaims" name="noOfAtFaultsClaims" required/>
+                                                                        <input type="text" class="input-text full-width" ng-pattern="/^[0-9]*$/" ng-minlength="1" ng-maxlength="3" value="" placeholder="No of Atfault Claims" ng-model="noOfAtFaultsClaims" id="noOfAtFaultsClaims" name="noOfAtFaultsClaims" ng-required="aInsCheck || insFlag"/>
 								                                        <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.pattern && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted)"><b>Atfault must be Numeric</b></span>
 								                                            <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.required && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted)"><b>Atfault is Required</b></span> 
 								                                           <span style="color:red" ng-show="frm.noOfAtFaultsClaims.$error.minlength && (!frm.noOfAtFaultsClaims.$pristine || frm.$submitted) && !frm.noOfAtFaultsClaims.$error.pattern"><b>Atfault must be upto 3 digits</b></span>
@@ -2051,7 +2051,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                        </div>	
                                                        <div class="col-sm-3 col-md-3">
                                                        		<div class="selector">
-	                                                                    <select class="full-width" name="inslictype0" id="inslictype0" required>
+	                                                                    <select class="full-width" name="inslictype0" id="inslictype0" ng-required="aInsCheck || insFlag">
 	                                                                        <option value="" selected disabled>Driving Licence Type</option>
 	                                                                        <option>L-Learner</option>
 	                                                                        <option>P-probation</option>
@@ -2111,7 +2111,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                        <div class="col-sm-4 col-md-4">
                                                            <input type="text"
                                                                   id="abcinsAvgNoOfKms" name="abcinsAvgNoOfKms" ng-model="abcinsAvgNoOfKms"
-                                                                  class="input-text full-width" value="" placeholder="999999" ng-pattern="/^[0-9]*$/" required />
+                                                                  class="input-text full-width" value="" placeholder="999999" ng-pattern="/^[0-9]*$/" ng-required="aInsCheck || insFlag" />
                                                            <span style="color:red" ng-show="frm.abcinsAvgNoOfKms.$error.pattern && (!frm.abcinsAvgNoOfKms.$pristine || frm.$submitted)"><b>Avg No of Kms must be Numeric</b></span>
                                                            <span style="color:red" ng-show="frm.abcinsAvgNoOfKms.$error.required && (!frm.abcinsAvgNoOfKms.$pristine || frm.$submitted) && !ebidinsfrm.insAvgNoOfKms.$error.pattern"><b>Avg No of Kms is Required</b></span>
                                                        </div>

@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,11 @@ import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InventoryRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
+import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidServMaintVO;
@@ -55,6 +58,11 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private UserSearchLeadRepository userSearclLeadRepository;
+	
+	
+	
 	@Autowired
 	private InventoryRepository inventoryRepository;
 	@Autowired
@@ -135,7 +143,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 			}
 		}
 		userRepository.flush();
-
+/*
 		//
 		// Checking for following conditions to create Leads and Quotations for
 		// Dealers
@@ -276,14 +284,14 @@ public class UserEBidServiceImpl implements UserEBidService {
 				dealerRepository.flush();
 			}
 
-			/*
+			
 			 * if (dealer.isFinancer() && searchFinance != null &&
 			 * userEBidVO.isFinance()) { createFinanceQuotation(user, dealer,
 			 * searchFinance, dealerSearchFinance, inventory); } if
 			 * (dealer.isInsurer() && searchInsurance != null &&
 			 * userEBidVO.isInsurance()) { createInsuranceQuotation(user,
 			 * dealer, searchInsurance, dealerSearchInsurance, inventory); }
-			 */
+			 
 		}
 
 		// Create insurance Leads
@@ -307,16 +315,16 @@ public class UserEBidServiceImpl implements UserEBidService {
 				}
 			}
 
-			/*
+			
 			 * if (dealer.isFinancer() && searchFinance != null &&
 			 * userEBidVO.isFinance()) { createFinanceQuotation(user, dealer,
 			 * searchFinance, dealerSearchFinance, inventory); } if
 			 * (dealer.isInsurer() && searchInsurance != null &&
 			 * userEBidVO.isInsurance()) { createInsuranceQuotation(user,
 			 * dealer, searchInsurance, dealerSearchInsurance, inventory); }
-			 */
+			 
 			dealerRepository.flush();
-		}
+		}*/
 
 		return "{\"userId\":" + userEBidVO.getUserId() + ",\"searchId\":" + search.getCarSearchId() + "}";
 
@@ -688,6 +696,20 @@ public class UserEBidServiceImpl implements UserEBidService {
 		 * insuranceQuotationRepository.save(insuranceQuotation);
 		 */
 
+	}
+ 
+	@Override
+	public List<SearchVO> getSearchByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		List<SearchVO> searchVOs = new ArrayList<SearchVO>();
+		List<Search> searchs = userSearclLeadRepository.getSearchByUserId(userid);
+		SearchVO searchVO;
+		for(Search search :searchs){
+			searchVO = domainModelUtil.toBatchSearchVO( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
 	}
 
 }
