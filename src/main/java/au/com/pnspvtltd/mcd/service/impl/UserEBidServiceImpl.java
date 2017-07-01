@@ -483,6 +483,9 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 		// Create User Insurance Lead
 		SearchServMaint searchInsurance = domainModelUtil.toSearchServMaint(userEBidVO.getServMaintLead());
+		 Calendar calendar = Calendar.getInstance();
+		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		    searchInsurance.setCreationDate(ourJavaDateObject);
 		if (user.getSearchServMaint() != null) {
 			user.getSearchServMaint().add(searchInsurance);
 		} else {

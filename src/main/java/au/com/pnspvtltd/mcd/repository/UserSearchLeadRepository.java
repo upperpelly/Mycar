@@ -41,7 +41,8 @@ public interface UserSearchLeadRepository extends JpaRepository<Search, Long>{
 			" ORDER BY search.carSearchId")
 			public List<Search> getSearchAllOtDate1(String modelYear, String modelDisplay, String modelName);
 	
-	
+	@Query("SELECT search FROM Search search WHERE search.userid=?1")
+			public List<Search> getSearchByUserId(Long userid);
 	
 	@Query("SELECT search FROM Search search WHERE search.modelYear=?1 AND search.modelDisplay=?2 AND search.modelName=?3 AND search.modelTrim=?4" +
 			" ORDER BY search.carSearchId")

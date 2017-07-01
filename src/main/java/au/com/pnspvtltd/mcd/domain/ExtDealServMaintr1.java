@@ -11,10 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "searchservmaint")
-public class SearchServMaint implements Serializable {
+@Table(name = "extdealservmaintr1")
+public class ExtDealServMaintr1 implements Serializable {
 
-	private Long searchServMaintId;
+	private Long extDealerSearchId;
 	private String postCode;
 	private int year;
 	private String regNo;
@@ -36,37 +36,239 @@ public class SearchServMaint implements Serializable {
 	private String photo1;
 	private String photo2;
 	private String photo3;
-	private Long userId;
 	
-	
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userid) {
-		this.userId = userid;
-	}
+	private Long userid;
+	private Long carSearchId;
+	private Long dealerId;
 	private Date creationDate;
+	private boolean status;
 	
-	public Date getCreationDate() {
-		return creationDate;
+	
+	
+	// Dealer info Start
+		private String category;
+		private String companyName;
+		private String street;
+		private String suburb;
+		private String dealState;
+		private int dealPostCode;
+		private String country;
+		private String phone;
+		private String website;
+		private String mobile;
+		private String tollFree;
+		private String fax;
+		private String afterHours;
+		private String postalAddress;
+		private String email;
+		private float longitude;
+		private float latitude;
+		// Dealer info end
+		
+		
+		
+
+		public String getCategory() {
+			return category;
+		}
+
+		public void setCategory(String category) {
+			this.category = category;
+		}
+
+		public String getCompanyName() {
+			return companyName;
+		}
+
+		public void setCompanyName(String companyName) {
+			this.companyName = companyName;
+		}
+
+		public String getStreet() {
+			return street;
+		}
+
+		public void setStreet(String street) {
+			this.street = street;
+		}
+
+		public String getSuburb() {
+			return suburb;
+		}
+
+		public void setSuburb(String suburb) {
+			this.suburb = suburb;
+		}
+
+		public String getDealState() {
+			return dealState;
+		}
+
+		public void setDealState(String dealState) {
+			this.dealState = dealState;
+		}
+
+		public int getDealPostCode() {
+			return dealPostCode;
+		}
+
+		public void setDealPostCode(int postCode) {
+			this.dealPostCode = postCode;
+		}
+
+		public String getCountry() {
+			return country;
+		}
+
+		public void setCountry(String country) {
+			this.country = country;
+		}
+
+		public String getPhone() {
+			return phone;
+		}
+
+		public void setPhone(String phone) {
+			this.phone = phone;
+		}
+
+		public String getWebsite() {
+			return website;
+		}
+
+		public void setWebsite(String website) {
+			this.website = website;
+		}
+
+		public String getMobile() {
+			return mobile;
+		}
+
+		public void setMobile(String mobile) {
+			this.mobile = mobile;
+		}
+
+		public String getTollFree() {
+			return tollFree;
+		}
+
+		public void setTollFree(String tollFree) {
+			this.tollFree = tollFree;
+		}
+
+		public String getFax() {
+			return fax;
+		}
+
+		public void setFax(String fax) {
+			this.fax = fax;
+		}
+
+		public String getAfterHours() {
+			return afterHours;
+		}
+
+		public void setAfterHours(String afterHours) {
+			this.afterHours = afterHours;
+		}
+
+		public String getPostalAddress() {
+			return postalAddress;
+		}
+
+		public void setPostalAddress(String postalAddress) {
+			this.postalAddress = postalAddress;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public float getLongitude() {
+			return longitude;
+		}
+
+		public void setLongitude(float longitude) {
+			this.longitude = longitude;
+		}
+
+		public float getLatitude() {
+			return latitude;
+		}
+
+		public void setLatitude(float latitude) {
+			this.latitude = latitude;
+		}
+	// User Creation Date
+		private Date userCreationDate;
+		
+		public Date getUserCreationDate() {
+			return userCreationDate;
+		}
+
+		public void setUserCreationDate(Date userCreationDate) {
+			this.userCreationDate = userCreationDate;
+		}
+
+		public boolean isStatus() {
+			return status;
+		}
+
+		public void setStatus(boolean status) {
+			this.status = status;
+		}
+
+		public Date getCreationDate() {
+			return creationDate;
+		}
+
+		public void setCreationDate(Date creationDate) {
+			this.creationDate = creationDate;
+		}
+		
+		
+
+		public Long getDealerId() {
+			return dealerId;
+		}
+
+		public void setDealerId(Long extdealerId) {
+			this.dealerId = extdealerId;
+		}
+		
+		
+		public Long getCarSearchId() {
+			return carSearchId;
+		}
+
+		public void setCarSearchId(Long carSearchId) {
+			this.carSearchId = carSearchId;
+		}
+	@Column(name = "userid")
+	public Long getUserid() {
+		return userid;
 	}
 
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
+	public void setUserid(Long userId) {
+		this.userid = userId;
 	}
-
-	
-	
-	
 	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "SEARCHSERVMAINTID")
-	public Long getSearchServMaintId() {
-		return searchServMaintId;
+	@Column(name = "EXTDEALSEARCHID")
+	public Long getExtDealerSearchId() {
+		return this.extDealerSearchId;
 	}
+
+	public void setExtDealerSearchId(Long dealerSearchId) {
+		this.extDealerSearchId = dealerSearchId;
+	}
+	
 	@Column(name = "AUTOSCOOPTRIM")
 	public String getAutoscoopTrim() {
 		return autoscoopTrim;
@@ -124,9 +326,6 @@ public class SearchServMaint implements Serializable {
 		this.photo3 = photo3;
 	}
 
-	public void setSearchServMaintId(Long searchServMaintId) {
-		this.searchServMaintId = searchServMaintId;
-	}
 	@Column(name = "FUELTYPE")
 	public String getFeulType() {
 		return feulType;

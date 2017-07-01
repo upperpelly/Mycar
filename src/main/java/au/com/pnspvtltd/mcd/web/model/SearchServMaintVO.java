@@ -1,5 +1,7 @@
 package au.com.pnspvtltd.mcd.web.model;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 
 public class SearchServMaintVO {
@@ -27,7 +29,26 @@ public class SearchServMaintVO {
 	private String photo1;
 	private String photo2;
 	private String photo3;
+	private Long userid;
 	
+	
+	public Long getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Long userid) {
+		this.userid = userid;
+	}
+	private Date creationDate;
+	
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
 	public String getAutoscoopTrim() {
 		return autoscoopTrim;
 	}
