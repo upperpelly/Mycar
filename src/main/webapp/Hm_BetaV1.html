@@ -247,6 +247,7 @@
             var carquery = new CarQuery();
             carquery.init();
             //carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
+            //Commented
             carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-auto-trims');
 
 
@@ -388,7 +389,7 @@ tr:hover {
         function showDiv1() {
             var carquery = new CarQuery();
             carquery.init();
-            carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-auto-trims-ins');
+            //carquery.initYearMakeModelTrim('car-years-ins', 'car-makes-ins', 'car-models-ins', 'car-model-auto-trims-ins');
             var servicelevel = new ServiceLevelCarQuery();
             servicelevel.initFinanceProviders('ins-fin-prov');
             servicelevel.initInsuranceProviders('curr-ins-prov');
@@ -398,7 +399,7 @@ tr:hover {
         function showDiv3() {
             var carquery = new CarQuery();
             carquery.init();
-            carquery.initYearMakeModelTrim('car-years-serv', 'car-makes-serv', 'car-models-serv', 'car-model-auto-trims-serv');
+            //carquery.initYearMakeModelTrim('car-years-serv', 'car-makes-serv', 'car-models-serv', 'car-model-auto-trims-serv');
 
             var servicelevel = new ServiceLevelCarQuery();
             servicelevel.init();
@@ -413,14 +414,14 @@ tr:hover {
         function showDiv4() {
             var carquery = new CarQuery();
             carquery.init();
-            carquery.initYearMakeModelTrim('car-years-trans', 'car-makes-trans', 'car-models-trans', 'car-model-auto-trims-trans');
+            //carquery.initYearMakeModelTrim('car-years-trans', 'car-makes-trans', 'car-models-trans', 'car-model-auto-trims-trans');
        }
     </script>
 <script>
         function showDiv2() {
             var carquery = new CarQuery();
             carquery.init();
-            carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-auto-trims-fin');
+            //carquery.initYearMakeModelTrim('car-years-fin', 'car-makes-fin', 'car-models-fin', 'car-model-auto-trims-fin');
          }
     </script>
 <script>
@@ -1212,12 +1213,12 @@ table {
 														<div class="col-sm-6 col-md-6">
 															<div class="radio">
 																<input type="radio" id="newUsedCarEbid"
-																	class="newUsedCarEbid" name="newUsedCarEbid" checked><span
+																	class="newUsedCarEbid" ng-model="newCarSearch" name="newUsedCarEbid"><span
 																	class="skin-color">New</span>
 															</div>
 															<div class="radio">
 																<input type="radio" id="usedCarEbid"
-																	class="newUsedCarEbid" name="newUsedCarEbid"><span
+																	class="newUsedCarEbid" ng-model="usedCarSearch" name="newUsedCarEbid"><span
 																	class="skin-color">Used</span>
 															</div>
 														</div>
@@ -1232,7 +1233,9 @@ table {
 														<div class="col-sm-6 col-md-6">
 															<div class="selector">
 																<select id="car-years" name="caryears"
-																	ng-model="caryears" class="full-width" required></select>
+																	ng-model="caryears" class="full-width" required>
+																	<option value="" selected disabled>Which Year ?</option>
+																	</select>
 															</div>
 															<span style="color: red"
 																ng-show="ebidfrm.caryears.$error.required &amp;&amp; (!ebidfrm.caryears.$pristine || ebidfrm.$submitted)"><b>Car
@@ -1610,7 +1613,7 @@ table {
 														</div>
 														<div class="col-sm-3 col-md-3">
 															<div class="selector">
-																<select id="car-years-fin" name="caryearsfin"
+																<select id="car-years-fin" name="caryearsfin" ng-options="x for x in yearsCar" ng-change="makeForYear(caryearsfin)"
 																	ng-model="caryearsfin" class="full-width"
 																	ng-required="!finRego || !finRegoState">
 																	<option value="" selected disabled>Year</option>
@@ -1622,7 +1625,7 @@ table {
 														</div>
 														<div class="col-sm-3 col-md-3">
 															<div class="selector">
-																<select id="car-makes-fin" name="carmakesfin"
+																<select id="car-makes-fin" name="carmakesfin" ng-options="x for x in MakesCarYear" ng-change="modelForYearMake(carmakesfin,caryearsfin)"
 																	ng-model="carmakesfin" class="full-width"
 																	ng-required="!finRego || !finRegoState">
 																	<option value="" selected disabled>Make</option>
@@ -1634,7 +1637,7 @@ table {
 														</div>
 														<div class="col-sm-3 col-md-3">
 															<div class="selector">
-																<select id="car-models-fin" name="carmodelsfin"
+																<select id="car-models-fin" name="carmodelsfin" ng-options="x for x in ModelsCarYearMake" ng-change="varForYearMakeMod(carmodelsfin,carmakesfin,caryearsfin)"
 																	ng-model="carmodelsfin" class="full-width"
 																	ng-required="!finRego || !finRegoState">
 																	<option value="" selected disabled>Model</option>
@@ -1651,7 +1654,7 @@ table {
 														<div class="col-sm-9 col-md-9">
 															<div class="selector">
 																<select id="car-model-auto-trims-fin"
-																	name="carmodelAutotrimsfin"
+																	name="carmodelAutotrimsfin" ng-options="x for x in VarsCarYearMakeMod"
 																	ng-model="carmodelAutotrimsfin" class="full-width"
 																	ng-required="!finRego || !finRegoState">
 																	<option value="" selected disabled>Autoscoop
@@ -2107,7 +2110,7 @@ table {
 																	<div class="col-sm-3 col-md-3">
 																		<div class="selector">
 																			<select id="car-years-ins" name="caryearsins"
-																				ng-model="caryearsins" class="full-width"
+																				ng-model="caryearsins" ng-options="x for x in yearsCar" ng-change="makeForYear(caryearsins)"  class="full-width"
 																				ng-required="!regono12 || !insregost">
 																				<option value="" selected disabled>Year</option>
 																			</select>
@@ -2118,7 +2121,7 @@ table {
 																	</div>
 																	<div class="col-sm-3 col-md-3">
 																		<div class="selector">
-																			<select id="car-makes-ins" name="carmakesins"
+																			<select id="car-makes-ins" name="carmakesins" ng-options="x for x in MakesCarYear" ng-change="modelForYearMake(carmakesins,caryearsins)"
 																				ng-model="carmakesins" class="full-width"
 																				ng-required="!regono12 || !insregost">
 																				<option value="" selected disabled>Make</option>
@@ -2130,7 +2133,7 @@ table {
 																	</div>
 																	<div class="col-sm-3 col-md-3">
 																		<div class="selector">
-																			<select id="car-models-ins" name="carmodelsins"
+																			<select id="car-models-ins" name="carmodelsins" ng-options="x for x in ModelsCarYearMake" ng-change="varForYearMakeMod(carmodelsins,carmakesins,caryearsins)"
 																				ng-model="carmodelsins" class="full-width"
 																				ng-required="!regono12 || !insregost">
 																				<option value="" selected disabled>Model</option>
@@ -2148,7 +2151,7 @@ table {
 																		<div class="selector">
 																			<select id="car-model-auto-trims-ins"
 																				name="carmodelAutotrimsins"
-																				ng-model="carmodelAutotrimsins" class="full-width"
+																				ng-model="carmodelAutotrimsins" class="full-width" ng-options="x for x in VarsCarYearMakeMod"
 																				ng-required="!regono12 || !insregost">
 																				<option value="" selected disabled>Autoscoop
 																					Trim</option>
@@ -3647,7 +3650,7 @@ table {
 																	<div class="col-sm-3 col-md-3"></div>
 																	<div class="col-sm-3 col-md-3">
 																		<div class="selector">
-																			<select id="car-years-trans" name="caryearstrans"
+																			<select id="car-years-trans" name="caryearstrans" ng-options="x for x in yearsCar" ng-change="makeForYear(caryearstrans)"
 																				ng-model="caryearstrans" class="full-width" required>
 																				<option value="" selected disabled>Year</option>
 																			</select>
@@ -3658,7 +3661,7 @@ table {
 																	</div>
 																	<div class="col-sm-3 col-md-3">
 																		<div class="selector">
-																			<select id="car-makes-trans" name="carmakestrans"
+																			<select id="car-makes-trans" name="carmakestrans" ng-options="x for x in MakesCarYear" ng-change="modelForYearMake(carmakestrans,caryearstrans)"
 																				ng-model="carmakestrans" class="full-width" required>
 																				<option value="" selected disabled>Make</option>
 																			</select>
@@ -3669,7 +3672,7 @@ table {
 																	</div>
 																	<div class="col-sm-3 col-md-3">
 																		<div class="selector">
-																			<select id="car-models-trans" name="carmodelstrans"
+																			<select id="car-models-trans" name="carmodelstrans" ng-options="x for x in ModelsCarYearMake" ng-change="varForYearMakeMod(carmodelstrans,carmakestrans,caryearstrans)"
 																				ng-model="carmodelstrans" class="full-width"
 																				required>
 																				<option value="" selected disabled>Model</option>
@@ -3686,7 +3689,7 @@ table {
 																	<div class="col-sm-9 col-md-9">
 																		<div class="selector">
 																			<select id="car-model-auto-trims-trans"
-																				name="carmodelAutotrimstrans"
+																				name="carmodelAutotrimstrans" ng-options="x for x in VarsCarYearMakeMod"
 																				ng-model="carmodelAutotrimstrans" class="full-width"
 																				required></select>
 																		</div>

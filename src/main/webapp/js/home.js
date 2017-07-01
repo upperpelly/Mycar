@@ -13,9 +13,82 @@
             .controller(
             'myController1',
             function ($scope, $http) {
-
+        		
                 //Login start
-
+        		//$scope.newCarSearch = false;
+        		//$scope.usedCarSearch = true;
+        		
+            	$body.addClass("loading");
+            	$http({
+                    method : 'GET',
+                    url : 'api/tempCarModelYears'
+                }).then(function mySuccess(response) {
+                	 $body.removeClass("loading");
+                	 $scope.yearsCar = response.data;
+                }, function myError(response) {
+                	$scope.yearsCar = response.statusText;
+                });
+            	
+            	
+            	
+            	$scope.makeForYear = function (year){
+            		$body.addClass("loading");
+            		$scope.MakesCarYear = "";
+            		$scope.ModelsCarYearMake = "";
+            		$scope.VarsCarYearMakeMod ="";
+            		//'api/tempCarModelMakesForYear?modelYear='+$scope.caryearsins
+                	$http({
+                        method : 'GET',
+                        url : 'api/tempCarModelMakesForYear?modelYear='+year
+                    }).then(function mySuccess(response) {
+                    	 $body.removeClass("loading");
+                    	 $scope.MakesCarYear = response.data;
+                    }, function myError(response) {
+                    	$scope.MakesCarYear = response.statusText;
+                    });
+            	}
+            	
+            	$scope.modelForYearMake = function (make,year){
+            		$body.addClass("loading");
+            		//'api/tempCarModelNamesForMake?modelDisplay='+$scope.carmakesins+'&modelYear='+$scope.caryearsins
+                	$http({
+                        method : 'GET',
+                        url : 'api/tempCarModelNamesForMake?modelDisplay='+make+'&modelYear='+year
+                    }).then(function mySuccess(response) {
+                    	 $body.removeClass("loading");
+                    	 $scope.ModelsCarYearMake = response.data;
+                    }, function myError(response) {
+                    	$scope.ModelsCarYearMake = response.statusText;
+                    });
+            	}
+            	
+            	$scope.varForYearMakeMod = function (model,make,year){
+            		$body.addClass("loading");
+            		//'api/tempCarModelVariantForModel?modelName='+$scope.carmodelsins+'&modelDisplay='+$scope.carmakesins+'&modelYear='+$scope.caryearsins
+                	$http({
+                        method : 'GET',
+                        url : 'api/tempCarModelVariantForModel?modelName='+model+'&modelDisplay='+make+'&modelYear='+year
+                    }).then(function mySuccess(response) {
+                    	 $body.removeClass("loading");
+                    	 $scope.VarsCarYearMakeMod = response.data;
+                    }, function myError(response) {
+                    	$scope.VarsCarYearMakeMod = response.statusText;
+                    });
+            	}
+            	
+            	
+            	$scope.modelForYear = function (){
+            		$body.addClass("loading");
+                	$http({
+                        method : 'GET',
+                        url : 'api/tempCarModelYears'
+                    }).then(function mySuccess(response) {
+                    	 $body.removeClass("loading");
+                    	 $scope.ModelsCarYear = response.data;
+                    }, function myError(response) {
+                    	$scope.ModelsCarYear = response.statusText;
+                    });
+            	}
                 $scope.submitForm12 = function () {
                     //alert("invoke login ");
                     /*alert($scope.email);
