@@ -414,7 +414,7 @@ function dashBoardCallSearch(model_data_id, userid)
         	   }
         	   else{
         	   forFinance("car-model-data",out);}*/
-        	   out1="";
+        	   /*out1="";
 
         	   var finCt = result.searchFinance.length;
         	   document.getElementById('finCt').innerHTML=finCt;
@@ -439,7 +439,7 @@ function dashBoardCallSearch(model_data_id, userid)
         	  }
         	  else{
         		  forFinance("data1",out1);
-        	  }
+        	  }*/
         	   /*this.model_data_id = "data1";
         	   alert("came here"+this.model_data_id);
         	   $("#"+sender.model_data_id).append(out1);*/
@@ -768,7 +768,7 @@ var insQCt=result.insuranceQuotation.length;
 	         	  forFinance("currentOffers",out14);
         	               	registerEditDealerVehicleQuotationModal();
         	               	//registerEditDealerVehicleSearchModal();
-        	               	registerEditDealerVehicleFinanceModal();
+        	               	//registerEditDealerVehicleFinanceModal();
         	               	registerEditDealerVehicleservmaintModal();
         	               	registerEditDealerfin12QuotationModal();
         	               	registerEditDealerins12QuotationModal();
@@ -2259,7 +2259,7 @@ function registerEditDealerVehicleservmaintModal(){
 
 
 }
-function registerEditDealerVehicleFinanceModal(){
+/*function registerEditDealerVehicleFinanceModal(){
 
 
 	//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
@@ -2387,7 +2387,7 @@ function registerEditDealerVehicleFinanceModal(){
 
 
 }
-
+*/
 
 
 
@@ -3274,7 +3274,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 	$('#UserpostCode').val(value.postCode);
 	$('#UserRegion').val(value.drivingLicense);
 	$('#UserState').val(value.state);
-	registerEditDealerVehicleSearchModal();
+	
+	
 	
 	//To get all CarSearch EBID request by userid
 	$scope.carEbidRequest = function(){
@@ -3316,14 +3317,198 @@ mainApp1.controller('myController13',function($scope, $http) {
 	        	   outLogT="";
 	        	   outLogT='<h2>No records found</h2>';
 	        	   
-	        	   forFinance("car-model-data",outLogT);
+	        	  // forFinance("car-model-data",outLogT);
+	        	   $("#"+"car-model-data").append(outLogT);
 	        	   }
 	        	   else{
-	        	   forFinance("car-model-data",out);}
-
+	        	   //forFinance("car-model-data",out);
+	        	   $("#"+"car-model-data").append(out);
+	        	   }
+	        	   registerEditDealerVehicleSearchModal();
 							});
+	    	
+	    	
+	    	// start of searchFinance
+	    	
+	    	var wsURL = 'api/getFinanceByUserId?userid='+userId;
+			// change here
+
+		   $body.addClass("loading");
+		    	$http({
+					method : 'GET',
+					url : wsURL
+
+				}).success(function(result) {
+					$body.removeClass("loading");
+					alert("successfully retreived");
+					
+					out1="";
+
+		        	   var finCt = result.length;
+		        	   document.getElementById('finCt').innerHTML=finCt;
+		        	   out1 += '<tr><th>'+"Car Finance ID"+'</th><th>'+"Vehicle Value"+'</th><th>'+"Balloon Pay"+'</th><th>'+"Loan Amount"+'</th><th>'+"Operation"+'</th></tr>';
+
+		        	for(i=result.length-1;i>=0;i--)
+		       		{
+
+		       		out1= out1+'<tr>'+'<td>'+result[i].searchFinanceId+'</td>'+'<td>'+result[i].vehValue+'</td>'+'<td>'+result[i].balloonPay+'</td>'+'<td>'+result[i].loanAmount+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleFinanceModal-' + result[i].searchFinanceId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleFinanceModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleFinanceModal">View</a></td></tr>';
+
+
+		       		}
+		        	   out1 = out1.replace(/>null</g, ">--NA--<");
+		        	   out1 = out1.replace(/>undefined</g, ">--NA--<");
+
+		        	  var LogFinance = result;
+
+		        	  if(LogFinance && result.length==0){
+		        	  outLogT="";
+		        	  outLogT='<h2>No records found</h2>';
+		        	  //forFinance("data1",outLogT);
+		        	  $("#"+"data1").append(outLogT);
+		        	  }
+		        	  else{
+		        		  //forFinance("data1",out1);
+		        		  $("#"+"data1").append(out1);
+		        	  }
+		        	  registerEditDealerVehicleFinanceModal();
+								});
+		    	
+		    	
+		    	// start of searchInsurance
 		
 	}
+	
+	// Modal for CarFinanceEbid
+	
+	function registerEditDealerVehicleFinanceModal(){
+
+
+		//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+		var editDealerVehicleFinanceModal = '<div class="modal fade" id="editDealerVehicleFinanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+		    <div class="modal-dialog">\
+		        <div class="modal-content">\
+		            <div class="modal-header">\
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		            </div>\
+					<h4 class="modal-title" id="myModalLabel"><center>View Vehicle Finance Details</center></h4>\
+			        <form id="edit-dealer-vehicle-finance-content-form">\
+					<div class="modal-body edit-dealer-vehicle-finance-content">\
+		            </div>\
+		            <div class="modal-footer">\
+		                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+					</div>\
+		            </form>\
+					<p><center>&copy; 2017 Autoscoop</center></p>\
+		        </div>\
+		    </div>\
+		</div>';
+
+		$(document.body).append(editDealerVehicleFinanceModal);
+
+
+		$('a.anchor-editDealerVehicleFinanceModal').on('click', function(event) {
+
+
+			var data = $(event.target).data('details');
+			//var json = JSON.stringify(data);
+
+			var quotIdHiddenField = '<input type="hidden" name="financeSearchId" value="' + data.searchFinanceId + '" />';
+			var moveToUser = '<input type="checkbox" name="moveToUser" />';
+			if(data.newer)
+			  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+			var moveToUser1 = '<input type="checkbox" name="moveToUser1" />';
+			if(data.used)
+			  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
+
+
+
+			var editDealerVehicleFinanceForm = '<form id="edit-dealer-vehicle-finance-content-form"><table>\
+				<tr><td>Search Reference ID</td><td>' + data.searchFinanceId + '</td></tr>\
+				</table>\
+				<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Registration</div></div>\
+				<table>\
+				<tr><td>Rego No</td><td>' + data.rego + '</td></tr>\
+				<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+				</table>\
+				<br/>\
+				<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Vehicle Details</div></div>\
+				<table>\
+				<tr><td>Year</td><td>' + data.year + '</td></tr>\
+				<tr><td>Make</td><td>' + data.make + '</td></tr>\
+				<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
+				<tr><td>Autoscoop Trim</td><td>' + data.autoscoopTrim + '</td></tr>\
+				</table>\
+				<br/>\
+				<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Where Do You Live ?	</div></div>\
+				<table>\
+				<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+				<tr><td>Street No</td><td>' + data.streetNo + '</td></tr>\
+				<tr><td>Street Name</td><td>' + data.streetName + '</td></tr>\
+				</table>\
+				<br/>\
+				<div class="row"><div class="col-sm-12 col-md-12 product-search-title">How much Loan your Looking?</div></div>\
+				<table>\
+				<tr><td>Loan Amount</td><td>' + data.loanAmount + '</td></tr>\
+				<tr><td>Loan Period</td><td>' + data.loanPeriod + '</td></tr>\
+				</table>\
+				<br/>\
+				<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Tell Us About Yourself</div></div>\
+				<table>\
+				<tr><td>Title</td><td>' + data.mr + '</td></tr>\
+				<tr><td>First Name</td><td>' + data.firstName + '</td></tr>\
+				<tr><td>Last Name</td><td>' + data.lastName + '</td></tr>\
+				<tr><td>Date of Birth</td><td>' + data.dateOfBirth + '</td></tr>\
+				</table>\
+				<br/>\
+				<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Your Income Details</div></div>\
+				<table>\
+				<tr><td>Income Type</td><td>' + data.incomeType + '</td></tr>\
+				<tr><td>Annual Income</td><td>' + data.annualIncome + '</td></tr>\
+				<tr><td>Years of Employment Business</td><td>' + data.yearEmploymentBusiness + '</td></tr>\
+				</table>\
+				<br/>\
+				<div class="row"><div class="col-sm-12 col-md-12 product-search-title">My Credit Rating</div></div>\
+				<table>\
+				<tr><td>Credit Rating</td><td>' + data.creditRating + '</td></tr>\
+				</table>\
+				<br/>\
+				</form>';
+			editDealerVehicleFinanceForm = editDealerVehicleFinanceForm.replace(/>null</g, ">--NA--<");
+			editDealerVehicleFinanceForm = editDealerVehicleFinanceForm.replace(/>undefined</g, ">--NA--<");
+			$(".edit-dealer-vehicle-finance-content").html(editDealerVehicleFinanceForm);
+		});
+
+
+		$.fn.convertFormDataToJSON = function(){
+			var checkboxes = [];
+			$(this).find('input:checkbox:checked').each(function(){
+				checkboxes.push($(this).attr("name"));
+			});
+			var o = {};
+		    var a = this.serializeArray();
+		    $.each(a, function() {
+		        if (o[this.name] != undefined) {
+		            if (!o[this.name].push) {
+		                o[this.name] = [o[this.name]];
+		            }
+		            if($.inArray(this.name, checkboxes) != -1)
+		              o[this.name].push('true' || '');
+		            else
+		            	o[this.name].push(this.value || '');
+		        } else {
+		        	if($.inArray(this.name, checkboxes) != -1)
+		        		o[this.name] = 'true' || '';
+			        else
+			           	o[this.name] = this.value || '';
+		        }
+		    });
+		    return JSON.stringify(o);
+		}
+
+
+	}
+	
 	
 	//Modal for CarSEarchEbid
 	

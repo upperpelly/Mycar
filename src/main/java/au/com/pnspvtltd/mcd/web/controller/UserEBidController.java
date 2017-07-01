@@ -38,6 +38,7 @@ import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
+import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserAdminSearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
@@ -98,6 +99,16 @@ public class UserEBidController {
 		return userEBidService.getSearchByUserId(userid);
 		//return null;
 	}
+	
+	
+	@GetMapping(value = "getFinanceByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<SearchFinanceVO> getFinanceByUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to CarFinance");
+		return userEBidService.getFinanceByUserId(userid);
+		//return null;
+	}
+	
 	
 	@PostMapping("eBid/car")
 	public String eBidForCar(@RequestBody UserEBidVO userEBidVO) {

@@ -648,6 +648,42 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return searchFinance;
 	}
+	
+	// User Finance Lead
+		public SearchFinanceVO toSearchFinance(final SearchFinance searchFinance) {
+			SearchFinanceVO searchFinanceVO = null;
+			
+			try {
+				BeanUtils.copyProperties(searchFinanceVO, searchFinance);
+				
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			return searchFinanceVO;
+		}
+		
+		
+		// User Car/Search Details lead
+				public SearchFinanceVO toSearchFinance1(final SearchFinance search) {
+
+					SearchFinanceVO searchVO = new SearchFinanceVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
 
 	// Dealer Finance Lead
 	public DealerSearchFinance toDealerSearchFinance(final SearchFinanceVO searchFinanceVO) {

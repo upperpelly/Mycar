@@ -38,11 +38,13 @@ import au.com.pnspvtltd.mcd.repository.DealerRepository;
 import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InventoryRepository;
+import au.com.pnspvtltd.mcd.repository.SearchFinanceRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidInsuranceVO;
@@ -61,7 +63,8 @@ public class UserEBidServiceImpl implements UserEBidService {
 	@Autowired
 	private UserSearchLeadRepository userSearclLeadRepository;
 	
-	
+	@Autowired
+	private SearchFinanceRepository searchFinanceRepository;
 	
 	@Autowired
 	private InventoryRepository inventoryRepository;
@@ -706,6 +709,20 @@ public class UserEBidServiceImpl implements UserEBidService {
 		SearchVO searchVO;
 		for(Search search :searchs){
 			searchVO = domainModelUtil.toBatchSearchVO( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<SearchFinanceVO> getFinanceByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		List<SearchFinanceVO> searchVOs = new ArrayList<SearchFinanceVO>();
+		List<SearchFinance> searchs = searchFinanceRepository.getFinanceByUserId(userid);
+		SearchFinanceVO searchVO;
+		for(SearchFinance search :searchs){
+			searchVO = domainModelUtil.toSearchFinance1( search);
 			//BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
