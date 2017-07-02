@@ -140,7 +140,8 @@ public class UserEBidServiceImpl implements UserEBidService {
 			userVehicleLeads.add(search);
 			user.setSearch(userVehicleLeads);
 		}
-
+		int searchCountTemp = user.getSearchCount();
+		user.setSearchCount(searchCountTemp+1);
 		SearchFinance searchFinance = null;
 		searchFinance = domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
 		// (2) create a java sql date object we want to insert
@@ -155,6 +156,8 @@ public class UserEBidServiceImpl implements UserEBidService {
 			 * searchFinance =
 			 * domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
 			 */
+			int searchInfCountTemp = user.getSearchFinCount();
+			user.setSearchFinCount(searchInfCountTemp+1);
 			if (user.getSearchFinance() != null) {
 				user.getSearchFinance().add(searchFinance);
 			} else {
@@ -176,6 +179,8 @@ public class UserEBidServiceImpl implements UserEBidService {
 			 * searchInsurance =
 			 * domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
 			 */
+			int searchInsCountTemp = user.getSearchInsCount();
+			user.setSearchInsCount(searchInsCountTemp+1);
 			if (user.getSearchInsurance() != null) {
 				user.getSearchInsurance().add(searchInsurance);
 			} else {
@@ -407,6 +412,8 @@ public class UserEBidServiceImpl implements UserEBidService {
 		// Create User Finance Lead
 		SearchFinance searchFinance = domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
 		searchFinance.setIdp(user.getUserId());
+		int searchFinCountTemp = user.getSearchFinCount();
+		user.setSearchFinCount(searchFinCountTemp+1);
 		if (user.getSearchFinance() != null) {
 			user.getSearchFinance().add(searchFinance);
 		} else {
@@ -465,6 +472,8 @@ public class UserEBidServiceImpl implements UserEBidService {
 		// Create User Insurance Lead
 		SearchTransp searchInsurance = domainModelUtil.toSearchTrans(userEBidVO.getSearchTranspLead());
 		searchInsurance.setIdp(user.getUserId());
+		int searchTranCountTemp = user.getSearchTranspCount();
+		user.setSearchTranspCount(searchTranCountTemp+1);
 		if (user.getSearchTransp() != null) {
 			user.getSearchTransp().add(searchInsurance);
 		} else {
@@ -539,6 +548,8 @@ public class UserEBidServiceImpl implements UserEBidService {
 		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 		    searchInsurance.setCreationDate(ourJavaDateObject);
 		    searchInsurance.setIdp(user.getUserId());
+		    int searchServCountTemp = user.getSearchServCount();
+			user.setSearchServCount(searchServCountTemp+1);
 		if (user.getSearchServMaint() != null) {
 			user.getSearchServMaint().add(searchInsurance);
 		} else {
@@ -609,6 +620,8 @@ public class UserEBidServiceImpl implements UserEBidService {
 		// Create User Insurance Lead
 		SearchInsurance searchInsurance = domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
 		searchInsurance.setIdp(user.getUserId());
+		int searchInsCountTemp = user.getSearchInsCount();
+		user.setSearchInsCount(searchInsCountTemp+1);
 		if (user.getSearchInsurance() != null) {
 			user.getSearchInsurance().add(searchInsurance);
 		} else {

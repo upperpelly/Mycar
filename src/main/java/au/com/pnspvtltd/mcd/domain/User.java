@@ -77,6 +77,98 @@ public class User implements Serializable {
 	List<MyVehicle> myVehicle;
 	List<UserNotification> userNotification;
 	
+	private int searchCount;
+	private int searchInsCount;
+	private int searchFinCount;
+	private int searchServCount;
+	private int searchTranspCount;
+	
+	private int vehicleQuotCt;
+	private int insuranceQuotCt;
+	private int financeQuotCt;
+	private int servMaintQuotCt;
+	private int transpServQuotCt;
+	
+	public int getVehicleQuotCt() {
+		return vehicleQuotCt;
+	}
+
+	public void setVehicleQuotCt(int vehicleQuotCt) {
+		this.vehicleQuotCt = vehicleQuotCt;
+	}
+
+	public int getInsuranceQuotCt() {
+		return insuranceQuotCt;
+	}
+
+	public void setInsuranceQuotCt(int insuranceQuotCt) {
+		this.insuranceQuotCt = insuranceQuotCt;
+	}
+
+	public int getFinanceQuotCt() {
+		return financeQuotCt;
+	}
+
+	public void setFinanceQuotCt(int financeQuotCt) {
+		this.financeQuotCt = financeQuotCt;
+	}
+
+	public int getServMaintQuotCt() {
+		return servMaintQuotCt;
+	}
+
+	public void setServMaintQuotCt(int servMaintQuotCt) {
+		this.servMaintQuotCt = servMaintQuotCt;
+	}
+
+	public int getTranspServQuotCt() {
+		return transpServQuotCt;
+	}
+
+	public void setTranspServQuotCt(int transpServQuotCt) {
+		this.transpServQuotCt = transpServQuotCt;
+	}
+
+	public int getSearchCount() {
+		return searchCount;
+	}
+
+	public void setSearchCount(int searchCount) {
+		this.searchCount = searchCount;
+	}
+
+	public int getSearchInsCount() {
+		return searchInsCount;
+	}
+
+	public void setSearchInsCount(int searchInsCount) {
+		this.searchInsCount = searchInsCount;
+	}
+
+	public int getSearchFinCount() {
+		return searchFinCount;
+	}
+
+	public void setSearchFinCount(int searchFinCount) {
+		this.searchFinCount = searchFinCount;
+	}
+
+	public int getSearchServCount() {
+		return searchServCount;
+	}
+
+	public void setSearchServCount(int searchServCount) {
+		this.searchServCount = searchServCount;
+	}
+
+	public int getSearchTranspCount() {
+		return searchTranspCount;
+	}
+
+	public void setSearchTranspCount(int searchTranspCount) {
+		this.searchTranspCount = searchTranspCount;
+	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
 	public List<UserNotification> getUserNotification() {

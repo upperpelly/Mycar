@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
+import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.repository.ExtDealerSearchRepository;
+import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
@@ -40,6 +42,8 @@ public class VehicleQuotationController {
 	VehicleQuotationRepository vehicleQuotationRepository;
 	@Autowired
 	ExtDealerSearchRepository extDealerSearchRepository;
+	@Autowired
+	UserRepository userRepository;
 	@Autowired
 	DomainModelUtil domainModelUtil;
 	
@@ -85,7 +89,9 @@ public class VehicleQuotationController {
 		vehicleQuotation.setDealSearchId(dealerVO.getDealSearchId());
 		ExtDealerSearch extDealerSearch=extDealerSearchRepository.findOne(dealerVO.getDealSearchId());
 		extDealerSearch.setStatus(true);
-		
+		User user =userRepository.findOne(dealerVO.getUserId());
+		int vehQuotCountTemp = user.getVehicleQuotCt();
+		user.setVehicleQuotCt(vehQuotCountTemp+1);
 		// Dealer info Start
 		vehicleQuotation.setCategory(extDealerSearch.getCategory());
 		vehicleQuotation.setCompanyName(extDealerSearch.getCompanyName());;

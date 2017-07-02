@@ -2858,7 +2858,43 @@ $("#"+"fuelCard4").append(outLogT);
 	function  carUserNotific(){	
 		userId=$.jStorage.get('key').userId;
 		//fbUserId=$.jStorage.get("fbKey");
+		//alert("before display");
+		// search
+				var finMax = value.searchCount;
+				document.getElementById('finMax').innerHTML=finMax;
 
+//search Finance
+				var finCt = value.searchFinCount;
+	        	document.getElementById('finCt').innerHTML=finCt;
+
+//search Insurance
+	        	var insRCt=value.searchInsCount;
+		        document.getElementById('insRCt').innerHTML=insRCt;
+
+//search Serv Maint
+				var servRCt = value.searchServCount;
+        	    document.getElementById('servRCt').innerHTML=servRCt;
+				   // search Transp
+        	    var trasRCt = value.searchTranspCount;
+		      	document.getElementById('trasRCt').innerHTML=trasRCt;
+		      	
+		     // vehicle Quotation
+		   	 var qtRecd = value.vehicleQuotCt;
+		   	        	   document.getElementById('qtRecd').innerHTML=qtRecd;
+		   // finance Quotation
+		   			   var finQCt=value.financeQuotCt;
+		   					document.getElementById('finQCt').innerHTML=finQCt;
+		   // insurance Quotation
+		   					var insQCt=value.insuranceQuotCt;
+		   						        	   document.getElementById('insQCt').innerHTML=insQCt;
+		   // Serv Maint Quotation
+		   								   var servQCt = value.servMaintQuotCt;
+		   				        	   document.getElementById('servQCt').innerHTML=servQCt;
+		   // Transport Quotation
+		   						   var trasQCt = value.transpServQuotCt;
+		   					        	   document.getElementById('trasQCt').innerHTML=trasQCt;
+		      	
+		      	
 		var wsURL = 'api/getUseNotByUserId?userid='+userId;
 		// change here
 
