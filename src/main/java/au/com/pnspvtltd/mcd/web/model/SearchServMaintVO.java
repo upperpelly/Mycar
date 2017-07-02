@@ -29,15 +29,16 @@ public class SearchServMaintVO {
 	private String photo1;
 	private String photo2;
 	private String photo3;
-	private Long userid;
+private long idp;
 	
 	
-	public Long getUserid() {
-		return userid;
+	
+	public long getIdp() {
+		return idp;
 	}
 
-	public void setUserid(Long userid) {
-		this.userid = userid;
+	public void setIdp(long idp) {
+		this.idp = idp;
 	}
 	private Date creationDate;
 	

@@ -97,6 +97,18 @@ public class MyVehicle implements Serializable {
 	private boolean vehServRemTwo;
 	private boolean vehServRemOne;
 	
+	private long idp;
+	
+	
+	
+	public long getIdp() {
+		return idp;
+	}
+
+	public void setIdp(long idp) {
+		this.idp = idp;
+	}
+
 	@Column(name = "regExpDate")
 	public Date getRegExpDate() {
 		return regExpDate;

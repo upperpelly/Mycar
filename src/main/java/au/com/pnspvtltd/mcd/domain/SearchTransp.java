@@ -57,7 +57,17 @@ public class SearchTransp implements Serializable {
 	private String photo;
 	private String regoNo;
 	private String regoState;
+private long idp;
 	
+	
+	
+	public long getIdp() {
+		return idp;
+	}
+
+	public void setIdp(long idp) {
+		this.idp = idp;
+	}
 	
 	
 	List<TranspSearchMakeList> carModel;

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import au.com.pnspvtltd.mcd.domain.CurrentOffers;
 import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
@@ -27,31 +28,53 @@ import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.SearchInsurance;
 import au.com.pnspvtltd.mcd.domain.SearchServMaint;
 import au.com.pnspvtltd.mcd.domain.SearchTransp;
+import au.com.pnspvtltd.mcd.domain.ServiceMaintQuotation;
+import au.com.pnspvtltd.mcd.domain.TranspServiceQuotation;
 import au.com.pnspvtltd.mcd.domain.User;
+import au.com.pnspvtltd.mcd.domain.UserNotification;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperPostCode;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerMakeList;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
 import au.com.pnspvtltd.mcd.repository.CountyRegPostSubRepository;
+import au.com.pnspvtltd.mcd.repository.CurrentOffersRepository;
 import au.com.pnspvtltd.mcd.repository.DealerRepository;
 import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InventoryRepository;
+import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
 import au.com.pnspvtltd.mcd.repository.SearchFinanceRepository;
+import au.com.pnspvtltd.mcd.repository.SearchInsuranceRepository;
+import au.com.pnspvtltd.mcd.repository.SearchServMtRepository;
+import au.com.pnspvtltd.mcd.repository.SearchTranspRepository;
+import au.com.pnspvtltd.mcd.repository.ServMaintQuotationRepository;
+import au.com.pnspvtltd.mcd.repository.TranspServQuotationRepository;
+import au.com.pnspvtltd.mcd.repository.UserNotificationRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
+import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
+import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
+import au.com.pnspvtltd.mcd.web.model.SearchServMaintVO;
+import au.com.pnspvtltd.mcd.web.model.SearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
+import au.com.pnspvtltd.mcd.web.model.ServiceMaintQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.TranspServiceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidTransServVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
+import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 @Service
 public class UserEBidServiceImpl implements UserEBidService {
@@ -62,10 +85,24 @@ public class UserEBidServiceImpl implements UserEBidService {
 	private UserRepository userRepository;
 	@Autowired
 	private UserSearchLeadRepository userSearclLeadRepository;
-	
+	@Autowired
+	private MyVehicleRepository myVehicleRepository;
 	@Autowired
 	private SearchFinanceRepository searchFinanceRepository;
-	
+	@Autowired
+	private	TranspServQuotationRepository transpServQuotationRepository;
+	@Autowired
+	private ServMaintQuotationRepository servMaintQuotationRepository;
+	@Autowired
+	private SearchInsuranceRepository searchInsuranceRepository;
+	@Autowired
+	private SearchServMtRepository searchServMtRepository;
+	@Autowired
+	private SearchTranspRepository searchTranspRepository;
+	@Autowired
+	private UserNotificationRepository userNotificationRepository;
+	@Autowired
+	private CurrentOffersRepository currentOffersRepository;
 	@Autowired
 	private InventoryRepository inventoryRepository;
 	@Autowired
@@ -110,6 +147,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 	    Calendar calendar12 = Calendar.getInstance();
 	    java.sql.Date ourJavaDateObject1 = new java.sql.Date(calendar12.getTime().getTime());
 	    searchFinance.setCreationDate(ourJavaDateObject1);
+	    searchFinance.setIdp(user.getUserId());
 		// Create User Finance Lead when isfinance and searchFinance != null
 		if (userEBidVO.isFinance() && searchFinance != null) {
 
@@ -130,6 +168,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 		Calendar calendar14 = Calendar.getInstance();
 	    java.sql.Date ourJavaDateObject12 = new java.sql.Date(calendar14.getTime().getTime());
 	    searchInsurance.setCreationDate(ourJavaDateObject12);
+	    searchInsurance.setIdp(user.getUserId());
 		// Create User Insurance Lead when isinsurer and searchInsurance != null
 		if (userEBidVO.isInsurance() && searchInsurance != null) {
 
@@ -367,6 +406,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 		// Create User Finance Lead
 		SearchFinance searchFinance = domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
+		searchFinance.setIdp(user.getUserId());
 		if (user.getSearchFinance() != null) {
 			user.getSearchFinance().add(searchFinance);
 		} else {
@@ -424,6 +464,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 		// Create User Insurance Lead
 		SearchTransp searchInsurance = domainModelUtil.toSearchTrans(userEBidVO.getSearchTranspLead());
+		searchInsurance.setIdp(user.getUserId());
 		if (user.getSearchTransp() != null) {
 			user.getSearchTransp().add(searchInsurance);
 		} else {
@@ -497,6 +538,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 		 Calendar calendar = Calendar.getInstance();
 		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 		    searchInsurance.setCreationDate(ourJavaDateObject);
+		    searchInsurance.setIdp(user.getUserId());
 		if (user.getSearchServMaint() != null) {
 			user.getSearchServMaint().add(searchInsurance);
 		} else {
@@ -566,6 +608,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 		// Create User Insurance Lead
 		SearchInsurance searchInsurance = domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
+		searchInsurance.setIdp(user.getUserId());
 		if (user.getSearchInsurance() != null) {
 			user.getSearchInsurance().add(searchInsurance);
 		} else {
@@ -621,6 +664,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 		// Create User MyVehicle Details (MyVehicle details)
 		MyVehicle search = domainModelUtil.toMyVehicle(userEBidVO.getMyVehicleVO());
+		search.setIdp(user.getUserId());
 		if (user.getMyVehicle() != null) {
 			user.getMyVehicle().add(search);
 		} else {
@@ -728,5 +772,159 @@ public class UserEBidServiceImpl implements UserEBidService {
 		}
 		return searchVOs;
 	}
+	
+	@Override
+	public List<SearchInsuranceVO> getInsuranceByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		List<SearchInsuranceVO> searchVOs = new ArrayList<SearchInsuranceVO>();
+		List<SearchInsurance> searchs = searchInsuranceRepository.getInsuranceByUserId(userid);
+		SearchInsuranceVO searchVO;
+		for(SearchInsurance search :searchs){
+			searchVO = domainModelUtil.toSearchInsurance1( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<SearchServMaintVO> getServMaintByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		List<SearchServMaintVO> searchVOs = new ArrayList<SearchServMaintVO>();
+		List<SearchServMaint> searchs = searchServMtRepository.getServMtByUserId(userid);
+		SearchServMaintVO searchVO;
+		for(SearchServMaint search :searchs){
+			searchVO = domainModelUtil.toSearchServMaint1( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<SearchTranspVO> getTranspByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		List<SearchTranspVO> searchVOs = new ArrayList<SearchTranspVO>();
+		List<SearchTransp> searchs = searchTranspRepository.getTranspByUserId(userid);
+		SearchTranspVO searchVO;
+		for(SearchTransp search :searchs){
+			searchVO = domainModelUtil.toSearchTransp1( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<CurrentOffersVO> getCurrentOffers() {
+		// TODO Auto-generated method stub
+		List<CurrentOffersVO> searchVOs = new ArrayList<CurrentOffersVO>();
+		List<CurrentOffers> searchs = currentOffersRepository.findAll();
+		CurrentOffersVO searchVO;
+		for(CurrentOffers search :searchs){
+			searchVO = domainModelUtil.fromCurrentOffers( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<UserNotificationVO> getUserNotiByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		List<UserNotificationVO> searchVOs = new ArrayList<UserNotificationVO>();
+		List<UserNotification> searchs = userNotificationRepository.getUserNotByUserId(userid);
+		UserNotificationVO searchVO;
+		for(UserNotification search :searchs){
+			searchVO = domainModelUtil.toSearchTransp1( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<VehicleQuotationVO> getUserQuotByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		List<VehicleQuotationVO> searchVOs = new ArrayList<VehicleQuotationVO>();
+		List<VehicleQuotation> searchs = vehicleQuotationRepository.getQuotationsForUser(userid);
+		VehicleQuotationVO searchVO;
+		for(VehicleQuotation search :searchs){
+			searchVO = domainModelUtil.fromVehicleQuotation( search, false);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<FinanceQuotationVO> getFinQuotByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		List<FinanceQuotationVO> searchVOs = new ArrayList<FinanceQuotationVO>();
+		List<FinanceQuotation> searchs = financeQuotationRepository.getQuotationsForUser(userid);
+		FinanceQuotationVO searchVO;
+		for(FinanceQuotation search :searchs){
+			searchVO = domainModelUtil.fromFinanceQuotation( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<InsuranceQuotationVO> getInsQuotByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		List<InsuranceQuotationVO> searchVOs = new ArrayList<InsuranceQuotationVO>();
+		List<InsuranceQuotation> searchs = insuranceQuotationRepository.getQuotationsForUser(userid);
+		InsuranceQuotationVO searchVO;
+		for(InsuranceQuotation search :searchs){
+			searchVO = domainModelUtil.fromInsuranceQuotation( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
 
+	@Override
+	public List<ServiceMaintQuotationVO> getServMQuotByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		List<ServiceMaintQuotationVO> searchVOs = new ArrayList<ServiceMaintQuotationVO>();
+		List<ServiceMaintQuotation> searchs = servMaintQuotationRepository.getQuotationsForUser(userid);
+		ServiceMaintQuotationVO searchVO;
+		for(ServiceMaintQuotation search :searchs){
+			searchVO = domainModelUtil.fromServMaintQuotation(search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	
+	@Override
+	public List<TranspServiceQuotationVO> getTranspQuotByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		List<TranspServiceQuotationVO> searchVOs = new ArrayList<TranspServiceQuotationVO>();
+		List<TranspServiceQuotation> searchs = transpServQuotationRepository.getQuotationsForUser(userid);
+		TranspServiceQuotationVO searchVO;
+		for(TranspServiceQuotation search :searchs){
+			searchVO = domainModelUtil.fromTranspServQuotation(search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<MyVehicleVO> getMyVehicleByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		List<MyVehicleVO> searchVOs = new ArrayList<MyVehicleVO>();
+		List<MyVehicle> searchs = myVehicleRepository.getMyVehicleByUserId(userid);
+		MyVehicleVO searchVO;
+		for(MyVehicle search :searchs){
+			searchVO = domainModelUtil.fromMyVehicle(search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
 }

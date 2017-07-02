@@ -15,6 +15,12 @@
             function ($scope, $http) {
         		
                 //Login start
+            	 function carDetailHtml(data) {
+                     alert("storage");
+                     $.jStorage.set('carKey', data);
+                     $.jStorage.setTTL('userSession', 30000); 
+
+                 }
         		$scope.newUsedCarSearch = true;
         		//$scope.usedCarSearch = true;
             	populateServicelev1();
@@ -142,7 +148,7 @@
             		//'api/tempCarModelVariantForModel?modelName='+$scope.carmodelsins+'&modelDisplay='+$scope.carmakesins+'&modelYear='+$scope.caryearsins
                 	$http({
                         method : 'GET',
-                        url : 'api/tempCarModelVariantForModel?modelName='+model+'&modelDisplay='+make+'&modelYear='+year
+                        url : 'api/tempCarModelTrimForAllSelect?modelName='+model+'&modelDisplay='+make+'&modelYear='+year
                     }).then(function mySuccess(response) {
                     	 $body.removeClass("loading");
                     	 $scope.VarsCarYearMakeMod = response.data;
@@ -200,7 +206,7 @@
             		//'api/tempCarModelVariantForModel?modelName='+$scope.carmodelsins+'&modelDisplay='+$scope.carmakesins+'&modelYear='+$scope.caryearsins
                 	$http({
                         method : 'GET',
-                        url : 'api/tempCarModelVariantForModel?modelName='+model+'&modelDisplay='+make+'&modelYear='+year
+                        url : 'api/tempCarModelTrimForAllSelect?modelName='+model+'&modelDisplay='+make+'&modelYear='+year
                     }).then(function mySuccess(response) {
                     	 $body.removeClass("loading");
                     	 $scope.VVarsCarYearMakeMod = response.data;
@@ -835,14 +841,14 @@
                     /* var e = document.getElementById("car-model-trims");
                     var strUser = e.options[e.selectedIndex].text; */
 
-                    var wsURL = 'api/inventory/getStatisticsFor?modelYear=' + $('#car-years').val() + '&modelDisplay=' + $('#car-makes').val() + '&modelName=' + $('#car-models').val() + '&autoscoopTrim=' + $('#car-model-auto-trims').val();
+                    var wsURL = 'api/inventory/getStatisticsFor?modelYear=' + $scope.caryears + '&modelDisplay=' + $scope.carmakes + '&modelName=' +  $scope.carmodels + '&autoscoopTrim=' + $scope.carmodelAutotrims;
 
-                    var modelYear = $('#car-years').val();
-                    var modelDisplay = $('#car-makes').val();
-                    var modelName = $('#car-models').val();
+                    var modelYear = $scope.caryears;
+                    var modelDisplay = $scope.carmakes;
+                    var modelName = $scope.carmodels;
                     //var trimValue=$('#car-model-trims').val();
                     //var modelTrim=strUser;
-                    var autoTrim = $('#car-model-auto-trims').val();
+                    var autoTrim = $scope.carmodelAutotrims;
                     //alert ("model"+modelYear);
                     if (alreadyLogged()) {
                         if (isValid) {

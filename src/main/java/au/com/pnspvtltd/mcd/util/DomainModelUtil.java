@@ -684,6 +684,70 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					}
 					return searchVO;
 				}
+				
+				// User Car/Search Details lead
+				public SearchInsuranceVO toSearchInsurance1(final SearchInsurance search) {
+
+					SearchInsuranceVO searchVO = new SearchInsuranceVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
+				
+				// User Car/Search Details lead
+				public SearchServMaintVO toSearchServMaint1(final SearchServMaint search) {
+
+					SearchServMaintVO searchVO = new SearchServMaintVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
+				
+				// User Car/Search Details lead
+				public SearchTranspVO toSearchTransp1(final SearchTransp search) {
+
+					SearchTranspVO searchVO = new SearchTranspVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
+				
+				// User Car/Search Details lead
+				public UserNotificationVO toSearchTransp1(final UserNotification search) {
+
+					UserNotificationVO searchVO = new UserNotificationVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
 
 	// Dealer Finance Lead
 	public DealerSearchFinance toDealerSearchFinance(final SearchFinanceVO searchFinanceVO) {
@@ -1905,6 +1969,19 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return financeQuotationVO;
 	}
+	
+	public MyVehicleVO fromMyVehicle(final MyVehicle financeQuotation) {
+		MyVehicleVO financeQuotationVO = new MyVehicleVO();
+		try {
+			BeanUtils.copyProperties(financeQuotationVO, financeQuotation);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return financeQuotationVO;
+	}
+	
+	
 	public CurrentOffersVO fromCurrentOffers(final CurrentOffers currentOffer) {
 		CurrentOffersVO currentOfferVO = new CurrentOffersVO();
 		try {

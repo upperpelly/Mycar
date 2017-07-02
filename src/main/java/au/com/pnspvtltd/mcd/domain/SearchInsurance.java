@@ -88,7 +88,17 @@ public class SearchInsurance implements Serializable {
 	private boolean NudgeBar; 
 	
 	private Date creationDate;
+private long idp;
 	
+	
+	
+	public long getIdp() {
+		return idp;
+	}
+
+	public void setIdp(long idp) {
+		this.idp = idp;
+	}
 	public Date getCreationDate() {
 		return creationDate;
 	}

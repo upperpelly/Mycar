@@ -48,15 +48,16 @@ public class SearchFinance implements Serializable {
 	private String firstName;
 	private String lastName;
 	private Date creationDate;
-	private long userId;
+	private long idp;
 	
 	
-	public long getUserId() {
-		return userId;
+	
+	public long getIdp() {
+		return idp;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setIdp(long idp) {
+		this.idp = idp;
 	}
 
 	public Date getCreationDate() {

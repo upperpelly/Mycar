@@ -48,7 +48,17 @@ import javax.persistence.Table;
 	private Date endDate;
 	
 	private boolean status;
+private long idp;
 	
+	
+	
+	public long getIdp() {
+		return idp;
+	}
+
+	public void setIdp(long idp) {
+		this.idp = idp;
+	}
 	
 	
 	public Long getMyVehicleId() {

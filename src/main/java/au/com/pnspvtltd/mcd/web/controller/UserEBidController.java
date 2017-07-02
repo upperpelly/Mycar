@@ -33,13 +33,21 @@ import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
+import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
+import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
+import au.com.pnspvtltd.mcd.web.model.SearchServMaintVO;
+import au.com.pnspvtltd.mcd.web.model.SearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
+import au.com.pnspvtltd.mcd.web.model.ServiceMaintQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.TranspServiceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.UserAdminSearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidInsuranceVO;
@@ -109,6 +117,94 @@ public class UserEBidController {
 		//return null;
 	}
 	
+	@GetMapping(value = "getInsuranceByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<SearchInsuranceVO> getInsuranceByUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to CarInsurance");
+		return userEBidService.getInsuranceByUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getServMtByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<SearchServMaintVO> getServMtByUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to CarServMaint");
+		return userEBidService.getServMaintByUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getTranspByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<SearchTranspVO> getTranspByUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to CarTransp");
+		return userEBidService.getTranspByUserId(userid);
+		//return null;
+	}
+	
+	
+	@GetMapping(value = "getUseNotByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<UserNotificationVO> getUseNotByUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to userNotiF");
+		return userEBidService.getUserNotiByUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getCurrentOffers", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<CurrentOffersVO> getCurrentOffers()
+	{
+		LOGGER.debug("Received request to current offers");
+		return userEBidService.getCurrentOffers();
+		//return null;
+	}
+	
+	@GetMapping(value = "getVehQuotaByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<VehicleQuotationVO> getVehQuotaByUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to user vehicle Quotation");
+		return userEBidService.getUserQuotByUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getFinQuotaByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<FinanceQuotationVO> getFinQuotaByUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to user Finance Quotation");
+		return userEBidService.getFinQuotByUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getInsQuotaByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<InsuranceQuotationVO> getInsQuotaByUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to user Insurance Quotation");
+		return userEBidService.getInsQuotByUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getServMQuotaByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<ServiceMaintQuotationVO> getServMQuotaByUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to user serv && Main Quotation");
+		return userEBidService.getServMQuotByUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getTranpQuotaByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<TranspServiceQuotationVO> getTranpQuotaByUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to user serv && Main Quotation");
+		return userEBidService.getTranspQuotByUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getLogBookByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<MyVehicleVO> getLogBookByUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to user serv && Main Quotation");
+		return userEBidService.getMyVehicleByUserId(userid);
+		//return null;
+	}
 	
 	@PostMapping("eBid/car")
 	public String eBidForCar(@RequestBody UserEBidVO userEBidVO) {

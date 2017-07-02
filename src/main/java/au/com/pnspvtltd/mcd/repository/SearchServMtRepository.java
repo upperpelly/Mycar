@@ -8,16 +8,18 @@ import org.springframework.data.jpa.repository.Query;
 
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
+import au.com.pnspvtltd.mcd.domain.SearchInsurance;
+import au.com.pnspvtltd.mcd.domain.SearchServMaint;
 import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
 
-public interface SearchFinanceRepository extends JpaRepository<SearchFinance, Long>{
+public interface SearchServMtRepository extends JpaRepository<SearchServMaint, Long>{
 
 	
 	
 	
 	
-	@Query("SELECT search FROM SearchFinance search WHERE search.idp=?1")
-			public List<SearchFinance> getFinanceByUserId(Long userid);
+	@Query("SELECT search FROM SearchServMaint search WHERE search.idp=?1")
+			public List<SearchServMaint> getServMtByUserId(Long userid);
 	
 	
 }

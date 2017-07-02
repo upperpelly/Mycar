@@ -107,7 +107,17 @@ public class MyVehicleVO {
 	private boolean vehServRemMon;
 	private boolean vehServRemTwo;
 	private boolean vehServRemOne;
+private long idp;
 	
+	
+	
+	public long getIdp() {
+		return idp;
+	}
+
+	public void setIdp(long idp) {
+		this.idp = idp;
+	}
 	public Date getRegExpDate() {
 		return regExpDate;
 	}

@@ -36,15 +36,16 @@ public class SearchServMaint implements Serializable {
 	private String photo1;
 	private String photo2;
 	private String photo3;
-	private Long userId;
+private long idp;
 	
 	
-	public Long getUserId() {
-		return userId;
+	
+	public long getIdp() {
+		return idp;
 	}
 
-	public void setUserId(Long userid) {
-		this.userId = userid;
+	public void setIdp(long idp) {
+		this.idp = idp;
 	}
 	private Date creationDate;
 	

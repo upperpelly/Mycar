@@ -37,7 +37,17 @@ public class SearchFinanceVO {
 	private String mr;
 	private String firstName;
 	private String lastName;
+	private long idp;
 	
+	
+	
+	public long getIdp() {
+		return idp;
+	}
+
+	public void setIdp(long idp) {
+		this.idp = idp;
+	}
 	private Date creationDate;
 	
 	public Date getCreationDate() {
