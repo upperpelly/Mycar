@@ -1103,6 +1103,20 @@ var mainApp1 = angular.module("mainApp13", []);
 mainApp1.controller('myController13',function($scope, $http) {
 					//alert("in user con");function vehicleRetrievalforLogBook(){
 	//alert("in angular");
+	
+	  $('#car-model-data').html('<img src="images/LoadImg.gif"></img>');
+	   $('#data1').html('<img src="images/LoadImg.gif"></img>');
+	   $('#car-model-data2').html('<img src="images/LoadImg.gif"></img>');
+	   $('#quo-model-data').html('<img src="images/LoadImg.gif"></img>');
+	   $('#quo-data1').html('<img src="images/LoadImg.gif"></img>');
+	   $('#quo-model-data2').html('<img src="images/LoadImg.gif"></img>');
+	   $('#quo-model-data4').html('<img src="images/LoadImg.gif"></img>');
+	   $('#logBook4').html('<img src="images/LoadImg.gif"></img>');
+	   $('#fuelCard4').html('<img src="images/LoadImg.gif"></img>');
+	   $('#servMaint4').html('<img src="images/LoadImg.gif"></img>');
+
+	   $('#datatranspserv').html('<img src="images/LoadImg.gif"></img>');
+	   $('#dataservmaint').html('<img src="images/LoadImg.gif"></img>');
 	$scope.carEbidreq121214=true;
 	$scope.scarEbidreq8818=true;
 	$scope.qcarEbidreq99=true;
