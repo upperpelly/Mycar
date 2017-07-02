@@ -1134,6 +1134,126 @@ mainApp1.controller('myController13',function($scope, $http) {
 	$('#UserpostCode').val(value.postCode);
 	$('#UserRegion').val(value.drivingLicense);
 	$('#UserState').val(value.state);
+	//call to populate FInance providers
+	populateFinanceProv();
+	//$scope.populateFinanceProv = function (){
+	function populateFinanceProv(){
+		$body.addClass("loading");
+    	$http({
+            method : 'GET',
+            url : 'api/financeProv'
+        }).then(function mySuccess(response) {
+        	 $body.removeClass("loading");
+        	 $scope.FinanceProvs = response.data;
+        }, function myError(response) {
+        	$scope.FinanceProvs = response.statusText;
+        });
+	}
+	//call to populate insurance providers
+	populateInsuranceProv();
+	//$scope.populateInsuranceProv = function (){
+	function populateInsuranceProv(){
+		$body.addClass("loading");
+    	$http({
+            method : 'GET',
+            url : 'api/insuranceProv'
+        }).then(function mySuccess(response) {
+        	 $body.removeClass("loading");
+        	 $scope.InsuranceProvs = response.data;
+        }, function myError(response) {
+        	$scope.InsuranceProvs = response.statusText;
+        });
+	}
+	
+	
+	populateServicelev1();
+	//$scope.populateServicelev1 = function (){
+	function populateServicelev1(){
+		$body.addClass("loading");
+    	$http({
+            method : 'GET',
+            url : 'api/level1'
+        }).then(function mySuccess(response) {
+        	 $body.removeClass("loading");
+        	 $scope.ServiceLev1s = response.data;
+        }, function myError(response) {
+        	$scope.ServiceLev1s = response.statusText;
+        });
+	}
+	$scope.populateServicelev2 = function (){
+		$body.addClass("loading");
+		alert($scope.ServL1);
+    	$http({
+            method : 'GET',
+            url : 'api/level2?level1='+$scope.ServL1
+        }).then(function mySuccess(response) {
+        	console.log(response);	
+        	 $body.removeClass("loading");
+        	 $scope.ServiceLev2s = response.data;
+        	 console.log($scope.ServiceLev2s);
+        }, function myError(response) {
+        	$scope.ServiceLev2s = response.statusText;
+        });
+	}
+	
+	
+	//$body.addClass("loading");
+	$http({
+        method : 'GET',
+        url : 'api/tempCarModelYears'
+    }).then(function mySuccess(response) {
+    	 //$body.removeClass("loading");
+    	 $scope.yearsCar = response.data;
+    }, function myError(response) {
+    	$scope.yearsCar = response.statusText;
+    });
+	
+	
+	
+	$scope.makeForYear = function (year){
+		$body.addClass("loading");
+		$scope.MakesCarYear = "";
+		$scope.ModelsCarYearMake = "";
+		$scope.VarsCarYearMakeMod ="";
+		//'api/tempCarModelMakesForYear?modelYear='+$scope.caryearsins
+    	$http({
+            method : 'GET',
+            url : 'api/tempCarModelMakesForYear?modelYear='+year
+        }).then(function mySuccess(response) {
+        	 $body.removeClass("loading");
+        	 $scope.MakesCarYear = response.data;
+        }, function myError(response) {
+        	$scope.MakesCarYear = response.statusText;
+        });
+	}
+	
+	$scope.modelForYearMake = function (make,year){
+		$body.addClass("loading");
+		//'api/tempCarModelNamesForMake?modelDisplay='+$scope.carmakesins+'&modelYear='+$scope.caryearsins
+    	$http({
+            method : 'GET',
+            url : 'api/tempCarModelNamesForMake?modelDisplay='+make+'&modelYear='+year
+        }).then(function mySuccess(response) {
+        	 $body.removeClass("loading");
+        	 $scope.ModelsCarYearMake = response.data;
+        }, function myError(response) {
+        	$scope.ModelsCarYearMake = response.statusText;
+        });
+	}
+	
+	$scope.varForYearMakeMod = function (model,make,year){
+		$body.addClass("loading");
+		//'api/tempCarModelVariantForModel?modelName='+$scope.carmodelsins+'&modelDisplay='+$scope.carmakesins+'&modelYear='+$scope.caryearsins
+    	$http({
+            method : 'GET',
+            url : 'api/tempCarModelTrimForAllSelect?modelName='+model+'&modelDisplay='+make+'&modelYear='+year
+        }).then(function mySuccess(response) {
+        	 $body.removeClass("loading");
+        	 $scope.VarsCarYearMakeMod = response.data;
+        }, function myError(response) {
+        	$scope.VarsCarYearMakeMod = response.statusText;
+        });
+	}
 	
 // To get all My Log Book
 	
@@ -1145,13 +1265,13 @@ mainApp1.controller('myController13',function($scope, $http) {
 		var wsURL = 'api/getLogBookByUserId?userid='+userId;
 		// change here
 
-	   $body.addClass("loading");
+	   //$body.addClass("loading");
 	    	$http({
 				method : 'GET',
 				url : wsURL
 
 			}).success(function(result) {
-				$body.removeClass("loading");
+				//$body.removeClass("loading");
 				//alert("successfully retreived");
 				
 				out8="";
@@ -1523,13 +1643,13 @@ $("#"+"fuelCard4").html(outLogT);
 		var wsURL = 'api/getLogBookByUserId?userid='+userId;
 		// change here
 
-	   $body.addClass("loading");
+	   //$body.addClass("loading");
 	    	$http({
 				method : 'GET',
 				url : wsURL
 
 			}).success(function(result) {
-				$body.removeClass("loading");
+				//$body.removeClass("loading");
 				//alert("successfully retreived");
 				
 				out6="";
@@ -1581,7 +1701,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        <div class="modal-content">\
 		            <div class="modal-header">\
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>View My Vehicle Details</center></h4>\
 			        <form id="edit-dealer-vehicle-detail-content-form">\
@@ -1872,13 +1992,13 @@ $("#"+"fuelCard4").html(outLogT);
 		var wsURL = 'api/getVehQuotaByUserId?userid='+userId;
 		// change here
 
-	   $body.addClass("loading");
+	   //$body.addClass("loading");
 	    	$http({
 				method : 'GET',
 				url : wsURL
 
 			}).success(function(result) {
-				$body.removeClass("loading");
+				//$body.removeClass("loading");
 				//alert("successfully retreived");
 				
 				 out3="";
@@ -1916,13 +2036,13 @@ $("#"+"fuelCard4").html(outLogT);
 	    	var wsURL = 'api/getFinQuotaByUserId?userid='+userId;
 			// change here
 
-		   $body.addClass("loading");
+		   //$body.addClass("loading");
 		    	$http({
 					method : 'GET',
 					url : wsURL
 
 				}).success(function(result) {
-					$body.removeClass("loading");
+					//$body.removeClass("loading");
 					//alert("successfully retreived");
 					
 					out4="";
@@ -1957,13 +2077,13 @@ $("#"+"fuelCard4").html(outLogT);
 		    	var wsURL = 'api/getInsQuotaByUserId?userid='+userId;
 				// change here
 
-			   $body.addClass("loading");
+			   //$body.addClass("loading");
 			    	$http({
 						method : 'GET',
 						url : wsURL
 
 					}).success(function(result) {
-						$body.removeClass("loading");
+						//$body.removeClass("loading");
 						//alert("successfully retreived");
 						
 						out5="";
@@ -1998,13 +2118,13 @@ $("#"+"fuelCard4").html(outLogT);
 			    	var wsURL = 'api/getServMQuotaByUserId?userid='+userId;
 					// change here
 
-				   $body.addClass("loading");
+				   //$body.addClass("loading");
 				    	$http({
 							method : 'GET',
 							url : wsURL
 
 						}).success(function(result) {
-							$body.removeClass("loading");
+							//$body.removeClass("loading");
 							//alert("successfully retreived");
 							
 							out444="";
@@ -2041,13 +2161,13 @@ $("#"+"fuelCard4").html(outLogT);
 				    	var wsURL = 'api/getTranpQuotaByUserId?userid='+userId;
 						// change here
 
-					   $body.addClass("loading");
+					   //$body.addClass("loading");
 					    	$http({
 								method : 'GET',
 								url : wsURL
 
 							}).success(function(result) {
-								$body.removeClass("loading");
+								//$body.removeClass("loading");
 								//alert("successfully retreived");
 								
 								out555="";
@@ -2093,7 +2213,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        <div class="modal-content">\
 		            <div class="modal-header">\
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>Edit Transport Service Quotation</center></h4>\
 			        <form id="edit-dealer-transpserv-quotation-content-form">\
@@ -2212,7 +2332,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        <div class="modal-content">\
 		            <div class="modal-header">\
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>Edit Vehicle Quotation</center></h4>\
 			        <form id="edit-dealer-servmaint-quotation-content-form">\
@@ -2328,7 +2448,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        <div class="modal-content">\
 		            <div class="modal-header">\
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>Edit Insurance Quotation</center></h4>\
 			        <form id="edit-dealer-ins12-quotation-content-form">\
@@ -2447,7 +2567,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        <div class="modal-content">\
 		            <div class="modal-header">\
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>Edit Finance Quotation</center></h4>\
 			        <form id="edit-dealer-fin12-quotation-content-form">\
@@ -2565,7 +2685,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        <div class="modal-content">\
 		            <div class="modal-header">\
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>Edit Vehicle Quotation</center></h4>\
 			        <form id="edit-dealer-vehicle-quotation-content-form">\
@@ -2912,13 +3032,13 @@ $("#"+"fuelCard4").html(outLogT);
 		var wsURL = 'api/getUseNotByUserId?userid='+userId;
 		// change here
 
-	   $body.addClass("loading");
+	   //$body.addClass("loading");
 	    	$http({
 				method : 'GET',
 				url : wsURL
 
 			}).success(function(result) {
-				$body.removeClass("loading");
+				//$body.removeClass("loading");
 				//alert("successfully retreived");
 				
 				out12="";
@@ -2996,7 +3116,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        <div class="modal-content">\
 		            <div class="modal-header">\
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>View User Notification Details</center></h4>\
 			        <form id="edit-dealer-usn-vehicle-transp-content-form">\
@@ -3114,13 +3234,13 @@ $("#"+"fuelCard4").html(outLogT);
 		var wsURL = 'api/getSearchByUserId?userid='+userId;
 		// change here
 
-	   $body.addClass("loading");
+	   //$body.addClass("loading");
 	    	$http({
 				method : 'GET',
 				url : wsURL
 
 			}).success(function(result) {
-				$body.removeClass("loading");
+				//$body.removeClass("loading");
 				//alert("successfully retreived");
 				
 				 out="";
@@ -3161,13 +3281,13 @@ $("#"+"fuelCard4").html(outLogT);
 	    	var wsURL = 'api/getFinanceByUserId?userid='+userId;
 			// change here
 
-		   $body.addClass("loading");
+		   //$body.addClass("loading");
 		    	$http({
 					method : 'GET',
 					url : wsURL
 
 				}).success(function(result) {
-					$body.removeClass("loading");
+					//$body.removeClass("loading");
 					//alert("successfully retreived");
 					
 					out1="";
@@ -3207,13 +3327,13 @@ $("#"+"fuelCard4").html(outLogT);
 		    	var wsURL = 'api/getInsuranceByUserId?userid='+userId;
 				// change here
 
-			   $body.addClass("loading");
+			   //$body.addClass("loading");
 			    	$http({
 						method : 'GET',
 						url : wsURL
 
 					}).success(function(result) {
-						$body.removeClass("loading");
+						//$body.removeClass("loading");
 						//alert("successfully retreived");
 						
 						out2="";
@@ -3251,13 +3371,13 @@ $("#"+"fuelCard4").html(outLogT);
 			    	var wsURL = 'api/getServMtByUserId?userid='+userId;
 					// change here
 
-				   $body.addClass("loading");
+				   //$body.addClass("loading");
 				    	$http({
 							method : 'GET',
 							url : wsURL
 
 						}).success(function(result) {
-							$body.removeClass("loading");
+							//$body.removeClass("loading");
 							//alert("successfully retreived");
 							
 							out10="";
@@ -3295,14 +3415,14 @@ $("#"+"fuelCard4").html(outLogT);
 				    	var wsURL = 'api/getTranspByUserId?userid='+userId;
 						// change here
 
-					   $body.addClass("loading");
+					   //$body.addClass("loading");
 					    	$http({
 								method : 'GET',
 								url : wsURL
 
 							}).success(function(result) {
-								$body.removeClass("loading");
-								alert("successfully retreived");
+								//$body.removeClass("loading");
+								//alert("successfully retreived");
 								
 								 out11="";
 
@@ -3347,7 +3467,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        <div class="modal-content">\
 		            <div class="modal-header">\
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>View Vehicle Transport Lead Details</center></h4>\
 			        <form id="edit-dealer-vehicle-transp-content-form">\
@@ -3595,7 +3715,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        <div class="modal-content">\
 		            <div class="modal-header">\
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>View Vehicle Service Maintainence Details</center></h4>\
 			        <form id="edit-dealer-vehicle-servmaint-content-form">\
@@ -3790,7 +3910,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        <div class="modal-content">\
 		            <div class="modal-header">\
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>View Vehicle Insurance Details</center></h4>\
 			        <form id="edit-dealer-vehicle-insurance-content-form">\
@@ -4026,7 +4146,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        <div class="modal-content">\
 		            <div class="modal-header">\
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>View Vehicle Finance Details</center></h4>\
 			        <form id="edit-dealer-vehicle-finance-content-form">\
@@ -4158,7 +4278,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        <div class="modal-content">\
 		            <div class="modal-header">\
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>View Vehicle Search Details</center></h4>\
 			        <form id="edit-dealer-vehicle-search-content-form">\
@@ -4345,7 +4465,7 @@ $("#"+"fuelCard4").html(outLogT);
 									        <div class="modal-content">\
 									            <div class="modal-header">\
 									                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-									                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+									                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 									            </div>\
 												<h4 class="modal-title" id="myModalLabel"><center>View Log Expenses Details</center></h4>\
 										        <form id="edit-dealer-vehicle-logbk-content-form">\
@@ -4508,7 +4628,7 @@ $("#"+"fuelCard4").html(outLogT);
 									        <div class="modal-content">\
 									            <div class="modal-header">\
 									                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-									                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+									                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 									            </div>\
 												<h4 class="modal-title" id="myModalLabel"><center>View Log Expenses Details</center></h4>\
 										        <form id="edit-dealer-vehicle-expns-content-form">\
@@ -4719,7 +4839,7 @@ $("#"+"fuelCard4").html(outLogT);
 									        <div class="modal-content">\
 									            <div class="modal-header">\
 									                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-									                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+									                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 									            </div>\
 												<h4 class="modal-title" id="myModalLabel"><center>View Log Service Maintenance Details</center></h4>\
 										        <form id="edit-dealer-vehicle-servmt-content-form">\
@@ -4922,7 +5042,7 @@ $("#"+"fuelCard4").html(outLogT);
 
 						}).success(function(data) {
 							$body.removeClass("loading");
-							alert("successfully retreived"+data.flex2);
+							//alert("successfully retreived"+data.flex2);
 							if(data.flex2!="nourl"){
 								window.open(data.flex2);
 							}
@@ -5078,7 +5198,7 @@ $("#"+"fuelCard4").html(outLogT);
 								        <div class="modal-content">\
 								            <div class="modal-header">\
 								                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-								                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+								                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 								            </div>\
 											<h4 class="modal-title" id="myModalLabel"><center>View My Vehicle Details</center></h4>\
 									        <form id="edit-dealer-vehicle-detail-content-form">\
@@ -5404,7 +5524,7 @@ $("#"+"fuelCard4").html(outLogT);
 							           		        <div class="modal-content">\
 							           		            <div class="modal-header">\
 							           		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-							           		                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+							           		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 							           		            </div>\
 							           					<h4 class="modal-title" id="myModalLabel"><center>View My Vehicle Details</center></h4>\
 							           			        <form id="edit-nwvh-dealer-vehicle-detail-content-form">\
@@ -5906,8 +6026,8 @@ $("#"+"fuelCard4").html(outLogT);
 																	"mechanicName":$('#mechanicNameCompanyName').val(),
 																	"companyName":"pqrs",
 																	"typeOfServMaint":$('#typeServiceMaintenance').val(),
-																	"mechanicAddress":$('#ServL1').val(),
-																	"contactDetails":$('#ServL2').val(),
+																	"mechanicAddress":$scope.ServL1,
+																	"contactDetails":$scope.ServL2,
 																	"odoMeterKm":$('#odoMeterKmsMilesServMaint').val(),
 																	"totalAmount":$('#totalAmount').val(),
 																	"nextOdoMeterKm":$('#NextServiceMaintenanceOdoMeterKmsmils').val(),
