@@ -114,7 +114,7 @@ $(document).ready(function(){
 		console.log(userDetails); <dt>Date of birth:</dt><dd>15 August 1985</dd>\
 	    */
 
-	$(".userdetails").append(userDetails);
+	$(".userdetails").html(userDetails);
 	var default1='https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/dashboard.png';
 	 url="";
 	fbdown(value.issueState);
@@ -184,7 +184,7 @@ $(document).ready(function(){
           url = bucket.getSignedUrl('getObject', params, function (err, url) {
             if (url) { //alert("successfully retrieved.."+url);
             	profilePic = '<img width="270" height="263" alt="" src="'+url+'"'+'>';
-            	$("#profilePic").append(profilePic);
+            	$("#profilePic").html(profilePic);
             }
             else{
 				//alert("Your Idle time as exceeded more than 10 mins, so can you plz log in again");
@@ -1158,10 +1158,10 @@ mainApp1.controller('myController13',function($scope, $http) {
        outLogT="";
        outLogT='<h2>No records found</h2>';
     //forFinance("fuelCard4",outLogT);
-$("#"+"fuelCard4").append(outLogT);
+$("#"+"fuelCard4").html(outLogT);
        } else {
 	               	//forFinance("fuelCard4",out8);
-		$("#"+"fuelCard4").append(out8);
+		$("#"+"fuelCard4").html(out8);
 		}
 
 
@@ -1538,10 +1538,10 @@ $("#"+"fuelCard4").append(outLogT);
 	           	outLogT="";
 	           	outLogT='<h2>No records found</h2>';
 	            //forFinance("quo-model-data4",outLogT);
-		     $("#"+"quo-model-data4").append(outLogT);
+		     $("#"+"quo-model-data4").html(outLogT);
 	           	} else{
 	           	   //forFinance("quo-model-data4",out6);
-			    $("#"+"quo-model-data4").append(out6);
+			    $("#"+"quo-model-data4").html(out6);
 			   }
 
 
@@ -1887,10 +1887,10 @@ $("#"+"fuelCard4").append(outLogT);
 	        	   outLogT="";
 	        	   outLogT='<h2>No records found</h2>';
 	        	   //forFinance("quo-model-data",outLogT);
-	        	   $("#"+"quo-model-data").append(outLogT);
+	        	   $("#"+"quo-model-data").html(outLogT);
 	        	   }else{
 	        	   //forFinance("quo-model-data",out3);
-	        	   $("#"+"quo-model-data").append(out3);
+	        	   $("#"+"quo-model-data").html(out3);
 			   }
 
 	        	   registerEditDealerVehicleQuotationModal();
@@ -1930,10 +1930,10 @@ $("#"+"fuelCard4").append(outLogT);
 		        	   outLogT="";
 		        	   outLogT='<h2>No records found</h2>';
 		        	   //forFinance("quo-data1",outLogT);
-					     $("#"+"quo-data1").append(outLogT);
+					     $("#"+"quo-data1").html(outLogT);
 		        	   }else{
 		        	   //forFinance("quo-data1",out4);
-				    $("#"+"quo-data1").append(out1);
+				    $("#"+"quo-data1").html(out1);
 				   }
 		        	   registerEditDealerfin12QuotationModal();
 								});
@@ -1970,10 +1970,10 @@ $("#"+"fuelCard4").append(outLogT);
 						        	   outLogT="";
 						        	   outLogT='<h2>No records found</h2>';
 						        	   //forFinance("quo-model-data2",outLogT);
-								   			  $("#"+"quo-model-data2").append(outLogT);
+								   			  $("#"+"quo-model-data2").html(outLogT);
 						        	   } else{
 						        	   //forFinance("quo-model-data2",out5);
-								   			        	  $("#"+"quo-model-data2").append(out5);
+								   			        	  $("#"+"quo-model-data2").html(out5);
 								   }
 
 						        	   registerEditDealerins12QuotationModal();
@@ -2012,10 +2012,10 @@ $("#"+"fuelCard4").append(outLogT);
 				        	   outLogT="";
 				        	   outLogT='<h2>No records found</h2>';
 				        	   //forFinance("dataservmaintQuot12",outLogT);
-				$("#"+"dataservmaintQuot12").append(outLogT);
+				$("#"+"dataservmaintQuot12").html(outLogT);
 				        	   } else{
 				        	   //forFinance("dataservmaintQuot12",out444);
-						    $("#"+"dataservmaintQuot12").append(out444);
+						    $("#"+"dataservmaintQuot12").html(out444);
 						   }
 
 				        	   registerEditDealerservmaintQuotationModal();
@@ -2055,10 +2055,10 @@ $("#"+"fuelCard4").append(outLogT);
 					        	   outLogT="";
 					        	   outLogT='<h2>No records found</h2>';
 					        	   //forFinance("datatranspservQuot",outLogT);
-							   $("#"+"datatranspservQuot").append(outLogT);
+							   $("#"+"datatranspservQuot").html(outLogT);
 					        	   } else{
 					        	   //forFinance("datatranspservQuot",out555);
-							   $("#"+"datatranspservQuot").append(out555);
+							   $("#"+"datatranspservQuot").html(out555);
 							   }
 
 
@@ -2926,10 +2926,10 @@ $("#"+"fuelCard4").append(outLogT);
 	         outLogT="";
 	         outLogT='<h2>No records found</h2>';
 	      //forFinance("userNotification",outLogT);
-	         $("#"+"userNotification").append(outLogT);
+	         $("#"+"userNotification").html(outLogT);
 	         } else {
 	         	  //forFinance("userNotification",out12);
-	        	 $("#"+"userNotification").append(out12);
+	        	 $("#"+"userNotification").html(out12);
 		  }
 
 	         registerEditDealerusnVehicletranspModal();
@@ -2964,7 +2964,7 @@ $("#"+"fuelCard4").append(outLogT);
 		         	   out14 = out14.replace(/>undefined</g, ">--NA--<");
 
 		         	  //forFinance("currentOffers",out14);
-		         	  $("#"+"currentOffers").append(out14);
+		         	  $("#"+"currentOffers").html(out14);
 		        	  //registerEditDealerVehicleFinanceModal();
 								});
 		    	
@@ -3132,11 +3132,11 @@ $("#"+"fuelCard4").append(outLogT);
 	        	   outLogT='<h2>No records found</h2>';
 	        	   
 	        	  // forFinance("car-model-data",outLogT);
-	        	   $("#"+"car-model-data").append(outLogT);
+	        	   $("#"+"car-model-data").html(outLogT);
 	        	   }
 	        	   else{
 	        	   //forFinance("car-model-data",out);
-	        	   $("#"+"car-model-data").append(out);
+	        	   $("#"+"car-model-data").html(out);
 	        	   }
 	        	   registerEditDealerVehicleSearchModal();
 							});
@@ -3178,11 +3178,11 @@ $("#"+"fuelCard4").append(outLogT);
 		        	  outLogT="";
 		        	  outLogT='<h2>No records found</h2>';
 		        	  //forFinance("data1",outLogT);
-		        	  $("#"+"data1").append(outLogT);
+		        	  $("#"+"data1").html(outLogT);
 		        	  }
 		        	  else{
 		        		  //forFinance("data1",out1);
-		        		  $("#"+"data1").append(out1);
+		        		  $("#"+"data1").html(out1);
 		        	  }
 		        	  registerEditDealerVehicleFinanceModal();
 								});
@@ -3223,10 +3223,10 @@ $("#"+"fuelCard4").append(outLogT);
 			        	   outLogT="";
 			        	   outLogT='<h2>No records found</h2>';
 			        	   //forFinance("car-model-data2",outLogT);
-			        	   $("#"+"car-model-data2").append(outLogT);
+			        	   $("#"+"car-model-data2").html(outLogT);
 			        	   }else{
 			        	   //forFinance("car-model-data2",out2);
-			        	  $("#"+"car-model-data2").append(out2);
+			        	  $("#"+"car-model-data2").html(out2);
 					   }
 			        	   registerEditDealerVehicleInsuranceModal();
 									});
@@ -3266,10 +3266,10 @@ $("#"+"fuelCard4").append(outLogT);
 	        	         	 outLogT="";
 	        	         	 outLogT='<h2>No records found</h2>';
 	        	         	//forFinance("dataservmaint",outLogT);
-	        	         	 $("#"+"dataservmaint").append(outLogT);
+	        	         	 $("#"+"dataservmaint").html(outLogT);
 	        	         	 } else{
 	        	         	  //forFinance("dataservmaint",out10);
-	        	         		$("#"+"dataservmaint").append(out10);
+	        	         		$("#"+"dataservmaint").html(out10);
 					  }
 	        	         	registerEditDealerVehicleservmaintModal();
 										});
@@ -3310,10 +3310,10 @@ $("#"+"fuelCard4").append(outLogT);
 			      	         	outLogT="";
 			      	         	outLogT='<h2>No records found</h2>';
 			      	         	//forFinance("datatranspserv",outLogT);
-			      	         	$("#"+"datatranspserv").append(outLogT);
+			      	         	$("#"+"datatranspserv").html(outLogT);
 			      	         	} else {
 			      	         	  //forFinance("datatranspserv",out11);
-						   $("#"+"datatranspserv").append(out11);
+						   $("#"+"datatranspserv").html(out11);
 						  }
 			      	         	registerEditDealerVehicletranspModal();
 											});
