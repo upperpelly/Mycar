@@ -999,10 +999,10 @@ $('.logBookBtn').click(function(){
 
 
 												<div class="row">
-														<div class="col-sm-3 col-md-2">
+														<div class="col-sm-2 col-md-2">
 															<label>Vehicle Identity</label>
 														</div>
-														<div class="col-sm-3 col-md-3">
+														<div class="col-sm-2 col-md-2">
 															<input type="text" id="vin" name="vin" class="input-text full-width" value=""  ng-model="vin" required placeholder="VIN /HIN Number" />
 															<span style="color:red" ng-show="vehFrm.vin.$error.required && (!vehFrm.vin.$pristine || vehFrm.$submitted)"><b>VIN /HIN Number is Required</b></span>
 														</div>
@@ -1015,20 +1015,28 @@ $('.logBookBtn').click(function(){
 				                                                <select class="full-width" id="regState" name="regState" ng-model="regState" required>
 				                                                    <option value="" selected disabled>Rego State</option>
 				                                                    <option>ACT</option>
-				                                                    <option>NSW</option>
-				                                                    <option>VIC</option>
-				                                                    <option>QLD</option>
-				                                                    <option>NT</option>
-				                                                    <option>TAS</option>
+																	<option>NT</option>
+																	<option>QLD</option>
+																	<option>VIC</option>
+																	<option>NSW</option>
+																	<option>TAS</option>
+																	<option>SA</option>
+																	<option>WA</option>
 				                                                </select>
 				                                            </div>
 				                                            <span style="color:red" ng-show="vehFrm.regState.$error.required && (!vehFrm.regState.$pristine || vehFrm.$submitted)"><b>Rego State is Required</b></span>
 														</div>
-														<div class="col-sm-3 col-md-3">
+														<div class="col-sm-2 col-md-2">
 				                                       		<input type="text" onfocus="(this.type='date')" name="RegExpDate" id = "RegExpDate" class="input-text full-width" placeholder="Rego End Date" ng-model="RegExpDate" required/>
 				                                       		<span style="color:red" ng-show="vehFrm.RegExpDate.$error.required && (!vehFrm.RegExpDate.$pristine || vehFrm.$submitted)"><b>Rego Exp date is Required</b></span>
-				                                       		<input type="checkbox" id="vehIdentRemind" name="vehIdentRemind"  ng-model="vehIdentRemind"/>Reminder
 														</div>
+														<div class="col-sm-2 col-md-2">
+				                                       		<input type="checkbox" id="vehIdentRemind" name="vehIdentRemind"  ng-model="vehIdentRemind"/><img src="images/RegRem.gif"></img>
+														</div>
+														<!-- <div class="col-sm-2 col-md-2">
+				                                       		<input type="checkbox" id="vehIdentRemind" name="vehIdentRemind"  ng-model="vehIdentRemind"/>Rego End Reminder
+														</div> -->
+														
 														<!-- <div class="col-sm-3 col-md-3">
 				                                       		<input type="checkbox" id="vehIdentRemind" name="vehIdentRemind"  ng-model="vehIdentRemind"/>Reminder
 				                                       		<span style="color:red" ng-show="vehFrm.insRemind.$error.required && (!vehFrm.insRemind.$pristine || vehFrm.$submitted)"><b>Reminder must be checked</b></span>
@@ -1044,7 +1052,8 @@ $('.logBookBtn').click(function(){
 				                            	</div>
 
 												<div class="row">
-														<div class="col-sm-3 col-md-3">
+																									
+														<div class="col-sm-2 col-md-2">
 															 <div class="selector">
 				                                                <select class="full-width" id="insProv" name="insProv" ng-model="insProv" ng-options="x for x in InsuranceProvs">
 				                                                	<option value="" selected disabled>Insurance Provider</option>
@@ -1061,10 +1070,36 @@ $('.logBookBtn').click(function(){
 															<!-- <span style="color:red" ng-show="vehFrm.insPrePaid.$error.required && (!vehFrm.insPrePaid.$pristine || vehFrm.$submitted)"><b>Insurance Premium is Required</b></span> -->
 																 <span style="color:red" ng-show="vehFrm.insPrePaid.$error.pattern && (!vehFrm.insPrePaid.$pristine || vehFrm.$submitted)"><b>Insurance Permium must be Numeric</b></span>
 														</div>
-														<div class="col-sm-3 col-md-3">
-				                                       		<input type="checkbox" id="insRemind" name="insRemind"  ng-model="insRemind"/>Reminder
+														
+														
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="insPostCode"
+																name="insPostCode" ng-model="insPostCode"
+																class="input-text full-width" value=""
+																placeholder="Post Code" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="vehFrm.insPostCode.$error.pattern &amp;&amp; (!vehFrm.insPostCode.$pristine || vehFrm.$submitted)"><b>POST
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="vehFrm.insPostCode.$error.required &amp;&amp; (!vehFrm.insPostCode.$pristine || vehFrm.$submitted)"><b>POST
+																	is Required</b></span> <span style="color: red"
+																ng-show="vehFrm.insPostCode.$error.minlength &amp;&amp; (!vehFrm.insPostCode.$pristine || vehFrm.$submitted) &amp;&amp; !vehFrm.insPostCode.$error.pattern"><b>POST
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="vehFrm.insPostCode.$error.maxlength &amp;&amp; (!vehFrm.insPostCode.$pristine || vehFrm.$submitted) &amp;&amp; !vehFrm.insPostCode.$error.pattern"><b>POST
+																	must be of 4 digits only.</b></span>
+														</div>
+														
+														<div class="col-sm-2 col-md-2">
+				                                       		<input type="checkbox" id="insRemind" name="insRemind"  ng-model="insRemind"/><img src="images/insrem.gif"></img>
 				                                       		<!-- <span style="color:red" ng-show="vehFrm.insRemind.$error.required && (!vehFrm.insRemind.$pristine || vehFrm.$submitted)"><b>Reminder must be checked</b></span> -->
 														</div>
+														<!-- <div class="col-sm-2 col-md-2">
+				                                       		<input type="checkbox" id="insRemind" name="insRemind"  ng-model="insRemind"/>Insurance Due Reminder
+				                                       		<span style="color:red" ng-show="vehFrm.insRemind.$error.required && (!vehFrm.insRemind.$pristine || vehFrm.$submitted)"><b>Reminder must be checked</b></span>
+														</div>
+								 -->						
 												</div>
 
 
@@ -1076,7 +1111,7 @@ $('.logBookBtn').click(function(){
 				                            </div>
 
 			                            	<div class="row">
-													<div class="col-sm-3 col-md-3">
+													<div class="col-sm-2 col-md-2">
 														<input type="text" id="odoMeter" name="odoMeter" class="input-text full-width" value="" ng-pattern="/^[0-9]*$/" placeholder="Last Service @KMs"  ng-model="odoMeter" />
 														<!-- <span style="color:red" ng-show="vehFrm.odoMeter.$error.required && (!vehFrm.odoMeter.$pristine || vehFrm.$submitted)"><b>Odometer reading is Required</b></span> -->
 															 <span style="color:red" ng-show="vehFrm.odoMeter.$error.pattern && (!vehFrm.odoMeter.$pristine || vehFrm.$submitted)"><b>Odometer reading must be Numeric</b></span>
@@ -1089,13 +1124,20 @@ $('.logBookBtn').click(function(){
 														<input type="text"  onfocus="(this.type='date')" id="NextServDate" name="NextServDate" class="input-text full-width" placeholder="Next Service & Maintenance Date"  ng-model="NextServDate"  />
 														<!-- <span style="color:red" ng-show="vehFrm.NextServDate.$error.required && (!vehFrm.NextServDate.$pristine || vehFrm.$submitted)"><b>Odometer reading is Required</b></span> -->
 													</div>
-													<div class="col-sm-3 col-md-3">
+													<div class="col-sm-2 col-md-2">
 														<input type="text" id="nextServMaiKms" name="nextServMaiKms" class="input-text full-width" ng-pattern="/^[0-9]*$/" value="" placeholder="Next service @ kms"   ng-model="nextServMaiKms"/>
 														<!-- <span style="color:red" ng-show="vehFrm.nextServMaiKms.$error.required && (!vehFrm.nextServMaiKms.$pristine || vehFrm.$submitted)"><b>Next service reading is Required</b></span> -->
 			                                       			 <span style="color:red" ng-show="vehFrm.nextServMaiKms.$error.pattern && (!vehFrm.nextServMaiKms.$pristine || vehFrm.$submitted)"><b>Next Service Kms must be Numeric</b></span>
-			                                       		<input type="checkbox" id="maiRemind" name="maiRemind"  ng-model="maiRemind" />Reminder
+			                                       		<!-- <input type="checkbox" id="maiRemind" name="maiRemind"  ng-model="maiRemind" />Reminder -->
 			                                       		<!-- <span style="color:red" ng-show="vehFrm.maiRemind.$error.required && (!vehFrm.maiRemind.$pristine || vehFrm.$submitted)"><b>Maintenance Reminder must be checked</b></span> -->
 													</div>
+													<div class="col-sm-2 col-md-2">
+			                                       		<input type="checkbox" id="maiRemind" name="maiRemind"  ng-model="maiRemind" /><img src="images/NextSerRem.gif"></img>
+													</div>
+													<!-- <div class="col-sm-2 col-md-2">
+			                                       		<input type="checkbox" id="maiRemind" name="maiRemind"  ng-model="maiRemind" />Next Service Reminder
+													</div> -->
+													
 											</div>
 
 
@@ -1107,7 +1149,7 @@ $('.logBookBtn').click(function(){
 				                            </div>
 
 			                            	<div class="row">
-													<div class="col-sm-3 col-md-3">
+													<div class="col-sm-2 col-md-2">
 														 <div class="selector">
 				                                                <select class="full-width" id="finProv" name="finProv" ng-model="finProv" ng-options="x for x in FinanceProvs">
 				                                                    <option value="" selected disabled>Finance Provider</option>
@@ -1125,7 +1167,7 @@ $('.logBookBtn').click(function(){
 															 <span style="color:red" ng-show="vehFrm.loanAmount.$error.pattern && (!vehFrm.loanAmount.$pristine || vehFrm.$submitted)"><b>Loan Amount must be Numeric</b></span>
 													</div>
 
-													 <div class="col-sm-3 col-md-3">
+													<div class="col-sm-2 col-md-2">
                                                             <div class="selector">
                                                                 <select class="full-width" id="laonPeriod" ng-model="laonPeriod"
                                                                         name="laonPeriod" placeholder="Loan Period">
@@ -1141,14 +1183,23 @@ $('.logBookBtn').click(function(){
                                                                     <option>9</option>
                                                                     <option>10</option>
                                                                 </select>
-                                                                <input type="checkbox" id="finRemind" name="finRemind" ng-model="finRemind" />Reminder
+                                                               
                                                             </div>
                                                             <!-- <span style="color:red" ng-show="ebidfinfrm.finLoanPeriod.$error.required && (!ebidfinfrm.finLoanPeriod.$pristine || ebidfinfrm.$submitted)"><b>Finance Loan Period is Required</b></span> -->
                                                         </div>
+                                                        
+                                                        
+                                                        <div class="col-sm-2 col-md-2">
+                                                        	 <input type="checkbox" id="finRemind" name="finRemind" ng-model="finRemind" /><img src="images/EMIRem.gif"></img>
+                                                        </div>
+                                                       <!--  <div class="col-sm-2 col-md-2">
+                                                        	 <input type="checkbox" id="finRemind" name="finRemind" ng-model="finRemind" />EMI Reminder
+                                                        </div> -->
+                                                        
 											</div>
 
-<table id="myveh-image">
-                                        </table>
+														<table id="myveh-image">
+				                                        </table>
 											<div class="row">
 													<div class="col-sm-3 col-md-3">
 														 <label>Add your Vehicle Photos</label>

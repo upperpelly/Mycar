@@ -3074,7 +3074,7 @@ table {
 														<div class="col-sm-3 col-md-3">&nbsp;</div>
 														<div class="col-sm-3 col-md-3">
 															<div class="selector">
-																<select id="car-years-serv" name="caryearsserv"
+																<select id="car-years-serv" name="caryearsserv" ng-options="x for x in yearsCar" ng-change="makeForYear(caryearsserv)"
 																	ng-model="caryearsserv" class="full-width"
 																	ng-required="!servregono || !regoStateServ">
 																	<option value="" selected disabled>Year</option>
@@ -3086,7 +3086,7 @@ table {
 														</div>
 														<div class="col-sm-3 col-md-3">
 															<div class="selector">
-																<select id="car-makes-serv" name="carmakesserv"
+																<select id="car-makes-serv" name="carmakesserv" ng-options="x for x in MakesCarYear" ng-change="modelForYearMake(carmakesserv,caryearsserv)"
 																	ng-model="carmakesserv" class="full-width"
 																	ng-required="!servregono || !regoStateServ">
 																	<option value="" selected disabled>Make</option>
@@ -3098,7 +3098,7 @@ table {
 														</div>
 														<div class="col-sm-3 col-md-3">
 															<div class="selector">
-																<select id="car-models-serv" name="carmodelsserv"
+																<select id="car-models-serv" name="carmodelsserv" ng-options="x for x in ModelsCarYearMake" ng-change="varForYearMakeMod(carmodelsserv,carmakesserv,caryearsserv)"
 																	ng-model="carmodelsserv" class="full-width"
 																	ng-required="!servregono || !regoStateServ">
 																	<option value="" selected disabled>Model</option>
@@ -3117,7 +3117,7 @@ table {
 														<div class="col-sm-9 col-md-9">
 															<div class="selector">
 																<select id="car-model-auto-trims-serv"
-																	name="carmodelAutotrimsserv"
+																	name="carmodelAutotrimsserv"  ng-options="x for x in VarsCarYearMakeMod"
 																	ng-model="carmodelAutotrimsserv" class="full-width"
 																	ng-required="!servregono || !regoStateServ">
 																	<option value="" selected disabled>Autoscoop
