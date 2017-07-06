@@ -23,6 +23,8 @@ import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchServMaint;
 import au.com.pnspvtltd.mcd.domain.DealerSearchTransp;
+import au.com.pnspvtltd.mcd.domain.ExtDealServMaint;
+import au.com.pnspvtltd.mcd.domain.ExtDealServMaintr1;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
 import au.com.pnspvtltd.mcd.domain.ExternalDealer;
 import au.com.pnspvtltd.mcd.domain.FinanceEntity;
@@ -91,7 +93,9 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealServMaintr1VO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityVO;
@@ -594,7 +598,23 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					}
 					return dealerSearch;
 				}
-				
+				// Dealer Vehicle Lead
+				public ExtDealServMaintr1VO toExtDealerServMaintVO(final ExtDealServMaintr1 searchVO) {
+
+					ExtDealServMaintr1VO dealerSearch = new ExtDealServMaintr1VO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
+
 				// Dealer Vehicle Lead
 				public VehicleQuotationVO toExtQtDealerSearchVO(final VehicleQuotation searchVO) {
 
@@ -628,7 +648,41 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					}
 					return dealerSearch;
 				}
-			
+			// start of Service and Maintenance
+				// Dealer Vehicle Lead
+				public ServiceMaintQuotationVO toExtQtSmDealerSearchVO(final ServiceMaintQuotation searchVO) {
+
+					ServiceMaintQuotationVO dealerSearch = new ServiceMaintQuotationVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
+				// end of service and Maintenance
+				
+				// Dealer Vehicle Lead
+				public ExtDealerServMaintVO toExternalDealerSmVO(final ExtDealServMaint searchVO) {
+
+					ExtDealerServMaintVO dealerSearch = new ExtDealerServMaintVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
 		
 	// User Finance Lead
 	public SearchFinance toSearchFinance(final SearchFinanceVO searchFinanceVO) {
@@ -1036,6 +1090,17 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 	
 	public ExtDealerSearch toExtDealerSearchAdmin(final ExtDealerSearchVO dealerSearch) {
 		ExtDealerSearch searchVO = new ExtDealerSearch();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public ExtDealServMaintr1 toExtDealerSvAdmin(final ExtDealServMaintr1VO dealerSearch) {
+		ExtDealServMaintr1 searchVO = new ExtDealServMaintr1();
 		try {
 			BeanUtils.copyProperties(searchVO, dealerSearch);
 		} catch (IllegalAccessException | InvocationTargetException e) {

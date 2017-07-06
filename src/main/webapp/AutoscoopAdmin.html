@@ -1270,7 +1270,7 @@ Date is Required</b></span>
 	                                        </div> 
 	                                        <!-- Start of Serv & Maint -->
 	                                        <div id="smRequest" class="tab-pane fade">
-				                       <form class="form-inline signup" name="s&msearchfrm" ng-submit="gets&mInfor()">
+				                       <form class="form-inline signup" name="s&msearchfrm" ng-submit="getsmInfor()">
 				                       			 <div class="col-md-12 product-search-title">
                                                      	<label>Search Criteria for Service and Maintenance Leads</label> 
                                                   </div>
@@ -1280,7 +1280,7 @@ Date is Required</b></span>
                                                       </div>
                                                       <div class="col-sm-3 col-md-6">
                                                           <div class="selector">
-                                                              <select id="car-years" name="caryears" ng-model="caryears"
+                                                              <select id="car-yearssm" name="caryearssm" ng-model="caryearssm"
                                                                       class="full-width" ></select>
                                                           </div>
                                                       </div>
@@ -1291,7 +1291,7 @@ Date is Required</b></span>
                                                        </div>
                                                        <div class="col-sm-3 col-md-6">
                                                            <div class="selector">
-                                                               <select id="car-makes" name="carmakes" ng-model="carmakes"
+                                                               <select id="car-makessm" name="carmakessm" ng-model="carmakessm"
                                                                        class="full-width"></select>
                                                            </div>
                                                        </div>
@@ -1302,7 +1302,7 @@ Date is Required</b></span>
                                                        </div>
                                                        <div class="col-sm-3 col-md-6">
 	                                                       <div class="selector">
-	                                                          <select id="car-models" name="carmodels" ng-model="carmodels"
+	                                                          <select id="car-modelssm" name="carmodelssm" ng-model="carmodelssm"
 	                                                                  class="full-width" ></select>
 	                                                      </div>
                                                        </div>
@@ -1313,7 +1313,7 @@ Date is Required</b></span>
                                                       </div>
                                                       <div class="col-sm-3 col-md-6">
 	                                                      <div class="selector">
-	                                                         <select id="car-model-trims" name="car-model-trims" ng-model="carmodeltrims"
+	                                                         <select id="car-model-trimssm" name="car-model-trimssm" ng-model="carmodeltrimssm"
 	                                                                 class="full-width" ></select>
 	                                                     </div>
                                                       </div>
@@ -1344,7 +1344,7 @@ Date is Required</b></span>
 			                                        <div id="selectedRecord">
 															<h4><center>Lead / Quotation creation process for a Service & Maintenance</center></h4><a class="button btn-mini pull-right" id="BackToVehicles12">Back To Services Log</a>
 															<h4><center>S&M Request Details</center>
-															<div class="edit-dealer-vehicle-search-content">
+															<div class="edit-dealer-vehicle-servmaint-content">
 														            </div>
 															<br/>
 															<br/>
@@ -1608,7 +1608,7 @@ Date is Required</b></span>
 													<br />
 													<div class="col-sm-4 col-md-4">
 																		<div class="selector">
-																			<select class="full-width" id="insDriversCt"
+																			<select class="full-width" id="insSvDriversCt"
 																				ng-model="insSvDriversCt" name="insSvDriversCt">
 																				<option value="" selected disabled>No of
 																					Additional Extras</option>
@@ -1617,7 +1617,7 @@ Date is Required</b></span>
 																			</select>
 																		</div>
 																	</div>
-													<div class="row" ng-show="insDriversCt == 1">
+													<div class="row" ng-show="insSvDriversCt == 1">
 																	<div class="col-sm-3 col-md-3">
 																		<input type="text" name='fname0' id="fname0"
 																			placeholder='Offer Details'
@@ -1632,7 +1632,7 @@ Date is Required</b></span>
 																			placeholder='Price' class="input-text full-width" />
 																	</div>
 																</div>
-													<div class="row" ng-show="insDriversCt == 1">
+													<div class="row" ng-show="insSvDriversCt == 1">
 																	<div class="col-sm-12 col-md-12">
 																		<!-- <button type="button" class="append_row">Add User</button> -->
 																		<a id="add_row" data-toggle="tooltip"
@@ -1645,7 +1645,7 @@ Date is Required</b></span>
 																			class="soap-icon-close"></i></a>
 																	</div>
 																</div>
-													<div class="row" ng-show="insDriversCt == 1" >
+													<div class="row" ng-show="insSvDriversCt == 1" >
 																	<div class="col-sm-12 col-md-12">
 																		<!-- <table id="my-table944">
                                                                             <tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
@@ -1665,8 +1665,8 @@ Date is Required</b></span>
 																<div class="row">
 														<div class="col-sm-3 col-md-3">&nbsp;</div>
 														<div class="col-sm-6 col-md-6">
-															<textarea rows="4" cols="50" id="servAddNotes"
-																ng-model="servAddNotes" name="servAddNotes"
+															<textarea rows="4" cols="50" id="servSvAddNotes"
+																ng-model="servSvAddNotes" name="servSvAddNotes"
 																placeholder="Dealer Terms and Conditions"></textarea>
 														</div>
 														<div class="col-sm-3 col-md-3">&nbsp;</div>

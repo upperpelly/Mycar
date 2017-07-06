@@ -18,6 +18,8 @@ import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
+import au.com.pnspvtltd.mcd.domain.ExtDealServMaint;
+import au.com.pnspvtltd.mcd.domain.ExtDealServMaintr1;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
 import au.com.pnspvtltd.mcd.domain.ExternalDealer;
 import au.com.pnspvtltd.mcd.domain.FinanceEntity;
@@ -26,6 +28,7 @@ import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.repository.DealerRepository;
+import au.com.pnspvtltd.mcd.repository.ExtDealerServMaintPRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerRepository;
 import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
@@ -38,8 +41,10 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealServMaintr1VO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchLdAdminVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerSvLdAdminVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
@@ -60,6 +65,8 @@ public class DealerServiceImpl implements DealerService {
 	private ExternalDealerRepository externalDealerRepository;
 	@Autowired
 	private InventoryRepository InventoryRepository;
+	@Autowired
+	private ExtDealerServMaintPRepository extDealerServMaintPRepository;
 	@Autowired
 	private VehicleQuotationRepository vehicleQuotationRepository;
 	@Autowired
@@ -153,6 +160,61 @@ public class DealerServiceImpl implements DealerService {
 			}
 			dealerRepository.flush();
 			return dealerSearch;
+			//return domainModelUtil.toDealerAdmin(dealer);
+		
+
+	}
+	
+	
+	@Override
+	@Transactional
+	public String extDealerSvAdminLead(ExtDealerSvLdAdminVO dealerVO) {
+		
+		List<ExtDealServMaintr1VO> extDealerSearchVOs = dealerVO.getExtDealerSearchVO();
+		for (ExtDealServMaintr1VO extDealerSearchVO : extDealerSearchVOs) {
+			ExtDealServMaint dealer = extDealerServMaintPRepository.findOne(extDealerSearchVO.getDealerId());
+			ExtDealServMaintr1 dealerSearch = null;
+			Calendar calendar = Calendar.getInstance();
+		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+			//extDealerSearchVO.setDateOfBirth(ourJavaDateObject);
+			//extDealerSearchVO.setAgeOfAdditionalDriver(ourJavaDateObject);
+			//extDealerSearchVO.setsYearOfMake(ourJavaDateObject);
+			// start of External Dealer
+			extDealerSearchVO.setCategory(dealer.getCategory());
+			extDealerSearchVO.setCompanyName(dealer.getCompanyName());
+			extDealerSearchVO.setStreet(dealer.getStreet());
+			extDealerSearchVO.setSuburb(dealer.getSuburb());
+			//extDealerSearchVO.setState(dealer.getState());
+			//extDealerSearchVO.setPostCode(dealer.getPostCode());
+			extDealerSearchVO.setCountry(dealer.getCountry());
+			extDealerSearchVO.setPhone(dealer.getPhone());
+			extDealerSearchVO.setWebsite(dealer.getWebsite());
+			extDealerSearchVO.setMobile(dealer.getMobile());
+			extDealerSearchVO.setTollFree(dealer.getTollFree());
+			extDealerSearchVO.setFax(dealer.getFax());
+			extDealerSearchVO.setAfterHours(dealer.getAfterHours());
+			extDealerSearchVO.setPostalAddress(dealer.getPostalAddress());
+			extDealerSearchVO.setEmail(dealer.getEmail());
+			extDealerSearchVO.setLongitude(dealer.getLongitude());
+			extDealerSearchVO.setLatitude(dealer.getLatitude());
+			// end of External Dealer
+			
+			dealerSearch = domainModelUtil.toExtDealerSvAdmin(extDealerSearchVO);
+			
+			dealerSearch.setUserid(extDealerSearchVO.getUserid());
+			if (dealer.getExtDealSearch() != null) {
+				dealer.getExtDealSearch().add(dealerSearch);
+			} else {
+				List<ExtDealServMaintr1> dealerVehicleLeads = new ArrayList<>();
+				dealerVehicleLeads.add(dealerSearch);
+				dealer.setExtDealSearch(dealerVehicleLeads);
+			}
+			externalDealerRepository.flush();
+			
+		}
+		return "success";
+
+		
 			//return domainModelUtil.toDealerAdmin(dealer);
 		
 

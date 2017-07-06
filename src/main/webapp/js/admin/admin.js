@@ -2486,6 +2486,119 @@ mainApp1.controller('myController13',function($scope, $http) {
     	$scope.dealerIds = response.statusText;
     });
 	
+	
+	// S&M start
+	$scope.submitSvMyLeadNewExtfrm = function() {
+		alert("ibnvsscv"+$scope.LeadSvCategory+""+$scope.leadSvExtpost);
+		$body.addClass("loading");
+		$http({
+	        method : 'GET',
+	        url : 'api/getExtDealSM?category='+$scope.LeadSvCategory+ '&postCode=' +$scope.leadSvExtpost
+	    }).then(function mySuccess(response) {
+	    	 $body.removeClass("loading");
+	    	
+	    	 out="";
+	    	 data1 = response.data;
+	    	 //console.log(data1);
+	    	 //console.log(data1.externalDealerVO);
+	    	 //alert(data1.externalDealerVO.length);
+	    	 //alert(data1.externalDealerVO)
+	    	 // change here
+	    	 alert("Retrieved"+data1.externalDealerVO.length);
+	    	 var options ;
+	    	 $(".ExtSvDealerId").empty();
+             if(data1.externalDealerVO.length!=0)
+           	  {
+               	  out += '<tr><th>'+"Operation"+'</th><th>'+"Ext Dealer Id"+'</th><th>'+"Company Name"+'</th><th>'+"Phone No"+'</th>'+'<th>'+"Email"+'</th><th>'+"Website URL"+'</th></tr>';
+               	options += '<option value="" selected disabled>Select a Dealer ID</option>';
+               	  for(i=0;i<data1.externalDealerVO.length;i++)
+  	          		{
+  	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+
+  	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data1.externalDealerVO[i].externalDealerId+'</td>'+'<td>'+data1.externalDealerVO[i].companyName+'</td>'+'<td>'+data1.externalDealerVO[i].phone+'<td>'+data1.externalDealerVO[i].email+'</td>'+'</td>'+'<td>'+data1.externalDealerVO[i].website+'</td></tr>';
+  	          	 //options += '<option>' +data1.externalDealerVO[i].externalDealerId+ '</option>';
+  	          	options += '<option value="' + data1.externalDealerVO[i].externalDealerId + '">' + data1.externalDealerVO[i].externalDealerId + '</option>';
+  	          		}
+               	  alert(options);
+               	 $(".ExtSvDealerId").html(options);
+           	  }
+      	 
+             else{
+      		out='<h2>No Dealers for the Combination</h2>';
+      	   }
+      	
+      	   out = out.replace(/>null</g, ">--NA--<");
+      	   out = out.replace(/>undefined</g, ">--NA--<");
+      	   $("#LeadSvExtDealTable").html(out);
+	    	 //console.log(data);
+	    	 //console.log(data.externalDealerVO);
+	    }, function myError(response) {
+	    	console.log(response.statusText);
+	    });
+		
+	}
+
+	
+	$scope.submitSvMyLeadNewfrmext = function() {
+		//alert("Insisdsssssde");
+		//alert(JSON.stringify($scope.vehicleData));
+		//console.log(JSON.stringify($scope.vehicleData));
+		//jsonInput = JSON.stringify($scope.vehicleData);
+		jsonInput = $scope.vehicleData;
+		
+		jsonInput["extDealerSearchId"]=null;
+		//alert("Dealer id"+$scope.ExtDealerId);
+		//$scope.ExtDealerId=155;
+		//console.log($scope.ExtDealerId);
+			jsonInput["dealerId"]=155;
+		
+		
+		/*var jsonInput1 ={
+				 "dealerSearchId": null,
+				 "dealerId" : $scope.LeadDealerId,
+				 "lastName": "Smith",
+				 "phoneNumber": "123-456-7890"
+				}*/
+		
+		/*var concattedjson = jsonInput.concat(jsonInput1); 26/06
+		console.log(concattedjson);*//*
+		$scope.leadDealerName = response.data.dealername;
+		 $scope.leadDealerABN = response.data.abnnumber;
+		 $scope.leadDealerEmail = response.data.email;*/
+			//console.log(JSON.stringify(jsonInput));
+			var jsonStr = '{"extDealerSearchVO":[]}';
+
+			var obj = JSON.parse(jsonStr);
+			obj['extDealerSearchVO'].push(jsonInput);
+			jsonStr = JSON.stringify(obj);
+			jsonStr.replace(/\\/g, "");
+			
+			
+			var json1 =jsonStr.split('"searchServMaintId":').join('"carSearchId":');
+			var json2= json1.split('"idp":').join('"userid":');
+			json2.replace(/\\/g, "");
+		 alert(" ssssss"+json2);
+		 console.log(json2);
+		 
+		$body.addClass("loading");
+		$http({
+	        method : 'POST',
+	        url : 'api/extDealerSvLeadCreation?_method=PUT',
+			data: json2
+	    }).then(function mySuccess(response) {
+	    	 $body.removeClass("loading");
+	    	 alert("Successfully Saved External Dealer Lead");
+	    	 //console.log(response.data);
+	    }, function myError(response) {
+	    	alert("Error Successfully Saved External Dealer Lead");
+	    	//console.log(response.statusText);
+	    });
+		
+	}
+	
+	
+	// S&M end
+	
 	$scope.submitMyLeadNewExtfrm = function() {
 		//alert("ibnvsscv");
 		$body.addClass("loading");
@@ -2820,8 +2933,703 @@ mainApp1.controller('myController13',function($scope, $http) {
 
     // Insurance lead post end
 	
+    // start of S&M
+    $scope.getsmInfor = function () {
+        //alert("invoke in before call getEbidInfor lead"+$scope.caryears+$scope.creationDateLd);
+      
+                        var jsonInputToAPI = {
+                    "modelYear": $scope.caryears,
+                    "modelDisplay": $scope.carmakes,
+                    "modelName": $scope.carmodels,
+                    "modelTrim": $scope.carmodeltrims,
+                    "creationDate": $scope.creationDateLd,
+                    "searchVO":null
+                };
+
+                       var wsURL = 'api/getSmInfor?modelYear='+ $scope.caryearssm + '&modelDisplay=' +$scope.carmakessm + '&modelName=' + $scope.carmodelssm + '&modelTrim=' + $scope.carmodeltrimssm + '&creationDate=' +$scope.creationDateSv;
+                        //alert("value"+$scope.creationDateLd);
+                        if($scope.creationDateLd === "undefined"){
+                        	 alert("value"+$scope.creationDateLd);
+                        	wsURL = 'api/getSearchInforOtDate?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims;
+                        }    
+             
+                //var wsURL = 'api/getSearchInfor?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims + '&creationDate=' +$scope.creationDateLd;
+                //var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/insurance';
+                //var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
+                /* alert(jsonInputToAPI.comingSoonUserEmail);
+                alert(jsonInputToAPI.flex1);
+                alert(jsonInputToAPI.flex2);
+                alert(jsonInputToAPI.flex3); */
+                // change here
+
+                $body.addClass("loading");
+               $http({
+                    method: 'GET',
+                    url: wsURL
+
+                }).success(function (data) {
+                    $body.removeClass("loading");
+                    alert("successfully retrieved"+data.searchVO.length);
+                    out10="";
+
+ /*	         	   var servRCt = result.length;
+ 	         	   document.getElementById('servRCt').innerHTML=servRCt;*/
+ 	         	   out10 += '<tr><th>'+"Car Serv Maint ID"+'</th><th>'+"Servic L1"+'</th><th>'+"Service L2"+'</th><th>'+"Rego State"+'</th><th>'+"Operation"+'</th></tr>';
+ 	         	   for(i=data.searchVO.length-1;i>=0;i--)
+ 	        		{
+ 	         		   //+'<td><a href="#" id="anchor-editDealerVehicleservmaintModal-' + data.searchVO[i].searchServMaintId + '" data-details=\'' + JSON.stringify(data.searchVO[i]) + '\' class="anchor-editDealerVehicleservmaintModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmaintModal">View</a></td>
+ 	         		 //out= out+'<tr>'+'<td><a href="#" id="anchor-editDealerVehicleservmaintModal-' + data.searchVO[i].searchServMaintId + '" data-details=\'' + JSON.stringify(data.searchVO[i]) + '\' class="anchor-editDealerVehicleservmaintModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmaintModal">Create Lead/Quotation</a></td>'+
+ 	        		out10= out10+'<tr>'+'<td><a href="#" id="anchor-editDealerVehicleservmaintModal-' + data.searchVO[i].searchServMaintId + '" data-details=\'' + JSON.stringify(data.searchVO[i]) + '\' class="anchor-editDealerVehicleservmaintModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmaintModal">Create Lead/Quotation</a></td>'+'<td>'+data.searchVO[i].searchServMaintId+'</td>'+'<td>'+data.searchVO[i].servMaintL1+'</td>'+'<td>'+data.searchVO[i].servMaintL2+'</td>'+'<td>'+data.searchVO[i].regoState+'</td>'+'</tr>';
+
+
+ 	        		}
+ 	         	   out10 = out10.replace(/>null</g, ">--NA--<");
+ 	         	   out10 = out10.replace(/>undefined</g, ">--NA--<");
+ 	         	  var LogSearchServMaint = data.searchVO;
+
+ 	         	 if(LogSearchServMaint && data.searchVO.length==0){
+ 	         	  outLogT="";
+             	   outLogT='<h2>No records found</h2>';
+             	   forFinance1("car-Sv-model-data12",outLogT);
+             	   }
+             	   else{
+             	   forFinance1("car-Sv-model-data12",out10);}
+ 	         	registerEditDealerVehicleservmaintModal();
+								});
+
+            }
+
+           
+    function registerEditDealerVehicleservmaintModal(){
+
+
+    	//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+    	/*var editDealerVehicleservmaintModal = '<div class="modal fade" id="editDealerVehicleservmaintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+    	    <div class="modal-dialog">\
+    	        <div class="modal-content">\
+    	            <div class="modal-header">\
+    	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+    	                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+    	            </div>\
+    				<h4 class="modal-title" id="myModalLabel"><center>View Vehicle Search Details</center></h4>\
+    		        <form id="edit-dealer-vehicle-servmaint-content-form">\
+    				<div class="modal-body edit-dealer-vehicle-servmaint-content">\
+    	            </div>\
+    	            <div class="modal-footer">\
+    	                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>\
+    		<p><center>&copy; 2017 Autoscoop</center></p>\
+    			</div>\
+    	            </form>\
+    	        </div>\
+    	    </div>\
+    	</div>';
+
+    	$(document.body).append(editDealerVehicleservmaintModal);
+*/
+
+    	$('a.anchor-editDealerVehicleservmaintModal').on('click', function(event) {
+
+    		$('#car-Sv-model-data12').toggle();
+    		$('#fuelCard4124').toggle();
+    		var data = $(event.target).data('details');
+    		//var json = JSON.stringify(data);
+
+       		//alert(data);
+       		//console.log(data);
+       		$scope.vehicleData = data;
+    		var quotIdHiddenField = '<input type="hidden" name="servMaintId" value="' + data.searchServMaintId + '" />';
+			/*var moveToUser = '<input type="checkbox" name="moveToUser" />';
+			if(data.newer)
+			  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+			var moveToUser1 = '<input type="checkbox" name="moveToUser1" />';
+			if(data.used)
+			  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';  // come here*/
+
+
+    		if(data.newer)
+    		  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+    		var moveToUser1 = '<input type="checkbox" name="moveToUser1" />';
+    		if(data.used)
+    		  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
+
+    		var editDealerVehicleservmaintForm = '<table>\
+    			<tr><th>'+"Serv Ebid ID"+'</th><th>'+'</th><th>'+"Service"+'</th><th>'+"Used"+"Service Maint L1"+'</th><th>'+"Service Maint L2"+'</th>'+'<th>'+"Add Notes"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th></tr>\
+    			<tr><td>' + data.searchServMaintId + '</td><td>' + data.lookService + '</td><td>' + '</td><td>' + data.servMaintL1 + '</td><td>' + data.servMaintL2 + '</td><td>' + data.freeText + '</td><td>' + data.make + '</td><td>' + data.model + '</td></tr>\
+    			</table>';
+
+    		//alert(JSON.stringify(data)); to work
+    		 /*var editDealerVehicleservmaintForm = '<form id="edit-dealer-vehicle-servmaint-content-form">\
+				<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+				<table>\
+				<tr><td>Search ID</td><td>' + data.searchServMaintId + '</td></tr>\
+				</table>\
+				<br/>\
+				<table>\
+				<div class="row"><div class="col-sm-12 col-md-12 product-search-title">I am Looking For</div></div>\
+				<tr><td>Service</td><td>' + data.lookService + '</td></tr>\
+				<tr><td>Service & Maintenance Level 1</td><td>' + data.servMaintL1 + '</td></tr>\
+				<tr><td>Service & Maintenance Level 2</td><td>' + data.servMaintL2 + '</td></tr>\
+				<tr><td>Add Notes</td><td>' + data.freeText + '</td></tr>\
+				</table>\
+				<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Details</div></div>\
+				<table>\
+				<br/>\
+				<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
+				<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+				<tr><td>Year</td><td>' + data.year + '</td></tr>\
+				<tr><td>Make</td><td>' + data.make + '</td></tr>\
+				<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
+				<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+				<tr><td>Fuel Type</td><td>' + data.feulType + '</td></tr>\
+				</table>\
+				<br/>\
+				<div class="row"><div class="col-sm-12 col-md-12 product-search-title">is the Car covered under Insurance</div></div>\
+				<table>\
+				<tr><td>Covered Under Insurance</td><td>' + data.coveredUnderIns + '</td></tr>\
+				<tr><td>Current Insurance Provider</td><td>' + data.curInsProv + '</td></tr>\
+				</table></form>';*/
+			editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>null</g, ">--NA--<");
+			editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>undefined</g, ">--NA--<");
+			$(".edit-dealer-vehicle-servmaint-content").html(editDealerVehicleservmaintForm);
+    		
+    		var wsURL = 'api/getDealSearchInfoId?carSearchId='+data.carSearchId ;
+  		  	$body.addClass("loading");
+    		$.ajax({
+				type: "GET",
+				url: wsURL,
+				success: function(data){
+					$body.removeClass("loading");
+	                  //alert("successfully retrieved");
+	                  out="";
+	                  if(data.dealerSearchVO && data.dealerSearchVO.length!=0)
+	                	  {
+		                	  out += '<tr><th>'+"Operation"+'</th><th>'+"Car Ebid ID"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>';
+		   	           	   for(i=0;i<data.dealerSearchVO.length;i++)
+		   	          		{
+		   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+	
+		   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.dealerSearchVO[i].carSearchId+'</td>'+'<td>'+data.dealerSearchVO[i].modelYear+'<td>'+data.dealerSearchVO[i].modelDisplay+'</td>'+'</td>'+'<td>'+data.dealerSearchVO[i].modelName+'</td>'+'<td>'+data.dealerSearchVO[i].modelTrim+'</td></tr>';
+	
+		   	          		}
+	                	  }
+	           	 
+	                  else{
+	           		out='<h2>No records</h2>';
+	           	   }
+	           	
+	           	   out = out.replace(/>null</g, ">--NA--<");
+	           	   out = out.replace(/>undefined</g, ">--NA--<");
+	           	   $("#LeadTable").html(out);
+
+				}
+			});
+    		
+    		
+    		
+    		//$scope.leadIDs = "";
+    		var wsURL = 'api/getExtDealServMtInfoId?searchServMaintId='+data.searchServMaintId ;
+  		  	$body.addClass("loading");
+    		$.ajax({
+				type: "GET",
+				url: wsURL,
+				success: function(data){
+					$body.removeClass("loading");
+	                  //alert("started retrieved Lead Id"); 
+	                  out="";
+	                  var options ="";
+	                 $(".ExtSvDealerId").empty();
+                  if(data.extDealerSearchVO && data.extDealerSearchVO.length!=0)
+                	  {
+	                	  out += '<tr><th>'+"Operation"+'</th><th>'+"Lead ID"+'</th><th>'+"Dealer Id"+'</th>'+'<th>'+"Car Ebid Id"+'</th><th>'+"User Id"+'</th><th>'+"Lead Creation Date"+'</th></tr>';
+	                		options += '<option value="" selected disabled>Select a Lead ID</option>';
+	                	  for(i=0;i<data.extDealerSearchVO.length;i++)
+	   	          		{
+	   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+
+	   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.extDealerSearchVO[i].extDealerSearchId+'</td>'+'<td>'+data.extDealerSearchVO[i].dealerId+'<td>'+data.extDealerSearchVO[i].carSearchId+'</td>'+'</td>'+'<td>'+data.extDealerSearchVO[i].userid+'</td>'+'<td>'+'<td><a href="#" id="anchor-editldaDealerVehicleSearchModal-' + data.extDealerSearchVO[i].extDealerSearchId + '" data-details=\'' + JSON.stringify(data.extDealerSearchVO[i]) + '\' class="anchor-editlda1DealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editlda1DealerVehicleSearchModal">View</a></td></tr>';
+	   	          		// options += '<option>' +data.extDealerSearchVO[i].extDealerSearchId+ '</option>';
+	   	          	//alert("insidecssdssretrieved Lead Id"+data.extDealerSearchVO[i].extDealerSearchId); 
+	   	          		 options += '<option>' + data.extDealerSearchVO[i].extDealerSearchId + '</option>';
+	   	          		}
+	   	           	   //$("#LeadQuoteId").html(options);
+	                		//alert("options"+options); 
+	   	            $(".ExtSvDealerId").html(options);
+                	  }
+           	 
+                  else{
+           		out='<h2>No records</h2>';
+           	   }
+           	
+           	   out = out.replace(/>null</g, ">--NA--<");
+           	   out = out.replace(/>undefined</g, ">--NA--<");
+           	   $("#LeadSvExtTable").html(out);
+	           	registerEditldaDealerVehicleSearchModal();
+				}
+			});
+    		// start of view of Lead
+    		function registerEditldaDealerVehicleSearchModal(){
+
+
+    			//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+    			var editldaDealerVehicleSearchModal = '<div class="modal fade" id="editldaDealerVehicleSearchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+    			    <div class="modal-dialog">\
+    			        <div class="modal-content">\
+    			            <div class="modal-header">\
+    			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+    			                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+    			            </div>\
+    						<h4 class="modal-title" id="myModalLabel"><center>View Lead Details</center></h4>\
+    				        <form id="edit-lda-dealer-vehicle-search-content-form">\
+    						<div class="modal-body edit-lda-dealer-vehicle-search-content">\
+    			            </div>\
+    			            <div class="modal-footer">\
+    			                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>\
+    				<p><center>&copy; 2017 Autoscoop</center></p>\
+    					</div>\
+    			            </form>\
+    			        </div>\
+    			    </div>\
+    			</div>';
+
+    			$(document.body).append(editldaDealerVehicleSearchModal);
+
+
+    			$('a.anchor-editldaDealerVehicleSearchModal').on('click', function(event) {
+
+
+    				var data = $(event.target).data('details');
+    				//var json = JSON.stringify(data);
+
+    				var quotIdHiddenField = '<input type="hidden" name="extDealerSearchId" value="' + data.extDealerSearchId + '" />';
+    				var moveToUser = '<input type="checkbox" name="moveToUser" />';
+    				
+    				if(data.newer)
+    					  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+    					var moveToUser1 = '<input type="checkbox" name="moveToUser1" />';
+    					if(data.used)
+    					  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
+    					 status1="Pending (Quotation not created)";
+    	   	         		if(data.status){status1="Quotation Completed";}
+
+    				//alert(JSON.stringify(data)); to work
+    				var editldaDealerVehicleSearchForm = '<form id="edit-lda-dealer-vehicle-search-content-form"><table>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Lead Details</div></div>\
+    					<tr><td>Dealer Lead ID</td><td>' + data.extDealerSearchId + '</td></tr>\
+    					<tr><td>' + quotIdHiddenField + '</td></tr>\
+    					<tr><td>Status</td><td>' + status1 + '</td></tr>\
+    					<tr><td>User Requirement Id</td><td>' + data.carSearchId + '</td></tr>\
+    					<tr><td>Autoscoop User Id</td><td>' + data.userid + '</td></tr>\
+    					<tr><td>User Since</td><td>' + data.creationDate + '</td></tr>\
+    					<tr><td>Lead Created Date</td><td>' + data.ageOfAdditionalDriver + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">External Dealer Details</div></div>\
+    					<tr><td>Category</td><td>' + data.category  + '</td></tr>\
+    					<tr><td>Company Name</td><td>' + data.companyName  + '</td></tr>\
+    					<tr><td>Street</td><td>' + data.street + '</td></tr>\
+    					<tr><td>Suburb</td><td>' + data.suburb + '</td></tr>\
+    					<tr><td>State</td><td>' + data.dealState + '</td></tr>\
+    					<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+    					<tr><td>Country</td><td>' + data.country + '</td></tr>\
+    					<tr><td>Phone</td><td>' + data.phone + '</td></tr>\
+    					<tr><td>Website</td><td>' + data.website + '</td></tr>\
+    					<tr><td>Mobile</td><td>' + data.mobile + '</td></tr>\
+    					<tr><td>Toll Free</td><td>' + data.tollFree + '</td></tr>\
+    					<tr><td>Fax</td><td>' + data.fax + '</td></tr>\
+    					<tr><td>After Hours</td><td>' + data.afterHours + '</td></tr>\
+    					<tr><td>Postal Address</td><td>' + data.postalAddress + '</td></tr>\
+    					<tr><td>Email</td><td>' + data.email + '</td></tr>\
+    					<tr><td>Longitude</td><td>' + data.longitude + '</td></tr>\
+    					<tr><td>Latitude</td><td>' + data.latitude + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Lead Requirement</div></div>\
+    					<tr><td>New</td><td>' + moveToUser + '</td></tr>\
+    					<tr><td>Used</td><td>' + moveToUser1 + '</td></tr>\
+    					<tr><td>Year</td><td>' + data.modelYear + '</td></tr>\
+    					<tr><td>Make</td><td>' + data.modelDisplay + '</td></tr>\
+    					<tr><td>Model</td><td>' + data.modelName + '</td></tr>\
+    					<tr><td>AutoScoop Trim</td><td>' + data.modelTrim + '</td></tr>\
+    					<tr><td>Finance</td><td>' + data.finance + '</td></tr>\
+    					<tr><td>Insurance</td><td>' + data.insurance + '</td></tr>\
+    					<tr><td>PostCode</td><td>' + data.postCode + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Pick your Fav Color</div></div>\
+    					<tr><td>Car Color 1</td><td>' + data.carColor + '</td></tr>\
+    					<tr><td>Car Color 2</td><td>' + data.sModel + '</td></tr>\
+    					</table>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">You can add your preferred extras</div></div>\
+    					<tr><td></td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">You can tell More about your requirements</div></div>\
+    					<tr><td>' + data.state + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					</table></form>';
+    				editldaDealerVehicleSearchForm = editldaDealerVehicleSearchForm.replace(/>null</g, ">--NA--<");
+    				editldaDealerVehicleSearchForm = editldaDealerVehicleSearchForm.replace(/>undefined</g, ">--NA--<");
+    				$(".edit-lda-dealer-vehicle-search-content").html(editldaDealerVehicleSearchForm);
+    			});
+    			$('button.submit-editldaDealerVehicleSearchModal').on('click', function(e) {
+
+    				var jsonInput = $("#edit-lda-dealer-vehicle-Search-content-form").convertFormDataToJSON();
+
+
+    				$.ajax({
+    					type: "POST",
+    					url: "api/vehicleSearchQuotation?_method=PUT",
+    					data: jsonInput,
+    					contentType:'application/json',
+    					success: function(result){
+    						$("#anchor-editDealerVehicleSearchModal-" + result.quotId).data('details', result);
+    						alert("Successfully upated the Quotations");
+
+    					}
+    				});
+
+
+    			});
+
+    			$.fn.convertFormDataToJSON = function(){
+    				var checkboxes = [];
+    				$(this).find('input:checkbox:checked').each(function(){
+    					checkboxes.push($(this).attr("name"));
+    				});
+    				var o = {};
+    			    var a = this.serializeArray();
+    			    $.each(a, function() {
+    			        if (o[this.name] != undefined) {
+    			            if (!o[this.name].push) {
+    			                o[this.name] = [o[this.name]];
+    			            }
+    			            if($.inArray(this.name, checkboxes) != -1)
+    			              o[this.name].push('true' || '');
+    			            else
+    			            	o[this.name].push(this.value || '');
+    			        } else {
+    			        	if($.inArray(this.name, checkboxes) != -1)
+    			        		o[this.name] = 'true' || '';
+    				        else
+    				           	o[this.name] = this.value || '';
+    			        }
+    			    });
+    			    return JSON.stringify(o);
+    			}
+
+
+    		}
+    		// end of view of Lead
+    		//$scope.leadIDs = "";
+    		var wsURL = 'api/getExtQtDealSearchInfoId?carSearchId='+data.carSearchId ;
+  		  	$body.addClass("loading");
+    		$.ajax({
+				type: "GET",
+				url: wsURL,
+				success: function(data){
+					$body.removeClass("loading");
+	                  //alert("successfully retrieved"); read here
+	                  out="";
+	                  //var options ;
+	                  if(data.vehicleQuotationVO && data.vehicleQuotationVO.length!=0)
+	                	  {
+		                	  out += '<tr><th>'+"Operation"+'</th><th>'+"Quotation ID"+'</th><th>'+"Dealer Id"+'</th>'+'<th>'+"Car Ebid Id"+'</th><th>'+"User Id"+'</th><th>'+"Quotation Creation Date"+'</th></tr>';
+		   	           	   for(i=0;i<data.vehicleQuotationVO.length;i++)
+		   	          		{
+		   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+	
+		   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.vehicleQuotationVO[i].quotId+'</td>'+'<td>'+data.vehicleQuotationVO[i].dealerId+'<td>'+data.vehicleQuotationVO[i].carSearchId+'</td>'+'</td>'+'<td>'+data.vehicleQuotationVO[i].userId+'</td>'+'<td>'+data.vehicleQuotationVO[i].creationDate+'<td><a href="#" id="anchor-editqtaDealerVehicleSearchModal-' + data.vehicleQuotationVO[i].quotId + '" data-details=\'' + JSON.stringify(data.vehicleQuotationVO[i]) + '\' class="anchor-editqtaDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editqtaDealerVehicleSearchModal">View</a></td></tr>';
+		   	          		 //options += '<option>' +data.vehicleQuotationVO[i].extDealerSearchId+ '</option>';
+		   	          		}
+		   	           	   //$("#LeadQuoteId").html(options);
+	                	  }
+	           	 
+	                  else{
+	           		out='<h2>No records</h2>';
+	           	   }
+	           	
+	           	   out = out.replace(/>null</g, ">--NA--<");
+	           	   out = out.replace(/>undefined</g, ">--NA--<");
+	           	   $("#QuoteTable").html(out);
+	           	registerEditqtaDealerVehicleSearchModal();
+				}	
+			});
+    		// start of view of Quotation
+    		function registerEditqtaDealerVehicleSearchModal(){
+
+
+    			//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+    			var editqtaDealerVehicleSearchModal = '<div class="modal fade" id="editqtaDealerVehicleSearchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+    			    <div class="modal-dialog">\
+    			        <div class="modal-content">\
+    			            <div class="modal-header">\
+    			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+    			                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+    			            </div>\
+    						<h4 class="modal-title" id="myModalLabel"><center>View Quotation Details</center></h4>\
+    				        <form id="edit-qta-dealer-vehicle-search-content-form">\
+    						<div class="modal-body edit-qta-dealer-vehicle-search-content">\
+    			            </div>\
+    			            <div class="modal-footer">\
+    			                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>\
+    				<p><center>&copy; 2017 Autoscoop</center></p>\
+    					</div>\
+    			            </form>\
+    			        </div>\
+    			    </div>\
+    			</div>';
+
+    			$(document.body).append(editqtaDealerVehicleSearchModal);
+
+
+    			$('a.anchor-editqtaDealerVehicleSearchModal').on('click', function(event) {
+
+
+    				var data = $(event.target).data('details');
+    				//var json = JSON.stringify(data);
+    				outInsDrvAdd = "";
+    			    var drvAddInfo = data.vehQuotExtras;
+    			    //alert("came here");
+    				if(drvAddInfo){
+    					 outInsDrvAdd += '<tr><th>'+"Extras "+'</th><th>'+"Quantity"+'</th><th>'+"Price"+'</th>'+'</th></tr>';
+    					 for(i=0;i<data.vehQuotExtras.length;i++)
+    						{
+    						 outInsDrvAdd= outInsDrvAdd+'<tr>'+'<td>'+data.vehQuotExtras[i].extras1+'</td><td>'+data.vehQuotExtras[i].extras2+'</td><td>'+data.vehQuotExtras[i].amount+'</td><td></tr>';
+    						}
+
+    				}
+    				else
+    			    {
+    			    	outInsDrvAdd='<h2>No records for Dealer Search Finance</h2>';
+    			    }
+    				var quotIdHiddenField = '<input type="hidden" name="quotId" value="' + data.quotId + '" />';
+    				var moveToUser = '<input type="checkbox" name="moveToUser" />';
+    				
+    				if(data.newer)
+    					  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+    					var moveToUser1 = '<input type="checkbox" name="moveToUser1" />';
+    					if(data.used)
+    					  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
+    					 status1="Submitted to User for View";
+    	   	         		if(data.status){status1="Submitted to User for View";}
+
+    				//alert(JSON.stringify(data)); to work
+    				var editqtaDealerVehicleSearchForm = '<form id="edit-qta-dealer-vehicle-search-content-form"><table>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Quotation Details</div></div>\
+    					<tr><td>Quotation ID</td><td>' + data.quotId + '</td></tr>\
+    					<tr><td>' + quotIdHiddenField + '</td></tr>\
+    					<tr><td>Status</td><td>' + status1 + '</td></tr>\
+    					<tr><td>Quotation Created Date</td><td>' + data.ageOfAdditionalDriver + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Requirement Details</div></div>\
+    					<tr><td>Offer Date</td><td>' + data.regoEndDate + '</td></tr>\
+    					<tr><td>Drive Away Price</td><td>' + data.driveAwayPrice + '</td></tr>\
+    					<tr><td>What you Save</td><td>' + data.offerPrice2 + '</td></tr>\
+    					<tr><td>Actual Value of Offer</td><td>' + data.offerPrice3 + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Offer Details</div></div>\
+    					<tr><td>Year</td><td>' + data.modelYear + '</td></tr>\
+    					<tr><td>Make</td><td>' + data.modelDisplay + '</td></tr>\
+    					<tr><td>Model</td><td>' + data.modelName + '</td></tr>\
+    					<tr><td>AutoScoop Trim</td><td>' + data.modelTrim + '</td></tr>\
+    					<tr><td>Basic price</td><td>' + data.modelTrim + '</td></tr>\
+    					<tr><td></td><td>' +outInsDrvAdd + '</td></tr>\
+    					</table>\
+    					<table>\
+    					<tr><td>Dealer Terms and Conditions</td><td>' + data.fname + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<tr><td>Dealer Lead Id</td><td>' + data.dealSearchId + '</td></tr>\
+    					<tr><td>User Requirement Id</td><td>' + data.carSearchId + '</td></tr>\
+    					<tr><td>Autoscoop User Id</td><td>' + data.userId + '</td></tr>\
+    					<tr><td>User Since</td><td>' + data.userCreationDate + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Lead Requirement</div></div>\
+    					<tr><td>New</td><td>' + moveToUser + '</td></tr>\
+    					<tr><td>Used</td><td>' + moveToUser1 + '</td></tr>\
+    					<tr><td>Finance</td><td>' + data.finance + '</td></tr>\
+    					<tr><td>Insurance</td><td>' + data.insurance + '</td></tr>\
+    					<tr><td>PostCode</td><td>' + data.postCode + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Pick your Fav Color</div></div>\
+    					<tr><td>Car Color 1</td><td>' + data.color + '</td></tr>\
+    					<tr><td>Car Color 2</td><td>' + data.transmission + '</td></tr>\
+    					</table>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">You can add your preferred extras</div></div>\
+    					<tr><td></td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">You can tell More about your requirements</div></div>\
+    					<tr><td>' + data.driveType + '</td></tr>\
+    					</table>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">External Dealer Details</div></div>\
+    					<tr><td>Dealer Id</td><td>' + data.dealerId + '</td></tr>\
+    					<tr><td>Category</td><td>' + data.category  + '</td></tr>\
+    					<tr><td>Company Name</td><td>' + data.companyName  + '</td></tr>\
+    					<tr><td>Street</td><td>' + data.street + '</td></tr>\
+    					<tr><td>Suburb</td><td>' + data.suburb + '</td></tr>\
+    					<tr><td>State</td><td>' + data.dealState + '</td></tr>\
+    					<tr><td>Post Code</td><td>' + data.dealPostCode + '</td></tr>\
+    					<tr><td>Country</td><td>' + data.country + '</td></tr>\
+    					<tr><td>Phone</td><td>' + data.phone + '</td></tr>\
+    					<tr><td>Website</td><td>' + data.website + '</td></tr>\
+    					<tr><td>Mobile</td><td>' + data.mobile + '</td></tr>\
+    					<tr><td>Toll Free</td><td>' + data.tollFree + '</td></tr>\
+    					<tr><td>Fax</td><td>' + data.fax + '</td></tr>\
+    					<tr><td>After Hours</td><td>' + data.afterHours + '</td></tr>\
+    					<tr><td>Postal Address</td><td>' + data.postalAddress + '</td></tr>\
+    					<tr><td>Email</td><td>' + data.email + '</td></tr>\
+    					<tr><td>Longitude</td><td>' + data.longitude + '</td></tr>\
+    					<tr><td>Latitude</td><td>' + data.latitude + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<br/>\
+    					</table></form>';
+    				editqtaDealerVehicleSearchForm = editqtaDealerVehicleSearchForm.replace(/>null</g, ">--NA--<");
+    				editqtaDealerVehicleSearchForm = editqtaDealerVehicleSearchForm.replace(/>undefined</g, ">--NA--<");
+    				$(".edit-qta-dealer-vehicle-search-content").html(editqtaDealerVehicleSearchForm);
+    			});
+    			$('button.submit-editqtaDealerVehicleSearchModal').on('click', function(e) {
+
+    				var jsonInput = $("#edit-qta-dealer-vehicle-Search-content-form").convertFormDataToJSON();
+
+
+    				$.ajax({
+    					type: "POST",
+    					url: "api/vehicleSearchQuotation?_method=PUT",
+    					data: jsonInput,
+    					contentType:'application/json',
+    					success: function(result){
+    						$("#anchor-editDealerVehicleSearchModal-" + result.quotId).data('details', result);
+    						alert("Successfully upated the Quotations");
+
+    					}
+    				});
+
+
+    			});
+
+    			$.fn.convertFormDataToJSON = function(){
+    				var checkboxes = [];
+    				$(this).find('input:checkbox:checked').each(function(){
+    					checkboxes.push($(this).attr("name"));
+    				});
+    				var o = {};
+    			    var a = this.serializeArray();
+    			    $.each(a, function() {
+    			        if (o[this.name] != undefined) {
+    			            if (!o[this.name].push) {
+    			                o[this.name] = [o[this.name]];
+    			            }
+    			            if($.inArray(this.name, checkboxes) != -1)
+    			              o[this.name].push('true' || '');
+    			            else
+    			            	o[this.name].push(this.value || '');
+    			        } else {
+    			        	if($.inArray(this.name, checkboxes) != -1)
+    			        		o[this.name] = 'true' || '';
+    				        else
+    				           	o[this.name] = this.value || '';
+    			        }
+    			    });
+    			    return JSON.stringify(o);
+    			}
+
+
+    		}
+    		// end of view of Lead
+    		
+    	});
+    	
+    	
+    	/*$('button.submit-editDealerVehicleSearchModal').on('click', function(e) {
+
+    		var jsonInput = $("#edit-dealer-vehicle-Search-content-form").convertFormDataToJSON();
+
+
+    		$.ajax({
+    			type: "POST",
+    			url: "api/vehicleSearchQuotation?_method=PUT",
+    			data: jsonInput,
+    			contentType:'application/json',
+    			success: function(result){
+    				$("#anchor-editDealerVehicleSearchModal-" + result.quotId).data('details', result);
+    				alert("Successfully upated the Quotations");
+
+    			}
+    		});
+
+
+    	});*/
+    	
+    	
+    	 $("#BackToVehicles1").click(function(){
+		        $('#fuelCard412').hide();
+		        //$( "#fuelCard41" ).empty();
+		        $('#car-model-data12').show();
+		        //document.getElementById("fuelCard41").style.display = "none";
+		        //document.getElementById("fuelCard4").style.display = "block";
+		        //alert("The paragraph ssswas showed.");
+		    }); 
+    	$.fn.convertFormDataToJSON = function(){
+    		var checkboxes = [];
+    		$(this).find('input:checkbox:checked').each(function(){
+    			checkboxes.push($(this).attr("name"));
+    		});
+    		var o = {};
+    	    var a = this.serializeArray();
+    	    $.each(a, function() {
+    	        if (o[this.name] != undefined) {
+    	            if (!o[this.name].push) {
+    	                o[this.name] = [o[this.name]];
+    	            }
+    	            if($.inArray(this.name, checkboxes) != -1)
+    	              o[this.name].push('true' || '');
+    	            else
+    	            	o[this.name].push(this.value || '');
+    	        } else {
+    	        	if($.inArray(this.name, checkboxes) != -1)
+    	        		o[this.name] = 'true' || '';
+    		        else
+    		           	o[this.name] = this.value || '';
+    	        }
+    	    });
+    	    return JSON.stringify(o);
+    	}
+
+
+    }
+    function forFinance1(model_data_id, out)
+    {
+     this.model_data_id = model_data_id;
+
+            	   $("#"+model_data_id).html(out);
+
+    }
+
     
     
+    // end of S&M    
  // User Search lead start
     $scope.getEbidInfor = function () {
         //alert("invoke in before call getEbidInfor lead"+$scope.caryears+$scope.creationDateLd);
@@ -3225,7 +4033,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 	           	   out = out.replace(/>undefined</g, ">--NA--<");
 	           	   $("#QuoteTable").html(out);
 	           	registerEditqtaDealerVehicleSearchModal();
-				}
+				}	
 			});
     		// start of view of Quotation
     		function registerEditqtaDealerVehicleSearchModal(){
@@ -5046,6 +5854,115 @@ mainApp1.controller('myController13',function($scope, $http) {
 														};
 
 
+														$scope.submitSvMyQuoteNewfrm = function(isValid) {
+															//alert("inside Sesdarv Maint"+isValid);
+															if (isValid) {
+															/*alert("inside Sesdarv Maint");
+															alert(myVehicleIDuse);*/
+															/*var vehicleTypeServMaint= stringToDate($('#vehicleTypeServMaint').val(),"dd/MM/yyyy","/");
+															var nextServiceMaintenanceDate= stringToDate($('#nextServiceMaintenanceDate').val(),"dd/MM/yyyy","/");*/
+
+															//logServMaintloadImage();
+															var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
+															var filefileChooserlogservmaint = fileChooserlogservmaint.files[0];
+															var objKeyfilefileChooserlogservmaint ='noImage';
+															if(filefileChooserlogservmaint){
+															objKeyfilefileChooserlogservmaint = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;}
+															//alert(objKeyfilefileChooserlogservmaint);
+															/*//alert(objKeyfilefileChooserlogservmaint);
+															var jsonInputToAPI = {
+																		"dealerId":null,
+																		"userId":null,
+																		"dealSearchId":null,
+																		"carSearchId":null,
+																		"refId":null,
+																		"dealerStockNo":null,
+																		"driveAwayPrice":null,
+																		"modelYear":null,
+																		"modelDisplay":null,
+																		"modelName":null,
+																		"modelTrim":null
+																	}*/
+															
+															jsonInput = $scope.vehicleData;
+															
+															jsonInput["servMaintQuotId"]=null;
+															//alert("dealer Search id"+$scope.LeadQuoteId);
+															$scope.ExtDealerId=0;
+															//$scope.LeadQuoteId=14;
+															jsonInput["dealerId"]=$scope.ExtDealerId;
+															jsonInput["driveAwayPrice"]=$scope.finSvAnnualIncome;
+															jsonInput["offerPrice2"]=$scope.finSvAnnualIncome1;
+															jsonInput["offerPrice3"]=$scope.finSvAnnualIncome2;
+															jsonInput["regoEndDate"]=$scope.finSvDOB;
+															jsonInput["dealSearchId"]=$scope.LeadSvQuoteId;
+															jsonInput["address"]=objKeyfilefileChooserlogservmaint;
+															jsonInput["modelYear"]=$scope.caryearsfin;
+															        jsonInput["modelDisplay"]=$scope.carmakesfin;
+															                    jsonInput["modelName"]=$scope.carmodelsfin;
+															                              jsonInput["modelTrim"]=$scope.carmodelAutotrimsfin;
+															                              
+															                              jsonInput["fname"]=$scope.servSvAddNotes;
+															var table1 = $("#my-table944");
+								                            var table = table1.tableToJSON({
+								                                ignoreColumns:[0],
+								                                headings: ['extras1', 'extras2', '45']
+								                              });
+								                            //delete table[0];
+
+								                            table.splice(0,1);
+
+								                            jsonInput.VehQuotExtras = table ;
+															//alert("value"+jsonInput);
+															
+															
+															// Transfer the object to a JSON string
+															var jsonstr1 = JSON.stringify(jsonInput);
+
+															// HERE you do the transform
+															var new_jsonstr = jsonstr1.replace('"idp"', '"userId"');
+															var new_jsonstr1 = new_jsonstr.replace('"creationDate"', '"userCreationDate"');
+															// You probably want to parse the altered string later
+															var new_obj = JSON.parse(new_jsonstr1);
+
+															
+															//alert("new"+JSON.stringify(new_obj));
+															
+															console.log(JSON.stringify(new_obj));
+															//alert("Before Call");
+															//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
+															//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
+															var wsURL = 'api/dealerQuotSmCreation?_method=PUT';
+															$body.addClass("loading");
+																    $http({
+																				method : 'POST',
+																				url : wsURL,
+																				data: JSON.stringify(new_obj)
+
+																			}).success(function(data) {
+																				$body.removeClass("loading");
+																				$scope.vehicleRetrievalforLogBook();
+																				alert("Successfully Stored Quotation However, Plz wait for the images to upload.. don't refresh or switch from your page..  the upload of images will start soon..");
+																				//alert("Service & Maintenance Successfully Stored..");
+
+
+													                			if(filefileChooserlogservmaint){
+													                				alert("Plz wait for the images to upload.. don't refresh or switch from dashboard.. the upload of images will start soon..");
+																				logServMaintloadImage();
+																				//alert("Before reset correct15689899");
+													                			document.getElementById("QuoteNewfrm").reset();
+													                			}
+													                			else {
+												                                	alert("No upload of images found..");
+												                                	//alert("Before reset correct15689899");
+														                			document.getElementById("QuoteNewfrm").reset();
+												                                }
+
+																							});
+														}
+															};
+														
+														
 
 													$scope.submitMyQuoteNewfrm = function(isValid) {
 														//alert("inside Sesdarv Maint"+isValid);
@@ -5082,13 +5999,13 @@ mainApp1.controller('myController13',function($scope, $http) {
 														jsonInput["quotId"]=null;
 														//alert("dealer Search id"+$scope.LeadQuoteId);
 														$scope.ExtDealerId=0;
-														//$scope.LeadQuoteId=14;
+														$scope.LeadQuoteId=1;
 														jsonInput["dealerId"]=$scope.ExtDealerId;
 														jsonInput["driveAwayPrice"]=$scope.finAnnualIncome;
 														jsonInput["offerPrice2"]=$scope.finAnnualIncome1;
 														jsonInput["offerPrice3"]=$scope.finAnnualIncome2;
 														jsonInput["regoEndDate"]=$scope.finDOB;
-														jsonInput["dealSearchId"]=$scope.LeadQuoteId;
+														jsonInput["carServMaintId"]=$scope.LeadQuoteId;
 														jsonInput["address"]=objKeyfilefileChooserlogservmaint;
 														jsonInput["modelYear"]=$scope.caryearsfin;
 														        jsonInput["modelDisplay"]=$scope.carmakesfin;

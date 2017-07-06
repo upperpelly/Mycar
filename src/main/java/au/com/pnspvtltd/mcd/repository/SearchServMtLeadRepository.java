@@ -32,7 +32,7 @@ public interface SearchServMtLeadRepository extends JpaRepository<SearchServMain
 	
 	@Query("SELECT search FROM SearchServMaint search WHERE search.creationDate=?1" +
 			" ORDER BY search.searchServMaintId")
-			public List<Search> getSearchCreationDate(Date creationDate);
+			public List<SearchServMaint> getSearchCreationDate(Date creationDate);
 	
 	/*@Query("SELECT search FROM SearchServMaint search WHERE search.modelYear=?1 AND search.modelDisplay=?2 AND search.creationDate=?3" +
 			" ORDER BY search.carSearchId")

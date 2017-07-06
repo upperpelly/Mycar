@@ -12,6 +12,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchLdAdminVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerSvLdAdminVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
@@ -29,6 +30,7 @@ public interface DealerService {
 
 	DealerSearch dealerAdminLead(DealerSearchAdminVO dealer);
 	String extDealerAdminLead(ExtDealerSearchLdAdminVO dealer);
+	String extDealerSvAdminLead(ExtDealerSvLdAdminVO dealerVO);
 	List<DealerVO> findAllDealers();
 
 	DealerVO findDealerByEmail(String email);

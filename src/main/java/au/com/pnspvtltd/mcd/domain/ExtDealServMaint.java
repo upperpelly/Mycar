@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * Entity implementation class for Entity: FinanceCompany
  * 
  */
-@Entity @Table(name = "externalDealer") public class ExtDealServMaint implements Serializable 
+@Entity @Table(name = "extdealservmaint") public class ExtDealServMaint implements Serializable 
 {
 
 
@@ -66,16 +66,16 @@ import javax.persistence.Table;
 	private float longitude;
 	private float latitude;
 
-	List<ExtDealerSearch> extDealSearch;
+	List<ExtDealServMaintr1> extDealSearch;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "externalDealerId")
-	public List<ExtDealerSearch> getExtDealSearch() {
+	public List<ExtDealServMaintr1> getExtDealSearch() {
 		return extDealSearch;
 	}
 
 
-	public void setExtDealSearch(List<ExtDealerSearch> extDealSearch) {
+	public void setExtDealSearch(List<ExtDealServMaintr1> extDealSearch) {
 		this.extDealSearch = extDealSearch;
 	}
 

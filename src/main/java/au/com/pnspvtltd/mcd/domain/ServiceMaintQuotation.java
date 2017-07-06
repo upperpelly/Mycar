@@ -34,6 +34,10 @@ public class ServiceMaintQuotation implements Serializable {
 	private Long userId;
 	// dealer Serv Maint lead id
 	private Long dealServMaintId;
+	// User Creation Date
+		private Date userCreationDate;
+		//Creation Date
+		private Date creationDate;
 	// user Serv Maint lead id
 	private Long carServMaintId;
 	// inventory repo id
@@ -41,9 +45,179 @@ public class ServiceMaintQuotation implements Serializable {
 	private boolean autoBid;
 	private boolean moveToUser;
 	
-	
+	// Dealer info Start
+			private String category;
+			private String companyName;
+			private String street;
+			private String suburb;
+			private String dealState;
+			private int dealPostCode;
+			private String country;
+			private String phone;
+			private String website;
+			private String mobile;
+			private String tollFree;
+			private String fax;
+			private String afterHours;
+			private String postalAddress;
+			private String email;
+			private float longitude;
+			private float latitude;
+			// Dealer info end
 
 	private String modelYear;
+	public Date getUserCreationDate() {
+		return userCreationDate;
+	}
+
+	public void setUserCreationDate(Date userCreationDate) {
+		this.userCreationDate = userCreationDate;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getSuburb() {
+		return suburb;
+	}
+
+	public void setSuburb(String suburb) {
+		this.suburb = suburb;
+	}
+
+	public String getDealState() {
+		return dealState;
+	}
+
+	public void setDealState(String dealState) {
+		this.dealState = dealState;
+	}
+
+	public int getDealPostCode() {
+		return dealPostCode;
+	}
+
+	public void setDealPostCode(int dealPostCode) {
+		this.dealPostCode = dealPostCode;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getTollFree() {
+		return tollFree;
+	}
+
+	public void setTollFree(String tollFree) {
+		this.tollFree = tollFree;
+	}
+
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+
+	public String getAfterHours() {
+		return afterHours;
+	}
+
+	public void setAfterHours(String afterHours) {
+		this.afterHours = afterHours;
+	}
+
+	public String getPostalAddress() {
+		return postalAddress;
+	}
+
+	public void setPostalAddress(String postalAddress) {
+		this.postalAddress = postalAddress;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public float getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(float longitude) {
+		this.longitude = longitude;
+	}
+
+	public float getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(float latitude) {
+		this.latitude = latitude;
+	}
+
 	private String modelDisplay;
 	private String modelName;
 	private String modelTrim;

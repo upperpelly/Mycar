@@ -27,6 +27,7 @@ import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
 import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
 import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
 import au.com.pnspvtltd.mcd.domain.Search;
+import au.com.pnspvtltd.mcd.domain.SearchServMaint;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
@@ -59,12 +60,15 @@ import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminOtDateVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
+import au.com.pnspvtltd.mcd.web.model.UserServiceMaintAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.repository.MyVehicleFuelExpensesRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleLogBookRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleServMaintRepository;
+import au.com.pnspvtltd.mcd.repository.SearchServMtLeadRepository;
+import au.com.pnspvtltd.mcd.repository.ServMaintQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.UserNotificationRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
@@ -85,6 +89,8 @@ public class UserEBidController {
 	@Autowired
 	private UserNotificationRepository userNotificationRepository;
 	@Autowired
+	private SearchServMtLeadRepository searchServMtLeadRepository;
+	@Autowired
 	UserEBidService userEBidService;
 	@Autowired
 	VehicleQuotationRepository vehicleQuotationRepository;
@@ -94,6 +100,7 @@ public class UserEBidController {
 	MyVehicleFuelExpensesRepository myVehicleFuelExpensesRepository;
 	@Autowired
 	MyVehicleServMaintRepository myVehicleServMaintRepository;
+	
 	@Autowired
 	private DomainModelUtil domainModelUtil;
 	
@@ -193,7 +200,7 @@ public class UserEBidController {
 	@GetMapping(value = "getTranpQuotaByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<TranspServiceQuotationVO> getTranpQuotaByUserId(@RequestParam("userid") Long userid)
 	{
-		LOGGER.debug("Received request to user serv && Main Quotation");
+		LOGGER.debug("Received request to user Transport Quotation");
 		return userEBidService.getTranspQuotByUserId(userid);
 		//return null;
 	}
@@ -201,7 +208,7 @@ public class UserEBidController {
 	@GetMapping(value = "getLogBookByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<MyVehicleVO> getLogBookByUserId(@RequestParam("userid") Long userid)
 	{
-		LOGGER.debug("Received request to user serv && Main Quotation");
+		LOGGER.debug("Received request to user MyVehicle Garage");
 		return userEBidService.getMyVehicleByUserId(userid);
 		//return null;
 	}
@@ -789,4 +796,27 @@ public class UserEBidController {
 	
 		return userAdminSearchVO12;
 	}
+	
+	
+	@GetMapping(value = "getSmInfor", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserServiceMaintAdminVO getSmInfor(@RequestParam("modelYear") String modelYear,
+			@RequestParam("modelDisplay") String modelDisplay, @RequestParam("modelName") String modelName, @RequestParam("modelTrim") String modelTrim,
+			@RequestParam("creationDate") Date creationDate) {
+		LOGGER.debug("Received request to get Dealer Search Finance with id {} ", modelYear);
+		UserServiceMaintAdminVO userAdminSearchVO12 = new UserServiceMaintAdminVO();
+	 if(creationDate !=null )	
+	{
+		List<SearchServMaintVO> userVOs = new ArrayList<SearchServMaintVO>();
+		
+		List<SearchServMaint> users = searchServMtLeadRepository.getSearchCreationDate(creationDate);
+		for (SearchServMaint user : users) {
+			userVOs.add(domainModelUtil.toSearchServMaint1(user));
+		
+		}
+		userAdminSearchVO12.setSearchVO(userVOs);
+	}//email, firstName, creationDate
+	
+		return userAdminSearchVO12;
+	}
+
 }
