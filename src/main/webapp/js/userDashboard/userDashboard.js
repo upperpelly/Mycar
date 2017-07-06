@@ -1654,15 +1654,15 @@ $("#"+"fuelCard4").html(outLogT);
 				
 				out6="";
 
-	           	   out6 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Operation"+'</th></tr>';
+	           	   out6 += '<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th>'+'<th>'+"Rego No"+'</th><th>'+"Operation"+'</th></tr>';
 	           	  for(i=result.length-1;i>=0;i--)
 	          		{
 
 	          		//<tr><td>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result[i].photo1+'"/></li></ul>'+'</td></tr>'+
 
 	           		 //out6= out6+'<tr>'+'<td>'+result[i].myVehicleId+'</td>'+'<td>'+result[i].year+'</td>'+'<td>'+result[i].make+'</td>'+'<td>'+result[i].model+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleDetailModal-' + result[i].myVehicleId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleDetailModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailModal">View</a></td></tr>';
-	           		out6= out6+'<tr>'+'<td>'+result[i].myVehicleId+'</td>'+'<td>'+result[i].year+'</td>'+'<td>'+result[i].make+'</td>'+'<td>'+result[i].model+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleDetailModal-' + result[i].myVehicleId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleDetailModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailModal">View</a></td></tr>';
-	          		//alert(out6);
+	           		out6= out6+'<tr>'+'<td>'+result[i].myVehicleId+'</td>'+'<td>'+result[i].year+'</td>'+'<td>'+result[i].make+'</td>'+'<td>'+result[i].model+'</td>'+'<td>'+result[i].regNum+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleDetailModal-' + result[i].myVehicleId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleDetailModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleDetailModal">View</a></td></tr>';
+	          		//alert(out6);regNum
 	          		}
 	           	out6 = out6.replace(/>null</g, ">--NA--<");
 	           	out6 = out6.replace(/>undefined</g, ">--NA--<");
