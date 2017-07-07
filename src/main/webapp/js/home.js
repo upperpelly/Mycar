@@ -16,7 +16,7 @@
         		
                 //Login start
             	 function carDetailHtml(data) {
-                     alert("storage");
+                     //alert("storage");
                      $.jStorage.set('carKey', data);
                      $.jStorage.setTTL('userSession', 30000); 
 
