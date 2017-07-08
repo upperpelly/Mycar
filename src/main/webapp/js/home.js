@@ -707,9 +707,113 @@
 
 
 
-                }
+                }     // Insurance lead post end
+                
+                //Sell my Vehicle
+                
+                $scope.submitSearchForm = function() {
+                	
+                	if (alreadyLogged()) {
+            				$('.result').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>Saving,Please wait...');
+                            userId = $.jStorage.get('key').userId;
+							var autobid=false;
+							autobid = document.getElementById("autoBid").value;
+							//var classified = document.getElementById("postClassified").value;
+							//alert("Came here c"+autobid);			SellvehicleType
+							var jsonInputToAPI = {
+																"refId":35,
+														"modelYear": $scope.sellVehYear,
+														"modelDisplay": $scope.SellVehMake,
+														"modelName": $scope.sellVehModel,															      
+														"modelTrim": $scope.sellVehAutotrim,
+														"typeOfCar": $scope.vehicleCondition,
+														"vehicleDescriptin": $scope.headerText,
+														"make": $scope.financeOwning,
+														"variant": $scope.hotOffer,
+														"price": $scope.displayPrice,
+														"bodyType":$scope.bodyType,
+														"transmission": $scope.transmission,
+														"fuelType": $scope.fuelType,
+														"engine": null,
+														"regNo": $scope.regno,
+														"driveType": $scope.driveType,
+														"kilometer": 120,
+														"extColor": null,
+														"warranty": null,
+														"regExpiryDate": null,
+														"vinNumber": $scope.vinnumber,
+														"vendorStockNo": $scope.stockNo,
+														"noOfDoors": 0,
+														"intColor": null,
+														"wheelSize": $scope.labelOnVehicle,
+														"seatMake": $scope.detailDescription,
+														"extFittingFlex1": $scope.extraExternal,
+														"extFittingFlex2": null,
+														"extFittingFlex3": null,
+														"extFittingFlex4": null,
+														"extFittingFlex5": null,
+														"extFittingFlex6": null,
+														"extFittingFlex7": null,
+														"extFittingFlex8": null,
+														"extFittingFlex9": null,
+														"extFittingFlex10": null,
+														"intFittingFlex1": $scope.extraInternal,
+														"intFittingFlex2": null,
+														"intFittingFlex3": null,
+														"intFittingFlex4": null,
+														"intFittingFlex5": null,
+														"intFittingFlex6": null,
+														"intFittingFlex7": null,
+														"intFittingFlex8": null,
+														"intFittingFlex9": null,
+														"intFittingFlex10": null,
+														"salePersonLooking": $scope.accidentHistory,
+														"contName": null,
+														"contPhone": 0,
+														"contEmail": null,
+														"logBookService": false,
+														"cameIntoInv": null,
+														"counterOfViewingCar": 0,
+														"counterOfEnquiryCar": 0,
+														"saleDate": null,
+														"features": [],
+														"photos": [],
+														"carColor": $scope.color,
+														"state": $scope.RegState,
+														"region": $scope.SellvehicleType,
+														"postCode": 0,
+														"yearOfMake": null,
+														"ausCapTer": null,
+														"insCompAmountMin": 0,
+														"insCompAmountMax": 0,
+														"dealAmountMin": $scope.QRangeMin,
+														"dealAmountMax": $scope.QRangeMax,
+														"insthirdInsuanceMin": 0,
+														"insthirdInsuanceMax": 0,
+														"finAmountMin": 0,
+														"newCar": false,
+														"StockItem": autoBid
+										}
+										var wsURL = 'api/dealer/addInventory';
+											    $http({
+															method : 'POST',
+															url : wsURL,
+															data: jsonInputToAPI
+																			
+														}).success(function(data) {
+															$('.result').html('Successfully Stored....');
+															alert("Successfully Stored.. ");
+															alert("Thank You. Your Inventory is saved"+data.inventoryId);
+																							
+																		});
+                	}
 
-                // Insurance lead post end
+                    else {
+                        alert("Please Login and Make Sell");
+                    }
+			};
+
+           
 
                 // Finance lead post
                 $scope.postFinanceLead = function (isValid) {
