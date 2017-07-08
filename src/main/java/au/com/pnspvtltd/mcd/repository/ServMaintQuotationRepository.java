@@ -15,7 +15,7 @@ public interface ServMaintQuotationRepository extends JpaRepository<ServiceMaint
 
 	List<ServiceMaintQuotation> findByDealerId(Long dealerId);
 	
-	@Query("SELECT deal FROM ServiceMaintQuotation deal where deal.carServMaintId = ?1")
+	@Query("SELECT deal FROM ServiceMaintQuotation deal where deal.searchServMaintId = ?1")
 	List<ServiceMaintQuotation> getDealerSmForID(Long carServMaintId);
 
 }

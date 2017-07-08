@@ -39,7 +39,7 @@ public class ServiceMaintQuotation implements Serializable {
 		//Creation Date
 		private Date creationDate;
 	// user Serv Maint lead id
-	private Long carServMaintId;
+	private Long searchServMaintId;
 	// inventory repo id
 	private Long refId;
 	private boolean autoBid;
@@ -288,12 +288,12 @@ public class ServiceMaintQuotation implements Serializable {
 			this.dealServMaintId = dealServMaintId;
 		}
 		@Column(name = "USERSERVMAINTID")
-		public Long getCarServMaintId() {
-			return carServMaintId;
+		public Long getSearchServMaintId() {
+			return searchServMaintId;
 		}
 
-		public void setCarServMaintId(Long carServMaintId) {
-			this.carServMaintId = carServMaintId;
+		public void setSearchServMaintId(Long carServMaintId) {
+			this.searchServMaintId = carServMaintId;
 		}
 		@Column(name = "POSTCODE")
 		public String getPostCode() {

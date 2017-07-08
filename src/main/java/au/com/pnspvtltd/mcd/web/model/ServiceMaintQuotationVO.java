@@ -22,7 +22,7 @@ public class ServiceMaintQuotationVO {
 	// dealer Serv Maint lead id
 	private Long dealServMaintId;
 	// user Serv Maint lead id
-	private Long carServMaintId;
+	private Long searchServMaintId;
 	// inventory repo id
 	private Long refId;
 	private boolean autoBid;
@@ -273,12 +273,12 @@ public class ServiceMaintQuotationVO {
 			this.dealServMaintId = dealServMaintId;
 		}
 		
-		public Long getCarServMaintId() {
-			return carServMaintId;
+		public Long getSearchServMaintId() {
+			return searchServMaintId;
 		}
 
-		public void setCarServMaintId(Long carServMaintId) {
-			this.carServMaintId = carServMaintId;
+		public void setSearchServMaintId(Long carServMaintId) {
+			this.searchServMaintId = carServMaintId;
 		}
 		
 		public String getPostCode() {

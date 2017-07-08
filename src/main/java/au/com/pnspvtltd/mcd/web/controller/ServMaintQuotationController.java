@@ -93,7 +93,7 @@ public class ServMaintQuotationController {
 	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 		vehicleQuotation.setCreationDate(ourJavaDateObject);
 		//vehicleQuotation.setStatus(true);
-		vehicleQuotation.setDealServMaintId(dealerVO.getDealServMaintId());
+		vehicleQuotation.setSearchServMaintId(dealerVO.getSearchServMaintId());
 		ExtDealServMaintr1 extDealerSearch=extDealerServMaintRepository.findOne(dealerVO.getDealServMaintId());
 		extDealerSearch.setStatus(true);
 		User user =userRepository.findOne(dealerVO.getUserId());
@@ -144,7 +144,7 @@ public class ServMaintQuotationController {
 	}
 	
 	@GetMapping(value = "getExtQtDealSmInfoId", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ExtQtDealerSmListAdminVO getExtQtDealSmInfoId(@RequestParam("carSearchId") Long carSearchId) {
+	public ExtQtDealerSmListAdminVO getExtQtDealSmInfoId(@RequestParam("searchServMaintId") Long carSearchId) {
 		LOGGER.debug("Received request to get Dealer car Search id {} ", carSearchId);
 		ExtQtDealerSmListAdminVO userAdminSearchVO12 = new ExtQtDealerSmListAdminVO();
 
