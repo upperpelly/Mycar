@@ -21,7 +21,7 @@
                      $.jStorage.setTTL('userSession', 30000); 
 
                  }
-        		$scope.newUsedCarSearch = true;
+        		$scope.newUsedCarSearch = "true";
         		//$scope.usedCarSearch = true;
             	populateServicelev1();
             	//$scope.populateServicelev1 = function (){
@@ -927,12 +927,23 @@
 
 
                 $scope.submitForm = function (isValid) {
-                    var usedCarEbid;
+                   /* var usedCarEbid;
                     var newCarEbid= document.getElementById("newUsedCarEbid").checked;
                     if(!newCarEbid){
                     	usedCarEbid = false;
                     	//alert("used is checked");
-                    }
+                    }*/
+                    
+                    var usedCarEbid;
+                    var newCarEbid;
+                    if($scope.newUsedCarSearch === "true"){
+            			//alert("here");
+                    	newCarEbid =true;
+            		}
+            		else{
+            			//alert("biscuit");
+            			usedCarEbid = false;
+            		}
                     var carEbidFinan = false;
                     //alert(document.getElementById("carEbidFinan").value);
                     carEbidFinan = document.getElementById("carEbidFinan").value;
