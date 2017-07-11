@@ -926,6 +926,8 @@
                 /// ISFinance & ISinsurance
                 
                 /* var isChecked896 = true; */
+                allSelected896();
+                allSelected996();
                 
                 $scope.isFinanceb = true;
                 $scope.isInsuranceb = true;
