@@ -923,7 +923,61 @@
                         return (begin <= index && index < end);
                     };
                 };
+                /// ISFinance & ISinsurance
+                
+                /* var isChecked896 = true; */
+                
+                $scope.isFinanceb = true;
+                $scope.isInsuranceb = true;
 
+                function allSelected896() {
+                    var flag= document.getElementById("carEbidFinan").checked;
+                    var data="";
+                    if(flag){
+                    	data="FChecked";
+
+                    }
+                    else
+                   	{
+                    	data="FNC";
+                    	 $scope.isFinanceb = false;
+                   	}
+
+                	$.jStorage.set('finCheckKey', data);
+                    $.jStorage.setTTL('mynewkey', 30000);
+                    /* if (isChecked896) {
+                        document.getElementById("carEbidFinan").value = false;
+                        isChecked896 = !isChecked896;
+                    }
+                    else {
+                        document.getElementById("carEbidFinan").value = true;
+                    } */
+                }
+
+                /* var isChecked996 = true; */
+
+                function allSelected996() {
+                	var flag= document.getElementById("carEbidInsur").checked;
+                	var data="";
+                    if(flag){
+
+                    	data="IChecked";
+                    }
+                    else
+                   	{
+                    	data="INC";
+                    	$scope.isInsuranceb = false;
+                   	}
+                    $.jStorage.set('insCheckKey', data);
+                    $.jStorage.setTTL('myinsnewkey', 30000);
+                    /* if (isChecked996) {
+                        document.getElementById("carEbidInsur").value = false;
+                        isChecked996 = !isChecked996;
+                    }
+                    else {
+                        document.getElementById("carEbidInsur").value = true;
+                    } */
+                }
 
 
                 $scope.submitForm = function (isValid) {
@@ -944,17 +998,9 @@
             			//alert("biscuit");
             			usedCarEbid = false;
             		}
-                    var carEbidFinan = false;
-                    //alert(document.getElementById("carEbidFinan").value);
-                    carEbidFinan = document.getElementById("carEbidFinan").value;
-                    if (carEbidFinan == "on") carEbidFinan = true;
-                    var carEbidInsur = false;
-                    carEbidInsur = document.getElementById("carEbidInsur").value;
-                    if (carEbidInsur == "on") carEbidInsur = true;
-                    //alert(usedCarEbid);
-                    //alert(newCarEbid);
-                    /* var e = document.getElementById("car-model-trims");
-                    var strUser = e.options[e.selectedIndex].text; */
+                    var carEbidFinan = $scope.isFinanceb;
+                    var carEbidInsur = $scope.isInsuranceb;
+                    
 
                     var wsURL = 'api/inventory/getStatisticsFor?modelYear=' + $scope.caryears + '&modelDisplay=' + $scope.carmakes + '&modelName=' +  $scope.carmodels + '&autoscoopTrim=' + $scope.carmodelAutotrims;
 

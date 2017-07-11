@@ -113,54 +113,7 @@
         	$.jStorage.set('newusekey', data);
             $.jStorage.setTTL('mynewkey', 30000);
         }
-        var isChecked896 = true;
-
-        function allSelected896() {
-            var flag= document.getElementById("carEbidFinan").checked;
-            var data="";
-            if(flag){
-            	data="FChecked";
-
-            }
-            else
-           	{
-            	data="FNC";
-           	}
-
-        	$.jStorage.set('finCheckKey', data);
-            $.jStorage.setTTL('mynewkey', 30000);
-            if (isChecked896) {
-                document.getElementById("carEbidFinan").value = false;
-                isChecked896 = !isChecked896;
-            }
-            else {
-                document.getElementById("carEbidFinan").value = true;
-            }
-        }
-
-        var isChecked996 = true;
-
-        function allSelected996() {
-        	var flag= document.getElementById("carEbidInsur").checked;
-        	var data="";
-            if(flag){
-
-            	data="IChecked";
-            }
-            else
-           	{
-            	data="INC";
-           	}
-            $.jStorage.set('insCheckKey', data);
-            $.jStorage.setTTL('myinsnewkey', 30000);
-            if (isChecked996) {
-                document.getElementById("carEbidInsur").value = false;
-                isChecked996 = !isChecked996;
-            }
-            else {
-                document.getElementById("carEbidInsur").value = true;
-            }
-        }
+       
     </script>
 <script src="js/jquery.simpleSocialShare.min.js"></script>
 <script type="text/javascript">
@@ -188,8 +141,8 @@
         	  });
 
 
-        	allSelected896();
-        	allSelected996();
+        	/* allSelected896();
+        	allSelected996(); */
             $("#coverageDetails").hide();
             $("#coverageCollapse").click(function () {
                 $('#coverageGlyphi').toggleClass("glyphicon-plus").toggleClass("glyphicon-minus");
@@ -1311,15 +1264,13 @@ table {
 														<div class="col-sm-6 col-md-6">
 															<div class="checkbox">
 																<label> <input type="checkbox" checked
-																	id="carEbidFinan" name="carEbidFinan"
-																	class="jpCheckbox" onclick="allSelected896()"><span
+																	id="carEbidFinan" name="carEbidFinan" value="true" ng-click="allSelected896()"><span
 																	class="skin-color">Finance&nbsp;&nbsp;</span> <!-- <input type="checkbox" checked><span class="skin-color"></span> -->
 																</label>
 															</div>
 															<div class="checkbox">
 																<label> <input type="checkbox" checked
-																	id="carEbidInsur" name="carEbidInsur"
-																	class="jpCheckbox" onclick="allSelected996()"><span
+																	id="carEbidInsur" name="carEbidInsur" value="true" ng-click="allSelected996()"><span
 																	class="skin-color">Insurance&nbsp;&nbsp;</span> <!-- <input type="checkbox" checked><span class="skin-color"></span> -->
 																</label>
 															</div>
