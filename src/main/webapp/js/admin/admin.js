@@ -3419,7 +3419,8 @@ mainApp1.controller('myController13',function($scope, $http) {
     					 status1="Submitted to User for View";
     	   	         		if(data.status){status1="Submitted to User for View";}
 
-    				alert(JSON.stringify(data));
+    				alert("vehicle quotation view"+JSON.stringify(data));
+    				console.log("Vehicle quotation view"+JSON.stringify(data));
     				var editqta1DealerVehicleSearchForm = '<form id="edit-qta1-dealer-vehicle-search-content-form"><table>\
     					<table>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Quotation Details</div></div>\
@@ -3430,7 +3431,7 @@ mainApp1.controller('myController13',function($scope, $http) {
     					<br/>\
     					<table>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Requirement Details</div></div>\
-    					<tr><td>Offer Date</td><td>' + data.regoEndDate + '</td></tr>\
+    					<tr><td>Offer Date</td><td>' + data.offerValidDate + '</td></tr>\
     					<tr><td>Estimate Quote for the Job</td><td>' + data.driveAwayPrice + '</td></tr>\
     					<tr><td>Quotated Hourly Rate</td><td>' + data.offerPrice2 + '</td></tr>\
     					<tr><td>Min</td><td>' + data.offerPrice3 + '</td></tr>\
@@ -3441,7 +3442,7 @@ mainApp1.controller('myController13',function($scope, $http) {
     					<tr><td></td><td>' +outInsDrvAdd + '</td></tr>\
     					</table>\
     					<table>\
-    					<tr><td>Dealer Terms and Conditions</td><td>' + data.fname + '</td></tr>\
+    					<tr><td>Dealer Terms and Conditions</td><td>' + data.freeText + '</td></tr>\
     					</table>\
     					<br/>\
     					<table>\
@@ -3454,16 +3455,17 @@ mainApp1.controller('myController13',function($scope, $http) {
     					<table>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Lead Requirement</div></div>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">I am Looking For</div></div>\
-    					<tr><td>Service</td><td>' + data.lookService + '</td></tr>\
+    					<tr><td>Service</td><td>' + data.flex1 + '</td></tr>\
     					<tr><td>Service & Maintenance Level 1</td><td>' + data.servMaintL1 + '</td></tr>\
     					<tr><td>Service & Maintenance Level 2</td><td>' + data.servMaintL2 + '</td></tr>\
-    					<tr><td>Add Notes</td><td>' + data.freeText + '</td></tr>\
+    					<tr><td>Add Notes</td><td>' + data.fname + '</td></tr>\
     					</table>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Details</div></div>\
     					<table>\
     					<br/>\
-    					<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
-    					<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+    					<tr><td>Rego No</td><td>' + data.regoNo + '</td></tr>\
+    					<tr><td>Rego State</td><td>' + data.regoStat + '</td></tr>\
+    					<tr><td>Post code</td><td>' + data.postCode + '</td></tr>\
     					<tr><td>Year</td><td>' + data.year + '</td></tr>\
     					<tr><td>Make</td><td>' + data.make + '</td></tr>\
     					<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
@@ -3726,8 +3728,8 @@ mainApp1.controller('myController13',function($scope, $http) {
     		var data = $(event.target).data('details');
     		//var json = JSON.stringify(data);
 
-       		//alert(data);
-       		//console.log(data);
+       		alert(data);
+       		console.log(data);
        		$scope.vehicleData = data;
     		var quotIdHiddenField = '<input type="hidden" name="carSearchId" value="' + data.carSearchId + '" />';
     		var moveToUser = '<input type="checkbox" name="moveToUser" />';
@@ -4097,7 +4099,7 @@ mainApp1.controller('myController13',function($scope, $http) {
     					<tr><td>Quotation ID</td><td>' + data.quotId + '</td></tr>\
     					<tr><td>' + quotIdHiddenField + '</td></tr>\
     					<tr><td>Status</td><td>' + status1 + '</td></tr>\
-    					<tr><td>Quotation Created Date</td><td>' + data.ageOfAdditionalDriver + '</td></tr>\
+    					<tr><td>Quotation Created Date</td><td>' + data.creationDate + '</td></tr>\
     					</table>\
     					<br/>\
     					<table>\
@@ -4114,7 +4116,10 @@ mainApp1.controller('myController13',function($scope, $http) {
     					<tr><td>Make</td><td>' + data.modelDisplay + '</td></tr>\
     					<tr><td>Model</td><td>' + data.modelName + '</td></tr>\
     					<tr><td>AutoScoop Trim</td><td>' + data.modelTrim + '</td></tr>\
-    					<tr><td>Basic price</td><td>' + data.modelTrim + '</td></tr>\
+    					<tr><td>Basic price for Make </td><td>' + data.basicPrice + '</td></tr>\
+    					</table>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Vehicle Extras Details</div></div>\
     					<tr><td></td><td>' +outInsDrvAdd + '</td></tr>\
     					</table>\
     					<table>\
@@ -4139,7 +4144,7 @@ mainApp1.controller('myController13',function($scope, $http) {
     					<br/>\
     					<table>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Pick your Fav Color</div></div>\
-    					<tr><td>Car Color 1</td><td>' + data.color + '</td></tr>\
+    					<tr><td>Car Color 1</td><td>' + data.carColor + '</td></tr>\
     					<tr><td>Car Color 2</td><td>' + data.transmission + '</td></tr>\
     					</table>\
     					<table>\
@@ -5884,14 +5889,16 @@ mainApp1.controller('myController13',function($scope, $http) {
 															
 															jsonInput["servMaintQuotId"]=null;
 															//$scope.LeadSvQuoteId;
-															alert("dealer Search id"+$scope.LeadSvQuoteId);
+															alert("dealer Lead id"+$scope.LeadSvQuoteId);
+															alert("rego end date"+$scope.finSvDOB);
+															alert("Exter dealer id"+$scope.ExtSvDealerId);
 															$scope.ExtDealerId=0;
 															
 															jsonInput["dealerId"]=$scope.ExtSvDealerId;
 															jsonInput["driveAwayPrice"]=$scope.finSvAnnualIncome;
 															jsonInput["offerPrice2"]=$scope.finSvAnnualIncome1;
 															jsonInput["offerPrice3"]=$scope.finSvAnnualIncome2;
-															jsonInput["regoEndDate"]=$scope.finSvDOB;
+															jsonInput["offerValidDate"]=$scope.finSvDOB;
 															// 07072017
 															jsonInput["dealServMaintId"]=$scope.LeadSvQuoteId;
 															jsonInput["address"]=objKeyfilefileChooserlogservmaint;
@@ -5922,8 +5929,16 @@ mainApp1.controller('myController13',function($scope, $http) {
 															//var new_jsonstr = jsonstr1.replace('"searchServMaintId"', '"carSearchId"');
 															var new_jsonstr = jsonstr1.replace('"idp"', '"userId"');
 															var new_jsonstr1 = new_jsonstr.replace('"creationDate"', '"userCreationDate"');
+															var new_jsonstr2 = new_jsonstr1.replace('"regNo"', '"regoNo"');
+															var new_jsonstr3 = new_jsonstr2.replace('"regoState"', '"regoStat"');
+															var new_jsonstr4 = new_jsonstr3.replace('"feulType"', '"fuelType"');
+															var new_jsonstr5 = new_jsonstr4.replace('"fname"', '"freeText"');
+															//var new_jsonstr6 = new_jsonstr5.replace('"coveredUnderIns"', '"coveredUnderIns"');
+															//var new_jsonstr7 = new_jsonstr6.replace('"curInsProv"', '"CURINSPROV"');
+															var new_jsonstr8 = new_jsonstr5.replace('"lookService"', '"flex1"');
+															var new_jsonstr9 = new_jsonstr8.replace('"carColor"', '"color"');
 															// You probably want to parse the altered string later
-															var new_obj = JSON.parse(new_jsonstr1);
+															var new_obj = JSON.parse(new_jsonstr9);
 
 															
 															alert("new"+JSON.stringify(new_obj));
@@ -5933,6 +5948,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 															//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 															//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
 															var wsURL = 'api/dealerQuotSmCreation?_method=PUT';
+															//var wsURL = '';
 															$body.addClass("loading");
 																    $http({
 																				method : 'POST',
@@ -6004,6 +6020,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 														jsonInput["driveAwayPrice"]=$scope.finAnnualIncome;
 														jsonInput["offerPrice2"]=$scope.finAnnualIncome1;
 														jsonInput["offerPrice3"]=$scope.finAnnualIncome2;
+														jsonInput["basicPrice"]=$scope.finAnnualIncome4;
 														jsonInput["regoEndDate"]=$scope.finDOB;
 														jsonInput["dealSearchId"]=$scope.LeadQuoteId;
 														jsonInput["address"]=objKeyfilefileChooserlogservmaint;
@@ -6016,14 +6033,15 @@ mainApp1.controller('myController13',function($scope, $http) {
 														var table1 = $("#my-table944");
 							                            var table = table1.tableToJSON({
 							                                ignoreColumns:[0],
-							                                headings: ['extras1', 'extras2', '45']
+							                                headings: ['extras1', 'extras2', 'amount']
 							                              });
 							                            //delete table[0];
 
 							                            table.splice(0,1);
 
-							                            jsonInput.VehQuotExtras = table ;
-														//alert("value"+jsonInput);
+							                            jsonInput.vehQuotExtras = table ;
+							                            alert("vehExtras"+table);
+														alert("vehExtras"+jsonInput.vehQuotExtras);
 														
 														
 														// Transfer the object to a JSON string
@@ -6032,17 +6050,19 @@ mainApp1.controller('myController13',function($scope, $http) {
 														// HERE you do the transform
 														var new_jsonstr = jsonstr1.replace('"userid"', '"userId"');
 														var new_jsonstr1 = new_jsonstr.replace('"creationDate"', '"userCreationDate"');
+														var new_jsonstr2 = new_jsonstr1.replace('"sModel"', '"transmission"');
 														// You probably want to parse the altered string later
-														var new_obj = JSON.parse(new_jsonstr1);
+														var new_obj = JSON.parse(new_jsonstr2);
 
 														
-														//alert("new"+JSON.stringify(new_obj));
+														alert("new"+JSON.stringify(new_obj));
 														
 														console.log(JSON.stringify(new_obj));
 														//alert("Before Call");
 														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 														//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
 														var wsURL = 'api/dealerQuotCreation?_method=PUT';
+														//var wsURL = '';
 														$body.addClass("loading");
 															    $http({
 																			method : 'POST',

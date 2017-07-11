@@ -498,6 +498,17 @@ List<DealerQuotationHistory> dealerQuotationHistory;
 	private String freeText;
 	private double offerPrice2;
 	private double offerPrice3;
+	private double basicPrice;
+	
+	public double getBasicPrice() {
+		return basicPrice;
+	}
+
+
+	public void setBasicPrice(double basicPrice) {
+		this.basicPrice = basicPrice;
+	}
+
 	private String adhoc1;
 	private String adhoc2;
 	private String adhoc3;

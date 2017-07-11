@@ -35,7 +35,16 @@ public class VehicleQuotationVO {
 	private String modelYear;
 	private String modelDisplay;
 	private String modelName;
+	private double basicPrice;
+	
+	public double getBasicPrice() {
+		return basicPrice;
+	}
 
+
+	public void setBasicPrice(double basicPrice) {
+		this.basicPrice = basicPrice;
+	}
 	// Start of Quotation action
 	private String postCode;
 	private String title;

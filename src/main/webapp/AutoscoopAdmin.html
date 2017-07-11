@@ -1154,6 +1154,18 @@ Date is Required</b></span>
 																ng-show="QuoteNewfrm.carmodelAutotrimsfin.$error.required &amp;&amp; (!QuoteNewfrm.carmodelAutotrimsfin.$pristine || QuoteNewfrm.$submitted)"><b>Autoscoop
 																	Trim is Required</b></span>
 														</div>
+														
+														<div class="col-sm-4 col-md-4 pull-left input-group">
+															<input type="text" id="finAnnualIncome4"
+																name="finAnnualIncome4" ng-model="finAnnualIncome4"
+																ng-pattern="/^[0-9]*$/" class="input-text full-width"
+																value="" placeholder="Basic price for Make" required /> <span
+																class="input-group-addon">$</span>
+															<span style="color: red"
+																ng-show="QuoteNewfrm.finAnnualIncome4.$error.pattern &amp;&amp; (!QuoteNewfrm.finAnnualIncome4.$pristine || QuoteNewfrm.$submitted)"><b>Basic Price
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="QuoteNewfrm.finAnnualIncome4.$error.required &amp;&amp; (!QuoteNewfrm.finAnnualIncome4.$pristine || QuoteNewfrm.$submitted) &amp;&amp; !QuoteNewfrm.finAnnualIncome2.$error.pattern"><b>Basic
+																	Price is Required</b></span></div>
 													</div>
 													
 													<br />
@@ -1528,7 +1540,7 @@ Date is Required</b></span>
 																	Away Price is Required</b></span></div>
 																	<div class="col-sm-4 col-md-4 pull-left input-group">
 															<input type="text" id="finSvAnnualIncome1"
-																name="finAnnualIncome1" ng-model="finAnnualIncome1"
+																name="finSvAnnualIncome1" ng-model="finSvAnnualIncome1"
 																ng-pattern="/^[0-9]*$/" class="input-text full-width"
 																value="" placeholder="Quotated Hourly Rate " required /> <span
 																class="input-group-addon">$</span>

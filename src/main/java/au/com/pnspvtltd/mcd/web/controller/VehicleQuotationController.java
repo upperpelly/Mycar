@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
+import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
@@ -76,8 +77,17 @@ public class VehicleQuotationController {
 		vehicleQuotation.setModelTrim(dealerVO.getModelTrim());
 		
 		// Addition of extras
+		
+		/*if (vehicleQuotation.getVehQuotExtras() != null) {
+			vehicleQuotation.getVehQuotExtras().add(dealerVO.getVehQuotExtras());
+		} else {
+			List<VehQuotExtras> vehQuotExtras = new ArrayList<>();
+			vehQuotExtras.add(vehQuotExtras);
+			vehicleQuotation.setVehQuotExtras(vehQuotExtras);
+		}*/
 		vehicleQuotation.setVehQuotExtras(dealerVO.getVehQuotExtras());
 		vehicleQuotation.setFname(dealerVO.getFname()); // Terms and conditions
+		vehicleQuotation.setBasicPrice(dealerVO.getBasicPrice()); // set Basic Price
 		
 		vehicleQuotation.setDealerId(dealerVO.getDealerId()); // Dealer Lead Id
 		vehicleQuotation.setUserId(dealerVO.getUserId());

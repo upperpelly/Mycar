@@ -72,7 +72,7 @@ public class ServMaintQuotationController {
 		LOGGER.debug("Received request to create SM Quotati for Ext Dealer {}", dealerVO);
 		
 		ServiceMaintQuotation vehicleQuotation = new ServiceMaintQuotation();
-		//vehicleQuotation.setRegoEndDate(dealerVO.getRegoEndDate());// set Offer Valid Date
+		vehicleQuotation.setOfferValidDate(dealerVO.getOfferValidDate());// set Offer Valid Date
 		vehicleQuotation.setDriveAwayPrice(dealerVO.getDriveAwayPrice()); // set Drive Away Price
 		vehicleQuotation.setOfferPrice2(dealerVO.getOfferPrice2());// set Save Price
 		vehicleQuotation.setOfferPrice3(dealerVO.getOfferPrice3());// Actual value of Offer
@@ -81,12 +81,21 @@ public class ServMaintQuotationController {
 		vehicleQuotation.setModelDisplay(dealerVO.getModelDisplay());
 		vehicleQuotation.setModelName(dealerVO.getModelName());
 		vehicleQuotation.setModelTrim(dealerVO.getModelTrim());
+		vehicleQuotation.setRegoNo(dealerVO.getRegoNo());
+		vehicleQuotation.setRegoStat(dealerVO.getRegoStat());
+		vehicleQuotation.setPostCode(dealerVO.getPostCode());
+		vehicleQuotation.setFuelType(dealerVO.getFuelType());
+		vehicleQuotation.setServMaintL1(dealerVO.getServMaintL1());
+		vehicleQuotation.setServMaintL2(dealerVO.getServMaintL2());
+		vehicleQuotation.setCoveredUnderIns(dealerVO.isCoveredUnderIns());
+		vehicleQuotation.setCurInsProv(dealerVO.getCurInsProv());
+		vehicleQuotation.setFlex1(dealerVO.getFlex1());
 		
 		// Addition of extras
 		//vehicleQuotation.setVehQuotExtras(dealerVO.getVehQuotExtras());
 		//vehicleQuotation.setFname(dealerVO.getFname()); // Terms and conditions
 		
-		vehicleQuotation.setDealerId(dealerVO.getDealerId()); // Dealer Lead Id
+		
 		vehicleQuotation.setUserId(dealerVO.getUserId());
 		vehicleQuotation.setUserCreationDate(dealerVO.getUserCreationDate());
 		Calendar calendar = Calendar.getInstance();
@@ -94,8 +103,10 @@ public class ServMaintQuotationController {
 		vehicleQuotation.setCreationDate(ourJavaDateObject);
 		//vehicleQuotation.setStatus(true);
 		vehicleQuotation.setSearchServMaintId(dealerVO.getSearchServMaintId());
+		vehicleQuotation.setDealServMaintId(dealerVO.getDealServMaintId());
 		ExtDealServMaintr1 extDealerSearch=extDealerServMaintRepository.findOne(dealerVO.getDealServMaintId());
 		extDealerSearch.setStatus(true);
+		vehicleQuotation.setDealerId(extDealerSearch.getDealerId()); // Dealer Lead Id
 		User user =userRepository.findOne(dealerVO.getUserId());
 		int vehQuotCountTemp = user.getVehicleQuotCt();
 		user.setServMaintQuotCt(vehQuotCountTemp+1);
