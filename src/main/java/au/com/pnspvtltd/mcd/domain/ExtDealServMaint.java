@@ -65,7 +65,15 @@ import javax.persistence.Table;
 	private String email;
 	private float longitude;
 	private float latitude;
+	private Date creationDate;
+	
+	public Date getCreationDate() {
+		return creationDate;
+	}
 
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
 	List<ExtDealServMaintr1> extDealSearch;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

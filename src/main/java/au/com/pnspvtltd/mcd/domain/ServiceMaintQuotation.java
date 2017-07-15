@@ -2,12 +2,17 @@ package au.com.pnspvtltd.mcd.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -66,6 +71,23 @@ public class ServiceMaintQuotation implements Serializable {
 			// Dealer info end
 
 	private String modelYear;
+	
+	List<VehQuotExtrasServ> vehQuotExtras;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "servMaintQuotId")
+	
+	public List<VehQuotExtrasServ> getVehQuotExtras() {
+		return vehQuotExtras;
+	}
+
+
+	public void setVehQuotExtras(
+			List<VehQuotExtrasServ> vehQuotExtras) {
+		this.vehQuotExtras = vehQuotExtras;
+	}
+
+	
 	public Date getUserCreationDate() {
 		return userCreationDate;
 	}
@@ -252,8 +274,19 @@ public class ServiceMaintQuotation implements Serializable {
 	private String adhoc2;
 	private String adhoc3;
 	private String adhoc4;
+	private String fname;
 	
-	// Flex start
+	
+	public String getFname() {
+		return fname;
+	}
+
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+		// Flex start
 		private String flex1;	
 		private String flex2;	
 		private String flex3;	

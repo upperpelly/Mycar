@@ -13,7 +13,8 @@ import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 	User findByEmailIgnoreCase(String emailId);
-	@Query("SELECT user FROM User user")
+	@Query("SELECT user FROM User user"+
+			" ORDER BY user.userId")
 	public List<User> getAllUser();
 	
 	

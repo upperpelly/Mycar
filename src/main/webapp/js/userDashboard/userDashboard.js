@@ -2360,7 +2360,7 @@ $("#"+"fuelCard4").html(outLogT);
     			    var drvAddInfo = data.vehQuotExtras;
     			    //alert("came here");
     				if(drvAddInfo){
-    					 outInsDrvAdd += '<tr><th>'+"Extras "+'</th><th>'+"Quantity"+'</th><th>'+"Price"+'</th>'+'</th></tr>';
+   					 outInsDrvAdd += '<tr><th>'+"Item No "+'</th><th>'+"Condition & Charges"+'</th><th>'+"Price"+'</th>'+'</th></tr>';
     					 for(i=0;i<data.vehQuotExtras.length;i++)
     						{
     						 outInsDrvAdd= outInsDrvAdd+'<tr>'+'<td>'+data.vehQuotExtras[i].extras1+'</td><td>'+data.vehQuotExtras[i].extras2+'</td><td>'+data.vehQuotExtras[i].amount+'</td><td></tr>';
@@ -2398,11 +2398,11 @@ $("#"+"fuelCard4").html(outLogT);
     					</table>\
     					<br/>\
     					<table>\
-    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Offer Details</div></div>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Items / Services Offered</div></div>\
     					<tr><td></td><td>' +outInsDrvAdd + '</td></tr>\
     					</table>\
     					<table>\
-    					<tr><td>Dealer Terms and Conditions</td><td>' + data.freeText + '</td></tr>\
+    					<tr><td>Dealer Terms and Conditions</td><td>' + data.fname + '</td></tr>\
     					</table>\
     					<br/>\
     					<table>\
@@ -2418,7 +2418,7 @@ $("#"+"fuelCard4").html(outLogT);
     					<tr><td>Service</td><td>' + data.flex1 + '</td></tr>\
     					<tr><td>Service & Maintenance Level 1</td><td>' + data.servMaintL1 + '</td></tr>\
     					<tr><td>Service & Maintenance Level 2</td><td>' + data.servMaintL2 + '</td></tr>\
-    					<tr><td>Add Notes</td><td>' + data.fname + '</td></tr>\
+    					<tr><td>Add Notes</td><td>' + data.freeText + '</td></tr>\
     					</table>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Details</div></div>\
     					<table>\
@@ -2430,7 +2430,7 @@ $("#"+"fuelCard4").html(outLogT);
     					<tr><td>Make</td><td>' + data.make + '</td></tr>\
     					<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
     					<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
-    					<tr><td>Fuel Type</td><td>' + data.feulType + '</td></tr>\
+    					<tr><td>Fuel Type</td><td>' + data.fuelType + '</td></tr>\
     					</table>\
     					<br/>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">is the Car covered under Insurance</div></div>\
@@ -2957,7 +2957,7 @@ $("#"+"fuelCard4").html(outLogT);
 					<br/>\
 					<table>\
 					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Pick your Fav Color</div></div>\
-					<tr><td>Car Color 1</td><td>' + data.carColor + '</td></tr>\
+					<tr><td>Car Color 1</td><td>' + data.color + '</td></tr>\
 					<tr><td>Car Color 2</td><td>' + data.transmission + '</td></tr>\
 					</table>\
 					<table>\

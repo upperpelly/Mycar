@@ -12,7 +12,9 @@ import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
 
 public interface SearchServMtLeadRepository extends JpaRepository<SearchServMaint, Long>{
 
-	
+	@Query("SELECT search FROM SearchServMaint search" +
+			" ORDER BY search.searchServMaintId")
+			public List<SearchServMaint> getAllSearchCriteria();
 	
 	/*@Query("SELECT search FROM SearchServMaint search WHERE search.modelYear=?1" +
 			" ORDER BY search.searchServMaintId")

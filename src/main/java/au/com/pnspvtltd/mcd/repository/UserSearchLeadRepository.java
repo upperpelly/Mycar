@@ -12,6 +12,9 @@ import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
 public interface UserSearchLeadRepository extends JpaRepository<Search, Long>{
 
 	
+	@Query("SELECT search FROM Search search" +
+			" ORDER BY search.carSearchId")
+			public List<Search> getAllSearch();
 	
 	@Query("SELECT search FROM Search search WHERE search.modelYear=?1" +
 			" ORDER BY search.carSearchId")

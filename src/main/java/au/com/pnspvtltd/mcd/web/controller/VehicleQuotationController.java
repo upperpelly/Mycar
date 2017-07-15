@@ -120,6 +120,9 @@ public class VehicleQuotationController {
 		vehicleQuotation.setEmail(extDealerSearch.getEmail());
 		vehicleQuotation.setLongitude(extDealerSearch.getLongitude());
 		vehicleQuotation.setLatitude(extDealerSearch.getLatitude());
+		vehicleQuotation.setColor(extDealerSearch.getCarColor());
+		vehicleQuotation.setDriveType(extDealerSearch.getState());
+		//vehicleQuotation.
 					// Dealer info end
 		
 		
@@ -136,9 +139,9 @@ public class VehicleQuotationController {
 		vehicleQuotation.setNewer(dealerVO.isNewer());
 		vehicleQuotation.setUsed(dealerVO.isUsed());
 		vehicleQuotation.setPostCode(dealerVO.getPostCode());
-		vehicleQuotation.setColor(dealerVO.getColor());// color 1
+		//vehicleQuotation.setColor(dealerVO.getColor());// color 1
 		vehicleQuotation.setTransmission(dealerVO.getTransmission()); // color2
-		vehicleQuotation.setDriveType(dealerVO.getDriveType());// more about more requirement
+		//vehicleQuotation.setDriveType(dealerVO.getDriveType());// more about more requirement
 		vehicleQuotation.setRefId(l);
 		vehicleQuotation.setAddress(dealerVO.getAddress()); // set image
 		vehicleQuotationRepository.save(vehicleQuotation);

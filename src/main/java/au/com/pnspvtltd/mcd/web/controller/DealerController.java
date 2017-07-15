@@ -2,6 +2,7 @@ package au.com.pnspvtltd.mcd.web.controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -33,6 +34,8 @@ import au.com.pnspvtltd.mcd.repository.ExtDealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerServMaintPRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerServMaintRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerRepository;
+import au.com.pnspvtltd.mcd.repository.ExternalDealerRepositoryFin;
+import au.com.pnspvtltd.mcd.repository.ExternalDealerTpRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
@@ -48,8 +51,10 @@ import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerServMtListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSvLdAdminVO;
+import au.com.pnspvtltd.mcd.web.model.ExternalDealerFinVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerSmVO;
+import au.com.pnspvtltd.mcd.web.model.ExternalDealerTpVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
@@ -59,6 +64,7 @@ import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
+import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 @RestController
@@ -81,6 +87,11 @@ public class DealerController {
 	
 	@Autowired
 	ExternalDealerRepository externalDealerRepository;
+	@Autowired
+	ExternalDealerTpRepository externalDealerTpRepository;
+	
+	@Autowired
+	ExternalDealerRepositoryFin externalDealerepositoryFin;
 	
 	@Autowired
 	DomainModelUtil domainModelUtil;
@@ -344,5 +355,68 @@ public class DealerController {
 		return userAdminSearchVO12;
 	}
 
+	@PostMapping(value = "extdealerCreation", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ExternalDealerVO> extdealerCreation(@RequestBody ExternalDealerVO userVO, HttpServletResponse response) {
+		LOGGER.debug("External Dealer Creation", userVO.getCategory());
+		userVO.setExternalDealerId(null);
+		 // (2) create a java sql date object we want to insert
+	    Calendar calendar = Calendar.getInstance();
+	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+	    
+		userVO.setCreationDate(ourJavaDateObject);
+		HttpStatus status = HttpStatus.OK;
+		response.setStatus(HttpStatus.CREATED.value());
+		ExternalDealerVO externalDealerVO = domainModelUtil.toExternalDealerVO(externalDealerRepository.save(domainModelUtil.toExternalDealer(userVO)));
+		return new ResponseEntity<>(externalDealerVO, status);
+		
+	}
+	
+	
+	@PostMapping(value = "extdealerTpCreation", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ExternalDealerTpVO> extdealerTpCreation(@RequestBody ExternalDealerTpVO userVO, HttpServletResponse response) {
+		LOGGER.debug("External Dealer Creation for Transport", userVO.getCategory());
+		userVO.setExternalDealerId(null);
+		 // (2) create a java sql date object we want to insert
+	    Calendar calendar = Calendar.getInstance();
+	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+	    
+		userVO.setCreationDate(ourJavaDateObject);
+		HttpStatus status = HttpStatus.OK;
+		response.setStatus(HttpStatus.CREATED.value());
+		ExternalDealerTpVO externalDealerVO = domainModelUtil.toExternalDealerTpVO(externalDealerTpRepository.save(domainModelUtil.toExternalDealerTp(userVO)));
+		return new ResponseEntity<>(externalDealerVO, status);
+		
+	}
+	
+	@PostMapping(value = "extdealerFinCreation", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ExternalDealerFinVO> extdealerFinCreation(@RequestBody ExternalDealerFinVO userVO, HttpServletResponse response) {
+		LOGGER.debug("External Dealer Creation for Finance", userVO.getCategory());
+		userVO.setExternalDealerId(null);
+		 // (2) create a java sql date object we want to insert
+	    Calendar calendar = Calendar.getInstance();
+	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+	    
+		userVO.setCreationDate(ourJavaDateObject);
+		HttpStatus status = HttpStatus.OK;
+		response.setStatus(HttpStatus.CREATED.value());
+		ExternalDealerFinVO externalDealerVO = domainModelUtil.toExternalDealerFinVO(externalDealerepositoryFin.save(domainModelUtil.toExternalDealerFin(userVO)));
+		return new ResponseEntity<>(externalDealerVO, status);
+		
+	}
+	@PostMapping(value = "extdealerSvCreation", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ExtDealerServMaintVO> extdealerSvCreation(@RequestBody ExtDealerServMaintVO userVO, HttpServletResponse response) {
+		LOGGER.debug("External Dealer Creation for Sv", userVO.getCategory());
+		userVO.setExternalDealerId(null);
+		 // (2) create a java sql date object we want to insert
+	    Calendar calendar = Calendar.getInstance();
+	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+	    
+		userVO.setCreationDate(ourJavaDateObject);
+		HttpStatus status = HttpStatus.OK;
+		response.setStatus(HttpStatus.CREATED.value());
+		ExtDealerServMaintVO externalDealerVO = domainModelUtil.toExternalDealerSvVO(extDealerServMaintPRepository.save(domainModelUtil.toExternalDealerSv(userVO)));
+		return new ResponseEntity<>(externalDealerVO, status);
+		
+	}
 	
 }

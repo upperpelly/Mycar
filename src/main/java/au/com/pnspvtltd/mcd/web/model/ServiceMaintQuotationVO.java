@@ -1,6 +1,14 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import au.com.pnspvtltd.mcd.domain.VehQuotExtrasServ;
 
 
 public class ServiceMaintQuotationVO {
@@ -53,6 +61,28 @@ public class ServiceMaintQuotationVO {
 				// Dealer info end
 
 	private String modelYear;
+	List<VehQuotExtrasServ> vehQuotExtras;
+	
+	public List<VehQuotExtrasServ> getVehQuotExtras() {
+		return vehQuotExtras;
+	}
+
+
+	public void setVehQuotExtras(
+			List<VehQuotExtrasServ> vehQuotExtras) {
+		this.vehQuotExtras = vehQuotExtras;
+	}
+	private String fname;
+	
+	
+	public String getFname() {
+		return fname;
+	}
+
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
 	public Date getUserCreationDate() {
 		return userCreationDate;
 	}

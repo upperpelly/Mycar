@@ -2486,10 +2486,15 @@ mainApp1.controller('myController13',function($scope, $http) {
     	$scope.dealerIds = response.statusText;
     });
 	
+	// start of External Dealer creation
+	
+	//end of external dealer Creation
+	
+	
 	
 	// S&M start
 	$scope.submitSvMyLeadNewExtfrm = function() {
-		alert("ibnvsscv"+$scope.LeadSvCategory+""+$scope.leadSvExtpost);
+		//alert("ibnvsscv"+$scope.LeadSvCategory+""+$scope.leadSvExtpost);
 		$body.addClass("loading");
 		$http({
 	        method : 'GET',
@@ -2506,7 +2511,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 	    	 // change here
 	    	 alert("Retrieved"+data1.externalDealerVO.length);
 	    	 var options="" ;
-	    	 alert("started retrieved Lead Id"); 
+	    	 //alert("started retrieved Lead Id"); 
 	    	 $("#ExtSvDealerId").empty();
              if(data1.externalDealerVO.length!=0)
            	  {
@@ -2520,7 +2525,7 @@ mainApp1.controller('myController13',function($scope, $http) {
   	          	 //options += '<option>' +data1.externalDealerVO[i].externalDealerId+ '</option>';
   	          	options += '<option value="' + data1.externalDealerVO[i].externalDealerId + '">' + data1.externalDealerVO[i].externalDealerId + '</option>';
   	          		}
-               	  alert("options in external"+options);
+               	  //alert("options in external"+options);
                	 $("#ExtSvDealerId").html(options);
            	  }
       	 
@@ -2578,8 +2583,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 			var json1 =jsonStr.split('"searchServMaintId":').join('"carSearchId":');
 			var json2= json1.split('"idp":').join('"userid":');
 			json2.replace(/\\/g, "");
-		 alert(" ssssss"+json2);
-		 console.log(json2);
+		 //alert(" ssssss"+json2);
+		 //console.log(json2);
 		 
 		$body.addClass("loading");
 		$http({
@@ -2596,6 +2601,57 @@ mainApp1.controller('myController13',function($scope, $http) {
 	    });
 		
 	}
+	
+	/*// start of check 
+	$scope.submitMyLeadNewExtChkfrm = function() {
+		alert("ibnvsscv");
+		$body.addClass("loading");
+		$http({
+	        method : 'GET',
+	        url : 'api/getExtDealSearch?category='+$scope.LeadChkCategory+ '&postCode=' +$scope.leadChkExtpost
+	    }).then(function mySuccess(response) {
+	    	 $body.removeClass("loading");
+	    	 //alert("Retrieved");
+	    	 out="";
+	    	 data1 = response.data;
+	    	 //console.log(data1);
+	    	 //console.log(data1.externalDealerVO);
+	    	 //alert(data1.externalDealerVO.length);
+	    	 //alert(data1.externalDealerVO)
+	    	 // change here
+	    	 var options ;
+	    	 //$(".ExtDealerId").empty();
+             if(data1.externalDealerVO.length!=0)
+           	  {
+               	  out += '<tr><th>'+"Operation"+'</th><th>'+"Ext Dealer Id"+'</th><th>'+"Company Name"+'</th><th>'+"Phone No"+'</th>'+'<th>'+"Email"+'</th><th>'+"Website URL"+'</th></tr>';
+               	//options += '<option value="" selected disabled>Select a Dealer ID</option>';
+               	  for(i=0;i<data1.externalDealerVO.length;i++)
+  	          		{
+  	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+
+  	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data1.externalDealerVO[i].externalDealerId+'</td>'+'<td>'+data1.externalDealerVO[i].companyName+'</td>'+'<td>'+data1.externalDealerVO[i].phone+'<td>'+data1.externalDealerVO[i].email+'</td>'+'</td>'+'<td>'+data1.externalDealerVO[i].website+'</td></tr>';
+  	          	 //options += '<option>' +data1.externalDealerVO[i].externalDealerId+ '</option>';
+  	          	//options += '<option value="' + data1.externalDealerVO[i].externalDealerId + '">' + data1.externalDealerVO[i].externalDealerId + '</option>';
+  	          		}
+               	 //$(".ExtDealerId").html(options);
+           	  }
+      	 
+             else{
+      		out='<h2>No Dealers for the Combination</h2>';
+      	   }
+      	
+      	   out = out.replace(/>null</g, ">--NA--<");
+      	   out = out.replace(/>undefined</g, ">--NA--<");
+      	   $("#LeadExtChkDealTable").html(out);
+	    	 //console.log(data);
+	    	 //console.log(data.externalDealerVO);
+	    }, function myError(response) {
+	    	console.log(response.statusText);
+	    });
+		
+	}
+	// end of check
+*/	
 	
 	
 	// S&M end
@@ -2723,6 +2779,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 			obj['extDealerSearchVO'].push(jsonInput);
 			jsonStr = JSON.stringify(obj);
 			jsonStr.replace(/\\/g, "");
+			//jsonStr.replace('"state"', '"insuranceType"');
 			
 		 //alert("before sss"+jsonStr);
 		 console.log(jsonStr);
@@ -2762,6 +2819,53 @@ mainApp1.controller('myController13',function($scope, $http) {
 	    });
 		
 	}
+	
+	
+	
+	
+	// get all userinfo start
+	 $scope.getallUserInfor = function () {
+	        
+	                        var wsURL = 'api/adminuserall';
+	                       
+	                $body.addClass("loading");
+	                $http({
+	                    method: 'GET',
+	                    url: wsURL
+
+	                }).success(function (data) {
+	                    $body.removeClass("loading");
+	                    alert("successfully retrieved"+data.userVO.length);
+	                    out="";
+
+	             	   out += '<tr><th>'+"S.no"+'</th><th>'+"User ID"+'</th><th>'+"First Name"+'</th>'+'<th>'+"Last Name"+'</th><th>'+"Email Id"+'</th><th>'+"Address"+'</th><th>'+"Date of Reg"+'</th><th>'+"Operation"+'</th></tr>';
+	             	   for(i=data.userVO.length-1;i>=0;i--)
+	            		{
+	             		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+
+	            		 out= out+'<tr>'+'<td>'+i+'</td>'+'<td>'+data.userVO[i].userId+'</td>'+'<td>'+data.userVO[i].firstName+'<td>'+data.userVO[i].lastName+'</td>'+'</td>'+'<td>'+data.userVO[i].email+'</td>'+'<td>'+data.userVO[i].streetNumber+data.userVO[i].streetName+data.userVO[i].streetName+data.userVO[i].postCode+data.userVO[i].drivingLicense+data.userVO[i].state+'</td>'+'<td>'+data.userVO[i].creationDate+'</td>'+'<td><a href="#" id="anchor-editDealerssVehicleSearchModal-' + data.userVO[i].userId + '" data-details=\'' + JSON.stringify(data.userVO[i]) + '\' class="anchor-editDealerssVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerssVehicleSearchModal">View</a></td></tr>';
+
+	            		}
+	             	   out = out.replace(/>null</g, ">--NA--<");
+	             	   out = out.replace(/>undefined</g, ">--NA--<");
+	             	   //alert(out);
+	             	   var LogSearch = data.userVO;
+
+	             	   if(LogSearch && data.userVO.length==0){
+	             	   outLogT="";
+	             	   outLogT='<h2>No records found</h2>';
+	             	   forFinance("car-model-data",outLogT);
+	             	   }
+	             	   else{
+	             	   forFinance("car-model-data",out);}
+	             	  registerEditDealerssVehicleSearchModal();
+
+	                });
+
+	            }
+	// end get all userinfo
+	
+	
 	// Insurance lead post
     $scope.getUserInfor = function () {
         //alert("invoke in before call ins lead");
@@ -2932,8 +3036,51 @@ mainApp1.controller('myController13',function($scope, $http) {
 
     }
 
-    // Insurance lead post end
-	
+    
+  // start of S&M all retreived..
+    $scope.getsmInforAll = function () {
+        
+                       var wsURL = 'api/getsmInforAll';
+                        
+                $body.addClass("loading");
+               $http({
+                    method: 'GET',
+                    url: wsURL
+
+                }).success(function (data) {
+                    $body.removeClass("loading");
+                    alert("successfully retrieved"+data.searchVO.length);
+                    out10="";
+
+ /*	         	   var servRCt = result.length;
+ 	         	   document.getElementById('servRCt').innerHTML=servRCt;*/
+ 	         	   out10 += '<tr><th>'+"Operation"+'</th><th>'+"Car Serv Maint ID"+'</th><th>'+"User id"+'</th><th>'+"Servic L1"+'</th><th>'+"Service L2"+'</th><th>'+"Rego State"+'</th></tr>';
+ 	         	   for(i=data.searchVO.length-1;i>=0;i--)
+ 	        		{
+ 	         		   //+'<td><a href="#" id="anchor-editDealerVehicleservmaintModal-' + data.searchVO[i].searchServMaintId + '" data-details=\'' + JSON.stringify(data.searchVO[i]) + '\' class="anchor-editDealerVehicleservmaintModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmaintModal">View</a></td>
+ 	         		 //out= out+'<tr>'+'<td><a href="#" id="anchor-editDealerVehicleservmaintModal-' + data.searchVO[i].searchServMaintId + '" data-details=\'' + JSON.stringify(data.searchVO[i]) + '\' class="anchor-editDealerVehicleservmaintModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmaintModal">Create Lead/Quotation</a></td>'+
+ 	        		out10= out10+'<tr>'+'<td><a href="#" id="anchor-editDealerVehicleservmaintModal-' + data.searchVO[i].searchServMaintId + '" data-details=\'' + JSON.stringify(data.searchVO[i]) + '\' class="anchor-editDealerVehicleservmaintModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleservmaintModal">Create Lead/Quotation</a></td>'+'<td>'+data.searchVO[i].searchServMaintId+'</td>'+'<td>'+data.searchVO[i].idp+'</td>'+'<td>'+data.searchVO[i].servMaintL1+'</td>'+'<td>'+data.searchVO[i].servMaintL2+'</td>'+'<td>'+data.searchVO[i].regoState+'</td>'+'</tr>';
+
+
+ 	        		}
+ 	         	   out10 = out10.replace(/>null</g, ">--NA--<");
+ 	         	   out10 = out10.replace(/>undefined</g, ">--NA--<");
+ 	         	  var LogSearchServMaint = data.searchVO;
+
+ 	         	 if(LogSearchServMaint && data.searchVO.length==0){
+ 	         	  outLogT="";
+             	   outLogT='<h2>No records found</h2>';
+             	   forFinance1("car-Sv-model-data12",outLogT);
+             	   }
+             	   else{
+             	   forFinance1("car-Sv-model-data12",out10);}
+ 	         	registerEditDealerVehicleservmaintModal();
+								});
+
+            }
+    // end of S&M all retreived..
+    
+    
     // start of S&M
     $scope.getsmInfor = function () {
         //alert("invoke in before call getEbidInfor lead"+$scope.caryears+$scope.creationDateLd);
@@ -2950,7 +3097,7 @@ mainApp1.controller('myController13',function($scope, $http) {
                        var wsURL = 'api/getSmInfor?modelYear='+ $scope.caryearssm + '&modelDisplay=' +$scope.carmakessm + '&modelName=' + $scope.carmodelssm + '&modelTrim=' + $scope.carmodeltrimssm + '&creationDate=' +$scope.creationDateSv;
                         //alert("value"+$scope.creationDateLd);
                         if($scope.creationDateLd === "undefined"){
-                        	 alert("value"+$scope.creationDateLd);
+                        	 //alert("value"+$scope.creationDateLd);
                         	wsURL = 'api/getSearchInforOtDate?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims;
                         }    
              
@@ -3135,7 +3282,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 				url: wsURL,
 				success: function(data){
 					$body.removeClass("loading");
-	                  alert("started retrieved Lead Id"); 
+	                  //alert("started retrieved Lead Id"); 
 	                  out="";
 	                  var options ="";
 	                 $("#LeadSvQuoteId").empty();
@@ -3153,7 +3300,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 	   	          		 options += '<option>' + data.extDealerSearchVO[i].extDealerSearchId + '</option>';
 	   	          		}
 	   	           	   //$("#LeadQuoteId").html(options);
-	                		alert("options"+options); 
+	                		//alert("options"+options); 
 	   	            $("#LeadSvQuoteId").html(options);
                 	  }
            	 
@@ -3326,7 +3473,7 @@ mainApp1.controller('myController13',function($scope, $http) {
     		}
     		// end of view of Lead
     		//$scope.leadIDs = "";
-    		alert("data.searchServMaintId "+data.searchServMaintId );
+    		//alert("data.searchServMaintId "+data.searchServMaintId );
     		var wsURL = 'api/getExtQtDealSmInfoId?searchServMaintId='+data.searchServMaintId ;
   		  	$body.addClass("loading");
     		$.ajax({
@@ -3334,7 +3481,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 				url: wsURL,
 				success: function(data){
 					$body.removeClass("loading");
-	                  alert("inside Service Quotation");
+	                  //alert("inside Service Quotation");
 	                  out="";
 	                  //var options ;
 	                  if(data.serviceMaintQuotationVO && data.serviceMaintQuotationVO.length!=0)
@@ -3397,7 +3544,7 @@ mainApp1.controller('myController13',function($scope, $http) {
     			    var drvAddInfo = data.vehQuotExtras;
     			    //alert("came here");
     				if(drvAddInfo){
-    					 outInsDrvAdd += '<tr><th>'+"Extras "+'</th><th>'+"Quantity"+'</th><th>'+"Price"+'</th>'+'</th></tr>';
+    					 outInsDrvAdd += '<tr><th>'+"Item No "+'</th><th>'+"Condition & Charges"+'</th><th>'+"Price"+'</th>'+'</th></tr>';
     					 for(i=0;i<data.vehQuotExtras.length;i++)
     						{
     						 outInsDrvAdd= outInsDrvAdd+'<tr>'+'<td>'+data.vehQuotExtras[i].extras1+'</td><td>'+data.vehQuotExtras[i].extras2+'</td><td>'+data.vehQuotExtras[i].amount+'</td><td></tr>';
@@ -3408,7 +3555,7 @@ mainApp1.controller('myController13',function($scope, $http) {
     			    {
     			    	outInsDrvAdd='<h2>No records for Dealer Search Finance</h2>';
     			    }
-    				var quotIdHiddenField = '<input type="hidden" name="quotId" value="' + data.servMaintQuotId + '" />';
+    				var quotIdHiddenField = '<input type="hidden" name="servMaintQuotId" value="' + data.servMaintQuotId + '" />';
     				var moveToUser = '<input type="checkbox" name="moveToUser" />';
     				
     				if(data.newer)
@@ -3419,7 +3566,7 @@ mainApp1.controller('myController13',function($scope, $http) {
     					 status1="Submitted to User for View";
     	   	         		if(data.status){status1="Submitted to User for View";}
 
-    				alert("vehicle quotation view"+JSON.stringify(data));
+    				//alert("vehicle quotation view"+JSON.stringify(data));
     				console.log("Vehicle quotation view"+JSON.stringify(data));
     				var editqta1DealerVehicleSearchForm = '<form id="edit-qta1-dealer-vehicle-search-content-form"><table>\
     					<table>\
@@ -3438,11 +3585,11 @@ mainApp1.controller('myController13',function($scope, $http) {
     					</table>\
     					<br/>\
     					<table>\
-    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Offer Details</div></div>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Items / Services Offered</div></div>\
     					<tr><td></td><td>' +outInsDrvAdd + '</td></tr>\
     					</table>\
     					<table>\
-    					<tr><td>Dealer Terms and Conditions</td><td>' + data.freeText + '</td></tr>\
+    					<tr><td>Dealer Terms and Conditions</td><td>' + data.fname + '</td></tr>\
     					</table>\
     					<br/>\
     					<table>\
@@ -3458,7 +3605,7 @@ mainApp1.controller('myController13',function($scope, $http) {
     					<tr><td>Service</td><td>' + data.flex1 + '</td></tr>\
     					<tr><td>Service & Maintenance Level 1</td><td>' + data.servMaintL1 + '</td></tr>\
     					<tr><td>Service & Maintenance Level 2</td><td>' + data.servMaintL2 + '</td></tr>\
-    					<tr><td>Add Notes</td><td>' + data.fname + '</td></tr>\
+    					<tr><td>Add Notes</td><td>' + data.freeText + '</td></tr>\
     					</table>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Details</div></div>\
     					<table>\
@@ -3470,7 +3617,7 @@ mainApp1.controller('myController13',function($scope, $http) {
     					<tr><td>Make</td><td>' + data.make + '</td></tr>\
     					<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
     					<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
-    					<tr><td>Fuel Type</td><td>' + data.feulType + '</td></tr>\
+    					<tr><td>Fuel Type</td><td>' + data.fuelType + '</td></tr>\
     					</table>\
     					<br/>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">is the Car covered under Insurance</div></div>\
@@ -3625,6 +3772,49 @@ mainApp1.controller('myController13',function($scope, $http) {
 
     }
 
+    // get all Ebid requests start
+    $scope.getAllEbidInfor = function () {
+        
+                        var wsURL = 'api/getSearchInforAll';
+                        
+                $body.addClass("loading");
+                $http({
+                    method: 'GET',
+                    url: wsURL
+
+                }).success(function (data) {
+                    $body.removeClass("loading");
+                    alert("successfully retrieved"+data.searchVO.length);
+                    out="";
+
+             	  out += '<tr><th>'+"Operation"+'</th><th>'+"Car Ebid ID"+'</th><th>'+"User Id"+'</th><th>'+"Post Code"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Trim"+'</th></tr>';
+             	   for(i=data.searchVO.length-1;i>=0;i--)
+            		{
+             		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+
+            		 out= out+'<tr>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + data.searchVO[i].carSearchId + '" data-details=\'' + JSON.stringify(data.searchVO[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">Create Lead/Quotation</a></td>'+'<td>'+data.searchVO[i].carSearchId+'</td>'+'<td>'+data.searchVO[i].userid+'<td>'+data.searchVO[i].postCode+'</td>'+data.searchVO[i].modelYear+'<td>'+data.searchVO[i].modelDisplay+'</td>'+'<td>'+data.searchVO[i].modelName+'</td>'+'<td>'+data.searchVO[i].modelTrim+'</td></tr>';
+
+            		}
+             	   out = out.replace(/>null</g, ">--NA--<");
+             	   out = out.replace(/>undefined</g, ">--NA--<");
+             	   //alert(out);
+             	   var LogSearch = data.searchVO;
+
+
+             	   if(LogSearch && data.searchVO.length==0){
+             	   outLogT="";
+             	   outLogT='<h2>No records found</h2>';
+             	   forFinance1("car-model-data12",outLogT);
+             	   }
+             	   else{
+             	   forFinance1("car-model-data12",out);}
+             	  registerEditDealerVehicleSearchModal();
+
+                });
+
+            }
+    // get all Ebid requests end
+    
     
     
     // end of S&M    
@@ -3644,7 +3834,7 @@ mainApp1.controller('myController13',function($scope, $http) {
                         var wsURL = 'api/getSearchInfor?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims + '&creationDate=' +$scope.creationDateLd;
                         //alert("value"+$scope.creationDateLd);
                         if($scope.creationDateLd === "undefined"){
-                        	 alert("value"+$scope.creationDateLd);
+                        	 //alert("value"+$scope.creationDateLd);
                         	wsURL = 'api/getSearchInforOtDate?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims;
                         }    
              
@@ -3728,8 +3918,8 @@ mainApp1.controller('myController13',function($scope, $http) {
     		var data = $(event.target).data('details');
     		//var json = JSON.stringify(data);
 
-       		alert(data);
-       		console.log(data);
+       		//alert(data);
+       		//console.log(data);
        		$scope.vehicleData = data;
     		var quotIdHiddenField = '<input type="hidden" name="carSearchId" value="' + data.carSearchId + '" />';
     		var moveToUser = '<input type="checkbox" name="moveToUser" />';
@@ -4066,6 +4256,23 @@ mainApp1.controller('myController13',function($scope, $http) {
 
     				var data = $(event.target).data('details');
     				//var json = JSON.stringify(data);
+			  var quotIdHiddenField = '<input type="hidden" name="quotId" value="' + data.quotId + '" />';
+			  var moveToUser = '<input type="checkbox" name="moveToUser" />';
+			  if(data.moveToUser)
+			    moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+			  var shortList = '<input type="checkbox" name="shortList" />';
+			  var makeOffer = '<input type="checkbox" name="makeOffer" />';
+			  var makeDeposit = '<input type="checkbox" name="makeDeposit" />';
+			  var chat = '<input type="checkbox" name="chat" />';
+			  var rejectIt = '<input type="checkbox" name="rejectIt" />';
+			  var postCode = '<input type="text" name="postCode" />';
+			  var title = '<input type="text" name="title" />';
+			  var lname = '<input type="text" name="lname" />';
+			  var fname = '<input type="text" name="fname" />';
+			  var address = '<input type="text" name="address" />';
+			  var mobileNum = '<input type="text" name="mobileNum" />';
+			  var prefDate = '<input type="date" name="prefDate" />';
+			  var comment = '<input type="text" name="comment" />';
     				outInsDrvAdd = "";
     			    var drvAddInfo = data.vehQuotExtras;
     			    //alert("came here");
@@ -4091,8 +4298,75 @@ mainApp1.controller('myController13',function($scope, $http) {
     					  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
     					 status1="Submitted to User for View";
     	   	         		if(data.status){status1="Submitted to User for View";}
+			  // logic to retrieve
+			  out5DD = "";
+			    var dealDt = data.userQuotationHistoryVO;
+			    if(dealDt)
+			    {
+			    	dealDt = data.userQuotationHistoryVO.length;
+		  	   //document.getElementById('finMax').innerHTML=finMax;
+		  	 out5DD += '<tr><th>'+"Car History ID"+'</th><th>'+"Comment"+'</th><th>'+"Creation Date"+'</th></tr>';
+		 	   for(i=0;i<data.userQuotationHistoryVO.length;i++)
+					{
+		 		  out5DD= out5DD+'<tr>'+'<td>'+data.userQuotationHistoryVO[i].userQuotationHistoryId+'</td><td>'+data.userQuotationHistoryVO[i].comment+'</td><td>'+data.userQuotationHistoryVO[i].creationDate+'</td><td></tr>';
+					}
 
-    				//alert(JSON.stringify(data)); to work
+			    }
+			    else
+			    {
+			    	out5DD='<h2>No records for Dealer Search Finance</h2>';
+			    }
+
+			    //forFinance("deal-operation",out5DD);
+			    //alert("userHistory"+out5DD);
+
+			    out5DD1 = "";
+			    var dealDt1 = data.dealerQuotationHistoryVO;
+			    if(dealDt1)
+			    {
+			    	dealDt1 = data.dealerQuotationHistoryVO.length;
+		  	   //document.getElementById('finMax').innerHTML=finMax;
+		  	 out5DD1 += '<tr><th>'+"Car History ID"+'</th><th>'+"Comment"+'</th><th>'+"Creation Date"+'</th></tr>';
+		 	   for(i=0;i<data.dealerQuotationHistoryVO.length;i++)
+					{
+		 		  out5DD1= out5DD1+'<tr>'+'<td>'+data.dealerQuotationHistoryVO[i].dealQuotationHistoryId+'</td><td>'+data.dealerQuotationHistoryVO[i].comment+'</td><td>'+data.dealerQuotationHistoryVO[i].creationDate+'</td><td></tr>';
+					}
+
+			    }
+			    else
+			    {
+			    	out5DD1='<h2>No records for Dealer Search Finance</h2>';
+			    }
+
+			    //forFinance("deal-operation",out5DD);
+			    //alert("userHistory"+out5DD1);
+			  // logic to retrieve
+
+			  //alert("data.oi"+data.postCode);
+			  if(data.postCode != null)
+			   postCode =data.postCode;
+			  if(data.title != null)
+			   title=data.title;
+			  if(data.lname != null)
+			   lname=data.lname;
+			  if(data.fname != null)
+			   fname=data.fname;
+			  if(data.address != null)
+			   address= data.address;
+			  if(data.mobileNum != null)
+			   mobileNum=data.mobileNum ;
+			  if(data.prefDate != null)
+			   prefDate=data.prefDate;
+			  if(data.shortList)
+			   shortList = '<input type="checkbox" name="shortList" checked="checked" />';
+			  if(data.makeOffer)
+			    makeOffer = '<input type="checkbox" name="makeOffer" checked="checked"/>';
+			  if(data.makeDeposit)
+			   makeDeposit='<input type="checkbox" name="makeDeposit" checked="checked"/>';
+			  if(data.chat)
+			   chat='<input type="checkbox" name="chat" checked="checked"/>';
+			  if(data.rejectIt)
+			   rejectIt= '<input type="checkbox" name="rejectIt" checked="checked" />';
     				var editqtaDealerVehicleSearchForm = '<form id="edit-qta-dealer-vehicle-search-content-form"><table>\
     					<table>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Quotation Details</div></div>\
@@ -4144,7 +4418,7 @@ mainApp1.controller('myController13',function($scope, $http) {
     					<br/>\
     					<table>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Pick your Fav Color</div></div>\
-    					<tr><td>Car Color 1</td><td>' + data.carColor + '</td></tr>\
+    					<tr><td>Car Color 1</td><td>' + data.color + '</td></tr>\
     					<tr><td>Car Color 2</td><td>' + data.transmission + '</td></tr>\
     					</table>\
     					<table>\
@@ -4179,7 +4453,29 @@ mainApp1.controller('myController13',function($scope, $http) {
     					</table>\
     					<br/>\
     					<br/>\
-    					</table></form>';
+			   <table>\
+			   <div class="row"><div class="col-sm-12 col-md-12 product-search-title">Request Test Drive</div></div>\
+			   <tr><td>Post Code</td><td>' +postCode + '</td></tr>\
+			   <tr><td>Mr </td><td>' + title + '</td><td>First Name </td><td>' +fname  + '</td><td>Last Name </td><td>' +lname + '</td></tr>\
+			   <tr><td>Address </td><td>' +address  + '</td><td>Mobile No:</td><td>' +mobileNum  + '</td></tr>\
+			   <tr><td>Preferred Date </td><td>' +prefDate + '</td></tr></table>\
+			   <table>\
+			   <div class="row"><div class="col-sm-12 col-md-12 product-search-title">What can be done to Quotation?</div></div>\
+			   <tr><td>Short List </td><td>' + shortList + '</td><td>Make an Offer </td><td>' +makeOffer  + '</td><td>Make a deposit </td><td>' +makeDeposit + '</td></tr>\
+			   <tr><td>Chat </td><td>' +chat  + '</td><td>Reject it </td><td>' +rejectIt  + '</td></tr>\
+			   </table><br /><br /><br />\
+			   <table>\
+			   <div class="row"><div class="col-sm-12 col-md-12 product-search-title">User Chat History</div></div>\
+			   <tr><td>History</td><td>' +out5DD + '</td></tr></table>\
+			   <table>\
+			   <div class="row"><div class="col-sm-12 col-md-12 product-search-title">Dealer Chat History</div></div>\
+			   <tr><td>History</td><td>' +out5DD1 + '</td></tr></table>\
+			   <table>\
+			   <div class="row"><div class="col-sm-12 col-md-12 product-search-title">Write a comment</div></div>\
+			   <tr><td>Comment</td><td>' +comment + '</td></tr>\
+			   </table>\
+			   <table>\
+			   </form>';
     				editqtaDealerVehicleSearchForm = editqtaDealerVehicleSearchForm.replace(/>null</g, ">--NA--<");
     				editqtaDealerVehicleSearchForm = editqtaDealerVehicleSearchForm.replace(/>undefined</g, ">--NA--<");
     				$(".edit-qta-dealer-vehicle-search-content").html(editqtaDealerVehicleSearchForm);
@@ -4231,7 +4527,8 @@ mainApp1.controller('myController13',function($scope, $http) {
     			}
 
 
-    		}
+    		
+}
     		// end of view of Lead
     		
     	});
@@ -5765,8 +6062,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 														//alert("inside Update Settings"+isValid);
 														if (isValid) {
 														//updateSettingloadImage();
-														alert("Date"+$scope.abcDriverDOB);
-														alert("Date"+$('#abcDriverDOB').val());
+														//alert("Date"+$scope.abcDriverDOB);
+														//alert("Date"+$('#abcDriverDOB').val());
 														//alert("vachindi");
 														//alert("vachindi");
 														//alert("inside updatset");
@@ -5856,7 +6153,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 
 
 														$scope.submitSvMyQuoteNewfrm = function(isValid) {
-															alert("inside Sesdarv Maint"+isValid);
+															//alert("inside Sesdarv Maint"+isValid);
 															if (isValid) {
 															/*alert("inside Sesdarv Maint");
 															alert(myVehicleIDuse);*/
@@ -5889,9 +6186,9 @@ mainApp1.controller('myController13',function($scope, $http) {
 															
 															jsonInput["servMaintQuotId"]=null;
 															//$scope.LeadSvQuoteId;
-															alert("dealer Lead id"+$scope.LeadSvQuoteId);
-															alert("rego end date"+$scope.finSvDOB);
-															alert("Exter dealer id"+$scope.ExtSvDealerId);
+															//alert("dealer Lead id"+$scope.LeadSvQuoteId);
+															//alert("rego end date"+$scope.finSvDOB);
+															//alert("Exter dealer id"+$scope.ExtSvDealerId);
 															$scope.ExtDealerId=0;
 															
 															jsonInput["dealerId"]=$scope.ExtSvDealerId;
@@ -5908,16 +6205,16 @@ mainApp1.controller('myController13',function($scope, $http) {
 															                              jsonInput["modelTrim"]=$scope.carmodelAutotrimsfin;
 															                              
 															                              jsonInput["fname"]=$scope.servSvAddNotes;
-															var table1 = $("#my-table944");
+															var table1 = $("#my-table955");
 								                            var table = table1.tableToJSON({
 								                                ignoreColumns:[0],
-								                                headings: ['extras1', 'extras2', '45']
+								                                headings: ['extras1', 'extras2', 'amount']
 								                              });
 								                            //delete table[0];
 
 								                            table.splice(0,1);
 
-								                            jsonInput.VehQuotExtras = table ;
+								                            jsonInput.vehQuotExtras = table ;
 															//alert("value"+jsonInput);
 															
 															
@@ -5932,16 +6229,16 @@ mainApp1.controller('myController13',function($scope, $http) {
 															var new_jsonstr2 = new_jsonstr1.replace('"regNo"', '"regoNo"');
 															var new_jsonstr3 = new_jsonstr2.replace('"regoState"', '"regoStat"');
 															var new_jsonstr4 = new_jsonstr3.replace('"feulType"', '"fuelType"');
-															var new_jsonstr5 = new_jsonstr4.replace('"fname"', '"freeText"');
+															//var new_jsonstr5 = new_jsonstr4.replace('"fname"', '"freeText"');
 															//var new_jsonstr6 = new_jsonstr5.replace('"coveredUnderIns"', '"coveredUnderIns"');
 															//var new_jsonstr7 = new_jsonstr6.replace('"curInsProv"', '"CURINSPROV"');
-															var new_jsonstr8 = new_jsonstr5.replace('"lookService"', '"flex1"');
+															var new_jsonstr8 = new_jsonstr4.replace('"lookService"', '"flex1"');
 															var new_jsonstr9 = new_jsonstr8.replace('"carColor"', '"color"');
 															// You probably want to parse the altered string later
 															var new_obj = JSON.parse(new_jsonstr9);
 
 															
-															alert("new"+JSON.stringify(new_obj));
+															//alert("new"+JSON.stringify(new_obj));
 															
 															console.log(JSON.stringify(new_obj));
 															//alert("Before Call");
@@ -5978,8 +6275,123 @@ mainApp1.controller('myController13',function($scope, $http) {
 														}
 															};
 														
-														
+															
+															// start of Finance Dealer
+															// start of External Dealer SM Creation
+															$scope.submitCrtExtDlFinNewfrm = function(isValid) {
+																//alert("inside creation SM Dealessssssr"+isValid+$scope.categorySvExt);
+																if (isValid) {
+																
+																var jsonInputToAPI = { "category": $scope.categoryFinExt, "companyName": $scope.companyFinExt, "street": $scope.streetFinExt, "suburb": $scope.suborbFinExt, "state": $scope.stateFinExt, "postCode": $scope.postFinExt, "phone": $scope.phoneFinExt, "website": $scope.websiteFinExt, "mobile": $scope.mobileFinExt, "tollFree": $scope.tollfreeFinExt, "fax": $scope.faxFinExt, "afterHours": $scope.afterHoursFinExt, "postalAddress": $scope.postalAddressFinExt, "email": $scope.emailFinExt, "longitude": $scope.longitudeFinExt, "latitude": $scope.latitudeFinExt};
+																	
+																//alert("jsonInputToAPI"+jsonInputToAPI);
+									                            var wsURL = 'api/extdealerFinCreation';
+																//var wsURL = '';
+																$body.addClass("loading");
+																	    $http({
+																					method : 'POST',
+																					url : wsURL,
+																					data: JSON.stringify(jsonInputToAPI)
 
+																				}).success(function(data) {
+																					$body.removeClass("loading");
+																					alert("Successfully Stored create External Dealer Financer's with id"+data.externalDealerId);
+																					//alert("Service & Maintenance Successfully Stored..");
+
+
+
+																								});
+															}
+																};
+															// end of Finance Dealer
+															
+															// start of Transport Dealer
+															
+															$scope.submitCrtExtDlTpNewfrm = function(isValid) {
+																//alert("inside creation SM Dealessssssr"+isValid+$scope.categorySvExt);
+																if (isValid) {
+																
+																var jsonInputToAPI = { "category": $scope.categoryTpExt, "companyName": $scope.companyTpExt, "street": $scope.streetTpExt, "suburb": $scope.suborbTpExt, "state": $scope.stateTpExt, "postCode": $scope.postTpExt, "phone": $scope.phoneTpExt, "website": $scope.websiteTpExt, "mobile": $scope.mobileTpExt, "tollFree": $scope.tollfreeTpExt, "fax": $scope.faxTpExt, "afterHours": $scope.afterHoursTpExt, "postalAddress": $scope.postalAddressTpExt, "email": $scope.emailTpExt, "longitude": $scope.longitudeTpExt, "latitude": $scope.latitudeTpExt};
+																	
+																//alert("jsonInputToAPI"+jsonInputToAPI);
+									                            var wsURL = 'api/extdealerTpCreation';
+																//var wsURL = '';
+																$body.addClass("loading");
+																	    $http({
+																					method : 'POST',
+																					url : wsURL,
+																					data: JSON.stringify(jsonInputToAPI)
+
+																				}).success(function(data) {
+																					$body.removeClass("loading");
+																					alert("Successfully Stored create External Dealer Transport with id"+data.externalDealerId);
+																					//alert("Service & Maintenance Successfully Stored..");
+
+
+
+																								});
+															}
+																};
+															// end of Transport Dealer
+															
+															
+															// start of External Dealer SM Creation
+															$scope.submitCrtExtDlSvNewfrm = function(isValid) {
+																//alert("inside creation SM Dealessssssr"+isValid+$scope.categorySvExt);
+																if (isValid) {
+																
+																var jsonInputToAPI = { "category": $scope.categorySvExt, "companyName": $scope.companySvExt, "street": $scope.streetSvExt, "suburb": $scope.suborbSvExt, "state": $scope.stateSvExt, "postCode": $scope.postSvExt, "phone": $scope.phoneSvExt, "website": $scope.websiteSvExt, "mobile": $scope.mobileSvExt, "tollFree": $scope.tollfreeSvExt, "fax": $scope.faxSvExt, "afterHours": $scope.afterHoursSvExt, "postalAddress": $scope.postalAddressSvExt, "email": $scope.emailSvExt, "longitude": $scope.longitudeSvExt, "latitude": $scope.latitudeSvExt};
+																	
+																//alert("jsonInputToAPI"+jsonInputToAPI);
+									                            var wsURL = 'api/extdealerSvCreation';
+																//var wsURL = '';
+																$body.addClass("loading");
+																	    $http({
+																					method : 'POST',
+																					url : wsURL,
+																					data: JSON.stringify(jsonInputToAPI)
+
+																				}).success(function(data) {
+																					$body.removeClass("loading");
+																					alert("Successfully Stored create External Dealer Sv with id"+data.externalDealerId);
+																					//alert("Service & Maintenance Successfully Stored..");
+
+
+
+																								});
+															}
+																};
+															// end of External Dealer SM Creation
+														
+															// start of External Dealer Creation
+															$scope.submitCrtExtDlNewfrm = function(isValid) {
+																//alert("inside creation Dealessssssr"+isValid+$scope.categoryExt);
+																if (isValid) {
+																
+																var jsonInputToAPI = { "category": $scope.categoryExt, "companyName": $scope.companyExt, "street": $scope.streetExt, "suburb": $scope.suborbExt, "state": $scope.stateExt, "postCode": $scope.postExt, "phone": $scope.phoneExt, "website": $scope.websiteExt, "mobile": $scope.mobileExt, "tollFree": $scope.tollfreeExt, "fax": $scope.faxExt, "afterHours": $scope.afterHoursExt, "postalAddress": $scope.postalAddressExt, "email": $scope.emailExt, "longitude": $scope.longitudeExt, "latitude": $scope.latitudeExt};
+																	
+																//alert("jsonInputToAPI"+jsonInputToAPI);
+									                            var wsURL = 'api/extdealerCreation';
+																//var wsURL = '';
+																$body.addClass("loading");
+																	    $http({
+																					method : 'POST',
+																					url : wsURL,
+																					data: JSON.stringify(jsonInputToAPI)
+
+																				}).success(function(data) {
+																					$body.removeClass("loading");
+																					alert("Successfully Stored create External Dealer with id"+data.externalDealerId);
+																					//alert("Service & Maintenance Successfully Stored..");
+
+
+
+																								});
+															}
+																};
+															// end of External Dealer Creation
+															
+															
 													$scope.submitMyQuoteNewfrm = function(isValid) {
 														//alert("inside Sesdarv Maint"+isValid);
 														if (isValid) {
@@ -6040,8 +6452,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 							                            table.splice(0,1);
 
 							                            jsonInput.vehQuotExtras = table ;
-							                            alert("vehExtras"+table);
-														alert("vehExtras"+jsonInput.vehQuotExtras);
+							                            //alert("vehExtras"+table);
+														//alert("vehExtras"+jsonInput.vehQuotExtras);
 														
 														
 														// Transfer the object to a JSON string
@@ -6055,7 +6467,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 														var new_obj = JSON.parse(new_jsonstr2);
 
 														
-														alert("new"+JSON.stringify(new_obj));
+														//alert("new"+JSON.stringify(new_obj));
 														
 														console.log(JSON.stringify(new_obj));
 														//alert("Before Call");

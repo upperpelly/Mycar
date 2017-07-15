@@ -53,7 +53,15 @@ public class ExtDealerServMaintVO {
 	private String email;
 	private float longitude;
 	private float latitude;
+	private Date creationDate;
+	
+	public Date getCreationDate() {
+		return creationDate;
+	}
 
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
 	List<ExtDealServMaintr1> extDealSearch;
 	
 	public List<ExtDealServMaintr1> getExtDealSearch() {

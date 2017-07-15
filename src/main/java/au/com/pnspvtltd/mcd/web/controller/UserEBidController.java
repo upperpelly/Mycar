@@ -608,6 +608,24 @@ public class UserEBidController {
 		return userAdminSearchVO12;
 	}
 	
+	
+	@GetMapping(value = "adminuserall", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserAdminSearchVO adminuserall() {
+		LOGGER.debug("Received request to get all users with id {} ");
+		UserAdminSearchVO userAdminSearchVO12 = new UserAdminSearchVO();
+	
+		List<UserVO> userVOs = new ArrayList<UserVO>();
+		
+		List<User> users = userRepository.getAllUser();
+		for (User user : users) {
+			userVOs.add(domainModelUtil.fromUser(user, true));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	
+		return userAdminSearchVO12;
+	}
+	
 	@GetMapping(value = "adminuser", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public UserAdminSearchVO adminuser(@RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName, @RequestParam("email") String email,
@@ -754,6 +772,22 @@ public class UserEBidController {
 		return userAdminSearchVO12;
 	}
 	
+	@GetMapping(value = "getSearchInforAll", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserSearchAdminVO getSearchInforAll() {
+		LOGGER.debug("Received request to get Search Ebid All with id {} ");
+		UserSearchAdminVO userAdminSearchVO12 = new UserSearchAdminVO();
+		List<SearchVO> userVOs = new ArrayList<SearchVO>();
+		
+		List<Search> users = userSearchLeadRepository.getAllSearch();
+		for (Search user : users) {
+			userVOs.add(domainModelUtil.toBatchSearchVO(user));
+		
+		}
+		userAdminSearchVO12.setSearchVO(userVOs);
+	
+		return userAdminSearchVO12;
+	}
+	
 	@GetMapping(value = "getSearchInfor", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public UserSearchAdminVO getSearchInfor(@RequestParam("modelYear") String modelYear,
 			@RequestParam("modelDisplay") String modelDisplay, @RequestParam("modelName") String modelName, @RequestParam("modelTrim") String modelTrim,
@@ -797,6 +831,22 @@ public class UserEBidController {
 		return userAdminSearchVO12;
 	}
 	
+	@GetMapping(value = "getsmInforAll", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserServiceMaintAdminVO getsmInforAll() {
+		LOGGER.debug("Received request to get Dealer Search Finance with id {} ");
+		UserServiceMaintAdminVO userAdminSearchVO12 = new UserServiceMaintAdminVO();
+	 
+		List<SearchServMaintVO> userVOs = new ArrayList<SearchServMaintVO>();
+		
+		List<SearchServMaint> users = searchServMtLeadRepository.getAllSearchCriteria();
+		for (SearchServMaint user : users) {
+			userVOs.add(domainModelUtil.toSearchServMaint1(user));
+		
+		}
+		userAdminSearchVO12.setSearchVO(userVOs);
+	
+		return userAdminSearchVO12;
+	}
 	
 	@GetMapping(value = "getSmInfor", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public UserServiceMaintAdminVO getSmInfor(@RequestParam("modelYear") String modelYear,

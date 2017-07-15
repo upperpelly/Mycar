@@ -95,7 +95,7 @@ public class ServMaintQuotationController {
 		//vehicleQuotation.setVehQuotExtras(dealerVO.getVehQuotExtras());
 		//vehicleQuotation.setFname(dealerVO.getFname()); // Terms and conditions
 		
-		
+		vehicleQuotation.setVehQuotExtras(dealerVO.getVehQuotExtras());
 		vehicleQuotation.setUserId(dealerVO.getUserId());
 		vehicleQuotation.setUserCreationDate(dealerVO.getUserCreationDate());
 		Calendar calendar = Calendar.getInstance();

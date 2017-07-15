@@ -238,7 +238,7 @@ public class DealerServiceImpl implements DealerService {
 			extDealerSearchVO.setCompanyName(dealer.getCompanyName());
 			extDealerSearchVO.setStreet(dealer.getStreet());
 			extDealerSearchVO.setSuburb(dealer.getSuburb());
-			extDealerSearchVO.setState(dealer.getState());
+			extDealerSearchVO.setDealState(dealer.getState());
 			extDealerSearchVO.setPostCode(dealer.getPostCode());
 			extDealerSearchVO.setCountry(dealer.getCountry());
 			extDealerSearchVO.setPhone(dealer.getPhone());
