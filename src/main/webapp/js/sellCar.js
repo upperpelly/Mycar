@@ -8,15 +8,22 @@ var mainApp1 = angular.module("mainApp1", []);
 		$scope.firstForm = function(valid) {
 			//alert("in first form");
 			$scope.firstFlag=true;
+			//alert(valid);
 			if(valid){
 				//alert("inside valid");
-				$('#first').removeClass('disabled');
+				//alert(this);
+				$(document.getElementById("first").parentElement.parentElement).slideToggle();			
+				$(document.getElementById("first").parentElement.parentElement.previousElementSibling).find('h3').removeClass('active');
+				$(document.getElementById("first").parentElement.parentElement.parentElement).next().find('.Registration').slideToggle();			
+				$(document.getElementById("first").parentElement.parentElement.parentElement).next().find('h3').addClass('active');
+				/*$('#first').removeClass('disabled');
 		        $('#first1').attr('data-toggle','pill');
 		        $('#first1').attr('href','#CarDet');
-		        document.getElementById("first1").click();
+		        document.getElementById("first1").click();*/
 		        $scope.firstFlag=false;
 			}else{
-				alert("inside invalid");
+				//alert("inside invalid");
+				$scope.firstFlag=true;
 			}
 			
 	        //$('#menu1').show();
@@ -27,13 +34,18 @@ var mainApp1 = angular.module("mainApp1", []);
 			//alert("in second form");secondFlag
 			$scope.secondFlag=true;
 			if(valid){
-				$('#second').removeClass('disabled');
+				/*$('#second').removeClass('disabled');
 		        $('#second1').attr('data-toggle','pill');
 		        $('#second1').attr('href','#CarExtr');
-		        document.getElementById("second1").click();
+		        document.getElementById("second1").click();*/
+				$(document.getElementById("second").parentElement.parentElement).slideToggle();			
+				$(document.getElementById("second").parentElement.parentElement.previousElementSibling).find('h3').removeClass('active');
+				$(document.getElementById("second").parentElement.parentElement.parentElement).next().find('.Registration').slideToggle();			
+				$(document.getElementById("second").parentElement.parentElement.parentElement).next().find('h3').addClass('active');
 		        $scope.secondFlag=false;
 			}else{
-				alert("inside invalid");
+				//alert("inside invalid");
+				$scope.secondFlag=true;
 			}
 			
 	        //$('#second1').click();
@@ -51,13 +63,18 @@ var mainApp1 = angular.module("mainApp1", []);
 			//alert("in four form");fourthFlag
 			$scope.fourthFlag=true;
 			if(valid){
-				$('#four').removeClass('disabled');
+				/*$('#four').removeClass('disabled');
 		        $('#four1').attr('data-toggle','pill');
 		        $('#four1').attr('href','#CarList');
-		        document.getElementById("four1").click();
+		        document.getElementById("four1").click();*/
+				$(document.getElementById("four").parentElement.parentElement).slideToggle();			
+				$(document.getElementById("four").parentElement.parentElement.previousElementSibling).find('h3').removeClass('active');
+				$(document.getElementById("four").parentElement.parentElement.parentElement).next().find('.Registration').slideToggle();			
+				$(document.getElementById("four").parentElement.parentElement.parentElement).next().find('h3').addClass('active');
 		        $scope.fourthFlag=false;
 			}else{
-				alert("inside invalid");
+				//alert("inside invalid");
+				$scope.fourthFlag=true;
 			}
 			
 	        //$('#second1').click();
@@ -70,6 +87,18 @@ var mainApp1 = angular.module("mainApp1", []);
 	        $('#five1').attr('data-toggle','pill');
 	        $('#five1').attr('href','#CarAddrCon');
 	        document.getElementById("five1").click();	        
+		};
+		
+		
+		$scope.sixthForm = function(valid) {
+			$scope.sixthFlag=true;
+			if(valid){
+				//alert("Valid");
+		        $scope.sixthFlag=false;
+			}else{
+				//alert("inside invalid");
+				$scope.sixthFlag=true;
+			}
 		};
 		$body = $("body");
 		$body.addClass("loading");

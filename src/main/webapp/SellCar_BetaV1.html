@@ -161,21 +161,21 @@ $(document).ready(function () {
 	$(".add-row").on("click", function(){
 	    //var markup = "<div class='form-group row'><div class='col-sm-6 col-md-6 input-group pull-left'><input type='text' name='uploadPics' class='input-text full-width' value='' placeholder='Upload Photos' required/><span class='glyphicon glyphicon-upload input-group-addon'></span></div><div class='col-sm-2 col-md-2'><a class='delete-row pull-right btn btn-danger'	data-toggle='tooltip' data-placement='top' title='Delete'><i	class='soap-icon-close'></i></a></div></div>";
 		if(count>25){
-            alert("Only 10 textboxes allow");
+            alert("You can only upload atmost 25 photos");
             return false;
    		 }   
 	    //var markup = "<div class='form-group row'><div class='col-sm-6 col-md-6 input-group pull-left'><input type='text' name='uploadPics' id=\"uploadPics" + count + "\" class='input-text full-width' placeholder='Upload Photos' required/><span class='glyphicon glyphicon-upload input-group-addon'></span></div><div class='col-sm-3 col-md-3'><a class='delete-row btn btn-danger' title='Delete'><i class='soap-icon-close'></i></a></div></div>"
-	    var markup = "<div class='form-group row' id=\"uploadPics" + count + "\"><div class='col-sm-6 col-md-6 input-group pull-left'><input type='text' name='uploadPics' id=\"uploadPics" + count + "\" class='input-text full-width' placeholder='Upload Photos' required/><span class='glyphicon glyphicon-upload input-group-addon'></span></div></div>"
+	    var markup = "<div class='form-group' id=\"uploadPics" + count + "\"><div class='col-sm-6 col-md-6 input-group pull-left'><input type='text' name='uploadPics' id=\"uploadPics" + count + "\" class='form-control' placeholder='Upload Photos' required/><span class='glyphicon glyphicon-upload input-group-addon'></span></div></div>"
 	    $("#photoSec").append(markup);
 	    count++;
 	  });
 	
 	$(".delete-row").on("click", function(){
-		alert("delete option");
-		alert(count);
+		//alert("delete option");
+		//alert(count);
 		count--;
 		if(count==1){
-			alert("Deleted the Last photo");
+			//alert("Deleted the Last photo");
 			count=2;
 			return false;
 		}
@@ -275,6 +275,11 @@ body.loading .modal {
 	
 		
 	</script>
+	
+	<!-- Bootstrap -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/cc-styles.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 </head>
 <body ng-app="mainApp1" >
     
@@ -402,22 +407,22 @@ body.loading .modal {
                 <div class="email-signup">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="input-text full-width" placeholder="first name">
+                            <input type="text" class="form-control" placeholder="first name">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="input-text full-width" placeholder="last name">
+                            <input type="text" class="form-control" placeholder="last name">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="input-text full-width" placeholder="email address">
+                            <input type="text" class="form-control" placeholder="email address">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="input-text full-width" placeholder="********">
+                            <input type="password" class="form-control" placeholder="********">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="input-text full-width" placeholder="********">
+                            <input type="password" class="form-control" placeholder="********">
                         </div>
                         <div class="form-group">
-                            <div class="checkbox">
+                            <div class="squaredOne">
                                 <label>
                                     <input type="checkbox"> Tell me about Autoscoop news
                                 </label>
@@ -440,10 +445,10 @@ body.loading .modal {
                 <div class="seperator"><label>OR</label></div>
                 <form>
                     <div class="form-group">
-                        <input type="text" class="input-text full-width" placeholder="email address">
+                        <input type="text" class="form-control" placeholder="email address">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="input-text full-width" placeholder="password">
+                        <input type="password" class="form-control" placeholder="password">
                     </div>
                     <div class="form-group">
                         <a href="#" class="forgot-password pull-right">Forgot password?</a>
@@ -458,401 +463,6 @@ body.loading .modal {
                 <p>Don't have an account? <a href="#travelo-signup" class="goto-signup soap-popupbox">Sign up</a></p>
             </div>
         </header>
-        <!--<div class="page-title-container">
-            <div class="container">
-                <div class="page-title pull-left">
-                    <h2 class="entry-title">Car Detailed</h2>
-                </div>
-                <ul class="breadcrumbs pull-right">
-                    <li><a href="Hm_BetaV1.html">HOME</a></li>
-                    <li class="active">Car Detailed</li>
-                </ul>
-            </div>
-        </div>-->
-        <!-- <div id="slideshow">
-            <div class="fullwidthbanner-container">
-                <div class="revolution-slider rev_slider" style="height: 0; overflow: hidden;">
-                    <ul>    SLIDE 
-                        <li data-index="rs-1" data-transition="turnoff-vertical" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="500"  data-thumb="http://static.soaptheme.net/uploads/revslider1/concept/bg3.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                            MAIN IMAGE
-                            <img src="http://static.soaptheme.net/uploads/revslider1/concept/bg3.jpg"  alt="" title="Slider1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                            LAYERS
-
-                            LAYER NR. 1
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-1" 
-                                 data-x="-481" 
-                                 data-y="324" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:50px;opacity:0;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:50px;opacity:0;s:1500;s:1500;" 
-                                data-start="500" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 5;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/badaal.png" alt="" data-no-retina> </div>
-
-                            LAYER NR. 2
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-2" 
-                                 data-x="203" 
-                                 data-y="102" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="x:right;skX:-85px;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="800" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 6;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/area.png" alt="" data-no-retina> </div>
-
-                            LAYER NR. 3
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-3" 
-                                 data-x="389" 
-                                 data-y="205" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:50px;opacity:0;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="1100" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 7;"><img src="images/carimage2.png" alt="" data-no-retina width="450" height="125"> </div>
-
-                            LAYER NR. 4
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-4" 
-                                 data-x="250" 
-                                 data-y="342" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="1400" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 8;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/11.png" alt="" data-no-retina> </div>
-
-                            LAYER NR. 5
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-5" 
-                                 data-x="122" 
-                                 data-y="420" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="4700" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 9;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/arrow11.png" alt="" data-no-retina> </div>
-
-                            LAYER NR. 6
-                            <div class="tp-caption large_bold_black2_1   tp-resizeme" 
-                                 id="slide-1-layer-6" 
-                                 data-x="139" 
-                                 data-y="428" 
-                                            data-width="['auto']"
-                                data-height="['auto']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:1500;s:1500;" 
-                                data-start="5000" 
-                                data-splitin="none" 
-                                data-splitout="none" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 10; white-space: nowrap;font-family:Arial;border-color:rgba(255, 214, 88, 1.00);"><span style="color:#fdb714">AVG SAV</span> $<span id="avgSavMin"></span> : $<span id="avgSavMax"></span> </span></div>
-
-                            LAYER NR. 7
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-7" 
-                                 data-x="194" 
-                                 data-y="191" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="1700" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 11;"><img src="images/22.png" alt="" data-no-retina> </div>
-
-                            LAYER NR. 8
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-8" 
-                                 data-x="66" 
-                                 data-y="233" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="4400" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 12;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/arrow11.png" alt="" data-no-retina> </div>
-
-                            LAYER NR. 9
-                            <div class="tp-caption large_bold_black2_1   tp-resizeme" 
-                                 id="slide-1-layer-9" 
-                                 data-x="89" 
-                                 data-y="240" 
-                                            data-width="['auto']"
-                                data-height="['auto']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:1500;s:1500;" 
-                                data-start="5300" 
-                                data-splitin="none" 
-                                data-splitout="none" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 13; white-space: nowrap;font-family:Arial;border-color:rgba(255, 214, 88, 1.00);"><span style="color:#fdb714">Dealers count :  </span><span id="noDealers"></span> </span> </div>
-
-                            LAYER NR. 10
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-10" 
-                                 data-x="341" 
-                                 data-y="8" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="2000" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 14;"><img src="images/33.png" alt="" data-no-retina> </div>
-
-                            LAYER NR. 11
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-11" 
-                                 data-x="213" 
-                                 data-y="90" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="4100" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 15;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/arrow11.png" alt="" data-no-retina> </div>
-
-                            LAYER NR. 12
-                            <div class="tp-caption large_bold_black2_1   tp-resizeme" 
-                                 id="slide-1-layer-12" 
-                                 data-x="232" 
-                                 data-y="97" 
-                                            data-width="['auto']"
-                                data-height="['auto']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:1500;s:1500;" 
-                                data-start="5600" 
-                                data-splitin="none" 
-                                data-splitout="none" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 16; white-space: nowrap;font-family:Arial;border-color:rgba(255, 214, 88, 1.00);"><span style="color:#fdb714">In Stock :  </span> <span id="noStock"></span></span></div>
-
-                            LAYER NR. 13
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-13" 
-                                 data-x="657" 
-                                 data-y="8" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="2300" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 17;"><img src="images/44.png" alt="" data-ww="auto" data-hh="auto" data-no-retina> </div>
-
-                            LAYER NR. 14
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-14" 
-                                 data-x="758" 
-                                 data-y="87" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:1500;s:1500;" 
-                                data-start="3800" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 18;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/arrow112.png" alt="" data-ww="auto" data-hh="auto" data-no-retina> </div>
-
-                            LAYER NR. 15
-                            <div class="tp-caption large_bold_black2_1   tp-resizeme" 
-                                 id="slide-1-layer-15" 
-                                 data-x="778" 
-                                 data-y="96" 
-                                            data-width="['auto']"
-                                data-height="['auto']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="5900" 
-                                data-splitin="none" 
-                                data-splitout="none" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 19; white-space: nowrap;font-family:Arial;border-color:rgba(255, 214, 88, 1.00);"><span style="color:#fdb714">FIN Min : Max </span> $<span id="finMin"></span> : $<span id="finMax"></span></span></div>
-
-                            LAYER NR. 16
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-16" 
-                                 data-x="827" 
-                                 data-y="207" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="2600" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 20;"><img src="images/66.png" alt="" data-ww="auto" data-hh="auto" data-no-retina> </div>
-
-                            LAYER NR. 17
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-17" 
-                                 data-x="910" 
-                                 data-y="230" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:300;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:1500;s:1500;" 
-                                data-start="3500" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 21;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/arrow112.png" alt="" data-ww="auto" data-hh="auto" data-no-retina> </div>
-
-                            LAYER NR. 18
-                            <div class="tp-caption large_bold_black2_1   tp-resizeme" 
-                                 id="slide-1-layer-18" 
-                                 data-x="945" 
-                                 data-y="238" 
-                                            data-width="['auto']"
-                                data-height="['auto']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="6200" 
-                                data-splitin="none" 
-                                data-splitout="none" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 22; white-space: nowrap;font-family:Arial;border-color:rgba(255, 214, 88, 1.00);"><span style="color:#fdb714">INS Min : Max </span>$<span id="insMin"></span> : $<span id="insMax"></span></span> </div>
-
-                            LAYER NR. 19
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-19" 
-                                 data-x="817" 
-                                 data-y="406" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="2900" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 23;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/77.png" alt="" data-ww="auto" data-hh="auto" data-no-retina> </div>
-
-                            LAYER NR. 20
-                            <div class="tp-caption   tp-resizeme" 
-                                 id="slide-1-layer-20" 
-                                 data-x="921" 
-                                 data-y="430" 
-                                            data-width="['none','none','none','none']"
-                                data-height="['none','none','none','none']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="3200" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 24;"><img src="http://static.soaptheme.net/uploads/revslider1/concept/arrow112.png" alt="" data-ww="auto" data-hh="auto" data-no-retina> </div>
-
-                            LAYER NR. 21
-                            <div class="tp-caption large_bold_black2_1   tp-resizeme" 
-                                 id="slide-1-layer-21" 
-                                 data-x="961" 
-                                 data-y="438" 
-                                            data-width="['auto']"
-                                data-height="['auto']"
-                                data-transform_idle="o:1;"
-                     
-                                 data-transform_in="y:bottom;s:1500;e:Power3.easeInOut;" 
-                                 data-transform_out="y:bottom;s:300;s:300;" 
-                                data-start="6500" 
-                                data-splitin="none" 
-                                data-splitout="none" 
-                                data-responsive_offset="on" 
-
-                                
-                                style="z-index: 25; white-space: nowrap;font-family:Arial;border-color:rgba(255, 214, 88, 1.00);"><span style="color:#fdb714">Price </span>$<span id="minValue"></span> : $<span id="maxValue"></span></div>
-                        </li>
-                       
-                    </ul>
-                </div>
-            </div>
-        </div> -->
-        
         <!-- start bubble -->
         <div id="dashboard"  class="PT50">
        	 <div class="row block ML10">
@@ -1012,143 +622,111 @@ body.loading .modal {
         <!-- end bubble -->
         <section id="content">
            <div class="container">
-           		<!-- <div class="row">
-           				<ul class="steps">
-								  <li class="past">
-								    <span>
-								      <strong>Step 1</strong>
-								    </span><i></i>
-								  </li>
-								  <li class="present">
-								    <span>
-								      <strong>Step 2</strong>
-								    </span><i></i>
-								  </li>
-								  <li class="past">
-								    <span>
-								      <strong>Step 3</strong>
-								    </span><i></i>
-								  </li><li class="present">
-								    <span>
-								      <strong>Step 2</strong>
-								    </span><i></i>
-								  </li>
-								</ul>
-           		</div> -->
-                
-                    <div id="main" class="col-md-10">
-                        <div class="booking-section travelo-box" ng-controller="myController1" id="myController1">
-                        	<div class="form-group row text-center">	
-	                        	<h1>Sell My Vehicle</h1>
-							</div>
-                            <!-- <div class="form-group row">
-                            	<div class="col-sm-1 col-md-1"><b>Share Via :</b></div>
-                            	<div class="col-sm-8 col-md-8">
-                            		<a class="share-button btn btn-info"  title="Twitter" data-share-url="http://www.autoscoop.com.au/" data-share-network="twitter" data-share-text="Share this awesome link on Twitter" data-share-title="Twitter Share" data-share-via="" data-share-tags="" data-share-media="" href="#"><i class="fa fa-twitter"></i></a>
-									<a class="share-button btn btn-primary"  title="Facebook" data-share-url="http://www.autoscoop.com.au/" data-share-network="facebook" data-share-text="Share this awesome link on Facebook" data-share-title="Facebook Share" data-share-via="" data-share-tags="" data-share-media="" href="#"><i class="fa fa-facebook"></i></a>
-									<a class="share-button btn btn-success"  title="Linkedin" data-share-url="http://www.autoscoop.com.au/" data-share-network="linkedin" data-share-text="Share this awesome link on LinkedIn" data-share-title="LinkedIn Share" data-share-via="" data-share-tags="" data-share-media="" href="#"><i class="fa fa-linkedin"></i></a>
-									<a class="share-button btn btn-danger"  title="Google plus"  data-share-url="http://www.autoscoop.com.au/" data-share-network="googleplus" data-share-text="Share this awesome link on Google+" data-share-title="Google+ Share" data-share-via="" data-share-tags="" data-share-media="" href="#"><i class="fa fa-google-plus"></i></a>
-									<a class="share-button btn btn-warning"  title="Pinterest" data-share-url="http://www.autoscoop.com.au/" data-share-network="pinterest" data-share-text="Share this awesome link on Pinterest" data-share-title="Pinterest Share" data-share-via="" data-share-tags="" data-share-media="" href="#"><i class="fa fa-pinterest"></i></a>
-									<a class="share-button btn btn-primary"  title="Reddit" data-share-url="http://www.autoscoop.com.au/" data-share-network="reddit" data-share-text="Share this awesome link on Reddit" data-share-title="Reddit Share" data-share-via="" data-share-tags="" data-share-media="" href="#"><i class="fa fa-reddit" aria-hidden="true"></i></a>
-                      	     	</div>
-                            </div> --><br/>
-                            <form class="booking-form" name="sellCarFrm" novalidate ng-submit="" >
-                            	<div class="form-group row">
-	                            	<ul class="nav nav-pills">
-									    <li class="active"><a data-toggle="pill" href="#CarPhVid">Add Photos & Videos of your Car</a></li>
-									    <li id="first" class="disabled"><a id="first1">Enter Car Details</a></li><!--data-toggle="pill" href="#CarDet"  -->
-									    <li id="second" class="disabled"><a id="second1">Enter Car Extras</a></li><!-- data-toggle="pill" href="#CarExtr"  -->
-									    <li id="third" class="disabled"><a id="third1">Enter Pricing</a></li><!-- data-toggle="pill" href="#CarPric"  -->
-									    <li id="four" class="disabled"><a id="four1">Listing Type</a></li><!--  data-toggle="pill" href="#CarList" -->
-									    <li id="five" class="disabled"><a id="five1">Address & Contact Details</a></li><!--  data-toggle="pill" href="#CarAddrCon" -->
-									  </ul>
-                            	</div>
-                            	<!-- <i class="fa fa-circle" aria-hidden="true">Step 1</i> -->
-                            	<div class="tab-content">
-								    <div id="CarPhVid" class="tab-pane fade in active" ng-form="VidSubForm">
-								      <h3>Add Photos & Videos of your Car!</h3>
-								      <div class="form-group row">
-	                                        <div class="col-sm-6 col-md-6">
-	                                            <input type="text"
-	                                                   id="vidUrlCar" name="vidUrlCar" ng-model="vidUrlCar"
-	                                                   class="input-text full-width" value="" placeholder="Provide hosted Video url for your Car" required/>
-	                                                   <span style="color: red" ng-show="VidSubForm.vidUrlCar.$invalid && firstFlag"><b>Url is Required</b></span>
-	                                        </div>
-	                                        <div class="col-sm-3 col-md-3">
-                                            	Example YouTube and Other
-                                       		 </div>
-                                       		 <!-- <h1>{{VidSubForm.vidUrlCar.$invalid}}</h1> -->
-                                       		 
-                                    	</div>
-                                    	<div class="form-group row">
-	                                        <div class="col-sm-6 col-md-6 input-group pull-left">
-	                                            <input type="text"
-	                                                   id="uploadPics" name="uploadPics" ng-model="vidPhotoCar"
-	                                                   class="input-text full-width" value="" placeholder="Upload Photos" required/><span class="glyphicon glyphicon-upload input-group-addon"></span>
-	                                            <span style="color: red" ng-show="VidSubForm.vidUrlCar.$invalid && firstFlag"><b>Minimum 1 Photo is Required</b></span>
-	                                        </div>
-	                                        <div class="col-sm-3 col-md-3">
-                                            	<a data-toggle="tooltip"
+                	<!-- Start Here -->
+                	<div id="main" class="col-md-10 booking-section travelo-box" ng-controller="myController1" id="myController1">
+                		<div class="row">
+					      <div class="col-md-12">
+					        <h1>SELL MY CAR</h1>
+					      </div>
+					    </div>
+                		 <div class="MinHyt">
+						      <div class="RegTL">
+						        <div class="row">
+						          <div class="col-md-12">
+						            <h3 class="heading active"><span>1</span>Add Photos & Videos of your Car</h3>
+						          </div>
+						          <div class="col-xs-11 col-sm-11 col-md-6 Registration MT10" ng-form="VidSubForm">
+						            <div class="form-group">
+						              <div class="clearfix"></div>
+						              <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0Mob ">
+						                <!-- <input type="text" class="form-control" placeholder="ABN Number"> -->
+						                <input type="text" id="vidUrlCar" name="vidUrlCar" ng-model="vidUrlCar" class="form-control" placeholder="Provide hosted Video url for your Car" required/>
+						                <span style="color: red" ng-show="VidSubForm.vidUrlCar.$invalid && firstFlag"><b>Url is Required</b></span>
+						              </div>
+						              <div class="clearfix"></div>
+						            </div>
+						            <div class="form-group">
+						              <div class="clearfix"></div>
+						              <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0Mob input-group pull-left">
+						              		<input type="text"
+	                                                   id="vidPhotoCar" name="vidPhotoCar" ng-model="vidPhotoCar"
+	                                                   class="form-control" placeholder="Upload Photos" required/><span class="glyphicon glyphicon-upload input-group-addon"></span>
+	                                            
+						              </div>
+						              <div class="clearfix"></div>
+						            </div>
+						            
+						            <div class="form-group">
+						              <div class="clearfix"></div>
+						              <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0Mob ">
+	                                    <span style="color: red" ng-show="VidSubForm.vidPhotoCar.$invalid && firstFlag"><b>Minimum 1 Photo is Required</b></span>
+						              </div>
+						              <div class="clearfix"></div>
+						            </div>
+						            <div class="form-group">
+						              <div class="clearfix"></div>
+						              <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0Mob input-group pull-left">
+						              	
+						            		<a data-toggle="tooltip"
 																			data-placement="right" title="Click to Add More Photos"
 																			class="add-row btn btn-success pull-left"><i
 																			class="soap-icon-plus"></i></a><a class='delete-row pull-right btn btn-danger'	data-toggle='tooltip' data-placement='top' title='Delete'><i	class='soap-icon-close'></i></a>
-                                       		 </div>
-                                    	</div>
-                                    	<div id="photoSec"></div>
-                                    	<div class="form-group row">
-                                    		<div class="col-sm-6 col-md-6">
-	                                    		<strong>Notes:</strong>
-	                                    		<ol>
-		                                    		<li>Add Your Photo for Maximum reach and responses.</li>
-		                                    		<li>Minimum 1 Photo is required.</li>
-		                                    		<li>You can Upload upto 25 Photos.</li>
-		                                    		<li>Upload Video or Link the Video from External Platform.</li>
-	                                    		</ol>
-                                    		</div>
-                                    	</div>
-                                    	<div class="form-group row">
-										 	 <div class="col-sm-10 col-md-10">
-											</div>
-	                                        <div class="col-sm-2 col-md-2">
-	                                        	<button type="submit" class="btn btn-sm btn-success btn-block" ng-click="firstForm(VidSubForm.$valid)">Next&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></button><!--ng-disabled="VidSubForm.$invalid"  -->
-	                                        </div>
-	                                    </div>
-								    </div>
-								    
-								    
-								    <div id="CarDet" class="tab-pane fade" ng-form="CarDetForm">
-								      <h3>Enter Car Details</h3>
-								      <div class="form-group row">
+						              </div>
+						              <div class="clearfix"></div>
+						            </div>
+						            
+						            <div id="photoSec"></div>
+						            <br/>
+						            <div class="col-md-12 col-sm-12 col-xs-12">
+							            <strong>Notes:</strong>
+	                               		<ol>
+	                                		<li>1.Add Your Photo for Maximum reach and responses.</li>
+	                                		<li>2.Minimum 1 Photo is required.</li>
+	                                		<li>3.You can Upload upto 25 Photos.</li>
+	                                		<li>4.Upload Video or Link the Video from External Platform.</li>
+	                               		</ol>
+                               		</div>
+						            <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0 MT20 MB20">
+						              <button class="btn btn-primary Details" id="first" ng-click="firstForm(VidSubForm.$valid)">Next</button>
+						            </div>
+						          </div>
+						        </div>
+						        <div class="row">
+						          <div class="col-md-12">
+						            <h3 class="heading"><span>2</span>Enter Car Details</h3>
+						          </div>
+						          <div class="col-xs-11 col-sm-11 col-md-11 Registration MT10" ng-form="CarDetForm">
+						            <div class="form-group row">
 										<div class="col-sm-2 col-md-2">
 											<label>Header Text</label>
 										</div>
 										<div class="col-sm-6 col-md-6">
 											<input type="text"
 	                                                   id="headText" name="headText" ng-model="headText"
-	                                                   class="input-text full-width" placeholder="Enter Add Title" required/>
+	                                                   class="form-control" placeholder="Enter Add Title" required/>
 	                                                   <span style="color: red" ng-show="CarDetForm.headText.$invalid && secondFlag"><b>Header Text is Required</b></span>
 										</div>
-									  </div>
-									  <div class="form-group row">
+									 </div>
+									 <div class="form-group row">
 										<div class="col-sm-2 col-md-2">
 											<label>Condition</label>
 										</div>
-										<!-- <div class="col-sm-6 col-md-6">
-											<input type="radio" name="optradio">New &nbsp;<input type="radio" name="optradio">Used &nbsp;<input type="radio" name="optradio">Demo
-										</div> -->
 										<div class="col-sm-2 col-md-2">
-											<div class="radio">
-												<label><input type="radio" name="optradio" ng-model="optradio" value="New" required />New</label>
+											<div class="squaredOne">
+												<input type="radio" name="optradio" ng-model="optradio" id="optNew" value="New" required />
+												<label for="optNew">New</label>
 											</div>
 										</div>
 										<div class="col-sm-2 col-md-2">
-											<div class="radio">
-												<label><input type="radio" name="optradio" ng-model="optradio" value="Used" required />Used</label>
+											<div class="squaredOne">
+												<input type="radio" name="optradio" ng-model="optradio" id="optUsed" value="Used" required />
+												<label for="optUsed">Used</label>
 											</div>
 										</div>
 										<div class="col-sm-2 col-md-2">
-											<div class="radio">
-												<label><input type="radio" name="optradio" ng-model="optradio" value="Demo" required />Demo</label>
+											<div class="squaredOne">
+												<input type="radio" name="optradio" ng-model="optradio" id="optDemo" value="Demo" required />
+												<label for="optDemo">Demo</label>
 											</div>
 										</div>
 										<div class="col-sm-4 col-md-4">
@@ -1160,36 +738,35 @@ body.loading .modal {
 												<label>Car Registration</label>
 											</div>
 											<div class="col-sm-3 col-md-3">
-												<input type="text" id="regNo" name="regNo" ng-model="regNo" ng-required="!notRegister"  class="input-text full-width" value="" placeholder="Rego No" />
+												<input type="text" id="regNo" name="regNo" ng-model="regNo" ng-required="!notRegister"  class="form-control" value="" placeholder="Rego No" />
 												<span style="color: red" ng-show="CarDetForm.regNo.$invalid && secondFlag"><b>RegoNo is Required</b></span>
 												<span style="color:red" ng-show="vehFrm.regNo.$error.required && (!vehFrm.regNo.$pristine || vehFrm.$submitted)"><b>Rego No is Required</b></span>
 											</div>
 											<div class="col-sm-2 col-md-2">
-												<div class="selector">
-	                                                <select class="full-width" id="regState" name="regState" ng-model="regState" ng-required="!notRegister" >
-	                                                    <option value="" selected disabled>Rego State</option>
-	                                                    <option>ACT</option>
-														<option>NT</option>
-														<option>QLD</option>
-														<option>VIC</option>
-														<option>NSW</option>
-														<option>TAS</option>
-														<option>SA</option>
-														<option>WA</option>
-	                                                </select>
-	                                            </div>
+                                                <select class="form-control" id="regState" name="regState" ng-model="regState" ng-required="!notRegister" >
+                                                    <option value="" selected disabled>Rego State</option>
+                                                    <option>ACT</option>
+													<option>NT</option>
+													<option>QLD</option>
+													<option>VIC</option>
+													<option>NSW</option>
+													<option>TAS</option>
+													<option>SA</option>
+													<option>WA</option>
+                                                </select>
 	                                            <span style="color: red" ng-show="CarDetForm.regState.$invalid && secondFlag"><b>Rego State  is Required</b></span>
 	                                            <span style="color:red" ng-show="vehFrm.regState.$error.required && (!vehFrm.regState.$pristine || vehFrm.$submitted)"><b>Rego State is Required</b></span>
 											</div>
 											<div class="col-sm-3 col-md-3">
-	                                       		<input type="text" onfocus="(this.type='date')" name="RegExpDate" id = "RegExpDate" class="input-text full-width" placeholder="Rego End Date" ng-model="RegExpDate" ng-required="!notRegister" />
+	                                       		<input type="text" onfocus="(this.type='date')" name="RegExpDate" id = "RegExpDate" class="form-control" placeholder="Rego End Date" ng-model="RegExpDate" ng-required="!notRegister" />
 	                                       		<span style="color: red" ng-show="CarDetForm.RegExpDate.$invalid && secondFlag"><b>Rego Exp date is Required</b></span>
 	                                       		<span style="color:red" ng-show="vehFrm.RegExpDate.$error.required && (!vehFrm.RegExpDate.$pristine || vehFrm.$submitted)"><b>Rego Exp date is Required</b></span>
 											</div>
 											<div class="col-sm-2 col-md-2">
 												<Strong>OR</Strong>&nbsp;
-												<div class="checkbox">
-													<input type="checkbox" id="notRegister" name="notRegister"  ng-model="notRegister" ng-required="!regNo || !regState || !RegExpDate" ng-disabled="regNo || regState || RegExpDate" />Not Registered<!-- <img src="images/RegRem.gif"></img> -->
+												<div class="squaredOne">
+													<input type="checkbox" id="notRegister" name="notRegister"  ng-model="notRegister" ng-required="!regNo || !regState || !RegExpDate" ng-disabled="regNo || regState || RegExpDate" />
+													<label for="notRegister">Not Registered</label>
 													<span style="color: red" ng-show="CarDetForm.notRegister.$invalid && secondFlag"><b>Not Registered is Required</b></span>
 												</div>
 											</div>
@@ -1200,7 +777,7 @@ body.loading .modal {
 												<label>VIN/HIN Number</label>
 											</div>
 											<div class="col-sm-3 col-md-3">
-												<input type="text" class="input-text full-width" value="" placeholder="VIN/HIN Number"   ng-model="vinnumber"  id="vinnumber" name="vinnumber" required/>
+												<input type="text" class="form-control" value="" placeholder="VIN/HIN Number"   ng-model="vinnumber"  id="vinnumber" name="vinnumber" required/>
 												<span style="color: red" ng-show="CarDetForm.vinnumber.$invalid && secondFlag"><b>VIN/HIN Number is Required</b></span>
 											</div>
 										</div>
@@ -1209,30 +786,24 @@ body.loading .modal {
 												<label>Make Details</label>
 											</div>
 	                                        <div class="col-sm-3 col-md-3">
-	                                            <div class="selector">
-													<select id="sellVehYear" name="sellVehYear" ng-options="x for x in yearsCar" ng-change="makeForYear(sellVehYear)"
-														ng-model="sellVehYear" class="full-width" required>
-														<option value="" selected disabled>Which Year ?</option>
-														</select>
-												</div>
+												<select id="sellVehYear" name="sellVehYear" ng-options="x for x in yearsCar" ng-change="makeForYear(sellVehYear)" class="form-control"
+													ng-model="sellVehYear" class="full-width" required>
+													<option value="" selected disabled>Which Year ?</option>
+													</select>
 												<span style="color: red" ng-show="CarDetForm.sellVehYear.$invalid && secondFlag"><b>Year is Required</b></span>
 	                                        </div>
 	                                        <div class="col-sm-3 col-md-3">
-	                                        	<div class="selector">
-													<select id="SellVehMake" name="SellVehMake" ng-options="x for x in MakesCarYear" ng-change="modelForYearMake(SellVehMake,sellVehYear)"
-														ng-model="SellVehMake" class="full-width" required>
-														<option value="" selected disabled>Make</option>
-														</select>
-												</div>
+												<select id="SellVehMake" name="SellVehMake" ng-options="x for x in MakesCarYear" ng-change="modelForYearMake(SellVehMake,sellVehYear)" class="form-control"
+													ng-model="SellVehMake" class="full-width" required>
+													<option value="" selected disabled>Make</option>
+													</select>
 												<span style="color: red" ng-show="CarDetForm.SellVehMake.$invalid && secondFlag"><b>Make is Required</b></span>
 	                                        </div>
 	                                        <div class="col-sm-3 col-md-3">
-												<div class="selector">
-													<select id="sellVehModel" name="sellVehModel" ng-options="x for x in ModelsCarYearMake" ng-change="varForYearMakeMod(sellVehModel,SellVehMake,sellVehYear)"
-														ng-model="sellVehModel" class="full-width" required>
-														<option value="" selected disabled>Model</option>
-														</select>
-												</div>
+												<select id="sellVehModel" name="sellVehModel" ng-options="x for x in ModelsCarYearMake" ng-change="varForYearMakeMod(sellVehModel,SellVehMake,sellVehYear)" class="form-control"
+													ng-model="sellVehModel" class="full-width" required>
+													<option value="" selected disabled>Model</option>
+													</select>
 												<span style="color: red" ng-show="CarDetForm.sellVehModel.$invalid && secondFlag"><b>Model is Required</b></span>
 	                                        </div>
 
@@ -1241,13 +812,11 @@ body.loading .modal {
                                     <div class="form-group row">
                                     	<div class="col-sm-2 col-md-2"></div>
                                     	<div class="col-md-9 col-sm-9">
-                                    		<div class="selector">
 												<select id="sellVehAutotrim"
-													name="sellVehAutotrim" ng-model="sellVehAutotrim" ng-options="x for x in VarsCarYearMakeMod"
+													name="sellVehAutotrim" ng-model="sellVehAutotrim" ng-options="x for x in VarsCarYearMakeMod" class="form-control"
 													class="full-width" required>
 													<option value="" selected disabled>AutoScoop Trim</option>
 													</select>
-											</div>
 											<span style="color: red" ng-show="CarDetForm.sellVehAutotrim.$invalid && secondFlag"><b>AutoScoop Trim is Required</b></span>
                                     	</div>
                                     </div>
@@ -1257,7 +826,7 @@ body.loading .modal {
 												<label>Mileage</label>
 											</div>
 											<div class="col-sm-3 col-md-3">
-												<input type="text" class="input-text full-width" placeholder="Current Odometer Reading"   ng-model="currOdometer"  id="currOdometer" name="currOdometer" required/>
+												<input type="text" class="form-control" placeholder="Current Odometer Reading"   ng-model="currOdometer"  id="currOdometer" name="currOdometer" required/>
 												<span style="color: red" ng-show="CarDetForm.currOdometer.$invalid && secondFlag"><b>Current Odometer Reading is Required</b></span>
 											</div>
 										</div>
@@ -1266,11 +835,11 @@ body.loading .modal {
 												<label>Color</label>
 											</div>
 											<div class="col-sm-3 col-md-3">
-												<input type="text" class="input-text full-width" placeholder="Internal Color"   ng-model="intColor"  id="intColor" name="intColor" required/>
+												<input type="text" class="form-control" placeholder="Internal Color"   ng-model="intColor"  id="intColor" name="intColor" required/>
 												<span style="color: red" ng-show="CarDetForm.intColor.$invalid && secondFlag"><b>Internal Color is Required</b></span>
 											</div>
 											<div class="col-sm-3 col-md-3">
-												<input type="text" class="input-text full-width" placeholder="External Color"   ng-model="extColor"  id="extColor" name="extColor" required/>
+												<input type="text" class="form-control" placeholder="External Color"   ng-model="extColor"  id="extColor" name="extColor" required/>
 												<span style="color: red" ng-show="CarDetForm.extColor.$invalid && secondFlag"><b>External Color is Required</b></span>
 											</div>
 										</div>
@@ -1279,130 +848,115 @@ body.loading .modal {
 												<label>Road Worthy will be provided</label>
 											</div>
 											<div class="col-sm-2 col-md-2">
-												<div class="radio">
-													<label><input type="radio" name="roadCert" ng-model="roadCert" value="true" required />Yes</label>
+												<div class="squaredOne">
+													<input type="radio" name="roadCert" id="CertYes" ng-model="roadCert" value="true" required />
+													<label for="CertYes">Yes</label>
 												</div>
 											</div>
 											<div class="col-sm-2 col-md-2">
-												<div class="radio">
-													<label><input type="radio" name="roadCert" ng-model="roadCert" value="false" required />No</label>
+												<div class="squaredOne">
+													<input type="radio" name="roadCert" id="CertNo"  ng-model="roadCert" value="false" required />
+													<label for="CertNo">No</label>
 												</div>
 											</div>
 											<span style="color: red" ng-show="CarDetForm.roadCert.$invalid && secondFlag"><b>Road Worthy is Required</b></span>
 										</div>
-									 	<div class="form-group row">
-										 	 <div class="col-sm-10 col-md-10">
-											</div>
-	                                        <div class="col-sm-2 col-md-2">
-	                                        	<button type="button" class="btn btn-sm btn-success btn-block" ng-click="secondForm(CarDetForm.$valid)">Next&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></button>
-	                                        </div>
-	                                    </div>
-								    </div><!--End of Car details  -->
-								    
-								    
-								    <div id="CarExtr" class="tab-pane fade">
-								      <h3>Enter Car Extras</h3>
-								       <div class="form-group row">
+						            <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0 MT20 MB20">
+						              <button class="btn btn-primary Details previous">Previous</button>
+						              <button class="btn btn-primary Details" id="second" ng-click="secondForm(CarDetForm.$valid)">Next</button>
+						            </div>
+						          </div>
+						        </div>
+						        <div class="row">
+						          <div class="col-md-12">
+						            <h3 class="heading"><span>3</span>Enter Car Extras</h3>
+						          </div>
+						          <div class="col-xs-11 col-sm-11 col-md-11 Registration MT10">
+						          	<div class="form-group row">
 											<div class="col-sm-6 col-md-6">
-												<h4 class="panel-title">After Market Extras</h4>
+												<label>After Market Extras</label>
 											</div>
 										</div>
 								      <div class="form-group row">
-                                         <div class="col-sm-4 col-md-4">
+								      		<div class="col-sm-1 col-md-1"></div>
+                                         <div class="col-sm-2 col-md-2">
 											<ul style="float:left;vertical-align:top;">
-											        <li class="checkbox">
-											            <label>
-											                <input type="checkbox" id="extraExternal1" name="extraExternal1" ng-model="extraExternal1"><span class="skin-color">Bull Bar</span></a>
-											            </label>
+											        <li class="squaredOne">
+										                <input type="checkbox" id="extraExternal1" name="extraExternal1" ng-model="extraExternal1">
+											            <label for="extraExternal1">Bull Bar</label>
 											        </li>
-											        <li class="checkbox">
-											            <label>
-											                <input type="checkbox" id="extraExternal2" name="extraExternal2" ng-model="extraExternal2"><span class="skin-color">Nudge Bar</span></a>
-											            </label>
+											        <li class="squaredOne">
+											                <input type="checkbox" id="extraExternal2" name="extraExternal2" ng-model="extraExternal2">
+											                <label for="extraExternal2">Nudge Bar</label>
 											        </li>
-											        <li class="checkbox">
-											            <label>
-											                <input type="checkbox" id="extraExternal3" name="extraExternal3" ng-model="extraExternal3"><span class="skin-color">Side Step</span></a>
-											            </label>
+											        <li class="squaredOne">
+											                <input type="checkbox" id="extraExternal3" name="extraExternal3" ng-model="extraExternal3">
+											                <label for="extraExternal3">Side Step</label>
 											        </li>
-											        <li class="checkbox">
-											            <label>
-											                <input type="checkbox" id="extraExternal4" name="extraExternal4" ng-model="extraExternal4"><span class="skin-color">Snorkel</span></a>
-											            </label>
+											        <li class="squaredOne">
+											                <input type="checkbox" id="extraExternal4" name="extraExternal4" ng-model="extraExternal4">
+											                <label for="extraExternal4">Snorkel</label>
 											        </li>
-											        <li class="checkbox">
-											            <label>
-											                <input type="checkbox" id="extraExternal5" name="extraExternal5" ng-model="extraExternal5"><span class="skin-color">Tow Bar</span></a>
-											            </label>
+											        <li class="squaredOne">
+											                <input type="checkbox" id="extraExternal5" name="extraExternal5" ng-model="extraExternal5">
+											                <label for="extraExternal5">Tow Bar</label>
 											        </li>
-											        <li class="checkbox">
-											            <label>
-											                <input type="checkbox" id="extraExternal6" name="extraExternal6" ng-model="extraExternal6"><span class="skin-color">Floor Mats</span></a>
-											            </label>
+											        <li class="squaredOne">
+											                <input type="checkbox" id="extraExternal6" name="extraExternal6" ng-model="extraExternal6">
+											                <label for="extraExternal6">Floor Mats</label>
 											        </li>
 											</ul>
 										</div>
 										<div class="col-sm-4 col-md-4">
 										    <ul style="float:relative;padding-left:5px;vertical-align:top;">
-										          <li class="checkbox">
-										              <label>
-										                  <input type="checkbox" id="extraInternal1" name="extraInternal1" ng-model="extraInternal1"><span class="skin-color">Tinted Glass</span></a>
-										              </label>
+										          <li class="squaredOne">
+										                  <input type="checkbox" id="extraInternal1" name="extraInternal1" ng-model="extraInternal1">
+										                  <label for="extraInternal1">Tinted Glass</label>
 										          </li>
-										          <li class="checkbox">
-										              <label>
-										                  <input type="checkbox" id="extraInternal2" name="extraInternal2" ng-model="extraInternal2"><span class="skin-color">Luggage & Cargo Accessories </span></a>
-										              </label>
+										          <li class="squaredOne">
+										                  <input type="checkbox" id="extraInternal2" name="extraInternal2" ng-model="extraInternal2">
+										                  <label for="extraInternal2">Luggage & Cargo Accessories</label>
 										          </li>
-										          <li class="checkbox">
-										              <label>
-										                  <input type="checkbox" id="extraInternal3" name="extraInternal3" ng-model="extraInternal3"><span class="skin-color">Applicable Roof Racks</span></a>
-										              </label>
+										          <li class="squaredOne">
+										                  <input type="checkbox" id="extraInternal3" name="extraInternal3" ng-model="extraInternal3">
+										                  <label for="extraInternal3">Applicable Roof Racks</label>
 										          </li>
-										          <li class="checkbox">
-										              <label>
-										                  <input type="checkbox" id="extraInternal4" name="extraInternal4" ng-model="extraInternal4"><span class="skin-color">Tow Accessories</span></a>
-										              </label>
+										          <li class="squaredOne">
+										                  <input type="checkbox" id="extraInternal4" name="extraInternal4" ng-model="extraInternal4">
+										                  <label for="extraInternal4">Tow Accessories</label>
 										          </li>
-										          <li class="checkbox">
-										              <label>
-										                  <input type="checkbox" id="extraInternal5" name="extraInternal5" ng-model="extraInternal5"><span class="skin-color">Applicable Roof Racks</span></a>
-										              </label>
+										          <li class="squaredOne">
+										                  <input type="checkbox" id="extraInternal5" name="extraInternal5" ng-model="extraInternal5">
+										                  <label for="extraInternal5">Applicable Roof Racks</label>
 										          </li>
-										          <li class="checkbox">
-										        <label>
-										            <input type="checkbox" id="extraInternal6" name="extraInternal6" ng-model="extraInternal6"><span class="skin-color">Seat Cover</span></a>
-										        </label>
-										    </li>
+										          <li class="squaredOne">
+										            <input type="checkbox" id="extraInternal6" name="extraInternal6" ng-model="extraInternal6">
+										            <label for="extraInternal6">Seat Cover</label>
+									    		  </li>
 											</ul>
 									  </div>
 									<div class="col-sm-4 col-md-4">
 									    <ul style="float:relative;padding-left:5px;vertical-align:top;">
-									            <li class="checkbox">
-									                <label>
-									                    <input type="checkbox" id="extraInternal7" name="extraInternal7" ng-model="extraInternal7"><span class="skin-color">Bonnet Protection</span></a>
-									                </label>
+									            <li class="squaredOne">
+									                    <input type="checkbox" id="extraInternal7" name="extraInternal7" ng-model="extraInternal7">
+									                    <label for="extraInternal7">Bonnet Protection</label>
 									            </li>
-									            <li class="checkbox">
-									                <label>
-									                    <input type="checkbox" id="extraInternal8" name="extraInternal8" ng-model="extraInternal8"><span class="skin-color">Head Lamp Protection</span></a>
-									                </label>
+									            <li class="squaredOne">
+									                    <input type="checkbox" id="extraInternal8" name="extraInternal8" ng-model="extraInternal8">
+									                    <label for="extraInternal8">Head Lamp Protection</label>
 									            </li>
-									            <li class="checkbox">
-									                <label>
-									                    <input type="checkbox" id="extraInternal9" name="extraInternal9" ng-model="extraInternal9"><span class="skin-color">Weather Shield</span></a>
-									                </label>
+									            <li class="squaredOne">
+									                    <input type="checkbox" id="extraInternal9" name="extraInternal9" ng-model="extraInternal9">
+									                    <label for="extraInternal9">Weather Shield</label>
 									            </li>
-									            <li class="checkbox">
-									                <label>
-									                    <input type="checkbox" id="extraInternal10" name="extraInternal10" ng-model="extraInternal10"><span class="skin-color">Safety Kid</span></a>
-									                </label>
-									            </li>
-									            <li class="checkbox">
-											          <label>
-											              <input type="checkbox" id="extraInternal11" name="extraInternal11" ng-model="extraInternal11"><span class="skin-color">Medical / first-aid Kit</span></a>
-											          </label>
+									            <li class="squaredOne">
+											              <input type="checkbox" id="extraInternal11" name="extraInternal11" ng-model="extraInternal11">
+											              <label for="extraInternal11">Medical / first-aid Kit</label>
 									      		</li>
+									            <li class="squaredOne">
+									                    <input type="checkbox" id="extraInternal10" name="extraInternal10" ng-model="extraInternal10">
+									                    <label for="extraInternal10">Safety Kid</label>
+									            </li>
 										  </ul>
 									    </div>
 									</div>
@@ -1414,94 +968,95 @@ body.loading .modal {
 																	placeholder="Enter text"></textarea>
 										</div>
 									</div>
-									<div class="form-group row">
-										 	 <div class="col-sm-10 col-md-10">
+						            <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0 MT20 MB20">
+						              <button class="btn btn-primary Details previous">Previous</button>
+						              <button class="btn btn-primary Details next">Next</button>
+						            </div>
+						          </div>
+						        </div>
+						        <div class="row">
+						          <div class="col-md-12">
+						            <h3 class="heading"><span>4</span>Enter Pricing</h3>
+						          </div>
+						          <div class="col-xs-11 col-sm-11 col-md-11 Registration MT10" ng-form="CarPricfrm">
+						          	<div class="form-group row">
+										<div class="col-sm-2 col-md-2">
+											<label>Select Pricing Type</label>
+										</div>
+										<div class="col-sm-2 col-md-2">
+											<div class="squaredOne">
+												<input type="radio" name="pricingType" id="priceFixed" ng-model="pricingType" value="Fixed" required/>
+												<label for="priceFixed">Fixed</label>
 											</div>
-	                                        <div class="col-sm-2 col-md-2">
-	                                        	<button type="button" class="btn btn-sm btn-success btn-block" ng-click="thirdForm()">Next&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></button>
-	                                        </div>
-	                                    </div>
-								    </div><!--End of Car EXtras  -->
-								    
-								    
-								    <div id="CarPric" class="tab-pane fade" ng-form="CarPricfrm">
-								     	 <h3>Enter Pricing</h3>
-									      <div class="form-group row">
-											<div class="col-sm-2 col-md-2">
-												<label>Select Pricing Type</label>
+										</div>
+										<div class="col-sm-2 col-md-2">
+											<div class="squaredOne">
+												<input type="radio" name="pricingType" id="priceNego" ng-model="pricingType" value="Negotiable" required/>
+												<label for="priceNego">Negotiable</label>
 											</div>
-											<div class="col-sm-2 col-md-2">
-												<div class="radio">
-													<label><input type="radio" name="pricingType" ng-model="pricingType" value="Fixed" required/>Fixed</label>
-												</div>
+										</div>
+										<div class="col-sm-2 col-md-2">
+											<div class="squaredOne">
+												<input type="radio" name="pricingType" id="priceRange" ng-model="pricingType" value="Range" required/>
+												<label for="priceRange">Price Range</label>
 											</div>
-											<div class="col-sm-2 col-md-2">
-												<div class="radio">
-													<label><input type="radio" name="pricingType" ng-model="pricingType" value="Negotiable" required/>Negotiable</label>
-												</div>
-											</div>
-											<div class="col-sm-2 col-md-2">
-												<div class="radio">
-													<label><input type="radio" name="pricingType" ng-model="pricingType" value="Range" required/>Price Range</label>
-												</div>
-											</div>
-											<div class="col-sm-4 col-md-4">
-												<span style="color: red" ng-show="CarPricfrm.pricingType.$invalid && fourthFlag"><b>Pricing Type is Required</b></span>
-											</div>
-										  </div>
+										</div>
+										<div class="col-sm-4 col-md-4">
+											<span style="color: red" ng-show="CarPricfrm.pricingType.$invalid && fourthFlag"><b>Pricing Type is Required</b></span>
+										</div>
+									  </div>
 									  
-											  <div class="form-group row">
-											 	 <div class="col-sm-2 col-md-2">
-													<label>Amount</label>
-												</div>
-		                                    	<div class="col-sm-3 col-md-3">
-		                                            <input type="text" class="input-text full-width" ng-model="displayPrice"  placeholder="Enter Amount" id="displayPrice" name="displayPrice" required/>
-		                                            <span style="color: red" ng-show="CarPricfrm.displayPrice.$invalid && fourthFlag"><b>Amount is Required</b></span>
-		                                        </div>	
-		                                    </div>
-		                                    <div class="form-group row" ng-show="(pricingType=='Negotiable') || (pricingType=='Range')">
-											 	 <div class="col-sm-2 col-md-2">
-													<label>Negotiable %</label>
-												</div>
-		                                        <div class="col-sm-3 col-md-3">
-		                                            <input type="text" class="input-text full-width" ng-model="negotiaPer"  placeholder="%" id="negotiaPer" name="negotiaPer" ng-required="(pricingType=='Negotiable') || (pricingType=='Range')"/>
-		                                            <span style="color: red" ng-show="CarPricfrm.negotiaPer.$invalid && fourthFlag"><b>Negotiable % is Required</b></span>
-		                                        </div>
-		                                    </div>
-		                                     <div class="form-group row" ng-show="(pricingType=='Range')">
-											 	 <div class="col-sm-2 col-md-2">
-													<label>Range</label>
-												</div>
-		                                        <div class="col-sm-3 col-md-3">
-		                                            <input type="text" class="input-text full-width" ng-model="QRangeMin"  placeholder="Quotation Range Min" id="QRangeMin" name="QRangeMin" ng-required="(pricingType=='Range')"/>
-		                                            <span style="color: red" ng-show="CarPricfrm.QRangeMin.$invalid && fourthFlag"><b>Range Min is Required</b></span>
-		                                        </div>
-		                                       <div class="col-sm-3 col-md-3">
-		                                            <input type="text" class="input-text full-width" ng-model="QRangeMax"  placeholder="Quotation Range Max" id="QRangeMax" name="QRangeMax" ng-required="(pricingType=='Range')"/>
-		                                            <span style="color: red" ng-show="CarPricfrm.QRangeMax.$invalid && fourthFlag"><b>Range Max is Required</b></span>
-		                                        </div>
-		                                    </div>
-		                                    <div class="form-group row">
-											 	 <div class="col-sm-10 col-md-10">
-												</div>
-		                                        <div class="col-sm-2 col-md-2">
-		                                        	<button type="button" class="btn btn-sm btn-success btn-block" ng-click="fourthForm(CarPricfrm.$valid)">Next&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></button>
-		                                        </div>
-		                                    </div>
-								    </div><!--End of Car Pricing  -->
-								    
-								    
-								    <div id="CarList" class="tab-pane fade">
-								      <h3>Listing Type</h3>
-								      <div class="form-group row">
+									  <div class="form-group row">
+									 	 <div class="col-sm-2 col-md-2">
+											<label>Amount</label>
+										</div>
+                                    	<div class="col-sm-3 col-md-3">
+                                            <input type="text" class="form-control" ng-model="displayPrice"  placeholder="Enter Amount" id="displayPrice" name="displayPrice" required/>
+                                            <span style="color: red" ng-show="CarPricfrm.displayPrice.$invalid && fourthFlag"><b>Amount is Required</b></span>
+                                        </div>	
+                                    </div>
+                                    <div class="form-group row" ng-show="(pricingType=='Negotiable') || (pricingType=='Range')">
+									 	 <div class="col-sm-2 col-md-2">
+											<label>Negotiable %</label>
+										</div>
+                                        <div class="col-sm-3 col-md-3">
+                                            <input type="text" class="form-control" ng-model="negotiaPer"  placeholder="%" id="negotiaPer" name="negotiaPer" ng-required="(pricingType=='Negotiable') || (pricingType=='Range')"/>
+                                            <span style="color: red" ng-show="CarPricfrm.negotiaPer.$invalid && fourthFlag"><b>Negotiable % is Required</b></span>
+                                        </div>
+                                    </div>
+                                     <div class="form-group row" ng-show="(pricingType=='Range')">
+									 	 <div class="col-sm-2 col-md-2">
+											<label>Range</label>
+										</div>
+                                        <div class="col-sm-3 col-md-3">
+                                            <input type="text" class="form-control" ng-model="QRangeMin"  placeholder="Quotation Range Min" id="QRangeMin" name="QRangeMin" ng-required="(pricingType=='Range')"/>
+                                            <span style="color: red" ng-show="CarPricfrm.QRangeMin.$invalid && fourthFlag"><b>Range Min is Required</b></span>
+                                        </div>
+                                       <div class="col-sm-3 col-md-3">
+                                            <input type="text" class="form-control" ng-model="QRangeMax"  placeholder="Quotation Range Max" id="QRangeMax" name="QRangeMax" ng-required="(pricingType=='Range')"/>
+                                            <span style="color: red" ng-show="CarPricfrm.QRangeMax.$invalid && fourthFlag"><b>Range Max is Required</b></span>
+                                        </div>
+                                    </div>
+						            <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0 MT20 MB20">
+						              <button class="btn btn-primary Details previous">Previous</button>
+						              <button class="btn btn-primary Details" id="four" ng-click="fourthForm(CarPricfrm.$valid)">Next</button>
+						            </div>
+						          </div>
+						        </div>
+						        
+						        <div class="row">
+						          <div class="col-md-12">
+						            <h3 class="heading"><span>5</span>Listing Type</h3>
+						          </div>
+						          <div class="col-xs-11 col-sm-11 col-md-11 Registration MT10">
+						            <div class="form-group row">
 										 	 <div class="col-sm-6 col-md-6">
 												<label>Offer this Vehicle, whoever looking to buy similar Vehicle</label>
 											</div>
 	                                        <div class="col-sm-3 col-md-3">
-	                                            <div class="checkbox">
-									                <label>
-									                    <input type="checkbox" id="autoQuote" name="autoQuote" ng-model="autoQuote"><span class="skin-color">Auto Quote</span></a>
-									                </label>
+	                                            <div class="squaredOne">
+									                    <input type="checkbox" id="autoQuote" name="autoQuote" ng-model="autoQuote">
+									                    <label for="autoQuote">Auto Quote</label>
 									            </div>
 	                                        </div>
 	                                    </div>
@@ -1510,10 +1065,9 @@ body.loading .modal {
 												<label>Get Current Market valuation & Offers from Dealers</label>
 											</div>
 	                                        <div class="col-sm-3 col-md-3">
-	                                            <div class="checkbox">
-									                <label>
-									                    <input type="checkbox" id="getOffers" name="getOffers" ng-model="getOffers"><span class="skin-color">Get Offers</span></a>
-									                </label>
+	                                            <div class="squaredOne">
+									                    <input type="checkbox" id="getOffers" name="getOffers" ng-model="getOffers">
+									                    <label for="getOffers">Get Offers</label>
 									            </div>
 	                                        </div>
 	                                    </div>
@@ -1522,135 +1076,81 @@ body.loading .modal {
 												<label>List Your Car in the Classified section AutoScoop</label>
 											</div>
 	                                        <div class="col-sm-4 col-md-4">
-	                                            <div class="checkbox checked disabled">
-									                <label>
-									                    <input type="checkbox" id="classAdv" name="classAdv" ng-model="classAdv" checked disabled><span class="skin-color">List in Classifieds & Advertise</span></a>
-									                </label>
+	                                            <div class="squaredOne">
+									                    <input type="checkbox" id="classAdv" name="classAdv" ng-model="classAdv" checked disabled>
+    									                    <label for="classAdv">List in Classifieds & Advertise</label>
 									            </div>
 	                                        </div>
-	                                    </div>
-	                                    <div class="form-group row">
-										 	 <div class="col-sm-10 col-md-10">
-											</div>
-	                                        <div class="col-sm-2 col-md-2">
-	                                        	<button type="button" class="btn btn-sm btn-success btn-block" ng-click="fifthForm()">Next&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></button>
-	                                        </div>
-	                                    </div>
-								    </div>
-							
+	                                    </div>						            
+						            <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0 MT20 MB20">
+						              <button class="btn btn-primary Details previous">Previous</button>
+						              <button class="btn btn-primary Details next">Next</button>
+						            </div>
+						          </div>
+						        </div>
+						        
+						        
+						        
+						        
+						        <div class="row">
+						          <div class="col-md-12">
+						            <h3 class="heading"><span>6</span>Address & Contact Details</h3>
+						          </div>
+						          <div class="col-xs-11 col-sm-11 col-md-11 Registration MT10" ng-form="addrSellCar">
+						            <div class="form-group row">
+									 	 <div class="col-sm-3 col-md-3">
+											<label>Address</label>
+										</div>
+                                        <div class="col-sm-3 col-md-3">
+                                            <input type="text" id="postcode11" name="postcode11"
+																		ng-model="postcode1111" ng-minlength="4"
+																		ng-pattern="/^[0-9]*$/" ng-maxlength="4"
+																		class="form-control" value=""
+																		placeholder="Post Code" required />
+																	<!-- <span style="color:red" ng-show="ebidinsfrm.postcode1111.$error.required && (!ebidinsfrm.postcode1111.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
 
-								    <div id="CarAddrCon" class="tab-pane fade">
-								      <h3>Address & Contact Details</h3>
-								     	 <div class="form-group row">
-										 	 <div class="col-sm-2 col-md-2">
-												<label>Address</label>
-											</div>
-	                                        <div class="col-sm-3 col-md-3">
-	                                            <input type="text" id="postcode11" name="postcode11"
-																			ng-model="postcode1111" ng-minlength="4"
-																			ng-pattern="/^[0-9]*$/" ng-maxlength="4"
-																			class="input-text full-width" value=""
-																			placeholder="Post Code" required />
-																		<!-- <span style="color:red" ng-show="ebidinsfrm.postcode1111.$error.required && (!ebidinsfrm.postcode1111.$pristine || ebidinsfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
-
-																		<span style="color: red"
-																			ng-show="ebidinsfrm.postcode11.$error.pattern &amp;&amp; (!ebidinsfrm.postcode11.$pristine || ebidinsfrm.$submitted)"><b>POST
-																				must be Numeric</b></span> <span style="color: red"
-																			ng-show="ebidinsfrm.postcode11.$error.required &amp;&amp; (!ebidinsfrm.postcode11.$pristine || ebidinsfrm.$submitted)"><b>POST
-																				is Required</b></span> <span style="color: red"
-																			ng-show="ebidinsfrm.postcode11.$error.minlength &amp;&amp; (!ebidinsfrm.postcode11.$pristine || ebidinsfrm.$submitted) &amp;&amp; !ebidinsfrm.postcode11.$error.pattern"><b>POST
-																				must be of 4 digits</b></span> <span style="color: red"
-																			ng-show="ebidinsfrm.postcode11.$error.maxlength &amp;&amp; (!ebidinsfrm.postcode11.$pristine || ebidinsfrm.$submitted) &amp;&amp; !ebidinsfrm.postcode11.$error.pattern"><b>POST
-																				must be of 4 digits only.</b></span>
-	                                        </div>
-	                                       <div class="col-sm-6 col-md-6">
-	                                            <input type="text" class="input-text full-width" ng-model="addrSell"  placeholder="Address" id="addrSell" name="addrSell"/>
-	                                        </div>
-	                                    </div>
-	                                    <div class="form-group row">
-										 	 <div class="col-sm-2 col-md-2">
-												<label>Contact Details</label>
-											</div>
-	                                        <div class="col-sm-3 col-md-3">
-	                                            <input type="text" class="input-text full-width" ng-model="conName"  placeholder="Contact Name" id="conName" name="conName"/>
-	                                        </div>
-	                                       <div class="col-sm-6 col-md-6">
-	                                            <input type="text" class="input-text full-width" ng-model="MobNum"  placeholder="Mobile Number" id="MobNum" name="MobNum"/>
-	                                        </div>
-	                                    </div>
-	                                    
-	                                    <div class="form-group row">
-	                                    	<div class="col-sm-8 col-md-8">
-											</div>
-                                   			<div class="col-sm-3 col-md-3">
-	                                            <button type="button" class="btn btn-success btn-sm btn-block">Proceed to Sell &nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-forward"></span></button>
-	                                        </div>
-	                                    </div>
-								     	 
-								     	 <div class="form-group row">
-		                                     <div class="col-sm-12 col-md-12">
-		                                         By proceeding further or using AutoScoop,  I agree to <a href="pages-autoscoop-policies.html" target="_blank" style="text-decoration:underline">AutoScoop Terms of Use</a>
-		                                     </div>
-		                               </div>
-								    </div>
-								  </div>
-								  
-								  
-                                
-                            </form>
-                        </div>
-                       
-                    </div><!-- 
-                    <div class="sidebar col-md-3">
-                        <article class="detailed-logo">
-                            <figure>
-                                <img width="320" height="80" src="http://placehold.it/320x80" alt="">
-                            </figure>
-                            <div class="details">
-                                <h2 class="box-title">4 Night Baja Mexico<small>mon, Jan 26, 2014</small></h2>
-                                <span class="price clearfix">
-                                    <small class="pull-left">from</small>
-                                    <span class="pull-right">$239</span>
-                                </span>
-                                <div class="feedback clearfix">
-                                    <div title="4 stars" class="five-stars-container" data-toggle="tooltip" data-placement="bottom"><span class="five-stars" style="width: 80%;"></span></div>
-                                    <span class="review pull-right">270 reviews</span>
-                                </div>
-                                <p class="description">Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
-                                <a class="button yellow full-width uppercase btn-small">add to wishlist</a>
-                            </div>
-                        </article>
-                        <div class="travelo-box contact-box">
-                            <h4>Need Autoscoop Help?</h4>
-                            <p>We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
-                            <address class="contact-details">
-                                <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
-                                <br>
-                                <a class="contact-email" href="#">help@autoscoop.com</a>
-                            </address>
-                        </div>
-                        <div class="travelo-box book-with-us-box">
-                            <h4>Why Book with us?</h4>
-                            <ul>
-                                <li>
-                                    <i class="soap-icon-hotel-1 circle"></i>
-                                    <h5 class="title"><a href="#">135,00+ Hotels</a></h5>
-                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
-                                </li>
-                                <li>
-                                    <i class="soap-icon-savings circle"></i>
-                                    <h5 class="title"><a href="#">Low Rates &amp; Savings</a></h5>
-                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
-                                </li>
-                                <li>
-                                    <i class="soap-icon-support circle"></i>
-                                    <h5 class="title"><a href="#">Excellent Support</a></h5>
-                                    <p>Nunc cursus libero pur congue arut nimspnty.</p>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                    </div> -->
+																	<span style="color: red"
+																		ng-show="addrSellCar.postcode11.$error.pattern &amp;&amp; (!addrSellCar.postcode11.$pristine || sixthFlag)"><b>POST
+																			must be Numeric</b></span> <span style="color: red"
+																		ng-show="addrSellCar.postcode11.$error.required &amp;&amp; (!addrSellCar.postcode11.$pristine || sixthFlag)"><b>POST
+																			is Required</b></span> <span style="color: red"
+																		ng-show="addrSellCar.postcode11.$error.minlength &amp;&amp; (!addrSellCar.postcode11.$pristine || sixthFlag) &amp;&amp; !addrSellCar.postcode11.$error.pattern"><b>POST
+																			must be of 4 digits</b></span> <span style="color: red"
+																		ng-show="addrSellCar.postcode11.$error.maxlength &amp;&amp; (!addrSellCar.postcode11.$pristine || sixthFlag) &amp;&amp; !ebidinsfrm.postcode11.$error.pattern"><b>POST
+																			must be of 4 digits only.</b></span>
+                                        </div>
+                                       <div class="col-sm-6 col-md-6">
+                                            <input type="text" class="form-control" ng-model="addrSell"  placeholder="Address" id="addrSell" name="addrSell" required/>
+                                            <span style="color: red" ng-show="addrSellCar.addrSell.$invalid && sixthFlag"><b>Address is Required</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+									 	 <div class="col-sm-3 col-md-3">
+											<label>Contact Details</label>
+										</div>
+                                        <div class="col-sm-3 col-md-3">
+                                            <input type="text" class="form-control" ng-model="conName"  placeholder="Contact Name" id="conName" name="conName" required/>
+                                            <span style="color: red" ng-show="addrSellCar.conName.$invalid && sixthFlag"><b>Contact Name is Required</b></span>
+                                        </div>
+                                       <div class="col-sm-6 col-md-6">
+                                            <input type="text" class="form-control" ng-model="MobNum"  placeholder="Mobile Number" id="MobNum" name="MobNum" required/>
+                                            <span style="color: red" ng-show="addrSellCar.MobNum.$invalid && sixthFlag"><b>Mobile Number is Required</b></span>
+                                        </div>
+                                    </div>						            
+						            <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0 MT20 MB20">
+						              <button class="btn btn-primary Details previous">Previous</button>
+						              <button class="btn btn-primary Details" ng-click="sixthForm(addrSellCar.$valid)">Proceed to Sell !</button>
+						            </div>
+						          </div>
+						        </div>
+						        
+						        
+						        
+						      </div>
+						    </div>
+                	
+                	</div>
+                	<!--End Here  -->
             </div>
         </section>
         <footer class="txt-center">
@@ -1834,72 +1334,9 @@ body.loading .modal {
     <script type="text/javascript" src="js/theme-scripts.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
     
-    <script type="text/javascript">
-        tjq(document).ready(function() {
-            tjq('.revolution-slider').revolution(
-            {
-                sliderType:"standard",
-				sliderLayout:"auto",
-				dottedOverlay:"none",
-				delay:9000,
-				navigation: {
-					keyboardNavigation:"off",
-					keyboard_direction: "horizontal",
-					mouseScrollNavigation:"off",
-					mouseScrollReverse:"default",
-					onHoverStop:"on",
-					touch:{
-						touchenabled:"on",
-						swipe_threshold: 75,
-						swipe_min_touches: 1,
-						swipe_direction: "horizontal",
-						drag_block_vertical: false
-					}
-					,
-					arrows: {
-						style:"default",
-						enable:true,
-						hide_onmobile:false,
-						hide_onleave:false,
-						tmp:'',
-						left: {
-							h_align:"left",
-							v_align:"center",
-							h_offset:20,
-							v_offset:0
-						},
-						right: {
-							h_align:"right",
-							v_align:"center",
-							h_offset:20,
-							v_offset:0
-						}
-					}
-				},
-				visibilityLevels:[1240,1024,778,480],
-				gridwidth:1170,
-				gridheight:646,
-				lazyType:"none",
-				shadow:0,
-				spinner:"spinner4",
-				stopLoop:"off",
-				stopAfterLoops:-1,
-				stopAtSlide:-1,
-				shuffle:"off",
-				autoHeight:"off",
-				hideThumbsOnMobile:"off",
-				hideSliderAtLimit:0,
-				hideCaptionAtLimit:0,
-				hideAllCaptionAtLilmit:0,
-				debugMode:false,
-				fallbacks: {
-					simplifyAll:"off",
-					nextSlideOnWindowFocus:"off",
-					disableFocusListener:false,
-				}
-            });
-        });
-    </script>
+   <script src="js/bootstrap.js"></script> 
+	<script src="js/custom.js"></script> 
+	
    <!-- Loading -->
 <div class="modal"><!-- Place at bottom of page --></div>
 </body>

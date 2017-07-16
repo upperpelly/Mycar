@@ -1,0 +1,41 @@
+// JavaScript Document
+$(document).ready(function () {
+   
+	var width = $(window).width();
+	  if (width < 768) {
+		$('.LeadsPanel h1').click(function(){
+			$(this).toggleClass("up");
+			$(".Leads").slideToggle();
+		});
+	  }
+	
+	$(".thumbnail figcaption").click(function(){
+		$(this).parent().toggleClass("open");
+	});
+	
+	$(".btn").click(function(event){
+		event.stopPropagation();
+	});
+	
+	
+	/* Delear Registration */
+		$(".RegTL .Registration").each(function(e) {
+			if (e != 0)
+				$(this).hide();
+		});
+
+		$(".next").click(function(){
+			$(this.parentElement.parentElement).slideToggle();			
+			$(this.parentElement.parentElement.previousElementSibling).find('h3').removeClass('active');
+			$(this.parentElement.parentElement.parentElement).next().find('.Registration').slideToggle();			
+			$(this.parentElement.parentElement.parentElement).next().find('h3').addClass('active');
+		});
+
+		$(".previous").click(function(){
+			$(this.parentElement.parentElement).slideToggle();			
+			$(this.parentElement.parentElement.previousElementSibling).find('h3').removeClass('active');
+			$(this.parentElement.parentElement.parentElement.previousElementSibling).find('.Registration').slideToggle();			
+			$(this.parentElement.parentElement.parentElement.previousElementSibling).find('h3').addClass('active');			
+		});
+	
+});
