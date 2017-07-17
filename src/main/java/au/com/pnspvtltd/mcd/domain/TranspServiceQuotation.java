@@ -2,12 +2,17 @@ package au.com.pnspvtltd.mcd.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -36,6 +41,11 @@ public class TranspServiceQuotation implements Serializable {
 	private Long dealTranspServId;
 	// user Transp Serv lead id
 	private Long userTranspServId;
+	
+	// User Creation Date
+			private Date userCreationDate;
+			//Creation Date
+			private Date creationDate;
 	// inventory repo id
 	private Long refId;
 	private boolean autoBid;
@@ -83,8 +93,283 @@ public class TranspServiceQuotation implements Serializable {
 	private String adhoc3;
 	private String adhoc4;
 	
+	
+	// transp search start
+		/*	private String fromPostCodeAddr;
+			private String toPostCodeAddr;
+			private String transTypeReq;
+			private Date pickUpDateTime;
+			private int noOfCars;*/
+			private int year;
+			private String make;
+			private String model;
+			private String variant;
+			/*private String freeText;
+			private boolean transpInsReq;
+			private String howMay;
+			private String fromStreetNo;
+			private String toStreetName;
+			private String toStreetNo;
+			private String fromStreetName;
+			private String kindOfTransport;
+			private boolean flexWithDateDefault;
+			private String uploadPhotos;*/
+			private String photo;
+			private String regoNo;
+			private String regoState;
+
+			// trasp search end
+	
+			// Dealer info Start
+						private String category;
+						private String companyName;
+						private String street;
+						private String suburb;
+						private String dealState;
+						private int dealPostCode;
+						private String country;
+						private String phone;
+						private String website;
+						private String mobile;
+						private String tollFree;
+						private String fax;
+						private String afterHours;
+						private String postalAddress;
+						private String email;
+						private float longitude;
+						private float latitude;
+						// Dealer info end
+			
+			
 	// Flex start
-		private String flex1;	
+						
+		private String flex1;
+		
+		public Date getUserCreationDate() {
+			return userCreationDate;
+		}
+
+
+		public void setUserCreationDate(Date userCreationDate) {
+			this.userCreationDate = userCreationDate;
+		}
+
+
+		public Date getCreationDate() {
+			return creationDate;
+		}
+
+
+		public void setCreationDate(Date creationDate) {
+			this.creationDate = creationDate;
+		}
+
+		List<VehQuotExtrasTp> vehQuotExtras;
+		
+		@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+		@JoinColumn(name = "TranspServQuotId")
+		
+		public List<VehQuotExtrasTp> getVehQuotExtras() {
+			return vehQuotExtras;
+		}
+
+
+		public void setVehQuotExtras(
+				List<VehQuotExtrasTp> vehQuotExtras) {
+			this.vehQuotExtras = vehQuotExtras;
+		}
+		public int getYear() {
+			return year;
+		}
+
+		public void setYear(int year) {
+			this.year = year;
+		}
+
+		public String getMake() {
+			return make;
+		}
+
+		public void setMake(String make) {
+			this.make = make;
+		}
+
+		public String getModel() {
+			return model;
+		}
+
+		public void setModel(String model) {
+			this.model = model;
+		}
+
+		public String getVariant() {
+			return variant;
+		}
+
+		public void setVariant(String variant) {
+			this.variant = variant;
+		}
+
+		public String getPhoto() {
+			return photo;
+		}
+
+		public void setPhoto(String photo) {
+			this.photo = photo;
+		}
+
+		public String getRegoNo() {
+			return regoNo;
+		}
+
+		public void setRegoNo(String regoNo) {
+			this.regoNo = regoNo;
+		}
+
+		public String getRegoState() {
+			return regoState;
+		}
+
+		public void setRegoState(String regoState) {
+			this.regoState = regoState;
+		}
+
+		public String getCategory() {
+			return category;
+		}
+
+		public void setCategory(String category) {
+			this.category = category;
+		}
+
+		public String getCompanyName() {
+			return companyName;
+		}
+
+		public void setCompanyName(String companyName) {
+			this.companyName = companyName;
+		}
+
+		public String getStreet() {
+			return street;
+		}
+
+		public void setStreet(String street) {
+			this.street = street;
+		}
+
+		public String getSuburb() {
+			return suburb;
+		}
+
+		public void setSuburb(String suburb) {
+			this.suburb = suburb;
+		}
+
+		public String getDealState() {
+			return dealState;
+		}
+
+		public void setDealState(String dealState) {
+			this.dealState = dealState;
+		}
+
+		public int getDealPostCode() {
+			return dealPostCode;
+		}
+
+		public void setDealPostCode(int dealPostCode) {
+			this.dealPostCode = dealPostCode;
+		}
+
+		public String getCountry() {
+			return country;
+		}
+
+		public void setCountry(String country) {
+			this.country = country;
+		}
+
+		public String getPhone() {
+			return phone;
+		}
+
+		public void setPhone(String phone) {
+			this.phone = phone;
+		}
+
+		public String getWebsite() {
+			return website;
+		}
+
+		public void setWebsite(String website) {
+			this.website = website;
+		}
+
+		public String getMobile() {
+			return mobile;
+		}
+
+		public void setMobile(String mobile) {
+			this.mobile = mobile;
+		}
+
+		public String getTollFree() {
+			return tollFree;
+		}
+
+		public void setTollFree(String tollFree) {
+			this.tollFree = tollFree;
+		}
+
+		public String getFax() {
+			return fax;
+		}
+
+		public void setFax(String fax) {
+			this.fax = fax;
+		}
+
+		public String getAfterHours() {
+			return afterHours;
+		}
+
+		public void setAfterHours(String afterHours) {
+			this.afterHours = afterHours;
+		}
+
+		public String getPostalAddress() {
+			return postalAddress;
+		}
+
+		public void setPostalAddress(String postalAddress) {
+			this.postalAddress = postalAddress;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public float getLongitude() {
+			return longitude;
+		}
+
+		public void setLongitude(float longitude) {
+			this.longitude = longitude;
+		}
+
+		public float getLatitude() {
+			return latitude;
+		}
+
+		public void setLatitude(float latitude) {
+			this.latitude = latitude;
+		}
+
 		private String flex2;	
 		private String flex3;	
 		private String flex4;
@@ -125,7 +410,7 @@ public class TranspServiceQuotation implements Serializable {
 		public void setUserTranspServId(Long userTranspServId) {
 			this.userTranspServId = userTranspServId;
 		}
-		@Column(name = "FROMPOSTCODE")
+		
 		public String getFromPostCodeAddr() {
 			return fromPostCodeAddr;
 		}
@@ -133,7 +418,7 @@ public class TranspServiceQuotation implements Serializable {
 		public void setFromPostCodeAddr(String fromPostCodeAddr) {
 			this.fromPostCodeAddr = fromPostCodeAddr;
 		}
-		@Column(name = "TOPOSTCODE")
+		
 		public String getToPostCodeAddr() {
 			return toPostCodeAddr;
 		}
@@ -141,7 +426,7 @@ public class TranspServiceQuotation implements Serializable {
 		public void setToPostCodeAddr(String toPostCodeAddr) {
 			this.toPostCodeAddr = toPostCodeAddr;
 		}
-		@Column(name = "TRANSTYPEREQ")
+		
 		public String getTransTypeReq() {
 			return transTypeReq;
 		}
@@ -149,7 +434,7 @@ public class TranspServiceQuotation implements Serializable {
 		public void setTransTypeReq(String transTypeReq) {
 			this.transTypeReq = transTypeReq;
 		}
-		@Column(name = "PICKUPDATE")
+		
 		public Date getPickUpDateTime() {
 			return pickUpDateTime;
 		}
@@ -173,7 +458,7 @@ public class TranspServiceQuotation implements Serializable {
 		public void setTranspInsReq(boolean transpInsReq) {
 			this.transpInsReq = transpInsReq;
 		}
-		@Column(name = "HOWMAY")
+		
 		public String getHowMay() {
 			return howMay;
 		}

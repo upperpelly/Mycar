@@ -67,6 +67,9 @@ import javax.persistence.Table;
 	private float latitude;
 	private Date creationDate;
 	
+	
+	// 
+	
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -74,16 +77,16 @@ import javax.persistence.Table;
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	List<ExtDealerSearch> extDealSearch;
+	List<ExtDealerSearchTp> extDealSearch;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "externalDealerId")
-	public List<ExtDealerSearch> getExtDealSearch() {
+	public List<ExtDealerSearchTp> getExtDealSearch() {
 		return extDealSearch;
 	}
 
 
-	public void setExtDealSearch(List<ExtDealerSearch> extDealSearch) {
+	public void setExtDealSearch(List<ExtDealerSearchTp> extDealSearch) {
 		this.extDealSearch = extDealSearch;
 	}
 

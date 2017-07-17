@@ -26,6 +26,7 @@ import au.com.pnspvtltd.mcd.domain.DealerSearchTransp;
 import au.com.pnspvtltd.mcd.domain.ExtDealServMaint;
 import au.com.pnspvtltd.mcd.domain.ExtDealServMaintr1;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
+import au.com.pnspvtltd.mcd.domain.ExtDealerSearchTp;
 import au.com.pnspvtltd.mcd.domain.ExternalDealer;
 import au.com.pnspvtltd.mcd.domain.ExternalDealerFin;
 import au.com.pnspvtltd.mcd.domain.ExternalDealerTp;
@@ -96,6 +97,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealServMaintr1VO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchTpVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerFinVO;
@@ -620,6 +622,23 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				}
 
 				// Dealer Vehicle Lead
+				public ExtDealerSearchTpVO toExtDealerTranspVO(final ExtDealerSearchTp searchVO) {
+
+					ExtDealerSearchTpVO dealerSearch = new ExtDealerSearchTpVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
+				
+				// Dealer Vehicle Lead
 				public VehicleQuotationVO toExtQtDealerSearchVO(final VehicleQuotation searchVO) {
 
 					VehicleQuotationVO dealerSearch = new VehicleQuotationVO();
@@ -790,7 +809,39 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					}
 					return dealerSearch;
 				}
+				
+				public TranspServiceQuotationVO toExtQtTpDealerSearchVO(final TranspServiceQuotation searchVO) {
+
+					TranspServiceQuotationVO dealerSearch = new TranspServiceQuotationVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
 				// end of service and Maintenance
+				public ExternalDealerTpVO toExternalDealerTpVO1(final ExternalDealerTp searchVO) {
+
+					ExternalDealerTpVO dealerSearch = new ExternalDealerTpVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
+				
 				
 				// Dealer Vehicle Lead
 				public ExtDealerServMaintVO toExternalDealerSmVO(final ExtDealServMaint searchVO) {
@@ -1226,6 +1277,17 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 	
 	public ExtDealServMaintr1 toExtDealerSvAdmin(final ExtDealServMaintr1VO dealerSearch) {
 		ExtDealServMaintr1 searchVO = new ExtDealServMaintr1();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public ExtDealerSearchTp toExtDealerTpAdmin(final ExtDealerSearchTpVO dealerSearch) {
+		ExtDealerSearchTp searchVO = new ExtDealerSearchTp();
 		try {
 			BeanUtils.copyProperties(searchVO, dealerSearch);
 		} catch (IllegalAccessException | InvocationTargetException e) {

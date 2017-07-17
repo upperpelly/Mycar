@@ -28,6 +28,7 @@ import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
 import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchServMaint;
+import au.com.pnspvtltd.mcd.domain.SearchTransp;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
@@ -61,6 +62,7 @@ import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminOtDateVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserServiceMaintAdminVO;
+import au.com.pnspvtltd.mcd.web.model.UserTranspAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.repository.MyVehicleFuelExpensesRepository;
@@ -68,6 +70,7 @@ import au.com.pnspvtltd.mcd.repository.MyVehicleLogBookRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleServMaintRepository;
 import au.com.pnspvtltd.mcd.repository.SearchServMtLeadRepository;
+import au.com.pnspvtltd.mcd.repository.SearchTranspRepository;
 import au.com.pnspvtltd.mcd.repository.ServMaintQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.UserNotificationRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
@@ -90,6 +93,9 @@ public class UserEBidController {
 	private UserNotificationRepository userNotificationRepository;
 	@Autowired
 	private SearchServMtLeadRepository searchServMtLeadRepository;
+	@Autowired
+	private SearchTranspRepository searchTranspRepository;
+	
 	@Autowired
 	UserEBidService userEBidService;
 	@Autowired
@@ -847,6 +853,25 @@ public class UserEBidController {
 	
 		return userAdminSearchVO12;
 	}
+	
+	
+	@GetMapping(value = "gettpInforAll", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserTranspAdminVO gettpInforAll() {
+		LOGGER.debug("Received request to get Transport Requests with id {} ");
+		UserTranspAdminVO userAdminSearchVO12 = new UserTranspAdminVO();
+	 
+		List<SearchTranspVO> userVOs = new ArrayList<SearchTranspVO>();
+		
+		List<SearchTransp> users = searchTranspRepository.getAllSearchCriteria();
+		for (SearchTransp user : users) {
+			userVOs.add(domainModelUtil.toSearchTransp1(user));
+		
+		}
+		userAdminSearchVO12.setSearchVO(userVOs);
+	
+		return userAdminSearchVO12;
+	}
+	
 	
 	@GetMapping(value = "getSmInfor", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public UserServiceMaintAdminVO getSmInfor(@RequestParam("modelYear") String modelYear,

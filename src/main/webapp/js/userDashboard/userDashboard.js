@@ -2173,11 +2173,11 @@ $("#"+"fuelCard4").html(outLogT);
 								out555="";
 					        	   var trasQCt = result.length;
 					        	   document.getElementById('trasQCt').innerHTML=trasQCt;
-					        	   out555 += '<tr><th>'+" Transp Serv Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
+					        	   out555 += '<tr><th>'+" Transp Serv Quotation ID"+'</th><th>'+"Dealer Id"+'</th><th>'+"Creation Date"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
 					        	   for(i=result.length-1;i>=0;i--)
 					       		{
 
-					       		out555= out555+'<tr>'+'<td>'+result[i].TranspServQuotId+'</td>'+'<td>'+result[i].dealerName+'</td>'+'<td>'+result[i].dealerStockNo+'</td>'+'<td>'+result[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealertranspservQuotationModal-' + result[i].TranspServQuotId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealertranspservQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealertranspservQuotationModal">Edit</a></td></tr>';
+					       		out555= out555+'<tr>'+'<td>'+result[i].transpServQuotId+'</td>'+'<td>'+result[i].dealerId+'</td>'+'<td>'+result[i].creationDate+'</td>'+'<td>'+result[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealertranspservQuotationModal-' + result[i].TranspServQuotId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealertranspservQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealertranspservQuotationModal">Edit</a></td></tr>';
 
 
 					       		}
@@ -2237,35 +2237,132 @@ $("#"+"fuelCard4").html(outLogT);
 
 			var data = $(event.target).data('details');
 			//var json = JSON.stringify(data);
+    				outInsDrvAdd = "";
+    			    var drvAddInfo = data.vehQuotExtras;
+    			    //alert("came here");
+    				if(drvAddInfo){
+    					 outInsDrvAdd += '<tr><th>'+"Item No "+'</th><th>'+"Condition & Charges"+'</th><th>'+"Price"+'</th>'+'</th></tr>';
+    					 for(i=0;i<data.vehQuotExtras.length;i++)
+    						{
+    						 outInsDrvAdd= outInsDrvAdd+'<tr>'+'<td>'+data.vehQuotExtras[i].extras1+'</td><td>'+data.vehQuotExtras[i].extras2+'</td><td>'+data.vehQuotExtras[i].amount+'</td><td></tr>';
+    						}
 
-			var quotIdHiddenField = '<input type="hidden" name="TranspServQuotId" value="' + data.TranspServQuotId + '" />';
+    				}
+    				else
+    			    {
+    			    	outInsDrvAdd='<h2>No records for Dealer Search Finance</h2>';
+    			    }
+			var quotIdHiddenField = '<input type="hidden" name="transpServQuotId" value="' + data.transpServQuotId + '" />';
 			var moveToUser = '<input type="checkbox" name="moveToUser" />';
-			if(data.moveToUser)
-			  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+    				if(data.newer)
+    					  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+    					var moveToUser1 = '<input type="checkbox" name="moveToUser1" />';
+    					if(data.used)
+    					  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
+    					 status1="Submitted to User for View";
+    	   	         		if(data.status){status1="Submitted to User for View";}
 
-
+    				//alert("vehicle quotation view"+JSON.stringify(data));
+    				console.log("Vehicle quotation view"+JSON.stringify(data));
 			var editDealertranspservQuotationForm = '<form id="edit-dealer-transpserv-quotation-content-form"><table>\
-				<tr><td>Quotation ID</td><td>' + data.TranspServQuotId + '</td></tr>\
-				<tr><td>' + quotIdHiddenField + '</td></tr>\
-				<tr><td>User ID</td><td>' + data.userId + '</td></tr>\
-				<tr><td>Model Year</td><td>' + data.modelYear + '</td></tr>\
-				<tr><td>Model Name</td><td>' + data.modelName + '</td></tr>\
-				<tr><td>Model Display</td><td>' + data.modelDisplay + '</td></tr>\
-				<tr><td>Auto Bid</td><td>' + data.autoBid + '</td></tr>\
-				<tr><td>Dealer Id</td><td>' + data.dealerId + '</td><td>Dealer Search Id</td><td>' + data.dealTranspServId + '</td></tr>\
-				<tr><td>Car Search Id</td><td>' + data.userTranspServId + '</td><td>Ref Id</td><td>' + data.refId + '</td></tr>\
-				<tr><td>Dealer Name</td><td>' + data.dealerName + '</td><td>Dealer ABN</td><td>' + data.dealerABN + '</td></tr>\
-				<tr><td>Quot Header FreeText</td><td>' + data.quotHeaderFreeText + '</td><td>fromPostCodeAddr</td><td>' + data.fromPostCodeAddr + '</td></tr>\
-				<tr><td>toPostCodeAddr</td><td>' + data.toPostCodeAddr + '</td><td>transTypeReq</td><td>' + data.transTypeReq + '</td></tr>\
-				<tr><td>pickUpDateTime</td><td>' + data.pickUpDateTime + '</td><td>Dealer Stock No</td><td>' + data.dealerStockNo + '</td></tr>\
-				<tr><td>No Of Kms</td><td>' + data.noOfKms + '</td><td>Drive Away Price</td><td>' + data.driveAwayPrice + '</td></tr>\
-				<tr><td>Negotiable</td><td>' + data.negotiable + '</td><td>Offer Valid Date</td><td>' + data.offerValidDate + '</td></tr>\
-				<tr><td>First Come Serve</td><td>' + data.firstCumServe + '</td><td>noOfCars</td><td>' + data.noOfCars + '</td></tr>\
-				<tr><td>transpInsReq</td><td>' + data.transpInsReq + '</td><td>howMay</td><td>' + data.howMay + '</td></tr>\
-				<tr><td>fromStreetNo</td><td>' + data.fromStreetNo + '</td><td>toStreetName</td><td>' + data.toStreetName + '</td></tr>\
-				<tr><td>toStreetNo</td><td>' + data.toStreetNo + '</td><td>Dealer Preferred Location</td><td>' + data.delPrefLocation + '</td></tr>\
-				<tr><td>Offer Price 2</td><td>' + data.offerPrice2 + '</td><td>Offer Price 3</td><td>' + data.offerPrice3 + '</td></tr>\
-				</table></form>';
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Quotation Details</div></div>\
+    					<tr><td>Quotation ID</td><td>' + data.transpServQuotId + '</td></tr>\
+    					<tr><td>' + quotIdHiddenField + '</td></tr>\
+    					<tr><td>Status</td><td>' + status1 + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Requirement Details</div></div>\
+    					<tr><td>Offer Date</td><td>' + data.offerValidDate + '</td></tr>\
+    					<tr><td>Estimate Quote for the Job</td><td>' + data.driveAwayPrice + '</td></tr>\
+    					<tr><td>Quotated Hourly Rate</td><td>' + data.offerPrice2 + '</td></tr>\
+    					<tr><td>Min</td><td>' + data.offerPrice3 + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Items / Services Offered</div></div>\
+    					<tr><td></td><td>' +outInsDrvAdd + '</td></tr>\
+    					</table>\
+    					<table>\
+    					<tr><td>Dealer Terms and Conditions</td><td>' + data.fname + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<tr><td>Dealer Lead Id</td><td>' + data.dealTranspServId + '</td></tr>\
+    					<tr><td>User Serv Req Id</td><td>' + data.userTranspServId + '</td></tr>\
+    					<tr><td>Autoscoop User Id</td><td>' + data.userId + '</td></tr>\
+    					<tr><td>User Since</td><td>' + data.userCreationDate + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Looking To Move</div></div>\
+    					<tr><td>Type Of Vehicle</td><td>' + data.transTypeReq + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">From</div></div>\
+    					<tr><td>Post Code</td><td>' + data.fromPostCodeAddr + '</td></tr>\
+    					<tr><td>Street No</td><td>' + data.fromStreetNo + '</td></tr>\
+    					<tr><td>Street Name</td><td>' + data.fromStreetName + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">To</div></div>\
+    					<tr><td>Post Code</td><td>' + data.toPostCodeAddr + '</td></tr>\
+    					<tr><td>Street No</td><td>' + data.toStreetNo + '</td></tr>\
+    					<tr><td>Street Name</td><td>' + data.toStreetName + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Transport Stuff</div></div>\
+    					<tr><td>When do You want THIS to be picked up & delivered?</td><td>' + data.pickUpDateTime + '</td></tr>\
+    					<tr><td>What kin of transport You need?</td><td>' + data.toStreetName + '</td></tr>\
+    					<tr><td>I am Flexible</td><td>' + data.flexWithDateDefault + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Vehicle Stuff</div></div>\
+    					<table>\
+    					<h6 style="color:#bd191e;"><b>Car Registration</b></h6>\
+    					<tr><td>Rego No</td><td>' + data.regoNo + '</td></tr>\
+    					<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<h6 style="color:#bd191e;"><b>Vehicle Details</b></h6>\
+    					<tr><td>Year</td><td>' + data.year + '</td></tr>\
+    					<tr><td>Make</td><td>' + data.make + '</td></tr>\
+    					<tr><td>Model Name</td><td>' + data.model + '</td></tr>\
+    					<tr><td>Variant</td><td>' + data.variant + '</td></tr>\
+    					<tr><td>Free Text</td><td>' + data.freeText + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">External Dealer Details</div></div>\
+    					<tr><td>Dealer Id</td><td>' + data.dealerId + '</td></tr>\
+    					<tr><td>Category</td><td>' + data.category  + '</td></tr>\
+    					<tr><td>Company Name</td><td>' + data.companyName  + '</td></tr>\
+    					<tr><td>Street</td><td>' + data.street + '</td></tr>\
+    					<tr><td>Suburb</td><td>' + data.suburb + '</td></tr>\
+    					<tr><td>State</td><td>' + data.dealState + '</td></tr>\
+    					<tr><td>Post Code</td><td>' + data.dealPostCode + '</td></tr>\
+    					<tr><td>Country</td><td>' + data.country + '</td></tr>\
+    					<tr><td>Phone</td><td>' + data.phone + '</td></tr>\
+    					<tr><td>Website</td><td>' + data.website + '</td></tr>\
+    					<tr><td>Mobile</td><td>' + data.mobile + '</td></tr>\
+    					<tr><td>Toll Free</td><td>' + data.tollFree + '</td></tr>\
+    					<tr><td>Fax</td><td>' + data.fax + '</td></tr>\
+    					<tr><td>After Hours</td><td>' + data.afterHours + '</td></tr>\
+    					<tr><td>Postal Address</td><td>' + data.postalAddress + '</td></tr>\
+    					<tr><td>Email</td><td>' + data.email + '</td></tr>\
+    					<tr><td>Longitude</td><td>' + data.longitude + '</td></tr>\
+    					<tr><td>Latitude</td><td>' + data.latitude + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<br/>\
+    					</table></form>';
 			editDealertranspservQuotationForm = editDealertranspservQuotationForm.replace(/>null</g, ">--NA--<");
 			editDealertranspservQuotationForm = editDealertranspservQuotationForm.replace(/>undefined</g, ">--NA--<");
 			$(".edit-dealer-transpserv-quotation-content").html(editDealertranspservQuotationForm);
@@ -2318,7 +2415,8 @@ $("#"+"fuelCard4").html(outLogT);
 		}
 
 
-	}
+	
+}
 	
 	
 	// modal for servMaint Quotation start

@@ -868,7 +868,7 @@ CarQuery.prototype = {
 				    	 if(flagV){
 				        	 //alert("raise");
     				    	 var usedCarEbid=true;
-    				         var newCarEbid= document.getElementById("newUsedCarEbid").checked;
+    				         var newCarEbid= true;
     				         if(!newCarEbid){
     				         	usedCarEbid = false;
     				         	//alert("used is checked");
@@ -2061,7 +2061,7 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
 
  var out = '<table class="model-data">';
 
-     out += '<tr><th colspan="2">'+data.modelYear+' '+data.modelDisplay+' '+data.modelName+' '+data.modelVariant+'</th></tr>';
+/*     out += '<tr><th colspan="2">'+data.modelYear+' '+data.modelDisplay+' '+data.modelName+' '+data.modelVariant+'</th></tr>';
 
      out += '<tr><td colspan="2">Car Model Header<hr/></td></tr>';
      out += '<tr><td>Autoscoop Trim:</td><td>'+data.flex1+'</td></tr>';
@@ -2080,9 +2080,9 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
      out += '<tr><td>Seats:</td><td>'+data.modelSeats+'</td></tr>';
     
      out +='<br/>';
-     
+*/     
      out += '<tr><td colspan="2">Car Model Overview<hr/></td></tr>';
-     out += '<tr><td>price:</td><td>'+data.carModel[0].price+'</td></tr>';
+    /* out += '<tr><td>price:</td><td>'+data.carModel[0].price+'</td></tr>';
      if(data.carModel[0].priceGuideEGC!=null)
     	 out += '<tr><td>Price Guide EGC:</td><td>'+data.carModel[0].priceGuideEGC+'</td></tr>';
      if(data.carModel[0].fuelType!=null)
@@ -2146,7 +2146,7 @@ out += '<tr><td>Fuel Capacity(g):</td><td>'+'<input type="text" class="input-tex
        //alert(options);
        $("#carColor").html(options);
        $("#carColor2").html(options);
-	   
+*/	   
      /*out += '<tr><td>Engine Displacement (cc):</td><td>'+data.model_engine_cc+'</td></tr>';
      out += '<tr><td>Engine Displacement (l):</td><td>'+data.model_engine_l+'</td></tr>';
      out += '<tr><td>Engine Displacement (cubic inches):</td><td>'+data.model_engine_ci+'</td></tr>';

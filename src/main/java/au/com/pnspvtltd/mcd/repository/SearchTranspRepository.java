@@ -16,7 +16,9 @@ import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
 public interface SearchTranspRepository extends JpaRepository<SearchTransp, Long>{
 
 	
-	
+	@Query("SELECT search FROM SearchTransp search" +
+			" ORDER BY search.searchTranspId")
+			public List<SearchTransp> getAllSearchCriteria();
 	
 	
 	@Query("SELECT search FROM SearchTransp search WHERE search.idp=?1")

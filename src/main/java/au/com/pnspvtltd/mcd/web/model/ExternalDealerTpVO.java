@@ -1,6 +1,14 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import au.com.pnspvtltd.mcd.domain.ExtDealerSearchTp;
 
 
 
@@ -14,7 +22,17 @@ public class ExternalDealerTpVO {
 	public Long getExternalDealerId() {
 		return externalDealerId;
 	}
+	List<ExtDealerSearchTp> extDealSearch;
+	
+	
+	public List<ExtDealerSearchTp> getExtDealSearch() {
+		return extDealSearch;
+	}
 
+
+	public void setExtDealSearch(List<ExtDealerSearchTp> extDealSearch) {
+		this.extDealSearch = extDealSearch;
+	}
 
 	public void setExternalDealerId(Long externalDealerId) {
 		this.externalDealerId = externalDealerId;

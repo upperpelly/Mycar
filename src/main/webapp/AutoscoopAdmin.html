@@ -291,6 +291,35 @@ $(document).ready( function() {
     	  });
 // end of Serv && maint
 
+// start of Transport Service
+// start of Serv && maint
+ var i1=1;
+     $("#add_row2").click(function(){
+    	 var fname2= $("#fname20").val();
+	    var lname2= $("#lname20").val();
+	    var inslictype20= $("#inslictype20").val();
+	    //var markup = "<tr><td><i class=\"soap-icon-close delete_row\" style=\"font-size:60px;color:red;\"></i></td><td>" + fname + "</td><td>" + lname +"</td><td>" + inslictype0 + "</td>" +"<td>" + dob0 + "</td></tr>";
+	    var markup14 = "<tr class=\"text-center\"><td><input type='checkbox' name='record'></td><td>" + fname2 + "</td><td>" + lname2 +"</td><td>" + inslictype20  + "</td></tr>";
+
+      //$('#addr'+i).html("<td>"+ (i+1) +"</td><td><input type='text' name='fname'  placeholder='First Name' class='input-text full-width'/></td><td><input type='text' name='lname0' placeholder='Last Name' class='input-text full-width'/></td><td><div class='selector'><select class='full-width' name='inslictype0' style='opacity:1'><option value='' selected disabled>Driving Licence Type</option><option>L-Learner</option><option>P-probation</option><option>Full Licence</option><option>OverSeas</option></select></div></td><td><input type='text' name='dob0' onfocus=\"(this.type='date')\" placeholder='DOB' class='input-text full-width'/></td>");
+      //<a id='delete_row' class="pull-right btn btn-danger"><i class="soap-icon-close">Delete Row</i></a>
+      //<a class='delete_row  btn btn-danger'><i class=\"soap-icon-close delete_row\" style=\"font-size:30px;color:red;\"></i></a>
+      $('#my-table966').append(markup14);
+      i++;
+      //<td><input name='name"+i+"' type='text' placeholder='Name' class='form-control input-md'  /> </td><td><input  name='mail"+i+"' type='text' placeholder='Mail'  class='form-control input-md'></td><td><input  name='mobile"+i+"' type='text' placeholder='Mobile'  class='form-control input-md'></td>
+  });
+
+
+     $(".delete_row2").on("click", function(){
+    	    $("#my-table966").find('input[name="record"]').each(function() {
+    	      if ($(this).is(":checked")) {
+    	        $(this).parents("tr").remove();
+    	      }
+    	    });
+    	  });
+// end of Serv && maint
+// end of Transport Service
+
 
     /*  $(".add-row").on("click", function(){
     	    var transregono12= $("#transregono12").val();
@@ -325,6 +354,7 @@ $(document).ready( function() {
 	 $('#fuelCard41').hide();
 	 $('#fuelCard412').hide();
 	 $('#fuelCard4124').hide();
+	 $('#fuelCard41246').hide();
 		$('#LogNew').hide();
 		$('#CreateVehicleForm').hide();
 		$('#LogNewSer').hide();
@@ -372,8 +402,14 @@ $(document).ready( function() {
     }); 
 	$("#BackToVehicles12").click(function(){
         $('#fuelCard4124').hide();
+        //$('#fuelCard41246').hide();
         $('#car-Sv-model-data12').show();
     }); 
+	$("#BackToVehicles14").click(function(){
+        $('#fuelCard41246').hide();
+        //$('#fuelCard41246').hide();
+        $('#car-Tp-model-data12').show();
+    });
 $('#logTab').hide();
 $('.logBookBtn').click(function(){
 	//alert("invoke");
@@ -727,6 +763,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                             <li class="active"><a data-toggle="tab" href="#dashboard"><i id="usrleftnav" class="soap-icon-anchor circle"></i>Users</a></li>
                             <li class=""><a data-toggle="tab" href="#ebidRequest"><i id="usrleftnav" class="soap-icon-user circle"></i>EBid Requests</a></li>
                              <li class=""><a data-toggle="tab" href="#smRequest"><i id="usrleftnav" class="soap-icon-user circle"></i>S & M Requests</a></li>
+                             <li class=""><a data-toggle="tab" href="#transpRequest"><i id="usrleftnav" class="soap-icon-user circle"></i>Transport Requests</a></li>
                               <li class=""><a data-toggle="tab" href="#extDealCreate"><i id="usrleftnav" class="soap-icon-user circle"></i>Ext-Dealer Creation</a></li>
                             <!-- <li class=""><a data-toggle="tab" href="#cruise-description"><i class="soap-icon-status circle"></i>My Vehicle</a></li> -->
                             <!-- <li class=""><a data-toggle="tab" href="#VehicleQuotation12"><i id="usrleftnav" class="flaticon-private-garage circle"></i>Vehicle Garage</a></li>
@@ -1789,6 +1826,473 @@ Date is Required</b></span>
 													</div>
 	                                        
 	                                        <!-- End of Serv & Maint -->
+	                                        
+	                                        
+	                                        <!--  start of Transport  -->
+	                                 <div id="transpRequest" class="tab-pane fade">
+				                       <form class="form-inline signup" name="transpsearchfrm" ng-submit="getsmInfor()">
+				                       			 <div class="col-md-12 product-search-title">
+                                                     	<label>Search Criteria for Service and Maintenance Leads</label> 
+                                                  </div>
+                                                  <div class="row">
+                                                      <div class="col-sm-3 col-md-3">
+                                                          
+                                                      </div>
+                                                      <div class="col-sm-3 col-md-6">
+                                                          <div class="selector">
+                                                              <select id="car-yearssm" name="caryearssm" ng-model="caryearssm"
+                                                                      class="full-width" ></select>
+                                                          </div>
+                                                      </div>
+                                                  </div><br />
+                                                   <div class="row">
+                                                       <div class="col-sm-3 col-md-3">
+                                                           
+                                                       </div>
+                                                       <div class="col-sm-3 col-md-6">
+                                                           <div class="selector">
+                                                               <select id="car-makessm" name="carmakessm" ng-model="carmakessm"
+                                                                       class="full-width"></select>
+                                                           </div>
+                                                       </div>
+                                                   </div><br />
+                                                   <div class="row">
+                                                       <div class="col-sm-3 col-md-3">
+                                                           
+                                                       </div>
+                                                       <div class="col-sm-3 col-md-6">
+	                                                       <div class="selector">
+	                                                          <select id="car-modelssm" name="carmodelssm" ng-model="carmodelssm"
+	                                                                  class="full-width" ></select>
+	                                                      </div>
+                                                       </div>
+                                                   </div><br />
+                                                   <div class="row">
+                                                      <div class="col-sm-3 col-md-3">
+                                                          
+                                                      </div>
+                                                      <div class="col-sm-3 col-md-6">
+	                                                      <div class="selector">
+	                                                         <select id="car-model-trimssm" name="car-model-trimssm" ng-model="carmodeltrimssm"
+	                                                                 class="full-width" ></select>
+	                                                     </div>
+                                                      </div>
+                                                  </div><br />
+                                                  <div class="row">
+                                                      <div class="col-sm-3 col-md-3">
+                                                          
+                                                      </div>
+                                                      <div class="col-sm-3 col-md-6">
+                                                                 <input type="text" name="creationDateSv" id="creationDateSv" ng-model="creationDateSv" onfocus="(this.type='date')" class="input-text full-width" placeholder="Creation Date" />
+                                                    	</div>
+                                                  </div><br />
+                                                  <div class="row">
+                                                      <div class="col-sm-3 col-md-3">
+                                                          &nbsp;
+                                                      </div>
+                                                      <div class="col-sm-5 col-md-6">
+                                                          <button type="submit" class="button submit-bgcolor">Search for the Transport</button>
+                                                      </div>
+                                                  </div><br />
+                                                  
+                                             </form> 
+                                                                                          <form class="form-inline signup" name="transpsearchAllfrm" ng-submit="gettpInforAll()">
+                                                     <div class="row">
+                                                        <div class="col-sm-3 col-md-3">
+                                                            &nbsp;
+                                                        </div>
+                                                        <div class="col-sm-5 col-md-6">
+                                                            <button class="button submit-bgcolor">Display all the Ebid for Transport</button>
+                                                        </div>
+                                                    </div><br />
+                                                     </form>
+                                                  
+												<h4>List of Search Transport Requests</h4>
+	                                         <table id="car-Tp-model-data12">
+	                                        </table>
+	                                        
+	                                         <div id="fuelCard41246">
+			                                        <div id="selectedRecord">
+															<h4><center>Lead / Quotation creation process for a Transport</center></h4><a class="button btn-mini pull-right" id="BackToVehicles14">Back To Services Log</a>
+															<h4><center>Tranport Request Details</center>
+															<div class="edit-dealer-vehicle-transp-content">
+														            </div>
+															<br/>
+															<br/>
+															<ul class="nav nav-tabs">
+															<li class="dropdown active">
+															    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lead Creation
+															    <span class="caret"></span></a>
+															    <ul class="dropdown-menu">
+															      <li><a data-toggle="tab" href="#LeadSvCreate">Internal Dealer</a></li>
+															      <li><a data-toggle="tab" href="#LeadTpCreateExt">External Dealer</a></li>
+															    </ul>
+															  </li>
+														    <!-- <li class="active"><a data-toggle="tab" href="#LeadCreate">Lead Creation</a></li> -->
+														    <li><a data-toggle="tab" href="#QuoteTpCreate">Quotation Creation</a></li>
+														  </ul>
+														  <div class="tab-content">
+														    <div id="LeadSvCreate" class="tab-pane fade in active">
+														    <div class="row">
+															    <div class="col-md-6"><button id="LeadSvNewButton">Start Create Lead Process for Internal Dealer</button></div>
+															    <div class="col-md-6"><button id="printBtn" class="pull-right" onclick="window.print();">Print</button></div>
+														    </div>
+	
+															<div class="booking-section travelo-box" id="LeadNew">
+																<form class="booking-form" id="LeadNewSvfrm" name="LeadNewSvfrm" ng-submit="submitMyLeadNewSvfrm()" novalidate>
+																<h4><center>Lead creation for Internal Dealer</center></h4>
+																    	<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																						<div class="selector">
+																							<select class="full-width" id="LeadSvDealerId" name="LeadSvDealerId" ng-model="LeadSvDealerId" ng-options="x for x in dealerIds" ng-change="dealerSvInfoForID()">
+																								<option value="" disabled selected>Select a Dealer ID</option>
+																							</select>
+																						</div>
+																			 </div>
+																		</div>
+																		<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																				<input type="text" id="leadSvDealerName" name="leadSvDealerName" ng-model="leadSvDealerName" class="input-text full-width" value="" placeholder="Dealer Name" readonly />
+																			 </div>
+																		</div>
+																		<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																				<input type="text" id="leadSvDealerABN" name="leadSvDealerABN" ng-model="leadSvDealerABN" class="input-text full-width" value="" placeholder="Dealer ABN Number" readonly />
+																			 </div>
+																		</div>
+																		<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																				<input type="text" id="leadSvDealerEmail" name="leadSvDealerEmail" ng-model="leadSvDealerEmail" class="input-text full-width" value="" placeholder="Dealer Email" readonly />
+																			 </div>
+																		</div>
+																		<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																				<textarea rows="4" cols="50" id="LongSvNotes" class="input-text full-width" ng-model="LongSvNotes" name="LongSvNotes" placeholder="Long Text"></textarea>
+																			 </div>
+																		</div>
+																		<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Send Lead</button>
+										                                    </div>
+										                                </div>
+																		
+																</form>
+															<!-- end form -->
+															</div>
+															<div class="row table-responsive">
+															<h4><center>List of Existing Leads for the selected S&M Request [Internal Dealer]</center></h4>
+															<table id="LeadSvTable">
+															</table></div>
+														    </div>
+														    
+														    <div id="LeadTpCreateExt" class="tab-pane fade">
+														    <div class="row">
+														    <h4><center>List of Existing Leads for the selected Transport Request [External Dealer]</center></h4>
+															<table id="LeadTpExtTable">
+															</table>
+															    <div class="col-md-6"><button id="LeadSvNewExtButton">Start Create Lead Process for External Dealer</button></div>
+															    <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div>
+														    </div>
+	
+															<div class="booking-section travelo-box" id="LeadNewExt">
+																<form class="booking-form" id="LeadTpNewExtfrm" name="LeadTpNewExtfrm" ng-submit="submitTpMyLeadNewExtfrm()" novalidate>
+																    	<div class="row">
+																    	<h4><center>Selection Criteria for External Dealer Transport</center></h4>
+																	    	<div class="col-sm-6 col-md-6">
+																						<div class="selector">
+																							<select class="full-width" id="LeadTpCategory" name="LeadTpCategory" ng-model="LeadTpCategory">
+																								<option value="" disabled selected>Category Type</option>
+																								<option>Motor Engineers Repairers</option>
+																								<option>Mechanical Engineers</option>
+																								<option>Motor Radiator Services</option>
+																								<option>Motor Replacement Parts</option>
+																								<option>Motor Sport Services</option>
+																								<option>Motor Vehicle Inspection Testing</option>
+																							</select>
+																						</div>
+																			 </div>
+																		</div>
+																		<div class="row">
+																	    	<div class="col-sm-6 col-md-6">
+																				<input type="text" id="leadTpExtpost" name="leadTpExtpost" ng-model="leadTpExtpost" class="input-text full-width" placeholder="PostCode" />
+																			 </div>
+																		</div>
+																		
+																		<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Retrieve Dealers</button>
+										                                    </div>
+										                                </div>
+										                                
+										                                <h4><center>List of External Dealer Retrieved</center></h4>
+															<table id="LeadTpExtDealTable">
+															</table>
+																		
+																</form>
+																
+																<form class="booking-form" id="LeadTpNewfrmext" name="LeadTpNewfrmext" ng-submit="submitTpMyLeadNewfrmext()" novalidate>
+																<h4><center>Lead creation for the External Dealer populated</center></h4>
+																    	<div class="row">
+															    		<div class="selector">
+																			<select class="full-width" id="ExtTpDealerId" name="ExtTpDealerId" ng-model="ExtTpDealerId">
+																				<option value="" disabled selected>Select a Dealer Id</option>
+																			</select>
+																		</div>
+																	</div>
+																		<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Create Lead for External Dealer</button>
+										                                    </div>
+										                                </div>
+																		
+																</form>
+																
+																
+																
+															<!-- end form -->
+															</div>
+															
+															
+															<!-- Lead for Extern start-->
+																
+																<!-- end -->
+														    </div>
+														    
+														    
+														    
+														    <div id="QuoteTpCreate" class="tab-pane fade">
+															    <div class="row">
+															    <div class="col-md-6"><button id="QuoteTpNewButton" onclick="showDiv2()">Start Create Quote Process</button></div>
+															    <!-- <div class="col-md-6 pull-right"><button id="printBtn" onclick="window.print();">Print</button></div> -->
+															    </div>
+																<div class="booking-section travelo-box" id="QuoteTpNew">
+																	<form class="booking-form" id="QuoteTpNewfrm" name="QuoteTpNewfrm" ng-submit="submitTpMyQuoteNewfrm(QuoteTpNewfrm.$valid)" novalidate>
+															    	<h4><center>List of Leads for the selected Tranport Request</center></h4>
+															    	<div class="row">
+															    		<div class="selector">
+																			<select class="full-width" id="LeadTpQuoteId" name="LeadTpQuoteId" ng-model="LeadTpQuoteId">
+																				<option value="" disabled selected>Select a Lead</option>
+																			</select>
+																		</div>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+															<input type="text" onfocus="(this.type='date')"
+																ng-model="finTpDOB" id="finTpDOB" name="finTpDOB"
+																class="input-text full-width"
+																placeholder="Offer Valid Date" required /> <span
+																style="color: red"
+																ng-show="QuoteTpNewfrm.finTpDOB.$error.required &amp;&amp; (!QuoteTpNewfrm.finTpDOB.$pristine || QuoteTpNewfrm.$submitted)"><b>Offer Valid
+																	
+Date is Required</b></span>
+														</div>
+														<div class="col-sm-4 col-md-4 pull-left input-group">
+															<input type="text" id="finTpAnnualIncome"
+																name="finTpAnnualIncome" ng-model="finTpAnnualIncome"
+																ng-pattern="/^[0-9]*$/" class="input-text full-width"
+																value="" placeholder="Estimated Quote for the Job" required /> 
+																<span
+																class="input-group-addon">$</span>
+															<span style="color: red"
+																ng-show="QuoteTpNewfrm.finTpAnnualIncome.$error.pattern &amp;&amp; (!QuoteTpNewfrm.finTpAnnualIncome.$pristine || QuoteTpNewfrm.$submitted)"><b>Drive Away Price
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="QuoteTpNewfrm.finTpAnnualIncome.$error.required &amp;&amp; (!QuoteTpNewfrm.finTpAnnualIncome.$pristine || QuoteTpNewfrm.$submitted) &amp;&amp; !QuoteTpNewfrm.finTpAnnualIncome.$error.pattern"><b>Drive
+																	Away Price is Required</b></span></div>
+																	<div class="col-sm-4 col-md-4 pull-left input-group">
+															<input type="text" id="finTpAnnualIncome1"
+																name="finTpAnnualIncome1" ng-model="finTpAnnualIncome1"
+																ng-pattern="/^[0-9]*$/" class="input-text full-width"
+																value="" placeholder="Quotated Hourly Rate " required /> <span
+																class="input-group-addon">$</span>
+															<span style="color: red"
+																ng-show="QuoteTpNewfrm.finTpAnnualIncome1.$error.pattern &amp;&amp; (!QuoteTpNewfrm.finTpAnnualIncome1.$pristine || QuoteTpNewfrm.$submitted)"><b>Save Price
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="QuoteTpNewfrm.finTpAnnualIncome1.$error.required &amp;&amp; (!QuoteTpNewfrm.finTpAnnualIncome1.$pristine || QuoteTpNewfrm.$submitted) &amp;&amp; !QuoteTpNewfrm.finTpAnnualIncome1.$error.pattern"><b>Save
+																	Price is Required</b></span></div>
+																	
+																	<div class="col-sm-4 col-md-4 pull-left input-group">
+															<input type="text" id="finTpAnnualIncome2"
+																name="finTpAnnualIncome2" ng-model="finTpAnnualIncome2"
+																ng-pattern="/^[0-9]*$/" class="input-text full-width"
+																value="" placeholder="Per Hour " required /> <span
+																class="input-group-addon">$</span>
+															<span style="color: red"
+																ng-show="QuoteTpNewfrm.finTpAnnualIncome2.$error.pattern &amp;&amp; (!QuoteTpNewfrm.finTpAnnualIncome2.$pristine || QuoteTpNewfrm.$submitted)"><b>Offer Price
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="QuoteTpNewfrm.finTpAnnualIncome2.$error.required &amp;&amp; (!QuoteTpNewfrm.finTpAnnualIncome2.$pristine || QuoteTpNewfrm.$submitted) &amp;&amp; !QuoteTpNewfrm.finTpAnnualIncome2.$error.pattern"><b>Offer
+																	Price is Required</b></span></div>
+																	
+																	
+																	<!-- <div class="col-sm-3 col-md-3">
+															<div class="selector">
+																<select id="car-years-fin" name="caryearsfin"
+																	ng-model="caryearsfin" class="full-width"
+																	required>
+																	<option value="" selected disabled>Year</option>
+																</select>
+															</div>
+															<span style="color: red"
+																ng-show="QuoteNewfrm.caryearsfin.$error.required &amp;&amp; (!QuoteNewfrm.caryearsfin.$pristine || QuoteNewfrm.$submitted)"><b>Car
+																	year is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
+																<select id="car-makes-fin" name="carmakesfin"
+																	ng-model="carmakesfin" class="full-width"
+																	required>
+																	<option value="" selected disabled>Make</option>
+																</select>
+															</div>
+															<span style="color: red"
+																ng-show="QuoteNewfrm.carmakesfin.$error.required &amp;&amp; (!QuoteNewfrm.carmakesfin.$pristine || QuoteNewfrm.$submitted)"><b>Car
+																	Make is Required</b></span>
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<div class="selector">
+																<select id="car-models-fin" name="carmodelsfin"
+																	ng-model="carmodelsfin" class="full-width"
+																	required>
+																	<option value="" selected disabled>Model</option>
+																</select>
+															</div>
+															<span style="color: red"
+																ng-show="QuoteNewfrm.carmodelsfin.$error.required &amp;&amp; (!QuoteNewfrm.carmodelsfin.$pristine || QuoteNewfrm.$submitted)"><b>Car
+																	model is Required</b></span>
+														</div>
+														<div class="row">
+														<div class="col-sm-3 col-md-3">&nbsp;</div>
+														<div class="col-sm-9 col-md-9">
+															<div class="selector">
+																<select id="car-model-auto-trims-fin"
+																	name="carmodelAutotrimsfin"
+																	ng-model="carmodelAutotrimsfin" class="full-width"
+																	required>
+																	<option value="" selected disabled>Autoscoop
+																		Trim</option>
+																</select>
+															</div>
+															<span style="color: red"
+																ng-show="QuoteNewfrm.carmodelAutotrimsfin.$error.required &amp;&amp; (!QuoteNewfrm.carmodelAutotrimsfin.$pristine || QuoteNewfrm.$submitted)"><b>Autoscoop
+																	Trim is Required</b></span>
+														</div> -->
+													</div>
+													
+													<br />
+													<div class="col-sm-4 col-md-4">
+																		<div class="selector">
+																			<select class="full-width" id="insTpDriversCt"
+																				ng-model="insTpDriversCt" name="insTpDriversCt">
+																				<option value="" selected disabled>No of
+																					Additional Extras</option>
+																				<option value="1">Yes</option>
+																				<option value="0">No</option>
+																			</select>
+																		</div>
+																	</div>
+													<div class="row" ng-show="insTpDriversCt == 1">
+																	<div class="col-sm-3 col-md-3">
+																		<input type="text" name='fname20' id="fname20"
+																			placeholder='Offer Details'
+																			class="input-text full-width" />
+																	</div>
+																	<div class="col-sm-3 col-md-3">
+																		<input type="text" name='lname20' id='lname20'
+																			placeholder='Quantity' class="input-text full-width" />
+																	</div>
+																	<div class="col-sm-3 col-md-3">
+																		<input type="text" name='inslictype20' id='inslictype20'
+																			placeholder='Price' class="input-text full-width" />
+																	</div>
+																</div>
+													<div class="row" ng-show="insTpDriversCt == 1">
+																	<div class="col-sm-12 col-md-12">
+																		<!-- <button type="button" class="append_row">Add User</button> -->
+																		<a id="add_row2" data-toggle="tooltip"
+																			data-placement="right" title="Click to Add Driver"
+																			class="btn btn-success pull-left"><i
+																			class="soap-icon-plus"></i></a><a
+																			class="delete_row2 pull-right btn btn-danger"
+																			data-toggle="tooltip" data-placement="top"
+																			title="Delete Selected Driver s"><i
+																			class="soap-icon-close"></i></a>
+																	</div>
+																</div>
+													<div class="row" ng-show="insTpDriversCt == 1" >
+																	<div class="col-sm-12 col-md-12">
+																		<!-- <table id="my-table955">
+                                                                            <tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
+                                                                        </table>
+                                                                         -->
+																		<table class="table table-bordered table-hover"
+																			id="my-table966">
+																			<tr>
+																				<th class="text-center">#</th>
+																				<th class="text-center">Offer Details</th>
+																				<th class="text-center">Quantity</th>
+																				<th class="text-center">Price</th>
+																			</tr>
+																		</table>
+																	</div>
+																</div>
+																<div class="row">
+														<div class="col-sm-3 col-md-3">&nbsp;</div>
+														<div class="col-sm-6 col-md-6">
+															<textarea rows="4" cols="50" id="servTpAddNotes"
+																ng-model="servTpAddNotes" name="servTpAddNotes"
+																placeholder="Dealer Terms and Conditions"></textarea>
+														</div>
+														<div class="col-sm-3 col-md-3">&nbsp;</div>
+													</div>
+													<!-- <div class="row">
+                                                        <div class="col-sm-3 col-md-3">
+                                                        &nbsp;
+                                                        </div>
+                                                        <div class="col-sm-9 col-md-9">
+                                                            <div class="selector">
+                                                                <select id="car-model-trims-fin" name="carmodeltrimsfin"  ng-model="carmodeltrimsfin"
+                                                                    class="full-width" required>
+                                                                    <option value="" selected disabled>Variant</option>
+                                                                </select>
+                                                            </div>
+                                                            <span style="color:red" ng-show="ebidfinfrm.carmodeltrimsfin.$error.required && (!ebidfinfrm.carmodeltrimsfin.$pristine || ebidfinfrm.$submitted)"><b>Car Variant is Required</b></span>
+                                                        </div>
+                                                    </div><br/> -->
+													
+													<br />
+																	<table id="logServMnt-image">
+                                							        </table>
+
+																		<div class="form-group row">
+																			<div class="col-sm-12 col-md-12">
+																				<label>Upload Quotation Hard Copy</label> <input
+																					type="file" id="file-chooser-Sv-logservmaint" name="photoSvInvoice"
+																					class="input-text full-width" value=""
+																					placeholder="" />
+
+																				<!-- <button id="upload-button-logservmaint" type="button">Upload</button> -->
+																			</div>
+																		</div>
+																		<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Create Quotation for External Dealer</button>
+										                                    </div>
+										                                </div>
+																		</div>
+																	
+																</form>
+																
+																<h4><center>List of Quotation Created for the selected Transport Requests</center></h4>
+																</div>
+																<table id="QuoteTpTable">
+																</table>
+														    </div>
+														  </div>
+													</div>
+	                                        
+	                                        
+	                                        <!-- end of Tranport -->
+	                                        
+	                                        
+	                                        
 	                                        
 	                                        <!--  Start of External Dealer Creation -->
 	                                        
