@@ -11,6 +11,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import au.com.pnspvtltd.mcd.domain.AdminAuto;
 import au.com.pnspvtltd.mcd.domain.BlogTemplate;
 import au.com.pnspvtltd.mcd.domain.CarModelTemplate;
 import au.com.pnspvtltd.mcd.domain.ComingSoonUser;
@@ -83,6 +84,7 @@ import au.com.pnspvtltd.mcd.domain.VehicleDealerMakeList;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerServMaintDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.domain.YoutubeTemplate;
+import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.BlogTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
@@ -269,6 +271,26 @@ public class DomainModelUtil {
 		}
 
 		ComingSoonVO userVO = new ComingSoonVO();
+		try {
+			BeanUtils.copyProperties(userVO, user);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userVO;
+	}
+	
+	
+	public AdminAutoVO fromAdmin(final AdminAuto user) {
+
+		if (user == null) {
+			return null;
+		}
+
+		AdminAutoVO userVO = new AdminAutoVO();
 		try {
 			BeanUtils.copyProperties(userVO, user);
 		} catch (IllegalAccessException e) {
