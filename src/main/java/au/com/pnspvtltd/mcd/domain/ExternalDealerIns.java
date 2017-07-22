@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * Entity implementation class for Entity: FinanceCompany
  * 
  */
-@Entity @Table(name = "externalDealerFin") public class ExternalDealerFin implements Serializable 
+@Entity @Table(name = "externalDealerIns") public class ExternalDealerIns implements Serializable 
 {
 
 

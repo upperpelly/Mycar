@@ -1,18 +1,10 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-
-import au.com.pnspvtltd.mcd.domain.ExtDealerSearchTp;
 
 
 
-public class ExternalDealerTpVO {
+public class ExternalDealerInsVO {
 
 
 
@@ -22,17 +14,7 @@ public class ExternalDealerTpVO {
 	public Long getExternalDealerId() {
 		return externalDealerId;
 	}
-	List<ExtDealerSearchTp> extDealSearch;
-	
-	
-	public List<ExtDealerSearchTp> getExtDealSearch() {
-		return extDealSearch;
-	}
 
-
-	public void setExtDealSearch(List<ExtDealerSearchTp> extDealSearch) {
-		this.extDealSearch = extDealSearch;
-	}
 
 	public void setExternalDealerId(Long externalDealerId) {
 		this.externalDealerId = externalDealerId;
@@ -41,10 +23,6 @@ public class ExternalDealerTpVO {
 	
 	private String category;
 	private String companyName;
-	private String abnNumber;
-	private String contactPerson;
-	private String transportFrom;
-	private String transportTo;
 	private String street;
 	private String suburb;
 	private String state;
@@ -61,47 +39,6 @@ public class ExternalDealerTpVO {
 	private float longitude;
 	private float latitude;
 	private Date creationDate;
-	
-	public String getAbnNumber() {
-		return abnNumber;
-	}
-
-
-	public void setAbnNumber(String abnNumber) {
-		this.abnNumber = abnNumber;
-	}
-
-
-	public String getContactPerson() {
-		return contactPerson;
-	}
-
-
-	public void setContactPerson(String contactPerson) {
-		this.contactPerson = contactPerson;
-	}
-
-
-	public String getTransportFrom() {
-		return transportFrom;
-	}
-
-
-	public void setTransportFrom(String transportFrom) {
-		this.transportFrom = transportFrom;
-	}
-
-
-	public String getTransportTo() {
-		return transportTo;
-	}
-
-
-	public void setTransportTo(String transportTo) {
-		this.transportTo = transportTo;
-	}
-
-
 	
 	public Date getCreationDate() {
 		return creationDate;

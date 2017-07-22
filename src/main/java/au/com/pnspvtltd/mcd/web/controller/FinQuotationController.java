@@ -21,16 +21,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.domain.ExtDealServMaintr1;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
+import au.com.pnspvtltd.mcd.domain.ExtDealerSearchFin;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearchTp;
+import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.ServiceMaintQuotation;
 import au.com.pnspvtltd.mcd.domain.TranspServiceQuotation;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.repository.ExtDealerFinRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerServMaintRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerTpRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerTpRepository;
+import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.ServMaintQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.TranspServQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
@@ -40,22 +44,24 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
+import au.com.pnspvtltd.mcd.web.model.ExtQtDealerFinListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.ExtQtDealerSearchListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.ExtQtDealerSmListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.ExtQtDealerTpListAdminVO;
+import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.ServiceMaintQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.TranspServiceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 @RestController
-public class TranspQuotationController {
+public class FinQuotationController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(TranspQuotationController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(FinQuotationController.class);
 
 	@Autowired
-	TranspServQuotationRepository servMaintQuotationRepository;
+	FinanceQuotationRepository servMaintQuotationRepository;
 	@Autowired
-	ExtDealerTpRepository extDealerServMaintRepository;
+	ExtDealerFinRepository extDealerServMaintRepository;
 	
 	@Autowired
 	UserRepository userRepository;
@@ -75,11 +81,11 @@ public class TranspQuotationController {
 		return vehicleQuotationVO;
 	}*/
 	
-	@PutMapping("dealerQuotTpCreation")
-	public TranspServiceQuotation dealerQuotTpCreation(@RequestBody TranspServiceQuotationVO dealerVO, HttpServletResponse response) {
-		LOGGER.debug("Received request to create Tp Quotati for Ext Dealer {}", dealerVO);
+	@PutMapping("dealerQuotFinCreation")
+	public FinanceQuotation dealerQuotFinCreation(@RequestBody FinanceQuotationVO dealerVO, HttpServletResponse response) {
+		LOGGER.debug("Received request to create Fin Quotati for Ext Dealer {}", dealerVO);
 		
-		TranspServiceQuotation vehicleQuotation = new TranspServiceQuotation();
+		FinanceQuotation vehicleQuotation = new FinanceQuotation();
 		vehicleQuotation.setOfferValidDate(dealerVO.getOfferValidDate());// set Offer Valid Date
 		vehicleQuotation.setDriveAwayPrice(dealerVO.getDriveAwayPrice()); // set Drive Away Price
 		vehicleQuotation.setOfferPrice2(dealerVO.getOfferPrice2());// set Save Price
@@ -101,48 +107,60 @@ public class TranspQuotationController {
 		
 		// Addition of extras
 		//vehicleQuotation.setVehQuotExtras(dealerVO.getVehQuotExtras());
-		//vehicleQuotation.setFname(dealerVO.getFname()); // Terms and conditions
+		//vehicleQuotation.setFname(dealerVO.getFlex2()); // Terms and conditions
 		
 		vehicleQuotation.setVehQuotExtras(dealerVO.getVehQuotExtras());
 		vehicleQuotation.setUserId(dealerVO.getUserId());
-		vehicleQuotation.setUserCreationDate(dealerVO.getUserCreationDate());
+		//vehicleQuotation.setUserCreationDate(dealerVO.getUserCreationDate());
 		Calendar calendar = Calendar.getInstance();
 	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
-		vehicleQuotation.setCreationDate(ourJavaDateObject);
+		//vehicleQuotation.setCreationDate(ourJavaDateObject);
 		//vehicleQuotation.setStatus(true);
-		vehicleQuotation.setUserTranspServId(dealerVO.getUserTranspServId());
-		vehicleQuotation.setDealTranspServId(dealerVO.getDealTranspServId());
-		ExtDealerSearchTp extDealerSearch=extDealerServMaintRepository.findOne(dealerVO.getDealTranspServId());
+		vehicleQuotation.setCarSearchId(dealerVO.getCarSearchId());
+		vehicleQuotation.setDealSearchId(dealerVO.getDealSearchId());
+		ExtDealerSearchFin extDealerSearch=extDealerServMaintRepository.findOne(dealerVO.getDealSearchId());
 		extDealerSearch.setStatus(true);
 		vehicleQuotation.setDealerId(extDealerSearch.getDealerId()); // Dealer Lead Id
-		vehicleQuotation.setFromPostCodeAddr(extDealerSearch.getFromPostCodeAddr());
-		vehicleQuotation.setToPostCodeAddr(extDealerSearch.getToPostCodeAddr());
-		vehicleQuotation.setTransTypeReq(extDealerSearch.getTransTypeReq());
-		vehicleQuotation.setPickUpDateTime(extDealerSearch.getPickUpDateTime());
-		vehicleQuotation.setNoOfCars(extDealerSearch.getNoOfCars());
-		vehicleQuotation.setYear(extDealerSearch.getYear());
-		vehicleQuotation.setMake(extDealerSearch.getMake());
-		vehicleQuotation.setModel(extDealerSearch.getModel());
-		vehicleQuotation.setVariant(extDealerSearch.getVariant());
-		vehicleQuotation.setFreeText(extDealerSearch.getFreeText());
-		vehicleQuotation.setTranspInsReq(extDealerSearch.isTranspInsReq());
-		vehicleQuotation.setHowMay(extDealerSearch.getHowMay());
-		vehicleQuotation.setFromStreetNo(extDealerSearch.getFromStreetNo());
-		vehicleQuotation.setToStreetName(extDealerSearch.getToStreetName());
-		vehicleQuotation.setToStreetNo(extDealerSearch.getToStreetNo());
-		vehicleQuotation.setFromStreetName(extDealerSearch.getFromStreetName());
-		vehicleQuotation.setKindOfTransport(extDealerSearch.getKindOfTransport());
-		vehicleQuotation.setFlexWithDateDefault(extDealerSearch.isFlexWithDateDefault());
-		vehicleQuotation.setUploadPhotos(extDealerSearch.getUploadPhotos());
-		vehicleQuotation.setPhoto(extDealerSearch.getPhoto());
-		vehicleQuotation.setRegoNo(extDealerSearch.getRegoNo());
+		vehicleQuotation.setNewer(extDealerSearch.isNewer());
+		vehicleQuotation.setUsed(extDealerSearch.isUsed());
+		
+		//vehicleQuotation.setPostCode(extDealerSearch.getPostCode());
+		
+		vehicleQuotation.setRego(extDealerSearch.getRego());
 		vehicleQuotation.setRegoState(extDealerSearch.getRegoState());
-		vehicleQuotation.setUserTranspServId(extDealerSearch.getCarSearchId());
+		vehicleQuotation.setModelYear(String.valueOf(extDealerSearch.getYear()));
+		vehicleQuotation.setModelDisplay(extDealerSearch.getMake());
+		vehicleQuotation.setModelName(extDealerSearch.getModel());
+		vehicleQuotation.setModelTrim(extDealerSearch.getAutoscoopTrim());
+		vehicleQuotation.setPostCode(String.valueOf(extDealerSearch.getPostCode()));
+		vehicleQuotation.setStreetNo(extDealerSearch.getStreetNo());
+		vehicleQuotation.setStreetName(extDealerSearch.getStreetName());
+		vehicleQuotation.setVehValue(extDealerSearch.getVehValue());
+		vehicleQuotation.setBalloonPay(extDealerSearch.getBalloonPay());
+		vehicleQuotation.setLoanAmount(extDealerSearch.getLoanAmount());
+		vehicleQuotation.setLoanPeriod(extDealerSearch.getLoanPeriod());
+		vehicleQuotation.setAnnualIncome(extDealerSearch.getAnnualIncome());
+		vehicleQuotation.setIncomeType(extDealerSearch.getIncomeType());
+		vehicleQuotation.setCreditRating(extDealerSearch.getCreditRating());
+		vehicleQuotation.setDateOfBirth(extDealerSearch.getDateOfBirth());
+		
+		vehicleQuotation.setYearEmploymentBusiness(extDealerSearch.getYearEmploymentBusiness());
+		vehicleQuotation.setIncomeBeforeSuperTax(extDealerSearch.getIncomeBeforeSuperTax());
+		vehicleQuotation.setIncomeAfterSuperTax(extDealerSearch.getIncomeAfterSuperTax());
+		vehicleQuotation.setIfBusinessProvideABN(extDealerSearch.getIfBusinessProvideABN());
+		vehicleQuotation.setRego(extDealerSearch.getRego());
+		vehicleQuotation.setRegoState(extDealerSearch.getRegoState());
+		vehicleQuotation.setStreetNo(extDealerSearch.getStreetNo());
+		vehicleQuotation.setStreetName(extDealerSearch.getStreetName());
+		vehicleQuotation.setMr(extDealerSearch.getMr());
+		vehicleQuotation.setFirstName(extDealerSearch.getFirstName());
+		vehicleQuotation.setLastName(extDealerSearch.getLastName());
+		
 		
 		
 		User user =userRepository.findOne(dealerVO.getUserId());
-		int vehQuotCountTemp = user.getTranspServQuotCt();
-		user.setTranspServQuotCt(vehQuotCountTemp+1);
+		int vehQuotCountTemp = user.getFinanceQuotCt();
+		user.setFinanceQuotCt(vehQuotCountTemp);
 		// Dealer info Start
 		vehicleQuotation.setCategory(extDealerSearch.getCategory());
 		vehicleQuotation.setCompanyName(extDealerSearch.getCompanyName());;
@@ -174,28 +192,28 @@ public class TranspQuotationController {
 		//vehicleQuotation.setDealerStockNo(vehicleQuotation.getDealerStockNo());
 		Long l =(long) 0;
 		// Ebid Request
-		/*vehicleQuotation.setNewer(dealerVO.isNewer());
-		vehicleQuotation.setUsed(dealerVO.isUsed());
-		vehicleQuotation.setPostCode(dealerVO.getPostCode());
+		vehicleQuotation.setNewer(extDealerSearch.isNewer());
+		vehicleQuotation.setUsed(extDealerSearch.isUsed());
+		vehicleQuotation.setPostCode(String.valueOf(extDealerSearch.getPostCode()));
 		vehicleQuotation.setColor(dealerVO.getColor());// color 1
 		vehicleQuotation.setTransmission(dealerVO.getTransmission()); // color2
 		vehicleQuotation.setDriveType(dealerVO.getDriveType());// more about more requirement
 		vehicleQuotation.setRefId(l);
-		vehicleQuotation.setAddress(dealerVO.getAddress()); // set image
-*/		servMaintQuotationRepository.save(vehicleQuotation);
+		//vehicleQuotation.setAddress(dealerVO.getAddress()); // set image
+		servMaintQuotationRepository.save(vehicleQuotation);
 		servMaintQuotationRepository.flush();
 		return vehicleQuotation;
 	}
 	
-	@GetMapping(value = "getExtQtDealTpInfoId", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ExtQtDealerTpListAdminVO getExtQtDealTpInfoId(@RequestParam("searchTranpsId") Long carSearchId) {
+	@GetMapping(value = "getExtQtDealFinInfoId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExtQtDealerFinListAdminVO getExtQtDealFinInfoId(@RequestParam("searchFinanceId") Long carSearchId) {
 		LOGGER.debug("Received request to get Dealer car Search id {} ", carSearchId);
-		ExtQtDealerTpListAdminVO userAdminSearchVO12 = new ExtQtDealerTpListAdminVO();
+		ExtQtDealerFinListAdminVO userAdminSearchVO12 = new ExtQtDealerFinListAdminVO();
 
-		List<TranspServiceQuotation> users = servMaintQuotationRepository.getDealerSmForID(carSearchId);
-		List<TranspServiceQuotationVO> searchVOs = new ArrayList<TranspServiceQuotationVO>();
-		for (TranspServiceQuotation search : users) {
-			TranspServiceQuotationVO dealVO= domainModelUtil.toExtQtTpDealerSearchVO(search);
+		List<FinanceQuotation> users = servMaintQuotationRepository.getDealerSmForID(carSearchId);
+		List<FinanceQuotationVO> searchVOs = new ArrayList<FinanceQuotationVO>();
+		for (FinanceQuotation search : users) {
+			FinanceQuotationVO dealVO= domainModelUtil.toExtQtFinDealerSearchVO(search);
 		searchVOs.add(dealVO);
 		}
 		userAdminSearchVO12.setServiceMaintQuotationVO(searchVOs);

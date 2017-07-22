@@ -13,6 +13,9 @@ import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
 
 public interface SearchInsuranceRepository extends JpaRepository<SearchInsurance, Long>{
 
+	@Query("SELECT search FROM SearchInsurance search" +
+			" ORDER BY search.searchInsuranceId")
+			public List<SearchInsurance> getAllSearchCriteria();
 	
 	
 	

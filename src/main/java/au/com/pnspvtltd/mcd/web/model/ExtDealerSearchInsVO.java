@@ -2,7 +2,7 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
 
-public class ExtDealerSearchFinVO {
+public class ExtDealerSearchInsVO {
 
 	private Long extDealerSearchId;
 	private String extraExter2;

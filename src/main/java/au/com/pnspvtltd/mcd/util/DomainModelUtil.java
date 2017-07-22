@@ -27,9 +27,12 @@ import au.com.pnspvtltd.mcd.domain.DealerSearchTransp;
 import au.com.pnspvtltd.mcd.domain.ExtDealServMaint;
 import au.com.pnspvtltd.mcd.domain.ExtDealServMaintr1;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
+import au.com.pnspvtltd.mcd.domain.ExtDealerSearchFin;
+import au.com.pnspvtltd.mcd.domain.ExtDealerSearchIns;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearchTp;
 import au.com.pnspvtltd.mcd.domain.ExternalDealer;
 import au.com.pnspvtltd.mcd.domain.ExternalDealerFin;
+import au.com.pnspvtltd.mcd.domain.ExternalDealerIns;
 import au.com.pnspvtltd.mcd.domain.ExternalDealerTp;
 import au.com.pnspvtltd.mcd.domain.FinanceEntity;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
@@ -99,10 +102,13 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealServMaintr1VO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchFinVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchInsVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchTpVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerFinVO;
+import au.com.pnspvtltd.mcd.web.model.ExternalDealerInsVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerTpVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
@@ -661,6 +667,40 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				}
 				
 				// Dealer Vehicle Lead
+				public ExtDealerSearchFinVO toExtDealerFinVO(final ExtDealerSearchFin searchVO) {
+
+					ExtDealerSearchFinVO dealerSearch = new ExtDealerSearchFinVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
+				
+				// Dealer Vehicle Lead
+				public ExtDealerSearchInsVO toExtDealerInsVO(final ExtDealerSearchIns searchVO) {
+
+					ExtDealerSearchInsVO dealerSearch = new ExtDealerSearchInsVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
+				
+				// Dealer Vehicle Lead
 				public VehicleQuotationVO toExtQtDealerSearchVO(final VehicleQuotation searchVO) {
 
 					VehicleQuotationVO dealerSearch = new VehicleQuotationVO();
@@ -847,6 +887,36 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					}
 					return dealerSearch;
 				}
+				public InsuranceQuotationVO toExtQtInsDealerSearchVO(final InsuranceQuotation searchVO) {
+
+					InsuranceQuotationVO dealerSearch = new InsuranceQuotationVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
+				public FinanceQuotationVO toExtQtFinDealerSearchVO(final FinanceQuotation searchVO) {
+
+					FinanceQuotationVO dealerSearch = new FinanceQuotationVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
 				// end of service and Maintenance
 				public ExternalDealerTpVO toExternalDealerTpVO1(final ExternalDealerTp searchVO) {
 
@@ -863,7 +933,37 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					}
 					return dealerSearch;
 				}
+				public ExternalDealerFinVO toExternalDealerFinVO1(final ExternalDealerFin searchVO) {
+
+					ExternalDealerFinVO dealerSearch = new ExternalDealerFinVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
 				
+				public ExternalDealerInsVO toExternalDealerInsVO1(final ExternalDealerIns searchVO) {
+
+					ExternalDealerInsVO dealerSearch = new ExternalDealerInsVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
 				
 				// Dealer Vehicle Lead
 				public ExtDealerServMaintVO toExternalDealerSmVO(final ExtDealServMaint searchVO) {
@@ -985,6 +1085,39 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					return searchVO;
 				}
 				
+				// User Car/Search Details lead
+				public SearchFinanceVO toSearchFin1(final SearchFinance search) {
+
+					SearchFinanceVO searchVO = new SearchFinanceVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
+				
+
+				// User Car/Search Details lead
+				public SearchInsuranceVO toSearchIns1(final SearchInsurance search) {
+
+					SearchInsuranceVO searchVO = new SearchInsuranceVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
+
 				// User Car/Search Details lead
 				public UserNotificationVO toSearchTransp1(final UserNotification search) {
 
@@ -1310,6 +1443,17 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 	
 	public ExtDealerSearchTp toExtDealerTpAdmin(final ExtDealerSearchTpVO dealerSearch) {
 		ExtDealerSearchTp searchVO = new ExtDealerSearchTp();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public ExtDealerSearchFin toExtDealerFinAdmin(final ExtDealerSearchFinVO dealerSearch) {
+		ExtDealerSearchFin searchVO = new ExtDealerSearchFin();
 		try {
 			BeanUtils.copyProperties(searchVO, dealerSearch);
 		} catch (IllegalAccessException | InvocationTargetException e) {

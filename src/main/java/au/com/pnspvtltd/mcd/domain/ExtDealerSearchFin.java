@@ -53,6 +53,41 @@ public class ExtDealerSearchFin implements Serializable {
 	private String state;
 	
 	
+	// start of Finance Ebid
+	private boolean isNewer;
+	private boolean isUsed;
+	
+	private String finPostCode;
+	
+	private int year;
+	
+	private String make;
+	private String model;
+	private String variant;
+	private String autoscoopTrim;
+	private double vehValue;
+	private double balloonPay;
+	/*private double loanAmount;
+	private int loanPeriod;*/
+	private double annualIncome;
+	/*private String incomeType;
+	private String creditRating;
+	private Date dateOfBirth;*/
+	
+	/*private int yearEmploymentBusiness;
+	private String incomeBeforeSuperTax;
+	private String incomeAfterSuperTax;
+	private String ifBusinessProvideABN;*/
+	private String rego;
+	private String regoState;
+	private String streetNo;
+	private String streetName;
+	private String mr;
+	private String firstName;
+	private String lastName;
+	/*private Date creationDate;*/
+	// end of Finance Ebid
+	
 	// Dealer info Start
 	private String category;
 	private String companyName;
@@ -76,6 +111,134 @@ public class ExtDealerSearchFin implements Serializable {
 	
 	public String getState() {
 		return state;
+	}
+
+	public String getFinPostCode() {
+		return finPostCode;
+	}
+
+	public void setFinPostCode(String finPostCode) {
+		this.finPostCode = finPostCode;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public String getMake() {
+		return make;
+	}
+
+	public void setMake(String make) {
+		this.make = make;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getVariant() {
+		return variant;
+	}
+
+	public void setVariant(String variant) {
+		this.variant = variant;
+	}
+
+	public String getAutoscoopTrim() {
+		return autoscoopTrim;
+	}
+
+	public void setAutoscoopTrim(String autoscoopTrim) {
+		this.autoscoopTrim = autoscoopTrim;
+	}
+
+	public double getVehValue() {
+		return vehValue;
+	}
+
+	public void setVehValue(double vehValue) {
+		this.vehValue = vehValue;
+	}
+
+	public double getBalloonPay() {
+		return balloonPay;
+	}
+
+	public void setBalloonPay(double balloonPay) {
+		this.balloonPay = balloonPay;
+	}
+
+	public double getAnnualIncome() {
+		return annualIncome;
+	}
+
+	public void setAnnualIncome(double annualIncome) {
+		this.annualIncome = annualIncome;
+	}
+
+	public String getRego() {
+		return rego;
+	}
+
+	public void setRego(String rego) {
+		this.rego = rego;
+	}
+
+	public String getRegoState() {
+		return regoState;
+	}
+
+	public void setRegoState(String regoState) {
+		this.regoState = regoState;
+	}
+
+	public String getStreetNo() {
+		return streetNo;
+	}
+
+	public void setStreetNo(String streetNo) {
+		this.streetNo = streetNo;
+	}
+
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+	public String getMr() {
+		return mr;
+	}
+
+	public void setMr(String mr) {
+		this.mr = mr;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getCategory() {

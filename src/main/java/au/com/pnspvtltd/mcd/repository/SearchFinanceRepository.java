@@ -8,11 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
+import au.com.pnspvtltd.mcd.domain.SearchTransp;
 import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
 
 public interface SearchFinanceRepository extends JpaRepository<SearchFinance, Long>{
 
-	
+	@Query("SELECT search FROM SearchFinance search" +
+			" ORDER BY search.searchFinanceId")
+			public List<SearchFinance> getAllSearchCriteria();
 	
 	
 	

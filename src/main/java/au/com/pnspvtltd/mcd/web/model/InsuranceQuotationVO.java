@@ -1,6 +1,14 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import au.com.pnspvtltd.mcd.domain.VehQuotExtrasIns;
 
 public class InsuranceQuotationVO {
 
@@ -69,8 +77,181 @@ public class InsuranceQuotationVO {
 	private String adhoc3;
 	private String adhoc4;
 
+	List<VehQuotExtrasIns> vehQuotExtras;
+	
+	public List<VehQuotExtrasIns> getVehQuotExtras() {
+		return vehQuotExtras;
+	}
+
+
+	public void setVehQuotExtras(
+			List<VehQuotExtrasIns> vehQuotExtras) {
+		this.vehQuotExtras = vehQuotExtras;
+	}
+	
+	
+	// start of External Dealer info
+		// Dealer info Start
+			private String category;
+			private String companyName;
+			private String street;
+			private String suburb;
+			private String dealState;
+			private int dealPostCode;
+			private String country;
+			private String phone;
+			private String website;
+			private String mobile;
+			private String tollFree;
+			private String fax;
+			private String afterHours;
+			private String postalAddress;
+			private String email;
+			private float longitude;
+			private float latitude;
+			// Dealer info end
+		// end of External Dealer info
+	
+	
+			
 	public Long getDealSearchId() {
 		return dealSearchId;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getSuburb() {
+		return suburb;
+	}
+
+	public void setSuburb(String suburb) {
+		this.suburb = suburb;
+	}
+
+	public String getDealState() {
+		return dealState;
+	}
+
+	public void setDealState(String dealState) {
+		this.dealState = dealState;
+	}
+
+	public int getDealPostCode() {
+		return dealPostCode;
+	}
+
+	public void setDealPostCode(int dealPostCode) {
+		this.dealPostCode = dealPostCode;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getTollFree() {
+		return tollFree;
+	}
+
+	public void setTollFree(String tollFree) {
+		this.tollFree = tollFree;
+	}
+
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+
+	public String getAfterHours() {
+		return afterHours;
+	}
+
+	public void setAfterHours(String afterHours) {
+		this.afterHours = afterHours;
+	}
+
+	public String getPostalAddress() {
+		return postalAddress;
+	}
+
+	public void setPostalAddress(String postalAddress) {
+		this.postalAddress = postalAddress;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public float getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(float longitude) {
+		this.longitude = longitude;
+	}
+
+	public float getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(float latitude) {
+		this.latitude = latitude;
 	}
 
 	public void setDealSearchId(Long dealSearchId) {

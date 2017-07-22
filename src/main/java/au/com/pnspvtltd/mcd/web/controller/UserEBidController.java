@@ -27,6 +27,8 @@ import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
 import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
 import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
 import au.com.pnspvtltd.mcd.domain.Search;
+import au.com.pnspvtltd.mcd.domain.SearchFinance;
+import au.com.pnspvtltd.mcd.domain.SearchInsurance;
 import au.com.pnspvtltd.mcd.domain.SearchServMaint;
 import au.com.pnspvtltd.mcd.domain.SearchTransp;
 import au.com.pnspvtltd.mcd.domain.User;
@@ -56,6 +58,8 @@ import au.com.pnspvtltd.mcd.web.model.UserEBidInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidTransServVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
+import au.com.pnspvtltd.mcd.web.model.UserFinAdminVO;
+import au.com.pnspvtltd.mcd.web.model.UserInsAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
@@ -69,6 +73,8 @@ import au.com.pnspvtltd.mcd.repository.MyVehicleFuelExpensesRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleLogBookRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleServMaintRepository;
+import au.com.pnspvtltd.mcd.repository.SearchFinanceRepository;
+import au.com.pnspvtltd.mcd.repository.SearchInsuranceRepository;
 import au.com.pnspvtltd.mcd.repository.SearchServMtLeadRepository;
 import au.com.pnspvtltd.mcd.repository.SearchTranspRepository;
 import au.com.pnspvtltd.mcd.repository.ServMaintQuotationRepository;
@@ -95,6 +101,10 @@ public class UserEBidController {
 	private SearchServMtLeadRepository searchServMtLeadRepository;
 	@Autowired
 	private SearchTranspRepository searchTranspRepository;
+	@Autowired
+	private SearchFinanceRepository searchFinanceRepository;
+	@Autowired
+	private SearchInsuranceRepository searchInsuranceRepository;
 	
 	@Autowired
 	UserEBidService userEBidService;
@@ -865,6 +875,40 @@ public class UserEBidController {
 		List<SearchTransp> users = searchTranspRepository.getAllSearchCriteria();
 		for (SearchTransp user : users) {
 			userVOs.add(domainModelUtil.toSearchTransp1(user));
+		
+		}
+		userAdminSearchVO12.setSearchVO(userVOs);
+	
+		return userAdminSearchVO12;
+	}
+	
+	@GetMapping(value = "getfinInforAll", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserFinAdminVO getfinInforAll() {
+		LOGGER.debug("Received request to get Finance Requests with id {} ");
+		UserFinAdminVO userAdminSearchVO12 = new UserFinAdminVO();
+	 
+		List<SearchFinanceVO> userVOs = new ArrayList<SearchFinanceVO>();
+		
+		List<SearchFinance> users = searchFinanceRepository.getAllSearchCriteria();
+		for (SearchFinance user : users) {
+			userVOs.add(domainModelUtil.toSearchFin1(user));
+		
+		}
+		userAdminSearchVO12.setSearchVO(userVOs);
+	
+		return userAdminSearchVO12;
+	}
+	
+	@GetMapping(value = "getinsInforAll", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserInsAdminVO getinsInforAll() {
+		LOGGER.debug("Received request to get Finance Requests with id {} ");
+		UserInsAdminVO userAdminSearchVO12 = new UserInsAdminVO();
+	 
+		List<SearchInsuranceVO> userVOs = new ArrayList<SearchInsuranceVO>();
+		
+		List<SearchInsurance> users = searchInsuranceRepository.getAllSearchCriteria();
+		for (SearchInsurance user : users) {
+			userVOs.add(domainModelUtil.toSearchIns1(user));
 		
 		}
 		userAdminSearchVO12.setSearchVO(userVOs);

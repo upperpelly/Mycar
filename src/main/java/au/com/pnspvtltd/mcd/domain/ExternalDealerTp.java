@@ -62,6 +62,10 @@ import javax.persistence.Table;
 	private String fax;
 	private String afterHours;
 	private String postalAddress;
+	private String abnNumber;
+	private String contactPerson;
+	private String transportFrom;
+	private String transportTo;
 	private String email;
 	private float longitude;
 	private float latitude;
@@ -70,6 +74,49 @@ import javax.persistence.Table;
 	
 	// 
 	
+	public String getAbnNumber() {
+		return abnNumber;
+	}
+
+
+	public void setAbnNumber(String abnNumber) {
+		this.abnNumber = abnNumber;
+	}
+
+
+	
+
+
+	public String getContactPerson() {
+		return contactPerson;
+	}
+
+
+	public void setContactPerson(String contactPerson) {
+		this.contactPerson = contactPerson;
+	}
+
+
+	public String getTransportFrom() {
+		return transportFrom;
+	}
+
+
+	public void setTransportFrom(String transportFrom) {
+		this.transportFrom = transportFrom;
+	}
+
+
+	public String getTransportTo() {
+		return transportTo;
+	}
+
+
+	public void setTransportTo(String transportTo) {
+		this.transportTo = transportTo;
+	}
+
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
