@@ -3301,6 +3301,7 @@ Date is Required</b></span>
 															      <li><a data-toggle="tab" href="#ExtSvCreation">S & M Dealer Creation</a></li>
 															      <li><a data-toggle="tab" href="#ExtTpCreation">Transport Dealer Creation</a></li>
 															      <li><a data-toggle="tab" href="#ExtFinCreation">Financer's Dealer Creation</a></li>
+															      <li><a data-toggle="tab" href="#ExtInsCreation">Insurance's Dealer Creation</a></li>
 															    </ul>
 															  </li>
 														    
@@ -4081,7 +4082,188 @@ Date is Required</b></span>
 														    </div>
 
 <!-- end of External Finance -->														    
-														    
+												<!-- Start of External Insurance -->
+												<!--  start of External Finance -->
+														    <div id="ExtInsCreation" class="tab-pane fade">
+	<!--  start of create -->
+	 <h4><center>External Dealer Creation for Insurer's</center></h4>
+															   
+																<div class="booking-section travelo-box" >
+																	<form class="booking-form" id="ExtDealerInsCreatefrm" name="ExtDealerInsCreatefrm" ng-submit="submitCrtExtDlInsNewfrm(ExtDealerInsCreatefrm.$valid)" novalidate>
+															<div class="col-sm-3 col-md-3">
+																						<div class="selector">
+																							<select class="full-width" id="categoryInsExt" name="categoryInsExt" ng-model="categoryInsExt" placeholder="Category" required>
+																								<option value="" disabled selected>Category Type</option>
+																								<option>Motor Engineers Repairers</option>
+																								<option>Mechanical Engineers</option>
+																								<option>Motor Radiator Services</option>
+																								<option>Motor Replacement Parts</option>
+																								<option>Motor Sport Services</option>
+																								<option>Motor Vehicle Inspection Testing</option>
+																							</select>
+																							<span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span>
+																						</div>
+																			 </div>    	
+														
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="companyInsExt" name="companyInsExt"
+																ng-model="companyInsExt" class="input-text full-width"
+																value="" placeholder="Company"
+																required/>
+															<span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.companyInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.companyInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Company
+																	is Required</b></span>
+														</div>
+														
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="streetInsExt" name="streetInsExt"
+																ng-model="streetInsExt" class="input-text full-width"
+																value="" placeholder="Street"
+																/>
+															
+														</div>
+														
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="suborbInsExt" name="suborbInsExt"
+																ng-model="suborbInsExt" class="input-text full-width"
+																value="" placeholder="Suborb"
+																/>
+															
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="stateInsExt" name="stateInsExt"
+																ng-model="stateInsExt" class="input-text full-width"
+																value="" placeholder="State"
+																/>
+															
+														</div>
+														
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="postInsExt"
+																name="postInsExt" ng-model="postInsExt"
+																class="input-text full-width" value=""
+																placeholder="Post Code" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.postInsExt.$error.pattern &amp;&amp; (!ExtDealerInsCreatefrm.postInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>POST
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.postInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.postInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>POST
+																	is Required</b></span> <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.postInsExt.$error.minlength &amp;&amp; (!ExtDealerInsCreatefrm.postInsExt.$pristine || ExtDealerInsCreatefrm.$submitted) &amp;&amp; !ExtDealerInsCreatefrm.postInsExt.$error.pattern"><b>POST
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.postInsExt.$error.maxlength &amp;&amp; (!ExtDealerInsCreatefrm.postInsExt.$pristine || ExtDealerInsCreatefrm.$submitted) &amp;&amp; !ExtDealerInsCreatefrm.postInsExt.$error.pattern"><b>POST
+																	must be of 4 digits only.</b></span>
+														</div>
+														
+														
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="phoneInsExt" name="phoneInsExt"
+																ng-model="phoneInsExt" class="input-text full-width"
+																value="" placeholder="Phone Number"
+																required/>
+															<span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.phoneInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.phoneInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Phone number
+																	is Required</b></span>
+														</div>
+														
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="websiteInsExt" name="websiteInsExt"
+																ng-model="websiteInsExt" class="input-text full-width"
+																value="" placeholder="Website"
+																/>
+															
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="mobileInsExt" name="mobileInsExt"
+																ng-model="mobileInsExt" class="input-text full-width"
+																value="" placeholder="Mobile"
+																/>
+															
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="tollfreeInsExt" name="tollfreeInsExt"
+																ng-model="tollfreeInsExt" class="input-text full-width"
+																value="" placeholder="Toll Free"
+																/>
+															
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="faxInsExt" name="faxInsExt"
+																ng-model="faxInsExt" class="input-text full-width"
+																value="" placeholder="Fax"
+																/>
+															
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="afterHoursInsExt" name="afterHoursInsExt"
+																ng-model="afterHoursInsExt" class="input-text full-width"
+																value="" placeholder="after hours"
+																/>
+															
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="postalAddressInsExt" name="postalAddressInsExt"
+																ng-model="postalAddressInsExt" class="input-text full-width"
+																value="" placeholder="Postal Address"
+																/>
+															
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="emailInsExt" name="emailInsExt"
+																ng-model="emailInsExt" class="input-text full-width"
+																value="" placeholder="Email"
+																/>
+															
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="longitudeInsExt" name="longitudeInsExt"
+																ng-model="longitudeInsExt" class="input-text full-width"
+																value="" placeholder="longitude"
+																/>
+															
+														</div>
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="latitudeInsExt" name="latitudeInsExt"
+																ng-model="latitudeInsExt" class="input-text full-width"
+																value="" placeholder="latitude"
+																/>
+															
+														</div>
+																	
+														
+													
+													<br />
+													<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Create External Dealer for Insurer's</button>
+										                                    </div>
+										                                </div>
+													
+																	
+
+																		
+																		
+																		</div>
+																	
+																</form>
+																
+																
+																
+	<!--  end of create -->
+															
+															
+															<!-- Lead for Extern start-->
+																
+																<!-- end -->
+														    </div>
+
+												    
+												
+												<!-- End of External Insurance -->		    
 														    </div>
                                                    <!--  End of S&M Dealer Creation -->
 
