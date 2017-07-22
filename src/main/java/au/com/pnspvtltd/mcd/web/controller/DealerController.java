@@ -58,6 +58,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealServMaintr1VO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerFinLdAdminVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerFinListAdminVO;
+import au.com.pnspvtltd.mcd.web.model.ExtDealerInsLdAdminVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerInsListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchFinVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchInsVO;
@@ -292,10 +293,23 @@ public class DealerController {
 	}
 	
 	@PutMapping("extDealerTpLeadCreation")
-	public String extDealerTpLeadCreation(@RequestBody ExtDealerFinLdAdminVO extDealerVO, HttpServletResponse response) {
-		LOGGER.debug("Received request to update ext Dealer Sv Lead {}", extDealerVO);
+	public String extDealerTpLeadCreation(@RequestBody ExtDealerTpLdAdminVO extDealerVO, HttpServletResponse response) {
+		LOGGER.debug("Received request to update ext Dealer Tp Lead {}", extDealerVO);
 		
-		String updatedDealer = dealerService.extDealerFinAdminLead(extDealerVO);
+		String updatedDealer = dealerService.extDealerTpAdminLead(extDealerVO);
+		//String updatedDealer = null;
+		// Dealer does not exist
+		if (updatedDealer == null) {
+			response.setStatus(HttpStatus.NO_CONTENT.value());
+		}
+		return updatedDealer;
+	}
+	
+	@PutMapping("extDealerInsLeadCreation")
+	public String extDealerInsLeadCreation(@RequestBody ExtDealerInsLdAdminVO extDealerVO, HttpServletResponse response) {
+		LOGGER.debug("Received request to update ext Dealer Fin Lead {}", extDealerVO);
+		
+		String updatedDealer = dealerService.extDealerInsAdminLead(extDealerVO);
 		//String updatedDealer = null;
 		// Dealer does not exist
 		if (updatedDealer == null) {
@@ -305,10 +319,10 @@ public class DealerController {
 	}
 	
 	@PutMapping("extDealerFinLeadCreation")
-	public String extDealerFinLeadCreation(@RequestBody ExtDealerTpLdAdminVO extDealerVO, HttpServletResponse response) {
+	public String extDealerFinLeadCreation(@RequestBody ExtDealerFinLdAdminVO extDealerVO, HttpServletResponse response) {
 		LOGGER.debug("Received request to update ext Dealer Fin Lead {}", extDealerVO);
 		
-		String updatedDealer = dealerService.extDealerTpAdminLead(extDealerVO);
+		String updatedDealer = dealerService.extDealerFinAdminLead(extDealerVO);
 		//String updatedDealer = null;
 		// Dealer does not exist
 		if (updatedDealer == null) {
@@ -558,6 +572,23 @@ public class DealerController {
 		return new ResponseEntity<>(externalDealerVO, status);
 		
 	}
+	
+	@PostMapping(value = "extdealerInsCreation", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ExternalDealerInsVO> extdealerInsCreation(@RequestBody ExternalDealerInsVO userVO, HttpServletResponse response) {
+		LOGGER.debug("External Dealer Creation for Insurance", userVO.getCategory());
+		userVO.setExternalDealerId(null);
+		 // (2) create a java sql date object we want to insert
+	    Calendar calendar = Calendar.getInstance();
+	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+	    
+		userVO.setCreationDate(ourJavaDateObject);
+		HttpStatus status = HttpStatus.OK;
+		response.setStatus(HttpStatus.CREATED.value());
+		ExternalDealerInsVO externalDealerVO = domainModelUtil.toExternalDealerInsVO(externalDealerInsRepository.save(domainModelUtil.toExternalDealerIns(userVO)));
+		return new ResponseEntity<>(externalDealerVO, status);
+		
+	}
+	
 	@PostMapping(value = "extdealerSvCreation", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<ExtDealerServMaintVO> extdealerSvCreation(@RequestBody ExtDealerServMaintVO userVO, HttpServletResponse response) {
 		LOGGER.debug("External Dealer Creation for Sv", userVO.getCategory());

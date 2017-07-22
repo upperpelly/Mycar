@@ -74,16 +74,16 @@ import javax.persistence.Table;
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	List<ExtDealerSearchFin> extDealSearch;
+	List<ExtDealerSearchIns> extDealSearch;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "externalDealerId")
-	public List<ExtDealerSearchFin> getExtDealSearch() {
+	public List<ExtDealerSearchIns> getExtDealSearch() {
 		return extDealSearch;
 	}
 
 
-	public void setExtDealSearch(List<ExtDealerSearchFin> extDealSearch) {
+	public void setExtDealSearch(List<ExtDealerSearchIns> extDealSearch) {
 		this.extDealSearch = extDealSearch;
 	}
 

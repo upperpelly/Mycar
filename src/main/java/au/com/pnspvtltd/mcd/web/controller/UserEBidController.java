@@ -901,7 +901,7 @@ public class UserEBidController {
 	
 	@GetMapping(value = "getinsInforAll", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public UserInsAdminVO getinsInforAll() {
-		LOGGER.debug("Received request to get Finance Requests with id {} ");
+		LOGGER.debug("Received request to get Insurance Requests with id {} ");
 		UserInsAdminVO userAdminSearchVO12 = new UserInsAdminVO();
 	 
 		List<SearchInsuranceVO> userVOs = new ArrayList<SearchInsuranceVO>();

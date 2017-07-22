@@ -161,12 +161,12 @@ public class InsQuotationController {
 		vehicleQuotation.setMr(extDealerSearch.getMr());
 		vehicleQuotation.setFirstName(extDealerSearch.getFirstName());
 		vehicleQuotation.setLastName(extDealerSearch.getLastName());
-		
+		*/
 		
 		
 		User user =userRepository.findOne(dealerVO.getUserId());
-		int vehQuotCountTemp = user.getFinanceQuotCt();
-		user.setFinanceQuotCt(vehQuotCountTemp);
+		int vehQuotCountTemp = user.getInsuranceQuotCt();
+		user.setInsuranceQuotCt(vehQuotCountTemp);
 		// Dealer info Start
 		vehicleQuotation.setCategory(extDealerSearch.getCategory());
 		vehicleQuotation.setCompanyName(extDealerSearch.getCompanyName());;
@@ -184,7 +184,7 @@ public class InsQuotationController {
 		vehicleQuotation.setPostalAddress(extDealerSearch.getPostalAddress());
 		vehicleQuotation.setEmail(extDealerSearch.getEmail());
 		vehicleQuotation.setLongitude(extDealerSearch.getLongitude());
-		vehicleQuotation.setLatitude(extDealerSearch.getLatitude());*/
+		vehicleQuotation.setLatitude(extDealerSearch.getLatitude());
 					// Dealer info end
 		
 		

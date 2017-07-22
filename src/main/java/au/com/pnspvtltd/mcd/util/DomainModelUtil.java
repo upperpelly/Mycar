@@ -783,6 +783,22 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 
 				// end of external dealer Tp
 
+				// start of external dealer Fin
+				public ExternalDealerInsVO toExternalDealerInsVO(final ExternalDealerIns searchVO) {
+
+					ExternalDealerInsVO dealerSearch = new ExternalDealerInsVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
 				
 				// start of external dealer Fin
 				public ExternalDealerFinVO toExternalDealerFinVO(final ExternalDealerFin searchVO) {
@@ -815,7 +831,23 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					}
 					return dealerSearch;
 				}
+				
+				
+				public ExternalDealerIns toExternalDealerIns(final ExternalDealerInsVO searchVO) {
 
+					ExternalDealerIns dealerSearch = new ExternalDealerIns();
+					try {
+						BeanUtils.copyProperties(dealerSearch,searchVO );
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
 				// end of external dealer Fin
 
 				
@@ -1443,6 +1475,17 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 	
 	public ExtDealerSearchTp toExtDealerTpAdmin(final ExtDealerSearchTpVO dealerSearch) {
 		ExtDealerSearchTp searchVO = new ExtDealerSearchTp();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public ExtDealerSearchIns toExtDealerInsAdmin(final ExtDealerSearchInsVO dealerSearch) {
+		ExtDealerSearchIns searchVO = new ExtDealerSearchIns();
 		try {
 			BeanUtils.copyProperties(searchVO, dealerSearch);
 		} catch (IllegalAccessException | InvocationTargetException e) {

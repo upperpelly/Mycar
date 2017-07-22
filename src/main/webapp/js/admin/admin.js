@@ -2700,6 +2700,66 @@ mainApp1.controller('myController13',function($scope, $http) {
 	    });
 		
 	}
+	
+// Insurance Lead Creation Start
+	
+	$scope.submitInsMyLeadNewfrmext = function() {
+		alert("Insisdsssssde");
+		//alert(JSON.stringify($scope.vehicleData));
+		//console.log(JSON.stringify($scope.vehicleData));
+		//jsonInput = JSON.stringify($scope.vehicleData);
+		jsonInput = $scope.vehicleData;
+		
+		jsonInput["extDealerSearchId"]=null;
+		//alert("Dealer id"+$scope.ExtDealerId);
+		
+		//console.log($scope.ExtDealerId);
+			jsonInput["dealerId"]=$scope.ExtFinDealerId;
+		
+		
+		/*var jsonInput1 ={
+				 "dealerSearchId": null,
+				 "dealerId" : $scope.LeadDealerId,
+				 "lastName": "Smith",
+				 "phoneNumber": "123-456-7890"
+				}*/
+		
+		/*var concattedjson = jsonInput.concat(jsonInput1); 26/06
+		console.log(concattedjson);*//*
+		$scope.leadDealerName = response.data.dealername;
+		 $scope.leadDealerABN = response.data.abnnumber;
+		 $scope.leadDealerEmail = response.data.email;*/
+			//console.log(JSON.stringify(jsonInput));
+			var jsonStr = '{"extDealerSearchVO":[]}';
+
+			var obj = JSON.parse(jsonStr);
+			obj['extDealerSearchVO'].push(jsonInput);
+			jsonStr = JSON.stringify(obj);
+			jsonStr.replace(/\\/g, "");
+			
+			
+			var json1 =jsonStr.split('"searchInsuranceId":').join('"carSearchId":');
+			var json2= json1.split('"idp":').join('"userid":');
+			json2.replace(/\\/g, "");
+		 alert(" ssssss"+json2);
+		 console.log(json2);
+		 
+		$body.addClass("loading");
+		$http({
+	        method : 'POST',
+	        url : 'api/extDealerInsLeadCreation?_method=PUT',
+			data: json2
+	    }).then(function mySuccess(response) {
+	    	 $body.removeClass("loading");
+	    	 alert("Successfully Saved External Dealer Lead");
+	    	 //console.log(response.data);
+	    }, function myError(response) {
+	    	alert("Error Successfully Saved External Dealer Lead");
+	    	//console.log(response.statusText);
+	    });
+		
+	}
+	// end of Insurance Lead Creation 
 
 	// Finance Lead Creation Start
 	
@@ -2747,7 +2807,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 		$body.addClass("loading");
 		$http({
 	        method : 'POST',
-	        url : 'api/extDealerTpLeadCreation?_method=PUT',
+	        url : 'api/extDealerFinLeadCreation?_method=PUT',
 			data: json2
 	    }).then(function mySuccess(response) {
 	    	 $body.removeClass("loading");
@@ -4324,7 +4384,7 @@ $.ajax({
 
    out = out.replace(/>null</g, ">--NA--<");
    out = out.replace(/>undefined</g, ">--NA--<");
-   $("#LeadFinExtTable").html(out);
+   $("#LeadInsExtTable").html(out);
 	registerEditlda8DealerVehicleSearchModal();
 	}
 });
@@ -8673,9 +8733,137 @@ this.model_data_id = model_data_id;
 									                	});
 													}
 														};
+														
+														
+// start of finance creation
+														
+														$scope.submitFinMyQuoteNewfrm = function(isValid) {
+															//alert("inside Sesdarv Maint"+isValid);
+															if (isValid) {
+															/*alert("inside Sesdarv Maint");
+															alert(myVehicleIDuse);*/
+															/*var vehicleTypeServMaint= stringToDate($('#vehicleTypeServMaint').val(),"dd/MM/yyyy","/");
+															var nextServiceMaintenanceDate= stringToDate($('#nextServiceMaintenanceDate').val(),"dd/MM/yyyy","/");*/
+
+															//logServMaintloadImage();
+															var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
+															var filefileChooserlogservmaint = fileChooserlogservmaint.files[0];
+															var objKeyfilefileChooserlogservmaint ='noImage';
+															if(filefileChooserlogservmaint){
+															objKeyfilefileChooserlogservmaint = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;}
+															//alert(objKeyfilefileChooserlogservmaint);
+															/*//alert(objKeyfilefileChooserlogservmaint);
+															var jsonInputToAPI = {
+																		"dealerId":null,
+																		"userId":null,
+																		"dealSearchId":null,
+																		"carSearchId":null,
+																		"refId":null,
+																		"dealerStockNo":null,
+																		"driveAwayPrice":null,
+																		"modelYear":null,
+																		"modelDisplay":null,
+																		"modelName":null,
+																		"modelTrim":null
+																	}*/
+															
+															jsonInput = $scope.vehicleData;
+															
+															jsonInput["insQuotId"]=null;
+															jsonInput["refId"]=0;
+															//$scope.LeadSvQuoteId;
+															//alert("dealer Lead id"+$scope.LeadSvQuoteId);
+															//alert("rego end date"+$scope.finSvDOB);
+															//alert("Exter dealer id"+$scope.ExtSvDealerId);
+															//$scope.ExtDealerId=0;
+															
+															jsonInput["dealerId"]=$scope.ExtInsDealerId;
+															jsonInput["driveAwayPrice"]=$scope.finInsAnnualIncome;
+															jsonInput["offerPrice2"]=$scope.finInsAnnualIncome1;
+															jsonInput["offerPrice3"]=$scope.finInsAnnualIncome2;
+															jsonInput["offerValidDate"]=$scope.finInsDOB;
+															// 07072017
+															jsonInput["dealSearchId"]=$scope.LeadInsQuoteId;
+															jsonInput["address"]=objKeyfilefileChooserlogservmaint;
+															jsonInput["modelYear"]=$scope.caryearsfin;
+															        jsonInput["modelDisplay"]=$scope.carmakesfin;
+															                    jsonInput["modelName"]=$scope.carmodelsfin;
+															                              jsonInput["modelTrim"]=$scope.carmodelAutotrimsfin;
+															                              
+															                              jsonInput["flex1"]=$scope.servSvAddNotes;
+															var table1 = $("#my-table999");
+								                            var table = table1.tableToJSON({
+								                                ignoreColumns:[0],
+								                                headings: ['extras1', 'extras2', 'amount']
+								                              });
+								                            //delete table[0];
+
+								                            table.splice(0,1);
+
+								                            jsonInput.vehQuotExtras = table ;
+															//alert("value"+jsonInput);
+															
+															
+															// Transfer the object to a JSON string
+															var jsonstr1 = JSON.stringify(jsonInput);
+
+															// HERE you do the transform
+															
+															//var new_jsonstr = jsonstr1.replace('"searchServMaintId"', '"carSearchId"');
+															var new_jsonstr = jsonstr1.replace('"idp"', '"userId"');
+															var new_jsonstr1 = new_jsonstr.replace('"creationDate"', '"userCreationDate"');
+															var new_jsonstr2 = new_jsonstr1.replace('"searchInsuranceId"', '"carSearchId"');
+															//var new_jsonstr3 = new_jsonstr2.replace('"regoState"', '"regoStat"');
+															//var new_jsonstr4 = new_jsonstr3.replace('"feulType"', '"fuelType"');
+															//var new_jsonstr5 = new_jsonstr4.replace('"fname"', '"freeText"');
+															//var new_jsonstr6 = new_jsonstr5.replace('"coveredUnderIns"', '"coveredUnderIns"');
+															//var new_jsonstr7 = new_jsonstr6.replace('"curInsProv"', '"CURINSPROV"');
+															//var new_jsonstr8 = new_jsonstr4.replace('"lookService"', '"flex1"');
+															//var new_jsonstr9 = new_jsonstr8.replace('"carColor"', '"color"');
+															// You probably want to parse the altered string later
+															var new_obj = JSON.parse(new_jsonstr2);
+
+															
+															//alert("new"+JSON.stringify(new_obj));
+															
+															console.log(JSON.stringify(new_obj));
+															//alert("Before Call");
+															//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
+															//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
+															var wsURL = 'api/dealerQuotInsCreation?_method=PUT';
+															//var wsURL = '';
+															$body.addClass("loading");
+																    $http({
+																				method : 'POST',
+																				url : wsURL,
+																				data: JSON.stringify(new_obj)
+
+																			}).success(function(data) {
+																				$body.removeClass("loading");
+																				$scope.vehicleRetrievalforLogBook();
+																				alert("Successfully Stored Quotation However, Plz wait for the images to upload.. don't refresh or switch from your page..  the upload of images will start soon..");
+																				//alert("Service & Maintenance Successfully Stored..");
+
+
+													                			if(filefileChooserlogservmaint){
+													                				alert("Plz wait for the images to upload.. don't refresh or switch from dashboard.. the upload of images will start soon..");
+																				logServMaintloadImage();
+																				//alert("Before reset correct15689899");
+													                			document.getElementById("QuoteNewfrm").reset();
+													                			}
+													                			else {
+												                                	alert("No upload of images found..");
+												                                	//alert("Before reset correct15689899");
+														                			document.getElementById("QuoteNewfrm").reset();
+												                                }
+
+																							});
+														}
+															};
+														// end of insurance creatioin
 
 														// start of finance creation
-														// start of QUotation Creation
+														
 														$scope.submitFinMyQuoteNewfrm = function(isValid) {
 															//alert("inside Sesdarv Maint"+isValid);
 															if (isValid) {
@@ -9051,6 +9239,34 @@ this.model_data_id = model_data_id;
 														}
 															};
 														
+															
+															// start of External Dealer Insurance Creation
+															$scope.submitCrtExtDlInsNewfrm = function(isValid) {
+																//alert("inside creation SM Dealessssssr"+isValid+$scope.categorySvExt);
+																if (isValid) {
+																
+																var jsonInputToAPI = { "category": $scope.categoryInsExt, "companyName": $scope.companyInsExt, "street": $scope.streetInsExt, "suburb": $scope.suborbInsExt, "state": $scope.stateInsExt, "postCode": $scope.postInsExt, "phone": $scope.phoneInsExt, "website": $scope.websiteInsExt, "mobile": $scope.mobileInsExt, "tollFree": $scope.tollfreeInsExt, "fax": $scope.faxInsExt, "afterHours": $scope.afterHoursInsExt, "postalAddress": $scope.postalAddressInsExt, "email": $scope.emailInsExt, "longitude": $scope.longitudeInsExt, "latitude": $scope.latitudeInsExt};
+																	
+																//alert("jsonInputToAPI"+jsonInputToAPI);
+									                            var wsURL = 'api/extdealerInsCreation';
+																//var wsURL = '';
+																$body.addClass("loading");
+																	    $http({
+																					method : 'POST',
+																					url : wsURL,
+																					data: JSON.stringify(jsonInputToAPI)
+
+																				}).success(function(data) {
+																					$body.removeClass("loading");
+																					alert("Successfully Stored create External Dealer Insurer's with id"+data.externalDealerId);
+																					//alert("Service & Maintenance Successfully Stored..");
+
+
+
+																								});
+															}
+																};
+															// end of Insurance Dealer
 															
 															// start of Finance Dealer
 															// start of External Dealer SM Creation
