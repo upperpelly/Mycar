@@ -127,41 +127,66 @@ public class InsQuotationController {
 		ExtDealerSearchIns extDealerSearch=extDealerServMaintRepository.findOne(dealerVO.getDealSearchId());
 		extDealerSearch.setStatus(true);
 		vehicleQuotation.setDealerId(extDealerSearch.getDealerId()); // Dealer Lead Id
-		/*vehicleQuotation.setNewer(extDealerSearch.isNewer());
+		
+		vehicleQuotation.setNewer(extDealerSearch.isNewer());
 		vehicleQuotation.setUsed(extDealerSearch.isUsed());
-		
-		//vehicleQuotation.setPostCode(extDealerSearch.getPostCode());
-		
-		vehicleQuotation.setRego(extDealerSearch.getRego());
-		vehicleQuotation.setRegoState(extDealerSearch.getRegoState());
-		vehicleQuotation.setModelYear(String.valueOf(extDealerSearch.getYear()));
-		vehicleQuotation.setModelDisplay(extDealerSearch.getMake());
-		vehicleQuotation.setModelName(extDealerSearch.getModel());
-		vehicleQuotation.setModelTrim(extDealerSearch.getAutoscoopTrim());
 		vehicleQuotation.setPostCode(String.valueOf(extDealerSearch.getPostCode()));
-		vehicleQuotation.setStreetNo(extDealerSearch.getStreetNo());
-		vehicleQuotation.setStreetName(extDealerSearch.getStreetName());
-		vehicleQuotation.setVehValue(extDealerSearch.getVehValue());
-		vehicleQuotation.setBalloonPay(extDealerSearch.getBalloonPay());
-		vehicleQuotation.setLoanAmount(extDealerSearch.getLoanAmount());
-		vehicleQuotation.setLoanPeriod(extDealerSearch.getLoanPeriod());
-		vehicleQuotation.setAnnualIncome(extDealerSearch.getAnnualIncome());
-		vehicleQuotation.setIncomeType(extDealerSearch.getIncomeType());
-		vehicleQuotation.setCreditRating(extDealerSearch.getCreditRating());
-		vehicleQuotation.setDateOfBirth(extDealerSearch.getDateOfBirth());
-		
-		vehicleQuotation.setYearEmploymentBusiness(extDealerSearch.getYearEmploymentBusiness());
-		vehicleQuotation.setIncomeBeforeSuperTax(extDealerSearch.getIncomeBeforeSuperTax());
-		vehicleQuotation.setIncomeAfterSuperTax(extDealerSearch.getIncomeAfterSuperTax());
-		vehicleQuotation.setIfBusinessProvideABN(extDealerSearch.getIfBusinessProvideABN());
-		vehicleQuotation.setRego(extDealerSearch.getRego());
+		vehicleQuotation.setInsuranceType(extDealerSearch.getInsuranceType());
+		vehicleQuotation.setRegNo(extDealerSearch.getRegNo());
 		vehicleQuotation.setRegoState(extDealerSearch.getRegoState());
-		vehicleQuotation.setStreetNo(extDealerSearch.getStreetNo());
+		vehicleQuotation.setYear(extDealerSearch.getYear());
+		
+		vehicleQuotation.setMake(extDealerSearch.getMake());
+		vehicleQuotation.setModel(extDealerSearch.getModel());
+		vehicleQuotation.setVariant(extDealerSearch.getVariant());
+		vehicleQuotation.setAutoscoopTrim(extDealerSearch.getAutoscoopTrim());
+		vehicleQuotation.setMarketValue(extDealerSearch.getMarketValue());
+		vehicleQuotation.setAgreedValue(extDealerSearch.getAgreedValue());
+		vehicleQuotation.setFinance(extDealerSearch.isFinance());
+		vehicleQuotation.setFinanceProvider(extDealerSearch.getFinanceProvider());
+		vehicleQuotation.setDrivingLicenseType(extDealerSearch.getDrivingLicenceType());
+		vehicleQuotation.setDrivingLicenseNo(extDealerSearch.getDrivingLicenseNo());
+		vehicleQuotation.setDrivingLicenseIssueState(extDealerSearch.getDrivingLicenseIssueState());
+		vehicleQuotation.setNoOfAtFaults(extDealerSearch.getNoOfAtFaults());
+		vehicleQuotation.setOtherIssues(extDealerSearch.getOtherIssues());
+		vehicleQuotation.setCurInsProv(extDealerSearch.getCurInsProv());
+		vehicleQuotation.setPrefExcessAmount(extDealerSearch.getPrefExcessAmount());
+		vehicleQuotation.setDateOfBirth(extDealerSearch.getDateOfBirth());
+		vehicleQuotation.setAgeOfAdditionalDriver(extDealerSearch.getAgeOfAdditionalDriver());
+		
+		vehicleQuotation.setCarParkedAt(extDealerSearch.getCarParkedAt());
+		//vehicleQuotation.setStreetNO(extDealerSearch.getStreetNO());
 		vehicleQuotation.setStreetName(extDealerSearch.getStreetName());
-		vehicleQuotation.setMr(extDealerSearch.getMr());
-		vehicleQuotation.setFirstName(extDealerSearch.getFirstName());
-		vehicleQuotation.setLastName(extDealerSearch.getLastName());
-		*/
+		vehicleQuotation.setCarUsedfor(extDealerSearch.getCarUsedfor());
+		vehicleQuotation.setTypeOfBusiness(extDealerSearch.getTypeOfBusiness());
+		vehicleQuotation.setDriverFirstName(extDealerSearch.getDriverFirstName());
+		vehicleQuotation.setDriverLastName(extDealerSearch.getDriverLastName());
+		vehicleQuotation.setDriverMobileNo(extDealerSearch.getDriverMobileNo());
+		vehicleQuotation.setDriverEmailId(extDealerSearch.getDriverEmailId());
+		vehicleQuotation.setLicenseIssueDate(extDealerSearch.getLicenseIssueDate());
+		vehicleQuotation.setLastAtFaultClaimDate(extDealerSearch.getLastAtFaultClaimDate());
+		vehicleQuotation.setReasonForSuspension(extDealerSearch.getReasonForSuspension());
+		vehicleQuotation.setAvgNoOfKmYr(extDealerSearch.getAvgNoOfKmYr());
+		vehicleQuotation.setNoOfDrivers(extDealerSearch.getNoOfDrivers());
+		vehicleQuotation.setLicenseGotSuspened(extDealerSearch.isLicenseGotSuspened());
+		
+		// Insurance extra requirements
+		vehicleQuotation.setExtNudgeBar(extDealerSearch.isExtNudgeBar());//Emergency accommodation and Transport
+		vehicleQuotation.setExtBullBar(extDealerSearch.isExtBullBar()); //Accidental Damage
+		vehicleQuotation.setExtsnokel(extDealerSearch.isExtsnokel()); //Essential Temporary Repairs
+		vehicleQuotation.setIntNudgeBar(extDealerSearch.isIntNudgeBar()); //Cover Towing Cost
+		vehicleQuotation.setIntBullBar(extDealerSearch.isIntBullBar()); //Cover Theft & Fire
+		vehicleQuotation.setIntsnokel(extDealerSearch.isIntsnokel());//No Claim Bonus Protection
+		vehicleQuotation.setAnyDriver(extDealerSearch.isAnyDriver());//Allow Under 25 Driver
+		vehicleQuotation.setFreeWindScreen(extDealerSearch.isFreeWindScreen());//Excess Free wind Screen
+		vehicleQuotation.setRoadsideasst(extDealerSearch.isRoadsideasst());//Road Side Assistance
+		vehicleQuotation.setRentalCar(extDealerSearch.isRentalCar()); //Excess Free Window Screen
+		vehicleQuotation.setNewCarRepl(extDealerSearch.isNewCarRepl());//New Car Replace
+		vehicleQuotation.setLifetimeWarrep(extDealerSearch.isLifetimeWarrep());//Life time Warranty repairs
+		vehicleQuotation.setHireCar(extDealerSearch.isHireCar());//Hire Car after Accident(if any)
+		vehicleQuotation.setBullBar(extDealerSearch.isBullBar());
+		vehicleQuotation.setSnokel(extDealerSearch.isSnokel());
+		vehicleQuotation.setNudgeBar(extDealerSearch.isNudgeBar()); 
 		
 		
 		User user =userRepository.findOne(dealerVO.getUserId());
