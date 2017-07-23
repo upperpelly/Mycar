@@ -5,15 +5,20 @@
 function setting(data){
     	//alert("cameheretoset");
     	//$.jStorage.deleteKey(key);
-    	console.log(data);
-    	alert(data);
+    	/*console.log(data);
+    	alert(data);*/
     	$.jStorage.set('Akey',data);
     	$.jStorage.setTTL('mykey1', 30000); // expires in 3 seconds
              // alert("came here");
 
     }
 
-
+function signingout(){
+	
+	 $.jStorage.deleteKey("Akey");
+	 alert("Successfully Logged Out");
+	 window.location="Ad_Betav1.html";
+}
 
 var mainApp1 = angular.module("mainApp1", []);
 mainApp1

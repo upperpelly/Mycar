@@ -5,6 +5,110 @@
 
 var mainApp1 = angular.module("mainApp1", []);
 	mainApp1.controller('myController1',function($scope,$http) {
+		
+		 $scope.submitSearchForm = function() {
+         	alert("invoke");
+         	if (alreadyLogged()) {
+     				$('.result').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>Saving,Please wait...');
+                     userId = $.jStorage.get('key').userId;
+						var autobid=false;
+						autobid = document.getElementById("autoBid").value;
+						//var classified = document.getElementById("postClassified").value;
+						//alert("Came here c"+autobid);			SellvehicleType
+						var jsonInputToAPI = {
+															"refId":35,
+													"modelYear": $scope.sellVehYear,
+													"modelDisplay": $scope.SellVehMake,
+													"modelName": $scope.sellVehModel,															      
+													"modelTrim": $scope.sellVehAutotrim,
+													"typeOfCar": $scope.vehicleCondition,
+													"vehicleDescriptin": $scope.headText,
+													"make": $scope.financeOwning,
+													"variant": $scope.getOffers,
+													"price": $scope.displayPrice,
+													"bodyType":$scope.classAdv,
+													"transmission": $scope.autoQuote,
+													"fuelType": $scope.addrSell,
+													"engine": null,
+													"regNo": $scope.regno,
+													"driveType": $scope.driveType,
+													"kilometer": 120,
+													"extColor": $scope.extColor,
+													"warranty": null,
+													"regExpiryDate": $scope.RegExpDate,
+													"vinNumber": $scope.vinnumber,
+													"vendorStockNo": $scope.stockNo,
+													"noOfDoors": 0,
+													"intColor": $scope.intColor,
+													"wheelSize": $scope.labelOnVehicle,
+													"seatMake": $scope.sellCarAddNotes,
+													"extFittingFlex1": $scope.extraExternal1,
+													"extFittingFlex2": $scope.extraExternal2,
+													"extFittingFlex3": $scope.extraExternal3,
+													"extFittingFlex4": $scope.extraExternal4,
+													"extFittingFlex5": $scope.extraExternal5,
+													"extFittingFlex6": $scope.extraExternal6,
+													"extFittingFlex7": null,
+													"extFittingFlex8": null,
+													"extFittingFlex9": null,
+													"extFittingFlex10": $scope.extraInternal11,
+													"intFittingFlex1": $scope.extraInternal1,
+													"intFittingFlex2": $scope.extraInternal2,
+													"intFittingFlex3": $scope.extraInternal3,
+													"intFittingFlex4": $scope.extraInternal4,
+													"intFittingFlex5": $scope.extraInternal5,
+													"intFittingFlex6": $scope.extraInternal6,
+													"intFittingFlex7": $scope.extraInternal7,
+													"intFittingFlex8": $scope.extraInternal8,
+													"intFittingFlex9": $scope.extraInternal9,
+													"intFittingFlex10": $scope.extraInternal10,
+													"salePersonLooking": $scope.accidentHistory,
+													"contName": $scope.conName,
+													"contPhone": $scope.MobNum,
+													"contEmail": null,
+													"logBookService": $scope.roadCert,//road certification
+													"cameIntoInv": null,
+													"counterOfViewingCar": 0,
+													"counterOfEnquiryCar": 0,
+													"saleDate": null,
+													"features": [],
+													"photos": [],
+													"carColor": $scope.extColor,
+													"state": $scope.regState,
+													"region": $scope.SellvehicleType,
+													"postCode":$scope.postcode11,
+													"yearOfMake": null,
+													"ausCapTer": null,
+													"insCompAmountMin": 0,
+													"insCompAmountMax": 0,
+													"dealAmountMin": $scope.QRangeMin,
+													"dealAmountMax": $scope.QRangeMax,
+													"insthirdInsuanceMin": 0,
+													"insthirdInsuanceMax": 0,
+													"finAmountMin": 0,
+													"newCar": false,
+													"StockItem": autoBid
+									}
+									var wsURL = 'api/dealer/addInventory';
+										    $http({
+														method : 'POST',
+														url : wsURL,
+														data: jsonInputToAPI
+																		
+													}).success(function(data) {
+														$('.result').html('Successfully Stored....');
+														alert("Successfully Stored.. ");
+														alert("Thank You. Your Inventory is saved"+data.inventoryId);
+																						
+																	});
+         	}
+
+             else {
+                 alert("Please Login and Make Sell");
+             }
+		};
+		
+		
 		$scope.firstForm = function(valid) {
 			//alert("in first form");
 			$scope.firstFlag=true;
@@ -95,6 +199,97 @@ var mainApp1 = angular.module("mainApp1", []);
 			if(valid){
 				//alert("Valid");
 		        $scope.sixthFlag=false;
+		        $('.result').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>Saving,Please wait...');
+                userId = $.jStorage.get('key').userId;
+					//var classified = document.getElementById("postClassified").value;
+					//alert("Came here c"+autobid);			SellvehicleType
+					var jsonInputToAPI = {
+							"refId":userId,
+							"modelYear": $scope.sellVehYear,
+							"modelDisplay": $scope.SellVehMake,
+							"modelName": $scope.sellVehModel,															      
+							"modelTrim": $scope.sellVehAutotrim,
+							"typeOfCar": $scope.optradio,
+							"vehicleDescriptin": $scope.headText,
+							"make": null,
+							"variant": $scope.getOffers,
+							"price": $scope.displayPrice,
+							"bodyType":$scope.classAdv,
+						"transmission": $scope.autoQuote,
+								"fuelType": $scope.addrSell,
+							"engine":$scope.MobNum,
+							"regNo": $scope.regno,
+							"driveType": $scope.pricingType,//fixed negotiable
+							"kilometer": $scope.currOdometer,
+							"extColor": $scope.extColor,
+							"warranty": null,
+							"regExpiryDate": $scope.RegExpDate,
+							"vinNumber": $scope.vinnumber,
+							"vendorStockNo": null,
+							"noOfDoors": $scope.negotiaPer,//negotiable perce
+							"intColor": $scope.intColor,
+							"wheelSize": $scope.labelOnVehicle,
+							"seatMake": $scope.sellCarAddNotes,
+							"extFittingFlex1": $scope.extraExternal1,
+							"extFittingFlex2": $scope.extraExternal2,
+							"extFittingFlex3": $scope.extraExternal3,
+							"extFittingFlex4": $scope.extraExternal4,
+							"extFittingFlex5": $scope.extraExternal5,
+							"extFittingFlex6": $scope.extraExternal6,
+							"extFittingFlex7": null,
+							"extFittingFlex8": null,
+							"extFittingFlex9": null,
+							"extFittingFlex10": $scope.extraInternal11,
+							"intFittingFlex1": $scope.extraInternal1,
+							"intFittingFlex2": $scope.extraInternal2,
+							"intFittingFlex3": $scope.extraInternal3,
+							"intFittingFlex4": $scope.extraInternal4,
+							"intFittingFlex5": $scope.extraInternal5,
+							"intFittingFlex6": $scope.extraInternal6,
+							"intFittingFlex7": $scope.extraInternal7,
+							"intFittingFlex8": $scope.extraInternal8,
+							"intFittingFlex9": $scope.extraInternal9,
+							"intFittingFlex10": $scope.extraInternal10,
+							"salePersonLooking":null,
+							"contName": $scope.conName,
+							"contPhone": 0,
+							"contEmail": null,
+							"logBookService": $scope.roadCert,//road certification
+							"cameIntoInv": null,
+							"counterOfViewingCar": 0,
+							"counterOfEnquiryCar": 0,
+							"saleDate": null,
+							"features": [],
+							"photos": [],
+							"carColor": $scope.extColor,
+							"state": $scope.regState,
+							"region": $scope.addrSell,
+							"postCode":$scope.postcode11,
+							"yearOfMake": null,
+							"ausCapTer": null,
+							"insCompAmountMin": 0,
+							"insCompAmountMax": 0,
+							"dealAmountMin": $scope.QRangeMin,
+							"dealAmountMax": $scope.QRangeMax,
+							"insthirdInsuanceMin": 0,
+							"insthirdInsuanceMax": 0,
+							"finAmountMin": 0,
+							"newCar": false,
+							"StockItem": $scope.notRegister
+								}
+								var wsURL = 'api/dealer/addInventory';
+									    $http({
+													method : 'POST',
+													url : wsURL,
+													data: jsonInputToAPI
+																	
+												}).success(function(data) {
+													$('.result').html('Successfully Stored....');
+													alert("Successfully Stored.. ");
+													alert("Thank You. Your Inventory is saved"+data.inventoryId);
+																					
+																});
+
 			}else{
 				//alert("inside invalid");
 				$scope.sixthFlag=true;

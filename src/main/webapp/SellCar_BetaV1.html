@@ -624,6 +624,8 @@ body.loading .modal {
            <div class="container">
                 	<!-- Start Here -->
                 	<div id="main" class="col-md-10 booking-section travelo-box" ng-controller="myController1" id="myController1">
+                		
+                		<form class="booking-form" novalidate>
                 		<div class="row">
 					      <div class="col-md-12">
 					        <h1>SELL MY CAR</h1>
@@ -882,27 +884,27 @@ body.loading .modal {
                                          <div class="col-sm-2 col-md-2">
 											<ul style="float:left;vertical-align:top;">
 											        <li class="squaredOne">
-										                <input type="checkbox" id="extraExternal1" name="extraExternal1" ng-model="extraExternal1">
+										                <input type="checkbox" id="extraExternal1" name="extraExternal1" value="Bull Bar" ng-model="extraExternal1">
 											            <label for="extraExternal1">Bull Bar</label>
 											        </li>
 											        <li class="squaredOne">
-											                <input type="checkbox" id="extraExternal2" name="extraExternal2" ng-model="extraExternal2">
+											                <input type="checkbox" id="extraExternal2" value="Nudge Bar" name="extraExternal2" ng-model="extraExternal2">
 											                <label for="extraExternal2">Nudge Bar</label>
 											        </li>
 											        <li class="squaredOne">
-											                <input type="checkbox" id="extraExternal3" name="extraExternal3" ng-model="extraExternal3">
+											                <input type="checkbox" id="extraExternal3" value="Side Step" name="extraExternal3" ng-model="extraExternal3">
 											                <label for="extraExternal3">Side Step</label>
 											        </li>
 											        <li class="squaredOne">
-											                <input type="checkbox" id="extraExternal4" name="extraExternal4" ng-model="extraExternal4">
+											                <input type="checkbox" id="extraExternal4" value="Snorkel" name="extraExternal4" ng-model="extraExternal4">
 											                <label for="extraExternal4">Snorkel</label>
 											        </li>
 											        <li class="squaredOne">
-											                <input type="checkbox" id="extraExternal5" name="extraExternal5" ng-model="extraExternal5">
+											                <input type="checkbox" id="extraExternal5"  value="Tow Bar" name="extraExternal5" ng-model="extraExternal5">
 											                <label for="extraExternal5">Tow Bar</label>
 											        </li>
 											        <li class="squaredOne">
-											                <input type="checkbox" id="extraExternal6" name="extraExternal6" ng-model="extraExternal6">
+											                <input type="checkbox" id="extraExternal6" value="Floor Mats" name="extraExternal6" ng-model="extraExternal6">
 											                <label for="extraExternal6">Floor Mats</label>
 											        </li>
 											</ul>
@@ -910,27 +912,27 @@ body.loading .modal {
 										<div class="col-sm-4 col-md-4">
 										    <ul style="float:relative;padding-left:5px;vertical-align:top;">
 										          <li class="squaredOne">
-										                  <input type="checkbox" id="extraInternal1" name="extraInternal1" ng-model="extraInternal1">
+										                  <input type="checkbox" id="extraInternal1" value="Tinted Glass" name="extraInternal1" ng-model="extraInternal1">
 										                  <label for="extraInternal1">Tinted Glass</label>
 										          </li>
 										          <li class="squaredOne">
-										                  <input type="checkbox" id="extraInternal2" name="extraInternal2" ng-model="extraInternal2">
+										                  <input type="checkbox" id="extraInternal2"  value="Luggage & Cargo Accessories" name="extraInternal2" ng-model="extraInternal2">
 										                  <label for="extraInternal2">Luggage & Cargo Accessories</label>
 										          </li>
 										          <li class="squaredOne">
-										                  <input type="checkbox" id="extraInternal3" name="extraInternal3" ng-model="extraInternal3">
+										                  <input type="checkbox" id="extraInternal3"  value="Applicable Roof Racks" name="extraInternal3" ng-model="extraInternal3">
 										                  <label for="extraInternal3">Applicable Roof Racks</label>
 										          </li>
 										          <li class="squaredOne">
-										                  <input type="checkbox" id="extraInternal4" name="extraInternal4" ng-model="extraInternal4">
+										                  <input type="checkbox" id="extraInternal4"  value="Tow Accessories" name="extraInternal4" ng-model="extraInternal4">
 										                  <label for="extraInternal4">Tow Accessories</label>
 										          </li>
 										          <li class="squaredOne">
-										                  <input type="checkbox" id="extraInternal5" name="extraInternal5" ng-model="extraInternal5">
+										                  <input type="checkbox" id="extraInternal5" value="Applicable Roof Racks" name="extraInternal5" ng-model="extraInternal5">
 										                  <label for="extraInternal5">Applicable Roof Racks</label>
 										          </li>
 										          <li class="squaredOne">
-										            <input type="checkbox" id="extraInternal6" name="extraInternal6" ng-model="extraInternal6">
+										            <input type="checkbox" id="extraInternal6" value="Seat Cover" name="extraInternal6" ng-model="extraInternal6">
 										            <label for="extraInternal6">Seat Cover</label>
 									    		  </li>
 											</ul>
@@ -938,23 +940,23 @@ body.loading .modal {
 									<div class="col-sm-4 col-md-4">
 									    <ul style="float:relative;padding-left:5px;vertical-align:top;">
 									            <li class="squaredOne">
-									                    <input type="checkbox" id="extraInternal7" name="extraInternal7" ng-model="extraInternal7">
+									                    <input type="checkbox" id="extraInternal7" value="Bonnet Protection" name="extraInternal7" ng-model="extraInternal7">
 									                    <label for="extraInternal7">Bonnet Protection</label>
 									            </li>
 									            <li class="squaredOne">
-									                    <input type="checkbox" id="extraInternal8" name="extraInternal8" ng-model="extraInternal8">
+									                    <input type="checkbox" id="extraInternal8" value="Head Lamp Protection" name="extraInternal8" ng-model="extraInternal8">
 									                    <label for="extraInternal8">Head Lamp Protection</label>
 									            </li>
 									            <li class="squaredOne">
-									                    <input type="checkbox" id="extraInternal9" name="extraInternal9" ng-model="extraInternal9">
+									                    <input type="checkbox" id="extraInternal9" value="Weather Shield" name="extraInternal9" ng-model="extraInternal9">
 									                    <label for="extraInternal9">Weather Shield</label>
 									            </li>
 									            <li class="squaredOne">
-											              <input type="checkbox" id="extraInternal11" name="extraInternal11" ng-model="extraInternal11">
+											              <input type="checkbox" id="extraInternal11" value="Medical / first-aid Kit" name="extraInternal11" ng-model="extraInternal11">
 											              <label for="extraInternal11">Medical / first-aid Kit</label>
 									      		</li>
 									            <li class="squaredOne">
-									                    <input type="checkbox" id="extraInternal10" name="extraInternal10" ng-model="extraInternal10">
+									                    <input type="checkbox" id="extraInternal10" value="Safety Kid" name="extraInternal10" ng-model="extraInternal10">
 									                    <label for="extraInternal10">Safety Kid</label>
 									            </li>
 										  </ul>
@@ -1141,6 +1143,12 @@ body.loading .modal {
 						              <button class="btn btn-primary Details previous">Previous</button>
 						              <button class="btn btn-primary Details" ng-click="sixthForm(addrSellCar.$valid)">Proceed to Sell !</button>
 						            </div>
+						            
+						            <div class="row">
+                                    <div class="col-sm-6 col-md-5 result" style="color:green;font-size:18px;">
+                                        
+                                    </div>
+                                </div>
 						          </div>
 						        </div>
 						        
@@ -1148,7 +1156,7 @@ body.loading .modal {
 						        
 						      </div>
 						    </div>
-                	
+                	</form>
                 	</div>
                 	<!--End Here  -->
             </div>

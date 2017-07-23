@@ -1274,7 +1274,11 @@ mainApp1.controller('myController13',function($scope, $http) {
 				//$body.removeClass("loading");
 				//alert("successfully retreived");
 				
-				out8="";
+					out8="<div class='row'><div class='col-sm-10 col-md-10'></div><div class='col-sm-2 col-md-2 pull-right'><a href='#' class='btn btn-success btn-sm' onclick='printDiv('selectedRecord')'>\
+												          <span class='glyphicon glyphicon-print'></span> Print\
+												        </a>\
+												    </div>\
+											    </div>";
 
                	   out8 += '<tr><th>'+"Activity"+'</th><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Rego No"+'</th><th>'+"Rego Exp"+'</th><th>'+"Vin"+'</th></tr>';
                	   for(i=0;i<result.length;i++)
@@ -1312,103 +1316,6 @@ $("#"+"fuelCard4").html(outLogT);
 	// modal for vehicle Log book
 	
 	function registerEditDealerVehicleDetailLogBookModal(){
-
-		// change here
-			//alert("log html gene");
-			//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
-			/*var editDealerVehicleDetailLogBookModal = '<div id="selectedRecord">\
-				<h4><center>Log Book Details for Vehicle</center></h4><a class="button btn-mini pull-right" id="BackToVehicles">Back To Vehicles Log</a>\
-				<div class="edit-dealer-vehicle-detail-logbook-content">\
-			            </div>\
-				<br/>\
-				<br/>\
-				<ul class="nav nav-tabs">\
-			    <li class="active"><a data-toggle="tab" href="#logTrip">Log Trip</a></li>\
-			    <li><a data-toggle="tab" href="#LogExp">Log Expenses</a></li>\
-			    <li><a data-toggle="tab" href="#ServMain">Service & Maintenance Log</a></li>\
-			  </ul>\
-			  <div class="tab-content">\
-			    <div id="logTrip" class="tab-pane fade in active">\
-			    <div class="col-md-12"><button id="LogNewButton">Log a New Trip</button></div>\
-				<div class="booking-section travelo-box" id="LogNew">\
-				<form class="booking-form">\
-		    	<div class="form-group row">\
-				   <div class="col-sm-6 col-md-6">\
-						<label>Vehicle Type</label>\
-						<input type="text" id="vehicleType" name="vehicleType" class="input-text full-width" value="" placeholder="" />\
-					</div>\
-					<div class="col-sm-6 col-md-6">\
-							<label>Trip Type</label>\
-							<div class="selector">\
-								<select class="full-width" id="tripType" name="tripType">\
-									<option>Private</option>\
-									<option>Business</option>\
-									<option>Other</option>\
-								</select>\
-							</div>\
-					 </div>\
-				</div>\
-				<div class="form-group row">\
-					<div class="col-sm-6 col-md-6">\
-						<label>Trip Description</label>\
-						<input type="text" id="tripDescription" name="tripDescription" class="input-text full-width" value="" placeholder="" />\
-					</div>\
-					<div class="col-sm-6 col-md-6">\
-						<label>From Location Post Code</label>\
-						<input type="text" id="lPostCode" name="lPostCode" class="input-text full-width" value="" placeholder="" />\
-					</div>\
-				</div>\
-				<div class="form-group row">\
-					<div class="col-sm-6 col-md-6">\
-						<label>From Location Address</label>\
-						<input type="text" id="lAPostCode" name="lAPostCode" class="input-text full-width" value="" placeholder="" />\
-					</div>\
-					<div class="col-sm-6 col-md-6">\
-						<label>To Location Post Code</label>\
-						<input type="text" id="tPostCode" name="tPostCode" class="input-text full-width" value="" placeholder="" />\
-					</div>\
-				</div>\
-				<div class="form-group row">\
-					<div class="col-sm-6 col-md-6">\
-						<label>To Location Address</label>\
-						<input type="text" id="tAPostCode" name="tAPostCode" class="input-text full-width" value="" placeholder="" />\
-					</div>\
-					<div class="col-sm-6 col-md-6">\
-						<label>Odo Meter Start of the Trip Kms/Miles</label>\
-						<input type="text" id="odoMeterStartTripKmsMiles" name="odoMeterStartTripKmsMiles" class="input-text full-width" value="" placeholder="" />\
-					</div>\
-				</div>\
-				<div class="form-group row">\
-					<div class="col-sm-6 col-md-6">\
-						<label>Odometer End of the Trip</label>\
-						<input type="text" id="odometerEndoftheTrip" name="odometerEndoftheTrip" class="input-text full-width" value="" placeholder="" />\
-					</div>\
-					 <div class="col-sm-6 col-md-6">\
-						<label>Rout Kms/Miles</label>\
-						<input type="text" id="routKmsMiles" name="routKmsMiles" class="input-text full-width" value="" placeholder="" />\
-					</div>\
-				</div>\
-		        <div class="form-group row">\
-					<div class="col-sm-6 col-md-5">\
-						<button type="button" class="full-width btn-large" id="LogSave" >Save</button>\
-					</div>\
-		        </div>\
-				</form>\
-				</div>\
-			    </div>\
-			    <div id="LogExp" class="tab-pane fade">\
-				<div class="col-md-12"><button id="LogNewExpButton">Log a New Expenses</button></div>\
-			      <p>Your Expenses goes here</p>\
-			    </div>\
-			    <div id="ServMain" class="tab-pane fade">\
-				<div class="col-md-12"><button id="LogNewSerButton">Log New Service & Maintenance</button></div>\
-			      <p>Your Service & maintenance goes here</p>\
-			    </div>\
-			  </div>\
-		 	  </div>';*/
-
-			//$(document.body).append(editDealerVehicleDetailLogBookModal);
-
 			$('a.anchor-editDealerVehicleDetailLogBookModal').on('click', function(event) {
 				//alert("invoke sscs clddaick");
 				$('#fuelCard4').toggle();
@@ -1417,122 +1324,9 @@ $("#"+"fuelCard4").html(outLogT);
 				//var json = JSON.stringify(data);
 
 				var quotIdHiddenField = '<input type="hidden" name="myVehicleId" value="' + data.myVehicleId + '" />';
-				/*var moveToUser = '<input type="checkbox" name="moveToUser" />';
-				if(data.moveToUser)
-				  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';*/
-
 				$('#fuelCard41').toggle();
 				myVehicleIDuse = data.myVehicleId;
-				//vehicleRetrievalforLogBook();
-				//alert("before call");
 				angular.element(document.getElementById('myController13')).scope().vehicleRetrievalforLogBook();
-				/*var wsURL = 'api/Myvehicle/'+data.myVehicleId;
-				$.ajax({
-					type: "GET",
-					url: wsURL,
-					contentType:'application/json',
-					success: function(result){
-						//alert(JSON.stringify(result));
-						var LogT = result.myVehicleLogBook;
-						outLogT="";
-						//alert(LogT);
-						//alert(result.myVehicleLogBook.length);
-						//alert("viscuit");
-						if(LogT && result.myVehicleLogBook.length!=0)
-							{
-							var logTripTable = '<table>\
-								<tr><th>'+"Trip Type"+'</th><th>'+"TripStart Addr"+'</th><th>'+"TripEnd Addr"+'</th><th>'+"Trip Date"+'</th><th>'+"OdoMeter Start"+'</th><th>'+"OdoMeter End"+'</th><th>'+"No of Kms"+'</th><th>'+"Purpose of Trim"+'</th><th>'+"Driver Name"+'</th><th>'+"Trip Log Date"+'</th></tr>\
-								<tr><td>' + data.myVehicleId + '</td>\
-								<td>' + data.year + '</td>\
-								<td>' + data.make + '</td>\
-								<td>' + data.model + '</td>\
-								<td>' + data.variant + '</td></tr>\
-								</table>';
-							logTlen = result.myVehicleLogBook.length;
-							outLogT += '<tr><th>'+"Trip Type"+'</th><th>'+"TripStart Addr"+'</th><th>'+"TripEnd Addr"+'</th><th>'+"Trip Date"+'</th><th>'+"OdoMeter Start"+'</th><th>'+"OdoMeter End"+'</th><th>'+"No of Kms"+'</th><th>'+"Purpose of Trip"+'</th><th>'+"Driver Name"+'</th><th>'+"Trip Log Date"+'</th></tr>';
-			           	    for(i=0;i<logTlen;i++)
-			          		 {
-			           	    	outLogT= outLogT+'<tr>'+'<td>'+result.myVehicleLogBook[i].tripType+'</td>'+'<td>'+result.myVehicleLogBook[i].fromLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].toLocation+'</td>'+'<td>'+result.myVehicleLogBook[i].date+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterStartOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].odoMeterEndOfTrip+'</td>'+'<td>'+result.myVehicleLogBook[i].routeKm+'</td>'+'<td>'+result.myVehicleLogBook[i].tripDescription+'</td>'+'<td>'+result.myVehicleLogBook[i].flex1+'</td></tr>';
-			          		 }
-			           	 outLogT = outLogT.replace(/>null</g, ">--NA--<");
-			           	outLogT = outLogT.replace(/>undefined</g, ">--NA--<");
-							}
-						else
-							{
-							outLogT='<h2>No records for Log Trips</h2>';
-							}
-						$('#logTripTable').html(outLogT);
-
-
-						var LogE = result.myVehicleFuelExpenses;
-						outLogE="";
-						//alert(result.myVehicleFuelExpenses.length);
-						if(LogE && result.myVehicleFuelExpenses.length!=0)
-						{
-							var  logServMainTable = '<table>\
-								<tr><th>'+"Type of Service"+'</th><th>'+"Date of Service"+'</th><th>'+"Mileage/OdoMeter @Service"+'</th><th>'+"Detail Work Performed"+'</th><th>'+"List of Service"+'</th><th>'+"Notes"+'</th><th>'+"Technician"+'</th><th>'+"Service & maintenancec Company"+'</th><th>'+"Uploadedd Maintenance record"+'</th></tr>\
-								<tr><td>' + data.myVehicleId + '</td>\
-								<td>' + data.year + '</td>\
-								<td>' + data.make + '</td>\
-								<td>' + data.model + '</td>\
-								<td>' + data.variant + '</td></tr>\
-								</table>';
-							logElen = result.myVehicleFuelExpenses.length;
-							outLogE += '<tr><th>'+"Expensive Type"+'</th><th>'+"Expensive Category"+'</th><th>'+"Expensive Date"+'</th><th>'+"Expensive Description"+'</th><th>'+"Amount"+'</th><th>'+"Uploaded Photo"+'</th></tr>';
-			           	    for(i=0;i<logElen;i++)
-			          		 {
-			           	    	outLogE= outLogE+'<tr>'+'<td>'+result.myVehicleFuelExpenses[i].recordType+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].business+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].date+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].others+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].amount+'</td>'+'<td>'+result.myVehicleFuelExpenses[i].photoOfInvoice+'</td></tr>';
-			          		 }
-			           	 outLogE = outLogE.replace(/>null</g, ">--NA--<");
-			           	outLogE = outLogE.replace(/>undefined</g, ">--NA--<");
-
-						}
-					else
-						{
-						outLogE='<h2>No records for log Expenses</h2>';
-						}
-						$('#logExpTable').html(outLogE);
-
-
-
-						//alert(result.myVehicleServMaint.length);
-						var LogS = result.myVehicleServMaint;
-						outLogS="";
-						if(LogS && result.myVehicleServMaint.length!=0)
-						{
-							var logExpTable = '<table>\
-								<tr><th>'+"Expensive Type"+'</th><th>'+"Expensive Category"+'</th><th>'+"Expensive Date"+'</th><th>'+"Expensive Description"+'</th><th>'+"Amount"+'</th><th>'+"Uploaded Photo"+'</th></tr>\
-								<tr><td>' + data.myVehicleId + '</td>\
-								<td>' + data.year + '</td>\
-								<td>' + data.make + '</td>\
-								<td>' + data.model + '</td>\
-								<td>' + data.variant + '</td></tr>\
-								</table>';
-
-							logSlen = result.myVehicleServMaint.length;
-							outLogS += '<tr><th>'+"Type of Service"+'</th><th>'+"Date of Service"+'</th><th>'+"Mileage/OdoMeter @Service"+'</th><th>'+"Detail Work Performed"+'</th><th>'+"List of Service"+'</th><th>'+"Notes"+'</th><th>'+"Technician"+'</th><th>'+"Service & maintenancec Company"+'</th><th>'+"Uploaded Maintenance record"+'</th></tr>';
-
-			           	    for(i=0;i<logSlen;i++)
-			          		 {
-			           	    	outLogS= outLogS+'<tr>'+'<td>'+result.myVehicleServMaint[i].typeOfServMaint+'</td>'+'<td>'+result.myVehicleServMaint[i].date+'</td>'+'<td>'+result.myVehicleServMaint[i].odoMeterKm+'</td>'+'<td>'+result.myVehicleServMaint[i].flex1+'</td>'+'<td>'+result.myVehicleServMaint[i].flex2+'</td>'+'<td>'+result.myVehicleServMaint[i].flex3+'</td><td>'+result.myVehicleServMaint[i].mechanicName+'</td>'+'<td>'+result.myVehicleServMaint[i].companyName+'</td><td>'+result.myVehicleServMaint[i].uploadPhoto+'</td></tr>';
-			          		 }
-			           	 outLogS = outLogS.replace(/>null</g, ">--NA--<");
-			           	outLogS = outLogS.replace(/>undefined</g, ">--NA--<");
-						}
-					else
-						{
-						outLogS='<h2>No records for Service maintenance</h2>';
-						}
-						$('#logServMainTable').html(outLogS);
-					}
-				});*/
-
-
-
-
-
-
-				//document.getElementById("fuelCard41").style.display = "block";
 				var editDealerVehicleDetailLogBookForm = '<table>\
 					<tr><th>'+"My Vehicle ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"RegoNum"+'</th><th>'+"RegoExpDt"+'</th><th>'+"VIN"+'</th></tr>\
 					<tr><td>' + data.myVehicleId + '</td>\
@@ -1558,48 +1352,6 @@ $("#"+"fuelCard4").html(outLogT);
 				    });
 
 
-
-				/*$("#LogSave").click(function(){
-				        //alert("Log Save alertsssaasa.");
-				        //angular.element(document.getElementById('LogNew')).scope().submitSearchFormLogBook();
-
-						//alert("inside Log Book");
-						//alert(""+$('#vehicleTypeLogBook').val());
-						var jsonInputToAPI = {"myVehicleId":data.myVehicleId,
-								"myVehicleLogBookVO":{
-									"myVehicleLogBookId":null,
-									"recordType": $('#vehicleTypeLogBook').val(),
-									"tripType":$('#tripType').val(),
-											"tripDescription" :$('#tripDescription').val(),
-											 "fromLocation":$('#lPostCode').val(),
-											"toLocation":$('#tPostCode').val(),
-											"flex1":$('#lAPostCode').val(),
-											"flex2":$('#tAPostCode').val(),
-											"odoMeterStartOfTrip":$('#odoMeterStartTripKmsMiles').val(),
-											"odoMeterEndOfTrip":$('#odometerEndoftheTrip').val(),
-											"routeKm":$('#routKmsMiles').val(),
-											"flex5":0,
-											"flex6":0,
-											"flex7":0
-								}
-								}
-
-						var wsURL = 'api/myvehicle/addMyVehicleLogBook';
-						//alert("before Ajax");
-						alert($('#lPostCode').val());
-						$.ajax({
-							type: "POST",
-							url: wsURL,
-							data: JSON.stringify(jsonInputToAPI),
-							contentType:'application/json',
-							success: function(result){
-
-								alert("Successfully saved");
-
-							}
-						});
-
-				    });*/
 			});
 
 
@@ -1693,9 +1445,6 @@ $("#"+"fuelCard4").html(outLogT);
 
 	function registerEditDealerVehicleDetailModal(){
 
-
-		//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
-		//alert("Inside rey");
 		var editDealerVehicleDetailModal = '<div class="modal fade" id="editDealerVehicleDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
 		    <div class="modal-dialog">\
 		        <div class="modal-content">\
@@ -1704,7 +1453,15 @@ $("#"+"fuelCard4").html(outLogT);
 		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
 		            </div>\
 					<h4 class="modal-title" id="myModalLabel"><center>View My Vehicle Details</center></h4>\
-			        <form id="edit-dealer-vehicle-detail-content-form">\
+					<form id="edit-dealer-vehicle-detail-content-form">\
+						<div class="row">\
+						<div class="col-sm-10 col-md-10"></div>\
+			    		<div class="col-sm-2 col-md-2 pull-right">\
+			        		<a href="#" class="btn btn-success btn-sm" onclick="printDiv("edit-dealer-vehicle-detail-content-form")">\
+					          <span class="glyphicon glyphicon-print"></span> Print\
+					        </a>\
+					    </div>\
+				    </div>\
 					<div class="modal-body edit-dealer-vehicle-detail-content">\
 		            </div>\
 		            <div class="modal-footer">\

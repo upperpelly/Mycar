@@ -139,6 +139,21 @@ $(document).ready(function() {
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" type="text/css" href="css/ie.css" />
 
+
+<script>
+function printDiv(divName) {
+	
+	var orgCode = "AutoScoop";
+	var printWindow = window.open("about:blank","print","left=0,top=0,width=10,height=10");
+	var orgHtml = "<html><body>"+document.getElementById(divName).innerHTML+"</body></html>";
+	printWindow.document.write(orgHtml);
+	printWindow.print();
+	//printWindow.close();
+	setTimeout(function(){ printWindow.print();},500000);
+	setTimeout(function(){ printWindow.close();},5000);
+   }
+</script>
+
     <!-- <script src="js/servicelevelcarquery.0.3.6.js" type="text/javascript"></script> -->
 <!-- Table alignment -->
 <style>
@@ -1358,6 +1373,14 @@ $('.logBookBtn').click(function(){
 
                                         </table>
                                         <div id="fuelCard41">
+                                        		<div class="row">
+                                        			<div class="col-sm-10 col-md-10"></div>
+	                                        		<div class="col-sm-2 col-md-2 pull-right">
+		                                        		<a href="#" class="btn btn-success btn-sm" onclick="printDiv('selectedRecord')">
+												          <span class="glyphicon glyphicon-print"></span> Print
+												        </a>
+												    </div>
+											    </div>
 		                                        <div id="selectedRecord">
 														<h4><center>Log Book Details for Vehicle</center></h4><a class="button btn-mini pull-right" id="BackToVehicles">Back To Vehicles Log</a>
 														<div class="edit-dealer-vehicle-detail-logbook-content">
