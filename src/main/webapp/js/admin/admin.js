@@ -18,7 +18,7 @@ var url="Db_BetaV1.html";
 window.location=url;
 }
 function alreadyLogged(){
-	var value = $.jStorage.get("key");
+	var value = $.jStorage.get("Akey");
 	//alert("Checking logged or not");
 	if(!value){
 	    // if not - return false
@@ -31,9 +31,13 @@ function alreadyLogged(){
 
 
 }
+
+
+
+
 if(!alreadyLogged())
 {
-		var url="Hm_BetaV1.html";
+		var url="Ad_Betav1.html";
 		window.location=url;
 }
 if(!value){
@@ -41,7 +45,7 @@ if(!value){
 //alert("can inside");
     //value = load_data_from_server()
     // and save it
-    $.jStorage.set("key",value);
+    $.jStorage.set("Akey",value);
 }
 //alert("can"+value.userId);
 /*console.log(value);

@@ -34,19 +34,11 @@
     <!-- Responsive Styles -->
     <link rel="stylesheet" href="css/responsive.css">
     
-    <!-- CSS for IE -->
-    <!--[if lte IE 9]>
-        <link rel="stylesheet" type="text/css" href="css/ie.css" />
-    <![endif]-->
-    
-    
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-      <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
-    <![endif]-->
+    <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script src="js/jstorage.js"></script>
+    <script src="js/AdValidation.js"></script>
 </head>
-<body class="soap-login-page style2 body-blank">
+<body class="soap-login-page style2 body-blank" ng-app="mainApp1" ng-controller="myController1">
     <div id="page-wrapper" class="wrapper-blank">
         <section id="content">
             <div class="container">
@@ -58,14 +50,16 @@
                     </h1>
                     <div class="welcome-text block">AutoScoop ADMIN</div>
                     <div class="col-sm-10 col-md-8 col-lg-6 no-float no-padding center-block block">
-                        <form class="login-form">
+                        <form class="login-form" novalidate name="loginFrm" ng-submit="logValidation(loginFrm.$valid)">
                             <div class="form-group input-login">
                                 <label>UserName</label>
-                                <input type="text" class="input-text input-large full-width" placeholder="enter your email or username">
+                                <input type="text" class="input-text input-large full-width" name="username" placeholder="enter your email or username" ng-model="username" required>
+                                <span style="color: red ;font-size:22px;" ng-show="loginFrm.username.$error.required &amp;&amp; (!loginFrm.username.$pristine || loginFrm.$submitted)"><b>Username is Required</b></span>
                             </div>
                             <div class="form-group input-password">
                                 <label>Password</label>
-                                <input type="text" class="input-text input-large full-width" placeholder="enter your password">
+                                <input type="password" class="input-text input-large full-width"  name="password"  placeholder="enter your password" ng-model="password" required>
+                                <span style="color: red;font-size:22px;" ng-show="loginFrm.password.$error.required &amp;&amp; (!loginFrm.password.$pristine || loginFrm.$submitted)"><b>Password is Required</b></span>
                             </div>
                             <button type="submit" class="btn-large full-width yellow">
                                 LOGIN TO YOUR ACCOUNT

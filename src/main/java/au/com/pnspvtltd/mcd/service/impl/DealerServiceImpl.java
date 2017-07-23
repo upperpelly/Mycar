@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import au.com.pnspvtltd.mcd.domain.AdminAuto;
 import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
@@ -33,6 +34,7 @@ import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.repository.AdminRepository;
 import au.com.pnspvtltd.mcd.repository.DealerRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerServMaintPRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerFinRepository;
@@ -45,6 +47,7 @@ import au.com.pnspvtltd.mcd.repository.InventoryRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
@@ -74,6 +77,10 @@ public class DealerServiceImpl implements DealerService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DealerServiceImpl.class);
 
+
+	@Autowired
+	AdminRepository adminRepository;
+	
 	@Autowired
 	private DealerRepository dealerRepository;
 	@Autowired
@@ -96,6 +103,18 @@ public class DealerServiceImpl implements DealerService {
 	private ExternalDealerFinRepository externalDealerFinRepository;
 	@Autowired
 	private ExternalDealerInsRepository externalDealerInsRepository;
+
+	
+	@Override
+	@Transactional(readOnly = true)
+	public AdminAutoVO findUserName(String userName) {
+		// TODO Auto-generated method stub
+		List<AdminAuto> admins = adminRepository.findByUserNameIgnoreCase(userName);
+		if (admins == null || admins.isEmpty()) {
+			return null;
+		}
+		return domainModelUtil.fromAdmin(admins.get(0));
+	}
 
 	@Override
 	@Transactional(readOnly = true)

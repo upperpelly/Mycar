@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * Entity implementation class for Entity: CARMODEL
  * 
  */
-@Entity @Table(name = "adminauto") 
+@Entity @Table(name = "AdminAuto") 
 public class AdminAuto implements Serializable{
 	private static final long serialVersionUID = 2795828321233759004L;
 	

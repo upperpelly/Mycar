@@ -6,6 +6,7 @@ import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
+import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
@@ -30,7 +31,7 @@ public interface DealerService {
 	DealerVO createDealer(DealerVO dealer);
 
 	DealerVO updateDealer(DealerVO dealer);
-
+	AdminAutoVO findUserName(String userName);
 	DealerSearch dealerAdminLead(DealerSearchAdminVO dealer);
 	String extDealerAdminLead(ExtDealerSearchLdAdminVO dealer);
 	String extDealerSvAdminLead(ExtDealerSvLdAdminVO dealerVO);

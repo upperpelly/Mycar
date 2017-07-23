@@ -23,7 +23,7 @@ public class AdminServiceImpl implements AdminService{
 	@Transactional(readOnly = true)
 	public AdminAutoVO findUserName(String userName) {
 		// TODO Auto-generated method stub
-		List<AdminAuto> admins = adminRepository.findByUserNameIgnoreCase(userName);
+		List<AdminAuto> admins = adminRepository.findByUserName(userName);
 		if (admins == null || admins.isEmpty()) {
 			return null;
 		}

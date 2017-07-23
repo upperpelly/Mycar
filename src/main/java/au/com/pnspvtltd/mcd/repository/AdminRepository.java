@@ -8,5 +8,7 @@ import au.com.pnspvtltd.mcd.domain.AdminAuto;
 public interface AdminRepository extends JpaRepository<AdminAuto,Long>{
 	
 	List<AdminAuto> findByUserNameIgnoreCase(String USERNAME);
-
+	
+	
+	List<AdminAuto> findByUserName(String USERNAME);
 }
