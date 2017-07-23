@@ -11,9 +11,9 @@ var mainApp1 = angular.module("mainApp1", []);
          	if (alreadyLogged()) {
      				$('.result').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>Saving,Please wait...');
                      userId = $.jStorage.get('key').userId;
-						var autobid=false;
+						/*var autobid=false;
 						autobid = document.getElementById("autoBid").value;
-						//var classified = document.getElementById("postClassified").value;
+						*///var classified = document.getElementById("postClassified").value;
 						//alert("Came here c"+autobid);			SellvehicleType
 						var jsonInputToAPI = {
 															"refId":35,
@@ -201,10 +201,11 @@ var mainApp1 = angular.module("mainApp1", []);
 		        $scope.sixthFlag=false;
 		        $('.result').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>Saving,Please wait...');
                 userId = $.jStorage.get('key').userId;
+                alert(userId);
 					//var classified = document.getElementById("postClassified").value;
 					//alert("Came here c"+autobid);			SellvehicleType
 					var jsonInputToAPI = {
-							"refId":userId,
+							"refId":117,
 							"modelYear": $scope.sellVehYear,
 							"modelDisplay": $scope.SellVehMake,
 							"modelName": $scope.sellVehModel,															      

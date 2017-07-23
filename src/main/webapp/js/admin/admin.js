@@ -4,24 +4,26 @@ var fbUserId = $.jStorage.get("fbKey");
 var fbToken = $.jStorage.get("fbAToken");
 
 var myVehicleIDuse=null;
-function setting(data){
+/*function setting(data){
 	//alert("cameheretoset");
 	//$.jStorage.deleteKey(key);
 	$.jStorage.set('key',data);
 	$.jStorage.setTTL('mykey', 30000); // expires in 3 seconds
          // alert("came here");
 
-}
-function refr(){
+}*/
+/*function refr(){
 var url="Db_BetaV1.html";
 
 window.location=url;
-}
+}*/
 function alreadyLogged(){
 	var value = $.jStorage.get("Akey");
+	alert("here");
 	//alert("Checking logged or not");
 	if(!value){
 	    // if not - return false
+		alert("biscuit");
 	return false;
 	}
 	else{
@@ -31,34 +33,16 @@ function alreadyLogged(){
 
 
 }
-
-
-
-
 if(!alreadyLogged())
 {
 		var url="Ad_Betav1.html";
 		window.location=url;
 }
-if(!value){
-    // if not - load the data from the server
-//alert("can inside");
-    //value = load_data_from_server()
-    // and save it
-    $.jStorage.set("Akey",value);
-}
-//alert("can"+value.userId);
-/*console.log(value);
-alert(value);*/
-//alert("can"+value.userId);
 
 function signingout(){
 
-	 $.jStorage.deleteKey("key");
-	 $.jStorage.deleteKey("carKey");
-	 $.jStorage.deleteKey("fbKey");
-	 alert("Successfully Logged Out");
-	 window.location="Hm_BetaV1.html";
+	 $.jStorage.deleteKey("Akey");
+	 window.location="Ad_Betav1.html";
 }
 function stringToDate(_date,_format,_delimiter)
 {
@@ -92,7 +76,7 @@ $(document).ready(function(){
 
 	//changed to Onload
 
-	var userDetails ='<h2 class="box-title fullname">' + value.firstName + '</h2>\
+/*	var userDetails ='<h2 class="box-title fullname">' + value.firstName + '</h2>\
 		<dl class="term-description">\
 	    <dt>user name:</dt><dd>' +value.email+ '</dd>\
 	    <dt>first name:</dt><dd>' +value.firstName+ '</dd>\
@@ -111,15 +95,15 @@ $(document).ready(function(){
 
 	userDetails = userDetails.replace(/>null</g, ">--NA--<");
 	userDetails = userDetails.replace(/>undefined</g, ">--NA--<");
-	/*alert("onload");
+	alert("onload");
 		alert(userDetails);
 		console.log(userDetails); <dt>Date of birth:</dt><dd>15 August 1985</dd>\
-	    */
+	    
 
 	$(".userdetails").append(userDetails);
 	var default1='https://elasticbeanstalk-us-east-1-675778862308.s3.amazonaws.com/dashboard.png';
-	 url="";
-	fbdown(value.issueState);
+	 url="";*/
+/*	fbdown(value.issueState);*/
 	 // start of image download
 
 	 function fbdown(imageName)
@@ -225,7 +209,7 @@ var FullURL= window.location.search.substring(1);
 	}
 	/* alert("pageName 11  now "); */
 
-	userId = value.userId;
+/*	userId = value.userId;
 	firstName = value.firstName;
 	//userId="71";
 	//document.getElementById('minValue').innerHTML=priceMin;
@@ -238,13 +222,13 @@ var FullURL= window.location.search.substring(1);
 		document.getElementById('welcomeDiv1').style.display = "none";
 		document.getElementById('userId').innerHTML="<b>"+"Hi "+firstName+"</b>";
 	}
-
+*/
 
 
 
 
   //alert("Before call");
-	dashBoardCallSearch('car-model-data',userId);
+	/*dashBoardCallSearch('car-model-data',userId);
 
   createCORSRequest("GET", "api/user/70");
 
@@ -263,8 +247,8 @@ function createCORSRequest(method, url){
         xhr = null;
     }
     return xhr;
-}
-function dashBoardPhotoUpdate()
+}*/
+/*function dashBoardPhotoUpdate()
 {
 // start of
 
@@ -315,7 +299,7 @@ function dashBoardPhotoUpdate()
 			}
 			}
 
-
+*/
 	//alert("Before Call");
 	//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 	//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
@@ -332,7 +316,7 @@ function dashBoardPhotoUpdate()
 
 									});	*/
 
-	$.ajax({
+/*	$.ajax({
 		type: "POST",
 		url: "api/eBid/updatePhoto?_method=PUT",
 		data: jsonInputToAPI,
@@ -346,7 +330,7 @@ function dashBoardPhotoUpdate()
 	});
 
 }
-
+*/
 function registerEditDealerservmaintQuotationModal(){
 
 
@@ -2467,7 +2451,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 	$scope.scarEbidreq8818=true;
 	$scope.qcarEbidreq99=true;
 	$body = $("body");
-	$scope.UserFirstName=value.firstName;
+	/*$scope.UserFirstName=value.firstName;
 	$scope.UserLastName=value.lastName;
 	$scope.UserPhoneNo=value.abnNumber;
 	$('#UserPhoneNo').val(value.abnNumber);
@@ -2476,9 +2460,9 @@ mainApp1.controller('myController13',function($scope, $http) {
 	$('#UserStreetNo').val(value.streetNumber);
 	$('#UserStreetName').val(value.streetName);
 	$('#UserpostCode').val(value.postCode);
-	$('#UserRegion').val(value.drivingLicense);
+	$('#User	Region').val(value.drivingLicense);
 	$('#UserState').val(value.state);
-	
+	*/
 	$body.addClass("loading");
 	$http({
         method : 'GET',
@@ -2715,10 +2699,10 @@ mainApp1.controller('myController13',function($scope, $http) {
 		jsonInput = $scope.vehicleData;
 		
 		jsonInput["extDealerSearchId"]=null;
-		//alert("Dealer id"+$scope.ExtDealerId);
+		alert("Dealer id"+$scope.ExtInsDealerId);
 		
 		//console.log($scope.ExtDealerId);
-			jsonInput["dealerId"]=$scope.ExtFinDealerId;
+			jsonInput["dealerId"]=$scope.ExtInsDealerId;
 		
 		
 		/*var jsonInput1 ={
@@ -4436,6 +4420,71 @@ function registerEditlda8DealerVehicleSearchModal(){
 			  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
 			 status1="Pending (Quotation not created)";
          		if(data.status){status1="Quotation Completed";}
+         		
+         		outInsDrvAdd = "";
+    		    var drvAddInfo = data.searchInsAdditionalDriv;
+    		    //alert("came here");
+    			if(drvAddInfo){
+    				 outInsDrvAdd += '<tr><th>'+"Additional ID"+'</th><th>'+"First Name"+'</th><th>'+"Last Name"+'</th><th>'+"License Type"+'</th><th>'+'</th><th>'+"DateOfBirth"+'</th></tr>';
+    				 for(i=0;i<data.searchInsAdditionalDriv.length;i++)
+    					{
+    					 outInsDrvAdd= outInsDrvAdd+'<tr>'+'<td>'+data.searchInsAdditionalDriv[i].searchInsAddDrivId+'</td><td>'+data.searchInsAdditionalDriv[i].firstName+'</td><td>'+data.searchInsAdditionalDriv[i].lastName+'</td><td>'+data.searchInsAdditionalDriv[i].drivingLicenseType+'</td><td>'+data.searchInsAdditionalDriv[i].dateOfBirth+'</td><td></tr>';
+    					}
+
+    			}
+    			else
+    		    {
+    		    	outInsDrvAdd='<h2>No records for Dealer Search Finance</h2>';
+    		    }
+    			//alert("inside"+outInsDrvAdd);
+    			var quotIdHiddenField = '<input type="hidden" name="financeSearchId" value="' + data.searchInsuranceId + '" />';
+    			var moveToUser = '<input type="checkbox" name="moveToUser" />';
+    			if(data.newer)
+    			  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+    			var moveToUser1 = '<input type="checkbox" name="moveToUser1" />';
+    			if(data.used)
+    			  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
+
+    			// start of Extra Requirements
+    			var extExt1 = '<input type="checkbox" name="extExt1" />';
+    			if(data.extExt1)
+    				extExt1 = '<input type="checkbox" name="extExt1" checked="checked" />';
+    			var intExt2 = '<input type="checkbox" name="intExt2" />';
+    			if(data.intExt2)
+    				intExt2 = '<input type="checkbox" name="intExt2" checked="checked" />';
+    			var extExt2 = '<input type="checkbox" name="extExt2" />';
+    			if(data.extExt2)
+    				extExt2 = '<input type="checkbox" name="extExt2" checked="checked" />';
+    			var intExt3 = '<input type="checkbox" name="intExt3" />';
+    			if(data.intExt3)
+    				intExt3 = '<input type="checkbox" name="intExt3" checked="checked" />';
+    			var extExt3 = '<input type="checkbox" name="extExt3" />';
+    			if(data.extExt3)
+    				extExt3 = '<input type="checkbox" name="extExt3" checked="checked" />';
+    			var intExt4 = '<input type="checkbox" name="intExt4" />';
+    			if(data.intExt4)
+    				intExt4 = '<input type="checkbox" name="intExt4" checked="checked" />';
+    			var extExt4 = '<input type="checkbox" name="extExt4" />';
+    			if(data.extExt4)
+    				extExt4 = '<input type="checkbox" name="extExt4" checked="checked" />';
+    			var intExt5 = '<input type="checkbox" name="intExt5" />';
+    			if(data.intExt5)
+    				intExt5 = '<input type="checkbox" name="intExt5" checked="checked" />';
+    			var extExt5 = '<input type="checkbox" name="extExt5" />';
+    			if(data.extExt5)
+    				extExt5 = '<input type="checkbox" name="extExt5" checked="checked" />';
+    			var intExt6 = '<input type="checkbox" name="intExt6" />';
+    			if(data.intExt6)
+    				intExt6 = '<input type="checkbox" name="intExt6" checked="checked" />';
+    			var intExt1 = '<input type="checkbox" name="intExt1" />';
+    			if(data.intExt1)
+    				intExt1 = '<input type="checkbox" name="intExt1" checked="checked" />';
+    			var intExt7 = '<input type="checkbox" name="intExt7" />';
+    			if(data.intExt7)
+    				intExt7 = '<input type="checkbox" name="intExt7" checked="checked" />';
+    			var intExt8 = '<input type="checkbox" name="intExt8" />';
+    			if(data.intExt8)
+    				intExt8 = '<input type="checkbox" name="intExt8" checked="checked" />';
 
 		//alert(JSON.stringify(data)); to work
 		var editlda8DealerVehicleSearchForm = '<form id="edit-lda8-dealer-vehicle-search-content-form"><table>\
@@ -4448,7 +4497,99 @@ function registerEditlda8DealerVehicleSearchModal(){
 			<tr><td>Autoscoop User Id</td><td>' + data.userid + '</td></tr>\
 			<tr><td>User Since</td><td>' + data.creationDate + '</td></tr>\
 			</table>\
+			<table>\
 			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Registration</div></div>\
+			<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Vehicle Details</b></h6>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model</td><td>' + data.model + '</td></tr>\
+			<tr><td>Autoscoop Trim</td><td>' + data.autoscoopTrim + '</td></tr>\
+			<tr><td>Average No of Kms</td><td>' + data.avgNoOfKmYr + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Is the Car is Under Finance ?</b></h6>\
+			<tr><td>Finance</td><td>' + data.finance + '</td></tr>\
+			<tr><td>Finance Provider</td><td>' + data.financeProvider + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Car Parked At Address</b></h6>\
+			<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+			<tr><td>Where car Parked?</td><td>' + data.carParkedAt + '</td></tr>\
+			<tr><td>Unit/StreetNo </td><td>' + data.streetNO + '</td></tr>\
+			<tr><td>Street Name</td><td>' + data.streetName + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Car is Used for</b></h6>\
+			<tr><td>Purpose</td><td>' + data.carUsedfor + '</td></tr>\
+			<tr><td>Type of Business</td><td>' + data.typeOfBusiness + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Coverage Details</div></div>\
+			<table>\
+			<tr><td>Type of Coverage</td><td>' + data.insuranceType + '</td></tr>\
+			</table>\
+			<br/>\
+			<h6 style="color:#bd191e;"><b>Agreed Value of Car</b></h6>\
+			<table>\
+			<tr><td>Agreed Value</td><td>' + data.agreedValue + '</td></tr>\
+			<tr><td>Market Value</td><td>' + data.marketValue + '</td></tr>\
+			</table>\
+			<table>\
+			<tr><td>Preferred Excess Amount</td><td>' + data.prefExcessAmount + '</td></tr>\
+			<tr><td>Current Insurer</td><td>' + data.curInsProv + '</td></tr>\
+			</table>\
+			<br/>\
+			<h5 style="color:#bd191e;"><b>Add Extra Requirements</b></h5>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>External Requirements</b></h6>\
+			<tr><td>Hire Car after Accident(ifany)</td><td>' + extExt1 +'</td><td>No Claim Bonus Protection</td><td>' + intExt2 + '</td></tr>\
+			<tr><td>Excess Free Wind Screen</td><td>' + extExt2 +'</td><td>Allow Under 25 Driver</td><td>' + intExt3 + '</td></tr>\
+			<tr><td>Excess Free Window Screen</td><td>' + extExt3 +'</td><td>Cover Theft & Fire</td><td>' + intExt4 + '</td></tr>\
+			<tr><td>New Car Replace</td><td>' + extExt4 +'</td><td>Cover Towing Cost</td><td>' + intExt5 + '</td></tr>\
+			<tr><td>Road Side Assitance</td><td>' + extExt5 +'</td><td>Essential Temporary Repairs</td><td>' + intExt6 + '</td></tr>\
+			<tr><td>Life time Warrantly repairs</td><td>' + intExt1 +'</td><td>Accidental Damage</td><td>' + intExt7 + '</td></tr>\
+			<tr><td>Emergency Accomdation and Transport</td><td>' + intExt8 + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Driver Details</div></div>\
+			<table>\
+			<tr><td>First Name</td><td>' + data.driverFirstName + '</td></tr>\
+			<tr><td>Last Name</td><td>' + data.driverLastName + '</td></tr>\
+			<tr><td>Mobile</td><td>' + data.driverMobileNo + '</td></tr>\
+			<tr><td>Email</td><td>' + data.driverEmailId + '</td></tr>\
+			<tr><td>Date Of Birth</td><td>' + data.dateOfBirth + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Driving Licence Details</b></h6>\
+			<tr><td>Driving License Type</td><td>' + data.drivingLicenseType + '</td></tr>\
+			<tr><td>Driving License No</td><td>' + data.drivingLicenseNo + '</td></tr>\
+			<tr><td>Driving License Issue Date</td><td>' + data.licenseIssueDate + '</td></tr>\
+			<tr><td>Driving License Issue State</td><td>' + data.drivingLicenseIssueState + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Drivers Claim History</b></h6>\
+			<tr><td>No Of AtFaults</td><td>' + data.noOfAtFaults + '</td></tr>\
+			<tr><td>Last AtFault Claim Date</td><td>' + data.lastAtFaultClaimDate + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Additional Driver Details</div></div>\
+			<table>\
+			<tr><td>No Of Drivers more than 1 ?</td><td>' + data.noOfDrivers + '</td></tr>\
+			</table>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Additional Driver Information</div></div>\
+			<tr><td></td><td>' +outInsDrvAdd + '</td></tr>\
+			</table>\
 			<table>\
 			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">External Dealer Details</div></div>\
 			<tr><td>Category</td><td>' + data.category  + '</td></tr>\
@@ -4541,7 +4682,7 @@ $.ajax({
           		{
            		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
 
-          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.serviceMaintQuotationVO[i].finQuotId+'</td>'+'<td>'+data.serviceMaintQuotationVO[i].dealerId+'<td>'+data.serviceMaintQuotationVO[i].carSearchId+'</td>'+'</td>'+'<td>'+data.serviceMaintQuotationVO[i].userId+'</td>'+'<td>'+data.serviceMaintQuotationVO[i].creationDate+'<td><a href="#" id="anchor-editqta8DealerVehicleSearchModal-' + data.serviceMaintQuotationVO[i].finQuotId + '" data-details=\'' + JSON.stringify(data.serviceMaintQuotationVO[i]) + '\' class="anchor-editqta8DealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editqta8DealerVehicleSearchModal">View</a></td></tr>';
+          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.serviceMaintQuotationVO[i].insQuotId+'</td>'+'<td>'+data.serviceMaintQuotationVO[i].dealerId+'<td>'+data.serviceMaintQuotationVO[i].carSearchId+'</td>'+'</td>'+'<td>'+data.serviceMaintQuotationVO[i].userId+'</td>'+'<td>'+data.serviceMaintQuotationVO[i].creationDate+'<td><a href="#" id="anchor-editqta8DealerVehicleSearchModal-' + data.serviceMaintQuotationVO[i].insQuotId + '" data-details=\'' + JSON.stringify(data.serviceMaintQuotationVO[i]) + '\' class="anchor-editqta8DealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editqta8DealerVehicleSearchModal">View</a></td></tr>';
           		 //options += '<option>' +data.vehicleQuotationVO[i].extDealerSearchId+ '</option>';
           		}
            	   //$("#LeadQuoteId").html(options);
@@ -4553,7 +4694,7 @@ $.ajax({
 	
 	   out = out.replace(/>null</g, ">--NA--<");
 	   out = out.replace(/>undefined</g, ">--NA--<");
-	   $("#QuoteFinTable").html(out);
+	   $("#QuoteInsTable").html(out);
 	registerEditqta8DealerVehicleSearchModal();
 	}	
 });
@@ -4605,7 +4746,7 @@ function registerEditqta8DealerVehicleSearchModal(){
 	    {
 	    	outInsDrvAdd='<h2>No records for Dealer Search Finance</h2>';
 	    }
-		var quotIdHiddenField = '<input type="hidden" name="finQuotId" value="' + data.finQuotId + '" />';
+		var quotIdHiddenField = '<input type="hidden" name="insQuotId" value="' + data.insQuotId + '" />';
 		var moveToUser = '<input type="checkbox" name="moveToUser" />';
 		
 		if(data.newer)
@@ -4616,6 +4757,75 @@ function registerEditqta8DealerVehicleSearchModal(){
 			 status1="Submitted to User for View";
          		if(data.status){status1="Submitted to User for View";}
 
+         		// start of search Insurance
+         		outInsDrvAdd1 = "";
+    		    var drvAddInfo = data.searchInsAdditionalDriv;
+    		    //alert("came here");
+    			if(drvAddInfo){
+    				 outInsDrvAdd1 += '<tr><th>'+"Additional ID"+'</th><th>'+"First Name"+'</th><th>'+"Last Name"+'</th><th>'+"License Type"+'</th><th>'+'</th><th>'+"DateOfBirth"+'</th></tr>';
+    				 for(i=0;i<data.searchInsAdditionalDriv.length;i++)
+    					{
+    					 outInsDrvAdd1= outInsDrvAdd1+'<tr>'+'<td>'+data.searchInsAdditionalDriv[i].searchInsAddDrivId+'</td><td>'+data.searchInsAdditionalDriv[i].firstName+'</td><td>'+data.searchInsAdditionalDriv[i].lastName+'</td><td>'+data.searchInsAdditionalDriv[i].drivingLicenseType+'</td><td>'+data.searchInsAdditionalDriv[i].dateOfBirth+'</td><td></tr>';
+    					}
+
+    			}
+    			else
+    		    {
+    		    	outInsDrvAdd1='<h2>No records for Dealer Search Finance</h2>';
+    		    }
+    			//alert("inside"+outInsDrvAdd);
+    			var quotIdHiddenField = '<input type="hidden" name="financeSearchId" value="' + data.searchInsuranceId + '" />';
+    			var moveToUser = '<input type="checkbox" name="moveToUser" />';
+    			if(data.newer)
+    			  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+    			var moveToUser1 = '<input type="checkbox" name="moveToUser1" />';
+    			if(data.used)
+    			  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
+
+    			// start of Extra Requirements
+    			var extExt1 = '<input type="checkbox" name="extExt1" />';
+    			if(data.extExt1)
+    				extExt1 = '<input type="checkbox" name="extExt1" checked="checked" />';
+    			var intExt2 = '<input type="checkbox" name="intExt2" />';
+    			if(data.intExt2)
+    				intExt2 = '<input type="checkbox" name="intExt2" checked="checked" />';
+    			var extExt2 = '<input type="checkbox" name="extExt2" />';
+    			if(data.extExt2)
+    				extExt2 = '<input type="checkbox" name="extExt2" checked="checked" />';
+    			var intExt3 = '<input type="checkbox" name="intExt3" />';
+    			if(data.intExt3)
+    				intExt3 = '<input type="checkbox" name="intExt3" checked="checked" />';
+    			var extExt3 = '<input type="checkbox" name="extExt3" />';
+    			if(data.extExt3)
+    				extExt3 = '<input type="checkbox" name="extExt3" checked="checked" />';
+    			var intExt4 = '<input type="checkbox" name="intExt4" />';
+    			if(data.intExt4)
+    				intExt4 = '<input type="checkbox" name="intExt4" checked="checked" />';
+    			var extExt4 = '<input type="checkbox" name="extExt4" />';
+    			if(data.extExt4)
+    				extExt4 = '<input type="checkbox" name="extExt4" checked="checked" />';
+    			var intExt5 = '<input type="checkbox" name="intExt5" />';
+    			if(data.intExt5)
+    				intExt5 = '<input type="checkbox" name="intExt5" checked="checked" />';
+    			var extExt5 = '<input type="checkbox" name="extExt5" />';
+    			if(data.extExt5)
+    				extExt5 = '<input type="checkbox" name="extExt5" checked="checked" />';
+    			var intExt6 = '<input type="checkbox" name="intExt6" />';
+    			if(data.intExt6)
+    				intExt6 = '<input type="checkbox" name="intExt6" checked="checked" />';
+    			var intExt1 = '<input type="checkbox" name="intExt1" />';
+    			if(data.intExt1)
+    				intExt1 = '<input type="checkbox" name="intExt1" checked="checked" />';
+    			var intExt7 = '<input type="checkbox" name="intExt7" />';
+    			if(data.intExt7)
+    				intExt7 = '<input type="checkbox" name="intExt7" checked="checked" />';
+    			var intExt8 = '<input type="checkbox" name="intExt8" />';
+    			if(data.intExt8)
+    				intExt8 = '<input type="checkbox" name="intExt8" checked="checked" />';
+         		// end of searc Insurance
+         		
+         		
+         		
 		//alert("vehicle quotation view"+JSON.stringify(data));
 		console.log("Vehicle quotation view"+JSON.stringify(data));
 		var editqta8DealerVehicleSearchForm = '<form id="edit-qta8-dealer-vehicle-search-content-form"><table>\
@@ -4649,6 +4859,99 @@ function registerEditqta8DealerVehicleSearchModal(){
 			<tr><td>User Since</td><td>' + data.userCreationDate + '</td></tr>\
 			</table>\
 			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Registration</div></div>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Registration</div></div>\
+			<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Vehicle Details</b></h6>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model</td><td>' + data.model + '</td></tr>\
+			<tr><td>Autoscoop Trim</td><td>' + data.autoscoopTrim + '</td></tr>\
+			<tr><td>Average No of Kms</td><td>' + data.avgNoOfKmYr + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Is the Car is Under Finance ?</b></h6>\
+			<tr><td>Finance</td><td>' + data.finance + '</td></tr>\
+			<tr><td>Finance Provider</td><td>' + data.financeProvider + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Car Parked At Address</b></h6>\
+			<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+			<tr><td>Where car Parked?</td><td>' + data.carParkedAt + '</td></tr>\
+			<tr><td>Unit/StreetNo </td><td>' + data.streetNO + '</td></tr>\
+			<tr><td>Street Name</td><td>' + data.streetName + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Car is Used for</b></h6>\
+			<tr><td>Purpose</td><td>' + data.carUsedfor + '</td></tr>\
+			<tr><td>Type of Business</td><td>' + data.typeOfBusiness + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Coverage Details</div></div>\
+			<table>\
+			<tr><td>Type of Coverage</td><td>' + data.insuranceType + '</td></tr>\
+			</table>\
+			<br/>\
+			<h6 style="color:#bd191e;"><b>Agreed Value of Car</b></h6>\
+			<table>\
+			<tr><td>Agreed Value</td><td>' + data.agreedValue + '</td></tr>\
+			<tr><td>Market Value</td><td>' + data.marketValue + '</td></tr>\
+			</table>\
+			<table>\
+			<tr><td>Preferred Excess Amount</td><td>' + data.prefExcessAmount + '</td></tr>\
+			<tr><td>Current Insurer</td><td>' + data.curInsProv + '</td></tr>\
+			</table>\
+			<br/>\
+			<h5 style="color:#bd191e;"><b>Add Extra Requirements</b></h5>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>External Requirements</b></h6>\
+			<tr><td>Hire Car after Accident(ifany)</td><td>' + extExt1 +'</td><td>No Claim Bonus Protection</td><td>' + intExt2 + '</td></tr>\
+			<tr><td>Excess Free Wind Screen</td><td>' + extExt2 +'</td><td>Allow Under 25 Driver</td><td>' + intExt3 + '</td></tr>\
+			<tr><td>Excess Free Window Screen</td><td>' + extExt3 +'</td><td>Cover Theft & Fire</td><td>' + intExt4 + '</td></tr>\
+			<tr><td>New Car Replace</td><td>' + extExt4 +'</td><td>Cover Towing Cost</td><td>' + intExt5 + '</td></tr>\
+			<tr><td>Road Side Assitance</td><td>' + extExt5 +'</td><td>Essential Temporary Repairs</td><td>' + intExt6 + '</td></tr>\
+			<tr><td>Life time Warrantly repairs</td><td>' + intExt1 +'</td><td>Accidental Damage</td><td>' + intExt7 + '</td></tr>\
+			<tr><td>Emergency Accomdation and Transport</td><td>' + intExt8 + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Driver Details</div></div>\
+			<table>\
+			<tr><td>First Name</td><td>' + data.driverFirstName + '</td></tr>\
+			<tr><td>Last Name</td><td>' + data.driverLastName + '</td></tr>\
+			<tr><td>Mobile</td><td>' + data.driverMobileNo + '</td></tr>\
+			<tr><td>Email</td><td>' + data.driverEmailId + '</td></tr>\
+			<tr><td>Date Of Birth</td><td>' + data.dateOfBirth + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Driving Licence Details</b></h6>\
+			<tr><td>Driving License Type</td><td>' + data.drivingLicenseType + '</td></tr>\
+			<tr><td>Driving License No</td><td>' + data.drivingLicenseNo + '</td></tr>\
+			<tr><td>Driving License Issue Date</td><td>' + data.licenseIssueDate + '</td></tr>\
+			<tr><td>Driving License Issue State</td><td>' + data.drivingLicenseIssueState + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Drivers Claim History</b></h6>\
+			<tr><td>No Of AtFaults</td><td>' + data.noOfAtFaults + '</td></tr>\
+			<tr><td>Last AtFault Claim Date</td><td>' + data.lastAtFaultClaimDate + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Additional Driver Details</div></div>\
+			<table>\
+			<tr><td>No Of Drivers more than 1 ?</td><td>' + data.noOfDrivers + '</td></tr>\
+			</table>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Additional Driver Information</div></div>\
+			<tr><td></td><td>' +outInsDrvAdd1 + '</td></tr>\
+			</table>\
 			<br/>\
 			<table>\
 			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">External Dealer Details</div></div>\
@@ -8741,8 +9044,8 @@ this.model_data_id = model_data_id;
 														
 // start of finance creation
 														
-														$scope.submitFinMyQuoteNewfrm = function(isValid) {
-															//alert("inside Sesdarv Maint"+isValid);
+														$scope.submitInsMyQuoteNewfrm = function(isValid) {
+															alert("inside Ins Qu"+isValid);
 															if (isValid) {
 															/*alert("inside Sesdarv Maint");
 															alert(myVehicleIDuse);*/
