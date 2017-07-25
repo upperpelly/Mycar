@@ -27,7 +27,7 @@ public class Inventory implements Serializable {
 	private String modelDisplay;
 	private String modelName;
 	private String modelTrim;
-	
+	private Long userId; 
 	// New car or old car
 		private boolean isNewCar;
 		private String typeOfCar;
@@ -136,6 +136,14 @@ public class Inventory implements Serializable {
 
 	public Long getRefId() {
 		return refId;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public void setRefId(Long dealerId) {

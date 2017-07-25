@@ -505,6 +505,17 @@ public class DealerServiceImpl implements DealerService {
 
 	@Override
 	@Transactional
+	public String addInventoryUser(InventoryVO inventoryVO) {
+		Long refId=new Long(35);
+		Dealer dealer = dealerRepository.findOne(refId);
+		inventoryVO.setUserId(inventoryVO.getRefId());
+		Inventory inventory = domainModelUtil.toInventory(inventoryVO);
+		dealer.getInventory().add(inventory);
+		dealerRepository.flush();
+		return "{\"dealerId\":" + dealer.getDealerId() + ",\"inventoryId\":" + inventory.getRepoId() + "}";
+	}
+	@Override
+	@Transactional
 	public String addInventoryList(InventoryListVO inventoryVO) {
 		List<Inventory> inventory = domainModelUtil.toInventoryList(inventoryVO);
 		Iterator<Inventory> it = inventory.iterator();

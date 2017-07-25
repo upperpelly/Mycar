@@ -43,6 +43,7 @@ public interface DealerService {
 	DealerVO findDealerByEmail(String email);
 	
 	String addInventory(InventoryVO inventoryVO);
+	String addInventoryUser(InventoryVO inventoryVO);
 	String addInventoryList(InventoryListVO inventoryVO);
 	String addFinanceEntityList(FinanceEntityListVO inventoryVO);
 	

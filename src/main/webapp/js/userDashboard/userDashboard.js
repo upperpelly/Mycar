@@ -2408,34 +2408,250 @@ $("#"+"fuelCard4").html(outLogT);
 
 			var data = $(event.target).data('details');
 			//var json = JSON.stringify(data);
+		outInsDrvAdd = "";
+	    var drvAddInfo = data.vehQuotExtras;
+	    //alert("came here");
+		if(drvAddInfo){
+			 outInsDrvAdd += '<tr><th>'+"Item No "+'</th><th>'+"Condition & Charges"+'</th><th>'+"Price"+'</th>'+'</th></tr>';
+			 for(i=0;i<data.vehQuotExtras.length;i++)
+				{
+				 outInsDrvAdd= outInsDrvAdd+'<tr>'+'<td>'+data.vehQuotExtras[i].extras1+'</td><td>'+data.vehQuotExtras[i].extras2+'</td><td>'+data.vehQuotExtras[i].amount+'</td><td></tr>';
+				}
 
+		}
+		else
+	    {
+	    	outInsDrvAdd='<h2>No records for Dealer Search Finance</h2>';
+	    }
 			var quotIdHiddenField = '<input type="hidden" name="insQuotId" value="' + data.insQuotId + '" />';
 			var moveToUser = '<input type="checkbox" name="moveToUser" />';
-			if(data.moveToUser)
+		if(data.newer)
 			  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+			var moveToUser1 = '<input type="checkbox" name="moveToUser1" />';
+			if(data.used)
+			  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
+			 status1="Submitted to User for View";
+         		if(data.status){status1="Submitted to User for View";}
 
+         		// start of search Insurance
+         		outInsDrvAdd1 = "";
+    		    var drvAddInfo = data.searchInsAdditionalDriv;
+    		    //alert("came here");
+    			if(drvAddInfo){
+    				 outInsDrvAdd1 += '<tr><th>'+"Additional ID"+'</th><th>'+"First Name"+'</th><th>'+"Last Name"+'</th><th>'+"License Type"+'</th><th>'+'</th><th>'+"DateOfBirth"+'</th></tr>';
+    				 for(i=0;i<data.searchInsAdditionalDriv.length;i++)
+    					{
+    					 outInsDrvAdd1= outInsDrvAdd1+'<tr>'+'<td>'+data.searchInsAdditionalDriv[i].searchInsAddDrivId+'</td><td>'+data.searchInsAdditionalDriv[i].firstName+'</td><td>'+data.searchInsAdditionalDriv[i].lastName+'</td><td>'+data.searchInsAdditionalDriv[i].drivingLicenseType+'</td><td>'+data.searchInsAdditionalDriv[i].dateOfBirth+'</td><td></tr>';
+    					}
 
+    			}
+    			else
+    		    {
+    		    	outInsDrvAdd1='<h2>No records for Dealer Search Finance</h2>';
+    		    }
+    			//alert("inside"+outInsDrvAdd);
+    			var quotIdHiddenField = '<input type="hidden" name="financeSearchId" value="' + data.searchInsuranceId + '" />';
+    			var moveToUser = '<input type="checkbox" name="moveToUser" />';
+    			if(data.newer)
+    			  moveToUser = '<input type="checkbox" name="moveToUser" checked="checked" />';
+    			var moveToUser1 = '<input type="checkbox" name="moveToUser1" />';
+    			if(data.used)
+    			  moveToUser1 = '<input type="checkbox" name="moveToUser1" checked="checked" />';
+
+    			// start of Extra Requirements
+    			var extExt1 = '<input type="checkbox" name="extExt1" />';
+    			if(data.extExt1)
+    				extExt1 = '<input type="checkbox" name="extExt1" checked="checked" />';
+    			var intExt2 = '<input type="checkbox" name="intExt2" />';
+    			if(data.intExt2)
+    				intExt2 = '<input type="checkbox" name="intExt2" checked="checked" />';
+    			var extExt2 = '<input type="checkbox" name="extExt2" />';
+    			if(data.extExt2)
+    				extExt2 = '<input type="checkbox" name="extExt2" checked="checked" />';
+    			var intExt3 = '<input type="checkbox" name="intExt3" />';
+    			if(data.intExt3)
+    				intExt3 = '<input type="checkbox" name="intExt3" checked="checked" />';
+    			var extExt3 = '<input type="checkbox" name="extExt3" />';
+    			if(data.extExt3)
+    				extExt3 = '<input type="checkbox" name="extExt3" checked="checked" />';
+    			var intExt4 = '<input type="checkbox" name="intExt4" />';
+    			if(data.intExt4)
+    				intExt4 = '<input type="checkbox" name="intExt4" checked="checked" />';
+    			var extExt4 = '<input type="checkbox" name="extExt4" />';
+    			if(data.extExt4)
+    				extExt4 = '<input type="checkbox" name="extExt4" checked="checked" />';
+    			var intExt5 = '<input type="checkbox" name="intExt5" />';
+    			if(data.intExt5)
+    				intExt5 = '<input type="checkbox" name="intExt5" checked="checked" />';
+    			var extExt5 = '<input type="checkbox" name="extExt5" />';
+    			if(data.extExt5)
+    				extExt5 = '<input type="checkbox" name="extExt5" checked="checked" />';
+    			var intExt6 = '<input type="checkbox" name="intExt6" />';
+    			if(data.intExt6)
+    				intExt6 = '<input type="checkbox" name="intExt6" checked="checked" />';
+    			var intExt1 = '<input type="checkbox" name="intExt1" />';
+    			if(data.intExt1)
+    				intExt1 = '<input type="checkbox" name="intExt1" checked="checked" />';
+    			var intExt7 = '<input type="checkbox" name="intExt7" />';
+    			if(data.intExt7)
+    				intExt7 = '<input type="checkbox" name="intExt7" checked="checked" />';
+    			var intExt8 = '<input type="checkbox" name="intExt8" />';
+    			if(data.intExt8)
+    				intExt8 = '<input type="checkbox" name="intExt8" checked="checked" />';
+         		// end of searc Insurance
+         		
+         		
+         		
+		//alert("vehicle quotation view"+JSON.stringify(data));
+		console.log("Vehicle quotation view"+JSON.stringify(data));
 			var editDealerins12QuotationForm = '<form id="edit-dealer-ins12-quotation-content-form"><table>\
-				<tr><td>Quotation ID</td><td>' + data.insQuotId + '</td></tr>\
-				<tr><td>' + quotIdHiddenField + '</td></tr>\
-				<tr><td>User ID</td><td>' + data.userId + '</td></tr>\
-				<tr><td>Model Year</td><td>' + data.modelYear + '</td></tr>\
-				<tr><td>Model Name</td><td>' + data.modelName + '</td></tr>\
-				<tr><td>Model Display</td><td>' + data.modelDisplay + '</td></tr>\
-				<tr><td>Auto Bid</td><td>' + data.autoBid + '</td></tr>\
-				<tr><td>Dealer Id</td><td>' + data.dealerId + '</td><td>Dealer Search Id</td><td>' + data.dealSearchId + '</td></tr>\
-				<tr><td>Car Search Id</td><td>' + data.carSearchId + '</td><td>Ref Id</td><td>' + data.refId + '</td></tr>\
-				<tr><td>Dealer Name</td><td>' + data.dealerName + '</td><td>Dealer ABN</td><td>' + data.dealerABN + '</td></tr>\
-				<tr><td>Quot Header FreeText</td><td>' + data.quotHeaderFreeText + '</td><td>VIN Number</td><td>' + data.vinNumber + '</td></tr>\
-				<tr><td>Rego No</td><td>' + data.regoNo + '</td><td>Rego End Date</td><td>' + data.regoEndDate + '</td></tr>\
-				<tr><td>Rego State</td><td>' + data.regoStat + '</td><td>Dealer Stock No</td><td>' + data.dealerStockNo + '</td></tr>\
-				<tr><td>No Of Kms</td><td>' + data.noOfKms + '</td><td>Drive Away Price</td><td>' + data.driveAwayPrice + '</td></tr>\
-				<tr><td>Negotiable</td><td>' + data.negotiable + '</td><td>Offer Valid Date</td><td>' + data.offerValidDate + '</td></tr>\
-				<tr><td>First Come Serve</td><td>' + data.firstCumServe + '</td><td>Color</td><td>' + data.color + '</td></tr>\
-				<tr><td>Transmission</td><td>' + data.transmission + '</td><td>Drive Type</td><td>' + data.driveType + '</td></tr>\
-				<tr><td>Fuel Type</td><td>' + data.fuelType + '</td><td>No Of Seats</td><td>' + data.noOfSeats + '</td></tr>\
-				<tr><td>No Of Doors</td><td>' + data.noOfDoors + '</td><td>Dealer Preferred Location</td><td>' + data.delPrefLocation + '</td></tr>\
-				<tr><td>Offer Price 2</td><td>' + data.offerPrice2 + '</td><td>Offer Price 3</td><td>' + data.offerPrice3 + '</td></tr>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Quotation Details</div></div>\
+			<tr><td>Quotation ID</td><td>' + data.insQuotId + '</td></tr>\
+			<tr><td>' + quotIdHiddenField + '</td></tr>\
+			<tr><td>Status</td><td>' + status1 + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Requirement Details</div></div>\
+			<tr><td>Offer Date</td><td>' + data.offerValidDate + '</td></tr>\
+			<tr><td>Estimate Quote for the Job</td><td>' + data.driveAwayPrice + '</td></tr>\
+			<tr><td>Quotated Hourly Rate</td><td>' + data.offerPrice2 + '</td></tr>\
+			<tr><td>Min</td><td>' + data.offerPrice3 + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Items / Services Offered</div></div>\
+			<tr><td></td><td>' +outInsDrvAdd + '</td></tr>\
+			</table>\
+			<table>\
+			<tr><td>Dealer Terms and Conditions</td><td>' + data.flex1 + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<tr><td>Dealer Lead Id</td><td>' + data.dealSearchId + '</td></tr>\
+			<tr><td>User Serv Req Id</td><td>' + data.carSearchId + '</td></tr>\
+			<tr><td>Autoscoop User Id</td><td>' + data.userId + '</td></tr>\
+			<tr><td>User Since</td><td>' + data.userCreationDate + '</td></tr>\
+			</table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Registration</div></div>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Registration</div></div>\
+			<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
+			<tr><td>Rego State</td><td>' + data.regoState + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Vehicle Details</b></h6>\
+			<tr><td>Year</td><td>' + data.year + '</td></tr>\
+			<tr><td>Make</td><td>' + data.make + '</td></tr>\
+			<tr><td>Model</td><td>' + data.model + '</td></tr>\
+			<tr><td>Autoscoop Trim</td><td>' + data.autoscoopTrim + '</td></tr>\
+			<tr><td>Average No of Kms</td><td>' + data.avgNoOfKmYr + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Is the Car is Under Finance ?</b></h6>\
+			<tr><td>Finance</td><td>' + data.finance + '</td></tr>\
+			<tr><td>Finance Provider</td><td>' + data.financeProvider + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Car Parked At Address</b></h6>\
+			<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+			<tr><td>Where car Parked?</td><td>' + data.carParkedAt + '</td></tr>\
+			<tr><td>Unit/StreetNo </td><td>' + data.streetNO + '</td></tr>\
+			<tr><td>Street Name</td><td>' + data.streetName + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Car is Used for</b></h6>\
+			<tr><td>Purpose</td><td>' + data.carUsedfor + '</td></tr>\
+			<tr><td>Type of Business</td><td>' + data.typeOfBusiness + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Coverage Details</div></div>\
+			<table>\
+			<tr><td>Type of Coverage</td><td>' + data.insuranceType + '</td></tr>\
+			</table>\
+			<br/>\
+			<h6 style="color:#bd191e;"><b>Agreed Value of Car</b></h6>\
+			<table>\
+			<tr><td>Agreed Value</td><td>' + data.agreedValue + '</td></tr>\
+			<tr><td>Market Value</td><td>' + data.marketValue + '</td></tr>\
+			</table>\
+			<table>\
+			<tr><td>Preferred Excess Amount</td><td>' + data.prefExcessAmount + '</td></tr>\
+			<tr><td>Current Insurer</td><td>' + data.curInsProv + '</td></tr>\
+			</table>\
+			<br/>\
+			<h5 style="color:#bd191e;"><b>Add Extra Requirements</b></h5>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>External Requirements</b></h6>\
+			<tr><td>Hire Car after Accident(ifany)</td><td>' + extExt1 +'</td><td>No Claim Bonus Protection</td><td>' + intExt2 + '</td></tr>\
+			<tr><td>Excess Free Wind Screen</td><td>' + extExt2 +'</td><td>Allow Under 25 Driver</td><td>' + intExt3 + '</td></tr>\
+			<tr><td>Excess Free Window Screen</td><td>' + extExt3 +'</td><td>Cover Theft & Fire</td><td>' + intExt4 + '</td></tr>\
+			<tr><td>New Car Replace</td><td>' + extExt4 +'</td><td>Cover Towing Cost</td><td>' + intExt5 + '</td></tr>\
+			<tr><td>Road Side Assitance</td><td>' + extExt5 +'</td><td>Essential Temporary Repairs</td><td>' + intExt6 + '</td></tr>\
+			<tr><td>Life time Warrantly repairs</td><td>' + intExt1 +'</td><td>Accidental Damage</td><td>' + intExt7 + '</td></tr>\
+			<tr><td>Emergency Accomdation and Transport</td><td>' + intExt8 + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Driver Details</div></div>\
+			<table>\
+			<tr><td>First Name</td><td>' + data.driverFirstName + '</td></tr>\
+			<tr><td>Last Name</td><td>' + data.driverLastName + '</td></tr>\
+			<tr><td>Mobile</td><td>' + data.driverMobileNo + '</td></tr>\
+			<tr><td>Email</td><td>' + data.driverEmailId + '</td></tr>\
+			<tr><td>Date Of Birth</td><td>' + data.dateOfBirth + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Driving Licence Details</b></h6>\
+			<tr><td>Driving License Type</td><td>' + data.drivingLicenseType + '</td></tr>\
+			<tr><td>Driving License No</td><td>' + data.drivingLicenseNo + '</td></tr>\
+			<tr><td>Driving License Issue Date</td><td>' + data.licenseIssueDate + '</td></tr>\
+			<tr><td>Driving License Issue State</td><td>' + data.drivingLicenseIssueState + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<h6 style="color:#bd191e;"><b>Drivers Claim History</b></h6>\
+			<tr><td>No Of AtFaults</td><td>' + data.noOfAtFaults + '</td></tr>\
+			<tr><td>Last AtFault Claim Date</td><td>' + data.lastAtFaultClaimDate + '</td></tr>\
+			</table>\
+			<br/>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Additional Driver Details</div></div>\
+			<table>\
+			<tr><td>No Of Drivers more than 1 ?</td><td>' + data.noOfDrivers + '</td></tr>\
+			</table>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Additional Driver Information</div></div>\
+			<tr><td></td><td>' +outInsDrvAdd1 + '</td></tr>\
+			</table>\
+			<br/>\
+			<table>\
+			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">External Dealer Details</div></div>\
+			<tr><td>Dealer Id</td><td>' + data.dealerId + '</td></tr>\
+			<tr><td>Category</td><td>' + data.category  + '</td></tr>\
+			<tr><td>Company Name</td><td>' + data.companyName  + '</td></tr>\
+			<tr><td>Street</td><td>' + data.street + '</td></tr>\
+			<tr><td>Suburb</td><td>' + data.suburb + '</td></tr>\
+			<tr><td>State</td><td>' + data.dealState + '</td></tr>\
+			<tr><td>Post Code</td><td>' + data.dealPostCode + '</td></tr>\
+			<tr><td>Country</td><td>' + data.country + '</td></tr>\
+			<tr><td>Phone</td><td>' + data.phone + '</td></tr>\
+			<tr><td>Website</td><td>' + data.website + '</td></tr>\
+			<tr><td>Mobile</td><td>' + data.mobile + '</td></tr>\
+			<tr><td>Toll Free</td><td>' + data.tollFree + '</td></tr>\
+			<tr><td>Fax</td><td>' + data.fax + '</td></tr>\
+			<tr><td>After Hours</td><td>' + data.afterHours + '</td></tr>\
+			<tr><td>Postal Address</td><td>' + data.postalAddress + '</td></tr>\
+			<tr><td>Email</td><td>' + data.email + '</td></tr>\
+			<tr><td>Longitude</td><td>' + data.longitude + '</td></tr>\
+			<tr><td>Latitude</td><td>' + data.latitude + '</td></tr>\
+			</table>\
+			<br/>\
+			<br/>\
 				</table></form>';
 			editDealerins12QuotationForm = editDealerins12QuotationForm.replace(/>null</g, ">--NA--<");
 			editDealerins12QuotationForm = editDealerins12QuotationForm.replace(/>undefined</g, ">--NA--<");
@@ -2489,7 +2705,8 @@ $("#"+"fuelCard4").html(outLogT);
 		}
 
 
-	}
+	
+}
 	
 	
 	// modal for Finance Quotation start

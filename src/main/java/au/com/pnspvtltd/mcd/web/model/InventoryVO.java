@@ -127,11 +127,19 @@ public class InventoryVO {
 		private double finAmountMin;
 		
 		private Long dealerId;
-
+		private Long userId;
 	// carQuery
 
 	public long getRefId() {
 		return refId;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public void setRefId(long dealerId) {

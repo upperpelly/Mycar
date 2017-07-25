@@ -17,6 +17,7 @@ var mainApp1 = angular.module("mainApp1", []);
 						//alert("Came here c"+autobid);			SellvehicleType
 						var jsonInputToAPI = {
 															"refId":35,
+															"userId":userId,
 													"modelYear": $scope.sellVehYear,
 													"modelDisplay": $scope.SellVehMake,
 													"modelName": $scope.sellVehModel,															      
@@ -197,7 +198,7 @@ var mainApp1 = angular.module("mainApp1", []);
 		$scope.sixthForm = function(valid) {
 			$scope.sixthFlag=true;
 			if(valid){
-				//alert("Valid");
+				alert("Valid changed");
 		        $scope.sixthFlag=false;
 		        $('.result').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>Saving,Please wait...');
                 userId = $.jStorage.get('key').userId;
@@ -205,7 +206,8 @@ var mainApp1 = angular.module("mainApp1", []);
 					//var classified = document.getElementById("postClassified").value;
 					//alert("Came here c"+autobid);			SellvehicleType
 					var jsonInputToAPI = {
-							"refId":117,
+							"refId":35,
+							"userId":userId,
 							"modelYear": $scope.sellVehYear,
 							"modelDisplay": $scope.SellVehMake,
 							"modelName": $scope.sellVehModel,															      
@@ -278,7 +280,8 @@ var mainApp1 = angular.module("mainApp1", []);
 							"newCar": false,
 							"StockItem": $scope.notRegister
 								}
-								var wsURL = 'api/dealer/addInventory';
+					console.log(JSON.stringify(jsonInputToAPI));
+								var wsURL = 'api/dealer/addInventoryUser';
 									    $http({
 													method : 'POST',
 													url : wsURL,

@@ -199,6 +199,13 @@ public class DealerController {
 		return dealerService.addInventory(inventoryVO);
 	}
 	
+	@PostMapping("dealer/addInventoryUser")
+	public String addInventoryUser(@RequestBody InventoryVO inventoryVO, HttpServletResponse response) {
+		LOGGER.debug("Received request to add inventory by the Dealer with Id {}", inventoryVO.getRefId());
+		response.setStatus(HttpStatus.CREATED.value());
+		return dealerService.addInventoryUser(inventoryVO);
+	}
+	
 	@PostMapping("dealer/addInventoryList")
 	public String addInventoryList(@RequestBody InventoryListVO inventoryVO, HttpServletResponse response) {
 		LOGGER.debug("Received request to add inventory List by the Dealer with Id {}");

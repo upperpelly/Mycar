@@ -4831,7 +4831,7 @@ function registerEditqta8DealerVehicleSearchModal(){
 		var editqta8DealerVehicleSearchForm = '<form id="edit-qta8-dealer-vehicle-search-content-form"><table>\
 			<table>\
 			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Quotation Details</div></div>\
-			<tr><td>Quotation ID</td><td>' + data.finQuotId + '</td></tr>\
+			<tr><td>Quotation ID</td><td>' + data.insQuotId + '</td></tr>\
 			<tr><td>' + quotIdHiddenField + '</td></tr>\
 			<tr><td>Status</td><td>' + status1 + '</td></tr>\
 			</table>\
