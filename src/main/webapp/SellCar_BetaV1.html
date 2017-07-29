@@ -410,7 +410,7 @@ body.loading .modal {
 						              <div class="clearfix"></div>
 						              <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0Mob input-group pull-left">
 						              		<input type="file"
-	                                                   id="vidPhotoCar" name="vidPhotoCar" ng-model="vidPhotoCar"
+	                                                   id="file-chooser-logservmaint" name="file-chooser-logservmaint" ng-model="file-chooser-logservmaint"
 	                                                   class="form-control" placeholder="Upload Photos" required/><span class="glyphicon glyphicon-upload input-group-addon"></span>
 	                                            
 						              </div>
@@ -1104,6 +1104,185 @@ body.loading .modal {
    <script src="js/bootstrap.js"></script> 
 	<script src="js/custom.js"></script> 
 	
+	<!-- Log Serv and maint SCRIPT -->
+ <script type="text/javascript">
+       function logServMaintloadImage()
+  	 {
+    	   $('#logServMnt-image').html('<img src="images/LoadImg.gif"></img>');
+	  var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
+     // var buttonlogservmaint = document.getElementById('upload-button-logservmaint');
+      var appId = '249863545451459';
+	    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+	      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+	      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+	      AWS.config.region = 'us-east-1';
+	      var bucket = new AWS.S3({
+	          params: {
+	              Bucket: bucketName
+	          }
+	      });
+	     //alert("Successfully set..");
+	     accessToken = $.jStorage.get("fbAToken");
+	     //alert(accessToken);
+				bucket.config.credentials = new AWS.WebIdentityCredentials({
+		                  ProviderId: 'graph.facebook.com',
+		                  RoleArn: roleArn,
+		                  WebIdentityToken: accessToken
+		              });
+
+			//alert("came here on click of log service and maintenance");
+            var file = fileChooserlogservmaint.files[0];
+
+
+            if (file) {
+
+            	//alert("came here on click of log service and maintenance12");
+                //results.innerHTML = '';
+
+
+                //Object key will be facebook-USERID#/FILE_NAME
+
+
+                var objKey = 'facebook-' + fbUserId + '/' + file.name;
+
+
+                var params = {
+
+
+                    Key: objKey,
+
+
+                    ContentType: file.type,
+
+
+                    Body: file,
+
+
+                    ACL: 'authenticated-read'
+
+
+                };
+
+
+                bucket.putObject(params, function (err, data) {
+                	alert("Successfully started to Upload the photos"+file.name+" Please don't refresh or switch from the homepage.. This will take some time..");
+                	//alert("came here on click of log service and maintenance14");
+                    if (err) {
+
+                    	//alert("Not saved service and maintenance1"+err);
+                    	alert("Sorry we are not able to upload your photo "+file.name+"for Log service and maintenance.. It failed with following error "+err+" It could be because of Idle time for more than 10 mins, plz login again and try. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                        /* results.innerHTML = 'ERROR: ' + err; */
+			        	//signingout();
+
+                    } else {
+                    	//alert("Successfully saved log Service and Maintenance1 into S3");
+                    	$('#logServMnt-image').html('');
+                    	 alert("Successfully uploaded photo "+file.name+" to database");
+
+                        //listObjs();
+
+
+                    }
+
+
+                });
+
+
+            } else {
+
+            	//alert("Nothing to upload for service and maintenance 1");
+                /* results.innerHTML = 'Nothing to upload.'; */
+
+
+            }
+
+
+
+
+
+        window.fbAsyncInit = function () {
+
+
+            FB.init({
+
+
+                appId: appId
+
+
+            });
+
+
+            FB.getLoginStatus(function(response) {
+            	//alert("Succesfully set..");
+            	//alert("Successfully started to Upload the photos.. Please don't refresh or switch from the dashboard.. This will take some time..");
+				if (response.status === 'connected') {
+					bucket.config.credentials = new AWS.WebIdentityCredentials({
+
+
+	                    ProviderId: 'graph.facebook.com',
+
+
+	                    RoleArn: roleArn,
+
+
+	                    WebIdentityToken: response.authResponse.accessToken
+
+
+	                });
+
+
+	                //fbUserId = response.authResponse.userID;
+
+
+	                //button.style.display = 'block';
+				}
+			},{
+				scope : 'email'
+			});
+
+
+
+
+
+        };
+
+
+         // Load the Facebook SDK asynchronously
+
+
+        (function (d, s, id) {
+
+
+            var js, fjs = d.getElementsByTagName(s)[0];
+
+
+            if (d.getElementById(id)) {
+
+
+                return;
+
+
+            }
+
+
+            js = d.createElement(s);
+
+
+            js.id = id;
+
+
+            js.src = "//connect.facebook.net/en_US/all.js";
+
+js.src = "https://connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+
+        }(document, 'script', 'facebook-jssdk'));
+
+  	 }
+
+
+    </script>
    <!-- Loading -->
 <div class="modal"><!-- Place at bottom of page --></div>
 </body>
