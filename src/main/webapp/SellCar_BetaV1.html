@@ -71,90 +71,6 @@ tr:nth-child(even){background-color: #f2f2f2}
 tr:hover{background-color:rgb(253, 183, 20);}
 
 </style>
-
-<style>
-	.steps {
-  padding-left: 0;
-  list-style: none;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 12px;
-  line-height: 1;
-  margin: 30px auto;
-  border-radius: 3px;
-}
-
-.steps strong {
-  font-size: 14px;
-  display: block;
-  line-height: 1.4;
-}
-
-.steps>li {
-  position: relative;
-  display: block;
-  /* border: 1px solid #ddd; */
-  padding: 12px 50px 8px 50px; 
-  width: 140px;
-  height: 40px;
-}
-
-@media (min-width: 768px) {
-  .steps>li { float: left; }
-  .steps .past { color: #666; background: #ececec; }
-  .steps .present { color: #000; }
-  .steps .future { color: #777; background: #efefef; }
-
-  .steps li > span:after,
-  .steps li > span:before {
-    content: "";
-    display: block;
-    width: 0px;
-    height: 0px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border: solid transparent;
-    border-left-color: #f0f0f0;
-    border-width: 30px;
-  }
-
-  .steps li > span:after {
-    top: -5px;
-    z-index: 1;
-    border-left-color: white;
-    border-width: 34px;
-  }
-
-  .steps li > span:before { z-index: 2; }
-
-  .steps li.past + li > span:before { border-left-color: #ececec; }
-  .steps li.present + li > span:before { border-left-color: #fff; }
-  .steps li.future + li > span:before { border-left-color: #efefef; }
-
-  .steps li:first-child > span:after,
-  .steps li:first-child > span:before { display: none; }
-
-  /* Arrows at start and end */
-  .steps li:first-child i,
-  .steps li:last-child i {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border: solid transparent;
-    border-left-color: white;
-    border-width: 30px;
-  }
-
-  .steps li:last-child i {
-    left: auto;
-    right: -30px;
-    border-left-color: transparent;
-    border-top-color: white;
-    border-bottom-color: white;
-  }
-}
-</style>
 <script>
 $(document).ready(function () {
     var count =2;
@@ -308,7 +224,7 @@ body.loading .modal {
                                 <li><a href="Db_BetaV1.html#wishlist" class="location-reload">Wishlist</a></li>
                                 <li><a href="Db_BetaV1.html#booking" class="location-reload">Booking</a></li>
                                 <li><a href="Db_BetaV1.html#rego" class="location-reload">Rego</a></li>
-                                <li><a onclick= "signingout()">signout</a></li>
+                                <li><a onclick= "signingout()">Sign out</a></li>
                             </ul>
                         </li>
                         
@@ -463,163 +379,6 @@ body.loading .modal {
                 <p>Don't have an account? <a href="#travelo-signup" class="goto-signup soap-popupbox">Sign up</a></p>
             </div>
         </header>
-        <!-- start bubble -->
-        <div id="dashboard"  class="PT50">
-       	 <div class="row block ML10">
-                <div  id="reqBooked" class="col-sm-4 col-md-2 MR5">
-                </div>
-                <div id="reqBooked" class="col-sm-4 col-md-2 MR5">
-                    <a tooltip="Service & Maintenance">
-                        <div class="tile-bg-ltblk txt-center">
-                            <span class="clearfix">&nbsp;</span>
-                            <span>
-                                <i id="userdash" class="soap-icon-friends"></i>
-                            </span>
-                            <div class="txt-bold">Number of Dealers</div><br />
-                            <div class="numbers counters-box">
-                                <div>
-                                    <span>&nbsp;</span>
-                                    <span id="noDealers"></span><br />
-                                    <span>&nbsp;</span>
-                                    <span>&nbsp;</span>
-                                </div>
-				
-				
-				
-                            </div>
-                            <div class="tile-bg-description">
-                                <i class="tile-bg-icon soap-tile-bg-icon-longarrow-right"></i>
-                                <span>Dealer Count</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div id="reqBooked" class="col-sm-4 col-md-2 MR5">
-                    <a>
-                        <div class="tile-bg-ltbrn txt-center">
-                            <span class="clearfix">&nbsp;</span>
-                            <span><i id="userdash" class="flaticon-people"></i></span>
-                            <div class="txt-bold">Cars in Stock</div><br />
-                            <div class="numbers counters-box">
-                                <div>
-                                    <span>&nbsp;</span>
-                                    <span id="noStock"></span><br />
-                                    <span>&nbsp;</span>
-                                    <span>&nbsp;</span>
-                                </div>
-
-
-
-                            </div>
-                            <div class="tile-bg-description">
-                                <i class="tile-bg-icon soap-icon-longarrow-right"></i>
-                                <span>Stock Count</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div id="reqBooked" class="col-sm-4 col-md-2 MR5">
-                    <a>
-                        <div class="tile-bg-drkvlt txt-center">
-                            <span class="clearfix">&nbsp;</span>
-                            <span><i id="userdash" class="flaticon-currency-rates"></i></span>
-                            <div class="txt-bold">Average Savings</div><br />
-                            <div class="numbers counters-box">
-                                <div>
-
-                                    <span>Minimum</span>
-                                    <span id="avgSavMin">$</span><br />
-                                    <span>Maximum</span>
-                                    <span id="avgSavMax">$</span>
-                                </div>
-
-
-                            </div>
-                            <div class="tile-bg-description">
-                                <i class="tile-bg-icon soap-icon-longarrow-right"></i>
-                                <span>Savings Earn</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div id="reqBooked" class="col-sm-4 col-md-2 MR5">
-                    <a>
-                        <div class="tile-bg-drkvlt txt-center">
-                            <span class="clearfix">&nbsp;</span>
-                            <span><i id="userdash" class="flaticon-dollar-rates"></i></span>
-                            <div class="txt-bold">Finance Interest Rate</div>
-                            <div class="numbers counters-box">
-                                <div>
-
-                                    <span>Minimum</span>
-                                    <span id="finMin">$</span><br />
-                                    <span>Maximum</span>
-                                    <span id="finMax">$</span>
-                                </div>
-
-
-                            </div>
-                            <div class="tile-bg-description">
-                                <i class="tile-bg-icon soap-icon-longarrow-right"></i>
-                                <span>Finance </span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div id="reqBooked" class="col-sm-4 col-md-2 MR5">
-                    <a>
-                        <div class="tile-bg-pink txt-center">
-                            <span class="clearfix">&nbsp;</span>
-                            <span><i id="userdash" class="flaticon-security"></i></span>
-                            <div class="txt-bold">Insurance Premium</div><br />
-                            <div class="numbers counters-box">
-                                <div>
-
-                                    <span>Minimum</span>
-                                    <span id="insMin">%</span><br />
-                                    <span>Maximum</span>
-                                    <span id="insMax">%</span>
-                                </div>
-
-
-
-
-                            </div>
-                            <div class="tile-bg-description">
-                                <i class="tile-bg-icon soap-icon-longarrow-right"></i>
-                                <span>Insurance</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div id="reqBooked" class="col-sm-4 col-md-2 MR5">
-                    <a>
-                        <div class="tile-bg-ltegrn txt-center">
-                            <span class="clearfix">&nbsp;</span>
-                            <span><i id="userdash" class="flaticon-money"></i></span>
-                            <div class="txt-bold">Price Range</div><br />
-                            <div class="numbers counters-box">
-                                <div>
-
-                                    <span>Minimum</span>
-                                    <span id="minValue">$</span><br />
-                                    <span>Maximum</span>
-                                    <span id="maxValue">$</span>
-                                </div>
-                            </div>
-                            <div class="tile-bg-description">
-                                <i class="tile-bg-icon soap-icon-longarrow-right"></i>
-                                <span>Price gain</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-         </div>
-                                
-        <!-- end bubble -->
         <section id="content">
            <div class="container">
                 	<!-- Start Here -->
@@ -650,7 +409,7 @@ body.loading .modal {
 						            <div class="form-group">
 						              <div class="clearfix"></div>
 						              <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0Mob input-group pull-left">
-						              		<input type="text"
+						              		<input type="file"
 	                                                   id="vidPhotoCar" name="vidPhotoCar" ng-model="vidPhotoCar"
 	                                                   class="form-control" placeholder="Upload Photos" required/><span class="glyphicon glyphicon-upload input-group-addon"></span>
 	                                            

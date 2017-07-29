@@ -1,6 +1,53 @@
 /**
  * 
  */
+var value = $.jStorage.get("key");
+if(!value){
+    // if not - load the data from the server
+//alert("can inside");
+    /*value = ()*/
+    // and save it
+    $.jStorage.set("key",value);
+}
+//alert("can"+value.userId);
+
+function alreadyLogged(){
+	var value = $.jStorage.get("key");
+	//alert("Checking logged or not");
+	if(!value){
+	    // if not - return false
+	return false;
+	}
+	else{
+		//alert("Successfully logged in..");
+		return true;
+	}
+	
+
+}
+if(!alreadyLogged())
+{
+		var url="Hm_BetaV1.html";
+		window.location=url;
+}
+function signingout(){
+	
+	 $.jStorage.deleteKey("key");
+	 $.jStorage.deleteKey("carKey");
+	 alert("Successfully Logged Out");
+	 window.location="Hm_BetaV1.html";
+}
+window.onload= function()
+{
+	firstName = value.firstName;
+	userId = value.userId;
+	address=value.streetNumber+value.streetName;
+	if(userId!= null){
+		document.getElementById('welcomeDiv').style.display = "block";
+		document.getElementById('welcomeDiv1').style.display = "none";
+		document.getElementById('userId').innerHTML="<b>"+"Hi "+firstName+"</b>";
+	}
+}
 
 
 var mainApp1 = angular.module("mainApp1", []);

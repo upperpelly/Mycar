@@ -377,8 +377,7 @@ tr:hover {
 		}(document, 'script', 'facebook-jssdk'));
 
 		function login() {
-			FB
-					.login(
+			FB.login(
 							function(response) {
 								if (response.status === 'connected') {
 									fbUserId = response.authResponse.userID;
@@ -597,7 +596,15 @@ function onSignInG()
                 $(".social").focus();
             }
         }
-
+        function redirectWithSell() {
+            if (alreadyLogged()) {
+                var url = "SellCar_BetaV1.html";
+                window.location = url;
+            }
+            else {
+                alert("Please Login & go to Sell My Vehicle");
+            }
+        }
 
     </script>
 <link rel="shortcut icon" href="favicon.ico">
@@ -790,10 +797,9 @@ table {
 						</button>
 					</div> -->
 					
-					<!-- <ul class="quick-menu pull-left hidden-mobile PL10">
-						<li><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-tags" aria-hidden="true"></i>Sell My Vehicle</button></li>
+					<ul class="quick-menu pull-left hidden-mobile PL10">
+						<li><button type="button" class="btn btn-info" onClick="redirectWithSell()"><i class="fa fa-tags" aria-hidden="true"></i>Sell My Vehicle</button></li>
 					</ul>
-					 -->
 												
 					
 					<ul id="homeLogbook" class="quick-menu pull-left hidden-mobile PL10">
