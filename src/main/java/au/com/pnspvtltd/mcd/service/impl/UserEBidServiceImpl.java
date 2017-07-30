@@ -59,6 +59,7 @@ import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
@@ -772,6 +773,20 @@ public class UserEBidServiceImpl implements UserEBidService {
 		return searchVOs;
 	}
 	
+	@Override
+	public List<InventoryVO> getSellMyVehByUserId(Long userid) {
+		// TODO Auto-generated method stub
+		Long id = new Long(35);
+		List<InventoryVO> searchVOs = new ArrayList<InventoryVO>();
+		List<Inventory> searchs = inventoryRepository.getAllInvForSellMy(userid, id);
+		InventoryVO searchVO;
+		for(Inventory search :searchs){
+			searchVO = domainModelUtil.toMyVehInvVO( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
 	@Override
 	public List<SearchFinanceVO> getFinanceByUserId(Long userid) {
 		// TODO Auto-generated method stub

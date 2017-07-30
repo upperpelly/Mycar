@@ -41,6 +41,7 @@ import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
@@ -131,6 +132,13 @@ public class UserEBidController {
 		//return null;
 	}
 	
+	@GetMapping(value = "getSellMyVehCarUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<InventoryVO> getSellMyVehCarUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to sell My Vehicle");
+		return userEBidService.getSellMyVehByUserId(userid);
+		//return null;
+	}
 	
 	@GetMapping(value = "getFinanceByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<SearchFinanceVO> getFinanceByUserId(@RequestParam("userid") Long userid)

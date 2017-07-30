@@ -6,6 +6,7 @@ import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
@@ -32,6 +33,7 @@ public interface UserEBidService {
 	String whenUserEBidForServMaint(UserEBidServMaintVO userEBidVO);
 	String whenUserEBidForTransServ(UserEBidTransServVO userEBidVO);
 	List<SearchVO> getSearchByUserId(Long userid);
+	List<InventoryVO> getSellMyVehByUserId(Long userid);
 	List<SearchFinanceVO> getFinanceByUserId(Long userid);
 	List<SearchInsuranceVO> getInsuranceByUserId(Long userid);
 	List<SearchServMaintVO> getServMaintByUserId(Long userid);

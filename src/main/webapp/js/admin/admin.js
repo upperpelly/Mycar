@@ -19,11 +19,11 @@ window.location=url;
 }*/
 function alreadyLogged(){
 	var value = $.jStorage.get("Akey");
-	alert("here");
+	//alert("here");
 	//alert("Checking logged or not");
 	if(!value){
 	    // if not - return false
-		alert("biscuit");
+		//alert("biscuit");
 	return false;
 	}
 	else{
@@ -8560,7 +8560,7 @@ this.model_data_id = model_data_id;
 
 
 							           		//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
-							           		alert("Inside new vehicle method raa");
+							           		//alert("Inside new vehicle method raa");
 							           		var editnwvhDealerVehicleDetailModal = '<div class="modal fade" id="editnwvhDealerVehicleDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
 							           		    <div class="modal-dialog">\
 							           		        <div class="modal-content">\

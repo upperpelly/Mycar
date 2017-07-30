@@ -381,6 +381,7 @@ $('.logBookBtn').click(function(){
                             <li id="logBookTab"><a data-toggle="tab" href="#l2Profile1" ng-click="carLogBook()"><i id="usrleftnav" class="flaticon-log-file-format-symbol"></i>Log Book</a></li>
                             <li><a data-toggle="tab" href="#travel-stories" ng-click="carEbidRequest()"><i id="usrleftnav" class="flaticon-auction"></i>Ebid-R</a></li>
                             <li><a data-toggle="tab" href="#settings" ng-click="carCarQuotation()"><i id="usrleftnav" class="flaticon-statement"></i>Quotation</a></li>
+                            <li><a data-toggle="tab" href="#sellMyVehicle" ng-click="sellMyVehicle()"><i id="usrleftnav" class="fa fa-tags"></i>Sell My Vehicle</a></li>
                             <li><a data-toggle="tab" href="#rego"><i id="usrleftnav" class="flaticon-clipboard-with-pencil"></i>Rego</a></li>
                         </ul>
                         <div class="tab-content">
@@ -1357,6 +1358,64 @@ $('.logBookBtn').click(function(){
                              
                           </div>
 
+<!--  Start of sell My Vehicle -->
+<div id="sellMyVehicle" class="tab-pane fade">
+                          <!--  Start radio button inline-->
+                           <div id="tab">
+									<!-- <input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTAll" checked/><span class="color-dark">All</span> -->
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOT12Cars" ng-model= "scarEbidreq8818" checked class="ML10"/><span class="color-dark">
+                                        Car's Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOT12SerMai" /><span class="color-dark">
+                                        Bike's Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOT12Insu" /><span class="color-dark">
+                                        Boat's Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOT12Trans" /><span class="color-dark">
+                                        Caravan's Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOT12Finance" /><span class="color-dark">
+                                        Heavy Vehicle's Only
+                                    </span>
+                                  
+							</div>
+
+							<div class="tab-content">
+							       <!-- <div class="tab-pane fade active in" id="eQUOTAll">All</div> -->
+							       <div class="tab-pane fade active in" id="eQUOT12Cars">
+							       Car Content
+							       		<h4>List of Car which are set to sell</h4>
+                                         <table id="car-selMV-model-data">
+                                        </table>
+							       </div>
+							       <div class="tab-pane fade" id="eQUOT12Insu">Insurance Content
+							       		<h4>List of Bike which are set to sell</h4>
+                              			<table id="bike-model-data2">   </table>
+							       </div>
+							       <div class="tab-pane fade" id="eQUOT12SerMai">Service & maintenance Content
+									       <h4>List of Boat which are set to sell</h4>
+									       <table id="boat-model-data2">
+
+		                                        </table>
+							       </div>
+							       <div class="tab-pane fade" id="eQUOT12Trans">Transport Content
+							       <h4>List of Caravan which are set to sell</h4>
+									       <table id="caravan-model-data2">
+
+		                                        </table></div>
+
+							       <div class="tab-pane fade" id="eQUOT12Finance">Finance Content
+							       		<h4>List of Heavy Vehicle which are set to sell</h4>
+                              			<table id="heavyVeh-model-data2"></table>
+							       </div>
+							       
+							</div>
+                          <!-- end radio button inline -->
+
+                             
+                          </div>
+<!-- end of sell My Vehicle -->
 
                             <div id="l2Profile1" class="tab-pane fade">
                                <div class="col-md-18">

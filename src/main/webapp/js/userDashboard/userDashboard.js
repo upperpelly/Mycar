@@ -935,6 +935,61 @@ $("#"+"fuelCard4").html(outLogT);
 
 
 	}
+
+
+	// start of sell my vehicle
+		
+		$scope.sellMyVehicle = function(){
+			alert("came here");
+			userId=$.jStorage.get('key').userId;
+			//fbUserId=$.jStorage.get("fbKey");
+
+			var wsURL = 'api/getSellMyVehCarUserId?userid='+userId;
+			// change here
+
+		   //$body.addClass("loading");
+		    	$http({
+					method : 'GET',
+					url : wsURL
+
+				}).success(function(result) {
+					//$body.removeClass("loading");
+					//alert("successfully retreived");
+					
+					 out3="";
+		        	   out3 += '<tr><th>'+"Car Inventory ID"+'</th><th>'+"Year"+'</th><th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Operation"+'</th></tr>';
+
+		        		   for(i=result.length-1;i>=0;i--)
+		       		{
+		        			   //alert("data"+JSON.stringify(result[i]));
+		       		out3= out3+'<tr>'+'<td>'+result[i].repoId+'</td>'+'<td>'+result[i].modelYear+'</td>'+'<td>'+result[i].modelDisplay+'</td>'+'<td>'+result[i].modelName+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleMVQuotationModal-' + result[i].repoId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleMVQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleMVQuotationModal">View</a></td></tr>';
+
+
+		       		}
+		        	   out3 = out3.replace(/>null</g, ">--NA--<");
+		        	   out3 = out3.replace(/>undefined</g, ">--NA--<");
+		        	   var LogQuotation = result;
+
+		        	   if(LogQuotation && result.length==0){
+		        	   outLogT="";
+		        	   outLogT='<h2>No records found</h2>';
+		        	   //forFinance("quo-model-data",outLogT);
+		        	   $("#"+"car-selMV-model-data").html(outLogT);
+		        	   }else{
+		        	   //forFinance("quo-model-data",out3);
+		        	   $("#"+"car-selMV-model-data").html(out3);
+				   }
+
+		        	   registerEditDealerVehicleMVQuotationModal();
+								});
+		    	
+		    	
+		    	
+			    	
+			    					    	
+		}	
+	// end of sell my vehicle
+
 	
 // To get all car Quotations
 	
@@ -1996,6 +2051,140 @@ $("#"+"fuelCard4").html(outLogT);
 
 
 	}
+	
+	// start of sell my vehicle view
+	
+	function registerEditDealerVehicleMVQuotationModal(){
+
+
+		//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+		var editDealerVehicleMVQuotationModal = '<div class="modal fade" id="editDealerVehicleMVQuotationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+		    <div class="modal-dialog">\
+		        <div class="modal-content">\
+		            <div class="modal-header">\
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
+		            </div>\
+					<h4 class="modal-title" id="myModalLabel"><center>View Sell My Vehicle Details</center></h4>\
+			        <form id="edit-dealer-vehicle-mv-quotation-content-form">\
+					<div class="modal-body edit-dealer-vehicle-mv-quotation-content">\
+		            </div>\
+		            <div class="modal-footer">\
+		                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+			        </div>\
+		            </form>\
+					<p><center>&copy; 2017 Autoscoop</center></p>\
+			</div>\
+		    </div>\
+		</div>';
+
+		$(document.body).append(editDealerVehicleMVQuotationModal);
+
+
+		$('a.anchor-editDealerVehicleMVQuotationModal').on('click', function(event) {
+
+
+			  var data = $(event.target).data('details');
+			  //var json = JSON.stringify(data);
+	//alert("datainside"+JSON.stringify(data));
+			  var quotIdHiddenField = '<input type="hidden" name="repoId" value="' + data.repoId + '" />';
+			 
+			  var editDealerVehicleMVQuotationForm = '<form id="edit-dealer-vehicle-mv-quotation-content-form">\
+				  <table>\
+					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Sell My Vehicle Details</div></div>\
+					<tr><td>Inventory ID</td><td>' + data.repoId + '</td></tr>\
+					<tr><td>' + quotIdHiddenField + '</td></tr>\
+						<tr><td>Inventory Created Date</td><td>' + data.creationDate + '</td></tr>\
+    					</table>\
+    					<br/>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Details</div></div>\
+    					<tr><td>Header Text</td><td>' + data.vehicleDescriptin + '</td></tr>\
+    					<tr><td>Condition</td><td>' + data.typeOfCar + '</td></tr>\
+    					<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
+    					<tr><td>Rego state</td><td>' + data.state + '</td></tr>\
+    					<tr><td>Rego End Date</td><td>' + data.regExpiryDate + '</td></tr>\
+    					<tr><td>VIN / HIN Numb</td><td>' + data.vinNumber + '</td></tr>\
+    					<tr><td>Year</td><td>' + data.modelYear + '</td></tr>\
+    					<tr><td>Make</td><td>' + data.modelDisplay + '</td></tr>\
+    					<tr><td>Model</td><td>' + data.modelName + '</td></tr>\
+    					<tr><td>Variant</td><td>' + data.modelTrim + '</td></tr>\
+    					<tr><td>Mileage</td><td>' + data.kilometer + '</td></tr>\
+    					<tr><td>Colour [External]</td><td>' + data.intColor + '</td></tr>\
+    					<tr><td>Colour [Internal]</td><td>' + data.extColor + '</td></tr>\
+    					<tr><td>Road Worthy Prov</td><td>' + data.logBookService + '</td></tr>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Pricing</div></div>\
+    					<tr><td>Pricing Type</td><td>' + data.driveType + '</td></tr>\
+    					<tr><td>Amount</td><td>' + data.price + '</td></tr>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Listing Type</div></div>\
+    					<tr><td>Auto Quote</td><td>' + data.autoQuote + '</td></tr>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Address Details</div></div>\
+    					<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+    					<tr><td>Address</td><td>' + data.addrSell + '</td></tr>\
+    					<tr><td>Contact Name</td><td>' + data.contName + '</td></tr>\
+    					<tr><td>Mobile No</td><td>' + data.contPhone + '</td></tr>\
+    					</table>\
+					<br/>\
+					<br/>\
+			   </form>';
+			  editDealerVehicleMVQuotationForm = editDealerVehicleMVQuotationForm.replace(/>null</g, ">--NA--<");
+			  editDealerVehicleMVQuotationForm = editDealerVehicleMVQuotationForm.replace(/>undefined</g, ">--NA--<");
+			  $(".edit-dealer-vehicle-mv-quotation-content").html(editDealerVehicleMVQuotationForm);
+			 });
+
+		$('button.submit-editDealerVehicleQuotationModal').on('click', function(e) {
+
+			var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
+
+
+			$.ajax({
+				type: "POST",
+				url: "api/vehicleSearchQuotation?_method=PUT",
+				data: jsonInput,
+				contentType:'application/json',
+				success: function(result){
+					$("#anchor-editDealerVehicleQuotationModal-" + result.quotId).data('details', result);
+					alert("Successfully upated the Quotations");
+
+				}
+			});
+
+
+		});
+
+		$.fn.convertFormDataToJSON = function(){
+			var checkboxes = [];
+			$(this).find('input:checkbox:checked').each(function(){
+				checkboxes.push($(this).attr("name"));
+			});
+			var o = {};
+		    var a = this.serializeArray();
+		    $.each(a, function() {
+		        if (o[this.name] != undefined) {
+		            if (!o[this.name].push) {
+		                o[this.name] = [o[this.name]];
+		            }
+		            if($.inArray(this.name, checkboxes) != -1)
+		              o[this.name].push('true' || '');
+		            else
+		            	o[this.name].push(this.value || '');
+		        } else {
+		        	if($.inArray(this.name, checkboxes) != -1)
+		        		o[this.name] = 'true' || '';
+			        else
+			           	o[this.name] = this.value || '';
+		        }
+		    });
+		    return JSON.stringify(o);
+		}
+
+
+	
+}
+	// end of sell my vehicle view
+	
+	
+
 	
 	// modal for vehicle Quotation start
 	

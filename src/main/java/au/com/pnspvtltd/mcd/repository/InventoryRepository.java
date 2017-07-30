@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.Inventory;
+import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
@@ -29,4 +30,8 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 	
 	@Query("SELECT inv FROM Inventory inv WHERE inv.modelDisplay=?1")
 	public List<Inventory> getInventoryForMake(String modelDisplay);
+	
+	@Query("SELECT inv FROM Inventory inv WHERE inv.userId=?1 AND inv.refId=?2" +
+			" ORDER BY inv.repoId")
+			public List<Inventory> getAllInvForSellMy(Long id, Long dealerId);
 }

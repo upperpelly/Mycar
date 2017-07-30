@@ -514,6 +514,21 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			return searchVO;
 		}
 
+		// User Car/Search Details lead
+				public InventoryVO toMyVehInvVO(final Inventory search) {
+
+					InventoryVO searchVO = new InventoryVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
 
 	// User Car/Search Details lead
 	public Search toSearch(final SearchVO searchVO) {

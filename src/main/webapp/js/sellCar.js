@@ -11,6 +11,256 @@ if(!value){
 }
 //alert("can"+value.userId);
 
+
+
+function logServMaintloadImage()
+{
+	  
+	//alert("came inside log inside script");
+	// $('#logServMnt-image').html('<img src="images/LoadImg.gif"></img>');
+var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
+var fileChooserlogservmaint1 = document.getElementById('file-1chooser-logservmaint');
+// var buttonlogservmaint = document.getElementById('upload-button-logservmaint');
+var appId = '249863545451459';
+ //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+   var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+   var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+   AWS.config.region = 'us-east-1';
+   var bucket = new AWS.S3({
+       params: {
+           Bucket: bucketName
+       }
+   });
+  //alert("Successfully set..");
+  accessToken = $.jStorage.get("fbAToken");
+  //alert(accessToken);
+			bucket.config.credentials = new AWS.WebIdentityCredentials({
+	                  ProviderId: 'graph.facebook.com',
+	                  RoleArn: roleArn,
+	                  WebIdentityToken: accessToken
+	              });
+
+		//alert("came here on click of log service and maintenance");
+     var file = fileChooserlogservmaint.files[0];
+
+
+     if (file) {
+
+     	//alert("came here on click of log service and maintenance12");
+         //results.innerHTML = '';
+
+
+         //Object key will be facebook-USERID#/FILE_NAME
+
+
+         var objKey = 'facebook-' + fbUserId + '/' + file.name;
+
+
+         var params = {
+
+
+             Key: objKey,
+
+
+             ContentType: file.type,
+
+
+             Body: file,
+
+
+             ACL: 'authenticated-read'
+
+
+         };
+
+
+         bucket.putObject(params, function (err, data) {
+         	alert("Successfully started to Upload the photos"+file.name+" Please don't refresh or switch from the homepage.. This will take some time..");
+         	//alert("came here on click of log service and maintenance14");
+             if (err) {
+
+             	//alert("Not saved service and maintenance1"+err);
+             	alert("Sorry we are not able to upload your photo "+file.name+"for Log service and maintenance.. It failed with following error "+err+" It could be because of Idle time for more than 10 mins, plz login again and try. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                 /* results.innerHTML = 'ERROR: ' + err; */
+		        	//signingout();
+
+             } else {
+             	//alert("Successfully saved log Service and Maintenance1 into S3");
+             	$('#logServMnt-image').html('');
+             	 alert("Successfully uploaded photo "+file.name+" to database");
+
+                 //listObjs();
+
+
+             }
+
+
+         });
+
+
+     } else {
+
+     	//alert("Nothing to upload for service and maintenance 1");
+         /* results.innerHTML = 'Nothing to upload.'; */
+
+
+     }
+
+
+//start of second image upload
+var file1 = fileChooserlogservmaint1.files[0];
+
+
+     if (file1) {
+
+     	//alert("came here on click of log service and maintenance12");
+         //results.innerHTML = '';
+
+
+         //Object key will be facebook-USERID#/FILE_NAME
+
+
+         var objKey = 'facebook-' + fbUserId + '/' + file1.name;
+
+
+         var params = {
+
+
+             Key: objKey,
+
+
+             ContentType: file1.type,
+
+
+             Body: file1,
+
+
+             ACL: 'authenticated-read'
+
+
+         };
+
+
+         bucket.putObject(params, function (err, data) {
+         	alert("Successfully started to Upload the photos"+file1.name+" Please don't refresh or switch from the homepage.. This will take some time..");
+         	//alert("came here on click of log service and maintenance14");
+             if (err) {
+
+             	//alert("Not saved service and maintenance1"+err);
+             	alert("Sorry we are not able to upload your photo "+file1.name+"for Log service and maintenance.. It failed with following error "+err+" It could be because of Idle time for more than 10 mins, plz login again and try. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
+                 /* results.innerHTML = 'ERROR: ' + err; */
+		        	//signingout();
+
+             } else {
+             	//alert("Successfully saved log Service and Maintenance1 into S3");
+             	$('#logServMnt-image').html('');
+             	 alert("Successfully uploaded photo "+file1.name+" to database");
+
+                 //listObjs();
+
+
+             }
+
+
+         });
+
+
+     } else {
+
+     	//alert("Nothing to upload for service and maintenance 1");
+         /* results.innerHTML = 'Nothing to upload.'; */
+
+
+     }
+//end of second image upload
+
+
+
+ window.fbAsyncInit = function () {
+
+
+     FB.init({
+
+
+         appId: appId
+
+
+     });
+
+
+     FB.getLoginStatus(function(response) {
+     	//alert("Succesfully set..");
+     	//alert("Successfully started to Upload the photos.. Please don't refresh or switch from the dashboard.. This will take some time..");
+			if (response.status === 'connected') {
+				bucket.config.credentials = new AWS.WebIdentityCredentials({
+
+
+                 ProviderId: 'graph.facebook.com',
+
+
+                 RoleArn: roleArn,
+
+
+                 WebIdentityToken: response.authResponse.accessToken
+
+
+             });
+
+
+             //fbUserId = response.authResponse.userID;
+
+
+             //button.style.display = 'block';
+			}
+		},{
+			scope : 'email'
+		});
+
+
+
+
+
+ };
+
+
+  // Load the Facebook SDK asynchronously
+
+
+ (function (d, s, id) {
+
+
+     var js, fjs = d.getElementsByTagName(s)[0];
+
+
+     if (d.getElementById(id)) {
+
+
+         return;
+
+
+     }
+
+
+     js = d.createElement(s);
+
+
+     js.id = id;
+
+
+     js.src = "//connect.facebook.net/en_US/all.js";
+
+js.src = "https://connect.facebook.net/en_US/all.js";
+     fjs.parentNode.insertBefore(js, fjs);
+
+
+ }(document, 'script', 'facebook-jssdk'));
+
+}
+
+
+
+
+
 function alreadyLogged(){
 	var value = $.jStorage.get("key");
 	//alert("Checking logged or not");
@@ -54,16 +304,23 @@ var mainApp1 = angular.module("mainApp1", []);
 	mainApp1.controller('myController1',function($scope,$http) {
 		
 		 $scope.submitSearchForm = function() {
-         	alert("invoke");
+         	//alert("invoke");
          	if (alreadyLogged()) {
      				$('.result').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>Saving,Please wait...');
                      userId = $.jStorage.get('key').userId;
                      var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
+                     //alert("fileChooserlogservmaint"+fileChooserlogservmaint);
 						var filefileChooserlogservmaint = fileChooserlogservmaint.files[0];
 						var objKeyfilefileChooserlogservmaint ='noImage';
 						if(filefileChooserlogservmaint){
 						objKeyfilefileChooserlogservmaint = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;}
 
+						var fileChooserlogservmaint1 = document.getElementById('file-1chooser-logservmaint');
+						  //alert("file1Chooserlogservmaint"+fileChooserlogservmaint1);
+						var filefileChooserlogservmaint1 = fileChooserlogservmaint1.files[0];
+						var objKeyfilefileChooserlogservmaint1 ='noImage';
+						if(filefileChooserlogservmaint1){
+						objKeyfilefileChooserlogservmaint1 = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint1.name;}
 
 						/*var autobid=false;
 						autobid = document.getElementById("autoBid").value;
@@ -133,7 +390,7 @@ var mainApp1 = angular.module("mainApp1", []);
 													"region": $scope.SellvehicleType,
 													"postCode":$scope.postcode11,
 													"yearOfMake": null,
-													"ausCapTer": null,
+													"ausCapTer": objKeyfilefileChooserlogservmaint1,
 													"insCompAmountMin": 0,
 													"insCompAmountMax": 0,
 													"dealAmountMin": $scope.QRangeMin,
@@ -152,13 +409,13 @@ var mainApp1 = angular.module("mainApp1", []);
 																		
 													}).success(function(data) {
 														$('.result').html('Successfully Stored....');
-														alert("Successfully Stored.. ");
-														alert("Thank You. Your Inventory is saved"+data.inventoryId);
+														//alert("Successfully Stored.. ");
+														//alert("Thank You. Your Inventory is saved"+data.inventoryId);
 																						
 														$('.result').html('Successfully Stored....');
 																			alert("Successfully Stored Sell My Car request with ID "+data.inventoryId+" However, Plz wait for the images to upload.. don't refresh or switch from your sellMycar page..  the upload of images will start soon..");
 														//alert("Successfully Stored.. ");
-												                			if(filefileChooserlogservmaint){
+												                			if(filefileChooserlogservmaint && fileChooserlogservmaint1){
 												                				alert("Plz wait for the images to upload.. don't refresh or switch from sellMycar.. the upload of images will start soon..");
 																			logServMaintloadImage();
 																			//alert("Before reset correct15689899");
@@ -167,7 +424,8 @@ var mainApp1 = angular.module("mainApp1", []);
 												                			else {
 											                                	alert("No upload of images found..");
 											                                	//alert("Before reset correct15689899");
-													                			//document.getElementById("logservmaintfrm").reset();}
+													                			//document.getElementById("logservmaintfrm").reset();
+											                                	}
 																	});
          	}
 
@@ -265,13 +523,29 @@ var mainApp1 = angular.module("mainApp1", []);
 		$scope.sixthForm = function(valid) {
 			$scope.sixthFlag=true;
 			if(valid){
-				alert("Valid changed");
+				//alert("Valid changed");
 		        $scope.sixthFlag=false;
 		        $('.result').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>Saving,Please wait...');
                 userId = $.jStorage.get('key').userId;
-                alert(userId);
+                //alert(userId);
+                fbUserId = $.jStorage.get("fbKey");
+                
+                var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
+                alert("fileChooserlogservmaint"+fileChooserlogservmaint);
+					var filefileChooserlogservmaint = fileChooserlogservmaint.files[0];
+					var objKeyfilefileChooserlogservmaint ='noImage';
+					if(filefileChooserlogservmaint){
+					objKeyfilefileChooserlogservmaint = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;}
+
+					var fileChooserlogservmaint1 = document.getElementById('file-1chooser-logservmaint');
+					  //alert("file1Chooserlogservmaint"+fileChooserlogservmaint1);
+					var filefileChooserlogservmaint1 = fileChooserlogservmaint1.files[0];
+					var objKeyfilefileChooserlogservmaint1 ='noImage';
+					if(filefileChooserlogservmaint1){
+					objKeyfilefileChooserlogservmaint1 = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint1.name;}
+
 					//var classified = document.getElementById("postClassified").value;
-					//alert("Came here c"+autobid);			SellvehicleType
+					alert("Came here c"+fbUserId+"object"+objKeyfilefileChooserlogservmaint1);			
 					var jsonInputToAPI = {
 							"refId":35,
 							"userId":userId,
@@ -292,7 +566,7 @@ var mainApp1 = angular.module("mainApp1", []);
 							"driveType": $scope.pricingType,//fixed negotiable
 							"kilometer": $scope.currOdometer,
 							"extColor": $scope.extColor,
-							"warranty": null,
+							"warranty": objKeyfilefileChooserlogservmaint,
 							"regExpiryDate": $scope.RegExpDate,
 							"vinNumber": $scope.vinnumber,
 							"vendorStockNo": null,
@@ -336,7 +610,7 @@ var mainApp1 = angular.module("mainApp1", []);
 							"region": $scope.addrSell,
 							"postCode":$scope.postcode11,
 							"yearOfMake": null,
-							"ausCapTer": null,
+							"ausCapTer": objKeyfilefileChooserlogservmaint1,
 							"insCompAmountMin": 0,
 							"insCompAmountMax": 0,
 							"dealAmountMin": $scope.QRangeMin,
@@ -355,9 +629,33 @@ var mainApp1 = angular.module("mainApp1", []);
 													data: jsonInputToAPI
 																	
 												}).success(function(data) {
+													//$('.result').html('Successfully Stored....');
+													//alert("Successfully Stored.. ");
+													//alert("Thank You. Your Inventory is saved"+data.inventoryId);
+
 													$('.result').html('Successfully Stored....');
 													alert("Successfully Stored.. ");
 													alert("Thank You. Your Inventory is saved"+data.inventoryId);
+																					
+													$('.result').html('Successfully Stored....');
+																		alert("Successfully Stored Sell My Car request with ID "+data.inventoryId+" However, Plz wait for the images to upload.. don't refresh or switch from your sellMycar page..  the upload of images will start soon..");
+													//alert("Successfully Stored.. ");
+											                			if(filefileChooserlogservmaint && fileChooserlogservmaint1){
+											                				alert("Plz wait for the images to upload.. don't refresh or switch from sellMycar.. the upload of images will start soon..");
+																		logServMaintloadImage();
+																		//alert("Before reset correct15689899");
+											                			//document.getElementById("logservmaintfrm").reset();
+																		var url="Db_BetaV1.html";
+																		//window.location=url;
+											                			}
+											                			else {
+										                                	alert("No upload of images found..");
+										                                	//alert("Before reset correct15689899");
+												                			//document.getElementById("logservmaintfrm").reset();
+										                                	var url="Db_BetaV1.html";
+										                            		//window.location=url;
+										                                	}
+																
 																					
 																});
 

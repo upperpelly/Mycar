@@ -508,7 +508,7 @@ public class DealerServiceImpl implements DealerService {
 	public String addInventoryUser(InventoryVO inventoryVO) {
 		Long refId=new Long(35);
 		Dealer dealer = dealerRepository.findOne(refId);
-		inventoryVO.setUserId(inventoryVO.getRefId());
+	//		inventoryVO.setUserId(inventoryVO.getRefId());
 		Inventory inventory = domainModelUtil.toInventory(inventoryVO);
 		dealer.getInventory().add(inventory);
 		dealerRepository.flush();
