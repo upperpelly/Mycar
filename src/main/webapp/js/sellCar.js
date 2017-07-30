@@ -58,6 +58,13 @@ var mainApp1 = angular.module("mainApp1", []);
          	if (alreadyLogged()) {
      				$('.result').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>Saving,Please wait...');
                      userId = $.jStorage.get('key').userId;
+                     var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
+						var filefileChooserlogservmaint = fileChooserlogservmaint.files[0];
+						var objKeyfilefileChooserlogservmaint ='noImage';
+						if(filefileChooserlogservmaint){
+						objKeyfilefileChooserlogservmaint = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;}
+
+
 						/*var autobid=false;
 						autobid = document.getElementById("autoBid").value;
 						*///var classified = document.getElementById("postClassified").value;
@@ -77,7 +84,7 @@ var mainApp1 = angular.module("mainApp1", []);
 													"bodyType":$scope.classAdv,
 													"transmission": $scope.autoQuote,
 													"fuelType": $scope.addrSell,
-													"engine": null,
+													"engine": objKeyfilefileChooserlogservmaint,
 													"regNo": $scope.regno,
 													"driveType": $scope.driveType,
 													"kilometer": 120,
@@ -148,6 +155,19 @@ var mainApp1 = angular.module("mainApp1", []);
 														alert("Successfully Stored.. ");
 														alert("Thank You. Your Inventory is saved"+data.inventoryId);
 																						
+														$('.result').html('Successfully Stored....');
+																			alert("Successfully Stored Sell My Car request with ID "+data.inventoryId+" However, Plz wait for the images to upload.. don't refresh or switch from your sellMycar page..  the upload of images will start soon..");
+														//alert("Successfully Stored.. ");
+												                			if(filefileChooserlogservmaint){
+												                				alert("Plz wait for the images to upload.. don't refresh or switch from sellMycar.. the upload of images will start soon..");
+																			logServMaintloadImage();
+																			//alert("Before reset correct15689899");
+												                			//document.getElementById("logservmaintfrm").reset();
+												                			}
+												                			else {
+											                                	alert("No upload of images found..");
+											                                	//alert("Before reset correct15689899");
+													                			//document.getElementById("logservmaintfrm").reset();}
 																	});
          	}
 
