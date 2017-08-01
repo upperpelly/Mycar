@@ -19,8 +19,8 @@ function logServMaintloadImage()
 	//alert("came inside log inside script");
 	// $('#logServMnt-image').html('<img src="images/LoadImg.gif"></img>');
 var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
-var fileChooserlogservmaint1 = document.getElementById('file-1chooser-logservmaint');
-// var buttonlogservmaint = document.getElementById('upload-button-logservmaint');
+//var fileChooserlogservmaint1 = document.getElementById('file-1chooser-logservmaint');
+// var buttonlogservmaint = document.getElementById('upload-button-logservmaint'); prod 249863545451459 test 238604546585672
 var appId = '249863545451459';
  //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
    var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
@@ -75,7 +75,7 @@ var appId = '249863545451459';
 
 
          bucket.putObject(params, function (err, data) {
-         	alert("Successfully started to Upload the photos"+file.name+" Please don't refresh or switch from the homepage.. This will take some time..");
+         	//alert("Successfully started to Upload the photos"+file.name+" Please don't refresh or switch from the homepage.. This will take some time..");
          	//alert("came here on click of log service and maintenance14");
              if (err) {
 
@@ -86,9 +86,13 @@ var appId = '249863545451459';
 
              } else {
              	//alert("Successfully saved log Service and Maintenance1 into S3");
-             	$('#logServMnt-image').html('');
-             	 alert("Successfully uploaded photo "+file.name+" to database");
-
+             	//$('#logServMnt-image').html('');
+             	 //alert("Successfully uploaded photo "+file.name+" to database");
+             	
+             	 
+             	$('.result').html('Successfully Stored....');
+				var url="Db_BetaV1.html";
+				window.location=url;
                  //listObjs();
 
 
@@ -108,7 +112,7 @@ var appId = '249863545451459';
 
 
 //start of second image upload
-var file1 = fileChooserlogservmaint1.files[0];
+/*var file1 = fileChooserlogservmaint1.files[0];
 
 
      if (file1) {
@@ -142,18 +146,18 @@ var file1 = fileChooserlogservmaint1.files[0];
 
 
          bucket.putObject(params, function (err, data) {
-         	alert("Successfully started to Upload the photos"+file1.name+" Please don't refresh or switch from the homepage.. This will take some time..");
+         	//alert("Successfully started to Upload the photos"+file1.name+" Please don't refresh or switch from the homepage.. This will take some time..");
          	//alert("came here on click of log service and maintenance14");
              if (err) {
 
              	//alert("Not saved service and maintenance1"+err);
              	alert("Sorry we are not able to upload your photo "+file1.name+"for Log service and maintenance.. It failed with following error "+err+" It could be because of Idle time for more than 10 mins, plz login again and try. However If the issue persists please send the photos and error you encountered to autoscoop support team which will upload photo and link it to your account and also resolve your error / issue thanks..");
-                 /* results.innerHTML = 'ERROR: ' + err; */
+                  results.innerHTML = 'ERROR: ' + err; 
 		        	//signingout();
 
              } else {
              	//alert("Successfully saved log Service and Maintenance1 into S3");
-             	$('#logServMnt-image').html('');
+             	//$('#logServMnt-image').html('');
              	 alert("Successfully uploaded photo "+file1.name+" to database");
 
                  //listObjs();
@@ -168,10 +172,10 @@ var file1 = fileChooserlogservmaint1.files[0];
      } else {
 
      	//alert("Nothing to upload for service and maintenance 1");
-         /* results.innerHTML = 'Nothing to upload.'; */
+          results.innerHTML = 'Nothing to upload.'; 
 
 
-     }
+     }*/
 //end of second image upload
 
 
@@ -315,13 +319,13 @@ var mainApp1 = angular.module("mainApp1", []);
 						if(filefileChooserlogservmaint){
 						objKeyfilefileChooserlogservmaint = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;}
 
-						var fileChooserlogservmaint1 = document.getElementById('file-1chooser-logservmaint');
+						/*var fileChooserlogservmaint1 = document.getElementById('file-1chooser-logservmaint');
 						  //alert("file1Chooserlogservmaint"+fileChooserlogservmaint1);
 						var filefileChooserlogservmaint1 = fileChooserlogservmaint1.files[0];
 						var objKeyfilefileChooserlogservmaint1 ='noImage';
 						if(filefileChooserlogservmaint1){
 						objKeyfilefileChooserlogservmaint1 = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint1.name;}
-
+*/
 						/*var autobid=false;
 						autobid = document.getElementById("autoBid").value;
 						*///var classified = document.getElementById("postClassified").value;
@@ -390,7 +394,7 @@ var mainApp1 = angular.module("mainApp1", []);
 													"region": $scope.SellvehicleType,
 													"postCode":$scope.postcode11,
 													"yearOfMake": null,
-													"ausCapTer": objKeyfilefileChooserlogservmaint1,
+													"ausCapTer": null,
 													"insCompAmountMin": 0,
 													"insCompAmountMax": 0,
 													"dealAmountMin": $scope.QRangeMin,
@@ -423,7 +427,10 @@ var mainApp1 = angular.module("mainApp1", []);
 												                			}
 												                			else {
 											                                	alert("No upload of images found..");
-											                                	//alert("Before reset correct15689899");
+											                                	$('.result').html('Successfully Stored....');
+											                    				var url="Db_BetaV1.html";
+											                    				window.location=url;
+											                                    //alert("Before reset correct15689899");
 													                			//document.getElementById("logservmaintfrm").reset();
 											                                	}
 																	});
@@ -531,21 +538,21 @@ var mainApp1 = angular.module("mainApp1", []);
                 fbUserId = $.jStorage.get("fbKey");
                 
                 var fileChooserlogservmaint = document.getElementById('file-chooser-logservmaint');
-                alert("fileChooserlogservmaint"+fileChooserlogservmaint);
+                //alert("fileChooserlogservmaint"+fileChooserlogservmaint);
 					var filefileChooserlogservmaint = fileChooserlogservmaint.files[0];
 					var objKeyfilefileChooserlogservmaint ='noImage';
 					if(filefileChooserlogservmaint){
 					objKeyfilefileChooserlogservmaint = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint.name;}
 
-					var fileChooserlogservmaint1 = document.getElementById('file-1chooser-logservmaint');
+					/*var fileChooserlogservmaint1 = document.getElementById('file-1chooser-logservmaint');
 					  //alert("file1Chooserlogservmaint"+fileChooserlogservmaint1);
 					var filefileChooserlogservmaint1 = fileChooserlogservmaint1.files[0];
 					var objKeyfilefileChooserlogservmaint1 ='noImage';
 					if(filefileChooserlogservmaint1){
 					objKeyfilefileChooserlogservmaint1 = 'facebook-' + fbUserId + '/' + filefileChooserlogservmaint1.name;}
-
+*/
 					//var classified = document.getElementById("postClassified").value;
-					alert("Came here c"+fbUserId+"object"+objKeyfilefileChooserlogservmaint1);			
+					//alert("Came here c"+fbUserId+"object"+objKeyfilefileChooserlogservmaint1);			
 					var jsonInputToAPI = {
 							"refId":35,
 							"userId":userId,
@@ -610,7 +617,7 @@ var mainApp1 = angular.module("mainApp1", []);
 							"region": $scope.addrSell,
 							"postCode":$scope.postcode11,
 							"yearOfMake": null,
-							"ausCapTer": objKeyfilefileChooserlogservmaint1,
+							"ausCapTer": null,
 							"insCompAmountMin": 0,
 							"insCompAmountMax": 0,
 							"dealAmountMin": $scope.QRangeMin,
@@ -633,27 +640,29 @@ var mainApp1 = angular.module("mainApp1", []);
 													//alert("Successfully Stored.. ");
 													//alert("Thank You. Your Inventory is saved"+data.inventoryId);
 
-													$('.result').html('Successfully Stored....');
-													alert("Successfully Stored.. ");
-													alert("Thank You. Your Inventory is saved"+data.inventoryId);
-																					
-													$('.result').html('Successfully Stored....');
-																		alert("Successfully Stored Sell My Car request with ID "+data.inventoryId+" However, Plz wait for the images to upload.. don't refresh or switch from your sellMycar page..  the upload of images will start soon..");
+													//$('.result').html('Successfully Stored....');
 													//alert("Successfully Stored.. ");
-											                			if(filefileChooserlogservmaint && fileChooserlogservmaint1){
-											                				alert("Plz wait for the images to upload.. don't refresh or switch from sellMycar.. the upload of images will start soon..");
+													//alert("Thank You. Your Inventory is saved"+data.inventoryId);
+																					
+													//$('.result').html('Successfully Stored....');
+																		//alert("Successfully Stored Sell My Car request with ID "+data.inventoryId+" However, Plz wait for the images to upload.. don't refresh or switch from your sellMycar page..  the upload of images will start soon..");
+													//alert("Successfully Stored.. ");
+											                			if(filefileChooserlogservmaint){
+											                				//alert("Plz wait for the images to upload.. don't refresh or switch from sellMycar.. the upload of images will start soon..");
 																		logServMaintloadImage();
 																		//alert("Before reset correct15689899");
 											                			//document.getElementById("logservmaintfrm").reset();
+																		/*$('.result').html('Successfully Stored....');
 																		var url="Db_BetaV1.html";
-																		//window.location=url;
+																		window.location=url;*/
 											                			}
 											                			else {
-										                                	alert("No upload of images found..");
+										                                	//alert("No upload of images found..");
+										                                	$('.result').html('Successfully Stored....');
 										                                	//alert("Before reset correct15689899");
 												                			//document.getElementById("logservmaintfrm").reset();
 										                                	var url="Db_BetaV1.html";
-										                            		//window.location=url;
+										                            		window.location=url;
 										                                	}
 																
 																					

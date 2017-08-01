@@ -940,7 +940,7 @@ $("#"+"fuelCard4").html(outLogT);
 	// start of sell my vehicle
 		
 		$scope.sellMyVehicle = function(){
-			alert("came here");
+			//alert("came here");
 			userId=$.jStorage.get('key').userId;
 			//fbUserId=$.jStorage.get("fbKey");
 
@@ -2071,10 +2071,10 @@ $("#"+"fuelCard4").html(outLogT);
 		            </div>\
 		            <div class="modal-footer">\
 		                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
-			        </div>\
+					</div>\
 		            </form>\
 					<p><center>&copy; 2017 Autoscoop</center></p>\
-			</div>\
+		        </div>\
 		    </div>\
 		</div>';
 
@@ -2084,73 +2084,127 @@ $("#"+"fuelCard4").html(outLogT);
 		$('a.anchor-editDealerVehicleMVQuotationModal').on('click', function(event) {
 
 
-			  var data = $(event.target).data('details');
-			  //var json = JSON.stringify(data);
-	//alert("datainside"+JSON.stringify(data));
+			var data = $(event.target).data('details');
+			//var json = JSON.stringify(data);
+	//alert("datainside"+JSON.stringify(data)); work here
 			  var quotIdHiddenField = '<input type="hidden" name="repoId" value="' + data.repoId + '" />';
-			 
-			  var editDealerVehicleMVQuotationForm = '<form id="edit-dealer-vehicle-mv-quotation-content-form">\
-				  <table>\
-					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Sell My Vehicle Details</div></div>\
-					<tr><td>Inventory ID</td><td>' + data.repoId + '</td></tr>\
-					<tr><td>' + quotIdHiddenField + '</td></tr>\
-						<tr><td>Inventory Created Date</td><td>' + data.creationDate + '</td></tr>\
-    					</table>\
-    					<br/>\
-    					<table>\
-    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Details</div></div>\
-    					<tr><td>Header Text</td><td>' + data.vehicleDescriptin + '</td></tr>\
-    					<tr><td>Condition</td><td>' + data.typeOfCar + '</td></tr>\
-    					<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
-    					<tr><td>Rego state</td><td>' + data.state + '</td></tr>\
-    					<tr><td>Rego End Date</td><td>' + data.regExpiryDate + '</td></tr>\
-    					<tr><td>VIN / HIN Numb</td><td>' + data.vinNumber + '</td></tr>\
-    					<tr><td>Year</td><td>' + data.modelYear + '</td></tr>\
-    					<tr><td>Make</td><td>' + data.modelDisplay + '</td></tr>\
-    					<tr><td>Model</td><td>' + data.modelName + '</td></tr>\
-    					<tr><td>Variant</td><td>' + data.modelTrim + '</td></tr>\
-    					<tr><td>Mileage</td><td>' + data.kilometer + '</td></tr>\
-    					<tr><td>Colour [External]</td><td>' + data.intColor + '</td></tr>\
-    					<tr><td>Colour [Internal]</td><td>' + data.extColor + '</td></tr>\
-    					<tr><td>Road Worthy Prov</td><td>' + data.logBookService + '</td></tr>\
-    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Pricing</div></div>\
-    					<tr><td>Pricing Type</td><td>' + data.driveType + '</td></tr>\
-    					<tr><td>Amount</td><td>' + data.price + '</td></tr>\
-    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Listing Type</div></div>\
-    					<tr><td>Auto Quote</td><td>' + data.autoQuote + '</td></tr>\
-    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Address Details</div></div>\
-    					<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
-    					<tr><td>Address</td><td>' + data.addrSell + '</td></tr>\
-    					<tr><td>Contact Name</td><td>' + data.contName + '</td></tr>\
-    					<tr><td>Mobile No</td><td>' + data.contPhone + '</td></tr>\
-    					</table>\
-					<br/>\
-					<br/>\
-			   </form>';
-			  editDealerVehicleMVQuotationForm = editDealerVehicleMVQuotationForm.replace(/>null</g, ">--NA--<");
-			  editDealerVehicleMVQuotationForm = editDealerVehicleMVQuotationForm.replace(/>undefined</g, ">--NA--<");
-			  $(".edit-dealer-vehicle-mv-quotation-content").html(editDealerVehicleMVQuotationForm);
-			 });
+			// start
+				var appId = '249863545451459';
+		    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+			      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+		      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+		      AWS.config.region = 'us-east-1';
+		      var bucket = new AWS.S3({
+		          params: {
+		              Bucket: bucketName
+		          }
+		      });
+		     accessToken = $.jStorage.get("fbAToken");
+		     bucket.config.credentials = new AWS.WebIdentityCredentials({
+	                  ProviderId: 'graph.facebook.com',
+	                  RoleArn: roleArn,
+	                  WebIdentityToken: accessToken
+	              });
+		     fbUserId = $.jStorage.get("fbKey");
+		     //alert(data.warranty);
+		     //console.log(JSON.stringify(data));
+		     url1=" ";
+		     var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: data.warranty, Expires: 60};
+		     bucket.getSignedUrl('getObject', params, function (err, url) {
+	          if (url) {
+	          url1=url;
+		           var editDealerVehicleMVQuotationForm = '<form id="edit-dealer-vehicle-mv-quotation-content-form">\
+					  <table>\
+					  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+						<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Sell My Vehicle Details</div></div>\
+						<tr><td>Inventory ID</td><td>' + data.repoId + '</td></tr>\
+						<tr><td>' + quotIdHiddenField + '</td></tr>\
+							<tr><td>Inventory Created Date</td><td>' + data.creationDate + '</td></tr>\
+	    					</table>\
+	    					<br/>\
+	    					<table>\
+	    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Details</div></div>\
+	    					<tr><td>Header Text</td><td>' + data.vehicleDescriptin + '</td></tr>\
+	    					<tr><td>Condition</td><td>' + data.typeOfCar + '</td></tr>\
+	    					<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
+	    					<tr><td>Rego state</td><td>' + data.state + '</td></tr>\
+	    					<tr><td>Rego End Date</td><td>' + data.regExpiryDate + '</td></tr>\
+	    					<tr><td>VIN / HIN Numb</td><td>' + data.vinNumber + '</td></tr>\
+	    					<tr><td>Year</td><td>' + data.modelYear + '</td></tr>\
+	    					<tr><td>Make</td><td>' + data.modelDisplay + '</td></tr>\
+	    					<tr><td>Model</td><td>' + data.modelName + '</td></tr>\
+	    					<tr><td>Variant</td><td>' + data.modelTrim + '</td></tr>\
+	    					<tr><td>Mileage</td><td>' + data.kilometer + '</td></tr>\
+	    					<tr><td>Colour [External]</td><td>' + data.intColor + '</td></tr>\
+	    					<tr><td>Colour [Internal]</td><td>' + data.extColor + '</td></tr>\
+	    					<tr><td>Road Worthy Prov</td><td>' + data.logBookService + '</td></tr>\
+	    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Pricing</div></div>\
+	    					<tr><td>Pricing Type</td><td>' + data.driveType + '</td></tr>\
+	    					<tr><td>Amount</td><td>' + data.price + '</td></tr>\
+	    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Listing Type</div></div>\
+	    					<tr><td>Auto Quote</td><td>' + data.autoQuote + '</td></tr>\
+	    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Address Details</div></div>\
+	    					<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+	    					<tr><td>Address</td><td>' + data.addrSell + '</td></tr>\
+	    					<tr><td>Contact Name</td><td>' + data.contName + '</td></tr>\
+	    					<tr><td>Mobile No</td><td>' + data.contPhone + '</td></tr>\
+	    					</table>\
+						<br/>\
+						<br/>\
+				   </form>';
+				  editDealerVehicleMVQuotationForm = editDealerVehicleMVQuotationForm.replace(/>null</g, ">--NA--<");
+				  editDealerVehicleMVQuotationForm = editDealerVehicleMVQuotationForm.replace(/>undefined</g, ">--NA--<");
+				  $(".edit-dealer-vehicle-mv-quotation-content").html(editDealerVehicleMVQuotationForm);
+		          }
+		          else{
+		          alert("not able to retrieve photo for My sell vehicle however you an view other details"+err);
+		           var editDealerVehicleMVQuotationForm = '<form id="edit-dealer-vehicle-mv-quotation-content-form">\
+					  <table>\
+					  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+						<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Sell My Vehicle Details</div></div>\
+						<tr><td>Inventory ID</td><td>' + data.repoId + '</td></tr>\
+						<tr><td>' + quotIdHiddenField + '</td></tr>\
+							<tr><td>Inventory Created Date</td><td>' + data.creationDate + '</td></tr>\
+	    					</table>\
+	    					<br/>\
+	    					<table>\
+	    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Car Details</div></div>\
+	    					<tr><td>Header Text</td><td>' + data.vehicleDescriptin + '</td></tr>\
+	    					<tr><td>Condition</td><td>' + data.typeOfCar + '</td></tr>\
+	    					<tr><td>Rego No</td><td>' + data.regNo + '</td></tr>\
+	    					<tr><td>Rego state</td><td>' + data.state + '</td></tr>\
+	    					<tr><td>Rego End Date</td><td>' + data.regExpiryDate + '</td></tr>\
+	    					<tr><td>VIN / HIN Numb</td><td>' + data.vinNumber + '</td></tr>\
+	    					<tr><td>Year</td><td>' + data.modelYear + '</td></tr>\
+	    					<tr><td>Make</td><td>' + data.modelDisplay + '</td></tr>\
+	    					<tr><td>Model</td><td>' + data.modelName + '</td></tr>\
+	    					<tr><td>Variant</td><td>' + data.modelTrim + '</td></tr>\
+	    					<tr><td>Mileage</td><td>' + data.kilometer + '</td></tr>\
+	    					<tr><td>Colour [External]</td><td>' + data.intColor + '</td></tr>\
+	    					<tr><td>Colour [Internal]</td><td>' + data.extColor + '</td></tr>\
+	    					<tr><td>Road Worthy Prov</td><td>' + data.logBookService + '</td></tr>\
+	    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Pricing</div></div>\
+	    					<tr><td>Pricing Type</td><td>' + data.driveType + '</td></tr>\
+	    					<tr><td>Amount</td><td>' + data.price + '</td></tr>\
+	    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Listing Type</div></div>\
+	    					<tr><td>Auto Quote</td><td>' + data.autoQuote + '</td></tr>\
+	    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Address Details</div></div>\
+	    					<tr><td>Post Code</td><td>' + data.postCode + '</td></tr>\
+	    					<tr><td>Address</td><td>' + data.addrSell + '</td></tr>\
+	    					<tr><td>Contact Name</td><td>' + data.contName + '</td></tr>\
+	    					<tr><td>Mobile No</td><td>' + data.contPhone + '</td></tr>\
+	    					</table>\
+						<br/>\
+						<br/>\
+				   </form>';
+				  editDealerVehicleMVQuotationForm = editDealerVehicleMVQuotationForm.replace(/>null</g, ">--NA--<");
+				  editDealerVehicleMVQuotationForm = editDealerVehicleMVQuotationForm.replace(/>undefined</g, ">--NA--<");
+				  $(".edit-dealer-vehicle-mv-quotation-content").html(editDealerVehicleMVQuotationForm);
 
-		$('button.submit-editDealerVehicleQuotationModal').on('click', function(e) {
-
-			var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
-
-
-			$.ajax({
-				type: "POST",
-				url: "api/vehicleSearchQuotation?_method=PUT",
-				data: jsonInput,
-				contentType:'application/json',
-				success: function(result){
-					$("#anchor-editDealerVehicleQuotationModal-" + result.quotId).data('details', result);
-					alert("Successfully upated the Quotations");
-
-				}
-			});
-
-
+	          }
+	        });
 		});
+
 
 		$.fn.convertFormDataToJSON = function(){
 			var checkboxes = [];
@@ -4675,7 +4729,7 @@ $("#"+"fuelCard4").html(outLogT);
 
 
 				           		//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
-				           		alert("Inside new vehicle method raa");
+				           		//alert("Inside new vehicle method raa");
 				           		var editnwvhDealerVehicleDetailModal = '<div class="modal fade" id="editnwvhDealerVehicleDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
 				           		    <div class="modal-dialog">\
 				           		        <div class="modal-content">\

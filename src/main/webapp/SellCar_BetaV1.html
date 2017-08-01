@@ -31,6 +31,16 @@
     <link rel="stylesheet" type="text/css" href="components/jquery.bxslider/jquery.bxslider.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="components/flexslider/flexslider.css" media="screen" />
     <script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-103397923-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 	<script type="text/javascript" src="js/tabs.js"></script> 
 	<script type="text/javascript" src="js/jquery.jqtransform.js" ></script>
 	<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
@@ -394,16 +404,16 @@ body.loading .modal {
 						      <div class="RegTL">
 						        <div class="row">
 						          <div class="col-md-12">
-						            <h3 class="heading active"><span>1</span>Add Photos & Videos of your Car</h3>
+						            <h3 class="heading active"><span>1</span>Add Photos of your Car</h3>
 						          </div>
 						          <div class="col-xs-11 col-sm-11 col-md-6 Registration MT10" ng-form="VidSubForm">
 						            <div class="form-group">
-						              <div class="clearfix"></div>
+						              <!-- <div class="clearfix"></div>
 						              <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0Mob ">
-						                <!-- <input type="text" class="form-control" placeholder="ABN Number"> -->
+						                <input type="text" class="form-control" placeholder="ABN Number">
 						                <input type="file" id="file-1chooser-logservmaint" name="file-1chooser-logservmaint" ng-model="file1chooserlogservmaint" class="form-control" placeholder="Provide hosted Video url for your Car"/>
-						                <!-- <span style="color: red" ng-show="VidSubForm.vidUrlCar.$invalid && firstFlag"><b>Url is Required</b></span> -->
-						              </div>
+						                <span style="color: red" ng-show="VidSubForm.vidUrlCar.$invalid && firstFlag"><b>Url is Required</b></span>
+						              </div> -->
 						              <div class="clearfix"></div>
 						            </div>
 						            <div class="form-group">
@@ -424,7 +434,7 @@ body.loading .modal {
 						              </div>
 						              <div class="clearfix"></div>
 						            </div> -->
-						            <div class="form-group">
+						            <!-- <div class="form-group">
 						              <div class="clearfix"></div>
 						              <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0Mob input-group pull-left">
 						              	
@@ -434,11 +444,11 @@ body.loading .modal {
 																			class="soap-icon-plus"></i></a><a class='delete-row pull-right btn btn-danger'	data-toggle='tooltip' data-placement='top' title='Delete'><i	class='soap-icon-close'></i></a>
 						              </div>
 						              <div class="clearfix"></div>
-						            </div>
+						            </div> -->
 						            
 						            <div id="photoSec"></div>
 						            <br/>
-						            <div class="col-md-12 col-sm-12 col-xs-12">
+						            <!-- <div class="col-md-12 col-sm-12 col-xs-12">
 							            <strong>Notes:</strong>
 	                               		<ol>
 	                                		<li>1.Add Your Photo for Maximum reach and responses.</li>
@@ -446,7 +456,7 @@ body.loading .modal {
 	                                		<li>3.You can Upload upto 25 Photos.</li>
 	                                		<li>4.Upload Video or Link the Video from External Platform.</li>
 	                               		</ol>
-                               		</div>
+                               		</div> -->
 						            <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0 MT20 MB20">
 						              <button class="btn btn-primary Details" id="first" ng-click="firstForm(VidSubForm.$valid)">Next</button>
 						            </div>
