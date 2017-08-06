@@ -8,8 +8,13 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import au.com.pnspvtltd.mcd.domain.BlogPoints;
 import au.com.pnspvtltd.mcd.domain.MyVehicle;
+import au.com.pnspvtltd.mcd.domain.ReferencedPoints;
+import au.com.pnspvtltd.mcd.domain.ReviewPoints;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
+import au.com.pnspvtltd.mcd.domain.UserReferPoints;
+import au.com.pnspvtltd.mcd.domain.ValTransPoints;
 
 public class UserVO {
 
@@ -44,6 +49,12 @@ public class UserVO {
 	List<TranspServiceQuotationVO> transpServQuotation;
 	List<CurrentOffersVO> currentOffers;
 	List<UserNotificationVO> userNotification;
+	
+	List<UserReferPointsVO> userReferPoints;
+	List<ReferencedPointsVO> referencedPoints;
+	List<BlogPointsVO> blogPoints;
+	List<ReviewPointsVO> reviewPoints;
+	List<ValTransPointsVO> valTransPoints;
 	
 	private int searchCount;
 	private int searchInsCount;
@@ -167,6 +178,47 @@ public class UserVO {
 		this.dateOfBirth = dateOfBirth;
 	}
 	
+	
+	public List<UserReferPointsVO> getUserReferPoints() {
+		return userReferPoints;
+	}
+
+	public void setUserReferPoints(List<UserReferPointsVO> userReferPoints) {
+		this.userReferPoints = userReferPoints;
+	}
+
+	public List<ReferencedPointsVO> getReferencedPoints() {
+		return referencedPoints;
+	}
+
+	public void setReferencedPoints(List<ReferencedPointsVO> referencedPoints) {
+		this.referencedPoints = referencedPoints;
+	}
+
+	public List<BlogPointsVO> getBlogPoints() {
+		return blogPoints;
+	}
+
+	public void setBlogPoints(List<BlogPointsVO> blogPoints) {
+		this.blogPoints = blogPoints;
+	}
+
+	public List<ReviewPointsVO> getReviewPoints() {
+		return reviewPoints;
+	}
+
+	public void setReviewPoints(List<ReviewPointsVO> reviewPoints) {
+		this.reviewPoints = reviewPoints;
+	}
+
+	public List<ValTransPointsVO> getValTransPoints() {
+		return valTransPoints;
+	}
+
+	public void setValTransPoints(List<ValTransPointsVO> valTransPoints) {
+		this.valTransPoints = valTransPoints;
+	}
+
 	public List<ServiceMaintQuotationVO> getServMaintQuotation() {
 		return servMaintQuotation;
 	}

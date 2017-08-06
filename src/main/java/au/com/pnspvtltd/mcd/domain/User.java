@@ -77,6 +77,12 @@ public class User implements Serializable {
 	List<MyVehicle> myVehicle;
 	List<UserNotification> userNotification;
 	
+	List<UserReferPoints> userReferPoints;
+	List<ReferencedPoints> referencedPoints;
+	List<BlogPoints> blogPoints;
+	List<ReviewPoints> reviewPoints;
+	List<ValTransPoints> valTransPoints;
+	
 	private int searchCount;
 	private int searchInsCount;
 	private int searchFinCount;
@@ -167,6 +173,51 @@ public class User implements Serializable {
 
 	public void setSearchTranspCount(int searchTranspCount) {
 		this.searchTranspCount = searchTranspCount;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "userId")
+	public List<UserReferPoints> getUserReferPoints() {
+		return userReferPoints;
+	}
+
+	public void setUserReferPoints(List<UserReferPoints> userReferPoints) {
+		this.userReferPoints = userReferPoints;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "userId")
+	public List<ReferencedPoints> getReferencedPoints() {
+		return referencedPoints;
+	}
+
+	public void setReferencedPoints(List<ReferencedPoints> referencedPoints) {
+		this.referencedPoints = referencedPoints;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "userId")
+	public List<BlogPoints> getBlogPoints() {
+		return blogPoints;
+	}
+
+	public void setBlogPoints(List<BlogPoints> blogPoints) {
+		this.blogPoints = blogPoints;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "userId")
+	public List<ReviewPoints> getReviewPoints() {
+		return reviewPoints;
+	}
+
+	public void setReviewPoints(List<ReviewPoints> reviewPoints) {
+		this.reviewPoints = reviewPoints;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "userId")
+	public List<ValTransPoints> getValTransPoints() {
+		return valTransPoints;
+	}
+
+	public void setValTransPoints(List<ValTransPoints> valTransPoints) {
+		this.valTransPoints = valTransPoints;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
