@@ -21,6 +21,7 @@ public class UserReferPointsVO {
 	private String firstName;
 	private String lastName;
 	private int noOfPoints;
+	private int actualPoints;
 	private int divBy;
 	private double audVal;
 	private double rupVal;
@@ -28,7 +29,13 @@ public class UserReferPointsVO {
 	private Date creationDate;
 	private long idp;
 	
-	
+	public int getActualPoints() {
+		return actualPoints;
+	}
+
+	public void setActualPoints(int actualPoints) {
+		this.actualPoints = actualPoints;
+	}
 	
 	public long getIdp() {
 		return idp;

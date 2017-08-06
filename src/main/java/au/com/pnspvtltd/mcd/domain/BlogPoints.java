@@ -29,6 +29,7 @@ public class BlogPoints implements Serializable {
 	private long blogId;
 	private String blogName;
 	private int noOfPoints;
+	private int actualPoints;
 	private int divBy;
 	private double audVal;
 	private double rupVal;
@@ -36,7 +37,13 @@ public class BlogPoints implements Serializable {
 	private Date creationDate;
 	private long idp;
 	
-	
+	public int getActualPoints() {
+		return actualPoints;
+	}
+
+	public void setActualPoints(int actualPoints) {
+		this.actualPoints = actualPoints;
+	}
 	
 	public long getIdp() {
 		return idp;

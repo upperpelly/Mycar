@@ -20,6 +20,7 @@ public class BlogPointsVO {
 	private long blogId;
 	private String blogName;
 	private int noOfPoints;
+	private int actualPoints;
 	private int divBy;
 	private double audVal;
 	private double rupVal;
@@ -27,7 +28,13 @@ public class BlogPointsVO {
 	private Date creationDate;
 	private long idp;
 	
-	
+	public int getActualPoints() {
+		return actualPoints;
+	}
+
+	public void setActualPoints(int actualPoints) {
+		this.actualPoints = actualPoints;
+	}
 	
 	public long getIdp() {
 		return idp;

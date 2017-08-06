@@ -30,6 +30,7 @@ public class ValTransPoints implements Serializable {
 	private String typeOfTrans;
 	private String name;
 	private int noOfPoints;
+	private int actualPoints;
 	private int divBy;
 	private double audVal;
 	private double rupVal;
@@ -37,7 +38,13 @@ public class ValTransPoints implements Serializable {
 	private Date creationDate;
 	private long idp;
 	
-	
+	public int getActualPoints() {
+		return actualPoints;
+	}
+
+	public void setActualPoints(int actualPoints) {
+		this.actualPoints = actualPoints;
+	}
 	
 	public long getIdp() {
 		return idp;

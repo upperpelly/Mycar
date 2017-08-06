@@ -30,6 +30,7 @@ public class UserReferPoints implements Serializable {
 	private String firstName;
 	private String lastName;
 	private int noOfPoints;
+	private int actualPoints;
 	private int divBy;
 	private double audVal;
 	private double rupVal;
@@ -39,6 +40,14 @@ public class UserReferPoints implements Serializable {
 	
 	
 	
+	public int getActualPoints() {
+		return actualPoints;
+	}
+
+	public void setActualPoints(int actualPoints) {
+		this.actualPoints = actualPoints;
+	}
+
 	public long getIdp() {
 		return idp;
 	}
