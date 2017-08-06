@@ -166,6 +166,22 @@ public class UserEBidServiceImpl implements UserEBidService {
 			userVehicleLeads.add(search);
 			user.setSearch(userVehicleLeads);
 		}
+		// Start of loyality program search car
+		ValTransPoints valTransPoints = new ValTransPoints();
+		valTransPoints.setCreationDate(ourJavaDateObject);
+		valTransPoints.setIdp(user.getUserId());
+		valTransPoints.setId(search.getCarSearchId());
+		valTransPoints.setName("CarReq");
+		valTransPoints.setTypeOfTrans("CarReq");
+		valTransPoints.setNoOfPoints(5);
+		if (user.getValTransPoints() != null) {
+			user.getValTransPoints().add(valTransPoints);
+		} else {
+			List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
+			userInsuranceLeads.add(valTransPoints);
+			user.setValTransPoints(userInsuranceLeads);
+		}
+		// end of loyality program
 		int searchCountTemp = user.getSearchCount();
 		user.setSearchCount(searchCountTemp+1);
 		SearchFinance searchFinance = null;
@@ -191,6 +207,24 @@ public class UserEBidServiceImpl implements UserEBidService {
 				userFinanceLeads.add(searchFinance);
 				user.setSearchFinance(userFinanceLeads);
 			}
+			
+			
+			// Start of loyality program for finance
+						ValTransPoints valTransPointsFin = new ValTransPoints();
+						valTransPointsFin.setCreationDate(ourJavaDateObject);
+						valTransPointsFin.setIdp(user.getUserId());
+						valTransPointsFin.setId(searchFinance.getSearchFinanceId());
+						valTransPointsFin.setName("FinReq");
+						valTransPointsFin.setTypeOfTrans("FinReq");
+						valTransPointsFin.setNoOfPoints(5);
+						if (user.getValTransPoints() != null) {
+							user.getValTransPoints().add(valTransPointsFin);
+						} else {
+							List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
+							userInsuranceLeads.add(valTransPointsFin);
+							user.setValTransPoints(userInsuranceLeads);
+						}
+						// end of loyality program
 		}
 		SearchInsurance searchInsurance = null;
 		searchInsurance = domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
@@ -214,7 +248,26 @@ public class UserEBidServiceImpl implements UserEBidService {
 				userInsuranceLeads.add(searchInsurance);
 				user.setSearchInsurance(userInsuranceLeads);
 			}
+			// Start of loyality program for insurance
+			ValTransPoints valTransPointsIns = new ValTransPoints();
+			valTransPointsIns.setCreationDate(ourJavaDateObject);
+			valTransPointsIns.setIdp(user.getUserId());
+			valTransPointsIns.setId(searchInsurance.getSearchInsuranceId());
+			valTransPointsIns.setName("InsReq");
+			valTransPointsIns.setTypeOfTrans("InsReq");
+			valTransPointsIns.setNoOfPoints(5);
+			if (user.getValTransPoints() != null) {
+				user.getValTransPoints().add(valTransPointsIns);
+			} else {
+				List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
+				userInsuranceLeads.add(valTransPointsIns);
+				user.setValTransPoints(userInsuranceLeads);
+			}
+			
+			
+			// end of loyality program
 		}
+		
 		userRepository.flush();
 /*
 		//
@@ -437,6 +490,9 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 		// Create User Finance Lead
 		SearchFinance searchFinance = domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
+		 Calendar calendar = Calendar.getInstance();
+		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		    searchFinance.setCreationDate(ourJavaDateObject);
 		searchFinance.setIdp(user.getUserId());
 		int searchFinCountTemp = user.getSearchFinCount();
 		user.setSearchFinCount(searchFinCountTemp+1);
@@ -447,7 +503,24 @@ public class UserEBidServiceImpl implements UserEBidService {
 			userFinanceLeads.add(searchFinance);
 			user.setSearchFinance(userFinanceLeads);
 		}
-
+		// Start of loyality program
+				ValTransPoints valTransPoints = new ValTransPoints();
+				valTransPoints.setCreationDate(ourJavaDateObject);
+				valTransPoints.setIdp(user.getUserId());
+				valTransPoints.setId(searchFinance.getSearchFinanceId());
+				valTransPoints.setName("FinReq");
+				valTransPoints.setTypeOfTrans("FinReq");
+				valTransPoints.setNoOfPoints(5);
+				if (user.getValTransPoints() != null) {
+					user.getValTransPoints().add(valTransPoints);
+				} else {
+					List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
+					userInsuranceLeads.add(valTransPoints);
+					user.setValTransPoints(userInsuranceLeads);
+				}
+				
+				
+				// end of loyality program
 		userRepository.flush();
 
 		// Create Finance Leads when
@@ -497,6 +570,9 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 		// Create User Insurance Lead
 		SearchTransp searchInsurance = domainModelUtil.toSearchTrans(userEBidVO.getSearchTranspLead());
+		 Calendar calendar = Calendar.getInstance();
+		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		    //searchInsurance.setCreationDate(ourJavaDateObject);
 		searchInsurance.setIdp(user.getUserId());
 		int searchTranCountTemp = user.getSearchTranspCount();
 		user.setSearchTranspCount(searchTranCountTemp+1);
@@ -508,6 +584,25 @@ public class UserEBidServiceImpl implements UserEBidService {
 			user.setSearchTransp(userInsuranceLeads);
 		}
 
+		// Start of loyality program
+		ValTransPoints valTransPoints = new ValTransPoints();
+		valTransPoints.setCreationDate(ourJavaDateObject);
+		valTransPoints.setIdp(user.getUserId());
+		valTransPoints.setId(searchInsurance.getSearchTranspId());
+		valTransPoints.setName("TranspReq");
+		valTransPoints.setTypeOfTrans("TranspReq");
+		valTransPoints.setNoOfPoints(5);
+		if (user.getValTransPoints() != null) {
+			user.getValTransPoints().add(valTransPoints);
+		} else {
+			List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
+			userInsuranceLeads.add(valTransPoints);
+			user.setValTransPoints(userInsuranceLeads);
+		}
+		
+		
+		// end of loyality program
+		
 		userRepository.flush();
 
 		// Get Inventory matching the User EBid for Car
@@ -583,6 +678,25 @@ public class UserEBidServiceImpl implements UserEBidService {
 			userInsuranceLeads.add(searchInsurance);
 			user.setSearchServMaint(userInsuranceLeads);
 		}
+		
+		// Start of loyality program
+		ValTransPoints valTransPoints = new ValTransPoints();
+		valTransPoints.setCreationDate(ourJavaDateObject);
+		valTransPoints.setIdp(user.getUserId());
+		valTransPoints.setId(searchInsurance.getSearchServMaintId());
+		valTransPoints.setName("ServMaint");
+		valTransPoints.setTypeOfTrans("ServMaint");
+		valTransPoints.setNoOfPoints(5);
+		if (user.getValTransPoints() != null) {
+			user.getValTransPoints().add(valTransPoints);
+		} else {
+			List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
+			userInsuranceLeads.add(valTransPoints);
+			user.setValTransPoints(userInsuranceLeads);
+		}
+		
+		
+		// end of loyality program
 
 		userRepository.flush();
 
@@ -645,6 +759,9 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 		// Create User Insurance Lead
 		SearchInsurance searchInsurance = domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
+		 Calendar calendar = Calendar.getInstance();
+		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		    searchInsurance.setCreationDate(ourJavaDateObject);
 		searchInsurance.setIdp(user.getUserId());
 		int searchInsCountTemp = user.getSearchInsCount();
 		user.setSearchInsCount(searchInsCountTemp+1);
@@ -656,6 +773,24 @@ public class UserEBidServiceImpl implements UserEBidService {
 			user.setSearchInsurance(userInsuranceLeads);
 		}
 
+		// Start of loyality program
+				ValTransPoints valTransPoints = new ValTransPoints();
+				valTransPoints.setCreationDate(ourJavaDateObject);
+				valTransPoints.setIdp(user.getUserId());
+				valTransPoints.setId(searchInsurance.getSearchInsuranceId());
+				valTransPoints.setName("InsReq");
+				valTransPoints.setTypeOfTrans("InsReq");
+				valTransPoints.setNoOfPoints(5);
+				if (user.getValTransPoints() != null) {
+					user.getValTransPoints().add(valTransPoints);
+				} else {
+					List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
+					userInsuranceLeads.add(valTransPoints);
+					user.setValTransPoints(userInsuranceLeads);
+				}
+				
+				
+				// end of loyality program
 		userRepository.flush();
 
 		// Create insurance Leads
