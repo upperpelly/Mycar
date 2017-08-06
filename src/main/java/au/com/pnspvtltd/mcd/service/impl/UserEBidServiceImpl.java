@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import au.com.pnspvtltd.mcd.domain.BlogPoints;
 import au.com.pnspvtltd.mcd.domain.CurrentOffers;
 import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
@@ -23,6 +24,8 @@ import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.MyVehicle;
+import au.com.pnspvtltd.mcd.domain.ReferencedPoints;
+import au.com.pnspvtltd.mcd.domain.ReviewPoints;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.SearchInsurance;
@@ -32,11 +35,14 @@ import au.com.pnspvtltd.mcd.domain.ServiceMaintQuotation;
 import au.com.pnspvtltd.mcd.domain.TranspServiceQuotation;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
+import au.com.pnspvtltd.mcd.domain.UserReferPoints;
+import au.com.pnspvtltd.mcd.domain.ValTransPoints;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperPostCode;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerMakeList;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
+import au.com.pnspvtltd.mcd.repository.BlogPointsRepository;
 import au.com.pnspvtltd.mcd.repository.CountyRegPostSubRepository;
 import au.com.pnspvtltd.mcd.repository.CurrentOffersRepository;
 import au.com.pnspvtltd.mcd.repository.DealerRepository;
@@ -44,6 +50,8 @@ import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InventoryRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
+import au.com.pnspvtltd.mcd.repository.ReferencedPointsRepository;
+import au.com.pnspvtltd.mcd.repository.ReviewPointsRepository;
 import au.com.pnspvtltd.mcd.repository.SearchFinanceRepository;
 import au.com.pnspvtltd.mcd.repository.SearchInsuranceRepository;
 import au.com.pnspvtltd.mcd.repository.SearchServMtRepository;
@@ -51,16 +59,21 @@ import au.com.pnspvtltd.mcd.repository.SearchTranspRepository;
 import au.com.pnspvtltd.mcd.repository.ServMaintQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.TranspServQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.UserNotificationRepository;
+import au.com.pnspvtltd.mcd.repository.UserReferPointsRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
+import au.com.pnspvtltd.mcd.repository.ValTransPointsRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.BlogPointsVO;
 import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
+import au.com.pnspvtltd.mcd.web.model.ReferencedPointsVO;
+import au.com.pnspvtltd.mcd.web.model.ReviewPointsVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchServMaintVO;
@@ -75,6 +88,8 @@ import au.com.pnspvtltd.mcd.web.model.UserEBidTransServVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
+import au.com.pnspvtltd.mcd.web.model.UserReferPointsVO;
+import au.com.pnspvtltd.mcd.web.model.ValTransPointsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 @Service
@@ -96,6 +111,16 @@ public class UserEBidServiceImpl implements UserEBidService {
 	private ServMaintQuotationRepository servMaintQuotationRepository;
 	@Autowired
 	private SearchInsuranceRepository searchInsuranceRepository;
+	@Autowired
+	private UserReferPointsRepository userReferPointsRepository;
+	@Autowired
+	private ReferencedPointsRepository referencedPointsRepository;
+	@Autowired
+	private BlogPointsRepository blogPointsRepository;
+	@Autowired
+	private ReviewPointsRepository reviewPointsRepository;
+	@Autowired
+	private ValTransPointsRepository valTransPointsRepository;
 	@Autowired
 	private SearchServMtRepository searchServMtRepository;
 	@Autowired
@@ -787,6 +812,77 @@ public class UserEBidServiceImpl implements UserEBidService {
 		}
 		return searchVOs;
 	}
+	
+	@Override
+	public List<UserReferPointsVO> getReferUserId(Long userid) {
+		
+		List<UserReferPointsVO> searchVOs = new ArrayList<UserReferPointsVO>();
+		List<UserReferPoints> searchs = userReferPointsRepository.getReferByUserId(userid);
+		UserReferPointsVO searchVO;
+		for(UserReferPoints search :searchs){
+			searchVO = domainModelUtil.toUserReferVO( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<ReferencedPointsVO> getReferencedUserId(Long userid) {
+		
+		List<ReferencedPointsVO> searchVOs = new ArrayList<ReferencedPointsVO>();
+		List<ReferencedPoints> searchs = referencedPointsRepository.getReferByUserId(userid);
+		ReferencedPointsVO searchVO;
+		for(ReferencedPoints search :searchs){
+			searchVO = domainModelUtil.toRefercedVO( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<BlogPointsVO> getBlogUserId(Long userid) {
+		
+		List<BlogPointsVO> searchVOs = new ArrayList<BlogPointsVO>();
+		List<BlogPoints> searchs = blogPointsRepository.getReferByUserId(userid);
+		BlogPointsVO searchVO;
+		for(BlogPoints search :searchs){
+			searchVO = domainModelUtil.toBlogPointsVO( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<ReviewPointsVO> getReviewUserId(Long userid) {
+		
+		List<ReviewPointsVO> searchVOs = new ArrayList<ReviewPointsVO>();
+		List<ReviewPoints> searchs = reviewPointsRepository.getReferByUserId(userid);
+		ReviewPointsVO searchVO;
+		for(ReviewPoints search :searchs){
+			searchVO = domainModelUtil.toReviewPointsVO( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<ValTransPointsVO> getValTransUserId(Long userid) {
+		
+		List<ValTransPointsVO> searchVOs = new ArrayList<ValTransPointsVO>();
+		List<ValTransPoints> searchs = valTransPointsRepository.getReferByUserId(userid);
+		ValTransPointsVO searchVO;
+		for(ValTransPoints search :searchs){
+			searchVO = domainModelUtil.toValTransPointsVO( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
 	@Override
 	public List<SearchFinanceVO> getFinanceByUserId(Long userid) {
 		// TODO Auto-generated method stub

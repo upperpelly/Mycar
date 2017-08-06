@@ -369,7 +369,7 @@ tr:hover {
 <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '249863545451459',
+				appId : '238604546585672',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -615,7 +615,17 @@ function onSignInG()
                 alert("Please Login & go to Sell My Vehicle");
             }
         }
-
+        
+        
+        function redirectWithLoy() {
+            if (alreadyLogged()) {
+                var url = "SellCar_BetaV1.html";
+                window.location = url;
+            }
+            else {
+                alert("Please Login & go to Sell My Vehicle");
+            }
+        }
     </script>
 <link rel="shortcut icon" href="favicon.ico">
 
@@ -809,6 +819,10 @@ table {
 					
 					<ul class="quick-menu pull-left hidden-mobile PL10">
 						<li><button type="button" class="btn btn-info" onClick="redirectWithSell()"><i class="fa fa-tags" aria-hidden="true"></i>Sell My Vehicle</button></li>
+					</ul>
+					
+					<ul class="quick-menu pull-left hidden-mobile PL10">
+						<li><button type="button" class="btn btn-info" onClick="redirectWithLoy()"><i class="fa fa-tags" aria-hidden="true"></i>Loyality Program</button></li>
 					</ul>
 												
 					

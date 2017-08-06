@@ -392,6 +392,7 @@ $('.logBookBtn').click(function(){
                             <li><a data-toggle="tab" href="#travel-stories" ng-click="carEbidRequest()"><i id="usrleftnav" class="flaticon-auction"></i>Ebid-R</a></li>
                             <li><a data-toggle="tab" href="#settings" ng-click="carCarQuotation()"><i id="usrleftnav" class="flaticon-statement"></i>Quotation</a></li>
                             <li><a data-toggle="tab" href="#sellMyVehicle" ng-click="sellMyVehicle()"><i id="usrleftnav" class="fa fa-tags"></i>Sell My Vehicle</a></li>
+                            <li><a data-toggle="tab" href="#loyalityProgram" ng-click="loyalityProgram()"><i id="usrleftnav" class="fa fa-tags"></i>Loyality Program</a></li>
                             <li><a data-toggle="tab" href="#rego"><i id="usrleftnav" class="flaticon-clipboard-with-pencil"></i>Rego</a></li>
                         </ul>
                         <div class="tab-content">
@@ -1427,6 +1428,64 @@ $('.logBookBtn').click(function(){
                           </div>
 <!-- end of sell My Vehicle -->
 
+<!-- Start of Loyality program -->
+<div id="loyalityProgram" class="tab-pane fade">
+                          <!--  Start radio button inline-->
+                           <div id="tab">
+									<!-- <input type="radio"  name="collapseeBIDGroup" data-target="#eQUOTAll" checked/><span class="color-dark">All</span> -->
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOT14Cars" ng-model= "scarEbidreq8818" checked class="ML10"/><span class="color-dark">
+                                        Referred Point's Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOT14SerMai" /><span class="color-dark">
+                                        Referrenced Point's Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOT14Insu" /><span class="color-dark">
+                                        Blog Point's Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOT14Trans" /><span class="color-dark">
+                                        Review Point's Only
+                                    </span>
+                                    <input type="radio" name="collapseeBIDGroup" data-target="#eQUOT14Finance" /><span class="color-dark">
+                                        Value Trans Point's Only
+                                    </span>
+                                  
+							</div>
+
+							<div class="tab-content">
+							       <!-- <div class="tab-pane fade active in" id="eQUOTAll">All</div> -->
+							       <div class="tab-pane fade active in" id="eQUOT14Cars">
+							       Referred Points
+							       		<h4>List of Referred Points</h4>
+                                         <table id="car-ref-points-data">
+                                        </table>
+							       </div>
+							       <div class="tab-pane fade" id="eQUOT14Insu">Referrenced Points
+							       		<h4>List of Referrenced Points</h4>
+                              			<table id="car-refd-points-data">   </table>
+							       </div>
+							       <div class="tab-pane fade" id="eQUOT14SerMai">Blog Points
+									       <h4>List of Blog Points</h4>
+									       <table id="car-blog-points">
+
+		                                        </table>
+							       </div>
+							       <div class="tab-pane fade" id="eQUOT14Trans">Review Points
+							       <h4>List of Review Points</h4>
+									       <table id="car-review-points">
+
+		                                        </table></div>
+
+							       <div class="tab-pane fade" id="eQUOT14Finance">Transanction Points
+							       		<h4>List of Value Transanction Points</h4>
+                              			<table id="car-valTrans-points"></table>
+							       </div>
+							       
+							</div>
+                          <!-- end radio button inline -->
+
+                             
+                          </div>
+<!-- end of Loyality program -->
                             <div id="l2Profile1" class="tab-pane fade">
                                <div class="col-md-18">
 

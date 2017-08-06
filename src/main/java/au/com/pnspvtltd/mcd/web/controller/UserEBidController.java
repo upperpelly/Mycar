@@ -37,6 +37,7 @@ import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.BlogPointsVO;
 import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
@@ -46,6 +47,8 @@ import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
+import au.com.pnspvtltd.mcd.web.model.ReferencedPointsVO;
+import au.com.pnspvtltd.mcd.web.model.ReviewPointsVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchServMaintVO;
@@ -64,11 +67,13 @@ import au.com.pnspvtltd.mcd.web.model.UserInsAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
+import au.com.pnspvtltd.mcd.web.model.UserReferPointsVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminOtDateVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserServiceMaintAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserTranspAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
+import au.com.pnspvtltd.mcd.web.model.ValTransPointsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.repository.MyVehicleFuelExpensesRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleLogBookRepository;
@@ -129,6 +134,46 @@ public class UserEBidController {
 	{
 		LOGGER.debug("Received request to CarSearc");
 		return userEBidService.getSearchByUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getReferUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<UserReferPointsVO> getReferUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to loyality refer");
+		return userEBidService.getReferUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getReferencedUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<ReferencedPointsVO> getReferencedUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to loyality referenced");
+		return userEBidService.getReferencedUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getBlogUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<BlogPointsVO> getBlogUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to loyality blog");
+		return userEBidService.getBlogUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getReviewUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<ReviewPointsVO> getReviewUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to loyality Review");
+		return userEBidService.getReviewUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getValTransUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<ValTransPointsVO> getValTransUserId(@RequestParam("userid") Long userid)
+	{
+		LOGGER.debug("Received request to loyality Review");
+		return userEBidService.getValTransUserId(userid);
 		//return null;
 	}
 	

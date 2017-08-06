@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import au.com.pnspvtltd.mcd.domain.AdminAuto;
+import au.com.pnspvtltd.mcd.domain.BlogPoints;
 import au.com.pnspvtltd.mcd.domain.BlogTemplate;
 import au.com.pnspvtltd.mcd.domain.CarModelTemplate;
 import au.com.pnspvtltd.mcd.domain.ComingSoonUser;
@@ -43,7 +44,9 @@ import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
 import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
 import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
 import au.com.pnspvtltd.mcd.domain.PhotosTemplate;
+import au.com.pnspvtltd.mcd.domain.ReferencedPoints;
 import au.com.pnspvtltd.mcd.domain.RegoStateUrl;
+import au.com.pnspvtltd.mcd.domain.ReviewPoints;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.SearchInsurance;
@@ -76,7 +79,9 @@ import au.com.pnspvtltd.mcd.domain.TranspServiceQuotation;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
+import au.com.pnspvtltd.mcd.domain.UserReferPoints;
 import au.com.pnspvtltd.mcd.domain.UserReviewTemplate;
+import au.com.pnspvtltd.mcd.domain.ValTransPoints;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperPostCode;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperState;
@@ -88,6 +93,7 @@ import au.com.pnspvtltd.mcd.domain.VehicleDealerServMaintDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.domain.YoutubeTemplate;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
+import au.com.pnspvtltd.mcd.web.model.BlogPointsVO;
 import au.com.pnspvtltd.mcd.web.model.BlogTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
@@ -122,7 +128,9 @@ import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.PhotosTemplateVO;
+import au.com.pnspvtltd.mcd.web.model.ReferencedPointsVO;
 import au.com.pnspvtltd.mcd.web.model.RegoStateUrlVO;
+import au.com.pnspvtltd.mcd.web.model.ReviewPointsVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchServMaintVO;
@@ -154,8 +162,10 @@ import au.com.pnspvtltd.mcd.web.model.TempCarModelVideosVO;
 import au.com.pnspvtltd.mcd.web.model.TranspServiceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotationHistoryVO;
+import au.com.pnspvtltd.mcd.web.model.UserReferPointsVO;
 import au.com.pnspvtltd.mcd.web.model.UserReviewTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
+import au.com.pnspvtltd.mcd.web.model.ValTransPointsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperPostCodeVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperRegionVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperStateVO;
@@ -513,7 +523,87 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			}
 			return searchVO;
 		}
+		
+		// User Car/Search Details lead
+				public UserReferPointsVO toUserReferVO(final UserReferPoints search) {
 
+					UserReferPointsVO searchVO = new UserReferPointsVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
+				
+				// User Car/Search Details lead
+				public ReferencedPointsVO toRefercedVO(final ReferencedPoints search) {
+
+					ReferencedPointsVO searchVO = new ReferencedPointsVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
+				
+				// User Car/Search Details lead
+				public BlogPointsVO toBlogPointsVO(final BlogPoints search) {
+
+					BlogPointsVO searchVO = new BlogPointsVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
+
+				// User Car/Search Details lead
+				public ReviewPointsVO toReviewPointsVO(final ReviewPoints search) {
+
+					ReviewPointsVO searchVO = new ReviewPointsVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
+				
+				// User Car/Search Details lead
+				public ValTransPointsVO toValTransPointsVO(final ValTransPoints search) {
+
+					ValTransPointsVO searchVO = new ValTransPointsVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
+				
 		// User Car/Search Details lead
 				public InventoryVO toMyVehInvVO(final Inventory search) {
 

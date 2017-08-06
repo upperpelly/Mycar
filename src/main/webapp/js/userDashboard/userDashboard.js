@@ -990,6 +990,212 @@ $("#"+"fuelCard4").html(outLogT);
 		}	
 	// end of sell my vehicle
 
+		
+// start of reward points
+		
+		$scope.loyalityProgram = function(){
+			//alert("came here");
+			userId=$.jStorage.get('key').userId;
+			//fbUserId=$.jStorage.get("fbKey");
+
+			var wsURL = 'api/getReferUserId?userid='+userId;
+			// change here
+
+		   //$body.addClass("loading");
+		    	$http({
+					method : 'GET',
+					url : wsURL
+
+				}).success(function(result) {
+					//$body.removeClass("loading");
+					//alert("successfully retreived");
+					
+					 out3="";
+		        	   out3 += '<tr><th>'+"User Refer ID"+'</th><th>'+"Reference email"+'</th><th>'+"Points"+'</th><th>'+"AUD Value"+'</th><th>'+"Operation"+'</th></tr>';
+
+		        		   for(i=result.length-1;i>=0;i--)
+		       		{
+		        			   //alert("data"+JSON.stringify(result[i]));
+		       		out3= out3+'<tr>'+'<td>'+result[i].userReferPointId+'</td>'+'<td>'+result[i].referedEmailId+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleMVQuotationModal-' + result[i].repoId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleMVQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleMVQuotationModal">View</a></td></tr>';
+
+
+		       		}
+		        	   out3 = out3.replace(/>null</g, ">--NA--<");
+		        	   out3 = out3.replace(/>undefined</g, ">--NA--<");
+		        	   var LogQuotation = result;
+
+		        	   if(LogQuotation && result.length==0){
+		        	   outLogT="";
+		        	   outLogT='<h2>No records found</h2>';
+		        	   //forFinance("quo-model-data",outLogT);
+		        	   $("#"+"car-ref-points-data").html(outLogT);
+		        	   }else{
+		        	   //forFinance("quo-model-data",out3);
+		        	   $("#"+"car-ref-points-data").html(out3);
+				   }
+		        	   //registerEditDealerVehicleMVQuotationModal();
+		        	   		});
+		    	
+		    	
+		    	var wsURL = 'api/getReferencedUserId?userid='+userId;
+				// change here
+
+			   //$body.addClass("loading");
+			    	$http({
+						method : 'GET',
+						url : wsURL
+
+					}).success(function(result) {
+						//$body.removeClass("loading");
+						//alert("successfully retreived");
+						
+						 out3="";
+			        	   out3 += '<tr><th>'+"User Referenced ID"+'</th><th>'+"Referrenced Email"+'</th><th>'+"Points"+'</th><th>'+"Value"+'</th><th>'+"Operation"+'</th></tr>';
+
+			        		   for(i=result.length-1;i>=0;i--)
+			       		{
+			        			   //alert("data"+JSON.stringify(result[i]));
+			       		out3= out3+'<tr>'+'<td>'+result[i].referPointId+'</td>'+'<td>'+result[i].referencedEmailId+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleMVQuotationModal-' + result[i].repoId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleMVQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleMVQuotationModal">View</a></td></tr>';
+
+
+			       		}
+			        	   out3 = out3.replace(/>null</g, ">--NA--<");
+			        	   out3 = out3.replace(/>undefined</g, ">--NA--<");
+			        	   var LogQuotation = result;
+
+			        	   if(LogQuotation && result.length==0){
+			        	   outLogT="";
+			        	   outLogT='<h2>No records found</h2>';
+			        	   //forFinance("quo-model-data",outLogT);
+			        	   $("#"+"car-refd-points-data").html(outLogT);
+			        	   }else{
+			        	   //forFinance("quo-model-data",out3);
+			        	   $("#"+"car-refd-points-data").html(out3);
+					   }
+			        	   //registerEditDealerVehicleMVQuotationModal();
+			        	    	});
+			    	
+			    	
+			    	var wsURL = 'api/getBlogUserId?userid='+userId;
+					// change here
+
+				   //$body.addClass("loading");
+				    	$http({
+							method : 'GET',
+							url : wsURL
+
+						}).success(function(result) {
+							//$body.removeClass("loading");
+							//alert("successfully retreived");
+							
+							 out3="";
+				        	   out3 += '<tr><th>'+"User Blog ID"+'</th><th>'+"Blog Name"+'</th><th>'+"Points"+'</th><th>'+"Aud Value"+'</th><th>'+"Operation"+'</th></tr>';
+
+				        		   for(i=result.length-1;i>=0;i--)
+				       		{
+				        			   //alert("data"+JSON.stringify(result[i]));
+				       		out3= out3+'<tr>'+'<td>'+result[i].blogPointId+'</td>'+'<td>'+result[i].blogName+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleMVQuotationModal-' + result[i].repoId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleMVQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleMVQuotationModal">View</a></td></tr>';
+
+
+				       		}
+				        	   out3 = out3.replace(/>null</g, ">--NA--<");
+				        	   out3 = out3.replace(/>undefined</g, ">--NA--<");
+				        	   var LogQuotation = result;
+
+				        	   if(LogQuotation && result.length==0){
+				        	   outLogT="";
+				        	   outLogT='<h2>No records found</h2>';
+				        	   //forFinance("quo-model-data",outLogT);
+				        	   $("#"+"car-blog-points").html(outLogT);
+				        	   }else{
+				        	   //forFinance("quo-model-data",out3);
+				        	   $("#"+"car-blog-points").html(out3);
+						   }
+				        	   //registerEditDealerVehicleMVQuotationModal();
+				        	    	});
+				    	
+				    	var wsURL = 'api/getReviewUserId?userid='+userId;
+						// change here
+
+					   //$body.addClass("loading");
+					    	$http({
+								method : 'GET',
+								url : wsURL
+
+							}).success(function(result) {
+								//$body.removeClass("loading");
+								//alert("successfully retreived");
+								
+								 out3="";
+					        	   out3 += '<tr><th>'+"User Reveiw ID"+'</th><th>'+"Review Name"+'</th><th>'+"Points"+'</th><th>'+"Aud Value"+'</th><th>'+"Operation"+'</th></tr>';
+
+					        		   for(i=result.length-1;i>=0;i--)
+					       		{
+					        			   //alert("data"+JSON.stringify(result[i]));
+					       		out3= out3+'<tr>'+'<td>'+result[i].revPointId+'</td>'+'<td>'+result[i].revName+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleMVQuotationModal-' + result[i].repoId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleMVQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleMVQuotationModal">View</a></td></tr>';
+
+
+					       		}
+					        	   out3 = out3.replace(/>null</g, ">--NA--<");
+					        	   out3 = out3.replace(/>undefined</g, ">--NA--<");
+					        	   var LogQuotation = result;
+
+					        	   if(LogQuotation && result.length==0){
+					        	   outLogT="";
+					        	   outLogT='<h2>No records found</h2>';
+					        	   //forFinance("quo-model-data",outLogT);
+					        	   $("#"+"car-review-points").html(outLogT);
+					        	   }else{
+					        	   //forFinance("quo-model-data",out3);
+					        	   $("#"+"car-review-points").html(out3);
+							   }
+					        	   //registerEditDealerVehicleMVQuotationModal();
+					        	    	});
+		    	
+					    	var wsURL = 'api/getValTransUserId?userid='+userId;
+							// change here
+
+						   //$body.addClass("loading");
+						    	$http({
+									method : 'GET',
+									url : wsURL
+
+								}).success(function(result) {
+									//$body.removeClass("loading");
+									//alert("successfully retreived");
+									
+									 out3="";
+						        	   out3 += '<tr><th>'+"User Trans ID"+'</th><th>'+"TypeOfTrans"+'</th><th>'+"Points"+'</th><th>'+"Value"+'</th><th>'+"Operation"+'</th></tr>';
+
+						        		   for(i=result.length-1;i>=0;i--)
+						       		{
+						        			   //alert("data"+JSON.stringify(result[i]));
+						       		out3= out3+'<tr>'+'<td>'+result[i].valTransPointId+'</td>'+'<td>'+result[i].typeOfTrans+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleMVQuotationModal-' + result[i].repoId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleMVQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleMVQuotationModal">View</a></td></tr>';
+
+
+						       		}
+						        	   out3 = out3.replace(/>null</g, ">--NA--<");
+						        	   out3 = out3.replace(/>undefined</g, ">--NA--<");
+						        	   var LogQuotation = result;
+
+						        	   if(LogQuotation && result.length==0){
+						        	   outLogT="";
+						        	   outLogT='<h2>No records found</h2>';
+						        	   //forFinance("quo-model-data",outLogT);
+						        	   $("#"+"car-valTrans-points").html(outLogT);
+						        	   }else{
+						        	   //forFinance("quo-model-data",out3);
+						        	   $("#"+"car-valTrans-points").html(out3);
+								   }
+						        	   //registerEditDealerVehicleMVQuotationModal();
+						        	    	});
+		    	
+			    	
+			    					    	
+		}	
+	// end of reward points
+		
+		
 	
 // To get all car Quotations
 	

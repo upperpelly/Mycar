@@ -3,11 +3,14 @@ package au.com.pnspvtltd.mcd.service;
 import java.util.List;
 
 import au.com.pnspvtltd.mcd.domain.Search;
+import au.com.pnspvtltd.mcd.web.model.BlogPointsVO;
 import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
+import au.com.pnspvtltd.mcd.web.model.ReferencedPointsVO;
+import au.com.pnspvtltd.mcd.web.model.ReviewPointsVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchServMaintVO;
@@ -22,6 +25,8 @@ import au.com.pnspvtltd.mcd.web.model.UserEBidTransServVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
+import au.com.pnspvtltd.mcd.web.model.UserReferPointsVO;
+import au.com.pnspvtltd.mcd.web.model.ValTransPointsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 public interface UserEBidService {
@@ -34,6 +39,11 @@ public interface UserEBidService {
 	String whenUserEBidForTransServ(UserEBidTransServVO userEBidVO);
 	List<SearchVO> getSearchByUserId(Long userid);
 	List<InventoryVO> getSellMyVehByUserId(Long userid);
+	List<UserReferPointsVO> getReferUserId(Long userid);
+	List<ReferencedPointsVO> getReferencedUserId(Long userid);
+	List<BlogPointsVO> getBlogUserId(Long userid);
+	List<ReviewPointsVO> getReviewUserId(Long userid);
+	List<ValTransPointsVO> getValTransUserId(Long userid);
 	List<SearchFinanceVO> getFinanceByUserId(Long userid);
 	List<SearchInsuranceVO> getInsuranceByUserId(Long userid);
 	List<SearchServMaintVO> getServMaintByUserId(Long userid);
