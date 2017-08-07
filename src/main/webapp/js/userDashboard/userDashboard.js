@@ -1016,7 +1016,7 @@ $("#"+"fuelCard4").html(outLogT);
 		        		   for(i=result.length-1;i>=0;i--)
 		       		{
 		        			   //alert("data"+JSON.stringify(result[i]));
-		       		out3= out3+'<tr>'+'<td>'+result[i].userReferPointId+'</td>'+'<td>'+result[i].referedEmailId+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].actualPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleRUQuotationModal-' + result[i].userReferPointId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleRUQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleRUQuotationModal">View</a></td></tr>';
+		       		out3= out3+'<tr>'+'<td>'+result[i].userReferPointId+'</td>'+'<td>'+result[i].referedEmailId+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].actualPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerRUQuotationModal-' + result[i].userReferPointId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerRUQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerRUQuotationModal">View</a></td></tr>';
 
 
 		       		}
@@ -1055,7 +1055,7 @@ $("#"+"fuelCard4").html(outLogT);
 			        		   for(i=result.length-1;i>=0;i--)
 			       		{
 			        			   //alert("data"+JSON.stringify(result[i]));
-			       		out3= out3+'<tr>'+'<td>'+result[i].referPointId+'</td>'+'<td>'+result[i].referencedEmailId+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].actualPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleRDQuotationModal-' + result[i].referPointId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleRDQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleRDQuotationModal">View</a></td></tr>';
+			       		out3= out3+'<tr>'+'<td>'+result[i].referPointId+'</td>'+'<td>'+result[i].referencedEmailId+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].actualPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerRDQuotationModal-' + result[i].referPointId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerRDQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerRDQuotationModal">View</a></td></tr>';
 
 
 			       		}
@@ -1094,7 +1094,7 @@ $("#"+"fuelCard4").html(outLogT);
 				        		   for(i=result.length-1;i>=0;i--)
 				       		{
 				        			   //alert("data"+JSON.stringify(result[i]));
-				       		out3= out3+'<tr>'+'<td>'+result[i].blogPointId+'</td>'+'<td>'+result[i].blogName+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].actualPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleBGQuotationModal-' + result[i].repoId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleBGQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleBGQuotationModal">View</a></td></tr>';
+				       		out3= out3+'<tr>'+'<td>'+result[i].blogPointId+'</td>'+'<td>'+result[i].blogName+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].actualPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerBGQuotationModal-' + result[i].repoId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerBGQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerBGQuotationModal">View</a></td></tr>';
 
 
 				       		}
@@ -1132,7 +1132,7 @@ $("#"+"fuelCard4").html(outLogT);
 					        		   for(i=result.length-1;i>=0;i--)
 					       		{
 					        			   //alert("data"+JSON.stringify(result[i]));
-					       		out3= out3+'<tr>'+'<td>'+result[i].revPointId+'</td>'+'<td>'+result[i].revName+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].actualPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleMVQuotationModal-' + result[i].repoId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleMVQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleMVQuotationModal">View</a></td></tr>';
+					       		out3= out3+'<tr>'+'<td>'+result[i].revPointId+'</td>'+'<td>'+result[i].revName+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].actualPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerWRQuotationModal-' + result[i].revPointId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerWRQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerWRQuotationModal">View</a></td></tr>';
 
 
 					       		}
@@ -1149,7 +1149,7 @@ $("#"+"fuelCard4").html(outLogT);
 					        	   //forFinance("quo-model-data",out3);
 					        	   $("#"+"car-review-points").html(out3);
 							   }
-					        	   //registerEditDealerVehicleMVQuotationModal();
+					        	   registerEditDealerWRQuotationModal();
 					        	    	});
 		    	
 					    	var wsURL = 'api/getValTransUserId?userid='+userId;
@@ -1170,7 +1170,7 @@ $("#"+"fuelCard4").html(outLogT);
 						        		   for(i=result.length-1;i>=0;i--)
 						       		{
 						        			   //alert("data"+JSON.stringify(result[i]));
-						       		out3= out3+'<tr>'+'<td>'+result[i].valTransPointId+'</td>'+'<td>'+result[i].typeOfTrans+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].actualPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleVTQuotationModal-' + result[i].repoId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleVTQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleVTQuotationModal">View</a></td></tr>';
+						       		out3= out3+'<tr>'+'<td>'+result[i].valTransPointId+'</td>'+'<td>'+result[i].typeOfTrans+'</td>'+'<td>'+result[i].noOfPoints+'</td>'+'<td>'+result[i].actualPoints+'</td>'+'<td>'+result[i].audVal+'</td>'+'<td><a href="#" id="anchor-editDealerVTQuotationModal-' + result[i].repoId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVTQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVTQuotationModal">View</a></td></tr>';
 
 
 						       		}
@@ -1195,7 +1195,7 @@ $("#"+"fuelCard4").html(outLogT);
 		}	
 	// end of reward points
 		// start of valTranpoints
-		function registerEditDealerVTQuotationModal(){
+		function registerEditDealerVehicleVTQuotationModal(){
 
 
 			//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
@@ -1264,6 +1264,9 @@ $("#"+"fuelCard4").html(outLogT);
 	    					<tr><td>Provisional Points</td><td>' + data.noOfPoints + '</td></tr>\
 	    					<tr><td>Actual Points</td><td>' + data.actualPoints + '</td></tr>\
 	    					<tr><td>Creation Date</td><td>' + data.creationDate + '</td></tr>\
+	    					</table>\
+	    					<br/>\
+	    					<br/>\
 	    					</table></form>';
 				editDealerVTQuotationForm = editDealerVTQuotationForm.replace(/>null</g, ">--NA--<");
 				editDealerVTQuotationForm = editDealerVTQuotationForm.replace(/>undefined</g, ">--NA--<");
@@ -1325,7 +1328,7 @@ $("#"+"fuelCard4").html(outLogT);
 
 
 			//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
-			var editDealerBGQuotationModal = '<div class="modal fade" id="editDealerWRQuotationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+			var editDealerWRQuotationModal = '<div class="modal fade" id="editDealerWRQuotationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
 			    <div class="modal-dialog">\
 			        <div class="modal-content">\
 			            <div class="modal-header">\
@@ -1390,6 +1393,9 @@ $("#"+"fuelCard4").html(outLogT);
 	    					<tr><td>Provisional Points</td><td>' + data.noOfPoints + '</td></tr>\
 	    					<tr><td>Actual Points</td><td>' + data.actualPoints + '</td></tr>\
 	    					<tr><td>Creation Date</td><td>' + data.creationDate + '</td></tr>\
+	    					</table>\
+	    					<br/>\
+	    					<br/>\
 	    					</table></form>';
 				editDealerWRQuotationForm = editDealerWRQuotationForm.replace(/>null</g, ">--NA--<");
 				editDealerWRQuotationForm = editDealerWRQuotationForm.replace(/>undefined</g, ">--NA--<");
@@ -1448,7 +1454,7 @@ $("#"+"fuelCard4").html(outLogT);
 // end of Reviewpoint	
 		
 // start of BlogPoint
-		function registerEditDealerBGQuotationModal(){
+		function registerEditDealerVehicleBGQuotationModal(){
 
 
 			//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
@@ -1576,7 +1582,7 @@ $("#"+"fuelCard4").html(outLogT);
 
 		
 // start of ReferencedPoint
-		function registerEditDealerRDQuotationModal(){
+		function registerEditDealerVehicleRDQuotationModal(){
 
 
 			//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
@@ -1646,6 +1652,9 @@ $("#"+"fuelCard4").html(outLogT);
 	    					<tr><td>Provisional Points</td><td>' + data.noOfPoints + '</td></tr>\
 	    					<tr><td>Actual Points</td><td>' + data.actualPoints + '</td></tr>\
 	    					<tr><td>Creation Date</td><td>' + data.creationDate + '</td></tr>\
+	    					</table>\
+	    					<br/>\
+	    					<br/>\
 	    					</table></form>';
 				editDealerRDQuotationForm = editDealerRDQuotationForm.replace(/>null</g, ">--NA--<");
 				editDealerRDQuotationForm = editDealerRDQuotationForm.replace(/>undefined</g, ">--NA--<");
@@ -1704,7 +1713,7 @@ $("#"+"fuelCard4").html(outLogT);
 // end of ReferencedPoint		
 		
 // start of userReferPoint
-		function registerEditDealerRUQuotationModal(){
+		function registerEditDealerVehicleRUQuotationModal(){
 
 
 			//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
@@ -1761,7 +1770,7 @@ $("#"+"fuelCard4").html(outLogT);
 	    				console.log("Vehicle quotation view"+JSON.stringify(data));
 */						var editDealerRUQuotationForm = '<form id="edit-dealer-RU-quotation-content-form"><table>\
 	    					<table>\
-	    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Quotation Details</div></div>\
+	    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">User Refer Details</div></div>\
 	    					<tr><td>User Refer ID</td><td>' + data.userReferPointId + '</td></tr>\
 	    					<tr><td>' + quotIdHiddenField + '</td></tr>\
 	    					</table>\
@@ -1774,6 +1783,9 @@ $("#"+"fuelCard4").html(outLogT);
 	    					<tr><td>Provisional Points</td><td>' + data.noOfPoints + '</td></tr>\
 	    					<tr><td>Actual Points</td><td>' + data.actualPoints + '</td></tr>\
 	    					<tr><td>Creation Date</td><td>' + data.creationDate + '</td></tr>\
+	    					</table>\
+	    					<br/>\
+	    					<br/>\
 	    					</table></form>';
 				editDealerRUQuotationForm = editDealerRUQuotationForm.replace(/>null</g, ">--NA--<");
 				editDealerRUQuotationForm = editDealerRUQuotationForm.replace(/>undefined</g, ">--NA--<");
