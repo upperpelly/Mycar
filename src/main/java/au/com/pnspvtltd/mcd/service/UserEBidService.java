@@ -8,6 +8,7 @@ import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.LoyalityProgAdminVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.ReferencedPointsVO;
 import au.com.pnspvtltd.mcd.web.model.ReviewPointsVO;
@@ -44,6 +45,7 @@ public interface UserEBidService {
 	List<BlogPointsVO> getBlogUserId(Long userid);
 	List<ReviewPointsVO> getReviewUserId(Long userid);
 	List<ValTransPointsVO> getValTransUserId(Long userid);
+	List<LoyalityProgAdminVO> getLoayalityProgram();
 	List<SearchFinanceVO> getFinanceByUserId(Long userid);
 	List<SearchInsuranceVO> getInsuranceByUserId(Long userid);
 	List<SearchServMaintVO> getServMaintByUserId(Long userid);

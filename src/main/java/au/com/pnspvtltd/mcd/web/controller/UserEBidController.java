@@ -43,6 +43,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.LoyalityProgAdminVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
@@ -174,6 +175,14 @@ public class UserEBidController {
 	{
 		LOGGER.debug("Received request to loyality Review");
 		return userEBidService.getValTransUserId(userid);
+		//return null;
+	}
+	
+	@GetMapping(value = "getLoyalityProgram", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<LoyalityProgAdminVO> getLoayalityProgram()
+	{
+		LOGGER.debug("Received request to loyality admin");
+		return userEBidService.getLoayalityProgram();
 		//return null;
 	}
 	

@@ -39,6 +39,7 @@ import au.com.pnspvtltd.mcd.domain.FinanceEntity;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
+import au.com.pnspvtltd.mcd.domain.LoyalityProgAdmin;
 import au.com.pnspvtltd.mcd.domain.MyVehicle;
 import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
 import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
@@ -123,6 +124,7 @@ import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.LoyalityProgAdminVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
@@ -592,6 +594,22 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				public ValTransPointsVO toValTransPointsVO(final ValTransPoints search) {
 
 					ValTransPointsVO searchVO = new ValTransPointsVO();
+					try {
+						BeanUtils.copyProperties(searchVO, search);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return searchVO;
+				}
+				
+				// User Car/Search Details lead
+				public LoyalityProgAdminVO toLoyalityProgVO(final LoyalityProgAdmin search) {
+
+					LoyalityProgAdminVO searchVO = new LoyalityProgAdminVO();
 					try {
 						BeanUtils.copyProperties(searchVO, search);
 					} catch (IllegalAccessException e) {

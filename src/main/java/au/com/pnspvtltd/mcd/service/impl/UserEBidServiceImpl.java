@@ -23,6 +23,7 @@ import au.com.pnspvtltd.mcd.domain.DealerSearchTransp;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
+import au.com.pnspvtltd.mcd.domain.LoyalityProgAdmin;
 import au.com.pnspvtltd.mcd.domain.MyVehicle;
 import au.com.pnspvtltd.mcd.domain.ReferencedPoints;
 import au.com.pnspvtltd.mcd.domain.ReviewPoints;
@@ -49,6 +50,7 @@ import au.com.pnspvtltd.mcd.repository.DealerRepository;
 import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InventoryRepository;
+import au.com.pnspvtltd.mcd.repository.LoyalityProgAdminRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
 import au.com.pnspvtltd.mcd.repository.ReferencedPointsRepository;
 import au.com.pnspvtltd.mcd.repository.ReviewPointsRepository;
@@ -71,6 +73,7 @@ import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.LoyalityProgAdminVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.ReferencedPointsVO;
 import au.com.pnspvtltd.mcd.web.model.ReviewPointsVO;
@@ -119,6 +122,8 @@ public class UserEBidServiceImpl implements UserEBidService {
 	private BlogPointsRepository blogPointsRepository;
 	@Autowired
 	private ReviewPointsRepository reviewPointsRepository;
+	@Autowired
+	private LoyalityProgAdminRepository loyalityProgAdminRepository;
 	@Autowired
 	private ValTransPointsRepository valTransPointsRepository;
 	@Autowired
@@ -1008,6 +1013,20 @@ public class UserEBidServiceImpl implements UserEBidService {
 		ValTransPointsVO searchVO;
 		for(ValTransPoints search :searchs){
 			searchVO = domainModelUtil.toValTransPointsVO( search);
+			//BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+	}
+	
+	@Override
+	public List<LoyalityProgAdminVO> getLoayalityProgram() {
+		
+		List<LoyalityProgAdminVO> searchVOs = new ArrayList<LoyalityProgAdminVO>();
+		List<LoyalityProgAdmin> searchs = loyalityProgAdminRepository.getAllSearchCriteria();
+		LoyalityProgAdminVO searchVO;
+		for(LoyalityProgAdmin search :searchs){
+			searchVO = domainModelUtil.toLoyalityProgVO( search);
 			//BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
