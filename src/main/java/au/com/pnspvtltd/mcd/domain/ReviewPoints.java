@@ -36,7 +36,16 @@ public class ReviewPoints implements Serializable {
 	private double usdVal;
 	private Date creationDate;
 	private long idp;
+private String action;
 	
+	
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
+	}
 	public int getActualPoints() {
 		return actualPoints;
 	}

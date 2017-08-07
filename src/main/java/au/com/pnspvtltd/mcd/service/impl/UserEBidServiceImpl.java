@@ -234,6 +234,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 				valTransPoints.setId(search.getCarSearchId());
 				valTransPoints.setName("CarReq");
 				valTransPoints.setTypeOfTrans("CarReq");
+				valTransPoints.setAction("INITIATED");
 				valTransPoints.setNoOfPoints(5);
 				if (user.getValTransPoints() != null) {
 					user.getValTransPoints().add(valTransPoints);
@@ -251,6 +252,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 				valTransPointsFin.setId(searchFinance.getSearchFinanceId());
 				valTransPointsFin.setName("FinReq");
 				valTransPointsFin.setTypeOfTrans("FinReq");
+				valTransPoints.setAction("INITIATED");
 				valTransPointsFin.setNoOfPoints(5);
 				if (user.getValTransPoints() != null) {
 					user.getValTransPoints().add(valTransPointsFin);
@@ -269,6 +271,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 				valTransPointsIns.setId(searchInsurance.getSearchInsuranceId());
 				valTransPointsIns.setName("InsReq");
 				valTransPointsIns.setTypeOfTrans("InsReq");
+				valTransPoints.setAction("INITIATED");
 				valTransPointsIns.setNoOfPoints(5);
 				if (user.getValTransPoints() != null) {
 					user.getValTransPoints().add(valTransPointsIns);
@@ -522,6 +525,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 		valTransPoints.setId(searchFinance.getSearchFinanceId());
 		valTransPoints.setName("FinReq");
 		valTransPoints.setTypeOfTrans("FinReq");
+		valTransPoints.setAction("INITIATED");
 		valTransPoints.setNoOfPoints(5);
 		if (user.getValTransPoints() != null) {
 			user.getValTransPoints().add(valTransPoints);
@@ -600,6 +604,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 		valTransPoints.setId(searchInsurance.getSearchTranspId());
 		valTransPoints.setName("TranspReq");
 		valTransPoints.setTypeOfTrans("TranspReq");
+		valTransPoints.setAction("INITIATED");
 		valTransPoints.setNoOfPoints(5);
 		if (user.getValTransPoints() != null) {
 			user.getValTransPoints().add(valTransPoints);
@@ -693,6 +698,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 		valTransPoints.setId(searchInsurance.getSearchServMaintId());
 		valTransPoints.setName("ServMaint");
 		valTransPoints.setTypeOfTrans("ServMaint");
+		valTransPoints.setAction("INITIATED");
 		valTransPoints.setNoOfPoints(5);
 		if (user.getValTransPoints() != null) {
 			user.getValTransPoints().add(valTransPoints);
@@ -784,6 +790,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 				valTransPoints.setId(searchInsurance.getSearchInsuranceId());
 				valTransPoints.setName("InsReq");
 				valTransPoints.setTypeOfTrans("InsReq");
+				valTransPoints.setAction("INITIATED");
 				valTransPoints.setNoOfPoints(5);
 				if (user.getValTransPoints() != null) {
 					user.getValTransPoints().add(valTransPoints);
