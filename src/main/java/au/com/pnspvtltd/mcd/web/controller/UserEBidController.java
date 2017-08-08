@@ -290,7 +290,10 @@ public class UserEBidController {
 		return userEBidService.getMyVehicleByUserId(userid);
 		//return null;
 	}
-	
+	@PostMapping("eBid/userReferPoints")
+	public String userReferPoints(@RequestBody UserReferPointsVO userEBidVO) {
+		return userEBidService.whenUserReferUserId(userEBidVO);
+	}
 	@PostMapping("eBid/car")
 	public String eBidForCar(@RequestBody UserEBidVO userEBidVO) {
 		return userEBidService.whenUserEBidForCar(userEBidVO);

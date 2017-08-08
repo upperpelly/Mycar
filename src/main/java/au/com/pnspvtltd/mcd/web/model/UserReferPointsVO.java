@@ -17,6 +17,7 @@ import au.com.pnspvtltd.mcd.domain.SearchInsAdditionalDriv;
 public class UserReferPointsVO {
 
 	private Long userReferPointId;
+	private Long userId;
 	private String referedEmailId;
 	private String firstName;
 	private String lastName;
@@ -31,6 +32,14 @@ public class UserReferPointsVO {
 	private String action;
 	
 	
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
 	public String getAction() {
 		return action;
 	}

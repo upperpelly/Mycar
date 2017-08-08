@@ -149,6 +149,35 @@ public class UserEBidServiceImpl implements UserEBidService {
 	@Autowired
 	private DomainModelUtil domainModelUtil;
 
+
+	@Override
+	@Transactional
+	public String whenUserReferUserId(UserReferPointsVO userReferPointsVO) {
+User user = userRepository.findOne(userReferPointsVO.getUserId());
+Calendar calendar = Calendar.getInstance();
+java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+// Start of loyality program search car
+UserReferPoints valTransPoints = new UserReferPoints();
+				valTransPoints.setCreationDate(ourJavaDateObject);
+				//valTransPoints.setId(search.getCarSearchId());
+				valTransPoints.setFirstName(userReferPointsVO.getFirstName());
+				valTransPoints.setLastName(userReferPointsVO.getLastName());
+				valTransPoints.setReferedEmailId(userReferPointsVO.getReferedEmailId());
+				valTransPoints.setAction("INITIATED");
+				valTransPoints.setNoOfPoints(5);
+				if (user.getValTransPoints() != null) {
+					user.getUserReferPoints().add(valTransPoints);
+				} else {
+					List<UserReferPoints> userInsuranceLeads = new ArrayList<>();
+					userInsuranceLeads.add(valTransPoints);
+					user.setUserReferPoints(userInsuranceLeads);
+				}
+				userRepository.flush();
+				return "success";
+
+}
+	
+	
 	@Override
 	@Transactional
 	public String whenUserEBidForCar(UserEBidVO userEBidVO) {

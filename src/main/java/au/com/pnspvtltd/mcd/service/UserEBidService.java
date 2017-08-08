@@ -32,6 +32,7 @@ import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 public interface UserEBidService {
 
+	String whenUserReferUserId(UserReferPointsVO userid);
 	String whenUserEBidForCar(UserEBidVO userEBidVO);
 	String whenUserEBidForInsurance(UserEBidInsuranceVO userEBidVO);
 	String createMyVehicle(UserMyVehicleVO userEBidVO);
