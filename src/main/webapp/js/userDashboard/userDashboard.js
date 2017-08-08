@@ -391,6 +391,47 @@ mainApp1.controller('myController13',function($scope, $http) {
 	   $('#servMaint4').html('<img src="images/LoadImg.gif"></img>');
 	   $('#datatranspserv').html('<img src="images/LoadImg.gif"></img>');
 	   $('#dataservmaint').html('<img src="images/LoadImg.gif"></img>');
+	   var url1 = window.location.hash;
+	    if(url1 == "#l2Profile1")
+	    	{
+	    		 $('.tabs li:eq(3) a').tab('show');
+				angular.element(document.getElementById('myController13')).scope().submitForm1();
+	    	}
+	    else if(url1 == "#profile"){
+	    	$('.tabs li:eq(1) a').tab('show');
+			angular.element(document.getElementById('myController13')).scope().submitForm1();
+	    }
+	    else if(url1 == "#travel-stories"){
+	    	//alert("biscuit");
+	    	$('.tabs li:eq(4) a').tab('show');
+			angular.element(document.getElementById('myController13')).scope().submitForm1();
+	    }
+	    else if(url1 == "#VehicleQuotation12"){
+	    	//alert("biscuit");
+	    	$('.tabs li:eq(2) a').tab('show');
+			carVehicleGarage();
+	    }
+	    
+	    if(url1 == "#travel-stories1"){
+			$('.tabs li:eq(4) a').tab('show');
+			$('#radioFin').tab('show').prop("checked", true);
+			angular.element(document.getElementById('myController13')).scope().submitForm1();
+		}
+		else if(url1 == "#travel-stories2"){
+			$('.tabs li:eq(4) a').tab('show');
+			$('#radioInsu').tab('show').prop("checked", true);
+			angular.element(document.getElementById('myController13')).scope().submitForm1();
+		}
+		else if(url1 == "#travel-stories3"){
+			$('.tabs li:eq(4) a').tab('show');
+			$('#radioServ').tab('show').prop("checked", true);
+			angular.element(document.getElementById('myController13')).scope().submitForm1();
+		}
+		else if(url1 == "#travel-stories4"){
+			$('.tabs li:eq(4) a').tab('show');
+			$('#radioTrans').tab('show').prop("checked", true);
+			angular.element(document.getElementById('myController13')).scope().submitForm1();
+		}
 	$scope.carEbidreq121214=true;
 	$scope.scarEbidreq8818=true;
 	$scope.qcarEbidreq99=true;
@@ -647,7 +688,8 @@ $("#"+"fuelCard4").html(outLogT);
 	
 // To get all My Vehicle Garage
 	
-	$scope.carVehicleGarage = function(){
+	//$scope.carVehicleGarage = function(){
+	function carVehicleGarage(){	
 		
 		userId=$.jStorage.get('key').userId;
 

@@ -562,7 +562,7 @@ tjq(window).load(function() {
     });
     
     // Mobile search
-    if (tjq('#mobile-search-tabs').length > 0) {
+    /*if (tjq('#mobile-search-tabs').length > 0) {
         mobile_search_tabs_slider = tjq('#mobile-search-tabs').bxSlider({
             mode: 'fade',
             infiniteLoop: false,
@@ -573,7 +573,7 @@ tjq(window).load(function() {
                 tjq('a[href="' + tjq($slideElement).children("a").attr("href") + '"]').tab('show');
             }
         });
-    }
+    }*/
 
     if ( typeof mobile_search_tabs_slider != 'undefined' ) { 
         var active_tab = tjq("body .search-box > ul.search-tabs li.active");

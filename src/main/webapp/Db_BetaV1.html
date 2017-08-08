@@ -56,7 +56,7 @@
 <script type="text/javascript" src="js/tabs.js"></script>
 <script type="text/javascript" src="js/jquery.jqtransform.js" ></script>
 <script type="text/javascript" src="js/script.js"></script>
-  <link rel="stylesheet" href="css12/reset.css" type="text/css" media="all">
+  <!-- <link rel="stylesheet" href="css12/reset.css" type="text/css" media="all"> -->
 <link rel="stylesheet" href="css12/layout.css" type="text/css" media="all">
  <link rel="stylesheet" href="font/flaticon.css" type="text/css" media="all">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -72,47 +72,55 @@ $('.LogBookButton').click(function(){
     $('#logTab').toggle(500);
 });
 </script>
-<script>
+<!-- <script>
 $(document).ready(function() {
 
     var url1 = window.location.hash;
     if(url1 == "#l2Profile1")
     	{
     		 $('.tabs li:eq(3) a').tab('show');
+			angular.element(document.getElementById('myController13')).scope().submitForm1();
     	}
     else if(url1 == "#profile"){
     	$('.tabs li:eq(1) a').tab('show');
+		angular.element(document.getElementById('myController13')).scope().submitForm1();
     }
     else if(url1 == "#travel-stories"){
     	//alert("biscuit");
     	$('.tabs li:eq(4) a').tab('show');
+		angular.element(document.getElementById('myController13')).scope().submitForm1();
     }
     else if(url1 == "#VehicleQuotation12"){
     	//alert("biscuit");
     	$('.tabs li:eq(2) a').tab('show');
+		angular.element(document.getElementById('myController13')).scope().carVehicleGarage();
     }
     
     if(url1 == "#travel-stories1"){
 		$('.tabs li:eq(4) a').tab('show');
 		$('#radioFin').tab('show').prop("checked", true);
+		angular.element(document.getElementById('myController13')).scope().submitForm1();
 	}
 	else if(url1 == "#travel-stories2"){
 		$('.tabs li:eq(4) a').tab('show');
 		$('#radioInsu').tab('show').prop("checked", true);
+		angular.element(document.getElementById('myController13')).scope().submitForm1();
 	}
 	else if(url1 == "#travel-stories3"){
 		$('.tabs li:eq(4) a').tab('show');
 		$('#radioServ').tab('show').prop("checked", true);
+		angular.element(document.getElementById('myController13')).scope().submitForm1();
 	}
 	else if(url1 == "#travel-stories4"){
 		$('.tabs li:eq(4) a').tab('show');
 		$('#radioTrans').tab('show').prop("checked", true);
+		angular.element(document.getElementById('myController13')).scope().submitForm1();
 	}
 
 
 
 });
-</script>
+</script> -->
 
 
 <!-- Main Style -->
@@ -168,26 +176,27 @@ function printDiv(divName) {
 <!-- Table alignment -->
 <style>
 table {
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
+    text-align:center;
     width: 100%;
 }
 
 th{
+padding-top:6px;
+padding-bottom:3px;
+padding-left:2px;
+padding-right:2px;
+text-align:center;
 background-color: rgb(253, 183, 20);
 }
 
-th, td {
-    text-align: left;
-    padding: 8px;
+tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {
-            background-color: rgb(253, 183, 20);
-        }
+tr:hover {
+    background-color: rgb(253, 183, 20);
+}
 </style>
 <style type="text/css">
         body {
@@ -1241,7 +1250,7 @@ $('.logBookBtn').click(function(){
 
 
 							        	<!-- Vehicle End -->
-                                        <table id="quo-model-data4">
+                                        <table id="quo-model-data4" class="table table-bordered table-striped table-hover">
                                         </table>
 									</div>
 							        <div class="tab-pane fade" id="vehicleQuoteBikes">Bikes Content</div>
