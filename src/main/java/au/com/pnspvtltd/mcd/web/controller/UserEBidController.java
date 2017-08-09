@@ -294,6 +294,10 @@ public class UserEBidController {
 	public String userReferPoints(@RequestBody UserReferPointsVO userEBidVO) {
 		return userEBidService.whenUserReferUserId(userEBidVO);
 	}
+	@PostMapping("eBid/referencedPoints")
+	public String referencedPoints(@RequestBody ReferencedPointsVO userEBidVO) {
+		return userEBidService.whenReferedUserId(userEBidVO);
+	}
 	@PostMapping("eBid/car")
 	public String eBidForCar(@RequestBody UserEBidVO userEBidVO) {
 		return userEBidService.whenUserEBidForCar(userEBidVO);

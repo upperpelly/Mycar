@@ -177,6 +177,34 @@ UserReferPoints valTransPoints = new UserReferPoints();
 
 }
 	
+	@Override
+	@Transactional
+	public String whenReferedUserId(ReferencedPointsVO referencedPointsVO) {
+		
+User user = userRepository.findOne(referencedPointsVO.getUserId());
+Calendar calendar = Calendar.getInstance();
+java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+// Start of loyality program search car
+ReferencedPoints valTransPoints = new ReferencedPoints();
+				valTransPoints.setCreationDate(ourJavaDateObject);
+				//valTransPoints.setId(search.getCarSearchId());
+				valTransPoints.setReferencedFirstName(referencedPointsVO.getReferencedFirstName());
+				valTransPoints.setReferencedLastName(referencedPointsVO.getReferencedLastName());
+				valTransPoints.setReferencedEmailId(referencedPointsVO.getReferencedEmailId());
+				valTransPoints.setAction("INITIATED");
+				valTransPoints.setNoOfPoints(5);
+				if (user.getValTransPoints() != null) {
+					user.getReferencedPoints().add(valTransPoints);
+				} else {
+					List<ReferencedPoints> userInsuranceLeads = new ArrayList<>();
+					userInsuranceLeads.add(valTransPoints);
+					user.setReferencedPoints(userInsuranceLeads);
+				}
+				userRepository.flush();
+				return "success";
+
+}
+	
 	
 	@Override
 	@Transactional
