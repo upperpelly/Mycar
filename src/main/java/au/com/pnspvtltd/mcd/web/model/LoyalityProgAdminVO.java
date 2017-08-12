@@ -75,6 +75,14 @@ public class LoyalityProgAdminVO {
 	private int buyCarDivByAct3;
 	private int buyCarDivByAct4;
 	// sell cars
+	// value of Trans
+	private String typeOfSell;
+	private String typeOfFin;
+	private String typeOfIns;
+	private String typeOfTrnp;
+	private String typeOfServ;
+	
+	
 	private String sellCarAction1;
 	private String sellCarAction2;
 	private String sellCarAction3;
@@ -130,6 +138,56 @@ public class LoyalityProgAdminVO {
 	
 	
 	
+	public String getTypeOfSell() {
+		return typeOfSell;
+	}
+
+
+	public void setTypeOfSell(String typeOfSell) {
+		this.typeOfSell = typeOfSell;
+	}
+
+
+	public String getTypeOfFin() {
+		return typeOfFin;
+	}
+
+
+	public void setTypeOfFin(String typeOfFin) {
+		this.typeOfFin = typeOfFin;
+	}
+
+
+	public String getTypeOfIns() {
+		return typeOfIns;
+	}
+
+
+	public void setTypeOfIns(String typeOfIns) {
+		this.typeOfIns = typeOfIns;
+	}
+
+
+	public String getTypeOfTrnp() {
+		return typeOfTrnp;
+	}
+
+
+	public void setTypeOfTrnp(String typeOfTrnp) {
+		this.typeOfTrnp = typeOfTrnp;
+	}
+
+
+	public String getTypeOfServ() {
+		return typeOfServ;
+	}
+
+
+	public void setTypeOfServ(String typeOfServ) {
+		this.typeOfServ = typeOfServ;
+	}
+
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "LOYALITYPROGAMID")
 	
 	public Long getLoyalityProgramId() {

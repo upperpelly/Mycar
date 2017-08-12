@@ -9574,6 +9574,35 @@ this.model_data_id = model_data_id;
 															}
 																};
 															// end of Insurance Dealer
+																
+																// start of Loyality Program Creation
+																$scope.submitCrtExtDlLylNewfrm = function() {
+																	//alert("inside creation SM Dealessssssr"+isValid+$scope.categorySvExt);
+																	/*if (isValid) {*/
+																	alert("division by"+$scope.revDivBy);
+																	var jsonInputToAPI = { "revName": $scope.reviewName, "revAction1": $scope.reviewNameAct, "revDivByAct1": $scope.revDivBy, "revAction2": $scope.reviewNameAct1, "revDivByAct2": $scope.revDivBy1,"blogName": $scope.blogName, "blogAction1": $scope.blogNameAct, "blogDivByAct1": $scope.blgDivBy, "blogAction2": $scope.blogNameAct1, "blogDivByAct2": $scope.blgDivBy1,"referredName": $scope.refedName, "referredAction1": $scope.refedNameAct, "referredDivByAct1": $scope.refedDivBy, "referredAction2": $scope.refedNameAct1, "referredDivByAct2": $scope.refedDivBy1,"userReferName": $scope.userRefedName, "userReferAction1": $scope.userRefedNameAct, "userReferDivByAct1": $scope.userReferDivBy, "userReferAction2": $scope.userRefedNameAct1, "userReferDivByAct2": $scope.userReferDivBy1,"typeOfTrans": $scope.valTransName, "buyCarDivByAct1": $scope.valTransDivBy, "buyCarAction1": $scope.valTransNameAct, "buyCarDivByAct2": $scope.valTransDivBy1, "buyCarAction2": $scope.valTransNameAct1, "typeOfSell": $scope.valSelTransName, "sellCarDivByAct1": $scope.valSelTransDivBy, "sellCarAction1": $scope.valSelTransNameAct, "sellCarDivByAct2": $scope.valSelTransDivBy1, "sellCarAction2": $scope.valSelTransNameAct1, "typeOfFin": $scope.valFinTransName, "finCarDivByAct1": $scope.valFinTransDivBy, "finCarAction1": $scope.valFinTransNameAct, "finCarDivByAct2": $scope.valFinTransDivBy1, "finCarAction2": $scope.valFinTransNameAct1, "typeOfIns": $scope.valInsTransName, "insCarDivByAct1": $scope.valInsTransDivBy, "insCarAction1": $scope.valInsTransNameAct, "insCarDivByAct2": $scope.valInsTransDivBy1, "insCarAction2": $scope.valInsTransNameAct1,"typeOfTrnp": $scope.valTrpTransName, "transpCarDivByAct1": $scope.valTrpTransDivBy, "transpCarAction1": $scope.valTrpTransNameAct, "transpCarDivByAct2": $scope.valTrpTransDivBy1, "transpCarAction2": $scope.valTrpTransNameAct1, "typeOfServ": $scope.valSrvTransName, "servCarDivByAct1": $scope.valSrvTransDivBy, "servCarAction1": $scope.valSrvTransNameAct, "servCarDivByAct2": $scope.valSrvTransDivBy1, "servCarAction2": $scope.valSrvTransNameAct1};
+																		
+																	//alert("jsonInputToAPI"+jsonInputToAPI);
+																	console.log(JSON.stringify(jsonInputToAPI));
+										                            var wsURL = 'api/loyalPrgCreation';
+																	//var wsURL = '';
+																	$body.addClass("loading");
+																		    $http({
+																						method : 'POST',
+																						url : wsURL,
+																						data: JSON.stringify(jsonInputToAPI)
+
+																					}).success(function(data) {
+																						$body.removeClass("loading");
+																						alert("Successfully Stored create loyality Program"+data.loyalityProgramId);
+																						//alert("Service & Maintenance Successfully Stored..");
+
+
+
+																									});
+																/*}*/
+																	};
+																// end of Insurance Dealer
 															
 															// start of Finance Dealer
 															// start of External Dealer SM Creation

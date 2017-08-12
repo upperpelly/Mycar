@@ -924,6 +924,23 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				}
 				
 				// start of external dealer Fin
+				public LoyalityProgAdminVO toLoyalityProgramVO(final LoyalityProgAdmin searchVO) {
+
+					LoyalityProgAdminVO dealerSearch = new LoyalityProgAdminVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
+				
+				// start of external dealer Fin
 				public ExternalDealerFinVO toExternalDealerFinVO(final ExternalDealerFin searchVO) {
 
 					ExternalDealerFinVO dealerSearch = new ExternalDealerFinVO();
@@ -1008,6 +1025,22 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					return dealerSearch;
 				}
 				// end of Ext Dealer S& M
+				
+				public LoyalityProgAdmin toLoyalityProgram(final LoyalityProgAdminVO searchVO) {
+
+					LoyalityProgAdmin dealerSearch = new LoyalityProgAdmin();
+					try {
+						BeanUtils.copyProperties(dealerSearch,searchVO );
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
 				
 			// start of Service and Maintenance
 				// Dealer Vehicle Lead

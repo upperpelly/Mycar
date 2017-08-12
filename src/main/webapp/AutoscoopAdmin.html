@@ -3298,6 +3298,7 @@ Date is Required</b></span>
 															      <li><a data-toggle="tab" href="#ExtTpCreation">Transport Dealer Creation</a></li>
 															      <li><a data-toggle="tab" href="#ExtFinCreation">Financer's Dealer Creation</a></li>
 															      <li><a data-toggle="tab" href="#ExtInsCreation">Insurance's Dealer Creation</a></li>
+															      <li><a data-toggle="tab" href="#LoyalPrgCreation">Loyality Create Program</a></li>
 															    </ul>
 															  </li>
 														    
@@ -4080,7 +4081,7 @@ Date is Required</b></span>
 
 <!-- end of External Finance -->														    
 												<!-- Start of External Insurance -->
-												<!--  start of External Finance -->
+												
 														    <div id="ExtInsCreation" class="tab-pane fade">
 	<!--  start of create -->
 	 <h4><center>External Dealer Creation for Insurer's</center></h4>
@@ -4261,7 +4262,812 @@ Date is Required</b></span>
 
 												    
 												
-												<!-- End of External Insurance -->		    
+												<!-- End of External Insurance -->	
+												
+												<!-- Start of Loyality Program Records  -->
+												
+														    <div id="LoyalPrgCreation" class="tab-pane fade">
+	<!--  start of create -->
+	 <h4><center>Loyality Program </center></h4>
+															   
+																<div class="booking-section travelo-box" >
+																	<form class="booking-form" id="ExtDealerLylCreatefrm" name="ExtDealerLylCreatefrm" ng-submit="submitCrtExtDlLylNewfrm()" novalidate>
+															
+															
+															<div class="col-sm-2 col-md-2">
+															<input type="text" id="reviewName" name="reviewName"
+																ng-model="reviewName" class="input-text full-width"
+																value="" placeholder="Review Name"
+																required/>
+															<!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.companyInsExt.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.companyInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Company
+																	is Required</b></span> -->
+														</div>
+															<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="reviewNameAct" name="reviewNameAct" ng-model="reviewNameAct" placeholder="Retrieve Points(Fixed/Formulae)" required>
+																								<option value="" disabled selected>Calculate Points </option>
+																								<option>Fixed</option>
+																								<option>Formulae</option>
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="revDivBy"
+																name="revDivBy" ng-model="revDivBy"
+																class="input-text full-width" value=""
+																placeholder="Initial Provisional Points" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.revDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.revDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Review by Div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.revDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.revDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Review by Div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.revDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.revDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.postInsExt.$error.pattern"><b>Review by Div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.revDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.revDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.postInsExt.$error.pattern"><b>Review by Div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="reviewNameAct1" name="reviewNameAct1" ng-model="reviewNameAct1" placeholder="Complete" required>
+																								<option value="" disabled selected>Complete Trans</option>
+																								<!-- <option>Initiated</option> -->
+																								<!-- <option>Completed</option> -->
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>
+																			 <div class="col-sm-2 col-md-2">
+															<input type="text" id="revDivBy1"
+																name="revDivBy1" ng-model="revDivBy1"
+																class="input-text full-width" value=""
+																placeholder="Completion Division By" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.revDivBy1.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.revDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Review by Div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.revDivBy1.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.revDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Review by Div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.revDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.revDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.postInsExt.$error.pattern"><b>Review by Div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.revDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.revDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.postInsExt.$error.pattern"><b>Review by Div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<div class="clearfix"></div>
+														<div class="clearfix"></div>
+														<br />
+														<!--  Start of blog -->
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="blogName" name="blogName"
+																ng-model="blogName" class="input-text full-width"
+																value="" placeholder="Blog Name"
+																required/>
+															<!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.companyInsExt.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.companyInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Company
+																	is Required</b></span> -->
+														</div>
+															<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="blogNameAct" name="blogNameAct" ng-model="blogNameAct" placeholder="Retrieve Points(Fixed/Formulae)" required>
+																								<option value="" disabled selected>Calculate Points</option>
+																								<option>Fixed</option>
+																								<option>Formulae</option>
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="blgDivBy"
+																name="blgDivBy" ng-model="blgDivBy"
+																class="input-text full-width" value=""
+																placeholder="Initial Provisional Points" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.blgDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.blgDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Blog div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.blgDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.blgDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Blog div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.blgDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.blgDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.blgDivBy.$error.pattern"><b>Blog div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.blgDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.blgDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.blgDivBy.$error.pattern"><b>Blog div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="blogNameAct1" name="blogNameAct1" ng-model="blogNameAct1" placeholder="Complete" required>
+																								<option value="" disabled selected>Complete</option>
+																								<!-- <option>Initiated</option> 
+																								<option>Completed</option> -->
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="blgDivBy1"
+																name="blgDivBy1" ng-model="blgDivBy1"
+																class="input-text full-width" value=""
+																placeholder="Completed Division By" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.blgDivBy1.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.blgDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Blog div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.blgDivBy1.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.blgDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Blog div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.blgDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.blgDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.blgDivBy.$error.pattern"><b>Blog div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.blgDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.blgDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.blgDivBy.$error.pattern"><b>Blog div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<div class="clearfix"></div>
+														<div class="clearfix"></div>
+														<br/>
+														<!--  end of blog -->
+														<!--  Start of userRefer -->
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="userRefedName" name="userRefedName"
+																ng-model="userRefedName" class="input-text full-width"
+																value="" placeholder="User Reference Name"
+																required/>
+															<!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.companyInsExt.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.companyInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Company
+																	is Required</b></span> -->
+														</div>
+															<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="userRefedNameAct" name="userRefedNameAct" ng-model="userRefedNameAct" placeholder="Retrieve Points(Fixed/Formulae)" required>
+																								<option value="" disabled selected>Calculate Points</option>
+																								<option>Fixed</option>
+																								<option>Formulae</option>
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="userReferDivBy"
+																name="userReferDivBy" ng-model="userReferDivBy"
+																class="input-text full-width" value=""
+																placeholder="Provisional Points" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Referred div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Referred div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.refedDivBy.$error.pattern"><b>Referred div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.refedDivBy.$error.pattern"><b>Referred div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="userRefedNameAct1" name="userRefedNameAct1" ng-model="userRefedNameAct1" placeholder="Complete" required>
+																								<option value="" disabled selected>Complete Trans</option>
+																								<!-- <option>Initiated</option>
+																								<option>Completed</option> -->
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="userReferDivBy1"
+																name="userReferDivBy1" ng-model="userReferDivBy1"
+																class="input-text full-width" value=""
+																placeholder="Completion Division By" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Referred div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Referred div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.refedDivBy.$error.pattern"><b>Referred div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.refedDivBy.$error.pattern"><b>Referred div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+
+
+														<!--  end of userRefer -->
+														<div class="clearfix"></div>
+														<div class="clearfix"></div>
+														<br/>
+														<!--  Start of referred -->
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="refedName" name="refedName"
+																ng-model="refedName" class="input-text full-width"
+																value="" placeholder="Referred Name"
+																required/>
+															<!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.companyInsExt.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.companyInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Company
+																	is Required</b></span> -->
+														</div>
+															<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="refedNameAct" name="refedNameAct" ng-model="refedNameAct" placeholder="Retrieve Points(Fixed/Formulae)" required>
+																								<option value="" disabled selected>Calculate Points</option>
+																								<option>Fixed</option>
+																								<option>Formulae</option>
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="refedDivBy"
+																name="refedDivBy" ng-model="refedDivBy"
+																class="input-text full-width" value=""
+																placeholder="Provisional Points" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Referred div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Referred div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.refedDivBy.$error.pattern"><b>Referred div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.refedDivBy.$error.pattern"><b>Referred div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="refedNameAct1" name="refedNameAct1" ng-model="refedNameAct" placeholder="Complete" required>
+																								<option value="" disabled selected>Complete Trans</option>
+																								<!-- <option>Initiated</option>
+																								<option>Completed</option> -->
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="refedDivBy1"
+																name="refedDivBy1" ng-model="refedDivBy1"
+																class="input-text full-width" value=""
+																placeholder="Completion Division By" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Referred div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Referred div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.refedDivBy.$error.pattern"><b>Referred div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.refedDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.refedDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.refedDivBy.$error.pattern"><b>Referred div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<!--  end of referred -->
+														<div class="clearfix"></div>
+														<div class="clearfix"></div>
+														<br/>
+														<!--  Start of valtranspoints Car -->
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valTransName" name="valTransName"
+																ng-model="valTransName" class="input-text full-width"
+																value="" placeholder="Buy Value Transanction Name"
+																required/>
+															<!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.companyInsExt.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.companyInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Company
+																	is Required</b></span> -->
+														</div>
+															<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="valTransNameAct" name="valTransNameAct" ng-model="valTransNameAct" placeholder="Retrieve Points(Fixed/Formulae)" required>
+																								<option value="" disabled selected>Calculate Points</option>
+																								<option>Fixed</option>
+																								<option>Formulae</option>
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valTransDivBy"
+																name="valTransDivBy" ng-model="valTransDivBy"
+																class="input-text full-width" value=""
+																placeholder="Provisional Points" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Transanction div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Transanction div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="valTransNameAct1" name="valTransNameAct1" ng-model="valTransNameAct1" placeholder="Complete" required>
+																								<option value="" disabled selected>Complete Transanction</option>
+																								<!-- <option>Initiated</option>
+																								<option>Completed</option> -->
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valTransDivBy1"
+																name="valTransDivBy1" ng-model="valTransDivBy1"
+																class="input-text full-width" value=""
+																placeholder="Completion Referred Division By" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Transanction div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Transanction div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<!--  end of valtranspoints -->
+														<div class="clearfix"></div>
+														<div class="clearfix"></div>
+														<br/>
+														<!--  Start of valtranspoints Sell -->
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valSelTransName" name="valSelTransName"
+																ng-model="valSelTransName" class="input-text full-width"
+																value="" placeholder="Sell Value Transanction Name"
+																required/>
+															<!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.companyInsExt.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.companyInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Company
+																	is Required</b></span> -->
+														</div>
+															<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="valSelTransNameAct" name="valSelTransNameAct" ng-model="valSelTransNameAct" placeholder="Retrieve Points(Fixed/Formulae)" required>
+																								<option value="" disabled selected>Calculate Points</option>
+																								<option>Fixed</option>
+																								<option>Formulae</option>
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valSelTransDivBy"
+																name="valSelTransDivBy" ng-model="valSelTransDivBy"
+																class="input-text full-width" value=""
+																placeholder="Provisional Points" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valSelTransDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.valSelTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Transanction div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valSelTransDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.valSelTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Transanction div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														
+														<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="valSelTransNameAct1" name="valSelTransNameAct1" ng-model="valSelTransNameAct1" placeholder="Complete" required>
+																								<option value="" disabled selected>Complete Transanction</option>
+																								<!-- <option>Initiated</option>
+																								<option>Completed</option> -->
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valSelTransDivBy1"
+																name="valSelTransDivBy1" ng-model="valSelTransDivBy1"
+																class="input-text full-width" value=""
+																placeholder="Completion Division By" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valSelTransDivBy1.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.valSelTransDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Transanction div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valSelTransDivBy1.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.valSelTransDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Transanction div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<!--  end of valtranspoints sell-->
+														<div class="clearfix"></div>
+														<div class="clearfix"></div>
+														<br/>
+														<!--  Start of valtranspoints Fin -->
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valFinTransName" name="valFinTransName"
+																ng-model="valFinTransName" class="input-text full-width"
+																value="" placeholder="Finance Value Transanction Name"
+																required/>
+															<!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.companyInsExt.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.companyInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Company
+																	is Required</b></span> -->
+														</div>
+															<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="valFinTransNameAct" name="valFinTransNameAct" ng-model="valFinTransNameAct" placeholder="Retrieve Points(Fixed/Formulae)" required>
+																								<option value="" disabled selected>Calculate Points</option>
+																								<!-- <option>Initiated</option>
+																								<option>Completed</option> -->
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valFinTransDivBy"
+																name="valFinTransDivBy" ng-model="valFinTransDivBy"
+																class="input-text full-width" value=""
+																placeholder="Provisional Points" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valFinTransDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.valFinTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Insurance Transanction div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valFinTransDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.valFinTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Insurance Transanction div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														
+														<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="valFinTransNameAct1" name="valFinTransNameAct1" ng-model="valFinTransNameAct1" placeholder="Complete" required>
+																								<option value="" disabled selected>Complete Transanction</option>
+																								<!-- <!-- <option>Initiated</option>
+																								<option>Completed</option> --> -->
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valFinTransDivBy1"
+																name="valFinTransDivBy1" ng-model="valFinTransDivBy1"
+																class="input-text full-width" value=""
+																placeholder="Completed Finance Value Division By" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valFinTransDivBy1.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.valFinTransDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Insurance Transanction div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valFinTransDivBy1.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.valFinTransDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Insurance Transanction div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<!--  end of valtranspoints Fin-->
+														<div class="clearfix"></div>
+														<div class="clearfix"></div>
+														<br/>
+														<!--  Start of valtranspoints Ins -->
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valInsTransName" name="valInsTransName"
+																ng-model="valInsTransName" class="input-text full-width"
+																value="" placeholder="Insurance Value Transanction Name"
+																required/>
+															<!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.companyInsExt.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.companyInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Company
+																	is Required</b></span> -->
+														</div>
+															<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="valInsTransNameAct" name="valInsTransNameAct" ng-model="valInsTransNameAct" placeholder="Retrieve Points(Fixed/Formulae)" required>
+																								<option value="" disabled selected>Calculate Points</option>
+																								<option>Fixed</option>
+																								<option>Formulae</option>
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valInsTransDivBy"
+																name="valInsTransDivBy" ng-model="valInsTransDivBy"
+																class="input-text full-width" value=""
+																placeholder="Provisional Points" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valInsTransDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.valInsTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Insurance Transanction div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valInsTransDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.valInsTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Insurance Transanction div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														
+														<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="valInsTransNameAct1" name="valInsTransNameAct1" ng-model="valInsTransNameAct1" placeholder="Complete" required>
+																								<option value="" disabled selected>Complete Transanction</option>
+																								<!-- <option>Initiated</option>
+																								<option>Completed</option> -->
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valInsTransDivBy1"
+																name="valInsTransDivBy1" ng-model="valInsTransDivBy1"
+																class="input-text full-width" value=""
+																placeholder="Completed Value Insurance Division By" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valInsTransDivBy1.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.valInsTransDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Insurance Transanction div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valInsTransDivBy1.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.valInsTransDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Insurance Transanction div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<!--  end of valtranspoints ins-->
+														<div class="clearfix"></div>
+														<div class="clearfix"></div>
+														<br/>
+														<!--  Start of valtranspoints Transp -->
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valTrpTransName" name="valTrpTransName"
+																ng-model="valTrpTransName" class="input-text full-width"
+																value="" placeholder="Transport Value Transanction Name"
+																required/>
+															<!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.companyInsExt.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.companyInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Company
+																	is Required</b></span> -->
+														</div>
+															<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="valTrpTransNameAct" name="valTrpTransNameAct" ng-model="valTrpTransNameAct" placeholder="Retrieve Points(Fixed/Formulae)" required>
+																								<option value="" disabled selected>Calculate Points</option>
+																								<option>Fixed</option>
+																								<option>Formulae</option>
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valTrpTransDivBy"
+																name="valTrpTransDivBy" ng-model="valTrpTransDivBy"
+																class="input-text full-width" value=""
+																placeholder="Provisional Points" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTrpTransDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.valTrpTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Transport Transanction div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTrpTransDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.valTrpTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Transport Transanction div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														
+														<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="valTrpTransNameAct1" name="valTrpTransNameAct1" ng-model="valTrpTransNameAct1" placeholder="Complete" required>
+																								<option value="" disabled selected>Complete Transanction</option>
+																								<!-- <option>Initiated</option> -->
+																								<!-- <option>Completed</option> -->
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valTrpTransDivBy1"
+																name="valTrpTransDivBy1" ng-model="valTrpTransDivBy1"
+																class="input-text full-width" value=""
+																placeholder="Completed Transport Value Division By" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTrpTransDivBy1.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.valTrpTransDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Transport Transanction div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTrpTransDivBy1.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.valTrpTransDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Transport Transanction div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valTransDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.valTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<!--  end of valtranspoints ins-->	
+														<div class="clearfix"></div>
+														<div class="clearfix"></div>
+														<br/>
+														<!--  Start of valtranspoints Serv -->
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valSrvTransName" name="valSrvTransName"
+																ng-model="valSrvTransName" class="input-text full-width"
+																value="" placeholder="Service Value Transanction Name"
+																required/>
+															<!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.companyInsExt.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.companyInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Company
+																	is Required</b></span> -->
+														</div>
+															<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="valSrvTransNameAct" name="valSrvTransNameAct" ng-model="valSrvTransNameAct" placeholder="Retrieve Points (Fixed/Formulae)" required>
+																								<option value="" disabled selected>Calculate Points</option>
+																								<option>Fixed</option>
+																								<option>Formulae</option>
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valSrvTransDivBy"
+																name="valSrvTransDivBy" ng-model="valSrvTransDivBy"
+																class="input-text full-width" value=""
+																placeholder="Provisional Points" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valSrvTransDivBy.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.valSrvTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Service div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valSrvTransDivBy.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.valSrvTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Service div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valSrvTransDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.valSrvTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valSrvTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valSrvTransDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.valSrvTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valSrvTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														
+																													<div class="col-sm-2 col-md-2">
+																						<div class="selector">
+																							<select class="full-width" id="valSrvTransNameAct1" name="valSrvTransNameAct1" ng-model="valSrvTransNameAct1" placeholder="Complete" required>
+																								<option value="" disabled selected>Complete Transanction</option>
+																								<!-- <option>Initiated</option> -->
+																								<!-- <option>Completed</option> -->
+																							</select>
+																							<!-- <span style="color: red"
+																ng-show="ExtDealerInsCreatefrm.categoryInsExt.$error.required &amp;&amp; (!ExtDealerInsCreatefrm.categoryInsExt.$pristine || ExtDealerInsCreatefrm.$submitted)"><b>Category
+																	is Required</b></span> -->
+																						</div>
+																			 </div>    	
+																			 
+														<div class="col-sm-2 col-md-2">
+															<input type="text" id="valSrvTransDivBy1"
+																name="valSrvTransDivBy1" ng-model="valSrvTransDivBy1"
+																class="input-text full-width" value=""
+																placeholder="Completed Service Value Division By" ng-minlength="4"
+																ng-pattern="/^[0-9]*$/" ng-maxlength="4" required />
+															<!-- <span style="color:red" ng-show="ebidfinfrm.finVehicleValue.$error.required && (!ebidfinfrm.finVehicleValue.$pristine || ebidfinfrm.$submitted)"><b>Finance Vehicle value is Required</b></span> -->
+
+															<span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valSrvTransDivBy1.$error.pattern &amp;&amp; (!ExtDealerLylCreatefrm.valSrvTransDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Service div
+																	must be Numeric</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valSrvTransDivBy1.$error.required &amp;&amp; (!ExtDealerLylCreatefrm.valSrvTransDivBy1.$pristine || ExtDealerLylCreatefrm.$submitted)"><b>Value Service div
+																	is Required</b></span> <!-- <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valSrvTransDivBy.$error.minlength &amp;&amp; (!ExtDealerLylCreatefrm.valSrvTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valSrvTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits</b></span> <span style="color: red"
+																ng-show="ExtDealerLylCreatefrm.valSrvTransDivBy.$error.maxlength &amp;&amp; (!ExtDealerLylCreatefrm.valSrvTransDivBy.$pristine || ExtDealerLylCreatefrm.$submitted) &amp;&amp; !ExtDealerLylCreatefrm.valSrvTransDivBy.$error.pattern"><b>Value Transanction div
+																	must be of 4 digits only.</b></span> -->
+														</div>
+														<!--  end of valtranspoints ins-->			
+														<div class="clearfix"></div>
+														<div class="clearfix"></div>
+													
+													<br />
+													<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Create Loyality Program Record</button>
+										                                    </div>
+										                                </div>
+													
+																	
+
+																		
+																		
+																		</div>
+																	
+																</form>
+																
+																
+																
+	<!--  end of create -->
+															
+															
+															<!-- Lead for Extern start-->
+																
+																<!-- end -->
+														    </div>
+
+												    
+												
+												
+												<!-- end of Loyality Program records -->
+													    
 														    </div>
                                                    <!--  End of S&M Dealer Creation -->
 

@@ -47,6 +47,7 @@ import au.com.pnspvtltd.mcd.repository.ExternalDealerInsRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerRepositoryFin;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerTpRepository;
+import au.com.pnspvtltd.mcd.repository.LoyalityProgAdminRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
@@ -85,6 +86,7 @@ import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.LoyalityProgAdminVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
@@ -124,6 +126,9 @@ public class DealerController {
 	
 	@Autowired
 	ExternalDealerInsRepository externalDealerInsRepository;
+	
+	@Autowired
+	LoyalityProgAdminRepository loyalityProgAdminRepository;
 	
 	@Autowired
 	ExternalDealerRepositoryFin externalDealerepositoryFin;
@@ -592,6 +597,22 @@ public class DealerController {
 		HttpStatus status = HttpStatus.OK;
 		response.setStatus(HttpStatus.CREATED.value());
 		ExternalDealerInsVO externalDealerVO = domainModelUtil.toExternalDealerInsVO(externalDealerInsRepository.save(domainModelUtil.toExternalDealerIns(userVO)));
+		return new ResponseEntity<>(externalDealerVO, status);
+		
+	}
+	
+	@PostMapping(value = "loyalPrgCreation", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<LoyalityProgAdminVO> loyalPrgCreation(@RequestBody LoyalityProgAdminVO userVO, HttpServletResponse response) {
+		LOGGER.debug("Loyality program Creation");
+		
+		 // (2) create a java sql date object we want to insert
+	    Calendar calendar = Calendar.getInstance();
+	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+	    
+		userVO.setCreationDate(ourJavaDateObject);
+		HttpStatus status = HttpStatus.OK;
+		response.setStatus(HttpStatus.CREATED.value());
+		LoyalityProgAdminVO externalDealerVO = domainModelUtil.toLoyalityProgramVO(loyalityProgAdminRepository.save(domainModelUtil.toLoyalityProgram(userVO)));
 		return new ResponseEntity<>(externalDealerVO, status);
 		
 	}
