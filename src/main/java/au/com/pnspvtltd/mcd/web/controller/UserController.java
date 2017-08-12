@@ -103,6 +103,7 @@ public class UserController {
 		HttpStatus status = HttpStatus.OK;
 		if (user == null) {
 			user = userService.createUser(userVO);
+			user.setLoyalityFlag(true);
 			response.setStatus(HttpStatus.CREATED.value());
 			return new ResponseEntity<>(user, status);
 		} 

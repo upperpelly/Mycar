@@ -3,7 +3,6 @@
 <head>
 <meta name="google-site-verification"
 	content="F2hekfX-gQ8sd_-yENZJ7cpn69zbYuvNh4P1C4wttzs" />
-
 <!-- Page Title -->
 <title>AutoScoop</title>
 
@@ -22,8 +21,9 @@
 </script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
-<!-- <script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.countdown.min.js"></script> -->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<!-- <script src="assets/js/jquery.countdown.min.js"></script> -->
 <!-- added end -->
  <script type="application/ld+json">
 	 	 {
@@ -513,9 +513,9 @@ function onSignInG()
 <!-- End Gmail -->
 
 
-<script
+<!-- <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
-<!-- <script src="js/angular-resource.js"></script>
+ --><!-- <script src="js/angular-resource.js"></script>
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script> -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
@@ -591,7 +591,7 @@ function onSignInG()
         
         function redirectWithLoy() {
             if (alreadyLogged()) {
-                var url = "Db_BetaV1.html";
+                var url = "Db_BetaV1.html#loyalityProgram";
                 window.location = url;
             }
             else {
@@ -974,7 +974,7 @@ table {
 				</div>
 			</div>
 			<div id="travelo-login" class="travelo-login-box travelo-box">
-				<div class="login-social">
+				<div class="login-social" ng-hide="">
 					<a href="#" class="button login-facebook" onclick="login()"> <i
 						class="soap-icon-facebook"></i>Login with Facebook
 					</a> <a href="#" class="button login-googleplus" onclick="onSignInG()">
@@ -5091,6 +5091,99 @@ table {
 		<div class="signinmodal">
 			<!-- Place at bottom of page -->
 		</div>
+		<button type="button" id="loyalityBtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#loyalityModal" ng-hide="true">Open Modal</button>
+		<!-- Modal Loyality Start -->
+		  <div class="modal fade" id="loyalityModal" role="dialog">
+		    <div class="modal-dialog">
+		    
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title" style="color:#bd191e">Your Feedback Matters!!!</h4>
+		        </div>
+		        <div class="modal-body">
+		          <p style="color:#bd191e">Please help us, How do you got to know ?</p>
+		          <form name="loyalityFrm" id="loyalityFrm" ng-submit="" novalidate>
+		          	<div class="row">
+						<div class="col-sm-3 col-md-3">
+							<label>Social Media</label>
+						</div>
+						<div class="col-sm-9 col-md-9">
+							<div class="radio checked">
+								<label><input type="radio"  value="Facebook"  ng-model="loyalityRadio" ng-click="" name="loyalityRadio">Facebook</label>
+							</div><!--class="newUsedCarEbid"  -->
+							<div class="radio">
+								<label><input type="radio" value="Google" ng-model="loyalityRadio" ng-click="" name="loyalityRadio">Google</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" value="Twitter"  ng-model="loyalityRadio" ng-click="" name="loyalityRadio">Twitter</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" value="LinkedIn"  ng-model="loyalityRadio" ng-click="" name="loyalityRadio">Linked in</label>
+							</div>
+							<div class="seperator"><label>OR</label></div>
+							<div class="radio">
+								<label><input type="radio" value="friends" ng-model="loyalityRadio" ng-click="" name="loyalityRadio">Friends (Reward points will be added to the referred Friend)</label>
+							</div>
+						</div>
+					</div>
+					<div class="row" ng-show="loyalityRadio == 'friends'">
+		          		<div class="col-sm-3 col-md-3">
+							
+						</div>
+						<div class="col-sm-8 col-md-8">
+							<label style="color:#bd191e">Please provide Friends info</label>							
+							
+						</div>
+		          	</div><br/>
+		          	<div class="row" ng-show="loyalityRadio == 'friends'">
+		          		<div class="col-sm-3 col-md-3">
+							<label></label>
+						</div>
+						<div class="col-sm-8 col-md-8">
+							<input type="text" id="loyalityEmail" name="loyalityEmail"
+																ng-model="loyalityEmail" class="input-text full-width"
+																value="" placeholder="Friend s Email ID"/>
+							
+						</div>
+		          	</div><br/>
+		          	<div class="row" ng-show="loyalityRadio == 'friends'">
+		          		<div class="col-sm-3 col-md-3"></div>
+		          		<div class="col-sm-4 col-md-4">
+							<input type="text" id="loyalityFname" name="loyalityFname"
+																ng-model="loyalityFname" class="input-text full-width"
+																value="" placeholder="First Name"/>
+						</div>
+						<div class="col-sm-4 col-md-4">
+							<input type="text" id="loyalityFname" name="loyalityLname"
+																ng-model="loyalityLname" class="input-text full-width"
+																value="" placeholder="Last Name"/>
+						</div>
+						
+		          	</div><br/>
+		          	<div class="row" ng-show="loyalityRadio == 'friends'">
+		          		<div class="col-sm-3 col-md-3"></div>
+		          		<div class="col-sm-8 col-md-8">
+		          					          	<button type="button" class="btn btn-info btn-block">Add points to Reffered</button>
+						</div>
+		          	</div>
+					<div class="row" ng-hide="loyalityRadio == 'friends'">
+		          		<div class="col-sm-3 col-md-3"></div>
+		          		<div class="col-sm-8 col-md-8">
+		          					          	<button type="button" class="btn btn-info btn-block">Save the Feedback</button>
+						</div>
+		          	</div>
+		          </form>
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		        </div>
+		      </div>
+		      
+		    </div>
+		  </div>
+		  <!-- Loyality ENd -->
 	
 	</div>
 

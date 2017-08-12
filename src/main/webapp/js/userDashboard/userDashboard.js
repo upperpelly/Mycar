@@ -395,42 +395,57 @@ mainApp1.controller('myController13',function($scope, $http) {
 	    if(url1 == "#l2Profile1")
 	    	{
 	    		 $('.tabs li:eq(3) a').tab('show');
-				angular.element(document.getElementById('myController13')).scope().submitForm1();
+	    		 carLogBook();
+	    		 //angular.element(document.getElementById('myController13')).scope().submitForm1();
 	    	}
 	    else if(url1 == "#profile"){
 	    	$('.tabs li:eq(1) a').tab('show');
-			angular.element(document.getElementById('myController13')).scope().submitForm1();
+			//angular.element(document.getElementById('myController13')).scope().submitForm1();
 	    }
 	    else if(url1 == "#travel-stories"){
 	    	//alert("biscuit");
 	    	$('.tabs li:eq(4) a').tab('show');
-			angular.element(document.getElementById('myController13')).scope().submitForm1();
+	    	carEbidRequest();
+			//angular.element(document.getElementById('myController13')).scope().submitForm1();
 	    }
 	    else if(url1 == "#VehicleQuotation12"){
 	    	//alert("biscuit");
 	    	$('.tabs li:eq(2) a').tab('show');
 			carVehicleGarage();
 	    }
+	    else if(url1 == "#loyalityProgram"){
+	    	//alert("biscuit");
+	    	$('.tabs li:eq(7) a').tab('show');
+	    	loyalityProgram();
+	    }else if(url1 == "#sellMyVehicle"){
+	    	//alert("biscuit");
+	    	$('.tabs li:eq(6) a').tab('show');
+	    	sellMyVehicle();
+	    }
 	    
 	    if(url1 == "#travel-stories1"){
 			$('.tabs li:eq(4) a').tab('show');
 			$('#radioFin').tab('show').prop("checked", true);
-			angular.element(document.getElementById('myController13')).scope().submitForm1();
+			carEbidRequest();
+			//angular.element(document.getElementById('myController13')).scope().submitForm1();
 		}
 		else if(url1 == "#travel-stories2"){
 			$('.tabs li:eq(4) a').tab('show');
 			$('#radioInsu').tab('show').prop("checked", true);
-			angular.element(document.getElementById('myController13')).scope().submitForm1();
+			carEbidRequest();
+			//angular.element(document.getElementById('myController13')).scope().submitForm1();
 		}
 		else if(url1 == "#travel-stories3"){
 			$('.tabs li:eq(4) a').tab('show');
 			$('#radioServ').tab('show').prop("checked", true);
-			angular.element(document.getElementById('myController13')).scope().submitForm1();
+			carEbidRequest();
+			//angular.element(document.getElementById('myController13')).scope().submitForm1();
 		}
 		else if(url1 == "#travel-stories4"){
 			$('.tabs li:eq(4) a').tab('show');
 			$('#radioTrans').tab('show').prop("checked", true);
-			angular.element(document.getElementById('myController13')).scope().submitForm1();
+			carEbidRequest();
+			//angular.element(document.getElementById('myController13')).scope().submitForm1();
 		}
 	$scope.carEbidreq121214=true;
 	$scope.scarEbidreq8818=true;
@@ -572,8 +587,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 	
 // To get all My Log Book
 	
-	$scope.carLogBook = function(){
-		
+	//$scope.carLogBook = function(){
+	function carLogBook(){	
 		userId=$.jStorage.get('key').userId;
 		var wsURL = 'api/getLogBookByUserId?userid='+userId;
 		// change here
@@ -981,7 +996,8 @@ $("#"+"fuelCard4").html(outLogT);
 
 	// start of sell my vehicle
 		
-		$scope.sellMyVehicle = function(){
+		//$scope.sellMyVehicle = function(){
+		function sellMyVehicle(){
 			//alert("came here");
 			userId=$.jStorage.get('key').userId;
 			//fbUserId=$.jStorage.get("fbKey");
@@ -1035,7 +1051,8 @@ $("#"+"fuelCard4").html(outLogT);
 		
 // start of reward points
 		
-		$scope.loyalityProgram = function(){
+		//$scope.loyalityProgram = function(){
+		function loyalityProgram(){
 			//alert("came here");
 			userId=$.jStorage.get('key').userId;
 			//fbUserId=$.jStorage.get("fbKey");
@@ -3650,7 +3667,9 @@ $("#"+"fuelCard4").html(outLogT);
 	
 	
 	//To get all CarSearch EBID request by userid
-	$scope.carEbidRequest = function(){
+	//$scope.carEbidRequest = function(){
+		
+	function carEbidRequest(){
 		
 		userId=$.jStorage.get('key').userId;
 		//fbUserId=$.jStorage.get("fbKey");
