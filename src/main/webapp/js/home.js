@@ -336,7 +336,51 @@
 
                 //social login end
 
-
+            	$scope.loyalityFrmSub = function (isValid){
+            		if(isValid){
+                		$('.loyaStatus').html('<i class="fa fa-spinner fa-spin" style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">Submitting,Please wait...<span>');
+                		var wsURL = 'api/eBid/referencedPoints';
+                		userId=$.jStorage.get('key').userId;
+                		alert(userId);
+                		var jsonInputToAPI = { "referPointId":null,"refUserId": userId, "referencedFirstName":$scope.loyalityFname, "referencedLastName": $scope.loyalityLname, "referencedEmailId": $scope.loyalityEmail};
+                		/*jsonInputToAPI = JSON.stringify(jsonInputToAPI);
+                		console.log(JSON.stringify(jsonInputToAPI));*/
+	            		$http({
+	                        method: 'POST',
+	                        url: wsURL,
+	                        data: jsonInputToAPI
+	
+	                    }).success(function (data) {
+	                        alert("successful");
+	                        $('.loyaStatus').html('<i style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">Successfully stored...<span>');
+	                    });
+            		}
+            	}
+            	
+            	//invite frm method
+            	
+            	$scope.inviteFrmSub = function (isValid){
+            		if(isValid){
+                		$('.loyaStatus').html('<i class="fa fa-spinner fa-spin" style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">Submitting,Please wait...<span>');
+                		var wsURL = 'api/eBid/userReferPoints';
+                		userId=$.jStorage.get('key').userId;
+                		alert(userId);
+                		var jsonInputToAPI = { "userReferPointId":null,"userId": userId, "firstName":$scope.inviteFname, "lastName": $scope.inviteLname, "referedEmailId": $scope.inviteEmail};
+                		/*jsonInputToAPI = JSON.stringify(jsonInputToAPI);
+                		console.log(JSON.stringify(jsonInputToAPI));*/
+	            		$http({
+	                        method: 'POST',
+	                        url: wsURL,
+	                        data: jsonInputToAPI
+	
+	                    }).success(function (data) {
+	                        alert("successful");
+	                        $('.loyaStatus').html('<i style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">Successfully stored...<span>');
+	                    });
+            		}
+            	}
+            	
+            	
                 // trans Lead post start
                 // Insurance lead post
                 $scope.posttransLead = function (isValid) {

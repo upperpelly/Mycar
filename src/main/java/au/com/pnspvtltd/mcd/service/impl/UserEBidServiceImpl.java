@@ -109,7 +109,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 	@Autowired
 	private SearchFinanceRepository searchFinanceRepository;
 	@Autowired
-	private	TranspServQuotationRepository transpServQuotationRepository;
+	private TranspServQuotationRepository transpServQuotationRepository;
 	@Autowired
 	private ServMaintQuotationRepository servMaintQuotationRepository;
 	@Autowired
@@ -149,63 +149,64 @@ public class UserEBidServiceImpl implements UserEBidService {
 	@Autowired
 	private DomainModelUtil domainModelUtil;
 
-
 	@Override
 	@Transactional
 	public String whenUserReferUserId(UserReferPointsVO userReferPointsVO) {
-User user = userRepository.findOne(userReferPointsVO.getUserId());
-Calendar calendar = Calendar.getInstance();
-java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
-// Start of loyality program search car
-UserReferPoints valTransPoints = new UserReferPoints();
-				valTransPoints.setCreationDate(ourJavaDateObject);
-				//valTransPoints.setId(search.getCarSearchId());
-				valTransPoints.setFirstName(userReferPointsVO.getFirstName());
-				valTransPoints.setLastName(userReferPointsVO.getLastName());
-				valTransPoints.setReferedEmailId(userReferPointsVO.getReferedEmailId());
-				valTransPoints.setAction("INITIATED");
-				valTransPoints.setNoOfPoints(5);
-				if (user.getValTransPoints() != null) {
-					user.getUserReferPoints().add(valTransPoints);
-				} else {
-					List<UserReferPoints> userInsuranceLeads = new ArrayList<>();
-					userInsuranceLeads.add(valTransPoints);
-					user.setUserReferPoints(userInsuranceLeads);
-				}
-				userRepository.flush();
-				return "success";
+		User user = userRepository.findOne(userReferPointsVO.getUserId());
+		Calendar calendar = Calendar.getInstance();
+		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		// Start of loyality program search car
+		UserReferPoints valTransPoints = new UserReferPoints();
+		valTransPoints.setCreationDate(ourJavaDateObject);
+		// valTransPoints.setId(search.getCarSearchId());
+		valTransPoints.setFirstName(userReferPointsVO.getFirstName());
+		valTransPoints.setLastName(userReferPointsVO.getLastName());
+		valTransPoints.setReferedEmailId(userReferPointsVO.getReferedEmailId());
+		valTransPoints.setAction("INITIATED");
+		valTransPoints.setNoOfPoints(5);
+		if (user.getValTransPoints() != null) {
+			user.getUserReferPoints().add(valTransPoints);
+		} else {
+			List<UserReferPoints> userInsuranceLeads = new ArrayList<>();
+			userInsuranceLeads.add(valTransPoints);
+			user.setUserReferPoints(userInsuranceLeads);
+		}
+		userRepository.flush();
+		return "success";
 
-}
-	
+	}
+
 	@Override
 	@Transactional
 	public String whenReferedUserId(ReferencedPointsVO referencedPointsVO) {
-		
-User user = userRepository.findOne(referencedPointsVO.getUserId());
-Calendar calendar = Calendar.getInstance();
-java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
-// Start of loyality program search car
-ReferencedPoints valTransPoints = new ReferencedPoints();
-				valTransPoints.setCreationDate(ourJavaDateObject);
-				//valTransPoints.setId(search.getCarSearchId());
-				valTransPoints.setReferencedFirstName(referencedPointsVO.getReferencedFirstName());
-				valTransPoints.setReferencedLastName(referencedPointsVO.getReferencedLastName());
-				valTransPoints.setReferencedEmailId(referencedPointsVO.getReferencedEmailId());
-				valTransPoints.setAction("INITIATED");
-				valTransPoints.setNoOfPoints(5);
-				if (user.getValTransPoints() != null) {
-					user.getReferencedPoints().add(valTransPoints);
-				} else {
-					List<ReferencedPoints> userInsuranceLeads = new ArrayList<>();
-					userInsuranceLeads.add(valTransPoints);
-					user.setReferencedPoints(userInsuranceLeads);
-				}
-				userRepository.flush();
-				return "success";
 
-}
-	
-	
+		// User user = userRepository.findOne(referencedPointsVO.getUserId());
+		User user = userRepository.findByEmailIgnoreCase(referencedPointsVO.getReferencedEmailId());
+		Calendar calendar = Calendar.getInstance();
+		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		// Start of loyality program search car
+		ReferencedPoints valTransPoints = new ReferencedPoints();
+		//valTransPoints.setIdp(referencedPointsVO.getUserId());
+		valTransPoints.setRefUserId(referencedPointsVO.getRefUserId());
+		valTransPoints.setCreationDate(ourJavaDateObject);
+		// valTransPoints.setId(search.getCarSearchId());
+		valTransPoints.setReferencedFirstName(referencedPointsVO.getReferencedFirstName());
+		valTransPoints.setReferencedLastName(referencedPointsVO.getReferencedLastName());
+		valTransPoints.setReferencedEmailId(referencedPointsVO.getReferencedEmailId());
+		valTransPoints.setAction("INITIATED");
+		valTransPoints.setNoOfPoints(5);
+		if (user.getValTransPoints() != null) {
+			user.getReferencedPoints().add(valTransPoints);
+		} else {
+			List<ReferencedPoints> userInsuranceLeads = new ArrayList<>();
+			userInsuranceLeads.add(valTransPoints);
+			user.setReferencedPoints(userInsuranceLeads);
+		}
+		userRepository.flush();
+		return "success";
+
+	}
+
 	@Override
 	@Transactional
 	public String whenUserEBidForCar(UserEBidVO userEBidVO) {
@@ -217,10 +218,10 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 		Search search = domainModelUtil.toSearch(userEBidVO.getSearchLead());
 		search.setLeadInitiatedBy(LeadInitiatedBy.USER);
 		// (2) create a java sql date object we want to insert
-	    Calendar calendar = Calendar.getInstance();
-	    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
-	    search.setCreationDate(ourJavaDateObject);
-	    search.setUserid(user.getUserId());
+		Calendar calendar = Calendar.getInstance();
+		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		search.setCreationDate(ourJavaDateObject);
+		search.setUserid(user.getUserId());
 		if (user.getSearch() != null) {
 			user.getSearch().add(search);
 		} else {
@@ -228,16 +229,16 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 			userVehicleLeads.add(search);
 			user.setSearch(userVehicleLeads);
 		}
-		
+
 		int searchCountTemp = user.getSearchCount();
-		user.setSearchCount(searchCountTemp+1);
+		user.setSearchCount(searchCountTemp + 1);
 		SearchFinance searchFinance = null;
 		searchFinance = domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
 		// (2) create a java sql date object we want to insert
-	    Calendar calendar12 = Calendar.getInstance();
-	    java.sql.Date ourJavaDateObject1 = new java.sql.Date(calendar12.getTime().getTime());
-	    searchFinance.setCreationDate(ourJavaDateObject1);
-	    searchFinance.setIdp(user.getUserId());
+		Calendar calendar12 = Calendar.getInstance();
+		java.sql.Date ourJavaDateObject1 = new java.sql.Date(calendar12.getTime().getTime());
+		searchFinance.setCreationDate(ourJavaDateObject1);
+		searchFinance.setIdp(user.getUserId());
 		// Create User Finance Lead when isfinance and searchFinance != null
 		if (userEBidVO.isFinance() && searchFinance != null) {
 
@@ -246,7 +247,7 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 			 * domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
 			 */
 			int searchInfCountTemp = user.getSearchFinCount();
-			user.setSearchFinCount(searchInfCountTemp+1);
+			user.setSearchFinCount(searchInfCountTemp + 1);
 			if (user.getSearchFinance() != null) {
 				user.getSearchFinance().add(searchFinance);
 			} else {
@@ -254,16 +255,14 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 				userFinanceLeads.add(searchFinance);
 				user.setSearchFinance(userFinanceLeads);
 			}
-			
-			
-			
+
 		}
 		SearchInsurance searchInsurance = null;
 		searchInsurance = domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
 		Calendar calendar14 = Calendar.getInstance();
-	    java.sql.Date ourJavaDateObject12 = new java.sql.Date(calendar14.getTime().getTime());
-	    searchInsurance.setCreationDate(ourJavaDateObject12);
-	    searchInsurance.setIdp(user.getUserId());
+		java.sql.Date ourJavaDateObject12 = new java.sql.Date(calendar14.getTime().getTime());
+		searchInsurance.setCreationDate(ourJavaDateObject12);
+		searchInsurance.setIdp(user.getUserId());
 		// Create User Insurance Lead when isinsurer and searchInsurance != null
 		if (userEBidVO.isInsurance() && searchInsurance != null) {
 
@@ -272,7 +271,7 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 			 * domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
 			 */
 			int searchInsCountTemp = user.getSearchInsCount();
-			user.setSearchInsCount(searchInsCountTemp+1);
+			user.setSearchInsCount(searchInsCountTemp + 1);
 			if (user.getSearchInsurance() != null) {
 				user.getSearchInsurance().add(searchInsurance);
 			} else {
@@ -280,248 +279,219 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 				userInsuranceLeads.add(searchInsurance);
 				user.setSearchInsurance(userInsuranceLeads);
 			}
-			
+
 		}
-		
+
 		userRepository.flush();
 		// Start of loyality program search car
-				ValTransPoints valTransPoints = new ValTransPoints();
-				valTransPoints.setCreationDate(ourJavaDateObject);
-				valTransPoints.setIdp(user.getUserId());
-				valTransPoints.setId(search.getCarSearchId());
-				valTransPoints.setName("CarReq");
-				valTransPoints.setTypeOfTrans("CarReq");
-				valTransPoints.setAction("INITIATED");
-				valTransPoints.setNoOfPoints(5);
-				if (user.getValTransPoints() != null) {
-					user.getValTransPoints().add(valTransPoints);
-				} else {
-					List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
-					userInsuranceLeads.add(valTransPoints);
-					user.setValTransPoints(userInsuranceLeads);
-				}
-				// end of loyality program
-				if (userEBidVO.isFinance() && searchFinance != null) {
-				// Start of loyality program for finance
-				ValTransPoints valTransPointsFin = new ValTransPoints();
-				valTransPointsFin.setCreationDate(ourJavaDateObject);
-				valTransPointsFin.setIdp(user.getUserId());
-				valTransPointsFin.setId(searchFinance.getSearchFinanceId());
-				valTransPointsFin.setName("FinReq");
-				valTransPointsFin.setTypeOfTrans("FinReq");
-				valTransPoints.setAction("INITIATED");
-				valTransPointsFin.setNoOfPoints(5);
-				if (user.getValTransPoints() != null) {
-					user.getValTransPoints().add(valTransPointsFin);
-				} else {
-					List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
-					userInsuranceLeads.add(valTransPointsFin);
-					user.setValTransPoints(userInsuranceLeads);
-				}
-				// end of loyality program
-				}
-				if (userEBidVO.isFinance() && searchFinance != null) {
-				// Start of loyality program for insurance
-				ValTransPoints valTransPointsIns = new ValTransPoints();
-				valTransPointsIns.setCreationDate(ourJavaDateObject);
-				valTransPointsIns.setIdp(user.getUserId());
-				valTransPointsIns.setId(searchInsurance.getSearchInsuranceId());
-				valTransPointsIns.setName("InsReq");
-				valTransPointsIns.setTypeOfTrans("InsReq");
-				valTransPoints.setAction("INITIATED");
-				valTransPointsIns.setNoOfPoints(5);
-				if (user.getValTransPoints() != null) {
-					user.getValTransPoints().add(valTransPointsIns);
-				} else {
-					List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
-					userInsuranceLeads.add(valTransPointsIns);
-					user.setValTransPoints(userInsuranceLeads);
-				}
-				// end of loyality program
-				}
-				
-/*
-		//
-		// Checking for following conditions to create Leads and Quotations for
-		// Dealers
-		// 1. {year, make, model, autoscooptrim} perfect match
-		// 2. Region, 3. Postcode
-		//
-
-		List<Inventory> inventories = inventoryRepository.getInventoryForTrim(search.getModelYear(),
-				search.getModelDisplay(), search.getModelTrim());
-
-		for (Inventory inventory : inventories) {
-
-			System.out.println("details for Dealer and Quotations Creation" + inventory.getRepoId()
-					+ inventory.getModelYear() + inventory.getModelDisplay() + inventory.getModelTrim());
-			Dealer dealer = inventory.getDealer();
-
-			DealerSearch dealerSearch = null;
-
-			// Create Dealer Vehicle Lead if
-			// he is a Dealer and
-			// check for region, postCode
-			// TODO: Rename isDealer to reflect whether the Dealer is eligible
-			// for Vehicle Lead
-			if (dealer.isDealer() && (checkDealerRegion(dealer, search.getPostCode())
-					|| checkDealerPostCode(dealer, search.getPostCode()))) {
-				System.out.println("isDealer" + dealer.isDealer() + "region and postcode is matching");
-				dealerSearch = domainModelUtil.toDealerSearch(userEBidVO.getSearchLead());
-				dealerSearch.setUserId(user.getUserId());
-				if (dealer.getDealSearch() != null) {
-					dealer.getDealSearch().add(dealerSearch);
-				} else {
-					List<DealerSearch> dealerVehicleLeads = new ArrayList<>();
-					dealerVehicleLeads.add(dealerSearch);
-					dealer.setDealSearch(dealerVehicleLeads);
-				}
-				inventoryRepository.flush();
-				// Create Quotation for Dealer matching Region and postCode
-				System.out.println("create quotation when region and postcode is matching" + dealer.isDealer());
-				createVehicleQuotation(user, dealer, search, dealerSearch, inventory);
+		ValTransPoints valTransPoints = new ValTransPoints();
+		valTransPoints.setCreationDate(ourJavaDateObject);
+		valTransPoints.setIdp(user.getUserId());
+		valTransPoints.setId(search.getCarSearchId());
+		valTransPoints.setName("CarReq");
+		valTransPoints.setTypeOfTrans("CarReq");
+		valTransPoints.setAction("INITIATED");
+		valTransPoints.setNoOfPoints(5);
+		if (user.getValTransPoints() != null) {
+			user.getValTransPoints().add(valTransPoints);
+		} else {
+			List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
+			userInsuranceLeads.add(valTransPoints);
+			user.setValTransPoints(userInsuranceLeads);
+		}
+		// end of loyality program
+		if (userEBidVO.isFinance() && searchFinance != null) {
+			// Start of loyality program for finance
+			ValTransPoints valTransPointsFin = new ValTransPoints();
+			valTransPointsFin.setCreationDate(ourJavaDateObject);
+			valTransPointsFin.setIdp(user.getUserId());
+			valTransPointsFin.setId(searchFinance.getSearchFinanceId());
+			valTransPointsFin.setName("FinReq");
+			valTransPointsFin.setTypeOfTrans("FinReq");
+			valTransPoints.setAction("INITIATED");
+			valTransPointsFin.setNoOfPoints(5);
+			if (user.getValTransPoints() != null) {
+				user.getValTransPoints().add(valTransPointsFin);
+			} else {
+				List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
+				userInsuranceLeads.add(valTransPointsFin);
+				user.setValTransPoints(userInsuranceLeads);
 			}
-
+			// end of loyality program
+		}
+		if (userEBidVO.isFinance() && searchFinance != null) {
+			// Start of loyality program for insurance
+			ValTransPoints valTransPointsIns = new ValTransPoints();
+			valTransPointsIns.setCreationDate(ourJavaDateObject);
+			valTransPointsIns.setIdp(user.getUserId());
+			valTransPointsIns.setId(searchInsurance.getSearchInsuranceId());
+			valTransPointsIns.setName("InsReq");
+			valTransPointsIns.setTypeOfTrans("InsReq");
+			valTransPoints.setAction("INITIATED");
+			valTransPointsIns.setNoOfPoints(5);
+			if (user.getValTransPoints() != null) {
+				user.getValTransPoints().add(valTransPointsIns);
+			} else {
+				List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
+				userInsuranceLeads.add(valTransPointsIns);
+				user.setValTransPoints(userInsuranceLeads);
+			}
+			// end of loyality program
 		}
 
-		// Create Dealer Leads from "Inventory make"
-		// Checking for following conditions to create Leads for Dealers from
-		// "inventory make"
-		// 1. IsDealer and
-		// 2. Region, Postcode
-		List<Inventory> inventorieMakes = inventoryRepository.getInventoryForMake(search.getModelDisplay());
-		for (Inventory inventory : inventorieMakes) {
-			System.out.println("details for matching Make from inventory repo" + inventory.getRepoId()
-					+ inventory.getModelYear() + inventory.getModelDisplay() + inventory.getModelTrim());
-			Dealer dealer = inventory.getDealer();
-
-			DealerSearch dealerSearch = null;
-
-			// Create Dealer Vehicle Lead if he is a Dealer
-			// check for region, postCode and IsDealer
-			// TODO: Rename isDealer to reflect whether the Dealer is eligible
-			// for Vehicle Lead
-			if (dealer.isDealer() && (checkDealerRegion(dealer, search.getPostCode())
-					|| checkDealerPostCode(dealer, search.getPostCode()))) {
-				dealerSearch = domainModelUtil.toDealerSearch(userEBidVO.getSearchLead());
-				dealerSearch.setUserId(user.getUserId());
-				if (dealer.getDealSearch() != null) {
-					dealer.getDealSearch().add(dealerSearch);
-				} else {
-					List<DealerSearch> dealerVehicleLeads = new ArrayList<>();
-					dealerVehicleLeads.add(dealerSearch);
-					dealer.setDealSearch(dealerVehicleLeads);
-				}
-			}
-
-			inventoryRepository.flush();
-
-		}
-
-		// Create Dealer Leads from "Dealer's make"
-		// Checking for following conditions to create Leads for Dealers from
-		// "Dealer's make"
-		// 1. Dealer make and
-		// 2. Region, Postcode
-		List<Dealer> dealerMakes = dealerRepository.getDealerForMake();
-		// boolean present12 = false;
-		for (Dealer dealer : dealerMakes) {
-			// present12 = true;
-
-			List<VehicleDealerMakeList> makeLists = dealer.getVehicleDealerMakeList();
-			for (VehicleDealerMakeList dealMake : makeLists) {
-				if (dealMake.getMake().equals(search.getModelDisplay())
-						&& (checkDealerRegion(dealer, search.getPostCode())
-								|| checkDealerPostCode(dealer, search.getPostCode()))) {
-					DealerSearch dealerSearch = null;
-					System.out.println(
-							"details for matching make from dealer's repo" + dealer.getDealerId() + dealMake.getMake());
-					// Create Dealer Vehicle Lead if he is a Dealer
-					// check for region, postCode and IsDealer
-					// TODO: Rename isDealer to reflect whether the Dealer is
-					// eligible
-					// for Vehicle Lead
-					if (dealer.isDealer() && (checkDealerRegion(dealer, search.getPostCode())
-							|| checkDealerPostCode(dealer, search.getPostCode()))) {
-						dealerSearch = domainModelUtil.toDealerSearch(userEBidVO.getSearchLead());
-						dealerSearch.setUserId(user.getUserId());
-						if (dealer.getDealSearch() != null) {
-							dealer.getDealSearch().add(dealerSearch);
-						} else {
-							List<DealerSearch> dealerVehicleLeads = new ArrayList<>();
-							dealerVehicleLeads.add(dealerSearch);
-							dealer.setDealSearch(dealerVehicleLeads);
-						}
-					}
-
-					dealerRepository.flush();
-				}
-			}
-
-		}
-
-		// Create Finance Leads when
-		// dealer isFinancer
-		List<Dealer> financeDealers = dealerRepository.getDealerForFinance(true);
-		for (Dealer dealer : financeDealers) {
-			DealerSearchFinance dealerSearchFinance = null;
-
-			if (userEBidVO.isFinance() && searchFinance != null) {
-				// Create Dealer Finance Lead if he provides finance
-
-				dealerSearchFinance = domainModelUtil.toDealerSearchFinance(userEBidVO.getFinanceLead());
-				dealerSearchFinance.setUserId(user.getUserId());
-				if (dealer.getDealSearchFinance() != null) {
-					dealer.getDealSearchFinance().add(dealerSearchFinance);
-				} else {
-					List<DealerSearchFinance> dealerFinanceLeads = new ArrayList<>();
-					dealerFinanceLeads.add(dealerSearchFinance);
-					dealer.setDealSearchFinance(dealerFinanceLeads);
-				}
-				dealerRepository.flush();
-			}
-
-			
-			 * if (dealer.isFinancer() && searchFinance != null &&
-			 * userEBidVO.isFinance()) { createFinanceQuotation(user, dealer,
-			 * searchFinance, dealerSearchFinance, inventory); } if
-			 * (dealer.isInsurer() && searchInsurance != null &&
-			 * userEBidVO.isInsurance()) { createInsuranceQuotation(user,
-			 * dealer, searchInsurance, dealerSearchInsurance, inventory); }
-			 
-		}
-
-		// Create insurance Leads
-		// when dealer isInsurer
-		List<Dealer> insuranceDealers = dealerRepository.getDealerForInsurance(true);
-		for (Dealer dealer : insuranceDealers) {
-			DealerSearchInsurance dealerSearchInsurance = null;
-
-			if (userEBidVO.isInsurance() && searchInsurance != null) {
-				// Create Dealer Insurance Lead if he provides insurance
-				if (dealer.isInsurer()) {
-					dealerSearchInsurance = domainModelUtil.toDealerSearchInsurance(userEBidVO.getInsuranceLead());
-					dealerSearchInsurance.setUserId(user.getUserId());
-					if (dealer.getDealSearchInsurance() != null) {
-						dealer.getDealSearchInsurance().add(dealerSearchInsurance);
-					} else {
-						List<DealerSearchInsurance> dealerInsuranceLeads = new ArrayList<>();
-						dealerInsuranceLeads.add(dealerSearchInsurance);
-						dealer.setDealSearchInsurance(dealerInsuranceLeads);
-					}
-				}
-			}
-
-			
-			 * if (dealer.isFinancer() && searchFinance != null &&
-			 * userEBidVO.isFinance()) { createFinanceQuotation(user, dealer,
-			 * searchFinance, dealerSearchFinance, inventory); } if
-			 * (dealer.isInsurer() && searchInsurance != null &&
-			 * userEBidVO.isInsurance()) { createInsuranceQuotation(user,
-			 * dealer, searchInsurance, dealerSearchInsurance, inventory); }
-			 
-			dealerRepository.flush();
-		}*/
+		/*
+		 * // // Checking for following conditions to create Leads and
+		 * Quotations for // Dealers // 1. {year, make, model, autoscooptrim}
+		 * perfect match // 2. Region, 3. Postcode //
+		 * 
+		 * List<Inventory> inventories =
+		 * inventoryRepository.getInventoryForTrim(search.getModelYear(),
+		 * search.getModelDisplay(), search.getModelTrim());
+		 * 
+		 * for (Inventory inventory : inventories) {
+		 * 
+		 * System.out.println("details for Dealer and Quotations Creation" +
+		 * inventory.getRepoId() + inventory.getModelYear() +
+		 * inventory.getModelDisplay() + inventory.getModelTrim()); Dealer
+		 * dealer = inventory.getDealer();
+		 * 
+		 * DealerSearch dealerSearch = null;
+		 * 
+		 * // Create Dealer Vehicle Lead if // he is a Dealer and // check for
+		 * region, postCode // TODO: Rename isDealer to reflect whether the
+		 * Dealer is eligible // for Vehicle Lead if (dealer.isDealer() &&
+		 * (checkDealerRegion(dealer, search.getPostCode()) ||
+		 * checkDealerPostCode(dealer, search.getPostCode()))) {
+		 * System.out.println("isDealer" + dealer.isDealer() +
+		 * "region and postcode is matching"); dealerSearch =
+		 * domainModelUtil.toDealerSearch(userEBidVO.getSearchLead());
+		 * dealerSearch.setUserId(user.getUserId()); if (dealer.getDealSearch()
+		 * != null) { dealer.getDealSearch().add(dealerSearch); } else {
+		 * List<DealerSearch> dealerVehicleLeads = new ArrayList<>();
+		 * dealerVehicleLeads.add(dealerSearch);
+		 * dealer.setDealSearch(dealerVehicleLeads); }
+		 * inventoryRepository.flush(); // Create Quotation for Dealer matching
+		 * Region and postCode System.out.println(
+		 * "create quotation when region and postcode is matching" +
+		 * dealer.isDealer()); createVehicleQuotation(user, dealer, search,
+		 * dealerSearch, inventory); }
+		 * 
+		 * }
+		 * 
+		 * // Create Dealer Leads from "Inventory make" // Checking for
+		 * following conditions to create Leads for Dealers from //
+		 * "inventory make" // 1. IsDealer and // 2. Region, Postcode
+		 * List<Inventory> inventorieMakes =
+		 * inventoryRepository.getInventoryForMake(search.getModelDisplay());
+		 * for (Inventory inventory : inventorieMakes) { System.out.println(
+		 * "details for matching Make from inventory repo" +
+		 * inventory.getRepoId() + inventory.getModelYear() +
+		 * inventory.getModelDisplay() + inventory.getModelTrim()); Dealer
+		 * dealer = inventory.getDealer();
+		 * 
+		 * DealerSearch dealerSearch = null;
+		 * 
+		 * // Create Dealer Vehicle Lead if he is a Dealer // check for region,
+		 * postCode and IsDealer // TODO: Rename isDealer to reflect whether the
+		 * Dealer is eligible // for Vehicle Lead if (dealer.isDealer() &&
+		 * (checkDealerRegion(dealer, search.getPostCode()) ||
+		 * checkDealerPostCode(dealer, search.getPostCode()))) { dealerSearch =
+		 * domainModelUtil.toDealerSearch(userEBidVO.getSearchLead());
+		 * dealerSearch.setUserId(user.getUserId()); if (dealer.getDealSearch()
+		 * != null) { dealer.getDealSearch().add(dealerSearch); } else {
+		 * List<DealerSearch> dealerVehicleLeads = new ArrayList<>();
+		 * dealerVehicleLeads.add(dealerSearch);
+		 * dealer.setDealSearch(dealerVehicleLeads); } }
+		 * 
+		 * inventoryRepository.flush();
+		 * 
+		 * }
+		 * 
+		 * // Create Dealer Leads from "Dealer's make" // Checking for following
+		 * conditions to create Leads for Dealers from // "Dealer's make" // 1.
+		 * Dealer make and // 2. Region, Postcode List<Dealer> dealerMakes =
+		 * dealerRepository.getDealerForMake(); // boolean present12 = false;
+		 * for (Dealer dealer : dealerMakes) { // present12 = true;
+		 * 
+		 * List<VehicleDealerMakeList> makeLists =
+		 * dealer.getVehicleDealerMakeList(); for (VehicleDealerMakeList
+		 * dealMake : makeLists) { if
+		 * (dealMake.getMake().equals(search.getModelDisplay()) &&
+		 * (checkDealerRegion(dealer, search.getPostCode()) ||
+		 * checkDealerPostCode(dealer, search.getPostCode()))) { DealerSearch
+		 * dealerSearch = null; System.out.println(
+		 * "details for matching make from dealer's repo" + dealer.getDealerId()
+		 * + dealMake.getMake()); // Create Dealer Vehicle Lead if he is a
+		 * Dealer // check for region, postCode and IsDealer // TODO: Rename
+		 * isDealer to reflect whether the Dealer is // eligible // for Vehicle
+		 * Lead if (dealer.isDealer() && (checkDealerRegion(dealer,
+		 * search.getPostCode()) || checkDealerPostCode(dealer,
+		 * search.getPostCode()))) { dealerSearch =
+		 * domainModelUtil.toDealerSearch(userEBidVO.getSearchLead());
+		 * dealerSearch.setUserId(user.getUserId()); if (dealer.getDealSearch()
+		 * != null) { dealer.getDealSearch().add(dealerSearch); } else {
+		 * List<DealerSearch> dealerVehicleLeads = new ArrayList<>();
+		 * dealerVehicleLeads.add(dealerSearch);
+		 * dealer.setDealSearch(dealerVehicleLeads); } }
+		 * 
+		 * dealerRepository.flush(); } }
+		 * 
+		 * }
+		 * 
+		 * // Create Finance Leads when // dealer isFinancer List<Dealer>
+		 * financeDealers = dealerRepository.getDealerForFinance(true); for
+		 * (Dealer dealer : financeDealers) { DealerSearchFinance
+		 * dealerSearchFinance = null;
+		 * 
+		 * if (userEBidVO.isFinance() && searchFinance != null) { // Create
+		 * Dealer Finance Lead if he provides finance
+		 * 
+		 * dealerSearchFinance =
+		 * domainModelUtil.toDealerSearchFinance(userEBidVO.getFinanceLead());
+		 * dealerSearchFinance.setUserId(user.getUserId()); if
+		 * (dealer.getDealSearchFinance() != null) {
+		 * dealer.getDealSearchFinance().add(dealerSearchFinance); } else {
+		 * List<DealerSearchFinance> dealerFinanceLeads = new ArrayList<>();
+		 * dealerFinanceLeads.add(dealerSearchFinance);
+		 * dealer.setDealSearchFinance(dealerFinanceLeads); }
+		 * dealerRepository.flush(); }
+		 * 
+		 * 
+		 * if (dealer.isFinancer() && searchFinance != null &&
+		 * userEBidVO.isFinance()) { createFinanceQuotation(user, dealer,
+		 * searchFinance, dealerSearchFinance, inventory); } if
+		 * (dealer.isInsurer() && searchInsurance != null &&
+		 * userEBidVO.isInsurance()) { createInsuranceQuotation(user, dealer,
+		 * searchInsurance, dealerSearchInsurance, inventory); }
+		 * 
+		 * }
+		 * 
+		 * // Create insurance Leads // when dealer isInsurer List<Dealer>
+		 * insuranceDealers = dealerRepository.getDealerForInsurance(true); for
+		 * (Dealer dealer : insuranceDealers) { DealerSearchInsurance
+		 * dealerSearchInsurance = null;
+		 * 
+		 * if (userEBidVO.isInsurance() && searchInsurance != null) { // Create
+		 * Dealer Insurance Lead if he provides insurance if
+		 * (dealer.isInsurer()) { dealerSearchInsurance =
+		 * domainModelUtil.toDealerSearchInsurance(userEBidVO.getInsuranceLead()
+		 * ); dealerSearchInsurance.setUserId(user.getUserId()); if
+		 * (dealer.getDealSearchInsurance() != null) {
+		 * dealer.getDealSearchInsurance().add(dealerSearchInsurance); } else {
+		 * List<DealerSearchInsurance> dealerInsuranceLeads = new ArrayList<>();
+		 * dealerInsuranceLeads.add(dealerSearchInsurance);
+		 * dealer.setDealSearchInsurance(dealerInsuranceLeads); } } }
+		 * 
+		 * 
+		 * if (dealer.isFinancer() && searchFinance != null &&
+		 * userEBidVO.isFinance()) { createFinanceQuotation(user, dealer,
+		 * searchFinance, dealerSearchFinance, inventory); } if
+		 * (dealer.isInsurer() && searchInsurance != null &&
+		 * userEBidVO.isInsurance()) { createInsuranceQuotation(user, dealer,
+		 * searchInsurance, dealerSearchInsurance, inventory); }
+		 * 
+		 * dealerRepository.flush(); }
+		 */
 
 		return "{\"userId\":" + userEBidVO.getUserId() + ",\"searchId\":" + search.getCarSearchId() + "}";
 
@@ -561,12 +531,12 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 
 		// Create User Finance Lead
 		SearchFinance searchFinance = domainModelUtil.toSearchFinance(userEBidVO.getFinanceLead());
-		 Calendar calendar = Calendar.getInstance();
-		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
-		    searchFinance.setCreationDate(ourJavaDateObject);
+		Calendar calendar = Calendar.getInstance();
+		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		searchFinance.setCreationDate(ourJavaDateObject);
 		searchFinance.setIdp(user.getUserId());
 		int searchFinCountTemp = user.getSearchFinCount();
-		user.setSearchFinCount(searchFinCountTemp+1);
+		user.setSearchFinCount(searchFinCountTemp + 1);
 		if (user.getSearchFinance() != null) {
 			user.getSearchFinance().add(searchFinance);
 		} else {
@@ -640,12 +610,12 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 
 		// Create User Insurance Lead
 		SearchTransp searchInsurance = domainModelUtil.toSearchTrans(userEBidVO.getSearchTranspLead());
-		 Calendar calendar = Calendar.getInstance();
-		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
-		    //searchInsurance.setCreationDate(ourJavaDateObject);
+		Calendar calendar = Calendar.getInstance();
+		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		// searchInsurance.setCreationDate(ourJavaDateObject);
 		searchInsurance.setIdp(user.getUserId());
 		int searchTranCountTemp = user.getSearchTranspCount();
-		user.setSearchTranspCount(searchTranCountTemp+1);
+		user.setSearchTranspCount(searchTranCountTemp + 1);
 		if (user.getSearchTransp() != null) {
 			user.getSearchTransp().add(searchInsurance);
 		} else {
@@ -671,7 +641,6 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 			user.setValTransPoints(userInsuranceLeads);
 		}
 		// end of loyality program
-
 
 		// Get Inventory matching the User EBid for Car
 		// (Model, Make, Year, Trim)
@@ -733,12 +702,12 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 
 		// Create User Insurance Lead
 		SearchServMaint searchInsurance = domainModelUtil.toSearchServMaint(userEBidVO.getServMaintLead());
-		 Calendar calendar = Calendar.getInstance();
-		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
-		    searchInsurance.setCreationDate(ourJavaDateObject);
-		    searchInsurance.setIdp(user.getUserId());
-		    int searchServCountTemp = user.getSearchServCount();
-			user.setSearchServCount(searchServCountTemp+1);
+		Calendar calendar = Calendar.getInstance();
+		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		searchInsurance.setCreationDate(ourJavaDateObject);
+		searchInsurance.setIdp(user.getUserId());
+		int searchServCountTemp = user.getSearchServCount();
+		user.setSearchServCount(searchServCountTemp + 1);
 		if (user.getSearchServMaint() != null) {
 			user.getSearchServMaint().add(searchInsurance);
 		} else {
@@ -747,7 +716,7 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 			user.setSearchServMaint(userInsuranceLeads);
 		}
 		userRepository.flush();
-		
+
 		// Start of loyality program
 		ValTransPoints valTransPoints = new ValTransPoints();
 		valTransPoints.setCreationDate(ourJavaDateObject);
@@ -825,12 +794,12 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 
 		// Create User Insurance Lead
 		SearchInsurance searchInsurance = domainModelUtil.toSearchInsurance(userEBidVO.getInsuranceLead());
-		 Calendar calendar = Calendar.getInstance();
-		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
-		    searchInsurance.setCreationDate(ourJavaDateObject);
+		Calendar calendar = Calendar.getInstance();
+		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		searchInsurance.setCreationDate(ourJavaDateObject);
 		searchInsurance.setIdp(user.getUserId());
 		int searchInsCountTemp = user.getSearchInsCount();
-		user.setSearchInsCount(searchInsCountTemp+1);
+		user.setSearchInsCount(searchInsCountTemp + 1);
 		if (user.getSearchInsurance() != null) {
 			user.getSearchInsurance().add(searchInsurance);
 		} else {
@@ -841,22 +810,22 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 		userRepository.flush();
 
 		// Start of loyality program
-				ValTransPoints valTransPoints = new ValTransPoints();
-				valTransPoints.setCreationDate(ourJavaDateObject);
-				valTransPoints.setIdp(user.getUserId());
-				valTransPoints.setId(searchInsurance.getSearchInsuranceId());
-				valTransPoints.setName("InsReq");
-				valTransPoints.setTypeOfTrans("InsReq");
-				valTransPoints.setAction("INITIATED");
-				valTransPoints.setNoOfPoints(5);
-				if (user.getValTransPoints() != null) {
-					user.getValTransPoints().add(valTransPoints);
-				} else {
-					List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
-					userInsuranceLeads.add(valTransPoints);
-					user.setValTransPoints(userInsuranceLeads);
-				}
-				// end of loyality program
+		ValTransPoints valTransPoints = new ValTransPoints();
+		valTransPoints.setCreationDate(ourJavaDateObject);
+		valTransPoints.setIdp(user.getUserId());
+		valTransPoints.setId(searchInsurance.getSearchInsuranceId());
+		valTransPoints.setName("InsReq");
+		valTransPoints.setTypeOfTrans("InsReq");
+		valTransPoints.setAction("INITIATED");
+		valTransPoints.setNoOfPoints(5);
+		if (user.getValTransPoints() != null) {
+			user.getValTransPoints().add(valTransPoints);
+		} else {
+			List<ValTransPoints> userInsuranceLeads = new ArrayList<>();
+			userInsuranceLeads.add(valTransPoints);
+			user.setValTransPoints(userInsuranceLeads);
+		}
+		// end of loyality program
 
 		// Create insurance Leads
 		// when dealer isInsurer
@@ -983,21 +952,21 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 		 */
 
 	}
- 
+
 	@Override
 	public List<SearchVO> getSearchByUserId(Long userid) {
 		// TODO Auto-generated method stub
 		List<SearchVO> searchVOs = new ArrayList<SearchVO>();
 		List<Search> searchs = userSearclLeadRepository.getSearchByUserId(userid);
 		SearchVO searchVO;
-		for(Search search :searchs){
-			searchVO = domainModelUtil.toBatchSearchVO( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (Search search : searchs) {
+			searchVO = domainModelUtil.toBatchSearchVO(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<InventoryVO> getSellMyVehByUserId(Long userid) {
 		// TODO Auto-generated method stub
@@ -1005,219 +974,219 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 		List<InventoryVO> searchVOs = new ArrayList<InventoryVO>();
 		List<Inventory> searchs = inventoryRepository.getAllInvForSellMy(userid, id);
 		InventoryVO searchVO;
-		for(Inventory search :searchs){
-			searchVO = domainModelUtil.toMyVehInvVO( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (Inventory search : searchs) {
+			searchVO = domainModelUtil.toMyVehInvVO(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<UserReferPointsVO> getReferUserId(Long userid) {
-		
+
 		List<UserReferPointsVO> searchVOs = new ArrayList<UserReferPointsVO>();
 		List<UserReferPoints> searchs = userReferPointsRepository.getReferByUserId(userid);
 		UserReferPointsVO searchVO;
-		for(UserReferPoints search :searchs){
-			searchVO = domainModelUtil.toUserReferVO( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (UserReferPoints search : searchs) {
+			searchVO = domainModelUtil.toUserReferVO(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<ReferencedPointsVO> getReferencedUserId(Long userid) {
-		
+
 		List<ReferencedPointsVO> searchVOs = new ArrayList<ReferencedPointsVO>();
 		List<ReferencedPoints> searchs = referencedPointsRepository.getReferByUserId(userid);
 		ReferencedPointsVO searchVO;
-		for(ReferencedPoints search :searchs){
-			searchVO = domainModelUtil.toRefercedVO( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (ReferencedPoints search : searchs) {
+			searchVO = domainModelUtil.toRefercedVO(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<BlogPointsVO> getBlogUserId(Long userid) {
-		
+
 		List<BlogPointsVO> searchVOs = new ArrayList<BlogPointsVO>();
 		List<BlogPoints> searchs = blogPointsRepository.getReferByUserId(userid);
 		BlogPointsVO searchVO;
-		for(BlogPoints search :searchs){
-			searchVO = domainModelUtil.toBlogPointsVO( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (BlogPoints search : searchs) {
+			searchVO = domainModelUtil.toBlogPointsVO(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<ReviewPointsVO> getReviewUserId(Long userid) {
-		
+
 		List<ReviewPointsVO> searchVOs = new ArrayList<ReviewPointsVO>();
 		List<ReviewPoints> searchs = reviewPointsRepository.getReferByUserId(userid);
 		ReviewPointsVO searchVO;
-		for(ReviewPoints search :searchs){
-			searchVO = domainModelUtil.toReviewPointsVO( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (ReviewPoints search : searchs) {
+			searchVO = domainModelUtil.toReviewPointsVO(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<ValTransPointsVO> getValTransUserId(Long userid) {
-		
+
 		List<ValTransPointsVO> searchVOs = new ArrayList<ValTransPointsVO>();
 		List<ValTransPoints> searchs = valTransPointsRepository.getReferByUserId(userid);
 		ValTransPointsVO searchVO;
-		for(ValTransPoints search :searchs){
-			searchVO = domainModelUtil.toValTransPointsVO( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (ValTransPoints search : searchs) {
+			searchVO = domainModelUtil.toValTransPointsVO(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<LoyalityProgAdminVO> getLoayalityProgram() {
-		
+
 		List<LoyalityProgAdminVO> searchVOs = new ArrayList<LoyalityProgAdminVO>();
 		List<LoyalityProgAdmin> searchs = loyalityProgAdminRepository.getAllSearchCriteria();
 		LoyalityProgAdminVO searchVO;
-		for(LoyalityProgAdmin search :searchs){
-			searchVO = domainModelUtil.toLoyalityProgVO( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (LoyalityProgAdmin search : searchs) {
+			searchVO = domainModelUtil.toLoyalityProgVO(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<SearchFinanceVO> getFinanceByUserId(Long userid) {
 		// TODO Auto-generated method stub
 		List<SearchFinanceVO> searchVOs = new ArrayList<SearchFinanceVO>();
 		List<SearchFinance> searchs = searchFinanceRepository.getFinanceByUserId(userid);
 		SearchFinanceVO searchVO;
-		for(SearchFinance search :searchs){
-			searchVO = domainModelUtil.toSearchFinance1( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (SearchFinance search : searchs) {
+			searchVO = domainModelUtil.toSearchFinance1(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<SearchInsuranceVO> getInsuranceByUserId(Long userid) {
 		// TODO Auto-generated method stub
 		List<SearchInsuranceVO> searchVOs = new ArrayList<SearchInsuranceVO>();
 		List<SearchInsurance> searchs = searchInsuranceRepository.getInsuranceByUserId(userid);
 		SearchInsuranceVO searchVO;
-		for(SearchInsurance search :searchs){
-			searchVO = domainModelUtil.toSearchInsurance1( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (SearchInsurance search : searchs) {
+			searchVO = domainModelUtil.toSearchInsurance1(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<SearchServMaintVO> getServMaintByUserId(Long userid) {
 		// TODO Auto-generated method stub
 		List<SearchServMaintVO> searchVOs = new ArrayList<SearchServMaintVO>();
 		List<SearchServMaint> searchs = searchServMtRepository.getServMtByUserId(userid);
 		SearchServMaintVO searchVO;
-		for(SearchServMaint search :searchs){
-			searchVO = domainModelUtil.toSearchServMaint1( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (SearchServMaint search : searchs) {
+			searchVO = domainModelUtil.toSearchServMaint1(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<SearchTranspVO> getTranspByUserId(Long userid) {
 		// TODO Auto-generated method stub
 		List<SearchTranspVO> searchVOs = new ArrayList<SearchTranspVO>();
 		List<SearchTransp> searchs = searchTranspRepository.getTranspByUserId(userid);
 		SearchTranspVO searchVO;
-		for(SearchTransp search :searchs){
-			searchVO = domainModelUtil.toSearchTransp1( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (SearchTransp search : searchs) {
+			searchVO = domainModelUtil.toSearchTransp1(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<CurrentOffersVO> getCurrentOffers() {
 		// TODO Auto-generated method stub
 		List<CurrentOffersVO> searchVOs = new ArrayList<CurrentOffersVO>();
 		List<CurrentOffers> searchs = currentOffersRepository.findAll();
 		CurrentOffersVO searchVO;
-		for(CurrentOffers search :searchs){
-			searchVO = domainModelUtil.fromCurrentOffers( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (CurrentOffers search : searchs) {
+			searchVO = domainModelUtil.fromCurrentOffers(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<UserNotificationVO> getUserNotiByUserId(Long userid) {
 		// TODO Auto-generated method stub
 		List<UserNotificationVO> searchVOs = new ArrayList<UserNotificationVO>();
 		List<UserNotification> searchs = userNotificationRepository.getUserNotByUserId(userid);
 		UserNotificationVO searchVO;
-		for(UserNotification search :searchs){
-			searchVO = domainModelUtil.toSearchTransp1( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (UserNotification search : searchs) {
+			searchVO = domainModelUtil.toSearchTransp1(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<VehicleQuotationVO> getUserQuotByUserId(Long userid) {
 		// TODO Auto-generated method stub
 		List<VehicleQuotationVO> searchVOs = new ArrayList<VehicleQuotationVO>();
 		List<VehicleQuotation> searchs = vehicleQuotationRepository.getQuotationsForUser(userid);
 		VehicleQuotationVO searchVO;
-		for(VehicleQuotation search :searchs){
-			searchVO = domainModelUtil.fromVehicleQuotation( search, false);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (VehicleQuotation search : searchs) {
+			searchVO = domainModelUtil.fromVehicleQuotation(search, false);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<FinanceQuotationVO> getFinQuotByUserId(Long userid) {
 		// TODO Auto-generated method stub
 		List<FinanceQuotationVO> searchVOs = new ArrayList<FinanceQuotationVO>();
 		List<FinanceQuotation> searchs = financeQuotationRepository.getQuotationsForUser(userid);
 		FinanceQuotationVO searchVO;
-		for(FinanceQuotation search :searchs){
-			searchVO = domainModelUtil.fromFinanceQuotation( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (FinanceQuotation search : searchs) {
+			searchVO = domainModelUtil.fromFinanceQuotation(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<InsuranceQuotationVO> getInsQuotByUserId(Long userid) {
 		// TODO Auto-generated method stub
 		List<InsuranceQuotationVO> searchVOs = new ArrayList<InsuranceQuotationVO>();
 		List<InsuranceQuotation> searchs = insuranceQuotationRepository.getQuotationsForUser(userid);
 		InsuranceQuotationVO searchVO;
-		for(InsuranceQuotation search :searchs){
-			searchVO = domainModelUtil.fromInsuranceQuotation( search);
-			//BeanUtils.copyProperties(searchVO, search);
+		for (InsuranceQuotation search : searchs) {
+			searchVO = domainModelUtil.fromInsuranceQuotation(search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
@@ -1229,38 +1198,37 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 		List<ServiceMaintQuotationVO> searchVOs = new ArrayList<ServiceMaintQuotationVO>();
 		List<ServiceMaintQuotation> searchs = servMaintQuotationRepository.getQuotationsForUser(userid);
 		ServiceMaintQuotationVO searchVO;
-		for(ServiceMaintQuotation search :searchs){
+		for (ServiceMaintQuotation search : searchs) {
 			searchVO = domainModelUtil.fromServMaintQuotation(search);
-			//BeanUtils.copyProperties(searchVO, search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
-	
+
 	@Override
 	public List<TranspServiceQuotationVO> getTranspQuotByUserId(Long userid) {
 		// TODO Auto-generated method stub
 		List<TranspServiceQuotationVO> searchVOs = new ArrayList<TranspServiceQuotationVO>();
 		List<TranspServiceQuotation> searchs = transpServQuotationRepository.getQuotationsForUser(userid);
 		TranspServiceQuotationVO searchVO;
-		for(TranspServiceQuotation search :searchs){
+		for (TranspServiceQuotation search : searchs) {
 			searchVO = domainModelUtil.fromTranspServQuotation(search);
-			//BeanUtils.copyProperties(searchVO, search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;
 	}
-	
+
 	@Override
 	public List<MyVehicleVO> getMyVehicleByUserId(Long userid) {
 		// TODO Auto-generated method stub
 		List<MyVehicleVO> searchVOs = new ArrayList<MyVehicleVO>();
 		List<MyVehicle> searchs = myVehicleRepository.getMyVehicleByUserId(userid);
 		MyVehicleVO searchVO;
-		for(MyVehicle search :searchs){
+		for (MyVehicle search : searchs) {
 			searchVO = domainModelUtil.fromMyVehicle(search);
-			//BeanUtils.copyProperties(searchVO, search);
+			// BeanUtils.copyProperties(searchVO, search);
 			searchVOs.add(searchVO);
 		}
 		return searchVOs;

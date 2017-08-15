@@ -22,6 +22,7 @@
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/css/font-awesome.css"></script>
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <!-- <script src="assets/js/jquery.countdown.min.js"></script> -->
 <!-- added end -->
@@ -778,7 +779,7 @@ table {
 				<div class="topnav" style="float: right">
 					<ul class="quick-menu pull-left hidden-mobile PL10">
 						<li><button onClick="redirect()" class="btn btn-primary">
-								<i class="soap-icon-grid"></i>Smart Garage
+								<i class="soap-icon-grid PR5 PT2"></i>Smart Garage
 							</button></li>
 					</ul>
 					&nbsp;&nbsp;
@@ -790,11 +791,11 @@ table {
 					</div> -->
 					
 					<ul class="quick-menu pull-left hidden-mobile PL10">
-						<li><button type="button" class="btn btn-info" onClick="redirectWithSell()"><i class="fa fa-tags" aria-hidden="true"></i>Sell My Vehicle</button></li>
+						<li><button type="button" class="btn btn-info" onClick="redirectWithSell()"><i class="fa fa-tags PR5 PT2" aria-hidden="true"></i>Sell My Vehicle</button></li>
 					</ul>
 					
-					<ul class="quick-menu pull-left hidden-mobile PL10">
-						<li><button type="button" class="btn btn-info" onClick="redirectWithLoy()"><i class="soap-icon-savings" aria-hidden="true"></i>Loyality Program</button></li>
+					<ul class="quick-menu pull-left hidden-mobile PL10"><!--onClick="redirectWithLoy()"  -->
+						<li><button type="button" class="btn btn-success" data-toggle="modal" data-target="#inviteModal"><i class="fa fa-users PR5 PT2" aria-hidden="true" style="color:yellow"></i>Invite</button></li>
 					</ul>
 												
 					
@@ -802,7 +803,7 @@ table {
 						<li class="ribbon">
 							<!-- <a href="#"><span id="userId"></span></a> -->
 							<button onClick="redirectWithLogbook()" class="btn btn-warning">
-								<i class="soap-icon-shopping"></i>Log Book
+								<i class="soap-icon-shopping PR5 PT2"></i>Log Book
 							</button>
 							<ul class="menu mini uppercase">
 								<li><a href="" onClick="redirectWithLogbook()"
@@ -857,7 +858,7 @@ table {
                         </button>-->
 						<button class="btn btn-success soap-popupbox"
 							data-target="#travelo-login" id="login">
-							<i class="fa fa-sign-in"></i>Login/SignUp
+							<i class="fa fa-sign-in PR5 PT2"></i>Login/SignUp
 						</button>
 					</div>
 					&nbsp;&nbsp;
@@ -5104,7 +5105,7 @@ table {
 		        </div>
 		        <div class="modal-body">
 		          <p style="color:#bd191e">Please help us, How do you got to know ?</p>
-		          <form name="loyalityFrm" id="loyalityFrm" ng-submit="" novalidate>
+		          <form name="loyalityFrm" id="loyalityFrm" ng-submit="loyalityFrmSub(loyalityFrm.$valid)" novalidate>
 		          	<div class="row">
 						<div class="col-sm-3 col-md-3">
 							<label>Social Media</label>
@@ -5142,37 +5143,45 @@ table {
 							<label></label>
 						</div>
 						<div class="col-sm-8 col-md-8">
-							<input type="text" id="loyalityEmail" name="loyalityEmail"
+							<input type="email" id="loyalityEmail" name="loyalityEmail"
 																ng-model="loyalityEmail" class="input-text full-width"
-																value="" placeholder="Friend s Email ID"/>
+																value="" placeholder="Friend s Email ID" ng-required="loyalityRadio == 'friends'"/>
+							<span style="color: red"
+																ng-show="loyalityFrm.loyalityEmail.$error.required &amp;&amp; (!loyalityFrm.loyalityEmail.$pristine || loyalityFrm.$submitted)"><b>Email ID is Required</b></span>
 							
 						</div>
-		          	</div><br/>
+		          	</div><br/>		
 		          	<div class="row" ng-show="loyalityRadio == 'friends'">
 		          		<div class="col-sm-3 col-md-3"></div>
 		          		<div class="col-sm-4 col-md-4">
 							<input type="text" id="loyalityFname" name="loyalityFname"
 																ng-model="loyalityFname" class="input-text full-width"
-																value="" placeholder="First Name"/>
+																value="" placeholder="First Name" ng-required="loyalityRadio == 'friends'"/>
+							<span style="color: red"
+																ng-show="loyalityFrm.loyalityFname.$error.required &amp;&amp; (!loyalityFrm.loyalityFname.$pristine || loyalityFrm.$submitted)"><b>First Name is Required</b></span>
 						</div>
 						<div class="col-sm-4 col-md-4">
 							<input type="text" id="loyalityFname" name="loyalityLname"
 																ng-model="loyalityLname" class="input-text full-width"
-																value="" placeholder="Last Name"/>
+																value="" placeholder="Last Name" ng-required="loyalityRadio == 'friends'"/>
+							<span style="color: red"
+																ng-show="loyalityFrm.loyalityLname.$error.required &amp;&amp; (!loyalityFrm.loyalityLname.$pristine || loyalityFrm.$submitted)"><b>Last Name is Required</b></span>																
 						</div>
 						
 		          	</div><br/>
 		          	<div class="row" ng-show="loyalityRadio == 'friends'">
 		          		<div class="col-sm-3 col-md-3"></div>
 		          		<div class="col-sm-8 col-md-8">
-		          					          	<button type="button" class="btn btn-info btn-block">Add points to Reffered</button>
+		         		<button class="btn btn-info btn-block">Add points to Reffered</button>
 						</div>
 		          	</div>
 					<div class="row" ng-hide="loyalityRadio == 'friends'">
 		          		<div class="col-sm-3 col-md-3"></div>
 		          		<div class="col-sm-8 col-md-8">
-		          					          	<button type="button" class="btn btn-info btn-block">Save the Feedback</button>
+		         		<button class="btn btn-info btn-block">Save the Feedback</button>
 						</div>
+		          	</div>
+		          	<div class="row loyaStatus">
 		          	</div>
 		          </form>
 		        </div>
@@ -5184,7 +5193,65 @@ table {
 		    </div>
 		  </div>
 		  <!-- Loyality ENd -->
-	
+		
+		
+		<!--Invite Modal -->
+		<div id="inviteModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title" style="color:#bd191e">Invite friend!</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<form name="inviteFrm" id="inviteFrm" ng-submit="inviteFrmSub(inviteFrm.$valid)" novalidate>
+			        <div class="row">
+						<div class="col-sm-8 col-md-8">
+							<input type="email" id="inviteEmail" name="inviteEmail"
+																ng-model="inviteEmail" class="input-text full-width"
+																value="" placeholder="Friend s Email ID" required/>
+							<span style="color: red"
+																ng-show="inviteFrm.inviteEmail.$error.required &amp;&amp; (!inviteFrm.inviteEmail.$pristine || inviteFrm.$submitted)"><b>Email ID is Required</b></span>
+							
+						</div>
+		          	</div><br/>	
+			        
+			        
+			        <div class="row">
+			          		<div class="col-sm-4 col-md-4">
+								<input type="text" id="inviteFname" name="inviteFname"
+																	ng-model="inviteFname" class="input-text full-width"
+																	value="" placeholder="First Name" required/>
+								<span style="color: red"
+																	ng-show="inviteFrm.inviteFname.$error.required &amp;&amp; (!inviteFrm.inviteFname.$pristine || inviteFrm.$submitted)"><b>First Name is Required</b></span>
+							</div>
+							<div class="col-sm-4 col-md-4">
+								<input type="text" id="inviteLname" name="inviteLname"
+																	ng-model="inviteLname" class="input-text full-width"
+																	value="" placeholder="Last Name" required/>
+								<span style="color: red"
+																	ng-show="inviteFrm.inviteLname.$error.required &amp;&amp; (!inviteFrm.inviteLname.$pristine || inviteFrm.$submitted)"><b>Last Name is Required</b></span>																
+							</div>
+							
+			          	</div><br/>
+		          	<div class="row">
+		          		<div class="col-sm-8 col-md-8">
+		         		<button class="btn btn-success btn-block">Invite & Earn&nbsp;&nbsp;&nbsp;<i class="fa fa-usd PR5 PT2" aria-hidden="true" style="color:yellow"></i></button>
+						</div>
+		          	</div>
+		          	<div class="row loyaStatus">
+		          	</div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		
+		  </div>
+		</div>
 	</div>
 
 </body>

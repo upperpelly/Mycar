@@ -30,6 +30,16 @@ public class ReferencedPointsVO {
 	private Date creationDate;
 	private long idp;
 	private String action;
+	private long refUserId;
+	
+	public long getRefUserId() {
+		return refUserId;
+	}
+
+	public void setRefUserId(long refUserId) {
+		this.refUserId = refUserId;
+	}
+
 	public Long getUserId() {
 		return userId;
 	}

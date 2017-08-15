@@ -2,9 +2,11 @@ package au.com.pnspvtltd.mcd.web.controller;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -35,6 +37,7 @@ import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.service.SmtpMailSender;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.BlogPointsVO;
@@ -95,6 +98,9 @@ import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 public class UserEBidController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserEBidController.class);
+
+	@Autowired
+	private SmtpMailSender smtp;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -292,6 +298,16 @@ public class UserEBidController {
 	}
 	@PostMapping("eBid/userReferPoints")
 	public String userReferPoints(@RequestBody UserReferPointsVO userEBidVO) {
+		try {
+			smtp.sendMail(userEBidVO.getReferedEmailId(), "Autoscoop Notification",
+					"You have been successfully Registered");
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return userEBidService.whenUserReferUserId(userEBidVO);
 	}
 	@PostMapping("eBid/referencedPoints")
