@@ -152,8 +152,20 @@ public class UserEBidServiceImpl implements UserEBidService {
 
 	@Override
 	@Transactional
-	public String whenUserReferUserId(UserReferPointsVO userReferPointsVO) {
+	public UserReferPoints whenUserReferUserId(UserReferPointsVO userReferPointsVO) {
 User user = userRepository.findOne(userReferPointsVO.getUserId());
+UserReferPoints valTransPoints = new UserReferPoints();
+// start check whether email id is already referred
+String emailCheck = userReferPointsVO.getReferedEmailId();
+boolean present = false;
+List<UserReferPoints> checkUserReferPoints =user.getUserReferPoints();
+for(UserReferPoints checkUserReferPoint : checkUserReferPoints){
+	if(emailCheck.equalsIgnoreCase(checkUserReferPoint.getReferedEmailId())){
+		present=true;
+	}
+}
+// end check whether email id 
+if(!present){
 Calendar calendar = Calendar.getInstance();
 java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 // Start of loyality program search car
@@ -218,7 +230,7 @@ for(LoyalityProgAdmin loyalityProgAdmin : loyalityProgAdmins){
 	valTrpActDiv = loyalityProgAdmin.getTranspCarDivByAct2();
 }
 // end of loyalityAdmiProg 
-UserReferPoints valTransPoints = new UserReferPoints();
+//UserReferPoints valTransPoints = new UserReferPoints();
 				valTransPoints.setCreationDate(ourJavaDateObject);
 				//valTransPoints.setId(search.getCarSearchId());
 				valTransPoints.setFirstName(userReferPointsVO.getFirstName());
@@ -235,13 +247,19 @@ UserReferPoints valTransPoints = new UserReferPoints();
 					user.setUserReferPoints(userInsuranceLeads);
 				}
 				userRepository.flush();
-				return "success";
-
+				//valTransPoints.setAction("Sent");
+				//return valTransPoints;
+}
+else{
+	//UserReferPoints valTransPoints = new UserReferPoints();
+	valTransPoints.setAction("Already Sent");
+}
+return valTransPoints;
 }
 	
 	@Override
 	@Transactional
-	public String whenReferedUserId(ReferencedPointsVO referencedPointsVO) {
+	public ReferencedPoints whenReferedUserId(ReferencedPointsVO referencedPointsVO) {
 		
 		// User user = userRepository.findOne(referencedPointsVO.getUserId());
 		User user = userRepository.findByEmailIgnoreCase(referencedPointsVO.getReferencedEmailId());
@@ -325,7 +343,7 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 					user.setReferencedPoints(userInsuranceLeads);
 				}
 				userRepository.flush();
-				return "success";
+				return valTransPoints;
 
 }
 	

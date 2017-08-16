@@ -374,8 +374,13 @@
 	                        data: jsonInputToAPI
 	
 	                    }).success(function (data) {
-	                        alert("successful");
+	                    	if(data.action=="INITIATED"){
+	                        alert("Successful");
 	                        $('.loyaStatus').html('<i style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">Successfully stored...<span>');
+	                    	}
+	                    	else{
+	                    		alert("Invitation already Sent for Email Id"+data.referedEmailId);
+	                    	}
 	                    });
             		}
             	}

@@ -28,6 +28,7 @@ import au.com.pnspvtltd.mcd.domain.MyVehicle;
 import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
 import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
 import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
+import au.com.pnspvtltd.mcd.domain.ReferencedPoints;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.SearchInsurance;
@@ -36,6 +37,7 @@ import au.com.pnspvtltd.mcd.domain.SearchTransp;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
+import au.com.pnspvtltd.mcd.domain.UserReferPoints;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.service.SmtpMailSender;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
@@ -297,21 +299,27 @@ public class UserEBidController {
 		//return null;
 	}
 	@PostMapping("eBid/userReferPoints")
-	public String userReferPoints(@RequestBody UserReferPointsVO userEBidVO) {
-		try {
-			smtp.sendMail(userEBidVO.getReferedEmailId(), "Autoscoop Notification",
-					"You have been successfully Registered");
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public UserReferPoints userReferPoints(@RequestBody UserReferPointsVO userEBidVO) {
+		
+		UserReferPoints userReferPoint = userEBidService.whenUserReferUserId(userEBidVO);
+		
+		if(userReferPoint.getAction().equalsIgnoreCase("INITIATED")){
+			try {
+				smtp.sendMail(userEBidVO.getReferedEmailId(), "Autoscoop Notification",
+						"You have been successfully Registered");
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		return userEBidService.whenUserReferUserId(userEBidVO);
+		
+		return userReferPoint;
 	}
 	@PostMapping("eBid/referencedPoints")
-	public String referencedPoints(@RequestBody ReferencedPointsVO userEBidVO) {
+	public ReferencedPoints referencedPoints(@RequestBody ReferencedPointsVO userEBidVO) {
 		return userEBidService.whenReferedUserId(userEBidVO);
 	}
 	@PostMapping("eBid/car")

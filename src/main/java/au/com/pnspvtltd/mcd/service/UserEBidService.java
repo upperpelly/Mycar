@@ -2,7 +2,9 @@ package au.com.pnspvtltd.mcd.service;
 
 import java.util.List;
 
+import au.com.pnspvtltd.mcd.domain.ReferencedPoints;
 import au.com.pnspvtltd.mcd.domain.Search;
+import au.com.pnspvtltd.mcd.domain.UserReferPoints;
 import au.com.pnspvtltd.mcd.web.model.BlogPointsVO;
 import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
@@ -32,8 +34,8 @@ import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 public interface UserEBidService {
 
-	String whenUserReferUserId(UserReferPointsVO userid);
-	String whenReferedUserId(ReferencedPointsVO userid);
+	UserReferPoints whenUserReferUserId(UserReferPointsVO userid);
+	ReferencedPoints whenReferedUserId(ReferencedPointsVO userid);
 	String whenUserEBidForCar(UserEBidVO userEBidVO);
 	String whenUserEBidForInsurance(UserEBidInsuranceVO userEBidVO);
 	String createMyVehicle(UserMyVehicleVO userEBidVO);
