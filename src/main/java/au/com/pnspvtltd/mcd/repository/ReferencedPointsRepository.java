@@ -19,7 +19,9 @@ public interface ReferencedPointsRepository extends JpaRepository<ReferencedPoin
 			" ORDER BY search.referPointId")
 			public List<ReferencedPoints> getAllSearchCriteria();
 	
-	
+	@Query("SELECT search FROM ReferencedPoints search WHERE search.status=?1" +
+			" ORDER BY search.referPointId")
+			public List<ReferencedPoints> getAllCriteria(boolean status);
 	
 	
 	@Query("SELECT search FROM ReferencedPoints search WHERE search.idp=?1")

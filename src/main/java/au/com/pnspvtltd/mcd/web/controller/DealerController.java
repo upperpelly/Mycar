@@ -34,7 +34,9 @@ import au.com.pnspvtltd.mcd.domain.ExternalDealer;
 import au.com.pnspvtltd.mcd.domain.ExternalDealerFin;
 import au.com.pnspvtltd.mcd.domain.ExternalDealerIns;
 import au.com.pnspvtltd.mcd.domain.ExternalDealerTp;
+import au.com.pnspvtltd.mcd.domain.LoyalityProgAdmin;
 import au.com.pnspvtltd.mcd.domain.Search;
+import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.repository.DealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerFinRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerInsRepository;
@@ -86,8 +88,10 @@ import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.LoyalAdminSearchVO;
 import au.com.pnspvtltd.mcd.web.model.LoyalityProgAdminVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
+import au.com.pnspvtltd.mcd.web.model.UserAdminSearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
@@ -150,6 +154,23 @@ public class DealerController {
 	@PostMapping("eBid/dealercar")
 	public String eBidForCar(@RequestBody DealerEBidVO dealerEBidVO) {
 		return dealerService.whenDealerEBidForCar(dealerEBidVO);
+	}
+	
+	@GetMapping(value = "adminlylall", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public LoyalAdminSearchVO adminlylall() {
+		LOGGER.debug("Received request to get all loyality with id {} ");
+		LoyalAdminSearchVO userAdminSearchVO12 = new LoyalAdminSearchVO();
+	
+		List<LoyalityProgAdminVO> userVOs = new ArrayList<LoyalityProgAdminVO>();
+		
+		List<LoyalityProgAdmin> users = loyalityProgAdminRepository.getAllSearchCriteria();
+		for (LoyalityProgAdmin user : users) {
+			userVOs.add(domainModelUtil.fromLoyalProg(user));
+		
+		}
+		userAdminSearchVO12.setUserVO(userVOs);
+	
+		return userAdminSearchVO12;
 	}
 	
 	@PostMapping("dealer")

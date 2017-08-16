@@ -3142,7 +3142,155 @@ mainApp1.controller('myController13',function($scope, $http) {
 		
 	}
 	
-	
+	// get loyality Program Start
+	 $scope.getalllylInfor = function () {
+	        
+         var wsURL = 'api/adminlylall';
+        
+ $body.addClass("loading");
+ $http({
+     method: 'GET',
+     url: wsURL
+
+ }).success(function (data) {
+     $body.removeClass("loading");
+     alert("successfully retrieved"+data.userVO.length);
+     out="";
+
+	   out += '<tr><th>'+"S.no"+'</th><th>'+"Loyality ID"+'</th><th>'+"Review Name"+'</th>'+'<th>'+"Referred Name"+'</th><th>'+"userReferred Name"+'</th><th>'+"Type of Regis"+'</th><th>'+"Type of Sell"+'</th><th>'+"Operation"+'</th></tr>';
+	   for(i=data.userVO.length-1;i>=0;i--)
+		{
+		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+
+		 out= out+'<tr>'+'<td>'+i+'</td>'+'<td>'+data.userVO[i].loyalityProgramId+'</td>'+'<td>'+data.userVO[i].revName+'<td>'+data.userVO[i].referredName+'</td>'+'</td>'+'<td>'+data.userVO[i].userReferName+'</td>'+'<td>'+data.userVO[i].typeOfTrans+'</td>'+'<td>'+data.userVO[i].typeOfSell+'</td>'+'<td><a href="#" id="anchor-editDealerlkVehicleSearchModal-' + data.userVO[i].loyalityProgramId + '" data-details=\'' + JSON.stringify(data.userVO[i]) + '\' class="anchor-editDealerlkVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerlkVehicleSearchModal">View</a></td></tr>';
+
+		}
+	   out = out.replace(/>null</g, ">--NA--<");
+	   out = out.replace(/>undefined</g, ">--NA--<");
+	   //alert(out);
+	   var LogSearch = data.userVO;
+
+	   if(LogSearch && data.userVO.length==0){
+	   outLogT="";
+	   outLogT='<h2>No records found</h2>';
+	   forFinance("car-lylty-data",outLogT);
+	   }
+	   else{
+	   forFinance("car-lylty-data",out);}
+	  registerEditDealerlkVehicleSearchModal();
+
+ });
+
+}
+
+	// end of loyality Program 
+// start of retrieval
+	 function registerEditDealerlkVehicleSearchModal(){
+
+
+	    	//Add a Bootstrap Modal DIV to Edit Dealer Vehicle Quotation Details
+	    	var editDealerlkVehicleSearchModal = '<div class="modal fade" id="editDealerlkVehicleSearchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+	    	    <div class="modal-dialog">\
+	    	        <div class="modal-content">\
+	    	            <div class="modal-header">\
+	    	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+	    	                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+	    	            </div>\
+	    				<h4 class="modal-title" id="myModalLabel"><center>View User Details</center></h4>\
+	    		        <form id="edit-dealer-lk-vehicle-search-content-form">\
+	    				<div class="modal-body edit-dealer-lk-vehicle-search-content">\
+	    	            </div>\
+	    	            <div class="modal-footer">\
+	    	                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>\
+	    		<p><center>&copy; 2017 Autoscoop</center></p>\
+	    			</div>\
+	    	            </form>\
+	    	        </div>\
+	    	    </div>\
+	    	</div>';
+
+	    	$(document.body).append(editDealerlkVehicleSearchModal);
+
+
+	    	$('a.anchor-editDealerlkVehicleSearchModal').on('click', function(event) {
+
+
+	    		var data = $(event.target).data('details');
+	    		//var json = JSON.stringify(data);
+	    		var quotIdHiddenField = '<input type="hidden" name="loyalityProgramId" value="' + data.loyalityProgramId + '" />';
+	    		
+
+
+	    		//alert(JSON.stringify(data)); to work
+	    		var editDealerlkVehicleSearchForm = '<form id="edit-dealer-lk-vehicle-search-content-form"><table>\
+	    			<table>\
+	    			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">User Details</div></div>\
+	    			<tr><td>Loyality ID</td><td>' + data.loyalityProgramId + '</td></tr>\
+	    			<tr><td>' + quotIdHiddenField + '</td></tr>\
+	    			<tr><td>Review Name</td><td>' + data.revName + '</td></tr>\
+	    			<tr><td>Blog Name</td><td>' + data.blogName + '</td></tr>\
+	    			<tr><td>Referred Name</td><td>' + data.referredName + '</td></tr>\
+	    			<tr><td>Type of Buy</td><td>' + data.typeOfTrans + '</td></tr>\
+	    			<tr><td>Type of Sell</td><td>' + data.typeOfSell + '</td></tr>\
+	    			<tr><td>Type of Fin</td><td>' + data.typeOfFin + '</td></tr>\
+	    			<tr><td>Type of Ins</td><td>' + data.typeOfIns + '</td></tr>\
+	    			<tr><td>Type of Trans</td><td>' + data.typeOfTrnp + '</td></tr>\
+	    			<tr><td>Type of Serv</td><td>' + data.typeOfServ + '</td></tr>\
+	    			<tr><td>creationDate</td><td>' + data.creationDate + '</td></tr>\
+	    			</table></form>';
+	    		editDealerlkVehicleSearchForm = editDealerlkVehicleSearchForm.replace(/>null</g, ">--NA--<");
+	    		editDealerlkVehicleSearchForm = editDealerlkVehicleSearchForm.replace(/>undefined</g, ">--NA--<");
+	    		$(".edit-dealer-lk-vehicle-search-content").html(editDealerlkVehicleSearchForm);
+	    	});
+	    	$('button.submit-editDealerlkVehicleSearchModal').on('click', function(e) {
+
+	    		var jsonInput = $("#edit-dealer-lk-vehicle-Search-content-form").convertFormDataToJSON();
+
+
+	    		$.ajax({
+	    			type: "POST",
+	    			url: "api/vehicleSearchQuotation?_method=PUT",
+	    			data: jsonInput,
+	    			contentType:'application/json',
+	    			success: function(result){
+	    				$("#anchor-editDealerlkVehicleSearchModal-" + result.quotId).data('details', result);
+	    				alert("Successfully upated the Quotations");
+
+	    			}
+	    		});
+
+
+	    	});
+
+	    	$.fn.convertFormDataToJSON = function(){
+	    		var checkboxes = [];
+	    		$(this).find('input:checkbox:checked').each(function(){
+	    			checkboxes.push($(this).attr("name"));
+	    		});
+	    		var o = {};
+	    	    var a = this.serializeArray();
+	    	    $.each(a, function() {
+	    	        if (o[this.name] != undefined) {
+	    	            if (!o[this.name].push) {
+	    	                o[this.name] = [o[this.name]];
+	    	            }
+	    	            if($.inArray(this.name, checkboxes) != -1)
+	    	              o[this.name].push('true' || '');
+	    	            else
+	    	            	o[this.name].push(this.value || '');
+	    	        } else {
+	    	        	if($.inArray(this.name, checkboxes) != -1)
+	    	        		o[this.name] = 'true' || '';
+	    		        else
+	    		           	o[this.name] = this.value || '';
+	    	        }
+	    	    });
+	    	    return JSON.stringify(o);
+	    	}
+
+
+	    }
+	 // end of retrieval
 	
 	
 	// get all userinfo start

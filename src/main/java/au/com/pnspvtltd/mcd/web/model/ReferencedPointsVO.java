@@ -30,6 +30,9 @@ public class ReferencedPointsVO {
 	private Date creationDate;
 	private long idp;
 	private String action;
+	
+	private boolean provStatus;
+	private boolean status;
 	private long refUserId;
 	
 	public long getRefUserId() {
@@ -38,6 +41,23 @@ public class ReferencedPointsVO {
 
 	public void setRefUserId(long refUserId) {
 		this.refUserId = refUserId;
+	}
+
+	
+	public boolean isProvStatus() {
+		return provStatus;
+	}
+
+	public void setProvStatus(boolean provStatus) {
+		this.provStatus = provStatus;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	public Long getUserId() {

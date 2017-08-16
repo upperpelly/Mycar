@@ -146,13 +146,23 @@ import javax.persistence.Table;
 				private int servCarDivByAct2;
 				private int servCarDivByAct3;
 				private int servCarDivByAct4;
-	
+				private boolean status;
 	private Date creationDate;
 	
 	
 	
 	
 	
+	public boolean isStatus() {
+		return status;
+	}
+
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+
 	public String getTypeOfSell() {
 		return typeOfSell;
 	}

@@ -19,7 +19,9 @@ public interface UserReferPointsRepository extends JpaRepository<UserReferPoints
 			public List<UserReferPoints> getAllSearchCriteria();
 	
 	
-	
+	@Query("SELECT search FROM UserReferPoints search WHERE search.status=?1" +
+			" ORDER BY search.userReferPointId")
+			public List<UserReferPoints> getAllCriteria(boolean status);
 	
 	@Query("SELECT search FROM UserReferPoints search WHERE search.idp=?1")
 			public List<UserReferPoints> getReferByUserId(Long userid);

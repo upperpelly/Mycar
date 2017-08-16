@@ -22,6 +22,9 @@ public interface LoyalityProgAdminRepository extends JpaRepository<LoyalityProgA
 			public List<LoyalityProgAdmin> getAllSearchCriteria();
 	
 	
+	@Query("SELECT search FROM LoyalityProgAdmin search WHERE search.status=?1" +
+			" ORDER BY search.loyalityProgramId")
+			public List<LoyalityProgAdmin> getAllCriteria(boolean status);
 	
 	
 	/*@Query("SELECT search FROM LoyalityProgAdmin search WHERE search.idp=?1")

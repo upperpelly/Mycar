@@ -39,8 +39,25 @@ public class UserReferPoints implements Serializable {
 	private long idp;
 	
 	private String action;
+	private boolean provStatus;
+	private boolean status;
 	
-	
+	public boolean isProvStatus() {
+		return provStatus;
+	}
+
+	public void setProvStatus(boolean provStatus) {
+		this.provStatus = provStatus;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	public String getAction() {
 		return action;
 	}

@@ -756,6 +756,23 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					return dealerSearch;
 				}
 				// Dealer Vehicle Lead
+				public LoyalityProgAdminVO fromLoyalProg(final LoyalityProgAdmin searchVO) {
+
+					LoyalityProgAdminVO dealerSearch = new LoyalityProgAdminVO();
+					try {
+						BeanUtils.copyProperties(dealerSearch, searchVO);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerSearch;
+				}
+
+				// Dealer Vehicle Lead
 				public ExtDealServMaintr1VO toExtDealerServMaintVO(final ExtDealServMaintr1 searchVO) {
 
 					ExtDealServMaintr1VO dealerSearch = new ExtDealServMaintr1VO();
@@ -771,7 +788,8 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					}
 					return dealerSearch;
 				}
-
+				
+				
 				// Dealer Vehicle Lead
 				public ExtDealerSearchTpVO toExtDealerTranspVO(final ExtDealerSearchTp searchVO) {
 

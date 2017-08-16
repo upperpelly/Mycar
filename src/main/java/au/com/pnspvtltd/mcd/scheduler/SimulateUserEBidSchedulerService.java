@@ -21,11 +21,15 @@ import org.springframework.transaction.annotation.Transactional;
 import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.Inventory;
+import au.com.pnspvtltd.mcd.domain.LoyalityProgAdmin;
 import au.com.pnspvtltd.mcd.domain.MyVehicle;
+import au.com.pnspvtltd.mcd.domain.ReferencedPoints;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
+import au.com.pnspvtltd.mcd.domain.UserReferPoints;
+import au.com.pnspvtltd.mcd.domain.ValTransPoints;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperPostCode;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerMakeList;
@@ -36,9 +40,13 @@ import au.com.pnspvtltd.mcd.repository.DealerRepository;
 import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InventoryRepository;
+import au.com.pnspvtltd.mcd.repository.LoyalityProgAdminRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
+import au.com.pnspvtltd.mcd.repository.ReferencedPointsRepository;
+import au.com.pnspvtltd.mcd.repository.UserReferPointsRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
+import au.com.pnspvtltd.mcd.repository.ValTransPointsRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.impl.UserServiceImpl;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
@@ -68,8 +76,269 @@ public class SimulateUserEBidSchedulerService {
 	private DomainModelUtil domainModelUtil;
 	@Autowired
 	private MyVehicleRepository myVehicleRepository;
+	@Autowired
+	private UserReferPointsRepository userReferPointsRepository;
+	@Autowired
+	private LoyalityProgAdminRepository loyalityProgAdminRepository;
+	@Autowired
+	private ReferencedPointsRepository referencedPointsRepository;
+	@Autowired
+	private ValTransPointsRepository valTransPointsRepository;
+	
 
 	//@Scheduled(fixedDelay=10800000)
+	@Scheduled(fixedDelay=50000)
+	@Transactional
+	public void simLoyalityProgram(){
+		
+		/**userreferpoints Loyality Program **/
+		
+		List<LoyalityProgAdmin> loyalityProgAdmins = loyalityProgAdminRepository.getAllCriteria(true);
+		// setting the ProvDiv value and actualDiv value
+		// userReferPoints 
+		int userReferProvDiv=0;
+		int userReferActDiv=0;
+		int referedProvDiv=0;
+		int referedActDiv=0;
+		int revProvDiv=0;
+		int revActDiv=0;
+		int blogProvDiv=0;
+		int blogActDiv=0;
+		int valBuyProvDiv=0;
+		int valBuyActDiv=0;
+		int valSelProvDiv=0;
+		int valSelActDiv=0;
+		int valFinProvDiv=0;
+		int valFinActDiv=0;
+		int valInsProvDiv=0;
+		int valInsActDiv=0;
+		int valTrpProvDiv=0;
+		int valTrpActDiv=0;
+		int valServProvDiv=0;
+		int valServActDiv=0;
+				
+			// Setting values	
+		
+		for(LoyalityProgAdmin loyalityProgAdmin : loyalityProgAdmins){
+			userReferProvDiv = loyalityProgAdmin.getUserReferDivByAct1();
+			userReferActDiv = loyalityProgAdmin.getUserReferDivByAct2();
+			referedProvDiv = loyalityProgAdmin.getReferredDivByAct1();
+			referedActDiv = loyalityProgAdmin.getReferredDivByAct2();
+			revProvDiv = loyalityProgAdmin.getRevDivByAct1();
+			revActDiv = loyalityProgAdmin.getRevDivByAct2();
+			blogProvDiv = loyalityProgAdmin.getBlogDivByAct1();
+			blogActDiv = loyalityProgAdmin.getBlogDivByAct2();
+			valBuyProvDiv = loyalityProgAdmin.getBuyCarDivByAct1();
+			valBuyActDiv = loyalityProgAdmin.getBuyCarDivByAct2();
+			
+			/*valBuyProvDiv = loyalityProgAdmin.getBuyCarDivByAct1();
+			valBuyActDiv = loyalityProgAdmin.getBuyCarDivByAct2();
+			*/
+			valSelProvDiv = loyalityProgAdmin.getSellCarDivByAct1();
+			valSelActDiv = loyalityProgAdmin.getSellCarDivByAct2();
+			
+			valFinProvDiv = loyalityProgAdmin.getFinCarDivByAct1();
+			valFinActDiv = loyalityProgAdmin.getFinCarDivByAct2();
+			
+			valInsProvDiv = loyalityProgAdmin.getInsCarDivByAct1();
+			valInsActDiv = loyalityProgAdmin.getInsCarDivByAct2();
+			
+			valServProvDiv = loyalityProgAdmin.getServCarDivByAct1();
+			valServActDiv = loyalityProgAdmin.getServCarDivByAct2();
+			
+			valTrpProvDiv = loyalityProgAdmin.getTranspCarDivByAct1();
+			valTrpActDiv = loyalityProgAdmin.getTranspCarDivByAct2();
+		}
+		
+		List<UserReferPoints> userReferPoints = userReferPointsRepository.getAllCriteria(false);
+		for(UserReferPoints userReferPoint : userReferPoints){
+			
+			// start of userReferPoints
+			if(!userReferPoint.isProvStatus()){
+				int point =userReferPoint.getNoOfPoints();
+				int result = point/userReferActDiv;
+				userReferPoint.setRupVal(result);
+				userReferPoint.setProvStatus(true);
+			}
+			
+			// check for Actual Points 
+			int point =userReferPoint.getActualPoints();
+			if(point != 0){
+			int result = point/userReferActDiv;
+			userReferPoint.setAudVal(result);
+			userReferPoint.setStatus(true);
+			}
+			// start of ReferedPoints
+			
+			// check for Actual Points 
+			
+		}
+		
+		List<ReferencedPoints> referencedPoints = referencedPointsRepository.getAllCriteria(false);
+		for(ReferencedPoints referencedPoint : referencedPoints){
+			
+			// start of userReferPoints
+			if(!referencedPoint.isProvStatus()){
+				int point =referencedPoint.getNoOfPoints();
+				int result = point/referedActDiv;
+				referencedPoint.setRupVal(result);
+				referencedPoint.setProvStatus(true);
+			}
+			
+			// check for Actual Points 
+			int point =referencedPoint.getActualPoints();
+			if(point !=0){
+			int result = point/referedActDiv;
+			referencedPoint.setAudVal(result);
+			referencedPoint.setStatus(true);}
+			
+			// start of ReferedPoints
+			
+			// check for Actual Points 
+			
+		}
+		String buy="CarReq";
+		List<ValTransPoints> valTransPoints = valTransPointsRepository.getAllCriteria(false,buy);
+		for(ValTransPoints valTransPoint : valTransPoints){
+			
+			// start of userReferPoints
+			if(!valTransPoint.isProvStatus()){
+				int point =valTransPoint.getNoOfPoints();
+				int result = point/valBuyActDiv;
+				valTransPoint.setRupVal(result);
+				valTransPoint.setProvStatus(true);
+			}
+			
+			// check for Actual Points 
+			int point =valTransPoint.getActualPoints();
+			if(point != 0){
+			int result = point/valBuyActDiv;
+			valTransPoint.setAudVal(result);
+			valTransPoint.setStatus(true);
+			}
+		}
+		
+		String sel="SelReq";
+		List<ValTransPoints> valTransPointSels = valTransPointsRepository.getAllCriteria(false,sel);
+		for(ValTransPoints valTransPointSel : valTransPointSels){
+			
+			// start of userReferPoints
+			if(!valTransPointSel.isProvStatus()){
+				int pointSel =valTransPointSel.getNoOfPoints();
+				int resultSel = pointSel/valSelActDiv;
+				valTransPointSel.setRupVal(resultSel);
+				valTransPointSel.setProvStatus(true);
+			}
+			
+			// check for Actual Points 
+			int pointAct =valTransPointSel.getActualPoints();
+			if(pointAct != 0){int resultAct = pointAct/valSelActDiv;
+			valTransPointSel.setAudVal(resultAct);
+			valTransPointSel.setStatus(true);}
+		
+		// start of ReferedPoints
+		
+		// check for Actual Points 
+		
+	}
+		
+		String fin="FinReq";
+		List<ValTransPoints> valTransPointFins = valTransPointsRepository.getAllCriteria(false,fin);
+		for(ValTransPoints valTransPointFin : valTransPointFins){
+			
+			// start of userReferPoints
+			if(!valTransPointFin.isProvStatus()){
+				int pointFin =valTransPointFin.getNoOfPoints();
+				int resultFin = pointFin/valFinActDiv;
+				valTransPointFin.setRupVal(resultFin);
+				valTransPointFin.setProvStatus(true);
+			}
+			
+			// check for Actual Points 
+			int pointAct =valTransPointFin.getActualPoints();
+			if(pointAct != 0){int resultAct = pointAct/valFinActDiv;
+			valTransPointFin.setAudVal(resultAct);
+			valTransPointFin.setStatus(true);}
+		
+		// start of ReferedPoints
+		
+		// check for Actual Points 
+		
+	}
+	
+		String ins="InsReq";
+		List<ValTransPoints> valTransPointInss = valTransPointsRepository.getAllCriteria(false,ins);
+		for(ValTransPoints valTransPointIns : valTransPointInss){
+			
+			// start of userReferPoints
+			if(!valTransPointIns.isProvStatus()){
+				int pointIns =valTransPointIns.getNoOfPoints();
+				int resultIns = pointIns/valInsActDiv;
+				valTransPointIns.setRupVal(resultIns);
+				valTransPointIns.setProvStatus(true);
+			}
+			
+			// check for Actual Points 
+			int pointAct =valTransPointIns.getActualPoints();
+			if(pointAct != 0){int resultAct = pointAct/valInsActDiv;
+			valTransPointIns.setAudVal(resultAct);
+			valTransPointIns.setStatus(true);}
+		
+		// start of ReferedPoints
+		
+		// check for Actual Points 
+		
+	}
+		String serv="ServMaint";
+		List<ValTransPoints> valTransPointServs = valTransPointsRepository.getAllCriteria(false,serv);
+		for(ValTransPoints valTransPointServ : valTransPointServs){
+			
+			// start of userReferPoints
+			if(!valTransPointServ.isProvStatus()){
+				int pointServ =valTransPointServ.getNoOfPoints();
+				int resultServ = pointServ/valServActDiv;
+				valTransPointServ.setRupVal(resultServ);
+				valTransPointServ.setProvStatus(true);
+			}
+			
+			// check for Actual Points 
+			int pointAct =valTransPointServ.getActualPoints();
+			if(pointAct != 0){int resultAct = pointAct/valServActDiv;
+			valTransPointServ.setAudVal(resultAct);
+			valTransPointServ.setStatus(true);}
+		
+		// start of ReferedPoints
+		
+		// check for Actual Points 
+		
+	}
+		
+		String trsp="TranspReq";
+		List<ValTransPoints> valTransPointTrps = valTransPointsRepository.getAllCriteria(false,trsp);
+		for(ValTransPoints valTransPointTrp : valTransPointTrps){
+			
+			// start of userReferPoints
+			if(!valTransPointTrp.isProvStatus()){
+				int pointTrp =valTransPointTrp.getNoOfPoints();
+				int resultTrp = pointTrp/valTrpActDiv;
+				valTransPointTrp.setRupVal(resultTrp);
+				valTransPointTrp.setProvStatus(true);
+			}
+			
+			// check for Actual Points 
+			int pointAct =valTransPointTrp.getActualPoints();
+			if(pointAct != 0){int resultAct = pointAct/valTrpActDiv;
+			valTransPointTrp.setAudVal(resultAct);
+			valTransPointTrp.setStatus(true);}
+		
+		// start of ReferedPoints
+		
+		// check for Actual Points 
+		
+	}
+	}
+	
+	
 	@Scheduled(fixedDelay=50000)
 	@Transactional
 	public void simulateUserEBid(){
