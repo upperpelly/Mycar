@@ -36,6 +36,7 @@ public class UserVO {
 	private String issueState;
 	private boolean facebook;
 	private boolean payDeposit;
+	private boolean refer;
 	private boolean loyalityFlag;
 	public boolean isLoyalityFlag() {
 		return loyalityFlag;
@@ -44,7 +45,13 @@ public class UserVO {
 	public void setLoyalityFlag(boolean loyalityFlag) {
 		this.loyalityFlag = loyalityFlag;
 	}
+	public boolean isRefer() {
+		return refer;
+	}
 
+	public void setRefer(boolean refer) {
+		this.refer = refer;
+	}
 	List<SearchVO> search;
 	List<SearchInsuranceVO> searchInsurance;
 	List<SearchFinanceVO> searchFinance;

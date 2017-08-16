@@ -335,6 +335,7 @@ ReferencedPoints valTransPoints = new ReferencedPoints();
 				valTransPoints.setReferencedEmailId(referencedPointsVO.getReferencedEmailId());
 				valTransPoints.setAction("INITIATED");
 				valTransPoints.setNoOfPoints(referedProvDiv);
+				user.setRefer(true);
 				if (user.getValTransPoints() != null) {
 					user.getReferencedPoints().add(valTransPoints);
 				} else {
