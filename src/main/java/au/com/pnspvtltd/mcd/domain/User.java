@@ -40,9 +40,19 @@ public class User implements Serializable {
 	private String issueState;
 	private boolean facebook;
 	private boolean payDeposit;
+	private boolean refer;
 	private String gender;
 	private Date creationDate;
 	
+	
+	public boolean isRefer() {
+		return refer;
+	}
+
+	public void setRefer(boolean refer) {
+		this.refer = refer;
+	}
+
 	public String getGender() {
 		return gender;
 	}
