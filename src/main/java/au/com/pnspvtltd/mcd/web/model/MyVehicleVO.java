@@ -3,12 +3,6 @@ package au.com.pnspvtltd.mcd.web.model;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-
-import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
-import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
-import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
-
 public class MyVehicleVO {
 
 	/* Mapping 

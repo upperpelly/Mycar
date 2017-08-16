@@ -282,7 +282,7 @@
                 // social login start
 
                 $scope.submitForm1 = function () {
-                	$('.login-social').html('<i class="fa fa-spinner fa-spin" style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">Logging in,Please wait...<span>');
+                	$('.login-social').html('<i class="fa fa-spinner fa-spin" style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">&nbsp;Logging in,Please wait...<span>');
                     var jsonInputToAPI = { "userId": 73, "password": " ", "abnNumber": " ", "firstName": "muf", "lastName": "ss", "email": "ss@gmail.com", "mobile": 98, "landLine": 98, "streetNumber": " ", "streetName": " ", "areaName": " ", "subOrb": " ", "state": " ", "postCode": 98, "drivingLicense": " ", "issueState": " ", "facebook": false, "payDeposit": true, "search": null, "searchInsurance": null, "searchFinance": null, "searchServMaint": null, "searchTransp": null, "vehicleQuotation": null, "insuranceQuotation": null, "financeQuotation": null };
                     jsonInputToAPI.email = email;
                     jsonInputToAPI.firstName = flex1;
@@ -318,7 +318,7 @@
                                 document.getElementById('userId').innerHTML = "<b>" + "Hi " + data.firstName + "</b>";
                             }
                             //alert(data.loyalityFlag);
-                            if(data.loyalityFlag == false){
+                            if(data.refer == false){
                             	//alert("inside loyality prog");
                             	//$("#loyalityModal").modal('show'); 
                             	$('.opacity-overlay').click();
@@ -338,10 +338,10 @@
 
             	$scope.loyalityFrmSub = function (isValid){
             		if(isValid){
-                		$('.loyaStatus').html('<i class="fa fa-spinner fa-spin" style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">Submitting,Please wait...<span>');
+                		$('.loyaStatus').html('<i class="fa fa-spinner fa-spin" style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">&nbsp;Submitting,Please wait...<span>');
                 		var wsURL = 'api/eBid/referencedPoints';
                 		userId=$.jStorage.get('key').userId;
-                		alert(userId);
+                		//alert(userId);
                 		var jsonInputToAPI = { "referPointId":null,"refUserId": userId, "referencedFirstName":$scope.loyalityFname, "referencedLastName": $scope.loyalityLname, "referencedEmailId": $scope.loyalityEmail};
                 		/*jsonInputToAPI = JSON.stringify(jsonInputToAPI);
                 		console.log(JSON.stringify(jsonInputToAPI));*/
@@ -360,34 +360,40 @@
             	//invite frm method
             	
             	$scope.inviteFrmSub = function (isValid){
-            		if(isValid){
-                		$('.loyaStatus').html('<i class="fa fa-spinner fa-spin" style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">Submitting,Please wait...<span>');
-                		var wsURL = 'api/eBid/userReferPoints';
-                		userId=$.jStorage.get('key').userId;
-                		alert(userId);
-                		var jsonInputToAPI = { "userReferPointId":null,"userId": userId, "firstName":$scope.inviteFname, "lastName": $scope.inviteLname, "referedEmailId": $scope.inviteEmail};
-                		/*jsonInputToAPI = JSON.stringify(jsonInputToAPI);
-                		console.log(JSON.stringify(jsonInputToAPI));*/
-	            		$http({
-	                        method: 'POST',
-	                        url: wsURL,
-	                        data: jsonInputToAPI
-	
-	                    }).success(function (data) {
-	                    	if(data.action=="INITIATED"){
-	                        alert("Successful");
-	                        $('.loyaStatus').html('<i style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">Successfully stored...<span>');
-	                    	}
-	                    	else{
-	                    		alert("Invitation already Sent for Email Id"+data.referedEmailId);
-	                    	}
-	                    });
+            		if (alreadyLogged()) {
+	            		if(isValid){
+	                		$('.loyaStatus1').html('<i class="fa fa-spinner fa-spin" style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">&nbsp;Submitting,Please wait...<span>');
+	                		var wsURL = 'api/eBid/userReferPoints';
+	                		userId=$.jStorage.get('key').userId;
+	                		//alert(userId);
+	                		var jsonInputToAPI = { "userReferPointId":null,"userId": userId, "firstName":$scope.inviteFname, "lastName": $scope.inviteLname, "referedEmailId": $scope.inviteEmail};
+	                		/*jsonInputToAPI = JSON.stringify(jsonInputToAPI);
+	                		console.log(JSON.stringify(jsonInputToAPI));*/
+		            		$http({
+		                        method: 'POST',
+		                        url: wsURL,
+		                        data: jsonInputToAPI
+		
+		                    }).success(function (data) {
+		                    	if(data.action=="INITIATED"){
+		                        alert("Successful");
+		                        $('.loyaStatus1').html('<i style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">Successfully stored...<span>');
+		                    	}
+		                    	else{
+		                    		alert("Invitation already Sent for Email Id"+data.referedEmailId);
+		                    		$('.loyaStatus1').html('<i style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">Thank you for the support!They are already referred by you...<span>');
+		                    	}
+		                    });
+	            		}
+            		}
+            		else{
+            			alert("Please login to invite your friends");
             		}
             	}
             	
             	
                 // trans Lead post start
-                // Insurance lead post
+                // Insurance lead posthey a
                 $scope.posttransLead = function (isValid) {
                     if (alreadyLogged()) {
                         if (isValid) {
