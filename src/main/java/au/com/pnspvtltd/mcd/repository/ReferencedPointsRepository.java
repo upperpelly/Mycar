@@ -24,7 +24,7 @@ public interface ReferencedPointsRepository extends JpaRepository<ReferencedPoin
 			public List<ReferencedPoints> getAllCriteria(boolean status);
 	
 	
-	@Query("SELECT search FROM ReferencedPoints search WHERE search.idp=?1")
+	@Query("SELECT search FROM ReferencedPoints search WHERE search.refUserId=?1")
 			public List<ReferencedPoints> getReferByUserId(Long userid);
 	
 	
