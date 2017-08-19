@@ -586,9 +586,12 @@ mainApp1.controller('myController13',function($scope, $http) {
 	}
 	
 // To get all My Log Book
-	
+	$scope.carLogBook = function(){
+		carLogBook();
+	}
 	//$scope.carLogBook = function(){
 	function carLogBook(){	
+		//alert("inside log book");
 		userId=$.jStorage.get('key').userId;
 		var wsURL = 'api/getLogBookByUserId?userid='+userId;
 		// change here
@@ -702,7 +705,9 @@ $("#"+"fuelCard4").html(outLogT);
 		}
 	
 // To get all My Vehicle Garage
-	
+	$scope.carVehicleGarage = function(){
+		carVehicleGarage();
+	}
 	//$scope.carVehicleGarage = function(){
 	function carVehicleGarage(){	
 		
@@ -995,7 +1000,9 @@ $("#"+"fuelCard4").html(outLogT);
 
 
 	// start of sell my vehicle
-		
+	$scope.sellMyVehicle = function(){
+		sellMyVehicle();
+	}
 		//$scope.sellMyVehicle = function(){
 		function sellMyVehicle(){
 			//alert("came here");
@@ -1050,7 +1057,9 @@ $("#"+"fuelCard4").html(outLogT);
 
 		
 // start of reward points
-		
+		$scope.loyalityProgram = function(){
+			loyalityProgram();
+		}
 		//$scope.loyalityProgram = function(){
 		function loyalityProgram(){
 			//alert("came here");
@@ -1321,7 +1330,9 @@ $("#"+"fuelCard4").html(outLogT);
 	    					<tr><td>Type Of Trans</td><td>' + data.typeOfTrans + '</td></tr>\
 	    					<tr><td>Id</td><td>' + data.id + '</td></tr>\
 	    					<tr><td>Provisional Points</td><td>' + data.noOfPoints + '</td></tr>\
+	    					<tr><td>Provisional Value</td><td>' + data.rupVal + '</td></tr>\
 	    					<tr><td>Actual Points</td><td>' + data.actualPoints + '</td></tr>\
+	    					<tr><td>Actual Value</td><td>' + data.audVal + '</td></tr>\
 	    					<tr><td>Creation Date</td><td>' + data.creationDate + '</td></tr>\
 	    					</table>\
 	    					<br/>\
@@ -1450,7 +1461,9 @@ $("#"+"fuelCard4").html(outLogT);
 	    					<tr><td>Id</td><td>' + data.revId + '</td></tr>\
 	    					<tr><td>Review Name</td><td>' + data.revName + '</td></tr>\
 	    					<tr><td>Provisional Points</td><td>' + data.noOfPoints + '</td></tr>\
+	    					<tr><td>Provisional Value</td><td>' + data.rupVal + '</td></tr>\
 	    					<tr><td>Actual Points</td><td>' + data.actualPoints + '</td></tr>\
+	    					<tr><td>Actual Value</td><td>' + data.audVal + '</td></tr>\
 	    					<tr><td>Creation Date</td><td>' + data.creationDate + '</td></tr>\
 	    					</table>\
 	    					<br/>\
@@ -1580,7 +1593,9 @@ $("#"+"fuelCard4").html(outLogT);
 	    					<tr><td>Id</td><td>' + data.blogId + '</td></tr>\
 	    					<tr><td>Blog Name</td><td>' + data.blogName + '</td></tr>\
 	    					<tr><td>Provisional Points</td><td>' + data.noOfPoints + '</td></tr>\
+	    					<tr><td>Provisional Value</td><td>' + data.rupVal + '</td></tr>\
 	    					<tr><td>Actual Points</td><td>' + data.actualPoints + '</td></tr>\
+	    					<tr><td>Actual Value</td><td>' + data.audVal + '</td></tr>\
 	    					<tr><td>Creation Date</td><td>' + data.creationDate + '</td></tr>\
 	    					</table></form>';
 				editDealerBGQuotationForm = editDealerBGQuotationForm.replace(/>null</g, ">--NA--<");
@@ -1709,7 +1724,9 @@ $("#"+"fuelCard4").html(outLogT);
 	    					<tr><td>Referrenced FirstName</td><td>' + data.referencedFirstName + '</td></tr>\
 	    					<tr><td>Referrenced LastName</td><td>' + data.referencedLastName + '</td></tr>\
 	    					<tr><td>Provisional Points</td><td>' + data.noOfPoints + '</td></tr>\
+	    					<tr><td>Provisional Value</td><td>' + data.rupVal + '</td></tr>\
 	    					<tr><td>Actual Points</td><td>' + data.actualPoints + '</td></tr>\
+	    					<tr><td>Actual Value</td><td>' + data.audVal + '</td></tr>\
 	    					<tr><td>Creation Date</td><td>' + data.creationDate + '</td></tr>\
 	    					</table>\
 	    					<br/>\
@@ -1840,7 +1857,9 @@ $("#"+"fuelCard4").html(outLogT);
 	    					<tr><td>firstName</td><td>' + data.firstName + '</td></tr>\
 	    					<tr><td>lastName</td><td>' + data.lastName + '</td></tr>\
 	    					<tr><td>Provisional Points</td><td>' + data.noOfPoints + '</td></tr>\
+	    					<tr><td>Provisional Value</td><td>' + data.rupVal + '</td></tr>\
 	    					<tr><td>Actual Points</td><td>' + data.actualPoints + '</td></tr>\
+	    					<tr><td>Actual Value</td><td>' + data.audVal + '</td></tr>\
 	    					<tr><td>Creation Date</td><td>' + data.creationDate + '</td></tr>\
 	    					</table>\
 	    					<br/>\
@@ -3667,6 +3686,9 @@ $("#"+"fuelCard4").html(outLogT);
 	
 	
 	//To get all CarSearch EBID request by userid
+	$scope.carEbidRequest = function(){
+		carEbidRequest();
+	}
 	//$scope.carEbidRequest = function(){
 		
 	function carEbidRequest(){
@@ -4760,428 +4782,12 @@ $("#"+"fuelCard4").html(outLogT);
 
 	}
 	
-	//Log Trip Start
-
-	registerEditDealerVehiclelogbkModal();
-	// start of LogBook
-	function registerEditDealerVehiclelogbkModal(){
-		//Add a Bootstrap Modal DIV to vehicle logbk Details
-		var editDealerVehiclelogbkModal = '<div class="modal fade" id="editDealerVehiclelogbkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
-		    <div class="modal-dialog">\
-		        <div class="modal-content">\
-		            <div class="modal-header">\
-		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
-		            </div>\
-					<h4 class="modal-title" id="myModalLabel"><center>View Log Expenses Details</center></h4>\
-			        <form id="edit-dealer-vehicle-logbk-content-form">\
-					<div class="modal-body edit-dealer-vehicle-logbk-content">\
-		            </div>\
-		            <div class="modal-footer">\
-		                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
-			<button type="button" class="btn btn-primary submit-editDealerVehiclelogbkModal" data-dismiss="modal">Save changes</button>\
-					</div>\
-		            </form>\
-		        	<p><center>&copy; 2017 Autoscoop</center></p>\
-		        </div>\
-		    </div>\
-		</div>';
-
-		$(document.body).append(editDealerVehiclelogbkModal);
-
-
-		$('a.anchor-editDealerVehiclelogbkModal').on('click', function(event) {
-
-
-			var data = $(event.target).data('details');
-			var quotIdHiddenField = '<input type="hidden" name="myVehicleLogBookId" value="' + data.myVehicleLogBookId + '" />';
-			var editDealerVehiclelogbkForm = '<form id="edit-dealer-vehicle-logbk-content-form"><table>\
-	        	 	<tr><td>Log Book ID</td><td> <input type="hidden" name="myVehicleLogBookId" class="input-text full-width" value="' + data.myVehicleLogBookId + '"/></td></tr>\
-					</table>\
-					<table>\
-					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Book Details</div></div>\
-					<tr><td>Trip Type</td><td> <input type="text" name="tripType" class="input-text full-width" value="' + data.tripType + '"/></td></tr>\
-					<tr><td>Trip Desc </td><td> <input type="text" name="tripDescription" class="input-text full-width" value="' + data.tripDescription + '"/></td></tr>\
-					<tr><td>TripStart Date </td><td> <input type="text" onfocus="(this.type=\'date\')" name="flex8" class="input-text full-width" value="' + data.flex8 + '"/></td></tr>\
-					<tr><td>Start Post </td><td> <input type="text" name="fromLocation" class="input-text full-width" value="' + data.fromLocation + '"/></td></tr>\
-					<tr><td>Start address</td><td> <input type="text" name="flex1" class="input-text full-width" value="' + data.flex1 + '"/></td></tr>\
-					<tr><td>Start OdoMeter Reading</td><td> <input type="text" name="odoMeterStartOfTrip" class="input-text full-width" value="' + data.odoMeterStartOfTrip + '"/></td></tr>\
-					<tr><td>Trip End Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="flex9" class="input-text full-width" value="' + data.flex9 + '"/></td></tr>\
-					<tr><td>End Post</td><td> <input type="text" name="toLocation" class="input-text full-width" value="' + data.toLocation + '"/></td></tr>\
-					<tr><td>End Address</td><td> <input type="text" name="flex2" class="input-text full-width" value="' + data.flex2 + '"/></td></tr>\
-					<tr><td>End ODOmeter Reading</td><td> <input type="text" name="odoMeterEndOfTrip" class="input-text full-width" value="' + data.odoMeterEndOfTrip + '"/></td></tr>\
-					<tr><td>Trip Notes</td><td> <input type="text" name="flex4" class="input-text full-width" value="' + data.flex4 + '"/></td></tr>\
-					<tr><td>Trip Kms</td><td> <input type="text" name="routeKm" class="input-text full-width" value="' + data.routeKm + '"/></td></tr>\
-					<tr><td>Driver License</td><td> <input type="text" name="flex3" class="input-text full-width" value="' + data.flex3 + '"/></td></tr>\
-					</table>\
-					</form>';
-				editDealerVehiclelogbkForm = editDealerVehiclelogbkForm.replace(/>null</g, ">--NA--<");
-				editDealerVehiclelogbkForm = editDealerVehiclelogbkForm.replace(/>undefined</g, ">--NA--<");
-				$(".edit-dealer-vehicle-logbk-content").html(editDealerVehiclelogbkForm);
-		});
-
-		$('button.submit-editDealerVehiclelogbkModal').on('click', function(e) {
-
-			var jsonInput = $("#edit-dealer-vehicle-logbk-content-form").convertFormDataToJSON();
-
-
-			$.ajax({
-				type: "POST",
-				url: "api/myvehicleLogBookUpdate?_method=PUT",
-				data: jsonInput,
-				contentType:'application/json',
-				success: function(result){
-					$("#anchor-editDealerVehiclelogbkModal-" + result.myVehicleLogBookId).data('details', result);
-					alert("Successfully upated the Logbook..");
-					angular.element(document.getElementById('myController13')).scope().vehicleRetrievalforLogBook();
-
-				}
-			});
-
-
-		});
-
-		$.fn.convertFormDataToJSON = function(){
-			var checkboxes = [];
-			$(this).find('input:checkbox:checked').each(function(){
-				checkboxes.push($(this).attr("name"));
-			});
-			var o = {};
-		    var a = this.serializeArray();
-		    $.each(a, function() {
-		        if (o[this.name] != undefined) {
-		            if (!o[this.name].push) {
-		                o[this.name] = [o[this.name]];
-		            }
-		            if($.inArray(this.name, checkboxes) != -1)
-		              o[this.name].push('true' || '');
-		            else
-		            	o[this.name].push(this.value || '');
-		        } else {
-		        	if($.inArray(this.name, checkboxes) != -1)
-		        		o[this.name] = 'true' || '';
-			        else
-			           	o[this.name] = this.value || '';
-		        }
-		    });
-		    return JSON.stringify(o);
-		}
-
-
-	}
-	// Log Trip End
+		
 	
 	
-	//Log Expense Start
-	
-
-	registerEditDealerVehicleexpnsModal();
-	// start of logexpenses
-	function registerEditDealerVehicleexpnsModal(){
-		//Add a Bootstrap Modal DIV to vehicle expns Details
-		var editDealerVehicleexpnsModal = '<div class="modal fade" id="editDealerVehicleexpnsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
-		    <div class="modal-dialog">\
-		        <div class="modal-content">\
-		            <div class="modal-header">\
-		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
-		            </div>\
-					<h4 class="modal-title" id="myModalLabel"><center>View Log Expenses Details</center></h4>\
-			        <form id="edit-dealer-vehicle-expns-content-form">\
-					<div class="modal-body edit-dealer-vehicle-expns-content">\
-		            </div>\
-		            <div class="modal-footer">\
-		                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
-			<button type="button" class="btn btn-primary submit-editDealerVehicleexpnsModal" data-dismiss="modal">Save changes</button>\
-					</div>\
-		            </form>\
-		        	<p><center>&copy; 2017 Autoscoop</center></p>\
-		        </div>\
-		    </div>\
-		</div>';
-
-		$(document.body).append(editDealerVehicleexpnsModal);
-
-
-		$('a.anchor-editDealerVehicleexpnsModal').on('click', function(event) {
-
-
-			var data = $(event.target).data('details');
-			var quotIdHiddenField = '<input type="hidden" name="myVehicleFuelExpensesId" value="' + data.myVehicleFuelExpensesId + '" />';
-			// start
-			var appId = '249863545451459';
-		    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-		      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
-		      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
-		      AWS.config.region = 'us-east-1';
-		      var bucket = new AWS.S3({
-		          params: {
-		              Bucket: bucketName
-		          }
-		      });
-		     accessToken = $.jStorage.get("fbAToken");
-		     bucket.config.credentials = new AWS.WebIdentityCredentials({
-	                  ProviderId: 'graph.facebook.com',
-	                  RoleArn: roleArn,
-	                  WebIdentityToken: accessToken
-	              });
-		          fbUserId = $.jStorage.get("fbKey");
-			url1=" ";
-			var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: data.photoOfInvoice, Expires: 60};
-	        bucket.getSignedUrl('getObject', params, function (err, url) {
-	          if (url) {
-	          url1=url;
-	          var editDealerVehicleexpnsForm = '<form id="edit-dealer-vehicle-expns-content-form"><table>\
-	        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-					<tr><td>Log Expense ID</td><td> <input type="hidden" name="myVehicleFuelExpensesId" class="input-text full-width" value="' + data.myVehicleFuelExpensesId + '"/></td></tr>\
-					</table>\
-					<table>\
-					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Expense Details</div></div>\
-					<tr><td>Expensive Type</td><td> <input type="text" name="recordType" class="input-text full-width" value="' + data.recordType + '"/></td></tr>\
-					<tr><td>Expensive Category</td><td> <input type="text" name="business" class="input-text full-width" value="' + data.business + '"/></td></tr>\
-					<tr><td>Expensive Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
-					<tr><td>Expensive Description</td><td> <input type="text" name="others" class="input-text full-width" value="' + data.others + '"/></td></tr>\
-					<tr><td>Amount</td><td> <input type="text" name="amount" class="input-text full-width" value="' + data.amount + '"/></td></tr>\
-					</table>\
-					</form>';
-				editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>null</g, ">--NA--<");
-				editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>undefined</g, ">--NA--<");
-				$(".edit-dealer-vehicle-expns-content").html(editDealerVehicleexpnsForm);
-
-	          }
-	          else{
-	        	  alert("not able to retrieve photo for Log expenses, However you can view other details"+err);
-	          //alert("successfully retrieved 12.."+url);
-
-	          var editDealerVehicleexpnsForm = '<form id="edit-dealer-vehicle-expns-content-form"><table>\
-	        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-	        	  <tr><td>Log Expense ID</td><td> <input type="hidden" name="myVehicleFuelExpensesId" class="input-text full-width" value="' + data.myVehicleFuelExpensesId + '"/></td></tr>\
-					</table>\
-					<table>\
-					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Expense Details</div></div>\
-					<tr><td>Expensive Type</td><td> <input type="text" name="recordType" class="input-text full-width" value="' + data.recordType + '"/></td></tr>\
-					<tr><td>Expensive Category</td><td> <input type="text" name="business" class="input-text full-width" value="' + data.business + '"/></td></tr>\
-					<tr><td>Expensive Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
-					<tr><td>Expensive Description</td><td> <input type="text" name="others" class="input-text full-width" value="' + data.others + '"/></td></tr>\
-					<tr><td>Amount</td><td> <input type="text" name="amount" class="input-text full-width" value="' + data.amount + '"/></td></tr>\
-					</table>\
-					</form>';
-				editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>null</g, ">--NA--<");
-				editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>undefined</g, ">--NA--<");
-				$(".edit-dealer-vehicle-expns-content").html(editDealerVehicleexpnsForm);
-
-
-	          }});
-		});
-
-
-
-		$('button.submit-editDealerVehicleexpnsModal').on('click', function(e) {
-
-			var jsonInput = $("#edit-dealer-vehicle-expns-content-form").convertFormDataToJSON();
-
-
-			$.ajax({
-				type: "POST",
-				url: "api/myvehicleLogExpensesUpdate?_method=PUT",
-				data: jsonInput,
-				contentType:'application/json',
-				success: function(result){
-					$("#anchor-editDealerVehicleexpnsModal-" + result.myVehicleFuelExpensesId).data('details', result);
-					alert("Successfully upated the fuel expenses");
-					angular.element(document.getElementById('myController13')).scope().vehicleRetrievalforLogBook();
-				}
-			});
-
-
-		});
-		$.fn.convertFormDataToJSON = function(){
-			var checkboxes = [];
-			$(this).find('input:checkbox:checked').each(function(){
-				checkboxes.push($(this).attr("name"));
-			});
-			var o = {};
-		    var a = this.serializeArray();
-		    $.each(a, function() {
-		        if (o[this.name] != undefined) {
-		            if (!o[this.name].push) {
-		                o[this.name] = [o[this.name]];
-		            }
-		            if($.inArray(this.name, checkboxes) != -1)
-		              o[this.name].push('true' || '');
-		            else
-		            	o[this.name].push(this.value || '');
-		        } else {
-		        	if($.inArray(this.name, checkboxes) != -1)
-		        		o[this.name] = 'true' || '';
-			        else
-			           	o[this.name] = this.value || '';
-		        }
-		    });
-		    return JSON.stringify(o);
-		}
-
-
-	}
-	//Loge Expense End
 	
 	
-	//Log Serv&maint Start
 	
-
-	registerEditDealerVehicleservmtModal();
-	// start of logsermaint
-	function registerEditDealerVehicleservmtModal(){
-		//Add a Bootstrap Modal DIV to vehicle expns Details
-		var editDealerVehicleservmtModal = '<div class="modal fade" id="editDealerVehicleservmtModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
-		    <div class="modal-dialog">\
-		        <div class="modal-content">\
-		            <div class="modal-header">\
-		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
-		            </div>\
-					<h4 class="modal-title" id="myModalLabel"><center>View Log Service Maintenance Details</center></h4>\
-			        <form id="edit-dealer-vehicle-servmt-content-form">\
-					<div class="modal-body edit-dealer-vehicle-servmt-content">\
-		            </div>\
-		            <div class="modal-footer">\
-		                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
-			<button type="button" class="btn btn-primary submit-editDealerVehicleservmtModal" data-dismiss="modal">Save changes</button>\
-					</div>\
-		            </form>\
-		        	<p><center>&copy; 2017 Autoscoop</center></p>\
-		        </div>\
-		    </div>\
-		</div>';
-
-		$(document.body).append(editDealerVehicleservmtModal);
-
-
-		$('a.anchor-editDealerVehicleservmtModal').on('click', function(event) {
-
-
-			var data = $(event.target).data('details');
-			var quotIdHiddenField = '<input type="hidden" name="myVehicleServMaintId" value="' + data.myVehicleServMaintId + '" />';
-			// start
-			var appId = '249863545451459';
-		    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
-		      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
-		      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
-		      AWS.config.region = 'us-east-1';
-		      var bucket = new AWS.S3({
-		          params: {
-		              Bucket: bucketName
-		          }
-		      });
-		     accessToken = $.jStorage.get("fbAToken");
-					bucket.config.credentials = new AWS.WebIdentityCredentials({
-			                  ProviderId: 'graph.facebook.com',
-			                  RoleArn: roleArn,
-			                  WebIdentityToken: accessToken
-			              });
-		          fbUserId = $.jStorage.get("fbKey");
-			url1=" ";
-			var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: data.uploadPhoto, Expires: 60};
-	        bucket.getSignedUrl('getObject', params, function (err, url) {
-	          if (url) {
-	          url1=url;
-	          var editDealerVehicleservmtForm = '<form id="edit-dealer-vehicle-servmt-content-form"><table>\
-	        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-					<tr><td>Log Serv Maint ID</td><td> <input type="hidden" name="myVehicleServMaintId" class="input-text full-width" value="' + data.myVehicleServMaintId + '"/></td></tr>\
-					</table>\
-					<table>\
-					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
-					<tr><td>Type</td><td> <input type="text" name="typeOfServMaint" class="input-text full-width" value="' + data.typeOfServMaint + '"/></td></tr>\
-					<tr><td>Type of Service(L1)</td><td> <input type="text" name="mechanicAddress" class="input-text full-width" value="' + data.mechanicAddress + '"/></td></tr>\
-					<tr><td>Type of Service(L2)</td><td> <input type="text" name="contactDetails" class="input-text full-width" value="' + data.contactDetails + '"/></td></tr>\
-					<tr><td>Service@ Date</td><td><input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
-					<tr><td>OdoMeter Reading Kms</td><td> <input type="text" name="odoMeterKm" class="input-text full-width" value="' + data.odoMeterKm + '"/></td></tr>\
-					<tr><td>Next S&M Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="nextServDate" class="input-text full-width" value="' + data.nextServDate + '"/></td></tr>\
-					<tr><td>Next S&M Date @ODO Meter Reading</td><td> <input type="text" name="nextOdoMeterKm" class="input-text full-width" value="' + data.nextOdoMeterKm + '"/></td></tr>\
-					<tr><td>Cost</td><td> <input type="text" name="totalAmount" class="input-text full-width" value="' + data.totalAmount + '"/></td></tr>\
-					<tr><td>Mechanic / Company Name</td><td> <input type="text" name="mechanicName" class="input-text full-width" value="' + data.mechanicName + '"/></td></tr>\
-					</table>\
-					</form>';
-				editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
-				editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>undefined</g, ">--NA--<");
-				$(".edit-dealer-vehicle-servmt-content").html(editDealerVehicleservmtForm);
-
-	          }
-	          else{alert("not able to retrieve photo for serv and maintenance, However you can view other details "+err)
-	          url1=url;
-	          var editDealerVehicleservmtForm = '<form id="edit-dealer-vehicle-servmt-content-form"><table>\
-	        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
-	        	  <tr><td>Log Serv Maint ID</td><td> <input type="hidden" name="myVehicleServMaintId" class="input-text full-width" value="' + data.myVehicleServMaintId + '"/></td></tr>\
-					</table>\
-					<table>\
-					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
-					<tr><td>Type</td><td> <input type="text" name="typeOfServMaint" class="input-text full-width" value="' + data.typeOfServMaint + '"/></td></tr>\
-					<tr><td>Type of Service(L1)</td><td> <input type="text" name="mechanicAddress" class="input-text full-width" value="' + data.mechanicAddress + '"/></td></tr>\
-					<tr><td>Type of Service(L2)</td><td> <input type="text" name="contactDetails" class="input-text full-width" value="' + data.contactDetails + '"/></td></tr>\
-					<tr><td>Service@ Date</td><td><input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
-					<tr><td>OdoMeter Reading Kms</td><td> <input type="text" name="odoMeterKm" class="input-text full-width" value="' + data.odoMeterKm + '"/></td></tr>\
-					<tr><td>Next S&M Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="nextServDate" class="input-text full-width" value="' + data.nextServDate + '"/></td></tr>\
-					<tr><td>Next S&M Date @ODO Meter Reading</td><td> <input type="text" name="nextOdoMeterKm" class="input-text full-width" value="' + data.nextOdoMeterKm + '"/></td></tr>\
-					<tr><td>Cost</td><td> <input type="text" name="totalAmount" class="input-text full-width" value="' + data.totalAmount + '"/></td></tr>\
-					<tr><td>Mechanic / Company Name</td><td> <input type="text" name="mechanicName" class="input-text full-width" value="' + data.mechanicName + '"/></td></tr>\
-					</table>\
-					</form>';
-				editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
-				editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>undefined</g, ">--NA--<");
-				$(".edit-dealer-vehicle-servmt-content").html(editDealerVehicleservmtForm);
-
-
-	          }});
-		});
-		$('button.submit-editDealerVehicleservmtModal').on('click', function(e) {
-
-			var jsonInput = $("#edit-dealer-vehicle-servmt-content-form").convertFormDataToJSON();
-
-
-			$.ajax({
-				type: "POST",
-				url: "api/myVehicleServMaintUpdate?_method=PUT",
-				data: jsonInput,
-				contentType:'application/json',
-				success: function(result){
-					$("#anchor-editDealerVehicleservmtModal-" + result.myVehicleServMaintId).data('details', result);
-					alert("Successfully upated the Logbook");
-					angular.element(document.getElementById('myController13')).scope().vehicleRetrievalforLogBook();
-				}
-			});
-
-
-		});
-
-		$.fn.convertFormDataToJSON = function(){
-			var checkboxes = [];
-			$(this).find('input:checkbox:checked').each(function(){
-				checkboxes.push($(this).attr("name"));
-			});
-			var o = {};
-		    var a = this.serializeArray();
-		    $.each(a, function() {
-		        if (o[this.name] != undefined) {
-		            if (!o[this.name].push) {
-		                o[this.name] = [o[this.name]];
-		            }
-		            if($.inArray(this.name, checkboxes) != -1)
-		              o[this.name].push('true' || '');
-		            else
-		            	o[this.name].push(this.value || '');
-		        } else {
-		        	if($.inArray(this.name, checkboxes) != -1)
-		        		o[this.name] = 'true' || '';
-			        else
-			           	o[this.name] = this.value || '';
-		        }
-		    });
-		    return JSON.stringify(o);
-		}
-
-
-	}
-	//Log Serv&MAINT END
 	
 	$scope.vehicleRetrievalforLogBook = function() {
 						//alert("inside ne method");
@@ -5211,7 +4817,117 @@ $("#"+"fuelCard4").html(outLogT);
 									}
 								$('#logTripTable').html(outLogT);//Log Trip Start//Log Trip End
 								// end of LogBook
-								
+								//Log Trip Start
+
+								registerEditDealerVehiclelogbkModal();
+								// start of LogBook
+								function registerEditDealerVehiclelogbkModal(){
+									//Add a Bootstrap Modal DIV to vehicle logbk Details
+									var editDealerVehiclelogbkModal = '<div class="modal fade" id="editDealerVehiclelogbkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+									    <div class="modal-dialog">\
+									        <div class="modal-content">\
+									            <div class="modal-header">\
+									                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+									                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
+									            </div>\
+												<h4 class="modal-title" id="myModalLabel"><center>View Log Expenses Details</center></h4>\
+										        <form id="edit-dealer-vehicle-logbk-content-form">\
+												<div class="modal-body edit-dealer-vehicle-logbk-content">\
+									            </div>\
+									            <div class="modal-footer">\
+									                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+										<button type="button" class="btn btn-primary submit-editDealerVehiclelogbkModal" data-dismiss="modal">Save changes</button>\
+												</div>\
+									            </form>\
+									        	<p><center>&copy; 2017 Autoscoop</center></p>\
+									        </div>\
+									    </div>\
+									</div>';
+
+									$(document.body).append(editDealerVehiclelogbkModal);
+
+
+									$('a.anchor-editDealerVehiclelogbkModal').on('click', function(event) {
+
+
+										var data = $(event.target).data('details');
+										var quotIdHiddenField = '<input type="hidden" name="myVehicleLogBookId" value="' + data.myVehicleLogBookId + '" />';
+										var editDealerVehiclelogbkForm = '<form id="edit-dealer-vehicle-logbk-content-form"><table>\
+								        	 	<tr><td>Log Book ID</td><td> <input type="hidden" name="myVehicleLogBookId" class="input-text full-width" value="' + data.myVehicleLogBookId + '"/></td></tr>\
+												</table>\
+												<table>\
+												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Book Details</div></div>\
+												<tr><td>Trip Type</td><td> <input type="text" name="tripType" class="input-text full-width" value="' + data.tripType + '"/></td></tr>\
+												<tr><td>Trip Desc </td><td> <input type="text" name="tripDescription" class="input-text full-width" value="' + data.tripDescription + '"/></td></tr>\
+												<tr><td>TripStart Date </td><td> <input type="text" onfocus="(this.type=\'date\')" name="flex8" class="input-text full-width" value="' + data.flex8 + '"/></td></tr>\
+												<tr><td>Start Post </td><td> <input type="text" name="fromLocation" class="input-text full-width" value="' + data.fromLocation + '"/></td></tr>\
+												<tr><td>Start address</td><td> <input type="text" name="flex1" class="input-text full-width" value="' + data.flex1 + '"/></td></tr>\
+												<tr><td>Start OdoMeter Reading</td><td> <input type="text" name="odoMeterStartOfTrip" class="input-text full-width" value="' + data.odoMeterStartOfTrip + '"/></td></tr>\
+												<tr><td>Trip End Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="flex9" class="input-text full-width" value="' + data.flex9 + '"/></td></tr>\
+												<tr><td>End Post</td><td> <input type="text" name="toLocation" class="input-text full-width" value="' + data.toLocation + '"/></td></tr>\
+												<tr><td>End Address</td><td> <input type="text" name="flex2" class="input-text full-width" value="' + data.flex2 + '"/></td></tr>\
+												<tr><td>End ODOmeter Reading</td><td> <input type="text" name="odoMeterEndOfTrip" class="input-text full-width" value="' + data.odoMeterEndOfTrip + '"/></td></tr>\
+												<tr><td>Trip Notes</td><td> <input type="text" name="flex4" class="input-text full-width" value="' + data.flex4 + '"/></td></tr>\
+												<tr><td>Trip Kms</td><td> <input type="text" name="routeKm" class="input-text full-width" value="' + data.routeKm + '"/></td></tr>\
+												<tr><td>Driver License</td><td> <input type="text" name="flex3" class="input-text full-width" value="' + data.flex3 + '"/></td></tr>\
+												</table>\
+												</form>';
+											editDealerVehiclelogbkForm = editDealerVehiclelogbkForm.replace(/>null</g, ">--NA--<");
+											editDealerVehiclelogbkForm = editDealerVehiclelogbkForm.replace(/>undefined</g, ">--NA--<");
+											$(".edit-dealer-vehicle-logbk-content").html(editDealerVehiclelogbkForm);
+									});
+
+									$('button.submit-editDealerVehiclelogbkModal').on('click', function(e) {
+
+										var jsonInput = $("#edit-dealer-vehicle-logbk-content-form").convertFormDataToJSON();
+
+
+										$.ajax({
+											type: "POST",
+											url: "api/myvehicleLogBookUpdate?_method=PUT",
+											data: jsonInput,
+											contentType:'application/json',
+											success: function(result){
+												$("#anchor-editDealerVehiclelogbkModal-" + result.myVehicleLogBookId).data('details', result);
+												alert("Successfully upated the Logbook..");
+												angular.element(document.getElementById('myController13')).scope().vehicleRetrievalforLogBook();
+
+											}
+										});
+
+
+									});
+
+									$.fn.convertFormDataToJSON = function(){
+										var checkboxes = [];
+										$(this).find('input:checkbox:checked').each(function(){
+											checkboxes.push($(this).attr("name"));
+										});
+										var o = {};
+									    var a = this.serializeArray();
+									    $.each(a, function() {
+									        if (o[this.name] != undefined) {
+									            if (!o[this.name].push) {
+									                o[this.name] = [o[this.name]];
+									            }
+									            if($.inArray(this.name, checkboxes) != -1)
+									              o[this.name].push('true' || '');
+									            else
+									            	o[this.name].push(this.value || '');
+									        } else {
+									        	if($.inArray(this.name, checkboxes) != -1)
+									        		o[this.name] = 'true' || '';
+										        else
+										           	o[this.name] = this.value || '';
+									        }
+									    });
+									    return JSON.stringify(o);
+									}
+
+
+								}
+								// Log Trip End
+
 								
 								var LogE = result.myVehicleFuelExpenses;
 								outLogE="";
@@ -5233,6 +4949,159 @@ $("#"+"fuelCard4").html(outLogT);
 									outLogE='<h2>No records for log Expenses</h2>';
 								}
 								$('#logExpTable').html(outLogE);//Log Expense Start ///Log Expense end 
+								//Log Expense Start
+								
+
+								registerEditDealerVehicleexpnsModal();
+								// start of logexpenses
+								function registerEditDealerVehicleexpnsModal(){
+									//Add a Bootstrap Modal DIV to vehicle expns Details
+									var editDealerVehicleexpnsModal = '<div class="modal fade" id="editDealerVehicleexpnsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+									    <div class="modal-dialog">\
+									        <div class="modal-content">\
+									            <div class="modal-header">\
+									                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+									                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
+									            </div>\
+												<h4 class="modal-title" id="myModalLabel"><center>View Log Expenses Details</center></h4>\
+										        <form id="edit-dealer-vehicle-expns-content-form">\
+												<div class="modal-body edit-dealer-vehicle-expns-content">\
+									            </div>\
+									            <div class="modal-footer">\
+									                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+										<button type="button" class="btn btn-primary submit-editDealerVehicleexpnsModal" data-dismiss="modal">Save changes</button>\
+												</div>\
+									            </form>\
+									        	<p><center>&copy; 2017 Autoscoop</center></p>\
+									        </div>\
+									    </div>\
+									</div>';
+
+									$(document.body).append(editDealerVehicleexpnsModal);
+
+
+									$('a.anchor-editDealerVehicleexpnsModal').on('click', function(event) {
+
+
+										var data = $(event.target).data('details');
+										var quotIdHiddenField = '<input type="hidden" name="myVehicleFuelExpensesId" value="' + data.myVehicleFuelExpensesId + '" />';
+										// start
+										var appId = '249863545451459';
+									    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+									      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+									      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+									      AWS.config.region = 'us-east-1';
+									      var bucket = new AWS.S3({
+									          params: {
+									              Bucket: bucketName
+									          }
+									      });
+									     accessToken = $.jStorage.get("fbAToken");
+									     bucket.config.credentials = new AWS.WebIdentityCredentials({
+								                  ProviderId: 'graph.facebook.com',
+								                  RoleArn: roleArn,
+								                  WebIdentityToken: accessToken
+								              });
+									          fbUserId = $.jStorage.get("fbKey");
+										url1=" ";
+										var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: data.photoOfInvoice, Expires: 60};
+								        bucket.getSignedUrl('getObject', params, function (err, url) {
+								          if (url) {
+								          url1=url;
+								          var editDealerVehicleexpnsForm = '<form id="edit-dealer-vehicle-expns-content-form"><table>\
+								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+												<tr><td>Log Expense ID</td><td> <input type="hidden" name="myVehicleFuelExpensesId" class="input-text full-width" value="' + data.myVehicleFuelExpensesId + '"/></td></tr>\
+												</table>\
+												<table>\
+												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Expense Details</div></div>\
+												<tr><td>Expensive Type</td><td> <input type="text" name="recordType" class="input-text full-width" value="' + data.recordType + '"/></td></tr>\
+												<tr><td>Expensive Category</td><td> <input type="text" name="business" class="input-text full-width" value="' + data.business + '"/></td></tr>\
+												<tr><td>Expensive Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
+												<tr><td>Expensive Description</td><td> <input type="text" name="others" class="input-text full-width" value="' + data.others + '"/></td></tr>\
+												<tr><td>Amount</td><td> <input type="text" name="amount" class="input-text full-width" value="' + data.amount + '"/></td></tr>\
+												</table>\
+												</form>';
+											editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>null</g, ">--NA--<");
+											editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>undefined</g, ">--NA--<");
+											$(".edit-dealer-vehicle-expns-content").html(editDealerVehicleexpnsForm);
+
+								          }
+								          else{
+								        	  alert("not able to retrieve photo for Log expenses, However you can view other details"+err);
+								          //alert("successfully retrieved 12.."+url);
+
+								          var editDealerVehicleexpnsForm = '<form id="edit-dealer-vehicle-expns-content-form"><table>\
+								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+								        	  <tr><td>Log Expense ID</td><td> <input type="hidden" name="myVehicleFuelExpensesId" class="input-text full-width" value="' + data.myVehicleFuelExpensesId + '"/></td></tr>\
+												</table>\
+												<table>\
+												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Expense Details</div></div>\
+												<tr><td>Expensive Type</td><td> <input type="text" name="recordType" class="input-text full-width" value="' + data.recordType + '"/></td></tr>\
+												<tr><td>Expensive Category</td><td> <input type="text" name="business" class="input-text full-width" value="' + data.business + '"/></td></tr>\
+												<tr><td>Expensive Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
+												<tr><td>Expensive Description</td><td> <input type="text" name="others" class="input-text full-width" value="' + data.others + '"/></td></tr>\
+												<tr><td>Amount</td><td> <input type="text" name="amount" class="input-text full-width" value="' + data.amount + '"/></td></tr>\
+												</table>\
+												</form>';
+											editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>null</g, ">--NA--<");
+											editDealerVehicleexpnsForm = editDealerVehicleexpnsForm.replace(/>undefined</g, ">--NA--<");
+											$(".edit-dealer-vehicle-expns-content").html(editDealerVehicleexpnsForm);
+
+
+								          }});
+									});
+
+
+
+									$('button.submit-editDealerVehicleexpnsModal').on('click', function(e) {
+
+										var jsonInput = $("#edit-dealer-vehicle-expns-content-form").convertFormDataToJSON();
+
+
+										$.ajax({
+											type: "POST",
+											url: "api/myvehicleLogExpensesUpdate?_method=PUT",
+											data: jsonInput,
+											contentType:'application/json',
+											success: function(result){
+												$("#anchor-editDealerVehicleexpnsModal-" + result.myVehicleFuelExpensesId).data('details', result);
+												alert("Successfully upated the fuel expenses");
+												angular.element(document.getElementById('myController13')).scope().vehicleRetrievalforLogBook();
+											}
+										});
+
+
+									});
+									$.fn.convertFormDataToJSON = function(){
+										var checkboxes = [];
+										$(this).find('input:checkbox:checked').each(function(){
+											checkboxes.push($(this).attr("name"));
+										});
+										var o = {};
+									    var a = this.serializeArray();
+									    $.each(a, function() {
+									        if (o[this.name] != undefined) {
+									            if (!o[this.name].push) {
+									                o[this.name] = [o[this.name]];
+									            }
+									            if($.inArray(this.name, checkboxes) != -1)
+									              o[this.name].push('true' || '');
+									            else
+									            	o[this.name].push(this.value || '');
+									        } else {
+									        	if($.inArray(this.name, checkboxes) != -1)
+									        		o[this.name] = 'true' || '';
+										        else
+										           	o[this.name] = this.value || '';
+									        }
+									    });
+									    return JSON.stringify(o);
+									}
+
+
+								}
+								//Loge Expense End
+								
 								//end of logexpenses
 								
 								var LogS = result.myVehicleServMaint;
@@ -5254,6 +5123,162 @@ $("#"+"fuelCard4").html(outLogT);
 									outLogS='<h2>No records for Service maintenance</h2>';
 								}
 								$('#logServMainTable').html(outLogS);//Log Serv&Maint start//Log Serv&Maint end
+								//Log Serv&maint Start
+								
+
+								registerEditDealerVehicleservmtModal();
+								// start of logsermaint
+								function registerEditDealerVehicleservmtModal(){
+									//Add a Bootstrap Modal DIV to vehicle expns Details
+									var editDealerVehicleservmtModal = '<div class="modal fade" id="editDealerVehicleservmtModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+									    <div class="modal-dialog">\
+									        <div class="modal-content">\
+									            <div class="modal-header">\
+									                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+									                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
+									            </div>\
+												<h4 class="modal-title" id="myModalLabel"><center>View Log Service Maintenance Details</center></h4>\
+										        <form id="edit-dealer-vehicle-servmt-content-form">\
+												<div class="modal-body edit-dealer-vehicle-servmt-content">\
+									            </div>\
+									            <div class="modal-footer">\
+									                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+										<button type="button" class="btn btn-primary submit-editDealerVehicleservmtModal" data-dismiss="modal">Save changes</button>\
+												</div>\
+									            </form>\
+									        	<p><center>&copy; 2017 Autoscoop</center></p>\
+									        </div>\
+									    </div>\
+									</div>';
+
+									$(document.body).append(editDealerVehicleservmtModal);
+
+
+									$('a.anchor-editDealerVehicleservmtModal').on('click', function(event) {
+
+
+										var data = $(event.target).data('details');
+										var quotIdHiddenField = '<input type="hidden" name="myVehicleServMaintId" value="' + data.myVehicleServMaintId + '" />';
+										// start
+										var appId = '249863545451459';
+									    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+									      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+									      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+									      AWS.config.region = 'us-east-1';
+									      var bucket = new AWS.S3({
+									          params: {
+									              Bucket: bucketName
+									          }
+									      });
+									     accessToken = $.jStorage.get("fbAToken");
+												bucket.config.credentials = new AWS.WebIdentityCredentials({
+										                  ProviderId: 'graph.facebook.com',
+										                  RoleArn: roleArn,
+										                  WebIdentityToken: accessToken
+										              });
+									          fbUserId = $.jStorage.get("fbKey");
+										url1=" ";
+										var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: data.uploadPhoto, Expires: 60};
+								        bucket.getSignedUrl('getObject', params, function (err, url) {
+								          if (url) {
+								          url1=url;
+								          var editDealerVehicleservmtForm = '<form id="edit-dealer-vehicle-servmt-content-form"><table>\
+								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+												<tr><td>Log Serv Maint ID</td><td> <input type="hidden" name="myVehicleServMaintId" class="input-text full-width" value="' + data.myVehicleServMaintId + '"/></td></tr>\
+												</table>\
+												<table>\
+												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
+												<tr><td>Type</td><td> <input type="text" name="typeOfServMaint" class="input-text full-width" value="' + data.typeOfServMaint + '"/></td></tr>\
+												<tr><td>Type of Service(L1)</td><td> <input type="text" name="mechanicAddress" class="input-text full-width" value="' + data.mechanicAddress + '"/></td></tr>\
+												<tr><td>Type of Service(L2)</td><td> <input type="text" name="contactDetails" class="input-text full-width" value="' + data.contactDetails + '"/></td></tr>\
+												<tr><td>Service@ Date</td><td><input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
+												<tr><td>OdoMeter Reading Kms</td><td> <input type="text" name="odoMeterKm" class="input-text full-width" value="' + data.odoMeterKm + '"/></td></tr>\
+												<tr><td>Next S&M Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="nextServDate" class="input-text full-width" value="' + data.nextServDate + '"/></td></tr>\
+												<tr><td>Next S&M Date @ODO Meter Reading</td><td> <input type="text" name="nextOdoMeterKm" class="input-text full-width" value="' + data.nextOdoMeterKm + '"/></td></tr>\
+												<tr><td>Cost</td><td> <input type="text" name="totalAmount" class="input-text full-width" value="' + data.totalAmount + '"/></td></tr>\
+												<tr><td>Mechanic / Company Name</td><td> <input type="text" name="mechanicName" class="input-text full-width" value="' + data.mechanicName + '"/></td></tr>\
+												</table>\
+												</form>';
+											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
+											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>undefined</g, ">--NA--<");
+											$(".edit-dealer-vehicle-servmt-content").html(editDealerVehicleservmtForm);
+
+								          }
+								          else{alert("not able to retrieve photo for serv and maintenance, However you can view other details "+err)
+								          url1=url;
+								          var editDealerVehicleservmtForm = '<form id="edit-dealer-vehicle-servmt-content-form"><table>\
+								        	  <ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+								        	  <tr><td>Log Serv Maint ID</td><td> <input type="hidden" name="myVehicleServMaintId" class="input-text full-width" value="' + data.myVehicleServMaintId + '"/></td></tr>\
+												</table>\
+												<table>\
+												<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Log Service Maintenance Details</div></div>\
+												<tr><td>Type</td><td> <input type="text" name="typeOfServMaint" class="input-text full-width" value="' + data.typeOfServMaint + '"/></td></tr>\
+												<tr><td>Type of Service(L1)</td><td> <input type="text" name="mechanicAddress" class="input-text full-width" value="' + data.mechanicAddress + '"/></td></tr>\
+												<tr><td>Type of Service(L2)</td><td> <input type="text" name="contactDetails" class="input-text full-width" value="' + data.contactDetails + '"/></td></tr>\
+												<tr><td>Service@ Date</td><td><input type="text" onfocus="(this.type=\'date\')" name="date" class="input-text full-width" value="' + data.date + '"/></td></tr>\
+												<tr><td>OdoMeter Reading Kms</td><td> <input type="text" name="odoMeterKm" class="input-text full-width" value="' + data.odoMeterKm + '"/></td></tr>\
+												<tr><td>Next S&M Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="nextServDate" class="input-text full-width" value="' + data.nextServDate + '"/></td></tr>\
+												<tr><td>Next S&M Date @ODO Meter Reading</td><td> <input type="text" name="nextOdoMeterKm" class="input-text full-width" value="' + data.nextOdoMeterKm + '"/></td></tr>\
+												<tr><td>Cost</td><td> <input type="text" name="totalAmount" class="input-text full-width" value="' + data.totalAmount + '"/></td></tr>\
+												<tr><td>Mechanic / Company Name</td><td> <input type="text" name="mechanicName" class="input-text full-width" value="' + data.mechanicName + '"/></td></tr>\
+												</table>\
+												</form>';
+											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>null</g, ">--NA--<");
+											editDealerVehicleservmtForm = editDealerVehicleservmtForm.replace(/>undefined</g, ">--NA--<");
+											$(".edit-dealer-vehicle-servmt-content").html(editDealerVehicleservmtForm);
+
+
+								          }});
+									});
+									$('button.submit-editDealerVehicleservmtModal').on('click', function(e) {
+
+										var jsonInput = $("#edit-dealer-vehicle-servmt-content-form").convertFormDataToJSON();
+
+
+										$.ajax({
+											type: "POST",
+											url: "api/myVehicleServMaintUpdate?_method=PUT",
+											data: jsonInput,
+											contentType:'application/json',
+											success: function(result){
+												$("#anchor-editDealerVehicleservmtModal-" + result.myVehicleServMaintId).data('details', result);
+												alert("Successfully upated the Logbook");
+												angular.element(document.getElementById('myController13')).scope().vehicleRetrievalforLogBook();
+											}
+										});
+
+
+									});
+
+									$.fn.convertFormDataToJSON = function(){
+										var checkboxes = [];
+										$(this).find('input:checkbox:checked').each(function(){
+											checkboxes.push($(this).attr("name"));
+										});
+										var o = {};
+									    var a = this.serializeArray();
+									    $.each(a, function() {
+									        if (o[this.name] != undefined) {
+									            if (!o[this.name].push) {
+									                o[this.name] = [o[this.name]];
+									            }
+									            if($.inArray(this.name, checkboxes) != -1)
+									              o[this.name].push('true' || '');
+									            else
+									            	o[this.name].push(this.value || '');
+									        } else {
+									        	if($.inArray(this.name, checkboxes) != -1)
+									        		o[this.name] = 'true' || '';
+										        else
+										           	o[this.name] = this.value || '';
+									        }
+									    });
+									    return JSON.stringify(o);
+									}
+
+
+								}
+								//Log Serv&MAINT END
 								//end of logservmaint
 							}
 						});

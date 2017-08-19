@@ -3202,6 +3202,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 	    	            </div>\
 	    	            <div class="modal-footer">\
 	    	                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>\
+	    		<button type="button" class="btn btn-primary submit-editDealerlkVehicleSearchModal" data-dismiss="modal">Save changes</button>\
 	    		<p><center>&copy; 2017 Autoscoop</center></p>\
 	    			</div>\
 	    	            </form>\
@@ -3218,7 +3219,9 @@ mainApp1.controller('myController13',function($scope, $http) {
 	    		var data = $(event.target).data('details');
 	    		//var json = JSON.stringify(data);
 	    		var quotIdHiddenField = '<input type="hidden" name="loyalityProgramId" value="' + data.loyalityProgramId + '" />';
-	    		
+	    		var moveToUser = '<input type="checkbox" name="status" />';
+				if(data.status)
+					  moveToUser = '<input type="checkbox" name="status" checked="checked" />';
 
 
 	    		//alert(JSON.stringify(data)); to work
@@ -3227,34 +3230,65 @@ mainApp1.controller('myController13',function($scope, $http) {
 	    			<div class="row"><div class="col-sm-12 col-md-12 product-search-title">User Details</div></div>\
 	    			<tr><td>Loyality ID</td><td>' + data.loyalityProgramId + '</td></tr>\
 	    			<tr><td>' + quotIdHiddenField + '</td></tr>\
-	    			<tr><td>Review Name</td><td>' + data.revName + '</td></tr>\
-	    			<tr><td>Blog Name</td><td>' + data.blogName + '</td></tr>\
-	    			<tr><td>Referred Name</td><td>' + data.referredName + '</td></tr>\
-	    			<tr><td>Type of Buy</td><td>' + data.typeOfTrans + '</td></tr>\
-	    			<tr><td>Type of Sell</td><td>' + data.typeOfSell + '</td></tr>\
-	    			<tr><td>Type of Fin</td><td>' + data.typeOfFin + '</td></tr>\
-	    			<tr><td>Type of Ins</td><td>' + data.typeOfIns + '</td></tr>\
-	    			<tr><td>Type of Trans</td><td>' + data.typeOfTrnp + '</td></tr>\
-	    			<tr><td>Type of Serv</td><td>' + data.typeOfServ + '</td></tr>\
-	    			<tr><td>creationDate</td><td>' + data.creationDate + '</td></tr>\
-	    			</table></form>';
+	    			<tr><td>Review Name</td><td> <input type="text" name="revName" class="input-text full-width" value="' + data.revName + '"/></td></tr>\
+	    			<tr><td>Calculate Points</td><td> <input type="text" name="revAction1" class="input-text full-width" value="' + data.revAction1 + '"/></td></tr>\
+	    			<tr><td>Initial Provisional Points</td><td> <input type="text" name="revDivByAct1" class="input-text full-width" value="' + data.revDivByAct1 + '"/></td></tr>\
+	    			<tr><td>Complete Trans Division</td><td> <input type="text" name="revDivByAct2" class="input-text full-width" value="' + data.revDivByAct2 + '"/></td></tr>\
+	    			<tr><td>Blog Name</td><td> <input type="text" name="blogName" class="input-text full-width" value="' + data.blogName + '"/></td></tr>\
+	    			<tr><td>Calculate Points</td><td> <input type="text" name="blogAction1" class="input-text full-width" value="' + data.blogAction1 + '"/></td></tr>\
+	    			<tr><td>Initial Provisional Points</td><td> <input type="text" name="blogDivByAct1" class="input-text full-width" value="' + data.blogDivByAct1 + '"/></td></tr>\
+	    			<tr><td>Complete Trans Division</td><td> <input type="text" name="blogDivByAct2" class="input-text full-width" value="' + data.blogDivByAct2 + '"/></td></tr>\
+	    			<tr><td>Referred Name</td><td> <input type="text" name="referredName" class="input-text full-width" value="' + data.referredName + '"/></td></tr>\
+	    			<tr><td>Calculate Points</td><td> <input type="text" name="referredAction1" class="input-text full-width" value="' + data.referredAction1 + '"/></td></tr>\
+	    			<tr><td>Initial Provisional Points</td><td> <input type="text" name="referredDivByAct1" class="input-text full-width" value="' + data.referredDivByAct1 + '"/></td></tr>\
+	    			<tr><td>Complete Trans Division</td><td> <input type="text" name="referredDivByAct2" class="input-text full-width" value="' + data.referredDivByAct2 + '"/></td></tr>\
+	    			<tr><td>User Refer Name</td><td> <input type="text" name="userReferName" class="input-text full-width" value="' + data.userReferName + '"/></td></tr>\
+	    			<tr><td>Calculate Points</td><td> <input type="text" name="userReferAction1" class="input-text full-width" value="' + data.userReferAction1 + '"/></td></tr>\
+	    			<tr><td>Initial Provisional Points</td><td> <input type="text" name="userReferDivByAct1" class="input-text full-width" value="' + data.userReferDivByAct1 + '"/></td></tr>\
+	    			<tr><td>Complete Trans Division</td><td> <input type="text" name="userReferDivByAct2" class="input-text full-width" value="' + data.userReferDivByAct2 + '"/></td></tr>\
+	    			<tr><td>Buy Value Transa</td><td> <input type="text" name="typeOfTrans" class="input-text full-width" value="' + data.typeOfTrans + '"/></td></tr>\
+	    			<tr><td>Calculate Points</td><td> <input type="text" name="buyCarAction1" class="input-text full-width" value="' + data.buyCarAction1 + '"/></td></tr>\
+	    			<tr><td>Initial Provisional Points</td><td> <input type="text" name="buyCarDivByAct1" class="input-text full-width" value="' + data.buyCarDivByAct1 + '"/></td></tr>\
+	    			<tr><td>Complete Trans Division</td><td> <input type="text" name="buyCarDivByAct2" class="input-text full-width" value="' + data.buyCarDivByAct2 + '"/></td></tr>\
+	    			<tr><td>Sell Value Transa</td><td> <input type="text" name="typeOfSell" class="input-text full-width" value="' + data.typeOfSell + '"/></td></tr>\
+	    			<tr><td>Calculate Points</td><td> <input type="text" name="sellCarAction1" class="input-text full-width" value="' + data.sellCarAction1 + '"/></td></tr>\
+	    			<tr><td>Initial Provisional Points</td><td> <input type="text" name="sellCarDivByAct1" class="input-text full-width" value="' + data.sellCarDivByAct1 + '"/></td></tr>\
+	    			<tr><td>Complete Trans Division</td><td> <input type="text" name="sellCarDivByAct2" class="input-text full-width" value="' + data.sellCarDivByAct2 + '"/></td></tr>\
+	    			<tr><td>Finance Value Transa</td><td> <input type="text" name="typeOfFin" class="input-text full-width" value="' + data.typeOfFin + '"/></td></tr>\
+	    			<tr><td>Calculate Points</td><td> <input type="text" name="finCarAction1" class="input-text full-width" value="' + data.finCarAction1 + '"/></td></tr>\
+	    			<tr><td>Initial Provisional Points</td><td> <input type="text" name="finCarDivByAct1" class="input-text full-width" value="' + data.finCarDivByAct1 + '"/></td></tr>\
+	    			<tr><td>Complete Trans Division</td><td> <input type="text" name="finCarDivByAct2" class="input-text full-width" value="' + data.finCarDivByAct2 + '"/></td></tr>\
+	    			<tr><td>Insurance Value Transa</td><td> <input type="text" name="typeOfIns" class="input-text full-width" value="' + data.typeOfIns + '"/></td></tr>\
+	    			<tr><td>Calculate Points</td><td> <input type="text" name="insCarAction1" class="input-text full-width" value="' + data.insCarAction1 + '"/></td></tr>\
+	    			<tr><td>Initial Provisional Points</td><td> <input type="text" name="insCarDivByAct1" class="input-text full-width" value="' + data.insCarDivByAct1 + '"/></td></tr>\
+	    			<tr><td>Complete Trans Division</td><td> <input type="text" name="insCarDivByAct2" class="input-text full-width" value="' + data.insCarDivByAct2 + '"/></td></tr>\
+	    			<tr><td>Transport Value Transa</td><td> <input type="text" name="typeOfTrnp" class="input-text full-width" value="' + data.typeOfTrnp + '"/></td></tr>\
+	    			<tr><td>Calculate Points</td><td> <input type="text" name="transpCarAction1" class="input-text full-width" value="' + data.transpCarAction1 + '"/></td></tr>\
+	    			<tr><td>Initial Provisional Points</td><td> <input type="text" name="transpCarDivByAct1" class="input-text full-width" value="' + data.transpCarDivByAct1 + '"/></td></tr>\
+	    			<tr><td>Complete Trans Division</td><td> <input type="text" name="transpCarDivByAct2" class="input-text full-width" value="' + data.transpCarDivByAct2 + '"/></td></tr>\
+	    			<tr><td>Service Maint Value Transa</td><td> <input type="text" name="typeOfServ" class="input-text full-width" value="' + data.typeOfServ + '"/></td></tr>\
+	    			<tr><td>Calculate Points</td><td> <input type="text" name="servCarAction1" class="input-text full-width" value="' + data.servCarAction1 + '"/></td></tr>\
+	    			<tr><td>Initial Provisional Points</td><td> <input type="text" name="servCarDivByAct1" class="input-text full-width" value="' + data.servCarDivByAct1 + '"/></td></tr>\
+	    			<tr><td>Complete Trans Division</td><td> <input type="text" name="servCarDivByAct2" class="input-text full-width" value="' + data.servCarDivByAct2 + '"/></td></tr>\
+	    			<tr><td>Active Status</td><td>' + moveToUser + '</td></tr>\
+	    			</table></table></form>';
 	    		editDealerlkVehicleSearchForm = editDealerlkVehicleSearchForm.replace(/>null</g, ">--NA--<");
 	    		editDealerlkVehicleSearchForm = editDealerlkVehicleSearchForm.replace(/>undefined</g, ">--NA--<");
 	    		$(".edit-dealer-lk-vehicle-search-content").html(editDealerlkVehicleSearchForm);
 	    	});
 	    	$('button.submit-editDealerlkVehicleSearchModal').on('click', function(e) {
 
-	    		var jsonInput = $("#edit-dealer-lk-vehicle-Search-content-form").convertFormDataToJSON();
-
+	    		var jsonInput = $("#edit-dealer-lk-vehicle-search-content-form").convertFormDataToJSON();
+//alert("changes12"+jsonInput);
 
 	    		$.ajax({
 	    			type: "POST",
-	    			url: "api/vehicleSearchQuotation?_method=PUT",
+	    			url: "api/loyalityUpdate?_method=PUT",
 	    			data: jsonInput,
 	    			contentType:'application/json',
 	    			success: function(result){
-	    				$("#anchor-editDealerlkVehicleSearchModal-" + result.quotId).data('details', result);
-	    				alert("Successfully upated the Quotations");
+	    				$("#anchor-editDealerlkVehicleSearchModal-" + result.loyalityProgramId).data('details', result);
+	    				alert("Successfully upated the Loyality Program");
 
 	    			}
 	    		});

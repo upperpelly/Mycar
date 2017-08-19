@@ -332,7 +332,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 		valTransPoints.setReferencedEmailId(referencedPointsVO.getReferencedEmailId());
 		valTransPoints.setAction("INITIATED");
 		valTransPoints.setNoOfPoints(referedProvDiv);
-		user.setRefer(true);
+		//user.setRefer(true);
 		if (user.getValTransPoints() != null) {
 			user.getReferencedPoints().add(valTransPoints);
 		} else {
@@ -341,6 +341,11 @@ public class UserEBidServiceImpl implements UserEBidService {
 			user.setReferencedPoints(userInsuranceLeads);
 		}
 		userRepository.flush();
+		// set refer true start
+		User userRef = userRepository.findOne(referencedPointsVO.getRefUserId());
+		userRef.setRefer(true);
+		userRepository.flush();
+		// set refer true start
 		return valTransPoints;
 
 	}

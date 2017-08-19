@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,8 @@ import au.com.pnspvtltd.mcd.domain.ExternalDealerTp;
 import au.com.pnspvtltd.mcd.domain.LoyalityProgAdmin;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.User;
+import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
+import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.repository.DealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerFinRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerInsRepository;
@@ -171,6 +174,62 @@ public class DealerController {
 		userAdminSearchVO12.setUserVO(userVOs);
 	
 		return userAdminSearchVO12;
+	}
+	
+	@PutMapping("loyalityUpdate")
+	@Transactional
+	public LoyalityProgAdminVO loyalityUpdate(@RequestBody LoyalityProgAdminVO vehicleQuotationVO,
+			HttpServletResponse response) {
+		  //TODO: create a service for VehicleQutotation to update quotation details
+		LOGGER.debug("Received request to update loyality {}", vehicleQuotationVO.getLoyalityProgramId());
+				if(vehicleQuotationVO != null){
+					LoyalityProgAdmin vehicleQuotation = loyalityProgAdminRepository.findOne(vehicleQuotationVO.getLoyalityProgramId());
+					
+					vehicleQuotation.setRevName(vehicleQuotationVO.getRevName());
+					vehicleQuotation.setRevAction1(vehicleQuotationVO.getRevAction1());
+					vehicleQuotation.setRevDivByAct1(vehicleQuotationVO.getRevDivByAct1());
+					vehicleQuotation.setRevDivByAct2(vehicleQuotationVO.getRevDivByAct2());
+					vehicleQuotation.setBlogName(vehicleQuotationVO.getBlogName());
+					vehicleQuotation.setBlogAction1(vehicleQuotationVO.getBlogAction1());
+					vehicleQuotation.setBlogDivByAct1(vehicleQuotationVO.getBlogDivByAct1());
+					vehicleQuotation.setBlogDivByAct2(vehicleQuotationVO.getBlogDivByAct2());
+					vehicleQuotation.setReferredName(vehicleQuotationVO.getReferredName());
+					vehicleQuotation.setReferredAction1(vehicleQuotationVO.getReferredAction1());
+					vehicleQuotation.setReferredDivByAct1(vehicleQuotationVO.getReferredDivByAct1());
+					vehicleQuotation.setReferredDivByAct2(vehicleQuotationVO.getReferredDivByAct2());
+					vehicleQuotation.setUserReferName(vehicleQuotationVO.getUserReferName());
+					vehicleQuotation.setUserReferAction1(vehicleQuotationVO.getUserReferAction1());
+					vehicleQuotation.setUserReferDivByAct1(vehicleQuotationVO.getUserReferDivByAct1());
+					vehicleQuotation.setUserReferDivByAct2(vehicleQuotationVO.getUserReferDivByAct2());
+					vehicleQuotation.setTypeOfTrans(vehicleQuotationVO.getTypeOfTrans());
+					vehicleQuotation.setBuyCarAction1(vehicleQuotationVO.getBuyCarAction1());
+					vehicleQuotation.setBuyCarDivByAct1(vehicleQuotationVO.getBuyCarDivByAct1());
+					vehicleQuotation.setBuyCarDivByAct2(vehicleQuotationVO.getBuyCarDivByAct2());
+					vehicleQuotation.setTypeOfSell(vehicleQuotationVO.getTypeOfSell());
+					vehicleQuotation.setSellCarAction1(vehicleQuotationVO.getSellCarAction1());
+					vehicleQuotation.setSellCarDivByAct1(vehicleQuotationVO.getSellCarDivByAct1());
+					vehicleQuotation.setSellCarDivByAct2(vehicleQuotationVO.getSellCarDivByAct2());
+					vehicleQuotation.setTypeOfFin(vehicleQuotationVO.getTypeOfFin());
+					vehicleQuotation.setFinCarAction1(vehicleQuotationVO.getFinCarAction1());
+					vehicleQuotation.setFinCarDivByAct1(vehicleQuotationVO.getFinCarDivByAct1());
+					vehicleQuotation.setFinCarDivByAct2(vehicleQuotationVO.getFinCarDivByAct2());
+					vehicleQuotation.setTypeOfIns(vehicleQuotationVO.getTypeOfIns());
+					vehicleQuotation.setInsCarAction1(vehicleQuotationVO.getInsCarAction1());
+					vehicleQuotation.setInsCarDivByAct1(vehicleQuotationVO.getInsCarDivByAct1());
+					vehicleQuotation.setInsCarDivByAct2(vehicleQuotationVO.getInsCarDivByAct2());
+					vehicleQuotation.setTypeOfTrnp(vehicleQuotationVO.getTypeOfTrnp());
+					vehicleQuotation.setTranspCarAction1(vehicleQuotationVO.getTranspCarAction1());
+					vehicleQuotation.setTranspCarDivByAct1(vehicleQuotationVO.getTranspCarDivByAct1());
+					vehicleQuotation.setTranspCarDivByAct2(vehicleQuotationVO.getTranspCarDivByAct2());
+					vehicleQuotation.setTypeOfServ(vehicleQuotationVO.getTypeOfServ());
+					vehicleQuotation.setServCarAction1(vehicleQuotationVO.getServCarAction1());
+					vehicleQuotation.setServCarDivByAct1(vehicleQuotationVO.getServCarDivByAct1());
+					vehicleQuotation.setServCarDivByAct2(vehicleQuotationVO.getServCarDivByAct2());
+					vehicleQuotation.setStatus(vehicleQuotationVO.isStatus());	
+					loyalityProgAdminRepository.flush();
+					//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+				}
+				return vehicleQuotationVO;
 	}
 	
 	@PostMapping("dealer")
