@@ -37,7 +37,8 @@ function signingout(){
 	 $.jStorage.deleteKey("key");
 	 $.jStorage.deleteKey("carKey");
 	 $.jStorage.deleteKey("fbKey");
-	 alert("Successfully Logged Out");
+	 $.jStorage.deleteKey("fbAToken");
+	 alert("Successfully Logged Out.. Thank you");
 	 window.location="Hm_BetaV1.html";
 }
 function stringToDate(_date,_format,_delimiter)
@@ -5943,7 +5944,8 @@ $("#"+"fuelCard4").html(outLogT);
 							           	   //forFinance("quo-model-data4",outVehicle);
 							           	   $("#"+"quo-model-data4").html(outVehicle);
 							           	   }
-							           	   
+							           	registerEditDealerVehicleDetailModal();
+
 
 										$body.removeClass("loading");
 													});
@@ -5952,7 +5954,248 @@ $("#"+"fuelCard4").html(outLogT);
 						}
 
 
+						function registerEditDealerVehicleDetailModal(){
 
+							var editDealerVehicleDetailModal = '<div class="modal fade" id="editDealerVehicleDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+							    <div class="modal-dialog">\
+							        <div class="modal-content">\
+							            <div class="modal-header">\
+							                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+							                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
+							            </div>\
+										<h4 class="modal-title" id="myModalLabel"><center>View My Vehicle Details</center></h4>\
+										<form id="edit-dealer-vehicle-detail-content-form">\
+											<div class="row">\
+											<div class="col-sm-10 col-md-10"></div>\
+								    		<div class="col-sm-2 col-md-2 pull-right">\
+								        		<a href="#" class="btn btn-success btn-sm" onclick="printDiv("edit-dealer-vehicle-detail-content-form")">\
+										          <span class="glyphicon glyphicon-print"></span> Print\
+										        </a>\
+										    </div>\
+									    </div>\
+										<div class="modal-body edit-dealer-vehicle-detail-content">\
+							            </div>\
+							            <div class="modal-footer">\
+							                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+								<button type="button" class="btn btn-primary submit-editDealerVehicleDetailModal" data-dismiss="modal">Save changes</button>\
+										</div>\
+							            </form>\
+										<p><center>&copy; 2017 Autoscoop</center></p>\
+							        </div>\
+							    </div>\
+							</div>';
+
+							$(document.body).append(editDealerVehicleDetailModal);
+
+
+							$('a.anchor-editDealerVehicleDetailModal').on('click', function(event) {
+
+
+								var data = $(event.target).data('details');
+								var quotIdHiddenField = '<input type="hidden" name="myVehicleId" value="' + data.myVehicleId + '" />';
+								// start
+								var appId = '249863545451459';
+							    //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+							      var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+							      var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+							      AWS.config.region = 'us-east-1';
+							      var bucket = new AWS.S3({
+							          params: {
+							              Bucket: bucketName
+							          }
+							      });
+							     accessToken = $.jStorage.get("fbAToken");
+							     bucket.config.credentials = new AWS.WebIdentityCredentials({
+						                  ProviderId: 'graph.facebook.com',
+						                  RoleArn: roleArn,
+						                  WebIdentityToken: accessToken
+						              });
+								fbUserId = $.jStorage.get("fbKey");
+								url1=" ";
+								var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: data.photo1, Expires: 60};
+						        bucket.getSignedUrl('getObject', params, function (err, url) {
+						          if (url) {
+						          url1=url;
+						          var insRemind = '<input type="checkbox" name="insRemind" />';
+						  		if(data.insRemind)
+						  			insRemind = '<input type="checkbox" name="insRemind" checked="checked" />';
+
+						  		var maiRemind = '<input type="checkbox" name="maiRemind" />';
+						  		if(data.maiRemind)
+						  			maiRemind = '<input type="checkbox" name="maiRemind" checked="checked" />';
+
+						  		var finRemind = '<input type="checkbox" name="finRemind" />';
+						  		if(data.finRemind)
+						  			finRemind = '<input type="checkbox" name="finRemind" checked="checked" />';
+
+						          var editDealerVehicleDetailForm = '<form id="edit-dealer-vehicle-detail-content-form"><table>\
+									<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+									<tr><td>My Vehicle ID</td><td> <input type="hidden" name="myVehicleId" class="input-text full-width" value="' + data.myVehicleId + '"/></td></tr>\
+									<table>\
+									<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Basic info</div></div>\
+									<tr><td>Vehicle Type</td><td> <input type="text" name="fuelType" class="input-text full-width" value="' + data.fuelType + '"/></td></tr>\
+									<tr><td>Year</td><td> <input type="text" name="year" class="input-text full-width" value="' + data.year + '"/></td></tr>\
+									<tr><td>Make</td><td> <input type="text" name="make" class="input-text full-width" value="' + data.make + '"/></td></tr>\
+									<tr><td>Model</td><td> <input type="text" name="model" class="input-text full-width" value="' + data.model + '"/></td></tr>\
+									<tr><td>Variant</td><td> <input type="text" name="variant" class="input-text full-width" value="' + data.variant + '"/></td></tr>\
+									</table>\
+									<br/>\
+									<table>\
+									<h6 style="color:#bd191e;"><b>Vehicle Identity</b></h6>\
+									<tr><td>VIN/HIN Number</td><td> <input type="text" name="vin" class="input-text full-width" value="' + data.vin + '"/></td></tr>\
+									<tr><td>Rego No</td><td> <input type="text" name="regNum" class="input-text full-width" value="' + data.regNum + '"/></td></tr>\
+									<tr><td>Rego State</td><td> <input type="text" name="regState" class="input-text full-width" value="' + data.regState + '"/></td></tr>\
+									<tr><td>Rego End Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="regExpDate" class="input-text full-width" value="' + data.regExpDate + '"/></td></tr>\
+									</table>\
+									<br/>\
+									<table>\
+									<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Insurance Details</div></div>\
+									<tr><td>Insurance Provider</td><td> <input type="text" name="insProv" class="input-text full-width" value="' + data.insProv + '"/></td></tr>\
+									<tr><td>Insurance End Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="insExpiry" class="input-text full-width" value="' + data.insExpiry + '"/></td></tr>\
+									<tr><td>Insurance Premium Paid</td><td> <input type="text" name="insPremPaid" class="input-text full-width" value="'+ data.insPremPaid + '"/></td></tr>\
+									<tr><td>Insurance Reminder</td><td>'+ insRemind + '</td></tr>\
+									</table>\
+									<br/>\
+									<table>\
+									<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Maintenance Details</div></div>\
+									<tr><td>Last Service @Kms</td><td> <input type="text" name="odoMeter" class="input-text full-width" value="' + data.odoMeter + '"/></td></tr>\
+									<tr><td>Last Service Dt</td><td> <input type="text" onfocus="(this.type=\'date\')" name="lastServiceDt" class="input-text full-width" value="' + data.lastServiceDt + '"/></td></tr>\
+									<tr><td>Next Service Dt</td><td> <input type="text" onfocus="(this.type=\'date\')" name="nextServiceDt" class="input-text full-width" value="' + data.nextServiceDt + '"/></td></tr>\
+									<tr><td>Next Service @Kms</td><td> <input type="text" name="nextServKms" class="input-text full-width" value="' + data.nextServKms + '"/></td></tr>\
+									<tr><td>Insurance Reminder</td><td>'+ maiRemind + '</td></tr>\
+									</table>\
+									<br/>\
+									<table>\
+									<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Finance Info</div></div>\
+									<tr><td>Finance Provider</td><td> <input type="text" name="finProvider" class="input-text full-width" value="' + data.finProvider + '"/></td></tr>\
+									<tr><td>Loan Taken Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="loanTakenDt" class="input-text full-width" value="' + data.loanTakenDt + '"/></td></tr>\
+									<tr><td>Loan Amount</td><td> <input type="text" name="loanAmt1" class="input-text full-width" value="' + data.loanAmt1 + '"/></td></tr>\
+									<tr><td>Loan Period</td><td> <input type="text" name="loanPeriod" class="input-text full-width" value="' + data.loanPeriod + '"/></td></tr>\
+									<tr><td>Insurance Reminder</td><td> '+ finRemind + '</td></tr>\
+									</table>\
+									<br/>\
+									</table></form>';
+								editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>null</g, ">--NA--<");
+								editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>undefined</g, ">--NA--<");
+								$(".edit-dealer-vehicle-detail-content").html(editDealerVehicleDetailForm);
+						          }
+						          else{
+						          alert("not able to retrieve photo for My Vehicle however you an view other details"+err);
+						          var insRemind = '<input type="checkbox" name="insRemind" />';
+						    		if(data.insRemind)
+						    			insRemind = '<input type="checkbox" name="insRemind" checked="checked" />';
+
+						    		var maiRemind = '<input type="checkbox" name="maiRemind" />';
+						    		if(data.maiRemind)
+						    			maiRemind = '<input type="checkbox" name="maiRemind" checked="checked" />';
+
+						    		var finRemind = '<input type="checkbox" name="finRemind" />';
+						    		if(data.finRemind)
+						    			finRemind = '<input type="checkbox" name="finRemind" checked="checked" />';
+
+						          var editDealerVehicleDetailForm = '<form id="edit-dealer-vehicle-detail-content-form"><table>\
+									<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+url+'"'+' height="200" width="250"/></li></ul>\
+									<tr><td>My Vehicle ID</td><td> <input type="hidden" name="myVehicleId" class="input-text full-width" value="' + data.myVehicleId + '"/></td></tr>\
+									<table>\
+									<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Basic info</div></div>\
+									<tr><td>Vehicle Type</td><td> <input type="text" name="fuelType" class="input-text full-width" value="' + data.fuelType + '"/></td></tr>\
+									<tr><td>Year</td><td> <input type="text" name="year" class="input-text full-width" value="' + data.year + '"/></td></tr>\
+									<tr><td>Make</td><td> <input type="text" name="make" class="input-text full-width" value="' + data.make + '"/></td></tr>\
+									<tr><td>Model</td><td> <input type="text" name="model" class="input-text full-width" value="' + data.model + '"/></td></tr>\
+									<tr><td>Variant</td><td> <input type="text" name="variant" class="input-text full-width" value="' + data.variant + '"/></td></tr>\
+									</table>\
+									<br/>\
+									<table>\
+									<h6 style="color:#bd191e;"><b>Vehicle Identity</b></h6>\
+									<tr><td>VIN/HIN Number</td><td> <input type="text" name="vin" class="input-text full-width" value="' + data.vin + '"/></td></tr>\
+									<tr><td>Rego No</td><td> <input type="text" name="regNum" class="input-text full-width" value="' + data.regNum + '"/></td></tr>\
+									<tr><td>Rego State</td><td> <input type="text" name="regState" class="input-text full-width" value="' + data.regState + '"/></td></tr>\
+									<tr><td>Rego End Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="regExpDate" class="input-text full-width" value="' + data.regExpDate + '"/></td></tr>\
+									</table>\
+									<br/>\
+									<table>\
+									<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Insurance Details</div></div>\
+									<tr><td>Insurance Provider</td><td> <input type="text" name="insProv" class="input-text full-width" value="' + data.insProv + '"/></td></tr>\
+									<tr><td>Insurance End Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="insExpiry" class="input-text full-width" value="' + data.insExpiry + '"/></td></tr>\
+									<tr><td>Insurance Premium Paid</td><td> <input type="text" name="insPremPaid" class="input-text full-width" value="'+ data.insPremPaid + '"/></td></tr>\
+									<tr><td>Insurance Reminder</td><td>'+ insRemind + '</td></tr>\
+									</table>\
+									<br/>\
+									<table>\
+									<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Maintenance Details</div></div>\
+									<tr><td>Last Service @Kms</td><td> <input type="text" name="odoMeter" class="input-text full-width" value="' + data.odoMeter + '"/></td></tr>\
+									<tr><td>Last Service Dt</td><td> <input type="text" onfocus="(this.type=\'date\')" name="lastServiceDt" class="input-text full-width" value="' + data.lastServiceDt + '"/></td></tr>\
+									<tr><td>Next Service Dt</td><td> <input type="text" onfocus="(this.type=\'date\')" name="nextServiceDt" class="input-text full-width" value="' + data.nextServiceDt + '"/></td></tr>\
+									<tr><td>Next Service @Kms</td><td> <input type="text" name="nextServKms" class="input-text full-width" value="' + data.nextServKms + '"/></td></tr>\
+									<tr><td>Insurance Reminder</td><td>'+ maiRemind + '</td></tr>\
+									</table>\
+									<br/>\
+									<table>\
+									<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Finance Info</div></div>\
+									<tr><td>Finance Provider</td><td> <input type="text" name="finProvider" class="input-text full-width" value="' + data.finProvider + '"/></td></tr>\
+									<tr><td>Loan Taken Date</td><td> <input type="text" onfocus="(this.type=\'date\')" name="loanTakenDt" class="input-text full-width" value="' + data.loanTakenDt + '"/></td></tr>\
+									<tr><td>Loan Amount</td><td> <input type="text" name="loanAmt1" class="input-text full-width" value="' + data.loanAmt1 + '"/></td></tr>\
+									<tr><td>Loan Period</td><td> <input type="text" name="loanPeriod" class="input-text full-width" value="' + data.loanPeriod + '"/></td></tr>\
+									<tr><td>Insurance Reminder</td><td> '+ finRemind + '</td></tr>\
+									</table>\
+									<br/>\
+									</table></form>';
+								editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>null</g, ">--NA--<");
+								editDealerVehicleDetailForm = editDealerVehicleDetailForm.replace(/>undefined</g, ">--NA--<");
+								$(".edit-dealer-vehicle-detail-content").html(editDealerVehicleDetailForm);
+
+						          }
+						        });
+								//end
+							});
+
+							$('button.submit-editDealerVehicleDetailModal').on('click', function(e) {
+
+								var jsonInput = $("#edit-dealer-vehicle-detail-content-form").convertFormDataToJSON();
+
+
+								$.ajax({
+									type: "POST",
+									url: "api/myVehicleGarageUpdate?_method=PUT",
+									data: jsonInput,
+									contentType:'application/json',
+									success: function(result){
+										$("#anchor-editDealerVehicleDetailModal-" + result.myVehicleId).data('details', result);
+										alert("Successfully upated the My Vehicle Garage Details..");
+									}
+								});
+
+
+							});
+
+							$.fn.convertFormDataToJSON = function(){
+								var checkboxes = [];
+								$(this).find('input:checkbox:checked').each(function(){
+									checkboxes.push($(this).attr("name"));
+								});
+								var o = {};
+							    var a = this.serializeArray();
+							    $.each(a, function() {
+							        if (o[this.name] != undefined) {
+							            if (!o[this.name].push) {
+							                o[this.name] = [o[this.name]];
+							            }
+							            if($.inArray(this.name, checkboxes) != -1)
+							              o[this.name].push('true' || '');
+							            else
+							            	o[this.name].push(this.value || '');
+							        } else {
+							        	if($.inArray(this.name, checkboxes) != -1)
+							        		o[this.name] = 'true' || '';
+								        else
+								           	o[this.name] = this.value || '';
+							        }
+							    });
+							    return JSON.stringify(o);
+							}
+
+
+						}
 
 
 

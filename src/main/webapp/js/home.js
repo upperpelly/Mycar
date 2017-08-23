@@ -23,6 +23,7 @@
                  }
         		$scope.newUsedCarSearch = "true";
         		//$scope.usedCarSearch = true;
+        		fbloadphoto12();
             	populateServicelev1();
             	//$scope.populateServicelev1 = function (){
             	function populateServicelev1(){

@@ -60,12 +60,22 @@
 	 	 }
 </script>
 <script type="text/javascript">
+function cleanup() {
+
+    $.jStorage.deleteKey("key");
+    $.jStorage.deleteKey("carKey");
+    $.jStorage.deleteKey("fbKey");
+    $.jStorage.deleteKey("fbAToken");
+    //alert("Successfully Logged Out Thank you");
+    window.location = "Hm_BetaV1.html";
+}
         function signingout() {
 
             $.jStorage.deleteKey("key");
             $.jStorage.deleteKey("carKey");
             $.jStorage.deleteKey("fbKey");
-            alert("Successfully Logged Out");
+            $.jStorage.deleteKey("fbAToken");
+            alert("Successfully Logged Out Thank you");
             window.location = "Hm_BetaV1.html";
         }
 
@@ -354,7 +364,7 @@ tr:hover {
 <!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId : '249863545451459',
+				appId : '238604546585672',
 				xfbml : true,
 				version : 'v2.8'
 			});
@@ -4610,7 +4620,52 @@ table {
 
         }
     </script>
+<!-- check the validity of token -->
+<script type="text/javascript">
 
+        function fbloadphoto12() {
+        	//alert("inside check of login");
+       //<!--Facebook Login logic prod 249863545451459 test 238604546585672 -- >
+        var appId = '249863545451459';
+            //prod        var roleArn =  'arn:aws:iam::675778862308:role/roleJavaScript'; //local var roleArn = 'arn:aws:iam::675778862308:role/javarolenow';
+            var roleArn = 'arn:aws:iam::675778862308:role/roleJavaScript';
+            var bucketName = 'elasticbeanstalk-us-east-1-675778862308';
+            AWS.config.region = 'us-east-1';
+            var bucket = new AWS.S3({
+                params: {
+                    Bucket: bucketName
+                }
+            });
+            accessToken = $.jStorage.get("fbAToken");
+      	     //alert(accessToken);
+      	     if(accessToken){
+      				bucket.config.credentials = new AWS.WebIdentityCredentials({
+      		                  ProviderId: 'graph.facebook.com',
+      		                  RoleArn: roleArn,
+      		                  WebIdentityToken: accessToken
+      		              });
+      				 var fileChooser = document.getElementById('uploadPhotoServ1');
+      				  var file = fileChooser.files[0];
+      				
+                fbUserId = $.jStorage.get("fbKey");
+                var value = $.jStorage.get("key");
+                var params = {Bucket: 'elasticbeanstalk-us-east-1-675778862308', Key: value.issueState, Expires: 60};
+                url = bucket.getSignedUrl('getObject', params, function (err, url) {
+                  if (url) {
+                  	//alert("Successfully retrieved");
+                  }
+                  else{
+                	  alert("Your session is Expired.. Please Re-Login..");
+                	  cleanup();
+      				}
+                });
+           
+
+
+        }
+        }
+    </script>
+<!-- check the validity end -->
 		<script type="text/javascript">
 
         function fbloadphoto() {

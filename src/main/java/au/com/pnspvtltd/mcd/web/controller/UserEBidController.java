@@ -302,10 +302,10 @@ public class UserEBidController {
 	public UserReferPoints userReferPoints(@RequestBody UserReferPointsVO userEBidVO) {
 		
 		UserReferPoints userReferPoint = userEBidService.whenUserReferUserId(userEBidVO);
-		
+		//UserReferPoints userReferPoint = new UserReferPoints();
 		if(userReferPoint.getAction().equalsIgnoreCase("INITIATED")){
 			try {
-				smtp.sendMail(userEBidVO.getReferedEmailId(), "Autoscoop Notification",
+				smtp.sendMail(userEBidVO.getFirstName(),userEBidVO.getLastName(),userEBidVO.getReferedEmailId(), "Autoscoop Notification",
 						"You have been successfully Registered");
 			} catch (MessagingException e) {
 				// TODO Auto-generated catch block
