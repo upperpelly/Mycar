@@ -37,7 +37,17 @@ public class UserVO {
 	private boolean facebook;
 	private boolean payDeposit;
 	private boolean refer;
+	private boolean welstatus;
 	private boolean loyalityFlag;
+	
+	public boolean isWelstatus() {
+		return welstatus;
+	}
+
+	public void setWelstatus(boolean welstatus) {
+		this.welstatus = welstatus;
+	}
+
 	public boolean isLoyalityFlag() {
 		return loyalityFlag;
 	}

@@ -3342,12 +3342,12 @@ mainApp1.controller('myController13',function($scope, $http) {
 	                    alert("successfully retrieved"+data.userVO.length);
 	                    out="";
 
-	             	   out += '<tr><th>'+"S.no"+'</th><th>'+"User ID"+'</th><th>'+"First Name"+'</th>'+'<th>'+"Last Name"+'</th><th>'+"Email Id"+'</th><th>'+"Address"+'</th><th>'+"Date of Reg"+'</th><th>'+"Operation"+'</th></tr>';
+	             	   out += '<tr><th>'+"S.no"+'</th><th>'+"User ID"+'</th><th>'+"First Name"+'</th>'+'<th>'+"Last Name"+'</th><th>'+"Email Id"+'</th><th>'+"Wecome Sent"+'</th><th>'+"Address"+'</th><th>'+"Date of Reg"+'</th><th>'+"Operation"+'</th></tr>';
 	             	   for(i=data.userVO.length-1;i>=0;i--)
 	            		{
 	             		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
 
-	            		 out= out+'<tr>'+'<td>'+i+'</td>'+'<td>'+data.userVO[i].userId+'</td>'+'<td>'+data.userVO[i].firstName+'<td>'+data.userVO[i].lastName+'</td>'+'</td>'+'<td>'+data.userVO[i].email+'</td>'+'<td>'+data.userVO[i].streetNumber+data.userVO[i].streetName+data.userVO[i].streetName+data.userVO[i].postCode+data.userVO[i].drivingLicense+data.userVO[i].state+'</td>'+'<td>'+data.userVO[i].creationDate+'</td>'+'<td><a href="#" id="anchor-editDealerssVehicleSearchModal-' + data.userVO[i].userId + '" data-details=\'' + JSON.stringify(data.userVO[i]) + '\' class="anchor-editDealerssVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerssVehicleSearchModal">View</a></td></tr>';
+	            		 out= out+'<tr>'+'<td>'+i+'</td>'+'<td>'+data.userVO[i].userId+'</td>'+'<td>'+data.userVO[i].firstName+'<td>'+data.userVO[i].lastName+'</td>'+'</td>'+'<td>'+data.userVO[i].email+'</td>'+'<td>'+data.userVO[i].welstatus+'</td>'+'<td>'+data.userVO[i].streetNumber+data.userVO[i].streetName+data.userVO[i].streetName+data.userVO[i].postCode+data.userVO[i].drivingLicense+data.userVO[i].state+'</td>'+'<td>'+data.userVO[i].creationDate+'</td>'+'<td><a href="#" id="anchor-editDealerssVehicleSearchModal-' + data.userVO[i].userId + '" data-details=\'' + JSON.stringify(data.userVO[i]) + '\' class="anchor-editDealerssVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerssVehicleSearchModal">View</a></td></tr>';
 
 	            		}
 	             	   out = out.replace(/>null</g, ">--NA--<");
@@ -3405,12 +3405,12 @@ mainApp1.controller('myController13',function($scope, $http) {
                     alert("successfully retrieved"+data.userVO.length);
                     out="";
 
-             	   out += '<tr><th>'+"User ID"+'</th><th>'+"First Name"+'</th>'+'<th>'+"Last Name"+'</th><th>'+"Email Id"+'</th><th>'+"Address"+'</th><th>'+"Operation"+'</th></tr>';
+             	   out += '<tr><th>'+"User ID"+'</th><th>'+"First Name"+'</th>'+'<th>'+"Last Name"+'</th><th>'+"Email Id"+'</th><th>'+"Wecome Sent"+'</th><th>'+"Address"+'</th><th>'+"Operation"+'</th></tr>';
              	   for(i=data.userVO.length-1;i>=0;i--)
             		{
              		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
 
-            		 out= out+'<tr>'+'<td>'+data.userVO[i].userId+'</td>'+'<td>'+data.userVO[i].firstName+'<td>'+data.userVO[i].lastName+'</td>'+'</td>'+'<td>'+data.userVO[i].email+'</td>'+'<td>'+data.userVO[i].postCode+'</td>'+'<td><a href="#" id="anchor-editDealerssVehicleSearchModal-' + data.userVO[i].userId + '" data-details=\'' + JSON.stringify(data.userVO[i]) + '\' class="anchor-editDealerssVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerssVehicleSearchModal">View</a></td></tr>';
+            		 out= out+'<tr>'+'<td>'+data.userVO[i].userId+'</td>'+'<td>'+data.userVO[i].firstName+'<td>'+data.userVO[i].lastName+'</td>'+'</td>'+'<td>'+data.userVO[i].email+'</td>'+'<td>'+data.userVO[i].welstatus+'</td>'+'<td>'+data.userVO[i].postCode+'</td>'+'<td><a href="#" id="anchor-editDealerssVehicleSearchModal-' + data.userVO[i].userId + '" data-details=\'' + JSON.stringify(data.userVO[i]) + '\' class="anchor-editDealerssVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerssVehicleSearchModal">View</a></td></tr>';
 
             		}
              	   out = out.replace(/>null</g, ">--NA--<");
@@ -3448,6 +3448,7 @@ mainApp1.controller('myController13',function($scope, $http) {
     	            </div>\
     	            <div class="modal-footer">\
     	                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>\
+    		<button type="button" class="btn btn-primary submit-editDealerssVehicleSearchModal" data-dismiss="modal">Send Welcome Mail</button>\
     		<p><center>&copy; 2017 Autoscoop</center></p>\
     			</div>\
     	            </form>\
@@ -3486,17 +3487,17 @@ mainApp1.controller('myController13',function($scope, $http) {
     	});
     	$('button.submit-editDealerssVehicleSearchModal').on('click', function(e) {
 
-    		var jsonInput = $("#edit-dealer-ss-vehicle-Search-content-form").convertFormDataToJSON();
-
+    		var jsonInput = $("#edit-dealer-ss-vehicle-search-content-form").convertFormDataToJSON();
+alert("data"+jsonInput);
 
     		$.ajax({
     			type: "POST",
-    			url: "api/vehicleSearchQuotation?_method=PUT",
+    			url: "eBid/welcomeMail",
     			data: jsonInput,
     			contentType:'application/json',
     			success: function(result){
-    				$("#anchor-editDealerssVehicleSearchModal-" + result.quotId).data('details', result);
-    				alert("Successfully upated the Quotations");
+    				$("#anchor-editDealerssVehicleSearchModal-" + result.userId).data('details', result);
+    				alert("Successfully Mail Sent....");
 
     			}
     		});

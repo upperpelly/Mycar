@@ -323,7 +323,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 		}
 		// end of loyalityAdmiProg
 		ReferencedPoints valTransPoints = new ReferencedPoints();
-		// valTransPoints.setIdp(referencedPointsVO.getUserId());
+		valTransPoints.setIdp(user.getUserId());
 		valTransPoints.setRefUserId(referencedPointsVO.getRefUserId());
 		valTransPoints.setCreationDate(ourJavaDateObject);
 		// valTransPoints.setId(search.getCarSearchId());

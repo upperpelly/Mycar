@@ -357,6 +357,42 @@
 	                    });
             		}
             	}
+            	// query on real loyality Program
+            	$scope.inviteFrmSub12 = function (isValid){
+            		//if (alreadyLogged()) {
+            		//alert("came here");
+	            		if(isValid){
+	                		$('.loyaStatus1').html('<i class="fa fa-spinner fa-spin" style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">&nbsp;Submitting,Please wait...<span>');
+	                		var wsURL = 'api/eBid/questionRealLoyal';
+	                		/*userId=$.jStorage.get('key').userId;
+	                		firstName=$.jStorage.get('key').firstName;
+	                		lastName=$.jStorage.get('key').lastName;*/
+	                		userId=0;
+	                		
+	                		//alert(userId);
+	                		var jsonInputToAPI = { "userReferPointId":null,"userId": userId, "fName":$scope.loyalityQuestion,"firstName":$scope.loyalityFname1, "lastName": $scope.loyalityLname1, "referedEmailId": $scope.loyalityEmail1};
+	                		/*jsonInputToAPI = JSON.stringify(jsonInputToAPI);
+	                		console.log(JSON.stringify(jsonInputToAPI));*/
+		            		$http({
+		                        method: 'POST',
+		                        url: wsURL,
+		                        data: jsonInputToAPI
+		
+		                    }).success(function (data) {
+		                    	
+		                        alert("Successful");
+		                        $('.loyaStatus1').html('<i style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">Successfully stored...<span>');
+		                    	
+		                    });
+	            		}
+            		/*//}
+            		else{
+            			alert("Please login to invite your friends");
+            		}*/
+            	}
+            	// query on real loyality Program end
+            	
+            	
             	
             	//invite frm method
             	
@@ -366,8 +402,10 @@
 	                		$('.loyaStatus1').html('<i class="fa fa-spinner fa-spin" style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">&nbsp;Submitting,Please wait...<span>');
 	                		var wsURL = 'api/eBid/userReferPoints';
 	                		userId=$.jStorage.get('key').userId;
+	                		firstName=$.jStorage.get('key').firstName;
+	                		lastName=$.jStorage.get('key').lastName;
 	                		//alert(userId);
-	                		var jsonInputToAPI = { "userReferPointId":null,"userId": userId, "firstName":$scope.inviteFname, "lastName": $scope.inviteLname, "referedEmailId": $scope.inviteEmail};
+	                		var jsonInputToAPI = { "userReferPointId":null,"userId": userId, "fName":firstName, "lName": lastName,"firstName":$scope.inviteFname, "lastName": $scope.inviteLname, "referedEmailId": $scope.inviteEmail};
 	                		/*jsonInputToAPI = JSON.stringify(jsonInputToAPI);
 	                		console.log(JSON.stringify(jsonInputToAPI));*/
 		            		$http({

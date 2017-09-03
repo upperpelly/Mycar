@@ -41,10 +41,19 @@ public class User implements Serializable {
 	private boolean facebook;
 	private boolean payDeposit;
 	private boolean refer;
+	private boolean welstatus;
 	private String gender;
 	private Date creationDate;
 	
 	
+	public boolean isWelstatus() {
+		return welstatus;
+	}
+
+	public void setWelstatus(boolean welstatus) {
+		this.welstatus = welstatus;
+	}
+
 	public boolean isRefer() {
 		return refer;
 	}

@@ -29,6 +29,8 @@ public class UserReferPoints implements Serializable {
 	private String referedEmailId;
 	private String firstName;
 	private String lastName;
+	private String fName;
+	private String lName;
 	private int noOfPoints;
 	private int actualPoints;
 	private int divBy;
@@ -42,6 +44,22 @@ public class UserReferPoints implements Serializable {
 	private boolean provStatus;
 	private boolean status;
 	
+	public String getfName() {
+		return fName;
+	}
+
+	public void setfName(String fName) {
+		this.fName = fName;
+	}
+
+	public String getlName() {
+		return lName;
+	}
+
+	public void setlName(String lName) {
+		this.lName = lName;
+	}
+
 	public boolean isProvStatus() {
 		return provStatus;
 	}

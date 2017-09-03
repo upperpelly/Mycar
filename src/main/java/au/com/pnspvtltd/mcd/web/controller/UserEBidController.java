@@ -305,7 +305,7 @@ public class UserEBidController {
 		//UserReferPoints userReferPoint = new UserReferPoints();
 		if(userReferPoint.getAction().equalsIgnoreCase("INITIATED")){
 			try {
-				smtp.sendMail(userEBidVO.getFirstName(),userEBidVO.getLastName(),userEBidVO.getReferedEmailId(), "Autoscoop Notification",
+				smtp.sendMail(userEBidVO.getfName(),userEBidVO.getlName(),userEBidVO.getFirstName(),userEBidVO.getLastName(),userEBidVO.getReferedEmailId(), "Autoscoop Notification",
 						"You have been successfully Registered");
 			} catch (MessagingException e) {
 				// TODO Auto-generated catch block
@@ -318,6 +318,49 @@ public class UserEBidController {
 		
 		return userReferPoint;
 	}
+	@PostMapping("eBid/questionRealLoyal")
+	public UserReferPoints questionRealLoyal(@RequestBody UserReferPointsVO userEBidVO) {
+		
+		//UserReferPoints userReferPoint = userEBidService.whenUserReferUserId(userEBidVO);
+		UserReferPoints userReferPoint = new UserReferPoints();
+		//if(userReferPoint.getAction().equalsIgnoreCase("INITIATED")){
+			try {
+				smtp.sendMailQuestion(userEBidVO.getfName(),userEBidVO.getFirstName(),userEBidVO.getLastName(),userEBidVO.getReferedEmailId(), "Question / Suggestion",
+						"You have been successfully Registered");
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		//}
+		
+		return userReferPoint;
+	}
+	@PostMapping("eBid/welcomeMail")
+	public User welcomeMail(@RequestBody UserVO userVO) {
+		
+		User user = userRepository.findOne(userVO.getUserId());
+		
+		if(!user.isWelstatus()){
+			try {
+				smtp.sendMailWelcome(user.getFirstName(),user.getLastName(),user.getEmail(), "Autoscoop Welcome Mail",
+						"You have been successfully Welcome");
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			user.setWelstatus(true);
+			userRepository.flush();
+		}
+		
+		return user;
+	}
+	
 	@PostMapping("eBid/referencedPoints")
 	public ReferencedPoints referencedPoints(@RequestBody ReferencedPointsVO userEBidVO) {
 		return userEBidService.whenReferedUserId(userEBidVO);
