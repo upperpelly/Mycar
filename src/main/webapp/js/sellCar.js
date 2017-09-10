@@ -270,20 +270,22 @@ function alreadyLogged(){
 	//alert("Checking logged or not");
 	if(!value){
 	    // if not - return false
+		alert("false");
 	return false;
 	}
 	else{
 		//alert("Successfully logged in..");
+		alert("true");
 		return true;
 	}
 	
 
 }
-if(!alreadyLogged())
+/*if(!alreadyLogged())
 {
 		var url="Hm_BetaV1.html";
 		window.location=url;
-}
+}*/
 function signingout(){
 	
 	 $.jStorage.deleteKey("key");
@@ -293,6 +295,8 @@ function signingout(){
 }
 window.onload= function()
 {
+	var value = $.jStorage.get("key");
+	if(value){
 	firstName = value.firstName;
 	userId = value.userId;
 	address=value.streetNumber+value.streetName;
@@ -300,6 +304,7 @@ window.onload= function()
 		document.getElementById('welcomeDiv').style.display = "block";
 		document.getElementById('welcomeDiv1').style.display = "none";
 		document.getElementById('userId').innerHTML="<b>"+"Hi "+firstName+"</b>";
+	}
 	}
 }
 
@@ -529,7 +534,7 @@ var mainApp1 = angular.module("mainApp1", []);
 		
 		$scope.sixthForm = function(valid) {
 			$scope.sixthFlag=true;
-			if(valid){
+			if(alreadyLogged() && valid){
 				//alert("Valid changed");
 		        $scope.sixthFlag=false;
 		        $('.result').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>Saving,Please wait...');
@@ -673,6 +678,9 @@ var mainApp1 = angular.module("mainApp1", []);
 				$scope.sixthFlag=true;
 			}
 		};
+		
+		
+		
 		$body = $("body");
 		$body.addClass("loading");
     	$http({

@@ -590,15 +590,17 @@ function onSignInG()
             }
         }
         function redirectWithSell() {
-            if (alreadyLogged()) {
-                var url = "SellCar_BetaV1.html";
-                window.location = url;
+            
+        	var url = "SellCar_BetaV1.html";
+            window.location = url;/* 
+        	if (alreadyLogged()) {
+                
             }
             else {
                 alert("Please Login & go to Sell My Vehicle");
-            }
-        }
-        
+            } */
+        } 
+       
         
         function redirectWithLoy() {
             if (alreadyLogged()) {
@@ -606,7 +608,7 @@ function onSignInG()
                 window.location = url;
             }
             else {
-                alert("Please Login & go to Sell My Vehicle");
+                alert("Please Login & go to Loyality");
             }
         }
     </script>
@@ -882,98 +884,100 @@ table {
                 </div> -->
 
 			</div>
-			<a href="#mobile-menu-01" data-toggle="collapse"
-				class="mobile-menu-toggle">Mobile Menu Toggle</a>
-
-			<div class="main-navigation">
-				<div class="container">
-					<nav id="main-menu" role="navigation">
-						<ul class="menu">
-							<li id="eBidR" class="menu-item-has-children"><a
-								class="menu-bold" href="#hotels-tab" data-toggle="tab">Vehicles</a>
-								<ul>
-									<li><a href="Hm_BetaV1.html">Browse</a></li>
-								</ul></li>
-						
-							<li class="menu-item-has-children"><a class="menu-bold"
-								href="#flight-and-hotel-tab" data-toggle="tab"
-								>Finance</a></li>
-							<li class="menu-item-has-children"><a class="menu-bold"
-								href="#cars-tab" data-toggle="tab" >Insurance</a>
-								</li>
-							<li class="menu-item-has-children"><a class="menu-bold"
-								href="#cruises-tab" data-toggle="tab" >
-									Serv & Maint </a> </li>
-							<li class="menu-item-has-children"><a class="menu-bold"
-								href="#flight-status-tab" data-toggle="tab" >Transport</a>
-								</li>
-
-							<li class="menu-item-has-children"><a class="menu-bold"
-								href="#online-checkin-tab" data-toggle="tab">Rego</a> </li>
+			<div>
+				<a href="#mobile-menu-01" data-toggle="collapse"
+					class="mobile-menu-toggle">Mobile Menu Toggle</a>
+	
+				<div class="main-navigation">
+					<div class="container">
+						<nav id="main-menu" role="navigation">
+							<ul class="menu">
+								<li id="eBidR" class="menu-item-has-children"><a
+									class="menu-bold" href="#hotels-tab" data-toggle="tab">Vehicles</a>
+									<ul>
+										<li><a href="Hm_BetaV1.html">Browse</a></li>
+									</ul></li>
+							
+								<li class="menu-item-has-children"><a class="menu-bold"
+									href="#flight-and-hotel-tab" data-toggle="tab"
+									>Finance</a></li>
+								<li class="menu-item-has-children"><a class="menu-bold"
+									href="#cars-tab" data-toggle="tab" >Insurance</a>
+									</li>
+								<li class="menu-item-has-children"><a class="menu-bold"
+									href="#cruises-tab" data-toggle="tab" >
+										Serv & Maint </a> </li>
+								<li class="menu-item-has-children"><a class="menu-bold"
+									href="#flight-status-tab" data-toggle="tab" >Transport</a>
+									</li>
+	
+								<li class="menu-item-has-children"><a class="menu-bold"
+									href="#online-checkin-tab" data-toggle="tab">Rego</a> </li>
+							</ul>
+						</nav>
+						<ul class="social-icons clearfix pull-right hidden-mobile">
+							<li class="facebook"><a title="facebook" href="#"
+								data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
+							<li class="twitter"><a title="twitter" href="#"
+								data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
+							<li class="google"><a title="google" href="#"
+								data-toggle="tooltip"><i class="soap-icon-googleplus"></i></a></li>
+							<li class="linkedin"><a title="linkedin" href="#"
+								data-toggle="tooltip"><i class="soap-icon-linkedin"></i></a></li>
 						</ul>
-					</nav>
-					<ul class="social-icons clearfix pull-right hidden-mobile">
-						<li class="facebook"><a title="facebook" href="#"
-							data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
-						<li class="twitter"><a title="twitter" href="#"
-							data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
-						<li class="google"><a title="google" href="#"
-							data-toggle="tooltip"><i class="soap-icon-googleplus"></i></a></li>
-						<li class="linkedin"><a title="linkedin" href="#"
-							data-toggle="tooltip"><i class="soap-icon-linkedin"></i></a></li>
-					</ul>
+					</div>
 				</div>
-			</div>
-
-			<nav id="mobile-menu-01" class="mobile-menu collapse">
-				<ul id="mobile-primary-menu" class="menu">
-					<li id="eBidR" class="menu-item-has-children"><a
-						href="#hotels-tab" data-toggle="tab">Vehicles</a>
-						<ul>
-							<li><a href="Hm_BetaV1.html">Browse</a></li>
-						</ul></li>
-					<li class="menu-item-has-children"><a
-						href="#flight-and-hotel-tab" data-toggle="tab"
-						>Finance</a></li>
-					<li class="menu-item-has-children"><a href="#cars-tab"
-						data-toggle="tab" >Insurance</a></li>
-					<li class="menu-item-has-children"><a href="#cruises-tab"
-						data-toggle="tab" > Service & Maintenance
-					</a></li>
-					<li class="menu-item-has-children"><a
-						href="#flight-status-tab" data-toggle="tab" >Transport</a>
-						</li>
-
-					<li class="menu-item-has-children"><a
-						href="#online-checkin-tab" data-toggle="tab">Rego</a> </li>
-					<li class="menu-item-has-children"><a
-						href="#checkVehicle12456" data-toggle="tab"> Check Vehicle </a> </li>
-				</ul>
-
-				<ul class="mobile-topnav container">
-					<li><a onClick="redirect()">MY ACCOUNT</a></li>
-					<ul class="quick-menu pull-right" id="welcomeDiv1"
-						style="display: block">
-						<li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
-						<li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
-
-					</ul>
-					<ul class="quick-menu pull-right" id="welcomeDiv"
-						style="display: none">
-						<a href="#"><span id="userId"></span></a>
-					</ul>
-					<ul class="quick-menu pull-right" id="welcomeDiv"
-						style="display: none">
-						<li class="ribbon"><a href="#"><span id="userId"></span></a>
-							<ul class="menu mini uppercase">
-								<li><a onclick="signingout()">Signout</a></li>
+	
+				<nav id="mobile-menu-01" class="mobile-menu collapse">
+					<ul id="mobile-primary-menu" class="menu">
+						<li id="eBidR" class="menu-item-has-children"><a
+							href="#hotels-tab" data-toggle="tab">Vehicles</a>
+							<ul>
+								<li><a href="Hm_BetaV1.html">Browse</a></li>
 							</ul></li>
-
+						<li class="menu-item-has-children"><a
+							href="#flight-and-hotel-tab" data-toggle="tab"
+							>Finance</a></li>
+						<li class="menu-item-has-children"><a href="#cars-tab"
+							data-toggle="tab" >Insurance</a></li>
+						<li class="menu-item-has-children"><a href="#cruises-tab"
+							data-toggle="tab" > Service & Maintenance
+						</a></li>
+						<li class="menu-item-has-children"><a
+							href="#flight-status-tab" data-toggle="tab" >Transport</a>
+							</li>
+	
+						<li class="menu-item-has-children"><a
+							href="#online-checkin-tab" data-toggle="tab">Rego</a> </li>
+						<li class="menu-item-has-children"><a
+							href="#checkVehicle12456" data-toggle="tab"> Check Vehicle </a> </li>
 					</ul>
-
-				</ul>
-
-			</nav>
+	
+					<ul class="mobile-topnav container">
+						<li><a onClick="redirect()">MY ACCOUNT</a></li>
+						<ul class="quick-menu pull-right" id="welcomeDiv1"
+							style="display: block">
+							<li><a href="#travelo-login" class="soap-popupbox">LOGIN</a></li>
+							<li><a href="#travelo-signup" class="soap-popupbox">SIGNUP</a></li>
+	
+						</ul>
+						<ul class="quick-menu pull-right" id="welcomeDiv"
+							style="display: none">
+							<a href="#"><span id="userId"></span></a>
+						</ul>
+						<ul class="quick-menu pull-right" id="welcomeDiv"
+							style="display: none">
+							<li class="ribbon"><a href="#"><span id="userId"></span></a>
+								<ul class="menu mini uppercase">
+									<li><a onclick="signingout()">Signout</a></li>
+								</ul></li>
+	
+						</ul>
+	
+					</ul>
+	
+				</nav>
+			</div>
 			<div id="travelo-signup" class="travelo-signup-box travelo-box">
 				<div class="login-social">
 					<a href="#" class="button login-facebook" onclick="login()"> <i
@@ -4174,21 +4178,15 @@ table {
 				
 				<!-- Side box start -->
 
-			</div>
-			<div class="sidebar col-sm-4 col-md-3">
-			<br>
-			<br>
-			<br>
-			<br>	
-			<br>
-			<br>
-			<ul class="quick-menu pull-right hidden-mobile PL10" >
-						<li><button type="button" class="btn btn-success" data-toggle="modal" data-target="#inviteModal"><i class="fa fa-users PR5 PT2" aria-hidden="true" style="color:yellow"></i>Invite Your Friend  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></li>
-					</ul>
-					</div>
+			</div> 
 					<br>
+					
+			<div class="sidebar col-sm-4 col-md-3"></div>		
 			<div class="sidebar col-sm-4 col-md-3">
+			<br><br><br><br><br>
 			            <div class="travelo-box contact-box">
+			            <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#inviteModal"><i class="fa fa-users PR5 PT2" aria-hidden="true" style="color:yellow"></i>Invite Your Friend</button>
+			            <br/><br/> 	
                  	<div><label>&nbsp;&nbsp;&nbsp;Earn you Loyality Points</label></div>
 					<div><label>&nbsp;&nbsp;&nbsp;And Get Paid / redeem</label></div>
 					<div><label>&nbsp;&nbsp;&nbsp;any of you next </label></div>
@@ -4196,16 +4194,15 @@ table {
 					 <br>
 					
 					
-					<ul class="quick-menu pull-left hidden-mobile PL10"><!--onClick="redirectWithLoy()"  -->
-						<li><button type="button" class="btn btn-success" data-toggle="modal" data-target="#learnMoreModal"><i class="fa fa-bell-o" aria-hidden="true" style="color:yellow"></i>Learn More>></button></li>
-					</ul>
+					<!-- <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#learnMoreModal"><i class="fa fa-bell-o PR5 PT2" aria-hidden="true" style="color:yellow"></i>Learn More >></button> -->
+					<a href="" data-toggle="modal" data-target="#learnMoreModal"><i class="fa fa-bell PR5 PT2" aria-hidden="true" style="color:red"></i>Learn More >></a>
 					<br>
                         </div>
                         <!-- <div class="travelo-box book-with-us-box">
                             <h4>Why Book with us?</h4>
                             <ul>
                                 <li>
-                                    <i class="soap-icon-hotel-1 circle"></i>
+                                    <i class="soap-icon-hotel-1 circle"></i> 
                                     <h5 class="title"><a href="#">135,00+ Hotels</a></h5>
                                     <p>Nunc cursus libero pur congue arut nimspnty.</p>
                                 </li>
@@ -5335,132 +5332,113 @@ table {
 		    <!-- Modal content-->
 		    <div class="modal-content">
 <div class="modal-header"><button class="close" type="button" data-dismiss="modal">&times;</button>
-<h4><strong><span style="color: #ff0000;">Welcome to Australia's unique and first of its kind&nbsp;<u>Real Loyalty Program</u>&trade;</span></strong></h4>
-<h4><strong><span style="color: #ff0000;"><u>Real Loyalty Program</u>&trade; is built to help AutoScoop User to get &ldquo;Real value&rdquo; and &ldquo;Tangible benefit&rdquo;</span></strong></h4>
+<p><strong><span style="color: #ff0000;">Welcome to Australia's unique and first of its kind&nbsp;<u>Real Loyalty Program</u>&trade;</span></strong></p>
+<p><strong><span style="color: #ff0000;"><u>Real Loyalty Program</u>&trade; is built to help AutoScoop User to get &ldquo;Real value&rdquo; and &ldquo;Tangible benefit&rdquo;</span></strong></p>
 <p>We have designed our Real Loyalty Program to give real benefits to the AutoScoop User, Starting from joining Us, referring your Friend, buying, leasing or sell your vehicle through us and any of the services you buy through us, you can earn Real Loyalty Points, Which you can put it through "Real Use" and get more Tangible benefits.</p>
 <p>&nbsp;Following are some of the ever growing list of activities you can do to get AutoScoop Real Loyalty Points</p>
-<ul>
-<li>> Joining AutoScoop</li>
-<li>> The Friend you referred has joined AutoScoop</li>
-<li>> Buying a Vehicle or Service through AutoScoop</li>
-<li>> Selling your Vehicle through AutoScoop.</li>
-<li>> Managing your Vehicle through Smart Garage</li>
-<li>> Regularly recording your Entries in the Log Book</li>
-<li>> Writing a Review or Blog of your Vehicle ( Coming Soon)</li>
-<li>> Writing a Blog on any topic related to Auto Industries and its Trends ( Coming Soon)</li>
-<li>> Shares and Likes of your Blog's on AutoScoop and different Social media Platforms ( Coming Soon)</li>
+<ul style="list-style-type:square;padding-left:30px;">
+<li>Joining AutoScoop</li>
+<li>The Friend you referred has joined AutoScoop</li>
+<li>Buying a Vehicle or Service through AutoScoop</li>
+<li>Selling your Vehicle through AutoScoop.</li>
+<li>Managing your Vehicle through Smart Garage</li>
+<li>Regularly recording your Entries in the Log Book</li>
+<li>Writing a Review or Blog of your Vehicle ( Coming Soon)</li>
+<li>Writing a Blog on any topic related to Auto Industries and its Trends ( Coming Soon)</li>
+<li>Shares and Likes of your Blog's on AutoScoop and different Social media Platforms ( Coming Soon)</li>
 </ul>
 <p>&nbsp;<strong><span style="color: #ff0000;">Review the Latest Real Points Charts</span></strong></p>
 <table>
 <tbody>
 <tr style="background-color: orange;">
 <td >
-<h4>Activities</h4>
+Activities
 </td>
 <td>
-<h4>Loyalty Points Earned</h4>
+Loyalty Points Earned
+</td>
+</tr>
+<tr>
+<td>Joining AutoScoop
+</td>
+<td>100
+</td>
+</tr>
+<tr>
+<td>Joining of your Referred Friend
+</td>
+<td>200
+</td>
+</tr>
+<tr>
+<td>Social Media Likes &amp; Follow
+</td>
+<td>100
+</td>
+</tr>
+<tr>
+<td>Buy/Lease &amp; Sell
+</td>
+<td>Value of the Vehicle*
+</td>
+</tr>
+<tr>
+<td>Vehicle Insurance
+</td>
+<td>Value of Vehicle Insured**
 </td>
 </tr>
 <tr>
 <td>
-<h4>Joining AutoScoop</h4>
+Vehicle Finance / Loan
 </td>
-<td>
-<h4>100</h4>
-</td>
-</tr>
-<tr>
-<td>
-<h4>Joining of your Referred Friend</h4>
-</td>
-<td>
-<h4>200</h4>
+<td>Value of the Loan***
 </td>
 </tr>
 <tr>
-<td>
-<h4><span style="color: #ff0000;">Social Media Likes &amp; Follow</span></h4>
+<td>Writing a Blog
 </td>
-<td>
-<h4><span style="color: #ff0000;">100 ( Can we do it )</span></h4>
+<td>Coming Soon
 </td>
 </tr>
 <tr>
-<td>
-<h4>Buy/Lease &amp; Sell</h4>
+<td>Liking, Sharing of Blogs on Social Media
 </td>
-<td>
-<h4>Value of the Vehicle*</h4>
+<td>Coming Soon
 </td>
 </tr>
 <tr>
-<td>
-<h4>Vehicle Insurance</h4>
+<td>Writing a Review of Vehicle &amp; Services availed
 </td>
-<td>
-<h4>Value of Vehicle Insured**</h4>
-</td>
-</tr>
-<tr>
-<td>
-<h4>Vehicle Finance / Loan</h4>
-</td>
-<td>
-<h4>Value of the Loan***</h4>
-</td>
-</tr>
-<tr>
-<td>
-<h4>Writing a Blog</h4>
-</td>
-<td>
-<h4>Coming Soon</h4>
-</td>
-</tr>
-<tr>
-<td>
-<h4>Liking, Sharing of Blogs on Social Media</h4>
-</td>
-<td>
-<h4>Coming Soon</h4>
-</td>
-</tr>
-<tr>
-<td>
-<h4>Writing a Review of Vehicle &amp; Services availed</h4>
-</td>
-<td>
-<h4>Coming Soon</h4>
+<td>Coming Soon
 </td>
 </tr>
 </tbody>
 </table>
-<h4>*Need to Confirm by the Buyer and Seller of the Vehicle</p>
-<h4>**Once the Copy of the Vehicle Insurance confirmed</p>
-<h4>***Need to confirm by Finance Broker /provider</p>
-<h4><span style="color: #ff0000;"><strong>How can you use AutoScoop Real Loyalty Points!</strong></span></p>
-<h4>You can use the points to redeem / Pay fully or partly based on the AutoScoop Real Loyalty Points Value. Below is the ever growing list towards which you can use the points on AutoScoop or its Partners</p>
-<ul>
-<li>> Towards your Insurance Policy premium fully or partly</li>
-<li>> Towards your Annual Vehicle Registration / CTP fully or partly ( coming Soon)</li>
-<li>> Towards Paying the Vendors / Service Providers fully or partly, from whom you brought the Vehicle or availed Service</li>
-<li>> Towards Paying Miscellaneous services fully or partly ( coming soon )</li>
-<li>> Maintaining your membership level - Basic, Bronze, Silver, Gold &amp; Platinum ( coming Soon)</li>
-<li>> Transfer points to other AutoScoop Members (coming soon, restriction apply)</li>
-<li>> Transfers for AutoScoop Breast Cancer Awareness &amp; Prostrate Cancer Awareness ( coming soon ) charity programs</li>
-<li>> Buying Fuel Cards (coming soon)</li>
-<li>> Buying Spares and Accessories (coming soon)</li>
-<li>> Use it on our Partners Platform (coming soon)</li>
-</ul>
-<p>&nbsp;</p>
+<p>*Need to Confirm by the Buyer and Seller of the Vehicle</p>
+<p>**Once the Copy of the Vehicle Insurance confirmed</p>
+<p>***Need to confirm by Finance Broker /provider</p>
+<p><span style="color: #ff0000;"><strong>How can you use AutoScoop Real Loyalty Points!</strong></span></p>
+<p>You can use the points to redeem / Pay fully or partly based on the AutoScoop Real Loyalty Points Value. Below is the ever growing list towards which you can use the points on AutoScoop or its Partners</p>
+<p>
+<ul style="list-style-type:square;padding-left:30px;">
+<li>Towards your Insurance Policy premium fully or partly</li>
+<li>Towards your Annual Vehicle Registration / CTP fully or partly ( coming Soon)</li>
+<li>Towards Paying the Vendors / Service Providers fully or partly, from whom you brought the Vehicle or availed Service</li>
+<li>Towards Paying Miscellaneous services fully or partly ( coming soon )</li>
+<li>Maintaining your membership level - Basic, Bronze, Silver, Gold &amp; Platinum ( coming Soon)</li>
+<li>Transfer points to other AutoScoop Members (coming soon, restriction apply)</li>
+<li>Transfers for AutoScoop Breast Cancer Awareness &amp; Prostrate Cancer Awareness ( coming soon ) charity programs</li>
+<li>Buying Fuel Cards (coming soon)</li>
+<li>Buying Spares and Accessories (coming soon)</li>
+<li>Use it on our Partners Platform (coming soon)</li>
+</ul></p>
 <form name="inviteFrm12" id="inviteFrm12" ng-submit="inviteFrmSub12(inviteFrm12.$valid)" validate>
 <!--  <form id="loyalityFrm1" name="loyalityFrm1" novalidate=""></form> -->
 <div class="row">
-<div >&nbsp;</div>
 <div ><label style="color: #bd191e;">Ask a Question ? or Send a Suggestion</label></div>
 </div>
 <div class="row">
-<div >&nbsp;</div>
   <div ><input id="loyalityQuestion" class="input-text full-width" name="loyalityQuestion" type="text" value="" placeholder="Question / Suggestion" /> <span style="color: red"
 																ng-show="inviteFrm12.loyalityQuestion.$error.required &amp;&amp; (!inviteFrm12.loyalityQuestion.$pristine || inviteFrm12.$submitted)"><b>Question / Suggestion is Required</b></span></div>
 </div>
@@ -5468,7 +5446,6 @@ table {
 																ng-show="inviteFrm12.loyalityEmail1.$error.required &amp;&amp; (!inviteFrm12.loyalityEmail1.$pristine || inviteFrm12.$submitted)"><b>Email ID is Required</b></span></div>
 
 <div class="row">
-<div >&nbsp;</div>
 <div ><input id="loyalityFname1" class="input-text full-width" name="loyalityFname1" type="text" value="" placeholder="First Name" /> <span style="color: red"
 																	ng-show="inviteFrm12.loyalityFname1.$error.required &amp;&amp; (!inviteFrm12.loyalityFname1.$pristine || inviteFrm12.$submitted)"><b>First Name is Required</b></span></div>
 <div ><input id="loyalityFname1" class="input-text full-width" name="loyalityLname1" type="text" value="" placeholder="Last Name" /> <span style="color: red"
@@ -5476,7 +5453,7 @@ table {
 </div>
 <div class="row">
 <div >&nbsp;</div>
-<div ><button class="btn btn-info btn-block">Ask Question / send Suggestion</button></div>
+<div ><button class="btn btn-info btn-block">Ask Question / Send Suggestion</button></div>
 </div>
 <div class="row">
 		          		<div class="col-sm-8 col-md-8 loyaStatus1">
