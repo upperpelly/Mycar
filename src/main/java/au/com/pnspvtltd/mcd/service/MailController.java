@@ -20,7 +20,7 @@ public class MailController {
 	public String sendMessage() throws UnsupportedEncodingException
 	{
 		try {
-			smtp.sendMail("srmkanjerla@gmail.com","Autoscoop","You have been successfully Registered");
+			smtp.sendMail("","","","","srmkanjerla@gmail.com","Autoscoop","You have been successfully Registered");
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -64,27 +64,35 @@ var modelYear=null;
     	document.getElementById('maxValue').innerHTML=priceMax;
     	
     	var insMin = value1.insMin;
-    	document.getElementById('insMin').innerHTML=insMin;
+    	//document.getElementById('insMin').innerHTML=insMin;
+    	document.getElementById('insMin').innerHTML=400;
     	
     	var insMax = value1.insMax;
-    	document.getElementById('insMax').innerHTML=insMax;
+    	//document.getElementById('insMax').innerHTML=insMax;
+    	document.getElementById('insMax').innerHTML=650;
     	
     	var avgSavMin = value1.avgSavMin;
-    	document.getElementById('avgSavMin').innerHTML=avgSavMin;
+    	//document.getElementById('avgSavMin').innerHTML=avgSavMin;
+    	document.getElementById('avgSavMin').innerHTML=500;
     	
     	var avgSavMax = value1.avgSavMax;
-    	document.getElementById('avgSavMax').innerHTML=avgSavMax;
+    	//document.getElementById('avgSavMax').innerHTML=avgSavMax;
+    	document.getElementById('avgSavMax').innerHTML=4200;
     	
     	var finMin = value1.finMin;
-    	document.getElementById('finMin').innerHTML=finMin;
+    	//document.getElementById('finMin').innerHTML=finMin;
+    	document.getElementById('finMin').innerHTML=4.25;
     	
     	var finMax = value1.finMax;
-    	document.getElementById('finMax').innerHTML=finMax;
-    	
+    	//document.getElementById('finMax').innerHTML=finMax;
+    	document.getElementById('finMax').innerHTML=11;
     	var noDealers = value1.noDealers;
+    	document.getElementById('noDealers').innerHTML=6;
+    	if(noDealers>6)
     	document.getElementById('noDealers').innerHTML=noDealers;
-    	
     	var noStock = value1.noStock;
+    	document.getElementById('noStock').innerHTML=11;
+    	if(noStock>11)
     	document.getElementById('noStock').innerHTML=noStock;
     	modelYear = value1.modelYear;
     	modelDisplay = value1.modelDisplay;
