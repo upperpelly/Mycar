@@ -312,6 +312,66 @@ window.onload= function()
 var mainApp1 = angular.module("mainApp1", []);
 	mainApp1.controller('myController1',function($scope,$http) {
 		
+		
+		// social login start
+
+        $scope.submitForm1 = function () {
+        	$('.login-social').html('<i class="fa fa-spinner fa-spin" style="font-size:24px;color:green;"></i><span style="font-size:18px;color:green">&nbsp;Logging in,Please wait...<span>');
+            var jsonInputToAPI = { "userId": 73, "password": " ", "abnNumber": " ", "firstName": "muf", "lastName": "ss", "email": "ss@gmail.com", "mobile": 98, "landLine": 98, "streetNumber": " ", "streetName": " ", "areaName": " ", "subOrb": " ", "state": " ", "postCode": 98, "drivingLicense": " ", "issueState": " ", "facebook": false, "payDeposit": true, "search": null, "searchInsurance": null, "searchFinance": null, "searchServMaint": null, "searchTransp": null, "vehicleQuotation": null, "insuranceQuotation": null, "financeQuotation": null };
+            jsonInputToAPI.email = email;
+            jsonInputToAPI.firstName = flex1;
+            jsonInputToAPI.lastName = flex1;
+
+            //alert(flex1);
+            var wsURL = 'api/user/login/social';
+
+            $body = $("body");
+            //$body.addClass("moSign");
+            $body.addClass("loading");
+
+            if (flex3 == 1 || flex3 == 2 || flex3 == 3 || flex3 == 4 || flex3 == 5) {
+
+                $http({
+                    method: 'POST',
+                    url: wsURL,
+                    data: jsonInputToAPI
+
+                }).success(function (data) {
+                    $body.removeClass("loading");
+                    //alert("successful login set to session");
+                    $('.login-social').html('<i style="font-size:24px"></i>Successfully logged in..');
+                    setting(data);
+                    userId = data.userId;
+                    firstName = data.firstName;
+                    //document.getElementById('status').innerHTML = '<div class="row"><div class="col-sm-1 col-md-1"></div> <div class="alert alert-success col-sm-11 col-md-11"> <strong>Login Success!</strong> Discover the Auto World... </div></div>';
+                    $(".social").hide();
+                    if (userId != null) {
+                        //alert(data.firstName);
+                        document.getElementById('welcomeDiv').style.display = "block";
+                        document.getElementById('welcomeDiv1').style.display = "none";
+                        document.getElementById('userId').innerHTML = "<b>" + "Hi " + data.firstName + "</b>";
+                    }
+                    //alert(data.loyalityFlag);
+                    if(data.refer == false){
+                    	//alert("inside loyality prog");
+                    	//$("#loyalityModal").modal('show'); 
+                    	$('.opacity-overlay').click();
+                    	$("#loyalityBtn").click();
+                    }
+                    
+                });
+            }
+            //$body.removeClass("moSign");
+
+
+
+
+        }
+
+        //social login end
+        
+        
+		
 		 $scope.submitSearchForm = function() {
          	//alert("invoke");
          	if (alreadyLogged()) {

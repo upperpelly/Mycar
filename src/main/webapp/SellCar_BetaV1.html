@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="components/jquery.bxslider/jquery.bxslider.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="components/flexslider/flexslider.css" media="screen" />
     <script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
+    
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -54,6 +55,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script src="js/jstorage.js"></script>
+
+
 <style>
 .col-container {
     display: table;
@@ -129,7 +132,61 @@ function redirectWithSell() {
 <script src="js/sellCar.js"></script>
 <script src="js/tabletojson.js"></script>
 <script src="js/jquery.simpleSocialShare.min.js"></script>
+<!-- <script src="js/home.js" type="text/javascript"></script> -->
 <!-- Socila Share  -->
+
+<script>
+<!-- Facebook Login logic prod 249863545451459 test 238604546585672 -->
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId : '238604546585672',
+				xfbml : true,
+				version : 'v2.8'
+			});
+		};
+
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
+		function login() {
+			FB.login(
+							function(response) {
+								if (response.status === 'connected') {
+									fbUserId = response.authResponse.userID;
+									fbAccessToken=response.authResponse.accessToken;
+									fbSess(fbUserId);
+									fbToken(fbAccessToken);
+									//fbinitilize();
+									/* document.getElementById('status').innerHTML = ' <div class="alert alert-success"> <strong>Success!</strong> You will be surely Notified! </div>'; */
+									var url = '/me?fields=name,email';
+									FB.api(url, function(response) {
+										email=response.email;
+										flex1=response.name;// username
+										flex2=response.id;// id
+										flex3=1;//1-FB 2-G+ 3-Twitter 4-LinkedIn 5-initial
+										//console.log(JSON.stringify(response));
+										angular.element(document.getElementById('myController1')).scope().submitForm1();
+									});
+								} else if (response.status === 'not_authorized') {
+									document.getElementById('status').innerHTML = 'We are not Connected';
+								} else {
+									document.getElementById('status').innerHTML = 'We are not fb Connected';
+								}
+							}, {
+								scope : 'email'
+							});
+
+		}
+    </script>
+
 <style type="text/css">
 .modal {
     display:    none;
@@ -163,7 +220,40 @@ body.loading .modal {
     
     <!-- Responsive Styles -->
     <link rel="stylesheet" href="css/responsive.css">
-    
+<script type="text/javascript">
+        function setting(data) {
+            $.jStorage.set('key', data);
+            $.jStorage.setTTL('mykey', 30000); 
+            // alert("came here");
+
+        }
+
+        function fbSess(data) {
+            $.jStorage.set('fbKey', data);
+            $.jStorage.setTTL('fbSession', 30000);
+
+        }
+
+        function fbToken(data) {
+            $.jStorage.set('fbAToken', data);
+            $.jStorage.setTTL('fbSession1', 30000);
+
+        }
+        function alreadyLogged() {
+            var value = $.jStorage.get('key');
+            if (!value) {
+                return false;
+            }
+            else {
+                return true;
+            }
+
+
+        }
+
+       
+    </script>
+        
     
 	    <script>
 		$(document).ready(function(){
@@ -214,12 +304,87 @@ body.loading .modal {
 		
 	</script>
 	
+	
+	
+
+<!-- Linked In login -->
+
+<script type="text/javascript" src="https://platform.linkedin.com/in.js">
+        api_key: 81vl95zfoimc37
+    </script>
+
+<script type="text/javascript">
+
+        function onLinkedInLoad() {
+            IN.UI.Authorize().place();
+            IN.Event.on(IN, "auth", function () { onLogin(); });
+            IN.Event.on(IN, "logout", function () { onLogout(); });
+        }
+
+        function onLogin() {
+            IN.API.Raw("/people/~:(id,firstName,lastName,emailAddress)?format=json").result(onSuccess).error(onError);
+        }
+        function onSuccess(data) {
+            email = data.emailAddress;
+            flex1 = data.firstName + " " + data.lastName;// username
+            flex2 = data.id;// id
+            flex3 = 4;//1-FB 2-G+ 3-Twitter 4-LinkedIn
+            angular.element(document.getElementById('myController1')).scope().submitForm1();
+        }
+
+        function onError(error) {
+            console.log(error);
+        }
+
+    </script>
+
+
+
+<!--  -->
+<!-- Gmail Login -->
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/api.js" async defer></script>
+
+<script>
+
+<!--- client_id for Production: 814821459166-2snv3tdshqgusiuhjnuoedrg0akt83ol.apps.googleusercontent.com     814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com -->
+
+function onSignInG()
+{
+	gapi.load('auth2', function() {
+		  auth2 = gapi.auth2.init({
+		    client_id: '814821459166-2snv3tdshqgusiuhjnuoedrg0akt83ol.apps.googleusercontent.com',
+		    });
+
+		  // Sign the user in, and then retrieve their ID.
+		  auth2.signIn().then(function() {
+			  var profile = auth2.currentUser.get().getBasicProfile();
+			  email=profile.getEmail();
+			  flex1=profile.getName();// username
+			  flex2=profile.getId();// id
+			  //$('#exampleEmail').val(email);
+			  flex3=2;//1-FB 2-G+ 3-Twitter 4-LinkedIn 5-initial
+			  angular.element(document.getElementById('myController1')).scope().submitForm1();
+
+		  });
+		});
+
+
+}
+
+    </script>
+
+<!-- End Gmail -->
+
+
+
 	<!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/cc-styles.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 </head>
-<body ng-app="mainApp1" >
+<body ng-app="mainApp1" ng-controller="myController1" id="myController1">
     
     <div id="page-wrapper">
         <header id="header" class="navbar-static-top style6">
@@ -257,7 +422,7 @@ body.loading .modal {
 				</div>
 			</div>
             
-            <div><!-- class="main-header" -->
+            <div class="main-header"><!-- class="main-header" -->
                 
                 <a href="#mobile-menu-01" data-toggle="collapse" class="mobile-menu-toggle">
                     Mobile Menu Toggle
@@ -374,30 +539,17 @@ body.loading .modal {
                 <p>Already a Autoscoop member? <a href="#travelo-login" class="goto-login soap-popupbox">Login</a></p>
             </div>
             <div id="travelo-login" class="travelo-login-box travelo-box">
-                <div class="login-social">
-                    <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
-                    <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
-                </div>
-                <div class="seperator"><label>OR</label></div>
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="email address">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="password">
-                    </div>
-                    <div class="form-group">
-                        <a href="#" class="forgot-password pull-right">Forgot password?</a>
-                        <div class="checkbox checkbox-inline">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
-                        </div>
-                    </div>
-                </form>
-                <div class="seperator"></div>
-                <p>Don't have an account? <a href="#travelo-signup" class="goto-signup soap-popupbox">Sign up</a></p>
-            </div>
+				<div class="login-social">
+					<a href="#" class="button login-facebook" onclick="login()"> <i
+						class="soap-icon-facebook"></i>Login with Facebook
+					</a> <a href="#" class="button login-googleplus" onclick="onSignInG()">
+						<i class="soap-icon-googleplus"></i>Login with Google+
+					</a> <a href="#" class="button login-twitter" style="background-color: #5bc0de; border-color: #46b8da;" onclick=""><i
+						class="soap-icon-twitter"></i>Login with Twitter</a> <a href="#"
+						class="button login-linkedin" onclick="onLinkedInLoad()" style="background-color: #007bb6; border-color: #007bb5;"><i
+						class="soap-icon-linkedin"></i>Login with Linkedin</a>
+				</div>
+			</div>
         </header>
         <section id="content">
            <div class="container">
@@ -410,7 +562,24 @@ body.loading .modal {
 					        <h1>SELL MY CAR</h1>
 					      </div>
 					    </div>
-                		 <div class="MinHyt">
+
+						<div class="login-social">
+							<a href="#" class="button login-facebook" onclick="login()">
+								<i class="soap-icon-facebook"></i> Login with Facebook
+							</a> <a href="#" class="button login-googleplus"
+								onclick="onSignInG()"> <i class="soap-icon-googleplus"></i> Login
+								with Google+
+							</a> <a href="#" class="button login-twitter"
+								style="background-color: #5bc0de; border-color: #46b8da;"
+								onclick=""><i class="soap-icon-twitter"></i> Login with
+								Twitter</a> <a href="#" class="button login-linkedin"
+								onclick="onLinkedInLoad()"
+								style="background-color: #007bb6; border-color: #007bb5;"><i
+								class="soap-icon-linkedin"></i> Login with Linkedin</a>
+						</div>
+
+
+						<div class="MinHyt">
 						      <div class="RegTL">
 						        <div class="row">
 						          <div class="col-md-12">
