@@ -62,7 +62,12 @@ public class VehicleQuotationVO {
 	private boolean status;
 	private boolean newer;
 	private boolean used;
-	
+	private boolean stockTillAvail;
+	private boolean autoscopStockAvl;
+	private int autoscpStockNo;
+	private int dealStockNo;
+	private Date quotDate;
+	private Date vehReqDate;
 	// Dealer info Start
 			private String category;
 			private String companyName;
@@ -85,6 +90,66 @@ public class VehicleQuotationVO {
 	
 	List<VehQuotExtras> vehQuotExtras;
 	
+	public boolean isStockTillAvail() {
+		return stockTillAvail;
+	}
+
+
+	public void setStockTillAvail(boolean stockTillAvail) {
+		this.stockTillAvail = stockTillAvail;
+	}
+
+
+	public boolean isAutoscopStockAvl() {
+		return autoscopStockAvl;
+	}
+
+
+	public void setAutoscopStockAvl(boolean autoscopStockAvl) {
+		this.autoscopStockAvl = autoscopStockAvl;
+	}
+
+
+	public int getAutoscpStockNo() {
+		return autoscpStockNo;
+	}
+
+
+	public void setAutoscpStockNo(int autoscpStockNo) {
+		this.autoscpStockNo = autoscpStockNo;
+	}
+
+
+	public int getDealStockNo() {
+		return dealStockNo;
+	}
+
+
+	public void setDealStockNo(int dealStockNo) {
+		this.dealStockNo = dealStockNo;
+	}
+
+
+	public Date getQuotDate() {
+		return quotDate;
+	}
+
+
+	public void setQuotDate(Date quotDate) {
+		this.quotDate = quotDate;
+	}
+
+
+	public Date getVehReqDate() {
+		return vehReqDate;
+	}
+
+
+	public void setVehReqDate(Date vehReqDate) {
+		this.vehReqDate = vehReqDate;
+	}
+
+
 	public String getCategory() {
 		return category;
 	}

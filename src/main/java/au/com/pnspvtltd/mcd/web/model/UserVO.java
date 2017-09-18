@@ -38,8 +38,35 @@ public class UserVO {
 	private boolean payDeposit;
 	private boolean refer;
 	private boolean welstatus;
+	private boolean credStat;
+	private boolean idCheck;
+	private boolean mobCheck;
 	private boolean loyalityFlag;
 	
+	public boolean isCredStat() {
+		return credStat;
+	}
+
+	public void setCredStat(boolean credStat) {
+		this.credStat = credStat;
+	}
+
+	public boolean isIdCheck() {
+		return idCheck;
+	}
+
+	public void setIdCheck(boolean idCheck) {
+		this.idCheck = idCheck;
+	}
+
+	public boolean isMobCheck() {
+		return mobCheck;
+	}
+
+	public void setMobCheck(boolean mobCheck) {
+		this.mobCheck = mobCheck;
+	}
+
 	public boolean isWelstatus() {
 		return welstatus;
 	}

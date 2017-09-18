@@ -71,11 +71,65 @@ public class ExtDealerSearch implements Serializable {
 	private String email;
 	private float longitude;
 	private float latitude;
+	private boolean credStat;
+	private boolean idCheck;
+	private boolean mobCheck;
+	private boolean finAppvd;
+	private Date estTimeBuy;
+	private Date vehReqDate;
 	// Dealer info end
 	
 	
 	public String getState() {
 		return state;
+	}
+
+	public boolean isCredStat() {
+		return credStat;
+	}
+
+	public void setCredStat(boolean credStat) {
+		this.credStat = credStat;
+	}
+
+	public boolean isIdCheck() {
+		return idCheck;
+	}
+
+	public void setIdCheck(boolean idCheck) {
+		this.idCheck = idCheck;
+	}
+
+	public boolean isMobCheck() {
+		return mobCheck;
+	}
+
+	public void setMobCheck(boolean mobCheck) {
+		this.mobCheck = mobCheck;
+	}
+
+	public boolean isFinAppvd() {
+		return finAppvd;
+	}
+
+	public void setFinAppvd(boolean finAppvd) {
+		this.finAppvd = finAppvd;
+	}
+
+	public Date getEstTimeBuy() {
+		return estTimeBuy;
+	}
+
+	public void setEstTimeBuy(Date estTimeBuy) {
+		this.estTimeBuy = estTimeBuy;
+	}
+
+	public Date getVehReqDate() {
+		return vehReqDate;
+	}
+
+	public void setVehReqDate(Date vehReqDate) {
+		this.vehReqDate = vehReqDate;
 	}
 
 	public String getCategory() {
