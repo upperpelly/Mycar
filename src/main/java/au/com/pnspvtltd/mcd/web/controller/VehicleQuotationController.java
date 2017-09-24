@@ -149,6 +149,7 @@ public class VehicleQuotationController {
 		//vehicleQuotation.setDriveType(dealerVO.getDriveType());// more about more requirement
 		vehicleQuotation.setRefId(l);
 		vehicleQuotation.setAddress(dealerVO.getAddress()); // set image
+		vehicleQuotation.setUserId(dealerVO.getUserId());
 		vehicleQuotationRepository.save(vehicleQuotation);
 		vehicleQuotationRepository.flush();
 		return vehicleQuotation;

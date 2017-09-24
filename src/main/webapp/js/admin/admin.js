@@ -964,7 +964,8 @@ function registerEditDealerVehicleQuotationModal(){
 	$('button.submit-editDealerVehicleQuotationModal').on('click', function(e) {
 
 		var jsonInput = $("#edit-dealer-vehicle-quotation-content-form").convertFormDataToJSON();
-
+		alert("data");
+		console.log(JSON.stringify(jsonInput));
 
 		$.ajax({
 			type: "POST",
@@ -2475,7 +2476,208 @@ mainApp1.controller('myController13',function($scope, $http) {
     });
 	
 	// start of External Dealer creation
+$scope.carCarQuotation = function(userId){
+		alert("came here");
+		//userId=$.jStorage.get('key').userId;
+		var wsURL = 'api/getVehQuotaByUserId?userid='+userId;
+		// change here
+
+	   //$body.addClass("loading");
+	    	$http({
+				method : 'GET',
+				url : wsURL
+
+			}).success(function(result) {
+				//$body.removeClass("loading");
+				//alert("successfully retreived");
+				
+				 out3="";
+	        	   var qtRecd = result.length;
+	        	   document.getElementById('qtRecd').innerHTML=qtRecd;
+	        	   out3 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
+
+	        		   for(i=result.length-1;i>=0;i--)
+	       		{
+	        			   //alert("data"+JSON.stringify(result[i]));
+	       		out3= out3+'<tr>'+'<td>'+result[i].quotId+'</td>'+'<td>'+result[i].dealerName+'</td>'+'<td>'+result[i].dealerStockNo+'</td>'+'<td>'+result[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleQuotationModal-' + result[i].quotId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerVehicleQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleQuotationModal">Edit</a></td></tr>';
+
+
+	       		}
+	        	   out3 = out3.replace(/>null</g, ">--NA--<");
+	        	   out3 = out3.replace(/>undefined</g, ">--NA--<");
+	        	   var LogQuotation = result;
+
+	        	   if(LogQuotation && result.length==0){
+		        	   outLogT="";
+		        	   outLogT='<h2>No records found</h2>';
+		        	   $("#"+"quo-model-data").html(outLogT);
+	        	   }else{
+	        		   $("#"+"quo-model-data").html(out3);
+	        	   }
+
+	        	   registerEditDealerVehicleQuotationModal();
+							});
+	    	
+	    	
+	    	// start of Finance quotation
+	    	
+	    	var wsURL = 'api/getFinQuotaByUserId?userid='+userId;
+			// change here
+
+		   //$body.addClass("loading");
+		    	$http({
+					method : 'GET',
+					url : wsURL
+
+				}).success(function(result) {
+					//$body.removeClass("loading");
+					//alert("successfully retreived");
+					
+					out4="";
+					var finQCt=result.length;
+					document.getElementById('finQCt').innerHTML=finQCt;
+					        	   out4 += '<tr><th>'+"Finance Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
+
+		        		   for(i=result.length-1;i>=0;i--)
+		       		{
+
+		        		   out4= out4+'<tr>'+'<td>'+result[i].finQuotId+'</td>'+'<td>'+result[i].dealerName+'</td>'+'<td>'+result[i].dealerStockNo+'</td>'+'<td>'+result[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerfin12QuotationModal-' + result[i].finQuotId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerfin12QuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerfin12QuotationModal">Edit</a></td></tr>';
+
+		       		}
+		        	   out4 = out4.replace(/>null</g, ">--NA--<");
+		        	   out4 = out4.replace(/>undefined</g, ">--NA--<");
+		        	   var LogFinQuo = result;
+
+		        	   if(LogFinQuo && result.length==0){
+		        	   outLogT="";
+		        	   outLogT='<h2>No records found</h2>';
+		        	   //forFinance("quo-data1",outLogT);
+					     $("#"+"quo-data1").html(outLogT);
+		        	   }else{
+		        	   //forFinance("quo-data1",out4);
+				    $("#"+"quo-data1").html(out1);
+				   }
+		        	   registerEditDealerfin12QuotationModal();
+								});
+		    	
+		    	// start of insurance Quotation
+		    	
+		    	var wsURL = 'api/getInsQuotaByUserId?userid='+userId;
+				// change here
+
+			   //$body.addClass("loading");
+			    	$http({
+						method : 'GET',
+						url : wsURL
+
+					}).success(function(result) {
+						//$body.removeClass("loading");
+						//alert("successfully retreived");
+						
+						out5="";
+						var insQCt=result.length;
+			        	   document.getElementById('insQCt').innerHTML=insQCt;
+			        	   out5 += '<tr><th>'+"Car Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
+			        	   for(i=result.length-1;i>=0;i--)
+				       		{
+				       			out5= out5+'<tr>'+'<td>'+result[i].insQuotId+'</td>'+'<td>'+result[i].dealerName+'</td>'+'<td>'+result[i].dealerStockNo+'</td>'+'<td>'+result[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerins12QuotationModal-' + result[i].insQuotId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerins12QuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerins12QuotationModal">Edit</a></td></tr>';
+				       		}
+			        	   out5 = out5.replace(/>null</g, ">--NA--<");
+			        	   out5 = out5.replace(/>undefined</g, ">--NA--<");
+			        	   var LogInsQuo = result;
 	
+			        	   if(LogInsQuo && result.length==0){
+				        	   	outLogT="";
+				        	   	outLogT='<h2>No records found</h2>';
+			   			  		$("#"+"quo-model-data2").html(outLogT);
+			        	   } else{
+	   			        	  	$("#"+"quo-model-data2").html(out5);
+			        	   }
+	
+			        	   registerEditDealerins12QuotationModal();
+									});
+		    	
+			    	// start of servMaint Quotation
+			    	
+			    	var wsURL = 'api/getServMQuotaByUserId?userid='+userId;
+					// change here
+
+				   //$body.addClass("loading");
+				    	$http({
+							method : 'GET',
+							url : wsURL
+
+						}).success(function(result) {
+							//$body.removeClass("loading");
+							//alert("successfully retreived");
+							
+							out444="";
+				        	   var servQCt = result.length;
+				        	   document.getElementById('servQCt').innerHTML=servQCt;
+				        	   out444 += '<tr><th>'+"Serv Maint Quotation ID"+'</th><th>'+"Dealer Name"+'</th><th>'+"Dealer Stock No"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
+				        	   for(i=result.length-1;i>=0;i--)
+				       		{
+
+				       		out444= out444+'<tr>'+'<td>'+result[i].servMaintQuotId+'</td>'+'<td>'+result[i].dealerName+'</td>'+'<td>'+result[i].dealerStockNo+'</td>'+'<td>'+result[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealerservmaintQuotationModal-' + result[i].servMaintQuotId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealerservmaintQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerservmaintQuotationModal">Edit</a></td></tr>';
+
+
+				       		}
+				        	   out444 = out444.replace(/>null</g, ">--NA--<");
+				        	   out444 = out444.replace(/>undefined</g, ">--NA--<");
+				        	   var LogServMaintQuo = result;
+
+				        	   if(LogServMaintQuo && result.length==0){
+					        	   outLogT="";
+					        	   outLogT='<h2>No records found</h2>';
+					        	   $("#"+"dataservmaintQuot12").html(outLogT);
+				        	   } else{
+				        		   $("#"+"dataservmaintQuot12").html(out444);
+				        	   }
+
+				        	   registerEditDealerservmaintQuotationModal();
+										});
+		    	    	
+				    	
+				    	// start of servMaint Quotation
+				    	
+				    	var wsURL = 'api/getTranpQuotaByUserId?userid='+userId;
+						// change here
+
+					   //$body.addClass("loading");
+					    	$http({
+								method : 'GET',
+								url : wsURL
+
+							}).success(function(result) {
+								//$body.removeClass("loading");
+								//alert("successfully retreived");
+								
+								out555="";
+					        	   var trasQCt = result.length;
+					        	   document.getElementById('trasQCt').innerHTML=trasQCt;
+					        	   out555 += '<tr><th>'+" Transp Serv Quotation ID"+'</th><th>'+"Dealer Id"+'</th><th>'+"Creation Date"+'</th><th>'+"drive away Price"+'</th><th>'+"Operation"+'</th></tr>';
+					        	   for(i=result.length-1;i>=0;i--)
+						       		{
+						       			out555= out555+'<tr>'+'<td>'+result[i].transpServQuotId+'</td>'+'<td>'+result[i].dealerId+'</td>'+'<td>'+result[i].creationDate+'</td>'+'<td>'+result[i].driveAwayPrice+'</td>'+'<td><a href="#" id="anchor-editDealertranspservQuotationModal-' + result[i].TranspServQuotId + '" data-details=\'' + JSON.stringify(result[i]) + '\' class="anchor-editDealertranspservQuotationModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealertranspservQuotationModal">Edit</a></td></tr>';
+						       		}
+					        	   out555 = out555.replace(/>null</g, ">--NA--<");
+					        	   out555 = out555.replace(/>undefined</g, ">--NA--<");
+					        	   var LogTranspServQuo = result;
+
+					        	   if(LogTranspServQuo && result.length==0){
+						        	   outLogT="";
+						        	   outLogT='<h2>No records found</h2>';
+						        	   $("#"+"datatranspservQuot").html(outLogT);
+					        	   } else{
+					        		   $("#"+"datatranspservQuot").html(out555);
+					        	   }
+
+
+					        	   registerEditDealertranspservQuotationModal();
+											});
+				    	
+	}
+
 	//end of external dealer Creation
 	
 	// start of Insurance Lead Requests
@@ -7349,7 +7551,7 @@ this.model_data_id = model_data_id;
     			        <div class="modal-content">\
     			            <div class="modal-header">\
     			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-    			                <h3 class="modal-title" id="myModalLabel"><center>Autoscoop.com.au</center></h3>\
+		                <h3 class="modal-title product-search-title" id="myModalLabel"><center>AutoScoop</center></h3>\
     			            </div>\
     						<h4 class="modal-title" id="myModalLabel"><center>View Quotation Details</center></h4>\
     				        <form id="edit-qta-dealer-vehicle-search-content-form">\
@@ -7357,9 +7559,10 @@ this.model_data_id = model_data_id;
     			            </div>\
     			            <div class="modal-footer">\
     			                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>\
-    				<p><center>&copy; 2017 Autoscoop</center></p>\
+			<button type="button" class="btn btn-primary submit-editqtaDealerVehicleSearchModal" data-dismiss="modal">Save changes</button>\
     					</div>\
     			            </form>\
+					<p><center>&copy; 2017 Autoscoop</center></p>\
     			        </div>\
     			    </div>\
     			</div>';
@@ -7483,7 +7686,7 @@ this.model_data_id = model_data_id;
 			   chat='<input type="checkbox" name="chat" checked="checked"/>';
 			  if(data.rejectIt)
 			   rejectIt= '<input type="checkbox" name="rejectIt" checked="checked" />';
-    				var editqtaDealerVehicleSearchForm = '<form id="edit-qta-dealer-vehicle-search-content-form"><table>\
+    				var editqtaDealerVehicleSearchForm = '<form id="edit-qta-dealer-vehicle-search-content-form">\
     					<table>\
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Quotation Details</div></div>\
     					<tr><td>Quotation ID</td><td>' + data.quotId + '</td></tr>\
@@ -7598,8 +7801,9 @@ this.model_data_id = model_data_id;
     			});
     			$('button.submit-editqtaDealerVehicleSearchModal').on('click', function(e) {
 
-    				var jsonInput = $("#edit-qta-dealer-vehicle-Search-content-form").convertFormDataToJSON();
-
+    				var jsonInput = $("#edit-qta-dealer-vehicle-search-content-form").convertFormDataToJSON();
+    				alert("data12");
+    				console.log(JSON.stringify(jsonInput));
 
     				$.ajax({
     					type: "POST",
@@ -7607,8 +7811,12 @@ this.model_data_id = model_data_id;
     					data: jsonInput,
     					contentType:'application/json',
     					success: function(result){
+    						console.log(JSON.stringify(result));
     						$("#anchor-editDealerVehicleSearchModal-" + result.quotId).data('details', result);
     						alert("Successfully upated the Quotations");
+					alert("will call update12"+result.userId);
+					//console.log(JSON.stringify(result));
+					$scope.carCarQuotation(result.userId);
 
     					}
     				});

@@ -8,6 +8,7 @@ import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
+import au.com.pnspvtltd.mcd.web.model.AdminVerifyVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
@@ -68,4 +69,5 @@ public interface DealerService {
 
 	DealerVO getDealerForID(Long dealerID);
 	String updateStatus(AdminStatusVO financeEntityListVO);
+	AdminVerifyVO getExistStatus(Long eBidId);
 }

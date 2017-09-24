@@ -3436,6 +3436,8 @@ $("#"+"fuelCard4").html(outLogT);
 				success: function(result){
 					$("#anchor-editDealerVehicleQuotationModal-" + result.quotId).data('details', result);
 					alert("Successfully upated the Quotations");
+					alert("will call update");
+					$scope.carCarQuotation();
 
 				}
 			});
@@ -4747,6 +4749,8 @@ $("#"+"fuelCard4").html(outLogT);
 				success: function(result){
 					$("#anchor-editDealerVehicleSearchModal-" + result.quotId).data('details', result);
 					alert("Successfully upated the Quotations");
+					alert("will call update");
+					carCarQuotation();
 
 				}
 			});

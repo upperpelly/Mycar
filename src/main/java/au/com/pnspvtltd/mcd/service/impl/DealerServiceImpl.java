@@ -53,6 +53,7 @@ import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
+import au.com.pnspvtltd.mcd.web.model.AdminVerifyVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
@@ -588,6 +589,20 @@ public class DealerServiceImpl implements DealerService {
 		return inventoryList;
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public AdminVerifyVO getExistStatus(Long eBidId) {
+		AdminVerifyVO adminVerifyVO = new AdminVerifyVO();
+		Search search = userSearchLeadRepository.findOne(eBidId);
+		User user = userRepository.findOne(search.getUserid());
+		adminVerifyVO.setMobCheck(user.isMobCheck());
+		adminVerifyVO.setIdCheck(user.isIdCheck());
+		adminVerifyVO.setMobile(user.getMobile());
+		adminVerifyVO.setDrivingLicense(user.getDrivingLicense());
+		adminVerifyVO.setEmail(user.getEmail());
+		return adminVerifyVO;
+		
+	}
 	@Override
 	@Transactional(readOnly = true)
 	public List<DealerSearchVO> getDealerSearch(Long dealerId) {
