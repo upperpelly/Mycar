@@ -122,6 +122,11 @@ public class VehicleQuotationController {
 		vehicleQuotation.setLatitude(extDealerSearch.getLatitude());
 		vehicleQuotation.setColor(extDealerSearch.getCarColor());
 		vehicleQuotation.setDriveType(extDealerSearch.getState());
+		vehicleQuotation.setIdCheck(extDealerSearch.isIdCheck());
+		vehicleQuotation.setCredStat(extDealerSearch.isCredStat());
+		vehicleQuotation.setMobCheck(extDealerSearch.isMobCheck());
+		vehicleQuotation.setDealStockNo(0);
+		vehicleQuotation.setAutoscpStockNo(0);
 		//vehicleQuotation.
 					// Dealer info end
 		

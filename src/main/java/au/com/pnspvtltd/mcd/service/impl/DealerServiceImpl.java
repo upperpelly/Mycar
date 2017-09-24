@@ -33,6 +33,8 @@ import au.com.pnspvtltd.mcd.domain.FinanceEntity;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
+import au.com.pnspvtltd.mcd.domain.Search;
+import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.repository.AdminRepository;
 import au.com.pnspvtltd.mcd.repository.DealerRepository;
@@ -44,10 +46,13 @@ import au.com.pnspvtltd.mcd.repository.ExternalDealerTpRepository;
 import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InventoryRepository;
+import au.com.pnspvtltd.mcd.repository.UserRepository;
+import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
+import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
@@ -103,8 +108,11 @@ public class DealerServiceImpl implements DealerService {
 	private ExternalDealerFinRepository externalDealerFinRepository;
 	@Autowired
 	private ExternalDealerInsRepository externalDealerInsRepository;
+	@Autowired
+	private UserSearchLeadRepository userSearchLeadRepository;
 
-	
+	@Autowired
+	private UserRepository userRepository;
 	@Override
 	@Transactional(readOnly = true)
 	public AdminAutoVO findUserName(String userName) {
@@ -548,6 +556,22 @@ public class DealerServiceImpl implements DealerService {
 		dealerRepository.flush();
 		}
 		return "{\"dealerId\":" + "" + ",\"financeEntityId\":" + "" + "}";
+	}
+	
+	@Override
+	@Transactional
+	public String updateStatus(AdminStatusVO financeEntityListVO) {
+		Search search = userSearchLeadRepository.findOne(financeEntityListVO.getCarSearchId());
+		search.setMobCheck(financeEntityListVO.isMobCheck());
+		search.setIdCheck(financeEntityListVO.isIdCheck());
+		userSearchLeadRepository.flush();
+		User user = userRepository.findOne(search.getUserid());
+		user.setMobCheck(financeEntityListVO.isMobCheck());
+		user.setIdCheck(financeEntityListVO.isIdCheck());
+		
+		userRepository.flush();
+		
+		return "";
 	}
 	
 	@Override

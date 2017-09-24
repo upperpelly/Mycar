@@ -364,7 +364,14 @@ public class UserEBidServiceImpl implements UserEBidService {
 		Calendar calendar = Calendar.getInstance();
 		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 		search.setCreationDate(ourJavaDateObject);
+		// start of check
+		search.setMobile(user.getMobile());
+		search.setLandLine(user.getLandLine());
+		search.setDrivingLicense(user.getDrivingLicense());
 		search.setUserid(user.getUserId());
+		search.setMobCheck(user.isMobCheck());
+		search.setIdCheck(user.isIdCheck());
+		// end of check
 		if (user.getSearch() != null) {
 			user.getSearch().add(search);
 		} else {
@@ -380,6 +387,14 @@ public class UserEBidServiceImpl implements UserEBidService {
 		// (2) create a java sql date object we want to insert
 		Calendar calendar12 = Calendar.getInstance();
 		java.sql.Date ourJavaDateObject1 = new java.sql.Date(calendar12.getTime().getTime());
+		// start of check
+		searchFinance.setMobile(user.getMobile());
+		searchFinance.setLandLine(user.getLandLine());
+		searchFinance.setDrivingLicense(user.getDrivingLicense());
+		searchFinance.setMobCheck(user.isMobCheck());
+		searchFinance.setIdCheck(user.isIdCheck());
+		// end of check
+
 		searchFinance.setCreationDate(ourJavaDateObject1);
 		searchFinance.setIdp(user.getUserId());
 		// Create User Finance Lead when isfinance and searchFinance != null
@@ -406,6 +421,14 @@ public class UserEBidServiceImpl implements UserEBidService {
 		java.sql.Date ourJavaDateObject12 = new java.sql.Date(calendar14.getTime().getTime());
 		searchInsurance.setCreationDate(ourJavaDateObject12);
 		searchInsurance.setIdp(user.getUserId());
+		
+		// start of check
+		searchInsurance.setMobile(user.getMobile());
+		searchInsurance.setLandLine(user.getLandLine());
+		searchInsurance.setDrivingLicense(user.getDrivingLicense());
+		searchInsurance.setMobCheck(user.isMobCheck());
+		searchInsurance.setIdCheck(user.isIdCheck());
+				// end of check
 		// Create User Insurance Lead when isinsurer and searchInsurance != null
 		if (userEBidVO.isInsurance() && searchInsurance != null) {
 
@@ -737,6 +760,14 @@ public class UserEBidServiceImpl implements UserEBidService {
 		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 		searchFinance.setCreationDate(ourJavaDateObject);
 		searchFinance.setIdp(user.getUserId());
+		// start of check
+				searchFinance.setMobile(user.getMobile());
+				searchFinance.setLandLine(user.getLandLine());
+				searchFinance.setDrivingLicense(user.getDrivingLicense());
+				searchFinance.setMobCheck(user.isMobCheck());
+				searchFinance.setIdCheck(user.isIdCheck());
+				// end of check
+
 		int searchFinCountTemp = user.getSearchFinCount();
 		user.setSearchFinCount(searchFinCountTemp + 1);
 		if (user.getSearchFinance() != null) {
@@ -875,6 +906,13 @@ public class UserEBidServiceImpl implements UserEBidService {
 		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 		// searchInsurance.setCreationDate(ourJavaDateObject);
 		searchInsurance.setIdp(user.getUserId());
+		// start of check
+		searchInsurance.setMobile(user.getMobile());
+		searchInsurance.setLandLine(user.getLandLine());
+		searchInsurance.setDrivingLicense(user.getDrivingLicense());
+		searchInsurance.setMobCheck(user.isMobCheck());
+		searchInsurance.setIdCheck(user.isIdCheck());
+		// end of check
 		int searchTranCountTemp = user.getSearchTranspCount();
 		user.setSearchTranspCount(searchTranCountTemp + 1);
 		if (user.getSearchTransp() != null) {
@@ -1027,6 +1065,13 @@ public class UserEBidServiceImpl implements UserEBidService {
 		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 		searchInsurance.setCreationDate(ourJavaDateObject);
 		searchInsurance.setIdp(user.getUserId());
+		// start of check
+				searchInsurance.setMobile(user.getMobile());
+				searchInsurance.setLandLine(user.getLandLine());
+				searchInsurance.setDrivingLicense(user.getDrivingLicense());
+				searchInsurance.setMobCheck(user.isMobCheck());
+				searchInsurance.setIdCheck(user.isIdCheck());
+				// end of check
 		int searchServCountTemp = user.getSearchServCount();
 		user.setSearchServCount(searchServCountTemp + 1);
 		if (user.getSearchServMaint() != null) {
@@ -1178,6 +1223,15 @@ public class UserEBidServiceImpl implements UserEBidService {
 		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 		searchInsurance.setCreationDate(ourJavaDateObject);
 		searchInsurance.setIdp(user.getUserId());
+		// start of check
+		searchInsurance.setMobile(user.getMobile());
+		searchInsurance.setLandLine(user.getLandLine());
+		searchInsurance.setDrivingLicense(user.getDrivingLicense());
+		searchInsurance.setMobCheck(user.isMobCheck());
+		searchInsurance.setIdCheck(user.isIdCheck());
+				// end of check
+
+		
 		int searchInsCountTemp = user.getSearchInsCount();
 		user.setSearchInsCount(searchInsCountTemp + 1);
 		if (user.getSearchInsurance() != null) {

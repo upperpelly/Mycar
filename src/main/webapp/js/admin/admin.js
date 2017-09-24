@@ -7059,6 +7059,7 @@ this.model_data_id = model_data_id;
         		alert($scope.idCheck);
     		});
         */	
+    		
     		$scope.carSearchId = data.carSearchId;
 			$scope.VerfMob = data.mobile;
     		$scope.VerfLIC = data.drivingLicense;
@@ -10062,16 +10063,37 @@ this.model_data_id = model_data_id;
 
 
 														$scope.VerfFrmSub = function(){
-															alert("inside submit update");
+															//alert("inside submit update");
 															
 															alert($scope.carSearchId);
-											        		alert($scope.mobCheck);
+											        		/*alert($scope.mobCheck);
 											        		alert($scope.VerfMob);
 											        		alert($scope.VerfLIC);
-											        		alert($scope.idCheck);
+											        		alert($scope.idCheck);*/
+											        		var jsonInputToAPI = {"ID":$scope.carSearchId,
+											        				"carSearchId":$scope.carSearchId,
+											        				"mobCheck":$scope.mobCheck,
+											        				"idCheck":$scope.idCheck,
+											        				"VerfMob":$scope.VerfMob,
+											        				"VerfLIC":$scope.VerfLIC
+																	}
+											        		console.log(JSON.stringify(jsonInputToAPI));
+											        		var wsURL = 'api/dealer/updateStatus';
+															 //$body.addClass("loading");
+																    $http({
+																				method : 'POST',
+																				url : wsURL,
+																				data: jsonInputToAPI
+
+																			}).success(function(data) {
+																				 //$body.removeClass("loading");
+																				alert("Successfully updated Status..");
+																				//alert("Fuel Expenses Successfully Stored..");
+																							});
+														
 														}
 														$scope.submitMyVehicleFuelExpenses = function(isValid) {
-															alert("inside Fuel Expe"+isValid);
+															//alert("inside Fuel Expe"+isValid);
 															if (isValid) {
 															//alert("inside Fuel Expe")
 															//logExpensesloadImage();

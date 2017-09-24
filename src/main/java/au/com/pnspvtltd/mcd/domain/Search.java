@@ -30,8 +30,63 @@ public class Search implements Serializable {
 	private boolean insurance;
 	private boolean dealer;
 	private Long userid;
+	private int mobile;
+	private int landLine;
+	private String drivingLicense;
+	private boolean credStat;
+	private boolean idCheck;
+	private boolean mobCheck;
 	
 	
+	
+	public boolean isCredStat() {
+		return credStat;
+	}
+
+	public void setCredStat(boolean credStat) {
+		this.credStat = credStat;
+	}
+
+	public boolean isIdCheck() {
+		return idCheck;
+	}
+
+	public void setIdCheck(boolean idCheck) {
+		this.idCheck = idCheck;
+	}
+
+	public boolean isMobCheck() {
+		return mobCheck;
+	}
+
+	public void setMobCheck(boolean mobCheck) {
+		this.mobCheck = mobCheck;
+	}
+
+	public int getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(int mobile) {
+		this.mobile = mobile;
+	}
+
+	public int getLandLine() {
+		return landLine;
+	}
+
+	public void setLandLine(int landLine) {
+		this.landLine = landLine;
+	}
+
+	public String getDrivingLicense() {
+		return drivingLicense;
+	}
+
+	public void setDrivingLicense(String drivingLicense) {
+		this.drivingLicense = drivingLicense;
+	}
+
 	public Long getUserid() {
 		return userid;
 	}

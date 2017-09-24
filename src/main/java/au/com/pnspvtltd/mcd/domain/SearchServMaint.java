@@ -38,8 +38,62 @@ public class SearchServMaint implements Serializable {
 	private String photo3;
 private long idp;
 	
+private int mobile;
+private int landLine;
+private String drivingLicense;
+private boolean credStat;
+private boolean idCheck;
+private boolean mobCheck;
+
 	
-	
+	public int getMobile() {
+	return mobile;
+}
+
+public void setMobile(int mobile) {
+	this.mobile = mobile;
+}
+
+public int getLandLine() {
+	return landLine;
+}
+
+public void setLandLine(int landLine) {
+	this.landLine = landLine;
+}
+
+public String getDrivingLicense() {
+	return drivingLicense;
+}
+
+public void setDrivingLicense(String drivingLicense) {
+	this.drivingLicense = drivingLicense;
+}
+
+public boolean isCredStat() {
+	return credStat;
+}
+
+public void setCredStat(boolean credStat) {
+	this.credStat = credStat;
+}
+
+public boolean isIdCheck() {
+	return idCheck;
+}
+
+public void setIdCheck(boolean idCheck) {
+	this.idCheck = idCheck;
+}
+
+public boolean isMobCheck() {
+	return mobCheck;
+}
+
+public void setMobCheck(boolean mobCheck) {
+	this.mobCheck = mobCheck;
+}
+
 	public long getIdp() {
 		return idp;
 	}

@@ -55,6 +55,7 @@ import au.com.pnspvtltd.mcd.repository.ExternalDealerTpRepository;
 import au.com.pnspvtltd.mcd.repository.LoyalityProgAdminRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
@@ -304,7 +305,12 @@ public class DealerController {
 		response.setStatus(HttpStatus.CREATED.value());
 		return dealerService.addFinanceEntityList(financeEntityVO);
 	}
-	
+	@PostMapping("dealer/updateStatus")
+	public String updateStatus(@RequestBody AdminStatusVO financeEntityVO, HttpServletResponse response) {
+		LOGGER.debug("Received request to update Status {}");
+		response.setStatus(HttpStatus.CREATED.value());
+		return dealerService.updateStatus(financeEntityVO);
+	}
 	@GetMapping(value = "dealer/{id}/inventory", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<InventoryVO> getInventory(@PathVariable Long id) {
 		LOGGER.debug("Received request to get Dealer Inventory with id {} ", id);
