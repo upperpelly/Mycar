@@ -8100,5 +8100,98 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 
 <!-- Loading -->
 <div class="modale"><!-- Place at bottom of page --></div>
+
+
+<!--Verification Modal -->
+		<div id="inviteModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title" style="color:#bd191e">Verification Process</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<form name="VerfFrm" id="VerfFrm" ng-submit="VerfFrmSub()" novalidate>
+			        <div class="form-group row">
+						<div class="col-sm-6 col-md-6">
+							<label for="VerfMob">Mobile No:</label>
+							<input type="text" id="VerfMob" name="VerfMob"
+																ng-model="VerfMob" class="input-text full-width"
+																value="" placeholder="Mobile No" readonly/>
+						</div>
+						
+						<div class="col-sm-6 col-md-6">
+							<label for="verMob">Verify:</label>
+							
+							<input type="radio"  ng-value="true"  ng-model="mobCheck" name="mobCheck" ng-checked="mobCheck == true">True
+							<input type="radio" ng-value="false" ng-model="mobCheck" name="mobCheck" ng-checked="mobCheck == false">False
+							
+							<!-- <div class="radio">
+								<label><input type="radio"  ng-value="true"  ng-model="mobCheck" name="mobCheck" ng-checked="mobCheck == true">True</label>
+							</div>class="newUsedCarEbid" 
+							<div class="radio">
+								<label><input type="radio" ng-value="false" ng-model="mobCheck" name="mobCheck" ng-checked="mobCheck == false">False</label>
+							</div> -->
+						</div>
+						<div class="col-sm-3 col-md-3" ng-show="mobCheck == true">
+							<i class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green;"><b> Verified</b></i>
+						</div>
+						<div class="col-sm-3 col-md-3" ng-show="mobCheck == false">
+							<i class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red;"><b> Not Verified</b></i>
+						</div>
+		          	</div><br/>	
+		          	
+		          	<div class="form-group row">
+						<div class="col-sm-6 col-md-6">
+							<label for="verLIC">License No:</label>
+							<input type="text" id="VerfLIC" name="VerfLIC"
+																ng-model="VerfLIC" class="input-text full-width"
+																value="" placeholder="Licence No" readonly/>							
+						</div>
+						
+						
+						<div class="col-sm-6 col-md-6">
+							<label for="VerfLIC">Verify:</label>
+							<input type="radio"  ng-value="true"  ng-model="idCheck" name="idCheck" ng-checked="idCheck">True
+							<input type="radio" ng-value="false" ng-model="idCheck" name="idCheck" ng-checked="idCheck">False
+							
+							
+							<!-- 
+							<div class="radio">
+								<label><input type="radio"  ng-value="true"  ng-model="idCheck" name="idCheck" ng-checked="idCheck">True</label>
+							</div>class="newUsedCarEbid" 
+							<div class="radio">
+								<label><input type="radio" ng-value="false" ng-model="idCheck" name="idCheck" ng-checked="idCheck">False</label>
+							</div> -->
+						</div>
+						
+						<div class="col-sm-3 col-md-3" ng-show="idCheck == true">
+							<i class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green;"><b> Verified</b></i>
+						</div> 
+						<div class="col-sm-3 col-md-3" ng-show="idCheck == false">
+							<i class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red;"><b> Not Verified</b></i>
+						</div>
+						 
+		          	</div><br/>	
+		          	<div class="row">
+		          		<div class="col-sm-6 col-md-6">
+		         		<button class="btn btn-default btn-block" style="color:green;"><b>Update Status</b>&nbsp;&nbsp;<i class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green;"></i></button>
+						</div>
+		          	</div>
+		          	<div class="row">
+		          		<div class="col-sm-8 col-md-8 loyaStatus1">
+						</div>
+		          	</div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		
+		  </div>
+		</div>
 </body>
 </html>

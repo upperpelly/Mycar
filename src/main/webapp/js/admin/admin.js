@@ -6985,7 +6985,15 @@ this.model_data_id = model_data_id;
 
 
     	$('a.anchor-editDealerVehicleSearchModal').on('click', function(event) {
-
+    		
+    		
+    		$scope.VerfMob = "";
+    		$scope.VerfLIC = "";
+    		
+    		$scope.mobCheck = false;
+    		$scope.idCheck = false;
+    		
+    		
     		$('#car-model-data12').toggle();
     		$('#fuelCard412').toggle();
     		var data = $(event.target).data('details');
@@ -7018,13 +7026,47 @@ this.model_data_id = model_data_id;
 
 
 
-    		//alert(JSON.stringify(data)); to work
+    		console.log(JSON.stringify(data));// to work
+    		
+    		condtion ="";
+    		if(data.newer){
+    			condition = "NEW";
+    		}
+    		else{
+    			condition = "USED";
+    		}
     		var editDealerVehicleSearchForm = '<table>\
-    			<tr><th>'+"Car Ebid ID"+'</th><th>'+'</th><th>'+"New"+'</th><th>'+"Used"+"Post Code"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>\
-    			<tr><td>' + data.carSearchId + '</td><td>' + data.newer + '</td><td>' + '</td><td>' + data.used + '</td><td>' + data.postCode + '</td><td>' + data.modelYear + '</td><td>' + data.modelDisplay + '</td><td>' + data.modelName + '</td><td>' + data.modelTrim + '</td></tr>\
+    			<tr><th>'+ "Verification"+'</th>'+'<th>'+"eBID ID"+'</th><th>'+"Condition"+'</th><th>'+"Post Code"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>\
+    			<tr><td><a href="#" id="anchor-intrModal-' + data.carSearchId + '" data-details=\'' + JSON.stringify(data) + '\' class="anchor-intrModal btn btn-success btn-sm" data-toggle="modal" data-target="#inviteModal">Verification</a></td><td>' + data.carSearchId + '</td>' + '<td>' + condition + '</td><td>' + data.postCode + '</td><td>' + data.modelYear + '</td><td>' + data.modelDisplay + '</td><td>' + data.modelName + '</td><td>' + data.modelTrim + '</td></tr>\
     			</table>';
     		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>null</g, ">--NA--<");
     		editDealerVehicleSearchForm = editDealerVehicleSearchForm.replace(/>undefined</g, ">--NA--<");
+    		
+/*
+        	$('.anchor-intrModal').on('click', function(event) {
+        		
+        		var data = $(event.target).data('details');
+        		
+    			$scope.VerfMob = data.mobile;
+        		$scope.VerfLIC = data.drivingLicense;
+        		
+        		$scope.mobCheck = data.mobCheck;
+        		$scope.idCheck = data.idCheck;
+        		
+        		alert($scope.mobCheck);
+        		alert($scope.VerfMob);
+        		alert($scope.VerfLIC);
+        		alert($scope.idCheck);
+    		});
+        */	
+    		$scope.carSearchId = data.carSearchId;
+			$scope.VerfMob = data.mobile;
+    		$scope.VerfLIC = data.drivingLicense;
+    		
+    		$scope.mobCheck = data.mobCheck;
+    		$scope.idCheck = data.idCheck;
+    	
+    		
     		$(".edit-dealer-vehicle-search-content").html(editDealerVehicleSearchForm);
     		
     		var wsURL = 'api/getDealSearchInfoId?carSearchId='+data.carSearchId ;
@@ -7605,6 +7647,8 @@ this.model_data_id = model_data_id;
     		// end of view of Lead
     		
     	});
+    	
+    	
     	
     	
     	/*$('button.submit-editDealerVehicleSearchModal').on('click', function(e) {
@@ -10017,7 +10061,15 @@ this.model_data_id = model_data_id;
 
 
 
-
+														$scope.VerfFrmSub = function(){
+															alert("inside submit update");
+															
+															alert($scope.carSearchId);
+											        		alert($scope.mobCheck);
+											        		alert($scope.VerfMob);
+											        		alert($scope.VerfLIC);
+											        		alert($scope.idCheck);
+														}
 														$scope.submitMyVehicleFuelExpenses = function(isValid) {
 															alert("inside Fuel Expe"+isValid);
 															if (isValid) {
